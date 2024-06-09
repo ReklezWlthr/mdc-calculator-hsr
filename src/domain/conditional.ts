@@ -1,5 +1,21 @@
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty } from './constant'
+import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from './constant'
+
+export type TalentScalingStyle = 'linear' | 'curved' | 'flat' | 'heal'
+
+export enum DebuffTypes {
+  WIND_SHEAR = 'Wind Shear',
+  BURN = 'Burn',
+  FROZEN = 'Frozen',
+  SHOCKED = 'Shocked',
+  BLEED = 'Bleeding',
+  ENTANGLE = 'Entangled',
+  IMPRISON = 'Imprisoned',
+  ATK_RED = 'ATK Reduced',
+  DEF_RED = 'DEF Reduced',
+  SPD_RED = 'SPD Reduced',
+  OTHER = 'Others',
+}
 
 export interface IScaling {
   name: string
@@ -7,12 +23,14 @@ export interface IScaling {
   value: { scaling: number; multiplier: Stats; override?: number }[]
   element: Element | TalentProperty
   property: TalentProperty
+  type: TalentType
   multiplier?: number
   flat?: number
   bonus?: number //Bonus dmg for each component
   cr?: number //Bonus crit rate for each component
   cd?: number //Bonus crit dmg for each component
-  defPen?: number //Only used by Yae
+  break?: number
+  energy?: number
 }
 
 export interface IWeaponContent {
@@ -36,6 +54,8 @@ export interface IContent {
   min?: number
   debuff?: boolean
   options?: { name: string; value: string }[]
+  chance?: { base: number; fixed: boolean }
+  duration?: number
 }
 
 export interface IWeaponContent {
@@ -62,7 +82,7 @@ export interface ITalentDisplay {
   title: string
   content: string
   upgrade?: string[]
-  value?: { name: string; value: { stat: Stats; scaling: (v: number) => number | string } }[]
+  value?: { base: number; growth: number; style: TalentScalingStyle }[]
 }
 
 export interface ITalent {

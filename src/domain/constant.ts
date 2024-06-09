@@ -21,18 +21,19 @@ export interface ICharacterStats {
 }
 
 export interface ICharacter {
+  id: string
   name: string
-  weapon: WeaponType
+  weapon: PathType
   element: Element
   rarity: number
   stat: ICharacterStats
-  codeName: string
 }
 
 export interface ITalentLevel {
-  normal: number
+  basic: number
   skill: number
-  burst: number
+  ult: number
+  talent: number
 }
 
 export interface ICharStoreBase {
@@ -41,6 +42,12 @@ export interface ICharStoreBase {
   cons: number
   cId: string
   talents: ITalentLevel
+  minor_traces: { stat: Stats; value: number; toggled: boolean }[]
+  major_traces: {
+    a2: boolean
+    a4: boolean
+    a6: boolean
+  }
 }
 
 export interface ICharStore extends ICharStoreBase {
@@ -64,10 +71,10 @@ export interface IArtifact {
   id: string
   name: string
   icon: string
-  rarity: (3 | 4 | 5)[]
   bonus: { stat: Stats; value: number }[]
+  bonusAdd: { stat: Stats; value: number }[]
   half?: (conditionals: StatsObject) => StatsObject
-  add?: (conditionals: StatsObject, weapon: WeaponType, team: ITeamChar[]) => StatsObject
+  add?: (conditionals: StatsObject, weapon: PathType, team: ITeamChar[]) => StatsObject
   desc: string[]
 }
 
@@ -98,60 +105,54 @@ export interface IWeaponEquip {
   wId: string
 }
 
-export enum WeaponType {
-  SWORD = 'Sword',
-  BOW = 'Bow',
-  CATALYST = 'Catalyst',
-  POLEARM = 'Polearm',
-  CLAYMORE = 'Claymore',
+export enum PathType {
+  PRESERVATION = 'Preservation',
+  HUNT = 'The Hunt',
+  ERUDITION = 'Erudition',
+  ABUNDANCE = 'Abundance',
+  DESTRUCTION = 'Destruction',
+  HARMONY = 'Harmony',
+  NIHILITY = 'Nihility',
 }
 
-export const WeaponIcon = {
-  [WeaponType.SWORD]: '/Skill_A_01.png',
-  [WeaponType.CLAYMORE]: '/Skill_A_04.png',
-  [WeaponType.POLEARM]: '/Skill_A_03.png',
-  [WeaponType.BOW]: '/Skill_A_02.png',
-  [WeaponType.CATALYST]: '/Skill_A_Catalyst_MD.png',
+export const PathMap = {
+  [PathType.PRESERVATION]: '/knight.webp',
+  [PathType.HUNT]: '/rogue.webp',
+  [PathType.ERUDITION]: '/mage.webp',
+  [PathType.ABUNDANCE]: '/priest.webp',
+  [PathType.DESTRUCTION]: '/warrior.webp',
+  [PathType.HARMONY]: '/shaman.webp',
+  [PathType.NIHILITY]: '/warlock.webp',
 }
 
-export const DefaultWeaponImage = {
-  [WeaponType.SWORD]: 'UI_EquipIcon_Sword_Blunt',
-  [WeaponType.CATALYST]: 'UI_EquipIcon_Catalyst_Apprentice',
-  [WeaponType.CLAYMORE]: 'UI_EquipIcon_Claymore_Aniki',
-  [WeaponType.POLEARM]: 'UI_EquipIcon_Pole_Gewalt',
-  [WeaponType.BOW]: 'UI_EquipIcon_Bow_Hunters',
-}
-
-export const DefaultWeaponName = {
-  [WeaponType.SWORD]: 'Dull Blade',
-  [WeaponType.CATALYST]: "Apprentice's Notes",
-  [WeaponType.CLAYMORE]: 'Waster Greatsword',
-  [WeaponType.POLEARM]: "Beginner's Protector",
-  [WeaponType.BOW]: "Hunter's Bow",
+export enum TalentType {
+  BA = 'Basic Attack',
+  SKILL = 'Skill',
+  ULT = 'Ultimate',
+  TECH = 'Technique',
+  TALENT = 'Talent',
+  NONE = 'None',
 }
 
 export enum TalentProperty {
-  NA = 'Normal Attack',
-  CA = 'Charged Attack',
-  PA = 'Plunging Attack',
-  SKILL = 'Elemental Skill',
-  BURST = 'Elemental Burst',
+  NORMAL = 'Normal',
   HEAL = 'Heal',
   SHIELD = 'Shield',
   ADD = 'Additional Attack',
-  STATIC = 'Static Attack',
-  CRIT = 'CRIT DMG',
+  BREAK = 'Break Damage',
+  SUPER_BREAK = 'Super Break Damage',
+  DOT = 'DoT',
+  FUA = 'Follow-Up',
 }
 
 export enum Element {
   PHYSICAL = 'Physical',
-  PYRO = 'Pyro',
-  CRYO = 'Cryo',
-  HYDRO = 'Hydro',
-  ELECTRO = 'Electro',
-  ANEMO = 'Anemo',
-  GEO = 'Geo',
-  DENDRO = 'Dendro',
+  FIRE = 'Fire',
+  ICE = 'Ice',
+  LIGHTNING = 'Lightning',
+  WIND = 'Wind',
+  QUANTUM = 'Quantum',
+  IMAGINARY = 'Imaginary',
 }
 
 export enum Stats {
@@ -161,56 +162,64 @@ export enum Stats {
   P_HP = 'HP%',
   P_ATK = 'ATK%',
   P_DEF = 'DEF%',
+  SPD = 'SPD',
+  P_SPD = 'SPD%',
   CRIT_RATE = 'CRIT Rate',
   CRIT_DMG = 'CRIT DMG',
-  ER = 'Energy Recharge',
-  EM = 'Elemental Mastery',
+  ERR = 'Energy Regen Rate',
+  BE = 'Break Effect',
+  EHR = 'Effect Hit Rate',
+  E_RES = 'Effect RES',
   PHYSICAL_DMG = 'Physical DMG%',
-  PYRO_DMG = 'Pyro DMG%',
-  HYDRO_DMG = 'Hydro DMG%',
-  CRYO_DMG = 'Cryo DMG%',
-  ELECTRO_DMG = 'Electro DMG%',
-  DENDRO_DMG = 'Dendro DMG%',
-  GEO_DMG = 'Geo DMG%',
-  ANEMO_DMG = 'Anemo DMG%',
-  HEAL = 'Healing Bonus',
-  I_HEALING = 'Incoming Healing',
-  SHIELD = 'Shield Strength',
+  FIRE_DMG = 'Fire DMG%',
+  ICE_DMG = 'Ice DMG%',
+  LIGHTNING_DMG = 'Lightning DMG%',
+  WIND_DMG = 'Wind DMG%',
+  QUANTUM_DMG = 'Quantum DMG%',
+  IMAGINARY_DMG = 'Imaginary DMG%',
+  HEAL = 'Outgoing Healing',
   ALL_DMG = 'DMG%',
-  ELEMENTAL_DMG = 'Elemental DMG%',
 }
 
 export const StatIcons = {
-  [Stats.P_HP]: 'stat_p_hp.png',
-  [Stats.P_ATK]: 'stat_p_atk.png',
-  [Stats.P_DEF]: 'stat_p_def.png',
-  [Stats.EM]: 'stat_em.png',
-  [Stats.PHYSICAL_DMG]: 'stat_physical.png',
-  [Stats.ATK]: 'stat_atk.png',
-  [Stats.HP]: 'stat_hp.png',
-  [Stats.DEF]: 'stat_def.png',
-  [Stats.CRIT_RATE]: 'stat_crit_rate.png',
-  [Stats.CRIT_DMG]: 'stat_crit_dmg.png',
+  [Stats.P_HP]: 'IconMaxHP.png',
+  [Stats.P_ATK]: 'IconAttack.png',
+  [Stats.P_DEF]: 'IconDefence.png',
+  [Stats.SPD]: 'IconSpeed.png',
+  [Stats.P_SPD]: 'IconSpeed.png',
+  [Stats.ATK]: 'IconAttack.png',
+  [Stats.HP]: 'IconMaxHP.png',
+  [Stats.DEF]: 'IconDefence.png',
+  [Stats.CRIT_RATE]: 'IconCriticalChance.png',
+  [Stats.CRIT_DMG]: 'IconCriticalDamage.png',
   [Stats.HEAL]: 'stat_heal.png',
-  [Stats.ER]: 'stat_er.png',
+  [Stats.BE]: 'IconBreakUp.png',
+  [Stats.E_RES]: 'IconStatusResistance.png',
+  [Stats.PHYSICAL_DMG]: 'IconPhysicalAddedRatio.png',
+  [Stats.FIRE_DMG]: 'IconFireAddedRatio.png',
+  [Stats.ICE_DMG]: 'IconIceAddedRatio.png',
+  [Stats.LIGHTNING_DMG]: 'IconThunderAddedRatio.png',
+  [Stats.WIND_DMG]: 'IconWindAddedRatio.png',
+  [Stats.QUANTUM_DMG]: 'IconQuantumAddedRatio.png',
+  [Stats.IMAGINARY_DMG]: 'IconImaginaryAddedRatio.png',
 }
 
-export const Region = Object.freeze({
-  1: 'Monstadt',
-  2: 'Liyue',
-  3: 'Inazuma',
-  4: 'Sumeru',
-  5: 'Fontaine',
-  6: 'Natlan',
-  7: 'Scheznaya',
+export const RelicPiece = Object.freeze({
+  1: 'Head',
+  2: 'Hands',
+  3: 'Body',
+  4: 'Foot',
+  5: 'Planar Sphere',
+  6: 'Link Rope',
 })
 
-export const ArtifactPiece = Object.freeze({
-  1: 'Goblet of Eonothem',
-  2: 'Plume of Death',
-  3: 'Circlet of Logos',
-  4: 'Flower of Life',
-  5: 'Sands of Eon',
+export const RelicPieceIcon = Object.freeze({
+  1: 'Head',
+  2: 'Hands',
+  3: 'Body',
+  4: 'Foot',
+  5: 'Neck',
+  6: 'Goods',
 })
 
 export const AscensionOptions = [
@@ -223,81 +232,81 @@ export const AscensionOptions = [
   { name: 'A6', value: '6' },
 ]
 
-export const ConstellationOptions = [
-  { name: 'C0', value: '0' },
-  { name: 'C1', value: '1' },
-  { name: 'C2', value: '2' },
-  { name: 'C3', value: '3' },
-  { name: 'C4', value: '4' },
-  { name: 'C5', value: '5' },
-  { name: 'C6', value: '6' },
+export const EidolonOptions = [
+  { name: 'E0', value: '0' },
+  { name: 'E1', value: '1' },
+  { name: 'E2', value: '2' },
+  { name: 'E3', value: '3' },
+  { name: 'E4', value: '4' },
+  { name: 'E5', value: '5' },
+  { name: 'E6', value: '6' },
 ]
 
-export const RefinementOptions = [
-  { name: 'R1', value: '1' },
-  { name: 'R2', value: '2' },
-  { name: 'R3', value: '3' },
-  { name: 'R4', value: '4' },
-  { name: 'R5', value: '5' },
+export const SuperimposeOptions = [
+  { name: 'S1', value: '1' },
+  { name: 'S2', value: '2' },
+  { name: 'S3', value: '3' },
+  { name: 'S4', value: '4' },
+  { name: 'S5', value: '5' },
 ]
 
 export const MainStatOptions = [
-  { name: Stats.P_ATK, value: Stats.P_ATK, img: '/icons/stat_p_atk.png' },
-  { name: Stats.P_HP, value: Stats.P_HP, img: '/icons/stat_p_hp.png' },
-  { name: Stats.P_DEF, value: Stats.P_DEF, img: '/icons/stat_p_def.png' },
-  { name: Stats.EM, value: Stats.EM, img: '/icons/stat_em.png' },
-  { name: Stats.ER, value: Stats.ER, img: '/icons/stat_er.png' },
-  { name: Stats.CRIT_RATE, value: Stats.CRIT_RATE, img: '/icons/stat_crit_rate.png' },
-  { name: Stats.CRIT_DMG, value: Stats.CRIT_DMG, img: '/icons/stat_crit_dmg.png' },
-  { name: Stats.PHYSICAL_DMG, value: Stats.PHYSICAL_DMG, img: '/icons/stat_physical.png' },
-  {
-    name: Stats.ANEMO_DMG,
-    value: Stats.ANEMO_DMG,
-    img: 'https://cdn.wanderer.moe/genshin-impact/elements/anemo.png',
-  },
-  {
-    name: Stats.PYRO_DMG,
-    value: Stats.PYRO_DMG,
-    img: 'https://cdn.wanderer.moe/genshin-impact/elements/pyro.png',
-  },
-  {
-    name: Stats.HYDRO_DMG,
-    value: Stats.HYDRO_DMG,
-    img: 'https://cdn.wanderer.moe/genshin-impact/elements/hydro.png',
-  },
-  {
-    name: Stats.CRYO_DMG,
-    value: Stats.CRYO_DMG,
-    img: 'https://cdn.wanderer.moe/genshin-impact/elements/cryo.png',
-  },
-  {
-    name: Stats.ELECTRO_DMG,
-    value: Stats.ELECTRO_DMG,
-    img: 'https://cdn.wanderer.moe/genshin-impact/elements/electro.png',
-  },
-  {
-    name: Stats.GEO_DMG,
-    value: Stats.GEO_DMG,
-    img: 'https://cdn.wanderer.moe/genshin-impact/elements/geo.png',
-  },
-  {
-    name: Stats.DENDRO_DMG,
-    value: Stats.DENDRO_DMG,
-    img: 'https://cdn.wanderer.moe/genshin-impact/elements/dendro.png',
-  },
+  // { name: Stats.P_ATK, value: Stats.P_ATK, img: '/icons/stat_p_atk.png' },
+  // { name: Stats.P_HP, value: Stats.P_HP, img: '/icons/stat_p_hp.png' },
+  // { name: Stats.P_DEF, value: Stats.P_DEF, img: '/icons/stat_p_def.png' },
+  // { name: Stats.EM, value: Stats.EM, img: '/icons/stat_em.png' },
+  // { name: Stats.ER, value: Stats.ER, img: '/icons/stat_er.png' },
+  // { name: Stats.CRIT_RATE, value: Stats.CRIT_RATE, img: '/icons/stat_crit_rate.png' },
+  // { name: Stats.CRIT_DMG, value: Stats.CRIT_DMG, img: '/icons/stat_crit_dmg.png' },
+  // { name: Stats.PHYSICAL_DMG, value: Stats.PHYSICAL_DMG, img: '/icons/stat_physical.png' },
+  // {
+  //   name: Stats.ANEMO_DMG,
+  //   value: Stats.ANEMO_DMG,
+  //   img: 'https://cdn.wanderer.moe/genshin-impact/elements/anemo.png',
+  // },
+  // {
+  //   name: Stats.PYRO_DMG,
+  //   value: Stats.PYRO_DMG,
+  //   img: 'https://cdn.wanderer.moe/genshin-impact/elements/pyro.png',
+  // },
+  // {
+  //   name: Stats.HYDRO_DMG,
+  //   value: Stats.HYDRO_DMG,
+  //   img: 'https://cdn.wanderer.moe/genshin-impact/elements/hydro.png',
+  // },
+  // {
+  //   name: Stats.CRYO_DMG,
+  //   value: Stats.CRYO_DMG,
+  //   img: 'https://cdn.wanderer.moe/genshin-impact/elements/cryo.png',
+  // },
+  // {
+  //   name: Stats.ELECTRO_DMG,
+  //   value: Stats.ELECTRO_DMG,
+  //   img: 'https://cdn.wanderer.moe/genshin-impact/elements/electro.png',
+  // },
+  // {
+  //   name: Stats.GEO_DMG,
+  //   value: Stats.GEO_DMG,
+  //   img: 'https://cdn.wanderer.moe/genshin-impact/elements/geo.png',
+  // },
+  // {
+  //   name: Stats.DENDRO_DMG,
+  //   value: Stats.DENDRO_DMG,
+  //   img: 'https://cdn.wanderer.moe/genshin-impact/elements/dendro.png',
+  // },
 ]
 
 export const SubStatOptions = [
-  { name: Stats.ATK, value: Stats.ATK, img: '/icons/stat_atk.png' },
-  { name: Stats.HP, value: Stats.HP, img: '/icons/stat_hp.png' },
-  { name: Stats.DEF, value: Stats.DEF, img: '/icons/stat_def.png' },
-  { name: Stats.P_ATK, value: Stats.P_ATK, img: '/icons/stat_p_atk.png' },
-  { name: Stats.P_HP, value: Stats.P_HP, img: '/icons/stat_p_hp.png' },
-  { name: Stats.P_DEF, value: Stats.P_DEF, img: '/icons/stat_p_def.png' },
-  { name: Stats.EM, value: Stats.EM, img: '/icons/stat_em.png' },
-  { name: Stats.ER, value: Stats.ER, img: '/icons/stat_er.png' },
-  { name: Stats.CRIT_RATE, value: Stats.CRIT_RATE, img: '/icons/stat_crit_rate.png' },
-  { name: Stats.CRIT_DMG, value: Stats.CRIT_DMG, img: '/icons/stat_crit_dmg.png' },
+  // { name: Stats.ATK, value: Stats.ATK, img: '/icons/stat_atk.png' },
+  // { name: Stats.HP, value: Stats.HP, img: '/icons/stat_hp.png' },
+  // { name: Stats.DEF, value: Stats.DEF, img: '/icons/stat_def.png' },
+  // { name: Stats.P_ATK, value: Stats.P_ATK, img: '/icons/stat_p_atk.png' },
+  // { name: Stats.P_HP, value: Stats.P_HP, img: '/icons/stat_p_hp.png' },
+  // { name: Stats.P_DEF, value: Stats.P_DEF, img: '/icons/stat_p_def.png' },
+  // { name: Stats.EM, value: Stats.EM, img: '/icons/stat_em.png' },
+  // { name: Stats.ER, value: Stats.ER, img: '/icons/stat_er.png' },
+  // { name: Stats.CRIT_RATE, value: Stats.CRIT_RATE, img: '/icons/stat_crit_rate.png' },
+  // { name: Stats.CRIT_DMG, value: Stats.CRIT_DMG, img: '/icons/stat_crit_dmg.png' },
 ]
 
 export const PropMap = {
@@ -306,25 +315,24 @@ export const PropMap = {
 }
 
 export const EnkaStatsMap = {
-  FIGHT_PROP_HP: Stats.HP,
-  FIGHT_PROP_ATTACK: Stats.ATK,
-  FIGHT_PROP_DEFENSE: Stats.DEF,
-  FIGHT_PROP_HP_PERCENT: Stats.P_HP,
-  FIGHT_PROP_ATTACK_PERCENT: Stats.P_ATK,
-  FIGHT_PROP_DEFENSE_PERCENT: Stats.P_DEF,
-  FIGHT_PROP_CRITICAL: Stats.CRIT_RATE,
-  FIGHT_PROP_CRITICAL_HURT: Stats.CRIT_DMG,
-  FIGHT_PROP_CHARGE_EFFICIENCY: Stats.ER,
-  FIGHT_PROP_HEAL_ADD: Stats.HEAL,
-  FIGHT_PROP_ELEMENT_MASTERY: Stats.EM,
-  FIGHT_PROP_PHYSICAL_ADD_HURT: Stats.PHYSICAL_DMG,
-  FIGHT_PROP_FIRE_ADD_HURT: Stats.PYRO_DMG,
-  FIGHT_PROP_ELEC_ADD_HURT: Stats.ELECTRO_DMG,
-  FIGHT_PROP_WATER_ADD_HURT: Stats.HYDRO_DMG,
-  FIGHT_PROP_WIND_ADD_HURT: Stats.ANEMO_DMG,
-  FIGHT_PROP_ICE_ADD_HURT: Stats.CRYO_DMG,
-  FIGHT_PROP_ROCK_ADD_HURT: Stats.GEO_DMG,
-  FIGHT_PROP_GRASS_ADD_HURT: Stats.DENDRO_DMG,
+  // FIGHT_PROP_HP: Stats.HP,
+  // FIGHT_PROP_ATTACK: Stats.ATK,
+  // FIGHT_PROP_DEFENSE: Stats.DEF,
+  // FIGHT_PROP_HP_PERCENT: Stats.P_HP,
+  // FIGHT_PROP_ATTACK_PERCENT: Stats.P_ATK,
+  // FIGHT_PROP_DEFENSE_PERCENT: Stats.P_DEF,
+  // FIGHT_PROP_CRITICAL: Stats.CRIT_RATE,
+  // FIGHT_PROP_CRITICAL_HURT: Stats.CRIT_DMG,
+  // FIGHT_PROP_CHARGE_EFFICIENCY: Stats.ER,
+  // FIGHT_PROP_HEAL_ADD: Stats.HEAL,
+  // FIGHT_PROP_ELEMENT_MASTERY: Stats.EM,
+  // FIGHT_PROP_PHYSICAL_ADD_HURT: Stats.PHYSICAL_DMG,
+  // FIGHT_PROP_FIRE_ADD_HURT: Stats.FIRE_DMG,
+  // FIGHT_PROP_ELEC_ADD_HURT: Stats.LIGHTNING_DMG,
+  // FIGHT_PROP_WIND_ADD_HURT: Stats.WIND_DMG,
+  // FIGHT_PROP_ICE_ADD_HURT: Stats.ICE_DMG,
+  // FIGHT_PROP_ROCK_ADD_HURT: Stats.QUANTUM_DMG,
+  // FIGHT_PROP_GRASS_ADD_HURT: Stats.IMAGINARY_DMG,
 }
 
 export const EnkaArtifactTypeMap = {
@@ -333,14 +341,6 @@ export const EnkaArtifactTypeMap = {
   EQUIP_SHOES: 5,
   EQUIP_RING: 1,
   EQUIP_DRESS: 3,
-}
-
-export const TravelerIconName = {
-  [Element.ANEMO]: 'PlayerWind',
-  [Element.GEO]: 'PlayerRock',
-  [Element.ELECTRO]: 'PlayerElectric',
-  [Element.DENDRO]: 'PlayerGrass',
-  [Element.HYDRO]: 'PlayerWater',
 }
 
 export const CustomConditionalMap = {

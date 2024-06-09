@@ -1,4 +1,4 @@
-import { Stats, WeaponType } from '@src/domain/constant'
+import { Stats, PathType } from '@src/domain/constant'
 
 export const Weapons = [
   {
@@ -9,10 +9,10 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.0766,
     icon: 'UI_EquipIcon_Sword_Steel',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Bane of Water and Ice',
-      detail: `Increases DMG against opponents affected by <b class="text-genshin-hydro">Hydro</b> or <b class="text-genshin-cryo">Cryo</b> by {{0}}%.`,
+      detail: `Increases DMG against opponents affected by <b class="text-gray">Hydro</b> or <b class="text-hsr-ice">Cryo</b> by {{0}}%.`,
       properties: [{ base: 12, growth: 3 }],
     },
   },
@@ -24,7 +24,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.102,
     icon: 'UI_EquipIcon_Sword_Dawn',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Vigorous',
       detail: `When HP is above 90%, increases CRIT Rate by {{0}}%.`,
@@ -39,7 +39,7 @@ export const Weapons = [
     ascStat: Stats.P_DEF,
     baseStat: 0.063733,
     icon: 'UI_EquipIcon_Sword_Traveler',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Journey',
       detail: `Each Elemental Orb or Particle collected restores {{0}}% HP.`,
@@ -54,7 +54,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 30.6,
     icon: 'UI_EquipIcon_Sword_Darker',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Overloaded',
       detail: `Upon causing an Overloaded, Superconduct, Electro-Charged, Quicken, Aggravate, Hyperbloom, or Electro-infused Swirl reaction, ATK is increased by {{0}}% for 12s.`,
@@ -69,7 +69,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.0766,
     icon: 'UI_EquipIcon_Sword_Sashimi',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Gash',
       detail: `On hit, has 50% chance to deal {{0}}% ATK DMG to a single enemy. Can only occur once every {{1}}.`,
@@ -87,7 +87,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.113,
     icon: 'UI_EquipIcon_Sword_Mitsurugi',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Determination',
       detail: `Using an Elemental Burst grants a {{0}}% increase in ATK and Movement SPD for 15s.`,
@@ -102,7 +102,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.113,
     icon: 'UI_EquipIcon_Sword_Zephyrus',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Windfall',
       detail: `CRIT hits have a {{0}}% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {{1}}s.`,
@@ -120,7 +120,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Sword_Troupe',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Chord',
       detail: `Normal or Charged Attacks grant a Harmonic on hits. Gaining 5 Harmonics triggers the power of music and deals {{0}}% ATK DMG to surrounding enemies. Harmonics last up to 30s, and a maximum of 1 can be gained every 0.5s.`,
@@ -135,7 +135,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.133333,
     icon: 'UI_EquipIcon_Sword_Fossil',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Composed',
       detail: `After dealing damage to an opponent with an Elemental Skill, the skill has a {{0}}% chance to end its own CD. Can only occur once every {{1}}s.`,
@@ -153,7 +153,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Sword_Theocrat',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Focus',
       detail: `Upon dealing damage to an opponent, increases CRIT Rate by {{0}}%. Max 5 stacks. A CRIT hit removes all existing stacks.`,
@@ -168,10 +168,10 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Sword_Rockkiller',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Bane of Fire and Thunder',
-      detail: `Increases DMG against enemies affected by <b class="text-genshin-pyro">Pyro</b> or <b class="text-genshin-electro">Electro</b> by {{0}}%.`,
+      detail: `Increases DMG against enemies affected by <b class="text-hsr-fire">Pyro</b> or <b class="text-hsr-lightning">Electro</b> by {{0}}%.`,
       properties: [{ base: 20, growth: 4 }],
     },
   },
@@ -183,7 +183,7 @@ export const Weapons = [
     ascStat: Stats.PHYSICAL_DMG,
     baseStat: 0.075,
     icon: 'UI_EquipIcon_Sword_Proto',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Smashed Stone',
       detail: `On hit, Normal or Charged Attacks increase ATK and DEF by {{0}}% for 6s. Max 4 stacks. This effect can only occur once every 0.3s.`,
@@ -198,7 +198,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 36,
     icon: 'UI_EquipIcon_Sword_Exotic',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Infusion Stinger',
       detail: `Dealing <b>Elemental DMG</b> increases all DMG by {{0}}% for 6s. Max 2 stacks. Can only occur once every 1s.`,
@@ -213,7 +213,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.08,
     icon: 'UI_EquipIcon_Sword_Blackrock',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Press the Advantage',
       detail: `After defeating an opponent, ATK is increased by {{0}}% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.`,
@@ -228,7 +228,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Sword_Bloodstained',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Justice',
       detail: `Increases DMG dealt by Normal and Charged Attacks by {{0}}%.
@@ -247,7 +247,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 12,
     icon: 'UI_EquipIcon_Sword_Outlaw',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Itinerant Hero',
       detail: `Increases DMG dealt by the character equipping this weapon by {{0}}%. Taking DMG disables this effect for 5s.`,
@@ -262,7 +262,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.1,
     icon: 'UI_EquipIcon_Sword_Magnum',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Undying Admiration',
       detail: `Increases Elemental Skill DMG by {{0}}% and Elemental Skill CRIT Rate by {{1}}%.`,
@@ -280,7 +280,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.12,
     icon: 'UI_EquipIcon_Sword_Bakufu',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Iwakura Succession',
       detail: `After casting an Elemental Skill, gain 1 Succession Seed. This effect can be triggered once every 5s. The Succession Seed lasts for 30s. Up to 3 Succession Seeds may exist simultaneously. After using an Elemental Burst, all Succession Seeds are consumed and after 2s, the character regenerates {{0}} Energy for each seed consumed.`,
@@ -295,7 +295,7 @@ export const Weapons = [
     ascStat: Stats.P_DEF,
     baseStat: 0.15,
     icon: 'UI_EquipIcon_Sword_Opus',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Spotless Heart',
       detail: `Elemental Skill DMG is increased by {{0}}% of DEF. The effect will be triggered no more than once every 1.5s and will be cleared 0.1s after the Elemental Skill deals DMG.`,
@@ -310,7 +310,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Sword_Youtou',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Isshin Art Clarity',
       detail: `When a Normal, Charged, or Plunging Attack hits an opponent, it will whip up a Hewing Gale, dealing AoE DMG equal to 180% of ATK and increasing ATK by 15% for 8s. This effect can be triggered once every 8s.`,
@@ -325,7 +325,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.067,
     icon: 'UI_EquipIcon_Sword_Arakalari',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Forest Sanctuary',
       detail: `After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a Leaf of Consciousness will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character {{0}} Elemental Mastery for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field. The Leaf of Consciousness' effect cannot stack.`,
@@ -340,7 +340,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 36,
     icon: 'UI_EquipIcon_Sword_Pleroma',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: "Jinni's Whisper",
       detail: `The following effect will trigger every 10s: The equipping character will gain {{0}}% Energy Recharge for each point of Elemental Mastery they possess for 12s, with nearby party members gaining 30% of this buff for the same duration. Multiple instances of this weapon can allow this buff to stack. This effect will still trigger even if the character is not on the field.`,
@@ -355,7 +355,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 36,
     icon: 'UI_EquipIcon_Sword_Kasabouzu',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Kaidan: Rainfall Earthbinder',
       detail: `After an attack hits opponents, it will inflict an instance of Cursed Parasol upon one of them for 10s. This effect can be triggered once every 15s. If this opponent is defeated during Cursed Parasol's duration, Cursed Parasol's CD will be refreshed immediately. The character wielding this weapon will deal {{0}}% more DMG to the opponent affected by Cursed Parasol.`,
@@ -370,7 +370,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Sword_Boreas',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Northwind Wolf',
       detail: `DMG dealt by Elemental Skill and Elemental Burst is increased by {{0}}%. When an Elemental Skill hits an opponent, its CRIT Rate will be increased by {{1}}%. When an Elemental Burst hits an opponent, its CRIT Rate will be increased by {{1}}%. Both of these effects last 10s separately, have 4 max stacks, and can be triggered once every 0.1s.`,
@@ -388,7 +388,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Sword_Vorpal',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'An End Sublime',
       detail: `When using an Elemental Skill, ATK will be increased by {{0}}% for 15s, and a <b class="text-genshin-bol">Bond of Life</b> worth 25% of Max HP will be granted. This effect can be triggered once every 10s. When the <b class="text-genshin-bol">Bond of Life</b> is cleared, a maximum of {{1}} ATK will be gained based on {{2}}% of the total amount of the Life Bond cleared, lasting for 15s.`,
@@ -407,7 +407,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.1,
     icon: 'UI_EquipIcon_Sword_Machination',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Ironbone',
       detail: `Increases Elemental Skill CRIT Rate by {{0}}%. Additionally, increases Energy Recharge by {{1}}% for 5s after using an Elemental Skill.`,
@@ -425,7 +425,7 @@ export const Weapons = [
     ascStat: Stats.P_HP,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Sword_Mechanic',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Sea Shanty',
       detail: `When the wielder is healed or heals others, they will gain a Stoic's Symbol that lasts 30s, up to a maximum of 3 Symbols. When using their Elemental Skill or Burst, all Symbols will be consumed and the Roused effect will be granted for 10s. For each Symbol consumed, gain {{0}} Elemental Mastery, and 2s after the effect occurs, {{1}} Energy per Symbol consumed will be restored for said character. The Roused effect can be triggered once every 15s, and Symbols can be gained even when the character is not on the field.`,
@@ -443,7 +443,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Sword_Purewill',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: "Hero's Blade",
       detail: `When the equipping character does not have an Arkhe: When Normal Attacks, Charged Attacks, or Plunging Attacks strike, a <b class="text-genshin-pneuma">Pneuma</b> or <b class="text-genshin-ousia">Ousia</b> energy blast will be unleashed, dealing {{0}}% of ATK as DMG. This effect can be triggered once every 12s. The energy blast type is determined by the current type of the Sword of Narzissenkreuz.`,
@@ -458,7 +458,7 @@ export const Weapons = [
     ascStat: Stats.PHYSICAL_DMG,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Sword_Falcon',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: "Falcon's Defiance",
       detail: `ATK is increased by {{0}}%. Triggers on taking DMG: the soul of the Falcon of the West awakens, holding the banner of the resistance aloft, regenerating HP equal to {{1}}% of ATK and dealing {{2}}% of ATK as DMG to surrounding opponents. This effect can only occur once every 15s.`,
@@ -477,7 +477,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.12,
     icon: 'UI_EquipIcon_Sword_Dvalin',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Sky-Piercing Fang',
       detail: `CRIT Rate increased by {{0}}%. Gains Skypiercing Might upon using an Elemental Burst: Increases Movement SPD by 10%, increases ATK SPD by 10%, and Normal and Charged hits deal additional DMG equal to {{1}}% of ATK. Skypiercing Might lasts for 12s.`,
@@ -495,7 +495,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 43,
     icon: 'UI_EquipIcon_Sword_Widsith',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Revolutionary Chorale',
       detail: `A part of the "Millennial Movement" that wanders amidst the winds.
@@ -519,7 +519,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.108,
     icon: 'UI_EquipIcon_Sword_Kunwu',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Golden Majesty',
       detail: `Increases Shield Strength by {{0}}%. Scoring hits on opponents increases ATK by {{1}}% for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%.`,
@@ -537,7 +537,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.096,
     icon: 'UI_EquipIcon_Sword_Morax',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: "Protector's Virtue",
       detail: `HP increased by {{0}}%. Additionally, provides an ATK Bonus based on {{1}}% of the wielder's Max HP.`,
@@ -555,7 +555,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.096,
     icon: 'UI_EquipIcon_Sword_Narukami',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: "Mistsplitter's Edge",
       detail: `Gain a {{0}}% <b>Elemental DMG Bonus</b> for all elements and receive the might of the Mistsplitter's Emblem. At stack levels 1/2/3, Mistsplitter's Emblem provides a {{1}}/{{2}}/{{3}}% <b>Elemental DMG Bonus</b> for the character's Elemental Type. The character will obtain 1 stack of Mistsplitter's Emblem in each of the following scenarios: Normal Attack deals Elemental DMG (stack lasts 5s), casting Elemental Burst (stack lasts 10s); Energy is less than 100% (stack disappears when Energy is full). Each stack's duration is calculated independently.`,
@@ -575,7 +575,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.072,
     icon: 'UI_EquipIcon_Sword_Amenoma',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Honed Flow',
       detail: `Obtain {{0}}% <b>All Elemental DMG Bonus</b>. When other nearby party members use Elemental Skills, the character equipping this weapon will gain 1 Wavespike stack. Max 2 stacks. This effect can be triggered once every 0.3s. When the character equipping this weapon uses an Elemental Skill, all stacks of Wavespike will be consumed to gain Rippling Upheaval: each stack of Wavespike consumed will increase Normal Attack DMG by {{1}}% for 8s.`,
@@ -593,7 +593,7 @@ export const Weapons = [
     ascStat: Stats.P_HP,
     baseStat: 0.144,
     icon: 'UI_EquipIcon_Sword_Deshret',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Sunken Song of the Sands',
       detail: `HP increased by {{0}}%. When an Elemental Skill hits opponents, you gain the Grand Hymn effect for 20s. This effect increases the equipping character's Elemental Mastery by {{1}}% of their Max HP. This effect can trigger once every 0.3s. Max 3 stacks. When this effect gains 3 stacks, or when the third stack's duration is refreshed, the Elemental Mastery of all nearby party members will be increased by {{2}}% of the equipping character's max HP for 20s.`,
@@ -612,7 +612,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.192,
     icon: 'UI_EquipIcon_Sword_Ayus',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Whitemoon Bristle',
       detail: `CRIT Rate is increased by {{0}}%. After Normal Attacks deal Elemental DMG, the Foliar Incision effect will be obtained, increasing DMG dealt by Normal Attacks and Elemental Skills by {{1}}% of Elemental Mastery. This effect will disappear after 28 DMG instances or 12s. You can obtain Foliar Incision once every 12s.`,
@@ -630,7 +630,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.192,
     icon: 'UI_EquipIcon_Sword_Regalis',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Dawn and Dusk by the Lake',
       detail: `When the equipping character's current HP increases or decreases, Elemental Skill DMG dealt will be increased by {{0}}% for 6s. Max 3 stacks. This effect can be triggered once every 0.2s. When other party members' current HP increases or decreases, the equipping character's Max HP will be increased by {{1}}% for 6s. Max 2 stacks. This effect can be triggered once every 0.2s. The aforementioned effects can be triggered even if the wielder is off-field.`,
@@ -648,10 +648,10 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.096,
     icon: 'UI_EquipIcon_Sword_Needle',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Brocade Bloom, Shrine Sword',
-      detail: `Normal Attack DMG is increased by {{0}}% and Elemental Skill DMG is increased by {{1}}%. After a nearby active character deals <b class="text-genshin-geo">Geo DMG</b>, the aforementioned effects increase by 100% for 15s. Additionally, the wielder's DEF is increased by {{2}}%.`,
+      detail: `Normal Attack DMG is increased by {{0}}% and Elemental Skill DMG is increased by {{1}}%. After a nearby active character deals <b class="text-hsr-quantum">Geo DMG</b>, the aforementioned effects increase by 100% for 15s. Additionally, the wielder's DEF is increased by {{2}}%.`,
       properties: [
         { base: 16, growth: 4 },
         { base: 24, growth: 6 },
@@ -667,7 +667,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.096,
     icon: 'UI_EquipIcon_Sword_Estoc',
-    type: WeaponType.SWORD,
+    type: PathType.SWORD,
     desc: {
       name: 'Deathly Pact',
       detail: `CRIT DMG increased by {{0}}%. Increasing the value of a <b class="text-genshin-bol">Bond of Life</b> increases the DMG the equipping character deals by {{1}}% for 6s. Max 3 stacks.`,
@@ -685,7 +685,7 @@ export const Weapons = [
     ascStat: Stats.P_HP,
     baseStat: 0.0766,
     icon: 'UI_EquipIcon_Claymore_Glaive',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Unbending',
       detail: `When HP falls below {{0}}%, increases Charged Attack DMG by {{1}}%, and Charged Attacks become much harder to interrupt.`,
@@ -703,7 +703,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 41,
     icon: 'UI_EquipIcon_Claymore_Siegfry',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Bane of Fire and Thunder',
       detail: `Increases DMG against opponents affected by Pyro or Electro by {{0}}%.`,
@@ -718,7 +718,7 @@ export const Weapons = [
     ascStat: Stats.P_DEF,
     baseStat: 0.0956,
     icon: 'UI_EquipIcon_Claymore_Tin',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Cull the Weak',
       detail: `Defeating an opponent restores {{0}}% HP.`,
@@ -733,7 +733,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.0766,
     icon: 'UI_EquipIcon_Claymore_Reasoning',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: "Blunt Conclusion",
       detail: `After using an Elemental Skill, Normal or Charged Attacks, on hit, deal an additional {{0}}% ATK DMG in a small area. Effect lasts 15s. DMG can only occur once every 3s.`,
@@ -748,7 +748,7 @@ export const Weapons = [
     ascStat: Stats.PHYSICAL_DMG,
     baseStat: 0.0956,
     icon: 'UI_EquipIcon_Claymore_Mitsurugi',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Courage',
       detail: `On hit, Normal or Charged Attacks increase ATK by {{0}}% for 6s. Max 4 stacks. Can only occur once every 0.5s.`,
@@ -763,7 +763,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.133333,
     icon: 'UI_EquipIcon_Claymore_Zephyrus',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Windfall',
       detail: `CRIT hits have a {{0}}% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {{1}}s.`,
@@ -781,7 +781,7 @@ export const Weapons = [
     ascStat: Stats.P_HP,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Claymore_Troupe',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Rebellious Guardian',
       detail: `Taking DMG generates a shield which absorbs DMG up to {{0}}% of max HP. This shield lasts for 10s or until broken, and can only be triggered once every 45s. While protected by a shield, the character gains {{1}}% increased DMG.`,
@@ -799,7 +799,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.067,
     icon: 'UI_EquipIcon_Claymore_Fossil',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Composed',
       detail: `After dealing damage to an opponent with an Elemental Skill, the skill has a {{0}}% chance to end its own CD. Can only occur once every {{1}}s.`,
@@ -817,7 +817,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Claymore_Theocrat',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Focus',
       detail: `Upon dealing damage to an opponent, increases CRIT Rate by {{0}}%. Max 5 stacks. A CRIT hit removes all existing stacks.`,
@@ -832,7 +832,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 36,
     icon: 'UI_EquipIcon_Claymore_Perdue',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Bane of Storm and Tide',
       detail: `Increases DMG against opponents affected by Hydro or Electro by {{0}}%.`,
@@ -847,7 +847,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Claymore_Proto',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Crush',
       detail: `On hit, Normal or Charged Attacks have a 50% chance to deal an additional {{0}}% ATK DMG to opponents within a small AoE. Can only occur once every 15s.`,
@@ -862,7 +862,7 @@ export const Weapons = [
     ascStat: Stats.P_DEF,
     baseStat: 0.1126,
     icon: 'UI_EquipIcon_Claymore_Exotic',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Infusion Blade',
       detail: `On hit, Normal or Charged Attacks increase ATK and DEF by {{0}}% for 6s. Max 4 stacks ({{1}}% total). Can only occur once every 0.5s.`,
@@ -880,7 +880,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.12,
     icon: 'UI_EquipIcon_Claymore_Blackrock',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Press the Advantage',
       detail: `After defeating an opponent, ATK is increased by {{0}}% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.`,
@@ -895,7 +895,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Claymore_Kione',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Wavesplitter',
       detail: `Every 4s a character is on the field, they will deal {{0}}% more DMG and take {{1}}% more DMG. This effect has a maximum of 5 stacks and will not be reset if the character leaves the field, but will be reduced by 1 stack when the character takes DMG.`,
@@ -913,10 +913,10 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Claymore_Lapis',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Lithic Axiom: Unity',
-      detail: `For every character in the party who hails from <b class="text-genshin-geo">Liyue</b>, the character who equips this weapon gains {{0}}% ATK increase and a {{1}}% CRIT Rate increase. This effect stacks up to 4 times.`,
+      detail: `For every character in the party who hails from <b class="text-hsr-quantum">Liyue</b>, the character who equips this weapon gains {{0}}% ATK increase and a {{1}}% CRIT Rate increase. This effect stacks up to 4 times.`,
       properties: [
         { base: 7, growth: 1 },
         { base: 3, growth: 1 },
@@ -931,7 +931,7 @@ export const Weapons = [
     ascStat: Stats.PHYSICAL_DMG,
     baseStat: 0.075,
     icon: 'UI_EquipIcon_Claymore_Dragonfell',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Frost Burial',
       detail: `Hitting an opponent with Normal and Charged Attacks has a {{0}}% chance of forming and dropping an Everfrost Icicle above them, dealing {{1}}% AoE ATK DMG. Opponents affected by Cryo are dealt {{2}}% ATK DMG instead by the icicle. Can only occur once every 10s.`,
@@ -950,7 +950,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.12,
     icon: 'UI_EquipIcon_Claymore_MillenniaTuna',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Oceanic Victory',
       detail: `Increases Elemental Burst DMG by {{0}}%. When Elemental Burst hits opponents, there is a 100% chance of summoning a huge onrush of tuna that deals {{1}}% ATK as AoE DMG. This effect can occur once every 15s.`,
@@ -968,7 +968,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.1,
     icon: 'UI_EquipIcon_Claymore_Bakufu',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Samurai Conduct',
       detail: `Increases Elemental Skill DMG by {{0}}%. After Elemental Skill hits an opponent, the character loses 3 Energy but regenerates {{1}} Energy every 2s for the next 6s. This effect can occur once every 10s. Can be triggered even when the character is not on the field.`,
@@ -986,7 +986,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 36,
     icon: 'UI_EquipIcon_Claymore_Pleroma',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Desert Pavilion',
       detail: `The following effect will trigger every 10s: The equipping character will gain {{0}}% of their Elemental Mastery as bonus ATK for 12s, with nearby party members gaining 30% of this buff for the same duration. Multiple instances of this weapon can allow this buff to stack. This effect will still trigger even if the character is not on the field.`,
@@ -1001,7 +1001,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Claymore_Maria',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Watatsumi Wavewalker',
       detail: `For every point of the entire party's combined maximum Energy capacity, the Elemental Burst DMG of the character equipping this weapon is increased by {{0}}%. A maximum of {{1}}% increased Elemental Burst DMG can be achieved this way.`,
@@ -1019,7 +1019,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.067,
     icon: 'UI_EquipIcon_Claymore_Arakalari',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Forest Sanctuary',
       detail: `After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a Leaf of Consciousness will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character {{0}} Elemental Mastery for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field. The Leaf of Consciousness' effect cannot stack.`,
@@ -1034,7 +1034,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 24,
     icon: 'UI_EquipIcon_Claymore_Fleurfair',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Whispers of Wind and Flower',
       detail: `Within 8s after the character's Elemental Skill hits an opponent or the character triggers an Elemental Reaction, their ATK and Elemental Mastery will be increased by {{0}}% and {{1}} respectively.`,
@@ -1052,7 +1052,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.04,
     icon: 'UI_EquipIcon_Claymore_BeastTamer',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: '"The Silver Tongue"',
       detail: `ATK will be increased by {{0}}% for 15s after being affected by Pyro. This effect can be triggered once every 12s. All Elemental DMG Bonus will be increased by {{1}}% for 15s after being affected by Hydro, Cryo, Electro, or Dendro. This effect can be triggered once every 12s.`,
@@ -1070,7 +1070,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Claymore_Vorpal',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'White Cruising Wave',
       detail: `After the wielder is healed, ATK will be increased by {{0}}% for 8s. This can be triggered even when the character is not on the field.`,
@@ -1085,7 +1085,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.067,
     icon: 'UI_EquipIcon_Claymore_Champion',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Melussistance!',
       detail: `ATK increased by {{0}}%. That's not all! The support from all Melusines you've helped in Merusea Village fills you with strength! Based on the number of them you've helped, your ATK is increased by up to an additional {{0}}%.`,
@@ -1100,7 +1100,7 @@ export const Weapons = [
     ascStat: Stats.P_HP,
     baseStat: 0.12,
     icon: 'UI_EquipIcon_Claymore_Mechanic',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Sea Shanty',
       detail: `When the wielder is healed or heals others, they will gain a Stoic's Symbol that lasts 30s, up to a maximum of 3 Symbols. When using their Elemental Skill or Burst, all Symbols will be consumed and the Roused effect will be granted for 10s. For each Symbol consumed, gain {{0}} Elemental Mastery, and 2s after the effect occurs, {{1}} Energy per Symbol consumed will be restored for said character. The Roused effect can be triggered once every 15s, and Symbols can be gained even when the character is not on the field.`,
@@ -1118,7 +1118,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.08,
     icon: 'UI_EquipIcon_Claymore_Dvalin',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Sky-ripping Dragon Spine',
       detail: `Increases all DMG by {{0}}%. After using an Elemental Burst, a vacuum blade that does {{1}}% of ATK as DMG to opponents along its path will be created when Normal or Charged Attacks hit. Lasts for 20s or 8 vacuum blades.`,
@@ -1136,7 +1136,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.108,
     icon: 'UI_EquipIcon_Claymore_Wolfmound',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Wolfish Tracker',
       detail: `Increases ATK by {{0}}%. On hit, attacks against opponents with less than 30% HP increase all party members' ATK by {{1}}% for 12s. Can only occur once every 30s.`,
@@ -1154,7 +1154,7 @@ export const Weapons = [
     ascStat: Stats.PHYSICAL_DMG,
     baseStat: 0.045,
     icon: 'UI_EquipIcon_Claymore_Widsith',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: "Rebel's Banner-Hymn",
       detail: `A part of the "Millennial Movement" that wanders amidst the winds.
@@ -1177,7 +1177,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.108,
     icon: 'UI_EquipIcon_Claymore_Kunwu',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Golden Majesty',
       detail: `Increases Shield Strength by {{0}}%. Scoring hits on opponents increases ATK by {{1}}% for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%.`,
@@ -1195,7 +1195,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.192,
     icon: 'UI_EquipIcon_Claymore_Itadorimaru',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Gokadaiou Otogibanashi',
       detail: `DEF is increased by {{0}}%. Normal and Charged Attack DMG is increased by {{1}}% of DEF.`,
@@ -1213,7 +1213,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.072,
     icon: 'UI_EquipIcon_Claymore_Deshret',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Desert Watch',
       detail: `After the character's Elemental Skill hits an opponent, their ATK will be increased by {{0}}% for 8s. After the character takes DMG, their ATK will be increased by {{0}}% for 8s. The 2 aforementioned effects can be triggered even when the character is not on the field. Additionally, when not protected by a shield, the character's Max HP will be increased by {{1}}%.`,
@@ -1231,7 +1231,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.048,
     icon: 'UI_EquipIcon_Claymore_GoldenVerdict',
-    type: WeaponType.CLAYMORE,
+    type: PathType.CLAYMORE,
     desc: {
       name: 'Many Oaths of Dawn and Dusk',
       detail: `Increases ATK by {{0}}%. When characters in your party obtain Elemental Shards from Crystallize reactions, the equipping character will gain 1 Seal, increasing Elemental Skill DMG by {{1}}%. The Seal lasts for 15s, and the equipped may have up to 2 Seals at once. All of the equipper's Seals will disappear 0.2s after their Elemental Skill deals DMG.`,
@@ -1249,7 +1249,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.051,
     icon: 'UI_EquipIcon_Pole_Ruby',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Sharp',
       detail: `Increases Normal Attack DMG by {{0}}%.`,
@@ -1264,7 +1264,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.051,
     icon: 'UI_EquipIcon_Pole_Halberd',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Heavy',
       detail: `Normal Attacks deal an additional {{0}}% DMG. Can only occur once every 10s.`,
@@ -1279,7 +1279,7 @@ export const Weapons = [
     ascStat: Stats.P_HP,
     baseStat: 0.102,
     icon: 'UI_EquipIcon_Pole_Noire',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Bane of the Soft',
       detail: `Increases DMG against slimes by {{0}}%.`,
@@ -1294,10 +1294,10 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 48,
     icon: 'UI_EquipIcon_Pole_Stardust',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Bane of Flame and Water',
-      detail: `Increases DMG against opponents affected by <b class="text-genshin-hydro">Hydro</b> or <b class="text-genshin-pyro">Pyro</b> by {{0}}%.`,
+      detail: `Increases DMG against opponents affected by <b class="text-gray">Hydro</b> or <b class="text-hsr-fire">Pyro</b> by {{0}}%.`,
       properties: [{ base: 20, growth: 4 }],
     },
   },
@@ -1309,7 +1309,7 @@ export const Weapons = [
     ascStat: Stats.PHYSICAL_DMG,
     baseStat: 0.075,
     icon: 'UI_EquipIcon_Pole_Exotic',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Infusion Needle',
       detail: `After picking up an Elemental Orb/Particle, Normal and Charged Attacks deal an additional {{0}}% ATK as DMG for 5s.`,
@@ -1324,7 +1324,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.051,
     icon: 'UI_EquipIcon_Pole_Proto',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Magic Affinity',
       detail: `After using an Elemental Skill, increases Normal and Charged Attack DMG by {{0}}% for 12s. Max 2 stacks.`,
@@ -1339,7 +1339,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.12,
     icon: 'UI_EquipIcon_Pole_Blackrock',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Press the Advantage',
       detail: `After defeating an opponent, ATK is increased by {{0}}% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.`,
@@ -1354,7 +1354,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.08,
     icon: 'UI_EquipIcon_Pole_Gladiator',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Gladiator',
       detail: `If there are at least 2 opponents nearby, ATK is increased by {{0}}% and DEF is increased by {{0}}%. If there are fewer than 2 opponents nearby, ATK is increased by {{1}}%.`,
@@ -1372,10 +1372,10 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Pole_Lapis',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Lithic Axiom: Unity',
-      detail: `For every character in the party who hails from <b class="text-genshin-geo">Liyue</b>, the character who equips this weapon gains {{0}}% ATK increase and a {{1}}% CRIT Rate increase. This effect stacks up to 4 times.`,
+      detail: `For every character in the party who hails from <b class="text-hsr-quantum">Liyue</b>, the character who equips this weapon gains {{0}}% ATK increase and a {{1}}% CRIT Rate increase. This effect stacks up to 4 times.`,
       properties: [
         { base: 7, growth: 1 },
         { base: 3, growth: 1 },
@@ -1390,7 +1390,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.067,
     icon: 'UI_EquipIcon_Pole_Zephyrus',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Windfall',
       detail: `CRIT hits have a {{0}}% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {{1}}s.`,
@@ -1408,7 +1408,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Pole_Theocrat',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Focus',
       detail: `Upon dealing damage to an opponent, increases CRIT Rate by {{0}}%. Max 5 stacks. A CRIT hit removes all existing stacks.`,
@@ -1423,7 +1423,7 @@ export const Weapons = [
     ascStat: Stats.PHYSICAL_DMG,
     baseStat: 0.15,
     icon: 'UI_EquipIcon_Pole_Everfrost',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Frost Burial',
       detail: `Hitting an opponent with Normal and Charged Attacks has a {{0}}% chance of forming and dropping an Everfrost Icicle above them, dealing {{1}}% AoE ATK DMG. Opponents affected by Cryo are dealt {{2}}% ATK DMG instead by the icicle. Can only occur once every 10s.`,
@@ -1442,7 +1442,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 24,
     icon: 'UI_EquipIcon_Pole_Bakufu',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Samurai Conduct',
       detail: `Increases Elemental Skill DMG by {{0}}%. After Elemental Skill hits an opponent, the character loses 3 Energy but regenerates {{1}} Energy every 2s for the next 6s. This effect can occur once every 10s. Can be triggered even when the character is not on the field.`,
@@ -1460,7 +1460,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.1,
     icon: 'UI_EquipIcon_Pole_Mori',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Shanty',
       detail: `Increases Elemental Burst DMG by {{0}}% and Elemental Burst CRIT Rate by {{1}}%.`,
@@ -1478,7 +1478,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.03,
     icon: 'UI_EquipIcon_Pole_Maria',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Watatsumi Wavewalker',
       detail: `For every point of the entire party's combined maximum Energy capacity, the Elemental Burst DMG of the character equipping this weapon is increased by {{0}}%. A maximum of {{1}}% increased Elemental Burst DMG can be achieved this way.`,
@@ -1496,7 +1496,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 24,
     icon: 'UI_EquipIcon_Pole_Arakalari',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Stillwood Moonshadow',
       detail: `After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a Leaf of Revival will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character {{0}}% ATK for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field.`,
@@ -1511,7 +1511,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Pole_Windvane',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'The Wind Unattained',
       detail: `Within 10s after an Elemental Reaction is triggered, ATK is increased by {{0}}% and Elemental Mastery is increased by {{1}}.`,
@@ -1529,7 +1529,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Pole_Shanty',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Tales of the Tundra',
       detail: `When there are at least 3 different Elemental Types in your party, Elemental Mastery will be increased by {{0}}.`,
@@ -1544,7 +1544,7 @@ export const Weapons = [
     ascStat: Stats.P_HP,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Pole_Vorpal',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Tip of the Spear',
       detail: `When the wielder is healed, restore {{0}} Energy. This effect can triggered once every 10s, and can occur even when the character is not on the field.`,
@@ -1559,7 +1559,7 @@ export const Weapons = [
     ascStat: Stats.P_HP,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Pole_Caduceus',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Principle of Equilibrium',
       detail: `When the wielder performs healing, restore {{0}} Energy. This effect can be triggered once every 10s and can occur even when the character is not on the field.`,
@@ -1574,7 +1574,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Pole_Mechanic',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: "Masons' Ditty",
       detail: `When the wielder is healed or heals others, they will gain a Unity's Symbol that lasts 30s, up to a maximum of 3 Symbols. When using their Elemental Skill or Burst, all Symbols will be consumed and the Struggle effect will be granted for 10s. For each Symbol consumed, gain {{0}}% ATK and {{1}}% All Elemental DMG Bonus. The Struggle effect can be triggered once every 15s, and Symbols can be gained even when the character is not on the field.`,
@@ -1592,7 +1592,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.144,
     icon: 'UI_EquipIcon_Pole_Homa',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Reckless Cinnabar',
       detail: `HP increased by {{0}}%. Additionally, provides an ATK Bonus based on {{1}}% of the wielder's Max HP. When the wielder's HP is less than 50%, this ATK bonus is increased by an additional {{2}}% of Max HP.`,
@@ -1611,7 +1611,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.08,
     icon: 'UI_EquipIcon_Pole_Dvalin',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Black Wing',
       detail: `Increases CRIT Rate by {{0}}% and increases Normal ATK SPD by 12%. Additionally, Normal and Charged Attacks hits on opponents have a 50% chance to trigger a vacuum blade that deals {{1}}% of ATK as DMG in a small AoE. This effect can occur no more than once every 2s.`,
@@ -1629,7 +1629,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.108,
     icon: 'UI_EquipIcon_Pole_Kunwu',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Golden Majesty',
       detail: `Increases Shield Strength by {{0}}%. Scoring hits on opponents increases ATK by {{1}}% for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%.`,
@@ -1647,7 +1647,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.036,
     icon: 'UI_EquipIcon_Pole_Santika',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Extinguishing Precept',
       detail: `Gain {{0}}% <b>All Elemental DMG Bonus</b>. Obtain Consummation for 20s after using an Elemental Skill, causing ATK to increase by {{1}}% per second. This ATK increase has a maximum of 6 stacks. When the character equipped with this weapon is not on the field, Consummation's ATK increase is doubled.`,
@@ -1665,7 +1665,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.12,
     icon: 'UI_EquipIcon_Pole_Narukami',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Timeless Dream: Eternal Stove',
       detail: `ATK increased by {{0}}% of Energy Recharge over the base 100%. You can gain a maximum bonus of {{1}}% ATK. Gain {{2}}% Energy Recharge for 12s after using an Elemental Burst.`,
@@ -1684,7 +1684,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.096,
     icon: 'UI_EquipIcon_Pole_Deshret',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: "Heat Haze at Horizon's End",
       detail: `The equipping character gains {{0}}% of their Elemental Mastery as bonus ATK. When an Elemental Skill hits opponents, the Dream of the Scarlet Sands effect will be gained for 10s: The equipping character will gain {{1}}% of their Elemental Mastery as bonus ATK. Max 3 stacks.`,
@@ -1702,7 +1702,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.048,
     icon: 'UI_EquipIcon_Pole_BloodMoon',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: "Ashen Sun's Shadow",
       detail: `Grants a <b class="text-genshin-bol">Bond of Life</b> equal to 25% of Max HP when a Charged Attack hits an opponent. This effect can be triggered up to once every 14s. In addition, when the equipping character has a <b class="text-genshin-bol">Bond of Life</b>. they gain a {{0}}% DMG Bonus; if the value of the <b class="text-genshin-bol">Bond of Life</b> is greater than or equal to 30% of Max HP, then gain an additional {{1}}% DMG.`,
@@ -1720,7 +1720,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.048,
     icon: 'UI_EquipIcon_Pole_Morax',
-    type: WeaponType.POLEARM,
+    type: PathType.POLEARM,
     desc: {
       name: 'Eagle Spear of Justice',
       detail: `On hit, increases ATK by {{0}}% for 6s. Max 7 stacks. This effect can only occur once every 0.3s. While in possession of the maximum possible stacks, DMG dealt is increased by {{1}}%.`,
@@ -1738,7 +1738,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 40.8,
     icon: 'UI_EquipIcon_Catalyst_Intro',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Bane of Storm and Tide',
       detail: `Increases DMG against opponents affected by Hydro or Electro by {{0}}%.`,
@@ -1753,7 +1753,7 @@ export const Weapons = [
     ascStat: Stats.P_HP,
     baseStat: 0.77,
     icon: 'UI_EquipIcon_Catalyst_Pulpfic',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Heritage',
       detail: `When switching characters, the new character taking the field has their ATK increased by {{0}}% for 10s. This effect can only occur once every 20s.`,
@@ -1768,7 +1768,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.85,
     icon: 'UI_EquipIcon_Catalyst_Lightnov',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Energy Shower',
       detail: `Each Elemental Orb or Particle collected restores {{0}}% HP.`,
@@ -1783,7 +1783,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 20.4,
     icon: 'UI_EquipIcon_Catalyst_Jade',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Rapids',
       detail: `Upon causing a Vaporize, Electro-Charged, Frozen, Bloom, or a Hydro-infused Swirl reaction, increases ATK by {{0}}% for 12s.`,
@@ -1798,7 +1798,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.034,
     icon: 'UI_EquipIcon_Catalyst_Phoney',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Guerilla Tactics',
       detail: `Defeating an opponent increases Movement SPD and ATK by {{0}}% for 15s.`,
@@ -1813,7 +1813,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.1,
     icon: 'UI_EquipIcon_Catalyst_Zephyrus',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Windfall',
       detail: `CRIT hits have a {{0}}% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {{1}}s.`,
@@ -1831,7 +1831,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.12,
     icon: 'UI_EquipIcon_Catalyst_Troupe',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Debut',
       detail: `When a character takes the field, they will gain a random theme song for 10s. This can only occur once every 30s.
@@ -1853,7 +1853,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 48,
     icon: 'UI_EquipIcon_Catalyst_Fossil',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Composed',
       detail: `After dealing damage to an opponent with an Elemental Skill, the skill has a {{0}}% chance to end its own CD. Can only occur once every {{1}}s.`,
@@ -1871,7 +1871,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Catalyst_Theocrat',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Focus',
       detail: `Upon dealing damage to an opponent, increases CRIT Rate by {{0}}%. Max 5 stacks. A CRIT hit removes all existing stacks.`,
@@ -1886,7 +1886,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Catalyst_Resurrection',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Solar Shine',
       detail: `Normal Attack hits increase Elemental Skill and Elemental Burst DMG by {{0}}% for 6s. Likewise, Elemental Skill or Elemental Burst hits increase Normal Attack DMG by {{0}}% for 6s.`,
@@ -1901,7 +1901,7 @@ export const Weapons = [
     ascStat: Stats.P_HP,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Catalyst_Proto',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Gilding',
       detail: `Using an Elemental Burst regenerates {{0}} Energy every 2s for 6s. All party members will regenerate {{0}}% HP every 2s for this duration.`,
@@ -1916,7 +1916,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 24,
     icon: 'UI_EquipIcon_Catalyst_Exotic',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Infusion Scroll',
       detail: `Triggering an Elemental reaction grants a {{0}}% <b>Elemental DMG Bonus</b> for 10s. Max 2 stacks.`,
@@ -1931,7 +1931,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.12,
     icon: 'UI_EquipIcon_Catalyst_Blackrock',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Press the Advantage',
       detail: `After defeating an opponent, ATK is increased by {{0}}% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.`,
@@ -1946,7 +1946,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.067,
     icon: 'UI_EquipIcon_Catalyst_DandelionPoem',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Azure Skies',
       detail: `Within 6s after Normal or Charged Attacks hit an opponent, Normal Attack DMG will be increased by {{0}}% and Charged Attack DMG will be increased by {{1}}%. Max 3 stacks. This effect can be triggered once every 0.3s.`,
@@ -1964,7 +1964,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.12,
     icon: 'UI_EquipIcon_Catalyst_Truelens',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Echo',
       detail: `Normal and Charged Attacks have a 50% chance to fire a Bolt of Perception, dealing {{0}}% ATK as DMG. This bolt can bounce between opponents a maximum of 4 times. This effect can occur once every {{1}}s.`,
@@ -1982,7 +1982,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.067,
     icon: 'UI_EquipIcon_Catalyst_Outlaw',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Ever-Changing',
       detail: `Hitting an opponent with a Normal Attack decreases the Stamina consumption of Sprint or Alternate Sprint by {{0}}% for 5s. Additionally, using a Sprint or Alternate Sprint ability increases ATK by {{1}}% for 5s.`,
@@ -2000,7 +2000,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Catalyst_Everfrost',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Frost Burial',
       detail: `Hitting an opponent with Normal and Charged Attacks has a {{0}}% chance of forming and dropping an Everfrost Icicle above them, dealing {{1}}% AoE ATK DMG. Opponents affected by Cryo are dealt {{2}}% ATK DMG instead by the icicle. Can only occur once every 10s.`,
@@ -2019,7 +2019,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.12,
     icon: 'UI_EquipIcon_Catalyst_Ludiharpastum',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Dodoventure!',
       detail: `Normal Attack hits on opponents increase Charged Attack DMG by {{0}}% for 6s. Charged Attack hits on opponents increase ATK by {{1}}% for 6s.`,
@@ -2037,10 +2037,10 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.067,
     icon: 'UI_EquipIcon_Catalyst_Bakufu',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Sakura Saiguu',
-      detail: `After the character equipped with this weapon triggers an <b class="text-genshin-electro">Electro</b> elemental reaction, nearby party members of an Elemental Type involved in the elemental reaction receive a {{0}}% <b>Elemental DMG Bonus</b> for their element, lasting 6s. Elemental Bonuses gained in this way cannot be stacked.`,
+      detail: `After the character equipped with this weapon triggers an <b class="text-hsr-lightning">Electro</b> elemental reaction, nearby party members of an Elemental Type involved in the elemental reaction receive a {{0}}% <b>Elemental DMG Bonus</b> for their element, lasting 6s. Elemental Bonuses gained in this way cannot be stacked.`,
       properties: [{ base: 10, growth: 2.5 }],
     },
   },
@@ -2052,7 +2052,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Catalyst_Jyanome',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'People of the Faltering Light',
       detail: `Increases Energy Recharge by {{0}}% for 10s after using an Elemental Skill.`,
@@ -2067,7 +2067,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 36,
     icon: 'UI_EquipIcon_Catalyst_Pleroma',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Wildling Nightstar',
       detail: `The following effect will trigger every 10s: The equipping character will gain {{0}}% of their Elemental Mastery as bonus ATK for 12s, with nearby party members gaining 30% of this buff for the same duration. Multiple instances of this weapon can allow this buff to stack. This effect will still trigger even if the character is not on the field.`,
@@ -2082,7 +2082,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.1,
     icon: 'UI_EquipIcon_Catalyst_Arakalari',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Full Circle',
       detail: `Obtain the "Wax and Wane" effect after an Elemental Reaction is triggered, gaining {{0}} Elemental Mastery while losing 5% ATK. For every 0.3s, 1 stack of Wax and Wane can be gained. Max 5 stacks. For every 6s that go by without an Elemental Reaction being triggered, 1 stack will be lost. This effect can be triggered even when the character is off-field.`,
@@ -2097,7 +2097,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.08,
     icon: 'UI_EquipIcon_Catalyst_Yue',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Jade Circulation',
       detail: `When not on the field for more than 5s, Max HP will be increased by {{0}}% and Elemental Mastery will be increased by {{1}}. These effects will be canceled after the wielder has been on the field for 10s.`,
@@ -2115,7 +2115,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Catalyst_Vorpal',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Unfinished Masterpiece',
       detail: `When using an Elemental Skill, All Elemental DMG Bonus will be increased by {{0}}% for 15s, and a <b class="text-genshin-bol">Bond of Life</b> worth 24% of Max HP will be granted. This effect can be triggered once every 10s. When the <b class="text-genshin-bol">Bond Of Life</b> is cleared, every 1,000 HP cleared in the process will provide {{1}}% All Elemental DMG Bonus, up to a maximum of {{2}}%. This effect lasts 15s.`,
@@ -2134,7 +2134,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.072,
     icon: 'UI_EquipIcon_Catalyst_Dvalin',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Wandering Clouds',
       detail: `Increases <b>Elemental DMG Bonus</b> by {{0}}%. Normal Attack hits have a 50% chance to earn the favor of the clouds. which actively seek out nearby opponents to attack for 15s, dealing {{1}}% ATK DMG. Can only occur once every 30s.`,
@@ -2152,7 +2152,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.072,
     icon: 'UI_EquipIcon_Catalyst_Fourwinds',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Boundless Blessing',
       detail: `Increases Movement SPD by 10%. When in battle, gain an {{0}}% Elemental DMG Bonus every 4s. Max 4 stacks. Lasts until the character falls or leaves combat.`,
@@ -2167,7 +2167,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.108,
     icon: 'UI_EquipIcon_Catalyst_Kunwu',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Golden Majesty',
       detail: `Increases Shield Strength by {{0}}%. Scoring hits on opponents increases ATK by {{1}}% for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%.`,
@@ -2185,7 +2185,7 @@ export const Weapons = [
     ascStat: Stats.P_HP,
     baseStat: 0.108,
     icon: 'UI_EquipIcon_Catalyst_Morax',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Primordial Jade Regalia',
       detail: `For 3s after using an Elemental Burst or creating a shield, the equipping character can gain the Primordial Jade Regalia effect: Restore {{0}} Energy every 2.5s, and gain {{1}}% Elemental DMG Bonus for their corresponding Elemental Type for every 1,000 Max HP they possess, up to {{2}}%. Primordial Jade Regalia will still take effect even if the equipping character is not on the field.`,
@@ -2204,7 +2204,7 @@ export const Weapons = [
     ascStat: Stats.P_HP,
     baseStat: 0.108,
     icon: 'UI_EquipIcon_Catalyst_Kaleido',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Byakuya Kougetsu',
       detail: `Healing Bonus increased by {{0}}%, Normal Attack DMG is increased by {{1}}% of the Max HP of the character equipping this weapon. For 12s after using an Elemental Burst, Normal Attacks that hit opponents will restore 0.6 Energy. Energy can be restored this way once every 0.1s.`,
@@ -2222,7 +2222,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.144,
     icon: 'UI_EquipIcon_Catalyst_Narukami',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Kagura Dance of the Sacred Sakura',
       detail: `Gains the Kagura Dance effect when using an Elemental Skill, causing the Elemental Skill DMG of the character wielding this weapon to increase by {{0}}% for 16s. Max 3 stacks. This character will gain {{0}}% <b>All Elemental DMG Bonus</b> when they possess 3 stacks.`,
@@ -2237,7 +2237,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 58,
     icon: 'UI_EquipIcon_Catalyst_Ayus',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: "A Thousand Nights' Dawnsong",
       detail: `Party members other than the equipping character will provide the equipping character with buffs based on whether their Elemental Type is the same as the latter or not. If their Elemental Types are the same, increase Elemental Mastery by {{0}}. If not, increase the equipping character's <b>DMG Bonus</b> from their Elemental Type by {{1}}%. Each of the aforementioned effects can have up to 3 stacks. Additionally, all nearby party members other than the equipping character will have their Elemental Mastery increased by {{2}}. Multiple such effects from multiple such weapons can stack.`,
@@ -2256,7 +2256,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.096,
     icon: 'UI_EquipIcon_Catalyst_Alaya',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Bygone Azure Teardrop',
       detail: `Normal Attack SPD is increased by {{0}}%. After the wielder unleashes an Elemental Skill, Normal Attack DMG will increase by {{1}}% every second for 14s. After this character hits an opponent with a Normal Attack during this duration, Normal Attack DMG will be increased by {{2}}%. This increase can be triggered once every 0.3s. The maximum Normal Attack DMG increase per single duration of the overall effect is {{3}}%. The effect will be removed when the wielder leaves the field, and using the Elemental Skill again will reset all DMG buffs.`,
@@ -2276,7 +2276,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.048,
     icon: 'UI_EquipIcon_Catalyst_Wheatley',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Golden Blood-Tide',
       detail: `ATK is increased by {{0}}%. When current HP increases or decreases, Normal Attack DMG will be increased by {{0}}% and Charged Attack DMG will be increased by {{1}}% for 4s. Max 3 stacks. This effect can be triggered once every 0.3s. When the wielder has 3 stacks, ATK SPD will be increased by {{2}}%.`,
@@ -2295,7 +2295,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.192,
     icon: 'UI_EquipIcon_Catalyst_Iudex',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Aeon Wave',
       detail: `HP is increased by {{0}}%. When current HP increases or decreases, Charged Attack DMG will be increased by {{1}}% for 4s. Max 3 stacks, can be triggered once every 0.3s. When you have 3 stacks or refresh a third stack's duration, {{2}} Energy will be restored. This Energy restoration effect can be triggered once every 12s.`,
@@ -2314,7 +2314,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.036,
     icon: 'UI_EquipIcon_Catalyst_MountainGale',
-    type: WeaponType.CATALYST,
+    type: PathType.CATALYST,
     desc: {
       name: 'Cloudfall Axiom',
       detail: `After the equipping character hits an opponent with a Plunging Attack, all nearby party members' Plunging Attacks will deal {{0}}% increased DMG for 20s. When nearby party members hit opponents with Plunging Attacks, they will restore {{1}} Energy to the equipping character. Energy can restored this way every 0.7s. This energy regain effect can be triggered even if the equipping character is not on the field.`,
@@ -2332,10 +2332,10 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 20,
     icon: 'UI_EquipIcon_Bow_Crowfeather',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Bane of Flame and Water',
-      detail: `Increases DMG against opponents affected by <b class="text-genshin-hydro">Hydro</b> or <b class="text-genshin-pyro">Pyro</b> by {{0}}%.`,
+      detail: `Increases DMG against opponents affected by <b class="text-gray">Hydro</b> or <b class="text-hsr-fire">Pyro</b> by {{0}}%.`,
       properties: [{ base: 12, growth: 3 }],
     },
   },
@@ -2347,7 +2347,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.102,
     icon: 'UI_EquipIcon_Bow_Arjuna',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Precise',
       detail: `Increases DMG against weak spots by {{0}}%.`,
@@ -2362,7 +2362,7 @@ export const Weapons = [
     ascStat: Stats.P_HP,
     baseStat: 0.102,
     icon: 'UI_EquipIcon_Bow_Curve',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Cull the Weak',
       detail: `Defeating an opponent restores {{0}}% HP.`,
@@ -2377,7 +2377,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.068,
     icon: 'UI_EquipIcon_Bow_Sling',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Slingshot',
       detail: `If a Normal or Charged Attack hits a target within 0.3s of being fired, increases DMG by {{0}}%. Otherwise, decreases DMG by 10%.`,
@@ -2392,7 +2392,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.068,
     icon: 'UI_EquipIcon_Bow_Msg',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: "Archer's Message",
       detail: `Charged Attack hits on weak spots deal an additional {{0}}% ATK DMG as CRIT DMG. Can only occur once every 10s.`,
@@ -2407,7 +2407,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.133333,
     icon: 'UI_EquipIcon_Bow_Zephyrus',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Windfall',
       detail: `CRIT hits have a {{0}}% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every {{1}}s.`,
@@ -2425,7 +2425,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 36,
     icon: 'UI_EquipIcon_Bow_Troupe',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Arrowless Song',
       detail: `Increases Elemental Skill and Elemental Burst DMG by {{0}}%.`,
@@ -2440,7 +2440,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.067,
     icon: 'UI_EquipIcon_Bow_Fossil',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Composed',
       detail: `After dealing damage to an opponent with an Elemental Skill, the skill has a {{0}}% chance to end its own CD. Can only occur once every {{1}}s.`,
@@ -2458,7 +2458,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Bow_Theocrat',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Focus',
       detail: `Upon dealing damage to an opponent, increases CRIT Rate by {{0}}%. Max 5 stacks. A CRIT hit removes all existing stacks.`,
@@ -2473,7 +2473,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Bow_Recluse',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Rapid Firing',
       detail: `Increases Normal Attack DMG by {{0}}% but decreases Charged Attack DMG by 10%.`,
@@ -2488,7 +2488,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Bow_Proto',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Unreturning',
       detail: `Charged Attack hits on weak points increase Movement SPD by 10% and ATK by {{0}}% for 10s.`,
@@ -2503,7 +2503,7 @@ export const Weapons = [
     ascStat: Stats.PHYSICAL_DMG,
     baseStat: 0.15,
     icon: 'UI_EquipIcon_Bow_Exotic',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Infusion Arrow',
       detail: `Normal Attack and Charged Attack hits increase ATK by {{0}}% and Normal ATK SPD by {{1}}% for 6s. Max 4 stacks. Can only occur once every 0.3s.`,
@@ -2521,7 +2521,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.08,
     icon: 'UI_EquipIcon_Bow_Blackrock',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Press the Advantage',
       detail: `After defeating an opponent, ATK is increased by {{0}}% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.`,
@@ -2536,10 +2536,10 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Bow_Viridescent',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Verdant Wind',
-      detail: `Upon hit, Normal and Aimed Shot Attacks have a 50% chance to generate a <b class="text-genshin-anemo">Cyclone</b>, which will continuously attract surrounding opponents, dealing {{0}}% of ATK as DMG to these opponents every 0.5s for 4s. This effect can only occur once every {{1}}s.`,
+      detail: `Upon hit, Normal and Aimed Shot Attacks have a 50% chance to generate a <b class="text-hsr-wind">Cyclone</b>, which will continuously attract surrounding opponents, dealing {{0}}% of ATK as DMG to these opponents every 0.5s for 4s. This effect can only occur once every {{1}}s.`,
       properties: [
         { base: 40, growth: 10 },
         { base: 14, growth: -1 },
@@ -2554,7 +2554,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Bow_Outlaw',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Oppidan Ambush',
       detail: `While the character equipped with this weapon is in the party but not on the field, their DMG increases by {{0}}% every second up to a max of {{1}}%. When the character is on the field for more than 4s, the aforementioned DMG buff decreases by {{2}}% per second until it reaches 0%.`,
@@ -2573,7 +2573,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.067,
     icon: 'UI_EquipIcon_Bow_Fallensun',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Radiance of the Deeps',
       detail: `Has three states, Evengleam, Afterglow, and Dawnblaze, which increase DMG dealt by {{0}}%/{{1}}%/{{2}}% respectively. When attacks hit opponents, this weapon will switch to the next state. This weapon can change states once every 7s. The character equipping this weapon can still trigger the state switch while not on the field.`,
@@ -2592,7 +2592,7 @@ export const Weapons = [
     ascStat: Stats.PHYSICAL_DMG,
     baseStat: 0.1126,
     icon: 'UI_EquipIcon_Bow_Nachtblind',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Evernight Duet',
       detail: `Normal Attack hits on opponents increase Elemental Skill DMG by {{0}}% for 5s. Elemental Skill hits on opponents increase Normal Attack DMG by {{0}}% for 5s.`,
@@ -2607,7 +2607,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 36,
     icon: 'UI_EquipIcon_Bow_Fleurfair',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Windblume Wish',
       detail: `After using an Elemental Skill, receive a boon from the ancient wish of the Windblume, increasing ATK by {{0}}% for 6s.`,
@@ -2622,7 +2622,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.12,
     icon: 'UI_EquipIcon_Bow_Bakufu',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Full Draw',
       detail: `Increases Normal Attack DMG by {{0}}% and Charged Attack DMG by {{1}}%. When the equipping character's Energy reaches 100%, this effect is increased by 100%.`,
@@ -2640,7 +2640,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Bow_Maria',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Watatsumi Wavewalker',
       detail: `For every point of the entire party's combined maximum Energy capacity, the Elemental Burst DMG of the character equipping this weapon is increased by {{0}}%. A maximum of {{1}}% increased Elemental Burst DMG can be achieved this way.`,
@@ -2658,7 +2658,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.12,
     icon: 'UI_EquipIcon_Bow_Arakalari',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: "Labyrinth Lord's Instruction",
       detail: `Obtain the Teachings of the Forest effect when unleashing Elemental Skills and Bursts, increasing Elemental Mastery by {{0}} for 12s. This effect will be removed when switching characters. When the Teachings of the Forest effect ends or is removed, it will deal {{1}}% of ATK as DMG to 1 nearby opponent. The Teachings of the Forest effect can be triggered once every 20s.`,
@@ -2676,7 +2676,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.1,
     icon: 'UI_EquipIcon_Bow_Fin',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Net Snapper',
       detail: `Triggers the Flowrider effect after using an Elemental Skill, dealing {{0}}% ATK as AoE DMG upon hitting an opponent with an attack. Flowrider will be removed after 15s or after causing 3 instances of AoE DMG. Only 1 instance of AoE DMG can be caused every 2s in this way. Flowrider can be triggered once every 12s.`,
@@ -2691,7 +2691,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Bow_Ibis',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: "Secret Wisdom's Favor",
       detail: `The character's Elemental Mastery will increase by {{0}} within 6s after Charged Attacks hit opponents. Max 2 stacks. This effect can triggered once every 0.5s.`,
@@ -2706,7 +2706,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.04,
     icon: 'UI_EquipIcon_Bow_Gurabad',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'The Way of Sunfire',
       detail: `After a Charged Attack hits an opponent, a Sunfire Arrow will descend upon the opponent hit, dealing {{0}}% ATK as DMG, and applying the Heartsearer effect to the opponent damaged by said Arrow for 10s. Opponents affected by Heartsearer take {{1}}% more Charged Attack DMG from the wielder. A Sunfire Arrow can be triggered once every 10s.`,
@@ -2724,7 +2724,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.09,
     icon: 'UI_EquipIcon_Bow_Vorpal',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Benthic Pulse',
       detail: `After the wielder is healed, they will deal {{0}}% more DMG for 8s. This can be triggered even when the character is not on the field.`,
@@ -2739,7 +2739,7 @@ export const Weapons = [
     ascStat: Stats.EM,
     baseStat: 36,
     icon: 'UI_EquipIcon_Bow_Ultimatum',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: `Crag-Chiseled Forge`,
       detail: `After Elemental Energy is decreased, the equipping character's Elemental Mastery will increase by {{0}} for 18s. Max 2 stacks.`,
@@ -2754,7 +2754,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.06,
     icon: 'UI_EquipIcon_Bow_Mechanic',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: "Masons' Ditty",
       detail: `When the wielder is healed or heals others, they will gain a Unity's Symbol that lasts 30s, up to a maximum of 3 Symbols. When using their Elemental Skill or Burst, all Symbols will be consumed and the Struggle effect will be granted for 10s. For each Symbol consumed, gain {{0}}% ATK and {{1}}% All Elemental DMG Bonus. The Struggle effect can be triggered once every 15s, and Symbols can be gained even when the character is not on the field.`,
@@ -2772,7 +2772,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.048,
     icon: 'UI_EquipIcon_Bow_Dvalin',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Echoing Ballad',
       detail: `Increases CRIT DMG by {{0}}%. Hits have a {{1}}% chance to inflict a small AoE attack, dealing 125% Physical ATK DMG. Can only occur once every {{2}}s.`,
@@ -2791,7 +2791,7 @@ export const Weapons = [
     ascStat: Stats.P_ATK,
     baseStat: 0.108,
     icon: 'UI_EquipIcon_Bow_Amos',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Strong-Willed',
       detail: `Increases Normal Attack and Charged Attack DMG by {{0}}%. After a Normal or Charged Attack is fired, DMG dealt increases by a further {{1}}% every 0.1 seconds the arrow is in the air for up to 5 times.`,
@@ -2809,7 +2809,7 @@ export const Weapons = [
     ascStat: Stats.ER,
     baseStat: 0.12,
     icon: 'UI_EquipIcon_Bow_Widsith',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'The Parting Refrain',
       detail: `A part of the "Millennial Movement" that wanders amidst the winds.
@@ -2833,7 +2833,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.072,
     icon: 'UI_EquipIcon_Bow_Worldbane',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: "Daylight's Augury",
       detail: `Elemental Skill and Elemental Burst DMG increased by {{0}}%. After a Normal Attack, Charged Attack, Elemental Skill or Elemental Burst hits an opponent, 1 stack of Ashen Nightstar will be gained for 12s. When 1/2/3/4 stacks of Ashen Nightstar are present, ATK is increased by {{1}}/{{2}}/{{3}}/{{4}}%. The stack of Ashen Nightstar created by the Normal Attack, Charged Attack, Elemental Skill or Elemental Burst will be counted independently of the others.`,
@@ -2854,7 +2854,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.192,
     icon: 'UI_EquipIcon_Bow_Kirin',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'The Cleansing Form',
       detail: `HP is increased by {{0}}%. When there are opponents nearby, the DMG dealt by the wielder of this weapon is increased by {{1}}%. This will take effect whether the character is on-field or not.`,
@@ -2872,7 +2872,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.144,
     icon: 'UI_EquipIcon_Bow_Narukami',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Rule By Thunder',
       detail: `Increases ATK by {{0}}% and grants the might of the Thunder Emblem. At stack levels 1/2/3, the Thunder Emblem increases Normal Attack DMG by {{1}}/{{2}}/{{3}}%. The character will obtain 1 stack of Thunder Emblem in each of the following scenarios: Normal Attack deals DMG (stack lasts 5s), casting Elemental Skill (stack lasts 10s); Energy is less than 100% (stack disappears when Energy is full). Each stack's duration is calculated independently.`,
@@ -2892,7 +2892,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_RATE,
     baseStat: 0.096,
     icon: 'UI_EquipIcon_Bow_Ayus',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'At the End of the Beast-Paths',
       detail: `Gain {{0}}% <b>All Elemental DMG Bonus</b>. Obtain the Tireless Hunt effect after hitting an opponent with a Charged Attack. This effect increases Charged Attack DMG by {{1}}% of Elemental Mastery. This effect will be removed after 12 Charged Attacks or 10s. Only 1 instance of Tireless Hunt can be gained every 12s.`,
@@ -2910,7 +2910,7 @@ export const Weapons = [
     ascStat: Stats.CRIT_DMG,
     baseStat: 0.144,
     icon: 'UI_EquipIcon_Bow_Pledge',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: 'Parsifal the Great',
       detail: `DMG dealt by Charged Attacks increased by {{0}}%. For every party member with the same Elemental Type as the wielder (including the wielder themselves), gain 1 Gimmick stack. For every party member with a different Elemental Type from the wielder, gain 1 Theatrics stack. When the wielder has 1/2/3 or more Gimmick stacks, ATK will be increased by {{0}}%/{{1}}%/{{2}}%. When the wielder has 1/2/3 or more Theatrics stacks, Movement SPD will be increased by {{3}}%/{{4}}%/{{5}}%.`,
@@ -2932,7 +2932,7 @@ export const Weapons = [
     ascStat: Stats.P_HP,
     baseStat: 0.144,
     icon: 'UI_EquipIcon_Bow_Arcdange',
-    type: WeaponType.BOW,
+    type: PathType.BOW,
     desc: {
       name: `Dryas's Nocturne`,
       detail: `The equipping character can gain the Remedy effect. When they possess 1/2/3 Remedy stacks, Max HP will increase by {{0}}%/{{1}}%/{{2}}%. 1 stack may be gained when the following conditions are met: 1 stack for 25s when using an Elemental Skill; 1 stack for 25s when the value of a <b class="text-genshin-bol">Bond of Life</b> value increases; 1 stack for 20s for performing healing. Stacks can still be triggered when the equipping character is not on the field. Each stack's duration is counted independently. In addition, when 3 stacks are active, Elemental Burst CRIT Rate will be increased by {{3}}%. This effect will be canceled 4s after falling under 3 stacks.`,

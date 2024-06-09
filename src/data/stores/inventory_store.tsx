@@ -1,4 +1,4 @@
-import { Element, IArtifactEquip, ITeamChar, IWeapon, IWeaponEquip, WeaponType } from '@src/domain/constant'
+import { Element, IArtifactEquip, ITeamChar, IWeapon, IWeaponEquip, PathType } from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'

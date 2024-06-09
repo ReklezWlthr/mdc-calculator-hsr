@@ -1,12 +1,4 @@
-import {
-  Element,
-  IArtifactEquip,
-  IBuild,
-  ITeamChar,
-  IWeapon,
-  IWeaponEquip,
-  WeaponType,
-} from '@src/domain/constant'
+import { Element, IArtifactEquip, IBuild, ITeamChar, IWeapon, IWeaponEquip, PathType } from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
@@ -31,9 +23,16 @@ export const DefaultCharacter = {
     artifacts: Array(5),
   },
   talents: {
-    normal: 1,
+    basic: 1,
     skill: 1,
-    burst: 1,
+    ult: 1,
+    talent: 1,
+  },
+  minor_traces: Array(10),
+  major_traces: {
+    a2: false,
+    a4: false,
+    a6: false,
   },
 }
 
@@ -43,8 +42,10 @@ export interface TeamStoreType {
   hydrated: boolean
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   setMember: (index: number, character: ITeamChar) => void
-  setTalentLevel: (index: number, type: 'normal' | 'skill' | 'burst', level: number) => void
+  setTalentLevel: (index: number, type: 'basic' | 'skill' | 'ult' | 'talent', level: number) => void
   setMemberInfo: (index: number, info: Partial<ITeamChar>) => void
+  toggleMajorTrace: (index: number, traceKey: string) => void
+  toggleMinorTrace: (index: number, traceIndex: number) => void
   setWeapon: (index: number, info: Partial<IWeaponEquip>) => void
   setArtifact: (index: number, type: number, aId: string) => void
   unequipAll: (index: number) => void
@@ -90,9 +91,21 @@ export class Team {
     this.characters[index] = { ...this.characters[index] }
   }
 
-  setTalentLevel = (index: number, type: 'normal' | 'skill' | 'burst', level: number) => {
+  setTalentLevel = (index: number, type: 'basic' | 'skill' | 'ult' | 'talent', level: number) => {
     if (!type) return
     this.characters[index].talents = { ...this.characters[index].talents, [type]: level }
+    this.characters[index] = { ...this.characters[index] }
+  }
+
+  toggleMajorTrace = (index: number, traceKey: string) => {
+    const v = this.characters[index].major_traces[traceKey]
+    this.characters[index].major_traces[traceKey] = !v
+    this.characters[index] = { ...this.characters[index] }
+  }
+
+  toggleMinorTrace = (index: number, traceIndex: number) => {
+    const v = this.characters[index].minor_traces[traceIndex].toggled
+    this.characters[index].minor_traces[traceIndex].toggled = !v
     this.characters[index] = { ...this.characters[index] }
   }
 

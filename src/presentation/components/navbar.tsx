@@ -11,7 +11,7 @@ export const NavBar = observer(() => {
         <p className="flex items-center text-3xl">
           MD<span className="text-base text-desc">✦</span>C Calculator
         </p>
-        <p className="text-sm font-normal text-gray">Genshin Impact</p>
+        <p className="text-sm font-normal text-gray">Honkai: Star Rail</p>
       </Link>
       {/* <div className="flex items-center gap-5">
         <p className='font-normal text-gray'>Also Check Out</p>

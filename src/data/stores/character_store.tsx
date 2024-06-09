@@ -5,64 +5,26 @@ import { enableStaticRendering } from 'mobx-react-lite'
 
 enableStaticRendering(typeof window === 'undefined')
 
-export const DefaultCharacterStore = {
+export const DefaultCharacterStore: ICharStore = {
   level: 1,
   ascension: 0,
   cons: 0,
   cId: null,
   talents: {
-    normal: 1,
+    basic: 1,
     skill: 1,
-    burst: 1,
+    ult: 1,
+    talent: 1,
+  },
+  minor_traces: Array(10),
+  major_traces: {
+    a2: false,
+    a4: false,
+    a6: false,
   },
 }
 
-export const DefaultAccount = [
-  {
-    level: 1,
-    ascension: 0,
-    cons: 0,
-    cId: '10000005-504',
-    talents: {
-      normal: 1,
-      skill: 1,
-      burst: 1,
-    },
-  },
-  {
-    level: 1,
-    ascension: 0,
-    cons: 0,
-    cId: '10000015',
-    talents: {
-      normal: 1,
-      skill: 1,
-      burst: 1,
-    },
-  },
-  {
-    level: 1,
-    ascension: 0,
-    cons: 0,
-    cId: '10000006',
-    talents: {
-      normal: 1,
-      skill: 1,
-      burst: 1,
-    },
-  },
-  {
-    level: 1,
-    ascension: 0,
-    cons: 0,
-    cId: '10000021',
-    talents: {
-      normal: 1,
-      skill: 1,
-      burst: 1,
-    },
-  },
-]
+export const DefaultAccount = _.map([], (item) => ({ ...DefaultCharacterStore, cId: item }))
 
 export interface CharacterStoreType {
   characters: ICharStore[]

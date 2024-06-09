@@ -35,9 +35,9 @@ export const toLocalStructure = (rawData: Record<string, any>) => {
         artifacts,
       },
       talents: {
-        normal: talents[0],
+        basic: talents[0],
         skill: talents[1],
-        burst: talents[2],
+        ult: talents[2],
       },
     }
   })
