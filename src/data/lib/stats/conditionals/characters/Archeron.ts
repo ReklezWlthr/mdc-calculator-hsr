@@ -31,6 +31,7 @@ const Archeron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       title: 'Trilateral Wiltcross',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Acheron's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
+      level: basic
     },
     skill: {
       title: 'Octobolt Flash',
@@ -39,6 +40,7 @@ const Archeron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         { base: 80, growth: 8, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },
       ],
+      level: skill
     },
     ult: {
       title: 'Slashed Dream Cries in Red',
@@ -56,6 +58,7 @@ const Archeron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         { base: 36, growth: 2.4, style: 'curved' },
         { base: 72, growth: 4.8, style: 'curved' },
       ],
+      level: ult
     },
     talent: {
       title: 'Atop Rainleaf Hangs Oneness',
@@ -63,6 +66,7 @@ const Archeron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       <br />When any unit inflicts debuffs on an enemy target while using their ability, Acheron gains <span class="text-desc">1</span> point of <b>Slashed Dream</b> and inflicts <span class="text-desc">1</span> stack of <b>Crimson Knot</b> on the target. If debuffs are inflicted on multiple targets, then the <span class="text-desc">1</span> stack of <b>Crimson Knot</b> will be inflicted on the enemy target with the most <b>Crimson Knot</b> stacks. This effect can only trigger once per every ability usage.
       <br />After an enemy target exits the field or gets defeated by any unit while Acheron is on the field, their <b>Crimson Knot</b> stacks will be transferred to the enemy target with the most <b>Crimson Knot</b> stacks on the whole field.`,
       value: [{ base: 10, growth: 0.1, style: 'curved' }],
+      level: talent
     },
     technique: {
       title: 'Quadrivalent Ascendance',

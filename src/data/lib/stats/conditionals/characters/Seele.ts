@@ -24,22 +24,26 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       title: 'Thwack',
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Seele's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
+      level: basic
     },
     skill: {
       title: 'Sheathed Blade',
       content: `Increases Seele's SPD by <span class="text-desc">25%</span> for <span class="text-desc">2</span> turn(s) and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Seele's ATK to a single enemy.`,
       value: [{ base: 110, growth: 11, style: 'curved' }],
+      level: skill
     },
     ult: {
       title: 'Butterfly Flurry',
       content: `Seele enters the buffed state and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of her ATK to a single enemy.`,
       value: [{ base: 255, growth: 17, style: 'curved' }],
+      level: ult
     },
     talent: {
       title: 'Resurgence',
       content: `Enters the buffed state upon defeating an enemy with Basic ATK, Skill, or Ultimate, and receives an extra turn. While in the buffed state, the DMG of Seele's attacks increases by {{0}}% for 1 turn(s).
       <br />Enemies defeated in the extra turn provided by "Resurgence" will not trigger another "Resurgence."`,
       value: [{ base: 40, growth: 4, style: 'curved' }],
+      level: talent
     },
     technique: {
       title: 'Phantom Illusion',
@@ -127,7 +131,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       text: `Target HP <= 80%`,
       ...talents.c1,
       show: c >= 1,
-      default: true,
+      default: false,
     },
     {
       type: 'toggle',

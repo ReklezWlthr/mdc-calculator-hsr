@@ -36,14 +36,13 @@ export class CalculatorStore {
     this.selected = 0
     this.level = 1
     this.res = {
-      [Element.ANEMO]: 10,
-      [Element.PYRO]: 10,
-      [Element.HYDRO]: 10,
-      [Element.CRYO]: 10,
-      [Element.ELECTRO]: 10,
-      [Element.GEO]: 10,
-      [Element.DENDRO]: 10,
-      [Element.PHYSICAL]: 10,
+      [Element.PHYSICAL]: 0,
+      [Element.FIRE]: 0,
+      [Element.ICE]: 0,
+      [Element.LIGHTNING]: 0,
+      [Element.WIND]: 0,
+      [Element.QUANTUM]: 0,
+      [Element.IMAGINARY]: 0,
     }
     this.custom = Array(4)
 
@@ -88,13 +87,12 @@ export class CalculatorStore {
   }
 
   getDefMult = (level: number, defPen: number = 0, defRed: number = 0) => {
-    return (level + 100) / ((this.level + 100) * (1 - defPen) * (1 - defRed) + level + 100)
+    return _.min([(level + 20) / ((this.level + 20) * (1 - defPen - defRed) + level + 20), 1])
   }
 
   getResMult = (element: Element, resPen: number) => {
+    if (this.res[element] === Infinity) return 0
     const res = this.res[element] / 100 - resPen
-    if (res < 0) return 1 - res / 2
-    if (res >= 0.75) return 1 / (4 * res + 1)
     return 1 - res
   }
 

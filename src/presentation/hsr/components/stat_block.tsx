@@ -27,10 +27,10 @@ export const StatBlock = observer(({ index, stat }: StatBlockProps) => {
         <p className="shrink-0">{title}</p>
         <hr className="w-full border border-primary-border" />
         <div className="flex flex-col items-end shrink-0">
-          <p className="font-normal text-gray">{_.round(base + bonus).toLocaleString()}</p>
+          <p className="font-normal text-gray">{_.round(base + bonus, title === 'SPD' ? 1 : 0).toLocaleString()}</p>
           <p className="font-normal text-neutral-400 text-[9px]">
             {_.round(base).toLocaleString()}
-            <span className="text-blue">{` +${_.round(bonus).toLocaleString()}`}</span>
+            <span className="text-blue">{` +${_.round(bonus, title === 'SPD' ? 1 : 0).toLocaleString()}`}</span>
           </p>
         </div>
       </div>
@@ -39,7 +39,11 @@ export const StatBlock = observer(({ index, stat }: StatBlockProps) => {
 
   return (
     <div className="grid w-full grid-flow-col grid-cols-2 p-4 font-bold text-white rounded-lg grid-rows-10 gap-y-1 gap-x-5 bg-primary-dark">
-      <ExtraDataRow title="HP" base={stat?.BASE_HP} bonus={stat?.BASE_HP * stat?.[Stats.P_HP] + stat?.[Stats.HP]} />
+      <ExtraDataRow
+        title="HP"
+        base={stat?.BASE_HP}
+        bonus={stat?.BASE_HP * stat?.[Stats.P_HP] + stat?.[Stats.HP] + stat?.X_HP}
+      />
       <ExtraDataRow
         title="ATK"
         base={stat?.BASE_ATK}

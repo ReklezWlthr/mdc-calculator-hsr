@@ -24,22 +24,26 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       title: 'Mind is Might',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
+      level: basic
     },
     skill: {
       title: 'Intellectual Midwifery',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK to a single target enemy.`,
       value: [{ base: 75, growth: 7.5, style: 'curved' }],
+      level: skill
     },
     ult: {
       title: 'Syllogistic Paradox',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK to a single target enemy and applies <b>Wiseman's Folly</b>. When Dr. Ratio's allies attack a target afflicted with <b>Wiseman's Folly</b>, Dr. Ratio launches his Talent's follow-up attack for <span class="text-desc">1</span> time against this target.
       <br />,<b>Wiseman's Folly</b> can be triggered for up to <span class="text-desc">2</span> times and only affects the most recent target of Dr. Ratio's Ultimate. This trigger count resets after Dr. Ratio's Ultimate is used.`,
       value: [{ base: 144, growth: 9.6, style: 'curved' }],
+      level: ult
     },
     talent: {
       title: 'Cogito, Ergo Sum',
       content: `When using his Skill, Dr. Ratio has a <span class="text-desc">40%</span> fixed chance of launching a follow-up attack against his target for <span class="text-desc">1</span> time, dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK. For each debuff the target enemy has, the fixed chance of launching follow-up attack increases by <span class="text-desc">20%</span>. If the target enemy is defeated before the follow-up attack triggers, the follow-up attack will be directed at a single random enemy instead.`,
       value: [{ base: 135, growth: 13.5, style: 'curved' }],
+      level: talent
     },
     technique: {
       title: 'Mold of Idolatry',

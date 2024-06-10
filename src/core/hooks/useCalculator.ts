@@ -127,7 +127,7 @@ export const useCalculator = () => {
     const debuffs = _.map(DebuffTypes, (v) => ({ type: v, count: 0 }))
     const preCompute = _.map(
       conditionals,
-      (base, index) => base?.preCompute(baseStats[index], calculatorStore.form[index], debuffs) || baseStats[index]
+      (base, index) => base?.preCompute(baseStats[index], calculatorStore.form[index], debuffs, []) || baseStats[index]
     ) // Compute all self conditionals, return stats of each char
     const preComputeShared = _.map(preCompute, (base, index) => {
       // Compute all shared conditionals, call function for every char except the owner
@@ -145,7 +145,8 @@ export const useCalculator = () => {
                 element: findCharacter(teamStore.characters[index]?.cId)?.element,
               },
               calculatorStore.form[index],
-              debuffs
+              debuffs,
+              []
             ) || x
       })
       return x
@@ -209,8 +210,14 @@ export const useCalculator = () => {
     const postCompute = _.map(
       conditionals,
       (base, index) =>
-        base?.postCompute(postWeapon[index], calculatorStore.form[index], postWeapon, calculatorStore.form) ||
-        postWeapon[index]
+        base?.postCompute(
+          postWeapon[index],
+          calculatorStore.form[index],
+          postWeapon,
+          calculatorStore.form,
+          debuffs,
+          []
+        ) || postWeapon[index]
     )
     // Cleanup callbacks for buffs that should be applied last
     const final = _.map(postCompute, (base, index) => {

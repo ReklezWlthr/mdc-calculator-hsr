@@ -12,10 +12,10 @@ export const EnemyModal = observer(() => {
   const { calculatorStore, teamStore } = useStore()
   const { res, level, computedStats, selected } = calculatorStore
   const charLevel = teamStore.characters[calculatorStore.selected]?.level
-  const rawDef = 5 * level + 500
+  const rawDef = 10 * level + 200
   const pen = computedStats[selected]?.DEF_PEN
   const red = computedStats[selected]?.DEF_REDUCTION
-  const def = rawDef * (1 - pen) * (1 - red)
+  const def = _.max([rawDef * (1 - pen - red), 0])
   const defMult = calculatorStore.getDefMult(charLevel, pen, red)
 
   return (
@@ -39,7 +39,7 @@ export const EnemyModal = observer(() => {
               <p className="font-bold text-yellow">{_.round(def).toLocaleString()}</p>
               <p>=</p>
               <p>
-                ((<b className="text-red">{level}</b> &#215; 5) + 500)
+                ((<b className="text-red">{level}</b> &#215; 10) + 200)
               </p>
               {!!pen && (
                 <p>
@@ -53,7 +53,7 @@ export const EnemyModal = observer(() => {
                 <p>
                   &#215;
                   <span className="ml-2">
-                    (1 - <b className="text-red">{toPercentage(red)}</b>)
+                    (1 - <b className="text-desc">{toPercentage(red)}</b>)
                   </span>
                 </p>
               )}
@@ -61,7 +61,7 @@ export const EnemyModal = observer(() => {
             <p>DEF Multiplier</p>
             <div className="flex items-center gap-2 px-2 py-1 text-sm font-normal rounded-lg bg-primary-darker w-fit text-gray">
               <p className="font-bold text-orange-300">{toPercentage(defMult)}</p>
-              <p>=</p>
+              <p>= 1 - </p>
               <div className="flex flex-col gap-y-1">
                 <p className="text-center">
                   <b className="text-yellow">{_.round(def).toLocaleString()}</b>
@@ -69,14 +69,13 @@ export const EnemyModal = observer(() => {
                 <div className="h-0 border-[1.5px] border-primary-border" />
                 <p className="text-center">
                   <b className="text-yellow">{_.round(def).toLocaleString()}</b> + (
-                  <b className="text-blue">{charLevel}</b> &#215; 5) + 500
+                  <b className="text-blue">{charLevel}</b> &#215; 10) + 200
                 </p>
               </div>
             </div>
           </div>
         </div>
         <div className="flex flex-col items-end gap-y-3">
-          <i className="fa-solid fa-circle-xmark text-red" title="Immune" />
           {_.map(BaseElementColor, (item, key: Element) => (
             <div className="flex items-center gap-3">
               <p className={classNames('whitespace-nowrap text-sm', item)}>{key} RES</p>
@@ -86,10 +85,6 @@ export const EnemyModal = observer(() => {
                 onChange={(value) => calculatorStore.setRes(key, value as any as number)}
                 style="!w-[75px]"
                 disabled={res[key] === Infinity}
-              />
-              <CheckboxInput
-                checked={res[key] === Infinity}
-                onClick={(v) => calculatorStore.setRes(key, v ? Infinity : 10)}
               />
             </div>
           ))}

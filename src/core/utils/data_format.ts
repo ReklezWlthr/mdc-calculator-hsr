@@ -52,7 +52,7 @@ export const getMainStat = (main: Stats, quality: number, level: number) => {
 }
 
 export const getRolls = (stat: Stats, value: number) => {
-  const low = _.find(SubStatMap, (item) => item.stat === stat)?.max * 0.7
+  const low = _.find(SubStatMap, (item) => item.stat === stat)?.min
   const roundValue = value / (_.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.SPD], stat) ? 1 : 100)
 
   return _.min([6, _.max([roundValue > 0 ? 1 : 0, _.floor(roundValue / low)])])
@@ -60,9 +60,8 @@ export const getRolls = (stat: Stats, value: number) => {
 
 export const correctSubStat = (stat: Stats, value: number) => {
   const data = _.find(SubStatMap, (item) => item.stat === stat)
-  const max = data?.max
-  const low = max * 0.7
-  const bonus = max * 0.1
+  const low = data?.min
+  const bonus = data?.bonus
 
   const roundValue = value / (_.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.SPD], stat) ? 1 : 100)
 
@@ -118,10 +117,10 @@ export const formatMinorTrace = (stats: Stats[], defaultValue: boolean[]) => {
     { stat: stats?.[0], value: TraceScaling[stats?.[0]]?.[1], toggled: defaultValue[2] },
     { stat: stats?.[0], value: TraceScaling[stats?.[0]]?.[1], toggled: defaultValue[3] },
     { stat: stats?.[0], value: TraceScaling[stats?.[0]]?.[2], toggled: defaultValue[4] },
-    { stat: stats?.[1], value: TraceScaling[stats?.[0]]?.[0], toggled: defaultValue[5] },
-    { stat: stats?.[1], value: TraceScaling[stats?.[0]]?.[1], toggled: defaultValue[6] },
-    { stat: stats?.[2], value: TraceScaling[stats?.[0]]?.[0], toggled: defaultValue[7] },
-    { stat: stats?.[2], value: TraceScaling[stats?.[0]]?.[1], toggled: defaultValue[8] },
-    { stat: stats?.[2], value: TraceScaling[stats?.[0]]?.[2], toggled: defaultValue[9] },
+    { stat: stats?.[1], value: TraceScaling[stats?.[1]]?.[0], toggled: defaultValue[5] },
+    { stat: stats?.[1], value: TraceScaling[stats?.[1]]?.[1], toggled: defaultValue[6] },
+    { stat: stats?.[2], value: TraceScaling[stats?.[2]]?.[0], toggled: defaultValue[7] },
+    { stat: stats?.[2], value: TraceScaling[stats?.[2]]?.[1], toggled: defaultValue[8] },
+    { stat: stats?.[2], value: TraceScaling[stats?.[2]]?.[2], toggled: defaultValue[9] },
   ]
 }

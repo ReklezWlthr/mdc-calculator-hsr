@@ -57,6 +57,8 @@ export interface IContent {
   options?: { name: string; value: string }[]
   chance?: { base: number; fixed: boolean }
   duration?: number
+  value?: { base: number; growth: number; style: TalentScalingStyle }[]
+  level?: number
 }
 
 export interface IWeaponContent {
@@ -84,6 +86,7 @@ export interface ITalentDisplay {
   content: string
   upgrade?: string[]
   value?: { base: number; growth: number; style: TalentScalingStyle }[]
+  level?: number
 }
 
 export interface ITalent {

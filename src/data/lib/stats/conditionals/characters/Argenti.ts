@@ -24,16 +24,19 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       title: 'Fleeting Fragrance',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Argenti's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
+      level: basic
     },
     skill: {
       title: 'Justice, Hereby Blooms',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Argenti's ATK to all enemies.`,
       value: [{ base: 60, growth: 6, style: 'curved' }],
+      level: skill
     },
     ult: {
       title: 'For In This Garden Supreme Beauty Bestows',
       content: `Consumes <span class="text-desc">90</span> Energy and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Argenti's ATK to all enemies.`,
       value: [{ base: 96, growth: 6.4, style: 'curved' }],
+      level: ult
     },
     ult_alt: {
       title: 'Merit Bestowed in "My" Garden',
@@ -42,11 +45,13 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 168, growth: 11.2, style: 'curved' },
         { base: 57, growth: 3.8, style: 'curved' },
       ],
+      level: ult
     },
     talent: {
       title: 'Sublime Object',
       content: `For every enemy hit when Argenti uses his Basic Attack, Skill, or Ultimate, regenerates Argenti's Energy by <span class="text-desc">3</span>, and grants him a stack of <b>Apotheosis</b>, increasing his CRIT Rate by {{0}}%. This effect can stack up to <span class="text-desc">10</span> time(s).`,
       value: [{ base: 1, growth: 0.15, style: 'curved' }],
+      level: talent
     },
     technique: {
       title: 'Manifesto of Purest Virtue',

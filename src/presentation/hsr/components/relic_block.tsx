@@ -170,7 +170,10 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
             </div>
             <div className="flex items-center gap-2 text-xs">
               <div className="flex items-center gap-1.5 shrink-0">
-                <img className="w-3.5" src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[artifact?.main]}`} />
+                <img
+                  className="w-3.5"
+                  src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[artifact?.main]}`}
+                />
                 {artifact?.main}
               </div>
               <hr className="w-full border border-primary-border" />
@@ -184,14 +187,17 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
             {_.map(subListWithRolls, (item) => (
               <div className="flex items-center gap-2 text-xs" key={item.stat}>
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <img className="w-3.5" src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[item.stat]}`} />
+                  <img
+                    className="w-3.5"
+                    src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[item.stat]}`}
+                  />
                   {item.stat}
                 </div>
                 <div className="text-primary-lighter">{_.repeat('\u{2771}', item.roll)}</div>
                 <hr className="w-full border border-primary-border" />
                 <p className="font-normal text-gray">
                   {_.includes([Stats.HP, Stats.ATK, Stats.DEF, Stats.SPD], item.stat)
-                    ? _.round(item.value).toLocaleString()
+                    ? _.round(item.value, item.stat === Stats.SPD ? 1 : 0).toLocaleString()
                     : toPercentage(item.value / 100)}
                 </p>
               </div>

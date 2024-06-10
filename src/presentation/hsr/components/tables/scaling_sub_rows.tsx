@@ -20,11 +20,11 @@ const propertyColor = {
 }
 
 export const BaseElementColor = {
-  [Element.WIND]: 'text-hsr-wind',
-  [Element.FIRE]: 'text-hsr-fire',
   [Element.PHYSICAL]: 'text-hsr-physical',
+  [Element.FIRE]: 'text-hsr-fire',
   [Element.ICE]: 'text-hsr-ice',
   [Element.LIGHTNING]: 'text-hsr-lightning',
+  [Element.WIND]: 'text-hsr-wind',
   [Element.QUANTUM]: 'text-hsr-quantum',
   [Element.IMAGINARY]: 'text-hsr-imaginary',
 }
@@ -53,11 +53,16 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
   const defPen = stats.DEF_PEN || 0
 
   const defMult = calculatorStore.getDefMult(teamStore.characters[index]?.level, defPen, stats.DEF_REDUCTION) || 1
-  const resMult = 1
-  // calculatorStore.getResMult(
-  //   element,
-  //   (stats[`${element.toUpperCase()}_RES_PEN`] || 0) + (stats.ALL_TYPE_RES_PEN || 0)
-  // )
+  const resMult = _.max([
+    _.min([
+      calculatorStore.getResMult(
+        element as Element,
+        (stats[`${element.toUpperCase()}_RES_PEN`] || 0) + (stats.ALL_TYPE_RES_PEN || 0)
+      ),
+      2,
+    ]),
+    0.1,
+  ])
   const isDamage = !_.includes([TalentProperty.SHIELD, TalentProperty.HEAL], scaling.property)
   const enemyMod = isDamage ? defMult * resMult : 1
 
@@ -76,7 +81,12 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
       ? stats[Stats.HEAL]
       : stats[Stats.ALL_DMG] + stats[`${element} DMG%`] + talentDmg + typeDmg) // Vulnerability effectively stacks with DMG Bonuses
   const raw =
-    _.sumBy(scaling.value, (item) => item.scaling * (item.override || statForScale[item.multiplier])) +
+    _.sumBy(
+      scaling.value,
+      (item) =>
+        item.scaling *
+        ((item.override || statForScale[item.multiplier]) + (item.multiplier === Stats.HP ? stats.X_HP : 0))
+    ) +
     (scaling.flat || 0) +
     elementFlat +
     talentFlat
@@ -92,7 +102,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
       `<span class="inline-flex items-center h-4">(<b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${
         StatIcons[item.multiplier]
       }" />${_.round(
-        item.override || statForScale[item.multiplier]
+        (item.override || statForScale[item.multiplier]) + (item.multiplier === Stats.HP ? stats.X_HP : 0)
       ).toLocaleString()}</b><span class="mx-1"> \u{00d7} </span><b>${toPercentage(item.scaling, 2)}</b>)</span>`
   )
   const baseScaling = _.join(scalingArray, ' + ')

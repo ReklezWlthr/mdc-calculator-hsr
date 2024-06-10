@@ -27,6 +27,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       title: 'Monodrama',
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Sparkle's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
+      level: basic,
     },
     skill: {
       title: 'Dreamdiver',
@@ -36,16 +37,19 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 12, growth: 1.2, style: 'curved' },
         { base: 27, growth: 1.8, style: 'curved' },
       ],
+      level: skill,
     },
     ult: {
       title: 'The Hero with a Thousand Faces',
       content: `Recovers <span class="text-desc">4</span> Skill Points for the team and grants all allies <b>Cipher</b>. When allies with <b>Cipher</b> trigger the DMG Boost effect provided by Sparkle's Talent, each stack additionally increases its effect by {{0}}%, lasting for <span class="text-desc">2</span> turns.`,
       value: [{ base: 6, growth: 0.4, style: 'curved' }],
+      level: ult,
     },
     talent: {
       title: 'Red Herring',
       content: `While Sparkle is on the battlefield, additionally increases the max number of Skill Points by <span class="text-desc">2</span>. Whenever an ally consumes <span class="text-desc">1</span> Skill Point, all allies' DMG increases by {{0}}%. This effect lasts for <span class="text-desc">2</span> turn(s) and can stack up to <span class="text-desc">3</span> time(s).`,
       value: [{ base: 3, growth: 0.3, style: 'curved' }],
+      level: talent,
     },
     technique: {
       title: 'Unreliable Narrator',
@@ -169,16 +173,6 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         if (quantumCount === 2) base[Stats.P_ATK] += 0.15
         if (quantumCount === 3) base[Stats.P_ATK] += 0.3
       }
-      if (form.seele_a2) base.AGGRO -= 0.5
-      if (form.seele_c1) base[Stats.CRIT_RATE] += 0.15
-      if (form.seele_c6)
-        base.ULT_SCALING.push({
-          name: 'Butterfly Flurry DMG',
-          value: [{ scaling: calcScaling(2.55, 0.17, ult, 'curved') * 0.15, multiplier: Stats.ATK }],
-          element: Element.QUANTUM,
-          property: TalentProperty.ADD,
-          type: TalentType.ULT,
-        })
 
       return base
     },
@@ -221,18 +215,12 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ) => {
       if (form.sparkle_skill && (c < 6 || !form.cipher)) {
         base.X_CRIT_DMG += calcScaling(0.27, 0.018, skill, 'curved')
-        base.CALLBACK.push((x, d, w, all) => {
-          x.X_CRIT_DMG += (calcScaling(0.12, 0.012, skill, 'curved') + (c >= 6 ? 0.3 : 0)) * base[Stats.CRIT_DMG]
-          return x
-        })
+        base.X_CRIT_DMG += (calcScaling(0.12, 0.012, skill, 'curved') + (c >= 6 ? 0.3 : 0)) * base[Stats.CRIT_DMG]
       }
       if (c >= 6 && _.some(allForm, (item) => item.sparkle_skill) && form.cipher) {
         for (const y of team) {
           y.X_CRIT_DMG += calcScaling(0.27, 0.018, skill, 'curved')
-          y.CALLBACK.push((z, d, w, all) => {
-            z.X_CRIT_DMG += (calcScaling(0.12, 0.012, skill, 'curved') + (c >= 6 ? 0.3 : 0)) * base[Stats.CRIT_DMG]
-            return z
-          })
+          y.X_CRIT_DMG += (calcScaling(0.12, 0.012, skill, 'curved') + (c >= 6 ? 0.3 : 0)) * base[Stats.CRIT_DMG]
         }
       }
 

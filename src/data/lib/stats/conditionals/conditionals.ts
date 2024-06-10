@@ -1,17 +1,19 @@
 import Archeron from './characters/Archeron'
 import Argenti from './characters/Argenti'
 import DrRatio from './characters/DrRatio'
+import FuXuan from './characters/FuXuan'
 import Seele from './characters/Seele'
+import SilverWolf from './characters/SilverWolf'
 import Sparkle from './characters/Sparkle'
 
 export default [
+  { id: '1006', conditionals: SilverWolf },
   { id: '1102', conditionals: Seele },
+  { id: '1208', conditionals: FuXuan },
   { id: '1302', conditionals: Argenti },
   { id: '1305', conditionals: DrRatio },
   { id: '1306', conditionals: Sparkle },
   { id: '1308', conditionals: Archeron },
-  // { id: '10000096', conditionals: Arlecchino },
-  // { id: '10000082', conditionals: Baizhu },
   // { id: '10000014', conditionals: Barbara },
   // { id: '10000024', conditionals: Beidou },
   // { id: '10000032', conditionals: Bennett },

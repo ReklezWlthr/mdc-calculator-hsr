@@ -26,7 +26,7 @@ export const baseStatsObject = {
   [Stats.EHR]: 0,
   [Stats.E_RES]: 0,
 
-  X_P_HP: 0, // For Fu Xuan and Lynx
+  X_HP: 0, // For Fu Xuan and Lynx
   X_CRIT_DMG: 0, // For Sparkle and Bronya, will not be used recursively
 
   // DMG Bonuses

@@ -1,3 +1,4 @@
+import { calcScaling } from '@src/core/utils/calculator'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { IContent } from '@src/domain/conditional'
 import { Element } from '@src/domain/constant'
@@ -46,15 +47,45 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
         )}
       >
         {_.size(_.filter(contents, 'show')) ? (
-          _.map(
-            contents,
-            (content) =>
+          _.map(contents, (content) => {
+            const formattedString = _.reduce(
+              Array.from(content.content?.matchAll(/{{\d+}}\%?/g) || []),
+              (acc, curr) => {
+                const index = curr?.[0]?.match(/\d+/)?.[0]
+                const isPercentage = !!curr?.[0]?.match(/\%$/)
+                return _.replace(
+                  acc,
+                  curr[0],
+                  `<span class="text-desc">${_.round(
+                    calcScaling(
+                      content?.value?.[index]?.base,
+                      content?.value?.[index]?.growth,
+                      content?.level,
+                      content?.value?.[index]?.style
+                    ),
+                    1
+                  ).toLocaleString()}${isPercentage ? '%' : ''}</span>`
+                )
+              },
+              content.content
+            )
+
+            return (
               content.show && (
                 <div className="grid items-center grid-cols-12 text-xs gap-x-1" key={content.id}>
                   <div className="col-span-6">
                     <Tooltip
-                      title={content.title}
-                      body={<p dangerouslySetInnerHTML={{ __html: content.content }} />}
+                      title={
+                        content.level ? (
+                          <div className="flex items-center justify-between">
+                            <p>{content.title}</p>
+                            <p className='text-xs font-normal text-desc'>Level: {content.level}</p>
+                          </div>
+                        ) : (
+                          content.title
+                        )
+                      }
+                      body={<p dangerouslySetInnerHTML={{ __html: formattedString }} />}
                       key={content.id}
                       style={tooltipStyle}
                       position="left"
@@ -101,19 +132,19 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                         value={calculatorStore.form[content.index]?.[content.id]}
                         options={
                           content.options || [
-                            { name: Element.PYRO, value: Element.PYRO },
-                            { name: Element.HYDRO, value: Element.HYDRO },
-                            { name: Element.CRYO, value: Element.CRYO },
-                            { name: Element.ELECTRO, value: Element.ELECTRO },
+                            { name: 'None', value: '' },
+                            ..._.map(Element, (item) => ({ name: item, value: item })),
                           ]
                         }
                         onChange={(value) => calculatorStore.setFormValue(content.index, content.id, value)}
+                        placeholder="None"
                       />
                     </div>
                   )}
                 </div>
               )
-          )
+            )
+          })
         ) : (
           <div className="text-center text-gray">None</div>
         )}

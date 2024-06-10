@@ -1,18 +1,18 @@
 import { IArtifact, Stats } from './constant'
 
 export const SubStatMap = {
-  0: { stat: Stats.ATK, max: 21.168754 },
-  1: { stat: Stats.HP, max: 42.33751 },
-  2: { stat: Stats.DEF, max: 21.168754 },
-  3: { stat: Stats.P_ATK, max: 0.0432 },
-  4: { stat: Stats.P_HP, max: 0.0432 },
-  5: { stat: Stats.P_DEF, max: 0.054 },
-  6: { stat: Stats.CRIT_RATE, max: 0.0324 },
-  7: { stat: Stats.CRIT_DMG, max: 0.0648 },
-  8: { stat: Stats.SPD, max: 2.6 },
-  9: { stat: Stats.BE, max: 0.0648 },
-  10: { stat: Stats.EHR, max: 0.0432 },
-  11: { stat: Stats.E_RES, max: 0.0432 },
+  0: { stat: Stats.ATK, min: 16.935, bonus: 2.1168754 },
+  1: { stat: Stats.HP, min: 33.87, bonus: 4.233751 },
+  2: { stat: Stats.DEF, min: 16.935, bonus: 2.1168754 },
+  3: { stat: Stats.P_ATK, min: 0.03456, bonus: 0.00432 },
+  4: { stat: Stats.P_HP, min: 0.03456, bonus: 0.00432 },
+  5: { stat: Stats.P_DEF, min: 0.0432, bonus: 0.0054 },
+  6: { stat: Stats.CRIT_RATE, min: 0.02592, bonus: 0.00324 },
+  7: { stat: Stats.CRIT_DMG, min: 0.05184, bonus: 0.00648 },
+  8: { stat: Stats.SPD, min: 2, bonus: 0.3 },
+  9: { stat: Stats.BE, min: 0.05184, bonus: 0.00648 },
+  10: { stat: Stats.EHR, min: 0.03456, bonus: 0.00432 },
+  11: { stat: Stats.E_RES, min: 0.03456, bonus: 0.00432 },
 }
 
 export const SubStatQuality = {
