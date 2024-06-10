@@ -53,6 +53,7 @@ export interface IContent {
   max?: number
   min?: number
   debuff?: boolean
+  unique?: boolean
   options?: { name: string; value: string }[]
   chance?: { base: number; fixed: boolean }
   duration?: number

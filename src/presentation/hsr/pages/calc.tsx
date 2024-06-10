@@ -4,7 +4,7 @@ import { Stats } from '@src/domain/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useCallback, useState } from 'react'
-import { ElementColor, ScalingSubRows } from '../components/tables/scaling_sub_rows'
+import { ScalingSubRows } from '../components/tables/scaling_sub_rows'
 import { ScalingWrapper } from '../components/tables/scaling_wrapper'
 import { StatBlock } from '../components/stat_block'
 import { CharacterSelect } from '../components/character_select'
@@ -15,10 +15,8 @@ import { Tooltip } from '@src/presentation/components/tooltip'
 import { AscensionIcons } from '../components/ascension_icons'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { EnemyModal } from '../components/enemy_modal'
-import { ReactionTooltip } from '../components/tables/reaction_tooltip'
 import { WeaponConditionalBlock } from '../components/weapon_conditional_block'
 import { useCalculator } from '@src/core/hooks/useCalculator'
-import { CrystallizeTooltip } from '../components/tables/crystallize_tooltip'
 import { CustomConditionalBlock } from '../components/custom_conditional_block'
 import { formatIdIcon } from '@src/core/utils/data_format'
 
@@ -95,8 +93,10 @@ export const Calculator = observer(({}: {}) => {
                 </ScalingWrapper>
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
-                  talent={main?.talents?.ult}
-                  icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Ultra.png`}
+                  talent={mainComputed?.ULT_ALT ? main?.talents?.ult_alt : main?.talents?.ult}
+                  icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Ultra${
+                    mainComputed?.ULT_ALT ? '02' : ''
+                  }.png`}
                   element={charData.element}
                   level={char.talents?.ult}
                   upgraded={main?.upgrade?.ult}

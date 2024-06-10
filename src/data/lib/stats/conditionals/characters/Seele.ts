@@ -203,7 +203,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       }
       if (form.seele_a2) base.AGGRO -= 0.5
       if (form.seele_c1) base[Stats.CRIT_RATE] += 0.15
-      if (form.seele_c6)
+      if (form.seele_c6) {
         base.ULT_SCALING.push({
           name: 'Butterfly Flurry DMG',
           value: [{ scaling: calcScaling(2.55, 0.17, ult, 'curved') * 0.15, multiplier: Stats.ATK }],
@@ -211,6 +211,11 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.ADD,
           type: TalentType.ULT,
         })
+        debuffs.push({
+          type: DebuffTypes.OTHER,
+          count: 1,
+        })
+      }
 
       return base
     },

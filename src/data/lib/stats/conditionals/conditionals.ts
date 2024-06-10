@@ -1,13 +1,15 @@
+import Archeron from './characters/Archeron'
+import Argenti from './characters/Argenti'
 import DrRatio from './characters/DrRatio'
 import Seele from './characters/Seele'
 import Sparkle from './characters/Sparkle'
 
 export default [
   { id: '1102', conditionals: Seele },
+  { id: '1302', conditionals: Argenti },
   { id: '1305', conditionals: DrRatio },
   { id: '1306', conditionals: Sparkle },
-  // { id: '10000062', conditionals: Aloy },
-  // { id: '10000057', conditionals: Itto },
+  { id: '1308', conditionals: Archeron },
   // { id: '10000096', conditionals: Arlecchino },
   // { id: '10000082', conditionals: Baizhu },
   // { id: '10000014', conditionals: Barbara },

@@ -51,6 +51,9 @@ export const baseStatsObject = {
   VULNERABILITY: 0,
   WEAKNESS: 0,
 
+  ULT_VUL: 0,
+  ULT_RES_PEN: 0,
+
   // RES PEN
   ALL_TYPE_RES_PEN: 0,
   PHYSICAL_RES_PEN: 0,
@@ -136,6 +139,11 @@ export const baseStatsObject = {
   },
 
   CALLBACK: [] as ((base: any, debuffs: {type: DebuffTypes, count: number}[], weakness: Element[], all: any[]) => any)[],
+
+  BA_ALT: false,
+  SKILL_ALT: false,
+  ULT_ALT: false,
+  TALENT_ALT: false
 }
 
 export const TalentTypeMap = {
