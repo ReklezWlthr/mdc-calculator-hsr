@@ -19,7 +19,7 @@ export const EnemyModal = observer(() => {
   const defMult = calculatorStore.getDefMult(charLevel, pen, red)
 
   return (
-    <div className="w-[35vw] p-4 text-white rounded-xl bg-primary-dark space-y-3 font-semibold">
+    <div className="w-[550px] p-4 text-white rounded-xl bg-primary-dark space-y-3 font-semibold">
       <p>Target Enemy Setting</p>
       <div className="flex justify-between gap-4">
         <div className="space-y-5">
@@ -35,28 +35,24 @@ export const EnemyModal = observer(() => {
           </div>
           <div className="space-y-1">
             <p>DEF</p>
-            <div className="flex flex-wrap items-center px-2 py-1 text-sm font-normal rounded-lg gap-x-2 bg-primary-darker w-fit text-gray">
+            <div className="flex items-start px-2 py-1 text-sm font-normal rounded-lg gap-x-2 bg-primary-darker w-fit text-gray">
               <p className="font-bold text-yellow">{_.round(def).toLocaleString()}</p>
               <p>=</p>
-              <p>
-                ((<b className="text-red">{level}</b> &#215; 10) + 200)
-              </p>
-              {!!pen && (
+              <div className="flex flex-wrap items-center gap-x-2">
                 <p>
-                  &#215;
-                  <span className="ml-2">
-                    (1 - <b className="text-red">{toPercentage(pen)}</b>)
-                  </span>
+                  ((<b className="text-red">{level}</b> &#215; 10) + 200)
                 </p>
-              )}
-              {!!red && (
-                <p>
-                  &#215;
-                  <span className="ml-2">
-                    (1 - <b className="text-desc">{toPercentage(red)}</b>)
-                  </span>
-                </p>
-              )}
+                {!!(pen || red) && (
+                  <p>
+                    &#215;
+                    <span className="ml-2">
+                      (1 - {!!pen && <b className="text-red">{toPercentage(pen)}</b>}
+                      {!!(pen && red) && ` - `}
+                      {!!red && <b className="text-desc">{toPercentage(red)}</b>})
+                    </span>
+                  </p>
+                )}
+              </div>
             </div>
             <p>DEF Multiplier</p>
             <div className="flex items-center gap-2 px-2 py-1 text-sm font-normal rounded-lg bg-primary-darker w-fit text-gray">
