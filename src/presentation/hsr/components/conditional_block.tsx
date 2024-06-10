@@ -46,8 +46,8 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
           open ? 'h-fit overflow-visible py-3' : 'h-0 overflow-hidden'
         )}
       >
-        {_.size(_.filter(contents, 'show')) ? (
-          _.map(contents, (content) => {
+        {_.size(contents) ? (
+          _.map(_.orderBy(contents, ['debuff', 'text'], ['desc', 'asc']), (content) => {
             const formattedString = _.reduce(
               Array.from(content.content?.matchAll(/{{\d+}}\%?/g) || []),
               (acc, curr) => {
@@ -79,7 +79,7 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                         content.level ? (
                           <div className="flex items-center justify-between">
                             <p>{content.title}</p>
-                            <p className='text-xs font-normal text-desc'>Level: {content.level}</p>
+                            <p className="text-xs font-normal text-desc">Level: {content.level}</p>
                           </div>
                         ) : (
                           content.title

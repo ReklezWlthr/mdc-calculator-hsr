@@ -123,7 +123,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       text: `Current HP <= 50%`,
       ...talents.a2,
       show: a.a2,
-      default: true,
+      default: false,
     },
     {
       type: 'toggle',
