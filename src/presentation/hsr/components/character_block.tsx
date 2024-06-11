@@ -129,7 +129,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
               </div>
               <RarityGauge rarity={rarity} />
               <div className="flex gap-0.5">
-                <div className="p-2 rounded-full w-11 h-11 bg-primary" title={characterData?.element}>
+                <div className="flex items-center justify-center p-1 rounded-full w-11 h-11 bg-primary" title={characterData?.element}>
                   <img src={getElementImage(characterData?.element)} />
                 </div>
               </div>

@@ -80,29 +80,29 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       content: `If there are <span class="text-desc">3</span> or more debuff(s) affecting the enemy when the Skill is used, then the Skill decreases the enemy's All-Type RES by an additional <span class="text-desc">3%</span>.`,
     },
     c1: {
-      title: 'C1: Social Engineering',
+      title: 'E1: Social Engineering',
       content: `After using her Ultimate to attack enemies, Silver Wolf regenerates <span class="text-desc">7</span> Energy for every debuff that the target enemy currently has. This effect can be triggered up to <span class="text-desc">5</span> time(s) in each use of her Ultimate.`,
     },
     c2: {
-      title: 'C2: Zombie Network',
+      title: 'E2: Zombie Network',
       content: `When an enemy enters battle, reduces their Effect RES by <span class="text-desc">20%</span>.`,
     },
     c3: {
-      title: 'C3: Payload',
+      title: 'E3: Payload',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: 'C4: Bounce Attack',
+      title: 'E4: Bounce Attack',
       content: `After using her Ultimate to attack enemies, deals Additional <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">20%</span> of Silver Wolf's ATK for every debuff currently on the enemy target. This effect can be triggered for a maximum of <span class="text-desc">5</span> time(s) during each use of her Ultimate.`,
     },
     c5: {
-      title: 'C5: Brute Force Attack',
+      title: 'E5: Brute Force Attack',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: 'C6: Overlay Network',
+      title: 'E6: Overlay Network',
       content: `For every debuff the target enemy has, the DMG dealt by Silver Wolf increases by <span class="text-desc">20%</span>, up to a limit of <span class="text-desc">100%</span>.`,
     },
   }
@@ -176,7 +176,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     {
       type: 'toggle',
       id: 'sw_c2',
-      text: `C2 Effect RES Reduction`,
+      text: `E2 Effect RES Reduction`,
       ...talents.c2,
       show: c >= 2,
       default: true,

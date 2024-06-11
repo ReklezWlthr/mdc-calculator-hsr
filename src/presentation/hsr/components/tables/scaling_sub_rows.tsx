@@ -109,8 +109,12 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
       ).toLocaleString()}</b><span class="mx-1"> \u{00d7} </span><b>${toPercentage(item.scaling, 2)}</b>)</span>`
   )
   const baseScaling = _.join(scalingArray, ' + ')
-  const shouldWrap = !!totalFlat || scaling.value.length > 1
-  const baseWithFlat = totalFlat ? _.join([baseScaling, _.round(totalFlat).toLocaleString()], ' + ') : baseScaling
+  const shouldWrap = (!!totalFlat || scaling.value.length > 1) && !!_.size(scaling.value)
+  const baseWithFlat = totalFlat
+    ? baseScaling
+      ? _.join([baseScaling, _.round(totalFlat).toLocaleString()], ' + ')
+      : _.round(totalFlat).toLocaleString()
+    : baseScaling
 
   const formulaString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(
     dmg
@@ -148,8 +152,10 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     totalCr
   )}</b>)</span>`
 
+  const prob = (scaling.chance?.base || 0) * (1 + stats[Stats.EHR])
+
   return (
-    <div className="grid items-center grid-cols-8 gap-2 pr-2">
+    <div className="grid items-center grid-cols-9 gap-2 pr-2">
       <p className="col-span-2 text-center">{scaling.property}</p>
       <p className={classNames('col-span-1 text-center', ElementColor[element])}>{element}</p>
       <Tooltip
@@ -177,25 +183,6 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
                 {scaling.type} Bonus: <span className="text-desc">{toPercentage(typeDmg)}</span>
               </p>
             )}
-            {/* {scaling.property === TalentProperty.HEAL && (
-              <div className="space-y-1 text-xs">
-                <b>✦ Teammate Incoming Healing ✦</b>
-                {_.map(
-                  names,
-                  (item, i) =>
-                    item && (
-                      <p key={item}>
-                        {item}:{' '}
-                        <span className="text-desc">
-                          {_.round(
-                            raw * (1 + stats[Stats.HEAL] + calculatorStore.computedStats[i]?.[Stats.I_HEALING])
-                          ).toLocaleString()}
-                        </span>
-                      </p>
-                    )
-                )}
-              </div>
-            )} */}
           </div>
         }
         style="w-[400px]"
@@ -261,6 +248,14 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
           </p>
         </Tooltip>
       )}
+      <p
+        className={classNames(
+          'text-xs text-center truncate',
+          prob ? (prob <= 0.6 ? 'text-red' : prob <= 0.8 ? 'text-desc' : 'text-heal') : 'text-gray'
+        )}
+      >
+        {scaling.chance ? toPercentage(prob, 1) : '-'}
+      </p>
       <p className="col-span-2 text-xs truncate" title={scaling.name}>
         {scaling.name}
       </p>

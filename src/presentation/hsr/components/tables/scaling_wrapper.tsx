@@ -71,7 +71,7 @@ export const TalentIcon = observer(
           <img
             src={icon}
             className={classNames(
-              'p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 group-hover:ring-offset-4 duration-200 ring-offset-primary-darker',
+              'p-1 rounded-full bg-opacity-50 ring-2 ring-offset-2 group-hover:ring-offset-4 duration-200 ring-offset-primary-darker',
               iconColor[element],
               size || 'w-12 h-12'
             )}

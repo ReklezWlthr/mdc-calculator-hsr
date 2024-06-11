@@ -59,18 +59,21 @@ export const Calculator = observer(({}: {}) => {
                   Damage Calculation
                 </p>
                 <div className="flex justify-end w-full mb-1.5 bg-primary-dark">
-                  <div className="grid w-4/5 grid-cols-8 gap-2 py-0.5 pr-2 text-sm font-bold text-center bg-primary-dark">
+                  <div className="grid w-4/5 grid-cols-9 gap-2 py-0.5 pr-2 text-sm font-bold text-center bg-primary-dark">
                     <p className="col-span-2">Property</p>
                     <p className="col-span-1">Element</p>
                     <p className="col-span-1">Base</p>
                     <p className="col-span-1">CRIT</p>
                     <p className="col-span-1">Average</p>
+                    <p className="col-span-1">Prob.</p>
                     <p className="col-span-2">DMG Component</p>
                   </div>
                 </div>
                 <ScalingWrapper
-                  talent={main?.talents?.normal}
-                  icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Normal.png`}
+                  talent={mainComputed?.BA_ALT ? main?.talents?.normal_alt : main?.talents?.normal}
+                  icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Normal${
+                    mainComputed?.BA_ALT ? '02' : ''
+                  }.png`}
                   element={charData.element}
                   level={char.talents?.basic}
                   upgraded={main?.upgrade?.basic}

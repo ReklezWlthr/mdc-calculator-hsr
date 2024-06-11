@@ -143,6 +143,7 @@ export enum TalentProperty {
   SUPER_BREAK = 'Super Break Damage',
   DOT = 'DoT',
   FUA = 'Follow-Up',
+  FROZEN = 'Frozen'
 }
 
 export enum Element {
@@ -192,7 +193,7 @@ export const StatIcons = {
   [Stats.DEF]: 'IconDefence.png',
   [Stats.CRIT_RATE]: 'IconCriticalChance.png',
   [Stats.CRIT_DMG]: 'IconCriticalDamage.png',
-  [Stats.HEAL]: 'stat_heal.png',
+  [Stats.HEAL]: 'IconHeal.png',
   [Stats.BE]: 'IconBreakUp.png',
   [Stats.E_RES]: 'IconStatusResistance.png',
   [Stats.PHYSICAL_DMG]: 'IconPhysicalAddedRatio.png',

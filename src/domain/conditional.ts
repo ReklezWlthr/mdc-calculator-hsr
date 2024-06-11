@@ -1,7 +1,7 @@
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from './constant'
 
-export type TalentScalingStyle = 'linear' | 'curved' | 'flat' | 'heal'
+export type TalentScalingStyle = 'linear' | 'curved' | 'flat' | 'heal' | 'pure' | 'arcana'
 
 export enum DebuffTypes {
   WIND_SHEAR = 'Wind Shear',
@@ -31,6 +31,7 @@ export interface IScaling {
   cd?: number //Bonus crit dmg for each component
   break?: number
   energy?: number
+  chance?: { base: number; fixed: boolean }
 }
 
 export interface IWeaponContent {

@@ -65,6 +65,8 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
 
   conditionals = weaponBonus?.scaling(conditionals, weapon?.refinement) || conditionals
 
+  if (character?.id === '1301' && char?.cons >= 6) conditionals[Stats.BE] += 0.2
+
   return conditionals
 }
 
@@ -151,6 +153,20 @@ export const calcScaling = (base: number, growth: number, level: number, type: T
           : index <= 4
           ? growth * 0.75 * (2 / 3)
           : growth * 0.75 * 0.75 * (2 / 3)),
+      base
+    )
+  if (type === 'pure')
+    return _.reduce(
+      Array(level - 1 || 0),
+      (acc, _, index) =>
+        acc + (index <= 1 ? growth : index === 2 ? growth * 1.4 : index <= 10 ? growth * 1.1 : growth * 0.6),
+      base
+    )
+  if (type === 'arcana')
+    return _.reduce(
+      Array(level - 1 || 0),
+      (acc, _, index) =>
+        acc + (index <= 4 ? growth * 1.32 : index <= 6 ? growth * 1.2 : index <= 8 ? growth * 1.5 : growth),
       base
     )
 }

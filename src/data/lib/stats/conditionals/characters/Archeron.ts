@@ -87,29 +87,29 @@ const Archeron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       content: `When the Rainblade from Acheron's Ultimate hits enemy targets with <b>Crimson Knot</b>, her DMG increases by <span class="text-desc">30%</span>, stacking up to <span class="text-desc">3</span> time(s) and lasting for <span class="text-desc">3</span> turn(s). And when Stygian Resurge triggers, additionally deals DMG for <span class="text-desc">6</span> times. Each time deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">25%</span> of Acheron's ATK to a single random enemy and is viewed as part of the Ultimate DMG.`,
     },
     c1: {
-      title: 'C1: Silenced Sky Spake Sooth',
+      title: 'E!: Silenced Sky Spake Sooth',
       content: `CRIT Rate increases by <span class="text-desc">18%</span> when dealing DMG to debuffed enemies.`,
     },
     c2: {
-      title: 'C2: Mute Thunder in Still Tempest',
+      title: 'E2: Mute Thunder in Still Tempest',
       content: `The number of Nihility characters required for the Trace "The Abyss" to achieve its highest possible effect is reduced by <span class="text-desc">1</span>. When this unit's turn starts, gains <span class="text-desc">1</span> point of <b>Slashed Dream</b> and inflicts <span class="text-desc">1</span> stack of <b>Crimson Knot</b> on the enemy with the most <b>Crimson Knot</b> stacks.`,
     },
     c3: {
-      title: 'C3: Frost Bites in Death',
+      title: 'E3: Frost Bites in Death',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'C4: Shrined Fire for Mirrored Soul',
+      title: 'E4: Shrined Fire for Mirrored Soul',
       content: `When enemy targets enter combat, afflict them with the Ultimate DMG Vulnerable Vulnerability state, increasing the amount of Ultimate DMG they take by <span class="text-desc">8%</span>.`,
     },
     c5: {
-      title: 'C5: Strewn Souls on Erased Earths',
+      title: 'E5: Strewn Souls on Erased Earths',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'C6: Apocalypse, the Emancipator',
+      title: 'E6: Apocalypse, the Emancipator',
       content: `Increases the All-Type RES PEN for the Ultimate DMG dealt by Acheron by <span class="text-desc">20%</span>. The DMG dealt by Basic ATK and Skill will also be considered as Ultimate DMG and can reduce enemy toughness regardless of Weakness Types. When Weakness is broken, triggers the <b class="text-hsr-lightning">Lightning</b> Weakness Break effect.`,
     },
   }
@@ -139,7 +139,7 @@ const Archeron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     {
       type: 'toggle',
       id: 'arch_c4',
-      text: `C4 ULT Vulnerability`,
+      text: `E4 ULT Vulnerability`,
       ...talents.c4,
       show: c >= 4,
       default: true,

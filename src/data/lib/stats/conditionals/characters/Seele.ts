@@ -62,29 +62,29 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `After using a Basic ATK, Seele's next action will be Advanced Forward by <span class="text-desc">20%</span>.`,
     },
     c1: {
-      title: 'C1: Extirpating Slash',
+      title: 'E1: Extirpating Slash',
       content: `When dealing DMG to an enemy whose HP percentage is <span class="text-desc">80%</span> or lower, CRIT Rate increases by <span class="text-desc">15%</span>.`,
     },
     c2: {
-      title: 'C2: Dancing Butterfly',
+      title: 'E2: Dancing Butterfly',
       content: `The SPD Boost effect of Seele's Skill can stack up to <span class="text-desc">2</span> time(s).`,
     },
     c3: {
-      title: 'C3: Dazzling Tumult',
+      title: 'E3: Dazzling Tumult',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: 'C4: Flitting Phantasm',
+      title: 'E4: Flitting Phantasm',
       content: `Seele regenerates <span class="text-desc">15</span> Energy when she defeats an enemy.`,
     },
     c5: {
-      title: 'C5: Piercing Shards',
+      title: 'E5: Piercing Shards',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Attack Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: 'C6: Shattering Shambles',
+      title: 'E6: Shattering Shambles',
       content: `After Seele uses her Ultimate, inflict the target enemy with Butterfly Flurry for <span class="text-desc">1</span> turn(s). Enemies suffering from Butterfly Flurry will take Additional Quantum DMG equal to <span class="text-desc">15%</span> of Seele's Ultimate DMG every time they are attacked. If the target enemy is defeated by the Butterfly Flurry DMG triggered by other allies' attacks, Seele's Talent will not be triggered.
       <br />When Seele is knocked down, the Butterfly Flurry inflicted on the enemies will be removed.`,
     },

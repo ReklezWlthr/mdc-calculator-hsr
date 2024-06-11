@@ -72,29 +72,29 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `If a target enemy applies Crowd Control debuffs to allies while the <b>Matrix of Prescience</b> is active, all allies will resist all Crowd Control debuffs applied by the enemy target during the current action. This effect can only be triggered once. When <b>Matrix of Prescience</b> is activated again, the number of times this effect can be triggered will reset.`,
     },
     c1: {
-      title: 'C1: Dominus Pacis',
+      title: 'E1: Dominus Pacis',
       content: `The Knowledge effect increases CRIT DMG by 30%.`,
     },
     c2: {
-      title: 'C2: Optimus Felix',
+      title: 'E2: Optimus Felix',
       content: `If any team member is struck by a killing blow while <b>Matrix of Prescience</b> is active, then all allies who were struck by a killing blow during this action will not be knocked down, and <span class="text-desc">70%</span> of their Max HP is immediately restored. This effect can trigger <span class="text-desc">1</span> time per battle.`,
     },
     c3: {
-      title: 'C3: Apex Nexus',
+      title: 'E3: Apex Nexus',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: 'C4: Fortuna Stellaris',
+      title: 'E4: Fortuna Stellaris',
       content: `When other allies under Matrix of Prescience are attacked, Fu Xuan regenerates <span class="text-desc">5</span> Energy.`,
     },
     c5: {
-      title: 'C5: Arbiter Primus',
+      title: 'E5: Arbiter Primus',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: 'C6: Omnia Vita',
+      title: 'E6: Omnia Vita',
       content: `Once <b>Matrix of Prescience</b> is activated, it will keep a tally of the total HP lost by all team members in the current battle. Fu Xuan's Ultimate DMG will increase by <span class="text-desc">200%</span> of this tally of HP loss.
       <br />This tally is also capped at <span class="text-desc">120%</span> of Fu Xuan's Max HP and the tally value will reset and re-accumulate after Fu Xuan's Ultimate is used.`,
     },

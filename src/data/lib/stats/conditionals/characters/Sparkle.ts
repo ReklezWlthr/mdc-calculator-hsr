@@ -68,29 +68,29 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Increases all allies' ATK by <span class="text-desc">15%</span>. When there are <span class="text-desc">1/2/3</span> <b class="text-hsr-quantum">Quantum</b> allies in your team, increases <b class="text-hsr-quantum">Quantum</b>-Type allies' ATK by <span class="text-desc">5%/15%/30%</span>.`,
     },
     c1: {
-      title: 'C1: Suspension of Disbelief',
+      title: 'E1: Suspension of Disbelief',
       content: `The Cipher effect applied by the Ultimate lasts for <span class="text-desc">1</span> extra turn. All allies affected by Cipher have their ATK increased by <span class="text-desc">40%</span>.`,
     },
     c2: {
-      title: 'C2: Purely Fictitious',
+      title: 'E2: Purely Fictitious',
       content: `Each Talent stack allows allies to ignore <span class="text-desc">8%</span> of the enemy target's DEF when dealing DMG to enemies.`,
     },
     c3: {
-      title: 'C3: Pipedream',
+      title: 'E3: Pipedream',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'C4: Flitting Phantasm',
+      title: 'E4: Flitting Phantasm',
       content: `The Ultimate recovers <span class="text-desc">1</span> more Skill Point. The Talent additionally increases Max Skill Points by <span class="text-desc">1</span>.`,
     },
     c5: {
-      title: 'C5: Parallax Truth',
+      title: 'E5: Parallax Truth',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'C6: Narrative Polysemy',
+      title: 'E6: Narrative Polysemy',
       content: `The CRIT DMG Boost effect of Sparkle's Skill additionally increases by <span class="text-desc">30%</span> of Sparkle's CRIT DMG, and when she uses her Skill, the CRIT DMG Boost effect will apply to all allies currently with Cipher. When Sparkle uses her Ultimate, this effect will spread to all allies with Cipher should the allied target have the CRIT DMG increase effect provided by the Skill active on them.`,
     },
   }

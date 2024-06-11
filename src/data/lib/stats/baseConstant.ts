@@ -42,6 +42,7 @@ export const baseStatsObject = {
   // Hidden Stats
   DEF_PEN: 0,
   SHIELD: 0,
+  BREAK_EFF: 0,
 
   //DEBUFFS
   ATK_REDUCTION: 0,
@@ -51,6 +52,8 @@ export const baseStatsObject = {
   VULNERABILITY: 0,
   WEAKEN: 0,
 
+  FIRE_VUL: 0,
+  BREAK_VUL: 0,
   ULT_VUL: 0,
   ULT_RES_PEN: 0,
 
@@ -66,14 +69,6 @@ export const baseStatsObject = {
 
   // RES
   ALL_TYPE_RES: 0,
-  PHYSICAL_RES: 0,
-  PYRO_RES: 0,
-  HYDRO_RES: 0,
-  CRYO_RES: 0,
-  ELECTRO_RES: 0,
-  ANEMO_RES: 0,
-  GEO_RES: 0,
-  DENDRO_RES: 0,
 
   // Talent Boosts
   BASIC_DMG: 0,
@@ -138,12 +133,17 @@ export const baseStatsObject = {
     return this.BASE_SPD * (1 + this[Stats.P_SPD]) + this[Stats.SPD]
   },
 
-  CALLBACK: [] as ((base: any, debuffs: {type: DebuffTypes, count: number}[], weakness: Element[], all: any[]) => any)[],
+  CALLBACK: [] as ((
+    base: any,
+    debuffs: { type: DebuffTypes; count: number }[],
+    weakness: Element[],
+    all: any[]
+  ) => any)[],
 
   BA_ALT: false,
   SKILL_ALT: false,
   ULT_ALT: false,
-  TALENT_ALT: false
+  TALENT_ALT: false,
 }
 
 export const TalentTypeMap = {

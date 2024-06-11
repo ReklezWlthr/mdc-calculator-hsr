@@ -9,7 +9,7 @@ import { calcScaling } from '@src/core/utils/calculator'
 
 const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
-    basic: c >= 5 ? 1 : 0,
+    basic: c >= 3 ? 1 : 0,
     skill: c >= 3 ? 2 : 0,
     ult: c >= 5 ? 2 : 0,
     talent: c >= 5 ? 2 : 0,
@@ -70,29 +70,29 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `The chance to resist Crowd Control debuffs increases by <span class="text-desc">70%</span>.`,
     },
     c1: {
-      title: 'C1: Ablution of the Quick',
+      title: 'E1: Ablution of the Quick',
       content: `While the Field is active, ATK of all allies increases by <span class="text-desc">20%</span>.`,
     },
     c2: {
-      title: 'C2: Bestowal From the Pure',
+      title: 'E2: Bestowal From the Pure',
       content: `When his Skill is triggered, if the target ally's HP is lower than <span class="text-desc">50%</span>, Luocha's Outgoing Healing increases by <span class="text-desc">30%</span>. If the target ally's HP is at <span class="text-desc">50%</span> or higher, the ally receives a Shield that can absorb DMG equal to <span class="text-desc">10%</span> of Luocha's ATK plus <span class="text-desc">240</span>, lasting for <span class="text-desc">2</span> turns.`,
     },
     c3: {
-      title: 'C3: Surveyal by the Fool',
+      title: 'E3: Surveyal by the Fool',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'C4: Heavy Lies the Crown',
+      title: 'E4: Heavy Lies the Crown',
       content: `When Luocha's <b>Field</b> is active, enemies become Weakened and deal <span class="text-desc">12%</span> less DMG.`,
     },
     c5: {
-      title: `C5: Cicatrix 'Neath the Pain`,
+      title: `E5: Cicatrix 'Neath the Pain`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'C6: Reunion With the Dust',
+      title: 'E6: Reunion With the Dust',
       content: `When Ultimate is used, there is a <span class="text-desc">100%</span> fixed chance to reduce all enemies' All-Type RES by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
   }
@@ -164,12 +164,12 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           flat: calcScaling(200, 120, skill, 'flat'),
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
-          type: TalentType.SKILL,
+          type: TalentType.NONE,
         },
       ]
       base.ULT_SCALING = [
         {
-          name: 'Single Target',
+          name: 'AoE',
           value: [{ scaling: calcScaling(1.2, 0.08, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
@@ -185,7 +185,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           flat: calcScaling(60, 36, skill, 'flat'),
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
-          type: TalentType.TALENT,
+          type: TalentType.NONE,
         },
       ]
 
@@ -207,7 +207,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           flat: 240,
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
-          type: TalentType.SKILL,
+          type: TalentType.NONE,
         })
       if (a.a4)
         base.TALENT_SCALING.push({
@@ -216,7 +216,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           flat: 93,
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
-          type: TalentType.TALENT,
+          type: TalentType.NONE,
         })
       if (form.luocha_c6) {
         base.ALL_TYPE_RES_PEN += 0.2
