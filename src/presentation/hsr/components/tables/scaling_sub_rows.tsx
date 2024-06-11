@@ -101,7 +101,6 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     elementFlat +
     talentFlat
   const dmg = raw * (1 + bonusDMG) * (scaling.multiplier || 1) * elementMult * enemyMod
-  console.log(dmg, defMult, resMult, vulMult, brokenMult)
 
   const totalCr = _.max([_.min([stats[Stats.CRIT_RATE] + (scaling.cr || 0) + talentCr, 1]), 0])
   const totalCd = stats[Stats.CRIT_DMG] + stats.X_CRIT_DMG + (scaling.cd || 0) + talentCd + elementCd

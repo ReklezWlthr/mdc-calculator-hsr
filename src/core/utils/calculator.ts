@@ -67,6 +67,11 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
 
   if (character?.id === '1301' && char?.cons >= 6) conditionals[Stats.BE] += 0.2
 
+  if (character?.id === '1307' && char?.major_traces?.a6) conditionals.CALLBACK.push((base) => {
+    base[Stats.ALL_DMG] += _.min([base[Stats.EHR] * 0.6, 0.72])
+    return base
+  }) 
+
   return conditionals
 }
 

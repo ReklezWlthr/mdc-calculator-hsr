@@ -204,6 +204,7 @@ export const StatIcons = {
   [Stats.QUANTUM_DMG]: 'IconQuantumAddedRatio.png',
   [Stats.IMAGINARY_DMG]: 'IconImaginaryAddedRatio.png',
   [Stats.ERR]: 'IconSPRatio.png',
+  [Stats.EHR]: 'IconStatusProbability.png',
 }
 
 export const RelicPiece = Object.freeze({

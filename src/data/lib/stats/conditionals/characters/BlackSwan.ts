@@ -54,9 +54,9 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     talent: {
       title: `Loom of Fate's Caprice`,
       content: `Every time an enemy target receives DoT at the start of each turn, there is a {{0}}% base chance for it to be inflicted with <b>Arcana</b>.
-      <br />While afflicted with <b>Arcana</b>, enemy targets receive Wind DoT equal to {{1}}% of Black Swan's ATK at the start of each turn. Each stack of <b>Arcana</b> increases this DoT DMG multiplier by {{2}}%. Then <b>Arcana</b> resets to <span class="text-desc">1</span> stack. <b>Arcana</b> can stack up to <span class="text-desc">50</span> times.
+      <br />While afflicted with <b>Arcana</b>, enemy targets receive <b class="text-hsr-wind">Wind DoT</b> equal to {{1}}% of Black Swan's ATK at the start of each turn. Each stack of <b>Arcana</b> increases this DoT DMG multiplier by {{2}}%. Then <b>Arcana</b> resets to <span class="text-desc">1</span> stack. <b>Arcana</b> can stack up to <span class="text-desc">50</span> times.
       <br />Only when <b>Arcana</b> causes DMG at the start of an enemy target's turn, Black Swan triggers additional effects based on the number of <b>Arcana</b> stacks inflicted on the target:
-      <br />When there are <span class="text-desc">3</span> or more <b>Arcana</b> stacks, deals Wind DoT equal to {{3}}% of Black Swan's ATK to adjacent targets, with a {{0}}% base chance of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b> on adjacent targets.
+      <br />When there are <span class="text-desc">3</span> or more <b>Arcana</b> stacks, deals <b class="text-hsr-wind">Wind DoT</b> equal to {{3}}% of Black Swan's ATK to adjacent targets, with a {{0}}% base chance of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b> on adjacent targets.
       <br />When there are <span class="text-desc">7</span> or more <b>Arcana</b> stacks, enables the current DoT dealt this time to ignore <span class="text-desc">20%</span> of the target's and adjacent targets' DEF.`,
       value: [
         { base: 50, growth: 1.5, style: 'curved' },
@@ -292,16 +292,27 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       weakness: Element[],
       broken: boolean
     ) => {
-      if (a.a6) base[Stats.ALL_DMG] += _.min([base[Stats.EHR] * 0.6, 0.72])
-
       if (c >= 1) {
         const wind =
-          _.find(debuffs, (item) => _.includes([DebuffTypes.WIND_SHEAR, DebuffTypes.DOT], item.type))?.count >= 1
+          _.sumBy(
+            _.filter(debuffs, (item) => _.includes([DebuffTypes.WIND_SHEAR, DebuffTypes.DOT], item.type)),
+            (item) => item.count
+          ) >= 1
         const physical =
-          _.find(debuffs, (item) => _.includes([DebuffTypes.BLEED, DebuffTypes.DOT], item.type))?.count >= 1
-        const fire = _.find(debuffs, (item) => _.includes([DebuffTypes.BURN, DebuffTypes.DOT], item.type))?.count >= 1
+          _.sumBy(
+            _.filter(debuffs, (item) => _.includes([DebuffTypes.BLEED, DebuffTypes.DOT], item.type)),
+            (item) => item.count
+          ) >= 1
+        const fire =
+          _.sumBy(
+            _.filter(debuffs, (item) => _.includes([DebuffTypes.BURN, DebuffTypes.DOT], item.type)),
+            (item) => item.count
+          ) >= 1
         const lightning =
-          _.find(debuffs, (item) => _.includes([DebuffTypes.SHOCKED, DebuffTypes.DOT], item.type))?.count >= 1
+          _.sumBy(
+            _.filter(debuffs, (item) => _.includes([DebuffTypes.SHOCKED, DebuffTypes.DOT], item.type)),
+            (item) => item.count
+          ) >= 1
 
         addDebuff(debuffs, DebuffTypes.OTHER, _.sum([wind, physical, fire, lightning]))
 
