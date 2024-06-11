@@ -50,7 +50,10 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
   const elementCd = stats[`${element.toUpperCase()}_CD`] || 0
   const elementFlat = stats[`${element.toUpperCase()}_F_DMG`] || 0
   const elementMult = stats[`${element.toUpperCase()}_MULT`] || 1
-  const defPen = stats.DEF_PEN || 0
+  const defPen =
+    (stats.DEF_PEN || 0) +
+    (stats[`${TalentTypeMap[scaling.type]}_DEF_PEN`] || 0) +
+    (stats[`${TalentPropertyMap[scaling.property]}_DEF_PEN`] || 0)
 
   const defMult = calculatorStore.getDefMult(teamStore.characters[index]?.level, defPen, stats.DEF_REDUCTION) || 1
   const resMult = _.max([

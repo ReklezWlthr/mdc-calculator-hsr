@@ -26,7 +26,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
   const { setParams, params } = useParams({
     searchWord: '',
     element: [],
-    weapon: [],
+    path: [],
     hasBuild: false,
   })
 
@@ -40,7 +40,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
           const regex = new RegExp(params.searchWord, 'i')
           const nameMatch = item.name.match(regex)
           const elmMatch = _.size(params.element) ? _.includes(params.element, item.element) : true
-          const weaponMatch = _.size(params.weapon) ? _.includes(params.weapon, item.path) : true
+          const weaponMatch = _.size(params.path) ? _.includes(params.path, item.path) : true
 
           return nameMatch && elmMatch && weaponMatch
         }
@@ -49,7 +49,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
   )
 
   const FilterIcon = ({ type, value }: { type: 'element' | 'path'; value: Element | PathType }) => {
-    const array = type === 'element' ? params.element : params.weapon
+    const array = type === 'element' ? params.element : params.path
     const checked = _.includes(array, value)
     return (
       <div
@@ -89,8 +89,8 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
           <FilterIcon type="path" value={PathType.ERUDITION} />
           <FilterIcon type="path" value={PathType.HARMONY} />
           <FilterIcon type="path" value={PathType.NIHILITY} />
-          <FilterIcon type="path" value={PathType.ABUNDANCE} />
           <FilterIcon type="path" value={PathType.PRESERVATION} />
+          <FilterIcon type="path" value={PathType.ABUNDANCE} />
         </div>
         <img
           src={`${publicRuntimeConfig.BASE_PATH}/icons/artifact_icon.png`}

@@ -49,7 +49,7 @@ export const baseStatsObject = {
   SPD_REDUCTION: 0,
   E_RES_RED: 0,
   VULNERABILITY: 0,
-  WEAKNESS: 0,
+  WEAKEN: 0,
 
   ULT_VUL: 0,
   ULT_RES_PEN: 0,

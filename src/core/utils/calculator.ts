@@ -10,7 +10,7 @@ import {
 import _ from 'lodash'
 import { Element, IArtifactEquip, ITeamChar, IWeaponEquip, Stats, PathType } from '@src/domain/constant'
 import { findCharacter, findWeapon } from '../utils/finder'
-import { RelicSets } from '@src/data/db/artifacts'
+import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
 import { baseStatsObject, StatsObject } from '@src/data/lib/stats/baseConstant'
 import WeaponBonus from '@src/data/lib/stats/conditionals/weapons/weapon_bonus'
 import { TalentScalingStyle } from '@src/domain/conditional'
@@ -83,15 +83,15 @@ export const addArtifactStats = (
   })
   _.forEach(setBonus, (value, key) => {
     if (value >= 2) {
-      const bonuses = _.find(RelicSets, ['id', key])?.bonus
-      const half = _.find(RelicSets, ['id', key])?.half
+      const bonuses = _.find(AllRelicSets, ['id', key])?.bonus
+      const half = _.find(AllRelicSets, ['id', key])?.half
       _.forEach(bonuses, (item) => {
         conditionals[item.stat] += item.value
       })
       if (half) conditionals = half(conditionals)
     }
     if (value >= 4) {
-      const add = _.find(RelicSets, ['id', key])?.add
+      const add = _.find(AllRelicSets, ['id', key])?.add
       if (add) conditionals = add(conditionals, weapon, team)
     }
   })
@@ -135,6 +135,22 @@ export const calcScaling = (base: number, growth: number, level: number, type: T
     return _.reduce(
       Array(level - 1 || 0),
       (acc, _, index) => acc + (index > 4 && index <= 8 ? growth * 1.25 : growth),
+      base
+    )
+  if (type === 'heal')
+    return _.reduce(Array(level - 1 || 0), (acc, _, index) => acc + (index <= 3 ? growth : growth * 0.8), base)
+  if (type === 'flat')
+    return _.reduce(
+      Array(level - 1 || 0),
+      (acc, _, index) =>
+        acc +
+        (index === 0
+          ? growth
+          : index <= 2
+          ? growth * 0.75
+          : index <= 4
+          ? growth * 0.75 * (2 / 3)
+          : growth * 0.75 * 0.75 * (2 / 3)),
       base
     )
 }
