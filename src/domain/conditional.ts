@@ -1,7 +1,7 @@
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from './constant'
 
-export type TalentScalingStyle = 'linear' | 'curved' | 'flat' | 'heal' | 'pure' | 'arcana'
+export type TalentScalingStyle = 'linear' | 'curved' | 'flat' | 'heal' | 'pure' | 'arcana' | 'dot'
 
 export enum DebuffTypes {
   WIND_SHEAR = 'Wind Shear',
@@ -15,6 +15,7 @@ export enum DebuffTypes {
   DEF_RED = 'DEF Reduced',
   SPD_RED = 'SPD Reduced',
   OTHER = 'Others',
+  DOT = 'DoT'
 }
 
 export interface IScaling {
@@ -32,6 +33,8 @@ export interface IScaling {
   break?: number
   energy?: number
   chance?: { base: number; fixed: boolean }
+  overrideIndex?: number
+  dotType?: DebuffTypes
 }
 
 export interface IWeaponContent {

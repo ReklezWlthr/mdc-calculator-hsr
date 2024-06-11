@@ -1,4 +1,4 @@
-import { findCharacter, findContentById } from '@src/core/utils/finder'
+import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
@@ -26,7 +26,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       title: 'System Warning',
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Silver Wolf's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
-      level: basic
+      level: basic,
     },
     skill: {
       title: 'Allow Changes?',
@@ -39,7 +39,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         { base: 7.5, growth: 0.25, style: 'curved' },
         { base: 98, growth: 9.8, style: 'curved' },
       ],
-      level: skill
+      level: skill,
     },
     ult: {
       title: 'User Banned',
@@ -49,7 +49,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         { base: 36, growth: 0.9, style: 'curved' },
         { base: 228, growth: 15.2, style: 'curved' },
       ],
-      level: ult
+      level: ult,
     },
     talent: {
       title: 'Awaiting System Response...',
@@ -61,7 +61,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         { base: 3, growth: 0.3, style: 'curved' },
         { base: 60, growth: 1.2, style: 'curved' },
       ],
-      level: talent
+      level: talent,
     },
     technique: {
       title: 'Force Quit Program',
@@ -208,7 +208,8 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         type: DebuffTypes
         count: number
       }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       const base = _.cloneDeep(x)
 
@@ -264,32 +265,32 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           form.sw_implant_ally = true
           weakness.push(Element.QUANTUM)
           base[`${form.sw_implant.toUpperCase()}_RES_PEN`] += 0.2
-          debuffs.push({ type: DebuffTypes.OTHER, count: 1 })
+          addDebuff(debuffs, DebuffTypes.OTHER)
         }
       }
       if (form.sw_skill) {
         base.ALL_TYPE_RES_PEN += calcScaling(0.075, 0.0025, skill, 'curved')
-        debuffs.push({ type: DebuffTypes.OTHER, count: 1 })
+        addDebuff(debuffs, DebuffTypes.OTHER)
       }
       if (form.sw_ult) {
         base.DEF_REDUCTION += calcScaling(0.36, 0.009, ult, 'curved')
-        debuffs.push({ type: DebuffTypes.DEF_RED, count: 1 })
+        addDebuff(debuffs, DebuffTypes.DEF_RED)
       }
       if (form.atk_bug) {
         base.ATK_REDUCTION += calcScaling(0.05, 0.005, ult, 'curved')
-        debuffs.push({ type: DebuffTypes.ATK_RED, count: 1 })
+        addDebuff(debuffs, DebuffTypes.ATK_RED)
       }
       if (form.def_bug) {
         base.DEF_REDUCTION += calcScaling(0.04, 0.004, ult, 'curved')
-        debuffs.push({ type: DebuffTypes.DEF_RED, count: 1 })
+        addDebuff(debuffs, DebuffTypes.DEF_RED)
       }
       if (form.spd_bug) {
         base.SPD_REDUCTION += calcScaling(0.03, 0.003, ult, 'curved')
-        debuffs.push({ type: DebuffTypes.SPD_RED, count: 1 })
+        addDebuff(debuffs, DebuffTypes.SPD_RED)
       }
       if (form.sw_c2) {
         base.E_RES_RED += 0.2
-        debuffs.push({ type: DebuffTypes.OTHER, count: 1 })
+        addDebuff(debuffs, DebuffTypes.OTHER)
       }
 
       return base
@@ -300,7 +301,8 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       form: Record<string, any>,
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       if (form.sw_implant_ally) base[`${form.sw_implant.toUpperCase()}_RES_PEN`] += 0.2
       if (form.sw_skill) base.ALL_TYPE_RES_PEN += calcScaling(0.075, 0.0025, skill, 'curved')
@@ -321,7 +323,8 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         type: DebuffTypes
         count: number
       }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       if (c >= 4)
         base.ULT_SCALING.push({

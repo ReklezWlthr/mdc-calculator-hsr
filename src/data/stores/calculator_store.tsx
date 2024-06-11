@@ -11,6 +11,7 @@ export interface CalculatorStoreType {
   computedStats: StatsObject[]
   selected: number
   res: Record<Element, number>
+  broken: boolean
   level: number
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
@@ -26,6 +27,7 @@ export class CalculatorStore {
   form: Record<string, any>[]
   computedStats: StatsObject[]
   res: Record<Element, number>
+  broken: boolean
   level: number
   selected: number
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
@@ -35,6 +37,7 @@ export class CalculatorStore {
     this.computedStats = Array(4)
     this.selected = 0
     this.level = 1
+    this.broken = false
     this.res = {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,

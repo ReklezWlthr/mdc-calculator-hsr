@@ -1,4 +1,4 @@
-import { findCharacter, findContentById } from '@src/core/utils/finder'
+import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
@@ -18,6 +18,8 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
   const skill = t.skill + upgrade.skill
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
+
+  const index = _.findIndex(team, (item) => item.cId === '1003')
 
   const talents: ITalent = {
     normal: {
@@ -133,11 +135,14 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     {
       type: 'toggle',
-      id: 'dh_a4',
-      text: `A4 SPD Bonus`,
-      ...talents.a4,
-      show: a.a4,
+      id: 'himeko_a2',
+      text: `A2 Burn`,
+      ...talents.a2,
+      show: a.a2,
       default: true,
+      debuff: true,
+      chance: { base: 0.5, fixed: false },
+      duration: 2,
     },
   ]
 
@@ -158,7 +163,8 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         type: DebuffTypes
         count: number
       }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       const base = _.cloneDeep(x)
 
@@ -231,12 +237,23 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         base.TALENT_SCALING.push(burn)
       }
 
+      if (form.himeko_a2) {
+        base.DOT_SCALING.push({
+          name: 'Burn DMG',
+          value: [{ scaling: 0.3, multiplier: Stats.ATK }],
+          element: Element.FIRE,
+          property: TalentProperty.DOT,
+          type: TalentType.NONE,
+          chance: { base: 0.5, fixed: false },
+          overrideIndex: index,
+          dotType: DebuffTypes.BURN
+        })
+        addDebuff(debuffs, DebuffTypes.BURN)
+      }
+
       if (form.himeko_tech) {
         base.FIRE_VUL += 0.1
-        debuffs.push({
-          type: DebuffTypes.OTHER,
-          count: 1,
-        })
+        addDebuff(debuffs, DebuffTypes.OTHER)
       }
       if (form.himeko_a6) base[Stats.CRIT_RATE] += 0.15
       if (form.himeko_c1) base[Stats.SPD] += 0.2
@@ -258,7 +275,8 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       form: Record<string, any>,
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       if (form.himeko_tech) base.FIRE_VUL += 0.1
 
@@ -273,7 +291,8 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         type: DebuffTypes
         count: number
       }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       const burned = _.sumBy(debuffs, (item) => Number(item.type === DebuffTypes.BURN) * item.count) >= 1
       if (burned && a.a4) base.SKILL_DMG += 0.2

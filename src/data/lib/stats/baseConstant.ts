@@ -54,6 +54,7 @@ export const baseStatsObject = {
 
   FIRE_VUL: 0,
   BREAK_VUL: 0,
+  DOT_VUL: 0,
   ULT_VUL: 0,
   ULT_RES_PEN: 0,
 
@@ -119,6 +120,8 @@ export const baseStatsObject = {
   ULT_SCALING: [] as IScaling[],
   TALENT_SCALING: [] as IScaling[],
   TECHNIQUE_SCALING: [] as IScaling[],
+
+  DOT_SCALING: [] as IScaling[],
 
   getAtk: function () {
     return this.BASE_ATK * (1 + this[Stats.P_ATK]) + this[Stats.ATK]

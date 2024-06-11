@@ -36,7 +36,7 @@ export const ElementColor = {
 
 export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
   const { calculatorStore, teamStore } = useStore()
-  const index = calculatorStore.selected
+  const index = scaling.overrideIndex || calculatorStore.selected
   const stats = calculatorStore.computedStats[index]
   const names = _.map(teamStore.characters, (item) => findCharacter(item.cId)?.name)
 
@@ -56,6 +56,12 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     (stats[`${TalentPropertyMap[scaling.property]}_DEF_PEN`] || 0)
 
   const defMult = calculatorStore.getDefMult(teamStore.characters[index]?.level, defPen, stats.DEF_REDUCTION) || 1
+  const vulMult =
+    1 +
+    stats.VULNERABILITY +
+    (stats[`${scaling.property.toUpperCase()}_VUL`] || 0) +
+    (stats[`${scaling.type.toUpperCase()}_VUL`] || 0) +
+    (stats[`${scaling.element.toUpperCase()}_VUL`] || 0)
   const resMult = _.max([
     _.min([
       calculatorStore.getResMult(
@@ -66,8 +72,9 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     ]),
     0.1,
   ])
+  const brokenMult = calculatorStore.broken ? 1 : 0.9
   const isDamage = !_.includes([TalentProperty.SHIELD, TalentProperty.HEAL], scaling.property)
-  const enemyMod = isDamage ? defMult * resMult : 1
+  const enemyMod = isDamage ? defMult * resMult * vulMult * brokenMult : 1
 
   const statForScale = {
     [Stats.ATK]: stats.getAtk(),
@@ -94,6 +101,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     elementFlat +
     talentFlat
   const dmg = raw * (1 + bonusDMG) * (scaling.multiplier || 1) * elementMult * enemyMod
+  console.log(dmg, defMult, resMult, vulMult, brokenMult)
 
   const totalCr = _.max([_.min([stats[Stats.CRIT_RATE] + (scaling.cr || 0) + talentCr, 1]), 0])
   const totalCd = stats[Stats.CRIT_DMG] + stats.X_CRIT_DMG + (scaling.cd || 0) + talentCd + elementCd
@@ -130,7 +138,12 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
         )}</b> <i class="text-[10px]">DEF</i> \u{00d7} <b class="text-teal-200">${toPercentage(
           resMult,
           2
-        )}</b> <i class="text-[10px]">RES</i>`
+        )}</b> <i class="text-[10px]">RES</i> \u{00d7} <b class="text-rose-300">${toPercentage(
+          vulMult,
+          2
+        )}</b> <i class="text-[10px]">VUL</i> \u{00d7} <b class="text-violet-300">${toPercentage(
+          brokenMult
+        )}</b> <i class="text-[10px]">BROKEN</i>`
       : ''
   }`
 
@@ -152,7 +165,18 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     totalCr
   )}</b>)</span>`
 
-  const prob = (scaling.chance?.base || 0) * (1 + stats[Stats.EHR])
+  const prob = (scaling.chance?.base || 0) * (1 + stats[Stats.EHR]) * (1 - 0.3)
+  const noCrit = _.includes(
+    [
+      TalentProperty.HEAL,
+      TalentProperty.SHIELD,
+      TalentProperty.DOT,
+      TalentProperty.BREAK,
+      TalentProperty.SUPER_BREAK,
+      TalentProperty.FROZEN,
+    ],
+    scaling.property
+  )
 
   return (
     <div className="grid items-center grid-cols-9 gap-2 pr-2">
@@ -189,7 +213,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
       >
         <p className="col-span-1 text-center text-gray">{_.round(dmg)}</p>
       </Tooltip>
-      {_.includes([TalentProperty.HEAL, TalentProperty.SHIELD], scaling.property) ? (
+      {noCrit ? (
         <p className="col-span-1 text-center text-gray">-</p>
       ) : (
         <Tooltip
@@ -219,7 +243,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
           <p className="col-span-1 text-center text-gray">{_.round(dmg * (1 + totalCd))}</p>
         </Tooltip>
       )}
-      {_.includes([TalentProperty.HEAL, TalentProperty.SHIELD], scaling.property) ? (
+      {noCrit ? (
         <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
           {_.round(dmg)}
         </p>

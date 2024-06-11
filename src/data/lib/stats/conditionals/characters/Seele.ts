@@ -1,4 +1,4 @@
-import { findContentById } from '@src/core/utils/finder'
+import { addDebuff, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
@@ -215,10 +215,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.ADD,
           type: TalentType.ULT,
         })
-        debuffs.push({
-          type: DebuffTypes.OTHER,
-          count: 1,
-        })
+        addDebuff(debuffs, DebuffTypes.OTHER)
       }
 
       return base

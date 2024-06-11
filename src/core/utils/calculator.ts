@@ -155,6 +155,24 @@ export const calcScaling = (base: number, growth: number, level: number, type: T
           : growth * 0.75 * 0.75 * (2 / 3)),
       base
     )
+  if (type === 'dot')
+    return _.reduce(
+      Array(level - 1 || 0),
+      (acc, _, index) =>
+        acc +
+        (index <= 3
+          ? growth
+          : index === 4
+          ? growth * 1.5
+          : index === 5
+          ? growth * 2
+          : index === 6
+          ? growth * 2.5
+          : index <= 8
+          ? growth * 3
+          : growth * 1.3),
+      base
+    )
   if (type === 'pure')
     return _.reduce(
       Array(level - 1 || 0),

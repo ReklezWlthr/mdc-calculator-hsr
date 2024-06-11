@@ -1,20 +1,25 @@
 import Archeron from './characters/Archeron'
 import Argenti from './characters/Argenti'
+import BlackSwan from './characters/BlackSwan'
 import DanHeng from './characters/DanHeng'
 import DrRatio from './characters/DrRatio'
 import FuXuan from './characters/FuXuan'
 import Gallagher from './characters/Gallagher'
 import Himeko from './characters/Himeko'
+import Kafka from './characters/Kafka'
 import Luocha from './characters/Luocha'
 import March from './characters/March'
 import Seele from './characters/Seele'
 import SilverWolf from './characters/SilverWolf'
 import Sparkle from './characters/Sparkle'
+import Welt from './characters/Welt'
 
 export default [
   { id: '1001', conditionals: March },
   { id: '1002', conditionals: DanHeng },
   { id: '1003', conditionals: Himeko },
+  { id: '1004', conditionals: Welt },
+  { id: '1005', conditionals: Kafka },
   { id: '1006', conditionals: SilverWolf },
   { id: '1102', conditionals: Seele },
   { id: '1203', conditionals: Luocha },
@@ -23,10 +28,8 @@ export default [
   { id: '1302', conditionals: Argenti },
   { id: '1305', conditionals: DrRatio },
   { id: '1306', conditionals: Sparkle },
+  { id: '1307', conditionals: BlackSwan },
   { id: '1308', conditionals: Archeron },
-  // { id: '10000090', conditionals: Chevreuse },
-  // { id: '10000094', conditionals: Chiori },
-  // { id: '10000036', conditionals: Chongyun },
   // { id: '10000067', conditionals: Collei },
   // { id: '10000071', conditionals: Cyno },
   // { id: '10000079', conditionals: Dehya },

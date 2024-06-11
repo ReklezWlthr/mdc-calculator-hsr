@@ -1,4 +1,4 @@
-import { findCharacter, findContentById } from '@src/core/utils/finder'
+import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
@@ -157,7 +157,8 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         type: DebuffTypes
         count: number
       }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       const base = _.cloneDeep(x)
 
@@ -229,17 +230,11 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       if (form.gall_ba) base.BA_ALT = true
       if (form.besotted) {
         base.BREAK_VUL += calcScaling(0.06, 0.006, talent, 'curved')
-        debuffs.push({
-          type: DebuffTypes.OTHER,
-          count: 1,
-        })
+        addDebuff(debuffs, DebuffTypes.OTHER)
       }
       if (form.gall_ba_debuff) {
         base.ATK_REDUCTION += calcScaling(0.1, 0.01, basic, 'linear')
-        debuffs.push({
-          type: DebuffTypes.ATK_RED,
-          count: 1,
-        })
+        addDebuff(debuffs, DebuffTypes.ATK_RED)
       }
       if (c >= 1) base[Stats.E_RES] += 0.5
       if (form.gall_c2) base[Stats.E_RES] += 0.3
@@ -253,7 +248,8 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       form: Record<string, any>,
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       if (form.besotted) base.BREAK_VUL += calcScaling(0.06, 0.006, talent, 'curved')
       if (form.gall_ba_debuff) base.ATK_REDUCTION += calcScaling(0.1, 0.01, basic, 'linear')
@@ -270,7 +266,8 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         type: DebuffTypes
         count: number
       }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       if (a.a2) base[Stats.HEAL] += _.min([base[Stats.BE] * 0.5, 0.75])
 

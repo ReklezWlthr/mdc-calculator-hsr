@@ -125,7 +125,8 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         type: DebuffTypes
         count: number
       }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       const base = _.cloneDeep(x)
 
@@ -209,7 +210,8 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       form: Record<string, any>,
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       if (aForm.march_aggro) base.AGGRO += 5
 
@@ -224,7 +226,8 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         type: DebuffTypes
         count: number
       }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       return base
     },

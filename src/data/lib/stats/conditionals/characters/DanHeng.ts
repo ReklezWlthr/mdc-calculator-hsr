@@ -1,4 +1,4 @@
-import { findCharacter, findContentById } from '@src/core/utils/finder'
+import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
@@ -165,7 +165,8 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         type: DebuffTypes
         count: number
       }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       const base = _.cloneDeep(x)
 
@@ -194,10 +195,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
       if (form.dh_slow) {
         base.SPD_REDUCTION += 0.12 + (c >= 6 ? 0.08 : 0)
-        debuffs.push({
-          type: DebuffTypes.SPD_RED,
-          count: 1,
-        })
+        addDebuff(debuffs, DebuffTypes.SPD_RED)
       }
       if (form.dh_tech) base[Stats.P_ATK] += 0.4
       if (form.dh_talent) base.WIND_RES_PEN += calcScaling(0.18, 0.018, talent, 'curved')
@@ -213,7 +211,8 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       form: Record<string, any>,
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       if (form.dh_slow) base.SPD_REDUCTION += 0.12 + (c >= 6 ? 0.08 : 0)
       if (aForm.march_aggro) base.AGGRO += 5
@@ -229,7 +228,8 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         type: DebuffTypes
         count: number
       }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       const slowed = _.sumBy(debuffs, (item) => Number(item.type === DebuffTypes.SPD_RED) * item.count) >= 1
       base.ULT_SCALING = [

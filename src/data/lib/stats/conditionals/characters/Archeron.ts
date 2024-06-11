@@ -1,4 +1,4 @@
-import { findCharacter, findContentById } from '@src/core/utils/finder'
+import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
@@ -296,10 +296,7 @@ const Archeron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       if (c >= 1 && _.sumBy(debuffs, (item) => item.count) >= 1) base[Stats.CRIT_RATE] += 0.18
       if (form.arch_c4) {
         base.ULT_VUL += 0.08
-        debuffs.push({
-          type: DebuffTypes.OTHER,
-          count: 1,
-        })
+        addDebuff(debuffs, DebuffTypes.OTHER)
       }
       if (c >= 6) base.ULT_RES_PEN += 0.2
 

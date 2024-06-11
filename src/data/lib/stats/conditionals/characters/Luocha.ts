@@ -1,4 +1,4 @@
-import { findCharacter, findContentById } from '@src/core/utils/finder'
+import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
@@ -142,7 +142,8 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         type: DebuffTypes
         count: number
       }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       const base = _.cloneDeep(x)
 
@@ -193,10 +194,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         if (c >= 1) base[Stats.P_ATK] += 0.2
         if (c >= 4) {
           base.WEAKEN += 0.12
-          debuffs.push({
-            type: DebuffTypes.OTHER,
-            count: 1,
-          })
+          addDebuff(debuffs, DebuffTypes.OTHER)
         }
       }
       if (form.luocha_c2) base[Stats.HEAL] += 0.3
@@ -220,10 +218,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         })
       if (form.luocha_c6) {
         base.ALL_TYPE_RES_PEN += 0.2
-        debuffs.push({
-          type: DebuffTypes.OTHER,
-          count: 1,
-        })
+        addDebuff(debuffs, DebuffTypes.OTHER)
       }
 
       return base
@@ -234,7 +229,8 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       form: Record<string, any>,
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       if (form.abyss_field) {
         if (c >= 1) base[Stats.P_ATK] += 0.2
@@ -253,7 +249,8 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         type: DebuffTypes
         count: number
       }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean
     ) => {
       return base
     },
