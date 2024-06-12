@@ -50,7 +50,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: skill,
     },
     ult: {
-      title: `Snowfield First Aid`,
+      title: `Coup de Grâce`,
       content: `Receives <span class="text-desc">2</span> stack(s) of <b>Fighting Will</b>, with a <span class="text-desc">100%</span> base chance to increase a single enemy target's DMG received by {{0}}% for <span class="text-desc">3</span> turn(s). Then, deals <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Luka's ATK to the target.`,
       value: [
         { base: 12, growth: 0.8, style: 'curved' },
