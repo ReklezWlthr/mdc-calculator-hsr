@@ -230,10 +230,19 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         addDebuff(debuffs, DebuffTypes.SHOCKED)
       }
       if (form.kafka_c1) {
-        base.DOT_VUL += 0.3
+        base.DOT_VUL.push({
+          name: `Eidolon 1`,
+          source: 'Self',
+          value: 0.3,
+        })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
-      if (c >= 2) base.DOT_DMG += 0.25
+      if (c >= 2)
+        base.DOT_DMG.push({
+          name: `Eidolon 2`,
+          source: 'Self',
+          value: 0.25,
+        })
 
       return base
     },
@@ -246,8 +255,18 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       weakness: Element[],
       broken: boolean
     ) => {
-      if (form.kafka_c1) base.DOT_VUL += 0.3
-      if (c >= 2) base.DOT_DMG += 0.25
+      if (form.kafka_c1)
+        base.DOT_VUL.push({
+          name: `Eidolon 1`,
+          source: 'Kafka',
+          value: 0.3,
+        })
+      if (c >= 2)
+        base.DOT_DMG.push({
+          name: `Eidolon 2`,
+          source: 'Kafka',
+          value: 0.25,
+        })
 
       return base
     },
@@ -271,7 +290,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             ...item,
             chance: undefined,
             name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
-            multiplier: calcScaling(0.6, 0.015, skill, 'curved'),
+            multiplier: (item.multiplier || 1) * calcScaling(0.6, 0.015, skill, 'curved'),
           }))
         )
         x.ULT_SCALING.push(
@@ -279,9 +298,10 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             ...item,
             chance: undefined,
             name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
-            multiplier: calcScaling(0.8, 0.02, ult, 'curved'),
+            multiplier: (item.multiplier || 1) * calcScaling(0.8, 0.02, ult, 'curved'),
           }))
         )
+
         return x
       })
 

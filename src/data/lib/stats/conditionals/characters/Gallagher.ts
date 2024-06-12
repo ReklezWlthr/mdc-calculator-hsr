@@ -229,16 +229,39 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
 
       if (form.gall_ba) base.BA_ALT = true
       if (form.besotted) {
-        base.BREAK_VUL += calcScaling(0.06, 0.006, talent, 'curved')
+        base.BREAK_VUL.push({
+          name: `Ultimate`,
+          source: 'Self',
+          value: calcScaling(0.06, 0.006, talent, 'curved'),
+        })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
       if (form.gall_ba_debuff) {
-        base.ATK_REDUCTION += calcScaling(0.1, 0.01, basic, 'linear')
+        base.ATK_REDUCTION.push({
+          name: `Enhanced Basic ATK`,
+          source: 'Self',
+          value: calcScaling(0.1, 0.01, basic, 'linear'),
+        })
         addDebuff(debuffs, DebuffTypes.ATK_RED)
       }
-      if (c >= 1) base[Stats.E_RES] += 0.5
-      if (form.gall_c2) base[Stats.E_RES] += 0.3
-      if (c >= 6) base.BREAK_EFF += 0.2
+      if (c >= 1)
+        base[Stats.E_RES].push({
+          name: `Eidolon 1`,
+          source: 'Self',
+          value: 0.5,
+        })
+      if (form.gall_c2)
+        base[Stats.E_RES].push({
+          name: `Skill (Eidolon 2)`,
+          source: 'Self',
+          value: 0.3,
+        })
+      if (c >= 6)
+        base.BREAK_EFF.push({
+          name: `Eidolon 6`,
+          source: 'Self',
+          value: 0.2,
+        })
 
       return base
     },
@@ -251,9 +274,24 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       weakness: Element[],
       broken: boolean
     ) => {
-      if (form.besotted) base.BREAK_VUL += calcScaling(0.06, 0.006, talent, 'curved')
-      if (form.gall_ba_debuff) base.ATK_REDUCTION += calcScaling(0.1, 0.01, basic, 'linear')
-      if (aForm.gall_c2) base[Stats.E_RES] += 0.3
+      if (form.besotted)
+        base.BREAK_VUL.push({
+          name: `Ultimate`,
+          source: 'Gallagher',
+          value: calcScaling(0.06, 0.006, talent, 'curved'),
+        })
+      if (form.gall_ba_debuff)
+        base.ATK_REDUCTION.push({
+          name: `Enhanced Basic ATK`,
+          source: 'Gallagher',
+          value: calcScaling(0.1, 0.01, basic, 'linear'),
+        })
+      if (aForm.gall_c2)
+        base[Stats.E_RES].push({
+          name: `Skill (Eidolon 2)`,
+          source: 'Gallagher',
+          value: 0.3,
+        })
 
       return base
     },
@@ -269,7 +307,12 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       weakness: Element[],
       broken: boolean
     ) => {
-      if (a.a2) base[Stats.HEAL] += _.min([base[Stats.BE] * 0.5, 0.75])
+      if (a.a2)
+        base[Stats.HEAL].push({
+          name: `Ascension 2 Passive`,
+          source: 'Self',
+          value: _.min([base.getValue(Stats.BE) * 0.5, 0.75]),
+        })
 
       return base
     },

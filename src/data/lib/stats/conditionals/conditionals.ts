@@ -4,15 +4,23 @@ import Arlan from './characters/Arlan'
 import Asta from './characters/Asta'
 import BlackSwan from './characters/BlackSwan'
 import Bronya from './characters/Bronya'
+import Clara from './characters/Clara'
 import DanHeng from './characters/DanHeng'
 import DrRatio from './characters/DrRatio'
 import FuXuan from './characters/FuXuan'
 import Gallagher from './characters/Gallagher'
+import Gepard from './characters/Gepard'
 import Herta from './characters/Herta'
 import Himeko from './characters/Himeko'
+import Hook from './characters/Hook'
 import Kafka from './characters/Kafka'
+import Luka from './characters/Luka'
 import Luocha from './characters/Luocha'
+import Lynx from './characters/Lynx'
 import March from './characters/March'
+import Natasha from './characters/Natasha'
+import Pela from './characters/Pela'
+import Sampo from './characters/Sampo'
 import Seele from './characters/Seele'
 import Serval from './characters/Serval'
 import SilverWolf from './characters/SilverWolf'
@@ -32,6 +40,14 @@ export default [
   { id: '1101', conditionals: Bronya },
   { id: '1102', conditionals: Seele },
   { id: '1103', conditionals: Serval },
+  { id: '1104', conditionals: Gepard },
+  { id: '1105', conditionals: Natasha },
+  { id: '1106', conditionals: Pela },
+  { id: '1107', conditionals: Clara },
+  { id: '1108', conditionals: Sampo },
+  { id: '1109', conditionals: Hook },
+  { id: '1110', conditionals: Lynx },
+  { id: '1111', conditionals: Luka },
   { id: '1203', conditionals: Luocha },
   { id: '1208', conditionals: FuXuan },
   { id: '1301', conditionals: Gallagher },
@@ -40,14 +56,6 @@ export default [
   { id: '1306', conditionals: Sparkle },
   { id: '1307', conditionals: BlackSwan },
   { id: '1308', conditionals: Archeron },
-  // { id: '10000068', conditionals: Dori },
-  // { id: '10000051', conditionals: Eula },
-  // { id: '10000076', conditionals: Faruzan },
-  // { id: '10000031', conditionals: Fischl },
-  // { id: '10000085', conditionals: Freminet },
-  // { id: '10000089', conditionals: Furina },
-  // { id: '10000092', conditionals: Gaming },
-  // { id: '10000037', conditionals: Ganyu },
   // { id: '10000055', conditionals: Gorou },
   // { id: '10000046', conditionals: Hutao },
   // { id: '10000003', conditionals: Jean },

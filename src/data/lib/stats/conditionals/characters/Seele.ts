@@ -24,26 +24,26 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       title: 'Thwack',
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Seele's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
-      level: basic
+      level: basic,
     },
     skill: {
       title: 'Sheathed Blade',
       content: `Increases Seele's SPD by <span class="text-desc">25%</span> for <span class="text-desc">2</span> turn(s) and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Seele's ATK to a single enemy.`,
       value: [{ base: 110, growth: 11, style: 'curved' }],
-      level: skill
+      level: skill,
     },
     ult: {
       title: 'Butterfly Flurry',
       content: `Seele enters the buffed state and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of her ATK to a single enemy.`,
       value: [{ base: 255, growth: 17, style: 'curved' }],
-      level: ult
+      level: ult,
     },
     talent: {
       title: 'Resurgence',
       content: `Enters the buffed state upon defeating an enemy with Basic ATK, Skill, or Ultimate, and receives an extra turn. While in the buffed state, the DMG of Seele's attacks increases by {{0}}% for 1 turn(s).
       <br />Enemies defeated in the extra turn provided by "Resurgence" will not trigger another "Resurgence."`,
       value: [{ base: 40, growth: 4, style: 'curved' }],
-      level: talent
+      level: talent,
     },
     technique: {
       title: 'Phantom Illusion',
@@ -199,14 +199,37 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ]
 
       if (form.resurgence) {
-        base[Stats.ALL_DMG] += calcScaling(0.4, 0.04, talent, 'curved')
-        if (a.a4) base.QUANTUM_RES_PEN += 0.2
+        base[Stats.ALL_DMG].push({
+          name: `Talent`,
+          source: 'Self',
+          value: calcScaling(0.4, 0.04, talent, 'curved'),
+        })
+        if (a.a4)
+          base.QUANTUM_RES_PEN.push({
+            name: `Ascension 4 Passive`,
+            source: 'Self',
+            value: 0.2,
+          })
       }
       if (form.seele_spd) {
-        base[Stats.P_SPD] = form.seele_spd * 0.25
+        base[Stats.P_SPD].push({
+          name: `Skill`,
+          source: 'Self',
+          value: form.seele_spd * 0.25,
+        })
       }
-      if (form.seele_a2) base.AGGRO -= 0.5
-      if (form.seele_c1) base[Stats.CRIT_RATE] += 0.15
+      if (form.seele_a2)
+        base.AGGRO.push({
+          name: `Ascension 2 Passive`,
+          source: 'Self',
+          value: -0.5,
+        })
+      if (form.seele_c1)
+        base[Stats.CRIT_RATE].push({
+          name: `Eidolon 1`,
+          source: 'Self',
+          value: 0.15,
+        })
       if (form.seele_c6) {
         base.ULT_SCALING.push({
           name: 'Butterfly Flurry DMG',

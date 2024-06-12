@@ -22,3 +22,6 @@ export const countDot = (debuffs: { type: DebuffTypes; count: number }[], type: 
     _.filter(debuffs, (d) => _.includes([DebuffTypes.DOT, type], d.type)),
     (item) => item.count
   )
+
+export const countDebuff = (debuffs: { type: DebuffTypes; count: number }[], type?: DebuffTypes) =>
+  _.sumBy(type ? _.filter(debuffs, (d) => d.type === type) : debuffs, (item) => item.count)

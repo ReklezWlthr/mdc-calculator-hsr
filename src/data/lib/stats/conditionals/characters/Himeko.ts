@@ -245,12 +245,28 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       }
 
       if (form.himeko_tech) {
-        base.FIRE_VUL += 0.1
+        base.FIRE_VUL.push({
+          name: `Technique`,
+          source: 'Self',
+          value: 0.1,
+        })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
-      if (form.himeko_a6) base[Stats.CRIT_RATE] += 0.15
-      if (form.himeko_c1) base[Stats.SPD] += 0.2
-      if (form.himeko_c2) base[Stats.ALL_DMG] += 0.15
+      if (form.himeko_a6) base[Stats.CRIT_RATE].push({
+          name: `Ascension 6 Passive`,
+          source: 'Self',
+          value: 0.15,
+        })
+      if (form.himeko_c1) base[Stats.SPD].push({
+          name: `Eidolon 1`,
+          source: 'Self',
+          value: 0.2,
+        })
+      if (form.himeko_c2) base[Stats.ALL_DMG].push({
+          name: `Eidolon 2`,
+          source: 'Self',
+          value: 0.15,
+        })
       if (c >= 6)
         base.ULT_SCALING.push({
           name: 'Additional DMG [x2]',
@@ -271,7 +287,11 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       weakness: Element[],
       broken: boolean
     ) => {
-      if (form.himeko_tech) base.FIRE_VUL += 0.1
+      if (form.himeko_tech) base.FIRE_VUL.push({
+          name: `Technique`,
+          source: 'Himeko',
+          value: 0.1,
+        })
 
       return base
     },
@@ -288,7 +308,11 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       broken: boolean
     ) => {
       const burned = countDot(debuffs, DebuffTypes.BURN)
-      if (burned && a.a4) base.SKILL_DMG += 0.2
+      if (burned && a.a4) base.SKILL_DMG.push({
+          name: `Ascension 4 Passive`,
+          source: 'Self',
+          value: 0.2,
+        })
 
       return base
     },

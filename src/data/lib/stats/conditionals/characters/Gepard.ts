@@ -9,131 +9,106 @@ import { calcScaling } from '@src/core/utils/calculator'
 
 const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
-    basic: c >= 2 ? 1 : 0,
-    skill: c >= 3 ? 2 : 0,
-    ult: c >= 5 ? 2 : 0,
-    talent: c >= 5 ? 2 : 0,
+    basic: c >= 5 ? 1 : 0,
+    skill: c >= 5 ? 2 : 0,
+    ult: c >= 3 ? 2 : 0,
+    talent: c >= 3 ? 2 : 0,
   }
   const basic = t.basic + upgrade.basic
   const skill = t.skill + upgrade.skill
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
 
-  const index = _.findIndex(team, (item) => item.cId === '1103')
-
   const talents: ITalent = {
     normal: {
-      title: 'Roaring Thunderclap',
-      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to a single enemy.`,
+      title: 'Fist of Conviction',
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Gepard's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
-      title: 'Lightning Flash	',
-      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to a single enemy and <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Serval's ATK to enemies adjacent to it, with a <span class="text-desc">80%</span> base chance for enemies hit to become <b class="text-hsr-lightning">Shocked</b> for <span class="text-desc">2</span> turn(s).
-      <br />While <b class="text-hsr-lightning">Shocked</b>, enemies take <b class="text-hsr-lightning">Lightning DoT</b> equal to {{2}}% of Serval's ATK at the beginning of each turn.`,
+      title: 'Daunting Smite',
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Gepard's ATK to a single enemy, with a 65% base chance to <b class="text-hsr-ice">Freeze</b> the enemy for <span class="text-desc">1</span> turn(s).
+      <br />While <b class="text-hsr-ice">Frozen</b>, the enemy cannot take action and will take Additional <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Gepard's ATK at the beginning of each turn.`,
       value: [
-        { base: 70, growth: 7, style: 'curved' },
+        { base: 100, growth: 10, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },
-        { base: 40, growth: 4, style: 'curved' },
       ],
       level: skill,
     },
     ult: {
-      title: `Here Comes the Mechanical Fever`,
-      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to all enemies. Enemies already <b class="text-hsr-lightning">Shocked</b> will extend the duration of their <b class="text-hsr-lightning">Shock</b> state by <span class="text-desc">2</span> turn(s).`,
-      value: [{ base: 108, growth: 7.2, style: 'curved' }],
+      title: `Enduring Bulwark`,
+      content: `Applies a <b class="text-indigo-300">Shield</b> to all allies, absorbing DMG equal to {{0}}% of Gepard's DEF plus {{1}} for <span class="text-desc">3</span> turn(s).`,
+      value: [
+        { base: 30, growth: 1.875, style: 'heal' },
+        { base: 150, growth: 90, style: 'flat' },
+      ],
       level: ult,
     },
     talent: {
-      title: `Galvanic Chords`,
-      content: `After Serval attacks, deals Additional <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to all <b class="text-hsr-lightning">Shocked</b> enemies.`,
-      value: [{ base: 36, growth: 3.6, style: 'curved' }],
+      title: `Unyielding Will`,
+      content: `When struck with a killing blow, instead of becoming knocked down, Gepard's HP immediately restores to {{0}}% of his Max HP. This effect can only trigger once per battle.`,
+      value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: talent,
     },
     technique: {
-      title: 'Good Night, Belobog',
-      content: `Immediately attacks the enemy. After entering battle, deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">50%</span> of Serval's ATK to a random enemy, with a <span class="text-desc">100%</span> base chance for all enemies to become <b class="text-hsr-lightning">Shocked</b> for <span class="text-desc">3</span> turn(s).
-      <br />While <b class="text-hsr-lightning">Shocked</b>, enemies will take <b class="text-hsr-lightning">Lightning DoT</b> equal to <span class="text-desc">50%</span> of Serval's ATK at the beginning of each turn.`,
+      title: 'Comradery',
+      content: `After Gepard uses his Technique, when the next battle begins, a <b class="text-indigo-300">Shield</b> will be applied to all allies, absorbing DMG equal to <span class="text-desc">24%</span> of Gepard's DEF plus <span class="text-desc">150</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
-      title: `A2: Rock 'n' Roll`,
-      content: `Skill has a <span class="text-desc">20%</span> increased base chance to <b class="text-hsr-lightning">Shock</b> enemies.`,
+      title: `A2: Integrity`,
+      content: `Gepard has a higher chance to be attacked by enemies.`,
     },
     a4: {
-      title: `A4: String Vibration`,
-      content: `At the start of the battle, immediately regenerates <span class="text-desc">15</span> Energy.`,
+      title: `A4: Commander`,
+      content: `When "Unyielding Will" is triggered, Gepard's Energy will be restored to <span class="text-desc">100%</span>.`,
     },
     a6: {
-      title: `A6: Mania`,
-      content: `Upon defeating an enemy, ATK is increased by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
+      title: `A6: Fighting Spirit`,
+      content: `Gepard's ATK increases by 35% of his current DEF. This effect will refresh at the start of each turn.`,
     },
     c1: {
-      title: `E1: Echo Chamber`,
-      content: `Basic ATK deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">60%</span> of the Basic ATK's DMG to a random enemy adjacent to the target of the Basic ATK.`,
+      title: `E1: Due Diligence`,
+      content: `When using Skill, increases the base chance to <b class="text-hsr-ice">Freeze</b> enemies by <span class="text-desc">35%</span>.`,
     },
     c2: {
-      title: `E2: Encore!`,
-      content: `Every time Serval's Talent is triggered to deal Additional DMG, she regenerates <span class="text-desc">4</span> Energy.`,
+      title: `E2: Lingering Cold`,
+      content: `After an enemy <b class="text-hsr-ice">Frozen</b> by Skill is unfrozen, their SPD is reduced by <span class="text-desc">20%</span> for <span class="text-desc">1</span> turn(s).`,
     },
     c3: {
-      title: `E3: Listen, the Heartbeat of the Gears`,
-      content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
-      <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
-    },
-    c4: {
-      title: 'E4: Make Some Noise!',
-      content: `Ultimate has a <span class="text-desc">100%</span> base chance to apply <b class="text-hsr-lightning">Shock</b> to any enemies not currently <b class="text-hsr-lightning">Shocked</b>. This <b class="text-hsr-lightning">Shock</b> has the same effects as the one applied by Skill.`,
-    },
-    c5: {
-      title: `E5: Belobog's Loudest Roar!`,
+      title: `E3: Never Surrender`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
+    c4: {
+      title: 'E4: Faith Moves Mountains',
+      content: `When Gepard is in battle, all allies' Effect RES increases by <span class="text-desc">20%</span>.`,
+    },
+    c5: {
+      title: `E5: Cold Iron Fist`,
+      content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
+      <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
+    },
     c6: {
-      title: 'E6: This Song Rocks to Heaven!',
-      content: `Serval deals <span class="text-desc">30%</span> more DMG to <b class="text-hsr-lightning">Shocked</b> enemies.`,
+      title: 'E6: Unyielding Resolve',
+      content: `When his Talent is triggered, Gepard immediately takes action again and restores extra HP equal to <span class="text-desc">50%</span> of his Max HP.`,
     },
   }
 
   const content: IContent[] = [
     {
       type: 'toggle',
-      id: 'serval_skill',
-      text: `Skill Shock`,
-      ...talents.skill,
-      show: true,
+      id: 'gepard_c2',
+      text: `E2 Frozen SPD Reduction`,
+      ...talents.c2,
+      show: c >= 2,
       default: true,
       debuff: true,
-      chance: { base: a.a2 ? 1 : 0.8, fixed: false },
-      duration: 2,
-    },
-    {
-      type: 'toggle',
-      id: 'serval_tech',
-      text: `Technique Shock`,
-      ...talents.technique,
-      show: true,
-      default: true,
-      debuff: true,
-      chance: { base: 1, fixed: false },
-      duration: 3,
-    },
-    {
-      type: 'toggle',
-      id: 'serval_a6',
-      text: `On-Kill ATK Bonus`,
-      ...talents.a6,
-      show: a.a6,
-      default: true,
-      duration: 2,
+      duration: 1,
     },
   ]
 
-  const teammateContent: IContent[] = [
-    findContentById(content, 'serval_skill'),
-    findContentById(content, 'serval_tech'),
-  ]
+  const teammateContent: IContent[] = [findContentById(content, 'gepard_c2')]
 
   const allyContent: IContent[] = []
 
@@ -159,7 +134,7 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         {
           name: 'Single Target',
           value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear'), multiplier: Stats.ATK }],
-          element: Element.LIGHTNING,
+          element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 30,
@@ -168,83 +143,70 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       base.SKILL_SCALING = [
         {
           name: 'Main',
-          value: [{ scaling: calcScaling(0.7, 0.07, skill, 'curved'), multiplier: Stats.ATK }],
-          element: Element.LIGHTNING,
+          value: [{ scaling: calcScaling(1, 0.1, skill, 'curved'), multiplier: Stats.ATK }],
+          element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 60,
         },
         {
-          name: 'Adjacent',
+          name: 'Frozen DMG',
           value: [{ scaling: calcScaling(0.3, 0.03, skill, 'curved'), multiplier: Stats.ATK }],
-          element: Element.LIGHTNING,
-          property: TalentProperty.NORMAL,
-          type: TalentType.SKILL,
-          break: 30,
+          element: Element.ICE,
+          property: TalentProperty.FROZEN,
+          type: TalentType.NONE,
+          chance: { base: c >= 1 ? 1 : 0.65, fixed: false },
         },
       ]
       base.ULT_SCALING = [
         {
-          name: 'AoE',
-          value: [{ scaling: calcScaling(0.5, 0.1, ult, 'curved'), multiplier: Stats.ATK }],
-          element: Element.LIGHTNING,
-          property: TalentProperty.NORMAL,
-          type: TalentType.ULT,
-          break: 60,
+          name: 'AoE Shield',
+          value: [{ scaling: calcScaling(0.3, 0.01875, ult, 'heal'), multiplier: Stats.DEF }],
+          flat: calcScaling(150, 90, ult, 'flat'),
+          element: TalentProperty.SHIELD,
+          property: TalentProperty.SHIELD,
+          type: TalentType.NONE,
         },
       ]
       base.TALENT_SCALING = [
         {
-          name: 'Additional DMG',
-          value: [{ scaling: calcScaling(0.36, 0.036, talent, 'curved'), multiplier: Stats.ATK }],
-          element: Element.LIGHTNING,
-          property: TalentProperty.ADD,
+          name: 'Revive Healing',
+          value: [{ scaling: calcScaling(0.25, 0.025, talent, 'curved') + (c >= 6 ? 0.5 : 0), multiplier: Stats.HP }],
+          element: TalentProperty.HEAL,
+          property: TalentProperty.HEAL,
           type: TalentType.NONE,
         },
       ]
       base.TECHNIQUE_SCALING = [
         {
-          name: 'AoE',
-          value: [{ scaling: 0.5, multiplier: Stats.ATK }],
-          element: Element.LIGHTNING,
-          property: TalentProperty.NORMAL,
-          type: TalentType.TECH,
-          break: 60,
+          name: 'AoE Shield',
+          value: [{ scaling: 0.24, multiplier: Stats.DEF }],
+          flat: 150,
+          element: TalentProperty.SHIELD,
+          property: TalentProperty.SHIELD,
+          type: TalentType.NONE,
         },
       ]
 
-      if (form.serval_skill) {
-        const skillShock = {
-          name: 'Skill Shocked DMG',
-          value: [{ scaling: calcScaling(0.4, 0.04, skill, 'dot'), multiplier: Stats.ATK }],
-          element: Element.LIGHTNING,
-          property: TalentProperty.DOT,
-          type: TalentType.NONE,
-        }
-        base.SKILL_SCALING.push({ ...skillShock, chance: { base: a.a2 ? 1 : 0.8, fixed: false } })
-        if (c >= 4) base.ULT_SCALING.push({ ...skillShock, chance: { base: 1, fixed: false } })
-        base.DOT_SCALING.push({ ...skillShock, overrideIndex: index, dotType: DebuffTypes.SHOCKED })
+      if (a.a2)
+        base.AGGRO.push({
+          name: 'Ascension 2 Passive',
+          source: 'Self',
+          value: 3,
+        })
+      if (form.gepard_c2) {
+        base.SPD_REDUCTION.push({
+          name: 'Eidolon 2',
+          source: 'Self',
+          value: 0.2,
+        })
+        addDebuff(debuffs, DebuffTypes.SPD_RED)
       }
-      if (form.serval_tech) {
-        const techniqueShock = {
-          name: 'Technique Shocked DMG',
-          value: [{ scaling: 0.5, multiplier: Stats.ATK }],
-          element: Element.LIGHTNING,
-          property: TalentProperty.DOT,
-          type: TalentType.NONE,
-        }
-        base.TECHNIQUE_SCALING.push(techniqueShock)
-        base.DOT_SCALING.push({ ...techniqueShock, overrideIndex: index, dotType: DebuffTypes.SHOCKED })
-      }
-      if (form.serval_a6) base[Stats.P_ATK] += 0.2
-      if (c >= 1)
-        base.BASIC_SCALING.push({
-          name: 'E1 Additional DMG',
-          value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear') * 0.6, multiplier: Stats.ATK }],
-          element: Element.LIGHTNING,
-          property: TalentProperty.ADD,
-          type: TalentType.NONE,
-          break: 30,
+      if (c >= 4)
+        base[Stats.E_RES].push({
+          name: 'Eidolon 4',
+          source: 'Self',
+          value: 0.2,
         })
 
       return base
@@ -258,6 +220,19 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       weakness: Element[],
       broken: boolean
     ) => {
+      if (form.gepard_c2) {
+        base.SPD_REDUCTION.push({
+          name: 'Eidolon 2',
+          source: 'Gepard',
+          value: 0.2,
+        })
+      }
+      if (c >= 4)
+        base[Stats.E_RES].push({
+          name: 'Eidolon 4',
+          source: 'Gepard',
+          value: 0.2,
+        })
       return base
     },
     postCompute: (
@@ -272,7 +247,12 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       weakness: Element[],
       broken: boolean
     ) => {
-      if (c >= 6 && countDot(debuffs, DebuffTypes.SHOCKED)) base[Stats.ALL_DMG] += 0.3
+      if (a.a6)
+        base[Stats.ATK].push({
+          name: 'Ascension 6 Passive',
+          source: 'Self',
+          value: base.getHP() * 0.35,
+        })
 
       return base
     },

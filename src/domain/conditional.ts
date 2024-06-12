@@ -15,7 +15,7 @@ export enum DebuffTypes {
   DEF_RED = 'DEF Reduced',
   SPD_RED = 'SPD Reduced',
   OTHER = 'Others',
-  DOT = 'DoT'
+  DOT = 'DoT',
 }
 
 export interface IScaling {
@@ -35,6 +35,7 @@ export interface IScaling {
   chance?: { base: number; fixed: boolean }
   overrideIndex?: number
   dotType?: DebuffTypes
+  cap?: { scaling: number; multiplier: Stats; override?: number } //Bleed Cap
 }
 
 export interface IWeaponContent {

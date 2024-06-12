@@ -19,6 +19,7 @@ import { WeaponConditionalBlock } from '../components/weapon_conditional_block'
 import { useCalculator } from '@src/core/hooks/useCalculator'
 import { CustomConditionalBlock } from '../components/custom_conditional_block'
 import { formatIdIcon } from '@src/core/utils/data_format'
+import { StatsModal } from '../components/stats_modal'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
@@ -32,6 +33,7 @@ export const Calculator = observer(({}: {}) => {
   const { main, mainComputed, contents } = useCalculator()
 
   const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal />), [])
+  const onOpenStatsModal = useCallback(() => modalStore.openModal(<StatsModal stats={mainComputed} />), [mainComputed])
 
   return (
     <div className="w-full overflow-y-auto">
@@ -84,8 +86,10 @@ export const Calculator = observer(({}: {}) => {
                 </ScalingWrapper>
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
-                  talent={main?.talents?.skill}
-                  icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_BP.png`}
+                  talent={mainComputed?.SKILL_ALT ? main?.talents?.skill_alt : main?.talents?.skill}
+                  icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_BP${
+                    mainComputed?.SKILL_ALT && char.cId !== '1109' ? '02' : ''
+                  }.png`}
                   element={charData.element}
                   level={char.talents?.skill}
                   upgraded={main?.upgrade?.skill}
@@ -169,6 +173,12 @@ export const Calculator = observer(({}: {}) => {
           )}
           {charData && tab === 'stats' && (
             <>
+              <div className="flex items-center justify-between w-full">
+                <p className="px-4 text-lg font-bold">
+                  <span className="text-desc">✦</span> Final Stats <span className="text-desc">✦</span>
+                </p>
+                <PrimaryButton title="Stats Breakdown" onClick={onOpenStatsModal} />
+              </div>
               <StatBlock index={selected} stat={computedStats[selected]} />
               {/* <div className="w-[252px]">
                 <AscensionIcons

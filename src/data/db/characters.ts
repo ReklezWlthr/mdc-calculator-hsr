@@ -548,7 +548,7 @@ export const Characters = [
       baseAtk: 81.84,
       baseHp: 184.8,
       baseDef: 69.3,
-      baseSpd: 69.3,
+      baseSpd: 98,
       energy: 140,
     },
     trace: [Stats.P_HP, Stats.SPD, Stats.E_RES],

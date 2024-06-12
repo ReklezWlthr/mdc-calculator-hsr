@@ -209,24 +209,45 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       ]
 
       if (form.welt_skill) {
-        base.SPD_REDUCTION += 0.1
+        base.SPD_REDUCTION.push({
+          name: `Skill`,
+          source: 'Self',
+          value: 0.1,
+        })
         addDebuff(debuffs, DebuffTypes.SPD_RED)
       }
       if (form.welt_ult) {
-        base.SPD_REDUCTION += 0.1
+        base.SPD_REDUCTION.push({
+          name: `Ultimmate`,
+          source: 'Self',
+          value: 0.1,
+        })
         addDebuff(debuffs, DebuffTypes.SPD_RED)
         addDebuff(debuffs, DebuffTypes.IMPRISON)
       }
       if (form.welt_tech) {
-        base.SPD_REDUCTION += 0.1
+        base.SPD_REDUCTION.push({
+          name: `Technique`,
+          source: 'Self',
+          value: 0.1,
+        })
         addDebuff(debuffs, DebuffTypes.SPD_RED)
         addDebuff(debuffs, DebuffTypes.IMPRISON)
       }
       if (form.welt_a2) {
-        base.VULNERABILITY += 0.12
+        base.VULNERABILITY.push({
+          name: `Ascension 2 Passive`,
+          source: 'Self',
+          value: 0.12,
+        })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
-      if (a.a6 && broken) base[Stats.ALL_DMG] += 0.2
+      if (a.a6 && broken)
+        base[Stats.ALL_DMG].push({
+          name: `Ascension 6 Passive`,
+          source: 'Self',
+          value: 0.2,
+        })
       if (c >= 1) {
         base.BASIC_SCALING.push({
           name: 'E1 Additional Damage',
@@ -255,10 +276,30 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       weakness: Element[],
       broken: boolean
     ) => {
-      if (form.welt_skill) base.SPD_REDUCTION += 0.1
-      if (form.welt_ult) base.SPD_REDUCTION += 0.1
-      if (form.welt_tech) base.SPD_REDUCTION += 0.1
-      if (form.welt_a2) base.VULNERABILITY += 0.12
+      if (form.welt_skill)
+        base.SPD_REDUCTION.push({
+          name: `Skill`,
+          source: 'Welt',
+          value: 0.1,
+        })
+      if (form.welt_ult)
+        base.SPD_REDUCTION.push({
+          name: `Ultimate`,
+          source: 'Welt',
+          value: 0.1,
+        })
+      if (form.welt_tech)
+        base.SPD_REDUCTION.push({
+          name: `Technique`,
+          source: 'Welt',
+          value: 0.1,
+        })
+      if (form.welt_a2)
+        base.VULNERABILITY.push({
+          name: `Ascension 2 Passive`,
+          source: 'Welt',
+          value: 0.12,
+        })
 
       return base
     },
@@ -274,9 +315,6 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       weakness: Element[],
       broken: boolean
     ) => {
-      const burned = _.sumBy(debuffs, (item) => Number(item.type === DebuffTypes.BURN) * item.count) >= 1
-      if (burned && a.a4) base.SKILL_DMG += 0.2
-
       return base
     },
   }

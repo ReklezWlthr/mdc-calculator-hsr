@@ -264,32 +264,60 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         } else {
           form.sw_implant_ally = true
           weakness.push(Element.QUANTUM)
-          base[`${form.sw_implant.toUpperCase()}_RES_PEN`] += 0.2
+          base[`${form.sw_implant.toUpperCase()}_RES_PEN`].push({
+            name: `Skill`,
+            source: 'Self',
+            value: 0.2,
+          })
           addDebuff(debuffs, DebuffTypes.OTHER)
         }
       }
       if (form.sw_skill) {
-        base.ALL_TYPE_RES_PEN += calcScaling(0.075, 0.0025, skill, 'curved')
+        base.ALL_TYPE_RES_PEN.push({
+          name: `Skill`,
+          source: 'Self',
+          value: calcScaling(0.075, 0.0025, skill, 'curved'),
+        })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
       if (form.sw_ult) {
-        base.DEF_REDUCTION += calcScaling(0.36, 0.009, ult, 'curved')
+        base.DEF_REDUCTION.push({
+          name: `Ultimate`,
+          source: 'Self',
+          value: calcScaling(0.36, 0.009, ult, 'curved'),
+        })
         addDebuff(debuffs, DebuffTypes.DEF_RED)
       }
       if (form.atk_bug) {
-        base.ATK_REDUCTION += calcScaling(0.05, 0.005, ult, 'curved')
+        base.ATK_REDUCTION.push({
+          name: `Talent`,
+          source: 'Self',
+          value: calcScaling(0.05, 0.005, ult, 'curved'),
+        })
         addDebuff(debuffs, DebuffTypes.ATK_RED)
       }
       if (form.def_bug) {
-        base.DEF_REDUCTION += calcScaling(0.04, 0.004, ult, 'curved')
+        base.DEF_REDUCTION.push({
+          name: `Talent`,
+          source: 'Self',
+          value: calcScaling(0.04, 0.004, ult, 'curved'),
+        })
         addDebuff(debuffs, DebuffTypes.DEF_RED)
       }
       if (form.spd_bug) {
-        base.SPD_REDUCTION += calcScaling(0.03, 0.003, ult, 'curved')
+        base.SPD_REDUCTION.push({
+          name: `Talent`,
+          source: 'Self',
+          value: calcScaling(0.03, 0.003, ult, 'curved'),
+        })
         addDebuff(debuffs, DebuffTypes.SPD_RED)
       }
       if (form.sw_c2) {
-        base.E_RES_RED += 0.2
+        base.E_RES_RED.push({
+          name: `Eidolon 2`,
+          source: 'Self',
+          value: 0.2,
+        })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
 
@@ -304,13 +332,48 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       weakness: Element[],
       broken: boolean
     ) => {
-      if (form.sw_implant_ally) base[`${form.sw_implant.toUpperCase()}_RES_PEN`] += 0.2
-      if (form.sw_skill) base.ALL_TYPE_RES_PEN += calcScaling(0.075, 0.0025, skill, 'curved')
-      if (form.sw_ult) base.DEF_REDUCTION += calcScaling(0.36, 0.009, ult, 'curved')
-      if (form.atk_bug) base.ATK_REDUCTION += calcScaling(0.05, 0.005, ult, 'curved')
-      if (form.def_bug) base.DEF_REDUCTION += calcScaling(0.04, 0.004, ult, 'curved')
-      if (form.spd_bug) base.SPD_REDUCTION += calcScaling(0.03, 0.003, ult, 'curved')
-      if (form.sw_c2) base.E_RES_RED += 0.2
+      if (form.sw_implant_ally)
+        base[`${form.sw_implant.toUpperCase()}_RES_PEN`].push({
+          name: `Skill`,
+          source: 'Silver Wolf',
+          value: 0.2,
+        })
+      if (form.sw_skill)
+        base.ALL_TYPE_RES_PEN.push({
+          name: `Skill`,
+          source: 'Silver Wolf',
+          value: calcScaling(0.075, 0.0025, skill, 'curved'),
+        })
+      if (form.sw_ult)
+        base.DEF_REDUCTION.push({
+          name: `Ultimate`,
+          source: 'Silver Wolf',
+          value: calcScaling(0.36, 0.009, ult, 'curved'),
+        })
+      if (form.atk_bug)
+        base.ATK_REDUCTION.push({
+          name: `Talent`,
+          source: 'Silver Wolf',
+          value: calcScaling(0.05, 0.005, ult, 'curved'),
+        })
+      if (form.def_bug)
+        base.DEF_REDUCTION.push({
+          name: `Talent`,
+          source: 'Silver Wolf',
+          value: calcScaling(0.04, 0.004, ult, 'curved'),
+        })
+      if (form.spd_bug)
+        base.SPD_REDUCTION.push({
+          name: `Talent`,
+          source: 'Silver Wolf',
+          value: calcScaling(0.03, 0.003, ult, 'curved'),
+        })
+      if (form.sw_c2)
+        base.E_RES_RED.push({
+          name: `Eidolon 2`,
+          source: 'Silver Wolf',
+          value: 0.2,
+        })
 
       return base
     },
@@ -334,7 +397,12 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           property: TalentProperty.ADD,
           type: TalentType.NONE,
         })
-      if (c >= 6) base[Stats.ALL_DMG] += _.min([_.sumBy(debuffs, (item) => item.count), 5]) * 0.2
+      if (c >= 6)
+        base[Stats.ALL_DMG].push({
+          name: `Eidolon 6`,
+          source: 'Self',
+          value: _.min([_.sumBy(debuffs, (item) => item.count), 5]) * 0.2,
+        })
 
       return base
     },

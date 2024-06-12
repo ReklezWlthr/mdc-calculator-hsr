@@ -236,7 +236,12 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         base.TECHNIQUE_SCALING.push(techniqueShock)
         base.DOT_SCALING.push({ ...techniqueShock, overrideIndex: index, dotType: DebuffTypes.SHOCKED })
       }
-      if (form.serval_a6) base[Stats.P_ATK] += 0.2
+      if (form.serval_a6)
+        base[Stats.P_ATK].push({
+          name: `Ascension 6 Passive`,
+          source: 'Self',
+          value: 0.2,
+        })
       if (c >= 1)
         base.BASIC_SCALING.push({
           name: 'E1 Additional DMG',
@@ -272,7 +277,12 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       weakness: Element[],
       broken: boolean
     ) => {
-      if (c >= 6 && countDot(debuffs, DebuffTypes.SHOCKED)) base[Stats.ALL_DMG] += 0.3
+      if (c >= 6 && countDot(debuffs, DebuffTypes.SHOCKED))
+        base[Stats.ALL_DMG].push({
+          name: `Eidolon 6`,
+          source: 'Self',
+          value: 0.3,
+        })
 
       return base
     },

@@ -161,17 +161,52 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ]
 
       if (form.red_herring) {
-        base[Stats.ALL_DMG] +=
-          form.red_herring *
-          (calcScaling(0.03, 0.003, talent, 'curved') + (form.cipher ? calcScaling(0.06, 0.004, talent, 'curved') : 0))
-        if (c >= 2) base.DEF_PEN += 0.08 * form.red_herring
+        base[Stats.ALL_DMG].push({
+          name: `Talent`,
+          source: 'Self',
+          value:
+            form.red_herring *
+            (calcScaling(0.03, 0.003, talent, 'curved') +
+              (form.cipher ? calcScaling(0.06, 0.004, talent, 'curved') : 0)),
+        })
+
+        if (c >= 2)
+          base.DEF_PEN.push({
+            name: `Ultimate`,
+            source: 'Self',
+            value: 0.08 * form.red_herring,
+          })
       }
-      if (form.cipher && c >= 1) base[Stats.P_ATK] += 0.4
+      if (form.cipher && c >= 1)
+        base[Stats.P_ATK].push({
+          name: `Eidolon 1`,
+          source: 'Self',
+          value: 0.4,
+        })
       if (a.a6) {
-        base[Stats.P_ATK] += 0.15
-        if (quantumCount === 1) base[Stats.P_ATK] += 0.05
-        if (quantumCount === 2) base[Stats.P_ATK] += 0.15
-        if (quantumCount === 3) base[Stats.P_ATK] += 0.3
+        base[Stats.P_ATK].push({
+          name: `Ascension 6 Passive`,
+          source: 'Self',
+          value: 0.15,
+        })
+        if (quantumCount === 1)
+          base[Stats.P_ATK].push({
+            name: `Ascension 6 Passive`,
+            source: 'Self',
+            value: 0.05,
+          })
+        if (quantumCount === 2)
+          base[Stats.P_ATK].push({
+            name: `Ascension 6 Passive`,
+            source: 'Self',
+            value: 0.15,
+          })
+        if (quantumCount === 3)
+          base[Stats.P_ATK].push({
+            name: `Ascension 6 Passive`,
+            source: 'Self',
+            value: 0.3,
+          })
       }
 
       return base
@@ -184,25 +219,63 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       debuffs: { type: DebuffTypes; count: number }[]
     ) => {
       if (aForm.sparkle_skill && (c < 6 || !form.cipher)) {
-        base.X_CRIT_DMG += calcScaling(0.27, 0.018, skill, 'curved')
         base.CALLBACK.push((x, d, w, all) => {
-          x.X_CRIT_DMG += (calcScaling(0.12, 0.012, skill, 'curved') + (c >= 6 ? 0.3 : 0)) * all[index][Stats.CRIT_DMG]
+          x.X_CRIT_DMG.push({
+            name: `Skill`,
+            source: 'Sparkle',
+            value:
+              calcScaling(0.27, 0.018, skill, 'curved') +
+              (calcScaling(0.12, 0.012, skill, 'curved') + (c >= 6 ? 0.3 : 0)) * all[index].getValue(Stats.CRIT_DMG),
+          })
           return x
         })
       }
       if (form.red_herring) {
-        base[Stats.ALL_DMG] +=
-          form.red_herring *
+        base[Stats.ALL_DMG].push({
+          name: `Eidolon 2`,
+          source: 'Sparkle',
+          value: 0.2,
+        })
+        form.red_herring *
           (calcScaling(0.03, 0.003, talent, 'curved') + (form.cipher ? calcScaling(0.06, 0.004, talent, 'curved') : 0))
-        if (c >= 2) base.DEF_PEN += 0.08 * form.red_herring
+        if (c >= 2)
+          base.DEF_PEN.push({
+            name: `Eidolon 2`,
+            source: 'Sparkle',
+            value: 0.08 * form.red_herring,
+          })
       }
-      if (form.cipher && c >= 1) base[Stats.P_ATK] += 0.4
+      if (form.cipher && c >= 1)
+        base[Stats.P_ATK].push({
+          name: `Eidolon 1`,
+          source: 'Sparkle',
+          value: 0.4,
+        })
       if (a.a6) {
-        base[Stats.P_ATK] += 0.15
+        base[Stats.P_ATK].push({
+          name: `Ascension 6 Passive`,
+          source: 'Sparkle',
+          value: 0.15,
+        })
         if (form.element === Element.QUANTUM) {
-          if (quantumCount === 1) base[Stats.P_ATK] += 0.05
-          if (quantumCount === 2) base[Stats.P_ATK] += 0.15
-          if (quantumCount === 3) base[Stats.P_ATK] += 0.3
+          if (quantumCount === 1)
+            base[Stats.P_ATK].push({
+              name: `Ascension 6 Passive`,
+              source: 'Sparkle',
+              value: 0.05,
+            })
+          if (quantumCount === 2)
+            base[Stats.P_ATK].push({
+              name: `Ascension 6 Passive`,
+              source: 'Sparkle',
+              value: 0.15,
+            })
+          if (quantumCount === 3)
+            base[Stats.P_ATK].push({
+              name: `Ascension 6 Passive`,
+              source: 'Sparkle',
+              value: 0.3,
+            })
         }
       }
       return base
@@ -214,13 +287,23 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       allForm: Record<string, any>[]
     ) => {
       if (form.sparkle_skill && (c < 6 || !form.cipher)) {
-        base.X_CRIT_DMG += calcScaling(0.27, 0.018, skill, 'curved')
-        base.X_CRIT_DMG += (calcScaling(0.12, 0.012, skill, 'curved') + (c >= 6 ? 0.3 : 0)) * base[Stats.CRIT_DMG]
+        base.X_CRIT_DMG.push({
+          name: `Skill`,
+          source: 'Self',
+          value:
+            calcScaling(0.27, 0.018, skill, 'curved') +
+            (calcScaling(0.12, 0.012, skill, 'curved') + (c >= 6 ? 0.3 : 0)) * base.getValue(Stats.CRIT_DMG),
+        })
       }
       if (c >= 6 && _.some(allForm, (item) => item.sparkle_skill) && form.cipher) {
         for (const y of team) {
-          y.X_CRIT_DMG += calcScaling(0.27, 0.018, skill, 'curved')
-          y.X_CRIT_DMG += (calcScaling(0.12, 0.012, skill, 'curved') + (c >= 6 ? 0.3 : 0)) * base[Stats.CRIT_DMG]
+          y.X_CRIT_DMG.push({
+            name: `Skill`,
+            source: 'Sparkle',
+            value:
+              calcScaling(0.27, 0.018, skill, 'curved') +
+              (calcScaling(0.12, 0.012, skill, 'curved') + (c >= 6 ? 0.3 : 0)) * base.getValue(Stats.CRIT_DMG),
+          })
         }
       }
 

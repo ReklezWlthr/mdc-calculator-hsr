@@ -186,7 +186,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       base.SKILL_SCALING = [
         {
           name: 'Main',
-          value: [{ scaling: calcScaling(0.45, 0.45, skill, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.45, 0.045, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
@@ -196,7 +196,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         },
         {
           name: 'Adjacent',
-          value: [{ scaling: calcScaling(0.45, 0.45, skill, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.45, 0.045, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
@@ -239,6 +239,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           dotType: form.epiphany ? DebuffTypes.DOT : DebuffTypes.WIND_SHEAR,
         })
         addDebuff(debuffs, form.epiphany ? DebuffTypes.DOT : DebuffTypes.WIND_SHEAR)
+        base.WIND_SHEAR_STACK += form.arcana
       }
       if (form.arcana >= 3)
         base.TALENT_SCALING.push({
@@ -290,6 +291,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       weakness: Element[],
       broken: boolean
     ) => {
+      if (form.arcana) base.WIND_SHEAR_STACK += form.arcana
       if (form.bs_skill)
         base.DEF_REDUCTION.push({
           name: `Skill`,

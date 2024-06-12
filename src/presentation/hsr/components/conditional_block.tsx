@@ -109,7 +109,9 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                         style="col-span-2"
                         small
                       />
-                      <p className="col-span-2 px-1 text-center text-gray">Max: {content.max.toLocaleString()}</p>
+                      <p className="col-span-2 px-1 text-center text-gray">
+                        Max: {content.max ? content.max.toLocaleString() : 'Uncapped'}
+                      </p>
                     </>
                   )}
                   {content.type === 'toggle' && (

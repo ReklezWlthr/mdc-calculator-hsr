@@ -75,7 +75,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     c2: {
       title: 'E2: Bestowal From the Pure',
-      content: `When his Skill is triggered, if the target ally's HP is lower than <span class="text-desc">50%</span>, Luocha's Outgoing Healing increases by <span class="text-desc">30%</span>. If the target ally's HP is at <span class="text-desc">50%</span> or higher, the ally receives a Shield that can absorb DMG equal to <span class="text-desc">10%</span> of Luocha's ATK plus <span class="text-desc">240</span>, lasting for <span class="text-desc">2</span> turns.`,
+      content: `When his Skill is triggered, if the target ally's HP is lower than <span class="text-desc">50%</span>, Luocha's Outgoing Healing increases by <span class="text-desc">30%</span>. If the target ally's HP is at <span class="text-desc">50%</span> or higher, the ally receives a <b class="text-indigo-300">Shield</b> that can absorb DMG equal to <span class="text-desc">10%</span> of Luocha's ATK plus <span class="text-desc">240</span>, lasting for <span class="text-desc">2</span> turns.`,
     },
     c3: {
       title: 'E3: Surveyal by the Fool',
@@ -191,13 +191,27 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       ]
 
       if (form.abyss_field) {
-        if (c >= 1) base[Stats.P_ATK] += 0.2
+        if (c >= 1)
+          base[Stats.P_ATK].push({
+            name: `Eidolon 1`,
+            source: 'Self',
+            value: 0.2,
+          })
         if (c >= 4) {
-          base.WEAKEN += 0.12
+          base.WEAKEN.push({
+            name: `Eidolon 4`,
+            source: 'Self',
+            value: 0.12,
+          })
           addDebuff(debuffs, DebuffTypes.OTHER)
         }
       }
-      if (form.luocha_c2) base[Stats.HEAL] += 0.3
+      if (form.luocha_c2)
+        base[Stats.HEAL].push({
+          name: `Eidolon 2`,
+          source: 'Self',
+          value: 0.3,
+        })
       if (c >= 2)
         base.SKILL_SCALING.push({
           name: 'Healing On-Hit',
@@ -217,7 +231,11 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.NONE,
         })
       if (form.luocha_c6) {
-        base.ALL_TYPE_RES_PEN += 0.2
+        base.ALL_TYPE_RES_PEN.push({
+          name: `Eidolon 6`,
+          source: 'Self',
+          value: 0.2,
+        })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
 
@@ -233,10 +251,25 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       broken: boolean
     ) => {
       if (form.abyss_field) {
-        if (c >= 1) base[Stats.P_ATK] += 0.2
-        if (c >= 4) base.WEAKEN += 0.12
+        if (c >= 1)
+          base[Stats.P_ATK].push({
+            name: `Eidolon 1`,
+            source: 'Luocha',
+            value: 0.2,
+          })
+        if (c >= 4)
+          base.WEAKEN.push({
+            name: `Eidolon 4`,
+            source: 'Luocha',
+            value: 0.12,
+          })
       }
-      if (form.luocha_c6) base.ALL_TYPE_RES_PEN += 0.2
+      if (form.luocha_c6)
+        base.ALL_TYPE_RES_PEN.push({
+          name: `Eidolon 6`,
+          source: 'Luocha',
+          value: 0.2,
+        })
 
       return base
     },

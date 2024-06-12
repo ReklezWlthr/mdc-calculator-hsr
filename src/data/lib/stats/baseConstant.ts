@@ -128,6 +128,7 @@ export const baseStatsObject = {
   TECHNIQUE_SCALING: [] as IScaling[],
 
   DOT_SCALING: [] as IScaling[],
+  WIND_SHEAR_STACK: 0,
 
   getAtk: function () {
     return this.BASE_ATK * (1 + _.sumBy(this[Stats.P_ATK], 'value')) + _.sumBy(this[Stats.ATK], 'value')
@@ -142,6 +143,7 @@ export const baseStatsObject = {
     return this.BASE_SPD * (1 + _.sumBy(this[Stats.P_SPD], 'value')) + _.sumBy(this[Stats.SPD], 'value')
   },
   getValue: function (key: string) {
+    // console.log(this[key])
     return _.sumBy(this[key], 'value')
   },
 

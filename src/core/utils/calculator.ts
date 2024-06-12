@@ -54,14 +54,17 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
   conditionals.MAX_ENERGY = character?.stat?.energy
 
   // Get Traces
-  const traces = _.reduce(
-    char.minor_traces,
-    (acc, curr) => {
-      acc[curr?.stat] += curr?.toggled ? curr?.value : 0
-      return acc
-    },
-    {} as Record<Stats, number>
-  )
+  const traces = _.every(char.minor_traces)
+    ? _.reduce(
+        char.minor_traces,
+        (acc, curr) => {
+          if (!acc[curr?.stat]) acc[curr?.stat] = 0
+          acc[curr?.stat] += curr?.toggled ? curr?.value : 0
+          return acc
+        },
+        {} as Record<Stats, number>
+      )
+    : {}
   for (const trace in traces) {
     conditionals[trace].push({
       value: traces[trace],
@@ -109,6 +112,7 @@ export const addArtifactStats = (
   const main = _.reduce(
     artifacts,
     (acc, curr) => {
+      if (!acc[curr?.main]) acc[curr?.main] = 0
       acc[curr?.main] += getMainStat(curr.main, curr.quality, curr.level)
       return acc
     },
@@ -124,6 +128,7 @@ export const addArtifactStats = (
   const sub = _.reduce(
     _.flatMap(artifacts, (item) => item.subList),
     (acc, curr) => {
+      if (!acc[curr?.stat]) acc[curr?.stat] = 0
       acc[curr?.stat] += correctSubStat(curr.stat, curr.value)
       return acc
     },

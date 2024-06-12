@@ -5,7 +5,7 @@ import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { toPercentage } from '@src/core/utils/converter'
-import { StatsObject, TalentPropertyMap } from '@src/data/lib/stats/baseConstant'
+import { StatsObject, StatsObjectKeys, TalentPropertyMap } from '@src/data/lib/stats/baseConstant'
 import { TalentTypeMap } from '../../../../data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { findCharacter } from '@src/core/utils/finder'
@@ -36,38 +36,44 @@ export const ElementColor = {
 
 export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
   const { calculatorStore, teamStore } = useStore()
-  const index = scaling.overrideIndex || calculatorStore.selected
+  const index = scaling.overrideIndex ?? calculatorStore.selected
   const stats = calculatorStore.computedStats[index]
   const names = _.map(teamStore.characters, (item) => findCharacter(item.cId)?.name)
 
   const element = scaling.element
 
-  const talentDmg = stats[`${TalentPropertyMap[scaling.property]}_DMG`] || 0
-  const typeDmg = stats[`${TalentTypeMap[scaling.type]}_DMG`] || 0
-  const talentFlat = stats[`${TalentPropertyMap[scaling.property]}_F_DMG`] || 0
-  const talentCr = stats[`${TalentTypeMap[scaling.type]}_CR`] || 0
-  const propertyCr = stats[`${TalentPropertyMap[scaling.property]}_CR`] || 0
-  const talentCd = stats[`${TalentPropertyMap[scaling.property]}_CD`] || 0
-  const elementCd = stats[`${element.toUpperCase()}_CD`] || 0
-  const elementFlat = stats[`${element.toUpperCase()}_F_DMG`] || 0
-  const elementMult = stats[`${element.toUpperCase()}_MULT`] || 1
+  const talentDmg = stats.getValue(`${TalentPropertyMap[scaling.property]}_DMG`) || 0
+  const typeDmg = stats.getValue(`${TalentTypeMap[scaling.type]}_DMG`) || 0
+  const talentFlat = stats.getValue(`${TalentPropertyMap[scaling.property]}_F_DMG`) || 0
+  const talentCr = stats.getValue(`${TalentTypeMap[scaling.type]}_CR`) || 0
+  const propertyCr = stats.getValue(`${TalentPropertyMap[scaling.property]}_CR`) || 0
+  const talentCd = stats.getValue(`${TalentPropertyMap[scaling.property]}_CD`) || 0
+  const elementCd = stats.getValue(`${element.toUpperCase()}_CD`) || 0
+  const elementFlat = stats.getValue(`${element.toUpperCase()}_F_DMG`) || 0
+  const elementMult = stats.getValue(`${element.toUpperCase()}_MULT`) || 1
   const defPen =
-    (stats.DEF_PEN || 0) +
-    (stats[`${TalentTypeMap[scaling.type]}_DEF_PEN`] || 0) +
-    (stats[`${TalentPropertyMap[scaling.property]}_DEF_PEN`] || 0)
+    (stats.getValue(StatsObjectKeys.DEF_PEN) || 0) +
+    (stats.getValue(`${TalentTypeMap[scaling.type]}_DEF_PEN`) || 0) +
+    (stats.getValue(`${TalentPropertyMap[scaling.property]}_DEF_PEN`) || 0)
 
-  const defMult = calculatorStore.getDefMult(teamStore.characters[index]?.level, defPen, stats.DEF_REDUCTION) || 1
+  const defMult =
+    calculatorStore.getDefMult(
+      teamStore.characters[index]?.level,
+      defPen,
+      stats.getValue(StatsObjectKeys.DEF_REDUCTION)
+    ) || 1
   const vulMult =
     1 +
-    stats.VULNERABILITY +
-    (stats[`${scaling.property.toUpperCase()}_VUL`] || 0) +
-    (stats[`${scaling.type.toUpperCase()}_VUL`] || 0) +
-    (stats[`${scaling.element.toUpperCase()}_VUL`] || 0)
+    stats.getValue(StatsObjectKeys.VULNERABILITY) +
+    (stats.getValue(`${scaling.property.toUpperCase()}_VUL`) || 0) +
+    (stats.getValue(`${scaling.type.toUpperCase()}_VUL`) || 0) +
+    (stats.getValue(`${scaling.element.toUpperCase()}_VUL`) || 0)
   const resMult = _.max([
     _.min([
       calculatorStore.getResMult(
         element as Element,
-        (stats[`${element.toUpperCase()}_RES_PEN`] || 0) + (stats.ALL_TYPE_RES_PEN || 0)
+        (stats.getValue(`${element.toUpperCase()}_RES_PEN`) || 0) +
+          (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0)
       ),
       2,
     ]),
@@ -81,7 +87,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     [Stats.ATK]: stats.getAtk(),
     [Stats.DEF]: stats.getDef(),
     [Stats.HP]: stats.getHP(),
-    // [Stats.EM]: stats[Stats.EM],
+    [Stats.EHP]: 100000,
   }
 
   const bonusDMG =
@@ -89,32 +95,47 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     (TalentProperty.SHIELD === scaling.property
       ? 0
       : TalentProperty.HEAL === scaling.property
-      ? stats[Stats.HEAL]
-      : stats[Stats.ALL_DMG] + stats[`${element} DMG%`] + talentDmg + typeDmg) // Vulnerability effectively stacks with DMG Bonuses
+      ? stats.getValue(Stats.HEAL)
+      : stats.getValue(Stats.ALL_DMG) + stats.getValue(`${element} DMG%`) + talentDmg + typeDmg) // Vulnerability effectively stacks with DMG Bonuses
   const raw =
     _.sumBy(
       scaling.value,
       (item) =>
         item.scaling *
-        ((item.override || statForScale[item.multiplier]) + (item.multiplier === Stats.HP ? stats.X_HP : 0))
+        ((item.override || statForScale[item.multiplier]) +
+          (item.multiplier === Stats.HP ? stats.getValue(StatsObjectKeys.X_HP) : 0))
     ) +
     (scaling.flat || 0) +
     elementFlat +
     talentFlat
-  const dmg = raw * (1 + bonusDMG) * (scaling.multiplier || 1) * elementMult * enemyMod
+  const cap = scaling.cap
+    ? scaling.cap?.scaling *
+      (statForScale[scaling.cap?.multiplier] +
+        (scaling.cap?.multiplier === Stats.HP ? stats.getValue(StatsObjectKeys.X_HP) : 0))
+    : 0
+  const capped = scaling.cap ? cap < raw : false
+  const dmg = (capped ? cap : raw) * (1 + bonusDMG) * (scaling.multiplier || 1) * elementMult * enemyMod
 
-  const totalCr = _.max([_.min([stats[Stats.CRIT_RATE] + (scaling.cr || 0) + talentCr + propertyCr, 1]), 0])
-  const totalCd = stats[Stats.CRIT_DMG] + stats.X_CRIT_DMG + (scaling.cd || 0) + talentCd + elementCd
+  const totalCr = _.max([_.min([stats.getValue(Stats.CRIT_RATE) + (scaling.cr || 0) + talentCr + propertyCr, 1]), 0])
+  const totalCd =
+    stats.getValue(Stats.CRIT_DMG) +
+    stats.getValue(StatsObjectKeys.X_CRIT_DMG) +
+    (scaling.cd || 0) +
+    talentCd +
+    elementCd
   const totalFlat = (scaling.flat || 0) + elementFlat + talentFlat
 
   const scalingArray = _.map(
-    scaling.value,
+    capped ? [scaling.cap] : scaling.value,
     (item) =>
       `<span class="inline-flex items-center h-4">(<b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${
         StatIcons[item.multiplier]
       }" />${_.round(
-        (item.override || statForScale[item.multiplier]) + (item.multiplier === Stats.HP ? stats.X_HP : 0)
-      ).toLocaleString()}</b><span class="mx-1"> \u{00d7} </span><b>${toPercentage(item.scaling, 2)}</b>)</span>`
+        (item.override || statForScale[item.multiplier]) +
+          (item.multiplier === Stats.HP ? stats.getValue(StatsObjectKeys.X_HP) : 0)
+      ).toLocaleString()}</b>${
+        item.multiplier === Stats.EHP ? `<i class="text-[10px] ml-1">Enemy HP</i>` : ''
+      }<span class="mx-1"> \u{00d7} </span><b>${toPercentage(item.scaling, 2)}</b>)</span>`
   )
   const baseScaling = _.join(scalingArray, ' + ')
   const shouldWrap = (!!totalFlat || scaling.value.length > 1) && !!_.size(scaling.value)
@@ -165,7 +186,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     totalCr
   )}</b>)</span>`
 
-  const prob = (scaling.chance?.base || 0) * (1 + stats[Stats.EHR]) * (1 - 0.3)
+  const prob = (scaling.chance?.base || 0) * (1 + stats.getValue(Stats.EHR)) * (1 - 0.3)
   const noCrit = _.includes(
     [
       TalentProperty.HEAL,
@@ -192,9 +213,10 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
                 Talent-Exclusive Bonus: <span className="text-desc">{toPercentage(scaling.bonus)}</span>
               </p>
             )}
-            {!!stats[`${element} DMG%`] && (
+            {!!stats.getValue(`${element} DMG%`) && (
               <p className="text-xs">
-                {element} DMG Bonus: <span className="text-desc">{toPercentage(stats[`${element} DMG%`])}</span>
+                {element} DMG Bonus:{' '}
+                <span className="text-desc">{toPercentage(stats.getValue(`${element} DMG%`))}</span>
               </p>
             )}
             {!!talentDmg && (

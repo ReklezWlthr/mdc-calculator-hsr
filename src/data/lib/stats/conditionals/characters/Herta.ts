@@ -204,8 +204,18 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         },
       ]
 
-      if (form.herta_skill) base.SKILL_DMG += 0.2 + (a.a2 ? 0.25 : 0)
-      if (form.herta_tech) base[Stats.P_ATK] += 0.4
+      if (form.herta_skill)
+        base.SKILL_DMG.push({
+          name: `Skill`,
+          source: 'Self',
+          value: 0.2 + (a.a2 ? 0.25 : 0),
+        })
+      if (form.herta_tech)
+        base[Stats.P_ATK].push({
+          name: `Technique`,
+          source: 'Self',
+          value: 0.4,
+        })
       if (form.herta_c1)
         base.BASIC_SCALING.push({
           name: 'Additional DMG',
@@ -214,9 +224,24 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.ADD,
           type: TalentType.NONE,
         })
-      if (form.herta_c2) base[Stats.CRIT_RATE] += form.herta_c2 * 0.03
-      if (c >= 4) base.TALENT_DMG += 0.1
-      if (form.herta_c6) base[Stats.P_ATK] += 0.25
+      if (form.herta_c2)
+        base[Stats.CRIT_RATE].push({
+          name: `Eidolon 2`,
+          source: 'Self',
+          value: form.herta_c2 * 0.03,
+        })
+      if (c >= 4)
+        base.TALENT_DMG.push({
+          name: `Eidolon 4`,
+          source: 'Self',
+          value: 0.1,
+        })
+      if (form.herta_c6)
+        base[Stats.P_ATK].push({
+          name: `Eidolon 6`,
+          source: 'Self',
+          value: 0.25,
+        })
 
       return base
     },
@@ -244,7 +269,12 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       broken: boolean
     ) => {
       const frozen = _.find(debuffs, (item) => item.type === DebuffTypes.FROZEN)?.count >= 1
-      if (frozen) base.ULT_DMG += 0.2
+      if (frozen && a.a6)
+        base.ULT_DMG.push({
+          name: `Ascension 6 Passive`,
+          source: 'Self',
+          value: 0.2,
+        })
 
       return base
     },

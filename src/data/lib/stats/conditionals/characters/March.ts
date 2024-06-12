@@ -28,7 +28,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     skill: {
       title: 'The Power of Cuteness',
-      content: `Provides a single ally with a Shield that can absorb DMG equal to {{0}}% of March 7th's DEF plus {{1}} for <span class="text-desc">3</span> turn(s).
+      content: `Provides a single ally with a <b class="text-indigo-300">Shield</b> that can absorb DMG equal to {{0}}% of March 7th's DEF plus {{1}} for <span class="text-desc">3</span> turn(s).
       <br />If the ally's current HP percentage is <span class="text-desc">30%</span> or higher, greatly increases the chance of enemies attacking that ally.`,
       value: [
         { base: 38, growth: 2.375, style: 'heal' },
@@ -48,7 +48,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     talent: {
       title: 'Girl Power',
-      content: `After a Shielded ally is attacked by an enemy, March 7th immediately Counters, dealing Ice DMG equal to {{0}}% of her ATK. This effect can be triggered <span class="text-desc">2</span> time(s) each turn.`,
+      content: `After a <b class="text-indigo-300">Shielded</b> ally is attacked by an enemy, March 7th immediately Counters, dealing <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of her ATK. This effect can be triggered <span class="text-desc">2</span> time(s) each turn.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: talent,
     },
@@ -63,7 +63,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     a4: {
       title: 'A4: Reinforce',
-      content: `The duration of the Shield generated from Skill is extended for <span class="text-desc">1</span> turn(s).`,
+      content: `The duration of the <b class="text-indigo-300">Shield</b> generated from Skill is extended for <span class="text-desc">1</span> turn(s).`,
     },
     a6: {
       title: 'A6: Ice Spell',
@@ -75,7 +75,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     c2: {
       title: `E2: Memory of It`,
-      content: `Upon entering battle, grants a Shield equal to <span class="text-desc">24%</span> of March 7th's DEF plus <span class="text-desc">320</span> to the ally with the lowest HP percentage, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `Upon entering battle, grants a <b class="text-indigo-300">Shield</b> equal to <span class="text-desc">24%</span> of March 7th's DEF plus <span class="text-desc">320</span> to the ally with the lowest HP percentage, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c3: {
       title: 'E3: Memory of Everything',
@@ -93,7 +93,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     c6: {
       title: 'E6: Just Like This, Always...',
-      content: `Allies under the protection of the Shield granted by the Skill restores HP equal to <span class="text-desc">4%</span> of their Max HP plus <span class="text-desc">106</span> at the beginning of each turn.`,
+      content: `Allies under the protection of the <b class="text-indigo-300">Shield</b> granted by the Skill restores HP equal to <span class="text-desc">4%</span> of their Max HP plus <span class="text-desc">106</span> at the beginning of each turn.`,
     },
   }
 
@@ -200,7 +200,12 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.SHIELD,
           type: TalentType.NONE,
         })
-      if (form.march_aggro) base.AGGRO += 5
+      if (form.march_aggro)
+        base.AGGRO.push({
+          name: `Skill`,
+          source: 'Self',
+          value: 5,
+        })
 
       return base
     },
@@ -213,7 +218,12 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       weakness: Element[],
       broken: boolean
     ) => {
-      if (aForm.march_aggro) base.AGGRO += 5
+      if (aForm.march_aggro)
+        base.AGGRO.push({
+          name: `Skill`,
+          source: 'March 7th',
+          value: 5,
+        })
 
       return base
     },

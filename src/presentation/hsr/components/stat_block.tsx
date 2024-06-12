@@ -42,7 +42,9 @@ export const StatBlock = observer(({ index, stat }: StatBlockProps) => {
       <ExtraDataRow
         title="HP"
         base={stat?.BASE_HP}
-        bonus={stat?.BASE_ATK * stat?.getValue(Stats.P_HP) + stat?.getValue(Stats.HP)}
+        bonus={
+          stat?.BASE_HP * stat?.getValue(Stats.P_HP) + stat?.getValue(Stats.HP) + stat?.getValue(StatsObjectKeys.X_HP)
+        }
       />
       <ExtraDataRow
         title="ATK"
@@ -52,12 +54,12 @@ export const StatBlock = observer(({ index, stat }: StatBlockProps) => {
       <ExtraDataRow
         title="DEF"
         base={stat?.BASE_DEF}
-        bonus={stat?.BASE_ATK * stat?.getValue(Stats.P_DEF) + stat?.getValue(Stats.DEF)}
+        bonus={stat?.BASE_DEF * stat?.getValue(Stats.P_DEF) + stat?.getValue(Stats.DEF)}
       />
       <ExtraDataRow
         title="SPD"
         base={stat?.BASE_SPD}
-        bonus={stat?.BASE_ATK * stat?.getValue(Stats.P_SPD) + stat?.getValue(Stats.SPD)}
+        bonus={stat?.BASE_SPD * stat?.getValue(Stats.P_SPD) + stat?.getValue(Stats.SPD)}
       />
       <DataRow title="CRIT Rate" value={toPercentage(stat?.getValue(Stats.CRIT_RATE))} />
       <DataRow

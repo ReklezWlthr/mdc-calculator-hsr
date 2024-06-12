@@ -143,7 +143,7 @@ export enum TalentProperty {
   SUPER_BREAK = 'Super Break Damage',
   DOT = 'DoT',
   FUA = 'Follow-Up',
-  FROZEN = 'Frozen'
+  FROZEN = 'Frozen',
 }
 
 export enum Element {
@@ -180,6 +180,8 @@ export enum Stats {
   IMAGINARY_DMG = 'Imaginary DMG%',
   HEAL = 'Outgoing Healing',
   ALL_DMG = 'DMG%',
+  // Enemy
+  EHP = 'Enemy HP',
 }
 
 export const StatIcons = {
@@ -205,6 +207,7 @@ export const StatIcons = {
   [Stats.IMAGINARY_DMG]: 'IconImaginaryAddedRatio.png',
   [Stats.ERR]: 'IconSPRatio.png',
   [Stats.EHR]: 'IconStatusProbability.png',
+  [Stats.EHP]: 'IconMaxHP.png',
 }
 
 export const RelicPiece = Object.freeze({

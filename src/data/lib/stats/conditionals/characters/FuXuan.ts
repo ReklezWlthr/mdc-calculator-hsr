@@ -26,7 +26,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       title: 'Novaburst',
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Fu Xuan's Max HP to a single target enemy.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
-      level: basic
+      level: basic,
     },
     skill: {
       title: 'Known by Stars, Shown by Hearts',
@@ -37,13 +37,13 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         { base: 3, growth: 0.3, style: 'curved' },
         { base: 6, growth: 0.6, style: 'curved' },
       ],
-      level: skill
+      level: skill,
     },
     ult: {
       title: 'Woes of Many Morphed to One',
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Fu Xuan's Max HP to all enemies and obtains <span class="text-desc">1</span> trigger count for the HP Restore effect granted by Fu Xuan's Talent.`,
       value: [{ base: 60, growth: 4, style: 'curved' }],
-      level: ult
+      level: ult,
     },
     talent: {
       title: 'Bleak Breeds Bliss',
@@ -53,7 +53,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         { base: 10, growth: 0.8, style: 'curved' },
         { base: 80, growth: 1, style: 'curved' },
       ],
-      level: talent
+      level: talent,
     },
     technique: {
       title: 'Of Fortune Comes Fate',
@@ -175,10 +175,24 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       ]
 
       if (form.knowledge) {
-        base[Stats.CRIT_RATE] += calcScaling(0.06, 0.006, skill, 'curved')
-        if (c >= 1) base[Stats.CRIT_DMG] += 0.3
+        base[Stats.CRIT_RATE].push({
+          name: `Skill`,
+          source: 'Self',
+          value: calcScaling(0.06, 0.006, skill, 'curved'),
+        })
+        if (c >= 1)
+          base[Stats.CRIT_DMG].push({
+            name: `Eidolon 1`,
+            source: 'Self',
+            value: 0.3,
+          })
       }
-      if (form.misfortune) base.DMG_REDUCTION.push(calcScaling(0.1, 0.008, talent, 'curved'))
+      if (form.misfortune)
+        base.DMG_REDUCTION.push({
+          name: `Talent`,
+          source: 'Self',
+          value: calcScaling(0.1, 0.008, talent, 'curved'),
+        })
       if (a.a4)
         base.ULT_SCALING.push({
           name: 'Ally Healing',
@@ -199,14 +213,28 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       debuffs: { type: DebuffTypes; count: number }[]
     ) => {
       if (form.knowledge) {
-        base[Stats.CRIT_RATE] += calcScaling(0.06, 0.006, skill, 'curved')
+        base[Stats.CRIT_RATE].push({
+          name: `Skill`,
+          source: 'Fu Xuan',
+          value: calcScaling(0.06, 0.006, skill, 'curved'),
+        })
         base.CALLBACK.push((x, d, w, all) => {
-          x.X_HP += calcScaling(0.03, 0.003, skill, 'curved') * all[index].getHP()
+          x.X_HP.push({
+            name: `Skill`,
+            source: 'Fu Xuan',
+            value: calcScaling(0.03, 0.003, skill, 'curved') * all[index].getHP(),
+          })
           return x
         })
-        if (c >= 1) base[Stats.CRIT_DMG] += 0.3
+        if (c >= 1)
+          base[Stats.CRIT_DMG].push({
+            name: `Eidolon 6`,
+            source: 'Fu Xuan',
+            value: 0.3,
+          })
       }
-      if (form.misfortune) base.DMG_REDUCTION.push(calcScaling(0.1, 0.008, talent, 'curved'))
+      if (form.misfortune)
+        base.DMG_REDUCTION.push({ name: `Talent`, source: 'Self', value: calcScaling(0.1, 0.008, talent, 'curved') })
 
       return base
     },
@@ -216,8 +244,18 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       team: StatsObject[],
       allForm: Record<string, any>[]
     ) => {
-      if (form.knowledge) base.X_HP += calcScaling(0.03, 0.003, skill, 'curved') * base.getHP()
-      if (form.fx_c6) base.ULT_F_DMG += _.min([base.getHP() * 1.2, form.fx_c6 * 2])
+      if (form.knowledge)
+        base.X_HP.push({
+          name: `Skill`,
+          source: 'Self',
+          value: calcScaling(0.03, 0.003, skill, 'curved') * base.getHP(),
+        })
+      if (form.fx_c6)
+        base.ULT_F_DMG.push({
+          name: `Eidolon 6`,
+          source: 'Self',
+          value: _.min([base.getHP() * 1.2, form.fx_c6 * 2]),
+        })
 
       return base
     },
