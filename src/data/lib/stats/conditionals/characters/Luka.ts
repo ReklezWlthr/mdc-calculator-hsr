@@ -224,7 +224,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       base.SKILL_SCALING = [
         {
           name: 'Single Target',
-          value: [{ scaling: calcScaling(1.98, 0.132, skill, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.6, 0.06, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
@@ -233,7 +233,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       base.ULT_SCALING = [
         {
           name: 'Single Target',
-          value: [{ scaling: calcScaling(0.6, 0.06, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.98, 0.132, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
@@ -322,7 +322,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       weakness: Element[],
       broken: boolean
     ) => {
-      if (form.luka_enhanced)
+      if (form.luka_enhance)
         base.CALLBACK.push((x, d, w, all) => {
           const bleed = _.filter(
             _.flatMap(all, (item) => item.DOT_SCALING),
