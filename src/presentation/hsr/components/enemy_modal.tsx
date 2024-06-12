@@ -7,14 +7,15 @@ import { BaseElementColor } from './tables/scaling_sub_rows'
 import { toPercentage } from '@src/core/utils/converter'
 import { observer } from 'mobx-react-lite'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
+import { StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 
 export const EnemyModal = observer(() => {
   const { calculatorStore, teamStore } = useStore()
   const { res, level, computedStats, selected } = calculatorStore
   const charLevel = teamStore.characters[calculatorStore.selected]?.level
   const rawDef = 10 * level + 200
-  const pen = computedStats[selected]?.DEF_PEN
-  const red = computedStats[selected]?.DEF_REDUCTION
+  const pen = computedStats[selected]?.getValue(StatsObjectKeys.DEF_PEN)
+  const red = computedStats[selected]?.getValue(StatsObjectKeys.DEF_REDUCTION)
   const def = _.max([rawDef * (1 - pen - red), 0])
   const defMult = calculatorStore.getDefMult(charLevel, pen, red)
 
