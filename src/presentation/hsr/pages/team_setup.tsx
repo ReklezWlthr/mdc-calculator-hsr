@@ -204,23 +204,6 @@ export const TeamSetup = observer(() => {
               </div>
               <div className="flex items-center gap-3">
                 <TalentIcon
-                  talent={talent?.talents?.talent}
-                  element={charData?.element}
-                  icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Passive.png`}
-                  size="w-9 h-9"
-                  upgraded={talent?.upgrade?.talent}
-                  level={char?.talents?.talent}
-                  showUpgrade
-                />
-                <SelectInput
-                  value={char?.talents?.talent?.toString()}
-                  onChange={(value) => teamStore.setTalentLevel(selected, 'talent', parseInt(value))}
-                  options={talentLevels}
-                  style="w-14"
-                />
-              </div>
-              <div className="flex items-center gap-3">
-                <TalentIcon
                   talent={talent?.talents?.skill}
                   element={charData?.element}
                   icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_BP.png`}
@@ -249,6 +232,23 @@ export const TeamSetup = observer(() => {
                 <SelectInput
                   value={char?.talents?.ult?.toString()}
                   onChange={(value) => teamStore.setTalentLevel(selected, 'ult', parseInt(value))}
+                  options={talentLevels}
+                  style="w-14"
+                />
+              </div>
+              <div className="flex items-center gap-3">
+                <TalentIcon
+                  talent={talent?.talents?.talent}
+                  element={charData?.element}
+                  icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Passive.png`}
+                  size="w-9 h-9"
+                  upgraded={talent?.upgrade?.talent}
+                  level={char?.talents?.talent}
+                  showUpgrade
+                />
+                <SelectInput
+                  value={char?.talents?.talent?.toString()}
+                  onChange={(value) => teamStore.setTalentLevel(selected, 'talent', parseInt(value))}
                   options={talentLevels}
                   style="w-14"
                 />

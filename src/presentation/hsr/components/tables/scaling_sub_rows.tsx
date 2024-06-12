@@ -45,7 +45,8 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
   const talentDmg = stats[`${TalentPropertyMap[scaling.property]}_DMG`] || 0
   const typeDmg = stats[`${TalentTypeMap[scaling.type]}_DMG`] || 0
   const talentFlat = stats[`${TalentPropertyMap[scaling.property]}_F_DMG`] || 0
-  const talentCr = stats[`${TalentPropertyMap[scaling.property]}_CR`] || 0
+  const talentCr = stats[`${TalentTypeMap[scaling.type]}_CR`] || 0
+  const propertyCr = stats[`${TalentPropertyMap[scaling.property]}_CR`] || 0
   const talentCd = stats[`${TalentPropertyMap[scaling.property]}_CD`] || 0
   const elementCd = stats[`${element.toUpperCase()}_CD`] || 0
   const elementFlat = stats[`${element.toUpperCase()}_F_DMG`] || 0
@@ -102,7 +103,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     talentFlat
   const dmg = raw * (1 + bonusDMG) * (scaling.multiplier || 1) * elementMult * enemyMod
 
-  const totalCr = _.max([_.min([stats[Stats.CRIT_RATE] + (scaling.cr || 0) + talentCr, 1]), 0])
+  const totalCr = _.max([_.min([stats[Stats.CRIT_RATE] + (scaling.cr || 0) + talentCr + propertyCr, 1]), 0])
   const totalCd = stats[Stats.CRIT_DMG] + stats.X_CRIT_DMG + (scaling.cd || 0) + talentCd + elementCd
   const totalFlat = (scaling.flat || 0) + elementFlat + talentFlat
 
@@ -258,6 +259,11 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
                 </p>
               )}
               {!!talentCr && (
+                <p className="text-xs">
+                  {scaling.type} CRIT Rate: <span className="text-desc">{toPercentage(talentCr)}</span>
+                </p>
+              )}
+              {!!propertyCr && (
                 <p className="text-xs">
                   {scaling.property} CRIT Rate: <span className="text-desc">{toPercentage(talentCr)}</span>
                 </p>

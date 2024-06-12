@@ -1,4 +1,4 @@
-import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
+import { addDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
@@ -146,7 +146,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'himeko_tech')]
+  const teammateContent: IContent[] = [findContentById(content, 'himeko_tech'), findContentById(content, 'himeko_a2')]
 
   const allyContent: IContent[] = []
 
@@ -222,7 +222,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         },
       ]
 
-      if (a.a2) {
+      if (form.himeko_a2) {
         const burn = {
           name: 'Burn DMG',
           value: [{ scaling: 0.3, multiplier: Stats.ATK }],
@@ -235,18 +235,11 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         base.SKILL_SCALING.push(burn)
         base.ULT_SCALING.push(burn)
         base.TALENT_SCALING.push(burn)
-      }
 
-      if (form.himeko_a2) {
         base.DOT_SCALING.push({
-          name: 'Burn DMG',
-          value: [{ scaling: 0.3, multiplier: Stats.ATK }],
-          element: Element.FIRE,
-          property: TalentProperty.DOT,
-          type: TalentType.NONE,
-          chance: { base: 0.5, fixed: false },
+          ...burn,
           overrideIndex: index,
-          dotType: DebuffTypes.BURN
+          dotType: DebuffTypes.BURN,
         })
         addDebuff(debuffs, DebuffTypes.BURN)
       }
@@ -294,7 +287,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       weakness: Element[],
       broken: boolean
     ) => {
-      const burned = _.sumBy(debuffs, (item) => Number(item.type === DebuffTypes.BURN) * item.count) >= 1
+      const burned = countDot(debuffs, DebuffTypes.BURN)
       if (burned && a.a4) base.SKILL_DMG += 0.2
 
       return base

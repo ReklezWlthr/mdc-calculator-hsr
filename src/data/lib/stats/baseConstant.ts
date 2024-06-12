@@ -2,6 +2,12 @@ import { DebuffTypes, IScaling } from '@src/domain/conditional'
 import { Element, Stats, TalentProperty, PathType, TalentType } from '@src/domain/constant'
 import _ from 'lodash'
 
+export interface StatsArray {
+  name: string
+  source: string
+  value: number
+}
+
 export const baseStatsObject = {
   // Base Stats
   BASE_ATK: 0,
@@ -10,107 +16,107 @@ export const baseStatsObject = {
   BASE_SPD: 0,
 
   // Basic Stats
-  [Stats.ATK]: 0,
-  [Stats.HP]: 0,
-  [Stats.DEF]: 0,
-  [Stats.P_ATK]: 0,
-  [Stats.P_HP]: 0,
-  [Stats.P_DEF]: 0,
-  [Stats.CRIT_RATE]: 0.05,
-  [Stats.CRIT_DMG]: 0.5,
-  [Stats.BE]: 0,
-  [Stats.ERR]: 1,
-  [Stats.HEAL]: 0,
-  [Stats.SPD]: 0,
-  [Stats.P_SPD]: 0,
-  [Stats.EHR]: 0,
-  [Stats.E_RES]: 0,
+  [Stats.ATK]: [] as StatsArray[],
+  [Stats.HP]: [] as StatsArray[],
+  [Stats.DEF]: [] as StatsArray[],
+  [Stats.P_ATK]: [] as StatsArray[],
+  [Stats.P_HP]: [] as StatsArray[],
+  [Stats.P_DEF]: [] as StatsArray[],
+  [Stats.CRIT_RATE]: [{ name: 'Base Value', source: 'Self', value: 0.05 }] as StatsArray[],
+  [Stats.CRIT_DMG]: [{ name: 'Base Value', source: 'Self', value: 0.5 }] as StatsArray[],
+  [Stats.BE]: [] as StatsArray[],
+  [Stats.ERR]: [{ name: 'Base Value', source: 'Self', value: 1 }] as StatsArray[],
+  [Stats.HEAL]: [] as StatsArray[],
+  [Stats.SPD]: [] as StatsArray[],
+  [Stats.P_SPD]: [] as StatsArray[],
+  [Stats.EHR]: [] as StatsArray[],
+  [Stats.E_RES]: [] as StatsArray[],
 
-  X_HP: 0, // For Fu Xuan and Lynx
-  X_CRIT_DMG: 0, // For Sparkle and Bronya, will not be used recursively
+  X_HP: [] as StatsArray[], // For Fu Xuan and Lynx
+  X_CRIT_DMG: [] as StatsArray[], // For Sparkle and Bronya, will not be used recursively
 
   // DMG Bonuses
-  [Stats.PHYSICAL_DMG]: 0,
-  [Stats.FIRE_DMG]: 0,
-  [Stats.ICE_DMG]: 0,
-  [Stats.LIGHTNING_DMG]: 0,
-  [Stats.QUANTUM_DMG]: 0,
-  [Stats.IMAGINARY_DMG]: 0,
-  [Stats.WIND_DMG]: 0,
-  [Stats.ALL_DMG]: 0,
+  [Stats.PHYSICAL_DMG]: [] as StatsArray[],
+  [Stats.FIRE_DMG]: [] as StatsArray[],
+  [Stats.ICE_DMG]: [] as StatsArray[],
+  [Stats.LIGHTNING_DMG]: [] as StatsArray[],
+  [Stats.QUANTUM_DMG]: [] as StatsArray[],
+  [Stats.IMAGINARY_DMG]: [] as StatsArray[],
+  [Stats.WIND_DMG]: [] as StatsArray[],
+  [Stats.ALL_DMG]: [] as StatsArray[],
 
   // Hidden Stats
-  DEF_PEN: 0,
-  SHIELD: 0,
-  BREAK_EFF: 0,
+  DEF_PEN: [] as StatsArray[],
+  SHIELD: [] as StatsArray[],
+  BREAK_EFF: [] as StatsArray[],
 
   //DEBUFFS
-  ATK_REDUCTION: 0,
-  DEF_REDUCTION: 0,
-  SPD_REDUCTION: 0,
-  E_RES_RED: 0,
-  VULNERABILITY: 0,
-  WEAKEN: 0,
+  ATK_REDUCTION: [] as StatsArray[],
+  DEF_REDUCTION: [] as StatsArray[],
+  SPD_REDUCTION: [] as StatsArray[],
+  E_RES_RED: [] as StatsArray[],
+  VULNERABILITY: [] as StatsArray[],
+  WEAKEN: [] as StatsArray[],
 
-  FIRE_VUL: 0,
-  BREAK_VUL: 0,
-  DOT_VUL: 0,
-  ULT_VUL: 0,
-  ULT_RES_PEN: 0,
+  FIRE_VUL: [] as StatsArray[],
+  BREAK_VUL: [] as StatsArray[],
+  DOT_VUL: [] as StatsArray[],
+  ULT_VUL: [] as StatsArray[],
+  ULT_RES_PEN: [] as StatsArray[],
 
   // RES PEN
-  ALL_TYPE_RES_PEN: 0,
-  PHYSICAL_RES_PEN: 0,
-  FIRE_RES_PEN: 0,
-  ICE_RES_PEN: 0,
-  LIGHTNING_RES_PEN: 0,
-  WIND_RES_PEN: 0,
-  QUANTUM_RES_PEN: 0,
-  IMAGINARY_RES_PEN: 0,
+  ALL_TYPE_RES_PEN: [] as StatsArray[],
+  PHYSICAL_RES_PEN: [] as StatsArray[],
+  FIRE_RES_PEN: [] as StatsArray[],
+  ICE_RES_PEN: [] as StatsArray[],
+  LIGHTNING_RES_PEN: [] as StatsArray[],
+  WIND_RES_PEN: [] as StatsArray[],
+  QUANTUM_RES_PEN: [] as StatsArray[],
+  IMAGINARY_RES_PEN: [] as StatsArray[],
 
   // RES
-  ALL_TYPE_RES: 0,
+  ALL_TYPE_RES: [] as StatsArray[],
 
   // Talent Boosts
-  BASIC_DMG: 0,
-  SKILL_DMG: 0,
-  ULT_DMG: 0,
-  TALENT_DMG: 0,
-  TECHNIQUE_DMG: 0,
-  DOT_DMG: 0,
-  FUA_DMG: 0,
+  BASIC_DMG: [] as StatsArray[],
+  SKILL_DMG: [] as StatsArray[],
+  ULT_DMG: [] as StatsArray[],
+  TALENT_DMG: [] as StatsArray[],
+  TECHNIQUE_DMG: [] as StatsArray[],
+  DOT_DMG: [] as StatsArray[],
+  FUA_DMG: [] as StatsArray[],
 
-  BASIC_F_DMG: 0,
-  SKILL_F_DMG: 0,
-  ULT_F_DMG: 0,
+  BASIC_F_DMG: [] as StatsArray[],
+  SKILL_F_DMG: [] as StatsArray[],
+  ULT_F_DMG: [] as StatsArray[],
 
-  BASIC_CR: 0,
-  SKILL_CR: 0,
-  ULT_CR: 0,
-  DOT_CR: 0,
-  FUA_CR: 0,
+  BASIC_CR: [] as StatsArray[],
+  SKILL_CR: [] as StatsArray[],
+  ULT_CR: [] as StatsArray[],
+  DOT_CR: [] as StatsArray[],
+  FUA_CR: [] as StatsArray[],
 
-  BASIC_CD: 0,
-  SKILL_CD: 0,
-  ULT_CD: 0,
-  DOT_CD: 0,
-  FUA_CD: 0,
+  BASIC_CD: [] as StatsArray[],
+  SKILL_CD: [] as StatsArray[],
+  ULT_CD: [] as StatsArray[],
+  DOT_CD: [] as StatsArray[],
+  FUA_CD: [] as StatsArray[],
 
-  BASIC_DEF_PEN: 0,
-  SKILL_DEF_PEN: 0,
-  ULT_DEF_PEN: 0,
-  DOT_DEF_PEN: 0,
-  FUA_DEF_PEN: 0,
-  BREAK_DEF_PEN: 0,
-  SUPER_BREAK_DEF_PEN: 0,
+  BASIC_DEF_PEN: [] as StatsArray[],
+  SKILL_DEF_PEN: [] as StatsArray[],
+  ULT_DEF_PEN: [] as StatsArray[],
+  DOT_DEF_PEN: [] as StatsArray[],
+  FUA_DEF_PEN: [] as StatsArray[],
+  BREAK_DEF_PEN: [] as StatsArray[],
+  SUPER_BREAK_DEF_PEN: [] as StatsArray[],
 
-  BREAK_DMG: 0,
-  SUPER_BREAK_DMG: 0,
+  BREAK_DMG: [] as StatsArray[],
+  SUPER_BREAK_DMG: [] as StatsArray[],
 
   // Mitigation
-  DMG_REDUCTION: [],
-  AGGRO: 0,
-  BASE_AGGRO: 0,
+  DMG_REDUCTION: [] as StatsArray[],
+  AGGRO: [] as StatsArray[],
+  BASE_AGGRO: [] as StatsArray[],
 
   MAX_ENERGY: 0,
 
@@ -124,16 +130,19 @@ export const baseStatsObject = {
   DOT_SCALING: [] as IScaling[],
 
   getAtk: function () {
-    return this.BASE_ATK * (1 + this[Stats.P_ATK]) + this[Stats.ATK]
+    return this.BASE_ATK * (1 + _.sumBy(this[Stats.P_ATK], 'value')) + _.sumBy(this[Stats.ATK], 'value')
   },
   getHP: function () {
-    return this.BASE_HP * (1 + this[Stats.P_HP]) + this[Stats.HP]
+    return this.BASE_HP * (1 + _.sumBy(this[Stats.P_HP], 'value')) + _.sumBy(this[Stats.HP], 'value')
   },
   getDef: function () {
-    return this.BASE_DEF * (1 + this[Stats.P_DEF]) + this[Stats.DEF]
+    return this.BASE_DEF * (1 + _.sumBy(this[Stats.P_DEF], 'value')) + _.sumBy(this[Stats.ATK], 'value')
   },
   getSpd: function () {
-    return this.BASE_SPD * (1 + this[Stats.P_SPD]) + this[Stats.SPD]
+    return this.BASE_SPD * (1 + _.sumBy(this[Stats.P_SPD], 'value')) + _.sumBy(this[Stats.SPD], 'value')
+  },
+  getValue: function (key: string) {
+    return _.sumBy(this[key], 'value')
   },
 
   CALLBACK: [] as ((

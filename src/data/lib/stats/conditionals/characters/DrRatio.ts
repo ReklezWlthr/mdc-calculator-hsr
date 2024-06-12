@@ -180,11 +180,27 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ]
 
       if (form.ratio_a2) {
-        base[Stats.CRIT_RATE] += form.ratio_a2 * 0.025
-        base[Stats.CRIT_DMG] += form.ratio_a2 * 0.05
+        base[Stats.CRIT_RATE].push({
+          name: `Ascension 2 Passive`,
+          source: 'Self',
+          value:form.ratio_a2 * 0.025,
+        }) 
+        base[Stats.CRIT_DMG].push({
+          name: `Ascension 2 Passive`,
+          source: 'Self',
+          value: form.ratio_a2 * 0.05,
+        }) 
       }
-      if (form.ratio_a4) base.E_RES_RED += 0.1
-      if (c >= 6) base.TALENT_DMG += 0.5
+      if (form.ratio_a4) base.E_RES_RED.push({
+          name: `Skill`,
+          source: 'Self',
+          value: 0.1,
+        })
+      if (c >= 6) base.TALENT_DMG.push({
+          name: `Eidolon 6`,
+          source: 'Self',
+          value: 0.5,
+        })
 
       return base
     },
@@ -195,7 +211,11 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[]
     ) => {
-      if (form.ratio_a4) base.E_RES_RED += 0.1
+      if (form.ratio_a4) base.E_RES_RED.push({
+          name: `Skill`,
+          source: 'Dr. Ratio',
+          value: 0.1,
+        })
 
       return base
     },
@@ -207,7 +227,11 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ) => {
       base.CALLBACK.push((x, d) => {
         const count = _.sumBy(d, (item) => item.count)
-        if (count >= 3) base[Stats.ALL_DMG] += _.min([0.1 * count, 0.5])
+        if (a.a6 && count >= 3) base[Stats.ALL_DMG].push({
+          name: `Ascension 6 Passive`,
+          source: 'Self',
+          value: _.min([0.1 * count, 0.5]),
+        }) 
         if (c >= 2 && count)
           base.TALENT_SCALING.push({
             name: 'Additional DMG per Debuff',

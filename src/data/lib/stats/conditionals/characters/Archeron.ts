@@ -31,7 +31,7 @@ const Archeron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       title: 'Trilateral Wiltcross',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Acheron's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
-      level: basic
+      level: basic,
     },
     skill: {
       title: 'Octobolt Flash',
@@ -40,7 +40,7 @@ const Archeron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         { base: 80, growth: 8, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },
       ],
-      level: skill
+      level: skill,
     },
     ult: {
       title: 'Slashed Dream Cries in Red',
@@ -58,7 +58,7 @@ const Archeron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         { base: 36, growth: 2.4, style: 'curved' },
         { base: 72, growth: 4.8, style: 'curved' },
       ],
-      level: ult
+      level: ult,
     },
     talent: {
       title: 'Atop Rainleaf Hangs Oneness',
@@ -66,7 +66,7 @@ const Archeron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       <br />When any unit inflicts debuffs on an enemy target while using their ability, Acheron gains <span class="text-desc">1</span> point of <b>Slashed Dream</b> and inflicts <span class="text-desc">1</span> stack of <b>Crimson Knot</b> on the target. If debuffs are inflicted on multiple targets, then the <span class="text-desc">1</span> stack of <b>Crimson Knot</b> will be inflicted on the enemy target with the most <b>Crimson Knot</b> stacks. This effect can only trigger once per every ability usage.
       <br />After an enemy target exits the field or gets defeated by any unit while Acheron is on the field, their <b>Crimson Knot</b> stacks will be transferred to the enemy target with the most <b>Crimson Knot</b> stacks on the whole field.`,
       value: [{ base: 10, growth: 0.1, style: 'curved' }],
-      level: talent
+      level: talent,
     },
     technique: {
       title: 'Quadrivalent Ascendance',
@@ -273,14 +273,18 @@ const Archeron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       ]
       base.TECHNIQUE_SCALING.push({
         name: 'AoE',
-          value: [{ scaling: 2, multiplier: Stats.ATK }],
-          element: Element.LIGHTNING,
-          property: TalentProperty.NORMAL,
-          type: TalentType.TECH,
-          break: 60,
+        value: [{ scaling: 2, multiplier: Stats.ATK }],
+        element: Element.LIGHTNING,
+        property: TalentProperty.NORMAL,
+        type: TalentType.TECH,
+        break: 60,
       })
 
-      base.ULT_RES_PEN += calcScaling(0.1, 0.01, talent, 'curved')
+      base.ULT_RES_PEN.push({
+        name: `Talent Level ${talent}`,
+        source: 'Self',
+        value: calcScaling(0.1, 0.01, talent, 'curved'),
+      })
 
       if (a.a6) {
         base.ULT_SCALING.push({
@@ -292,13 +296,32 @@ const Archeron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           multiplier,
         })
       }
-      if (form.arch_a6) base[Stats.ALL_DMG] += 0.3 * form.arch_a6
-      if (c >= 1 && _.sumBy(debuffs, (item) => item.count) >= 1) base[Stats.CRIT_RATE] += 0.18
+      if (form.arch_a6)
+        base[Stats.ALL_DMG].push({
+          name: `Ascension 6 Passive`,
+          source: 'Self',
+          value: 0.3 * form.arch_a6,
+        })
+      if (c >= 1 && _.sumBy(debuffs, (item) => item.count) >= 1)
+        base[Stats.CRIT_RATE].push({
+          name: `Eidolon 1`,
+          source: 'Self',
+          value: 0.18,
+        })
       if (form.arch_c4) {
-        base.ULT_VUL += 0.08
+        base.ULT_VUL.push({
+          name: `Eidolon 4`,
+          source: 'Self',
+          value: 0.08,
+        })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
-      if (c >= 6) base.ULT_RES_PEN += 0.2
+      if (c >= 6)
+        base.ULT_RES_PEN.push({
+          name: `Eidolon 6`,
+          source: 'Self',
+          value: 0.2,
+        })
 
       return base
     },
@@ -309,7 +332,12 @@ const Archeron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[]
     ) => {
-      if (form.arch_c4) base.ULT_VUL += 0.08
+      if (form.arch_c4)
+        base.ULT_VUL.push({
+          name: `Eidolon 4`,
+          source: 'Archeron',
+          value: 0.08,
+        })
 
       return base
     },

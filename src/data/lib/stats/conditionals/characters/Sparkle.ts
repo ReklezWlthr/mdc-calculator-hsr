@@ -161,7 +161,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ]
 
       if (form.red_herring) {
-        base[Stats.ALL_DMG] =
+        base[Stats.ALL_DMG] +=
           form.red_herring *
           (calcScaling(0.03, 0.003, talent, 'curved') + (form.cipher ? calcScaling(0.06, 0.004, talent, 'curved') : 0))
         if (c >= 2) base.DEF_PEN += 0.08 * form.red_herring
@@ -191,7 +191,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         })
       }
       if (form.red_herring) {
-        base[Stats.ALL_DMG] =
+        base[Stats.ALL_DMG] +=
           form.red_herring *
           (calcScaling(0.03, 0.003, talent, 'curved') + (form.cipher ? calcScaling(0.06, 0.004, talent, 'curved') : 0))
         if (c >= 2) base.DEF_PEN += 0.08 * form.red_herring

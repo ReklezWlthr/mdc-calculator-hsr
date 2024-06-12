@@ -173,20 +173,18 @@ export const Calculator = observer(({}: {}) => {
               {/* <div className="w-[252px]">
                 <AscensionIcons
                   talents={main?.talents}
-                  codeName={iconCodeName}
                   element={charData.element}
                   stats={computedStats[selected]}
                   ascension={char.ascension}
                 />
-              </div>
+              </div> */}
               <ConsCircle
                 talents={main?.talents}
-                codeName={charData.codeName}
                 element={charData.element}
-                name={charData.constellation}
+                id={char.cId}
                 cons={char.cons}
                 stats={computedStats[selected]}
-              /> */}
+              />
             </>
           )}
         </div>

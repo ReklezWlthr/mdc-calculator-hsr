@@ -20,6 +20,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
   const talent = t.talent + upgrade.talent
 
   const names = _.map(team, (item) => findCharacter(item.cId)?.name)
+  const index = _.findIndex(team, (item) => item.cId === '1005')
 
   const talents: ITalent = {
     normal: {
@@ -114,15 +115,6 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     {
       type: 'toggle',
-      id: 'kafka_c2',
-      text: `E2 DoT Bonus`,
-      ...talents.c2,
-      show: c >= 2,
-      default: true,
-      debuff: true,
-    },
-    {
-      type: 'toggle',
       id: 'kafka_ult',
       text: `Ult Shock`,
       ...talents.ult,
@@ -134,7 +126,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'kafka_c1'), findContentById(content, 'kafka_c2')]
+  const teammateContent: IContent[] = [findContentById(content, 'kafka_c1'), findContentById(content, 'kafka_ult')]
 
   const allyContent: IContent[] = []
 
@@ -187,14 +179,6 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           energy: 30,
         },
       ]
-      const shock = {
-        name: 'Shocked DMG',
-        value: [{ scaling: calcScaling(1.16, 0.10875, ult, 'dot'), multiplier: Stats.ATK }],
-        element: Element.LIGHTNING,
-        property: TalentProperty.DOT,
-        type: TalentType.NONE,
-        chance: { base: 1 + (a.a6 ? 0.3 : 0), fixed: false },
-      }
       base.ULT_SCALING = [
         {
           name: 'AoE',
@@ -205,7 +189,6 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           break: 60,
           energy: 5,
         },
-        shock,
       ]
       base.TALENT_SCALING = [
         {
@@ -215,7 +198,6 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
         },
-        shock,
       ]
       base.TECHNIQUE_SCALING = [
         {
@@ -225,17 +207,33 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
         },
-        shock,
       ]
 
       if (form.kafka_ult) {
+        const shock = {
+          name: 'Shocked DMG',
+          value: [{ scaling: calcScaling(1.16, 0.10875, ult, 'dot'), multiplier: Stats.ATK }],
+          element: Element.LIGHTNING,
+          property: TalentProperty.DOT,
+          type: TalentType.NONE,
+          chance: { base: 1 + (a.a6 ? 0.3 : 0), fixed: false },
+        }
+
+        base.ULT_SCALING.push(shock)
+        base.TALENT_SCALING.push(shock)
+        base.TECHNIQUE_SCALING.push(shock)
+        base.DOT_SCALING.push({
+          ...shock,
+          overrideIndex: index,
+          dotType: DebuffTypes.SHOCKED,
+        })
         addDebuff(debuffs, DebuffTypes.SHOCKED)
       }
       if (form.kafka_c1) {
         base.DOT_VUL += 0.3
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
-      if (form.kafka_c2) base.DOT_DMG += 0.25
+      if (c >= 2) base.DOT_DMG += 0.25
 
       return base
     },
@@ -249,7 +247,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       broken: boolean
     ) => {
       if (form.kafka_c1) base.DOT_VUL += 0.3
-      if (form.kafka_c2) base.DOT_DMG += 0.25
+      if (c >= 2) base.DOT_DMG += 0.25
 
       return base
     },
@@ -272,7 +270,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           ..._.map(dots, (item) => ({
             ...item,
             chance: undefined,
-            name: `${names?.[item.overrideIndex]}'s ${item.name}`,
+            name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
             multiplier: calcScaling(0.6, 0.015, skill, 'curved'),
           }))
         )
@@ -280,7 +278,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           ..._.map(a.a2 ? dots : shock, (item, i) => ({
             ...item,
             chance: undefined,
-            name: `${names?.[item.overrideIndex]}'s ${item.name}`,
+            name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
             multiplier: calcScaling(0.8, 0.02, ult, 'curved'),
           }))
         )

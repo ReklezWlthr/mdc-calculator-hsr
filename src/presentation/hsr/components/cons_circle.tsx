@@ -1,7 +1,9 @@
+import { getPathImage } from '@src/core/utils/fetcher'
+import { findCharacter } from '@src/core/utils/finder'
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { ReverseConsList } from '@src/data/lib/stats/conditionals/conditionals'
 import { ITalent, ITalentDisplay } from '@src/domain/conditional'
-import { Element, Stats, TravelerIconName } from '@src/domain/constant'
+import { Element, Stats } from '@src/domain/constant'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import classNames from 'classnames'
 import _ from 'lodash'
@@ -23,54 +25,43 @@ export const TooltipBody = ({
     [Stats.ATK]: stats?.getAtk(),
     [Stats.DEF]: stats?.getDef(),
     [Stats.HP]: stats?.getHP(),
-    [Stats.EM]: stats?.[Stats.EM],
-    [Stats.ER]: stats?.[Stats.ER],
+    // [Stats.EM]: stats?.[Stats.EM],
+    // [Stats.ER]: stats?.[Stats.ER],
     [Stats.HEAL]: stats?.[Stats.HEAL],
   }
 
   return (
     <div className="space-y-3">
       <p dangerouslySetInnerHTML={{ __html: talent?.content }} />
-      {!!_.size(talent?.value) && unlocked && stats && (
-        <div>
-          {_.map(talent?.value, (item) => (
-            <p key={item.name}>
-              {item.name}: <span className="text-desc">{item.value.scaling(statForScale[item.value.stat])}</span>
-            </p>
-          ))}
-        </div>
-      )}
     </div>
   )
 }
 
 export const ElementIconColor = {
-  [Element.PYRO]: 'bg-hsr-fire ring-hsr-fire',
-  [Element.HYDRO]: 'bg-gray ring-gray',
-  [Element.CRYO]: 'bg-hsr-ice ring-hsr-ice',
-  [Element.ELECTRO]: 'bg-hsr-lightning ring-hsr-lightning',
-  [Element.GEO]: 'bg-hsr-quantum ring-hsr-quantum',
-  [Element.ANEMO]: 'bg-hsr-wind ring-hsr-wind',
-  [Element.DENDRO]: 'bg-hsr-imaginary ring-hsr-imaginary',
+  [Element.PHYSICAL]: 'bg-hsr-physical ring-hsr-physical',
+  [Element.FIRE]: 'bg-hsr-fire ring-hsr-fire',
+  [Element.ICE]: 'bg-hsr-ice ring-hsr-ice',
+  [Element.LIGHTNING]: 'bg-hsr-lightning ring-hsr-lightning',
+  [Element.WIND]: 'bg-hsr-wind ring-hsr-wind',
+  [Element.QUANTUM]: 'bg-hsr-quantum ring-hsr-quantum',
+  [Element.IMAGINARY]: 'bg-hsr-imaginary ring-hsr-imaginary',
 }
 
 export const ConsCircle = observer(
   ({
     talents,
     element,
-    codeName,
-    name,
+    id,
     cons,
     stats,
   }: {
     talents: ITalent
     element: Element
-    codeName: string
-    name: string
+    id: string
     cons: number
     stats?: StatsObject
   }) => {
-    if (codeName === 'Player') codeName = TravelerIconName[element]
+    const char = findCharacter(id)
 
     return (
       <div className="space-y-5">
@@ -83,9 +74,7 @@ export const ConsCircle = observer(
             >
               <div className="rounded-full bg-primary-bg">
                 <img
-                  src={`https://enka.network/ui/hsr/UI_Talent_S_${codeName}${
-                    codeName === 'Aloy' ? '_Lock' : codeName === 'Shenhe' ? '_02' : '_01'
-                  }.png`}
+                  src={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${id}_Rank1.png`}
                   className={classNames(
                     'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                     cons >= 1 ? ElementIconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
@@ -102,9 +91,7 @@ export const ConsCircle = observer(
             >
               <div className="rounded-full bg-primary-bg">
                 <img
-                  src={`https://enka.network/ui/hsr/UI_Talent_S_${codeName}${
-                    codeName === 'PlayerGrass' ? '_06' : codeName === 'Aloy' ? '_Lock' : '_04'
-                  }.png`}
+                  src={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${id}_Rank6.png`}
                   className={classNames(
                     'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                     cons >= 6 ? ElementIconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
@@ -119,15 +106,7 @@ export const ConsCircle = observer(
             >
               <div className="rounded-full bg-primary-bg">
                 <img
-                  src={`https://enka.network/ui/hsr/UI_Talent_S_${codeName}${
-                    codeName === 'Aloy'
-                      ? '_Lock'
-                      : codeName === 'Ningguang'
-                      ? '_05'
-                      : codeName === 'Shenhe'
-                      ? '_01'
-                      : '_02'
-                  }.png`}
+                  src={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${id}_Rank2.png`}
                   className={classNames(
                     'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                     cons >= 2 ? ElementIconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
@@ -137,7 +116,7 @@ export const ConsCircle = observer(
             </Tooltip>
           </div>
           <div className="relative flex items-center justify-center h-12 -z-50">
-            <p className="w-1/2 px-1 text-lg font-bold text-center">{name}</p>
+            <p className="w-1/2 px-1 text-lg font-bold text-center">{`${char?.name}'s Eidonlons`}</p>
             <div
               className={classNames(
                 'absolute -translate-x-1/2 -translate-y-1/2 rounded-full w-[200px] h-[200px] ring top-1/2 left-1/2 bg-opacity-0 ring-opacity-50 pointer-events-none',
@@ -145,10 +124,10 @@ export const ConsCircle = observer(
               )}
             />
             <img
-              src={`${publicRuntimeConfig.BASE_PATH}/icons/cons/${name.replaceAll(' ', '_')}_Shape.webp`}
-              className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full opacity-80 h-[170px] top-1/2 left-1/2 -z-10"
+              src={getPathImage(char?.path)}
+              className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25 h-[150px] top-1/2 left-1/2 -z-10"
               onError={(e) => (e.currentTarget.style.display = 'none')}
-              onLoad={(e) => (e.currentTarget.style.display = 'block')}
+              onLoad={(e) => (e.currentTarget.style.display = 'absolute')}
             />
           </div>
           <div className="flex justify-between px-3">
@@ -159,17 +138,7 @@ export const ConsCircle = observer(
             >
               <div className="rounded-full bg-primary-bg">
                 <img
-                  src={`https://enka.network/ui/hsr/UI_Talent_${
-                    _.includes(['Aloy', 'PlayerGrass'], codeName) ? 'S' : 'U'
-                  }_${codeName}${
-                    codeName === 'PlayerGrass'
-                      ? '_05'
-                      : codeName === 'Aloy'
-                      ? '_Lock'
-                      : _.includes(ReverseConsList, codeName)
-                      ? '_01'
-                      : '_02'
-                  }.png`}
+                  src={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${id}_Ultra.png`}
                   className={classNames(
                     'shrink-0 w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                     cons >= 5 ? ElementIconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
@@ -184,17 +153,7 @@ export const ConsCircle = observer(
             >
               <div className="rounded-full bg-primary-bg">
                 <img
-                  src={`https://enka.network/ui/hsr/UI_Talent_${
-                    _.includes(['Aloy', 'PlayerGrass'], codeName) ? 'S' : 'U'
-                  }_${codeName}${
-                    codeName === 'PlayerGrass'
-                      ? '_03'
-                      : codeName === 'Aloy'
-                      ? '_Lock'
-                      : _.includes(ReverseConsList, codeName)
-                      ? '_02'
-                      : '_01'
-                  }.png`}
+                  src={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${id}_BP.png`}
                   className={classNames(
                     'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                     cons >= 3 ? ElementIconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'
@@ -211,15 +170,7 @@ export const ConsCircle = observer(
             >
               <div className="rounded-full bg-primary-bg">
                 <img
-                  src={`https://enka.network/ui/hsr/UI_Talent_S_${codeName}${
-                    codeName === 'PlayerGrass'
-                      ? '_04'
-                      : codeName === 'Aloy'
-                      ? '_Lock'
-                      : codeName === 'Tartaglia'
-                      ? '_05'
-                      : '_03'
-                  }.png`}
+                  src={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${id}_Rank4.png`}
                   className={classNames(
                     'w-12 h-12 p-1 rounded-full bg-opacity-60 ring-2 ring-offset-2 hover:ring-offset-4 duration-200 ring-offset-primary-darker',
                     cons >= 4 ? ElementIconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50'

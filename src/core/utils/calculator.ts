@@ -54,8 +54,20 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
   conditionals.MAX_ENERGY = character?.stat?.energy
 
   // Get Traces
-  for (const trace of char.minor_traces) {
-    if (trace?.toggled) conditionals[trace?.stat] += trace?.value
+  const traces = _.reduce(
+    char.minor_traces,
+    (acc, curr) => {
+      acc[curr?.stat] += curr?.toggled ? curr?.value : 0
+      return acc
+    },
+    {} as Record<Stats, number>
+  )
+  for (const trace in traces) {
+    conditionals[trace].push({
+      value: traces[trace],
+      source: 'Self',
+      name: 'Minor Traces',
+    })
   }
 
   // Get Ascension
@@ -65,12 +77,24 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
 
   conditionals = weaponBonus?.scaling(conditionals, weapon?.refinement) || conditionals
 
-  if (character?.id === '1301' && char?.cons >= 6) conditionals[Stats.BE] += 0.2
+  // Gallagher
+  if (character?.id === '1301' && char?.cons >= 6)
+    conditionals[Stats.BE].push({
+      name: 'Eidolon 6',
+      source: 'Self',
+      value: 0.2,
+    })
 
-  if (character?.id === '1307' && char?.major_traces?.a6) conditionals.CALLBACK.push((base) => {
-    base[Stats.ALL_DMG] += _.min([base[Stats.EHR] * 0.6, 0.72])
-    return base
-  }) 
+  // Black Swan
+  if (character?.id === '1307' && char?.major_traces?.a6)
+    conditionals.CALLBACK.push((base) => {
+      base[Stats.ALL_DMG].push({
+        name: 'Ascension 6 Passive',
+        source: 'Self',
+        value: _.min([base[Stats.EHR] * 0.6, 0.72]),
+      })
+      return base
+    })
 
   return conditionals
 }
@@ -82,10 +106,34 @@ export const addArtifactStats = (
   team: ITeamChar[]
 ) => {
   const setBonus = getSetCount(artifacts)
-  _.forEach(artifacts, (item) => {
-    conditionals[item.main] += getMainStat(item.main, item.quality, item.level)
-    _.forEach(item.subList, (sub) => {
-      conditionals[sub.stat] += correctSubStat(sub.stat, sub.value)
+  const main = _.reduce(
+    artifacts,
+    (acc, curr) => {
+      acc[curr?.main] += getMainStat(curr.main, curr.quality, curr.level)
+      return acc
+    },
+    {} as Record<Stats, number>
+  )
+  _.forEach(main, (item, key) => {
+    conditionals[key].push({
+      name: `Relic Main Stat`,
+      source: 'Self',
+      value: item,
+    })
+  })
+  const sub = _.reduce(
+    _.flatMap(artifacts, (item) => item.subList),
+    (acc, curr) => {
+      acc[curr?.stat] += correctSubStat(curr.stat, curr.value)
+      return acc
+    },
+    {} as Record<Stats, number>
+  )
+  _.forEach(sub, (item, key) => {
+    conditionals[key].push({
+      name: `Relic Sub Stat`,
+      source: 'Self',
+      value: item,
     })
   })
   _.forEach(setBonus, (value, key) => {
@@ -93,7 +141,11 @@ export const addArtifactStats = (
       const bonuses = _.find(AllRelicSets, ['id', key])?.bonus
       const half = _.find(AllRelicSets, ['id', key])?.half
       _.forEach(bonuses, (item) => {
-        conditionals[item.stat] += item.value
+        conditionals[item.stat].push({
+          name: _.find(AllRelicSets, ['id', key])?.name,
+          source: 'Self',
+          value: item.value,
+        })
       })
       if (half) conditionals = half(conditionals)
     }

@@ -194,14 +194,43 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ]
 
       if (form.dh_slow) {
-        base.SPD_REDUCTION += 0.12 + (c >= 6 ? 0.08 : 0)
+        base.SPD_REDUCTION.push({
+          name: `Skill (CRIT)`,
+          source: 'Self',
+          value: 0.12 + (c >= 6 ? 0.08 : 0),
+        })
         addDebuff(debuffs, DebuffTypes.SPD_RED)
       }
-      if (form.dh_tech) base[Stats.P_ATK] += 0.4
-      if (form.dh_talent) base.WIND_RES_PEN += calcScaling(0.18, 0.018, talent, 'curved')
-      if (form.dh_a2) base.AGGRO -= 0.5
-      if (form.dh_a4) base[Stats.P_SPD] += 0.2
-      if (form.dh_c1) base[Stats.CRIT_RATE] += 0.12
+      if (form.dh_tech)
+        base[Stats.P_ATK].push({
+          name: `Technique`,
+          source: 'Self',
+          value: 0.4,
+        })
+      if (form.dh_talent)
+        base.WIND_RES_PEN.push({
+          name: `Talent`,
+          source: 'Self',
+          value: calcScaling(0.18, 0.018, talent, 'curved'),
+        })
+      if (form.dh_a2)
+        base.AGGRO.push({
+          name: `Ascension 2 Passive`,
+          source: 'Self',
+          value: -0.5,
+        })
+      if (form.dh_a4)
+        base[Stats.P_SPD].push({
+          name: `Ascension 4 Passive`,
+          source: 'Self',
+          value: 0.2,
+        })
+      if (form.dh_c1)
+        base[Stats.CRIT_RATE].push({
+          name: `Eidolon 1`,
+          source: 'Self',
+          value: 0.12,
+        })
 
       return base
     },
@@ -214,8 +243,12 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       weakness: Element[],
       broken: boolean
     ) => {
-      if (form.dh_slow) base.SPD_REDUCTION += 0.12 + (c >= 6 ? 0.08 : 0)
-      if (aForm.march_aggro) base.AGGRO += 5
+      if (form.dh_slow)
+        base.SPD_REDUCTION.push({
+          name: `Skill (CRIT)`,
+          source: 'Dan Heng',
+          value: 0.12 + (c >= 6 ? 0.08 : 0),
+        })
 
       return base
     },
@@ -248,7 +281,12 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           energy: 5,
         },
       ]
-      if (slowed && a.a6) base.BASIC_DMG += 0.4
+      if (slowed && a.a6)
+        base.BASIC_DMG.push({
+          name: `Ascension 6 Passive`,
+          source: 'Self',
+          value: 0.4,
+        })
 
       return base
     },

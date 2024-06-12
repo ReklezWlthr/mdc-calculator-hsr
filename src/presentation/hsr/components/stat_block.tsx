@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import _ from 'lodash'
 import { toPercentage } from '@src/core/utils/converter'
 
-import { StatsObject } from '@src/data/lib/stats/baseConstant'
+import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { Stats } from '@src/domain/constant'
 
 interface StatBlockProps {
@@ -42,39 +42,42 @@ export const StatBlock = observer(({ index, stat }: StatBlockProps) => {
       <ExtraDataRow
         title="HP"
         base={stat?.BASE_HP}
-        bonus={stat?.BASE_HP * stat?.[Stats.P_HP] + stat?.[Stats.HP] + stat?.X_HP}
+        bonus={stat?.BASE_ATK * stat?.getValue(Stats.P_HP) + stat?.getValue(Stats.HP)}
       />
       <ExtraDataRow
         title="ATK"
         base={stat?.BASE_ATK}
-        bonus={stat?.BASE_ATK * stat?.[Stats.P_ATK] + stat?.[Stats.ATK]}
+        bonus={stat?.BASE_ATK * stat?.getValue(Stats.P_ATK) + stat?.getValue(Stats.ATK)}
       />
       <ExtraDataRow
         title="DEF"
         base={stat?.BASE_DEF}
-        bonus={stat?.BASE_DEF * stat?.[Stats.P_DEF] + stat?.[Stats.DEF]}
+        bonus={stat?.BASE_ATK * stat?.getValue(Stats.P_DEF) + stat?.getValue(Stats.DEF)}
       />
       <ExtraDataRow
         title="SPD"
         base={stat?.BASE_SPD}
-        bonus={stat?.BASE_SPD * stat?.[Stats.P_SPD] + stat?.[Stats.SPD]}
+        bonus={stat?.BASE_ATK * stat?.getValue(Stats.P_SPD) + stat?.getValue(Stats.SPD)}
       />
-      <DataRow title="CRIT Rate" value={toPercentage(stat?.[Stats.CRIT_RATE])} />
-      <DataRow title="CRIT DMG" value={toPercentage(stat?.[Stats.CRIT_DMG] + stat?.X_CRIT_DMG)} />
-      <DataRow title="Break Effect" value={toPercentage(stat?.[Stats.BE])} />
-      <DataRow title="Outgoing Healing" value={toPercentage(stat?.[Stats.HEAL])} />
-      <DataRow title="Energy Regen Rate" value={toPercentage(stat?.[Stats.ERR])} />
+      <DataRow title="CRIT Rate" value={toPercentage(stat?.getValue(Stats.CRIT_RATE))} />
+      <DataRow
+        title="CRIT DMG"
+        value={toPercentage(stat?.getValue(Stats.CRIT_DMG) + stat?.getValue(StatsObjectKeys.X_CRIT_DMG))}
+      />
+      <DataRow title="Break Effect" value={toPercentage(stat?.getValue(Stats.BE))} />
+      <DataRow title="Outgoing Healing" value={toPercentage(stat?.getValue(Stats.HEAL))} />
+      <DataRow title="Energy Regen Rate" value={toPercentage(stat?.getValue(Stats.ERR))} />
       <DataRow title="Max Energy" value={stat?.MAX_ENERGY} />
-      <DataRow title="Physical DMG%" value={toPercentage(stat?.[Stats.PHYSICAL_DMG])} />
-      <DataRow title="Fire DMG%" value={toPercentage(stat?.[Stats.FIRE_DMG])} />
-      <DataRow title="Ice DMG%" value={toPercentage(stat?.[Stats.ICE_DMG])} />
-      <DataRow title="Lightning DMG%" value={toPercentage(stat?.[Stats.LIGHTNING_DMG])} />
-      <DataRow title="Wind DMG%" value={toPercentage(stat?.[Stats.WIND_DMG])} />
-      <DataRow title="Quantum DMG%" value={toPercentage(stat?.[Stats.QUANTUM_DMG])} />
-      <DataRow title="Imaginary DMG%" value={toPercentage(stat?.[Stats.IMAGINARY_DMG])} />
-      <DataRow title="DMG%" value={toPercentage(stat?.[Stats.ALL_DMG])} />
-      <DataRow title="Effect Hit Rate" value={toPercentage(stat?.[Stats.EHR])} />
-      <DataRow title="Effect RES" value={toPercentage(stat?.[Stats.E_RES])} />
+      <DataRow title="Physical DMG%" value={toPercentage(stat?.getValue(Stats.PHYSICAL_DMG))} />
+      <DataRow title="Fire DMG%" value={toPercentage(stat?.getValue(Stats.FIRE_DMG))} />
+      <DataRow title="Ice DMG%" value={toPercentage(stat?.getValue(Stats.ICE_DMG))} />
+      <DataRow title="Lightning DMG%" value={toPercentage(stat?.getValue(Stats.LIGHTNING_DMG))} />
+      <DataRow title="Wind DMG%" value={toPercentage(stat?.getValue(Stats.WIND_DMG))} />
+      <DataRow title="Quantum DMG%" value={toPercentage(stat?.getValue(Stats.QUANTUM_DMG))} />
+      <DataRow title="Imaginary DMG%" value={toPercentage(stat?.getValue(Stats.IMAGINARY_DMG))} />
+      <DataRow title="DMG%" value={toPercentage(stat?.getValue(Stats.ALL_DMG))} />
+      <DataRow title="Effect Hit Rate" value={toPercentage(stat?.getValue(Stats.EHR))} />
+      <DataRow title="Effect RES" value={toPercentage(stat?.getValue(Stats.E_RES))} />
     </div>
   )
 })

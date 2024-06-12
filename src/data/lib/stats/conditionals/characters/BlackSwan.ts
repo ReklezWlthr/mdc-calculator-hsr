@@ -9,10 +9,10 @@ import { calcScaling } from '@src/core/utils/calculator'
 
 const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
-    basic: c >= 3 ? 1 : 0,
+    basic: c >= 5 ? 1 : 0,
     skill: c >= 3 ? 2 : 0,
     ult: c >= 5 ? 2 : 0,
-    talent: c >= 5 ? 2 : 0,
+    talent: c >= 3 ? 2 : 0,
   }
   const basic = t.basic + upgrade.basic
   const skill = t.skill + upgrade.skill
@@ -42,7 +42,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     ult: {
       title: `Bliss of Otherworld's Embrace`,
-      content: `Inflicts <b>Epiphany</b> on all enemies for 2 turn(s).
+      content: `Inflicts <b>Epiphany</b> on all enemies for <span class="text-desc">2</span> turn(s).
       <br />Enemies affected by <b>Epiphany</b> take {{0}}% more DMG in their turn, and their <b>Arcana</b> effect is regarded as <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-physical">Bleed</b>, <b class="text-hsr-fire">Burn</b>, and <b class="text-hsr-lightning">Shock</b> effects. In addition, when their <b>Arcana</b> effect is triggered at the beginning of the next turn, the <b>Arcana</b> stacks are not reset. The stack non-reset effect can be triggered up to <span class="text-desc">1</span> time(s) in <b>Epiphany</b>'s duration, and its charges are replenished when <b>Epiphany</b> is applied again.
       <br />Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{1}}% of Black Swan's ATK to all enemies.`,
       value: [
@@ -230,7 +230,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         type: TalentType.NONE,
         chance: { base: calcScaling(0.5, 0.015, talent, 'curved'), fixed: false },
       }
-      base.TALENT_SCALING = [arcana]
+      base.TALENT_SCALING = form.arcana ? [arcana] : []
 
       if (form.arcana) {
         base.DOT_SCALING.push({
@@ -249,15 +249,33 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           type: TalentType.NONE,
           chance: { base: calcScaling(0.5, 0.015, talent, 'curved'), fixed: false },
         })
-      if (form.arcana >= 7) base.DOT_DEF_PEN += 0.2
+      if (form.arcana >= 7)
+        base.DOT_DEF_PEN.push({
+          name: `Talent (7+ Arcana)`,
+          source: 'Self',
+          value: 0.2,
+        })
 
       if (form.bs_skill) {
-        base.DEF_REDUCTION += calcScaling(0.148, 0.006, skill, 'curved')
+        base.DEF_REDUCTION.push({
+          name: `Skill`,
+          source: 'Self',
+          value: calcScaling(0.148, 0.006, skill, 'curved'),
+        })
         addDebuff(debuffs, DebuffTypes.DEF_RED)
       }
       if (form.epiphany) {
-        base.VULNERABILITY += calcScaling(0.15, 0.01, ult, 'curved')
-        if (c >= 4) base.E_RES_RED += 0.1
+        base.VULNERABILITY.push({
+          name: `Ultimate (Epiphany)`,
+          source: 'Self',
+          value: calcScaling(0.15, 0.01, ult, 'curved'),
+        })
+        if (c >= 4)
+          base.E_RES_RED.push({
+            name: `Eidolon 4`,
+            source: 'Asta',
+            value: 0.1,
+          })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
 
@@ -272,10 +290,24 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       weakness: Element[],
       broken: boolean
     ) => {
-      if (form.bs_skill) base.DEF_REDUCTION += calcScaling(0.148, 0.006, skill, 'curved')
+      if (form.bs_skill)
+        base.DEF_REDUCTION.push({
+          name: `Skill`,
+          source: 'Black Swan',
+          value: calcScaling(0.148, 0.006, skill, 'curved'),
+        })
       if (form.epiphany) {
-        base.VULNERABILITY += calcScaling(0.15, 0.01, ult, 'curved')
-        if (c >= 4) base.E_RES_RED += 0.1
+        base.VULNERABILITY.push({
+          name: `Ultimate (Epiphany)`,
+          source: 'Asta',
+          value: calcScaling(0.15, 0.01, ult, 'curved'),
+        })
+        if (c >= 4)
+          base.E_RES_RED.push({
+            name: `Eidolon 4`,
+            source: 'Black Swan',
+            value: 0.1,
+          })
       }
 
       return base
@@ -317,10 +349,30 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         addDebuff(debuffs, DebuffTypes.OTHER, _.sum([wind, physical, fire, lightning]))
 
         for (const x of team) {
-          if (wind) x.WIND_RES_PEN += 0.25
-          if (physical) x.PHYSICAL_RES_PEN += 0.25
-          if (fire) x.FIRE_RES_PEN += 0.25
-          if (lightning) x.LIGHTNING_RES_PEN += 0.25
+          if (wind)
+            x.WIND_RES_PEN.push({
+              name: `Eidolon 1`,
+              source: 'Asta',
+              value: 0.25,
+            })
+          if (physical)
+            x.PHYSICAL_RES_PEN.push({
+              name: `Eidolon 1`,
+              source: 'Asta',
+              value: 0.25,
+            })
+          if (fire)
+            x.FIRE_RES_PEN.push({
+              name: `Eidolon 1`,
+              source: 'Asta',
+              value: 0.25,
+            })
+          if (lightning)
+            x.LIGHTNING_RES_PEN.push({
+              name: `Eidolon 1`,
+              source: 'Asta',
+              value: 0.25,
+            })
         }
       }
 
