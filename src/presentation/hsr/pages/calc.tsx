@@ -174,8 +174,8 @@ export const Calculator = observer(({}: {}) => {
           </div>
           {tab === 'mod' && (
             <>
-              <ConditionalBlock title="Self Conditionals" contents={_.filter(contents.main, 'show')} />
-              <ConditionalBlock title="Team Conditionals" contents={_.filter(contents.team, 'show')} />
+              <ConditionalBlock title="Self Modifiers" contents={_.filter(contents.main, 'show')} />
+              <ConditionalBlock title="Team Modifiers" contents={_.filter(contents.team, 'show')} />
               <WeaponConditionalBlock contents={contents.weapon(selected)} index={selected} />
               <CustomConditionalBlock index={selected} />
             </>

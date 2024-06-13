@@ -47,7 +47,7 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
         )}
       >
         {_.size(contents) ? (
-          _.map(_.orderBy(contents, ['debuff', 'text'], ['desc', 'asc']), (content) => {
+          _.map(_.orderBy(contents, ['debuff', 'unique'], ['desc', 'asc']), (content) => {
             const formattedString = _.reduce(
               Array.from(content.content?.matchAll(/{{\d+}}\%?/g) || []),
               (acc, curr) => {

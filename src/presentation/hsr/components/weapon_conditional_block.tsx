@@ -38,7 +38,7 @@ export const WeaponConditionalBlock = observer(
           )}
           onClick={() => setOpen((prev) => !prev)}
         >
-          Weapon Conditionals
+          Weapon Modifiers
           <i
             className={classNames(
               'ml-2 text-base align-top fa-solid fa-caret-down duration-300',

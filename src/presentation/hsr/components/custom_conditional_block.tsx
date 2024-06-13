@@ -32,7 +32,7 @@ export const CustomConditionalBlock = observer(({ index }: CustomConditionalBloc
         )}
         onClick={() => setOpen((prev) => !prev)}
       >
-        Custom Conditionals
+        Custom Modifiers
         <i
           className={classNames('ml-2 text-base align-top fa-solid fa-caret-down duration-300', open && '-rotate-180')}
         />
