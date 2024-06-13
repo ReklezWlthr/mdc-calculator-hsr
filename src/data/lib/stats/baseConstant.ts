@@ -49,6 +49,7 @@ export const baseStatsObject = {
   DEF_PEN: [] as StatsArray[],
   SHIELD: [] as StatsArray[],
   BREAK_EFF: [] as StatsArray[],
+  I_HEAL: [] as StatsArray[],
 
   //DEBUFFS
   ATK_REDUCTION: [] as StatsArray[],
@@ -61,6 +62,7 @@ export const baseStatsObject = {
   FIRE_VUL: [] as StatsArray[],
   BREAK_VUL: [] as StatsArray[],
   DOT_VUL: [] as StatsArray[],
+  FUA_VUL: [] as StatsArray[],
   ULT_VUL: [] as StatsArray[],
   ULT_RES_PEN: [] as StatsArray[],
 
@@ -133,8 +135,12 @@ export const baseStatsObject = {
   getAtk: function () {
     return this.BASE_ATK * (1 + _.sumBy(this[Stats.P_ATK], 'value')) + _.sumBy(this[Stats.ATK], 'value')
   },
-  getHP: function () {
-    return this.BASE_HP * (1 + _.sumBy(this[Stats.P_HP], 'value')) + _.sumBy(this[Stats.HP], 'value')
+  getHP: function (exclude?: boolean) {
+    return (
+      this.BASE_HP * (1 + _.sumBy(this[Stats.P_HP], 'value')) +
+      _.sumBy(this[Stats.HP], 'value') +
+      (exclude ? 0 : this.getValue('X_HP'))
+    )
   },
   getDef: function () {
     return this.BASE_DEF * (1 + _.sumBy(this[Stats.P_DEF], 'value')) + _.sumBy(this[Stats.ATK], 'value')

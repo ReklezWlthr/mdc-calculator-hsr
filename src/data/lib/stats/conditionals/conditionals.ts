@@ -3,6 +3,7 @@ import Argenti from './characters/Argenti'
 import Arlan from './characters/Arlan'
 import Asta from './characters/Asta'
 import BlackSwan from './characters/BlackSwan'
+import Blade from './characters/Blade'
 import Bronya from './characters/Bronya'
 import Clara from './characters/Clara'
 import DanHeng from './characters/DanHeng'
@@ -13,6 +14,7 @@ import Gepard from './characters/Gepard'
 import Herta from './characters/Herta'
 import Himeko from './characters/Himeko'
 import Hook from './characters/Hook'
+import JingYuan from './characters/JingYuan'
 import Kafka from './characters/Kafka'
 import Luka from './characters/Luka'
 import Luocha from './characters/Luocha'
@@ -20,11 +22,15 @@ import Lynx from './characters/Lynx'
 import March from './characters/March'
 import Natasha from './characters/Natasha'
 import Pela from './characters/Pela'
+import Qingque from './characters/Qingque'
 import Sampo from './characters/Sampo'
 import Seele from './characters/Seele'
 import Serval from './characters/Serval'
 import SilverWolf from './characters/SilverWolf'
 import Sparkle from './characters/Sparkle'
+import Sushang from './characters/Sushang'
+import Tingyun from './characters/Tingyun'
+import Topaz from './characters/Topaz'
 import Welt from './characters/Welt'
 
 export default [
@@ -48,7 +54,13 @@ export default [
   { id: '1109', conditionals: Hook },
   { id: '1110', conditionals: Lynx },
   { id: '1111', conditionals: Luka },
+  { id: '1112', conditionals: Topaz },
+  { id: '1201', conditionals: Qingque },
+  { id: '1202', conditionals: Tingyun },
   { id: '1203', conditionals: Luocha },
+  { id: '1204', conditionals: JingYuan },
+  { id: '1205', conditionals: Blade },
+  { id: '1206', conditionals: Sushang },
   { id: '1208', conditionals: FuXuan },
   { id: '1301', conditionals: Gallagher },
   { id: '1302', conditionals: Argenti },
@@ -56,12 +68,6 @@ export default [
   { id: '1306', conditionals: Sparkle },
   { id: '1307', conditionals: BlackSwan },
   { id: '1308', conditionals: Archeron },
-  // { id: '10000055', conditionals: Gorou },
-  // { id: '10000046', conditionals: Hutao },
-  // { id: '10000003', conditionals: Jean },
-  // { id: '10000047', conditionals: Kazuha },
-  // { id: '10000015', conditionals: Kaeya },
-  // { id: '10000002', conditionals: Ayaka },
   // { id: '10000066', conditionals: Ayato },
   // { id: '10000081', conditionals: Kaveh },
   // { id: '10000042', conditionals: Keqing },

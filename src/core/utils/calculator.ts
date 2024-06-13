@@ -99,6 +99,14 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
       return base
     })
 
+  // Sushang
+  if (character?.id === '1206' && char?.cons >= 4)
+    conditionals[Stats.BE].push({
+      name: 'Eidolon 4',
+      source: 'Self',
+      value: 0.4,
+    })
+
   return conditionals
 }
 

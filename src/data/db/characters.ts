@@ -303,7 +303,7 @@ export const Characters = [
   },
   {
     id: '1112',
-    name: 'Topaz & Numby',
+    name: 'Topaz and Numby',
     stat: {
       baseAtk: 84.48,
       baseHp: 126.72,

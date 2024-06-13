@@ -30,12 +30,14 @@ export interface IScaling {
   bonus?: number //Bonus dmg for each component
   cr?: number //Bonus crit rate for each component
   cd?: number //Bonus crit dmg for each component
+  res_pen?: number
   break?: number
   energy?: number
   chance?: { base: number; fixed: boolean }
   overrideIndex?: number
   dotType?: DebuffTypes
   cap?: { scaling: number; multiplier: Stats; override?: number } //Bleed Cap
+  vul?: number
 }
 
 export interface IWeaponContent {

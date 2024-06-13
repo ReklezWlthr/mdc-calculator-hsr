@@ -138,12 +138,13 @@ export enum TalentProperty {
   NORMAL = 'Normal',
   HEAL = 'Heal',
   SHIELD = 'Shield',
-  ADD = 'Additional Attack',
-  BREAK = 'Break Damage',
-  SUPER_BREAK = 'Super Break Damage',
+  ADD = 'Additional DMG',
+  BREAK = 'Break DMG',
+  SUPER_BREAK = 'Super Break DMG',
   DOT = 'DoT',
-  FUA = 'Follow-Up',
+  FUA = 'Follow-Up DMG',
   FROZEN = 'Frozen',
+  ENTANGLE = 'Entanglement',
 }
 
 export enum Element {

@@ -1,5 +1,5 @@
 import { IScaling } from '@src/domain/conditional'
-import { Element, StatIcons, Stats, TalentProperty, PathType } from '@src/domain/constant'
+import { Element, StatIcons, Stats, TalentProperty, PathType, TalentType } from '@src/domain/constant'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
@@ -65,9 +65,10 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
   const vulMult =
     1 +
     stats.getValue(StatsObjectKeys.VULNERABILITY) +
-    (stats.getValue(`${scaling.property.toUpperCase()}_VUL`) || 0) +
-    (stats.getValue(`${scaling.type.toUpperCase()}_VUL`) || 0) +
-    (stats.getValue(`${scaling.element.toUpperCase()}_VUL`) || 0)
+    (stats.getValue(`${TalentPropertyMap[scaling.property]}_VUL`) || 0) +
+    (stats.getValue(`${TalentTypeMap[scaling.type]}_VUL`) || 0) +
+    (stats.getValue(`${scaling.element.toUpperCase()}_VUL`) || 0) +
+    (scaling.vul || 0)
   const resMult = _.max([
     _.min([
       calculatorStore.getResMult(
@@ -186,7 +187,9 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     totalCr
   )}</b>)</span>`
 
-  const prob = (scaling.chance?.base || 0) * (1 + stats.getValue(Stats.EHR)) * (1 - 0.3)
+  const prob = scaling.chance?.fixed
+    ? scaling.chance?.base
+    : (scaling.chance?.base || 0) * (1 + stats.getValue(Stats.EHR)) * (1 - 0.3)
   const noCrit = _.includes(
     [
       TalentProperty.HEAL,

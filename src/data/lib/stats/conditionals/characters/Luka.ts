@@ -9,10 +9,10 @@ import { calcScaling } from '@src/core/utils/calculator'
 
 const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
-    basic: c >= 3 ? 1 : 0,
+    basic: c >= 5 ? 1 : 0,
     skill: c >= 3 ? 2 : 0,
     ult: c >= 5 ? 2 : 0,
-    talent: c >= 5 ? 2 : 0,
+    talent: c >= 3 ? 2 : 0,
   }
   const basic = t.basic + upgrade.basic
   const skill = t.skill + upgrade.skill
@@ -127,6 +127,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       ...talents.talent,
       show: true,
       default: true,
+      unique: true,
     },
     {
       type: 'toggle',
@@ -170,7 +171,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
   ]
 
-  const teammateContent: IContent[] = []
+  const teammateContent: IContent[] = [findContentById(content, 'luka_ult'), findContentById(content, 'luka_bleed')]
 
   const allyContent: IContent[] = []
 
@@ -227,7 +228,8 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           value: [{ scaling: calcScaling(0.6, 0.06, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
-          type: TalentType.ULT,
+          type: TalentType.SKILL,
+          break: 60,
         },
       ]
       base.ULT_SCALING = [
@@ -236,7 +238,8 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           value: [{ scaling: calcScaling(1.98, 0.132, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
-          type: TalentType.SKILL,
+          type: TalentType.ULT,
+          break: 90,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -246,6 +249,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
+          break: 60,
         },
       ]
 
@@ -304,7 +308,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       if (form.luka_ult)
         base.VULNERABILITY.push({
           name: 'Ultimate',
-          source: 'Self',
+          source: 'Luka',
           value: calcScaling(0.12, 0.008, ult, 'curved'),
         })
 
