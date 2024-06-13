@@ -9,10 +9,10 @@ import { calcScaling } from '@src/core/utils/calculator'
 
 const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
-    basic: c >= 5 ? 1 : 0,
-    skill: c >= 5 ? 2 : 0,
-    ult: c >= 3 ? 2 : 0,
-    talent: c >= 3 ? 2 : 0,
+    basic: c >= 3 ? 1 : 0,
+    skill: c >= 3 ? 2 : 0,
+    ult: c >= 5 ? 2 : 0,
+    talent: c >= 5 ? 2 : 0,
   }
   const basic = t.basic + upgrade.basic
   const skill = t.skill + upgrade.skill
@@ -112,7 +112,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c5: {
       title: `E5: Fall is the Pride`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
-      <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
+      <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
       title: `E6: Reign, Returned`,

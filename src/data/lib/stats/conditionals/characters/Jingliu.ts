@@ -9,10 +9,10 @@ import { calcScaling } from '@src/core/utils/calculator'
 
 const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
-    basic: c >= 5 ? 1 : 0,
+    basic: c >= 3 ? 1 : 0,
     skill: c >= 5 ? 2 : 0,
     ult: c >= 3 ? 2 : 0,
-    talent: c >= 3 ? 2 : 0,
+    talent: c >= 5 ? 2 : 0,
   }
   const basic = t.basic + upgrade.basic
   const skill = t.skill + upgrade.skill
