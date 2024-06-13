@@ -76,7 +76,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
         element as Element,
         (stats.getValue(`${element.toUpperCase()}_RES_PEN`) || 0) +
           (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0) +
-          scaling.res_pen // Counted as Elemental RES PEN
+          (scaling.res_pen || 0) // Counted as Elemental RES PEN
       ),
       2,
     ]),
