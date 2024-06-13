@@ -1,4 +1,4 @@
-import Archeron from './characters/Archeron'
+import Acheron from './characters/Acheron'
 import Argenti from './characters/Argenti'
 import Arlan from './characters/Arlan'
 import Asta from './characters/Asta'
@@ -79,7 +79,7 @@ export default [
   { id: '1305', conditionals: DrRatio },
   { id: '1306', conditionals: Sparkle },
   { id: '1307', conditionals: BlackSwan },
-  { id: '1308', conditionals: Archeron },
+  { id: '1308', conditionals: Acheron },
   // { id: '10000065', conditionals: Kuki },
   // { id: '10000074', conditionals: Layla },
   // { id: '10000006', conditionals: Lisa },

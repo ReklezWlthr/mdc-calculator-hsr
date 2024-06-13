@@ -663,7 +663,7 @@ export const Characters = [
   },
   {
     id: '1308',
-    name: 'Archeron',
+    name: 'Acheron',
     stat: {
       baseAtk: 95.04,
       baseHp: 153.12,

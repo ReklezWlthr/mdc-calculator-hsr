@@ -7,7 +7,7 @@ import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/calculator'
 
-const Archeron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
+const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
     basic: c >= 3 ? 1 : 0,
     skill: c >= 5 ? 2 : 0,
@@ -352,4 +352,4 @@ const Archeron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
   }
 }
 
-export default Archeron
+export default Acheron
