@@ -248,7 +248,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         base.X_HP.push({
           name: `Skill`,
           source: 'Self',
-          value: calcScaling(0.03, 0.003, skill, 'curved') * base.getHP(),
+          value: calcScaling(0.03, 0.003, skill, 'curved') * base.getHP(true),
         })
       if (form.fx_c6)
         base.ULT_F_DMG.push({

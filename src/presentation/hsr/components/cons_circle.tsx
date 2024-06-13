@@ -116,7 +116,7 @@ export const ConsCircle = observer(
             </Tooltip>
           </div>
           <div className="relative flex items-center justify-center h-12 -z-50">
-            <p className="w-1/2 px-1 text-lg font-bold text-center">{`${char?.name}'s Eidonlons`}</p>
+            <p className="w-1/2 px-1 text-lg font-bold text-center">{`${char?.name}'s Eidolons`}</p>
             <div
               className={classNames(
                 'absolute -translate-x-1/2 -translate-y-1/2 rounded-full w-[200px] h-[200px] ring top-1/2 left-1/2 bg-opacity-0 ring-opacity-50 pointer-events-none',

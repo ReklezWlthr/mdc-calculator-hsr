@@ -29,7 +29,7 @@ module.exports = {
           lightning: '#d376f0',
           imaginary: '#ffd438',
           fire: '#ff5347',
-          ice: '#00b0f0',
+          ice: '#4dc9ff',
           quantum: '#6563ff',
         },
       },

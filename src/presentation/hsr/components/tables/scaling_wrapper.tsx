@@ -100,9 +100,9 @@ export const TalentIcon = observer(
 export const ScalingWrapper = observer(({ children, icon, talent, element, level, upgraded }: ScalingWrapperProps) => {
   return (
     <div className="flex w-full">
-      <div className="flex flex-col items-center justify-center w-1/5 px-2 py-5">
+      <div className="flex flex-col items-center justify-center w-1/5 px-2 py-5 min-h-[132px]">
         <TalentIcon talent={talent} icon={icon} element={element} level={level} upgraded={upgraded} />
-        <p className="w-full mt-2 font-bold text-center">{talent?.title}</p>
+        <p className="w-full mt-2 font-bold text-center min-h-5">{talent?.title}</p>
         {level && (
           <p className="text-xs text-gray">
             Level <span className={upgraded ? 'text-blue font-bold' : 'text-gray'}>{level + upgraded}</span>

@@ -47,7 +47,8 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
   const talentFlat = stats.getValue(`${TalentPropertyMap[scaling.property]}_F_DMG`) || 0
   const talentCr = stats.getValue(`${TalentTypeMap[scaling.type]}_CR`) || 0
   const propertyCr = stats.getValue(`${TalentPropertyMap[scaling.property]}_CR`) || 0
-  const talentCd = stats.getValue(`${TalentPropertyMap[scaling.property]}_CD`) || 0
+  const talentCd = stats.getValue(`${TalentTypeMap[scaling.type]}_CD`) || 0
+  const propertyCd = stats.getValue(`${TalentPropertyMap[scaling.property]}_CD`) || 0
   const elementCd = stats.getValue(`${element.toUpperCase()}_CD`) || 0
   const elementFlat = stats.getValue(`${element.toUpperCase()}_F_DMG`) || 0
   const elementMult = stats.getValue(`${element.toUpperCase()}_MULT`) || 1
@@ -74,7 +75,8 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
       calculatorStore.getResMult(
         element as Element,
         (stats.getValue(`${element.toUpperCase()}_RES_PEN`) || 0) +
-          (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0)
+          (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0) +
+          scaling.res_pen // Counted as Elemental RES PEN
       ),
       2,
     ]),
@@ -123,7 +125,8 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     stats.getValue(StatsObjectKeys.X_CRIT_DMG) +
     (scaling.cd || 0) +
     talentCd +
-    elementCd
+    elementCd +
+    propertyCd
   const totalFlat = (scaling.flat || 0) + elementFlat + talentFlat
 
   const scalingArray = _.map(
@@ -258,7 +261,12 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
               )}
               {!!talentCd && (
                 <p className="text-xs">
-                  {scaling.property} CRIT DMG: <span className="text-desc">{toPercentage(talentCd)}</span>
+                  {scaling.type} CRIT DMG: <span className="text-desc">{toPercentage(talentCd)}</span>
+                </p>
+              )}
+              {!!propertyCd && (
+                <p className="text-xs">
+                  {scaling.property} CRIT DMG: <span className="text-desc">{toPercentage(propertyCd)}</span>
                 </p>
               )}
             </div>
@@ -290,7 +298,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
               )}
               {!!propertyCr && (
                 <p className="text-xs">
-                  {scaling.property} CRIT Rate: <span className="text-desc">{toPercentage(talentCr)}</span>
+                  {scaling.property} CRIT Rate: <span className="text-desc">{toPercentage(propertyCr)}</span>
                 </p>
               )}
             </div>

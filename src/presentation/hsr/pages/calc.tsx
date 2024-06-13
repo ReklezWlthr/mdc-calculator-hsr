@@ -72,9 +72,18 @@ export const Calculator = observer(({}: {}) => {
                   </div>
                 </div>
                 <ScalingWrapper
-                  talent={mainComputed?.BA_ALT ? main?.talents?.normal_alt : main?.talents?.normal}
+                  talent={
+                    mainComputed?.BA_ALT
+                      ? main?.talents?.[`normal_alt${calculatorStore.form[selected]?.dhil_sp}`] ||
+                        main?.talents?.normal_alt
+                      : main?.talents?.normal
+                  }
                   icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Normal${
-                    mainComputed?.BA_ALT ? '02' : ''
+                    mainComputed?.BA_ALT
+                      ? calculatorStore.form[selected]?.dhil_sp
+                        ? `0${calculatorStore.form[selected]?.dhil_sp + 1}`
+                        : '02'
+                      : ''
                   }.png`}
                   element={charData.element}
                   level={char.talents?.basic}

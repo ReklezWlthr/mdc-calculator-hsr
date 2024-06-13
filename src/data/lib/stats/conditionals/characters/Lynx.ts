@@ -251,7 +251,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           team[i].X_HP.push({
             name: 'Skill',
             source: index === i ? 'Self' : 'Lynx',
-            value: (calcScaling(0.05, 0.0025, skill, 'curved') + (c >= 6 ? 0.06 : 0)) * base.getHP(),
+            value: (calcScaling(0.05, 0.0025, skill, 'curved') + (c >= 6 ? 0.06 : 0)) * base.getHP(true),
           })
           if (c >= 4)
             team[i][Stats.ATK].push({

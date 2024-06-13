@@ -2,18 +2,22 @@ import Archeron from './characters/Archeron'
 import Argenti from './characters/Argenti'
 import Arlan from './characters/Arlan'
 import Asta from './characters/Asta'
+import Bailu from './characters/Bailu'
 import BlackSwan from './characters/BlackSwan'
 import Blade from './characters/Blade'
 import Bronya from './characters/Bronya'
 import Clara from './characters/Clara'
 import DanHeng from './characters/DanHeng'
+import DHIL from './characters/DHIL'
 import DrRatio from './characters/DrRatio'
 import FuXuan from './characters/FuXuan'
 import Gallagher from './characters/Gallagher'
 import Gepard from './characters/Gepard'
+import Guinaifen from './characters/Guinaifen'
 import Herta from './characters/Herta'
 import Himeko from './characters/Himeko'
 import Hook from './characters/Hook'
+import Jingliu from './characters/Jingliu'
 import JingYuan from './characters/JingYuan'
 import Kafka from './characters/Kafka'
 import Luka from './characters/Luka'
@@ -32,6 +36,8 @@ import Sushang from './characters/Sushang'
 import Tingyun from './characters/Tingyun'
 import Topaz from './characters/Topaz'
 import Welt from './characters/Welt'
+import Yanqing from './characters/Yanqing'
+import Yukong from './characters/Yukong'
 
 export default [
   { id: '1001', conditionals: March },
@@ -61,19 +67,19 @@ export default [
   { id: '1204', conditionals: JingYuan },
   { id: '1205', conditionals: Blade },
   { id: '1206', conditionals: Sushang },
+  { id: '1207', conditionals: Yukong },
   { id: '1208', conditionals: FuXuan },
+  { id: '1209', conditionals: Yanqing },
+  { id: '1210', conditionals: Guinaifen },
+  { id: '1211', conditionals: Bailu },
+  { id: '1212', conditionals: Jingliu },
+  { id: '1213', conditionals: DHIL },
   { id: '1301', conditionals: Gallagher },
   { id: '1302', conditionals: Argenti },
   { id: '1305', conditionals: DrRatio },
   { id: '1306', conditionals: Sparkle },
   { id: '1307', conditionals: BlackSwan },
   { id: '1308', conditionals: Archeron },
-  // { id: '10000066', conditionals: Ayato },
-  // { id: '10000081', conditionals: Kaveh },
-  // { id: '10000042', conditionals: Keqing },
-  // { id: '10000061', conditionals: Kirara },
-  // { id: '10000029', conditionals: Klee },
-  // { id: '10000056', conditionals: Sara },
   // { id: '10000065', conditionals: Kuki },
   // { id: '10000074', conditionals: Layla },
   // { id: '10000006', conditionals: Lisa },
