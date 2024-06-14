@@ -87,6 +87,7 @@ export const baseStatsObject = {
   TECHNIQUE_DMG: [] as StatsArray[],
   DOT_DMG: [] as StatsArray[],
   FUA_DMG: [] as StatsArray[],
+  ADD_DMG: [] as StatsArray[],
 
   BASIC_F_DMG: [] as StatsArray[],
   SKILL_F_DMG: [] as StatsArray[],
@@ -103,6 +104,7 @@ export const baseStatsObject = {
   ULT_CD: [] as StatsArray[],
   DOT_CD: [] as StatsArray[],
   FUA_CD: [] as StatsArray[],
+  ADD_CD: [] as StatsArray[],
 
   BASIC_DEF_PEN: [] as StatsArray[],
   SKILL_DEF_PEN: [] as StatsArray[],

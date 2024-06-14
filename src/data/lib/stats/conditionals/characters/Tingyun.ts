@@ -230,6 +230,19 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ) => {
       _.forEach(allForm, (f, i) => {
         if (f.tingyun_skill) {
+          _.forEach(
+            [team[i].BASIC_SCALING, team[i].SKILL_SCALING, team[i].ULT_SCALING, team[i].TALENT_SCALING],
+            (s) => {
+              if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
+                s.push({
+                  name: `Benediction's Additional DMG`,
+                  value: [{ scaling: calcScaling(0.2, 0.02, skill, 'curved'), multiplier: Stats.ATK }],
+                  element: Element.LIGHTNING,
+                  property: TalentProperty.ADD,
+                  type: TalentType.NONE,
+                })
+            }
+          )
           team[i].CALLBACK.push((x, d, w, all) => {
             const buff = _.min([
               calcScaling(0.25, 0.025, skill, 'curved') * x.BASE_ATK,
@@ -239,13 +252,6 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               name: 'Skill',
               source: index === i ? 'Self' : 'Tingyun',
               value: buff,
-            })
-            x.BASIC_SCALING.push({
-              name: `Benediction's Additional DMG`,
-              value: [{ scaling: calcScaling(0.2, 0.02, skill, 'curved'), multiplier: Stats.ATK }],
-              element: Element.LIGHTNING,
-              property: TalentProperty.ADD,
-              type: TalentType.NONE,
             })
             if (i !== index)
               team[index].TALENT_SCALING.push({

@@ -188,13 +188,16 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     ) => {
       const base = _.cloneDeep(x)
 
+      // For attacks that can't increase stack
+      const outroar_norm = form.outroar * calcScaling(0.06, 0.006, skill, 'curved')
+
       const righteous_heart = (hit: number, offset: number = 0) =>
         _.reduce(
           // Offset is used for adjacent attack that starts from 4th hit
           // Stack is gained AFTER the previous hit land (Start from 0)
-          Array(hit - offset).fill(form.righteous_heart + offset),
+          Array(hit - offset).fill(form.righteous_heart),
           (acc, curr, i) => {
-            const currentStacks = _.min([c >= 1 ? 10 : 6, (curr + i) * (c >= 1 ? 2 : 1)])
+            const currentStacks = _.min([c >= 1 ? 10 : 6, curr + (offset + i) * (c >= 1 ? 2 : 1)])
             const hitSplit = hit > 2 ? 1 / (hit - offset) : i ? 0.7 : 0.3 // DHIL's Base Basic ATK has 30/70 Hit Split
             return acc + currentStacks * hitSplit * (calcScaling(5, 0.5, talent, 'curved') / 100)
           },
@@ -224,6 +227,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               type: TalentType.BA,
               break: 60,
               bonus: righteous_heart(3),
+              cd: outroar_norm,
             },
           ]
           break
@@ -287,6 +291,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               type: TalentType.BA,
               break: 30,
               bonus: righteous_heart(2),
+              cd: outroar_norm,
             },
           ]
       }
@@ -311,10 +316,11 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       base.TECHNIQUE_SCALING = [
         {
           name: 'AoE',
-          value: [{ scaling: 1.2, multiplier: Stats.HP }],
+          value: [{ scaling: 1.2, multiplier: Stats.ATK }],
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
+          break: 60,
         },
       ]
 
@@ -322,10 +328,55 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         base.BA_ALT = true
       }
 
+      const r_offset = (hit: number) => _.min([form.righteous_heart + hit * (c >= 1 ? 2 : 1), c >= 1 ? 10 : 6])
+      const o_offset = (hit: number) => _.min([4, form.outroar + hit])
+
+      base.CALLBACK.push((x) => {
+        let hit = 2
+
+        switch (form.dhil_sp) {
+          case 1:
+            hit = 3
+            break
+          case 2:
+            hit = 5
+            break
+          case 3:
+            hit = 7
+            break
+        }
+
+        x.BASIC_SCALING = _.map(x.BASIC_SCALING, (item) =>
+          item.property === TalentProperty.ADD
+            ? {
+                ...item,
+                bonus: r_offset(hit) * calcScaling(0.05, 0.005, talent, 'curved'),
+                cd: o_offset(hit) * calcScaling(0.06, 0.006, skill, 'curved'),
+              }
+            : item
+        )
+        x.ULT_SCALING = _.map(x.ULT_SCALING, (item) =>
+          item.property === TalentProperty.ADD
+            ? {
+                ...item,
+                bonus: r_offset(3) * calcScaling(0.05, 0.005, talent, 'curved'),
+                cd: o_offset(0) * calcScaling(0.06, 0.006, skill, 'curved'),
+              }
+            : item
+        )
+
+        return x
+      })
+
       base.ULT_DMG.push({
         name: 'Talent',
         source: 'Self',
         value: righteous_heart(3),
+      })
+      base.ULT_CD.push({
+        name: 'Skill',
+        source: 'Self',
+        value: outroar_norm,
       })
 
       return base

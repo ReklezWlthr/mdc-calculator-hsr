@@ -36,6 +36,7 @@ import Sushang from './characters/Sushang'
 import Tingyun from './characters/Tingyun'
 import Topaz from './characters/Topaz'
 import Welt from './characters/Welt'
+import Xueyi from './characters/Xueyi'
 import Yanqing from './characters/Yanqing'
 import Yukong from './characters/Yukong'
 
@@ -74,13 +75,13 @@ export default [
   { id: '1211', conditionals: Bailu },
   { id: '1212', conditionals: Jingliu },
   { id: '1213', conditionals: DHIL },
+  { id: '1214', conditionals: Xueyi },
   { id: '1301', conditionals: Gallagher },
   { id: '1302', conditionals: Argenti },
   { id: '1305', conditionals: DrRatio },
   { id: '1306', conditionals: Sparkle },
   { id: '1307', conditionals: BlackSwan },
   { id: '1308', conditionals: Acheron },
-  // { id: '10000065', conditionals: Kuki },
   // { id: '10000074', conditionals: Layla },
   // { id: '10000006', conditionals: Lisa },
   // { id: '10000083', conditionals: Lynette },
