@@ -218,6 +218,11 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ]
 
       if (form.soulsteel) {
+        base.BASE_AGGRO.push({
+          name: 'Talent',
+          source: 'Self',
+          value: -0.6,
+        })
         base[Stats.CRIT_RATE].push({
           name: 'Talent',
           source: 'Self',

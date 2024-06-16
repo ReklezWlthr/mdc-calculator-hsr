@@ -51,7 +51,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       title: 'Tipsy Tussle',
       content: `The <b>Besotted</b> state increases the Break DMG that targets receive by {{0}}%. Every time a <b>Besotted</b> target is attacked by an ally, the attacker's HP gets restored by {{1}}.`,
       value: [
-        { base: 6, growth: 0.6, style: 'heal' },
+        { base: 6, growth: 0.6, style: 'curved' },
         { base: 80, growth: 136, style: 'pure' },
       ],
       level: talent,

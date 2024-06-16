@@ -195,12 +195,6 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         },
       ]
 
-      if (form.survival_response)
-        base[Stats.HP].push({
-          name: 'Skill',
-          source: 'Self',
-          value: calcScaling(50, 30, skill, 'flat'),
-        })
       if (form.lynx_c1)
         base[Stats.HEAL].push({
           name: 'Eidolon 1',
@@ -219,19 +213,13 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       weakness: Element[],
       broken: boolean
     ) => {
-      if (aForm.survival_response) {
-        base[Stats.HP].push({
+      if (aForm.survival_response && _.includes([PathType.DESTRUCTION, PathType.PRESERVATION], form.path))
+        base.AGGRO.push({
           name: 'Skill',
           source: 'Lynx',
-          value: calcScaling(50, 30, skill, 'flat'),
+          value: 5,
         })
-        if (_.includes([PathType.DESTRUCTION, PathType.PRESERVATION], form.path))
-          base.AGGRO.push({
-            name: 'Skill',
-            source: 'Lynx',
-            value: 5,
-          })
-      }
+
       return base
     },
     postCompute: (
@@ -252,6 +240,11 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
             name: 'Skill',
             source: index === i ? 'Self' : 'Lynx',
             value: (calcScaling(0.05, 0.0025, skill, 'curved') + (c >= 6 ? 0.06 : 0)) * base.getHP(true),
+          })
+          team[i][Stats.HP].push({
+            name: 'Skill',
+            source: index === i ? 'Self' : 'Lynx',
+            value: calcScaling(50, 30, skill, 'flat'),
           })
           if (c >= 4)
             team[i][Stats.ATK].push({

@@ -1,57 +1,54 @@
 import _ from 'lodash'
-import { Weapons } from '@src/data/db/weapons'
+import { LightCones } from '@src/data/db/lightcone'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { useParams } from '@src/core/hooks/useParams'
 import { useMemo } from 'react'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
-import { StatIcons, Stats } from '@src/domain/constant'
+import { PathType, StatIcons, Stats } from '@src/domain/constant'
 import classNames from 'classnames'
 import { findCharacter } from '@src/core/utils/finder'
 import getConfig from 'next/config'
+import { getPathImage } from '@src/core/utils/fetcher'
 
 const { publicRuntimeConfig } = getConfig()
 
-interface WeaponModalProps {
+interface LCModalProps {
   index: number
 }
 
-export const WeaponModal = observer(({ index }: WeaponModalProps) => {
+export const LCModal = observer(({ index }: LCModalProps) => {
   const { teamStore, modalStore } = useStore()
   const { setParams, params } = useParams({
     searchWord: '',
-    stat: [],
+    path: [findCharacter(teamStore.characters[index]?.cId)?.path],
+    rarity: [],
   })
 
   const filteredWeapon = useMemo(
     () =>
-      _.filter(
-        Weapons.sort((a, b) => a.name.localeCompare(b.name)),
-        (item) => {
-          const regex = new RegExp(params.searchWord, 'i')
-          const nameMatch = item.name.match(regex)
-          const data = findCharacter(teamStore.characters[index]?.cId)
-          const typeMatch = data?.weapon === item.type
-          const statMatch = _.size(params.stat) ? _.includes(params.stat, item.ascStat) : true
+      _.filter(_.orderBy(LightCones, ['rarity', 'name'], ['desc', 'asc']), (item) => {
+        const regex = new RegExp(params.searchWord, 'i')
+        const nameMatch = item.name.match(regex)
+        const typeMatch = _.size(params.path) ? _.includes(params.path, item.type) : true
 
-          return nameMatch && typeMatch && statMatch
-        }
-      ),
+        return nameMatch && typeMatch
+      }),
     [params]
   )
 
-  const FilterIcon = ({ stat }: { stat: Stats }) => {
-    const checked = _.includes(params.stat, stat)
+  const FilterIcon = ({ path }: { path: PathType }) => {
+    const checked = _.includes(params.path, path)
     return (
       <div
         className={classNames('w-8 h-8 duration-200 rounded-full cursor-pointer hover:bg-primary-lighter', {
           'bg-primary-light': checked,
         })}
-        onClick={() => setParams({ stat: checked ? _.without(params.stat, stat) : [...params.stat, stat] })}
-        title={stat}
+        onClick={() => setParams({ path: checked ? _.without(params.path, path) : [...params.path, path] })}
+        title={path}
       >
-        <img src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[stat]}`} className="p-1" />
+        <img src={getPathImage(path)} className="p-1" />
       </div>
     )
   }
@@ -68,14 +65,13 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
           />
         </div>
         <div className="flex gap-2">
-          <FilterIcon stat={Stats.P_HP} />
-          <FilterIcon stat={Stats.P_ATK} />
-          <FilterIcon stat={Stats.P_DEF} />
-          <FilterIcon stat={Stats.EM} />
-          <FilterIcon stat={Stats.ER} />
-          <FilterIcon stat={Stats.CRIT_RATE} />
-          <FilterIcon stat={Stats.CRIT_DMG} />
-          <FilterIcon stat={Stats.PHYSICAL_DMG} />
+          <FilterIcon path={PathType.DESTRUCTION} />
+          <FilterIcon path={PathType.HUNT} />
+          <FilterIcon path={PathType.ERUDITION} />
+          <FilterIcon path={PathType.HARMONY} />
+          <FilterIcon path={PathType.NIHILITY} />
+          <FilterIcon path={PathType.PRESERVATION} />
+          <FilterIcon path={PathType.ABUNDANCE} />
         </div>
       </div>
       <div className="grid w-full grid-cols-9 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
@@ -91,15 +87,15 @@ export const WeaponModal = observer(({ index }: WeaponModalProps) => {
           >
             <div className="relative">
               <img
-                src={`${publicRuntimeConfig.BASE_PATH}/icons/${StatIcons[item.ascStat]}`}
+                src={getPathImage(item.type)}
                 className="absolute p-1 rounded-full w-7 h-7 top-2 left-2 bg-primary"
-                title={item.ascStat}
+                title={item.type}
               />
               <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
                 <RarityGauge rarity={item.rarity} />
               </div>
               <img
-                src={`https://enka.network/ui/hsr/${item.icon || 'UI_EquipIcon_Sword_Blunt'}.png`}
+                src={`https://api.hakush.in/hsr/UI/lightconemediumicon/${item.id}.webp`}
                 className="object-contain rounded-t-lg bg-primary-darker aspect-square"
               />
             </div>

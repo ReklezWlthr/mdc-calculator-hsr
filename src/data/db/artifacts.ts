@@ -19,8 +19,16 @@ export const RelicSets: IArtifact[] = [
     bonus: [{ stat: Stats.P_ATK, value: 0.12 }],
     bonusAdd: [],
     add: (base) => {
-      base[Stats.P_ATK] += 0.06
-      base.BASIC_DMG += 0.1
+      base[Stats.P_ATK].push({
+        name: '4-Piece Bonus',
+        source: 'Musketeer of Wild Wheat',
+        value: 0.06,
+      })
+      base.BASIC_DMG.push({
+        name: '4-Piece Bonus',
+        source: 'Musketeer of Wild Wheat',
+        value: 0.1,
+      })
       return base
     },
     desc: [`ATK increases by 12%.`, `The wearer's SPD increases by 6% and Basic ATK DMG increases by 10%.`],
@@ -31,8 +39,12 @@ export const RelicSets: IArtifact[] = [
     icon: '71002',
     bonus: [{ stat: Stats.P_DEF, value: 0.15 }],
     bonusAdd: [],
-    half: (base) => {
-      base.SHIELD += 0.6
+    add: (base) => {
+      base.SHIELD.push({
+        name: '2-Piece Bonus',
+        source: 'Knight of Purity Palace',
+        value: 0.2,
+      })
       return base
     },
     desc: [
@@ -69,7 +81,11 @@ export const RelicSets: IArtifact[] = [
     bonus: [],
     bonusAdd: [],
     half: (base) => {
-      base.DMG_REDUCTION.push(0.08)
+      base.DMG_REDUCTION.push({
+        name: '4-Piece Bonus',
+        source: 'Guard of Wuthering Snow',
+        value: 0.08,
+      })
       return base
     },
     desc: [
@@ -84,7 +100,11 @@ export const RelicSets: IArtifact[] = [
     bonus: [{ stat: Stats.FIRE_DMG, value: 0.1 }],
     bonusAdd: [],
     add: (base) => {
-      base.SKILL_DMG += 0.12
+      base.SKILL_DMG.push({
+        name: '4-Piece Bonus',
+        source: 'Firesmith of Lava-Forging',
+        value: 0.12,
+      })
       return base
     },
     desc: [
@@ -99,9 +119,12 @@ export const RelicSets: IArtifact[] = [
     bonus: [{ stat: Stats.QUANTUM_DMG, value: 0.1 }],
     bonusAdd: [],
     add: (base) => {
-      base.DEF_PEN += 0.1
       base.CALLBACK.push((x, b, w) => {
-        if (_.includes(w, Element.QUANTUM)) x.DEF_PEN += 0.1
+        x.DEF_PEN.push({
+          name: '4-Piece Bonus',
+          source: 'Genius of Brilliant Stars',
+          value: _.includes(w, Element.QUANTUM) ? 0.2 : 0.1,
+        })
         return x
       })
       return base
@@ -139,10 +162,6 @@ export const RelicSets: IArtifact[] = [
     icon: '71010',
     bonus: [{ stat: Stats.BE, value: 0.16 }],
     bonusAdd: [{ stat: Stats.BE, value: 0.16 }],
-    add: (base) => {
-      base[Stats.BE] += 0.16
-      return base
-    },
     desc: [
       `Increases Break Effect by 16%.`,
       `Increases the wearer's Break Effect by 16%. After the wearer inflicts Weakness Break on an enemy, regenerates 3 Energy.`,
@@ -156,8 +175,18 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [],
     add: (base) => {
       base.CALLBACK.push((x, d) => {
-        if (_.sum(_.values(d))) x[Stats.CRIT_DMG] += 0.2
-        if (d[DebuffTypes.IMPRISON]) x[Stats.CRIT_DMG] += 0.2
+        if (_.sum(_.values(d)))
+          x[Stats.CRIT_RATE].push({
+            name: '4-Piece Bonus',
+            source: 'Wastelander of Banditry Desert',
+            value: 0.1,
+          })
+        if (d[DebuffTypes.IMPRISON])
+          x[Stats.CRIT_DMG].push({
+            name: '4-Piece Bonus',
+            source: 'Wastelander of Banditry Desert',
+            value: 0.2,
+          })
         return x
       })
       return base
@@ -196,7 +225,11 @@ export const RelicSets: IArtifact[] = [
     bonus: [],
     bonusAdd: [],
     half: (base) => {
-      base.FUA_DMG += 0.2
+      base.FUA_DMG.push({
+        name: '2-Piece Bonus',
+        source: 'The Ashblazing Grand Duke',
+        value: 0.2,
+      })
       return base
     },
     desc: [
@@ -218,7 +251,12 @@ export const RelicSets: IArtifact[] = [
           ),
           (item) => item.count
         )
-        if (count) base.DEF_PEN += 0.06 * _.min([count, 3])
+        if (count)
+          base.DEF_PEN.push({
+            name: '4-Piece Bonus',
+            source: 'Prisoner in Deep Confinement',
+            value: 0.06 * _.min([count, 3]),
+          })
         return x
       })
       return base
@@ -236,8 +274,18 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [{ stat: Stats.CRIT_RATE, value: 0.04 }],
     add: (base) => {
       base.CALLBACK.push((x, d) => {
-        if (_.sum(_.values(d)) >= 3) x[Stats.CRIT_DMG] += 0.12
-        else if (_.sum(_.values(d)) > 2) x[Stats.CRIT_DMG] += 0.8
+        if (_.sum(_.values(d)) >= 3)
+          x[Stats.CRIT_DMG].push({
+            name: '4-Piece Bonus',
+            source: 'Pioneer Diver of Dead Waters',
+            value: 0.12,
+          })
+        else if (_.sum(_.values(d)) >= 2)
+          x[Stats.CRIT_DMG].push({
+            name: '4-Piece Bonus',
+            source: 'Pioneer Diver of Dead Waters',
+            value: 0.12,
+          })
         return x
       })
       return base
@@ -266,8 +314,18 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [{ stat: Stats.BE, value: 0.16 }],
     add: (base) => {
       base.CALLBACK.push((x: StatsObject) => {
-        if (x[Stats.BE] >= 2.5) x.SUPER_BREAK_DEF_PEN += 0.15
-        if (x[Stats.BE] >= 1.5) x.BREAK_DEF_PEN += 0.1
+        if (x.getValue(Stats.BE) >= 2.5)
+          x.SUPER_BREAK_DEF_PEN.push({
+            name: '4-Piece Bonus',
+            source: 'Iron Cavalry Against the Scourge',
+            value: 0.15,
+          })
+        if (x.getValue(Stats.BE) >= 1.5)
+          x.BREAK_DEF_PEN.push({
+            name: '4-Piece Bonus',
+            source: 'Iron Cavalry Against the Scourge',
+            value: 0.1,
+          })
         return x
       })
       return base
@@ -319,7 +377,11 @@ export const PlanarSets: IArtifact[] = [
     bonusAdd: [],
     half: (base) => {
       base.CALLBACK.push((x) => {
-        x[Stats.ATK] += _.min([0.25 * x[Stats.EHR], 0.25])
+        x[Stats.ATK].push({
+          name: '2-Piece Bonus',
+          source: 'Pan-Cosmic Commercial Enterprise',
+          value: _.min([0.25 * x.getValue(Stats.EHR), 0.25]),
+        })
         return x
       })
       return base
@@ -356,9 +418,17 @@ export const PlanarSets: IArtifact[] = [
     bonusAdd: [],
     half: (base) => {
       base.CALLBACK.push((x) => {
-        if (x[Stats.CRIT_RATE] >= 0.5) {
-          x.FUA_DMG += 0.15
-          x.ULT_DMG += 0.15
+        if (x.getValue(Stats.CRIT_RATE) >= 0.5) {
+          x.FUA_DMG.push({
+            name: '2-Piece Bonus',
+            source: 'Inert Salsotto',
+            value: 0.15,
+          })
+          x.ULT_DMG.push({
+            name: '2-Piece Bonus',
+            source: 'Inert Salsotto',
+            value: 0.15,
+          })
         }
         return x
       })
@@ -396,9 +466,17 @@ export const PlanarSets: IArtifact[] = [
     bonusAdd: [],
     half: (base) => {
       base.CALLBACK.push((x) => {
-        if (x[Stats.CRIT_RATE] >= 0.7) {
-          x.BASIC_DMG += 0.2
-          x.SKILL_DMG += 0.2
+        if (x.getValue(Stats.CRIT_RATE) >= 0.7) {
+          x.BASIC_DMG.push({
+            name: '2-Piece Bonus',
+            source: 'Rutilant Arena',
+            value: 0.2,
+          })
+          x.SKILL_DMG.push({
+            name: '2-Piece Bonus',
+            source: 'Rutilant Arena',
+            value: 0.2,
+          })
         }
         return x
       })
@@ -426,8 +504,18 @@ export const PlanarSets: IArtifact[] = [
     bonusAdd: [],
     half: (base) => {
       base.CALLBACK.push((x) => {
-        if (x.getSpd() >= 1.35) x[Stats.ALL_DMG] += 0.12
-        if (x.getSpd() >= 1.6) x[Stats.ALL_DMG] += 0.06
+        if (x.getSpd() >= 1.35)
+          x[Stats.ALL_DMG].push({
+            name: '2-Piece Bonus',
+            source: 'Firmament Frontline: Glamoth',
+            value: 0.12,
+          })
+        if (x.getSpd() >= 1.6)
+          x[Stats.ALL_DMG].push({
+            name: '2-Piece Bonus',
+            source: 'Firmament Frontline: Glamoth',
+            value: 0.06,
+          })
         return x
       })
       return base

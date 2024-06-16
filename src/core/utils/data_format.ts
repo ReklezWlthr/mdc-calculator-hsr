@@ -33,11 +33,10 @@ export const getBaseStat = (base: number, level: number = 1, ascension: number =
   return base * (1 + 0.4 * ascension) + growth * (level - 1)
 }
 
-export const getWeaponBase = (tier: number, level: number = 0, ascension: number = 0, rarity: number = 1) => {
-  // const base = WeaponScaling[rarity]?.base?.[tier - 1 || 0]
-  // const ascBonus = WeaponScaling[rarity]?.ascension?.[_.min([rarity === 1 ? 4 : 6, ascension])]
-  // const scaling = WeaponScaling[_.max([rarity, 3])]?.level?.[tier || 2]?.[_.min([rarity === 1 ? 70 : 90, level]) - 1]
-  // return base * scaling + ascBonus
+export const getWeaponBase = (base: number, level: number = 0, ascension: number = 0) => {
+  if (!base) return 0
+  const growth = base * (3 / 20)
+  return base * (1 + (ascension >= 1 ? 1.2 : 0) + (1.6 * (ascension - 1))) + growth * (level - 1)
 }
 
 export const getWeaponBonus = (base: number, level: number) => {

@@ -19,7 +19,7 @@ import { StatBlock } from '../components/stat_block'
 import { calculateFinal, calculateOutOfCombat } from '@src/core/utils/calculator'
 import { baseStatsObject } from '@src/data/lib/stats/baseConstant'
 import { RelicBlock } from '../components/relic_block'
-import { WeaponBlock } from '../components/weapon_block'
+import { LCBlock } from '../components/lc_block'
 import { SetToolTip } from './team_setup'
 import { getSetCount } from '@src/core/utils/data_format'
 import { ImportModal } from '../components/import_modal'
@@ -306,7 +306,7 @@ export const ImportExport = observer(() => {
                 <StatBlock index={selected} stat={stats} />
               </div>
               <div className="w-1/5 space-y-5">
-                <WeaponBlock {...char?.equipments?.weapon} />
+                <LCBlock {...char?.equipments?.weapon} />
                 <RelicBlock
                   index={selected}
                   piece={5}

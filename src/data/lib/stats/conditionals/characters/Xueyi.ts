@@ -92,7 +92,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Deva, Enthralled`,
+      title: `E6: Saṃsāra, Mastered`,
       content: `The max stack limit for <b>Karma</b> decreases to <span class="text-desc">6</span>.`,
     },
   }
@@ -101,7 +101,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     {
       type: 'number',
       id: 'xueyi_ult',
-      text: `Ultimate Toughness DMG Dealt`,
+      text: `Ult Toughness DMG Dealt`,
       ...talents.ult,
       show: true,
       default: 120,

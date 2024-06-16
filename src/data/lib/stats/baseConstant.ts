@@ -10,6 +10,14 @@ export interface StatsArray {
 
 export const baseStatsObject = {
   // Base Stats
+  BASE_ATK_C: 0,
+  BASE_HP_C: 0,
+  BASE_DEF_C: 0,
+
+  BASE_ATK_L: 0,
+  BASE_HP_L: 0,
+  BASE_DEF_L: 0,
+
   BASE_ATK: 0,
   BASE_HP: 0,
   BASE_DEF: 0,
@@ -34,6 +42,7 @@ export const baseStatsObject = {
 
   X_HP: [] as StatsArray[], // For Fu Xuan and Lynx
   X_CRIT_DMG: [] as StatsArray[], // For Sparkle and Bronya, will not be used recursively
+  X_ATK: [] as StatsArray[], // For Robin
 
   // DMG Bonuses
   [Stats.PHYSICAL_DMG]: [] as StatsArray[],
@@ -76,6 +85,15 @@ export const baseStatsObject = {
   QUANTUM_RES_PEN: [] as StatsArray[],
   IMAGINARY_RES_PEN: [] as StatsArray[],
 
+  ALL_TYPE_RES_RED: [] as StatsArray[],
+  PHYSICAL_RES_RED: [] as StatsArray[],
+  FIRE_RES_RED: [] as StatsArray[],
+  ICE_RES_RED: [] as StatsArray[],
+  LIGHTNING_RES_RED: [] as StatsArray[],
+  WIND_RES_RED: [] as StatsArray[],
+  QUANTUM_RES_RED: [] as StatsArray[],
+  IMAGINARY_RES_RED: [] as StatsArray[],
+
   // RES
   ALL_TYPE_RES: [] as StatsArray[],
 
@@ -117,6 +135,8 @@ export const baseStatsObject = {
   BREAK_DMG: [] as StatsArray[],
   SUPER_BREAK_DMG: [] as StatsArray[],
 
+  SUPER_BREAK_MULT: [] as StatsArray[],
+
   // Mitigation
   DMG_REDUCTION: [] as StatsArray[],
   AGGRO: [] as StatsArray[],
@@ -134,8 +154,12 @@ export const baseStatsObject = {
   DOT_SCALING: [] as IScaling[],
   WIND_SHEAR_STACK: 0,
 
-  getAtk: function () {
-    return this.BASE_ATK * (1 + _.sumBy(this[Stats.P_ATK], 'value')) + _.sumBy(this[Stats.ATK], 'value')
+  getAtk: function (exclude?: boolean) {
+    return (
+      this.BASE_ATK * (1 + _.sumBy(this[Stats.P_ATK], 'value')) +
+      _.sumBy(this[Stats.ATK], 'value') +
+      (exclude ? 0 : this.getValue('X_ATK'))
+    )
   },
   getHP: function (exclude?: boolean) {
     return (
@@ -145,14 +169,16 @@ export const baseStatsObject = {
     )
   },
   getDef: function () {
-    return this.BASE_DEF * (1 + _.sumBy(this[Stats.P_DEF], 'value')) + _.sumBy(this[Stats.ATK], 'value')
+    return this.BASE_DEF * (1 + _.sumBy(this[Stats.P_DEF], 'value')) + _.sumBy(this[Stats.DEF], 'value')
   },
   getSpd: function () {
     return this.BASE_SPD * (1 + _.sumBy(this[Stats.P_SPD], 'value')) + _.sumBy(this[Stats.SPD], 'value')
   },
   getValue: function (key: string) {
-    // console.log(this[key])
     return _.sumBy(this[key], 'value')
+  },
+  getDmgRed: function () {
+    return _.min([1 - _.reduce(this.DMG_REDUCTION, (acc, curr) => acc * (1 - curr.value), 1), 0.99])
   },
 
   CALLBACK: [] as ((
@@ -166,6 +192,8 @@ export const baseStatsObject = {
   SKILL_ALT: false,
   ULT_ALT: false,
   TALENT_ALT: false,
+
+  SUPER_BREAK: false,
 }
 
 export const TalentTypeMap = {

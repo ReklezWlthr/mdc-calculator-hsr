@@ -8,7 +8,7 @@ import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { Dispatch, SetStateAction, useState } from 'react'
-import { WeaponTooltip } from './weapon_block'
+import { LCTooltip } from './lc_block'
 import { findCharacter } from '@src/core/utils/finder'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 
@@ -62,7 +62,7 @@ export const WeaponConditionalBlock = observer(
                     key={content.id + (content.owner || content.index)}
                   >
                     <div className="col-span-6">
-                      <WeaponTooltip
+                      <LCTooltip
                         wId={_.split(content.id, '_')[0]}
                         refinement={
                           teamStore.characters[content.owner || content.index]?.equipments?.weapon?.refinement
@@ -73,7 +73,7 @@ export const WeaponConditionalBlock = observer(
                           {content.owner && `${findCharacter(teamStore.characters[content.owner]?.cId)?.name}: `}
                           {content.text}
                         </p>
-                      </WeaponTooltip>
+                      </LCTooltip>
                     </div>
                     <div className={classNames('col-span-2 text-center', content.debuff ? 'text-red' : 'text-blue')}>
                       {content.debuff ? 'Debuff' : 'Buff'}

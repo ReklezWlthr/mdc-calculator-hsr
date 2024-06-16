@@ -37,6 +37,7 @@ export interface IScaling {
   overrideIndex?: number
   dotType?: DebuffTypes
   cap?: { scaling: number; multiplier: Stats; override?: number } //Bleed Cap
+  toughCap?: number
   vul?: number
 }
 

@@ -222,7 +222,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           x.X_HP.push({
             name: `Skill`,
             source: 'Fu Xuan',
-            value: calcScaling(0.03, 0.003, skill, 'curved') * all[index].getHP(),
+            value: calcScaling(0.03, 0.003, skill, 'curved') * all[index].getHP(true),
           })
           return x
         })

@@ -9,6 +9,7 @@ import { StatsObject, StatsObjectKeys, TalentPropertyMap } from '@src/data/lib/s
 import { TalentTypeMap } from '../../../../data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { findCharacter } from '@src/core/utils/finder'
+import { BreakBaseLevel, BreakElementMult } from '@src/domain/scaling'
 
 interface ScalingSubRowsProps {
   scaling: IScaling
@@ -49,6 +50,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
   const propertyCr = stats.getValue(`${TalentPropertyMap[scaling.property]}_CR`) || 0
   const talentCd = stats.getValue(`${TalentTypeMap[scaling.type]}_CD`) || 0
   const propertyCd = stats.getValue(`${TalentPropertyMap[scaling.property]}_CD`) || 0
+  const typeCd = stats.getValue(`${TalentTypeMap[scaling.type]}_CD`) || 0
   const elementCd = stats.getValue(`${element.toUpperCase()}_CD`) || 0
   const elementFlat = stats.getValue(`${element.toUpperCase()}_F_DMG`) || 0
   const elementMult = stats.getValue(`${element.toUpperCase()}_MULT`) || 1
@@ -111,13 +113,22 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     (scaling.flat || 0) +
     elementFlat +
     talentFlat
+  const breakElementMult = BreakElementMult[scaling.element]
+  const breakLevel = BreakBaseLevel[teamStore.characters[index]?.level - 1]
+  const toughnessMult = 0.5 * (_.min([420, scaling.toughCap || 420]) / 120)
+  const breakRaw = breakElementMult * breakLevel * toughnessMult
   const cap = scaling.cap
     ? scaling.cap?.scaling *
       (statForScale[scaling.cap?.multiplier] +
         (scaling.cap?.multiplier === Stats.HP ? stats.getValue(StatsObjectKeys.X_HP) : 0))
     : 0
   const capped = scaling.cap ? cap < raw : false
-  const dmg = (capped ? cap : raw) * (1 + bonusDMG) * (scaling.multiplier || 1) * elementMult * enemyMod
+  const dmg =
+    (capped ? cap : scaling.property === TalentProperty.BREAK ? breakRaw : raw) *
+    (1 + (scaling.property === TalentProperty.BREAK ? stats.getValue(Stats.BE) : bonusDMG)) *
+    (scaling.multiplier || 1) *
+    elementMult *
+    enemyMod
 
   const totalCr = _.max([_.min([stats.getValue(Stats.CRIT_RATE) + (scaling.cr || 0) + talentCr + propertyCr, 1]), 0])
   const totalCd =
@@ -126,9 +137,11 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     (scaling.cd || 0) +
     talentCd +
     elementCd +
-    propertyCd
+    propertyCd +
+    typeCd
   const totalFlat = (scaling.flat || 0) + elementFlat + talentFlat
 
+  // String Construct
   const scalingArray = _.map(
     capped ? [scaling.cap] : scaling.value,
     (item) =>
@@ -142,6 +155,11 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
       }<span class="mx-1"> \u{00d7} </span><b>${toPercentage(item.scaling, 2)}</b>)</span>`
   )
   const baseScaling = _.join(scalingArray, ' + ')
+  const baseBreakScaling = `(<b class="${
+    ElementColor[scaling.element]
+  }">${breakElementMult}</b> <i class="text-[10px]">ELEMENT</i> \u{00d7} <b>${_.round(
+    breakLevel
+  ).toLocaleString()}</b> <i class="text-[10px]">BASE</i> \u{00d7} <b>${toughnessMult}</b> <i class="text-[10px]">TOUGHNESS</i>)`
   const shouldWrap = (!!totalFlat || scaling.value.length > 1) && !!_.size(scaling.value)
   const baseWithFlat = totalFlat
     ? baseScaling
@@ -151,8 +169,14 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
 
   const formulaString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(
     dmg
-  ).toLocaleString()}</b> = ${shouldWrap ? `(${baseWithFlat})` : baseWithFlat}${
-    bonusDMG > 0 ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(bonusDMG)}</b>)` : ''
+  ).toLocaleString()}</b> = ${
+    scaling.property === TalentProperty.BREAK ? baseBreakScaling : shouldWrap ? `(${baseWithFlat})` : baseWithFlat
+  }${
+    (scaling.property === TalentProperty.BREAK ? stats.getValue(Stats.BE) > 0 : bonusDMG > 0)
+      ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(
+          scaling.property === TalentProperty.BREAK ? stats.getValue(Stats.BE) : bonusDMG
+        )}</b>)`
+      : ''
   }${scaling.multiplier > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(scaling.multiplier, 2)}</b>` : ''}${
     elementMult > 1 ? ` \u{00d7} <b class="text-amber-400">${toPercentage(elementMult, 2)}</b>` : ''
   }${
@@ -204,13 +228,23 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     ],
     scaling.property
   )
+  const toughness = scaling.break * (1 + stats.getValue(StatsObjectKeys.BREAK_EFF))
 
   return (
     <div className="grid items-center grid-cols-9 gap-2 pr-2">
       <p className="col-span-2 text-center">{scaling.property}</p>
       <p className={classNames('col-span-1 text-center', ElementColor[element])}>{element}</p>
       <Tooltip
-        title={scaling.name}
+        title={
+          <div className="flex items-center justify-between">
+            <p>{scaling.name}</p>
+            {!!toughness && (
+              <p className="text-xs font-normal">
+                Toughness Damage: <span className="text-desc">{_.round(toughness, 1).toLocaleString()}</span>
+              </p>
+            )}
+          </div>
+        }
         body={
           <div className="space-y-1">
             <p dangerouslySetInnerHTML={{ __html: formulaString }} />
@@ -267,6 +301,11 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
               {!!propertyCd && (
                 <p className="text-xs">
                   {scaling.property} CRIT DMG: <span className="text-desc">{toPercentage(propertyCd)}</span>
+                </p>
+              )}
+              {!!typeCd && (
+                <p className="text-xs">
+                  {scaling.type} CRIT DMG: <span className="text-desc">{toPercentage(typeCd)}</span>
                 </p>
               )}
             </div>

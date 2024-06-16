@@ -29,8 +29,8 @@ export const StatBlock = observer(({ index, stat }: StatBlockProps) => {
         <div className="flex flex-col items-end shrink-0">
           <p className="font-normal text-gray">{_.round(base + bonus, title === 'SPD' ? 1 : 0).toLocaleString()}</p>
           <p className="font-normal text-neutral-400 text-[9px]">
-            {_.round(base).toLocaleString()}
-            <span className="text-blue">{` +${_.round(bonus, title === 'SPD' ? 1 : 0).toLocaleString()}`}</span>
+            {_.floor(base).toLocaleString()}
+            <span className="text-blue">{` +${_.floor(bonus, title === 'SPD' ? 1 : 0).toLocaleString()}`}</span>
           </p>
         </div>
       </div>

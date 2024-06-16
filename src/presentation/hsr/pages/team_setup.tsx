@@ -4,7 +4,7 @@ import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import classNames from 'classnames'
 import { StatBlock } from '../components/stat_block'
-import { WeaponBlock } from '../components/weapon_block'
+import { LCBlock } from '../components/lc_block'
 import { RelicBlock } from '../components/relic_block'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
@@ -163,8 +163,8 @@ export const TeamSetup = observer(() => {
   return (
     <div className="w-full overflow-y-auto">
       <div className="flex justify-center w-full gap-5 p-5 max-w-[1240px] mx-auto">
-        <div className="w-1/3">
-          <div className="flex justify-center w-full gap-4 pt-1 pb-3">
+        <div className="w-1/3 space-y-3">
+          <div className="flex justify-center w-full gap-4 pt-1">
             {_.map(teamStore?.characters, (item, index) => {
               return (
                 <CharacterSelect
@@ -177,7 +177,7 @@ export const TeamSetup = observer(() => {
             })}
           </div>
           <CharacterBlock index={selected} />
-          <div className="h-5" />
+          <LCBlock index={selected} {...teamStore.characters[selected]?.equipments?.weapon} />
           <StatBlock index={selected} stat={stats} />
         </div>
         <div className="w-1/5 space-y-5">
@@ -195,12 +195,15 @@ export const TeamSetup = observer(() => {
                   level={char?.talents?.basic}
                   showUpgrade
                 />
-                <SelectInput
-                  value={char?.talents?.basic?.toString()}
-                  onChange={(value) => teamStore.setTalentLevel(selected, 'basic', parseInt(value))}
-                  options={basicLevels}
-                  style="w-14"
-                />
+                <div>
+                  <p className="text-xs text-primary-lighter">Basic ATK</p>
+                  <SelectInput
+                    value={char?.talents?.basic?.toString()}
+                    onChange={(value) => teamStore.setTalentLevel(selected, 'basic', parseInt(value))}
+                    options={basicLevels}
+                    style="w-14"
+                  />
+                </div>
               </div>
               <div className="flex items-center gap-3">
                 <TalentIcon
@@ -212,12 +215,15 @@ export const TeamSetup = observer(() => {
                   level={char?.talents?.skill}
                   showUpgrade
                 />
-                <SelectInput
-                  value={char?.talents?.skill?.toString()}
-                  onChange={(value) => teamStore.setTalentLevel(selected, 'skill', parseInt(value))}
-                  options={talentLevels}
-                  style="w-14"
-                />
+                <div>
+                  <p className="text-xs text-primary-lighter">Skill</p>
+                  <SelectInput
+                    value={char?.talents?.skill?.toString()}
+                    onChange={(value) => teamStore.setTalentLevel(selected, 'skill', parseInt(value))}
+                    options={talentLevels}
+                    style="w-14"
+                  />
+                </div>
               </div>
               <div className="flex items-center gap-3">
                 <TalentIcon
@@ -229,12 +235,15 @@ export const TeamSetup = observer(() => {
                   level={char?.talents?.ult}
                   showUpgrade
                 />
-                <SelectInput
-                  value={char?.talents?.ult?.toString()}
-                  onChange={(value) => teamStore.setTalentLevel(selected, 'ult', parseInt(value))}
-                  options={talentLevels}
-                  style="w-14"
-                />
+                <div>
+                  <p className="text-xs text-primary-lighter">Ultimate</p>
+                  <SelectInput
+                    value={char?.talents?.ult?.toString()}
+                    onChange={(value) => teamStore.setTalentLevel(selected, 'ult', parseInt(value))}
+                    options={talentLevels}
+                    style="w-14"
+                  />
+                </div>
               </div>
               <div className="flex items-center gap-3">
                 <TalentIcon
@@ -246,12 +255,15 @@ export const TeamSetup = observer(() => {
                   level={char?.talents?.talent}
                   showUpgrade
                 />
-                <SelectInput
-                  value={char?.talents?.talent?.toString()}
-                  onChange={(value) => teamStore.setTalentLevel(selected, 'talent', parseInt(value))}
-                  options={talentLevels}
-                  style="w-14"
-                />
+                <div>
+                  <p className="text-xs text-primary-lighter">Talent</p>
+                  <SelectInput
+                    value={char?.talents?.talent?.toString()}
+                    onChange={(value) => teamStore.setTalentLevel(selected, 'talent', parseInt(value))}
+                    options={talentLevels}
+                    style="w-14"
+                  />
+                </div>
               </div>
               <p className="-mb-2 font-bold text-center text-white col-span-full">Ascension Passives</p>
               <div className="flex justify-around col-span-full">
@@ -262,11 +274,14 @@ export const TeamSetup = observer(() => {
                     icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_SkillTree1.png`}
                     size="w-9 h-9"
                   />
-                  <CheckboxInput
-                    checked={char?.major_traces?.a2}
-                    onClick={() => teamStore.toggleMajorTrace(selected, 'a2')}
-                    disabled={char?.ascension < 2}
-                  />
+                  <div className="flex gap-2">
+                    <p className="text-xs text-primary-lighter">A2</p>
+                    <CheckboxInput
+                      checked={char?.major_traces?.a2}
+                      onClick={() => teamStore.toggleMajorTrace(selected, 'a2')}
+                      disabled={char?.ascension < 2}
+                    />
+                  </div>
                 </div>
                 <div className="flex flex-col items-center gap-3">
                   <TalentIcon
@@ -275,11 +290,14 @@ export const TeamSetup = observer(() => {
                     icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_SkillTree2.png`}
                     size="w-9 h-9"
                   />
-                  <CheckboxInput
-                    checked={char?.major_traces?.a4}
-                    onClick={() => teamStore.toggleMajorTrace(selected, 'a4')}
-                    disabled={char?.ascension < 4}
-                  />
+                  <div className="flex gap-2">
+                    <p className="text-xs text-primary-lighter">A4</p>
+                    <CheckboxInput
+                      checked={char?.major_traces?.a4}
+                      onClick={() => teamStore.toggleMajorTrace(selected, 'a4')}
+                      disabled={char?.ascension < 4}
+                    />
+                  </div>
                 </div>
                 <div className="flex flex-col items-center gap-3">
                   <TalentIcon
@@ -288,11 +306,14 @@ export const TeamSetup = observer(() => {
                     icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_SkillTree3.png`}
                     size="w-9 h-9"
                   />
-                  <CheckboxInput
-                    checked={char?.major_traces?.a6}
-                    onClick={() => teamStore.toggleMajorTrace(selected, 'a6')}
-                    disabled={char?.ascension < 6}
-                  />
+                  <div className="flex gap-2">
+                    <p className="text-xs text-primary-lighter">A6</p>
+                    <CheckboxInput
+                      checked={char?.major_traces?.a6}
+                      onClick={() => teamStore.toggleMajorTrace(selected, 'a6')}
+                      disabled={char?.ascension < 6}
+                    />
+                  </div>
                 </div>
               </div>
               <div className="col-span-full">
@@ -314,6 +335,11 @@ export const TeamSetup = observer(() => {
               _.map(set, (item, key) => <SetToolTip item={item} set={key} type="planar" key={key} />)
             )}
           </div>
+          <div className="flex gap-x-2">
+            <PrimaryButton title="Equip Build" onClick={onOpenBuildModal} />
+            <PrimaryButton title="Save Build" onClick={onOpenSaveModal} />
+            <PrimaryButton title="Unequip All" onClick={onOpenConfirmModal} />
+          </div>
         </div>
         <div className="w-1/5 space-y-5">
           <RelicBlock index={selected} piece={1} aId={teamStore.characters[selected]?.equipments?.artifacts?.[0]} />
@@ -324,11 +350,6 @@ export const TeamSetup = observer(() => {
           <RelicBlock index={selected} piece={2} aId={teamStore.characters[selected]?.equipments?.artifacts?.[1]} />
           <RelicBlock index={selected} piece={4} aId={teamStore.characters[selected]?.equipments?.artifacts?.[3]} />
           <RelicBlock index={selected} piece={6} aId={teamStore.characters[selected]?.equipments?.artifacts?.[5]} />
-          <div className="flex gap-x-2">
-            <PrimaryButton title="Equip Build" onClick={onOpenBuildModal} />
-            <PrimaryButton title="Save Build" onClick={onOpenSaveModal} />
-            <PrimaryButton title="Unequip All" onClick={onOpenConfirmModal} />
-          </div>
         </div>
       </div>
     </div>

@@ -1,10 +1,10 @@
 import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
 import { Characters as GIChar } from '@src/data/db/characters'
-import { Weapons } from '@src/data/db/weapons'
+import { LightCones } from '@src/data/db/lightcone'
 import { DebuffTypes } from '@src/domain/conditional'
 import _ from 'lodash'
 
-export const findWeapon = (wId: string) => _.find(Weapons, (item) => item.id === wId)
+export const findLightCone = (wId: string) => _.find(LightCones, (item) => item.id === wId)
 
 export const findCharacter = (cId: string) => _.find(GIChar, (item) => item.id === cId)
 

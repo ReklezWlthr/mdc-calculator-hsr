@@ -2,21 +2,27 @@ import Acheron from './characters/Acheron'
 import Argenti from './characters/Argenti'
 import Arlan from './characters/Arlan'
 import Asta from './characters/Asta'
+import Aventurine from './characters/Aventurine'
 import Bailu from './characters/Bailu'
 import BlackSwan from './characters/BlackSwan'
 import Blade from './characters/Blade'
+import Boothill from './characters/Boothill'
 import Bronya from './characters/Bronya'
 import Clara from './characters/Clara'
 import DanHeng from './characters/DanHeng'
 import DHIL from './characters/DHIL'
 import DrRatio from './characters/DrRatio'
+import Firefly from './characters/Firefly'
 import FuXuan from './characters/FuXuan'
 import Gallagher from './characters/Gallagher'
 import Gepard from './characters/Gepard'
 import Guinaifen from './characters/Guinaifen'
+import Hanya from './characters/Hanya'
 import Herta from './characters/Herta'
 import Himeko from './characters/Himeko'
+import HMC from './characters/HMC'
 import Hook from './characters/Hook'
+import Huohuo from './characters/Huohuo'
 import Jingliu from './characters/Jingliu'
 import JingYuan from './characters/JingYuan'
 import Kafka from './characters/Kafka'
@@ -24,9 +30,12 @@ import Luka from './characters/Luka'
 import Luocha from './characters/Luocha'
 import Lynx from './characters/Lynx'
 import March from './characters/March'
+import Misha from './characters/Misha'
 import Natasha from './characters/Natasha'
 import Pela from './characters/Pela'
 import Qingque from './characters/Qingque'
+import Robin from './characters/Robin'
+import RuanMei from './characters/RuanMei'
 import Sampo from './characters/Sampo'
 import Seele from './characters/Seele'
 import Serval from './characters/Serval'
@@ -76,21 +85,21 @@ export default [
   { id: '1212', conditionals: Jingliu },
   { id: '1213', conditionals: DHIL },
   { id: '1214', conditionals: Xueyi },
+  { id: '1215', conditionals: Hanya },
+  { id: '1217', conditionals: Huohuo },
   { id: '1301', conditionals: Gallagher },
   { id: '1302', conditionals: Argenti },
+  { id: '1303', conditionals: RuanMei },
+  { id: '1304', conditionals: Aventurine },
   { id: '1305', conditionals: DrRatio },
   { id: '1306', conditionals: Sparkle },
   { id: '1307', conditionals: BlackSwan },
   { id: '1308', conditionals: Acheron },
-  // { id: '10000074', conditionals: Layla },
-  // { id: '10000006', conditionals: Lisa },
-  // { id: '10000083', conditionals: Lynette },
-  // { id: '10000084', conditionals: Lyney },
-  // { id: '10000080', conditionals: Mika },
-  // { id: '10000041', conditionals: Mona },
-  // { id: '10000073', conditionals: Nahida },
-  // { id: '10000091', conditionals: Navia },
-  // { id: '10000087', conditionals: Neuvillette },
+  { id: '1309', conditionals: Robin },
+  { id: '1310', conditionals: Firefly },
+  { id: '1312', conditionals: Misha },
+  { id: '1315', conditionals: Boothill },
+  { id: '8005', conditionals: HMC },
   // { id: '10000070', conditionals: Nilou },
   // { id: '10000027', conditionals: Ningguang },
   // { id: '10000034', conditionals: Noelle },

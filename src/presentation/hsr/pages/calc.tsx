@@ -20,6 +20,7 @@ import { useCalculator } from '@src/core/hooks/useCalculator'
 import { CustomConditionalBlock } from '../components/custom_conditional_block'
 import { formatIdIcon } from '@src/core/utils/data_format'
 import { StatsModal } from '../components/stats_modal'
+import { SuperBreakSubRows } from '../components/tables/super_break_sub_rows'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
@@ -33,7 +34,10 @@ export const Calculator = observer(({}: {}) => {
   const { main, mainComputed, contents } = useCalculator()
 
   const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal />), [])
-  const onOpenStatsModal = useCallback(() => modalStore.openModal(<StatsModal stats={mainComputed} />), [mainComputed])
+  const onOpenStatsModal = useCallback(
+    () => modalStore.openModal(<StatsModal stats={mainComputed} path={charData.path} />),
+    [mainComputed, charData]
+  )
 
   return (
     <div className="w-full overflow-y-auto">
@@ -47,7 +51,7 @@ export const Calculator = observer(({}: {}) => {
                     key={`char_select_${index}`}
                     onClick={() => calculatorStore.setValue('selected', index)}
                     isSelected={index === selected}
-                    id={formatIdIcon(item.cId, settingStore.settings?.travelerGender)}
+                    id={item.cId}
                   />
                 )
               })}
@@ -92,6 +96,16 @@ export const Calculator = observer(({}: {}) => {
                   {_.map(mainComputed?.BASIC_SCALING, (item) => (
                     <ScalingSubRows key={item.name} scaling={item} />
                   ))}
+                  {mainComputed?.SUPER_BREAK && (
+                    <div className="pt-2 space-y-0.5">
+                      {_.map(
+                        _.filter(mainComputed?.BASIC_SCALING, (item) => !!item.break),
+                        (item) => (
+                          <SuperBreakSubRows key={item.name} scaling={item} />
+                        )
+                      )}
+                    </div>
+                  )}
                 </ScalingWrapper>
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
@@ -106,6 +120,16 @@ export const Calculator = observer(({}: {}) => {
                   {_.map(mainComputed?.SKILL_SCALING, (item) => (
                     <ScalingSubRows key={item.name} scaling={item} />
                   ))}
+                  {mainComputed?.SUPER_BREAK && (
+                    <div className="pt-2 space-y-0.5">
+                      {_.map(
+                        _.filter(mainComputed?.SKILL_SCALING, (item) => !!item.break),
+                        (item) => (
+                          <SuperBreakSubRows key={item.name} scaling={item} />
+                        )
+                      )}
+                    </div>
+                  )}
                 </ScalingWrapper>
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
@@ -120,6 +144,16 @@ export const Calculator = observer(({}: {}) => {
                   {_.map(mainComputed?.ULT_SCALING, (item) => (
                     <ScalingSubRows key={item.name} scaling={item} />
                   ))}
+                  {mainComputed?.SUPER_BREAK && (
+                    <div className="pt-2 space-y-0.5">
+                      {_.map(
+                        _.filter(mainComputed?.ULT_SCALING, (item) => !!item.break),
+                        (item) => (
+                          <SuperBreakSubRows key={item.name} scaling={item} />
+                        )
+                      )}
+                    </div>
+                  )}
                 </ScalingWrapper>
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
@@ -132,6 +166,16 @@ export const Calculator = observer(({}: {}) => {
                   {_.map(mainComputed?.TALENT_SCALING, (item) => (
                     <ScalingSubRows key={item.name} scaling={item} />
                   ))}
+                  {mainComputed?.SUPER_BREAK && (
+                    <div className="pt-2 space-y-0.5">
+                      {_.map(
+                        _.filter(mainComputed?.TALENT_SCALING, (item) => !!item.break),
+                        (item) => (
+                          <SuperBreakSubRows key={item.name} scaling={item} />
+                        )
+                      )}
+                    </div>
+                  )}
                 </ScalingWrapper>
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper

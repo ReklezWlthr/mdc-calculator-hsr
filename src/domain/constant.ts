@@ -125,6 +125,16 @@ export const PathMap = {
   [PathType.NIHILITY]: '/warlock.webp',
 }
 
+export const BaseAggro = {
+  [PathType.PRESERVATION]: 150,
+  [PathType.HUNT]: 75,
+  [PathType.ERUDITION]: 75,
+  [PathType.ABUNDANCE]: 100,
+  [PathType.DESTRUCTION]: 125,
+  [PathType.HARMONY]: 100,
+  [PathType.NIHILITY]: 100,
+}
+
 export enum TalentType {
   BA = 'Basic Attack',
   SKILL = 'Skill',

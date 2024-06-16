@@ -25,10 +25,22 @@ interface TalentIconProps {
   showLevel?: boolean
   showUpgrade?: boolean
   upgraded?: number
+  active?: boolean
 }
 
 export const TalentIcon = observer(
-  ({ talent, icon, element, size, tooltipSize, level, showLevel, upgraded, showUpgrade }: TalentIconProps) => {
+  ({
+    talent,
+    icon,
+    element,
+    size,
+    tooltipSize,
+    level,
+    showLevel,
+    upgraded,
+    showUpgrade,
+    active = true,
+  }: TalentIconProps) => {
     const iconColor = {
       [Element.FIRE]: 'bg-hsr-fire ring-hsr-fire',
       [Element.ICE]: 'bg-hsr-ice ring-hsr-ice',
@@ -68,14 +80,27 @@ export const TalentIcon = observer(
         style={tooltipSize || 'w-[35vw]'}
       >
         <div className="relative group">
-          <img
-            src={icon}
+          <div
             className={classNames(
-              'p-1 rounded-full bg-opacity-50 ring-2 ring-offset-2 group-hover:ring-offset-4 duration-200 ring-offset-primary-darker',
-              iconColor[element],
+              'p-1 rounded-full bg-opacity-50 ring-2 ring-offset-2 group-hover:ring-offset-4 duration-200 ring-offset-primary-darker flex justify-center items-center',
+              active ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50',
               size || 'w-12 h-12'
             )}
-          />
+          >
+            <img
+              src={icon}
+              onError={(e) => {
+                e.currentTarget.style.display = 'none'
+                e.currentTarget.nextElementSibling.className = 'block text-3xl font-bold opacity-80'
+              }}
+              onLoad={(e) => {
+                e.currentTarget.style.display = 'block'
+                e.currentTarget.nextElementSibling.className = 'hidden'
+              }}
+            />
+            <div className="hidden">?</div>
+          </div>
+
           {!!level && showLevel && (
             <div
               className={classNames(

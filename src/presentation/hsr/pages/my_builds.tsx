@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { useParams } from '@src/core/hooks/useParams'
 import { BuildBlock } from '../components/build_block'
-import { WeaponBlock } from '../components/weapon_block'
+import { LCBlock } from '../components/lc_block'
 import { useMemo, useState } from 'react'
 import { RelicBlock } from '../components/relic_block'
 
@@ -34,7 +34,7 @@ export const MyBuilds = observer(() => {
         {selected ? (
           <>
             <div className="w-1/5 space-y-5">
-              <WeaponBlock {...selectedBuild?.weapon} />
+              <LCBlock {...selectedBuild?.weapon} />
               <RelicBlock piece={5} aId={selectedBuild?.artifacts?.[4]} canEdit={false} />
             </div>
             <div className="w-1/5 space-y-5">

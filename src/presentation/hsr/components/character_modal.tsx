@@ -10,7 +10,7 @@ import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { useMemo } from 'react'
 import { DefaultWeapon } from '@src/data/stores/team_store'
 import { DefaultBuild } from '@src/data/stores/build_store'
-import { findWeapon } from '@src/core/utils/finder'
+import { findLightCone } from '@src/core/utils/finder'
 import getConfig from 'next/config'
 import { getElementImage, getPathImage } from '@src/core/utils/fetcher'
 import { formatIdIcon, formatMinorTrace } from '@src/core/utils/data_format'
@@ -30,7 +30,7 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
     hasBuild: false,
   })
 
-  const selectedWeaponData = findWeapon(teamStore.characters[index]?.equipments?.weapon?.wId)
+  const selectedWeaponData = findLightCone(teamStore.characters[index]?.equipments?.weapon?.wId)
 
   const filteredChar = useMemo(
     () =>

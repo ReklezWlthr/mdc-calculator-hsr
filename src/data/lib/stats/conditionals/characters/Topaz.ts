@@ -185,7 +185,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ]
       base.TALENT_SCALING = [
         {
-          name: 'Random Target',
+          name: 'Single Target',
           value: [
             {
               scaling:

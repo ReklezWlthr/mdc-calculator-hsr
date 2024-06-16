@@ -9,7 +9,7 @@ import {
 } from '../utils/data_format'
 import _ from 'lodash'
 import { Element, IArtifactEquip, ITeamChar, IWeaponEquip, Stats, PathType } from '@src/domain/constant'
-import { findCharacter, findWeapon } from '../utils/finder'
+import { findCharacter, findLightCone } from '../utils/finder'
 import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
 import { baseStatsObject, StatsObject } from '@src/data/lib/stats/baseConstant'
 import WeaponBonus from '@src/data/lib/stats/conditionals/weapons/weapon_bonus'
@@ -23,7 +23,7 @@ export const calculateOutOfCombat = (
 ) => {
   if (!_.size(team)) return conditionals
   const base = calculateBase(conditionals, team[selected], team[selected]?.equipments?.weapon)
-  const final = addArtifactStats(base, artifacts, findWeapon(team[selected]?.equipments?.weapon?.wId)?.type, team)
+  const final = addArtifactStats(base, artifacts, findLightCone(team[selected]?.equipments?.weapon?.wId)?.type, team)
 
   return final
 }
@@ -39,17 +39,20 @@ export const calculateFinal = (conditionals: StatsObject) => {
 
 export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon: IWeaponEquip) => {
   const character = findCharacter(char?.cId)
-  const weaponData = findWeapon(weapon?.wId)
+  const weaponData = findLightCone(weapon?.wId)
 
-  const charBaseAtk = getBaseStat(character?.stat?.baseAtk, char?.level, char?.ascension)
-  // const weaponBaseAtk = getWeaponBase(weaponData?.tier, weapon?.level, weapon?.ascension, weaponData?.rarity)
-  // const weaponSecondary = getWeaponBonus(weaponData?.baseStat, weapon?.level)
+  conditionals.BASE_ATK_C = getBaseStat(character?.stat?.baseAtk, char?.level, char?.ascension)
+  conditionals.BASE_HP_C = getBaseStat(character?.stat?.baseHp, char?.level, char?.ascension)
+  conditionals.BASE_DEF_C = getBaseStat(character?.stat?.baseDef, char?.level, char?.ascension)
+  conditionals.BASE_ATK_L = getWeaponBase(weaponData?.baseAtk, weapon?.level, weapon?.ascension)
+  conditionals.BASE_HP_L = getWeaponBase(weaponData?.baseHp, weapon?.level, weapon?.ascension)
+  conditionals.BASE_DEF_L = getWeaponBase(weaponData?.baseDef, weapon?.level, weapon?.ascension)
   const weaponBonus = _.find(WeaponBonus, (item) => item.id === weapon?.wId)
 
   // Get Base
-  conditionals.BASE_ATK = charBaseAtk
-  conditionals.BASE_HP = getBaseStat(character?.stat?.baseHp, char?.level, char?.ascension)
-  conditionals.BASE_DEF = getBaseStat(character?.stat?.baseDef, char?.level, char?.ascension)
+  conditionals.BASE_ATK = conditionals.BASE_ATK_C + conditionals.BASE_ATK_L
+  conditionals.BASE_HP = conditionals.BASE_HP_C + conditionals.BASE_HP_L
+  conditionals.BASE_DEF = conditionals.BASE_DEF_C + conditionals.BASE_DEF_L
   conditionals.BASE_SPD = character?.stat?.baseSpd
   conditionals.MAX_ENERGY = character?.stat?.energy
 
@@ -155,8 +158,8 @@ export const addArtifactStats = (
       const half = _.find(AllRelicSets, ['id', key])?.half
       _.forEach(bonuses, (item) => {
         conditionals[item.stat].push({
-          name: _.find(AllRelicSets, ['id', key])?.name,
-          source: 'Self',
+          name: '2-Piece Bonus',
+          source: _.find(AllRelicSets, ['id', key])?.name,
           value: item.value,
         })
       })

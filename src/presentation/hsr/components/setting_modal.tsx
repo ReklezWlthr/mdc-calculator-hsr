@@ -15,14 +15,14 @@ export const SettingModal = observer(() => {
       <p className="text-lg font-bold text-white">Settings</p>
       <div className="p-3 space-y-1 rounded-lg bg-primary-darker">
         <div className="flex items-center justify-between gap-x-2">
-          <p className="text-sm text-gray">Choose Your Traveler</p>
+          <p className="text-sm text-gray">Choose Your Trailblazer</p>
           <div className="flex items-center gap-2 text-xs text-desc">
-            <p>Aether</p>
+            <p>Caelus</p>
             <ToggleSwitch
               enabled={settingStore.settings.travelerGender === 'PlayerGirl'}
               onClick={(v) => settingStore.setSettingValue({ travelerGender: v ? 'PlayerGirl' : 'PlayerBoy' })}
             />
-            <p>Lumine</p>
+            <p>Stelle</p>
           </div>
         </div>
       </div>

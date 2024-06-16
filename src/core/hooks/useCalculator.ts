@@ -124,11 +124,12 @@ export const useCalculator = () => {
   // Some weapon buffs scale off character's stat so we have to calculate ones above first
   // Reactions are placed last because they only provide damage buff, not stat buffs, and heavily relies on stats
   useEffect(() => {
+    const weakness = []
     const debuffs = _.map(DebuffTypes, (v) => ({ type: v, count: 0 }))
     const preCompute = _.map(
       conditionals,
       (base, index) =>
-        base?.preCompute(baseStats[index], calculatorStore.form[index], debuffs, [], calculatorStore.broken) ||
+        base?.preCompute(baseStats[index], calculatorStore.form[index], debuffs, weakness, calculatorStore.broken) ||
         baseStats[index]
     ) // Compute all self conditionals, return stats of each char
     const preComputeShared = _.map(preCompute, (base, index) => {
@@ -148,7 +149,7 @@ export const useCalculator = () => {
               },
               calculatorStore.form[index],
               debuffs,
-              [],
+              weakness,
               calculatorStore.broken
             ) || x
       })
@@ -219,7 +220,7 @@ export const useCalculator = () => {
           postWeapon,
           calculatorStore.form,
           debuffs,
-          [],
+          weakness,
           calculatorStore.broken
         ) || postWeapon[index]
     )
@@ -227,7 +228,7 @@ export const useCalculator = () => {
     const final = _.map(postCompute, (base, index) => {
       let x = base
       _.forEach(base.CALLBACK, (cb) => {
-        x = cb(x, debuffs, [], postCompute)
+        x = cb(x, debuffs, weakness, postCompute)
       })
       return x
     })
