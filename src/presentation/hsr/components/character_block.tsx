@@ -123,13 +123,19 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
           {characterData && (
             <div className="flex items-center justify-between gap-2 px-3 pt-1">
               <div className="flex gap-0.5">
-                <div className="p-1.5 rounded-full w-11 h-11 bg-primary" title={characterData?.path}>
+                <div
+                  className="lex items-center justify-center p-1.5 rounded-full w-11 h-11 bg-primary"
+                  title={characterData?.path}
+                >
                   <img src={getPathImage(characterData?.path)} />
                 </div>
               </div>
               <RarityGauge rarity={rarity} />
               <div className="flex gap-0.5">
-                <div className="flex items-center justify-center p-1 rounded-full w-11 h-11 bg-primary" title={characterData?.element}>
+                <div
+                  className="flex items-center justify-center p-1 rounded-full w-11 h-11 bg-primary"
+                  title={characterData?.element}
+                >
                   <img src={getElementImage(characterData?.element)} />
                 </div>
               </div>

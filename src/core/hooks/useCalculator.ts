@@ -13,7 +13,7 @@ import {
   WeaponAllyConditionals,
   WeaponConditionals,
   WeaponTeamConditionals,
-} from '@src/data/lib/stats/conditionals/weapons/weapon_conditionals'
+} from '@src/data/lib/stats/conditionals/lightcones/weapon_conditionals'
 import { Element, Stats } from '@src/domain/constant'
 import { getSetCount } from '../utils/data_format'
 import { ResonanceConditionals } from '@src/data/lib/stats/conditionals/resonance'
@@ -258,9 +258,6 @@ export const useCalculator = () => {
   // Update: This is with the exception of single target buffs that will be put in allies' form instead of the giver so that the buff will not activate all at once
   const mainContent = _.filter(mapped, ['index', selected])
   const teamContent = [..._.filter(mapped, (item, index) => selected !== item.index), ...allyMapped]
-
-  // Content of transformative reaction dmg
-  const nilou = _.some(calculatorStore.form, (item) => item?.bountiful_core)
 
   return {
     main,

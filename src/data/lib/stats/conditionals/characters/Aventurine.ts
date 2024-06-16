@@ -36,7 +36,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       level: skill,
     },
     ult: {
-      title: `Petals to Stream, Repose in Dream`,
+      title: `Roulette Shark`,
       content: `Randomly gains <span class="text-desc">1</span> to <span class="text-desc">7</span> points of <b>Blind Bet</b>. Then inflicts <b>Unnerved</b> on a single target enemy, lasting for <span class="text-desc">3</span> turn(s). And deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Aventurine's DEF to the single target enemy. When an ally hits an <b>Unnerved</b> enemy target, the CRIT DMG dealt increases by {{1}}%.`,
       value: [
         { base: 162, growth: 10.8, style: 'curved' },

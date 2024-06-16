@@ -23,6 +23,8 @@ export const baseStatsObject = {
   BASE_DEF: 0,
   BASE_SPD: 0,
 
+  ELEMENT: null as Element,
+
   // Basic Stats
   [Stats.ATK]: [] as StatsArray[],
   [Stats.HP]: [] as StatsArray[],
@@ -185,7 +187,7 @@ export const baseStatsObject = {
     base: any,
     debuffs: { type: DebuffTypes; count: number }[],
     weakness: Element[],
-    all: any[]
+    all: any[],
   ) => any)[],
 
   BA_ALT: false,

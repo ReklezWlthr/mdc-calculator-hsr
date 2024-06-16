@@ -36,7 +36,7 @@ export const getBaseStat = (base: number, level: number = 1, ascension: number =
 export const getWeaponBase = (base: number, level: number = 0, ascension: number = 0) => {
   if (!base) return 0
   const growth = base * (3 / 20)
-  return base * (1 + (ascension >= 1 ? 1.2 : 0) + (1.6 * (ascension - 1))) + growth * (level - 1)
+  return base * (1 + (ascension >= 1 ? 1.2 : 0) + 1.6 * _.max([ascension - 1, 0])) + growth * (level - 1)
 }
 
 export const getWeaponBonus = (base: number, level: number) => {

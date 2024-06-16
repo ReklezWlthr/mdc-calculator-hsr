@@ -20,12 +20,12 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [],
     add: (base) => {
       base[Stats.P_ATK].push({
-        name: '4-Piece Bonus',
+        name: '4-Piece',
         source: 'Musketeer of Wild Wheat',
         value: 0.06,
       })
       base.BASIC_DMG.push({
-        name: '4-Piece Bonus',
+        name: '4-Piece',
         source: 'Musketeer of Wild Wheat',
         value: 0.1,
       })
@@ -41,7 +41,7 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [],
     add: (base) => {
       base.SHIELD.push({
-        name: '2-Piece Bonus',
+        name: '2-Piece',
         source: 'Knight of Purity Palace',
         value: 0.2,
       })
@@ -82,7 +82,7 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [],
     half: (base) => {
       base.DMG_REDUCTION.push({
-        name: '4-Piece Bonus',
+        name: '4-Piece',
         source: 'Guard of Wuthering Snow',
         value: 0.08,
       })
@@ -101,7 +101,7 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [],
     add: (base) => {
       base.SKILL_DMG.push({
-        name: '4-Piece Bonus',
+        name: '4-Piece',
         source: 'Firesmith of Lava-Forging',
         value: 0.12,
       })
@@ -121,7 +121,7 @@ export const RelicSets: IArtifact[] = [
     add: (base) => {
       base.CALLBACK.push((x, b, w) => {
         x.DEF_PEN.push({
-          name: '4-Piece Bonus',
+          name: '4-Piece',
           source: 'Genius of Brilliant Stars',
           value: _.includes(w, Element.QUANTUM) ? 0.2 : 0.1,
         })
@@ -177,13 +177,13 @@ export const RelicSets: IArtifact[] = [
       base.CALLBACK.push((x, d) => {
         if (_.sum(_.values(d)))
           x[Stats.CRIT_RATE].push({
-            name: '4-Piece Bonus',
+            name: '4-Piece',
             source: 'Wastelander of Banditry Desert',
             value: 0.1,
           })
         if (d[DebuffTypes.IMPRISON])
           x[Stats.CRIT_DMG].push({
-            name: '4-Piece Bonus',
+            name: '4-Piece',
             source: 'Wastelander of Banditry Desert',
             value: 0.2,
           })
@@ -226,7 +226,7 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [],
     half: (base) => {
       base.FUA_DMG.push({
-        name: '2-Piece Bonus',
+        name: '2-Piece',
         source: 'The Ashblazing Grand Duke',
         value: 0.2,
       })
@@ -247,13 +247,16 @@ export const RelicSets: IArtifact[] = [
       base.CALLBACK.push((x, d) => {
         const count = _.sumBy(
           _.filter(d, (item) =>
-            _.includes([DebuffTypes.BURN, DebuffTypes.SHOCKED, DebuffTypes.WIND_SHEAR, DebuffTypes.BLEED], item.type)
+            _.includes(
+              [DebuffTypes.BURN, DebuffTypes.SHOCKED, DebuffTypes.WIND_SHEAR, DebuffTypes.BLEED, DebuffTypes.DOT],
+              item.type
+            )
           ),
           (item) => item.count
         )
         if (count)
-          base.DEF_PEN.push({
-            name: '4-Piece Bonus',
+          x.DEF_PEN.push({
+            name: '4-Piece',
             source: 'Prisoner in Deep Confinement',
             value: 0.06 * _.min([count, 3]),
           })
@@ -276,13 +279,13 @@ export const RelicSets: IArtifact[] = [
       base.CALLBACK.push((x, d) => {
         if (_.sum(_.values(d)) >= 3)
           x[Stats.CRIT_DMG].push({
-            name: '4-Piece Bonus',
+            name: '4-Piece',
             source: 'Pioneer Diver of Dead Waters',
             value: 0.12,
           })
         else if (_.sum(_.values(d)) >= 2)
           x[Stats.CRIT_DMG].push({
-            name: '4-Piece Bonus',
+            name: '4-Piece',
             source: 'Pioneer Diver of Dead Waters',
             value: 0.12,
           })
@@ -316,13 +319,13 @@ export const RelicSets: IArtifact[] = [
       base.CALLBACK.push((x: StatsObject) => {
         if (x.getValue(Stats.BE) >= 2.5)
           x.SUPER_BREAK_DEF_PEN.push({
-            name: '4-Piece Bonus',
+            name: '4-Piece',
             source: 'Iron Cavalry Against the Scourge',
             value: 0.15,
           })
         if (x.getValue(Stats.BE) >= 1.5)
           x.BREAK_DEF_PEN.push({
-            name: '4-Piece Bonus',
+            name: '4-Piece',
             source: 'Iron Cavalry Against the Scourge',
             value: 0.1,
           })
@@ -377,8 +380,8 @@ export const PlanarSets: IArtifact[] = [
     bonusAdd: [],
     half: (base) => {
       base.CALLBACK.push((x) => {
-        x[Stats.ATK].push({
-          name: '2-Piece Bonus',
+        x[Stats.P_ATK].push({
+          name: '2-Piece',
           source: 'Pan-Cosmic Commercial Enterprise',
           value: _.min([0.25 * x.getValue(Stats.EHR), 0.25]),
         })
@@ -420,12 +423,12 @@ export const PlanarSets: IArtifact[] = [
       base.CALLBACK.push((x) => {
         if (x.getValue(Stats.CRIT_RATE) >= 0.5) {
           x.FUA_DMG.push({
-            name: '2-Piece Bonus',
+            name: '2-Piece',
             source: 'Inert Salsotto',
             value: 0.15,
           })
           x.ULT_DMG.push({
-            name: '2-Piece Bonus',
+            name: '2-Piece',
             source: 'Inert Salsotto',
             value: 0.15,
           })
@@ -468,12 +471,12 @@ export const PlanarSets: IArtifact[] = [
       base.CALLBACK.push((x) => {
         if (x.getValue(Stats.CRIT_RATE) >= 0.7) {
           x.BASIC_DMG.push({
-            name: '2-Piece Bonus',
+            name: '2-Piece',
             source: 'Rutilant Arena',
             value: 0.2,
           })
           x.SKILL_DMG.push({
-            name: '2-Piece Bonus',
+            name: '2-Piece',
             source: 'Rutilant Arena',
             value: 0.2,
           })
@@ -504,17 +507,11 @@ export const PlanarSets: IArtifact[] = [
     bonusAdd: [],
     half: (base) => {
       base.CALLBACK.push((x) => {
-        if (x.getSpd() >= 1.35)
+        if (x.getSpd() >= 135)
           x[Stats.ALL_DMG].push({
-            name: '2-Piece Bonus',
+            name: '2-Piece',
             source: 'Firmament Frontline: Glamoth',
-            value: 0.12,
-          })
-        if (x.getSpd() >= 1.6)
-          x[Stats.ALL_DMG].push({
-            name: '2-Piece Bonus',
-            source: 'Firmament Frontline: Glamoth',
-            value: 0.06,
+            value: x.getSpd() >= 160 ? 0.18 : 0.12,
           })
         return x
       })

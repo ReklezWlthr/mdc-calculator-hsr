@@ -182,7 +182,7 @@ export const LCBlock = observer(({ index = -1, wId, level = 1, ascension = 0, re
                 <p>Base HP</p>
               </div>
               <hr className="w-full border border-primary-border" />
-              <p className="font-normal text-gray">{_.round(weaponBaseHp).toLocaleString()}</p>
+              <p className="font-normal text-gray">{_.floor(weaponBaseHp).toLocaleString()}</p>
             </div>
             <div className="flex items-center gap-2 text-xs">
               <div className="flex items-center gap-1.5 shrink-0">
@@ -193,7 +193,7 @@ export const LCBlock = observer(({ index = -1, wId, level = 1, ascension = 0, re
                 <p>Base ATK</p>
               </div>
               <hr className="w-full border border-primary-border" />
-              <p className="font-normal text-gray">{_.round(weaponBaseAtk).toLocaleString()}</p>
+              <p className="font-normal text-gray">{_.floor(weaponBaseAtk).toLocaleString()}</p>
             </div>
             <div className="flex items-center gap-2 text-xs">
               <div className="flex items-center gap-1.5 shrink-0">
@@ -204,7 +204,7 @@ export const LCBlock = observer(({ index = -1, wId, level = 1, ascension = 0, re
                 <p>Base DEF</p>
               </div>
               <hr className="w-full border border-primary-border" />
-              <p className="font-normal text-gray">{_.round(weaponBaseDef).toLocaleString()}</p>
+              <p className="font-normal text-gray">{_.floor(weaponBaseDef).toLocaleString()}</p>
             </div>
           </div>
         </div>

@@ -50,20 +50,20 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
       </p>
       <div className="space-y-1 text-xs">
         <BulletPoint>
-          Character Base {stats} <span className="text-desc">{_.round(cBase, round).toLocaleString()}</span>
+          Character Base {stats} <span className="text-desc">{_.floor(cBase, round).toLocaleString()}</span>
         </BulletPoint>
         {!!lBase && (
           <BulletPoint>
-            Light Cone Base {stats} <span className="text-desc">{_.round(lBase, round).toLocaleString()}</span>
+            Light Cone Base {stats} <span className="text-desc">{_.floor(lBase, round).toLocaleString()}</span>
           </BulletPoint>
         )}
         {_.map(pArray, (item) => {
-          const c = _.round((cBase + lBase) * item.value, round).toLocaleString()
+          const c = _.floor((cBase + lBase) * item.value, round).toLocaleString()
           return (
             !!item.value && (
               <BulletPoint key={item.source + item.name}>
                 {item.source} / {item.name} <span className="text-desc">{c}</span> ={' '}
-                {_.round(cBase + lBase, round).toLocaleString()} {`\u{00d7}`}{' '}
+                {_.floor(cBase + lBase, round).toLocaleString()} {`\u{00d7}`}{' '}
                 <span className="text-blue">{toPercentage(item.value)}</span>
               </BulletPoint>
             )
@@ -75,7 +75,7 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
             !!item.value && (
               <BulletPoint key={item.source + item.name}>
                 {item.source} / {item.name}{' '}
-                <span className="text-desc">{_.round(item.value, round).toLocaleString()}</span>
+                <span className="text-desc">{_.floor(item.value, round).toLocaleString()}</span>
               </BulletPoint>
             )
         )}
@@ -95,7 +95,7 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
               stats="HP"
               cBase={stats.BASE_HP_C}
               lBase={stats.BASE_HP_L}
-              totalValue={_.round(stats.getHP()).toLocaleString()}
+              totalValue={_.floor(stats.getHP()).toLocaleString()}
               pArray={stats[Stats.P_HP]}
               fArray={_.concat(stats[Stats.HP], stats.X_HP)}
             />
@@ -103,7 +103,7 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
               stats="ATK"
               cBase={stats.BASE_ATK_C}
               lBase={stats.BASE_ATK_L}
-              totalValue={_.round(stats.getAtk()).toLocaleString()}
+              totalValue={_.floor(stats.getAtk()).toLocaleString()}
               pArray={stats[Stats.P_ATK]}
               fArray={_.concat(stats[Stats.ATK], stats.X_ATK)}
             />
@@ -111,14 +111,14 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
               stats="DEF"
               cBase={stats.BASE_DEF_C}
               lBase={stats.BASE_DEF_L}
-              totalValue={_.round(stats.getDef()).toLocaleString()}
+              totalValue={_.floor(stats.getDef()).toLocaleString()}
               pArray={stats[Stats.P_DEF]}
               fArray={stats[Stats.DEF]}
             />
             <ExtraBlock
               stats="SPD"
               cBase={stats.BASE_SPD}
-              totalValue={_.round(stats.getSpd(), 1).toLocaleString()}
+              totalValue={_.floor(stats.getSpd(), 1).toLocaleString()}
               pArray={stats[Stats.P_SPD]}
               fArray={stats[Stats.SPD]}
               round={1}

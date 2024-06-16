@@ -12,7 +12,7 @@ import { Element, IArtifactEquip, ITeamChar, IWeaponEquip, Stats, PathType } fro
 import { findCharacter, findLightCone } from '../utils/finder'
 import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
 import { baseStatsObject, StatsObject } from '@src/data/lib/stats/baseConstant'
-import WeaponBonus from '@src/data/lib/stats/conditionals/weapons/weapon_bonus'
+import LightConeBonus from '@src/data/lib/stats/conditionals/lightcones/lc_bonus'
 import { TalentScalingStyle } from '@src/domain/conditional'
 
 export const calculateOutOfCombat = (
@@ -28,7 +28,7 @@ export const calculateOutOfCombat = (
   return final
 }
 
-export const calculateFinal = (conditionals: StatsObject) => {
+export const calculateFinal = (conditionals: StatsObject, element: Element) => {
   const cb = conditionals.CALLBACK
   let x = conditionals
   _.forEach(cb, (item) => {
@@ -41,13 +41,16 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
   const character = findCharacter(char?.cId)
   const weaponData = findLightCone(weapon?.wId)
 
+  conditionals.ELEMENT = character?.element
+
   conditionals.BASE_ATK_C = getBaseStat(character?.stat?.baseAtk, char?.level, char?.ascension)
   conditionals.BASE_HP_C = getBaseStat(character?.stat?.baseHp, char?.level, char?.ascension)
   conditionals.BASE_DEF_C = getBaseStat(character?.stat?.baseDef, char?.level, char?.ascension)
   conditionals.BASE_ATK_L = getWeaponBase(weaponData?.baseAtk, weapon?.level, weapon?.ascension)
   conditionals.BASE_HP_L = getWeaponBase(weaponData?.baseHp, weapon?.level, weapon?.ascension)
   conditionals.BASE_DEF_L = getWeaponBase(weaponData?.baseDef, weapon?.level, weapon?.ascension)
-  const weaponBonus = _.find(WeaponBonus, (item) => item.id === weapon?.wId)
+  const weaponBonus =
+    character?.path === weaponData?.type ? _.find(LightConeBonus, (item) => item.id === weapon?.wId) : undefined
 
   // Get Base
   conditionals.BASE_ATK = conditionals.BASE_ATK_C + conditionals.BASE_ATK_L
@@ -158,7 +161,7 @@ export const addArtifactStats = (
       const half = _.find(AllRelicSets, ['id', key])?.half
       _.forEach(bonuses, (item) => {
         conditionals[item.stat].push({
-          name: '2-Piece Bonus',
+          name: '2-Piece',
           source: _.find(AllRelicSets, ['id', key])?.name,
           value: item.value,
         })

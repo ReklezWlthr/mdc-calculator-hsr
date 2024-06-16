@@ -71,7 +71,7 @@ export const MainStatValue = [
     stat: [Stats.P_DEF],
     rarity: 5,
     base: 0.0864,
-    growth: 0.03924,
+    growth: 0.03024,
   },
   {
     stat: [Stats.BE],

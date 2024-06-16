@@ -1,7 +1,8 @@
 import { calcScaling } from '@src/core/utils/calculator'
+import { toPercentage } from '@src/core/utils/converter'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { IContent } from '@src/domain/conditional'
-import { Element } from '@src/domain/constant'
+import { Element, Stats } from '@src/domain/constant'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
@@ -40,12 +41,7 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
           className={classNames('ml-2 text-base align-top fa-solid fa-caret-down duration-300', open && '-rotate-180')}
         />
       </p>
-      <div
-        className={classNames(
-          'space-y-3 duration-300 ease-out px-4',
-          open ? 'h-fit overflow-visible py-3' : 'h-0 overflow-hidden'
-        )}
-      >
+      <div className={classNames('space-y-3 duration-300 ease-out px-4 overflow-hidden', open ? 'h-fit py-3' : 'h-0')}>
         {_.size(contents) ? (
           _.map(_.orderBy(contents, ['debuff', 'unique'], ['desc', 'asc']), (content) => {
             const formattedString = _.reduce(
@@ -70,10 +66,16 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
               content.content
             )
 
+            const prob = content.chance?.fixed
+              ? content.chance?.base
+              : (content.chance?.base || 0) *
+                (1 + calculatorStore.computedStats[content.index]?.getValue(Stats.EHR)) *
+                (1 - 0.3)
+
             return (
               content.show && (
                 <div className="grid items-center grid-cols-12 text-xs gap-x-1" key={content.id}>
-                  <div className="col-span-6">
+                  <div className="col-span-5">
                     <Tooltip
                       title={
                         content.level ? (
@@ -96,6 +98,14 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                   <div className={classNames('col-span-2 text-center', content.debuff ? 'text-red' : 'text-blue')}>
                     {content.debuff ? 'Debuff' : 'Buff'}
                   </div>
+                  <div
+                    className={classNames(
+                      'text-xs text-center truncate col-span-2',
+                      prob ? (prob <= 0.6 ? 'text-red' : prob <= 0.8 ? 'text-desc' : 'text-heal') : 'text-gray'
+                    )}
+                  >
+                    {prob ? toPercentage(prob, 1) : '-'}
+                  </div>
                   {content.type === 'number' && (
                     <>
                       <TextInput
@@ -109,8 +119,8 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                         style="col-span-2"
                         small
                       />
-                      <p className="col-span-2 px-1 text-center text-gray">
-                        Max: {content.max ? content.max.toLocaleString() : `\u{221e}`}
+                      <p className="col-span-1 px-1 text-center text-gray">
+                        Max {content.max ? content.max.toLocaleString() : `\u{221e}`}
                       </p>
                     </>
                   )}

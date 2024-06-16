@@ -992,13 +992,13 @@ export const LightCones = [
     id: '21043',
     name: 'Concert for Two',
     rarity: 4,
-    baseHp: 38.4,
+    baseHp: 43.2,
     baseAtk: 16.8,
-    baseDef: 24,
+    baseDef: 21,
     type: PathType.PRESERVATION,
     desc: {
       name: 'Inspire',
-      detail: `Increases the wearer's DEF by {{0}}%. For every on-field character that has a Shield, the DMG dealt by the wearer increases by {{1}}%.`,
+      detail: `Increases the wearer's DEF by {{0}}%. For every on-field character that has a <b class="text-indigo-300">Shield</b>, the DMG dealt by the wearer increases by {{1}}%.`,
       properties: [
         { base: 16, growth: 4 },
         { base: 4, growth: 1 },
@@ -1056,23 +1056,6 @@ export const LightCones = [
       properties: [
         { base: 20, growth: 5 },
         { base: 4, growth: 1 },
-      ],
-    },
-  },
-  {
-    id: '21000',
-    name: 'Post-Op Conversation',
-    rarity: 4,
-    baseHp: 48,
-    baseAtk: 19.2,
-    baseDef: 15,
-    type: PathType.ABUNDANCE,
-    desc: {
-      name: 'Mutual Healing',
-      detail: `Increases the wearer's Energy Regeneration Rate by {{0}}% and increases Outgoing Healing when they use their Ultimate by {{0}}%.`,
-      properties: [
-        { base: 8, growth: 2 },
-        { base: 12, growth: 3 },
       ],
     },
   },
