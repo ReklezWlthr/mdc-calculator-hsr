@@ -129,7 +129,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     {
       type: 'number',
       id: 'arch_a6',
-      text: `Thunder Core DMG Bonus Stacks`,
+      text: `A6 DMG Bonus Stacks`,
       ...talents.a6,
       show: a.a6,
       default: 3,
@@ -139,7 +139,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     {
       type: 'toggle',
       id: 'arch_c4',
-      text: `E4 ULT Vulnerability`,
+      text: `E4 Ult Vulnerability`,
       ...talents.c4,
       show: c >= 4,
       default: true,
@@ -206,6 +206,64 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         calcScaling(0.09, 0.006, ult, 'linear') *
         _.min([_.max([form.crimson_knot - 6 + Number(form.crimson_knot > 6), 0]), 4])
       const ra = _.sum([r1, r2, r3])
+
+      const rs1 =
+        form.crimson_knot > 0
+          ? [
+              {
+                name: 'Rainblade AoE [1]',
+                value: [{ scaling: r1, multiplier: Stats.ATK }],
+                element: Element.LIGHTNING,
+                property: TalentProperty.NORMAL,
+                type: TalentType.ULT,
+                break: 15,
+                multiplier,
+              },
+            ]
+          : []
+      const rs2 =
+        form.crimson_knot > 3
+          ? [
+              {
+                name: 'Rainblade AoE [2]',
+                value: [{ scaling: r2, multiplier: Stats.ATK }],
+                element: Element.LIGHTNING,
+                property: TalentProperty.NORMAL,
+                type: TalentType.ULT,
+                break: 15,
+                multiplier,
+              },
+            ]
+          : []
+      const rs3 =
+        form.crimson_knot > 6
+          ? [
+              {
+                name: 'Rainblade AoE [3]',
+                value: [{ scaling: r3, multiplier: Stats.ATK }],
+                element: Element.LIGHTNING,
+                property: TalentProperty.NORMAL,
+                type: TalentType.ULT,
+                break: 15,
+                multiplier,
+              },
+            ]
+          : []
+      const trs =
+        form.crimson_knot > 0
+          ? [
+              {
+                name: 'Total Rainblade AoE',
+                value: [{ scaling: ra, multiplier: Stats.ATK }],
+                element: Element.LIGHTNING,
+                property: TalentProperty.NORMAL,
+                type: TalentType.ULT,
+                break: 15 * _.ceil(form.crimson_knot / 3),
+                multiplier,
+              },
+            ]
+          : []
+
       base.ULT_SCALING = [
         {
           name: 'Rainblade Main',
@@ -216,33 +274,9 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           break: 15,
           multiplier,
         },
-        {
-          name: 'Rainblade AoE [1]',
-          value: [{ scaling: r1, multiplier: Stats.ATK }],
-          element: Element.LIGHTNING,
-          property: TalentProperty.NORMAL,
-          type: TalentType.ULT,
-          break: 15,
-          multiplier,
-        },
-        {
-          name: 'Rainblade AoE [2]',
-          value: [{ scaling: r2, multiplier: Stats.ATK }],
-          element: Element.LIGHTNING,
-          property: TalentProperty.NORMAL,
-          type: TalentType.ULT,
-          break: 15,
-          multiplier,
-        },
-        {
-          name: 'Rainblade AoE [3]',
-          value: [{ scaling: r3, multiplier: Stats.ATK }],
-          element: Element.LIGHTNING,
-          property: TalentProperty.NORMAL,
-          type: TalentType.ULT,
-          break: 15,
-          multiplier,
-        },
+        ...rs1,
+        ...rs2,
+        ...rs3,
         {
           name: 'Total Rainblade Main',
           value: [{ scaling: calcScaling(0.144, 0.0096, ult, 'linear') * 3 + ra, multiplier: Stats.ATK }],
@@ -252,15 +286,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           break: 15 * (3 + _.ceil(form.crimson_knot / 3)),
           multiplier,
         },
-        {
-          name: 'Total Rainblade AoE',
-          value: [{ scaling: ra, multiplier: Stats.ATK }],
-          element: Element.LIGHTNING,
-          property: TalentProperty.NORMAL,
-          type: TalentType.ULT,
-          break: 15 * _.ceil(form.crimson_knot / 3),
-          multiplier,
-        },
+        ...trs,
         {
           name: 'Stygian Resurge',
           value: [{ scaling: calcScaling(0.72, 0.048, ult, 'linear'), multiplier: Stats.ATK }],

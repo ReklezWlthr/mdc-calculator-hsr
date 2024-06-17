@@ -136,8 +136,8 @@ export const addArtifactStats = (
   )
   _.forEach(main, (item, key) => {
     conditionals[key].push({
-      name: `Relic Main Stat`,
-      source: 'Self',
+      name: `Main Stat`,
+      source: 'Relic',
       value: item,
     })
   })
@@ -152,8 +152,8 @@ export const addArtifactStats = (
   )
   _.forEach(sub, (item, key) => {
     conditionals[key].push({
-      name: `Relic Sub Stat`,
-      source: 'Self',
+      name: `Sub Stat`,
+      source: 'Relic',
       value: item,
     })
   })

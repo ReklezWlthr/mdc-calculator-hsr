@@ -2,6 +2,7 @@ import { IArtifact, Stats, PathType, Element } from '@src/domain/constant'
 import _ from 'lodash'
 import { StatsObject } from '../lib/stats/baseConstant'
 import { DebuffTypes } from '@src/domain/conditional'
+import { countDebuff } from '@src/core/utils/finder'
 
 export const RelicSets: IArtifact[] = [
   {
@@ -275,9 +276,21 @@ export const RelicSets: IArtifact[] = [
     icon: '71028',
     bonus: [],
     bonusAdd: [{ stat: Stats.CRIT_RATE, value: 0.04 }],
+    half: (base) => {
+      base.CALLBACK.push((x, d) => {
+        if (countDebuff(d))
+          x[Stats.ALL_DMG].push({
+            name: '2-Piece',
+            source: 'Pioneer Diver of Dead Waters',
+            value: 0.16,
+          })
+        return x
+      })
+      return base
+    },
     add: (base) => {
       base.CALLBACK.push((x, d) => {
-        if (_.sum(_.values(d)) >= 3)
+        if (countDebuff(d) >= 3)
           x[Stats.CRIT_DMG].push({
             name: '4-Piece',
             source: 'Pioneer Diver of Dead Waters',

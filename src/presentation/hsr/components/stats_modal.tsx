@@ -164,10 +164,10 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
           <div className="space-y-2">
             <NormalBlock stat="Weakness Break Efficiency" array={stats.BREAK_EFF} />
             <NormalBlock stat="All-Type RES PEN" array={stats.ALL_TYPE_RES_PEN} />
-            <NormalBlock stat="DMG Reduction" array={stats.DMG_REDUCTION} />
+            <NormalBlock stat="DEF PEN" array={stats.DEF_PEN} />
           </div>
           <div className="space-y-2">
-            <NormalBlock stat="DEF PEN" array={stats.DEF_PEN} />
+            <NormalBlock stat="DMG Reduction" array={stats.DMG_REDUCTION} />
             <NormalBlock stat="Shield Bonus" array={stats.SHIELD} />
             <ExtraBlock
               stats="Aggro"
