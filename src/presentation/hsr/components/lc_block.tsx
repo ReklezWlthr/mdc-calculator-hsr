@@ -105,19 +105,24 @@ export const LCBlock = observer(({ index = -1, wId, level = 1, ascension = 0, re
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-[280px]">
       <div className="flex justify-center px-5 py-2 rounded-t-lg bg-primary-lighter">Light Cone</div>
       <div className="grid h-full grid-cols-2 gap-3 p-3">
-        <div className="flex flex-col justify-between gap-1 h-fit shrink-0">
+        <div className="flex flex-col justify-between gap-1 h-fit shrink-0" onClick={onOpenModal}>
           {weaponData ? (
             <img
               src={`https://api.hakush.in/hsr/UI/lightconemaxfigures/${weaponData?.id}.webp`}
-              className={classNames("object-contain h-[200px] py-2 border rounded-lg bg-primary-darker cursor-pointer duration-200", 
-                invalid ? "border-error hover:border-red" : "border-primary-border hover:border-primary-light"
+              className={classNames(
+                'object-contain h-[200px] py-2 border rounded-lg bg-primary-darker cursor-pointer duration-200',
+                invalid ? 'border-error hover:border-red' : 'border-primary-border hover:border-primary-light'
               )}
-              onClick={onOpenModal}
             />
           ) : (
             <div className="h-[200px] border rounded-lg bg-primary-darker border-primary-border shrink-0" />
           )}
-          {!!rarity && (invalid ? <p className='text-xs text-center text-red'>PATH MISMATCHED</p> : <RarityGauge rarity={rarity} />)}
+          {!!rarity &&
+            (invalid ? (
+              <p className="text-xs text-center text-red">PATH MISMATCHED</p>
+            ) : (
+              <RarityGauge rarity={rarity} />
+            ))}
         </div>
         <div className="space-y-3">
           <div className="space-y-1">

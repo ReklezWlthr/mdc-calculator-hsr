@@ -103,7 +103,7 @@ export const ConsCircle = observer(
             </div>
             <div className="rounded-full bg-primary-bg">
               <TalentIcon
-                talent={talents?.c1}
+                talent={talents?.c2}
                 icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${id}_Rank2.png`}
                 element={element}
                 active={cons >= 2}

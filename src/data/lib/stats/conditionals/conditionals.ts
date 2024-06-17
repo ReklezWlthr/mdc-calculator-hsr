@@ -48,6 +48,7 @@ import Welt from './characters/Welt'
 import Xueyi from './characters/Xueyi'
 import Yanqing from './characters/Yanqing'
 import Yukong from './characters/Yukong'
+import Jade from './characters/Jade'
 
 export default [
   { id: '1001', conditionals: March },
@@ -98,9 +99,9 @@ export default [
   { id: '1309', conditionals: Robin },
   { id: '1310', conditionals: Firefly },
   { id: '1312', conditionals: Misha },
+  { id: '1314', conditionals: Jade },
   { id: '1315', conditionals: Boothill },
   { id: '8005', conditionals: HMC },
-  // { id: '10000070', conditionals: Nilou },
   // { id: '10000027', conditionals: Ningguang },
   // { id: '10000034', conditionals: Noelle },
   // { id: '10000035', conditionals: Qiqi },

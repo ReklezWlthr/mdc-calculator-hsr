@@ -16,6 +16,7 @@ export enum DebuffTypes {
   SPD_RED = 'SPD Reduced',
   OTHER = 'Others',
   DOT = 'DoT',
+  CONTROL = 'Control',
 }
 
 export interface IScaling {

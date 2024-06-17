@@ -1093,7 +1093,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
           x.FUA_DMG.push({
             name: 'Passive',
             source: 'Yet Hope Is Priceless',
-            value: calcRefinement(0.16, 0.03, r) * exceed,
+            value: calcRefinement(0.12, 0.02, r) * exceed,
           })
         return x
       })
