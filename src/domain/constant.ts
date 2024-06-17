@@ -155,6 +155,7 @@ export enum TalentProperty {
   FUA = 'Follow-Up DMG',
   FROZEN = 'Frozen',
   ENTANGLE = 'Entanglement',
+  PURE = 'Pure DMG'
 }
 
 export enum Element {

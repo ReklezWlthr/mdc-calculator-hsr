@@ -1553,6 +1553,42 @@ export const LightCones = [
     },
   },
   {
+    id: '23026',
+    name: 'Flowing Nightglow',
+    rarity: 5,
+    baseHp: 43.2,
+    baseAtk: 28.8,
+    baseDef: 21,
+    type: PathType.HARMONY,
+    desc: {
+      name: 'Pacify',
+      detail: `Every time an ally attacks, the wearer gains <span class="text-desc">1</span> stack of <b>Cantillation</b>. Each stack of <b>Cantillation</b> increases the wearer's Energy Regeneration Rate by {{0}}%, stacking up to <span class="text-desc">5</span> time(s). When the wearer uses their Ultimate, removes <b>Cantillation</b> and gains <b>Cadenza</b>. <b>Cadenza</b> increases the Wearer's ATK by {{1}}% and increases all allies' DMG dealt by {{2}}%, lasting for <span class="text-desc">1</span> turn(s).`,
+      properties: [
+        { base: 3, growth: 0.5 },
+        { base: 48, growth: 12 },
+        { base: 24, growth: 4 },
+      ],
+    },
+  },
+  {
+    id: '23027',
+    name: 'Sailing Towards A Second Life',
+    rarity: 5,
+    baseHp: 48,
+    baseAtk: 26.4,
+    baseDef: 21,
+    type: PathType.HUNT,
+    desc: {
+      name: 'Rough Water',
+      detail: `Increases the wearer's Break Effect by {{0}}%. The Break DMG dealt by the wearer ignores {{1}}% of the target's DEF. When the wearer's Break Effect in battle is at <span class="text-desc">1500%</span> or greater, increases their SPD by {{2}}%.`,
+      properties: [
+        { base: 60, growth: 10 },
+        { base: 20, growth: 3 },
+        { base: 12, growth: 2 },
+      ],
+    },
+  },
+  {
     id: '23028',
     name: 'Yet Hope Is Priceless',
     rarity: 5,

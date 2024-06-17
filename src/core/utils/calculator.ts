@@ -32,7 +32,7 @@ export const calculateFinal = (conditionals: StatsObject, element: Element) => {
   const cb = conditionals.CALLBACK
   let x = conditionals
   _.forEach(cb, (item) => {
-    x = item(x, [], [], [])
+    x = item(x, [], [], [], false)
   })
   return x
 }
@@ -41,7 +41,9 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
   const character = findCharacter(char?.cId)
   const weaponData = findLightCone(weapon?.wId)
 
+  conditionals.NAME = character?.name
   conditionals.ELEMENT = character?.element
+  conditionals.PATH = character?.path
 
   conditionals.BASE_ATK_C = getBaseStat(character?.stat?.baseAtk, char?.level, char?.ascension)
   conditionals.BASE_HP_C = getBaseStat(character?.stat?.baseHp, char?.level, char?.ascension)

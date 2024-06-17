@@ -23,6 +23,8 @@ export const baseStatsObject = {
   BASE_DEF: 0,
   BASE_SPD: 0,
 
+  NAME: '',
+  PATH: null as PathType,
   ELEMENT: null as Element,
 
   // Basic Stats
@@ -55,6 +57,9 @@ export const baseStatsObject = {
   [Stats.IMAGINARY_DMG]: [] as StatsArray[],
   [Stats.WIND_DMG]: [] as StatsArray[],
   [Stats.ALL_DMG]: [] as StatsArray[],
+
+  SKILL_HEAL: [] as StatsArray[],
+  ULT_HEAL: [] as StatsArray[],
 
   // Hidden Stats
   DEF_PEN: [] as StatsArray[],
@@ -188,6 +193,7 @@ export const baseStatsObject = {
     debuffs: { type: DebuffTypes; count: number }[],
     weakness: Element[],
     all: any[],
+    battle: boolean
   ) => any)[],
 
   BA_ALT: false,

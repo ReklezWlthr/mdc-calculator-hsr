@@ -41,15 +41,6 @@ export interface IScaling {
   vul?: number
 }
 
-export interface IWeaponContent {
-  type?: 'toggle' | 'number' | 'element'
-  id: string
-  default?: number | boolean | Element
-  max?: number
-  min?: number
-  debuff?: boolean
-}
-
 export interface IContent {
   type?: 'toggle' | 'number' | 'element'
   id: string
@@ -57,7 +48,7 @@ export interface IContent {
   title: string
   content: string
   show: boolean
-  default?: number | boolean | Element
+  default?: any
   max?: number
   min?: number
   debuff?: boolean
@@ -72,18 +63,28 @@ export interface IContent {
 export interface IWeaponContent {
   type?: 'toggle' | 'number' | 'element'
   id: string
-  text: string
-  show: boolean
-  default?: number | boolean | Element
+  default?: any
   max?: number
   min?: number
   debuff?: boolean
+  chance?: { base: number; fixed: boolean }
+  duration?: number
+  text: string
+  show: boolean
   options?: { name: string; value: string }[]
   scaling: (
     base: StatsObject, // Stats of the character
     form: Record<string, any>,
     r: number,
-    extra: { team: ITeamChar[]; element: Element; own: StatsObject; totalEnergy: number; index: number; owner?: number }
+    extra: {
+      team: ITeamChar[]
+      element: Element
+      own: StatsObject
+      totalEnergy: number
+      index: number
+      owner?: number
+      debuffs: { type: DebuffTypes; count: number }[]
+    }
     //"element" is the element of the wearer
     // "own" is the stat of the wearer
   ) => StatsObject

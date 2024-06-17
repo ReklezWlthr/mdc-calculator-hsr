@@ -1,6 +1,6 @@
 import { useStore } from '@src/data/providers/app_store_provider'
 import { IContent } from '@src/domain/conditional'
-import { Element } from '@src/domain/constant'
+import { Element, Stats } from '@src/domain/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { Tooltip } from '@src/presentation/components/tooltip'
@@ -11,6 +11,7 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import { LCTooltip } from './lc_block'
 import { findCharacter } from '@src/core/utils/finder'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
+import { toPercentage } from '@src/core/utils/converter'
 
 interface IContentIndex extends IContent {
   index: number
@@ -38,7 +39,7 @@ export const WeaponConditionalBlock = observer(
           )}
           onClick={() => setOpen((prev) => !prev)}
         >
-          Weapon Modifiers
+          Light Cone Modifiers
           <i
             className={classNames(
               'ml-2 text-base align-top fa-solid fa-caret-down duration-300',
@@ -53,15 +54,20 @@ export const WeaponConditionalBlock = observer(
           )}
         >
           {_.size(_.filter(contents, 'show')) ? (
-            _.map(
-              contents,
-              (content) =>
+            _.map(contents, (content) => {
+              const prob = content.chance?.fixed
+              ? content.chance?.base
+              : (content.chance?.base || 0) *
+                (1 + calculatorStore.computedStats[content.index]?.getValue(Stats.EHR)) *
+                (1 - 0.3)
+                
+              return (
                 content.show && (
                   <div
                     className="grid items-center grid-cols-12 text-xs gap-x-1"
                     key={content.id + (content.owner || content.index)}
                   >
-                    <div className="col-span-6">
+                    <div className="col-span-5">
                       <LCTooltip
                         wId={_.split(content.id, '_')[0]}
                         refinement={
@@ -78,18 +84,31 @@ export const WeaponConditionalBlock = observer(
                     <div className={classNames('col-span-2 text-center', content.debuff ? 'text-red' : 'text-blue')}>
                       {content.debuff ? 'Debuff' : 'Buff'}
                     </div>
+                    <div
+                      className={classNames(
+                        'text-xs text-center truncate col-span-2',
+                        prob ? (prob <= 0.6 ? 'text-red' : prob <= 0.8 ? 'text-desc' : 'text-heal') : 'text-gray'
+                      )}
+                    >
+                      {prob ? toPercentage(prob, 1) : '-'}
+                    </div>
                     {content.type === 'number' && (
-                      <TextInput
-                        type="number"
-                        value={calculatorStore.form[content.index]?.[content.id]}
-                        onChange={(value) =>
-                          calculatorStore.setFormValue(content.index, content.id, parseFloat(value) ?? '')
-                        }
-                        max={content.max}
-                        min={content.min}
-                        style="col-span-2"
-                        small
-                      />
+                      <>
+                        <TextInput
+                          type="number"
+                          value={calculatorStore.form[content.index]?.[content.id]}
+                          onChange={(value) =>
+                            calculatorStore.setFormValue(content.index, content.id, parseFloat(value) ?? '')
+                          }
+                          max={content.max}
+                          min={content.min}
+                          style="col-span-2"
+                          small
+                        />
+                        <p className="col-span-1 px-1 text-center text-gray">
+                          Max {content.max ? content.max.toLocaleString() : `\u{221e}`}
+                        </p>
+                      </>
                     )}
                     {content.type === 'toggle' && (
                       <div className="flex items-center justify-center col-span-2">
@@ -105,19 +124,19 @@ export const WeaponConditionalBlock = observer(
                           value={calculatorStore.form[content.index]?.[content.id]}
                           options={
                             content.options || [
-                              { name: Element.PYRO, value: Element.PYRO },
-                              { name: Element.HYDRO, value: Element.HYDRO },
-                              { name: Element.CRYO, value: Element.CRYO },
-                              { name: Element.ELECTRO, value: Element.ELECTRO },
+                              { name: 'None', value: '' },
+                              ..._.map(Element, (item) => ({ name: item, value: item })),
                             ]
                           }
                           onChange={(value) => calculatorStore.setFormValue(content.index, content.id, value)}
+                          placeholder="None"
                         />
                       </div>
                     )}
                   </div>
                 )
-            )
+              )
+            })
           ) : (
             <div className="text-center text-gray">None</div>
           )}

@@ -100,7 +100,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     (TalentProperty.SHIELD === scaling.property
       ? 0
       : TalentProperty.HEAL === scaling.property
-      ? stats.getValue(Stats.HEAL)
+      ? stats.getValue(Stats.HEAL) + stats.getValue(`${TalentTypeMap[scaling.type]}_HEAL`)
       : stats.getValue(Stats.ALL_DMG) + stats.getValue(`${element} DMG%`) + talentDmg + typeDmg) // Vulnerability effectively stacks with DMG Bonuses
   const raw =
     _.sumBy(

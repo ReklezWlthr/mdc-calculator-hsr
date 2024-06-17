@@ -1,5 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { findCharacter } from '../utils/finder'
+import { findCharacter, findLightCone } from '../utils/finder'
 import { useEffect, useMemo } from 'react'
 import { getTeamOutOfCombat } from '../utils/calculator'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
@@ -14,7 +14,7 @@ import {
   WeaponConditionals,
   WeaponTeamConditionals,
 } from '@src/data/lib/stats/conditionals/lightcones/weapon_conditionals'
-import { Element, Stats } from '@src/domain/constant'
+import { Element, ITeamChar, Stats } from '@src/domain/constant'
 import { getSetCount } from '../utils/data_format'
 import { ResonanceConditionals } from '@src/data/lib/stats/conditionals/resonance'
 import { isFlat } from '@src/presentation/hsr/components/custom_modal'
@@ -61,21 +61,32 @@ export const useCalculator = () => {
       }),
     [teamStore.characters, artifactStore.artifacts]
   )
+  const checkValid = (item: ITeamChar) =>
+    findLightCone(item?.equipments?.weapon?.wId)?.type === findCharacter(item.cId)?.path
   const weaponConditionals = _.map(teamStore.characters, (item, index) =>
     _.map(
-      _.filter(WeaponConditionals, (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId)),
+      _.filter(
+        WeaponConditionals,
+        (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId) && checkValid(item)
+      ),
       (cond) => ({ ...cond, title: '', content: '', index })
     )
   )
   const weaponTeamConditionals = _.map(teamStore.characters, (item, index) =>
     _.map(
-      _.filter(WeaponTeamConditionals, (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId)),
+      _.filter(
+        WeaponTeamConditionals,
+        (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId) && checkValid(item)
+      ),
       (cond) => ({ ...cond, title: '', content: '', index })
     )
   )
   const weaponAllyConditionals = _.map(teamStore.characters, (item, index) =>
     _.map(
-      _.filter(WeaponAllyConditionals, (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId)),
+      _.filter(
+        WeaponAllyConditionals,
+        (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId) && checkValid(item)
+      ),
       (cond) => ({ ...cond, id: `${cond.id}_${index}`, title: '', content: '', index: selected, owner: index })
     )
   )
@@ -158,7 +169,11 @@ export const useCalculator = () => {
     const postCustom = _.map(preComputeShared, (base, index) => {
       let x = base
       _.forEach(calculatorStore.custom[index], (v) => {
-        x[v.name as any] += v.value / (isFlat(v.name) ? 1 : 100)
+        x[v.name as any].push({
+          name: 'Custom',
+          source: 'Manual',
+          value: v.value / (isFlat(v.name) ? 1 : 100),
+        })
       })
       return x
     })
@@ -181,16 +196,19 @@ export const useCalculator = () => {
       // Apply self self buff then loop for team-wide buff that is in each character's own form
       _.forEach(calculatorStore.form, (form, i) => {
         _.forEach(
-          _.filter(i === index ? weaponConditionals[i] : weaponTeamConditionals[i], (c) =>
-            _.includes(_.keys(form), c.id)
+          _.filter(
+            i === index ? [...weaponConditionals[i], ...weaponTeamConditionals[i]] : weaponTeamConditionals[i],
+            (c) => _.includes(_.keys(form), c.id)
           ),
           (c) => {
             x = c.scaling(x, form, teamStore.characters[i]?.equipments?.weapon?.refinement, {
               team: teamStore.characters,
               element: findCharacter(teamStore.characters[i]?.cId)?.element,
               own: postArtifact[i],
+              owner: i,
               totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
               index: i,
+              debuffs,
             })
           }
         )
@@ -206,6 +224,7 @@ export const useCalculator = () => {
             totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
             index,
             owner: c.owner,
+            debuffs,
           })
         }
       )
@@ -228,7 +247,7 @@ export const useCalculator = () => {
     const final = _.map(postCompute, (base, index) => {
       let x = base
       _.forEach(base.CALLBACK, (cb) => {
-        x = cb(x, debuffs, weakness, postCompute)
+        x = cb(x, debuffs, weakness, postCompute, true)
       })
       return x
     })

@@ -9,13 +9,14 @@ import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 
-export const isFlat = (key: string) => _.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.EM], key) || _.includes(key, '_F_')
+export const isFlat = (key: string) =>
+  _.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.SPD], key) || _.includes(key, '_F_')
 
 export const CustomModal = observer(({ index }: { index: number }) => {
   const { calculatorStore, modalStore } = useStore()
 
   const [selectedTab, setSelectedTab] = useState('stats')
-  const [selectedElement, setSelectedElement] = useState(Element.PYRO)
+  const [selectedElement, setSelectedElement] = useState(Element.PHYSICAL)
   const [selectedTalent, setSelectedTalent] = useState('BASIC')
 
   const [key, setKey] = useState(StatsObjectKeys[Stats.ALL_DMG])
@@ -30,13 +31,13 @@ export const CustomModal = observer(({ index }: { index: number }) => {
       { name: Stats.P_ATK, value: Stats.P_ATK },
       { name: Stats.DEF, value: Stats.DEF },
       { name: Stats.P_DEF, value: Stats.P_DEF },
-      { name: Stats.EM, value: Stats.EM },
-      { name: Stats.ER, value: Stats.ER },
-      { name: Stats.HEAL, value: Stats.HEAL },
-      { name: Stats.I_HEALING, value: Stats.I_HEALING },
+      { name: Stats.SPD, value: Stats.SPD },
+      { name: Stats.P_SPD, value: Stats.P_SPD },
       { name: Stats.CRIT_RATE, value: Stats.CRIT_RATE },
       { name: Stats.CRIT_DMG, value: Stats.CRIT_DMG },
-      { name: Stats.SHIELD, value: Stats.SHIELD },
+      { name: Stats.BE, value: Stats.BE },
+      { name: Stats.HEAL, value: Stats.HEAL },
+      { name: Stats.ERR, value: Stats.ERR },
     ],
     element: [
       { name: 'Percentage Bonus', value: 'percentage' },
@@ -48,32 +49,9 @@ export const CustomModal = observer(({ index }: { index: number }) => {
       { name: 'CRIT Rate', value: '_CR' },
       { name: 'CRIT DMG', value: '_CD' },
     ],
-    reaction: [
-      { name: 'Swirl', value: StatsObjectKeys.SWIRL_DMG },
-      { name: 'Melt', value: StatsObjectKeys.MELT_DMG },
-      { name: 'Vaporize', value: StatsObjectKeys.VAPE_DMG },
-      { name: 'Overloaded', value: StatsObjectKeys.OVERLOAD_DMG },
-      { name: 'Superconduct', value: StatsObjectKeys.SUPERCONDUCT_DMG },
-      { name: 'Electro-Charged', value: StatsObjectKeys.TASER_DMG },
-      { name: 'Shattered', value: StatsObjectKeys.SHATTER_DMG },
-      { name: 'Bloom', value: StatsObjectKeys.BLOOM_DMG },
-      { name: 'Hyperbloom', value: StatsObjectKeys.HYPERBLOOM_DMG },
-      { name: 'Burgeon', value: StatsObjectKeys.BURGEON_DMG },
-      { name: 'Burning', value: StatsObjectKeys.BURNING_DMG },
-      { name: 'Spread', value: StatsObjectKeys.SPREAD_DMG },
-      { name: 'Aggravate', value: StatsObjectKeys.AGGRAVATE_DMG },
-    ],
     debuff: [
       { name: 'DEF Reduction', value: StatsObjectKeys.DEF_REDUCTION },
       { name: 'All-Type RES Reduction', value: StatsObjectKeys.ALL_TYPE_RES_PEN },
-      { name: 'Physical RES Reduction', value: StatsObjectKeys.PHYSICAL_RES_PEN },
-      { name: 'Pyro RES Reduction', value: StatsObjectKeys.PYRO_RES_PEN },
-      { name: 'Hydro RES Reduction', value: StatsObjectKeys.HYDRO_RES_PEN },
-      { name: 'Cryo RES Reduction', value: StatsObjectKeys.CRYO_RES_PEN },
-      { name: 'Electro RES Reduction', value: StatsObjectKeys.ELECTRO_RES_PEN },
-      { name: 'Anemo RES Reduction', value: StatsObjectKeys.ANEMO_RES_PEN },
-      { name: 'Geo RES Reduction', value: StatsObjectKeys.GEO_RES_PEN },
-      { name: 'Dendro RES Reduction', value: StatsObjectKeys.DENDRO_RES_PEN },
     ],
   }
 
@@ -131,7 +109,6 @@ export const CustomModal = observer(({ index }: { index: number }) => {
         <Tab title="Stats" value="stats" defaultKey={StatsObjectKeys[Stats.ALL_DMG]} />
         <Tab title="Element" value="element" defaultKey={options.element[0].value} />
         <Tab title="Talent" value="talent" defaultKey={options.talent[0].value} />
-        <Tab title="Reaction" value="reaction" defaultKey={StatsObjectKeys.SWIRL_DMG} />
         <Tab title="Debuffs" value="debuff" defaultKey={options.debuff[0].value} />
       </div>
       <div className="grid items-center grid-cols-3 pb-4 border-b gap-x-3 border-primary-border">
@@ -153,12 +130,6 @@ export const CustomModal = observer(({ index }: { index: number }) => {
           <>
             <SelectInput value={selectedTalent} onChange={(v) => setSelectedTalent(v as any)} options={talent} />
             <SelectInput value={key} onChange={(v) => setKey(v)} options={options.talent} />
-          </>
-        )}
-        {selectedTab === 'reaction' && (
-          <>
-            <SelectInput value={key} onChange={(v) => setKey(v)} options={options.reaction} />
-            <p className="text-sm text-gray">Percentage Bonus</p>
           </>
         )}
         {selectedTab === 'debuff' && (

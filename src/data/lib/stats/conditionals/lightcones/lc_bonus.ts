@@ -18,6 +18,67 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
     },
   },
   {
+    id: '20002',
+    scaling: (base, r) => {
+      base.BASIC_DMG.push({
+        name: 'Passive',
+        source: 'Collapsing Sky',
+        value: calcRefinement(0.2, 0.05, r),
+      })
+      base.SKILL_DMG.push({
+        name: 'Passive',
+        source: 'Collapsing Sky',
+        value: calcRefinement(0.2, 0.05, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '20001',
+    scaling: (base, r) => {
+      base.SKILL_HEAL.push({
+        name: 'Passive',
+        source: 'Cornucopia',
+        value: calcRefinement(0.12, 0.03, r),
+      })
+      base.ULT_HEAL.push({
+        name: 'Passive',
+        source: 'Cornucopia',
+        value: calcRefinement(0.12, 0.03, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '20018',
+    scaling: (base, r) => {
+      base.BASIC_SCALING.push({
+        name: 'Hidden Shadow DMG',
+        value: [{ scaling: calcRefinement(0.6, 0.15, r), multiplier: Stats.ATK }],
+        element: base.ELEMENT,
+        property: TalentProperty.ADD,
+        type: TalentType.NONE,
+      })
+      return base
+    },
+  },
+  {
+    id: '20011',
+    scaling: (base, r) => {
+      base.CALLBACK.push((x, d) => {
+        const count = countDebuff(d)
+        if (count)
+          base[Stats.ALL_DMG].push({
+            name: 'Passive',
+            source: 'Loop',
+            value: calcRefinement(0.24, 0.06, r),
+          })
+        return x
+      })
+      return base
+    },
+  },
+  {
     id: '21012',
     scaling: (base, r) => {
       base[Stats.ALL_DMG].push({
@@ -89,11 +150,17 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
         source: 'Day One of My New Life',
         value: calcRefinement(0.16, 0.02, r),
       })
-      base.ALL_TYPE_RES.push({
-        name: 'Passive',
-        source: 'Day One of My New Life',
-        value: calcRefinement(0.08, 0.01, r),
-      })
+      if (
+        !_.includes(
+          _.map(base.ALL_TYPE_RES, (item) => item.source),
+          'Day One of My New Life'
+        )
+      )
+        base.ALL_TYPE_RES.push({
+          name: 'Passive',
+          source: 'Day One of My New Life',
+          value: calcRefinement(0.08, 0.01, r),
+        })
       return base
     },
   },
@@ -352,6 +419,11 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
         source: 'Post-Op Conversation',
         value: calcRefinement(0.08, 0.02, r),
       })
+      base.ULT_HEAL.push({
+        name: 'Passive',
+        source: 'Post-Op Conversation',
+        value: calcRefinement(0.12, 0.03, r),
+      })
       return base
     },
   },
@@ -539,6 +611,507 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
             value: calcRefinement(0.16, 0.04, r),
           })
         return x
+      })
+      return base
+    },
+  },
+  {
+    id: '23024',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: 'Along the Passing Shore',
+        value: calcRefinement(0.36, 0.06, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23018',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: 'An Instant Before A Gaze',
+        value: calcRefinement(0.36, 0.06, r),
+      })
+      base.ULT_DMG.push({
+        name: 'Passive',
+        source: 'An Instant Before A Gaze',
+        value: calcRefinement(0.0036, 0.0006, r) * _.min([180, base.MAX_ENERGY]),
+      })
+      return base
+    },
+  },
+  {
+    id: '23020',
+    scaling: (base, r) => {
+      base.CALLBACK.push((x, d) => {
+        const count = countDebuff(d)
+        x[Stats.CRIT_DMG].push({
+          name: 'Passive',
+          source: 'Baptism of Pure Thought',
+          value: calcRefinement(0.2, 0.03, r) + _.min([count, 3]) * calcRefinement(0.08, 0.01, r),
+        })
+        return x
+      })
+      return base
+    },
+  },
+  {
+    id: '23010',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: 'Before Dawn',
+        value: calcRefinement(0.36, 0.06, r),
+      })
+      base.SKILL_DMG.push({
+        name: 'Passive',
+        source: 'Before Dawn',
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      base.ULT_DMG.push({
+        name: 'Passive',
+        source: 'Before Dawn',
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23015',
+    scaling: (base, r) => {
+      base[Stats.CRIT_RATE].push({
+        name: 'Passive',
+        source: 'Brighter Than the Sun',
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23003',
+    scaling: (base, r) => {
+      base[Stats.ERR].push({
+        name: 'Passive',
+        source: `But the Battle Isn't Over`,
+        value: calcRefinement(0.1, 0.02, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '24001',
+    scaling: (base, r) => {
+      base[Stats.CRIT_RATE].push({
+        name: 'Passive',
+        source: 'Cruising in the Stellar Sea',
+        value: calcRefinement(0.08, 0.02, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23021',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: 'Earthly Escapade',
+        value: calcRefinement(0.36, 0.07, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23008',
+    scaling: (base, r) => {
+      base[Stats.P_ATK].push({
+        name: 'Passive',
+        source: 'Echoes of the Coffin',
+        value: calcRefinement(0.24, 0.04, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '24004',
+    scaling: (base, r) => {
+      base[Stats.P_ATK].push({
+        name: 'Passive',
+        source: 'Eternal Calculus',
+        value: calcRefinement(0.08, 0.01, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23014',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: 'I Shall Be My Own Sword',
+        value: calcRefinement(0.2, 0.03, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23004',
+    scaling: (base, r) => {
+      base.CALLBACK.push((x, d) => {
+        const count = countDebuff(d)
+        if (count)
+          x[Stats.ALL_DMG].push({
+            name: 'Passive',
+            source: 'In the Name of the World',
+            value: calcRefinement(0.24, 0.04, r),
+          })
+        return x
+      })
+      return base
+    },
+  },
+  {
+    id: '23001',
+    scaling: (base, r) => {
+      base[Stats.CRIT_RATE].push({
+        name: 'Passive',
+        source: 'In the Night',
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      base.CALLBACK.push((x) => {
+        const stack = _.min([_.max([x.getSpd() - 100, 0]) / 10, 6])
+        if (stack) {
+          x.BASIC_DMG.push({
+            name: 'Passive',
+            source: 'In the Night',
+            value: calcRefinement(0.06, 0.01, r) * stack,
+          })
+          x.SKILL_DMG.push({
+            name: 'Passive',
+            source: 'In the Night',
+            value: calcRefinement(0.06, 0.01, r) * stack,
+          })
+          x.ULT_CD.push({
+            name: 'Passive',
+            source: 'In the Night',
+            value: calcRefinement(0.12, 0.02, r) * stack,
+          })
+        }
+        return x
+      })
+      return base
+    },
+  },
+  {
+    id: '23007',
+    scaling: (base, r) => {
+      base[Stats.EHR].push({
+        name: 'Passive',
+        source: 'Incessant Rain',
+        value: calcRefinement(0.24, 0.04, r),
+      })
+      base.CALLBACK.push((x, d) => {
+        const count = countDebuff(d)
+        if (count >= 3)
+          x[Stats.CRIT_RATE].push({
+            name: 'Passive',
+            source: 'Incessant Rain',
+            value: calcRefinement(0.12, 0.02, r),
+          })
+      })
+      return base
+    },
+  },
+  {
+    id: '23023',
+    scaling: (base, r) => {
+      base[Stats.P_DEF].push({
+        name: 'Passive',
+        source: 'Inherently Unjust Destiny',
+        value: calcRefinement(0.4, 0.06, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23005',
+    scaling: (base, r) => {
+      base[Stats.P_DEF].push({
+        name: 'Passive',
+        source: 'Moment of Victory',
+        value: calcRefinement(0.24, 0.04, r),
+      })
+      base[Stats.EHR].push({
+        name: 'Passive',
+        source: 'Moment of Victory',
+        value: calcRefinement(0.24, 0.04, r),
+      })
+      base.AGGRO.push({
+        name: 'Passive',
+        source: 'Moment of Victory',
+        value: 2,
+      })
+      return base
+    },
+  },
+  {
+    id: '23017',
+    scaling: (base, r) => {
+      base[Stats.ERR].push({
+        name: 'Passive',
+        source: 'Night of Fright',
+        value: calcRefinement(0.12, 0.02, r),
+      })
+      // base.CALLBACK.push((x, _d, _w, all) => {
+      //   _.forEach(all, item => {
+      //     item.ULT_SCALING.push({
+      //       name: 'Self Healing',
+      //     value: [{ scaling: calcRefinement(0.1, 0.01, r), multiplier: Stats.HP }],
+      //     element: TalentProperty.HEAL,
+      //     property: TalentProperty.HEAL,
+      //     type: TalentType.NONE,
+      //     overrideIndex:
+      //     })
+      //   })
+      //   return x
+      // })
+      return base
+    },
+  },
+  {
+    id: '23019',
+    scaling: (base, r) => {
+      base[Stats.BE].push({
+        name: 'Passive',
+        source: 'Past Self in Mirror',
+        value: calcRefinement(0.6, 0.1, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23006',
+    scaling: (base, r) => {
+      base[Stats.ALL_DMG].push({
+        name: 'Passive',
+        source: 'Patience Is All You Need',
+        value: calcRefinement(0.24, 0.04, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23022',
+    scaling: (base, r) => {
+      base[Stats.EHR].push({
+        name: 'Passive',
+        source: 'Reforged Remembrance',
+        value: calcRefinement(0.4, 0.05, r),
+      })
+      base.CALLBACK.push((x, d) => {
+        const windshear = countDot(d, DebuffTypes.WIND_SHEAR) >= 1
+        const burn = countDot(d, DebuffTypes.BURN) >= 1
+        const bleed = countDot(d, DebuffTypes.BLEED) >= 1
+        const shock = countDot(d, DebuffTypes.SHOCKED) >= 1
+        const total = _.sum([windshear, burn, bleed, shock])
+
+        if (total) {
+          x[Stats.P_ATK].push({
+            name: 'Passive',
+            source: 'Reforged Remembrance',
+            value: calcRefinement(0.05, 0.01, r) * total,
+          })
+          x.DOT_DEF_PEN.push({
+            name: 'Passive',
+            source: 'Reforged Remembrance',
+            value: calcRefinement(0.072, 0.007, r) * total,
+          })
+        }
+        return x
+      })
+      return base
+    },
+  },
+  {
+    id: '23027',
+    scaling: (base, r) => {
+      base[Stats.BE].push({
+        name: 'Passive',
+        source: 'Sailing Towards A Second Life',
+        value: calcRefinement(0.6, 0.1, r),
+      })
+      base.BREAK_DEF_PEN.push({
+        name: 'Passive',
+        source: 'Sailing Towards A Second Life',
+        value: calcRefinement(0.2, 0.03, r),
+      })
+      base.CALLBACK.push((x, _d, _w, _a, battle) => {
+        if (battle && x.getValue(Stats.BE) >= 1.5)
+          x[Stats.SPD].push({
+            name: 'Passive',
+            source: 'Sailing Towards A Second Life',
+            value: calcRefinement(0.12, 0.02, r),
+          })
+        return x
+      })
+      return base
+    },
+  },
+  {
+    id: '23011',
+    scaling: (base, r) => {
+      base[Stats.P_HP].push({
+        name: 'Passive',
+        source: 'She Already Shut Her Eyes',
+        value: calcRefinement(0.24, 0.04, r),
+      })
+      base[Stats.ERR].push({
+        name: 'Passive',
+        source: 'She Already Shut Her Eyes',
+        value: calcRefinement(0.12, 0.02, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23012',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: 'Sleep Like the Dead',
+        value: calcRefinement(0.3, 0.05, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '24003',
+    scaling: (base, r) => {
+      base[Stats.BE].push({
+        name: 'Passive',
+        source: 'Solitary Healing',
+        value: calcRefinement(0.2, 0.05, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23002',
+    scaling: (base, r) => {
+      base[Stats.P_ATK].push({
+        name: 'Passive',
+        source: 'Something Irreplaceable',
+        value: calcRefinement(0.24, 0.04, r),
+      })
+      base.CALLBACK.push((x) => {
+        x.SKILL_SCALING.push({
+          name: 'On-Kill/Attacked Healing',
+          value: [{ scaling: calcRefinement(0.08, 0.01, r), multiplier: Stats.ATK }],
+          element: TalentProperty.HEAL,
+          property: TalentProperty.HEAL,
+          type: TalentType.NONE,
+        })
+      })
+      return base
+    },
+  },
+  {
+    id: '24002',
+    scaling: (base, r) => {
+      base[Stats.E_RES].push({
+        name: 'Passive',
+        source: 'Texture of Memories',
+        value: calcRefinement(0.08, 0.02, r),
+      })
+      base.CALLBACK.push((x) => {
+        x.SKILL_SCALING.push({
+          name: 'On-Attacked Shield',
+          value: [{ scaling: calcRefinement(0.16, 0.04, r), multiplier: Stats.HP }],
+          element: TalentProperty.SHIELD,
+          property: TalentProperty.SHIELD,
+          type: TalentType.NONE,
+        })
+      })
+      return base
+    },
+  },
+  {
+    id: '23009',
+    scaling: (base, r) => {
+      base[Stats.P_HP].push({
+        name: 'Passive',
+        source: 'The Unreachable Side',
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      base[Stats.CRIT_RATE].push({
+        name: 'Passive',
+        source: 'The Unreachable Side',
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23025',
+    scaling: (base, r) => {
+      base[Stats.BE].push({
+        name: 'Passive',
+        source: 'Whereabouts Should Dreams Rest',
+        value: calcRefinement(0.6, 0.1, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23016',
+    scaling: (base, r) => {
+      base[Stats.CRIT_RATE].push({
+        name: 'Passive',
+        source: 'Worrisome, Blissful',
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      base.FUA_DMG.push({
+        name: 'Passive',
+        source: 'Worrisome, Blissful',
+        value: calcRefinement(0.3, 0.05, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23028',
+    scaling: (base, r) => {
+      base[Stats.P_HP].push({
+        name: 'Passive',
+        source: 'Yet Hope Is Priceless',
+        value: calcRefinement(0.16, 0.03, r),
+      })
+      base.CALLBACK.push((x) => {
+        const exceed = _.min([_.max([0, x.getValue(Stats.CRIT_DMG) - 1.2]) / 0.2, 4])
+        if (exceed)
+          x.FUA_DMG.push({
+            name: 'Passive',
+            source: 'Yet Hope Is Priceless',
+            value: calcRefinement(0.16, 0.03, r) * exceed,
+          })
+        return x
+      })
+      return base
+    },
+  },
+  {
+    id: '23013',
+    scaling: (base, r) => {
+      base[Stats.P_HP].push({
+        name: 'Passive',
+        source: 'Time Waits for No One',
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      base[Stats.HEAL].push({
+        name: 'Passive',
+        source: 'Time Waits for No One',
+        value: calcRefinement(0.12, 0.02, r),
       })
       return base
     },

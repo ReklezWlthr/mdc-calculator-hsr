@@ -128,13 +128,7 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                     <div className="flex items-center justify-center col-span-2">
                       <CheckboxInput
                         checked={calculatorStore.form[content.index]?.[content.id]}
-                        onClick={(v) => {
-                          calculatorStore.setFormValue(content.index, content.id, v)
-                          if (content.id === 'melt_forward')
-                            calculatorStore.setFormValue(content.index, 'vape_reverse', false)
-                          if (content.id === 'vape_reverse')
-                            calculatorStore.setFormValue(content.index, 'melt_forward', false)
-                        }}
+                        onClick={(v) => calculatorStore.setFormValue(content.index, content.id, v)}
                       />
                     </div>
                   )}
