@@ -42,12 +42,12 @@ export const SelectInput = ({ disabled, value, placeholder, onChange, options, s
             { 'text-primary-light': !value }
           )}
         >
-          <div className="flex items-center">
+          <div className="flex items-center w-full">
             {value && valueFinder(value)?.img && (
               <img src={valueFinder(value)?.img} className="object-cover w-6 h-6 mr-3 rounded-full" />
             )}
             <div>{value && <i className={icon} />}</div>
-            <div className="text-sm truncate">{value ? valueFinder(value)?.name : placeholder}</div>
+            <div className="w-full text-sm truncate text-start">{value ? valueFinder(value)?.name : placeholder}</div>
           </div>
         </Listbox.Button>
         <Transition

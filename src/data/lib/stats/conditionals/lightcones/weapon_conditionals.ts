@@ -1016,7 +1016,7 @@ export const WeaponConditionals: IWeaponContent[] = [
       if (form['23030']) {
         base.FUA_DMG.push({
           name: 'Firedance',
-          source: 'Void',
+          source: 'Dance at Sunset',
           value: calcRefinement(0.36, 0.06, r) * form['23030'],
         })
       }
@@ -1458,7 +1458,7 @@ export const WeaponTeamConditionals: IWeaponContent[] = [
     type: 'element',
     text: `Those Many Springs Tier`,
     show: true,
-    default: true,
+    default: '0',
     options: [
       { name: 'None', value: '0' },
       { name: 'Unarmored', value: '1' },
