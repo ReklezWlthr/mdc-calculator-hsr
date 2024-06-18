@@ -1003,6 +1003,26 @@ export const WeaponConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'number',
+    text: `Firedance Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 2,
+    duration: 3,
+    id: '23030',
+    scaling: (base, form, r) => {
+      if (form['23030']) {
+        base.FUA_DMG.push({
+          name: 'Firedance',
+          source: 'Void',
+          value: calcRefinement(0.36, 0.06, r) * form['23030'],
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const WeaponAllyConditionals: IWeaponContent[] = [
@@ -1430,6 +1450,33 @@ export const WeaponTeamConditionals: IWeaponContent[] = [
           source: 'Mediation',
           value: calcRefinement(12, 2, r),
         })
+      }
+      return base
+    },
+  },
+  {
+    type: 'element',
+    text: `Those Many Springs Tier`,
+    show: true,
+    default: true,
+    options: [
+      { name: 'None', value: '0' },
+      { name: 'Unarmored', value: '1' },
+      { name: 'Cornered', value: '2' },
+    ],
+    debuff: true,
+    chance: { base: 0.6, fixed: false },
+    duration: 2,
+    id: '23029',
+    scaling: (base, form, r, { debuffs, own }) => {
+      const tier = Number(form['23029'])
+      if (tier) {
+        base.VULNERABILITY.push({
+          name: `Ensnare`,
+          source: 'Resolution Shines As Pearls of Sweat',
+          value: tier === 1 ? calcRefinement(0.1, 0.02, r) : calcRefinement(0.18, 0.03, r),
+        })
+        if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.DEF_RED)
       }
       return base
     },

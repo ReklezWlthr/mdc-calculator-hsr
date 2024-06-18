@@ -120,7 +120,7 @@ export const TeamSetup = observer(() => {
   const char = teamStore.characters[selected]
   const charData = findCharacter(char.cId)
   const raw = calculateOutOfCombat(_.cloneDeep(baseStatsObject), selected, teamStore.characters, artifactData)
-  const stats = calculateFinal(raw, charData?.element)
+  const stats = calculateFinal(raw)
 
   const onOpenSaveModal = useCallback(() => {
     modalStore.openModal(<SaveBuildModal index={selected} />)

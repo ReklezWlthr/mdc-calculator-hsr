@@ -28,7 +28,7 @@ export const calculateOutOfCombat = (
   return final
 }
 
-export const calculateFinal = (conditionals: StatsObject, element: Element) => {
+export const calculateFinal = (conditionals: StatsObject) => {
   const cb = conditionals.CALLBACK
   let x = conditionals
   _.forEach(cb, (item) => {

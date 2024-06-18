@@ -1116,6 +1116,56 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '21046',
+    scaling: (base, r) => {
+      base[Stats.P_ATK].push({
+        name: 'Passive',
+        source: 'Poised to Bloom',
+        value: calcRefinement(0.16, 0.04, r),
+      })
+      base.CALLBACK.push((x, _d, _w, all) => {
+        const path = _.map(all, (item) => item.PATH)
+        _.forEach(path, (item, i) => {
+          if (_.size(_.filter(path, (p) => p === item)) >= 2)
+            all[i][Stats.CRIT_DMG].push({
+              name: 'Passive',
+              source: 'Poised to Bloom',
+              value: calcRefinement(0.16, 0.04, r),
+            })
+        })
+        return x
+      })
+      return base
+    },
+  },
+  {
+    id: '23029',
+    scaling: (base, r) => {
+      base[Stats.EHR].push({
+        name: 'Passive',
+        source: 'Those Many Springs',
+        value: calcRefinement(0.6, 0.1, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23030',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: 'Dance at Sunset',
+        value: calcRefinement(0.36, 0.06, r),
+      })
+      base.AGGRO.push({
+        name: 'Passive',
+        source: 'Dance at Sunset',
+        value: 2,
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

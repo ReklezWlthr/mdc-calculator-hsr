@@ -248,7 +248,7 @@ export const AscensionOptions = [
   { name: 'A4', value: '4' },
   { name: 'A5', value: '5' },
   { name: 'A6', value: '6' },
-]
+].reverse()
 
 export const EidolonOptions = [
   { name: 'E0', value: '0' },

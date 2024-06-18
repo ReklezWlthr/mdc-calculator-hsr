@@ -1039,6 +1039,20 @@ export const LightCones = [
       ],
     },
   },
+  {
+    id: '21046',
+    name: 'Poised to Bloom',
+    rarity: 4,
+    baseHp: 43.2,
+    baseAtk: 19.2,
+    baseDef: 18,
+    type: PathType.HARMONY,
+    desc: {
+      name: 'Lose Not, Forget Not',
+      detail: `Increases the wearer's ATK by {{0}}%. Upon entering the battle, if there are two or more allies in the team who follow the same Path, these characters' CRIT DMG increases by {{0}}%. Abilities of the same type cannot stack.`,
+      properties: [{ base: 16, growth: 4 }],
+    },
+  },
   //---------------------
   //   Event 4 Star
   //---------------------
@@ -1604,6 +1618,38 @@ export const LightCones = [
         { base: 12, growth: 2 },
         { base: 20, growth: 4 },
       ],
+    },
+  },
+  {
+    id: '23029',
+    name: 'Those Many Springs',
+    rarity: 5,
+    baseHp: 43.2,
+    baseAtk: 26.4,
+    baseDef: 24,
+    type: PathType.NIHILITY,
+    desc: {
+      name: 'Worldly Affairs Leave No Mark',
+      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. If the target is not under the Unarmored effect dealt by the wearer, when the wearer uses a Basic ATK, Skill, or Ultimate on enemy targets, there is a <span class="text-desc">60%</span> base chance to inflict Unarmored to the enemy. Under the Unarmored state, the target enemy's DMG received is increased by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). When the wearer deals DMG to an enemy with the Unarmored effect inflicted by themselves, there is a <span class="text-desc">60%</span> base chance to escalate the Unarmored state from them into the Cornered state, which increases the target enemy's DMG received by {{2}}%.`,
+      properties: [
+        { base: 60, growth: 10 },
+        { base: 10, growth: 2 },
+        { base: 18, growth: 3 },
+      ],
+    },
+  },
+  {
+    id: '23030',
+    name: 'Dance at Sunset',
+    rarity: 5,
+    baseHp: 48,
+    baseAtk: 26.4,
+    baseDef: 21,
+    type: PathType.DESTRUCTION,
+    desc: {
+      name: 'Deeply Engrossed',
+      detail: `Greatly increases the odds that the wearer will be attacked, increases the wearer's CRIT DMG by {{0}}%. After the wearer uses their Ultimate, they receive <span class="text-desc">1</span> stack of <b>Firedance</b>, lasting for <span class="text-desc">2</span> turns and up to <span class="text-desc">2</span> stacks. Each stack of <b>Firedance</b> increases the DMG dealt by the wearer's follow-up attack by {{0}}%.`,
+      properties: [{ base: 36, growth: 6 }],
     },
   },
   //---------------------
