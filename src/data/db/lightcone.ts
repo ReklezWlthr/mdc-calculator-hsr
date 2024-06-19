@@ -1630,7 +1630,7 @@ export const LightCones = [
     type: PathType.NIHILITY,
     desc: {
       name: 'Worldly Affairs Leave No Mark',
-      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. If the target is not under the Unarmored effect dealt by the wearer, when the wearer uses a Basic ATK, Skill, or Ultimate on enemy targets, there is a <span class="text-desc">60%</span> <u>base chance</u> to inflict Unarmored to the enemy. Under the Unarmored state, the target enemy's DMG received is increased by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). When the wearer deals DMG to an enemy with the Unarmored effect inflicted by themselves, there is a <span class="text-desc">60%</span> <u>base chance</u> to escalate the Unarmored state from them into the Cornered state, which increases the target enemy's DMG received by {{2}}%.`,
+      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. If the target is not under the <b>Unarmored</b> effect dealt by the wearer, when the wearer uses a Basic ATK, Skill, or Ultimate on enemy targets, there is a <span class="text-desc">60%</span> <u>base chance</u> to inflict <b>Unarmored</b> to the enemy. Under the <b>Unarmored</b> state, the target enemy's DMG received is increased by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). When the wearer deals DMG to an enemy with the <b>Unarmored</b> effect inflicted by themselves, there is a <span class="text-desc">60%</span> <u>base chance</u> to escalate the <b>Unarmored</b> state from them into the <b>Cornered</b> state, which increases the target enemy's DMG received by {{2}}%.`,
       properties: [
         { base: 60, growth: 10 },
         { base: 10, growth: 2 },

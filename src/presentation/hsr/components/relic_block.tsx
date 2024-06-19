@@ -241,7 +241,7 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
             className="flex items-center justify-center w-full h-full transition-colors duration-200 cursor-pointer hover:bg-primary-darker"
             onClick={onOpenSwapModal}
           >
-            Equip an Relic
+            Equip a Relic
           </div>
         </div>
       ) : (

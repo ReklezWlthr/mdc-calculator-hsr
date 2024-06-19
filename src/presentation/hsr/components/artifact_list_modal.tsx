@@ -33,7 +33,7 @@ export const ArtifactListModal = observer(({ index, type }: { index: number; typ
   return (
     <div className="w-[65vw] p-4 text-white rounded-xl bg-primary-darker space-y-4">
       <div className="flex items-center justify-between w-full">
-        <p className="text-lg font-bold">Choose an artifact</p>
+        <p className="text-lg font-bold">Choose a relic</p>
         <div className="flex items-center gap-3">
           <SelectTextInput
             value={params.set}
