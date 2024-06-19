@@ -37,7 +37,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     ult: {
       title: `G—Gonna Be Late!`,
-      content: `Has <span class="text-desc">3</span> Hits Per Action by default. First, uses <span class="text-desc">1</span> hit to deal <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Misha's ATK to a single target enemy. Then, the rest of the hits each deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Misha's ATK to a single random enemy. Just before each hit lands, there is a {{1}}% base chance to <b class="text-hsr-ice">Freeze</b> the target, lasting for <span class="text-desc">1</span> turn.
+      content: `Has <span class="text-desc">3</span> Hits Per Action by default. First, uses <span class="text-desc">1</span> hit to deal <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Misha's ATK to a single target enemy. Then, the rest of the hits each deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Misha's ATK to a single random enemy. Just before each hit lands, there is a {{1}}% <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> the target, lasting for <span class="text-desc">1</span> turn.
       <br />While <b class="text-hsr-ice">Frozen</b>, enemy targets cannot take any actions, and at the start of their turn, they receive Additional <b class="text-hsr-ice">Ice DMG</b> equal to {{2}}% of Misha's ATK.
       <br />This Ultimate can possess up to <span class="text-desc">10</span> Hits Per Action. After the Ultimate is used, its Hits Per Action will be reset to the default level.`,
       value: [
@@ -59,7 +59,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     a2: {
       title: `A2: Release`,
-      content: `Before the Ultimate's first hit lands, increases the base chance of <b class="text-hsr-ice">Freezing</b> the target by <span class="text-desc">80%</span>.`,
+      content: `Before the Ultimate's first hit lands, increases the <u>base chance</u> of <b class="text-hsr-ice">Freezing</b> the target by <span class="text-desc">80%</span>.`,
     },
     a4: {
       title: `A4: Interlock`,
@@ -75,7 +75,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     c2: {
       title: `E2: Yearning of Youth`,
-      content: `Before each hit of the Ultimate lands, there is a <span class="text-desc">24%</span> base chance of reducing the target's DEF by 16% for <span class="text-desc">3</span> turn(s).`,
+      content: `Before each hit of the Ultimate lands, there is a <span class="text-desc">24%</span> <u>base chance</u> of reducing the target's DEF by 16% for <span class="text-desc">3</span> turn(s).`,
     },
     c3: {
       title: `E3: Vestige of Happiness`,

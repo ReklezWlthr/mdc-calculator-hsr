@@ -31,7 +31,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     skill: {
       title: `Scorch Onslaught`,
-      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to a single enemy and <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Jiaoqiu's ATK to enemies adjacent to it. Has a <span class="text-desc">100%</span> base chance to inflict <span class="text-desc">1</span> stack of <b>Ashen Roast</b> on the primary target.`,
+      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to a single enemy and <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Jiaoqiu's ATK to enemies adjacent to it. Has a <span class="text-desc">100%</span> <u>base chance</u> to inflict <span class="text-desc">1</span> stack of <b>Ashen Roast</b> on the primary target.`,
       value: [
         { base: 90, growth: 9, style: 'curved' },
         { base: 45, growth: 4.5, style: 'curved' },
@@ -41,7 +41,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ult: {
       title: 'Pyrograph Arcanum',
       content: `Sets the number of "<b>Ashen Roast</b>" stacks on enemy targets to the highest number of "<b>Ashen Roast</b>" stacks present on the battlefield. Then, activates a Field and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to all enemies.
-      <br />While inside the field, enemy targets take {{1}}% increased Ultimate DMG, with a {{2}}% base chance of being inflicted with <span class="text-desc">1</span> stack of <b>Ashen Roast</b> when taking action. This effect can only be triggered once for enemies in each turn.
+      <br />While inside the field, enemy targets take {{1}}% increased Ultimate DMG, with a {{2}}% <u>base chance</u> of being inflicted with <span class="text-desc">1</span> stack of <b>Ashen Roast</b> when taking action. This effect can only be triggered once for enemies in each turn.
       <br />The Field lasts for <span class="text-desc">3</span> turn(s), and its duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn. If Jiaoqiu is knocked down, the Field will also be dispelled.`,
       value: [
         { base: 120, growth: 8, style: 'curved' },
@@ -52,7 +52,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     talent: {
       title: `Quartet Finesse, Octave Finery`,
-      content: `When Jiaoqiu uses his Basic ATK, Skill, or Ultimate to hit an enemy, there is a <span class="text-desc">100%</span> base chance of dealing <span class="text-desc">1</span> stack of <b>Ashen Roast</b>, increasing the initial DMG enemies receive by {{0}}%, with each stack additionally increasing DMG by {{1}}% to a max of <span class="text-desc">5</span> stack(s). <b>Ashen Roast</b> will last <span class="text-desc">2</span> turn(s).`,
+      content: `When Jiaoqiu uses his Basic ATK, Skill, or Ultimate to hit an enemy, there is a <span class="text-desc">100%</span> <u>base chance</u> of dealing <span class="text-desc">1</span> stack of <b>Ashen Roast</b>, increasing the initial DMG enemies receive by {{0}}%, with each stack additionally increasing DMG by {{1}}% to a max of <span class="text-desc">5</span> stack(s). <b>Ashen Roast</b> will last <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 7.5, growth: 0.75, style: 'curved' },
         { base: 2.5, growth: 0.25, style: 'curved' },
@@ -61,7 +61,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     technique: {
       title: 'Fiery Queller',
-      content: `After using Technique, creates a special dimension that lasts for <span class="text-desc">15</span> second(s). After engaging enemies in the dimension, deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">100%</span> of Jiaoqiu's ATK to all enemies and has a <span class="text-desc">100%</span> base chance of applying 1 <b>Ashen Roast</b> stack. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
+      content: `After using Technique, creates a special dimension that lasts for <span class="text-desc">15</span> second(s). After engaging enemies in the dimension, deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">100%</span> of Jiaoqiu's ATK to all enemies and has a <span class="text-desc">100%</span> <u>base chance</u> of applying 1 <b>Ashen Roast</b> stack. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
       title: 'A2: Seared Scent',

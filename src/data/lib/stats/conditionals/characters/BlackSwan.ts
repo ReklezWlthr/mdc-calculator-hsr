@@ -24,7 +24,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
   const talents: ITalent = {
     normal: {
       title: 'Percipience, Silent Dawn',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Black Swan's ATK to a single target enemy, with a {{1}}% base chance of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b>. And if the hit target currently has <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-physical">Bleed</b>, <b class="text-hsr-fire">Burn</b>, or <b class="text-hsr-lightning">Shock</b> applied to them, each respectively has a {{1}}% base chance of inflicting <span class="text-desc">1</span> extra stack of <b>Arcana</b> onto the enemy.`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Black Swan's ATK to a single target enemy, with a {{1}}% <u>base chance</u> of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b>. And if the hit target currently has <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-physical">Bleed</b>, <b class="text-hsr-fire">Burn</b>, or <b class="text-hsr-lightning">Shock</b> applied to them, each respectively has a {{1}}% <u>base chance</u> of inflicting <span class="text-desc">1</span> extra stack of <b>Arcana</b> onto the enemy.`,
       value: [
         { base: 30, growth: 6, style: 'linear' },
         { base: 50, growth: 3, style: 'linear' },
@@ -33,7 +33,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     skill: {
       title: 'Decadence, False Twilight',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Black Swan's ATK to a single target enemy and any adjacent targets. At the same time, there is a <span class="text-desc">100%</span> base chance of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b> on the target enemy and the adjacent targets. And there is a <span class="text-desc">100%</span> base chance of reducing the DEF of the target enemy and the adjacent targets by {{1}}%, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Black Swan's ATK to a single target enemy and any adjacent targets. At the same time, there is a <span class="text-desc">100%</span> <u>base chance</u> of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b> on the target enemy and the adjacent targets. And there is a <span class="text-desc">100%</span> <u>base chance</u> of reducing the DEF of the target enemy and the adjacent targets by {{1}}%, lasting for <span class="text-desc">3</span> turn(s).`,
       value: [
         { base: 45, growth: 4.5, style: 'curved' },
         { base: 14.8, growth: 0.6, style: 'curved' },
@@ -53,10 +53,10 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     talent: {
       title: `Loom of Fate's Caprice`,
-      content: `Every time an enemy target receives DoT at the start of each turn, there is a {{0}}% base chance for it to be inflicted with <b>Arcana</b>.
+      content: `Every time an enemy target receives DoT at the start of each turn, there is a {{0}}% <u>base chance</u> for it to be inflicted with <b>Arcana</b>.
       <br />While afflicted with <b>Arcana</b>, enemy targets receive <b class="text-hsr-wind">Wind DoT</b> equal to {{1}}% of Black Swan's ATK at the start of each turn. Each stack of <b>Arcana</b> increases this DoT DMG multiplier by {{2}}%. Then <b>Arcana</b> resets to <span class="text-desc">1</span> stack. <b>Arcana</b> can stack up to <span class="text-desc">50</span> times.
       <br />Only when <b>Arcana</b> causes DMG at the start of an enemy target's turn, Black Swan triggers additional effects based on the number of <b>Arcana</b> stacks inflicted on the target:
-      <br />When there are <span class="text-desc">3</span> or more <b>Arcana</b> stacks, deals <b class="text-hsr-wind">Wind DoT</b> equal to {{3}}% of Black Swan's ATK to adjacent targets, with a {{0}}% base chance of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b> on adjacent targets.
+      <br />When there are <span class="text-desc">3</span> or more <b>Arcana</b> stacks, deals <b class="text-hsr-wind">Wind DoT</b> equal to {{3}}% of Black Swan's ATK to adjacent targets, with a {{0}}% <u>base chance</u> of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b> on adjacent targets.
       <br />When there are <span class="text-desc">7</span> or more <b>Arcana</b> stacks, enables the current DoT dealt this time to ignore <span class="text-desc">20%</span> of the target's and adjacent targets' DEF.`,
       value: [
         { base: 50, growth: 1.5, style: 'curved' },
@@ -68,15 +68,15 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     technique: {
       title: 'From Façade to Vérité',
-      content: `After this Technique is used, there is a <span class="text-desc">150%</span> base chance for each enemy to be inflicted with <span class="text-desc">1</span> stack of <b>Arcana</b> at the start of the next battle. For each successful application of <b>Arcana</b> on a target, inflicts another stack of <b>Arcana</b> on the same target. This process repeats until <b>Arcana</b> fails to be inflicted on this target. For each successive application of <b>Arcana</b> on a target, its base chance of success is equal to <span class="text-desc">50%</span> of the base chance of the previous successful infliction of <b>Arcana</b> on that target.`,
+      content: `After this Technique is used, there is a <span class="text-desc">150%</span> <u>base chance</u> for each enemy to be inflicted with <span class="text-desc">1</span> stack of <b>Arcana</b> at the start of the next battle. For each successful application of <b>Arcana</b> on a target, inflicts another stack of <b>Arcana</b> on the same target. This process repeats until <b>Arcana</b> fails to be inflicted on this target. For each successive application of <b>Arcana</b> on a target, its <u>base chance</u> of success is equal to <span class="text-desc">50%</span> of the <u>base chance</u> of the previous successful infliction of <b>Arcana</b> on that target.`,
     },
     a2: {
       title: `A2: Viscera's Disquiet`,
-      content: `After using the Skill to hit an enemy that has <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-physical">Bleed</b>, <b class="text-hsr-fire">Burn</b>, or <b class="text-hsr-lightning">Shock</b>, each of these debuffs respectively has a <span class="text-desc">65%</span> base chance of inflicting 1 extra stack of <b>Arcana</b>.`,
+      content: `After using the Skill to hit an enemy that has <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-physical">Bleed</b>, <b class="text-hsr-fire">Burn</b>, or <b class="text-hsr-lightning">Shock</b>, each of these debuffs respectively has a <span class="text-desc">65%</span> <u>base chance</u> of inflicting 1 extra stack of <b>Arcana</b>.`,
     },
     a4: {
       title: `A4: Goblet's Dredges`,
-      content: `There is a <span class="text-desc">65%</span> base chance to inflict <span class="text-desc">1</span> stack of <b>Arcana</b> when a target enters battle. Every time an enemy target receives DoT during a single attack by an ally, there is a <span class="text-desc">65%</span> base chance for the target to be inflicted with <span class="text-desc">1</span> stack of <b>Arcana</b>, stacking up to <span class="text-desc">3</span> time(s) during <span class="text-desc">1</span> single attack.`,
+      content: `There is a <span class="text-desc">65%</span> <u>base chance</u> to inflict <span class="text-desc">1</span> stack of <b>Arcana</b> when a target enters battle. Every time an enemy target receives DoT during a single attack by an ally, there is a <span class="text-desc">65%</span> <u>base chance</u> for the target to be inflicted with <span class="text-desc">1</span> stack of <b>Arcana</b>, stacking up to <span class="text-desc">3</span> time(s) during <span class="text-desc">1</span> single attack.`,
     },
     a6: {
       title: `A6: Candleflame's Portent`,
@@ -88,7 +88,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     c2: {
       title: `E2: Weep Not For Me, My Lamb`,
-      content: `When an enemy target afflicted with Arcana is defeated, there is a <span class="text-desc">100%</span> base chance of inflicting <span class="text-desc">6</span> stack(s) of <b>Arcana</b> on adjacent targets.`,
+      content: `When an enemy target afflicted with Arcana is defeated, there is a <span class="text-desc">100%</span> <u>base chance</u> of inflicting <span class="text-desc">6</span> stack(s) of <b>Arcana</b> on adjacent targets.`,
     },
     c3: {
       title: 'E3: As Above, So Below',
@@ -106,8 +106,8 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     c6: {
       title: 'E6: Pantheon Merciful, Masses Pitiful',
-      content: `When enemy targets get attacked by Black Swan's allies, Black Swan has a <span class="text-desc">65%</span> base chance of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b> on the target.
-      <br />Each time Black Swan inflicts <b>Arcana</b> on an enemy target, there is a <span class="text-desc">50%</span> fixed chance to additionally increase the number of <b>Arcana</b> stacks afflicted this time by <span class="text-desc">1</span>.`,
+      content: `When enemy targets get attacked by Black Swan's allies, Black Swan has a <span class="text-desc">65%</span> <u>base chance</u> of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b> on the target.
+      <br />Each time Black Swan inflicts <b>Arcana</b> on an enemy target, there is a <span class="text-desc">50%</span> <u>fixed chance</u> to additionally increase the number of <b>Arcana</b> stacks afflicted this time by <span class="text-desc">1</span>.`,
     },
   }
 

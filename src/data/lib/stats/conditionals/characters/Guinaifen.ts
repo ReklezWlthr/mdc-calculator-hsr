@@ -31,7 +31,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     skill: {
       title: `Blazing Welcome`,
-      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Guinaifen's ATK to a single enemy and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Guinaifen's ATK to any adjacent enemies with a <span class="text-desc">100%</span> base chance to <b class="text-hsr-fire">Burn</b> the target and adjacent targets. When <b class="text-hsr-fire">Burned</b>, enemies will take a <b class="text-hsr-fire">Fire DoT</b> equal to {{2}}% of Guinaifen's ATK at the beginning of each turn, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Guinaifen's ATK to a single enemy and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Guinaifen's ATK to any adjacent enemies with a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-fire">Burn</b> the target and adjacent targets. When <b class="text-hsr-fire">Burned</b>, enemies will take a <b class="text-hsr-fire">Fire DoT</b> equal to {{2}}% of Guinaifen's ATK at the beginning of each turn, lasting for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 60, growth: 6, style: 'curved' },
         { base: 20, growth: 2, style: 'curved' },
@@ -50,17 +50,17 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     talent: {
       title: `PatrAeon Benefits`,
-      content: `When Guinaifen is on the field, there is a <span class="text-desc">100%</span> base chance to apply <b>Firekiss</b> to an enemy after their <b class="text-hsr-fire">Burn</b> status causes DMG. While inflicted with <b>Firekiss</b>, the enemy receives {{0}}% increased DMG, which lasts for <span class="text-desc">3</span> turn(s) and can stack up to <span class="text-desc">3</span> time(s).`,
+      content: `When Guinaifen is on the field, there is a <span class="text-desc">100%</span> <u>base chance</u> to apply <b>Firekiss</b> to an enemy after their <b class="text-hsr-fire">Burn</b> status causes DMG. While inflicted with <b>Firekiss</b>, the enemy receives {{0}}% increased DMG, which lasts for <span class="text-desc">3</span> turn(s) and can stack up to <span class="text-desc">3</span> time(s).`,
       value: [{ base: 4, growth: 0.3, style: 'curved' }],
       level: talent,
     },
     technique: {
       title: `Skill Showcase`,
-      content: `Immediately attacks the enemy. After entering battle, deals DMG for <span class="text-desc">4</span> time(s), dealing <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of Guinaifen's ATK to a random single enemy target each time, with a <span class="text-desc">100%</span> base chance of inflicting <b>Firekiss</b> on them.`,
+      content: `Immediately attacks the enemy. After entering battle, deals DMG for <span class="text-desc">4</span> time(s), dealing <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of Guinaifen's ATK to a random single enemy target each time, with a <span class="text-desc">100%</span> <u>base chance</u> of inflicting <b>Firekiss</b> on them.`,
     },
     a2: {
       title: `A2: High Poles`,
-      content: `Basic ATK has a <span class="text-desc">80%</span> base chance of inflicting an enemy with a <b class="text-hsr-fire">Burn</b>, equivalent to that of Skill.`,
+      content: `Basic ATK has a <span class="text-desc">80%</span> <u>base chance</u> of inflicting an enemy with a <b class="text-hsr-fire">Burn</b>, equivalent to that of Skill.`,
     },
     a4: {
       title: `A4: Bladed Hoop`,
@@ -72,7 +72,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     c1: {
       title: `E1: Slurping Noodles During Handstand`,
-      content: `When Skill is used, there is a <span class="text-desc">100%</span> base chance to reduce the attacked target enemy's Effect RES by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `When Skill is used, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce the attacked target enemy's Effect RES by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
       title: `E2: Brushing Teeth While Whistling`,

@@ -93,7 +93,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     c6: {
       title: 'E6: Reunion With the Dust',
-      content: `When Ultimate is used, there is a <span class="text-desc">100%</span> fixed chance to reduce all enemies' All-Type RES by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `When Ultimate is used, there is a <span class="text-desc">100%</span> <u>fixed chance</u> to reduce all enemies' All-Type RES by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
   }
 

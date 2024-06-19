@@ -28,7 +28,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     skill: {
       title: 'Edge of the Void',
-      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to a single enemy and further deals DMG <span class="text-desc">2</span> extra times, with each time dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to a random enemy. On hit, there is a {{1}}% base chance to reduce the enemy's SPD by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to a single enemy and further deals DMG <span class="text-desc">2</span> extra times, with each time dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to a random enemy. On hit, there is a {{1}}% <u>base chance</u> to reduce the enemy's SPD by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 36, growth: 3.6, style: 'curved' },
         { base: 65, growth: 1, style: 'curved' },
@@ -37,7 +37,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     ult: {
       title: 'Synthetic Black Hole',
-      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to all enemies, with a <span class="text-desc">100%</span> base chance for enemies hit by this ability to be <b class="text-hsr-imaginary">Imprisoned</b> for <span class="text-desc">1</span> turn.
+      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> for enemies hit by this ability to be <b class="text-hsr-imaginary">Imprisoned</b> for <span class="text-desc">1</span> turn.
       <br /><b class="text-hsr-imaginary">Imprisoned</b> enemies have their actions delayed by {{1}}% and SPD reduced by <span class="text-desc">10%</span>.`,
       value: [
         { base: 138, growth: 9.2, style: 'curved' },
@@ -53,12 +53,12 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     technique: {
       title: 'Gravitational Imprisonment',
-      content: `After using Welt's Technique, create a dimension that lasts for <span class="text-desc">15</span> second(s). Enemies in this dimension have their Movement SPD reduced by <span class="text-desc">50%</span>. After entering battle with enemies in the dimension, there is a <span class="text-desc">100%</span> base chance to <b class="text-hsr-imaginary">Imprison</b> the enemies for <span class="text-desc">1</span> turn.
+      content: `After using Welt's Technique, create a dimension that lasts for <span class="text-desc">15</span> second(s). Enemies in this dimension have their Movement SPD reduced by <span class="text-desc">50%</span>. After entering battle with enemies in the dimension, there is a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-imaginary">Imprison</b> the enemies for <span class="text-desc">1</span> turn.
       <br /><b class="text-hsr-imaginary">Imprisoned</b> enemies have their actions delayed by <span class="text-desc">20%</span> and SPD reduced by <span class="text-desc">10%</span>. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
       title: 'A2: Retribution',
-      content: `When using Ultimate, there is a <span class="text-desc">100%</span> base chance to increase the DMG received by the targets by <span class="text-desc">12%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `When using Ultimate, there is a <span class="text-desc">100%</span> <u>base chance</u> to increase the DMG received by the targets by <span class="text-desc">12%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a4: {
       title: 'A4: Judgment',
@@ -83,7 +83,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     c4: {
       title: 'E4: Appellation of Justice',
-      content: `Base chance for Skill to inflict SPD Reduction increases by <span class="text-desc">35%</span>.`,
+      content: `<u>base chance</u> for Skill to inflict SPD Reduction increases by <span class="text-desc">35%</span>.`,
     },
     c5: {
       title: `E5: Power of Kindness`,

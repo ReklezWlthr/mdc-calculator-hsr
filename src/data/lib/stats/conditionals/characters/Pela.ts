@@ -34,7 +34,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     ult: {
       title: `Zone Suppression`,
-      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pela's ATK to all enemies, with a <span class="text-desc">100%</span> base chance to inflict <b>Exposed</b> on all enemies.
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pela's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b>Exposed</b> on all enemies.
       <br />When <b>Exposed</b>, enemies' DEF is reduced by {{1}}% for 2 turn(s).`,
       value: [
         { base: 60, growth: 4, style: 'curved' },
@@ -50,7 +50,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     technique: {
       title: 'Preemptive Strike',
-      content: `Immediately attacks the enemy. Upon entering battle, Pela deals <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">80%</span> of her ATK to a random enemy, with a <span class="text-desc">100%</span> base chance of lowering the DEF of all enemies by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `Immediately attacks the enemy. Upon entering battle, Pela deals <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">80%</span> of her ATK to a random enemy, with a <span class="text-desc">100%</span> <u>base chance</u> of lowering the DEF of all enemies by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
       title: `A2: Bash`,
@@ -79,7 +79,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     c4: {
       title: 'E4: Full Analysis',
-      content: `When using Skill, there is a <span class="text-desc">100%</span> base chance to reduce the target enemy's <b class="text-hsr-ice">Ice RES</b> by <span class="text-desc">12%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `When using Skill, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce the target enemy's <b class="text-hsr-ice">Ice RES</b> by <span class="text-desc">12%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c5: {
       title: `E5: Absolute Jeopardy`,

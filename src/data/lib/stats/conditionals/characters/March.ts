@@ -38,7 +38,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     ult: {
       title: 'Glacial Cascade',
-      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of March 7th's ATK to all enemies. Hit enemies have a <span class="text-desc">50%</span> base chance to be <b class="text-hsr-ice">Frozen</b> for <span class="text-desc">1</span> turn(s).
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of March 7th's ATK to all enemies. Hit enemies have a <span class="text-desc">50%</span> <u>base chance</u> to be <b class="text-hsr-ice">Frozen</b> for <span class="text-desc">1</span> turn(s).
       <br />While <b class="text-hsr-ice">Frozen</b>, enemies cannot take action and will receive Additional <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of March 7th's ATK at the beginning of each turn.`,
       value: [
         { base: 90, growth: 6, style: 'curved' },
@@ -54,7 +54,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     technique: {
       title: 'Freezing Beauty',
-      content: `Immediately attacks the enemy. After entering battle, there is a <span class="text-desc">100%</span> base chance to <b class="text-hsr-ice">Freeze</b> a random enemy for <span class="text-desc">1</span> turn(s).
+      content: `Immediately attacks the enemy. After entering battle, there is a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> a random enemy for <span class="text-desc">1</span> turn(s).
       <br />While <b class="text-hsr-ice">Frozen</b>, the enemy cannot take action and will take Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">50%</span> of March 7th's ATK at the beginning of each turn.`,
     },
     a2: {
@@ -67,7 +67,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     a6: {
       title: 'A6: Ice Spell',
-      content: `Increases Ultimate's base chance to <b class="text-hsr-ice">Freeze</b> enemies by <span class="text-desc">15%</span>.`,
+      content: `Increases Ultimate's <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> enemies by <span class="text-desc">15%</span>.`,
     },
     c1: {
       title: 'E1: Memory of You',

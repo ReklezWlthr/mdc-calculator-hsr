@@ -30,9 +30,9 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     },
     skill: {
       title: 'Allow Changes?',
-      content: `There is a {{0}}% base chance to add 1 Weakness of an on-field ally's Type to the target enemy. This also reduces the enemy's DMG RES to that Weakness Type by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s). If the enemy already has that Type Weakness, the effect of DMG RES reduction to that Weakness Type will not be triggered.
+      content: `There is a {{0}}% <u>base chance</u> to add 1 Weakness of an on-field ally's Type to the target enemy. This also reduces the enemy's DMG RES to that Weakness Type by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s). If the enemy already has that Type Weakness, the effect of DMG RES reduction to that Weakness Type will not be triggered.
       <br />Each enemy can only have 1 Weakness implanted by Silver Wolf. When Silver Wolf implants another Weakness to the target, only the most recent implanted Weakness will be kept.
-      <br />In addition, there is a <span class="text-desc">100%</span> base chance to reduce the All-Type RES of the enemy further by {{1}}% for <span class="text-desc">2</span> turn(s).
+      <br />In addition, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce the All-Type RES of the enemy further by {{1}}% for <span class="text-desc">2</span> turn(s).
       <br />Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{2}}% of Silver Wolf's ATK to this enemy.`,
       value: [
         { base: 75, growth: 1, style: 'curved' },
@@ -43,7 +43,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     },
     ult: {
       title: 'User Banned',
-      content: `There's a {{0}}% base chance to decrease the target enemy's DEF by {{1}}% for 3 turn(s). And at the same time, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{2}}% of Silver Wolf's ATK to the target enemy.`,
+      content: `There's a {{0}}% <u>base chance</u> to decrease the target enemy's DEF by {{1}}% for 3 turn(s). And at the same time, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{2}}% of Silver Wolf's ATK to the target enemy.`,
       value: [
         { base: 85, growth: 1.5, style: 'curved' },
         { base: 36, growth: 0.9, style: 'curved' },
@@ -54,7 +54,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     talent: {
       title: 'Awaiting System Response...',
       content: `Silver Wolf can create three types of Bugs: reduce ATK by {{0}}%, reduce DEF by {{1}}%, and reduce SPD by {{2}}%.
-      <br />Every time Silver Wolf attacks, she has a {{3}}% base chance to implant a random Bug that lasts for 3 turn(s) in the enemy target.`,
+      <br />Every time Silver Wolf attacks, she has a {{3}}% <u>base chance</u> to implant a random Bug that lasts for 3 turn(s) in the enemy target.`,
       value: [
         { base: 5, growth: 0.5, style: 'curved' },
         { base: 4, growth: 0.4, style: 'curved' },
@@ -69,7 +69,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     },
     a2: {
       title: 'A2: Generate',
-      content: `Bug's duration is extended for <span class="text-desc">1</span> turn(s). Every time an enemy is inflicted with Weakness Break, Silver Wolf has a <span class="text-desc">65%</span> base chance of implanting a random Bug in the enemy.`,
+      content: `Bug's duration is extended for <span class="text-desc">1</span> turn(s). Every time an enemy is inflicted with Weakness Break, Silver Wolf has a <span class="text-desc">65%</span> <u>base chance</u> of implanting a random Bug in the enemy.`,
     },
     a4: {
       title: 'A4: Inject',

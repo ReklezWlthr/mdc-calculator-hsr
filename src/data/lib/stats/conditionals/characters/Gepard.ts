@@ -28,7 +28,7 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     skill: {
       title: 'Daunting Smite',
-      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Gepard's ATK to a single enemy, with a 65% base chance to <b class="text-hsr-ice">Freeze</b> the enemy for <span class="text-desc">1</span> turn(s).
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Gepard's ATK to a single enemy, with a 65% <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> the enemy for <span class="text-desc">1</span> turn(s).
       <br />While <b class="text-hsr-ice">Frozen</b>, the enemy cannot take action and will take Additional <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Gepard's ATK at the beginning of each turn.`,
       value: [
         { base: 100, growth: 10, style: 'curved' },
@@ -69,7 +69,7 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     c1: {
       title: `E1: Due Diligence`,
-      content: `When using Skill, increases the base chance to <b class="text-hsr-ice">Freeze</b> enemies by <span class="text-desc">35%</span>.`,
+      content: `When using Skill, increases the <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> enemies by <span class="text-desc">35%</span>.`,
     },
     c2: {
       title: `E2: Lingering Cold`,

@@ -29,7 +29,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     normal_alt: {
       title: 'Brows Be Smitten, Heart Be Bitten',
-      content: `This attack deals <span class="text-desc">3</span> Hits Per Action initially. Each hit against the target enemy deals Imaginary DMG equal to {{0}}% of March 7th's ATK. After dealing the final hit, there is a <span class="text-desc">60%</span> fixed chance to deal <span class="text-desc">1</span> extra hit, up to <span class="text-desc">3</span> extra hit(s). Energy regenerated from using Enhanced Basic ATK does not increase with the number of Hits Per Action.
+      content: `This attack deals <span class="text-desc">3</span> Hits Per Action initially. Each hit against the target enemy deals Imaginary DMG equal to {{0}}% of March 7th's ATK. After dealing the final hit, there is a <span class="text-desc">60%</span> <u>fixed chance</u> to deal <span class="text-desc">1</span> extra hit, up to <span class="text-desc">3</span> extra hit(s). Energy regenerated from using Enhanced Basic ATK does not increase with the number of Hits Per Action.
       <br />Enhanced Basic ATK cannot recover Skill Points.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
@@ -49,7 +49,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     ult: {
       title: 'March 7th, the Apex Heroine',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of March 7th's ATK to a single target enemy.
-      <br />Increases the initial Hits Per Action of the next Enhanced Basic ATK by <span class="text-desc">2</span> hits and increase the fixed chance of additionally dealing DMG by <span class="text-desc">20%</span>.`,
+      <br />Increases the initial Hits Per Action of the next Enhanced Basic ATK by <span class="text-desc">2</span> hits and increase the <u>fixed chance</u> of additionally dealing DMG by <span class="text-desc">20%</span>.`,
       value: [{ base: 144, growth: 9.6, style: 'curved' }],
       level: ult,
     },

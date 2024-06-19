@@ -30,7 +30,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     skill: {
       title: 'Lightning Flash	',
-      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to a single enemy and <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Serval's ATK to enemies adjacent to it, with a <span class="text-desc">80%</span> base chance for enemies hit to become <b class="text-hsr-lightning">Shocked</b> for <span class="text-desc">2</span> turn(s).
+      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to a single enemy and <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Serval's ATK to enemies adjacent to it, with a <span class="text-desc">80%</span> <u>base chance</u> for enemies hit to become <b class="text-hsr-lightning">Shocked</b> for <span class="text-desc">2</span> turn(s).
       <br />While <b class="text-hsr-lightning">Shocked</b>, enemies take <b class="text-hsr-lightning">Lightning DoT</b> equal to {{2}}% of Serval's ATK at the beginning of each turn.`,
       value: [
         { base: 70, growth: 7, style: 'curved' },
@@ -53,12 +53,12 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     technique: {
       title: 'Good Night, Belobog',
-      content: `Immediately attacks the enemy. After entering battle, deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">50%</span> of Serval's ATK to a random enemy, with a <span class="text-desc">100%</span> base chance for all enemies to become <b class="text-hsr-lightning">Shocked</b> for <span class="text-desc">3</span> turn(s).
+      content: `Immediately attacks the enemy. After entering battle, deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">50%</span> of Serval's ATK to a random enemy, with a <span class="text-desc">100%</span> <u>base chance</u> for all enemies to become <b class="text-hsr-lightning">Shocked</b> for <span class="text-desc">3</span> turn(s).
       <br />While <b class="text-hsr-lightning">Shocked</b>, enemies will take <b class="text-hsr-lightning">Lightning DoT</b> equal to <span class="text-desc">50%</span> of Serval's ATK at the beginning of each turn.`,
     },
     a2: {
       title: `A2: Rock 'n' Roll`,
-      content: `Skill has a <span class="text-desc">20%</span> increased base chance to <b class="text-hsr-lightning">Shock</b> enemies.`,
+      content: `Skill has a <span class="text-desc">20%</span> increased <u>base chance</u> to <b class="text-hsr-lightning">Shock</b> enemies.`,
     },
     a4: {
       title: `A4: String Vibration`,
@@ -83,7 +83,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     c4: {
       title: 'E4: Make Some Noise!',
-      content: `Ultimate has a <span class="text-desc">100%</span> base chance to apply <b class="text-hsr-lightning">Shock</b> to any enemies not currently <b class="text-hsr-lightning">Shocked</b>. This <b class="text-hsr-lightning">Shock</b> has the same effects as the one applied by Skill.`,
+      content: `Ultimate has a <span class="text-desc">100%</span> <u>base chance</u> to apply <b class="text-hsr-lightning">Shock</b> to any enemies not currently <b class="text-hsr-lightning">Shocked</b>. This <b class="text-hsr-lightning">Shock</b> has the same effects as the one applied by Skill.`,
     },
     c5: {
       title: `E5: Belobog's Loudest Roar!`,

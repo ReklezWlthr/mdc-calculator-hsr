@@ -53,11 +53,11 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     technique: {
       title: 'Incomplete Combustion',
-      content: `After using Technique, creates a dimension that lasts for <span class="text-desc">15</span> second(s). After entering battle with enemies in the dimension, there is a <span class="text-desc">100%</span> base chance to increase <b class="text-hsr-fire">Fire DMG</b> taken by enemies by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s). Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
+      content: `After using Technique, creates a dimension that lasts for <span class="text-desc">15</span> second(s). After entering battle with enemies in the dimension, there is a <span class="text-desc">100%</span> <u>base chance</u> to increase <b class="text-hsr-fire">Fire DMG</b> taken by enemies by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s). Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
       title: 'A2: Starfire',
-      content: `After using an attack, there is a <span class="text-desc">50%</span> base chance to inflict <b class="text-hsr-fire">Burn</b> on enemies for <span class="text-desc">2</span> turn(s).
+      content: `After using an attack, there is a <span class="text-desc">50%</span> <u>base chance</u> to inflict <b class="text-hsr-fire">Burn</b> on enemies for <span class="text-desc">2</span> turn(s).
       <br />When afflicted with <b class="text-hsr-fire">Burn</b>, enemies take <b class="text-hsr-fire">Fire DoT</b> equal to <span class="text-desc">30%</span> of Himeko's ATK at the start of each turn.`,
     },
     a4: {

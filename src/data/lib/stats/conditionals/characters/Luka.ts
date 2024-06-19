@@ -41,7 +41,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     skill: {
       title: 'Lacerating Fist',
-      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Luka's ATK to a single enemy target. In addition, there is a <span class="text-desc">100%</span> base chance to inflict <b class="text-hsr-physical">Bleed</b> on them, lasting for <span class="text-desc">3</span> turn(s).
+      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Luka's ATK to a single enemy target. In addition, there is a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-physical">Bleed</b> on them, lasting for <span class="text-desc">3</span> turn(s).
       <br />While <b class="text-hsr-physical">Bleeding</b>, the enemy will take <span class="text-desc">24%</span> of their Max HP as <b class="text-hsr-physical">Physical DoT</b> at the start of each turn. This DMG will not exceed more than {{1}}% of Luka's ATK.`,
       value: [
         { base: 60, growth: 6, style: 'curved' },
@@ -51,7 +51,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     ult: {
       title: `Coup de Grâce`,
-      content: `Receives <span class="text-desc">2</span> stack(s) of <b>Fighting Will</b>, with a <span class="text-desc">100%</span> base chance to increase a single enemy target's DMG received by {{0}}% for <span class="text-desc">3</span> turn(s). Then, deals <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Luka's ATK to the target.`,
+      content: `Receives <span class="text-desc">2</span> stack(s) of <b>Fighting Will</b>, with a <span class="text-desc">100%</span> <u>base chance</u> to increase a single enemy target's DMG received by {{0}}% for <span class="text-desc">3</span> turn(s). Then, deals <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Luka's ATK to the target.`,
       value: [
         { base: 12, growth: 0.8, style: 'curved' },
         { base: 198, growth: 13.2, style: 'curved' },
@@ -66,7 +66,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     technique: {
       title: 'Anticipator',
-      content: `Immediately attacks the enemy. Upon entering battle, Luka deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">50%</span> of his ATK to a random single enemy with a <span class="text-desc">100%</span> base chance to inflict his Skill's <b class="text-hsr-physical">Bleed</b> effect on the target. Then, Luka gains <span class="text-desc">2</span> additional stack of <b>Fighting Will</b>.`,
+      content: `Immediately attacks the enemy. Upon entering battle, Luka deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">50%</span> of his ATK to a random single enemy with a <span class="text-desc">100%</span> <u>base chance</u> to inflict his Skill's <b class="text-hsr-physical">Bleed</b> effect on the target. Then, Luka gains <span class="text-desc">2</span> additional stack of <b>Fighting Will</b>.`,
     },
     a2: {
       title: `A2: Kinetic Overload`,
@@ -78,7 +78,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     a6: {
       title: `A6: Crush Fighting Will`,
-      content: `When using Enhanced Basic ATK, every hit Direct Punch deals has a <span class="text-desc">50%</span> fixed chance for Luka to use <span class="text-desc">1</span> additional hit. This effect does not apply to additional hits generated in this way.`,
+      content: `When using Enhanced Basic ATK, every hit Direct Punch deals has a <span class="text-desc">50%</span> <u>fixed chance</u> for Luka to use <span class="text-desc">1</span> additional hit. This effect does not apply to additional hits generated in this way.`,
     },
     c1: {
       title: `E1: Fighting Endlessly`,

@@ -55,7 +55,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     a2: {
       title: `A2: Kinship`,
-      content: `When attacked, this character has a <span class="text-desc">35%</span> fixed chance to remove a debuff placed on them.`,
+      content: `When attacked, this character has a <span class="text-desc">35%</span> <u>fixed chance</u> to remove a debuff placed on them.`,
     },
     a4: {
       title: `A4: Under Protection`,
@@ -89,7 +89,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     c6: {
       title: `E6: Long Company`,
-      content: `After other allies are hit, Svarog also has a <span class="text-desc">50%</span> fixed chance to trigger a Counter on the attacker and mark them with a <b>Mark of Counter</b>. When using Ultimate, the number of Enhanced Counters increases by <span class="text-desc">1</span>.`,
+      content: `After other allies are hit, Svarog also has a <span class="text-desc">50%</span> <u>fixed chance</u> to trigger a Counter on the attacker and mark them with a <b>Mark of Counter</b>. When using Ultimate, the number of Enhanced Counters increases by <span class="text-desc">1</span>.`,
     },
   }
 

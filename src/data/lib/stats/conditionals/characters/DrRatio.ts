@@ -41,13 +41,13 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     talent: {
       title: 'Cogito, Ergo Sum',
-      content: `When using his Skill, Dr. Ratio has a <span class="text-desc">40%</span> fixed chance of launching a follow-up attack against his target for <span class="text-desc">1</span> time, dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK. For each debuff the target enemy has, the fixed chance of launching follow-up attack increases by <span class="text-desc">20%</span>. If the target enemy is defeated before the follow-up attack triggers, the follow-up attack will be directed at a single random enemy instead.`,
+      content: `When using his Skill, Dr. Ratio has a <span class="text-desc">40%</span> <u>fixed chance</u> of launching a follow-up attack against his target for <span class="text-desc">1</span> time, dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK. For each debuff the target enemy has, the <u>fixed chance</u> of launching follow-up attack increases by <span class="text-desc">20%</span>. If the target enemy is defeated before the follow-up attack triggers, the follow-up attack will be directed at a single random enemy instead.`,
       value: [{ base: 135, growth: 13.5, style: 'curved' }],
       level: talent,
     },
     technique: {
       title: 'Mold of Idolatry',
-      content: `After using Technique, creates a special dimension that Taunts nearby enemies, lasting for <span class="text-desc">10</span> second(s). After entering battle with enemies in this special dimension, there is a <span class="text-desc">100%</span> base chance to reduce each single enemy target's SPD by <span class="text-desc">15%</span> for <span class="text-desc">2</span> turn(s). Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
+      content: `After using Technique, creates a special dimension that Taunts nearby enemies, lasting for <span class="text-desc">10</span> second(s). After entering battle with enemies in this special dimension, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce each single enemy target's SPD by <span class="text-desc">15%</span> for <span class="text-desc">2</span> turn(s). Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
       title: 'A2: Summation',
@@ -55,7 +55,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     a4: {
       title: 'A4: Inference',
-      content: `When Skill is used to attack an enemy target, there is a <span class="text-desc">100%</span> base chance to reduce the attacked target's Effect RES by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `When Skill is used to attack an enemy target, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce the attacked target's Effect RES by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a6: {
       title: 'A6: Deduction',

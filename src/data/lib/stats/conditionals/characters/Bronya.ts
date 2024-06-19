@@ -69,7 +69,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     c1: {
       title: `E1: Hone Your Strength`,
-      content: `When using Skill, there is <span class="text-desc">50%</span> fixed chance of recovering <span class="text-desc">1</span> Skill Point. This effect has a <span class="text-desc">1</span>-turn cooldown.`,
+      content: `When using Skill, there is <span class="text-desc">50%</span> <u>fixed chance</u> of recovering <span class="text-desc">1</span> Skill Point. This effect has a <span class="text-desc">1</span>-turn cooldown.`,
     },
     c2: {
       title: `E2: Quick March`,

@@ -37,7 +37,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     ult: {
       title: `Surprise Present`,
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Sampo's ATK to all enemies, with a <span class="text-desc">100%</span> base chance to increase the targets' DoT taken by {{1}}% for <span class="text-desc">2</span> turn(s).`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Sampo's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> to increase the targets' DoT taken by {{1}}% for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 96, growth: 6.4, style: 'curved' },
         { base: 20, growth: 1, style: 'curved' },
@@ -46,7 +46,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     talent: {
       title: `Windtorn Dagger`,
-      content: `Sampo's attacks have a <span class="text-desc">65%</span> base chance to inflict <b class="text-hsr-wind">Wind Shear</b> for <span class="text-desc">3</span> turn(s).
+      content: `Sampo's attacks have a <span class="text-desc">65%</span> <u>base chance</u> to inflict <b class="text-hsr-wind">Wind Shear</b> for <span class="text-desc">3</span> turn(s).
       <br />Enemies inflicted with <b class="text-hsr-wind">Wind Shear</b> will take <b class="text-hsr-wind">Wind DoT</b> equal to {{0}}% of Sampo's ATK at the beginning of each turn. <b class="text-hsr-wind">Wind Shear</b> can stack up to <span class="text-desc">5</span> time(s).`,
       value: [{ base: 20, growth: 2, style: 'dot' }],
       level: talent,
@@ -54,7 +54,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     technique: {
       title: 'Shining Bright',
       content: `After Sampo uses Technique, enemies in a set area are inflicted with <b>Blind</b> for <span class="text-desc">10</span> second(s). <b>Blinded</b> enemies cannot detect your team.
-      <br />When initiating combat against a <b>Blinded</b> enemy, there is a <span class="text-desc">100%</span> fixed chance to delay all enemies' action by <span class="text-desc">25%</span>.`,
+      <br />When initiating combat against a <b>Blinded</b> enemy, there is a <span class="text-desc">100%</span> <u>fixed chance</u> to delay all enemies' action by <span class="text-desc">25%</span>.`,
     },
     a2: {
       title: `A2: Trap`,
@@ -74,7 +74,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     c2: {
       title: `E2: Infectious Enthusiasm`,
-      content: `Defeating an enemy with <b class="text-hsr-wind">Wind Shear</b> has a <span class="text-desc">100%</span> base chance to inflict all enemies with <span class="text-desc">1</span> stack(s) of <b class="text-hsr-wind">Wind Shear</b>, equivalent to the Talent's <b class="text-hsr-wind">Wind Shear</b>.`,
+      content: `Defeating an enemy with <b class="text-hsr-wind">Wind Shear</b> has a <span class="text-desc">100%</span> <u>base chance</u> to inflict all enemies with <span class="text-desc">1</span> stack(s) of <b class="text-hsr-wind">Wind Shear</b>, equivalent to the Talent's <b class="text-hsr-wind">Wind Shear</b>.`,
     },
     c3: {
       title: `E3: Big Money!`,

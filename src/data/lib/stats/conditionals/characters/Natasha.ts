@@ -54,12 +54,12 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     technique: {
       title: 'Hypnosis Research',
-      content: `Immediately attacks the enemy. After entering battle, deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">80%</span> of Natasha's ATK to a random enemy, with a <span class="text-desc">100%</span> base chance to <b>Weaken</b> all enemies.
+      content: `Immediately attacks the enemy. After entering battle, deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">80%</span> of Natasha's ATK to a random enemy, with a <span class="text-desc">100%</span> <u>base chance</u> to <b>Weaken</b> all enemies.
       <br />While <b>Weakened</b>, enemies deal <span class="text-desc">30%</span> less DMG to allies for <span class="text-desc">1</span> turn(s).`,
     },
     a2: {
       title: `A2: Soothe`,
-      content: `Skill has a <span class="text-desc">20%</span> increased base chance to <b class="text-hsr-lightning">Shock</b> enemies.`,
+      content: `Skill has a <span class="text-desc">20%</span> increased <u>base chance</u> to <b class="text-hsr-lightning">Shock</b> enemies.`,
     },
     a4: {
       title: `A4: Healer`,

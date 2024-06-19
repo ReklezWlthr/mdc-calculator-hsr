@@ -31,7 +31,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     skill: {
       title: 'Hey! Remember Hook?',
-      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Hook's ATK to a single enemy. In addition, there is a <span class="text-desc">100%</span> base chance to inflict <b class="text-hsr-fire">Burn</b> for <span class="text-desc">2</span> turn(s).
+      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Hook's ATK to a single enemy. In addition, there is a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-fire">Burn</b> for <span class="text-desc">2</span> turn(s).
       <br />When afflicted with <b class="text-hsr-fire">Burn</b>, enemies will take <b class="text-hsr-fire">Fire DoT</b> equal to {{1}}% of Hook's ATK at the beginning of each turn.`,
       value: [
         { base: 120, growth: 12, style: 'curved' },
@@ -41,7 +41,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     skill_alt: {
       title: 'Hey! Remember Hook?',
-      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Hook's ATK to a single enemy, with a 100% base chance to <b class="text-hsr-fire">Burn</b> them for <span class="text-desc">2</span> turn(s). Additionally, deals <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Hook's ATK to enemies adjacent to it.
+      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Hook's ATK to a single enemy, with a 100% <u>base chance</u> to <b class="text-hsr-fire">Burn</b> them for <span class="text-desc">2</span> turn(s). Additionally, deals <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Hook's ATK to enemies adjacent to it.
       <br />When afflicted with <b class="text-hsr-fire">Burn</b>, enemies will take <b class="text-hsr-fire">Fire DoT</b> equal to {{2}}% of Hook's ATK at the beginning of each turn.`,
       value: [
         { base: 140, growth: 14, style: 'curved' },
@@ -64,7 +64,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     technique: {
       title: 'Ack! Look at This Mess!',
-      content: `Immediately attacks the enemy. Upon entering battle, Hook deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of her ATK to a random enemy. In addition, there is a <span class="text-desc">100%</span> base chance to inflict <b class="text-hsr-fire">Burn</b> on every enemy for <span class="text-desc">3</span> turn(s). When afflicted with <b class="text-hsr-fire">Burn</b>, enemies will take <b class="text-hsr-fire">Fire DoT</b> equal to <span class="text-desc">50%</span> of Hook's ATK at the beginning of each turn.`,
+      content: `Immediately attacks the enemy. Upon entering battle, Hook deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of her ATK to a random enemy. In addition, there is a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-fire">Burn</b> on every enemy for <span class="text-desc">3</span> turn(s). When afflicted with <b class="text-hsr-fire">Burn</b>, enemies will take <b class="text-hsr-fire">Fire DoT</b> equal to <span class="text-desc">50%</span> of Hook's ATK at the beginning of each turn.`,
     },
     a2: {
       title: `A2: Innocence`,
@@ -93,7 +93,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     c4: {
       title: `E4: It's Okay to Not Know`,
-      content: `When Talent is triggered, there is a <span class="text-desc">100%</span> base chance to <b class="text-hsr-fire">Burn</b> enemies adjacent to the target enemy, equivalent to that of Skill.`,
+      content: `When Talent is triggered, there is a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-fire">Burn</b> enemies adjacent to the target enemy, equivalent to that of Skill.`,
     },
     c5: {
       title: `E5: Let the Moles' Deeds Be Known`,

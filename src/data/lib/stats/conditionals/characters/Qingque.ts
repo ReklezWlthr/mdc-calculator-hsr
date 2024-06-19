@@ -87,7 +87,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     c4: {
       title: `E4: Right on the Tiles`,
-      content: `After this character's Skill is used, there is a 24% fixed chance to gain <b>Autarky</b>, which lasts until the end of the current turn.
+      content: `After this character's Skill is used, there is a 24% <u>fixed chance</u> to gain <b>Autarky</b>, which lasts until the end of the current turn.
       <br />With <b>Autarky</b>, using Basic ATK or Enhanced Basic ATK immediately launches <span class="text-desc">1</span> follow-up attack on the same target, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">100%</span> of the previous Basic ATK (or Enhanced Basic ATK)'s DMG.`,
     },
     c5: {

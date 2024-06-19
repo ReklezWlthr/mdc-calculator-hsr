@@ -54,7 +54,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     a2: {
       title: `A2: Sparks`,
-      content: `Asta's Basic ATK has a <span class="text-desc">80%</span> base chance to <b class="text-hsr-fire">Burn</b> enemies for <span class="text-desc">3</span> turn(s).
+      content: `Asta's Basic ATK has a <span class="text-desc">80%</span> <u>base chance</u> to <b class="text-hsr-fire">Burn</b> enemies for <span class="text-desc">3</span> turn(s).
       <br /><b class="text-hsr-fire">Burned</b> enemies take <b class="text-hsr-fire">Fire DoT</b> equal to <span class="text-desc">50%</span> of DMG dealt by Asta's Basic ATK at the start of each turn.`,
     },
     a4: {

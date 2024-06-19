@@ -29,7 +29,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill: {
       title: 'Cloudlancer Art: Torrent',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Dan Heng's ATK to a single enemy.
-      <br />On a CRIT Hit, there is a <span class="text-desc">100%</span> base chance to reduce the target's SPD by <span class="text-desc">12%</span> for <span class="text-desc">2</span> turn(s).`,
+      <br />On a CRIT Hit, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce the target's SPD by <span class="text-desc">12%</span> for <span class="text-desc">2</span> turn(s).`,
       value: [{ base: 130, growth: 13, style: 'curved' }],
       level: skill,
     },
@@ -58,7 +58,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     a4: {
       title: 'A4: Faster Than Light',
-      content: `After launching an attack, there is a <span class="text-desc">50%</span> fixed chance to increase own SPD by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `After launching an attack, there is a <span class="text-desc">50%</span> <u>fixed chance</u> to increase own SPD by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a6: {
       title: 'A6: High Gale',

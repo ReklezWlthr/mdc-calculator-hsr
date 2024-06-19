@@ -60,7 +60,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     technique: {
       title: `Fiend: Impeachment of Evil`,
-      content: `Huohuo terrorizes surrounding enemies, afflicting Horror-Struck on them. Enemies in Horror-Struck will flee away from Huohuo for <span class="text-desc">10</span> second(s). When entering battle with enemies in Horror-Struck, there is a <span class="text-desc">100%</span> base chance of reducing every single enemy's ATK by <span class="text-desc">25%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `Huohuo terrorizes surrounding enemies, afflicting Horror-Struck on them. Enemies in Horror-Struck will flee away from Huohuo for <span class="text-desc">10</span> second(s). When entering battle with enemies in Horror-Struck, there is a <span class="text-desc">100%</span> <u>base chance</u> of reducing every single enemy's ATK by <span class="text-desc">25%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
       title: `A2: Fearful to Act`,

@@ -546,7 +546,7 @@ export const LightCones = [
     type: PathType.ABUNDANCE,
     desc: {
       name: 'Glance Back',
-      detail: `When the wearer hits an enemy and if the hit enemy is not already Ensnared, then there is a {{0}}% base chance to Ensnare the hit enemy. Ensnared enemies' DEF decreases by {{1}}% for <span class="text-desc">1</span> turn(s).`,
+      detail: `When the wearer hits an enemy and if the hit enemy is not already Ensnared, then there is a {{0}}% <u>base chance</u> to Ensnare the hit enemy. Ensnared enemies' DEF decreases by {{1}}% for <span class="text-desc">1</span> turn(s).`,
       properties: [
         { base: 60, growth: 10 },
         { base: 12, growth: 1 },
@@ -563,7 +563,7 @@ export const LightCones = [
     type: PathType.PRESERVATION,
     desc: {
       name: 'A New Round of Shuffling',
-      detail: `Increases the wearer's DEF by {{0}}%. When the wearer is attacked, there is a {{1}}% base chance to <b class="text-hsr-fire">Burn</b> the enemy. For each turn, the wearer deals DoT that is equal to {{2}}% of the wearer's DEF for <span class="text-desc">2</span> turn(s).`,
+      detail: `Increases the wearer's DEF by {{0}}%. When the wearer is attacked, there is a {{1}}% <u>base chance</u> to <b class="text-hsr-fire">Burn</b> the enemy. For each turn, the wearer deals DoT that is equal to {{2}}% of the wearer's DEF for <span class="text-desc">2</span> turn(s).`,
       properties: [
         { base: 16, growth: 4 },
         { base: 100, growth: 5 },
@@ -801,7 +801,7 @@ export const LightCones = [
     type: PathType.HUNT,
     desc: {
       name: 'Raging Waves',
-      detail: `Increases the wearer's CRIT Rate by {{0}}%. After a CRIT Hit, there is a {{1}}% fixed chance to dispel <span class="text-desc">1</span> buff on the target enemy. This effect can only trigger <span class="text-desc">1</span> time per attack.`,
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. After a CRIT Hit, there is a {{1}}% <u>fixed chance</u> to dispel <span class="text-desc">1</span> buff on the target enemy. This effect can only trigger <span class="text-desc">1</span> time per attack.`,
       properties: [
         { base: 12, growth: 3 },
         { base: 16, growth: 4 },
@@ -1220,7 +1220,7 @@ export const LightCones = [
     type: PathType.NIHILITY,
     desc: {
       name: 'Spider Web',
-      detail: `Increases DMG dealt by the wearer by {{0}}%. After every attack launched by the wearer, their SPD increases by {{1}}%, stacking up to <span class="text-desc">3</span> times. If the wearer hits an enemy target that is not affected by <b class="text-hsr-lightning">Erode</b>, there is a <span class="text-desc">100%</span> base chance to inflict <b class="text-hsr-lightning">Erode</b> to the target. Enemies afflicted with <b class="text-hsr-lightning">Erode</b> are also considered to be <b class="text-hsr-lightning">Shocked</b> and will receive <b class="text-hsr-lightning">Lightning DoT</b> at the start of each turn equal to {{2}}% of the wearer's ATK, lasting for <span class="text-desc">1</span> turn.`,
+      detail: `Increases DMG dealt by the wearer by {{0}}%. After every attack launched by the wearer, their SPD increases by {{1}}%, stacking up to <span class="text-desc">3</span> times. If the wearer hits an enemy target that is not affected by <b class="text-hsr-lightning">Erode</b>, there is a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Erode</b> to the target. Enemies afflicted with <b class="text-hsr-lightning">Erode</b> are also considered to be <b class="text-hsr-lightning">Shocked</b> and will receive <b class="text-hsr-lightning">Lightning DoT</b> at the start of each turn equal to {{2}}% of the wearer's ATK, lasting for <span class="text-desc">1</span> turn.`,
       properties: [
         { base: 24, growth: 4 },
         { base: 4.8, growth: 0.8 },
@@ -1238,7 +1238,7 @@ export const LightCones = [
     type: PathType.NIHILITY,
     desc: {
       name: 'Mirage of Reality',
-      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. When the wearer deals DMG to an enemy that currently has <span class="text-desc">3</span> or more debuffs, increases the wearer's CRIT Rate by {{1}}%. After the wearer uses their Basic ATK, Skill, or Ultimate, there is a <span class="text-desc">100%</span> base chance to implant <b>Aether Code</b> on a random hit target that does not yet have it. Targets with <b>Aether Code</b> receive {{1}}% increased DMG for <span class="text-desc">1</span> turn.`,
+      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. When the wearer deals DMG to an enemy that currently has <span class="text-desc">3</span> or more debuffs, increases the wearer's CRIT Rate by {{1}}%. After the wearer uses their Basic ATK, Skill, or Ultimate, there is a <span class="text-desc">100%</span> <u>base chance</u> to implant <b>Aether Code</b> on a random hit target that does not yet have it. Targets with <b>Aether Code</b> receive {{1}}% increased DMG for <span class="text-desc">1</span> turn.`,
       properties: [
         { base: 24, growth: 4 },
         { base: 12, growth: 2 },
@@ -1524,7 +1524,7 @@ export const LightCones = [
     type: PathType.PRESERVATION,
     desc: {
       name: 'All-In',
-      detail: `Increases the wearer's DEF by {{0}}%. When the wearer provides a <b class="text-indigo-300">Shield</b> to an ally, the wearer's CRIT DMG increases by {{0}}%, lasting for <span class="text-desc">2</span> turn(s). When the wearer's follow-up attack hits an enemy target, there is a {{1}}% base chance to increase the DMG taken by the attacked enemy target by {{2}}%, lasting for <span class="text-desc">2</span> turn(s).`,
+      detail: `Increases the wearer's DEF by {{0}}%. When the wearer provides a <b class="text-indigo-300">Shield</b> to an ally, the wearer's CRIT DMG increases by {{0}}%, lasting for <span class="text-desc">2</span> turn(s). When the wearer's follow-up attack hits an enemy target, there is a {{1}}% <u>base chance</u> to increase the DMG taken by the attacked enemy target by {{2}}%, lasting for <span class="text-desc">2</span> turn(s).`,
       properties: [
         { base: 40, growth: 6 },
         { base: 100, growth: 15 },
@@ -1630,7 +1630,7 @@ export const LightCones = [
     type: PathType.NIHILITY,
     desc: {
       name: 'Worldly Affairs Leave No Mark',
-      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. If the target is not under the Unarmored effect dealt by the wearer, when the wearer uses a Basic ATK, Skill, or Ultimate on enemy targets, there is a <span class="text-desc">60%</span> base chance to inflict Unarmored to the enemy. Under the Unarmored state, the target enemy's DMG received is increased by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). When the wearer deals DMG to an enemy with the Unarmored effect inflicted by themselves, there is a <span class="text-desc">60%</span> base chance to escalate the Unarmored state from them into the Cornered state, which increases the target enemy's DMG received by {{2}}%.`,
+      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. If the target is not under the Unarmored effect dealt by the wearer, when the wearer uses a Basic ATK, Skill, or Ultimate on enemy targets, there is a <span class="text-desc">60%</span> <u>base chance</u> to inflict Unarmored to the enemy. Under the Unarmored state, the target enemy's DMG received is increased by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). When the wearer deals DMG to an enemy with the Unarmored effect inflicted by themselves, there is a <span class="text-desc">60%</span> <u>base chance</u> to escalate the Unarmored state from them into the Cornered state, which increases the target enemy's DMG received by {{2}}%.`,
       properties: [
         { base: 60, growth: 10 },
         { base: 10, growth: 2 },
