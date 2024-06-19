@@ -11,7 +11,10 @@ export const RelicSets: IArtifact[] = [
     icon: '71000',
     bonus: [{ stat: Stats.HEAL, value: 0.1 }],
     bonusAdd: [],
-    desc: [`Increases Outgoing Healing by 10%.`, `At the start of the battle, immediately regenerates 1 Skill Point.`],
+    desc: [
+      `Increases Outgoing Healing by <span class="text-desc">10%</span>.`,
+      `At the start of the battle, immediately regenerates <span class="text-desc">1</span> Skill Point.`,
+    ],
   },
   {
     id: '102',
@@ -32,7 +35,10 @@ export const RelicSets: IArtifact[] = [
       })
       return base
     },
-    desc: [`ATK increases by 12%.`, `The wearer's SPD increases by 6% and Basic ATK DMG increases by 10%.`],
+    desc: [
+      `ATK increases by <span class="text-desc">12%</span>.`,
+      `The wearer's SPD increases by <span class="text-desc">6%</span> and Basic ATK DMG increases by <span class="text-desc">10%</span>.`,
+    ],
   },
   {
     id: '103',
@@ -49,8 +55,8 @@ export const RelicSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases DEF by 15%.`,
-      `Increases the max DMG that can be absorbed by the Shield created by the wearer by 20%.`,
+      `Increases DEF by <span class="text-desc">15%</span>.`,
+      `Increases the max DMG that can be absorbed by the <b class="text-indigo-300">Shield</b> created by the wearer by <span class="text-desc">20%</span>.`,
     ],
   },
   {
@@ -60,8 +66,8 @@ export const RelicSets: IArtifact[] = [
     bonus: [{ stat: Stats.ICE_DMG, value: 0.1 }],
     bonusAdd: [],
     desc: [
-      `Increases <b class="text-hsr-ice">Ice DMG</b> by 10%.`,
-      `After the wearer uses their Ultimate, their CRIT DMG increases by 25% for 2 turn(s).`,
+      `Increases <b class="text-hsr-ice">Ice DMG</b> by <span class="text-desc">10%</span>.`,
+      `After the wearer uses their Ultimate, their CRIT DMG increases by <span class="text-desc">25%</span> for <span class="text-desc">2</span> turn(s).`,
     ],
   },
   {
@@ -71,8 +77,8 @@ export const RelicSets: IArtifact[] = [
     bonus: [{ stat: Stats.PHYSICAL_DMG, value: 0.1 }],
     bonusAdd: [],
     desc: [
-      `Increases <b class="text-hsr-physical">Physical DMG</b> by 10%.`,
-      `After the wearer attacks or is hit, their ATK increases by 5% for the rest of the battle. This effect can stack up to 5 time(s).`,
+      `Increases <b class="text-hsr-physical">Physical DMG</b> by <span class="text-desc">10%</span>.`,
+      `After the wearer attacks or is hit, their ATK increases by <span class="text-desc">5%</span> for the rest of the battle. This effect can stack up to <span class="text-desc">5</span> time(s).`,
     ],
   },
   {
@@ -90,8 +96,8 @@ export const RelicSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Reduces DMG taken by 8%.`,
-      `At the beginning of the turn, if the wearer's HP is equal to or less than 50%, restores HP equal to 8% of their Max HP and regenerates 5 Energy.`,
+      `Reduces DMG taken by <span class="text-desc">8%</span>.`,
+      `At the beginning of the turn, if the wearer's HP is equal to or less than <span class="text-desc">50%</span>, restores HP equal to <span class="text-desc">8%</span> of their Max HP and regenerates <span class="text-desc">5</span> Energy.`,
     ],
   },
   {
@@ -109,8 +115,8 @@ export const RelicSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases <b class="text-hsr-fire">Fire DMG</b> by 10%.`,
-      `Increases the wearer's Skill DMG by 12%. After unleashing Ultimate, increases the wearer's <b class="text-hsr-fire">Fire DMG</b> by 12% for the next attack.`,
+      `Increases <b class="text-hsr-fire">Fire DMG</b> by <span class="text-desc">10%</span>.`,
+      `Increases the wearer's Skill DMG by <span class="text-desc">12%</span>. After unleashing Ultimate, increases the wearer's <b class="text-hsr-fire">Fire DMG</b> by <span class="text-desc">12%</span> for the next attack.`,
     ],
   },
   {
@@ -120,7 +126,7 @@ export const RelicSets: IArtifact[] = [
     bonus: [{ stat: Stats.QUANTUM_DMG, value: 0.1 }],
     bonusAdd: [],
     add: (base) => {
-      base.CALLBACK.push((x, b, w) => {
+      base.CALLBACK.push((x, _d, w) => {
         x.DEF_PEN.push({
           name: '4-Piece',
           source: 'Genius of Brilliant Stars',
@@ -131,8 +137,8 @@ export const RelicSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases <b class="text-hsr-quantum">Quantum DMG</b> by 10%.`,
-      `When the wearer deals DMG to the target enemy, ignores 10% DEF. If the target enemy has Quantum Weakness, the wearer additionally ignores 10% DEF.`,
+      `Increases <b class="text-hsr-quantum">Quantum DMG</b> by <span class="text-desc">10%</span>.`,
+      `When the wearer deals DMG to the target enemy, ignores <span class="text-desc">10%</span> DEF. If the target enemy has <b class="text-hsr-quantum">Quantum</b> Weakness, the wearer additionally ignores <span class="text-desc">10%</span> DEF.`,
     ],
   },
   {
@@ -142,8 +148,8 @@ export const RelicSets: IArtifact[] = [
     bonus: [{ stat: Stats.LIGHTNING_DMG, value: 0.1 }],
     bonusAdd: [],
     desc: [
-      `Increases <b class="text-hsr-lightning">Lightning DMG</b> by 10%.`,
-      `When the wearer uses their Skill, increases the wearer's ATK by 20% for 1 turn(s).`,
+      `Increases <b class="text-hsr-lightning">Lightning DMG</b> by <span class="text-desc">10%</span>.`,
+      `When the wearer uses their Skill, increases the wearer's ATK by <span class="text-desc">20%</span> for <span class="text-desc">1</span> turn(s).`,
     ],
   },
   {
@@ -153,8 +159,8 @@ export const RelicSets: IArtifact[] = [
     bonus: [{ stat: Stats.WIND_DMG, value: 0.1 }],
     bonusAdd: [],
     desc: [
-      `Increases <b class="text-hsr-wind">Wind DMG</b> by 10%.`,
-      `After the wearer uses their Ultimate, their action is Advanced Forward by 25%.`,
+      `Increases <b class="text-hsr-wind">Wind DMG</b> by <span class="text-desc">10%</span>.`,
+      `After the wearer uses their Ultimate, their action is Advanced Forward by <span class="text-desc">25%</span>.`,
     ],
   },
   {
@@ -164,8 +170,8 @@ export const RelicSets: IArtifact[] = [
     bonus: [{ stat: Stats.BE, value: 0.16 }],
     bonusAdd: [{ stat: Stats.BE, value: 0.16 }],
     desc: [
-      `Increases Break Effect by 16%.`,
-      `Increases the wearer's Break Effect by 16%. After the wearer inflicts Weakness Break on an enemy, regenerates 3 Energy.`,
+      `Increases Break Effect by <span class="text-desc">16%</span>.`,
+      `Increases the wearer's Break Effect by <span class="text-desc">16%</span>. After the wearer inflicts Weakness Break on an enemy, regenerates <span class="text-desc">3</span> Energy.`,
     ],
   },
   {
@@ -176,13 +182,13 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [],
     add: (base) => {
       base.CALLBACK.push((x, d) => {
-        if (_.sum(_.values(d)))
+        if (countDebuff(d))
           x[Stats.CRIT_RATE].push({
             name: '4-Piece',
             source: 'Wastelander of Banditry Desert',
             value: 0.1,
           })
-        if (d[DebuffTypes.IMPRISON])
+        if (countDebuff(d, DebuffTypes.IMPRISON))
           x[Stats.CRIT_DMG].push({
             name: '4-Piece',
             source: 'Wastelander of Banditry Desert',
@@ -193,8 +199,8 @@ export const RelicSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases <b class="text-hsr-imaginary">Imaginary DMG</b> by 10%.`,
-      `When attacking debuffed enemies, the wearer's CRIT Rate increases by 10%, and their CRIT DMG increases by 20% against Imprisoned enemies.`,
+      `Increases <b class="text-hsr-imaginary">Imaginary DMG</b> by <span class="text-desc">10%</span>.`,
+      `When attacking debuffed enemies, the wearer's CRIT Rate increases by <span class="text-desc">10%</span>, and their CRIT DMG increases by <span class="text-desc">20%</span> against <b class="text-hsr-imaginary">Imprisoned</b> enemies.`,
     ],
   },
   {
@@ -204,8 +210,8 @@ export const RelicSets: IArtifact[] = [
     bonus: [{ stat: Stats.P_HP, value: 0.12 }],
     bonusAdd: [],
     desc: [
-      `Increases Max HP by 12%.`,
-      `When the wearer is hit or has their HP consumed by an ally or themselves, their CRIT Rate increases by 8% for 2 turn(s) and up to 2 stacks.`,
+      `Increases Max HP by <span class="text-desc">12%</span>.`,
+      `When the wearer is hit or has their HP consumed by an ally or themselves, their CRIT Rate increases by <span class="text-desc">8%</span> for <span class="text-desc">2</span> turn(s) and up to <span class="text-desc">2</span> stacks.`,
     ],
   },
   {
@@ -215,8 +221,8 @@ export const RelicSets: IArtifact[] = [
     bonus: [{ stat: Stats.P_SPD, value: 0.06 }],
     bonusAdd: [],
     desc: [
-      `Increases SPD by 6%.`,
-      `When the wearer uses their Ultimate on an ally, SPD for all allies increases by 12% for 1 turn(s). This effect cannot be stacked.`,
+      `Increases SPD by <span class="text-desc">6%</span>.`,
+      `When the wearer uses their Ultimate on an ally, SPD for all allies increases by <span class="text-desc">12%</span> for <span class="text-desc">1</span> turn(s). This effect cannot be stacked.`,
     ],
   },
   {
@@ -234,8 +240,8 @@ export const RelicSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases the DMG dealt by follow-up attacks by 20%.`,
-      `When the wearer uses follow-up attacks, increases the wearer's ATK by 6% for every time the follow-up attack deals DMG. This effect can stack up to 8 time(s) and lasts for 3 turn(s). This effect is removed the next time the wearer uses a follow-up attack.`,
+      `Increases the DMG dealt by follow-up attacks by <span class="text-desc">20%</span>.`,
+      `When the wearer uses follow-up attacks, increases the wearer's ATK by <span class="text-desc">6%</span> for every time the follow-up attack deals DMG. This effect can stack up to <span class="text-desc">8</span> time(s) and lasts for <span class="text-desc">3</span> turn(s). This effect is removed the next time the wearer uses a follow-up attack.`,
     ],
   },
   {
@@ -266,8 +272,8 @@ export const RelicSets: IArtifact[] = [
       return base
     },
     desc: [
-      `ATK increases by 12%.`,
-      `For every DoT the target enemy is afflicted with, the wearer will ignore 6% of its DEF when dealing DMG to it. This effect is valid for a max of 3 DoTs.`,
+      `ATK increases by <span class="text-desc">12%</span>.`,
+      `For every DoT the target enemy is afflicted with, the wearer will ignore <span class="text-desc">6%</span> of its DEF when dealing DMG to it. This effect is valid for a max of <span class="text-desc">3</span> DoTs.`,
     ],
   },
   {
@@ -307,8 +313,8 @@ export const RelicSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases DMG dealt to enemies with debuffs by 12%.`,
-      `Increases CRIT Rate by 4%. The wearer deals 8%/12% increased CRIT DMG to enemies with at least 2/3 debuffs. After the wearer inflicts a debuff on enemy targets, the aforementioned effects increase by 100%, lasting for 1 turn(s).`,
+      `Increases DMG dealt to enemies with debuffs by <span class="text-desc">12%</span>.`,
+      `Increases CRIT Rate by <span class="text-desc">4%</span>. The wearer deals <span class="text-desc">8%</span>/<span class="text-desc">12%</span> increased CRIT DMG to enemies with at least <span class="text-desc">2</span>/<span class="text-desc">3</span> debuffs. After the wearer inflicts a debuff on enemy targets, the aforementioned effects increase by <span class="text-desc">100%</span>, lasting for <span class="text-desc">1</span> turn(s).`,
     ],
   },
   {
@@ -318,8 +324,8 @@ export const RelicSets: IArtifact[] = [
     bonus: [{ stat: Stats.BE, value: 0.16 }],
     bonusAdd: [],
     desc: [
-      `Increases Break Effect by 16%.`,
-      `When the wearer uses their Ultimate on an ally, all allies' Break Effect increases by 30% for 2 turn(s). This effect cannot be stacked.`,
+      `Increases Break Effect by <span class="text-desc">16%</span>.`,
+      `When the wearer uses their Ultimate on an ally, all allies' Break Effect increases by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s). This effect cannot be stacked.`,
     ],
   },
   {
@@ -347,8 +353,8 @@ export const RelicSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases Break Effect by 16%.`,
-      `If the wearer's Break Effect is 150% or higher, ignores 10% of the enemy target's DEF when dealing Break DMG to them. When the wearer's Break Effect is 250% or higher, the Super Break DMG they deal to enemy targets additionally ignores 15% of the targets' DEF.`,
+      `Increases Break Effect by <span class="text-desc">16%</span>.`,
+      `If the wearer's Break Effect is <span class="text-desc">150%</span> or higher, ignores <span class="text-desc">10%</span> of the enemy target's DEF when dealing Break DMG to them. When the wearer's Break Effect is <span class="text-desc">250%</span> or higher, the Super Break DMG they deal to enemy targets additionally ignores <span class="text-desc">15%</span> of the targets' DEF.`,
     ],
   },
   {
@@ -358,8 +364,8 @@ export const RelicSets: IArtifact[] = [
     bonus: [{ stat: Stats.P_ATK, value: 0.12 }],
     bonusAdd: [{ stat: Stats.CRIT_RATE, value: 0.06 }],
     desc: [
-      `ATK increases by 12%.`,
-      `Increases the wearer's CRIT Rate by 6%. When the wearer uses a follow-up attack, increase the DMG dealt by their Ultimate by 36%, lasting for 1 turn(s).`,
+      `ATK increases by <span class="text-desc">12%</span>.`,
+      `Increases the wearer's CRIT Rate by <span class="text-desc">6%</span>. When the wearer uses a follow-up attack, increase the DMG dealt by their Ultimate by <span class="text-desc">36%</span>, lasting for <span class="text-desc">1</span> turn(s).`,
     ],
   },
 ]
@@ -371,8 +377,20 @@ export const PlanarSets: IArtifact[] = [
     icon: '71012',
     bonus: [{ stat: Stats.P_ATK, value: 0.12 }],
     bonusAdd: [],
+    half: (base) => {
+      base.CALLBACK.push((x: StatsObject) => {
+        if (x.getSpd() >= 120)
+          x[Stats.P_ATK].push({
+            name: '2-Piece',
+            source: 'Space Sealing Station',
+            value: 0.12,
+          })
+        return x
+      })
+      return base
+    },
     desc: [
-      `Increases the wearer's ATK by 12%. When the wearer's SPD reaches 120 or higher, the wearer's ATK increases by an extra 12%.`,
+      `Increases the wearer's ATK by <span class="text-desc">12%</span>. When the wearer's SPD reaches <span class="text-desc">120</span> or higher, the wearer's ATK increases by an extra <span class="text-desc">12%</span>.`,
     ],
   },
   {
@@ -381,8 +399,23 @@ export const PlanarSets: IArtifact[] = [
     icon: '71013',
     bonus: [{ stat: Stats.P_HP, value: 0.12 }],
     bonusAdd: [],
+    half: (base) => {
+      base.CALLBACK.push((x: StatsObject, _d, _w, all) => {
+        if (x.getSpd() >= 120)
+          _.forEach(all, (item) => {
+            item[Stats.P_ATK].push({
+              name: 'Fleet of the Ageless',
+              source: x.NAME === item.NAME ? 'Self' : x.NAME,
+              value: 0.8,
+            })
+          })
+
+        return x
+      })
+      return base
+    },
     desc: [
-      `Increases the wearer's Max HP by 12%. When the wearer's SPD reaches 120 or higher, all allies' ATK increases by 8%.`,
+      `Increases the wearer's Max HP by <span class="text-desc">12%</span>. When the wearer's SPD reaches <span class="text-desc">120</span> or higher, all allies' ATK increases by <span class="text-desc">8%</span>.`,
     ],
   },
   {
@@ -403,7 +436,7 @@ export const PlanarSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases the wearer's Effect Hit Rate by 10%. Meanwhile, the wearer's ATK increases by an amount that is equal to 25% of the current Effect Hit Rate, up to a maximum of 25%.`,
+      `Increases the wearer's Effect Hit Rate by <span class="text-desc">10%</span>. Meanwhile, the wearer's ATK increases by an amount that is equal to <span class="text-desc">25%</span> of the current Effect Hit Rate, up to a maximum of <span class="text-desc">25%</span>.`,
     ],
   },
   {
@@ -412,8 +445,20 @@ export const PlanarSets: IArtifact[] = [
     icon: '71015',
     bonus: [{ stat: Stats.P_DEF, value: 0.15 }],
     bonusAdd: [],
+    half: (base) => {
+      base.CALLBACK.push((x: StatsObject) => {
+        if (x.getValue(Stats.EHR) >= 0.5)
+          x[Stats.P_DEF].push({
+            name: '2-Piece',
+            source: 'Belobog of the Architects',
+            value: 0.15,
+          })
+        return x
+      })
+      return base
+    },
     desc: [
-      `Increases the wearer's DEF by 15%. When the wearer's Effect Hit Rate is 50% or higher, the wearer gains an extra 15% DEF.`,
+      `Increases the wearer's DEF by <span class="text-desc">12%</span>. When the wearer's Effect Hit Rate is <span class="text-desc">50%</span> or higher, the wearer gains an extra <span class="text-desc">15%</span> DEF.`,
     ],
   },
   {
@@ -423,7 +468,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [{ stat: Stats.CRIT_DMG, value: 0.16 }],
     bonusAdd: [],
     desc: [
-      `Increases the wearer's CRIT DMG by 16%. When the wearer's current CRIT DMG reaches 120% or higher, after entering battle, the wearer's CRIT Rate increases by 60% until the end of their first attack.`,
+      `Increases the wearer's CRIT DMG by <span class="text-desc">16%</span>. When the wearer's current CRIT DMG reaches <span class="text-desc">120%</span> or higher, after entering battle, the wearer's CRIT Rate increases by <span class="text-desc">60%</span> until the end of their first attack.`,
     ],
   },
   {
@@ -451,7 +496,7 @@ export const PlanarSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases the wearer's CRIT Rate by 8%. When the wearer's current CRIT Rate reaches 50% or higher, the wearer's Ultimate and follow-up attack DMG increases by 15%.`,
+      `Increases the wearer's CRIT Rate by <span class="text-desc">8%</span>. When the wearer's current CRIT Rate reaches <span class="text-desc">50%</span> or higher, the wearer's Ultimate and follow-up attack DMG increases by <span class="text-desc">15%</span>.`,
     ],
   },
   {
@@ -460,8 +505,20 @@ export const PlanarSets: IArtifact[] = [
     icon: '71018',
     bonus: [{ stat: Stats.BE, value: 0.16 }],
     bonusAdd: [],
+    half: (base) => {
+      base.CALLBACK.push((x: StatsObject) => {
+        if (x.getSpd() >= 145)
+          x[Stats.BE].push({
+            name: '2-Piece',
+            source: 'Talia: Kingdom of Banditry',
+            value: 0.2,
+          })
+        return x
+      })
+      return base
+    },
     desc: [
-      `Increases the wearer's Break Effect by 16%. When the wearer's SPD reaches 145 or higher, the wearer's Break Effect increases by an extra 20%.`,
+      `Increases the wearer's Break Effect by <span class="text-desc">16%</span>. When the wearer's SPD reaches <span class="text-desc">145</span> or higher, the wearer's Break Effect increases by an extra <span class="text-desc">20%</span>.`,
     ],
   },
   {
@@ -471,7 +528,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [{ stat: Stats.ERR, value: 0.05 }],
     bonusAdd: [],
     desc: [
-      `Increases the wearer's Energy Regeneration Rate by 5%. When the wearer's SPD reaches 120 or higher, the wearer's action is Advanced Forward by 40% immediately upon entering battle.`,
+      `Increases the wearer's Energy Regeneration Rate by <span class="text-desc">5%</span>. When the wearer's SPD reaches <span class="text-desc">120</span> or higher, the wearer's action is Advanced Forward by <span class="text-desc">40%</span> immediately upon entering battle.`,
     ],
   },
   {
@@ -499,7 +556,7 @@ export const PlanarSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases the wearer's CRIT Rate by 8%. When the wearer's current CRIT Rate reaches 70% or higher, the wearer's Basic ATK and Skill DMG increase by 20%.`,
+      `Increases the wearer's CRIT Rate by <span class="text-desc">8%</span>. When the wearer's current CRIT Rate reaches <span class="text-desc">70%</span> or higher, the wearer's Basic ATK and Skill DMG increase by <span class="text-desc">20%</span>.`,
     ],
   },
   {
@@ -508,8 +565,22 @@ export const PlanarSets: IArtifact[] = [
     icon: '71023',
     bonus: [{ stat: Stats.E_RES, value: 0.1 }],
     bonusAdd: [],
+    half: (base) => {
+      base.CALLBACK.push((x: StatsObject, _d, _w, all) => {
+        if (x.getValue(Stats.E_RES) >= 145)
+          _.forEach(all, (item) => {
+            item[Stats.CRIT_DMG].push({
+              name: 'Talia: Kingdom of Banditry',
+              source: x.NAME === item.NAME ? 'Self' : x.NAME,
+              value: 0.2,
+            })
+          })
+        return x
+      })
+      return base
+    },
     desc: [
-      `Increases the wearer's Effect RES by 10%. When the wearer's Effect RES is at 30% or higher, all allies' CRIT DMG increases by 10%.`,
+      `Increases the wearer's Effect RES by <span class="text-desc">10%</span>. When the wearer's Effect RES is at <span class="text-desc">30%</span> or higher, all allies' CRIT DMG increases by <span class="text-desc">10%</span>.`,
     ],
   },
   {
@@ -531,7 +602,7 @@ export const PlanarSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases the wearer's ATK by 12%. When the wearer's SPD is equal to or higher than 135/160, the wearer deals 12%/18% more DMG.`,
+      `Increases the wearer's ATK by <span class="text-desc">12%</span>. When the wearer's SPD is equal to or higher than <span class="text-desc">135</span>/<span class="text-desc">160</span>, the wearer deals <span class="text-desc">12%</span>/<span class="text-desc">18%</span> more DMG.`,
     ],
   },
   {
@@ -540,8 +611,22 @@ export const PlanarSets: IArtifact[] = [
     icon: '71027',
     bonus: [{ stat: Stats.ERR, value: 0.05 }],
     bonusAdd: [],
+    half: (base) => {
+      base.CALLBACK.push((x: StatsObject, _d, _w, all) => {
+        _.forEach(all, (item) => {
+          if (item.PATH === x.PATH && x.NAME !== item.NAME)
+            item[Stats.ALL_DMG].push({
+              name: `Penacony, Land of the Dreams [${x.ELEMENT}]`,
+              source: x.NAME,
+              value: 0.1,
+            })
+        })
+        return x
+      })
+      return base
+    },
     desc: [
-      `Increases wearer's Energy Regeneration Rate by 5%. Increases DMG by 10% for all other allies that are of the same Type as the wearer.`,
+      `Increases wearer's Energy Regeneration Rate by <span class="text-desc">5%</span>. Increases DMG by <span class="text-desc">10%</span> for all other allies that are of the same Type as the wearer.`,
     ],
   },
   {
@@ -551,7 +636,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [{ stat: Stats.CRIT_RATE, value: 0.04 }],
     bonusAdd: [],
     desc: [
-      `Increases the wearer's CRIT Rate by 4%. When an enemy target gets defeated, the wearer's CRIT DMG increases by 4%, stacking up to 10 time(s).`,
+      `Increases the wearer's CRIT Rate by <span class="text-desc">4%</span>. When an enemy target gets defeated, the wearer's CRIT DMG increases by <span class="text-desc">4%</span>, stacking up to <span class="text-desc">10</span> time(s).`,
     ],
   },
   {
@@ -560,8 +645,21 @@ export const PlanarSets: IArtifact[] = [
     icon: '71031',
     bonus: [{ stat: Stats.P_ATK, value: 0.12 }],
     bonusAdd: [],
+    half: (base) => {
+      base.CALLBACK.push((x: StatsObject, _d, _w, all) => {
+        const pathDupe = _.size(_.filter(all, (item) => item.PATH === x.PATH && item.NAME !== x.NAME)) >= 1
+        if (pathDupe)
+          x[Stats.CRIT_RATE].push({
+            name: `2-Piece`,
+            source: 'Izumo Gensei and Takama Divine Realm',
+            value: 0.12,
+          })
+        return x
+      })
+      return base
+    },
     desc: [
-      `Increases the wearer's ATK by 12%. When entering battle, if at least one other ally follows the same Path as the wearer, then the wearer's CRIT Rate increases by 12%.`,
+      `Increases the wearer's ATK by <span class="text-desc">12%</span>. When entering battle, if at least one other ally follows the same Path as the wearer, then the wearer's CRIT Rate increases by <span class="text-desc">12%</span>.`,
     ],
   },
   {
@@ -571,7 +669,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [],
     bonusAdd: [],
     desc: [
-      `When allies use follow-up attacks, the wearer receives 1 stack of Merit, stacking up to 5 times. Every stack of Merit increases the DMG dealt by the wearer's follow-up attacks by 5%. When there are 5 stacks, additionally increases the wearer's CRIT DMG by 25%.`,
+      `When allies use follow-up attacks, the wearer receives <span class="text-desc">1</span> stack of <b>Merit</b>, stacking up to <span class="text-desc">5</span> times. Every stack of <b>Merit</b> increases the DMG dealt by the wearer's follow-up attacks by <span class="text-desc">5%</span>. When there are <span class="text-desc">5</span> stacks, additionally increases the wearer's CRIT DMG by <span class="text-desc">25%</span>.`,
     ],
   },
   {
@@ -581,7 +679,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [{ stat: Stats.P_SPD, value: 0.06 }],
     bonusAdd: [],
     desc: [
-      `Increase the wearer's SPD by 6%. When the wearer hits enemy targets with Fire Weakness, the wearer's Break Effect increases by 40%, lasting for 1 turn(s).`,
+      `Increase the wearer's SPD by <span class="text-desc">6%</span>. When the wearer hits enemy targets with <b class="text-hsr-fire">Fire</b> Weakness, the wearer's Break Effect increases by <span class="text-desc">40%</span>, lasting for <span class="text-desc">1</span> turn(s).`,
     ],
   },
 ]

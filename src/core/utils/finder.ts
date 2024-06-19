@@ -1,6 +1,7 @@
 import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
 import { Characters as GIChar } from '@src/data/db/characters'
 import { LightCones } from '@src/data/db/lightcone'
+import { StatsArray } from '@src/data/lib/stats/baseConstant'
 import { DebuffTypes } from '@src/domain/conditional'
 import _ from 'lodash'
 
@@ -25,3 +26,6 @@ export const countDot = (debuffs: { type: DebuffTypes; count: number }[], type: 
 
 export const countDebuff = (debuffs: { type: DebuffTypes; count: number }[], type?: DebuffTypes) =>
   _.sumBy(type ? _.filter(debuffs, (d) => d.type === type) : debuffs, (item) => item.count)
+
+export const checkBuffExist = (array: StatsArray[], key: keyof StatsArray, value: any) =>
+  _.size(_.filter(array, (item) => item[key] === value)) >= 1

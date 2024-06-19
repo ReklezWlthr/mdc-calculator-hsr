@@ -5,9 +5,9 @@ import { getTeamOutOfCombat } from '../utils/calculator'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import _ from 'lodash'
 import {
-  calculateArtifact,
-  calculateTeamArtifact,
-  getArtifactConditionals,
+  calculateRelic,
+  calculateTeamRelic,
+  getRelicConditionals,
 } from '@src/data/lib/stats/conditionals/artifacts/calculate_artifact'
 import {
   LCAllyConditionals,
@@ -57,7 +57,7 @@ export const useCalculator = () => {
     () =>
       _.map(teamStore.characters, (item) => {
         const artifacts = _.map(item.equipments.artifacts, (a) => _.find(artifactStore.artifacts, (b) => b.id === a))
-        return getArtifactConditionals(artifacts)
+        return getRelicConditionals(artifacts)
       }),
     [teamStore.characters, artifactStore.artifacts]
   )
@@ -187,7 +187,7 @@ export const useCalculator = () => {
       const setBonus = getSetCount(artifactData)
       if (setBonus['2276480763'] >= 4) emblem[index] = true
       _.forEach(calculatorStore.form, (form, i) => {
-        x = i === index ? calculateArtifact(x, form, teamStore.characters, index) : calculateTeamArtifact(x, form)
+        x = i === index ? calculateRelic(x, form, teamStore.characters, index) : calculateTeamRelic(x, form, postCustom[i])
       })
       return x
     })
