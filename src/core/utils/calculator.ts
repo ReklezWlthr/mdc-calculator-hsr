@@ -171,7 +171,15 @@ export const addArtifactStats = (
       if (half) conditionals = half(conditionals)
     }
     if (value >= 4) {
+      const bonuses = _.find(AllRelicSets, ['id', key])?.bonusAdd
       const add = _.find(AllRelicSets, ['id', key])?.add
+      _.forEach(bonuses, (item) => {
+        conditionals[item.stat].push({
+          name: '4-Piece',
+          source: _.find(AllRelicSets, ['id', key])?.name,
+          value: item.value,
+        })
+      })
       if (add) conditionals = add(conditionals, weapon, team)
     }
   })
