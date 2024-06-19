@@ -558,7 +558,7 @@ export const Characters = [
   },
   {
     id: '1218',
-    name: 'Jiaoqui',
+    name: 'Jiaoqiu',
     stat: {
       baseAtk: 81.84,
       baseHp: 184.8,

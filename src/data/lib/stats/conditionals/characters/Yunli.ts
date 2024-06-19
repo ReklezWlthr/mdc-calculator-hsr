@@ -77,11 +77,11 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     c1: {
       title: `E1: Weathered Blade Does Not Sully`,
-      content: `DMG from <b>Intuit: Slash</b> and <b>Intuit: Cull</b> increases by 20%, and <b>Intuit: Cull</b>'s extra DMG Hits increases by <span class="text-desc">3</span>.`,
+      content: `DMG from <b>Intuit: Slash</b> and <b>Intuit: Cull</b> increases by <span class="text-desc">20%</span>, and <b>Intuit: Cull</b>'s extra DMG Hits increases by <span class="text-desc">3</span>.`,
     },
     c2: {
       title: `E2: First Luster Breaks Dawn`,
-      content: `Yunli increases her own CRIT Rate by 18% at the end of the turn, lasting until the beginning of the next turn.`,
+      content: `Yunli increases her own CRIT Rate by <span class="text-desc">18%</span> at the end of the turn, lasting until the beginning of the next turn.`,
     },
     c3: {
       title: `E3: Mastlength Twirls Mountweight`,
@@ -90,7 +90,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     c4: {
       title: `E4: Artisan's Ironsong`,
-      content: `When Yunli deals DMG via launching a Counter, ignores 20% of the target's DEF.`,
+      content: `When Yunli deals DMG via launching a Counter, ignores <span class="text-desc">20%</span> of the target's DEF.`,
     },
     c5: {
       title: `E5: Blade of Old Outlasts All`,
