@@ -95,8 +95,13 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                       <p className="w-full text-xs text-center text-white truncate">{content.text}</p>
                     </Tooltip>
                   </div>
-                  <div className={classNames('col-span-2 text-center', content.debuff ? 'text-red' : 'text-blue')}>
-                    {content.debuff ? 'Debuff' : 'Buff'}
+                  <div
+                    className={classNames(
+                      'col-span-2 text-center',
+                      content.debuff ? 'text-red' : content.unique ? 'text-desc' : 'text-blue'
+                    )}
+                  >
+                    {content.debuff ? 'Debuff' : content.unique ? 'Other' : 'Buff'}
                   </div>
                   <div
                     className={classNames(

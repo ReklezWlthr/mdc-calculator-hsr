@@ -49,6 +49,9 @@ import Xueyi from './characters/Xueyi'
 import Yanqing from './characters/Yanqing'
 import Yukong from './characters/Yukong'
 import Jade from './characters/Jade'
+import MarchHunt from './characters/MarchHunt'
+import Jiaoqiu from './characters/Jiaoqiu'
+import Yunli from './characters/Yunli'
 
 export default [
   { id: '1001', conditionals: March },
@@ -88,6 +91,9 @@ export default [
   { id: '1214', conditionals: Xueyi },
   { id: '1215', conditionals: Hanya },
   { id: '1217', conditionals: Huohuo },
+  { id: '1218', conditionals: Jiaoqiu },
+  { id: '1221', conditionals: Yunli },
+  { id: '1224', conditionals: MarchHunt },
   { id: '1301', conditionals: Gallagher },
   { id: '1302', conditionals: Argenti },
   { id: '1303', conditionals: RuanMei },
@@ -102,44 +108,6 @@ export default [
   { id: '1314', conditionals: Jade },
   { id: '1315', conditionals: Boothill },
   { id: '8005', conditionals: HMC },
-  // { id: '10000027', conditionals: Ningguang },
-  // { id: '10000034', conditionals: Noelle },
-  // { id: '10000035', conditionals: Qiqi },
-  // { id: '10000052', conditionals: Raiden },
-  // { id: '10000020', conditionals: Razor },
-  // { id: '10000045', conditionals: Rosaria },
-  // { id: '10000053', conditionals: Sayu },
-  // { id: '10000054', conditionals: Kokomi },
-  // { id: '10000063', conditionals: Shenhe },
-  // { id: '10000059', conditionals: Heizou },
-  // { id: '10000043', conditionals: Sucrose },
-  // { id: '10000033', conditionals: Childe },
-  // { id: '10000050', conditionals: Thoma },
-  // { id: '10000069', conditionals: Tighnari },
-  // { id: '10000022', conditionals: Venti },
-  // { id: '10000075', conditionals: Wanderer },
-  // { id: '10000086', conditionals: Wriothesley },
-  // { id: '10000023', conditionals: Xiangling },
-  // { id: '10000093', conditionals: Xianyun },
-  // { id: '10000026', conditionals: Xiao },
-  // { id: '10000025', conditionals: Xingqiu },
-  // { id: '10000044', conditionals: Xinyan },
-  // { id: '10000058', conditionals: Yae },
-  // { id: '10000048', conditionals: Yanfei },
-  // { id: '10000077', conditionals: Yaoyao },
-  // { id: '10000060', conditionals: Yelan },
-  // { id: '10000049', conditionals: Yoimiya },
-  // { id: '10000064', conditionals: Yunjin },
-  // { id: '10000030', conditionals: Zhongli },
-  // { id: '10000095', conditionals: Sigewinne },
-  // { id: '10000097', conditionals: Sethos },
-  // { id: '10000098', conditionals: Clorinde },
-  // // Travelers
-  // { id: '10000005-504', conditionals: TravelerWind },
-  // { id: '10000005-506', conditionals: TravelerRock },
-  // { id: '10000005-507', conditionals: TravelerElectric },
-  // { id: '10000005-508', conditionals: TravelerGrass },
-  // { id: '10000005-503', conditionals: TravelerWater },
 ]
 
 export const UtilTalentOverride = {

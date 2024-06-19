@@ -72,6 +72,7 @@ export const baseStatsObject = {
   DEF_REDUCTION: [] as StatsArray[],
   SPD_REDUCTION: [] as StatsArray[],
   E_RES_RED: [] as StatsArray[],
+  EHR_RED: [] as StatsArray[],
   VULNERABILITY: [] as StatsArray[],
   WEAKEN: [] as StatsArray[],
 

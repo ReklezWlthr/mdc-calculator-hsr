@@ -3,7 +3,7 @@ import { Element, PathType, Stats } from '@src/domain/constant'
 export const Characters = [
   {
     id: '1001',
-    name: 'March 7th',
+    name: 'March 7th (Preservation)',
     stat: {
       baseAtk: 69.6,
       baseHp: 144,
@@ -555,6 +555,51 @@ export const Characters = [
     rarity: 5,
     path: PathType.ABUNDANCE,
     element: Element.WIND,
+  },
+  {
+    id: '1218',
+    name: 'Jiaoqui',
+    stat: {
+      baseAtk: 81.84,
+      baseHp: 184.8,
+      baseDef: 69.3,
+      baseSpd: 98,
+      energy: 100,
+    },
+    trace: [Stats.EHR, Stats.SPD, Stats.FIRE_DMG],
+    rarity: 5,
+    path: PathType.NIHILITY,
+    element: Element.FIRE,
+  },
+  {
+    id: '1221',
+    name: 'Yunli',
+    stat: {
+      baseAtk: 92.4,
+      baseHp: 184.8,
+      baseDef: 62.7,
+      baseSpd: 94,
+      energy: 240,
+    },
+    trace: [Stats.P_ATK, Stats.CRIT_RATE, Stats.P_HP],
+    rarity: 5,
+    path: PathType.DESTRUCTION,
+    element: Element.PHYSICAL,
+  },
+  {
+    id: '1224',
+    name: 'March 7th (The Hunt)',
+    stat: {
+      baseAtk: 76.8,
+      baseHp: 124.8,
+      baseDef: 57,
+      baseSpd: 107,
+      energy: 110,
+    },
+    trace: [Stats.P_ATK, Stats.P_DEF, Stats.CRIT_RATE],
+    rarity: 4,
+    path: PathType.HUNT,
+    element: Element.IMAGINARY,
   },
   {
     id: '1301',

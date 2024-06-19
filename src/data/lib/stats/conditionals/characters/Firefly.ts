@@ -67,7 +67,10 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       title: `Chrysalid Pyronexus`,
       content: `The lower the HP, the less DMG received. When HP is <span class="text-desc">20%</span> or lower, the DMG Reduction reaches its maximum effect, reducing up to {{0}}%. During the <b class="text-hsr-fire">Complete Combustion</b>, the DMG Reduction remains at its maximum effect, and the Effect RES increases by {{1}}%.
       <br />If Energy is lower than <span class="text-desc">50%</span> when the battle starts, regenerates Energy to <span class="text-desc">50%</span>. Once Energy is regenerated to its maximum, dispels all debuffs on this unit.`,
-      value: [{ base: 5, growth: 0.5, style: 'curved' }],
+      value: [
+        { base: 20, growth: 2, style: 'curved' },
+        { base: 10, growth: 2, style: 'curved' },
+      ],
       level: talent,
     },
     technique: {
@@ -186,13 +189,21 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         value:
           (form.complete_combustion ? 1 : 1 - (form.ff_talent - 20) / 80) * calcScaling(0.2, 0.02, talent, 'curved'),
       })
+      if (form.ff_implant && !_.includes(weakness, Element.FIRE)) weakness.push(Element.FIRE)
       if (form.complete_combustion) {
+        base.BA_ALT = true
+        base.SKILL_ALT = true
         base[Stats.SPD].push({
           name: 'Ultimate',
           source: 'Self',
           value: calcScaling(30, 3, ult, 'curved'),
         })
         base.BREAK_EFF.push({
+          name: 'Ultimate',
+          source: 'Self',
+          value: 0.5,
+        })
+        base.BREAK_DMG.push({
           name: 'Ultimate',
           source: 'Self',
           value: calcScaling(0.1, 0.01, ult, 'curved'),

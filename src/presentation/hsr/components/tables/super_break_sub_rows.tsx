@@ -43,8 +43,8 @@ export const SuperBreakSubRows = observer(({ scaling }: ScalingSubRowsProps) => 
 
   const defPen =
     (stats.getValue(StatsObjectKeys.DEF_PEN) || 0) +
-    (stats.getValue(`${TalentTypeMap[scaling.type]}_DEF_PEN`) || 0) +
-    (stats.getValue(`${TalentPropertyMap[scaling.property]}_DEF_PEN`) || 0)
+    (stats.getValue(StatsObjectKeys.SUPER_BREAK_DEF_PEN) || 0) +
+    (stats.getValue(StatsObjectKeys.BREAK_DEF_PEN) || 0)
 
   const defMult =
     calculatorStore.getDefMult(
@@ -55,9 +55,7 @@ export const SuperBreakSubRows = observer(({ scaling }: ScalingSubRowsProps) => 
   const vulMult =
     1 +
     stats.getValue(StatsObjectKeys.VULNERABILITY) +
-    (stats.getValue(`${TalentPropertyMap[scaling.property]}_VUL`) || 0) +
-    (stats.getValue(`${TalentTypeMap[scaling.type]}_VUL`) || 0) +
-    (stats.getValue(`${scaling.element.toUpperCase()}_VUL`) || 0) +
+    (stats.getValue(StatsObjectKeys.BREAK_VUL) || 0) +
     (scaling.vul || 0)
   const resMult = _.max([
     _.min([
@@ -82,6 +80,7 @@ export const SuperBreakSubRows = observer(({ scaling }: ScalingSubRowsProps) => 
     raw *
     (1 + stats.getValue(Stats.BE)) *
     (1 + stats.getValue(Stats.BE)) *
+    (1 + stats.getValue(StatsObjectKeys.BREAK_DMG)) *
     (1 + stats.getValue(StatsObjectKeys.SUPER_BREAK_DMG)) *
     stats.getValue(StatsObjectKeys.SUPER_BREAK_MULT) *
     enemyMod

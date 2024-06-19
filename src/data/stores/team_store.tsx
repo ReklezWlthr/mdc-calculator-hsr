@@ -20,7 +20,7 @@ export const DefaultCharacter = {
   cId: null,
   equipments: {
     weapon: DefaultWeapon,
-    artifacts: Array(5),
+    artifacts: Array(6),
   },
   talents: {
     basic: 1,

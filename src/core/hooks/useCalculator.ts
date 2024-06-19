@@ -10,10 +10,10 @@ import {
   getArtifactConditionals,
 } from '@src/data/lib/stats/conditionals/artifacts/calculate_artifact'
 import {
-  WeaponAllyConditionals,
-  WeaponConditionals,
-  WeaponTeamConditionals,
-} from '@src/data/lib/stats/conditionals/lightcones/weapon_conditionals'
+  LCAllyConditionals,
+  LCConditionals,
+  LCTeamConditionals,
+} from '@src/data/lib/stats/conditionals/lightcones/lc_conditionals'
 import { Element, ITeamChar, Stats } from '@src/domain/constant'
 import { getSetCount } from '../utils/data_format'
 import { ResonanceConditionals } from '@src/data/lib/stats/conditionals/resonance'
@@ -66,7 +66,7 @@ export const useCalculator = () => {
   const weaponConditionals = _.map(teamStore.characters, (item, index) =>
     _.map(
       _.filter(
-        WeaponConditionals,
+        LCConditionals,
         (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId) && checkValid(item)
       ),
       (cond) => ({ ...cond, title: '', content: '', index })
@@ -75,7 +75,7 @@ export const useCalculator = () => {
   const weaponTeamConditionals = _.map(teamStore.characters, (item, index) =>
     _.map(
       _.filter(
-        WeaponTeamConditionals,
+        LCTeamConditionals,
         (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId) && checkValid(item)
       ),
       (cond) => ({ ...cond, title: '', content: '', index })
@@ -84,7 +84,7 @@ export const useCalculator = () => {
   const weaponAllyConditionals = _.map(teamStore.characters, (item, index) =>
     _.map(
       _.filter(
-        WeaponAllyConditionals,
+        LCAllyConditionals,
         (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId) && checkValid(item)
       ),
       (cond) => ({ ...cond, id: `${cond.id}_${index}`, title: '', content: '', index: selected, owner: index })

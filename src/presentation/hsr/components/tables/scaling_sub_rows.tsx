@@ -50,7 +50,6 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
   const propertyCr = stats.getValue(`${TalentPropertyMap[scaling.property]}_CR`) || 0
   const talentCd = stats.getValue(`${TalentTypeMap[scaling.type]}_CD`) || 0
   const propertyCd = stats.getValue(`${TalentPropertyMap[scaling.property]}_CD`) || 0
-  const typeCd = stats.getValue(`${TalentTypeMap[scaling.type]}_CD`) || 0
   const elementCd = stats.getValue(`${element.toUpperCase()}_CD`) || 0
   const elementFlat = stats.getValue(`${element.toUpperCase()}_F_DMG`) || 0
   const elementMult = stats.getValue(`${element.toUpperCase()}_MULT`) || 1
@@ -137,8 +136,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     (scaling.cd || 0) +
     talentCd +
     elementCd +
-    propertyCd +
-    typeCd
+    propertyCd
   const totalFlat = (scaling.flat || 0) + elementFlat + talentFlat
 
   // String Construct
@@ -301,11 +299,6 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
               {!!propertyCd && (
                 <p className="text-xs">
                   {scaling.property} CRIT DMG: <span className="text-desc">{toPercentage(propertyCd)}</span>
-                </p>
-              )}
-              {!!typeCd && (
-                <p className="text-xs">
-                  {scaling.type} CRIT DMG: <span className="text-desc">{toPercentage(typeCd)}</span>
                 </p>
               )}
             </div>

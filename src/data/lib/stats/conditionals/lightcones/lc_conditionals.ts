@@ -5,7 +5,7 @@ import { Element, Stats, TalentProperty, TalentType } from '@src/domain/constant
 import _ from 'lodash'
 import { StatsObject, TalentTypeMap } from '../../baseConstant'
 
-export const WeaponConditionals: IWeaponContent[] = [
+export const LCConditionals: IWeaponContent[] = [
   {
     type: 'toggle',
     text: `Mirage Fizzle`,
@@ -738,7 +738,7 @@ export const WeaponConditionals: IWeaponContent[] = [
     },
   },
   {
-    type: 'toggle',
+    type: 'number',
     text: `Hits Against the Same Target`,
     show: true,
     default: 0,
@@ -1025,7 +1025,7 @@ export const WeaponConditionals: IWeaponContent[] = [
   },
 ]
 
-export const WeaponAllyConditionals: IWeaponContent[] = [
+export const LCAllyConditionals: IWeaponContent[] = [
   {
     type: 'toggle',
     text: `But the Battle Isn't Over`,
@@ -1104,7 +1104,7 @@ export const WeaponAllyConditionals: IWeaponContent[] = [
   },
 ]
 
-export const WeaponTeamConditionals: IWeaponContent[] = [
+export const LCTeamConditionals: IWeaponContent[] = [
   {
     type: 'toggle',
     text: `Mask`,
