@@ -251,13 +251,10 @@ const Hanya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     ) => {
       _.forEach(team, (t, i) => {
         if (allForm[i].hanya_ult)
-          t.CALLBACK.push((x, d, w, all) => {
-            x[Stats.SPD].push({
-              name: 'Ultimate',
-              source: index === i ? 'Self' : 'Hanya',
-              value: calcScaling(0.15, 0.005, ult, 'curved') * all[index].getSpd(),
-            })
-            return x
+          t[Stats.SPD].push({
+            name: 'Ultimate',
+            source: index === i ? 'Self' : 'Hanya',
+            value: calcScaling(0.15, 0.005, ult, 'curved') * base.getSpd(),
           })
       })
 

@@ -65,10 +65,7 @@ export const useCalculator = () => {
     findLightCone(item?.equipments?.weapon?.wId)?.type === findCharacter(item.cId)?.path
   const weaponConditionals = _.map(teamStore.characters, (item, index) =>
     _.map(
-      _.filter(
-        LCConditionals,
-        (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId) && checkValid(item)
-      ),
+      _.filter(LCConditionals, (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId) && checkValid(item)),
       (cond) => ({ ...cond, title: '', content: '', index })
     )
   )
@@ -187,7 +184,7 @@ export const useCalculator = () => {
       const setBonus = getSetCount(artifactData)
       if (setBonus['2276480763'] >= 4) emblem[index] = true
       _.forEach(calculatorStore.form, (form, i) => {
-        x = i === index ? calculateRelic(x, form, teamStore.characters, index) : calculateTeamRelic(x, form, postCustom[i])
+        x = i === index ? calculateRelic(x, form) : calculateTeamRelic(x, form, postCustom[i])
       })
       return x
     })

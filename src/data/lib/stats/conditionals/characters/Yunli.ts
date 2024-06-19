@@ -33,7 +33,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 60, growth: 6, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },
         { base: 20, growth: 1.25, style: 'heal' },
-        { base: 50, growth: 80, style: 'flat' },
+        { base: 50, growth: 30, style: 'flat' },
       ],
       level: skill,
     },

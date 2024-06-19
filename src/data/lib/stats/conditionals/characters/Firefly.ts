@@ -113,7 +113,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     c6: {
       title: `E6: In Finalized Morrow, I Full Bloom`,
-      content: `While in <b class="text-hsr-fire">Complete Combustion</b>, increases SAM's Fire RES PEN by <span class="text-desc">20%</span>. When using the Enhanced Basic ATK or Enhanced Skill, increases the Weakness Break efficiency by <span class="text-desc">50%</span>.`,
+      content: `While in <b class="text-hsr-fire">Complete Combustion</b>, increases SAM's <b class="text-hsr-fire">Fire RES PEN</b> by <span class="text-desc">20%</span>. When using the Enhanced Basic ATK or Enhanced Skill, increases the Weakness Break efficiency by <span class="text-desc">50%</span>.`,
     },
   }
 

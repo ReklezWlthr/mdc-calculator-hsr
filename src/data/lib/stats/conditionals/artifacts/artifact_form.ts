@@ -141,6 +141,16 @@ export const ArtifactForm = () => {
       default: true,
       id: '316',
     },
+    {
+      type: 'toggle',
+      text: `The Wind-Soaring Valorous`,
+      title: `The Wind-Soaring Valorous`,
+      content: `Increases the wearer's CRIT Rate by <span class="text-desc">6%</span>. When the wearer uses a follow-up attack, increase the DMG dealt by their Ultimate by <span class="text-desc">36%</span>, lasting for <span class="text-desc">1</span> turn(s).`,
+      show: true,
+      default: true,
+      duration: 1,
+      id: '120',
+    },
   ]
 
   const teamContent: IContent[] = [findContentById(content, '114'), findContentById(content, '118')]
