@@ -21,18 +21,21 @@ const Arlan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Lightning Rush',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Arlan's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Shackle Breaker',
       content: `Consumes Arlan's HP equal to <span class="text-desc">15%</span> of his Max HP to deal <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Arlan's ATK to a single enemy. If Arlan does not have sufficient HP, his HP will be reduced to <span class="text-desc">1</span> after using his Skill.`,
       value: [{ base: 120, growth: 12, style: 'curved' }],
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Frenzied Punishment`,
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Arlan's ATK to a single enemy and <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Arlan's ATK to enemies adjacent to it.`,
       value: [
@@ -42,50 +45,61 @@ const Arlan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Pain and Anger`,
       content: `Increases Arlan's DMG for every percent of HP below his Max HP, up to a max of {{0}}% more DMG.`,
       value: [{ base: 36, growth: 3.6, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Swift Harvest',
       content: `Immediately attacks the enemy. After entering battle, deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">80%</span> of Arlan's ATK to all enemies.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Revival`,
       content: `If the current HP percentage is <span class="text-desc">30%</span> or lower when defeating an enemy, immediately restores HP equal to <span class="text-desc">20%</span> of Max HP.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Endurance`,
       content: `The chance to resist DoT Debuffs increases by <span class="text-desc">50%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Repel`,
       content: `Upon entering battle, if Arlan's HP is less than or equal to <span class="text-desc">50%</span>, he can nullify all DMG received except for DoT until after he is attacked.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: 'To the Bitter End',
       content: `When HP is lower than or equal to <span class="text-desc">50%</span> of Max HP, increases Skill's DMG by <span class="text-desc">10%</span>.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Breaking Free`,
       content: `Using Skill or Ultimate removes <span class="text-desc">1</span> debuff from oneself.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: 'Power Through',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Turn the Tables',
       content: `When struck by a killing blow after entering battle, instead of becoming knocked down, Arlan immediately restores his HP to <span class="text-desc">25%</span> of his Max HP. This effect is automatically removed after it is triggered once or after <span class="text-desc">2</span> turn(s) have elapsed.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Hammer and Tongs`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'Self-Sacrifice',
       content: `When HP drops to <span class="text-desc">50%</span> or below, Ultimate deals <span class="text-desc">20%</span> more DMG. The DMG multiplier of DMG taken by the target enemy now applies to adjacent enemies as well.`,
     },

@@ -24,12 +24,14 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Heart Afire',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Scorch Onslaught`,
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to a single enemy and <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Jiaoqiu's ATK to enemies adjacent to it. Has a <span class="text-desc">100%</span> <u>base chance</u> to inflict <span class="text-desc">1</span> stack of <b>Ashen Roast</b> on the primary target.`,
       value: [
@@ -39,6 +41,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Pyrograph Arcanum',
       content: `Sets the number of "<b>Ashen Roast</b>" stacks on enemy targets to the highest number of "<b>Ashen Roast</b>" stacks present on the battlefield. Then, activates a Field and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to all enemies.
       <br />While inside the field, enemy targets take {{1}}% increased Ultimate DMG, with a {{2}}% <u>base chance</u> of being inflicted with <span class="text-desc">1</span> stack of <b>Ashen Roast</b> when taking action. This effect can only be triggered once for enemies in each turn.
@@ -51,6 +54,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Quartet Finesse, Octave Finery`,
       content: `When Jiaoqiu uses his Basic ATK, Skill, or Ultimate to hit an enemy, there is a <span class="text-desc">100%</span> <u>base chance</u> of dealing <span class="text-desc">1</span> stack of <b>Ashen Roast</b>, increasing the initial DMG enemies receive by {{0}}%, with each stack additionally increasing DMG by {{1}}% to a max of <span class="text-desc">5</span> stack(s). <b>Ashen Roast</b> will last <span class="text-desc">2</span> turn(s).`,
       value: [
@@ -60,44 +64,54 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Fiery Queller',
       content: `After using Technique, creates a special dimension that lasts for <span class="text-desc">15</span> second(s). After engaging enemies in the dimension, deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">100%</span> of Jiaoqiu's ATK to all enemies and has a <span class="text-desc">100%</span> <u>base chance</u> of applying 1 <b>Ashen Roast</b> stack. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: 'Seared Scent',
       content: `When a Field exists, enemies entering combat will be inflicted with <b>Ashen Roast</b> stacks. The number of stacks applied will match the highest number of <b>Ashen Roast</b> stacks inflicted while the Field is active, with a minimum of <span class="text-desc">1</span> stack(s).`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: 'Hearth Kindle',
       content: `When Jiaoqiu's Effect Hit Rate is higher than <span class="text-desc">80%</span>, for each <span class="text-desc">15%</span> exceeded, Jiaoqiu additionally gains <span class="text-desc">60%</span> ATK, up to a maximum of <span class="text-desc">240%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: 'Pyre Cleanse',
       content: `When a Field exists, the enemies' Effect Hit Rate is reduced by <span class="text-desc">30%</span>. At the start of each turn, they receive <b class="text-hsr-fire">Fire Additional DMG</b> equal to <span class="text-desc">150%</span> of Jiaoqiu's ATK.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: 'Pentapathic Transference',
       content: `When an ally attacks an enemy target afflicted with <b>Ashen Roast</b>, increases DMG dealt by <span class="text-desc">48%</span>. Each time the Talent triggers <b>Ashen Roast</b>, additionally increases the present <b>Ashen Roast</b> stacks by <span class="text-desc">1</span>.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `From Savor Comes Suffer`,
       content: `<b>Ashen Roast</b> can be considered as a <b class="text-hsr-fire">Burn</b> status. Enemies with <b>Ashen Roast</b> will suffer <b class="text-hsr-fire">Fire DoT</b> equal to <span class="text-desc">300%</span> of Jiaoqiu's ATK at the start of each turn.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: 'Flavored Euphony Reigns Supreme',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Leisure In, Luster Out',
       content: `When the Field exists, reduces enemy target's ATK by <span class="text-desc">15%</span>.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Duel in Dawn, Dash in Dusk`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'Nonamorphic Pyrobind',
       content: `When the enemy target is defeated, existing <b>Ashen Roast</b> stacks will be transferred to a surviving enemy with the lowest amount of <b>Ashen Roast</b> stacks. Increases max <b>Ashen Roast</b> stacks to <span class="text-desc">9</span>. Every stack of <b>Ashen Roast</b> will reduce all enemies' All-Type RES by <span class="text-desc">3%</span>.`,
     },

@@ -1,5 +1,6 @@
 import { calcScaling } from '@src/core/utils/calculator'
 import { toPercentage } from '@src/core/utils/converter'
+import { findCharacter } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { IContent } from '@src/domain/conditional'
 import { Element, Stats } from '@src/domain/constant'
@@ -25,7 +26,7 @@ interface ConditionalBlockProps {
 export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[40vw]' }: ConditionalBlockProps) => {
   const [open, setOpen] = useState(true)
 
-  const { calculatorStore } = useStore()
+  const { calculatorStore, teamStore } = useStore()
 
   return (
     <div className="w-full rounded-lg bg-primary-darker h-fit">
@@ -78,14 +79,21 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                   <div className="col-span-5">
                     <Tooltip
                       title={
-                        content.level ? (
-                          <div className="flex items-center justify-between">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <p className="text-xs font-normal opacity-75 text-gray">
+                              {findCharacter(teamStore.characters[content.index]?.cId)?.name} - {content.trace}
+                            </p>
                             <p>{content.title}</p>
-                            <p className="text-xs font-normal text-desc">Level: {content.level}</p>
                           </div>
-                        ) : (
-                          content.title
-                        )
+                          <div className="flex flex-col items-end">
+                            {!!content.level && (
+                              <p className="text-xs font-normal text-gray">
+                                Level: <span className="text-desc">{content.level}</span>
+                              </p>
+                            )}
+                          </div>
+                        </div>
                       }
                       body={<p dangerouslySetInnerHTML={{ __html: formattedString }} />}
                       key={content.id}

@@ -21,12 +21,14 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'I Want to Help',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Clara's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Svarog Watches Over You',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Clara's ATK to all enemies, and additionally deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Clara's ATK to enemies marked by Svarog with a <b>Mark of Counter</b>.
       <br />All <b>Marks of Counter</b> will be removed after this Skill is used.`,
@@ -34,6 +36,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Promise, Not Command`,
       content: `After Clara uses Ultimate, DMG dealt to her is reduced by an extra {{0}}%, and she has greatly increased chances of being attacked by enemies for <span class="text-desc">2</span> turn(s).
       <br />In addition, Svarog's Counter is enhanced. When an ally is attacked, Svarog immediately launches a Counter, and its DMG multiplier against the enemy increases by {{1}}%. Enemies adjacent to it take <span class="text-desc">50%</span> of the DMG dealt to the target enemy. Enhanced Counter(s) can take effect <span class="text-desc">2</span> time(s).`,
@@ -44,50 +47,61 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Because We're Family`,
       content: `Under the protection of Svarog, DMG taken by Clara when hit by enemy attacks is reduced by <span class="text-desc">10%</span>. Svarog will mark enemies who attack Clara with his Mark of Counter and retaliate with a Counter, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Clara's ATK.`,
       value: [{ base: 80, growth: 8, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'A Small Price for Victory',
       content: `Immediately attacks the enemy. Upon entering battle, the chance Clara will be attacked by enemies increases for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Kinship`,
       content: `When attacked, this character has a <span class="text-desc">35%</span> <u>fixed chance</u> to remove a debuff placed on them.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Under Protection`,
       content: `The chance to resist Crowd Control Debuffs increases by <span class="text-desc">35%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Revenge`,
       content: `Increases Svarog's Counter DMG by <span class="text-desc">30%</span>.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `A Tall Figure`,
       content: `Using Skill will not remove Marks of Counter on the enemy.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `A Tight Embrace`,
       content: `After using the Ultimate, ATK increases by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Cold Steel Armor`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Family's Warmth`,
       content: `After Clara is hit, the DMG taken by Clara is reduced by <span class="text-desc">30%</span>. This effect lasts until the start of her next turn.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `A Small Promise`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Long Company`,
       content: `After other allies are hit, Svarog also has a <span class="text-desc">50%</span> <u>fixed chance</u> to trigger a Counter on the attacker and mark them with a <b>Mark of Counter</b>. When using Ultimate, the number of Enhanced Counters increases by <span class="text-desc">1</span>.`,
     },

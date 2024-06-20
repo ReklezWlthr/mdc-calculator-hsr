@@ -23,12 +23,14 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Banner: Stormcaller`,
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Huohuo's Max HP to a target enemy.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Talisman: Protection`,
       content: `Dispels <span class="text-desc">1</span> debuff(s) from a single target ally and immediately restores this ally's HP by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}. At the same time, restores HP for allies that are adjacent to this target ally by an amount equal to {{2}}% of Huohuo's Max HP plus {{3}}.`,
       value: [
@@ -40,6 +42,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Tail: Spiritual Domination`,
       content: `Regenerates Energy for all allies (excluding this character) by an amount equal to {{0}}% of their respective Max Energy. At the same time, increases their ATK by {{1}}% for <span class="text-desc">2</span> turn(s).`,
       value: [
@@ -49,6 +52,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Possession: Ethereal Metaflow`,
       content: `After using her Skill, Huohuo gains <b>Divine Provision</b>, lasting for <span class="text-desc">2</span> turn(s). This duration decreases by <span class="text-desc">1</span> turn at the start of each Huohuo's turn. If Huohuo has <b>Divine Provision</b> when an ally's turn starts or when an ally uses their Ultimate, restores HP for that ally by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}. At the same time, every ally with <span class="text-desc">50%</span> HP or lower receives healing once.
       <br />When <b>Divine Provision</b> is triggered to heal an ally, dispel <span class="text-desc">1</span> debuff(s) from that ally. This effect can be triggered up to <span class="text-desc">6</span> time(s). Using the skill again resets the effect's trigger count.`,
@@ -59,44 +63,54 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: `Fiend: Impeachment of Evil`,
       content: `Huohuo terrorizes surrounding enemies, afflicting Horror-Struck on them. Enemies in Horror-Struck will flee away from Huohuo for <span class="text-desc">10</span> second(s). When entering battle with enemies in Horror-Struck, there is a <span class="text-desc">100%</span> <u>base chance</u> of reducing every single enemy's ATK by <span class="text-desc">25%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Fearful to Act`,
       content: `When battle starts, Huohuo gains <b>Divine Provision</b>, lasting for <span class="text-desc">1</span> turn(s).`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `The Cursed One`,
       content: `The chance to resist Crowd Control Debuffs increases by <span class="text-desc">35%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Stress Reaction to Horror`,
       content: `When her Talent is triggered to heal allies, Huohuo regenerates <span class="text-desc">1</span> Energy.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Anchored to Vessel, Specters Nestled`,
       content: `The duration of <b>Divine Provision</b> produced by the Talent is extended by <span class="text-desc">1</span> turn(s). When Huohuo possesses <b>Divine Provision</b>, all allies' SPD increases by <span class="text-desc">12%</span>.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Sealed in Tail, Wraith Subdued`,
       content: `If Huohuo possesses <b>Divine Provision</b> when an ally is struck by a killing blow, the ally will not be knocked down, and their HP will immediately be restored by an amount equal to <span class="text-desc">50%</span> of their Max HP. This reduces the duration of <b>Divine Provision</b> by <span class="text-desc">1</span> turn. This effect can only be triggered <span class="text-desc">2</span> time(s) per battle.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Cursed by Fate, Moths to Flame`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Tied in Life, Bound to Strife`,
       content: `When healing a target ally via Skill or Talent, the less HP the target ally currently has, the higher the amount of healing they will receive. The maximum increase in healing provided by Huohuo is <span class="text-desc">80%</span>.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Mandated by Edict, Evils Evicted`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Woven Together, Cohere Forever`,
       content: `When healing a target ally, increases the target ally's DMG dealt by <span class="text-desc">50%</span> for <span class="text-desc">2</span> turn(s).`,
     },

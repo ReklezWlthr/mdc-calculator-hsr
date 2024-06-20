@@ -23,68 +23,82 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'What Are You Looking At?',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Herta's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'One-Time Offer',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Herta's ATK to all enemies. If the enemy's HP percentage is <span class="text-desc">50%</span> or higher, DMG dealt to this target increases by <span class="text-desc">20%</span>.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `It's Magic, I Added Some Magic`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Herta's ATK to all enemies.`,
       value: [{ base: 120, growth: 8, style: 'curved' }],
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Fine, I'll Do It Myself`,
       content: `When an ally's attack causes an enemy's HP percentage to fall to <span class="text-desc">50%</span> or lower, Herta will launch a follow-up attack, dealing <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Herta's ATK to all enemies.`,
       value: [{ base: 25, growth: 1.5, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'It Can Still Be Optimized',
       content: `After using her Technique, Herta's ATK increases by <span class="text-desc">40%</span> for <span class="text-desc">3</span> turn(s) at the beginning of the next battle.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Efficiency`,
       content: `When Skill is used, the DMG Boost effect on target enemies increases by an extra <span class="text-desc">25%</span>.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Puppet`,
       content: `The chance to resist Crowd Control Debuffs increases by <span class="text-desc">35%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Icing`,
       content: `When Ultimate is used, deals <span class="text-desc">20%</span> more DMG to <b class="text-hsr-ice">Frozen</b> enemies.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Kick You When You're Down`,
       content: `If the enemy's HP percentage is at <span class="text-desc">50%</span> or less, Herta's Basic ATK deals Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">40%</span> of Herta's ATK.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Keep the Ball Rolling`,
       content: `Every time Talent is triggered, this character's CRIT Rate increases by <span class="text-desc">3%</span>. This effect can stack up to <span class="text-desc">5</span> time(s).`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `That's the Kind of Girl I Am`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Hit Where It Hurts',
       content: `When Talent is triggered, DMG increases by <span class="text-desc">10%</span>.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Cuss Big or Cuss Nothing`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'No One Can Betray Me',
       content: `After using Ultimate, this character's ATK increases by <span class="text-desc">25%</span> for <span class="text-desc">1</span> turn(s).`,
     },

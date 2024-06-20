@@ -21,12 +21,14 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Shard Sword`,
       content: `Deals {{0}}% of Blade's ATK as <b class="text-hsr-wind">Wind DMG</b> to a target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     normal_alt: {
+      trace: 'Enhanced Basic ATK',
       title: `Forest of Swords`,
       content: `Consumes HP equal to <span class="text-desc">10%</span> of Blade's Max HP and deals <b class="text-hsr-wind">Wind DMG</b> equal to the sum of {{0}}% of his ATK and {{1}}% of his Max HP to a single enemy. In addition deals <b class="text-hsr-wind">Wind DMG</b> equal to the sum of {{2}}% of Blade's ATK and {{0}}% of his Max HP to adjacent targets.
       <br />If Blade's current HP is insufficient, his HP will be reduced to <span class="text-desc">1</span> when using Forest of Swords.
@@ -39,6 +41,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Hellscape`,
       content: `Consumes HP equal to <span class="text-desc">30%</span> of Blade's Max HP to enter the <b>Hellscape</b> state.
       <br />When <b>Hellscape</b> is active, his Skill cannot be used, his DMG dealt increases by {{0}}%, and his Basic ATK Shard Sword is enhanced to Forest of Swords for <span class="text-desc">3</span> turn(s).
@@ -48,6 +51,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Death Sentence',
       content: `Sets Blade's current HP to <span class="text-desc">50%</span> of his Max HP and deals to single enemy <b class="text-hsr-wind">Wind DMG</b> equal to the sum of {{0}}% of his ATK, {{1}}% of his Max HP, and {{1}}% of the total HP he has lost in the current battle. At the same time, deals <b class="text-hsr-wind">Wind DMG</b> to adjacent targets equal to the sum of {{2}}% of his ATK, {{3}}% of his Max HP, and {{3}}% of the total HP he has lost in the current battle. The total HP Blade has lost in the current battle is capped at <span class="text-desc">90%</span> of his Max HP. This value will be reset and re-accumulated after his Ultimate is used.`,
       value: [
@@ -59,6 +63,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Shuhu's Gift`,
       content: `When Blade sustains DMG or consumes his HP, he gains <span class="text-desc">1</span> stack of <b>Charge</b>, stacking up to <span class="text-desc">5</span> times. A max of <span class="text-desc">1</span> <b>Charge</b> stack can be gained every time he is attacked.
       <br />When <b>Charge</b> stack reaches maximum, immediately launches a follow-up attack on all enemies, dealing <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Blade's ATK plus {{1}}% of his Max HP. At the same time, restores Blade's HP by <span class="text-desc">25%</span> of his Max HP. After the follow-up attack, all <b>Charges</b> are consumed.`,
@@ -69,47 +74,57 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: `Karma Wind`,
       content: `Immediately attacks the enemy.
       <br />After entering combat, consumes <span class="text-desc">20%</span> of Blade's Max HP while dealing <b class="text-hsr-wind">Wind DMG</b> equal to <span class="text-desc">40%</span> of his Max HP to all enemies.
       <br />If Blade's current HP is insufficient, his HP will be reduced to <span class="text-desc">1</span> when this Technique is used.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Vita Infinita`,
       content: `When Blade's current HP is at <span class="text-desc">50%</span> of Max HP or lower, Incoming Healing increases by <span class="text-desc">20%</span>.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Neverending Deaths`,
       content: `If Blade hits a Weakness Broken enemy after using Forest of Swords, he will restore HP equal to <span class="text-desc">5%</span> of his Max HP plus <span class="text-desc">100</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Cyclone of Destruction`,
       content: `DMG dealt by Talent's follow-up attack increases by <span class="text-desc">20%</span>.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Blade Cuts the Deepest in Hell`,
       content: `Blade's Ultimate deals additionally increased DMG to a single enemy target, with the increased amount equal to <span class="text-desc">150%</span> of Blade's total HP loss in the current battle.
       <br />The total HP Blade has lost in the current battle is capped at <span class="text-desc">90%</span> of his Max HP. This value will be reset and re-accumulated after his Ultimate has been used.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Ten Thousand Sorrows From One Broken Dream`,
       content: `When Blade is in the Hellscape state, his CRIT Rate increases by <span class="text-desc">15%</span>.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Hardened Blade Bleeds Coldest Shade`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Rejected by Death, Infected With Life`,
       content: `When Blade's current HP drops to <span class="text-desc">50%</span> or lower of his Max HP, increases his Max HP by <span class="text-desc">20%</span>. Stacks up to <span class="text-desc">/2</span> time(s).`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Death By Ten Lords' Gaze`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Reborn Into an Empty Husk`,
       content: `The maximum number of <b>Charge</b> stacks is reduced to <span class="text-desc">4</span>. The DMG of the follow-up attack triggered by Blade's Talent additionally increases by <span class="text-desc">50%</span> of his Max HP.`,
     },

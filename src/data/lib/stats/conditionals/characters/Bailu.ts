@@ -21,12 +21,14 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Diagnostic Kick`,
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Bailu's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Singing Among Clouds`,
       content: `Heals a single ally for {{0}}% of Bailu's Max HP plus {{1}}. Bailu then heals random allies <span class="text-desc">2</span> time(s). After each healing, HP restored from the next healing is reduced by <span class="text-desc">15%</span>.`,
       value: [
@@ -36,6 +38,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Felicitous Thunderleap',
       content: `Heals all allies for {{0}}% of Bailu's Max HP plus {{1}}. Bailu applies <b>Invigoration</b> to allies that are not already <b>Invigorated</b>. For those already <b>Invigorated</b>, Bailu extends the duration of their <b>Invigoration</b> by <span class="text-desc">1</span> turn. The effect of <b>Invigoration</b> can last for <span class="text-desc">2</span> turn(s). This effect cannot stack.`,
       value: [
@@ -45,6 +48,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Gourdful of Elixir`,
       content: `After an ally with <b>Invigoration</b> is hit, restores the ally's HP for {{0}}% of Bailu's Max HP plus {{1}}. This effect can trigger <span class="text-desc">2</span> time(s). When an ally receives a killing blow, they will not be knocked down. Bailu immediately heals the ally for {{2}}% of Bailu's Max HP plus {{3}} HP. This effect can be triggered <span class="text-desc">1</span> time per battle.`,
       value: [
@@ -56,44 +60,54 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: `Saunter in the Rain`,
       content: `After using Technique, at the start of the next battle, all allies are granted <b>Invigoration</b> for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Qihuang Analects`,
       content: `When Bailu heals a target ally above their normal Max HP, the target's Max HP increases by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turns.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Vidyadhara Ichor Lines`,
       content: `Invigoration can trigger <span class="text-desc">1</span> more time(s).`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Aquatic Benediction`,
       content: `Characters with <b>Invigoration</b> receive <span class="text-desc">10%</span> less DMG.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Ambrosial Aqua`,
       content: `If the target ally's current HP is equal to their Max HP when <b>Invigoration</b> ends, regenerates <span class="text-desc">8</span> extra Energy for this target.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Sylphic Slumber`,
       content: `After using her Ultimate, Bailu's Outgoing Healing increases by an additional <span class="text-desc">15%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Omniscient Opulence`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Evil Excision`,
       content: `Every healing provided by the Skill makes the recipient deal <span class="text-desc">10%</span> more DMG for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">3</span> time(s).`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Waning Worries`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Drooling Drop of Draconic Divinity`,
       content: `Bailu can heal allies who received a killing blow <span class="text-desc">1</span> more time(s) in a single battle.`,
     },

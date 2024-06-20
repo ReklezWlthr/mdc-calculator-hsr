@@ -23,12 +23,14 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Windrider Bullet',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Bronya's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Combat Redeployment',
       content: `Dispels a debuff from a single ally, allows them to immediately take action, and increases their DMG by {{0}}% for <span class="text-desc">1</span> turn(s).
       <br />When this Skill is used on Bronya herself, she cannot immediately take action again.`,
@@ -36,6 +38,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `The Belobog March`,
       content: `Increases the ATK of all allies by {{0}}%, and increases their CRIT DMG equal to {{1}}% of Bronya's CRIT DMG plus {{2}}% for <span class="text-desc">2</span> turn(s).`,
       value: [
@@ -46,50 +49,61 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Leading the Way`,
       content: `After using her Basic ATK, Bronya's next action will be Advanced Forward by {{0}}%.`,
       value: [{ base: 15, growth: 1.5, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Banner of Command',
       content: `After using Bronya's Technique, at the start of the next battle, all allies' ATK increases by <span class="text-desc">15%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Command`,
       content: `The CRIT Rate for Basic ATK increases to <span class="text-desc">100%</span>.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Battlefield`,
       content: `At the start of the battle, all allies' DEF increases by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Military Might`,
       content: `When Bronya is on the field, all allies deal <span class="text-desc">10%</span> more DMG.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Hone Your Strength`,
       content: `When using Skill, there is <span class="text-desc">50%</span> <u>fixed chance</u> of recovering <span class="text-desc">1</span> Skill Point. This effect has a <span class="text-desc">1</span>-turn cooldown.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Quick March`,
       content: `When using Skill, the target ally's SPD increases by <span class="text-desc">30%</span> after taking action, lasting for <span class="text-desc">1</span> turn.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Bombardment`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Take by Surprise',
       content: `After an ally other than Bronya uses Basic ATK on an enemy with <b class="text-hsr-wind">Wind</b> Weakness, Bronya immediately launches a follow-up attack on the target, dealing <b class="text-hsr-wind">Wind DMG</b> equal to <span class="text-desc">80%</span> of Bronya's Basic ATK DMG. This effect can only be triggered <span class="text-desc">1</span> time per turn.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Unstoppable`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'Piercing Rainbow',
       content: `The duration of the DMG Boost effect placed by the Skill on the target ally increases by <span class="text-desc">1</span> turn(s).`,
     },

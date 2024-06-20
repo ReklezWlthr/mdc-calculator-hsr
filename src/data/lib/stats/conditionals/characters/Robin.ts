@@ -23,18 +23,21 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Wingflip White Noise`,
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Robin's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Pinion's Aria`,
       content: `Increase DMG dealt by all allies by {{0}}%, lasting for <span class="text-desc">3</span> turn(s). This duration reduces by <span class="text-desc">1</span> at the start of Robin's every turn.`,
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Vox Harmonique, Opus Cosmique	`,
       content: `Robin enters the <b>Concerto</b> state and makes all other allies immediately take action.
       <br />While in the <b>Concerto</b> state, increase all allies' ATK by {{0}}% of Robin's ATK plus {{1}}. Moreover, after every attack by allies, Robin deals Additional <b class="text-hsr-physical">Physical DMG</b> equal to {{2}}% of her ATK for <span class="text-desc">1</span> time, with a fixed CRIT Rate for this damage set at <span class="text-desc">100%</span> and fixed CRIT DMG set at <span class="text-desc">150%</span>.
@@ -48,50 +51,61 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Tonal Resonance`,
       content: `Increase all allies' CRIT DMG by {{0}}%. Moreover, after allies attack enemy targets, Robin additionally regenerates <span class="text-desc">2</span> Energy for herself.`,
       value: [{ base: 5, growth: 1.5, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: `Overture of Inebriation`,
       content: `After using Technique, creates a special dimension around the character that lasts for <span class="text-desc">15</span> seconds. Enemies within this dimension will not attack Robin and will follow Robin while the dimension is active. After entering battle while the dimension is active, Robin regenerates <span class="text-desc">5</span> Energy at the start of each wave. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Coloratura Cadenza`,
       content: `When the battle begins, this character's action is Advanced Forward by <span class="text-desc">25%</span>.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Impromptu Flourish`,
       content: `While the Concerto state is active, the CRIT DMG dealt when all allies launch follow-up attacks increases by <span class="text-desc">25%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Sequential Passage`,
       content: `When using Skill, additionally regenerates <span class="text-desc">5</span> Energy.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Land of Smiles`,
       content: `While the <b>Concerto</b> state is active, all allies' All-Type RES PEN increases by <span class="text-desc">24%</span>.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Afternoon Tea For Two`,
       content: `While the <b>Concerto</b> state is active, all allies' SPD increases by <span class="text-desc">16%</span>. The Talent's Energy Regeneration effect additionally increases by <span class="text-desc">1</span>.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Inverted Tuning`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Raindrop Key`,
       content: `When using the Ultimate, dispels Crowd Control debuffs from all allies. While Robin is in the <b>Concerto</b> state, increases the Effect RES of all allies by <span class="text-desc">50%</span>.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Lonestar's Lament`,
       content: `<br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Moonless Midnight`,
       content: `While the <b>Concerto</b> state is active, the CRIT DMG of the Additional <b class="text-hsr-physical">Physical DMG</b> caused by the Ultimate increases by <span class="text-desc">450%</span>. The effect of Moonless Midnight can trigger up to <span class="text-desc">8</span> time(s). And the trigger count resets each time the Ultimate is used.`,
     },

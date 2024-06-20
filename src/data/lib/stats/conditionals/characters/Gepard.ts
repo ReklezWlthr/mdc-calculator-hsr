@@ -21,12 +21,14 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Fist of Conviction',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Gepard's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Daunting Smite',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Gepard's ATK to a single enemy, with a 65% <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> the enemy for <span class="text-desc">1</span> turn(s).
       <br />While <b class="text-hsr-ice">Frozen</b>, the enemy cannot take action and will take Additional <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Gepard's ATK at the beginning of each turn.`,
@@ -37,6 +39,7 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Enduring Bulwark`,
       content: `Applies a <b class="text-indigo-300">Shield</b> to all allies, absorbing DMG equal to {{0}}% of Gepard's DEF plus {{1}} for <span class="text-desc">3</span> turn(s).`,
       value: [
@@ -46,50 +49,61 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Unyielding Will`,
       content: `When struck with a killing blow, instead of becoming knocked down, Gepard's HP immediately restores to {{0}}% of his Max HP. This effect can only trigger once per battle.`,
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Comradery',
       content: `After Gepard uses his Technique, when the next battle begins, a <b class="text-indigo-300">Shield</b> will be applied to all allies, absorbing DMG equal to <span class="text-desc">24%</span> of Gepard's DEF plus <span class="text-desc">150</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Integrity`,
       content: `Gepard has a higher chance to be attacked by enemies.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Commander`,
       content: `When "Unyielding Will" is triggered, Gepard's Energy will be restored to <span class="text-desc">100%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Fighting Spirit`,
       content: `Gepard's ATK increases by 35% of his current DEF. This effect will refresh at the start of each turn.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Due Diligence`,
       content: `When using Skill, increases the <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> enemies by <span class="text-desc">35%</span>.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Lingering Cold`,
       content: `After an enemy <b class="text-hsr-ice">Frozen</b> by Skill is unfrozen, their SPD is reduced by <span class="text-desc">20%</span> for <span class="text-desc">1</span> turn(s).`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Never Surrender`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Faith Moves Mountains',
       content: `When Gepard is in battle, all allies' Effect RES increases by <span class="text-desc">20%</span>.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Cold Iron Fist`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'Unyielding Resolve',
       content: `When his Talent is triggered, Gepard immediately takes action again and restores extra HP equal to <span class="text-desc">50%</span> of his Max HP.`,
     },

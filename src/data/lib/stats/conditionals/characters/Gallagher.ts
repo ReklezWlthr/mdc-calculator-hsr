@@ -21,12 +21,14 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Corkage Fee',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Gallagher's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     normal_alt: {
+      trace: 'Enhanced Basic ATK',
       title: 'Nectar Blitz',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Gallagher's ATK to a single target enemy. Reduces the target's ATK by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).`,
       value: [
@@ -36,18 +38,21 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Special Brew',
       content: `Immediately heals a target ally for {{0}} HP.`,
       value: [{ base: 200, growth: 140, style: 'pure' }],
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Champagne Etiquette',
       content: `Inflicts <b>Besotted</b> on all enemies, lasting for <span class="text-desc">2</span> turn(s). At the same time, deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Gallagher's ATK to all enemies, and enhances this unit's next Basic ATK to <b>Nectar Blitz</b>.`,
       value: [{ base: 75, growth: 7.5, style: 'curved' }],
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: 'Tipsy Tussle',
       content: `The <b>Besotted</b> state increases the Break DMG that targets receive by {{0}}%. Every time a <b>Besotted</b> target is attacked by an ally, the attacker's HP gets restored by {{1}}.`,
       value: [
@@ -57,44 +62,54 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Artisan Elixir',
       content: `Immediately attacks the enemy. Upon entering battle, inflicts Besotted on all enemies, lasting for <span class="text-desc">2</span> turn(s). And deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of Gallagher's ATK to all enemies.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: 'Novel Concoction',
       content: `Increases this unit's Outgoing Healing by an amount equal to <span class="text-desc">50%</span> of Break Effect, up to a maximum Outgoing Healing increase of <span class="text-desc">75%</span>.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: 'Organic Yeast',
       content: `After using the Ultimate, immediately Advances Forward this unit's Action by <span class="text-desc">100%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: 'Bottoms Up',
       content: `When Gallagher uses Nectar Blitz to attack Besotted enemies, the HP Restore effect of his Talent will also apply to other allies for this time.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: 'Salty Dog',
       content: `When Gallagher enters the battle, regenerates <span class="text-desc">20</span> Energy and increases Effect RES by <span class="text-desc">50%</span>.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Lion's Tail`,
       content: `When using the Skill, removes <span class="text-desc">1</span> debuff(s) from a target ally. At the same time, increases their Effect RES by <span class="text-desc">30%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: 'Corpse Reviver',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Last Word',
       content: `Extends the duration of the <b>Besotted</b> state inflicted by Gallagher's Ultimate by <span class="text-desc">1</span> turn(s).`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Death in the Afternoon`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'Blood and Sand',
       content: `Increases Gallagher's Break Effect by <span class="text-desc">20%</span> and Weakness Break Efficiency by <span class="text-desc">20%</span>.`,
     },

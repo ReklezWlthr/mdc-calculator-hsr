@@ -21,12 +21,14 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Arrowslinger`,
       content: `Deals {{0}}% of Yukong's ATK as <b class="text-hsr-imaginary">Imaginary DMG</b> to a target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Emboldening Salvo`,
       content: `Obtains <span class="text-desc">2</span> stack(s) of "Roaring Bowstrings" (to a maximum of <span class="text-desc">2</span> stacks). When "Roaring Bowstrings" is active, the ATK of all allies increases by {{0}}%, and every time an ally's turn ends, Yukong loses <span class="text-desc">1</span> stack of "Roaring Bowstrings."
       <br />When it's the turn where Yukong gains "Roaring Bowstrings" by using Skill, "Roaring Bowstrings" will not be removed.`,
@@ -34,6 +36,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Diving Kestrel',
       content: `If "Roaring Bowstrings" is active on Yukong when her Ultimate is used, additionally increases all allies' CRIT Rate by {{0}}% and CRIT DMG by {{1}}%. At the same time, deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{2}}% of Yukong's ATK to a single enemy.`,
       value: [
@@ -44,50 +47,61 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Seven Layers, One Arrow`,
       content: `Basic ATK additionally deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Yukong's ATK, and increases the Toughness-Reducing DMG of this attack by <span class="text-desc">100%</span>. This effect can be triggered again in <span class="text-desc">1</span> turn(s).`,
       value: [{ base: 40, growth: 4, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: `Chasing the Wind`,
       content: `After using her Technique, Yukong enters Sprint mode for <span class="text-desc">20</span> seconds. In Sprint mode, her Movement SPD increases by <span class="text-desc">35%</span>, and Yukong gains <span class="text-desc">2</span> stack(s) of "Roaring Bowstrings" when she enters battle by attacking enemies.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Archerion`,
       content: `Yukong can resist <span class="text-desc">1</span> debuff application for <span class="text-desc">1</span> time. This effect can be triggered again in <span class="text-desc">2</span> turn(s).`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Bowmaster`,
       content: `When Yukong is on the field, <b class="text-hsr-imaginary">Imaginary DMG</b> dealt by all allies increases by <span class="text-desc">12%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Majestas`,
       content: `When "Roaring Bowstrings" is active, Yukong regenerates <span class="text-desc">2</span> additional Energy every time an ally takes action.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Aerial Marshal`,
       content: `At the start of battle, increases the SPD of all allies by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Skyward Command`,
       content: `When any ally's current energy is equal to its energy limit, Yukong regenerates an additional <span class="text-desc">5</span> energy. This effect can only be triggered once for each ally. The trigger count is reset after Yukong casts her Ultimate.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Torrential Fusillade`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Zephyrean Echoes`,
       content: `When "Roaring Bowstrings" is active, Yukong deals <span class="text-desc">30%</span> more DMG to enemies.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `August Deadshot`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Bowstring Thunderclap`,
       content: `When Yukong uses her Ultimate, she immediately gains <span class="text-desc">1</span> stack(s) of "Roaring Bowstrings."`,
     },

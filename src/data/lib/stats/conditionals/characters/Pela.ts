@@ -21,18 +21,21 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Frost Shot',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pela's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Frostbite',
       content: `Removes <span class="text-desc">1</span> buff(s) and deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pela's ATK as to a single enemy.`,
       value: [{ base: 105, growth: 10.5, style: 'curved' }],
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Zone Suppression`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pela's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b>Exposed</b> on all enemies.
       <br />When <b>Exposed</b>, enemies' DEF is reduced by {{1}}% for 2 turn(s).`,
@@ -43,50 +46,61 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Data Collecting`,
       content: `If the enemy is debuffed after Pela's attack, Pela will restore {{0}} extra Energy. This effect can only be triggered <span class="text-desc">1</span> time per attack.`,
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Preemptive Strike',
       content: `Immediately attacks the enemy. Upon entering battle, Pela deals <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">80%</span> of her ATK to a random enemy, with a <span class="text-desc">100%</span> <u>base chance</u> of lowering the DEF of all enemies by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Bash`,
       content: `Deals <span class="text-desc">20%</span> more DMG to debuffed enemies.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `The Secret Strategy`,
       content: `When Pela is on the battlefield, all allies' Effect Hit Rate increases by <span class="text-desc">10%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Wipe Out`,
       content: `Using Skill to remove buff(s) increases the DMG of the next attack by <span class="text-desc">20%</span>.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Victory Report`,
       content: `When an enemy is defeated, Pela regenerates <span class="text-desc">5</span> Energy.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Adamant Charge`,
       content: `Using Skill to remove buff(s) increases SPD by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Suppressive Force`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Full Analysis',
       content: `When using Skill, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce the target enemy's <b class="text-hsr-ice">Ice RES</b> by <span class="text-desc">12%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Absolute Jeopardy`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Feeble Pursuit`,
       content: `When Pela attacks a debuffed enemy, she deals Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">40%</span> of Pela's ATK to the enemy.`,
     },

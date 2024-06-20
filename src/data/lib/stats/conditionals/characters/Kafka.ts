@@ -24,12 +24,14 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Midnight Tumult',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Caressing Moonlight',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to a target enemy and <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Kafka's ATK to enemies adjacent to it.
       <br />If the target enemy is currently receiving DoT, all DoTs currently placed on that enemy immediately produce DMG equal to {{2}}% of their original DMG.`,
@@ -41,6 +43,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Twilight Trill',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> for enemies hit to become <b class="text-hsr-lightning">Shocked</b> and immediately take DMG from their current <b class="text-hsr-lightning">Shock</b> state, equal to {{1}}% of its original DMG. <b class="text-hsr-lightning">Shock</b> lasts for <span class="text-desc">2</span> turn(s).
       <br />While <b class="text-hsr-lightning">Shocked</b>, enemies receive <b class="text-hsr-lightning">Lightning DoT</b> equal to {{2}}% of Kafka's ATK at the beginning of each turn.`,
@@ -52,50 +55,61 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: 'Gentle but Cruel',
       content: `After an ally of Kafka's uses Basic ATK on an enemy target, Kafka immediately launches <span class="text-desc">1</span> follow-up attack and deals Lightning DMG equal to {{0}}% of her ATK to that target, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> equivalent to that applied by her Ultimate to the attacked enemy target for <span class="text-desc">2</span> turns. This effect can only be triggered <span class="text-desc">1</span> time per turn.`,
       value: [{ base: 42, growth: 9.8, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Mercy Is Not Forgiveness',
       content: `Immediately attacks all enemies within a set range. After entering battle, deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">50%</span> of Kafka's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> equivalent to that applied by her Ultimate on every enemy target for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: 'Torture',
       content: `When the Ultimate is used, enemy targets will now receive DMG immediately from all currently applied DoT sources instead of just receiving DMG immediately from the currently applied <b class="text-hsr-lightning">Shock</b> state.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: 'Plunder',
       content: `If an enemy is defeated while <b class="text-hsr-lightning">Shocked</b>, Kafka additionally regenerates <span class="text-desc">5</span> Energy.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: 'Thorns',
       content: `The <u>base chance</u> for Ultimate, Technique, or the follow-up attack triggered by the Talent to inflict <b class="text-hsr-lightning">Shock</b> increases by <span class="text-desc">30%</span>.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: 'Da Capo',
       content: `When the Talent triggers a follow-up attack, there is a <span class="text-desc">100%</span> <u>base chance</u> to increase the DoT received by the target by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Fortississimo`,
       content: `While Kafka is on the field, DoT dealt by all allies increases by <span class="text-desc">25%</span>.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: 'Capriccio',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Recitativo',
       content: `When an enemy target takes DMG from the <b class="text-hsr-lightning">Shock</b> status inflicted by Kafka, Kafka additionally regenerates <span class="text-desc">2</span> Energy.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Doloroso`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'Leggiero',
       content: `The <b class="text-hsr-lightning">Shock</b> inflicted on the enemy target by the Ultimate, the Technique, or the Talent-triggered follow-up attack has a DMG multiplier increase of <span class="text-desc">156%</span> and lasts <span class="text-desc">1</span> turn(s) longer.`,
     },

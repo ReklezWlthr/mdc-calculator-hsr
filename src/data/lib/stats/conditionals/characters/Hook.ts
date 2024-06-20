@@ -24,12 +24,14 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Hehe! Don't Get Burned!`,
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Hook's ATK to a target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Hey! Remember Hook?',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Hook's ATK to a single enemy. In addition, there is a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-fire">Burn</b> for <span class="text-desc">2</span> turn(s).
       <br />When afflicted with <b class="text-hsr-fire">Burn</b>, enemies will take <b class="text-hsr-fire">Fire DoT</b> equal to {{1}}% of Hook's ATK at the beginning of each turn.`,
@@ -40,6 +42,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: skill,
     },
     skill_alt: {
+      trace: 'Enhanced Skill',
       title: 'Hey! Remember Hook?',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Hook's ATK to a single enemy, with a 100% <u>base chance</u> to <b class="text-hsr-fire">Burn</b> them for <span class="text-desc">2</span> turn(s). Additionally, deals <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Hook's ATK to enemies adjacent to it.
       <br />When afflicted with <b class="text-hsr-fire">Burn</b>, enemies will take <b class="text-hsr-fire">Fire DoT</b> equal to {{2}}% of Hook's ATK at the beginning of each turn.`,
@@ -51,56 +54,68 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Boom! Here Comes the Fire!`,
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Hook's ATK to a single enemy. After using Ultimate, the next Skill to be used is Enhanced, which deals DMG to a single enemy and enemies adjacent to it.`,
       value: [{ base: 240, growth: 16, style: 'curved' }],
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Ha! Oil to the Flames!`,
       content: `When attacking a target afflicted with <b class="text-hsr-fire">Burn</b>, deals Additional <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Hook's ATK and regenerates <span class="text-desc">5</span> extra Energy.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Ack! Look at This Mess!',
       content: `Immediately attacks the enemy. Upon entering battle, Hook deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of her ATK to a random enemy. In addition, there is a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-fire">Burn</b> on every enemy for <span class="text-desc">3</span> turn(s). When afflicted with <b class="text-hsr-fire">Burn</b>, enemies will take <b class="text-hsr-fire">Fire DoT</b> equal to <span class="text-desc">50%</span> of Hook's ATK at the beginning of each turn.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Innocence`,
       content: `Hook restores HP equal to <span class="text-desc">5%</span> of her Max HP whenever her Talent is triggered.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Naivete`,
       content: `The chance to resist Crowd Control Debuffs increases by <span class="text-desc">35%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Playing With Fire`,
       content: `When using her Ultimate, Hook has her action Advanced Forward by <span class="text-desc">20%</span> and Hook additionally regenerates <span class="text-desc">5</span> Energy.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Early to Bed, Early to Rise`,
       content: `Enhanced Skill deals <span class="text-desc">20%</span> increased DMG.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Happy Tummy, Happy Body`,
       content: `Extends the duration of <b class="text-hsr-fire">Burn</b> caused by Skill by <span class="text-desc">1</span> turn(s).`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Don't Be Picky, Nothing's Icky`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `It's Okay to Not Know`,
       content: `When Talent is triggered, there is a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-fire">Burn</b> enemies adjacent to the target enemy, equivalent to that of Skill.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Let the Moles' Deeds Be Known`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Always Ready to Punch and Kick`,
       content: `Hook deals <span class="text-desc">20%</span> more DMG to enemies afflicted with <b class="text-hsr-fire">Burn</b>.`,
     },

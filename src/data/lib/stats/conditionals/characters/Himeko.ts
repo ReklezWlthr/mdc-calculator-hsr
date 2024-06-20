@@ -23,12 +23,14 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Sawblade Tuning',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Himeko's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Molten Detonation',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Himeko's ATK to a single enemy and <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Himeko's ATK to enemies adjacent to it.`,
       value: [
@@ -38,12 +40,14 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Heavenly Flare',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Himeko's ATK to all enemies. Himeko regenerates <span class="text-desc">5</span> extra Energy for each enemy defeated.`,
       value: [{ base: 138, growth: 9.2, style: 'curved' }],
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: 'Victory Rush',
       content: `When an enemy is inflicted with Weakness Break, Himeko gains <span class="text-desc">1</span> point of <b>Charge</b> (max <span class="text-desc">3</span> points).
       <br />If Himeko is fully <b>Charged</b> when an ally performs an attack, Himeko immediately performs <span class="text-desc">1</span> follow-up attack and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of her ATK to all enemies, consuming all <b>Charge</b> points.
@@ -52,45 +56,55 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Incomplete Combustion',
       content: `After using Technique, creates a dimension that lasts for <span class="text-desc">15</span> second(s). After entering battle with enemies in the dimension, there is a <span class="text-desc">100%</span> <u>base chance</u> to increase <b class="text-hsr-fire">Fire DMG</b> taken by enemies by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s). Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: 'Starfire',
       content: `After using an attack, there is a <span class="text-desc">50%</span> <u>base chance</u> to inflict <b class="text-hsr-fire">Burn</b> on enemies for <span class="text-desc">2</span> turn(s).
       <br />When afflicted with <b class="text-hsr-fire">Burn</b>, enemies take <b class="text-hsr-fire">Fire DoT</b> equal to <span class="text-desc">30%</span> of Himeko's ATK at the start of each turn.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: 'Magma',
       content: `Skill deals <span class="text-desc">20%</span> more DMG to enemies currently afflicted with <b class="text-hsr-fire">Burn</b>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: 'Benchmark',
       content: `When current HP percentage is <span class="text-desc">80%</span> or higher, CRIT Rate increases by <span class="text-desc">15%</span>.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: 'Childhood',
       content: `After "Victory Rush" is triggered, Himeko's SPD increases by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Convergence`,
       content: `Deals <span class="text-desc">15%</span> more DMG to enemies whose HP percentage is <span class="text-desc">50%</span> or less.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: 'Poised',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Dedication',
       content: `When Himeko's Skill inflicts Weakness Break on an enemy, she gains <span class="text-desc">1</span> extra point(s) of <b>Charge</b>.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Aspiration`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'Trailblaze!',
       content: `Ultimate deals DMG <span class="text-desc">2</span> extra times, each of which deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">40%</span> of the original DMG to a random enemy.`,
     },

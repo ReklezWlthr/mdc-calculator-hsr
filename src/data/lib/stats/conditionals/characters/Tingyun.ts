@@ -24,12 +24,14 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Dislodged`,
       content: `Tingyun deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of her ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Soothing Melody`,
       content: `Grants a single ally with <b>Benediction</b> to increase their ATK by {{0}}%, up to {{1}}% of Tingyun's current ATK.
       <br />When the ally with <b>Benediction</b> attacks, they will deal Additional <b class="text-hsr-lightning">Lightning DMG</b> equal to {{2}}% of that ally's ATK for <span class="text-desc">1</span> time.
@@ -42,56 +44,68 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Amidst the Rejoicing Clouds',
       content: `Regenerates <span class="text-desc">50</span> Energy for a single ally and increases the target's DMG by {{0}}% for <span class="text-desc">2</span> turn(s).`,
       value: [{ base: 20, growth: 3, style: 'curved' }],
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Violet Sparknado`,
       content: `When an enemy is attacked by Tingyun, the ally with <b>Benediction</b> immediately deals Additional <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of that ally's ATK to the same enemy.`,
       value: [{ base: 30, growth: 3, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Gentle Breeze',
       content: `Tingyun immediately regenerates <span class="text-desc">50</span> Energy upon using her Technique.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Nourished Joviality`,
       content: `Tingyun's SPD increases by <span class="text-desc">20%</span> for <span class="text-desc">1</span> turn after using Skill.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Knell Subdual`,
       content: `Increases Basic ATK DMG by <span class="text-desc">40%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Jubilant Passage`,
       content: `Tingyun immediately regenerates <span class="text-desc">5</span> Energy at the start of her turn.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Windfall of Lucky Springs`,
       content: `After using their Ultimate, the ally with <b>Benediction</b>> gains a <span class="text-desc">20%</span> increase in SPD for <span class="text-desc">1</span> turn.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Gainfully Gives, Givingly Gains`,
       content: `The ally with <b>Benediction</b> regenerates <span class="text-desc">5</span> Energy after defeating an enemy. This effect can only be triggered once per turn.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Halcyon Bequest`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Jovial Versatility`,
       content: `The DMG multiplier provided by <b>Benediction</b> increases by <span class="text-desc">20%</span>.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Sauntering Coquette`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Peace Brings Wealth to All`,
       content: `Ultimate regenerates <span class="text-desc">10</span> more Energy for the target ally.`,
     },

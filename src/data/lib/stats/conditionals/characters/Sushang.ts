@@ -21,12 +21,14 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Cloudfencer Art: Starshine`,
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Sushang's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Cloudfencer Art: Mountainfall`,
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Sushang's ATK to a single enemy. In addition, there is a <span class="text-desc">33%</span> chance to trigger <b>Sword Stance</b> on the final hit, dealing Additional <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Sushang's ATK to the enemy.
       <br />If the enemy is inflicted with Weakness Break, <b>Sword Stance</b> is guaranteed to trigger.`,
@@ -37,6 +39,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Shape of Taixu: Dawn Herald',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Sushang's ATK to a single enemy target, and she immediately takes action again. In addition, Sushang's ATK increases by {{1}}% and using her Skill has <span class="text-desc">2</span> extra chances to trigger <b>Sword Stance</b> for <span class="text-desc">2</span> turn(s).
       <br /><b>Sword Stance</b> triggered from the extra chances deals <span class="text-desc">50%</span> of the original DMG.`,
@@ -49,50 +52,61 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Dancing Blade`,
       content: `When an enemy has their Weakness Broken on the field, Sushang's SPD increases by {{0}}% for <span class="text-desc">2</span> turn(s).`,
       value: [{ base: 15, growth: 0.5, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: `Cloudfencer Art: Warcry`,
       content: `Immediately attacks the enemy. Upon entering battle, Sushang deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">80%</span> of her ATK to all enemies.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Guileless`,
       content: `When current HP percentage is <span class="text-desc">50%</span> or lower, reduces the chance of being attacked by enemies.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Riposte`,
       content: `For every <b>Sword Stance</b> triggered, the DMG dealt by <b>Sword Stance</b> increases by <span class="text-desc">2%</span>. Stacks up to <span class="text-desc">10</span> time(s).`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Vanquisher`,
       content: `After using Basic ATK or Skill, if there are enemies on the field with Weakness Break, Sushang's action is Advanced Forward by <span class="text-desc">15%</span>.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Cut With Ease`,
       content: `After using Skill against a Weakness Broken enemy, regenerates <span class="text-desc">1</span> Skill Point.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Refine in Toil`,
       content: `After triggering <b>Sword Stance</b>, the DMG taken by Sushang is reduced by <span class="text-desc">20%</span> for <span class="text-desc">1</span> turn.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Rise From Fame`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Cleave With Heart`,
       content: `Sushang's Break Effect increases by <span class="text-desc">40%</span>.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Prevail via Taixu`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Dwell Like Water`,
       content: `Talent's SPD Boost is stackable and can stack up to <span class="text-desc">2</span> times. Additionally, after entering battle, Sushang immediately gains <span class="text-desc">1</span> stack of her Talent's SPD Boost.`,
     },

@@ -23,24 +23,28 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Spectrum Beam',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Asta's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Meteor Storm',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Asta's ATK to a single enemy and further deals DMG for <span class="text-desc">4</span> extra times, with each time dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Asta's ATK to a random enemy.`,
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Astral Blessing`,
       content: `Increases SPD of all allies by {{0}} for <span class="text-desc">2</span> turn(s).`,
       value: [{ base: 36, growth: 1.4, style: 'curved' }],
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Astrometry`,
       content: `Gains <span class="text-desc">1</span> stack of <b>Charging</b> for every different enemy hit by Asta plus an extra stack if the enemy hit has <b class="text-hsr-fire">Fire</b> Weakness.
       <br />For every stack of <b>Charging</b> Asta has, all allies' ATK increases by {{0}}%, up to <span class="text-desc">5</span> time(s).
@@ -49,45 +53,55 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Miracle Flash',
       content: `Immediately attacks the enemy. After entering battle, deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of Asta's ATK to all enemies.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Sparks`,
       content: `Asta's Basic ATK has a <span class="text-desc">80%</span> <u>base chance</u> to <b class="text-hsr-fire">Burn</b> enemies for <span class="text-desc">3</span> turn(s).
       <br /><b class="text-hsr-fire">Burned</b> enemies take <b class="text-hsr-fire">Fire DoT</b> equal to <span class="text-desc">50%</span> of DMG dealt by Asta's Basic ATK at the start of each turn.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Ignite`,
       content: `When Asta is on the field, all allies' <b class="text-hsr-fire">Fire DMG</b> increases by <span class="text-desc">18%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Constellation`,
       content: `Asta's DEF increases by <span class="text-desc">6%</span> for every current <b>Charging</b> stack she possesses.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: 'Star Sings Sans Verses or Vocals',
       content: `When using Skill, deals DMG for <span class="text-desc">1</span> extra time to a random enemy.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Moon Speaks in Wax and Wane`,
       content: `After using her Ultimate, Asta's <b>Charging</b> stacks will not be reduced in the next turn.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: 'Meteor Showers for Wish and Want',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Aurora Basks in Beauty and Bliss',
       content: `Asta's Energy Regeneration Rate increases by <span class="text-desc">15%</span> when she has <span class="text-desc">2</span> or more <b>Charging</b> stacks.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Nebula Secludes in Runes and Riddles`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'Cosmos Dreams in Calm and Comfort',
       content: `<b>Charging</b> stack(s) lost in each turn is reduced by <span class="text-desc">1</span>.`,
     },

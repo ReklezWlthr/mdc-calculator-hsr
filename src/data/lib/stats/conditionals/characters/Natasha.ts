@@ -21,12 +21,14 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Behind the Kindness',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Natasha's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Love, Heal, and Choose',
       content: `Restores a single ally for {{0}}% of Natasha's Max HP plus {{1}}. Restores the ally for another {{2}}% of Natasha's Max HP plus {{3}} at the beginning of each turn for <span class="text-desc">2</span> turn(s).`,
       value: [
@@ -38,6 +40,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Gift of Rebirth`,
       content: `Heals all allies for {{0}}% of Natasha's Max HP plus {{1}}.`,
       value: [
@@ -47,51 +50,62 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Innervation`,
       content: `When healing allies with HP percentage at <span class="text-desc">30%</span> or lower, increases Natasha's Outgoing Healing by {{0}}%. This effect also works on continuous healing.`,
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Hypnosis Research',
       content: `Immediately attacks the enemy. After entering battle, deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">80%</span> of Natasha's ATK to a random enemy, with a <span class="text-desc">100%</span> <u>base chance</u> to <b>Weaken</b> all enemies.
       <br />While <b>Weakened</b>, enemies deal <span class="text-desc">30%</span> less DMG to allies for <span class="text-desc">1</span> turn(s).`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Soothe`,
       content: `Skill has a <span class="text-desc">20%</span> increased <u>base chance</u> to <b class="text-hsr-lightning">Shock</b> enemies.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Healer`,
       content: `Natasha's Outgoing Healing increases by <span class="text-desc">10%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Recuperation`,
       content: `Increases the duration of Skill's continuous healing effect for <span class="text-desc">1</span> turn(s).`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Pharmacology Expertise`,
       content: `After being attacked, if the current HP percentage is <span class="text-desc">30%</span> or lower, heals self for <span class="text-desc">1</span> time to restore HP by an amount equal to <span class="text-desc">15%</span> of Max HP plus <span class="text-desc">400</span>. This effect can only be triggered <span class="text-desc">1</span> time per battle.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Clinical Research`,
       content: `When Natasha uses her Ultimate, grant continuous healing for <span class="text-desc">1</span> turn(s) to all allies whose HP is at <span class="text-desc">30%</span> or lower. And at the beginning of their turn, their HP is restored by an amount equal to <span class="text-desc">6%</span> of Natasha's Max HP plus <span class="text-desc">160</span>.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `The Right Cure`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Miracle Cure',
       content: `After being attacked, regenerates <span class="text-desc">5</span> extra Energy.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Preventive Treatment`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Doctor's Grace`,
       content: `Natasha's Basic ATK additionally deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">40%</span> of her Max HP.`,
     },

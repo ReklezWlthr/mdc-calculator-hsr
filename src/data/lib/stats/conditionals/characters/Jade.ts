@@ -23,6 +23,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Lash of Riches`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Jade's ATK to a single target enemy, and <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Jade's ATK to adjacent enemies.`,
       value: [
@@ -32,6 +33,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Acquisition Surety`,
       content: `Makes a single target ally become the <b>Debt Collector</b> and increases their SPD by <span class="text-desc">30</span>, lasting for <span class="text-desc">3</span> turn(s).
       <br />After the <b>Debt Collector</b> attacks, deals <span class="text-desc">1</span> instance of Additional <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Jade's ATK to each enemy target hit, and consumes the Debt Collector's HP by an amount equal to <span class="text-desc">2%</span> of their Max HP. If the current HP is insufficient, reduces HP to <span class="text-desc">1</span>.
@@ -41,6 +43,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Vow of the Deep`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Jade's ATK to all enemies. At the same time, Jade enhances her Talent's follow-up attack, increasing its DMG multiplier by {{1}}%. This enhancement can trigger <span class="text-desc">2</span> time(s).`,
       value: [
@@ -50,6 +53,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Fang of Flare Flaying`,
       content: `After Jade or the <b>Debt Collector</b> unit attacks, gains <span class="text-desc">1</span> point of <b>Charge</b> for each enemy target hit. Upon reaching <span class="text-desc">8</span> points of <b>Charge</b>, consumes the <span class="text-desc">8</span> points to launch <span class="text-desc">1</span> instance of follow-up attack, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Jade's ATK to all enemies. This follow-up attack does not generate <b>Charge</b>.
       <br />When launching her Talent's follow-up attack, Jade immediately gains <span class="text-desc">5</span> stack(s) of <b class="text-hsr-quantum">Pawned Asset</b>, with each stack increasing CRIT DMG by {{1}}%, stacking up to <span class="text-desc">50</span> times.`,
@@ -60,44 +64,54 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: `Visionary Predation`,
       content: `After using the Technique, inflicts enemies within a set area with Blind Fealty for <span class="text-desc">10</span> second(s). Enemies inflicted with Blind Fealty will not initiate attacks on allies. When entering battle via actively attacking enemies inflicted with Blind Fealty, all enemies with Blind Fealty will enter combat simultaneously. After entering battle, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">50%</span> of Jade's ATK to all enemies, and immediately gains <span class="text-desc">15</span> stack(s) of <b class="text-hsr-quantum">Pawned Asset</b>.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Asset Forfeiture`,
       content: `Each <b class="text-hsr-quantum">Pawned Asset</b> stack from the Talent additionally increases Jade's ATK by <span class="text-desc">0.5%</span>.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Collateral Ticket`,
       content: `When the battle starts, Jade's action is advanced forward by <span class="text-desc">50%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Reverse Repo`,
       content: `When an enemy target enters combat, Jade gains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-quantum">Pawned Asset</b>. When the <b>Debt Collector</b> character's turn starts, additionally gains <span class="text-desc">3</span> stack(s) of <b class="text-hsr-quantum">Pawned Asset</b>.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Altruism? Nevertheless Tradable`,
       content: `The follow-up attack DMG from Jade's Talent increases by <span class="text-desc">32%</span>. After the <b>Debt Collector</b> character attacks and the number of the enemy target(s) hit is either <span class="text-desc">2</span> or <span class="text-desc">1</span>, Jade additionally gains <span class="text-desc">1</span> or <span class="text-desc">2</span> point(s) of <b>Charge</b> respectively.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Morality? Herein Authenticated`,
       content: `When there are <span class="text-desc">15</span> stacks of <b class="text-hsr-quantum">Pawned Asset</b>, Jade's CRIT Rate increases by <span class="text-desc">18%</span>.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Honesty? Soon Mortgaged`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Sincerity? Put Option Only`,
       content: `When using Ultimate, enables the DMG dealt by Jade to ignore <span class="text-desc">12%</span> of enemy targets' DEF, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Hope? Hitherto Forfeited`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Equity? Pending Sponsorship`,
       content: `When the <b>Debt Collector</b> character exists on the field, Jade's <b class="text-hsr-quantum">Quantum RES PEN</b> increases by <span class="text-desc">20%</span>, and Jade gains the <b>Debt Collector</b> state.`,
     },

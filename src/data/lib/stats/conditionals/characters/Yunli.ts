@@ -21,12 +21,14 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Galespin Summersault`,
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Bladeborne Quake`,
       content: `Restores HP equal to {{2}}% of Yunli's ATK plus {{3}}, and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to a single enemy target and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Yunli's ATK to adjacent targets.`,
       value: [
@@ -38,6 +40,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Earthbind, Etherbreak`,
       content: `Consumes <span class="text-desc">120</span> Energy. Yunli gains Block and Taunts all enemies, lasting until the end of the next turn of an allied or enemy unit. While Block is active, Yunli's CRIT DMG increases by {{3}}%. When the Counter Talent effect is triggered while Block is active, it will be switched to a <b>Counter Intuit: Cull</b> effect and also dispel Block. If no Counters are triggered while Block is active, when the effect ends, Yunli will immediately launch a <b>Counter Intuit: Slash</b> effect on a random enemy target. When an <b>Intuit: Slash</b> is inflicted, it will cause the next <b>Intuit: Slash</b> to become an <b>Intuit: Cull</b>.
       <br /><b>Intuit: Slash</b>: Deals <b class="text-hsr-physical">Physical DMG</b> to the target equal to {{0}}% of Yunli's ATK, and deals <b class="text-hsr-physical">Physical DMG</b> to adjacent targets equal to {{1}}% of Yunli's ATK.
@@ -51,6 +54,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Flashforge`,
       content: `When Yunli is attacked by an enemy target, immediately launches a Counter on the attacker, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK, and <b class="text-hsr-physical">Physical DMG</b> to adjacent targets equal to {{1}}% of Yunli's ATK.`,
       value: [
@@ -60,44 +64,54 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: `Posterior Precedence`,
       content: `Gains the Ward effect for <span class="text-desc">15</span> seconds. When entering combat by attacking enemies or receiving an attack, immediately inflicts <b>Intuit: Cull</b> on a random enemy target, and increases this attack's DMG by <span class="text-desc">80%</span>.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `True Sunder`,
       content: `When using a Counter, increases Yunli's ATK by <span class="text-desc">30%</span> for <span class="text-desc">1</span> turn.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Demon Quell`,
       content: `While in the Block state, resists the Crowd Control debuff received and reduces DMG received by <span class="text-desc">20%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Fiery Wheel`,
       content: `Upon being attacked, Yunli additionaly regenerates <span class="text-desc">15</span> extra Energy.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Weathered Blade Does Not Sully`,
       content: `DMG from <b>Intuit: Slash</b> and <b>Intuit: Cull</b> increases by <span class="text-desc">20%</span>, and <b>Intuit: Cull</b>'s extra DMG Hits increases by <span class="text-desc">3</span>.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `First Luster Breaks Dawn`,
       content: `Yunli increases her own CRIT Rate by <span class="text-desc">18%</span> at the end of the turn, lasting until the beginning of the next turn.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Mastlength Twirls Mountweight`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Artisan's Ironsong`,
       content: `When Yunli deals DMG via launching a Counter, ignores <span class="text-desc">20%</span> of the target's DEF.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Blade of Old Outlasts All`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Walk in Blade, Talk in Zither`,
       content: `After using Ultimate, if the next unit to act is an enemy unit, <b>Intuit: Cull</b> will be triggered regardless of whether it is targeting Yunli, and the Block effect provided by the Ultimate will not be dispelled and will last until the end of the next turn. This effect can only be triggered <span class="text-desc">1</span> per turn.`,
     },

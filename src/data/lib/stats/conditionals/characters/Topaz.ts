@@ -21,12 +21,14 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Deficit...	`,
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Topaz's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Difficulty Paying?',
       content: `Inflicts a single target enemy with a <b>Proof of Debt</b> status, increasing the DMG it takes from follow-up attacks by {{0}}%. <b>Proof of Debt</b> only takes effect on the most recent target it is applied to. If there are no enemies inflicted with <b>Proof of Debt</b> on the field when an ally's turn starts or when an ally takes action, Topaz will inflict a random enemy with <b>Proof of Debt</b>.
       <br />Numby deals <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Topaz's ATK to this target. Using this Skill to deal DMG is considered as launching a follow-up attack.`,
@@ -37,6 +39,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Turn a Profit!`,
       content: `Numby enters the <b>Windfall Bonanza!</b> state and its DMG multiplier increases by {{0}}% and CRIT DMG increases by {{1}}%. Also, when enemies with <b>Proof of Debt</b> are hit by an ally's Basic ATK, Skill, or Ultimate, Numby's action is Advanced Forward by <span class="text-desc">50%</span>. Numby exits the <b>Windfall Bonanza!</b> state after using <span class="text-desc">2</span> attacks.`,
       value: [
@@ -46,6 +49,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Trotter Market!?`,
       content: `Summons Numby at the start of battle. Numby has <span class="text-desc">80</span> SPD by default. When taking action, Numby launches follow-up attacks on a single enemy target afflicted with <b>Proof of Debt</b>, dealing Fire DMG equal to {{0}}% of Topaz's ATK.
       <br />When enemies afflicted with <b>Proof of Debt</b> receive an ally's follow-up attacks, Numby's action is Advanced Forward by <span class="text-desc">50%</span>. The action Advance Forward effect cannot be triggered during Numby's own turn.
@@ -54,6 +58,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Explicit Subsidy',
       content: `Summons Numby when Topaz enters the overworld. Numby will automatically search for Basic Treasures and Trotters within a set radius.
       <br />Using her Technique will regenerate <span class="text-desc">60</span> Energy for Topaz after Numby's first attack in the next battle.
@@ -61,41 +66,50 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       <br />After using her Technique and defeating enemies in Simulated Universe, additionally receive a small amount of Cosmic Fragments with a small chance to obtain <span class="text-desc">1</span> random Curio.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Overdraft`,
       content: `When Topaz uses Basic ATK to deal DMG, it will be considered as a follow-up attack.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Financial Turmoil`,
       content: `Increases Topaz and Numby's DMG dealt to enemy targets with <b class="text-hsr-fire">Fire</b> Weakness by <span class="text-desc">15%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Stonks Market`,
       content: `After Numby uses an attack while in the <b>Windfall Bonanza!</b> state, Topaz additionally regenerates <span class="text-desc">10</span> Energy.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Future Market`,
       content: `When enemies afflicted with <b>Proof of Debt</b> receive follow-up attacks, they will enter the <b>Debtor</b> state. This can take effect only once within a single action.
       <br />The <b>Debtor</b> state increases the CRIT DMG of follow-up attacks inflicted on the target enemies by <span class="text-desc">25%</span>, stacking up to <span class="text-desc">2</span> time(s). When <b>Proof of Debt</b> is removed, the <b>Debtor</b> state is also removed.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Bona Fide Acquisition`,
       content: `After Numby takes action and launches an attack, Topaz regenerates <span class="text-desc">5</span> Energy.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Seize the Big and Free the Small`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Agile Operation`,
       content: `After Numby's turn begins, Topaz's action is Advanced Forward by <span class="text-desc">20%</span>.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Inflationary Demand`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Incentive Mechanism`,
       content: `Numby's attack count during the <b>Windfall Bonanza!</b> state increases by <span class="text-desc">1</span>, and its <b class="text-hsr-fire">Fire RES PEN</b> increases by <span class="text-desc">10%</span> when it attacks.`,
     },

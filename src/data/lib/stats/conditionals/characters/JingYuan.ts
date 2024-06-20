@@ -24,24 +24,28 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Glistening Light`,
       content: `Jing Yuan deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of his ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Rifting Zenith`,
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Jing Yuan's ATK to all enemies and increases <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action by <span class="text-desc">2</span> for the next turn.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Lightbringer',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Jing Yuan's ATK to all enemies and increases <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action by <span class="text-desc">3</span> for the next turn.`,
       value: [{ base: 20, growth: 3, style: 'curved' }],
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Prana Extirpated`,
       content: `Summons <b class="text-hsr-lightning">Lightning-Lord</b> at the start of the battle. <b class="text-hsr-lightning">Lightning-Lord</b> has <span class="text-desc">60</span> base SPD and <span class="text-desc">3</span> base Hits Per Action. When the <b class="text-hsr-lightning">Lightning-Lord</b> takes action, its hits are considered as follow-up attacks, with each hit dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Jing Yuan's ATK to a random single enemy, and enemies adjacent to it also receive <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">25%</span> of the DMG dealt to the target enemy.
       <br />The <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action can reach a max of <span class="text-desc">10</span>. Every time <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action increases by <span class="text-desc">1</span>, its SPD increases by <span class="text-desc">10</span>. After the <b class="text-hsr-lightning">Lightning-Lord</b>'s action ends, its SPD and Hits Per Action return to their base values.
@@ -51,44 +55,54 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Spirit Invocation',
       content: `After the Technique is used, the <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action in the first turn increases by <span class="text-desc">3</span> at the start of the next battle.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Battalia Crush`,
       content: `If the <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action is greater or equal to <span class="text-desc">6</span> in the next turn, its CRIT DMG increases by <span class="text-desc">25%</span> for the next turn.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Savant Providence`,
       content: `At the start of the battle, immediately regenerates <span class="text-desc">15</span> Energy.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `War Marshal`,
       content: `After the Skill is used, the CRIT Rate increases by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Slash, Seas Split`,
       content: `When <b class="text-hsr-lightning">Lightning-Lord</b> attacks, the DMG multiplier on enemies adjacent to the target enemy increases by an extra amount equal to <span class="text-desc">25%</span> of the DMG multiplier against the target enemy.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Swing, Skies Squashed`,
       content: `After <b class="text-hsr-lightning">Lightning-Lord</b> takes action, DMG caused by Jing Yuan's Basic ATK, Skill, and Ultimate increases by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Strike, Suns Subdued`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Spin, Stars Sieged`,
       content: `For each hit performed by the <b class="text-hsr-lightning">Lightning-Lord</b> when it takes action, Jing Yuan regenerates <span class="text-desc">2</span> Energy.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Stride, Spoils Seized`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Sweep, Souls Slain`,
       content: `Each hit performed by the <b class="text-hsr-lightning">Lightning-Lord</b> when it takes action will make the target enemy <b>Vulnerable</b>.
       <br />While <b>Vulnerable</b>, enemies receive <span class="text-desc">12%</span> more DMG until the end of the <b class="text-hsr-lightning">Lightning-Lord</b>'s current turn, stacking up to <span class="text-desc">3</span> time(s).`,

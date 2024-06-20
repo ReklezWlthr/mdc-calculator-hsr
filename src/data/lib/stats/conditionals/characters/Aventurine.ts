@@ -21,12 +21,14 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Straight Bet`,
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Aventurine's DEF to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Cornerstone Deluxe`,
       content: `Provides all allies with a <b class="text-indigo-300">Fortified Wager</b> shield that can block DMG equal to {{0}}% of Aventurine's DEF plus {{1}}, lasting for <span class="text-desc">3</span> turn(s). When repeatedly gaining <b class="text-indigo-300">Fortified Wager</b>, the <b class="text-indigo-300">Shield</b> effect can stack, up to <span class="text-desc">200%</span> of the <b class="text-indigo-300">Shield</b> provided by the current Skill.`,
       value: [
@@ -36,6 +38,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Roulette Shark`,
       content: `Randomly gains <span class="text-desc">1</span> to <span class="text-desc">7</span> points of <b>Blind Bet</b>. Then inflicts <b>Unnerved</b> on a single target enemy, lasting for <span class="text-desc">3</span> turn(s). And deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Aventurine's DEF to the single target enemy. When an ally hits an <b>Unnerved</b> enemy target, the CRIT DMG dealt increases by {{1}}%.`,
       value: [
@@ -45,6 +48,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Shot Loaded Right`,
       content: `For any single ally with <b class="text-indigo-300">Fortified Wager</b>, their Effect RES increases by {{0}}%, and when they get attacked, Aventurine gains <span class="text-desc">1</span> point of <b>Blind Bet</b>. When Aventurine has <b class="text-indigo-300">Fortified Wager</b>, he can resist Crowd Control debuffs. This effect can trigger again after <span class="text-desc">2</span> turn(s). Aventurine additionally gains <span class="text-desc">1</span> point(s) of <b>Blind Bet</b> after getting attacked. Upon reaching <span class="text-desc">7</span> points of <b>Blind Bet</b>, Aventurine consumes the <span class="text-desc">7</span> points to launch a <span class="text-desc">7</span>-hit follow-up attack, with each hit dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Aventurine's DEF to a single random enemy. <b>Blind Bet</b> is capped at <span class="text-desc">10</span> points.`,
       value: [
@@ -54,6 +58,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: `The Red or the Black`,
       content: `After using the Technique, <span class="text-desc">1</span> of the following effects will be granted:
       <br />There is a chance for DEF to increase by <span class="text-desc">24%</span>.
@@ -64,40 +69,49 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       <br />When the next battle starts, increases all allies' DEF by the corresponding value, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Leverage`,
       content: `For every <span class="text-desc">100</span> of Aventurine's DEF that exceeds <span class="text-desc">1600</span>, increases his own CRIT Rate by <span class="text-desc">2%</span>, up to a maximum increase of <span class="text-desc">48%</span>.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Hot Hand`,
       content: `When battle starts, grants all allies a <b class="text-indigo-300">Fortified Wager</b> shield, whose <b class="text-indigo-300">Shield</b> effect is equal to <span class="text-desc">100%</span> of the one provided by the Skill, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Bingo!`,
       content: `After an ally with <b class="text-indigo-300">Fortified Wager</b> launches a follow-up attack, Aventurine accumulates <span class="text-desc">1</span> Blind Bet point. This effect can trigger up to <span class="text-desc">3</span> time(s). And its trigger count resets at the start of Aventurine's turn. After Aventurine launches his Talent's follow-up attack, provides all allies with a <b class="text-indigo-300">Fortified Wager</b> that can block DMG equal to <span class="text-desc">7.2%</span> of Aventurine's DEF plus <span class="text-desc">96</span>, and additionally grants a <b class="text-indigo-300">Fortified Wager</b> that can block DMG equal to <span class="text-desc">7.2%</span> of Aventurine's DEF plus <span class="text-desc">96</span> to the ally with the lowest <b class="text-indigo-300">Shield</b> effect, lasting for 3<span class="text-desc">3</span> turns.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Prisoner's Dilemma`,
       content: `Increases CRIT DMG by <span class="text-desc">20%</span> for allies with <b class="text-indigo-300">Fortified Wager</b>. After using the Ultimate, provides all allies with a <b class="text-indigo-300">Fortified Wager</b> shield, whose <b class="text-indigo-300">Shield</b> effect is equal to <span class="text-desc">100%</span> of the one provided by the Skill, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Bounded Rationality`,
       content: `When using Basic ATK, reduces the target's All-Type RES by <span class="text-desc">12%</span> for <span class="text-desc">3</span> turn(s).`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Droprate Maxing`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Unexpected Hanging Paradox`,
       content: `When triggering his Talent's follow-up attack, first increases Aventurine's DEF by <span class="text-desc">40%</span> for <span class="text-desc">2</span> turn(s), and additionally increases the Hits Per Action for his talent's follow-up attack by <span class="text-desc">3</span>.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Ambiguity Aversion`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Stag Hunt Game`,
       content: `For every ally with a <b class="text-indigo-300">Shield</b>, the DMG dealt by Aventurine increases by <span class="text-desc">50%</span>, up to a maximum of <span class="text-desc">150%</span>.`,
     },

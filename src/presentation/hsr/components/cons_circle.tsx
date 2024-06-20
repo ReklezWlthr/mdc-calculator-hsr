@@ -88,7 +88,7 @@ export const ConsCircle = observer(
                 element={element}
                 active={cons >= 1}
                 tooltipSize="w-[30vw]"
-                type='Eidolon 1'
+                type={talents?.c1?.trace}
               />
             </div>
           </div>
@@ -100,7 +100,7 @@ export const ConsCircle = observer(
                 element={element}
                 active={cons >= 6}
                 tooltipSize="w-[30vw]"
-                type='Eidolon 6'
+                type={talents?.c6?.trace}
               />
             </div>
             <div className="rounded-full bg-primary-bg">
@@ -110,7 +110,7 @@ export const ConsCircle = observer(
                 element={element}
                 active={cons >= 2}
                 tooltipSize="w-[30vw]"
-                type='Eidolon 2'
+                type={talents?.c2?.trace}
               />
             </div>
           </div>
@@ -139,7 +139,7 @@ export const ConsCircle = observer(
                 element={element}
                 active={cons >= 5}
                 tooltipSize="w-[30vw]"
-                type='Eidolon 5'
+                type={talents?.c5?.trace}
               />
             </div>
             <div className="rounded-full bg-primary-bg">
@@ -151,7 +151,7 @@ export const ConsCircle = observer(
                 element={element}
                 active={cons >= 3}
                 tooltipSize="w-[30vw]"
-                type='Eidolon 3'
+                type={talents?.c3?.trace}
               />
             </div>
           </div>
@@ -163,7 +163,7 @@ export const ConsCircle = observer(
                 element={element}
                 active={cons >= 4}
                 tooltipSize="w-[30vw]"
-                type='Eidolon 4'
+                type={talents?.c4?.trace}
               />
             </div>
           </div>

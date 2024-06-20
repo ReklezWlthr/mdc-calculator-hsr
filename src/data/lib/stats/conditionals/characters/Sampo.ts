@@ -24,18 +24,21 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Dazzling Blades',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Sampo's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Ricochet Love',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Sampo's ATK to a single enemy, and further deals DMG for <span class="text-desc">4</span> extra time(s), with each time dealing <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Sampo's ATK to a random enemy.`,
       value: [{ base: 28, growth: 2.8, style: 'curved' }],
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Surprise Present`,
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Sampo's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> to increase the targets' DoT taken by {{1}}% for <span class="text-desc">2</span> turn(s).`,
       value: [
@@ -45,6 +48,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Windtorn Dagger`,
       content: `Sampo's attacks have a <span class="text-desc">65%</span> <u>base chance</u> to inflict <b class="text-hsr-wind">Wind Shear</b> for <span class="text-desc">3</span> turn(s).
       <br />Enemies inflicted with <b class="text-hsr-wind">Wind Shear</b> will take <b class="text-hsr-wind">Wind DoT</b> equal to {{0}}% of Sampo's ATK at the beginning of each turn. <b class="text-hsr-wind">Wind Shear</b> can stack up to <span class="text-desc">5</span> time(s).`,
@@ -52,45 +56,55 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Shining Bright',
       content: `After Sampo uses Technique, enemies in a set area are inflicted with <b>Blind</b> for <span class="text-desc">10</span> second(s). <b>Blinded</b> enemies cannot detect your team.
       <br />When initiating combat against a <b>Blinded</b> enemy, there is a <span class="text-desc">100%</span> <u>fixed chance</u> to delay all enemies' action by <span class="text-desc">25%</span>.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Trap`,
       content: `Extends the duration of <b class="text-hsr-wind">Wind Shear</b> caused by Talent by <span class="text-desc">1</span> turn(s).`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Defensive Position`,
       content: `Using Ultimate additionally regenerates <span class="text-desc">10</span> Energy.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Spice Up`,
       content: `Enemies with <b class="text-hsr-wind">Wind Shear</b> effect deal <span class="text-desc">15%</span> less DMG to Sampo.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Rising Love`,
       content: `When using Skill, deals DMG for <span class="text-desc">1</span> extra time(s) to a random enemy.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Infectious Enthusiasm`,
       content: `Defeating an enemy with <b class="text-hsr-wind">Wind Shear</b> has a <span class="text-desc">100%</span> <u>base chance</u> to inflict all enemies with <span class="text-desc">1</span> stack(s) of <b class="text-hsr-wind">Wind Shear</b>, equivalent to the Talent's <b class="text-hsr-wind">Wind Shear</b>.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Big Money!`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `The Deeper the Love, the Stronger the Hate`,
       content: `When Skill hits an enemy with <span class="text-desc">5</span> or more stack(s) of <b class="text-hsr-wind">Wind Shear</b>, the enemy immediately takes <span class="text-desc">8%</span> of current <b class="text-hsr-wind">Wind Shear</b> DMG.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Huuuuge Money!`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Increased Spending`,
       content: `Talent's <b class="text-hsr-wind">Wind Shear</b> DMG multiplier increases by <span class="text-desc">15%</span>.`,
     },

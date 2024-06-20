@@ -44,6 +44,7 @@ export interface IScaling {
 
 export interface IContent {
   type?: 'toggle' | 'number' | 'element'
+  trace?: string
   id: string
   text: string
   title: string
@@ -92,6 +93,7 @@ export interface IWeaponContent {
 }
 
 export interface ITalentDisplay {
+  trace: string
   title: string
   content: string
   upgrade?: string[]

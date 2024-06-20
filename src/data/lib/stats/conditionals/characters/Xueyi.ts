@@ -21,12 +21,14 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Mara-Sunder Awl`,
       content: `Deals {{0}}% of Xueyi's ATK as <b class="text-hsr-quantum">Quantum DMG</b> to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Iniquity Obliteration`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Xueyi's ATK to a single enemy, and <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Xueyi's ATK to any adjacent enemies.`,
       value: [
@@ -36,6 +38,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Divine Castigation`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Xueyi's ATK to a single target enemy. This attack ignores Weakness Types and reduces the enemy's Toughness. When the enemy's Weakness is Broken, the <b class="text-hsr-quantum">Quantum</b> Weakness Break effect is triggered.
       <br />In this attack, the more Toughness is reduced, the higher the DMG will be dealt, up to a max of {{1}}% increase.`,
@@ -46,6 +49,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Karmic Perpetuation`,
       content: `When Xueyi reduces enemy Toughness with attacks, <b>Karma</b> will be stacked. The more Toughness is reduced, the more stacks of <b>Karma</b> are added, up to <span class="text-desc">8</span> stacks.
       <br />When Xueyi's allies reduce enemy Toughness with attacks, Xueyi gains <span class="text-desc">1</span> stacks of <b>Karma</b>.
@@ -54,44 +58,54 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: `Summary Execution`,
       content: `Immediately attacks the enemy. After entering combat, deals <span class="text-desc">80%</span> of Xueyi's ATK as <b class="text-hsr-quantum">Quantum DMG</b> to all enemies.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Clairvoyant Loom`,
       content: `Increases DMG dealt by this unit by an amount equal to <span class="text-desc">100%</span> of Break Effect, up to a maximum DMG increase of <span class="text-desc">2400%</span>.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Intrepid Rollerbearings`,
       content: `If the enemy target's Toughness is equal to or higher than <span class="text-desc">50%</span> of their Max Toughness, deals <span class="text-desc">10%</span> more DMG when using Ultimate.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Perspicacious Mainframe`,
       content: `Xueyi will keep a tally of the number of <b>Karma</b> stacks that exceed the max stack limit, up to <span class="text-desc">6</span> stacks in the tally. After Xueyi's Talent is triggered, she will gain a corresponding number of tallied <b>Karma</b> stacks.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Dvesha, Inhibited`,
       content: `Increases the DMG dealt by the Talent's follow-up attack by <span class="text-desc">40%</span>.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Klesha, Breached`,
       content: `Talent's follow-up attack reduces enemy Toughness regardless of Weakness types. At the same time, restores Xueyi's HP by an amount equal to <span class="text-desc">5%</span> of her Max HP. When breaking Weakness, triggers the <b class="text-hsr-quantum">Quantum</b> Break Effect.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Duḥkha, Ceased`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Karma, Severed`,
       content: `When using Ultimate, increases Break Effect by <span class="text-desc">40%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Deva, Enthralled`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Saṃsāra, Mastered`,
       content: `The max stack limit for <b>Karma</b> decreases to <span class="text-desc">6</span>.`,
     },

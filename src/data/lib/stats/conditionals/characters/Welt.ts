@@ -21,12 +21,14 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Gravity Suppression',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Edge of the Void',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to a single enemy and further deals DMG <span class="text-desc">2</span> extra times, with each time dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to a random enemy. On hit, there is a {{1}}% <u>base chance</u> to reduce the enemy's SPD by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
       value: [
@@ -36,6 +38,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Synthetic Black Hole',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> for enemies hit by this ability to be <b class="text-hsr-imaginary">Imprisoned</b> for <span class="text-desc">1</span> turn.
       <br /><b class="text-hsr-imaginary">Imprisoned</b> enemies have their actions delayed by {{1}}% and SPD reduced by <span class="text-desc">10%</span>.`,
@@ -46,51 +49,62 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: 'Time Distortion',
       content: `When hitting an enemy that is already <b>Slowed</b>, Welt deals Additional <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of his ATK to the enemy.`,
       value: [{ base: 360, growth: 3, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Gravitational Imprisonment',
       content: `After using Welt's Technique, create a dimension that lasts for <span class="text-desc">15</span> second(s). Enemies in this dimension have their Movement SPD reduced by <span class="text-desc">50%</span>. After entering battle with enemies in the dimension, there is a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-imaginary">Imprison</b> the enemies for <span class="text-desc">1</span> turn.
       <br /><b class="text-hsr-imaginary">Imprisoned</b> enemies have their actions delayed by <span class="text-desc">20%</span> and SPD reduced by <span class="text-desc">10%</span>. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: 'Retribution',
       content: `When using Ultimate, there is a <span class="text-desc">100%</span> <u>base chance</u> to increase the DMG received by the targets by <span class="text-desc">12%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: 'Judgment',
       content: `Using Ultimate additionally regenerates <span class="text-desc">10</span> Energy.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: 'Punishment',
       content: `Deals <span class="text-desc">20%</span> more DMG to enemies inflicted with Weakness Break.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: 'Legacy of Honor',
       content: `After Welt uses his Ultimate, his abilities are enhanced. The next <span class="text-desc">2</span> time(s) he uses his Basic ATK or Skill, deals Additional DMG to the target equal to <span class="text-desc">50%</span> of his Basic ATK's DMG multiplier or <span class="text-desc">80%</span> of his Skill's DMG multiplier respectively.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Conflux of Stars`,
       content: `When his Talent is triggered, Welt regenerates <span class="text-desc">3</span> Energy.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: 'Prayer of Peace',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Appellation of Justice',
       content: `<u>base chance</u> for Skill to inflict SPD Reduction increases by <span class="text-desc">35%</span>.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Power of Kindness`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'Prospect of Glory',
       content: `When using Skill, deals DMG for <span class="text-desc">1</span> extra time to a random enemy.`,
     },

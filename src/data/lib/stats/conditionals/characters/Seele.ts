@@ -21,24 +21,28 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Thwack',
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Seele's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Sheathed Blade',
       content: `Increases Seele's SPD by <span class="text-desc">25%</span> for <span class="text-desc">2</span> turn(s) and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Seele's ATK to a single enemy.`,
       value: [{ base: 110, growth: 11, style: 'curved' }],
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Butterfly Flurry',
       content: `Seele enters the buffed state and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of her ATK to a single enemy.`,
       value: [{ base: 255, growth: 17, style: 'curved' }],
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: 'Resurgence',
       content: `Enters the buffed state upon defeating an enemy with Basic ATK, Skill, or Ultimate, and receives an extra turn. While in the buffed state, the DMG of Seele's attacks increases by {{0}}% for 1 turn(s).
       <br />Enemies defeated in the extra turn provided by "Resurgence" will not trigger another "Resurgence."`,
@@ -46,44 +50,54 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Phantom Illusion',
       content: `After using her Technique, Seele gains Stealth for <span class="text-desc">20</span> second(s). While Stealth is active, Seele cannot be detected by enemies. And when entering battle by attacking enemies, Seele will immediately enter the buffed state.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: 'Nightshade',
       content: `When current HP percentage is <span class="text-desc">50%</span> or lower, reduces the chance of being attacked by enemies.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: 'Lacerate',
       content: `While Seele is in the buffed state, her <b class="text-hsr-quantum">Quantum RES PEN</b> increases by <span class="text-desc">20%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: 'Rippling Waves',
       content: `After using a Basic ATK, Seele's next action will be Advanced Forward by <span class="text-desc">20%</span>.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: 'Extirpating Slash',
       content: `When dealing DMG to an enemy whose HP percentage is <span class="text-desc">80%</span> or lower, CRIT Rate increases by <span class="text-desc">15%</span>.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: 'Dancing Butterfly',
       content: `The SPD Boost effect of Seele's Skill can stack up to <span class="text-desc">2</span> time(s).`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: 'Dazzling Tumult',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Flitting Phantasm',
       content: `Seele regenerates <span class="text-desc">15</span> Energy when she defeats an enemy.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: 'Piercing Shards',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Attack Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'Shattering Shambles',
       content: `After Seele uses her Ultimate, inflict the target enemy with Butterfly Flurry for <span class="text-desc">1</span> turn(s). Enemies suffering from Butterfly Flurry will take Additional Quantum DMG equal to <span class="text-desc">15%</span> of Seele's Ultimate DMG every time they are attacked. If the target enemy is defeated by the Butterfly Flurry DMG triggered by other allies' attacks, Seele's Talent will not be triggered.
       <br />When Seele is knocked down, the Butterfly Flurry inflicted on the enemies will be removed.`,

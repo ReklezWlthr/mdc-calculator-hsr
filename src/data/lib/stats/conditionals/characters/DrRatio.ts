@@ -21,18 +21,21 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Mind is Might',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Intellectual Midwifery',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK to a single target enemy.`,
       value: [{ base: 75, growth: 7.5, style: 'curved' }],
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Syllogistic Paradox',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK to a single target enemy and applies <b>Wiseman's Folly</b>. When Dr. Ratio's allies attack a target afflicted with <b>Wiseman's Folly</b>, Dr. Ratio launches his Talent's follow-up attack for <span class="text-desc">1</span> time against this target.
       <br />,<b>Wiseman's Folly</b> can be triggered for up to <span class="text-desc">2</span> times and only affects the most recent target of Dr. Ratio's Ultimate. This trigger count resets after Dr. Ratio's Ultimate is used.`,
@@ -40,50 +43,61 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: 'Cogito, Ergo Sum',
       content: `When using his Skill, Dr. Ratio has a <span class="text-desc">40%</span> <u>fixed chance</u> of launching a follow-up attack against his target for <span class="text-desc">1</span> time, dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK. For each debuff the target enemy has, the <u>fixed chance</u> of launching follow-up attack increases by <span class="text-desc">20%</span>. If the target enemy is defeated before the follow-up attack triggers, the follow-up attack will be directed at a single random enemy instead.`,
       value: [{ base: 135, growth: 13.5, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Mold of Idolatry',
       content: `After using Technique, creates a special dimension that Taunts nearby enemies, lasting for <span class="text-desc">10</span> second(s). After entering battle with enemies in this special dimension, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce each single enemy target's SPD by <span class="text-desc">15%</span> for <span class="text-desc">2</span> turn(s). Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: 'Summation',
       content: `When Dr. Ratio uses his Skill, for every debuff on the target, his CRIT Rate increases by <span class="text-desc">2.5%</span> and CRIT DMG by <span class="text-desc">5%</span>. This effect can stack up to <span class="text-desc">6</span> time(s).`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: 'Inference',
       content: `When Skill is used to attack an enemy target, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce the attacked target's Effect RES by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: 'Deduction',
       content: `When dealing DMG to a target that has <span class="text-desc">3</span> or more debuff(s), for each debuff the target has, the DMG dealt by Dr. Ratio to this target increases by <span class="text-desc">10%</span>, up to a maximum increase of <span class="text-desc">50%</span>.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: 'C1: Pride Comes Before a Fall',
       content: `The maximum stackable count for the Trace "Summation" increases by <span class="text-desc">4</span>. When a battle begins, immediately obtains <span class="text-desc">4</span> stacks of Summation. Needs to unlock Summation first.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: 'C2: The Divine Is in the Details',
       content: `When his Talent's follow-up attack hits a target, for every debuff the target has, additionally deals <b class="text-hsr-imaginary">Imaginary Additional DMG</b> equal to <span class="text-desc">20%</span> of Dr. Ratio's ATK. This effect can be triggered for a maximum of <span class="text-desc">4</span> time(s) during each follow-up attack.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: 'C3: Know Thyself',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'C4: Ignorance Is Blight',
       content: `When triggering the Talent, additionally regenerates <span class="text-desc">15</span> Energy for Dr. Ratio.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: 'C5: Sic Itur Ad Astra',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'C6: Vincit Omnia Veritas',
       content: `Increases the trigger count for <b>Wiseman's Folly</b> by <span class="text-desc">1</span>. The DMG dealt by the Talent's follow-up attack increases by <span class="text-desc">50%</span>.`,
     },

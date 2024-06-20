@@ -21,18 +21,21 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Frost Thorn`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Yanqing's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Darting Ironthorn`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Yanqing's ATK to a single enemy and activates <b>Soulsteel Sync</b> for <span class="text-desc">1</span> turn.`,
       value: [{ base: 110, growth: 11, style: 'curved' }],
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Amidst the Raining Bliss',
       content: `Increases Yanqing's CRIT Rate by <span class="text-desc">60%</span>. When <b>Soulsteel Sync</b> is active, increases Yanqing's CRIT DMG by an extra {{0}}%. This buff lasts for one turn. Afterwards, deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Yanqing's ATK to a single enemy.`,
       value: [
@@ -42,6 +45,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `One With the Sword`,
       content: `When <b>Soulsteel Sync</b> is active, Yanqing is less likely to be attacked by enemies. Yanqing's CRIT Rate increases by {{0}}% and his CRIT DMG increases by {{1}}%. After Yanqing attacks an enemy, there is {{2}}% <u>fixed chance</u> to perform a follow-up attack, dealing <b class="text-hsr-ice">Ice DMG</b> equal to {{3}}% of Yanqing's ATK to the enemy, which has a <span class="text-desc">65%</span> <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> the enemy for <span class="text-desc">1</span> turn.
       <br />The <b class="text-hsr-ice">Frozen</b> target cannot take action and receives Additional <b class="text-hsr-ice">Ice DMG</b> equal to {{3}}% of Yanqing's ATK at the beginning of each turn.
@@ -55,44 +59,54 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: `The One True Sword`,
       content: `After using his Technique, at the start of the next battle, Yanqing deals <span class="text-desc">30%</span> more DMG for <span class="text-desc">2</span> turn(s) to enemies whose current HP is <span class="text-desc">50%</span> or higher.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Icing on the Kick`,
       content: `When Yanqing attacks, deals Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">30%</span> of Yanqing's ATK to enemies with <b class="text-hsr-ice">Ice</b> Weakness.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Frost Favors the Brave`,
       content: `When <b>Soulsteel Sync</b> is active, Effect RES increases by <span class="text-desc">20%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Gentle Blade`,
       content: `When a CRIT Hit is triggered, increases SPD by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Svelte Saber`,
       content: `When Yanqing attacks a <b class="text-hsr-ice">Frozen</b> enemy, he deals Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">60%</span> of his ATK.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Supine Serenade`,
       content: `When <b>Soulsteel Sync</b> is active, Energy Regeneration Rate increases by an extra <span class="text-desc">10%</span>.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Sword Savant`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Searing Sting`,
       content: `When the current HP percentage is <span class="text-desc">80%</span> or higher, <b class="text-hsr-ice">Ice RES PEN</b> increases by <span class="text-desc">12%</span>.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Surging Strife`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Swift Swoop`,
       content: `If the Ultimate's buffs are still in effect when an enemy is defeated, their duration is extended by <span class="text-desc">1</span> turn.`,
     },

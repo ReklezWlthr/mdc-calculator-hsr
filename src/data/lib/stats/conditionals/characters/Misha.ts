@@ -21,12 +21,14 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `E—Excuse Me, Please!`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Misha's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `R—Room Service`,
       content: `Increases the Hits Per Action for Misha's next Ultimate by <span class="text-desc">1</span> hit(s). Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Misha's ATK to a single target enemy, and <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Misha's ATK to adjacent targets.`,
       value: [
@@ -36,6 +38,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `G—Gonna Be Late!`,
       content: `Has <span class="text-desc">3</span> Hits Per Action by default. First, uses <span class="text-desc">1</span> hit to deal <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Misha's ATK to a single target enemy. Then, the rest of the hits each deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Misha's ATK to a single random enemy. Just before each hit lands, there is a {{1}}% <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> the target, lasting for <span class="text-desc">1</span> turn.
       <br />While <b class="text-hsr-ice">Frozen</b>, enemy targets cannot take any actions, and at the start of their turn, they receive Additional <b class="text-hsr-ice">Ice DMG</b> equal to {{2}}% of Misha's ATK.
@@ -48,50 +51,61 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Horological Escapement`,
       content: `Whenever any ally consumes <span class="text-desc">1</span> Skill Point, Misha's next Ultimate delivers <span class="text-desc">1</span> more Hit(s) Per Action and Misha regenerates {{0}} Energy.`,
       value: [{ base: 1, growth: 0.1, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: `Wait, You Are So Beautiful!`,
       content: `After using the Technique, creates a dimension that lasts for <span class="text-desc">15</span> seconds. Enemies caught in the dimension are inflicted with Dream Prison and stop all their actions. Upon entering battle against enemies afflicted with Dream Prison, increases the Hits Per Action for Misha's next Ultimate by <span class="text-desc">2</span> hit(s). Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Release`,
       content: `Before the Ultimate's first hit lands, increases the <u>base chance</u> of <b class="text-hsr-ice">Freezing</b> the target by <span class="text-desc">80%</span>.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Interlock`,
       content: `When using the Ultimate, increases the Effect Hit Rate by <span class="text-desc">60%</span>, lasting until the end of the Ultimate's current action.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Transmission`,
       content: `When dealing DMG to <b class="text-hsr-ice">Frozen</b> enemies, increases CRIT DMG by <span class="text-desc">30%</span>.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Whimsicality of Fancy`,
       content: `When using the Ultimate, for every enemy on the field, additionally increases the Hits Per Action for the Ultimate by <span class="text-desc">1</span> hit(s), up to a maximum increase of <span class="text-desc">5</span> hit(s).`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Yearning of Youth`,
       content: `Before each hit of the Ultimate lands, there is a <span class="text-desc">24%</span> <u>base chance</u> of reducing the target's DEF by 16% for <span class="text-desc">3</span> turn(s).`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Vestige of Happiness`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Visage of Kinship`,
       content: `Increases the DMG multiplier for each hit of the Ultimate by <span class="text-desc">6%</span>.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Genesis of First Love`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Estrangement of Dream`,
       content: `When using the Ultimate, increases own DMG by <span class="text-desc">30%</span>, lasting until the end of the turn. In addition, the next time the Skill is used, recovers <span class="text-desc">1</span> Skill Point(s) for the team.`,
     },

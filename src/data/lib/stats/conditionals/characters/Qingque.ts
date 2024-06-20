@@ -21,12 +21,14 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Flower Pick`,
       content: `Tosses <span class="text-desc">1</span> jade tile from the suit with the fewest tiles in hand to deal <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Qingque's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     normal_alt: {
+      trace: 'Enhanced Basic ATK',
       title: `Cherry on Top!`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Qingque's ATK to a single enemy, and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Qingque's ATK to enemies adjacent to it.
       <br />"Cherry on Top!" cannot recover Skill Points.`,
@@ -37,18 +39,21 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'A Scoop of Moon',
       content: `Immediately draws <span class="text-desc">2</span> jade tile(s) and increases DMG by {{0}}% until the end of the current turn. This effect can stack up to <span class="text-desc">4</span> time(s). The turn will not end after this Skill is used.`,
       value: [{ base: 14, growth: 1.4, style: 'curved' }],
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `A Quartet? Woo-hoo!`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Qingque's ATK to all enemies, and obtains <span class="text-desc">4</span> jade tiles of the same suit.`,
       value: [{ base: 120, growth: 8, style: 'curved' }],
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Celestial Jade`,
       content: `When an ally's turn starts, Qingque randomly draws <span class="text-desc">1</span> tile from <span class="text-desc">3</span> different suits and can hold up to <span class="text-desc">4</span> tiles at one time.
       <br />If Qingque starts her turn with <span class="text-desc">4</span> tiles of the same suit, she consumes all tiles to enter the "Hidden Hand" state.
@@ -57,45 +62,55 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Game Solitaire',
       content: `After using Technique, Qingque draws <span class="text-desc">2</span> jade tile(s) when the battle starts.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Tile Battle`,
       content: `Restores <span class="text-desc">1</span> Skill Point when using the Skill. This effect can only be triggered <span class="text-desc">1</span> time per battle.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Bide Time`,
       content: `Using the Skill increases DMG Boost effect of attacks by an extra <span class="text-desc">10%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Winning Hand`,
       content: `Qingque's SPD increases by <span class="text-desc">10%</span> for <span class="text-desc">1</span> turn after using the Enhanced Basic ATK.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Rise Through the Tiles`,
       content: `Ultimate deals <span class="text-desc">10%</span> more DMG.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Sleep on the Tiles`,
       content: `Every time Draw Tile is triggered, Qingque immediately regenerates <span class="text-desc">1</span> Energy.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Read Between the Tiles`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Right on the Tiles`,
       content: `After this character's Skill is used, there is a 24% <u>fixed chance</u> to gain <b>Autarky</b>, which lasts until the end of the current turn.
       <br />With <b>Autarky</b>, using Basic ATK or Enhanced Basic ATK immediately launches <span class="text-desc">1</span> follow-up attack on the same target, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">100%</span> of the previous Basic ATK (or Enhanced Basic ATK)'s DMG.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Gambit for the Tiles`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Prevail Beyond the Tiles`,
       content: `Recovers <span class="text-desc">1</span> Skill Point after using Enhanced Basic ATK.`,
     },

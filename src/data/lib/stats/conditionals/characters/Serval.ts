@@ -23,12 +23,14 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Roaring Thunderclap',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Lightning Flash	',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to a single enemy and <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Serval's ATK to enemies adjacent to it, with a <span class="text-desc">80%</span> <u>base chance</u> for enemies hit to become <b class="text-hsr-lightning">Shocked</b> for <span class="text-desc">2</span> turn(s).
       <br />While <b class="text-hsr-lightning">Shocked</b>, enemies take <b class="text-hsr-lightning">Lightning DoT</b> equal to {{2}}% of Serval's ATK at the beginning of each turn.`,
@@ -40,57 +42,69 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Here Comes the Mechanical Fever`,
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to all enemies. Enemies already <b class="text-hsr-lightning">Shocked</b> will extend the duration of their <b class="text-hsr-lightning">Shock</b> state by <span class="text-desc">2</span> turn(s).`,
       value: [{ base: 108, growth: 7.2, style: 'curved' }],
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Galvanic Chords`,
       content: `After Serval attacks, deals Additional <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to all <b class="text-hsr-lightning">Shocked</b> enemies.`,
       value: [{ base: 36, growth: 3.6, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Good Night, Belobog',
       content: `Immediately attacks the enemy. After entering battle, deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">50%</span> of Serval's ATK to a random enemy, with a <span class="text-desc">100%</span> <u>base chance</u> for all enemies to become <b class="text-hsr-lightning">Shocked</b> for <span class="text-desc">3</span> turn(s).
       <br />While <b class="text-hsr-lightning">Shocked</b>, enemies will take <b class="text-hsr-lightning">Lightning DoT</b> equal to <span class="text-desc">50%</span> of Serval's ATK at the beginning of each turn.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Rock 'n' Roll`,
       content: `Skill has a <span class="text-desc">20%</span> increased <u>base chance</u> to <b class="text-hsr-lightning">Shock</b> enemies.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `String Vibration`,
       content: `At the start of the battle, immediately regenerates <span class="text-desc">15</span> Energy.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Mania`,
       content: `Upon defeating an enemy, ATK is increased by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Echo Chamber`,
       content: `Basic ATK deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">60%</span> of the Basic ATK's DMG to a random enemy adjacent to the target of the Basic ATK.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Encore!`,
       content: `Every time Serval's Talent is triggered to deal Additional DMG, she regenerates <span class="text-desc">4</span> Energy.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Listen, the Heartbeat of the Gears`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Make Some Noise!',
       content: `Ultimate has a <span class="text-desc">100%</span> <u>base chance</u> to apply <b class="text-hsr-lightning">Shock</b> to any enemies not currently <b class="text-hsr-lightning">Shocked</b>. This <b class="text-hsr-lightning">Shock</b> has the same effects as the one applied by Skill.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Belobog's Loudest Roar!`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'This Song Rocks to Heaven!',
       content: `Serval deals <span class="text-desc">30%</span> more DMG to <b class="text-hsr-lightning">Shocked</b> enemies.`,
     },

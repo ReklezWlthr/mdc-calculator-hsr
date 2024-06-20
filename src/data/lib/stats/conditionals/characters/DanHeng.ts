@@ -21,12 +21,14 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Cloudlancer Art: North Wind',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Dan Heng's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Cloudlancer Art: Torrent',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Dan Heng's ATK to a single enemy.
       <br />On a CRIT Hit, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce the target's SPD by <span class="text-desc">12%</span> for <span class="text-desc">2</span> turn(s).`,
@@ -34,6 +36,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Ethereal Dream',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Dan Heng's ATK to a single enemy. If the enemy is <b>Slowed</b>, the Ultimate's DMG multiplier increases by {{1}}%.`,
       value: [
@@ -43,50 +46,61 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: 'Superiority of Reach',
       content: `When Dan Heng is the target of an ally's Ability, his next attack's <b class="text-hsr-wind">Wind RES PEN</b> increases by {{0}}%. This effect can be triggered again after <span class="text-desc">2</span> turn(s).`,
       value: [{ base: 18, growth: 1.8, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Splitting Spearhead',
       content: `After Dan Heng uses his Technique, his ATK increases by <span class="text-desc">40%</span> at the start of the next battle for <span class="text-desc">3</span> turn(s).`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: 'Hidden Dragon',
       content: `When current HP percentage is <span class="text-desc">50%</span> or lower, reduces the chance of being attacked by enemies.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: 'Faster Than Light',
       content: `After launching an attack, there is a <span class="text-desc">50%</span> <u>fixed chance</u> to increase own SPD by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: 'High Gale',
       content: `Basic ATK deals <span class="text-desc">40%</span> more DMG to <b>Slowed</b> enemies.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: 'The Higher You Fly, the Harder You Fall',
       content: `When the target enemy's current HP percentage is greater than or equal to <span class="text-desc">50%</span>, CRIT Rate increases by <span class="text-desc">12%</span>.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Quell the Venom Octet, Quench the Vice O'Flame`,
       content: `Reduces Talent cooldown by <span class="text-desc">1</span> turn.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: 'Seen and Unseen',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Roaring Dragon and Soaring Sun',
       content: `When Dan Heng uses his Ultimate to defeat an enemy, he will immediately take action again.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `A Drop of Rain Feeds a Torrent`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'The Troubled Soul Lies in Wait',
       content: `The <b>Slow</b> state triggered by Skill reduces the enemy's SPD by an extra <span class="text-desc">8%</span>.`,
     },

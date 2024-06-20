@@ -21,24 +21,28 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Fleeting Fragrance',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Argenti's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Justice, Hereby Blooms',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Argenti's ATK to all enemies.`,
       value: [{ base: 60, growth: 6, style: 'curved' }],
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'For In This Garden Supreme Beauty Bestows',
       content: `Consumes <span class="text-desc">90</span> Energy and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Argenti's ATK to all enemies.`,
       value: [{ base: 96, growth: 6.4, style: 'curved' }],
       level: ult,
     },
     ult_alt: {
+      trace: 'Enhanced Ultimate',
       title: 'Merit Bestowed in "My" Garden',
       content: `Consumes <span class="text-desc">180</span> Energy and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Argenti's ATK to all enemies, and further deals DMG for 6 extra time(s), with each time dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Argenti's ATK to a random enemy.`,
       value: [
@@ -48,51 +52,62 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: 'Sublime Object',
       content: `For every enemy hit when Argenti uses his Basic Attack, Skill, or Ultimate, regenerates Argenti's Energy by <span class="text-desc">3</span>, and grants him a stack of <b>Apotheosis</b>, increasing his CRIT Rate by {{0}}%. This effect can stack up to <span class="text-desc">10</span> time(s).`,
       value: [{ base: 1, growth: 0.15, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Manifesto of Purest Virtue',
       content: `After using the Technique, enemies in a set area are inflicted with <b>Daze</b> for <span class="text-desc">10</span> second(s). <b>Dazed</b> enemies will not actively attack the team.
       <br />When attacking a <b>Dazed</b> enemy to enter combat, deals <b class="text-hsr-physical">Physical DMG</b> to all enemies equal to <span class="text-desc">80%</span> of Argenti's ATK and regenerates his Energy by <span class="text-desc">15</span>.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: 'Piety',
       content: `At the start of a turn, immediately gains <span class="text-desc">1</span> stack(s) of <b>Apotheosis</b>.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: 'Generosity',
       content: `When enemy targets enter battle, immediately regenerates <span class="text-desc">2</span> Energy for self.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: 'Courage',
       content: `Deals <span class="text-desc">15%</span> more DMG to enemies whose HP percentage is <span class="text-desc">50%</span> or less.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: 'Suspension of Disbelief',
       content: `The Cipher effect applied by the Ultimate lasts for <span class="text-desc">1</span> extra turn. All allies affected by Cipher have their ATK increased by <span class="text-desc">40%</span>.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: 'Purely Fictitious',
       content: `Each Talent stack allows allies to ignore <span class="text-desc">8%</span> of the enemy target's DEF when dealing DMG to enemies.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: 'Pipedream',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Flitting Phantasm',
       content: `The Ultimate recovers <span class="text-desc">1</span> more Skill Point. The Talent additionally increases Max Skill Points by <span class="text-desc">1</span>.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: 'Parallax Truth',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'Narrative Polysemy',
       content: `The CRIT DMG Boost effect of Sparkle's Skill additionally increases by <span class="text-desc">30%</span> of Sparkle's CRIT DMG, and when she uses her Skill, the CRIT DMG Boost effect will apply to all allies currently with Cipher. When Sparkle uses her Ultimate, this effect will spread to all allies with Cipher should the allied target have the CRIT DMG increase effect provided by the Skill active on them.`,
     },

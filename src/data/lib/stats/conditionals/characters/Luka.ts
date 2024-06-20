@@ -24,12 +24,14 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Direct Punch`,
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Luka's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     normal_alt: {
+      trace: 'Enhanced Basic ATK',
       title: `Sky-Shatter Fist`,
       content: `Consumes <span class="text-desc">2</span> stacks of <b>Fighting Will</b>. First, uses Direct Punch to deal <span class="text-desc">3</span> hits, with each hit dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Luka's ATK to a single enemy target.
       <br />Then, uses Rising Uppercut to deal <span class="text-desc">1</span> hit, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Luka's ATK to the single enemy target.`,
@@ -40,6 +42,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Lacerating Fist',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Luka's ATK to a single enemy target. In addition, there is a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-physical">Bleed</b> on them, lasting for <span class="text-desc">3</span> turn(s).
       <br />While <b class="text-hsr-physical">Bleeding</b>, the enemy will take <span class="text-desc">24%</span> of their Max HP as <b class="text-hsr-physical">Physical DoT</b> at the start of each turn. This DMG will not exceed more than {{1}}% of Luka's ATK.`,
@@ -50,6 +53,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Coup de Grâce`,
       content: `Receives <span class="text-desc">2</span> stack(s) of <b>Fighting Will</b>, with a <span class="text-desc">100%</span> <u>base chance</u> to increase a single enemy target's DMG received by {{0}}% for <span class="text-desc">3</span> turn(s). Then, deals <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Luka's ATK to the target.`,
       value: [
@@ -59,50 +63,61 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Flying Sparks`,
       content: `After Luka uses his Basic ATK "Direct Punch" or Skill "Lacerating Fist," he receives <span class="text-desc">1</span> stack(s) of <b>Fighting Will</b>, up to <span class="text-desc">4</span> stacks. When he has <span class="text-desc">2</span> or more stacks of <b>Fighting Will</b>, his Basic ATK "Direct Punch" is enhanced to "Sky-Shatter Fist." After his Enhanced Basic ATK's "Rising Uppercut" hits a <b class="text-hsr-physical">Bleeding</b> enemy target, the <b class="text-hsr-physical">Bleed</b> status will immediately deal DMG for <span class="text-desc">1</span> time equal to {{0}}% of the original DMG to the target. At the start of battle, Luka will possess <span class="text-desc">1</span> stack of <b>Fighting Will</b>.`,
       value: [{ base: 68, growth: 1.7, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Anticipator',
       content: `Immediately attacks the enemy. Upon entering battle, Luka deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">50%</span> of his ATK to a random single enemy with a <span class="text-desc">100%</span> <u>base chance</u> to inflict his Skill's <b class="text-hsr-physical">Bleed</b> effect on the target. Then, Luka gains <span class="text-desc">2</span> additional stack of <b>Fighting Will</b>.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Kinetic Overload`,
       content: `When the Skill is used, immediately dispels <span class="text-desc">1</span> buff from the enemy target.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Cycle Braking`,
       content: `For every stack of Fighting Will obtained, additionally regenerates <span class="text-desc">3</span> Energy.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Crush Fighting Will`,
       content: `When using Enhanced Basic ATK, every hit Direct Punch deals has a <span class="text-desc">50%</span> <u>fixed chance</u> for Luka to use <span class="text-desc">1</span> additional hit. This effect does not apply to additional hits generated in this way.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Fighting Endlessly`,
       content: `When Luka takes action, if the target enemy is <b class="text-hsr-physical">Bleeding</b>, increases DMG dealt by Luka by <span class="text-desc">15%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `The Enemy is Weak, I am Strong`,
       content: `If the Skill hits an enemy target with <b class="text-hsr-physical">Physical</b> Weakness, gain <span class="text-desc">1</span> stack(s) of <b>Fighting Will</b>.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Born for the Ring`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Never Turning Back`,
       content: `For every stack of <b>Fighting Will</b> obtained, increases ATK by <span class="text-desc">5%</span>, stacking up to <span class="text-desc">4</span> time(s).`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `The Spirit of Wildfire`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `A Champion's Applause`,
       content: `After the Enhanced Basic ATK's "Rising Uppercut" hits a <b class="text-hsr-physical">Bleeding</b> enemy target, the <b class="text-hsr-physical">Bleed</b> status will immediately deal DMG <span class="text-desc">1</span> time equal to <span class="text-desc">8%</span> of the original DMG for every hit of Direct Punch already unleashed during the current Enhanced Basic ATK.`,
     },

@@ -24,12 +24,14 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Standing Ovation`,
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Guinaifen's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Blazing Welcome`,
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Guinaifen's ATK to a single enemy and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Guinaifen's ATK to any adjacent enemies with a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-fire">Burn</b> the target and adjacent targets. When <b class="text-hsr-fire">Burned</b>, enemies will take a <b class="text-hsr-fire">Fire DoT</b> equal to {{2}}% of Guinaifen's ATK at the beginning of each turn, lasting for <span class="text-desc">2</span> turn(s).`,
       value: [
@@ -40,6 +42,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Watch This Showstopper',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Guinaifen's ATK to all enemies. If the target enemy is currently inflicted with <b class="text-hsr-fire">Burn</b>, then their <b class="text-hsr-fire">Burn</b> status immediately produce DMG equal to {{1}}% of their original DMG.`,
       value: [
@@ -49,50 +52,61 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `PatrAeon Benefits`,
       content: `When Guinaifen is on the field, there is a <span class="text-desc">100%</span> <u>base chance</u> to apply <b>Firekiss</b> to an enemy after their <b class="text-hsr-fire">Burn</b> status causes DMG. While inflicted with <b>Firekiss</b>, the enemy receives {{0}}% increased DMG, which lasts for <span class="text-desc">3</span> turn(s) and can stack up to <span class="text-desc">3</span> time(s).`,
       value: [{ base: 4, growth: 0.3, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: `Skill Showcase`,
       content: `Immediately attacks the enemy. After entering battle, deals DMG for <span class="text-desc">4</span> time(s), dealing <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of Guinaifen's ATK to a random single enemy target each time, with a <span class="text-desc">100%</span> <u>base chance</u> of inflicting <b>Firekiss</b> on them.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `High Poles`,
       content: `Basic ATK has a <span class="text-desc">80%</span> <u>base chance</u> of inflicting an enemy with a <b class="text-hsr-fire">Burn</b>, equivalent to that of Skill.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Bladed Hoop`,
       content: `When the battle begins, Guinaifen's action is advanced forward by <span class="text-desc">25%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Walking on Knives`,
       content: `Deals <span class="text-desc">20%</span> more DMG to <b class="text-hsr-fire">Burned</b> enemies.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Slurping Noodles During Handstand`,
       content: `When Skill is used, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce the attacked target enemy's Effect RES by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Brushing Teeth While Whistling`,
       content: `When an enemy target is <b class="text-hsr-fire">Burned</b>, Guinaifen's Basic ATK and Skill can increase the DMG multiplier of their <b class="text-hsr-fire">Burn</b> status by 40%.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Smashing Boulder on Chest`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Blocking Pike with Neck`,
       content: `Every time the <b class="text-hsr-fire">Burn</b> status inflicted by Guinaifen causes DMG, Guinaifen regenerates <span class="text-desc">2</span> Energy.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Swallowing Sword to Stomach`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Catching Bullet with Hands`,
       content: `Increases the stackable Firekiss count by <span class="text-desc">1</span>.`,
     },

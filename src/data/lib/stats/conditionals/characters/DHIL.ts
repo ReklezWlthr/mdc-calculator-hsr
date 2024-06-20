@@ -21,18 +21,21 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Beneficent Lotus`,
       content: `Uses a 2-hit attack and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dan Heng • Imbibitor Lunae's ATK to a single enemy target.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     normal_alt1: {
+      trace: 'Enhanced Basic ATK',
       title: `Transcendence`,
       content: `Uses a 3-hit attack and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dan Heng • Imbibitor Lunae's ATK to a single enemy target.`,
       value: [{ base: 130, growth: 26, style: 'linear' }],
       level: basic,
     },
     normal_alt2: {
+      trace: 'Enhanced Basic ATK',
       title: `Divine Spear`,
       content: `Uses a 5-hit attack and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dan Heng • Imbibitor Lunae's ATK to a single enemy target. From the fourth hit onward, simultaneously deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Dan Heng • Imbibitor Lunae's ATK to adjacent targets.`,
       value: [
@@ -42,6 +45,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: basic,
     },
     normal_alt3: {
+      trace: 'Enhanced Basic ATK',
       title: `Fulgurant Leap`,
       content: `Uses a 7-hit attack and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dan Heng • Imbibitor Lunae's ATK to a single enemy target. From the fourth hit onward, simultaneously deal <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Dan Heng • Imbibitor Lunae's ATK to adjacent targets.`,
       value: [
@@ -51,6 +55,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Dracore Libre`,
       content: `Enhances Basic ATK. Enhancements may be applied up to <span class="text-desc">3</span> times consecutively. Using this ability does not consume Skill Points and is not considered as using a Skill.
       <br />Enhanced once, Beneficent Lotus becomes Transcendence.
@@ -61,6 +66,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Azure's Aqua Ablutes All`,
       content: `Uses a 3-hit attack and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dan Heng • Imbibitor Lunae's ATK to a single enemy target. At the same time, deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Dan Heng • Imbibitor Lunae's ATK to adjacent targets. Then, obtains <span class="text-desc">2</span> <b class="text-hsr-imaginary">Squama Sacrosancta</b>.
       <br />It's possible to hold up to <span class="text-desc">3</span> <b class="text-hsr-imaginary">Squama Sacrosancta</b>, which can be used to offset Dan Heng • Imbibitor Lunae's consumption of skill points. Consuming <b class="text-hsr-imaginary">Squama Sacrosancta</b> is considered equivalent to consuming skill points.`,
@@ -71,50 +77,61 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Righteous Heart`,
       content: `After each hit dealt during an attack, Dan Heng • Imbibitor Lunae gains <span class="text-desc">1</span> stack of <b>Righteous Heart</b>, increasing his DMG by {{0}}%. This effect can stack up to <span class="text-desc">6</span> time(s), lasting until the end of his turn.`,
       value: [{ base: 5, growth: 0.5, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: `Heaven-Quelling Prismadrakon`,
       content: `After using his Technique, Dan Heng • Imbibitor Lunae enters the Leaping Dragon state for <span class="text-desc">20</span> seconds. While in the Leaping Dragon state, using his attack enables him to move forward rapidly for a set distance, attacking all enemies he touches and blocking all incoming attacks. After entering combat via attacking enemies in the Leaping Dragon state, Dan Heng • Imbibitor Lunae deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to <span class="text-desc">120%</span> of his ATK to all enemies, and gains <span class="text-desc">1</span> <b class="text-hsr-imaginary">Squama Sacrosancta</b>.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Star Veil`,
       content: `At the start of the battle, immediately regenerates <span class="text-desc">15</span> Energy.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Aqua Reign`,
       content: `Increases the chance to resist Crowd Control debuffs by <span class="text-desc">35%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Jolt Anew`,
       content: `This character's CRIT DMG increases by <span class="text-desc">24%</span> when dealing DMG to enemy targets with <b class="text-hsr-imaginary">Imaginary</b> Weakness.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Tethered to Sky`,
       content: `Increases the stackable <b>Righteous Heart</b> count by <span class="text-desc">4</span>, and gains <span class="text-desc">1</span> extra stack of <b>Righteous Heart</b> for each hit during an attack.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Imperium On Cloud Nine`,
       content: `After using his Ultimate, Dan Heng • Imbibitor Lunae's action is Advanced Forward by <span class="text-desc">100%</span> and gains <span class="text-desc">1</span> extra <b class="text-hsr-imaginary">Squama Sacrosancta</b>.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Clothed in Clouds`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Zephyr's Bliss`,
       content: `The buff effect granted by <b>Outroar</b> lasts until the end of this character's next turn.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Fall is the Pride`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Reign, Returned`,
       content: `After any other ally uses their Ultimate, the <b class="text-hsr-imaginary">Imaginary RES PEN</b> of Dan Heng • Imbibitor Lunae's next Fulgurant Leap attack increases by <span class="text-desc">20%</span>. This effect can stack up to <span class="text-desc">3</span> time(s).`,
     },

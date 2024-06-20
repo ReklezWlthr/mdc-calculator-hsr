@@ -21,12 +21,14 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Thorns of the Abyss',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Luocha's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Prayer of Abyss Flower',
       content: `After using his Skill, Luocha immediately restores the target ally's HP equal to {{0}}% of Luocha's ATK plus {{1}}. Meanwhile, Luocha gains <span class="text-desc">1</span> stack of <b>Abyss Flower</b>.
       <br />When any ally's HP percentage drops to <span class="text-desc">50%</span> or lower, an effect equivalent to Luocha's Skill will immediately be triggered and applied to this ally for one time (without consuming Skill Points). This effect can be triggered again after <span class="text-desc">2</span> turn(s).`,
@@ -37,12 +39,14 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Death Wish',
       content: `Removes <span class="text-desc">1</span> buff(s) from all enemies and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Luocha's ATK to all enemies. Luocha gains <span class="text-desc">1</span> stack of <b>Abyss Flower</b>.`,
       value: [{ base: 120, growth: 8, style: 'curved' }],
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: 'Cycle of Life',
       content: `When Abyss Flower reaches <span class="text-desc">2</span> stacks, Luocha consumes all stacks of <b>Abyss Flower</b> to deploy a <b>Field</b> against the enemy.
       <br />When any enemy in the <b>Field</b> is attacked by an ally, the attacking ally's HP is immediately restored by an amount equal to {{0}}% of Luocha's ATK plus {{1}}.
@@ -54,44 +58,54 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Mercy of a Fool',
       content: `After the Technique is used, the Talent will be immediately triggered at the start of the next battle.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: 'Cleansing Revival',
       content: `When the Skill's effect is triggered, removes <span class="text-desc">1</span> debuff(s) from a target ally.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: 'Sanctified',
       content: `When any enemy in the Field is attacked by an ally, all allies (except the attacker) restore HP equal to <span class="text-desc">7%</span> of Luocha's ATK plus <span class="text-desc">93</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: 'Through the Valley',
       content: `The chance to resist Crowd Control debuffs increases by <span class="text-desc">70%</span>.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: 'Ablution of the Quick',
       content: `While the Field is active, ATK of all allies increases by <span class="text-desc">20%</span>.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: 'Bestowal From the Pure',
       content: `When his Skill is triggered, if the target ally's HP is lower than <span class="text-desc">50%</span>, Luocha's Outgoing Healing increases by <span class="text-desc">30%</span>. If the target ally's HP is at <span class="text-desc">50%</span> or higher, the ally receives a <b class="text-indigo-300">Shield</b> that can absorb DMG equal to <span class="text-desc">10%</span> of Luocha's ATK plus <span class="text-desc">240</span>, lasting for <span class="text-desc">2</span> turns.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: 'Surveyal by the Fool',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Heavy Lies the Crown',
       content: `When Luocha's <b>Field</b> is active, enemies become Weakened and deal <span class="text-desc">12%</span> less DMG.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Cicatrix 'Neath the Pain`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'Reunion With the Dust',
       content: `When Ultimate is used, there is a <span class="text-desc">100%</span> <u>fixed chance</u> to reduce all enemies' All-Type RES by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },

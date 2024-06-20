@@ -23,12 +23,14 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Ice Crampon Technique`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of this character's Max HP to a single enemy.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Salted Camping Cans',
       content: `Applies "Survival Response" to a single target ally and increases their Max HP by {{0}}% of Lynx's Max HP plus {{1}}. If the target ally is a character on the Path of Destruction or Preservation, the chance of them being attacked by enemies will greatly increase. "Survival Response" lasts for <span class="text-desc">2</span> turn(s).
       <br />Restores the target's HP by {{2}}% of Lynx's Max HP plus {{3}}.`,
@@ -41,6 +43,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `Snowfield First Aid`,
       content: `Dispels <span class="text-desc">1</span> debuff(s) from all allies and immediately restores their respective HP by an amount equal to {{0}}% of Lynx's Max HP plus {{1}}.`,
       value: [
@@ -50,6 +53,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Outdoor Survival Experience`,
       content: `When using Lynx's Skill or Ultimate, applies continuous healing to the target ally for <span class="text-desc">2</span> turn(s), restoring the target ally's HP by an amount equal to {{0}}% of Lynx's Max HP plus {{1}} at the start of each their turn. If the target has "Survival Response", the continuous healing effect additionally restores HP by an amount equal to {{2}}% of Lynx's Max HP plus {{3}}.`,
       value: [
@@ -61,44 +65,54 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Chocolate Energy Bar',
       content: `After Lynx uses her Technique, at the start of the next battle, all allies are granted her Talent's continuous healing effect, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Advance Surveying`,
       content: `After a target with "Survival Response" is hit, Lynx regenerates <span class="text-desc">2</span> Energy immediately.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Exploration Techniques`,
       content: `Increases the chance to resist Crowd Control debuffs by <span class="text-desc">35%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Survival in the Extreme`,
       content: `Extends the duration of the continuous healing effect granted by Talent for <span class="text-desc">1</span> turn(s).`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Morning of Snow Hike`,
       content: `When healing allies with HP equal to or lower than <span class="text-desc">50%</span>, Lynx's Outgoing Healing increases by <span class="text-desc">20%</span>. This effect also works on continuous healing.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Noon of Portable Furnace`,
       content: `A target with "Survival Response" can resist debuff application for <span class="text-desc">1</span> time(s).`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Afternoon of Avalanche Beacon`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Dusk of Warm Campfire`,
       content: `When "Survival Response" is gained, increases the target's ATK by an amount equal to <span class="text-desc">3%</span> of Lynx's Max HP for <span class="text-desc">1</span> turn(s).`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Night of Aurora Tea`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Dawn of Explorers' Chart`,
       content: `Additionally boosts the Max HP increasing effect of "Survival Response" by an amount equal to <span class="text-desc">6%</span> of Lynx's Max HP and increases Effect RES by <span class="text-desc">30%</span>.`,
     },

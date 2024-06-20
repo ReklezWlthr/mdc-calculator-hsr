@@ -23,68 +23,82 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Swing Dance Etiquette`,
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of the Trailblazer's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Halftime to Make It Rain`,
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of the Trailblazer's ATK to a single target enemy and additionally deals DMG for <span class="text-desc">4</span> times, with each time dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of the Trailblazer's ATK to a random enemy.`,
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: `All-Out Footlight Parade`,
       content: `Grants all allies the <b class="text-hsr-imaginary">Backup Dancer</b> effect, lasting for <span class="text-desc">3</span> turn(s). This duration reduces by <span class="text-desc">1</span> at the start of Trailblazer's every turn. Allies that have the <b class="text-hsr-imaginary">Backup Dancer</b> effect have their Break Effect increased by {{0}}%. And when they attack enemy targets that are in the Weakness Broken state, the Toughness Reduction of this attack will be converted into <span class="text-desc">1</span> instance of Super Break DMG.`,
       value: [{ base: 15, growth: 1.5, style: 'curved' }],
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Full-on Aerial Dance`,
       content: `The Trailblazer immediately regenerates {{0}} Energy when an enemy target's Weakness is Broken.`,
       value: [{ base: 5, growth: 0.5, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: `Now! I'm the Band!`,
       content: `After the Technique is used, at the start of the next battle, all allies' Break Effect increases by <span class="text-desc">30%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Dance With the One`,
       content: `When the number of enemy targets on the field is <span class="text-desc">5</span> or more/<span class="text-desc">4</span>/<span class="text-desc">3</span>/<span class="text-desc">2</span>/<span class="text-desc">1</span>, the Super Break DMG triggered by the <b class="text-hsr-imaginary">Backup Dancer</b> effect increases by <span class="text-desc">20%</span>/<span class="text-desc">30%</span>/<span class="text-desc">40%</span>/<span class="text-desc">50%</span>/<span class="text-desc">60%</span>.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Shuffle Along`,
       content: `When using Skill, additionally increases the Toughness Reduction of the first instance of DMG by <span class="text-desc">100%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Hat of the Theater`,
       content: `Additionally delays the enemy target's action by <span class="text-desc">30%</span> when allies Break enemy Weaknesses.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Best Seat in the House`,
       content: `After using Skill for the first time, immediately recovers <span class="text-desc">1</span> Skill Point(s).`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Jailbreaking Rainbowwalk`,
       content: `When the battle starts, the Trailblazer's Energy Regeneration Rate increases by <span class="text-desc">25%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Sanatorium for Rest Notes`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Dove in Tophat`,
       content: `While the Trailblazer is on the field, increases the Break Effect of all teammates (excluding the Trailblazer), by an amount equal to <span class="text-desc">15%</span> of the Trailblazer's Break Effect.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Poem Favors Rhythms of Old`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Tomorrow, Rest in Spotlight`,
       content: `The number of additional DMG applications by the Skill increases by <span class="text-desc">2</span>.`,
     },

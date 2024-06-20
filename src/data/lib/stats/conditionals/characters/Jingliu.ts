@@ -21,18 +21,21 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: `Lucent Moonglow`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: `Transcendent Flash`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's ATK to a single enemy and obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>.`,
       value: [{ base: 100, growth: 10, style: 'curved' }],
       level: skill,
     },
     skill_alt: {
+      trace: 'Enhanced Skill',
       title: `Moon On Glacial River`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's ATK to a single enemy, and deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Jingliu's ATK to adjacent enemies. Consumes <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>. Using this ability does not consume Skill Points.`,
       value: [
@@ -42,6 +45,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Florephemeral Dreamflux',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's ATK to a single enemy, and deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Jingliu's ATK to any adjacent enemies. Gains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b> after attack ends.`,
       value: [
@@ -51,6 +55,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: `Crescent Transmigration`,
       content: `When Jingliu has <span class="text-desc">2</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>, she enters the <b>Spectral Transmigration</b> state with her Action Advanced by 100% and her CRIT Rate increases by {{0}}%. Then, Jingliu's Skill "Transcendent Flash" becomes enhanced and turns into "Moon On Glacial River," and becomes the only ability she can use in battle. When Jingliu uses an attack in the <b>Spectral Transmigration</b> state, she consumes HP from all other allies equal to <span class="text-desc">4%</span> of their respective Max HP (this cannot reduce allies' HP to lower than <span class="text-desc">1</span>). Jingliu's ATK increases by <span class="text-desc">540%</span> of the total HP consumed from all allies in this attack, capped at {{1}}% of her base ATK, lasting until the current attack ends. Jingliu cannot enter the <b>Spectral Transmigration</b> state again until the current <b>Spectral Transmigration</b> state ends. <b class="text-hsr-ice">Syzygy</b> can stack up to <span class="text-desc">3</span> times. When <b class="text-hsr-ice">Syzygy</b> stacks become <span class="text-desc">0</span>, Jingliu will exit the <b>Spectral Transmigration</b> state.`,
       value: [
@@ -60,44 +65,54 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: `Shine of Truth`,
       content: `After using this Technique, creates a dimension around Jingliu that lasts for <span class="text-desc">20</span> seconds, and all enemies in this dimension will become <b class="text-hsr-ice">Frozen</b>. After entering combat with enemies in the dimension, Jingliu immediately regenerates <span class="text-desc">15</span> Energy and obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>, with a <span class="text-desc">100%</span> <u>base chance</u> of <b class="text-hsr-ice">Freezing</b> enemy targets for <span class="text-desc">1</span> turn(s). While <b class="text-hsr-ice">Frozen</b>, enemy targets cannot take action, and receive Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">80%</span> of Jingliu's ATK at the start of every turn. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: `Deathrealm`,
       content: `While in the <b>Spectral Transmigration</b> state, increases Effect RES by <span class="text-desc">35%</span>.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: `Sword Champion`,
       content: `After using Transcendent Flash, the next action will be Advanced Forward by <span class="text-desc">10%</span>.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: `Frost Wraith`,
       content: `While in the <b>Spectral Transmigration</b> state, increases Ultimate DMG by <span class="text-desc">20%</span>.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: `Moon Crashes Tianguan Gate`,
       content: `When using her Ultimate or Enhanced Skill, Jingliu's CRIT DMG increases by <span class="text-desc">24%</span> for <span class="text-desc">1</span> turn(s). If only one enemy target is attacked, the target will additionally be dealt <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">100%</span> of Jingliu's ATK.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Crescent Shadows Qixing Dipper`,
       content: `After using Ultimate, increases the DMG of the next Enhanced Skill by <span class="text-desc">80%</span>.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: `Halfmoon Gapes Mercurial Haze`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: `Lunarlance Shines Skyward Dome`,
       content: `During the <b>Spectral Transmigration</b> state, the ATK gained from consuming allies' HP is additionally increased by <span class="text-desc">90%</span> of the total HP consumed from the entire team. The cap for ATK gained this way also increases by <span class="text-desc">30%</span>.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Night Shades Astral Radiance`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: `Eclipse Hollows Corporeal Husk`,
       content: `When Jingliu enters the <b>Spectral Transmigration</b> state, the <b class="text-hsr-ice">Syzygy</b> stack limit increases by <span class="text-desc">1</span>, and Jingliu obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>. While she is in the <b>Spectral Transmigration</b> state, her CRIT DMG increases by <span class="text-desc">50%</span>.`,
     },

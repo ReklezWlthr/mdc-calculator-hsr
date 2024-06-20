@@ -21,12 +21,14 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Frigid Cold Arrow',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of March 7th's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'The Power of Cuteness',
       content: `Provides a single ally with a <b class="text-indigo-300">Shield</b> that can absorb DMG equal to {{0}}% of March 7th's DEF plus {{1}} for <span class="text-desc">3</span> turn(s).
       <br />If the ally's current HP percentage is <span class="text-desc">30%</span> or higher, greatly increases the chance of enemies attacking that ally.`,
@@ -37,6 +39,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'Glacial Cascade',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of March 7th's ATK to all enemies. Hit enemies have a <span class="text-desc">50%</span> <u>base chance</u> to be <b class="text-hsr-ice">Frozen</b> for <span class="text-desc">1</span> turn(s).
       <br />While <b class="text-hsr-ice">Frozen</b>, enemies cannot take action and will receive Additional <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of March 7th's ATK at the beginning of each turn.`,
@@ -47,51 +50,62 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: 'Girl Power',
       content: `After a <b class="text-indigo-300">Shielded</b> ally is attacked by an enemy, March 7th immediately Counters, dealing <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of her ATK. This effect can be triggered <span class="text-desc">2</span> time(s) each turn.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Freezing Beauty',
       content: `Immediately attacks the enemy. After entering battle, there is a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> a random enemy for <span class="text-desc">1</span> turn(s).
       <br />While <b class="text-hsr-ice">Frozen</b>, the enemy cannot take action and will take Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">50%</span> of March 7th's ATK at the beginning of each turn.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: 'Purify',
       content: `Skill removes <span class="text-desc">1</span> debuff from an ally.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: 'Reinforce',
       content: `The duration of the <b class="text-indigo-300">Shield</b> generated from Skill is extended for <span class="text-desc">1</span> turn(s).`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: 'Ice Spell',
       content: `Increases Ultimate's <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> enemies by <span class="text-desc">15%</span>.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: 'Memory of You',
       content: `Every time March 7th's Ultimate <b class="text-hsr-ice">Freezes</b> a target, she regenerates <span class="text-desc">6</span> Energy.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: `Memory of It`,
       content: `Upon entering battle, grants a <b class="text-indigo-300">Shield</b> equal to <span class="text-desc">24%</span> of March 7th's DEF plus <span class="text-desc">320</span> to the ally with the lowest HP percentage, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: 'Memory of Everything',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Never Forfeit Again',
       content: `The Talent's Counter effect can be triggered <span class="text-desc">1</span> more time in each turn. The DMG dealt by Counter increases by an amount that is equal to <span class="text-desc">30%</span> of March 7th's DEF.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: `Never Forget Again`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'Just Like This, Always...',
       content: `Allies under the protection of the <b class="text-indigo-300">Shield</b> granted by the Skill restores HP equal to <span class="text-desc">4%</span> of their Max HP plus <span class="text-desc">106</span> at the beginning of each turn.`,
     },

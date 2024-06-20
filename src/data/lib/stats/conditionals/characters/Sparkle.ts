@@ -24,12 +24,14 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      trace: 'Basic ATK',
       title: 'Monodrama',
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Sparkle's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
     skill: {
+      trace: 'Skill',
       title: 'Dreamdiver',
       content: `Increases the CRIT DMG of a single ally by {{0}}% of Sparkle's CRIT DMG plus {{1}}%, lasting for <span class="text-desc">1</span> turn(s). And at the same time, Advances Forward this ally's action by <span class="text-desc">50%</span>.
       <br />When Sparkle uses this ability on herself, the Action Advance effect will not trigger.`,
@@ -40,56 +42,68 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      trace: 'Ultimate',
       title: 'The Hero with a Thousand Faces',
       content: `Recovers <span class="text-desc">4</span> Skill Points for the team and grants all allies <b>Cipher</b>. When allies with <b>Cipher</b> trigger the DMG Boost effect provided by Sparkle's Talent, each stack additionally increases its effect by {{0}}%, lasting for <span class="text-desc">2</span> turns.`,
       value: [{ base: 6, growth: 0.4, style: 'curved' }],
       level: ult,
     },
     talent: {
+      trace: 'Talent',
       title: 'Red Herring',
       content: `While Sparkle is on the battlefield, additionally increases the max number of Skill Points by <span class="text-desc">2</span>. Whenever an ally consumes <span class="text-desc">1</span> Skill Point, all allies' DMG increases by {{0}}%. This effect lasts for <span class="text-desc">2</span> turn(s) and can stack up to <span class="text-desc">3</span> time(s).`,
       value: [{ base: 3, growth: 0.3, style: 'curved' }],
       level: talent,
     },
     technique: {
+      trace: 'Technique',
       title: 'Unreliable Narrator',
       content: `Using the Technique grants all allies Misdirect for <span class="text-desc">20</span> seconds. Characters with Misdirect will not be detected by enemies, and entering battle in the Misdirect state recovers <span class="text-desc">3</span> Skill Point(s) for the team.`,
     },
     a2: {
+      trace: 'Ascension 2 Passive',
       title: 'Almanac',
       content: `When using Basic ATK, additionally regenerates <span class="text-desc">10</span> Energy.`,
     },
     a4: {
+      trace: 'Ascension 4 Passive',
       title: 'Artificial Flower',
       content: `The CRIT DMG Boost effect provided by the Skill will extend to last until the start of the target's next turn.`,
     },
     a6: {
+      trace: 'Ascension 6 Passive',
       title: 'Nocturne',
       content: `Increases all allies' ATK by <span class="text-desc">15%</span>. When there are <span class="text-desc">1/2/3</span> <b class="text-hsr-quantum">Quantum</b> allies in your team, increases <b class="text-hsr-quantum">Quantum</b>-Type allies' ATK by <span class="text-desc">5%/15%/30%</span>.`,
     },
     c1: {
+      trace: 'Eidolon 1',
       title: 'Suspension of Disbelief',
       content: `The Cipher effect applied by the Ultimate lasts for <span class="text-desc">1</span> extra turn. All allies affected by Cipher have their ATK increased by <span class="text-desc">40%</span>.`,
     },
     c2: {
+      trace: 'Eidolon 2',
       title: 'Purely Fictitious',
       content: `Each Talent stack allows allies to ignore <span class="text-desc">8%</span> of the enemy target's DEF when dealing DMG to enemies.`,
     },
     c3: {
+      trace: 'Eidolon 3',
       title: 'Pipedream',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
+      trace: 'Eidolon 4',
       title: 'Flitting Phantasm',
       content: `The Ultimate recovers <span class="text-desc">1</span> more Skill Point. The Talent additionally increases Max Skill Points by <span class="text-desc">1</span>.`,
     },
     c5: {
+      trace: 'Eidolon 5',
       title: 'Parallax Truth',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
+      trace: 'Eidolon 6',
       title: 'Narrative Polysemy',
       content: `The CRIT DMG Boost effect of Sparkle's Skill additionally increases by <span class="text-desc">30%</span> of Sparkle's CRIT DMG, and when she uses her Skill, the CRIT DMG Boost effect will apply to all allies currently with Cipher. When Sparkle uses her Ultimate, this effect will spread to all allies with Cipher should the allied target have the CRIT DMG increase effect provided by the Skill active on them.`,
     },
