@@ -54,41 +54,41 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Immediately attacks the enemy. Upon entering battle, the chance Clara will be attacked by enemies increases for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
-      title: `A2: Kinship`,
+      title: `Kinship`,
       content: `When attacked, this character has a <span class="text-desc">35%</span> <u>fixed chance</u> to remove a debuff placed on them.`,
     },
     a4: {
-      title: `A4: Under Protection`,
+      title: `Under Protection`,
       content: `The chance to resist Crowd Control Debuffs increases by <span class="text-desc">35%</span>.`,
     },
     a6: {
-      title: `A6: Revenge`,
+      title: `Revenge`,
       content: `Increases Svarog's Counter DMG by <span class="text-desc">30%</span>.`,
     },
     c1: {
-      title: `E1: A Tall Figure`,
+      title: `A Tall Figure`,
       content: `Using Skill will not remove Marks of Counter on the enemy.`,
     },
     c2: {
-      title: `E2: A Tight Embrace`,
+      title: `A Tight Embrace`,
       content: `After using the Ultimate, ATK increases by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
-      title: `E3: Cold Steel Armor`,
+      title: `Cold Steel Armor`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Family's Warmth`,
+      title: `Family's Warmth`,
       content: `After Clara is hit, the DMG taken by Clara is reduced by <span class="text-desc">30%</span>. This effect lasts until the start of her next turn.`,
     },
     c5: {
-      title: `E5: A Small Promise`,
+      title: `A Small Promise`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Long Company`,
+      title: `Long Company`,
       content: `After other allies are hit, Svarog also has a <span class="text-desc">50%</span> <u>fixed chance</u> to trigger a Counter on the attacker and mark them with a <b>Mark of Counter</b>. When using Ultimate, the number of Enhanced Counters increases by <span class="text-desc">1</span>.`,
     },
   }
@@ -170,7 +170,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -185,7 +185,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 30,
+          break: 10,
         },
       ]
       const ult_adj = form.clara_ult
@@ -201,7 +201,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               element: Element.PHYSICAL,
               property: TalentProperty.FUA,
               type: TalentType.TALENT,
-              break: 60,
+              break: 20,
             },
           ]
         : []
@@ -219,7 +219,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.PHYSICAL,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
-          break: 60,
+          break: 20,
         },
         ...ult_adj,
       ]

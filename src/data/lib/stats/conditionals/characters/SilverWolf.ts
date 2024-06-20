@@ -68,41 +68,41 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       content: `Immediately attacks the enemy. After entering battle, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">80%</span> of Silver Wolf's ATK to all enemies, and ignores Weakness Types and reduces Toughness from all enemies. Enemies with their Weakness Broken in this way will trigger the <b class="text-hsr-quantum">Quantum</b> Weakness Break effect.`,
     },
     a2: {
-      title: 'A2: Generate',
+      title: 'Generate',
       content: `Bug's duration is extended for <span class="text-desc">1</span> turn(s). Every time an enemy is inflicted with Weakness Break, Silver Wolf has a <span class="text-desc">65%</span> <u>base chance</u> of implanting a random Bug in the enemy.`,
     },
     a4: {
-      title: 'A4: Inject',
+      title: 'Inject',
       content: `The duration of the Weakness implanted by Silver Wolf's Skill increases by <span class="text-desc">1</span> turn(s).`,
     },
     a6: {
-      title: 'A6: Side Note',
+      title: 'Side Note',
       content: `If there are <span class="text-desc">3</span> or more debuff(s) affecting the enemy when the Skill is used, then the Skill decreases the enemy's All-Type RES by an additional <span class="text-desc">3%</span>.`,
     },
     c1: {
-      title: 'E1: Social Engineering',
+      title: 'Social Engineering',
       content: `After using her Ultimate to attack enemies, Silver Wolf regenerates <span class="text-desc">7</span> Energy for every debuff that the target enemy currently has. This effect can be triggered up to <span class="text-desc">5</span> time(s) in each use of her Ultimate.`,
     },
     c2: {
-      title: 'E2: Zombie Network',
+      title: 'Zombie Network',
       content: `When an enemy enters battle, reduces their Effect RES by <span class="text-desc">20%</span>.`,
     },
     c3: {
-      title: 'E3: Payload',
+      title: 'Payload',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: 'E4: Bounce Attack',
+      title: 'Bounce Attack',
       content: `After using her Ultimate to attack enemies, deals Additional <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">20%</span> of Silver Wolf's ATK for every debuff currently on the enemy target. This effect can be triggered for a maximum of <span class="text-desc">5</span> time(s) during each use of her Ultimate.`,
     },
     c5: {
-      title: 'E5: Brute Force Attack',
+      title: 'Brute Force Attack',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: 'E6: Overlay Network',
+      title: 'Overlay Network',
       content: `For every debuff the target enemy has, the DMG dealt by Silver Wolf increases by <span class="text-desc">20%</span>, up to a limit of <span class="text-desc">100%</span>.`,
     },
   }
@@ -220,7 +220,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
           energy: 20,
         },
       ]
@@ -231,7 +231,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
           energy: 30,
         },
       ]
@@ -242,7 +242,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 90,
+          break: 30,
           energy: 5,
         },
       ]
@@ -253,7 +253,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 60,
+          break: 20,
         },
       ]
 

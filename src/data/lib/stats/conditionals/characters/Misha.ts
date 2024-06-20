@@ -58,41 +58,41 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `After using the Technique, creates a dimension that lasts for <span class="text-desc">15</span> seconds. Enemies caught in the dimension are inflicted with Dream Prison and stop all their actions. Upon entering battle against enemies afflicted with Dream Prison, increases the Hits Per Action for Misha's next Ultimate by <span class="text-desc">2</span> hit(s). Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
-      title: `A2: Release`,
+      title: `Release`,
       content: `Before the Ultimate's first hit lands, increases the <u>base chance</u> of <b class="text-hsr-ice">Freezing</b> the target by <span class="text-desc">80%</span>.`,
     },
     a4: {
-      title: `A4: Interlock`,
+      title: `Interlock`,
       content: `When using the Ultimate, increases the Effect Hit Rate by <span class="text-desc">60%</span>, lasting until the end of the Ultimate's current action.`,
     },
     a6: {
-      title: `A6: Transmission`,
+      title: `Transmission`,
       content: `When dealing DMG to <b class="text-hsr-ice">Frozen</b> enemies, increases CRIT DMG by <span class="text-desc">30%</span>.`,
     },
     c1: {
-      title: `E1: Whimsicality of Fancy`,
+      title: `Whimsicality of Fancy`,
       content: `When using the Ultimate, for every enemy on the field, additionally increases the Hits Per Action for the Ultimate by <span class="text-desc">1</span> hit(s), up to a maximum increase of <span class="text-desc">5</span> hit(s).`,
     },
     c2: {
-      title: `E2: Yearning of Youth`,
+      title: `Yearning of Youth`,
       content: `Before each hit of the Ultimate lands, there is a <span class="text-desc">24%</span> <u>base chance</u> of reducing the target's DEF by 16% for <span class="text-desc">3</span> turn(s).`,
     },
     c3: {
-      title: `E3: Vestige of Happiness`,
+      title: `Vestige of Happiness`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Visage of Kinship`,
+      title: `Visage of Kinship`,
       content: `Increases the DMG multiplier for each hit of the Ultimate by <span class="text-desc">6%</span>.`,
     },
     c5: {
-      title: `E5: Genesis of First Love`,
+      title: `Genesis of First Love`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Estrangement of Dream`,
+      title: `Estrangement of Dream`,
       content: `When using the Ultimate, increases own DMG by <span class="text-desc">30%</span>, lasting until the end of the turn. In addition, the next time the Skill is used, recovers <span class="text-desc">1</span> Skill Point(s) for the team.`,
     },
   }
@@ -156,7 +156,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -166,7 +166,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
         },
         {
           name: 'Adjacent',
@@ -174,7 +174,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 30,
+          break: 10,
         },
       ]
       base.ULT_SCALING = [
@@ -184,7 +184,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 30,
+          break: 10,
           chance: { base: calcScaling(0.12, 0.008, ult, 'curved') + (a.a2 ? 0.8 : 0), fixed: false },
         },
         {
@@ -193,7 +193,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 15,
+          break: 5,
           chance: { base: calcScaling(0.12, 0.008, ult, 'curved'), fixed: false },
         },
         {

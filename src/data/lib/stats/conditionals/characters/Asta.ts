@@ -53,42 +53,42 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Immediately attacks the enemy. After entering battle, deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of Asta's ATK to all enemies.`,
     },
     a2: {
-      title: `A2: Sparks`,
+      title: `Sparks`,
       content: `Asta's Basic ATK has a <span class="text-desc">80%</span> <u>base chance</u> to <b class="text-hsr-fire">Burn</b> enemies for <span class="text-desc">3</span> turn(s).
       <br /><b class="text-hsr-fire">Burned</b> enemies take <b class="text-hsr-fire">Fire DoT</b> equal to <span class="text-desc">50%</span> of DMG dealt by Asta's Basic ATK at the start of each turn.`,
     },
     a4: {
-      title: `A4: Ignite`,
+      title: `Ignite`,
       content: `When Asta is on the field, all allies' <b class="text-hsr-fire">Fire DMG</b> increases by <span class="text-desc">18%</span>.`,
     },
     a6: {
-      title: `A6: Constellation`,
+      title: `Constellation`,
       content: `Asta's DEF increases by <span class="text-desc">6%</span> for every current <b>Charging</b> stack she possesses.`,
     },
     c1: {
-      title: 'E1: Star Sings Sans Verses or Vocals',
+      title: 'Star Sings Sans Verses or Vocals',
       content: `When using Skill, deals DMG for <span class="text-desc">1</span> extra time to a random enemy.`,
     },
     c2: {
-      title: `E2: Moon Speaks in Wax and Wane`,
+      title: `Moon Speaks in Wax and Wane`,
       content: `After using her Ultimate, Asta's <b>Charging</b> stacks will not be reduced in the next turn.`,
     },
     c3: {
-      title: 'E3: Meteor Showers for Wish and Want',
+      title: 'Meteor Showers for Wish and Want',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: 'E4: Aurora Basks in Beauty and Bliss',
+      title: 'Aurora Basks in Beauty and Bliss',
       content: `Asta's Energy Regeneration Rate increases by <span class="text-desc">15%</span> when she has <span class="text-desc">2</span> or more <b>Charging</b> stacks.`,
     },
     c5: {
-      title: `E5: Nebula Secludes in Runes and Riddles`,
+      title: `Nebula Secludes in Runes and Riddles`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: 'E6: Cosmos Dreams in Calm and Comfort',
+      title: 'Cosmos Dreams in Calm and Comfort',
       content: `<b>Charging</b> stack(s) lost in each turn is reduced by <span class="text-desc">1</span>.`,
     },
   }
@@ -158,7 +158,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
           energy: 20,
         },
       ]
@@ -169,7 +169,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 30,
+          break: 10,
           energy: 6,
         },
         {
@@ -178,7 +178,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 15,
+          break: 5,
           energy: 6,
         },
       ]
@@ -189,7 +189,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 60,
+          break: 20,
         },
       ]
 

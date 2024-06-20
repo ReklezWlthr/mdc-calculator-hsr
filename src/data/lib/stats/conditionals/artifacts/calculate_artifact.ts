@@ -1,15 +1,14 @@
-import { Element, IArtifactEquip, ITeamChar, Stats, TalentProperty } from '@src/domain/constant'
+import { IArtifactEquip, Stats } from '@src/domain/constant'
 import { StatsObject } from '../../baseConstant'
 import { getSetCount } from '@src/core/utils/data_format'
 import _ from 'lodash'
 import { ArtifactForm } from './artifact_form'
-import { checkBuffExist, findCharacter } from '@src/core/utils/finder'
+import { checkBuffExist } from '@src/core/utils/finder'
 
 export const getRelicConditionals = (artifacts: IArtifactEquip[]) => {
   const setBonus = getSetCount(artifacts)
   const { content, teamContent } = ArtifactForm()
-  const set = _.keys(_.pickBy(setBonus, (item) => item >= 2))
-  console.log(set)
+  const set = _.keys(_.pickBy(setBonus, (item, key) => item >= (_.head(key) === '1' ? 4 : 2)))
 
   return {
     content: _.filter(content, (item) => _.some(set, (s) => _.includes(item.id, s))),

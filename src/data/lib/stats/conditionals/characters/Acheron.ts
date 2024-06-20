@@ -75,15 +75,15 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       <br />If attacking a normal enemy, immediately defeats them without entering combat. When not hitting enemies, no Technique Points are consumed.`,
     },
     a2: {
-      title: 'A2: Red Oni',
+      title: 'Red Oni',
       content: `When battle starts, immediately gains <span class="text-desc">5</span> point(s) of <b>Slashed Dream</b> and applies <span class="text-desc">5</span> stack(s) of <b>Crimson Knot</b> to a random enemy. When <b>Slashed Dream</b> reaches its upper limit, for every point of <b>Slashed Dream</b> that exceeds the limit, gains <span class="text-desc">1</span> stack of <b>Quadrivalent Ascendance</b>. Increases the maximum stackable count for <b>Quadrivalent Ascendance</b> to <span class="text-desc">3</span>.`,
     },
     a4: {
-      title: 'A4: The Abyss',
+      title: 'The Abyss',
       content: `When there are <span class="text-desc">1</span> or <span class="text-desc">2</span> Nihility characters other than Acheron in the team, the DMG dealt by Acheron's Basic ATK, Skill, and Ultimate increases to <span class="text-desc">115%</span> or <span class="text-desc">160%</span> of the original DMG respectively.`,
     },
     a6: {
-      title: 'A6: Thunder Core',
+      title: 'Thunder Core',
       content: `When the Rainblade from Acheron's Ultimate hits enemy targets with <b>Crimson Knot</b>, her DMG increases by <span class="text-desc">30%</span>, stacking up to <span class="text-desc">3</span> time(s) and lasting for <span class="text-desc">3</span> turn(s). And when Stygian Resurge triggers, additionally deals DMG for <span class="text-desc">6</span> times. Each time deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">25%</span> of Acheron's ATK to a single random enemy and is viewed as part of the Ultimate DMG.`,
     },
     c1: {
@@ -91,25 +91,25 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `CRIT Rate increases by <span class="text-desc">18%</span> when dealing DMG to debuffed enemies.`,
     },
     c2: {
-      title: 'E2: Mute Thunder in Still Tempest',
+      title: 'Mute Thunder in Still Tempest',
       content: `The number of Nihility characters required for the Trace "The Abyss" to achieve its highest possible effect is reduced by <span class="text-desc">1</span>. When this unit's turn starts, gains <span class="text-desc">1</span> point of <b>Slashed Dream</b> and inflicts <span class="text-desc">1</span> stack of <b>Crimson Knot</b> on the enemy with the most <b>Crimson Knot</b> stacks.`,
     },
     c3: {
-      title: 'E3: Frost Bites in Death',
+      title: 'Frost Bites in Death',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'E4: Shrined Fire for Mirrored Soul',
+      title: 'Shrined Fire for Mirrored Soul',
       content: `When enemy targets enter combat, afflict them with the Ultimate DMG Vulnerable Vulnerability state, increasing the amount of Ultimate DMG they take by <span class="text-desc">8%</span>.`,
     },
     c5: {
-      title: 'E5: Strewn Souls on Erased Earths',
+      title: 'Strewn Souls on Erased Earths',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'E6: Apocalypse, the Emancipator',
+      title: 'Apocalypse, the Emancipator',
       content: `Increases the All-Type RES PEN for the Ultimate DMG dealt by Acheron by <span class="text-desc">20%</span>. The DMG dealt by Basic ATK and Skill will also be considered as Ultimate DMG and can reduce enemy toughness regardless of Weakness Types. When Weakness is broken, triggers the <b class="text-hsr-lightning">Lightning</b> Weakness Break effect.`,
     },
   }
@@ -174,7 +174,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: c >= 6 ? TalentType.ULT : TalentType.BA,
-          break: 30,
+          break: 10,
           multiplier,
         },
       ]
@@ -185,7 +185,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: c >= 6 ? TalentType.ULT : TalentType.SKILL,
-          break: 60,
+          break: 20,
           multiplier,
         },
         {
@@ -194,7 +194,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: c >= 6 ? TalentType.ULT : TalentType.SKILL,
-          break: 30,
+          break: 10,
           multiplier,
         },
       ]
@@ -216,7 +216,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 element: Element.LIGHTNING,
                 property: TalentProperty.NORMAL,
                 type: TalentType.ULT,
-                break: 15,
+                break: 5,
                 multiplier,
               },
             ]
@@ -230,7 +230,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 element: Element.LIGHTNING,
                 property: TalentProperty.NORMAL,
                 type: TalentType.ULT,
-                break: 15,
+                break: 5,
                 multiplier,
               },
             ]
@@ -244,7 +244,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 element: Element.LIGHTNING,
                 property: TalentProperty.NORMAL,
                 type: TalentType.ULT,
-                break: 15,
+                break: 5,
                 multiplier,
               },
             ]
@@ -258,7 +258,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 element: Element.LIGHTNING,
                 property: TalentProperty.NORMAL,
                 type: TalentType.ULT,
-                break: 15 * _.ceil(form.crimson_knot / 3),
+                break: 5 * _.ceil(form.crimson_knot / 3),
                 multiplier,
               },
             ]
@@ -271,7 +271,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 15,
+          break: 5,
           multiplier,
         },
         ...rs1,
@@ -283,7 +283,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 15 * (3 + _.ceil(form.crimson_knot / 3)),
+          break: 5 * (3 + _.ceil(form.crimson_knot / 3)),
           multiplier,
         },
         ...trs,
@@ -293,7 +293,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 15,
+          break: 5,
           multiplier,
         },
       ]
@@ -303,7 +303,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         element: Element.LIGHTNING,
         property: TalentProperty.NORMAL,
         type: TalentType.TECH,
-        break: 60,
+        break: 20,
       })
 
       base.ULT_RES_PEN.push({

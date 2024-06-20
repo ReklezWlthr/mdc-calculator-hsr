@@ -8,6 +8,7 @@ import { toPercentage } from '@src/core/utils/converter'
 import { observer } from 'mobx-react-lite'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
+import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
 
 export const EnemyModal = observer(() => {
   const { calculatorStore, teamStore } = useStore()
@@ -34,7 +35,16 @@ export const EnemyModal = observer(() => {
               style="!w-[60px]"
             />
           </div>
-          <div className="space-y-1">
+          <div className="flex items-center w-full gap-x-3">
+            <p>Weakness</p>
+            <TagSelectInput
+              values={calculatorStore.weakness}
+              options={_.map(Element, (item) => ({ name: item, value: item }))}
+              onChange={(values) => calculatorStore.setValue('weakness', values as any)}
+              style='w-[150px]'
+            />
+          </div>
+          <div className="flex flex-col gap-y-1">
             <p>DEF</p>
             <div className="flex items-start px-2 py-1 text-sm font-normal rounded-lg gap-x-2 bg-primary-darker w-fit text-gray">
               <p className="font-bold text-yellow">{_.round(def).toLocaleString()}</p>
@@ -55,7 +65,7 @@ export const EnemyModal = observer(() => {
                 )}
               </div>
             </div>
-            <p>DEF Multiplier</p>
+            <p className="pt-2">DEF Multiplier</p>
             <div className="flex items-center gap-2 px-2 py-1 text-sm font-normal rounded-lg bg-primary-darker w-fit text-gray">
               <p className="font-bold text-orange-300">{toPercentage(defMult)}</p>
               <p>= 1 - </p>
@@ -70,17 +80,25 @@ export const EnemyModal = observer(() => {
                 </p>
               </div>
             </div>
+            <div className="flex items-center pt-2 gap-x-3">
+              <p className="text-sm font-normal">Weakness Broken</p>
+              <CheckboxInput
+                checked={calculatorStore.broken}
+                onClick={() => calculatorStore.setValue('broken', !calculatorStore.broken)}
+              />
+            </div>
           </div>
         </div>
         <div className="flex flex-col items-end gap-y-3">
+          <p className="text-sm">Initial DMG RES</p>
           {_.map(BaseElementColor, (item, key: Element) => (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3" key={key}>
               <p className={classNames('whitespace-nowrap text-sm', item)}>{key} RES</p>
               <TextInput
                 type={res[key] === Infinity ? 'text' : 'number'}
                 value={res[key] === Infinity ? 'Immune' : res[key].toString()}
                 onChange={(value) => calculatorStore.setRes(key, value as any as number)}
-                style="!w-[75px]"
+                style="!w-[50px]"
                 disabled={res[key] === Infinity}
               />
             </div>

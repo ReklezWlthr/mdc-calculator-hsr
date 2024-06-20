@@ -56,42 +56,42 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `After using Technique, creates a dimension that lasts for <span class="text-desc">15</span> second(s). After entering battle with enemies in the dimension, there is a <span class="text-desc">100%</span> <u>base chance</u> to increase <b class="text-hsr-fire">Fire DMG</b> taken by enemies by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s). Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
-      title: 'A2: Starfire',
+      title: 'Starfire',
       content: `After using an attack, there is a <span class="text-desc">50%</span> <u>base chance</u> to inflict <b class="text-hsr-fire">Burn</b> on enemies for <span class="text-desc">2</span> turn(s).
       <br />When afflicted with <b class="text-hsr-fire">Burn</b>, enemies take <b class="text-hsr-fire">Fire DoT</b> equal to <span class="text-desc">30%</span> of Himeko's ATK at the start of each turn.`,
     },
     a4: {
-      title: 'A4: Magma',
+      title: 'Magma',
       content: `Skill deals <span class="text-desc">20%</span> more DMG to enemies currently afflicted with <b class="text-hsr-fire">Burn</b>.`,
     },
     a6: {
-      title: 'A6: Benchmark',
+      title: 'Benchmark',
       content: `When current HP percentage is <span class="text-desc">80%</span> or higher, CRIT Rate increases by <span class="text-desc">15%</span>.`,
     },
     c1: {
-      title: 'E1: Childhood',
+      title: 'Childhood',
       content: `After "Victory Rush" is triggered, Himeko's SPD increases by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
-      title: `E2: Convergence`,
+      title: `Convergence`,
       content: `Deals <span class="text-desc">15%</span> more DMG to enemies whose HP percentage is <span class="text-desc">50%</span> or less.`,
     },
     c3: {
-      title: 'E3: Poised',
+      title: 'Poised',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'E4: Dedication',
+      title: 'Dedication',
       content: `When Himeko's Skill inflicts Weakness Break on an enemy, she gains <span class="text-desc">1</span> extra point(s) of <b>Charge</b>.`,
     },
     c5: {
-      title: `E5: Aspiration`,
+      title: `Aspiration`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'E6: Trailblaze!',
+      title: 'Trailblaze!',
       content: `Ultimate deals DMG <span class="text-desc">2</span> extra times, each of which deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">40%</span> of the original DMG to a random enemy.`,
     },
   }
@@ -175,7 +175,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
           energy: 20,
         },
       ]
@@ -186,7 +186,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
           energy: 30,
         },
         {
@@ -195,7 +195,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 30,
+          break: 10,
           energy: 30,
         },
       ]
@@ -206,7 +206,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
           energy: 5,
         },
       ]
@@ -217,7 +217,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.FIRE,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
-          break: 30,
+          break: 10,
           energy: 10,
         },
       ]

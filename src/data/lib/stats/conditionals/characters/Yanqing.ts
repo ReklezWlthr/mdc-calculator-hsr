@@ -59,41 +59,41 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `After using his Technique, at the start of the next battle, Yanqing deals <span class="text-desc">30%</span> more DMG for <span class="text-desc">2</span> turn(s) to enemies whose current HP is <span class="text-desc">50%</span> or higher.`,
     },
     a2: {
-      title: `A2: Icing on the Kick`,
+      title: `Icing on the Kick`,
       content: `When Yanqing attacks, deals Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">30%</span> of Yanqing's ATK to enemies with <b class="text-hsr-ice">Ice</b> Weakness.`,
     },
     a4: {
-      title: `A4: Frost Favors the Brave`,
+      title: `Frost Favors the Brave`,
       content: `When <b>Soulsteel Sync</b> is active, Effect RES increases by <span class="text-desc">20%</span>.`,
     },
     a6: {
-      title: `A6: Gentle Blade`,
+      title: `Gentle Blade`,
       content: `When a CRIT Hit is triggered, increases SPD by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c1: {
-      title: `E1: Svelte Saber`,
+      title: `Svelte Saber`,
       content: `When Yanqing attacks a <b class="text-hsr-ice">Frozen</b> enemy, he deals Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">60%</span> of his ATK.`,
     },
     c2: {
-      title: `E2: Supine Serenade`,
+      title: `Supine Serenade`,
       content: `When <b>Soulsteel Sync</b> is active, Energy Regeneration Rate increases by an extra <span class="text-desc">10%</span>.`,
     },
     c3: {
-      title: `E3: Sword Savant`,
+      title: `Sword Savant`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Searing Sting`,
+      title: `Searing Sting`,
       content: `When the current HP percentage is <span class="text-desc">80%</span> or higher, <b class="text-hsr-ice">Ice RES PEN</b> increases by <span class="text-desc">12%</span>.`,
     },
     c5: {
-      title: `E5: Surging Strife`,
+      title: `Surging Strife`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Swift Swoop`,
+      title: `Swift Swoop`,
       content: `If the Ultimate's buffs are still in effect when an enemy is defeated, their duration is extended by <span class="text-desc">1</span> turn.`,
     },
   }
@@ -174,7 +174,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -184,7 +184,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
         },
       ]
       base.ULT_SCALING = [
@@ -194,7 +194,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 90,
+          break: 30,
         },
       ]
       base.TALENT_SCALING = [
@@ -204,7 +204,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.TALENT,
-          break: 30,
+          break: 10,
           chance: { base: calcScaling(50, 1, talent, 'curved') / 100, fixed: true },
         },
         {

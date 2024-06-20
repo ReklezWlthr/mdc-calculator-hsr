@@ -67,41 +67,41 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Immediately attacks the enemy. Upon entering battle, Hook deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of her ATK to a random enemy. In addition, there is a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-fire">Burn</b> on every enemy for <span class="text-desc">3</span> turn(s). When afflicted with <b class="text-hsr-fire">Burn</b>, enemies will take <b class="text-hsr-fire">Fire DoT</b> equal to <span class="text-desc">50%</span> of Hook's ATK at the beginning of each turn.`,
     },
     a2: {
-      title: `A2: Innocence`,
+      title: `Innocence`,
       content: `Hook restores HP equal to <span class="text-desc">5%</span> of her Max HP whenever her Talent is triggered.`,
     },
     a4: {
-      title: `A4: Naivete`,
+      title: `Naivete`,
       content: `The chance to resist Crowd Control Debuffs increases by <span class="text-desc">35%</span>.`,
     },
     a6: {
-      title: `A6: Playing With Fire`,
+      title: `Playing With Fire`,
       content: `When using her Ultimate, Hook has her action Advanced Forward by <span class="text-desc">20%</span> and Hook additionally regenerates <span class="text-desc">5</span> Energy.`,
     },
     c1: {
-      title: `E1: Early to Bed, Early to Rise`,
+      title: `Early to Bed, Early to Rise`,
       content: `Enhanced Skill deals <span class="text-desc">20%</span> increased DMG.`,
     },
     c2: {
-      title: `E2: Happy Tummy, Happy Body`,
+      title: `Happy Tummy, Happy Body`,
       content: `Extends the duration of <b class="text-hsr-fire">Burn</b> caused by Skill by <span class="text-desc">1</span> turn(s).`,
     },
     c3: {
-      title: `E3: Don't Be Picky, Nothing's Icky`,
+      title: `Don't Be Picky, Nothing's Icky`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: It's Okay to Not Know`,
+      title: `It's Okay to Not Know`,
       content: `When Talent is triggered, there is a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-fire">Burn</b> enemies adjacent to the target enemy, equivalent to that of Skill.`,
     },
     c5: {
-      title: `E5: Let the Moles' Deeds Be Known`,
+      title: `Let the Moles' Deeds Be Known`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Always Ready to Punch and Kick`,
+      title: `Always Ready to Punch and Kick`,
       content: `Hook deals <span class="text-desc">20%</span> more DMG to enemies afflicted with <b class="text-hsr-fire">Burn</b>.`,
     },
   }
@@ -171,7 +171,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       const burn = {
@@ -190,7 +190,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               element: Element.FIRE,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
-              break: 60,
+              break: 20,
             },
             {
               name: `Adjacent`,
@@ -198,7 +198,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               element: Element.FIRE,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
-              break: 30,
+              break: 10,
             },
           ]
         : [
@@ -208,7 +208,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               element: Element.FIRE,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
-              break: 60,
+              break: 20,
             },
           ]
       base.ULT_SCALING = [
@@ -218,7 +218,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 90,
+          break: 30,
         },
       ]
       base.TALENT_SCALING = [
@@ -228,7 +228,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.FIRE,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
-          break: 90,
+          break: 30,
         },
       ]
       const talentBurn = {
@@ -246,7 +246,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 90,
+          break: 30,
         },
       ]
 

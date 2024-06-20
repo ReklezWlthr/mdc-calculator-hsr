@@ -75,42 +75,42 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       <br />If Blade's current HP is insufficient, his HP will be reduced to <span class="text-desc">1</span> when this Technique is used.`,
     },
     a2: {
-      title: `A2: Vita Infinita`,
+      title: `Vita Infinita`,
       content: `When Blade's current HP is at <span class="text-desc">50%</span> of Max HP or lower, Incoming Healing increases by <span class="text-desc">20%</span>.`,
     },
     a4: {
-      title: `A4: Neverending Deaths`,
+      title: `Neverending Deaths`,
       content: `If Blade hits a Weakness Broken enemy after using Forest of Swords, he will restore HP equal to <span class="text-desc">5%</span> of his Max HP plus <span class="text-desc">100</span>.`,
     },
     a6: {
-      title: `A6: Cyclone of Destruction`,
+      title: `Cyclone of Destruction`,
       content: `DMG dealt by Talent's follow-up attack increases by <span class="text-desc">20%</span>.`,
     },
     c1: {
-      title: `E1: Blade Cuts the Deepest in Hell`,
+      title: `Blade Cuts the Deepest in Hell`,
       content: `Blade's Ultimate deals additionally increased DMG to a single enemy target, with the increased amount equal to <span class="text-desc">150%</span> of Blade's total HP loss in the current battle.
       <br />The total HP Blade has lost in the current battle is capped at <span class="text-desc">90%</span> of his Max HP. This value will be reset and re-accumulated after his Ultimate has been used.`,
     },
     c2: {
-      title: `E2: Ten Thousand Sorrows From One Broken Dream`,
+      title: `Ten Thousand Sorrows From One Broken Dream`,
       content: `When Blade is in the Hellscape state, his CRIT Rate increases by <span class="text-desc">15%</span>.`,
     },
     c3: {
-      title: `E3: Hardened Blade Bleeds Coldest Shade`,
+      title: `Hardened Blade Bleeds Coldest Shade`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `E4: Rejected by Death, Infected With Life`,
+      title: `Rejected by Death, Infected With Life`,
       content: `When Blade's current HP drops to <span class="text-desc">50%</span> or lower of his Max HP, increases his Max HP by <span class="text-desc">20%</span>. Stacks up to <span class="text-desc">/2</span> time(s).`,
     },
     c5: {
-      title: `E5: Death By Ten Lords' Gaze`,
+      title: `Death By Ten Lords' Gaze`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: `E6: Reborn Into an Empty Husk`,
+      title: `Reborn Into an Empty Husk`,
       content: `The maximum number of <b>Charge</b> stacks is reduced to <span class="text-desc">4</span>. The DMG of the follow-up attack triggered by Blade's Talent additionally increases by <span class="text-desc">50%</span> of his Max HP.`,
     },
   }
@@ -188,7 +188,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               element: Element.WIND,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 60,
+              break: 20,
             },
             {
               name: 'Adjacent',
@@ -199,7 +199,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               element: Element.WIND,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 30,
+              break: 10,
             },
           ]
         : [
@@ -209,7 +209,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               element: Element.WIND,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 30,
+              break: 10,
             },
           ]
       base.TALENT_SCALING = [
@@ -222,7 +222,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
         },
         {
           name: 'Healing',
@@ -239,7 +239,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 60,
+          break: 20,
         },
       ]
 
@@ -324,7 +324,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             element: Element.WIND,
             property: TalentProperty.NORMAL,
             type: TalentType.ULT,
-            break: 60,
+            break: 20,
           },
           {
             name: 'Adjacent',
@@ -336,7 +336,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             element: Element.WIND,
             property: TalentProperty.NORMAL,
             type: TalentType.ULT,
-            break: 60,
+            break: 20,
           },
         ]
 

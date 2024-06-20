@@ -63,41 +63,41 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `Huohuo terrorizes surrounding enemies, afflicting Horror-Struck on them. Enemies in Horror-Struck will flee away from Huohuo for <span class="text-desc">10</span> second(s). When entering battle with enemies in Horror-Struck, there is a <span class="text-desc">100%</span> <u>base chance</u> of reducing every single enemy's ATK by <span class="text-desc">25%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
-      title: `A2: Fearful to Act`,
+      title: `Fearful to Act`,
       content: `When battle starts, Huohuo gains <b>Divine Provision</b>, lasting for <span class="text-desc">1</span> turn(s).`,
     },
     a4: {
-      title: `A4: The Cursed One`,
+      title: `The Cursed One`,
       content: `The chance to resist Crowd Control Debuffs increases by <span class="text-desc">35%</span>.`,
     },
     a6: {
-      title: `A6: Stress Reaction to Horror`,
+      title: `Stress Reaction to Horror`,
       content: `When her Talent is triggered to heal allies, Huohuo regenerates <span class="text-desc">1</span> Energy.`,
     },
     c1: {
-      title: `E1: Anchored to Vessel, Specters Nestled`,
+      title: `Anchored to Vessel, Specters Nestled`,
       content: `The duration of <b>Divine Provision</b> produced by the Talent is extended by <span class="text-desc">1</span> turn(s). When Huohuo possesses <b>Divine Provision</b>, all allies' SPD increases by <span class="text-desc">12%</span>.`,
     },
     c2: {
-      title: `E2: Sealed in Tail, Wraith Subdued`,
+      title: `Sealed in Tail, Wraith Subdued`,
       content: `If Huohuo possesses <b>Divine Provision</b> when an ally is struck by a killing blow, the ally will not be knocked down, and their HP will immediately be restored by an amount equal to <span class="text-desc">50%</span> of their Max HP. This reduces the duration of <b>Divine Provision</b> by <span class="text-desc">1</span> turn. This effect can only be triggered <span class="text-desc">2</span> time(s) per battle.`,
     },
     c3: {
-      title: `E3: Cursed by Fate, Moths to Flame`,
+      title: `Cursed by Fate, Moths to Flame`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `E4: Tied in Life, Bound to Strife`,
+      title: `Tied in Life, Bound to Strife`,
       content: `When healing a target ally via Skill or Talent, the less HP the target ally currently has, the higher the amount of healing they will receive. The maximum increase in healing provided by Huohuo is <span class="text-desc">80%</span>.`,
     },
     c5: {
-      title: `E5: Mandated by Edict, Evils Evicted`,
+      title: `Mandated by Edict, Evils Evicted`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: `E6: Woven Together, Cohere Forever`,
+      title: `Woven Together, Cohere Forever`,
       content: `When healing a target ally, increases the target ally's DMG dealt by <span class="text-desc">50%</span> for <span class="text-desc">2</span> turn(s).`,
     },
   }
@@ -187,7 +187,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [

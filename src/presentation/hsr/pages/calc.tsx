@@ -44,7 +44,7 @@ export const Calculator = observer(({}: {}) => {
       <div className="grid w-full grid-cols-3 gap-5 p-5 text-white max-w-[1240px] mx-auto">
         <div className="col-span-2">
           <div className="flex items-center">
-            <div className="flex justify-center w-full gap-4 pt-1 pb-3">
+            <div className="flex w-full gap-4 pt-1 pb-3 pl-3">
               {_.map(teamStore?.characters, (item, index) => {
                 return (
                   <CharacterSelect
@@ -61,9 +61,10 @@ export const Calculator = observer(({}: {}) => {
           {teamStore?.characters[selected]?.cId ? (
             <>
               <div className="flex flex-col mb-5 text-sm rounded-lg bg-primary-darker h-fit">
-                <p className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
-                  Damage Calculation
-                </p>
+                <div className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
+                  <p>Damage Calculation</p>
+                  {/* <p className='text-xs font-normal text-gray'>Hover Numbers for More Details</p> */}
+                </div>
                 <div className="flex justify-end w-full mb-1.5 bg-primary-dark">
                   <div className="grid w-4/5 grid-cols-9 gap-2 py-0.5 pr-2 text-sm font-bold text-center bg-primary-dark">
                     <p className="col-span-2">Property</p>

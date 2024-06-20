@@ -60,41 +60,41 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `After the Technique is used, all team members receive a Barrier, lasting for <span class="text-desc">20</span> seconds. This Barrier can block all enemy attacks, and the team will not enter battle when attacked. Entering battle while the Barrier is active will have Fu Xuan automatically activate <b>Matrix of Prescience</b> at the start of the battle, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
-      title: 'A2: Taiyi, the Macrocosmic',
+      title: 'Taiyi, the Macrocosmic',
       content: `When Matrix of Prescience is active, Fu Xuan will regenerate <span class="text-desc">20</span> extra Energy when she uses her Skill.`,
     },
     a4: {
-      title: 'A4: Dunjia, the Metamystic',
+      title: 'Dunjia, the Metamystic',
       content: `When Fu Xuan's Ultimate is used, heals all other allies by an amount equal to <span class="text-desc">5%</span> of Fu Xuan's Max HP plus <span class="text-desc">133</span>.`,
     },
     a6: {
-      title: 'A6: Liuren, the Sexagenary',
+      title: 'Liuren, the Sexagenary',
       content: `If a target enemy applies Crowd Control debuffs to allies while the <b>Matrix of Prescience</b> is active, all allies will resist all Crowd Control debuffs applied by the enemy target during the current action. This effect can only be triggered once. When <b>Matrix of Prescience</b> is activated again, the number of times this effect can be triggered will reset.`,
     },
     c1: {
-      title: 'E1: Dominus Pacis',
+      title: 'Dominus Pacis',
       content: `The Knowledge effect increases CRIT DMG by 30%.`,
     },
     c2: {
-      title: 'E2: Optimus Felix',
+      title: 'Optimus Felix',
       content: `If any team member is struck by a killing blow while <b>Matrix of Prescience</b> is active, then all allies who were struck by a killing blow during this action will not be knocked down, and <span class="text-desc">70%</span> of their Max HP is immediately restored. This effect can trigger <span class="text-desc">1</span> time per battle.`,
     },
     c3: {
-      title: 'E3: Apex Nexus',
+      title: 'Apex Nexus',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: 'E4: Fortuna Stellaris',
+      title: 'Fortuna Stellaris',
       content: `When other allies under Matrix of Prescience are attacked, Fu Xuan regenerates <span class="text-desc">5</span> Energy.`,
     },
     c5: {
-      title: 'E5: Arbiter Primus',
+      title: 'Arbiter Primus',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: 'E6: Omnia Vita',
+      title: 'Omnia Vita',
       content: `Once <b>Matrix of Prescience</b> is activated, it will keep a tally of the total HP lost by all team members in the current battle. Fu Xuan's Ultimate DMG will increase by <span class="text-desc">200%</span> of this tally of HP loss.
       <br />This tally is also capped at <span class="text-desc">120%</span> of Fu Xuan's Max HP and the tally value will reset and re-accumulate after Fu Xuan's Ultimate is used.`,
     },
@@ -158,7 +158,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
           energy: 20,
         },
       ]
@@ -169,7 +169,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
           energy: 5,
         },
       ]

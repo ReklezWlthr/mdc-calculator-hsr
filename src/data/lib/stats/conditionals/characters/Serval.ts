@@ -57,41 +57,41 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       <br />While <b class="text-hsr-lightning">Shocked</b>, enemies will take <b class="text-hsr-lightning">Lightning DoT</b> equal to <span class="text-desc">50%</span> of Serval's ATK at the beginning of each turn.`,
     },
     a2: {
-      title: `A2: Rock 'n' Roll`,
+      title: `Rock 'n' Roll`,
       content: `Skill has a <span class="text-desc">20%</span> increased <u>base chance</u> to <b class="text-hsr-lightning">Shock</b> enemies.`,
     },
     a4: {
-      title: `A4: String Vibration`,
+      title: `String Vibration`,
       content: `At the start of the battle, immediately regenerates <span class="text-desc">15</span> Energy.`,
     },
     a6: {
-      title: `A6: Mania`,
+      title: `Mania`,
       content: `Upon defeating an enemy, ATK is increased by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c1: {
-      title: `E1: Echo Chamber`,
+      title: `Echo Chamber`,
       content: `Basic ATK deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">60%</span> of the Basic ATK's DMG to a random enemy adjacent to the target of the Basic ATK.`,
     },
     c2: {
-      title: `E2: Encore!`,
+      title: `Encore!`,
       content: `Every time Serval's Talent is triggered to deal Additional DMG, she regenerates <span class="text-desc">4</span> Energy.`,
     },
     c3: {
-      title: `E3: Listen, the Heartbeat of the Gears`,
+      title: `Listen, the Heartbeat of the Gears`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'E4: Make Some Noise!',
+      title: 'Make Some Noise!',
       content: `Ultimate has a <span class="text-desc">100%</span> <u>base chance</u> to apply <b class="text-hsr-lightning">Shock</b> to any enemies not currently <b class="text-hsr-lightning">Shocked</b>. This <b class="text-hsr-lightning">Shock</b> has the same effects as the one applied by Skill.`,
     },
     c5: {
-      title: `E5: Belobog's Loudest Roar!`,
+      title: `Belobog's Loudest Roar!`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'E6: This Song Rocks to Heaven!',
+      title: 'This Song Rocks to Heaven!',
       content: `Serval deals <span class="text-desc">30%</span> more DMG to <b class="text-hsr-lightning">Shocked</b> enemies.`,
     },
   }
@@ -162,7 +162,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -172,7 +172,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
         },
         {
           name: 'Adjacent',
@@ -180,7 +180,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 30,
+          break: 10,
         },
       ]
       base.ULT_SCALING = [
@@ -190,7 +190,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
         },
       ]
       base.TALENT_SCALING = [
@@ -209,7 +209,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 60,
+          break: 20,
         },
       ]
 
@@ -249,7 +249,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.LIGHTNING,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
-          break: 30,
+          break: 10,
         })
 
       return base

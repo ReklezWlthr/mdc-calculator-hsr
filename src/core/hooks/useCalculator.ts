@@ -15,8 +15,6 @@ import {
   LCTeamConditionals,
 } from '@src/data/lib/stats/conditionals/lightcones/lc_conditionals'
 import { Element, ITeamChar, Stats } from '@src/domain/constant'
-import { getSetCount } from '../utils/data_format'
-import { ResonanceConditionals } from '@src/data/lib/stats/conditionals/resonance'
 import { isFlat } from '@src/presentation/hsr/components/custom_modal'
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { DebuffTypes } from '@src/domain/conditional'
@@ -132,7 +130,7 @@ export const useCalculator = () => {
   // Some weapon buffs scale off character's stat so we have to calculate ones above first
   // Reactions are placed last because they only provide damage buff, not stat buffs, and heavily relies on stats
   useEffect(() => {
-    const weakness = []
+    const weakness = _.cloneDeep(calculatorStore.weakness)
     const debuffs = _.map(DebuffTypes, (v) => ({ type: v, count: 0 }))
     const preCompute = _.map(
       conditionals,
@@ -174,15 +172,9 @@ export const useCalculator = () => {
       })
       return x
     })
-    const emblem = [false, false, false, false]
     // Always loop; artifact buffs are either self or team-wide so everything is in each character's own form
     const postArtifact = _.map(postCustom, (base, index) => {
       let x = base
-      const artifactData = _.map(teamStore.characters[index].equipments.artifacts, (item) =>
-        _.find(artifactStore.artifacts, ['id', item])
-      )
-      const setBonus = getSetCount(artifactData)
-      if (setBonus['2276480763'] >= 4) emblem[index] = true
       _.forEach(calculatorStore.form, (form, i) => {
         x = i === index ? calculateRelic(x, form) : calculateTeamRelic(x, form, postCustom[i])
       })
@@ -249,7 +241,7 @@ export const useCalculator = () => {
       return x
     })
     calculatorStore.setValue('computedStats', final)
-  }, [baseStats, calculatorStore.form, calculatorStore.custom, teamStore.characters])
+  }, [baseStats, calculatorStore.form, calculatorStore.custom, teamStore.characters, calculatorStore.weakness])
 
   // =================
   //

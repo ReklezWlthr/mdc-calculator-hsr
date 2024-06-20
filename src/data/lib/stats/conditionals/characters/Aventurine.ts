@@ -64,41 +64,41 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       <br />When the next battle starts, increases all allies' DEF by the corresponding value, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     a2: {
-      title: `A2: Leverage`,
+      title: `Leverage`,
       content: `For every <span class="text-desc">100</span> of Aventurine's DEF that exceeds <span class="text-desc">1600</span>, increases his own CRIT Rate by <span class="text-desc">2%</span>, up to a maximum increase of <span class="text-desc">48%</span>.`,
     },
     a4: {
-      title: `A4: Hot Hand`,
+      title: `Hot Hand`,
       content: `When battle starts, grants all allies a <b class="text-indigo-300">Fortified Wager</b> shield, whose <b class="text-indigo-300">Shield</b> effect is equal to <span class="text-desc">100%</span> of the one provided by the Skill, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     a6: {
-      title: `A6: Bingo!`,
+      title: `Bingo!`,
       content: `After an ally with <b class="text-indigo-300">Fortified Wager</b> launches a follow-up attack, Aventurine accumulates <span class="text-desc">1</span> Blind Bet point. This effect can trigger up to <span class="text-desc">3</span> time(s). And its trigger count resets at the start of Aventurine's turn. After Aventurine launches his Talent's follow-up attack, provides all allies with a <b class="text-indigo-300">Fortified Wager</b> that can block DMG equal to <span class="text-desc">7.2%</span> of Aventurine's DEF plus <span class="text-desc">96</span>, and additionally grants a <b class="text-indigo-300">Fortified Wager</b> that can block DMG equal to <span class="text-desc">7.2%</span> of Aventurine's DEF plus <span class="text-desc">96</span> to the ally with the lowest <b class="text-indigo-300">Shield</b> effect, lasting for 3<span class="text-desc">3</span> turns.`,
     },
     c1: {
-      title: `E1: Prisoner's Dilemma`,
+      title: `Prisoner's Dilemma`,
       content: `Increases CRIT DMG by <span class="text-desc">20%</span> for allies with <b class="text-indigo-300">Fortified Wager</b>. After using the Ultimate, provides all allies with a <b class="text-indigo-300">Fortified Wager</b> shield, whose <b class="text-indigo-300">Shield</b> effect is equal to <span class="text-desc">100%</span> of the one provided by the Skill, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c2: {
-      title: `E2: Bounded Rationality`,
+      title: `Bounded Rationality`,
       content: `When using Basic ATK, reduces the target's All-Type RES by <span class="text-desc">12%</span> for <span class="text-desc">3</span> turn(s).`,
     },
     c3: {
-      title: `E3: Droprate Maxing`,
+      title: `Droprate Maxing`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Unexpected Hanging Paradox`,
+      title: `Unexpected Hanging Paradox`,
       content: `When triggering his Talent's follow-up attack, first increases Aventurine's DEF by <span class="text-desc">40%</span> for <span class="text-desc">2</span> turn(s), and additionally increases the Hits Per Action for his talent's follow-up attack by <span class="text-desc">3</span>.`,
     },
     c5: {
-      title: `E5: Ambiguity Aversion`,
+      title: `Ambiguity Aversion`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Stag Hunt Game`,
+      title: `Stag Hunt Game`,
       content: `For every ally with a <b class="text-indigo-300">Shield</b>, the DMG dealt by Aventurine increases by <span class="text-desc">50%</span>, up to a maximum of <span class="text-desc">150%</span>.`,
     },
   }
@@ -198,7 +198,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -226,7 +226,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 90,
+          break: 30,
         },
       ]
       base.TALENT_SCALING = [
@@ -236,7 +236,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           element: Element.IMAGINARY,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
-          break: 10,
+          break: 10 / 3,
         },
       ]
 

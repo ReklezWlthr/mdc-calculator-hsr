@@ -50,15 +50,15 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `After using Technique, creates a special dimension that Taunts nearby enemies, lasting for <span class="text-desc">10</span> second(s). After entering battle with enemies in this special dimension, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce each single enemy target's SPD by <span class="text-desc">15%</span> for <span class="text-desc">2</span> turn(s). Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
-      title: 'A2: Summation',
+      title: 'Summation',
       content: `When Dr. Ratio uses his Skill, for every debuff on the target, his CRIT Rate increases by <span class="text-desc">2.5%</span> and CRIT DMG by <span class="text-desc">5%</span>. This effect can stack up to <span class="text-desc">6</span> time(s).`,
     },
     a4: {
-      title: 'A4: Inference',
+      title: 'Inference',
       content: `When Skill is used to attack an enemy target, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce the attacked target's Effect RES by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a6: {
-      title: 'A6: Deduction',
+      title: 'Deduction',
       content: `When dealing DMG to a target that has <span class="text-desc">3</span> or more debuff(s), for each debuff the target has, the DMG dealt by Dr. Ratio to this target increases by <span class="text-desc">10%</span>, up to a maximum increase of <span class="text-desc">50%</span>.`,
     },
     c1: {
@@ -139,7 +139,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -149,7 +149,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
         },
       ]
       base.ULT_SCALING = [
@@ -159,7 +159,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 90,
+          break: 30,
         },
       ]
 
@@ -223,7 +223,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             element: Element.IMAGINARY,
             property: TalentProperty.FUA,
             type: TalentType.TALENT,
-            break: 30,
+            break: 10,
             chance: { base: _.min([0.4 + count * 0.2, 1]), fixed: true },
           },
         ]

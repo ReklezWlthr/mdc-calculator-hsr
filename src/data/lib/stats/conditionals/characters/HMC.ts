@@ -51,41 +51,41 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       content: `After the Technique is used, at the start of the next battle, all allies' Break Effect increases by <span class="text-desc">30%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
-      title: `A2: Dance With the One`,
+      title: `Dance With the One`,
       content: `When the number of enemy targets on the field is <span class="text-desc">5</span> or more/<span class="text-desc">4</span>/<span class="text-desc">3</span>/<span class="text-desc">2</span>/<span class="text-desc">1</span>, the Super Break DMG triggered by the <b class="text-hsr-imaginary">Backup Dancer</b> effect increases by <span class="text-desc">20%</span>/<span class="text-desc">30%</span>/<span class="text-desc">40%</span>/<span class="text-desc">50%</span>/<span class="text-desc">60%</span>.`,
     },
     a4: {
-      title: `A4: Shuffle Along`,
+      title: `Shuffle Along`,
       content: `When using Skill, additionally increases the Toughness Reduction of the first instance of DMG by <span class="text-desc">100%</span>.`,
     },
     a6: {
-      title: `A6: Hat of the Theater`,
+      title: `Hat of the Theater`,
       content: `Additionally delays the enemy target's action by <span class="text-desc">30%</span> when allies Break enemy Weaknesses.`,
     },
     c1: {
-      title: `E1: Best Seat in the House`,
+      title: `Best Seat in the House`,
       content: `After using Skill for the first time, immediately recovers <span class="text-desc">1</span> Skill Point(s).`,
     },
     c2: {
-      title: `E2: Jailbreaking Rainbowwalk`,
+      title: `Jailbreaking Rainbowwalk`,
       content: `When the battle starts, the Trailblazer's Energy Regeneration Rate increases by <span class="text-desc">25%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c3: {
-      title: `E3: Sanatorium for Rest Notes`,
+      title: `Sanatorium for Rest Notes`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `E4: Dove in Tophat`,
+      title: `Dove in Tophat`,
       content: `While the Trailblazer is on the field, increases the Break Effect of all teammates (excluding the Trailblazer), by an amount equal to <span class="text-desc">15%</span> of the Trailblazer's Break Effect.`,
     },
     c5: {
-      title: `E5: Poem Favors Rhythms of Old`,
+      title: `Poem Favors Rhythms of Old`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: `E6: Tomorrow, Rest in Spotlight`,
+      title: `Tomorrow, Rest in Spotlight`,
       content: `The number of additional DMG applications by the Skill increases by <span class="text-desc">2</span>.`,
     },
   }
@@ -163,7 +163,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -173,7 +173,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: a.a4 ? 60 : 30,
+          break: a.a4 ? 20 : 10,
         },
         {
           name: `Bounce [x${c >= 6 ? 6 : 4}]`,
@@ -181,7 +181,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 15,
+          break: 5,
         },
       ]
 

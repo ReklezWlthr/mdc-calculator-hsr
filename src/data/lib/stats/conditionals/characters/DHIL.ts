@@ -81,41 +81,41 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `After using his Technique, Dan Heng • Imbibitor Lunae enters the Leaping Dragon state for <span class="text-desc">20</span> seconds. While in the Leaping Dragon state, using his attack enables him to move forward rapidly for a set distance, attacking all enemies he touches and blocking all incoming attacks. After entering combat via attacking enemies in the Leaping Dragon state, Dan Heng • Imbibitor Lunae deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to <span class="text-desc">120%</span> of his ATK to all enemies, and gains <span class="text-desc">1</span> <b class="text-hsr-imaginary">Squama Sacrosancta</b>.`,
     },
     a2: {
-      title: `A2: Star Veil`,
+      title: `Star Veil`,
       content: `At the start of the battle, immediately regenerates <span class="text-desc">15</span> Energy.`,
     },
     a4: {
-      title: `A4: Aqua Reign`,
+      title: `Aqua Reign`,
       content: `Increases the chance to resist Crowd Control debuffs by <span class="text-desc">35%</span>.`,
     },
     a6: {
-      title: `A6: Jolt Anew`,
+      title: `Jolt Anew`,
       content: `This character's CRIT DMG increases by <span class="text-desc">24%</span> when dealing DMG to enemy targets with <b class="text-hsr-imaginary">Imaginary</b> Weakness.`,
     },
     c1: {
-      title: `E1: Tethered to Sky`,
+      title: `Tethered to Sky`,
       content: `Increases the stackable <b>Righteous Heart</b> count by <span class="text-desc">4</span>, and gains <span class="text-desc">1</span> extra stack of <b>Righteous Heart</b> for each hit during an attack.`,
     },
     c2: {
-      title: `E2: Imperium On Cloud Nine`,
+      title: `Imperium On Cloud Nine`,
       content: `After using his Ultimate, Dan Heng • Imbibitor Lunae's action is Advanced Forward by <span class="text-desc">100%</span> and gains <span class="text-desc">1</span> extra <b class="text-hsr-imaginary">Squama Sacrosancta</b>.`,
     },
     c3: {
-      title: `E3: Clothed in Clouds`,
+      title: `Clothed in Clouds`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Zephyr's Bliss`,
+      title: `Zephyr's Bliss`,
       content: `The buff effect granted by <b>Outroar</b> lasts until the end of this character's next turn.`,
     },
     c5: {
-      title: `E5: Fall is the Pride`,
+      title: `Fall is the Pride`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Reign, Returned`,
+      title: `Reign, Returned`,
       content: `After any other ally uses their Ultimate, the <b class="text-hsr-imaginary">Imaginary RES PEN</b> of Dan Heng • Imbibitor Lunae's next Fulgurant Leap attack increases by <span class="text-desc">20%</span>. This effect can stack up to <span class="text-desc">3</span> time(s).`,
     },
   }
@@ -225,7 +225,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 60,
+              break: 20,
               bonus: righteous_heart(3),
               cd: outroar_norm,
             },
@@ -239,7 +239,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 90,
+              break: 30,
               bonus: righteous_heart(5),
               cd: outroar(5),
             },
@@ -249,7 +249,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 30,
+              break: 10,
               bonus: righteous_heart(5, 3),
               cd: outroar(5, 3),
             },
@@ -263,7 +263,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 120,
+              break: 40,
               bonus: righteous_heart(7),
               cd: outroar(7),
               res_pen: form.dhil_e6 * 0.2,
@@ -274,7 +274,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 60,
+              break: 20,
               bonus: righteous_heart(7, 3),
               cd: outroar(7, 3),
               res_pen: form.dhil_e6 * 0.2,
@@ -289,7 +289,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 30,
+              break: 10,
               bonus: righteous_heart(2),
               cd: outroar_norm,
             },
@@ -302,7 +302,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
         },
         {
           name: 'Adjacent',
@@ -310,7 +310,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -320,7 +320,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 60,
+          break: 20,
         },
       ]
 

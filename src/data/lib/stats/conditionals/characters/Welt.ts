@@ -57,41 +57,41 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       <br /><b class="text-hsr-imaginary">Imprisoned</b> enemies have their actions delayed by <span class="text-desc">20%</span> and SPD reduced by <span class="text-desc">10%</span>. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
-      title: 'A2: Retribution',
+      title: 'Retribution',
       content: `When using Ultimate, there is a <span class="text-desc">100%</span> <u>base chance</u> to increase the DMG received by the targets by <span class="text-desc">12%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a4: {
-      title: 'A4: Judgment',
+      title: 'Judgment',
       content: `Using Ultimate additionally regenerates <span class="text-desc">10</span> Energy.`,
     },
     a6: {
-      title: 'A6: Punishment',
+      title: 'Punishment',
       content: `Deals <span class="text-desc">20%</span> more DMG to enemies inflicted with Weakness Break.`,
     },
     c1: {
-      title: 'E1: Legacy of Honor',
+      title: 'Legacy of Honor',
       content: `After Welt uses his Ultimate, his abilities are enhanced. The next <span class="text-desc">2</span> time(s) he uses his Basic ATK or Skill, deals Additional DMG to the target equal to <span class="text-desc">50%</span> of his Basic ATK's DMG multiplier or <span class="text-desc">80%</span> of his Skill's DMG multiplier respectively.`,
     },
     c2: {
-      title: `E2: Conflux of Stars`,
+      title: `Conflux of Stars`,
       content: `When his Talent is triggered, Welt regenerates <span class="text-desc">3</span> Energy.`,
     },
     c3: {
-      title: 'E3: Prayer of Peace',
+      title: 'Prayer of Peace',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'E4: Appellation of Justice',
+      title: 'Appellation of Justice',
       content: `<u>base chance</u> for Skill to inflict SPD Reduction increases by <span class="text-desc">35%</span>.`,
     },
     c5: {
-      title: `E5: Power of Kindness`,
+      title: `Power of Kindness`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'E6: Prospect of Glory',
+      title: 'Prospect of Glory',
       content: `When using Skill, deals DMG for <span class="text-desc">1</span> extra time to a random enemy.`,
     },
   }
@@ -172,7 +172,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
           energy: 20,
         },
       ]
@@ -183,7 +183,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 30,
+          break: 10,
           energy: 10,
         },
       ]
@@ -194,7 +194,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
           energy: 5,
         },
       ]

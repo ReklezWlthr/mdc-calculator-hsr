@@ -52,41 +52,41 @@ const Arlan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Immediately attacks the enemy. After entering battle, deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">80%</span> of Arlan's ATK to all enemies.`,
     },
     a2: {
-      title: `A2: Revival`,
+      title: `Revival`,
       content: `If the current HP percentage is <span class="text-desc">30%</span> or lower when defeating an enemy, immediately restores HP equal to <span class="text-desc">20%</span> of Max HP.`,
     },
     a4: {
-      title: `A4: Endurance`,
+      title: `Endurance`,
       content: `The chance to resist DoT Debuffs increases by <span class="text-desc">50%</span>.`,
     },
     a6: {
-      title: `A6: Repel`,
+      title: `Repel`,
       content: `Upon entering battle, if Arlan's HP is less than or equal to <span class="text-desc">50%</span>, he can nullify all DMG received except for DoT until after he is attacked.`,
     },
     c1: {
-      title: 'E1: To the Bitter End',
+      title: 'To the Bitter End',
       content: `When HP is lower than or equal to <span class="text-desc">50%</span> of Max HP, increases Skill's DMG by <span class="text-desc">10%</span>.`,
     },
     c2: {
-      title: `E2: Breaking Free`,
+      title: `Breaking Free`,
       content: `Using Skill or Ultimate removes <span class="text-desc">1</span> debuff from oneself.`,
     },
     c3: {
-      title: 'E3: Power Through',
+      title: 'Power Through',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'E4: Turn the Tables',
+      title: 'Turn the Tables',
       content: `When struck by a killing blow after entering battle, instead of becoming knocked down, Arlan immediately restores his HP to <span class="text-desc">25%</span> of his Max HP. This effect is automatically removed after it is triggered once or after <span class="text-desc">2</span> turn(s) have elapsed.`,
     },
     c5: {
-      title: `E5: Hammer and Tongs`,
+      title: `Hammer and Tongs`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'E6: Self-Sacrifice',
+      title: 'Self-Sacrifice',
       content: `When HP drops to <span class="text-desc">50%</span> or below, Ultimate deals <span class="text-desc">20%</span> more DMG. The DMG multiplier of DMG taken by the target enemy now applies to adjacent enemies as well.`,
     },
   }
@@ -134,7 +134,7 @@ const Arlan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
           energy: 20,
         },
       ]
@@ -145,7 +145,7 @@ const Arlan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
           energy: 30,
         },
       ]
@@ -156,7 +156,7 @@ const Arlan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
           energy: 5,
         },
         {
@@ -170,7 +170,7 @@ const Arlan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
           energy: 5,
         },
       ]
@@ -181,7 +181,7 @@ const Arlan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 60,
+          break: 20,
         },
       ]
 

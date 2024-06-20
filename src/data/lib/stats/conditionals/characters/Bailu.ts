@@ -60,41 +60,41 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `After using Technique, at the start of the next battle, all allies are granted <b>Invigoration</b> for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
-      title: `A2: Qihuang Analects`,
+      title: `Qihuang Analects`,
       content: `When Bailu heals a target ally above their normal Max HP, the target's Max HP increases by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turns.`,
     },
     a4: {
-      title: `A4: Vidyadhara Ichor Lines`,
+      title: `Vidyadhara Ichor Lines`,
       content: `Invigoration can trigger <span class="text-desc">1</span> more time(s).`,
     },
     a6: {
-      title: `A6: Aquatic Benediction`,
+      title: `Aquatic Benediction`,
       content: `Characters with <b>Invigoration</b> receive <span class="text-desc">10%</span> less DMG.`,
     },
     c1: {
-      title: `E1: Ambrosial Aqua`,
+      title: `Ambrosial Aqua`,
       content: `If the target ally's current HP is equal to their Max HP when <b>Invigoration</b> ends, regenerates <span class="text-desc">8</span> extra Energy for this target.`,
     },
     c2: {
-      title: `E2: Sylphic Slumber`,
+      title: `Sylphic Slumber`,
       content: `After using her Ultimate, Bailu's Outgoing Healing increases by an additional <span class="text-desc">15%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
-      title: `E3: Omniscient Opulence`,
+      title: `Omniscient Opulence`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Evil Excision`,
+      title: `Evil Excision`,
       content: `Every healing provided by the Skill makes the recipient deal <span class="text-desc">10%</span> more DMG for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">3</span> time(s).`,
     },
     c5: {
-      title: `E5: Waning Worries`,
+      title: `Waning Worries`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: `E6: Drooling Drop of Draconic Divinity`,
+      title: `Drooling Drop of Draconic Divinity`,
       content: `Bailu can heal allies who received a killing blow <span class="text-desc">1</span> more time(s) in a single battle.`,
     },
   }
@@ -172,7 +172,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       const baseHeal = {

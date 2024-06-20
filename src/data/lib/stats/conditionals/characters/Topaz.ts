@@ -61,42 +61,42 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       <br />After using her Technique and defeating enemies in Simulated Universe, additionally receive a small amount of Cosmic Fragments with a small chance to obtain <span class="text-desc">1</span> random Curio.`,
     },
     a2: {
-      title: `A2: Overdraft`,
+      title: `Overdraft`,
       content: `When Topaz uses Basic ATK to deal DMG, it will be considered as a follow-up attack.`,
     },
     a4: {
-      title: `A4: Financial Turmoil`,
+      title: `Financial Turmoil`,
       content: `Increases Topaz and Numby's DMG dealt to enemy targets with <b class="text-hsr-fire">Fire</b> Weakness by <span class="text-desc">15%</span>.`,
     },
     a6: {
-      title: `A6: Stonks Market`,
+      title: `Stonks Market`,
       content: `After Numby uses an attack while in the <b>Windfall Bonanza!</b> state, Topaz additionally regenerates <span class="text-desc">10</span> Energy.`,
     },
     c1: {
-      title: `E1: Future Market`,
+      title: `Future Market`,
       content: `When enemies afflicted with <b>Proof of Debt</b> receive follow-up attacks, they will enter the <b>Debtor</b> state. This can take effect only once within a single action.
       <br />The <b>Debtor</b> state increases the CRIT DMG of follow-up attacks inflicted on the target enemies by <span class="text-desc">25%</span>, stacking up to <span class="text-desc">2</span> time(s). When <b>Proof of Debt</b> is removed, the <b>Debtor</b> state is also removed.`,
     },
     c2: {
-      title: `E2: Bona Fide Acquisition`,
+      title: `Bona Fide Acquisition`,
       content: `After Numby takes action and launches an attack, Topaz regenerates <span class="text-desc">5</span> Energy.`,
     },
     c3: {
-      title: `E3: Seize the Big and Free the Small`,
+      title: `Seize the Big and Free the Small`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Agile Operation`,
+      title: `Agile Operation`,
       content: `After Numby's turn begins, Topaz's action is Advanced Forward by <span class="text-desc">20%</span>.`,
     },
     c5: {
-      title: `E5: Inflationary Demand`,
+      title: `Inflationary Demand`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Incentive Mechanism`,
+      title: `Incentive Mechanism`,
       content: `Numby's attack count during the <b>Windfall Bonanza!</b> state increases by <span class="text-desc">1</span>, and its <b class="text-hsr-fire">Fire RES PEN</b> increases by <span class="text-desc">10%</span> when it attacks.`,
     },
   }
@@ -161,7 +161,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.FIRE,
           property: a.a2 ? TalentProperty.FUA : TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -178,7 +178,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.FIRE,
           property: TalentProperty.FUA,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
           res_pen: form.windfall && c >= 6 ? 0.1 : 0,
           cd: form.windfall ? calcScaling(0.125, 0.0125, ult, 'curved') : 0,
         },
@@ -197,7 +197,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.FIRE,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
-          break: 60,
+          break: 20,
           res_pen: form.windfall && c >= 6 ? 0.1 : 0,
           cd: form.windfall ? calcScaling(0.125, 0.0125, ult, 'curved') : 0,
         },

@@ -64,41 +64,41 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Gains the Ward effect for <span class="text-desc">15</span> seconds. When entering combat by attacking enemies or receiving an attack, immediately inflicts <b>Intuit: Cull</b> on a random enemy target, and increases this attack's DMG by <span class="text-desc">80%</span>.`,
     },
     a2: {
-      title: `A2: True Sunder`,
+      title: `True Sunder`,
       content: `When using a Counter, increases Yunli's ATK by <span class="text-desc">30%</span> for <span class="text-desc">1</span> turn.`,
     },
     a4: {
-      title: `A4: Demon Quell`,
+      title: `Demon Quell`,
       content: `While in the Block state, resists the Crowd Control debuff received and reduces DMG received by <span class="text-desc">20%</span>.`,
     },
     a6: {
-      title: `A6: Fiery Wheel`,
+      title: `Fiery Wheel`,
       content: `Upon being attacked, Yunli additionaly regenerates <span class="text-desc">15</span> extra Energy.`,
     },
     c1: {
-      title: `E1: Weathered Blade Does Not Sully`,
+      title: `Weathered Blade Does Not Sully`,
       content: `DMG from <b>Intuit: Slash</b> and <b>Intuit: Cull</b> increases by <span class="text-desc">20%</span>, and <b>Intuit: Cull</b>'s extra DMG Hits increases by <span class="text-desc">3</span>.`,
     },
     c2: {
-      title: `E2: First Luster Breaks Dawn`,
+      title: `First Luster Breaks Dawn`,
       content: `Yunli increases her own CRIT Rate by <span class="text-desc">18%</span> at the end of the turn, lasting until the beginning of the next turn.`,
     },
     c3: {
-      title: `E3: Mastlength Twirls Mountweight`,
+      title: `Mastlength Twirls Mountweight`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Artisan's Ironsong`,
+      title: `Artisan's Ironsong`,
       content: `When Yunli deals DMG via launching a Counter, ignores <span class="text-desc">20%</span> of the target's DEF.`,
     },
     c5: {
-      title: `E5: Blade of Old Outlasts All`,
+      title: `Blade of Old Outlasts All`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Walk in Blade, Talk in Zither`,
+      title: `Walk in Blade, Talk in Zither`,
       content: `After using Ultimate, if the next unit to act is an enemy unit, <b>Intuit: Cull</b> will be triggered regardless of whether it is targeting Yunli, and the Block effect provided by the Ultimate will not be dispelled and will last until the end of the next turn. This effect can only be triggered <span class="text-desc">1</span> per turn.`,
     },
   }
@@ -160,7 +160,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -170,7 +170,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
         },
         {
           name: 'Adjacent',
@@ -178,7 +178,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 30,
+          break: 10,
         },
         {
           name: 'Healing',
@@ -196,7 +196,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.PHYSICAL,
           property: TalentProperty.FUA,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
         },
         {
           name: 'Intuit Adjacent',
@@ -204,7 +204,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.PHYSICAL,
           property: TalentProperty.FUA,
           type: TalentType.ULT,
-          break: 30,
+          break: 10,
         },
         {
           name: `Cull Extra DMG [x${c >= 1 ? 9 : 6}]`,
@@ -229,7 +229,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.PHYSICAL,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
-          break: 30,
+          break: 10,
         },
         {
           name: 'Counter Adjacent',
@@ -237,7 +237,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.PHYSICAL,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
-          break: 30,
+          break: 10,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -248,7 +248,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.FUA,
           type: TalentType.ULT,
           bonus: 0.8,
-          break: 60,
+          break: 20,
         },
         {
           name: 'Intuit Adjacent',
@@ -257,7 +257,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.FUA,
           type: TalentType.ULT,
           bonus: 0.8,
-          break: 30,
+          break: 10,
         },
       ]
 

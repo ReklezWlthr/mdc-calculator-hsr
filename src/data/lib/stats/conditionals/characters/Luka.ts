@@ -69,41 +69,41 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Immediately attacks the enemy. Upon entering battle, Luka deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">50%</span> of his ATK to a random single enemy with a <span class="text-desc">100%</span> <u>base chance</u> to inflict his Skill's <b class="text-hsr-physical">Bleed</b> effect on the target. Then, Luka gains <span class="text-desc">2</span> additional stack of <b>Fighting Will</b>.`,
     },
     a2: {
-      title: `A2: Kinetic Overload`,
+      title: `Kinetic Overload`,
       content: `When the Skill is used, immediately dispels <span class="text-desc">1</span> buff from the enemy target.`,
     },
     a4: {
-      title: `A4: Cycle Braking`,
+      title: `Cycle Braking`,
       content: `For every stack of Fighting Will obtained, additionally regenerates <span class="text-desc">3</span> Energy.`,
     },
     a6: {
-      title: `A6: Crush Fighting Will`,
+      title: `Crush Fighting Will`,
       content: `When using Enhanced Basic ATK, every hit Direct Punch deals has a <span class="text-desc">50%</span> <u>fixed chance</u> for Luka to use <span class="text-desc">1</span> additional hit. This effect does not apply to additional hits generated in this way.`,
     },
     c1: {
-      title: `E1: Fighting Endlessly`,
+      title: `Fighting Endlessly`,
       content: `When Luka takes action, if the target enemy is <b class="text-hsr-physical">Bleeding</b>, increases DMG dealt by Luka by <span class="text-desc">15%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
-      title: `E2: The Enemy is Weak, I am Strong`,
+      title: `The Enemy is Weak, I am Strong`,
       content: `If the Skill hits an enemy target with <b class="text-hsr-physical">Physical</b> Weakness, gain <span class="text-desc">1</span> stack(s) of <b>Fighting Will</b>.`,
     },
     c3: {
-      title: `E3: Born for the Ring`,
+      title: `Born for the Ring`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `E4: Never Turning Back`,
+      title: `Never Turning Back`,
       content: `For every stack of <b>Fighting Will</b> obtained, increases ATK by <span class="text-desc">5%</span>, stacking up to <span class="text-desc">4</span> time(s).`,
     },
     c5: {
-      title: `E5: The Spirit of Wildfire`,
+      title: `The Spirit of Wildfire`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: `E6: A Champion's Applause`,
+      title: `A Champion's Applause`,
       content: `After the Enhanced Basic ATK's "Rising Uppercut" hits a <b class="text-hsr-physical">Bleeding</b> enemy target, the <b class="text-hsr-physical">Bleed</b> status will immediately deal DMG <span class="text-desc">1</span> time equal to <span class="text-desc">8%</span> of the original DMG for every hit of Direct Punch already unleashed during the current Enhanced Basic ATK.`,
     },
   }
@@ -209,7 +209,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               element: Element.PHYSICAL,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 30,
+              break: 10,
             },
           ]
         : [
@@ -219,7 +219,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               element: Element.PHYSICAL,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 30,
+              break: 10,
             },
           ]
       base.SKILL_SCALING = [
@@ -229,7 +229,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
         },
       ]
       base.ULT_SCALING = [
@@ -239,7 +239,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 90,
+          break: 30,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -249,7 +249,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 60,
+          break: 20,
         },
       ]
 

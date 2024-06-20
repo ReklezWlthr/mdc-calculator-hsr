@@ -61,41 +61,41 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       <br />In Simulated Universe, when Ruan Mei has <b>Silken Serenade</b>, the team actively attacking enemies will always be regarded as attacking their Weakness to enter battle, and this attack can reduce all enemies' Toughness regardless of Weakness types. When breaking Weakness, triggers Weakness Break Effect corresponding to the attacker's Type. For every Blessing in possession up to <span class="text-desc">20</span> Blessing(s), additionally increases the Toughness-Reducing DMG of this attack by <span class="text-desc">100%</span>. After breaking an enemy target's Weakness, additionally deals to the enemy target Break DMG equal to <span class="text-desc">100%</span> of Ruan Mei's <b class="text-hsr-ice">Ice Break DMG</b>.`,
     },
     a2: {
-      title: `A2: Inert Respiration`,
+      title: `Inert Respiration`,
       content: `Increases Break Effect by <span class="text-desc">20%</span> for all allies.`,
     },
     a4: {
-      title: `A4: Days Wane, Thoughts Wax`,
+      title: `Days Wane, Thoughts Wax`,
       content: `Ruan Mei regenerates <span class="text-desc">5</span> Energy at the start of her turn.`,
     },
     a6: {
-      title: `A6: Candle Lights on Still Waters`,
+      title: `Candle Lights on Still Waters`,
       content: `In battle, for every <span class="text-desc">10%</span> of Ruan Mei's Break Effect that exceeds <span class="text-desc">120%</span>, her Skill additionally increases allies' DMG by <span class="text-desc">6%</span>, up to a maximum of <span class="text-desc">36%</span>.`,
     },
     c1: {
-      title: `E1: Neuronic Embroidery`,
+      title: `Neuronic Embroidery`,
       content: `While the Ultimate's field is deployed, the DMG dealt by all allies ignores <span class="text-desc">20%</span> of the target's DEF.`,
     },
     c2: {
-      title: `E2: Reedside Promenade`,
+      title: `Reedside Promenade`,
       content: `With Ruan Mei on the field, all allies increase their ATK by <span class="text-desc">40%</span> when dealing DMG to enemies with Weakness Break.`,
     },
     c3: {
-      title: `E3: Viridescent Pirouette`,
+      title: `Viridescent Pirouette`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `E4: Chatoyant Éclat`,
+      title: `Chatoyant Éclat`,
       content: `When an enemy target's Weakness is Broken, Ruan Mei's Break Effect increases by <span class="text-desc">100%</span> for <span class="text-desc">3</span> turn(s).`,
     },
     c5: {
-      title: `E5: Languid Barrette`,
+      title: `Languid Barrette`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: `E6: Sash Cascade`,
+      title: `Sash Cascade`,
       content: `Extends the duration of the Ultimate's field by <span class="text-desc">1</span> turn(s). The Talent's Break DMG multiplier additionally increases by <span class="text-desc">200%</span>.`,
     },
   }
@@ -159,7 +159,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.ULT_SCALING = [

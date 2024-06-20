@@ -55,41 +55,41 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       content: `After the Technique is used, the <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action in the first turn increases by <span class="text-desc">3</span> at the start of the next battle.`,
     },
     a2: {
-      title: `A2: Battalia Crush`,
+      title: `Battalia Crush`,
       content: `If the <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action is greater or equal to <span class="text-desc">6</span> in the next turn, its CRIT DMG increases by <span class="text-desc">25%</span> for the next turn.`,
     },
     a4: {
-      title: `A4: Savant Providence`,
+      title: `Savant Providence`,
       content: `At the start of the battle, immediately regenerates <span class="text-desc">15</span> Energy.`,
     },
     a6: {
-      title: `A6: War Marshal`,
+      title: `War Marshal`,
       content: `After the Skill is used, the CRIT Rate increases by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c1: {
-      title: `E1: Slash, Seas Split`,
+      title: `Slash, Seas Split`,
       content: `When <b class="text-hsr-lightning">Lightning-Lord</b> attacks, the DMG multiplier on enemies adjacent to the target enemy increases by an extra amount equal to <span class="text-desc">25%</span> of the DMG multiplier against the target enemy.`,
     },
     c2: {
-      title: `E2: Swing, Skies Squashed`,
+      title: `Swing, Skies Squashed`,
       content: `After <b class="text-hsr-lightning">Lightning-Lord</b> takes action, DMG caused by Jing Yuan's Basic ATK, Skill, and Ultimate increases by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
-      title: `E3: Strike, Suns Subdued`,
+      title: `Strike, Suns Subdued`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Spin, Stars Sieged`,
+      title: `Spin, Stars Sieged`,
       content: `For each hit performed by the <b class="text-hsr-lightning">Lightning-Lord</b> when it takes action, Jing Yuan regenerates <span class="text-desc">2</span> Energy.`,
     },
     c5: {
-      title: `E5: Stride, Spoils Seized`,
+      title: `Stride, Spoils Seized`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Sweep, Souls Slain`,
+      title: `Sweep, Souls Slain`,
       content: `Each hit performed by the <b class="text-hsr-lightning">Lightning-Lord</b> when it takes action will make the target enemy <b>Vulnerable</b>.
       <br />While <b>Vulnerable</b>, enemies receive <span class="text-desc">12%</span> more DMG until the end of the <b class="text-hsr-lightning">Lightning-Lord</b>'s current turn, stacking up to <span class="text-desc">3</span> time(s).`,
     },
@@ -156,7 +156,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -166,7 +166,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 30,
+          break: 10,
         },
       ]
       base.ULT_SCALING = [
@@ -176,7 +176,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
         },
       ]
       const vul =
@@ -191,7 +191,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           element: Element.LIGHTNING,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
-          break: 15,
+          break: 5,
           cd: form.jingyuan_talent >= 6 && a.a2 ? 0.25 : 0,
           vul,
         },
@@ -212,7 +212,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           element: Element.LIGHTNING,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
-          break: 15 * form.jingyuan_talent,
+          break: 5 * form.jingyuan_talent,
           multiplier: form.jingyuan_talent,
           cd: form.jingyuan_talent >= 6 && a.a2 ? 0.25 : 0,
           vul,

@@ -58,41 +58,41 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `After using Technique, creates a special dimension around the character that lasts for <span class="text-desc">15</span> seconds. Enemies within this dimension will not attack Robin and will follow Robin while the dimension is active. After entering battle while the dimension is active, Robin regenerates <span class="text-desc">5</span> Energy at the start of each wave. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
-      title: `A2: Coloratura Cadenza`,
+      title: `Coloratura Cadenza`,
       content: `When the battle begins, this character's action is Advanced Forward by <span class="text-desc">25%</span>.`,
     },
     a4: {
-      title: `A4: Impromptu Flourish`,
+      title: `Impromptu Flourish`,
       content: `While the Concerto state is active, the CRIT DMG dealt when all allies launch follow-up attacks increases by <span class="text-desc">25%</span>.`,
     },
     a6: {
-      title: `A6: Sequential Passage`,
+      title: `Sequential Passage`,
       content: `When using Skill, additionally regenerates <span class="text-desc">5</span> Energy.`,
     },
     c1: {
-      title: `E1: Land of Smiles`,
+      title: `Land of Smiles`,
       content: `While the <b>Concerto</b> state is active, all allies' All-Type RES PEN increases by <span class="text-desc">24%</span>.`,
     },
     c2: {
-      title: `E2: Afternoon Tea For Two`,
+      title: `Afternoon Tea For Two`,
       content: `While the <b>Concerto</b> state is active, all allies' SPD increases by <span class="text-desc">16%</span>. The Talent's Energy Regeneration effect additionally increases by <span class="text-desc">1</span>.`,
     },
     c3: {
-      title: `E3: Inverted Tuning`,
+      title: `Inverted Tuning`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `E4: Raindrop Key`,
+      title: `Raindrop Key`,
       content: `When using the Ultimate, dispels Crowd Control debuffs from all allies. While Robin is in the <b>Concerto</b> state, increases the Effect RES of all allies by <span class="text-desc">50%</span>.`,
     },
     c5: {
-      title: `E5: Lonestar's Lament`,
+      title: `Lonestar's Lament`,
       content: `<br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Moonless Midnight`,
+      title: `Moonless Midnight`,
       content: `While the <b>Concerto</b> state is active, the CRIT DMG of the Additional <b class="text-hsr-physical">Physical DMG</b> caused by the Ultimate increases by <span class="text-desc">450%</span>. The effect of Moonless Midnight can trigger up to <span class="text-desc">8</span> time(s). And the trigger count resets each time the Ultimate is used.`,
     },
   }
@@ -158,7 +158,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
 

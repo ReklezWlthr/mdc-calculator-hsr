@@ -54,41 +54,41 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `After using her Technique, Yukong enters Sprint mode for <span class="text-desc">20</span> seconds. In Sprint mode, her Movement SPD increases by <span class="text-desc">35%</span>, and Yukong gains <span class="text-desc">2</span> stack(s) of "Roaring Bowstrings" when she enters battle by attacking enemies.`,
     },
     a2: {
-      title: `A2: Archerion`,
+      title: `Archerion`,
       content: `Yukong can resist <span class="text-desc">1</span> debuff application for <span class="text-desc">1</span> time. This effect can be triggered again in <span class="text-desc">2</span> turn(s).`,
     },
     a4: {
-      title: `A4: Bowmaster`,
+      title: `Bowmaster`,
       content: `When Yukong is on the field, <b class="text-hsr-imaginary">Imaginary DMG</b> dealt by all allies increases by <span class="text-desc">12%</span>.`,
     },
     a6: {
-      title: `A6: Majestas`,
+      title: `Majestas`,
       content: `When "Roaring Bowstrings" is active, Yukong regenerates <span class="text-desc">2</span> additional Energy every time an ally takes action.`,
     },
     c1: {
-      title: `E1: Aerial Marshal`,
+      title: `Aerial Marshal`,
       content: `At the start of battle, increases the SPD of all allies by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
-      title: `E2: Skyward Command`,
+      title: `Skyward Command`,
       content: `When any ally's current energy is equal to its energy limit, Yukong regenerates an additional <span class="text-desc">5</span> energy. This effect can only be triggered once for each ally. The trigger count is reset after Yukong casts her Ultimate.`,
     },
     c3: {
-      title: `E3: Torrential Fusillade`,
+      title: `Torrential Fusillade`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Zephyrean Echoes`,
+      title: `Zephyrean Echoes`,
       content: `When "Roaring Bowstrings" is active, Yukong deals <span class="text-desc">30%</span> more DMG to enemies.`,
     },
     c5: {
-      title: `E5: August Deadshot`,
+      title: `August Deadshot`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Bowstring Thunderclap`,
+      title: `Bowstring Thunderclap`,
       content: `When Yukong uses her Ultimate, she immediately gains <span class="text-desc">1</span> stack(s) of "Roaring Bowstrings."`,
     },
   }
@@ -169,7 +169,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: form.yukong_talent ? 60 : 30,
+          break: form.yukong_talent ? 20 : 10,
         },
       ]
       base.ULT_SCALING = [
@@ -179,7 +179,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 90,
+          break: 30,
         },
       ]
 

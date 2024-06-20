@@ -57,41 +57,41 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       <br />When initiating combat against a <b>Blinded</b> enemy, there is a <span class="text-desc">100%</span> <u>fixed chance</u> to delay all enemies' action by <span class="text-desc">25%</span>.`,
     },
     a2: {
-      title: `A2: Trap`,
+      title: `Trap`,
       content: `Extends the duration of <b class="text-hsr-wind">Wind Shear</b> caused by Talent by <span class="text-desc">1</span> turn(s).`,
     },
     a4: {
-      title: `A4: Defensive Position`,
+      title: `Defensive Position`,
       content: `Using Ultimate additionally regenerates <span class="text-desc">10</span> Energy.`,
     },
     a6: {
-      title: `A6: Spice Up`,
+      title: `Spice Up`,
       content: `Enemies with <b class="text-hsr-wind">Wind Shear</b> effect deal <span class="text-desc">15%</span> less DMG to Sampo.`,
     },
     c1: {
-      title: `E1: Rising Love`,
+      title: `Rising Love`,
       content: `When using Skill, deals DMG for <span class="text-desc">1</span> extra time(s) to a random enemy.`,
     },
     c2: {
-      title: `E2: Infectious Enthusiasm`,
+      title: `Infectious Enthusiasm`,
       content: `Defeating an enemy with <b class="text-hsr-wind">Wind Shear</b> has a <span class="text-desc">100%</span> <u>base chance</u> to inflict all enemies with <span class="text-desc">1</span> stack(s) of <b class="text-hsr-wind">Wind Shear</b>, equivalent to the Talent's <b class="text-hsr-wind">Wind Shear</b>.`,
     },
     c3: {
-      title: `E3: Big Money!`,
+      title: `Big Money!`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: The Deeper the Love, the Stronger the Hate`,
+      title: `The Deeper the Love, the Stronger the Hate`,
       content: `When Skill hits an enemy with <span class="text-desc">5</span> or more stack(s) of <b class="text-hsr-wind">Wind Shear</b>, the enemy immediately takes <span class="text-desc">8%</span> of current <b class="text-hsr-wind">Wind Shear</b> DMG.`,
     },
     c5: {
-      title: `E5: Huuuuge Money!`,
+      title: `Huuuuge Money!`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Increased Spending`,
+      title: `Increased Spending`,
       content: `Talent's <b class="text-hsr-wind">Wind Shear</b> DMG multiplier increases by <span class="text-desc">15%</span>.`,
     },
   }
@@ -155,7 +155,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -165,7 +165,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 30,
+          break: 10,
         },
         {
           name: `Bounce [x${c >= 1 ? 5 : 4}]`,
@@ -173,7 +173,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 15,
+          break: 5,
         },
       ]
       base.ULT_SCALING = [
@@ -183,7 +183,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
         },
       ]
       const wind_shear = {

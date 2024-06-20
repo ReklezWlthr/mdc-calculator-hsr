@@ -53,41 +53,41 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Immediately attacks the enemy. Upon entering battle, Pela deals <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">80%</span> of her ATK to a random enemy, with a <span class="text-desc">100%</span> <u>base chance</u> of lowering the DEF of all enemies by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
-      title: `A2: Bash`,
+      title: `Bash`,
       content: `Deals <span class="text-desc">20%</span> more DMG to debuffed enemies.`,
     },
     a4: {
-      title: `A4: The Secret Strategy`,
+      title: `The Secret Strategy`,
       content: `When Pela is on the battlefield, all allies' Effect Hit Rate increases by <span class="text-desc">10%</span>.`,
     },
     a6: {
-      title: `A6: Wipe Out`,
+      title: `Wipe Out`,
       content: `Using Skill to remove buff(s) increases the DMG of the next attack by <span class="text-desc">20%</span>.`,
     },
     c1: {
-      title: `E1: Victory Report`,
+      title: `Victory Report`,
       content: `When an enemy is defeated, Pela regenerates <span class="text-desc">5</span> Energy.`,
     },
     c2: {
-      title: `E2: Adamant Charge`,
+      title: `Adamant Charge`,
       content: `Using Skill to remove buff(s) increases SPD by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
-      title: `E3: Suppressive Force`,
+      title: `Suppressive Force`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'E4: Full Analysis',
+      title: 'Full Analysis',
       content: `When using Skill, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce the target enemy's <b class="text-hsr-ice">Ice RES</b> by <span class="text-desc">12%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c5: {
-      title: `E5: Absolute Jeopardy`,
+      title: `Absolute Jeopardy`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Feeble Pursuit`,
+      title: `Feeble Pursuit`,
       content: `When Pela attacks a debuffed enemy, she deals Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">40%</span> of Pela's ATK to the enemy.`,
     },
   }
@@ -173,7 +173,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -183,7 +183,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
         },
       ]
       base.ULT_SCALING = [
@@ -194,7 +194,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -204,7 +204,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 60,
+          break: 20,
         },
       ]
 
@@ -257,7 +257,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.ICE,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
-          break: 60,
+          break: 20,
         })
 
       return base

@@ -58,41 +58,41 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `After the Technique is used, the Talent will be immediately triggered at the start of the next battle.`,
     },
     a2: {
-      title: 'A2: Cleansing Revival',
+      title: 'Cleansing Revival',
       content: `When the Skill's effect is triggered, removes <span class="text-desc">1</span> debuff(s) from a target ally.`,
     },
     a4: {
-      title: 'A4: Sanctified',
+      title: 'Sanctified',
       content: `When any enemy in the Field is attacked by an ally, all allies (except the attacker) restore HP equal to <span class="text-desc">7%</span> of Luocha's ATK plus <span class="text-desc">93</span>.`,
     },
     a6: {
-      title: 'A6: Through the Valley',
+      title: 'Through the Valley',
       content: `The chance to resist Crowd Control debuffs increases by <span class="text-desc">70%</span>.`,
     },
     c1: {
-      title: 'E1: Ablution of the Quick',
+      title: 'Ablution of the Quick',
       content: `While the Field is active, ATK of all allies increases by <span class="text-desc">20%</span>.`,
     },
     c2: {
-      title: 'E2: Bestowal From the Pure',
+      title: 'Bestowal From the Pure',
       content: `When his Skill is triggered, if the target ally's HP is lower than <span class="text-desc">50%</span>, Luocha's Outgoing Healing increases by <span class="text-desc">30%</span>. If the target ally's HP is at <span class="text-desc">50%</span> or higher, the ally receives a <b class="text-indigo-300">Shield</b> that can absorb DMG equal to <span class="text-desc">10%</span> of Luocha's ATK plus <span class="text-desc">240</span>, lasting for <span class="text-desc">2</span> turns.`,
     },
     c3: {
-      title: 'E3: Surveyal by the Fool',
+      title: 'Surveyal by the Fool',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'E4: Heavy Lies the Crown',
+      title: 'Heavy Lies the Crown',
       content: `When Luocha's <b>Field</b> is active, enemies become Weakened and deal <span class="text-desc">12%</span> less DMG.`,
     },
     c5: {
-      title: `E5: Cicatrix 'Neath the Pain`,
+      title: `Cicatrix 'Neath the Pain`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'E6: Reunion With the Dust',
+      title: 'Reunion With the Dust',
       content: `When Ultimate is used, there is a <span class="text-desc">100%</span> <u>fixed chance</u> to reduce all enemies' All-Type RES by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
   }
@@ -154,7 +154,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
           energy: 20,
         },
       ]
@@ -175,7 +175,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
           energy: 5,
         },
       ]

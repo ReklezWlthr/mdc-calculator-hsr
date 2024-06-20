@@ -49,7 +49,7 @@ export const TagSelectInput = ({
           bgColor="bg-light-2"
           textColor="text-dark-0"
           width="w-fit"
-          iconRight="fa-regular fa-times text-dark-3"
+          iconRight="fa-solid fa-times text-dark-3"
           actionIconRight={() => onToggleSelection(_.find(options, { value: item })?.value || '')}
         />
       ))

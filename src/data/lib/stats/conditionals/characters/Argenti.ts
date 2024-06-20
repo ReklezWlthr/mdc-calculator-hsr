@@ -59,41 +59,41 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       <br />When attacking a <b>Dazed</b> enemy to enter combat, deals <b class="text-hsr-physical">Physical DMG</b> to all enemies equal to <span class="text-desc">80%</span> of Argenti's ATK and regenerates his Energy by <span class="text-desc">15</span>.`,
     },
     a2: {
-      title: 'A2: Piety',
+      title: 'Piety',
       content: `At the start of a turn, immediately gains <span class="text-desc">1</span> stack(s) of <b>Apotheosis</b>.`,
     },
     a4: {
-      title: 'A4: Generosity',
+      title: 'Generosity',
       content: `When enemy targets enter battle, immediately regenerates <span class="text-desc">2</span> Energy for self.`,
     },
     a6: {
-      title: 'A6: Courage',
+      title: 'Courage',
       content: `Deals <span class="text-desc">15%</span> more DMG to enemies whose HP percentage is <span class="text-desc">50%</span> or less.`,
     },
     c1: {
-      title: 'E1: Suspension of Disbelief',
+      title: 'Suspension of Disbelief',
       content: `The Cipher effect applied by the Ultimate lasts for <span class="text-desc">1</span> extra turn. All allies affected by Cipher have their ATK increased by <span class="text-desc">40%</span>.`,
     },
     c2: {
-      title: 'E2: Purely Fictitious',
+      title: 'Purely Fictitious',
       content: `Each Talent stack allows allies to ignore <span class="text-desc">8%</span> of the enemy target's DEF when dealing DMG to enemies.`,
     },
     c3: {
-      title: 'E3: Pipedream',
+      title: 'Pipedream',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'E4: Flitting Phantasm',
+      title: 'Flitting Phantasm',
       content: `The Ultimate recovers <span class="text-desc">1</span> more Skill Point. The Talent additionally increases Max Skill Points by <span class="text-desc">1</span>.`,
     },
     c5: {
-      title: 'E5: Parallax Truth',
+      title: 'Parallax Truth',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'E6: Narrative Polysemy',
+      title: 'Narrative Polysemy',
       content: `The CRIT DMG Boost effect of Sparkle's Skill additionally increases by <span class="text-desc">30%</span> of Sparkle's CRIT DMG, and when she uses her Skill, the CRIT DMG Boost effect will apply to all allies currently with Cipher. When Sparkle uses her Ultimate, this effect will spread to all allies with Cipher should the allied target have the CRIT DMG increase effect provided by the Skill active on them.`,
     },
   }
@@ -164,7 +164,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -174,7 +174,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 30,
+          break: 10,
         },
       ]
 
@@ -186,7 +186,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               element: Element.PHYSICAL,
               property: TalentProperty.NORMAL,
               type: TalentType.ULT,
-              break: 60,
+              break: 20,
             },
             {
               name: 'Bounce [x6]',
@@ -194,7 +194,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               element: Element.PHYSICAL,
               property: TalentProperty.NORMAL,
               type: TalentType.ULT,
-              break: 15,
+              break: 5,
             },
             {
               name: 'Max Single Target DMG',
@@ -207,7 +207,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               element: Element.PHYSICAL,
               property: TalentProperty.NORMAL,
               type: TalentType.ULT,
-              break: 90 + 15 * 6,
+              break: 20 + 5 * 6,
             },
           ]
         : [
@@ -217,7 +217,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               element: Element.PHYSICAL,
               property: TalentProperty.NORMAL,
               type: TalentType.ULT,
-              break: 60,
+              break: 20,
             },
           ]
       base.TECHNIQUE_SCALING.push({

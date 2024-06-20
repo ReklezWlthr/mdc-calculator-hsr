@@ -58,41 +58,41 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Immediately attacks the enemy. After entering combat, deals <span class="text-desc">80%</span> of Xueyi's ATK as <b class="text-hsr-quantum">Quantum DMG</b> to all enemies.`,
     },
     a2: {
-      title: `A2: Clairvoyant Loom`,
+      title: `Clairvoyant Loom`,
       content: `Increases DMG dealt by this unit by an amount equal to <span class="text-desc">100%</span> of Break Effect, up to a maximum DMG increase of <span class="text-desc">2400%</span>.`,
     },
     a4: {
-      title: `A4: Intrepid Rollerbearings`,
+      title: `Intrepid Rollerbearings`,
       content: `If the enemy target's Toughness is equal to or higher than <span class="text-desc">50%</span> of their Max Toughness, deals <span class="text-desc">10%</span> more DMG when using Ultimate.`,
     },
     a6: {
-      title: `A6: Perspicacious Mainframe`,
+      title: `Perspicacious Mainframe`,
       content: `Xueyi will keep a tally of the number of <b>Karma</b> stacks that exceed the max stack limit, up to <span class="text-desc">6</span> stacks in the tally. After Xueyi's Talent is triggered, she will gain a corresponding number of tallied <b>Karma</b> stacks.`,
     },
     c1: {
-      title: `E1: Dvesha, Inhibited`,
+      title: `Dvesha, Inhibited`,
       content: `Increases the DMG dealt by the Talent's follow-up attack by <span class="text-desc">40%</span>.`,
     },
     c2: {
-      title: `E2: Klesha, Breached`,
+      title: `Klesha, Breached`,
       content: `Talent's follow-up attack reduces enemy Toughness regardless of Weakness types. At the same time, restores Xueyi's HP by an amount equal to <span class="text-desc">5%</span> of her Max HP. When breaking Weakness, triggers the <b class="text-hsr-quantum">Quantum</b> Break Effect.`,
     },
     c3: {
-      title: `E3: Duḥkha, Ceased`,
+      title: `Duḥkha, Ceased`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Karma, Severed`,
+      title: `Karma, Severed`,
       content: `When using Ultimate, increases Break Effect by <span class="text-desc">40%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c5: {
-      title: `E5: Deva, Enthralled`,
+      title: `Deva, Enthralled`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Saṃsāra, Mastered`,
+      title: `Saṃsāra, Mastered`,
       content: `The max stack limit for <b>Karma</b> decreases to <span class="text-desc">6</span>.`,
     },
   }
@@ -157,7 +157,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -167,7 +167,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
         },
         {
           name: 'Adjacent',
@@ -175,7 +175,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 30,
+          break: 10,
         },
       ]
       base.ULT_SCALING = [
@@ -185,7 +185,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 120,
+          break: 40,
         },
       ]
       base.TALENT_SCALING = [
@@ -195,7 +195,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.QUANTUM,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
-          break: 15,
+          break: 5,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -205,7 +205,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 60,
+          break: 20,
         },
       ]
 

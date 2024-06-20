@@ -58,41 +58,41 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       <br />While <b class="text-hsr-ice">Frozen</b>, the enemy cannot take action and will take Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">50%</span> of March 7th's ATK at the beginning of each turn.`,
     },
     a2: {
-      title: 'A2: Purify',
+      title: 'Purify',
       content: `Skill removes <span class="text-desc">1</span> debuff from an ally.`,
     },
     a4: {
-      title: 'A4: Reinforce',
+      title: 'Reinforce',
       content: `The duration of the <b class="text-indigo-300">Shield</b> generated from Skill is extended for <span class="text-desc">1</span> turn(s).`,
     },
     a6: {
-      title: 'A6: Ice Spell',
+      title: 'Ice Spell',
       content: `Increases Ultimate's <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> enemies by <span class="text-desc">15%</span>.`,
     },
     c1: {
-      title: 'E1: Memory of You',
+      title: 'Memory of You',
       content: `Every time March 7th's Ultimate <b class="text-hsr-ice">Freezes</b> a target, she regenerates <span class="text-desc">6</span> Energy.`,
     },
     c2: {
-      title: `E2: Memory of It`,
+      title: `Memory of It`,
       content: `Upon entering battle, grants a <b class="text-indigo-300">Shield</b> equal to <span class="text-desc">24%</span> of March 7th's DEF plus <span class="text-desc">320</span> to the ally with the lowest HP percentage, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c3: {
-      title: 'E3: Memory of Everything',
+      title: 'Memory of Everything',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'E4: Never Forfeit Again',
+      title: 'Never Forfeit Again',
       content: `The Talent's Counter effect can be triggered <span class="text-desc">1</span> more time in each turn. The DMG dealt by Counter increases by an amount that is equal to <span class="text-desc">30%</span> of March 7th's DEF.`,
     },
     c5: {
-      title: `E5: Never Forget Again`,
+      title: `Never Forget Again`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'E6: Just Like This, Always...',
+      title: 'Just Like This, Always...',
       content: `Allies under the protection of the <b class="text-indigo-300">Shield</b> granted by the Skill restores HP equal to <span class="text-desc">4%</span> of their Max HP plus <span class="text-desc">106</span> at the beginning of each turn.`,
     },
   }
@@ -137,7 +137,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
           energy: 20,
         },
       ]
@@ -158,7 +158,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
           energy: 5,
         },
         {

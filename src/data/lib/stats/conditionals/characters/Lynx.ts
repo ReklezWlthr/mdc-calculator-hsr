@@ -65,41 +65,41 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `After Lynx uses her Technique, at the start of the next battle, all allies are granted her Talent's continuous healing effect, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
-      title: `A2: Advance Surveying`,
+      title: `Advance Surveying`,
       content: `After a target with "Survival Response" is hit, Lynx regenerates <span class="text-desc">2</span> Energy immediately.`,
     },
     a4: {
-      title: `A4: Exploration Techniques`,
+      title: `Exploration Techniques`,
       content: `Increases the chance to resist Crowd Control debuffs by <span class="text-desc">35%</span>.`,
     },
     a6: {
-      title: `A6: Survival in the Extreme`,
+      title: `Survival in the Extreme`,
       content: `Extends the duration of the continuous healing effect granted by Talent for <span class="text-desc">1</span> turn(s).`,
     },
     c1: {
-      title: `E1: Morning of Snow Hike`,
+      title: `Morning of Snow Hike`,
       content: `When healing allies with HP equal to or lower than <span class="text-desc">50%</span>, Lynx's Outgoing Healing increases by <span class="text-desc">20%</span>. This effect also works on continuous healing.`,
     },
     c2: {
-      title: `E2: Noon of Portable Furnace`,
+      title: `Noon of Portable Furnace`,
       content: `A target with "Survival Response" can resist debuff application for <span class="text-desc">1</span> time(s).`,
     },
     c3: {
-      title: `E3: Afternoon of Avalanche Beacon`,
+      title: `Afternoon of Avalanche Beacon`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Dusk of Warm Campfire`,
+      title: `Dusk of Warm Campfire`,
       content: `When "Survival Response" is gained, increases the target's ATK by an amount equal to <span class="text-desc">3%</span> of Lynx's Max HP for <span class="text-desc">1</span> turn(s).`,
     },
     c5: {
-      title: `E5: Night of Aurora Tea`,
+      title: `Night of Aurora Tea`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Dawn of Explorers' Chart`,
+      title: `Dawn of Explorers' Chart`,
       content: `Additionally boosts the Max HP increasing effect of "Survival Response" by an amount equal to <span class="text-desc">6%</span> of Lynx's Max HP and increases Effect RES by <span class="text-desc">30%</span>.`,
     },
   }
@@ -153,7 +153,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [

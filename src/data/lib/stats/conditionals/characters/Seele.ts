@@ -50,41 +50,41 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `After using her Technique, Seele gains Stealth for <span class="text-desc">20</span> second(s). While Stealth is active, Seele cannot be detected by enemies. And when entering battle by attacking enemies, Seele will immediately enter the buffed state.`,
     },
     a2: {
-      title: 'A2: Nightshade',
+      title: 'Nightshade',
       content: `When current HP percentage is <span class="text-desc">50%</span> or lower, reduces the chance of being attacked by enemies.`,
     },
     a4: {
-      title: 'A4: Lacerate',
+      title: 'Lacerate',
       content: `While Seele is in the buffed state, her <b class="text-hsr-quantum">Quantum RES PEN</b> increases by <span class="text-desc">20%</span>.`,
     },
     a6: {
-      title: 'A6: Rippling Waves',
+      title: 'Rippling Waves',
       content: `After using a Basic ATK, Seele's next action will be Advanced Forward by <span class="text-desc">20%</span>.`,
     },
     c1: {
-      title: 'E1: Extirpating Slash',
+      title: 'Extirpating Slash',
       content: `When dealing DMG to an enemy whose HP percentage is <span class="text-desc">80%</span> or lower, CRIT Rate increases by <span class="text-desc">15%</span>.`,
     },
     c2: {
-      title: 'E2: Dancing Butterfly',
+      title: 'Dancing Butterfly',
       content: `The SPD Boost effect of Seele's Skill can stack up to <span class="text-desc">2</span> time(s).`,
     },
     c3: {
-      title: 'E3: Dazzling Tumult',
+      title: 'Dazzling Tumult',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: 'E4: Flitting Phantasm',
+      title: 'Flitting Phantasm',
       content: `Seele regenerates <span class="text-desc">15</span> Energy when she defeats an enemy.`,
     },
     c5: {
-      title: 'E5: Piercing Shards',
+      title: 'Piercing Shards',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Attack Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: 'E6: Shattering Shambles',
+      title: 'Shattering Shambles',
       content: `After Seele uses her Ultimate, inflict the target enemy with Butterfly Flurry for <span class="text-desc">1</span> turn(s). Enemies suffering from Butterfly Flurry will take Additional Quantum DMG equal to <span class="text-desc">15%</span> of Seele's Ultimate DMG every time they are attacked. If the target enemy is defeated by the Butterfly Flurry DMG triggered by other allies' attacks, Seele's Talent will not be triggered.
       <br />When Seele is knocked down, the Butterfly Flurry inflicted on the enemies will be removed.`,
     },
@@ -171,7 +171,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
           energy: 20,
         },
       ]
@@ -182,7 +182,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
           energy: 30,
         },
       ]
@@ -193,7 +193,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 90,
+          break: 30,
           energy: 5,
         },
       ]

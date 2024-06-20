@@ -71,41 +71,41 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       content: `After this Technique is used, there is a <span class="text-desc">150%</span> <u>base chance</u> for each enemy to be inflicted with <span class="text-desc">1</span> stack of <b>Arcana</b> at the start of the next battle. For each successful application of <b>Arcana</b> on a target, inflicts another stack of <b>Arcana</b> on the same target. This process repeats until <b>Arcana</b> fails to be inflicted on this target. For each successive application of <b>Arcana</b> on a target, its <u>base chance</u> of success is equal to <span class="text-desc">50%</span> of the <u>base chance</u> of the previous successful infliction of <b>Arcana</b> on that target.`,
     },
     a2: {
-      title: `A2: Viscera's Disquiet`,
+      title: `Viscera's Disquiet`,
       content: `After using the Skill to hit an enemy that has <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-physical">Bleed</b>, <b class="text-hsr-fire">Burn</b>, or <b class="text-hsr-lightning">Shock</b>, each of these debuffs respectively has a <span class="text-desc">65%</span> <u>base chance</u> of inflicting 1 extra stack of <b>Arcana</b>.`,
     },
     a4: {
-      title: `A4: Goblet's Dredges`,
+      title: `Goblet's Dredges`,
       content: `There is a <span class="text-desc">65%</span> <u>base chance</u> to inflict <span class="text-desc">1</span> stack of <b>Arcana</b> when a target enters battle. Every time an enemy target receives DoT during a single attack by an ally, there is a <span class="text-desc">65%</span> <u>base chance</u> for the target to be inflicted with <span class="text-desc">1</span> stack of <b>Arcana</b>, stacking up to <span class="text-desc">3</span> time(s) during <span class="text-desc">1</span> single attack.`,
     },
     a6: {
-      title: `A6: Candleflame's Portent`,
+      title: `Candleflame's Portent`,
       content: `Increases this unit's DMG by an amount equal to <span class="text-desc">60%</span> of Effect Hit Rate, up to a maximum DMG increase of <span class="text-desc">72%</span>.`,
     },
     c1: {
-      title: 'E1: Seven Pillars of Wisdom',
+      title: 'Seven Pillars of Wisdom',
       content: `While Black Swan is active in battle, enemies afflicted with <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-physical">Bleed</b>, <b class="text-hsr-fire">Burn</b>, or <b class="text-hsr-lightning">Shock</b> will have their corresponding <b class="text-hsr-wind">Wind</b>, <b class="text-hsr-physical">Physical</b>, <b class="text-hsr-fire">Fire</b>, or <b class="text-hsr-lightning">Lightning RES</b> respectively reduced by <span class="text-desc">25%</span>.`,
     },
     c2: {
-      title: `E2: Weep Not For Me, My Lamb`,
+      title: `Weep Not For Me, My Lamb`,
       content: `When an enemy target afflicted with Arcana is defeated, there is a <span class="text-desc">100%</span> <u>base chance</u> of inflicting <span class="text-desc">6</span> stack(s) of <b>Arcana</b> on adjacent targets.`,
     },
     c3: {
-      title: 'E3: As Above, So Below',
+      title: 'As Above, So Below',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: 'E4: In Tears We Gift',
+      title: 'In Tears We Gift',
       content: `While in the <b>Epiphany</b> state, enemy targets have their Effect RES reduced by <span class="text-desc">10%</span>. And at the start of their turn or when they get defeated, Black Swan regenerates <span class="text-desc">8</span> Energy. This Energy Regeneration effect can only trigger up to <span class="text-desc">1</span> time while <b>Epiphany</b> lasts. And this trigger count resets after the enemy gets inflicted with <b>Epiphany</b> again.`,
     },
     c5: {
-      title: `E5: Linnutee Flyway`,
+      title: `Linnutee Flyway`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: 'E6: Pantheon Merciful, Masses Pitiful',
+      title: 'Pantheon Merciful, Masses Pitiful',
       content: `When enemy targets get attacked by Black Swan's allies, Black Swan has a <span class="text-desc">65%</span> <u>base chance</u> of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b> on the target.
       <br />Each time Black Swan inflicts <b>Arcana</b> on an enemy target, there is a <span class="text-desc">50%</span> <u>fixed chance</u> to additionally increase the number of <b>Arcana</b> stacks afflicted this time by <span class="text-desc">1</span>.`,
     },
@@ -178,7 +178,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
           energy: 20,
           chance: { base: calcScaling(0.5, 0.03, basic, 'linear'), fixed: false },
         },
@@ -190,7 +190,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
           energy: 30,
           chance: { base: 1, fixed: false },
         },
@@ -200,7 +200,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 30,
+          break: 10,
           energy: 30,
           chance: { base: 1, fixed: false },
         },
@@ -212,7 +212,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
           energy: 5,
         },
       ]

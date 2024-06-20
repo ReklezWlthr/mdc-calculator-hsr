@@ -73,7 +73,7 @@ export const SuperBreakSubRows = observer(({ scaling }: ScalingSubRowsProps) => 
   const enemyMod = isDamage ? defMult * resMult * vulMult : 1
 
   const breakLevel = BreakBaseLevel[teamStore.characters[index]?.level - 1]
-  const toughnessMult = (scaling.break * (1 + stats.getValue(StatsObjectKeys.BREAK_EFF))) / 30
+  const toughnessMult = (scaling.break * (1 + stats.getValue(StatsObjectKeys.BREAK_EFF))) / 10
 
   const raw = breakLevel * toughnessMult
   const dmg =

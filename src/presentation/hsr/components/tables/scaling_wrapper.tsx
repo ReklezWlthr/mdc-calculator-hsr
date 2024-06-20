@@ -26,6 +26,8 @@ interface TalentIconProps {
   showUpgrade?: boolean
   upgraded?: number
   active?: boolean
+  type?: string
+  energy?: number
 }
 
 export const TalentIcon = observer(
@@ -39,7 +41,9 @@ export const TalentIcon = observer(
     showLevel,
     upgraded,
     showUpgrade,
+    type,
     active = true,
+    energy,
   }: TalentIconProps) => {
     const iconColor = {
       [Element.FIRE]: 'bg-hsr-fire ring-hsr-fire',
@@ -75,7 +79,29 @@ export const TalentIcon = observer(
 
     return (
       <Tooltip
-        title={talent?.title}
+        title={
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-xs font-normal opacity-75 text-gray">{type}</p>
+              <p>{talent?.title}</p>
+            </div>
+            <div className="flex flex-col items-end">
+              {!!level && (
+                <p className="text-xs font-normal text-gray">
+                  Level:{' '}
+                  <span className="text-desc">
+                    {level} {!!upgraded && <span className="text-blue">(+{upgraded})</span>}
+                  </span>
+                </p>
+              )}
+              {!!energy && (
+                <p className="text-xs font-normal text-gray">
+                  Energy: <span className="text-desc"></span>
+                </p>
+              )}
+            </div>
+          </div>
+        }
         body={<p dangerouslySetInnerHTML={{ __html: formattedString }} />}
         style={tooltipSize || 'w-[35vw]'}
       >

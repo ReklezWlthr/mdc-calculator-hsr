@@ -61,41 +61,41 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       content: `Immediately attacks the enemy. Upon entering battle, inflicts Besotted on all enemies, lasting for <span class="text-desc">2</span> turn(s). And deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of Gallagher's ATK to all enemies.`,
     },
     a2: {
-      title: 'A2: Novel Concoction',
+      title: 'Novel Concoction',
       content: `Increases this unit's Outgoing Healing by an amount equal to <span class="text-desc">50%</span> of Break Effect, up to a maximum Outgoing Healing increase of <span class="text-desc">75%</span>.`,
     },
     a4: {
-      title: 'A4: Organic Yeast',
+      title: 'Organic Yeast',
       content: `After using the Ultimate, immediately Advances Forward this unit's Action by <span class="text-desc">100%</span>.`,
     },
     a6: {
-      title: 'A6: Bottoms Up',
+      title: 'Bottoms Up',
       content: `When Gallagher uses Nectar Blitz to attack Besotted enemies, the HP Restore effect of his Talent will also apply to other allies for this time.`,
     },
     c1: {
-      title: 'E1: Salty Dog',
+      title: 'Salty Dog',
       content: `When Gallagher enters the battle, regenerates <span class="text-desc">20</span> Energy and increases Effect RES by <span class="text-desc">50%</span>.`,
     },
     c2: {
-      title: `E2: Lion's Tail`,
+      title: `Lion's Tail`,
       content: `When using the Skill, removes <span class="text-desc">1</span> debuff(s) from a target ally. At the same time, increases their Effect RES by <span class="text-desc">30%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
-      title: 'E3: Corpse Reviver',
+      title: 'Corpse Reviver',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'E4: Last Word',
+      title: 'Last Word',
       content: `Extends the duration of the <b>Besotted</b> state inflicted by Gallagher's Ultimate by <span class="text-desc">1</span> turn(s).`,
     },
     c5: {
-      title: `E5: Death in the Afternoon`,
+      title: `Death in the Afternoon`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'E6: Blood and Sand',
+      title: 'Blood and Sand',
       content: `Increases Gallagher's Break Effect by <span class="text-desc">20%</span> and Weakness Break Efficiency by <span class="text-desc">20%</span>.`,
     },
   }
@@ -170,7 +170,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               element: Element.FIRE,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 90,
+              break: 30,
               energy: 20,
             },
           ]
@@ -181,7 +181,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               element: Element.FIRE,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 30,
+              break: 10,
               energy: 20,
             },
           ]
@@ -202,7 +202,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
           energy: 5,
         },
       ]
@@ -223,7 +223,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 60,
+          break: 20,
         },
       ]
 

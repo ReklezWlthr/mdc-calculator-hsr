@@ -59,41 +59,41 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       content: `Immediately attacks the enemy. After entering battle, deals DMG for <span class="text-desc">4</span> time(s), dealing <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of Guinaifen's ATK to a random single enemy target each time, with a <span class="text-desc">100%</span> <u>base chance</u> of inflicting <b>Firekiss</b> on them.`,
     },
     a2: {
-      title: `A2: High Poles`,
+      title: `High Poles`,
       content: `Basic ATK has a <span class="text-desc">80%</span> <u>base chance</u> of inflicting an enemy with a <b class="text-hsr-fire">Burn</b>, equivalent to that of Skill.`,
     },
     a4: {
-      title: `A4: Bladed Hoop`,
+      title: `Bladed Hoop`,
       content: `When the battle begins, Guinaifen's action is advanced forward by <span class="text-desc">25%</span>.`,
     },
     a6: {
-      title: `A6: Walking on Knives`,
+      title: `Walking on Knives`,
       content: `Deals <span class="text-desc">20%</span> more DMG to <b class="text-hsr-fire">Burned</b> enemies.`,
     },
     c1: {
-      title: `E1: Slurping Noodles During Handstand`,
+      title: `Slurping Noodles During Handstand`,
       content: `When Skill is used, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce the attacked target enemy's Effect RES by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
-      title: `E2: Brushing Teeth While Whistling`,
+      title: `Brushing Teeth While Whistling`,
       content: `When an enemy target is <b class="text-hsr-fire">Burned</b>, Guinaifen's Basic ATK and Skill can increase the DMG multiplier of their <b class="text-hsr-fire">Burn</b> status by 40%.`,
     },
     c3: {
-      title: `E3: Smashing Boulder on Chest`,
+      title: `Smashing Boulder on Chest`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Blocking Pike with Neck`,
+      title: `Blocking Pike with Neck`,
       content: `Every time the <b class="text-hsr-fire">Burn</b> status inflicted by Guinaifen causes DMG, Guinaifen regenerates <span class="text-desc">2</span> Energy.`,
     },
     c5: {
-      title: `E5: Swallowing Sword to Stomach`,
+      title: `Swallowing Sword to Stomach`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Catching Bullet with Hands`,
+      title: `Catching Bullet with Hands`,
       content: `Increases the stackable Firekiss count by <span class="text-desc">1</span>.`,
     },
   }
@@ -179,7 +179,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -189,7 +189,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
         },
         {
           name: 'Adjacent',
@@ -197,7 +197,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 30,
+          break: 10,
         },
       ]
       base.ULT_SCALING = [
@@ -207,7 +207,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -217,7 +217,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 60,
+          break: 20,
         },
       ]
 

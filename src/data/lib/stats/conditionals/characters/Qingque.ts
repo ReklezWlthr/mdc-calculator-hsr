@@ -61,42 +61,42 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `After using Technique, Qingque draws <span class="text-desc">2</span> jade tile(s) when the battle starts.`,
     },
     a2: {
-      title: `A2: Tile Battle`,
+      title: `Tile Battle`,
       content: `Restores <span class="text-desc">1</span> Skill Point when using the Skill. This effect can only be triggered <span class="text-desc">1</span> time per battle.`,
     },
     a4: {
-      title: `A4: Bide Time`,
+      title: `Bide Time`,
       content: `Using the Skill increases DMG Boost effect of attacks by an extra <span class="text-desc">10%</span>.`,
     },
     a6: {
-      title: `A6: Winning Hand`,
+      title: `Winning Hand`,
       content: `Qingque's SPD increases by <span class="text-desc">10%</span> for <span class="text-desc">1</span> turn after using the Enhanced Basic ATK.`,
     },
     c1: {
-      title: `E1: Rise Through the Tiles`,
+      title: `Rise Through the Tiles`,
       content: `Ultimate deals <span class="text-desc">10%</span> more DMG.`,
     },
     c2: {
-      title: `E2: Sleep on the Tiles`,
+      title: `Sleep on the Tiles`,
       content: `Every time Draw Tile is triggered, Qingque immediately regenerates <span class="text-desc">1</span> Energy.`,
     },
     c3: {
-      title: `E3: Read Between the Tiles`,
+      title: `Read Between the Tiles`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `E4: Right on the Tiles`,
+      title: `Right on the Tiles`,
       content: `After this character's Skill is used, there is a 24% <u>fixed chance</u> to gain <b>Autarky</b>, which lasts until the end of the current turn.
       <br />With <b>Autarky</b>, using Basic ATK or Enhanced Basic ATK immediately launches <span class="text-desc">1</span> follow-up attack on the same target, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">100%</span> of the previous Basic ATK (or Enhanced Basic ATK)'s DMG.`,
     },
     c5: {
-      title: `E5: Gambit for the Tiles`,
+      title: `Gambit for the Tiles`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: `E6: Prevail Beyond the Tiles`,
+      title: `Prevail Beyond the Tiles`,
       content: `Recovers <span class="text-desc">1</span> Skill Point after using Enhanced Basic ATK.`,
     },
   }
@@ -161,7 +161,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               element: Element.QUANTUM,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 60,
+              break: 20,
             },
             {
               name: 'Adjacent',
@@ -169,7 +169,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               element: Element.QUANTUM,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 30,
+              break: 10,
             },
           ]
         : [
@@ -179,7 +179,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               element: Element.QUANTUM,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 30,
+              break: 10,
             },
           ]
       base.ULT_SCALING = [
@@ -189,7 +189,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
         },
       ]
 
@@ -225,7 +225,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                   element: Element.QUANTUM,
                   property: TalentProperty.FUA,
                   type: TalentType.BA,
-                  break: 60,
+                  break: 20,
                   chance: { base: 0.24, fixed: true },
                 },
                 {
@@ -234,7 +234,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                   element: Element.QUANTUM,
                   property: TalentProperty.FUA,
                   type: TalentType.BA,
-                  break: 30,
+                  break: 10,
                   chance: { base: 0.24, fixed: true },
                 },
               ]

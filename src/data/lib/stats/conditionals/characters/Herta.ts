@@ -51,41 +51,41 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `After using her Technique, Herta's ATK increases by <span class="text-desc">40%</span> for <span class="text-desc">3</span> turn(s) at the beginning of the next battle.`,
     },
     a2: {
-      title: `A2: Efficiency`,
+      title: `Efficiency`,
       content: `When Skill is used, the DMG Boost effect on target enemies increases by an extra <span class="text-desc">25%</span>.`,
     },
     a4: {
-      title: `A4: Puppet`,
+      title: `Puppet`,
       content: `The chance to resist Crowd Control Debuffs increases by <span class="text-desc">35%</span>.`,
     },
     a6: {
-      title: `A6: Icing`,
+      title: `Icing`,
       content: `When Ultimate is used, deals <span class="text-desc">20%</span> more DMG to <b class="text-hsr-ice">Frozen</b> enemies.`,
     },
     c1: {
-      title: `E1: Kick You When You're Down`,
+      title: `Kick You When You're Down`,
       content: `If the enemy's HP percentage is at <span class="text-desc">50%</span> or less, Herta's Basic ATK deals Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">40%</span> of Herta's ATK.`,
     },
     c2: {
-      title: `E2: Keep the Ball Rolling`,
+      title: `Keep the Ball Rolling`,
       content: `Every time Talent is triggered, this character's CRIT Rate increases by <span class="text-desc">3%</span>. This effect can stack up to <span class="text-desc">5</span> time(s).`,
     },
     c3: {
-      title: `E3: That's the Kind of Girl I Am`,
+      title: `That's the Kind of Girl I Am`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'E4: Hit Where It Hurts',
+      title: 'Hit Where It Hurts',
       content: `When Talent is triggered, DMG increases by <span class="text-desc">10%</span>.`,
     },
     c5: {
-      title: `E5: Cuss Big or Cuss Nothing`,
+      title: `Cuss Big or Cuss Nothing`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'E6: No One Can Betray Me',
+      title: 'No One Can Betray Me',
       content: `After using Ultimate, this character's ATK increases by <span class="text-desc">25%</span> for <span class="text-desc">1</span> turn(s).`,
     },
   }
@@ -166,7 +166,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
           energy: 20,
         },
       ]
@@ -177,7 +177,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 30,
+          break: 10,
           energy: 30,
         },
       ]
@@ -188,7 +188,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
           energy: 5,
         },
       ]
@@ -199,7 +199,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.ICE,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
-          break: 15,
+          break: 5,
           energy: 5,
         },
       ]

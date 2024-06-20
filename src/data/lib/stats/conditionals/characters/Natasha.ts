@@ -58,41 +58,41 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       <br />While <b>Weakened</b>, enemies deal <span class="text-desc">30%</span> less DMG to allies for <span class="text-desc">1</span> turn(s).`,
     },
     a2: {
-      title: `A2: Soothe`,
+      title: `Soothe`,
       content: `Skill has a <span class="text-desc">20%</span> increased <u>base chance</u> to <b class="text-hsr-lightning">Shock</b> enemies.`,
     },
     a4: {
-      title: `A4: Healer`,
+      title: `Healer`,
       content: `Natasha's Outgoing Healing increases by <span class="text-desc">10%</span>.`,
     },
     a6: {
-      title: `A6: Recuperation`,
+      title: `Recuperation`,
       content: `Increases the duration of Skill's continuous healing effect for <span class="text-desc">1</span> turn(s).`,
     },
     c1: {
-      title: `E1: Pharmacology Expertise`,
+      title: `Pharmacology Expertise`,
       content: `After being attacked, if the current HP percentage is <span class="text-desc">30%</span> or lower, heals self for <span class="text-desc">1</span> time to restore HP by an amount equal to <span class="text-desc">15%</span> of Max HP plus <span class="text-desc">400</span>. This effect can only be triggered <span class="text-desc">1</span> time per battle.`,
     },
     c2: {
-      title: `E2: Clinical Research`,
+      title: `Clinical Research`,
       content: `When Natasha uses her Ultimate, grant continuous healing for <span class="text-desc">1</span> turn(s) to all allies whose HP is at <span class="text-desc">30%</span> or lower. And at the beginning of their turn, their HP is restored by an amount equal to <span class="text-desc">6%</span> of Natasha's Max HP plus <span class="text-desc">160</span>.`,
     },
     c3: {
-      title: `E3: The Right Cure`,
+      title: `The Right Cure`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'E4: Miracle Cure',
+      title: 'Miracle Cure',
       content: `After being attacked, regenerates <span class="text-desc">5</span> extra Energy.`,
     },
     c5: {
-      title: `E5: Preventive Treatment`,
+      title: `Preventive Treatment`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Doctor's Grace`,
+      title: `Doctor's Grace`,
       content: `Natasha's Basic ATK additionally deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">40%</span> of her Max HP.`,
     },
   }
@@ -149,7 +149,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -187,7 +187,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 60,
+          break: 20,
         },
       ]
 

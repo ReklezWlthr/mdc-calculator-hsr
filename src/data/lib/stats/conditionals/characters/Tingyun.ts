@@ -58,41 +58,41 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Tingyun immediately regenerates <span class="text-desc">50</span> Energy upon using her Technique.`,
     },
     a2: {
-      title: `A2: Nourished Joviality`,
+      title: `Nourished Joviality`,
       content: `Tingyun's SPD increases by <span class="text-desc">20%</span> for <span class="text-desc">1</span> turn after using Skill.`,
     },
     a4: {
-      title: `A4: Knell Subdual`,
+      title: `Knell Subdual`,
       content: `Increases Basic ATK DMG by <span class="text-desc">40%</span>.`,
     },
     a6: {
-      title: `A6: Jubilant Passage`,
+      title: `Jubilant Passage`,
       content: `Tingyun immediately regenerates <span class="text-desc">5</span> Energy at the start of her turn.`,
     },
     c1: {
-      title: `E1: Windfall of Lucky Springs`,
+      title: `Windfall of Lucky Springs`,
       content: `After using their Ultimate, the ally with <b>Benediction</b>> gains a <span class="text-desc">20%</span> increase in SPD for <span class="text-desc">1</span> turn.`,
     },
     c2: {
-      title: `E2: Gainfully Gives, Givingly Gains`,
+      title: `Gainfully Gives, Givingly Gains`,
       content: `The ally with <b>Benediction</b> regenerates <span class="text-desc">5</span> Energy after defeating an enemy. This effect can only be triggered once per turn.`,
     },
     c3: {
-      title: `E3: Halcyon Bequest`,
+      title: `Halcyon Bequest`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Jovial Versatility`,
+      title: `Jovial Versatility`,
       content: `The DMG multiplier provided by <b>Benediction</b> increases by <span class="text-desc">20%</span>.`,
     },
     c5: {
-      title: `E5: Sauntering Coquette`,
+      title: `Sauntering Coquette`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Peace Brings Wealth to All`,
+      title: `Peace Brings Wealth to All`,
       content: `Ultimate regenerates <span class="text-desc">10</span> more Energy for the target ally.`,
     },
   }
@@ -167,7 +167,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
 

@@ -64,41 +64,41 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `After using this Technique, creates a dimension around Jingliu that lasts for <span class="text-desc">20</span> seconds, and all enemies in this dimension will become <b class="text-hsr-ice">Frozen</b>. After entering combat with enemies in the dimension, Jingliu immediately regenerates <span class="text-desc">15</span> Energy and obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>, with a <span class="text-desc">100%</span> <u>base chance</u> of <b class="text-hsr-ice">Freezing</b> enemy targets for <span class="text-desc">1</span> turn(s). While <b class="text-hsr-ice">Frozen</b>, enemy targets cannot take action, and receive Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">80%</span> of Jingliu's ATK at the start of every turn. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
-      title: `A2: Deathrealm`,
+      title: `Deathrealm`,
       content: `While in the <b>Spectral Transmigration</b> state, increases Effect RES by <span class="text-desc">35%</span>.`,
     },
     a4: {
-      title: `A4: Sword Champion`,
+      title: `Sword Champion`,
       content: `After using Transcendent Flash, the next action will be Advanced Forward by <span class="text-desc">10%</span>.`,
     },
     a6: {
-      title: `A6: Frost Wraith`,
+      title: `Frost Wraith`,
       content: `While in the <b>Spectral Transmigration</b> state, increases Ultimate DMG by <span class="text-desc">20%</span>.`,
     },
     c1: {
-      title: `E1: Moon Crashes Tianguan Gate`,
+      title: `Moon Crashes Tianguan Gate`,
       content: `When using her Ultimate or Enhanced Skill, Jingliu's CRIT DMG increases by <span class="text-desc">24%</span> for <span class="text-desc">1</span> turn(s). If only one enemy target is attacked, the target will additionally be dealt <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">100%</span> of Jingliu's ATK.`,
     },
     c2: {
-      title: `E2: Crescent Shadows Qixing Dipper`,
+      title: `Crescent Shadows Qixing Dipper`,
       content: `After using Ultimate, increases the DMG of the next Enhanced Skill by <span class="text-desc">80%</span>.`,
     },
     c3: {
-      title: `E3: Halfmoon Gapes Mercurial Haze`,
+      title: `Halfmoon Gapes Mercurial Haze`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Lunarlance Shines Skyward Dome`,
+      title: `Lunarlance Shines Skyward Dome`,
       content: `During the <b>Spectral Transmigration</b> state, the ATK gained from consuming allies' HP is additionally increased by <span class="text-desc">90%</span> of the total HP consumed from the entire team. The cap for ATK gained this way also increases by <span class="text-desc">30%</span>.`,
     },
     c5: {
-      title: `E5: Night Shades Astral Radiance`,
+      title: `Night Shades Astral Radiance`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: `E6: Eclipse Hollows Corporeal Husk`,
+      title: `Eclipse Hollows Corporeal Husk`,
       content: `When Jingliu enters the <b>Spectral Transmigration</b> state, the <b class="text-hsr-ice">Syzygy</b> stack limit increases by <span class="text-desc">1</span>, and Jingliu obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>. While she is in the <b>Spectral Transmigration</b> state, her CRIT DMG increases by <span class="text-desc">50%</span>.`,
     },
   }
@@ -169,7 +169,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = form.spectral_transmigration
@@ -180,7 +180,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               element: Element.ICE,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
-              break: 60,
+              break: 20,
             },
             {
               name: 'Adjacent',
@@ -188,7 +188,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               element: Element.ICE,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
-              break: 30,
+              break: 10,
             },
           ]
         : [
@@ -198,7 +198,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               element: Element.ICE,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
-              break: 60,
+              break: 20,
             },
           ]
       base.ULT_SCALING = [
@@ -208,7 +208,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
         },
         {
           name: 'Adjacent',
@@ -216,7 +216,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
         },
       ]
       base.TECHNIQUE_SCALING = [

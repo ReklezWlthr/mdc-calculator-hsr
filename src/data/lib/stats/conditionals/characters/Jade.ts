@@ -64,41 +64,41 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `After using the Technique, inflicts enemies within a set area with Blind Fealty for <span class="text-desc">10</span> second(s). Enemies inflicted with Blind Fealty will not initiate attacks on allies. When entering battle via actively attacking enemies inflicted with Blind Fealty, all enemies with Blind Fealty will enter combat simultaneously. After entering battle, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">50%</span> of Jade's ATK to all enemies, and immediately gains <span class="text-desc">15</span> stack(s) of <b class="text-hsr-quantum">Pawned Asset</b>.`,
     },
     a2: {
-      title: `A2: Asset Forfeiture`,
+      title: `Asset Forfeiture`,
       content: `Each <b class="text-hsr-quantum">Pawned Asset</b> stack from the Talent additionally increases Jade's ATK by <span class="text-desc">0.5%</span>.`,
     },
     a4: {
-      title: `A4: Collateral Ticket`,
+      title: `Collateral Ticket`,
       content: `When the battle starts, Jade's action is advanced forward by <span class="text-desc">50%</span>.`,
     },
     a6: {
-      title: `A6: Reverse Repo`,
+      title: `Reverse Repo`,
       content: `When an enemy target enters combat, Jade gains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-quantum">Pawned Asset</b>. When the <b>Debt Collector</b> character's turn starts, additionally gains <span class="text-desc">3</span> stack(s) of <b class="text-hsr-quantum">Pawned Asset</b>.`,
     },
     c1: {
-      title: `E1: Altruism? Nevertheless Tradable`,
+      title: `Altruism? Nevertheless Tradable`,
       content: `The follow-up attack DMG from Jade's Talent increases by <span class="text-desc">32%</span>. After the <b>Debt Collector</b> character attacks and the number of the enemy target(s) hit is either <span class="text-desc">2</span> or <span class="text-desc">1</span>, Jade additionally gains <span class="text-desc">1</span> or <span class="text-desc">2</span> point(s) of <b>Charge</b> respectively.`,
     },
     c2: {
-      title: `E2: Morality? Herein Authenticated`,
+      title: `Morality? Herein Authenticated`,
       content: `When there are <span class="text-desc">15</span> stacks of <b class="text-hsr-quantum">Pawned Asset</b>, Jade's CRIT Rate increases by <span class="text-desc">18%</span>.`,
     },
     c3: {
-      title: `E3: Honesty? Soon Mortgaged`,
+      title: `Honesty? Soon Mortgaged`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `E4: Sincerity? Put Option Only`,
+      title: `Sincerity? Put Option Only`,
       content: `When using Ultimate, enables the DMG dealt by Jade to ignore <span class="text-desc">12%</span> of enemy targets' DEF, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c5: {
-      title: `E5: Hope? Hitherto Forfeited`,
+      title: `Hope? Hitherto Forfeited`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: `E6: Equity? Pending Sponsorship`,
+      title: `Equity? Pending Sponsorship`,
       content: `When the <b>Debt Collector</b> character exists on the field, Jade's <b class="text-hsr-quantum">Quantum RES PEN</b> increases by <span class="text-desc">20%</span>, and Jade gains the <b>Debt Collector</b> state.`,
     },
   }
@@ -165,7 +165,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
         {
           name: 'Adjacent',
@@ -173,7 +173,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 15,
+          break: 5,
         },
       ]
       base.ULT_SCALING = [
@@ -183,7 +183,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
         },
       ]
       base.TALENT_SCALING = [
@@ -193,7 +193,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.QUANTUM,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
-          break: 30,
+          break: 10,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -203,7 +203,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 60,
+          break: 20,
         },
       ]
 

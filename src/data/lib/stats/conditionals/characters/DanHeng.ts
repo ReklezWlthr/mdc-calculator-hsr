@@ -53,41 +53,41 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `After Dan Heng uses his Technique, his ATK increases by <span class="text-desc">40%</span> at the start of the next battle for <span class="text-desc">3</span> turn(s).`,
     },
     a2: {
-      title: 'A2: Hidden Dragon',
+      title: 'Hidden Dragon',
       content: `When current HP percentage is <span class="text-desc">50%</span> or lower, reduces the chance of being attacked by enemies.`,
     },
     a4: {
-      title: 'A4: Faster Than Light',
+      title: 'Faster Than Light',
       content: `After launching an attack, there is a <span class="text-desc">50%</span> <u>fixed chance</u> to increase own SPD by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a6: {
-      title: 'A6: High Gale',
+      title: 'High Gale',
       content: `Basic ATK deals <span class="text-desc">40%</span> more DMG to <b>Slowed</b> enemies.`,
     },
     c1: {
-      title: 'E1: The Higher You Fly, the Harder You Fall',
+      title: 'The Higher You Fly, the Harder You Fall',
       content: `When the target enemy's current HP percentage is greater than or equal to <span class="text-desc">50%</span>, CRIT Rate increases by <span class="text-desc">12%</span>.`,
     },
     c2: {
-      title: `E2: Quell the Venom Octet, Quench the Vice O'Flame`,
+      title: `Quell the Venom Octet, Quench the Vice O'Flame`,
       content: `Reduces Talent cooldown by <span class="text-desc">1</span> turn.`,
     },
     c3: {
-      title: 'E3: Seen and Unseen',
+      title: 'Seen and Unseen',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'E4: Roaring Dragon and Soaring Sun',
+      title: 'Roaring Dragon and Soaring Sun',
       content: `When Dan Heng uses his Ultimate to defeat an enemy, he will immediately take action again.`,
     },
     c5: {
-      title: `E5: A Drop of Rain Feeds a Torrent`,
+      title: `A Drop of Rain Feeds a Torrent`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'E6: The Troubled Soul Lies in Wait',
+      title: 'The Troubled Soul Lies in Wait',
       content: `The <b>Slow</b> state triggered by Skill reduces the enemy's SPD by an extra <span class="text-desc">8%</span>.`,
     },
   }
@@ -177,7 +177,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
           energy: 20,
         },
       ]
@@ -188,7 +188,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
           energy: 30,
         },
       ]
@@ -277,7 +277,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 90,
+          break: 30,
           energy: 5,
         },
       ]

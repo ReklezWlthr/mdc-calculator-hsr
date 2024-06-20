@@ -194,6 +194,7 @@ export const TeamSetup = observer(() => {
                   upgraded={talent?.upgrade?.basic}
                   level={char?.talents?.basic}
                   showUpgrade
+                  type="Basic ATK"
                 />
                 <div>
                   <p className="text-xs text-primary-lighter">Basic ATK</p>
@@ -214,6 +215,7 @@ export const TeamSetup = observer(() => {
                   upgraded={talent?.upgrade?.skill}
                   level={char?.talents?.skill}
                   showUpgrade
+                  type="Skill"
                 />
                 <div>
                   <p className="text-xs text-primary-lighter">Skill</p>
@@ -234,6 +236,7 @@ export const TeamSetup = observer(() => {
                   upgraded={talent?.upgrade?.ult}
                   level={char?.talents?.ult}
                   showUpgrade
+                  type="Ultimate"
                 />
                 <div>
                   <p className="text-xs text-primary-lighter">Ultimate</p>
@@ -254,6 +257,7 @@ export const TeamSetup = observer(() => {
                   upgraded={talent?.upgrade?.talent}
                   level={char?.talents?.talent}
                   showUpgrade
+                  type="Talent"
                 />
                 <div>
                   <p className="text-xs text-primary-lighter">Talent</p>
@@ -273,6 +277,7 @@ export const TeamSetup = observer(() => {
                     element={charData?.element}
                     icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_SkillTree1.png`}
                     size="w-9 h-9"
+                    type="Ascension 2 Passive"
                   />
                   <div className="flex gap-2">
                     <p className="text-xs text-primary-lighter">A2</p>
@@ -289,6 +294,7 @@ export const TeamSetup = observer(() => {
                     element={charData?.element}
                     icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_SkillTree2.png`}
                     size="w-9 h-9"
+                    type="Ascension 4 Passive"
                   />
                   <div className="flex gap-2">
                     <p className="text-xs text-primary-lighter">A4</p>
@@ -305,6 +311,7 @@ export const TeamSetup = observer(() => {
                     element={charData?.element}
                     icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_SkillTree3.png`}
                     size="w-9 h-9"
+                    type="Ascension 6 Passive"
                   />
                   <div className="flex gap-2">
                     <p className="text-xs text-primary-lighter">A6</p>

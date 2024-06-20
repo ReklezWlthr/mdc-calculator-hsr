@@ -66,41 +66,41 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       <br />After using her Technique, March 7th regenerates <span class="text-desc">30</span> Energy upon entering the next battle.`,
     },
     a2: {
-      title: 'A2: Gliding Waves',
+      title: 'Gliding Waves',
       content: `When <b class="text-hsr-imaginary">Master</b> is on the field, increases March 7th's SPD by <span class="text-desc">10%</span>.`,
     },
     a4: {
-      title: 'A4: Acute Smarts',
+      title: 'Acute Smarts',
       content: `March 7th can reduce the Toughness of enemies with Weakness of <b class="text-hsr-imaginary">Master</b>'s Type. When inflicting Weakness Break, also triggers the <b class="text-hsr-imaginary">Imaginary</b> Weakness Break effect.`,
     },
     a6: {
-      title: 'A6: Soaring Swan',
+      title: 'Soaring Swan',
       content: `When the battle starts, March 7th's action is Advanced Forward by <span class="text-desc">25%</span>.`,
     },
     c1: {
-      title: 'E1: My Sword Stirs Starlight',
+      title: 'My Sword Stirs Starlight',
       content: `After using Ultimate, increases the CRIT DMG of the next Enhanced Basic ATK by <span class="text-desc">36%</span>.`,
     },
     c2: {
-      title: `E2: Blade Dances on Waves' Fight`,
+      title: `Blade Dances on Waves' Fight`,
       content: `After the <b class="text-hsr-imaginary">Master</b> uses their Basic ATK or Skill to attack an enemy, March 7th immediately launches a follow-up attack and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to <span class="text-desc">60%</span> of March 7th's ATK to the target enemy. Additionally, triggers an effect corresponding to <b class="text-hsr-imaginary">Master</b>'s Path and gains <span class="text-desc">1</span> Charge(s). If there is no target enemy that can be attacked, March 7th attacks a random enemy. This effect can only be triggered once per turn.`,
     },
     c3: {
-      title: 'E3: Sharp Wit in Martial Might',
+      title: 'Sharp Wit in Martial Might',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'E4: Being Fabulous Never Frights',
+      title: 'Being Fabulous Never Frights',
       content: `At the start of the turn, regenerates <span class="text-desc">5</span> Energy.`,
     },
     c5: {
-      title: `E5: Sword Delights, Sugar Blights`,
+      title: `Sword Delights, Sugar Blights`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'E6: Me, the Best Girl on Sight',
+      title: 'Me, the Best Girl on Sight',
       content: `After using Enhanced Basic ATK, increases the <b class="text-hsr-imaginary">Master</b>'s CRIT DMG by <span class="text-desc">60%</span> and Break Effect by <span class="text-desc">36%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
   }
@@ -181,7 +181,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               multiplier: form.h_march_ult ? 5 : 3,
-              break: 15 * (form.h_march_ult ? 5 : 3),
+              break: 5 * (form.h_march_ult ? 5 : 3),
             },
             {
               name: 'Extra Attack DMG [x3]',
@@ -189,7 +189,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 15,
+              break: 5,
               chance: { base: form.h_march_ult ? 0.8 : 0.6, fixed: true },
             },
           ]
@@ -200,7 +200,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 30,
+              break: 10,
             },
           ]
       base.ULT_SCALING = [
@@ -210,7 +210,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 90,
+          break: 30,
         },
       ]
 

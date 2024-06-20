@@ -70,41 +70,41 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       content: `After the Technique is used, when casting the Skill for the first time in the next battle, applies the same <b class="text-hsr-physical">Physical</b> Weakness to the target as the one induced by the Ultimate, lasting for 2 turn(s).`,
     },
     a2: {
-      title: `A2: Ghost Load`,
+      title: `Ghost Load`,
       content: `Increase this character's CRIT Rate/CRIT DMG, by an amount equal to <span class="text-desc">10%</span>/<span class="text-desc">50%</span> of Break Effect, up to a max increase of <span class="text-desc">30%</span>/<span class="text-desc">150%</span>.`,
     },
     a4: {
-      title: `A4: Above Snakes`,
+      title: `Above Snakes`,
       content: `Reduces the DMG this character receives from targets that are not in the <b>Standoff</b> by <span class="text-desc">30%</span>.`,
     },
     a6: {
-      title: `A6: Point Blank`,
+      title: `Point Blank`,
       content: `When in <b>Standoff</b> and gaining <b>Pocket Trickshot</b>, regenerates <span class="text-desc">10</span> Energy. Can also trigger this effect when gaining <b>Pocket Trickshot</b> stacks that exceed the max limit.`,
     },
     c1: {
-      title: `E1: Dusty Trail's Lone Star`,
+      title: `Dusty Trail's Lone Star`,
       content: `When the battle starts, obtains <span class="text-desc">1</span> stack of <b>Pocket Trickshot</b>. When Boothill deals DMG, ignores <span class="text-desc">16%</span> of the enemy target's DEF.`,
     },
     c2: {
-      title: `E2: Milestonemonger`,
+      title: `Milestonemonger`,
       content: `When in <b>Standoff</b> and gaining <b>Pocket Trickshot</b>, recovers <span class="text-desc">1</span> Skill Point(s) and increases Break Effect by <span class="text-desc">30%</span>, lasting for <span class="text-desc">2</span> turn(s). Can also trigger this effect when gaining <b>Pocket Trickshot</b> stacks that exceed the max limit. But cannot trigger repeatedly within one turn.`,
     },
     c3: {
-      title: `E3: Marble Orchard's Guard`,
+      title: `Marble Orchard's Guard`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Cold Cuts Chef`,
+      title: `Cold Cuts Chef`,
       content: `When the enemy target in the <b>Standoff</b> is attacked by Boothill, the DMG they receive additionally increases by <span class="text-desc">12%</span>. When Boothill is attacked by the enemy target in the <b>Standoff</b>, the effect of him receiving increased DMG is offset by <span class="text-desc">12%</span>.`,
     },
     c5: {
-      title: `E5: Stump Speech`,
+      title: `Stump Speech`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Crowbar Hotel's Raccoon`,
+      title: `Crowbar Hotel's Raccoon`,
       content: `When triggering the Talent's Break DMG, additionally deals Break DMG to the target equal to <span class="text-desc">40%</span> of the original DMG multiplier and additionally deals Break DMG to adjacent targets equal to <span class="text-desc">70%</span> of the original DMG multiplier.`,
     },
   }
@@ -235,7 +235,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               element: Element.PHYSICAL,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: (1 + form.trickshot * 0.5) * 60,
+              break: (1 + form.trickshot * 0.5) * 20,
             },
             ...talentScale,
           ]
@@ -246,7 +246,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               element: Element.PHYSICAL,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 30,
+              break: 10,
             },
           ]
       base.ULT_SCALING = [
@@ -256,7 +256,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 90,
+          break: 30,
         },
       ]
 

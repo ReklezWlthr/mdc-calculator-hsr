@@ -59,41 +59,41 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Immediately attacks the enemy. Upon entering battle, Sushang deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">80%</span> of her ATK to all enemies.`,
     },
     a2: {
-      title: `A2: Guileless`,
+      title: `Guileless`,
       content: `When current HP percentage is <span class="text-desc">50%</span> or lower, reduces the chance of being attacked by enemies.`,
     },
     a4: {
-      title: `A4: Riposte`,
+      title: `Riposte`,
       content: `For every <b>Sword Stance</b> triggered, the DMG dealt by <b>Sword Stance</b> increases by <span class="text-desc">2%</span>. Stacks up to <span class="text-desc">10</span> time(s).`,
     },
     a6: {
-      title: `A6: Vanquisher`,
+      title: `Vanquisher`,
       content: `After using Basic ATK or Skill, if there are enemies on the field with Weakness Break, Sushang's action is Advanced Forward by <span class="text-desc">15%</span>.`,
     },
     c1: {
-      title: `E1: Cut With Ease`,
+      title: `Cut With Ease`,
       content: `After using Skill against a Weakness Broken enemy, regenerates <span class="text-desc">1</span> Skill Point.`,
     },
     c2: {
-      title: `E2: Refine in Toil`,
+      title: `Refine in Toil`,
       content: `After triggering <b>Sword Stance</b>, the DMG taken by Sushang is reduced by <span class="text-desc">20%</span> for <span class="text-desc">1</span> turn.`,
     },
     c3: {
-      title: `E3: Rise From Fame`,
+      title: `Rise From Fame`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: `E4: Cleave With Heart`,
+      title: `Cleave With Heart`,
       content: `Sushang's Break Effect increases by <span class="text-desc">40%</span>.`,
     },
     c5: {
-      title: `E5: Prevail via Taixu`,
+      title: `Prevail via Taixu`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: `E6: Dwell Like Water`,
+      title: `Dwell Like Water`,
       content: `Talent's SPD Boost is stackable and can stack up to <span class="text-desc">2</span> times. Additionally, after entering battle, Sushang immediately gains <span class="text-desc">1</span> stack of her Talent's SPD Boost.`,
     },
   }
@@ -186,7 +186,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       const sword_stance = form.dawn_herald
@@ -236,7 +236,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
         },
         ...sword_stance,
       ]
@@ -247,7 +247,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 90,
+          break: 30,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -257,7 +257,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 60,
+          break: 20,
         },
       ]
 

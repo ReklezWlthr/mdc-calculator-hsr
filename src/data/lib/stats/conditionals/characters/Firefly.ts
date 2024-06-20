@@ -77,42 +77,42 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       title: `Δ Order: Meteoric Incineration`,
       content: `Leaps into the air and moves about freely for <span class="text-desc">5</span> seconds, which can be ended early by launching a plunging attack. When the duration ends, plunges and immediately attacks all enemies within a set area. At the start of each wave, applies a <b class="text-hsr-fire">Fire</b> Weakness to all enemies, lasting for <span class="text-desc">2</span> turn(s). Then, deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">200%</span> of SAM's ATK to all enemies.`,
     },
-    a2: {
-      title: `A2: Module γ: Core Overload`,
-      content: `For every <span class="text-desc">10</span> of SAM's ATK that exceeds <span class="text-desc">1800</span>, increases SAM's Break Effect by <span class="text-desc">1%</span>.`,
+    a6: {
+      title: `Module γ: Core Overload`,
+      content: `For every <span class="text-desc">10</span> of SAM's ATK that exceeds <span class="text-desc">1800</span>, increases SAM's Break Effect by <span class="text-desc">0.8%</span>.`,
     },
     a4: {
-      title: `A4: Module β: Autoreactive Armor`,
+      title: `Module β: Autoreactive Armor`,
       content: `When SAM is in <b class="text-hsr-fire">Complete Combustion</b> with a Break Effect that is equal to or greater than <span class="text-desc">200%</span>/<span class="text-desc">360%</span>, attacking a Weakness-Broken enemy target will convert the Toughness Reduction of this attack into <span class="text-desc">1</span> instance of <span class="text-desc">35%</span>/<span class="text-desc">50%</span> Super Break DMG.`,
     },
-    a6: {
-      title: `A6: Module α: Antilag Outburst`,
+    a2: {
+      title: `Module α: Antilag Outburst`,
       content: `During the <b class="text-hsr-fire">Complete Combustion</b>, attacking enemies that have no <b class="text-hsr-fire">Fire</b> Weakness can also reduce their Toughness, with the effect being equivalent to <span class="text-desc">55%</span> of the original Toughness Reduction from abilities.`,
     },
     c1: {
-      title: `E1: In Reddened Chrysalis, I Once Rest`,
+      title: `In Reddened Chrysalis, I Once Rest`,
       content: `When using the Enhanced Skill, ignores <span class="text-desc">15%</span> of the target's DEF. And the Enhanced Skill does not consume Skill Points.`,
     },
     c2: {
-      title: `E2: From Shattered Sky, I Free Fall`,
+      title: `From Shattered Sky, I Free Fall`,
       content: `When using the Enhanced Basic ATK or the Enhanced Skill in <b class="text-hsr-fire">Complete Combustion</b> state to defeat an enemy target or cause them to be Weakness Broken, SAM immediately gains <span class="text-desc">1</span> extra turn. This effect can trigger again after <span class="text-desc">1</span> turn(s).`,
     },
     c3: {
-      title: `E3: Upon Lighted Fyrefly, I Soon Gaze`,
+      title: `Upon Lighted Fyrefly, I Soon Gaze`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Dove in Tophat`,
+      title: `Dove in Tophat`,
       content: `While in <b class="text-hsr-fire">Complete Combustion</b>, increases SAM's Effect RES by <span class="text-desc">50%</span>.`,
     },
     c5: {
-      title: `E5: From Undreamt Night, I Thence Shine`,
+      title: `From Undreamt Night, I Thence Shine`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: In Finalized Morrow, I Full Bloom`,
+      title: `In Finalized Morrow, I Full Bloom`,
       content: `While in <b class="text-hsr-fire">Complete Combustion</b>, increases SAM's <b class="text-hsr-fire">Fire RES PEN</b> by <span class="text-desc">20%</span>. When using the Enhanced Basic ATK or Enhanced Skill, increases the Weakness Break efficiency by <span class="text-desc">50%</span>.`,
     },
   }
@@ -179,7 +179,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 60,
+          break: 20,
         },
       ]
 
@@ -203,7 +203,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Self',
           value: 0.5,
         })
-        base.BREAK_DMG.push({
+        base.BREAK_VUL.push({
           name: 'Ultimate',
           source: 'Self',
           value: calcScaling(0.1, 0.01, ult, 'curved'),
@@ -265,11 +265,11 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       broken: boolean
     ) => {
       base.CALLBACK.push((x) => {
-        if (a.a2)
+        if (a.a6)
           x[Stats.BE].push({
-            name: 'Ascension 2 Passive',
+            name: 'Ascension 6 Passive',
             source: 'Self',
-            value: (_.max([0, x.getAtk() - 1800]) / 10) * 0.01,
+            value: (_.max([0, x.getAtk() - 1800]) / 10) * 0.008,
           })
         const superBreak = x.getValue(Stats.BE) >= 3.6 ? 0.5 : x.getValue(Stats.BE) >= 2 ? 0.35 : 0
         if (superBreak && form.complete_combustion) {
@@ -280,7 +280,6 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             value: superBreak,
           })
         }
-        const isFireWeak = _.includes(weakness, Element.FIRE)
         x.BASIC_SCALING = form.complete_combustion
           ? [
               {
@@ -289,7 +288,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 element: Element.FIRE,
                 property: TalentProperty.NORMAL,
                 type: TalentType.BA,
-                break: isFireWeak ? 45 : 45 * 0.55,
+                break: 15,
               },
               {
                 name: 'Healing',
@@ -306,7 +305,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 element: Element.FIRE,
                 property: TalentProperty.NORMAL,
                 type: TalentType.BA,
-                break: 30,
+                break: 10,
               },
             ]
         x.SKILL_SCALING = form.complete_combustion
@@ -322,7 +321,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 element: Element.FIRE,
                 property: TalentProperty.NORMAL,
                 type: TalentType.SKILL,
-                break: isFireWeak ? 90 : 90 * 0.55,
+                break: 30,
               },
               {
                 name: 'Adjacent',
@@ -335,7 +334,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 element: Element.FIRE,
                 property: TalentProperty.NORMAL,
                 type: TalentType.SKILL,
-                break: isFireWeak ? 45 : 45 * 0.55,
+                break: 15,
               },
               {
                 name: 'Healing',
@@ -352,7 +351,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 element: Element.FIRE,
                 property: TalentProperty.NORMAL,
                 type: TalentType.SKILL,
-                break: 60,
+                break: 20,
               },
             ]
         return x

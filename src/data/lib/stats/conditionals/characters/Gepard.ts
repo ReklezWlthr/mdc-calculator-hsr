@@ -56,41 +56,41 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `After Gepard uses his Technique, when the next battle begins, a <b class="text-indigo-300">Shield</b> will be applied to all allies, absorbing DMG equal to <span class="text-desc">24%</span> of Gepard's DEF plus <span class="text-desc">150</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
-      title: `A2: Integrity`,
+      title: `Integrity`,
       content: `Gepard has a higher chance to be attacked by enemies.`,
     },
     a4: {
-      title: `A4: Commander`,
+      title: `Commander`,
       content: `When "Unyielding Will" is triggered, Gepard's Energy will be restored to <span class="text-desc">100%</span>.`,
     },
     a6: {
-      title: `A6: Fighting Spirit`,
+      title: `Fighting Spirit`,
       content: `Gepard's ATK increases by 35% of his current DEF. This effect will refresh at the start of each turn.`,
     },
     c1: {
-      title: `E1: Due Diligence`,
+      title: `Due Diligence`,
       content: `When using Skill, increases the <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> enemies by <span class="text-desc">35%</span>.`,
     },
     c2: {
-      title: `E2: Lingering Cold`,
+      title: `Lingering Cold`,
       content: `After an enemy <b class="text-hsr-ice">Frozen</b> by Skill is unfrozen, their SPD is reduced by <span class="text-desc">20%</span> for <span class="text-desc">1</span> turn(s).`,
     },
     c3: {
-      title: `E3: Never Surrender`,
+      title: `Never Surrender`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
-      title: 'E4: Faith Moves Mountains',
+      title: 'Faith Moves Mountains',
       content: `When Gepard is in battle, all allies' Effect RES increases by <span class="text-desc">20%</span>.`,
     },
     c5: {
-      title: `E5: Cold Iron Fist`,
+      title: `Cold Iron Fist`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
-      title: 'E6: Unyielding Resolve',
+      title: 'Unyielding Resolve',
       content: `When his Talent is triggered, Gepard immediately takes action again and restores extra HP equal to <span class="text-desc">50%</span> of his Max HP.`,
     },
   }
@@ -137,7 +137,7 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -147,7 +147,7 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
         },
         {
           name: 'Frozen DMG',

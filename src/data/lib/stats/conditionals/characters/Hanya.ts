@@ -55,41 +55,41 @@ const Hanya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Immediately attacks the enemy. After entering battle, applies <b>Burden</b> equivalent to that applied by the Skill to a random enemy.`,
     },
     a2: {
-      title: `A2: Scrivener`,
+      title: `Scrivener`,
       content: `Allies triggering <b>Burden</b>'s Skill Point recovery effect have their ATK increased by <span class="text-desc">10%</span> for <span class="text-desc">1</span> turns.`,
     },
     a4: {
-      title: `A4: Netherworld`,
+      title: `Netherworld`,
       content: `When enemies with <b>Burden</b> are defeated, if <b>Burden</b>'s Skill Point recovery trigger count is <span class="text-desc">1</span> or fewer, additionally recover <span class="text-desc">1</span> Skill Point(s).`,
     },
     a6: {
-      title: `A6: Reanimated`,
+      title: `Reanimated`,
       content: `When <b>Burden</b>'s Skill Point recovery effect is triggered, this character regenerates <span class="text-desc">2</span> Energy.`,
     },
     c1: {
-      title: `E1: One Heart`,
+      title: `One Heart`,
       content: `When an ally with Hanya's Ultimate's effect defeats an enemy, Hanya's action is Advanced Forward by <span class="text-desc">15%</span>. This effect can only be triggered <span class="text-desc">1</span> time(s) per turn.`,
     },
     c2: {
-      title: `E2: Two Views`,
+      title: `Two Views`,
       content: `After using the Skill, this character's SPD increases by <span class="text-desc">20%</span> for <span class="text-desc">1</span> turn(s).`,
     },
     c3: {
-      title: `E3: Three Temptations`,
+      title: `Three Temptations`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: `E4: Four Truths`,
+      title: `Four Truths`,
       content: `The Ultimate's duration is additionally extended for <span class="text-desc">1</span> turn(s).`,
     },
     c5: {
-      title: `E5: Five Skandhas`,
+      title: `Five Skandhas`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: `E6: Six Reverences`,
+      title: `Six Reverences`,
       content: `Increase the DMG Boost effect of the Talent by an additional <span class="text-desc">10%</span>.`,
     },
   }
@@ -166,7 +166,7 @@ const Hanya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -176,7 +176,7 @@ const Hanya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
         },
       ]
 

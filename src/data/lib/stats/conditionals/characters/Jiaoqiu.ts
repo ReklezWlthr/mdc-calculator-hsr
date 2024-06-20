@@ -64,41 +64,41 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `After using Technique, creates a special dimension that lasts for <span class="text-desc">15</span> second(s). After engaging enemies in the dimension, deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">100%</span> of Jiaoqiu's ATK to all enemies and has a <span class="text-desc">100%</span> <u>base chance</u> of applying 1 <b>Ashen Roast</b> stack. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a2: {
-      title: 'A2: Seared Scent',
+      title: 'Seared Scent',
       content: `When a Field exists, enemies entering combat will be inflicted with <b>Ashen Roast</b> stacks. The number of stacks applied will match the highest number of <b>Ashen Roast</b> stacks inflicted while the Field is active, with a minimum of <span class="text-desc">1</span> stack(s).`,
     },
     a4: {
-      title: 'A4: Hearth Kindle',
+      title: 'Hearth Kindle',
       content: `When Jiaoqiu's Effect Hit Rate is higher than <span class="text-desc">80%</span>, for each <span class="text-desc">15%</span> exceeded, Jiaoqiu additionally gains <span class="text-desc">60%</span> ATK, up to a maximum of <span class="text-desc">240%</span>.`,
     },
     a6: {
-      title: 'A6: Pyre Cleanse',
+      title: 'Pyre Cleanse',
       content: `When a Field exists, the enemies' Effect Hit Rate is reduced by <span class="text-desc">30%</span>. At the start of each turn, they receive <b class="text-hsr-fire">Fire Additional DMG</b> equal to <span class="text-desc">150%</span> of Jiaoqiu's ATK.`,
     },
     c1: {
-      title: 'E1: Pentapathic Transference',
+      title: 'Pentapathic Transference',
       content: `When an ally attacks an enemy target afflicted with <b>Ashen Roast</b>, increases DMG dealt by <span class="text-desc">48%</span>. Each time the Talent triggers <b>Ashen Roast</b>, additionally increases the present <b>Ashen Roast</b> stacks by <span class="text-desc">1</span>.`,
     },
     c2: {
-      title: `E2: From Savor Comes Suffer`,
+      title: `From Savor Comes Suffer`,
       content: `<b>Ashen Roast</b> can be considered as a <b class="text-hsr-fire">Burn</b> status. Enemies with <b>Ashen Roast</b> will suffer <b class="text-hsr-fire">Fire DoT</b> equal to <span class="text-desc">300%</span> of Jiaoqiu's ATK at the start of each turn.`,
     },
     c3: {
-      title: 'E3: Flavored Euphony Reigns Supreme',
+      title: 'Flavored Euphony Reigns Supreme',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'E4: Leisure In, Luster Out',
+      title: 'Leisure In, Luster Out',
       content: `When the Field exists, reduces enemy target's ATK by <span class="text-desc">15%</span>.`,
     },
     c5: {
-      title: `E5: Duel in Dawn, Dash in Dusk`,
+      title: `Duel in Dawn, Dash in Dusk`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'E6: Nonamorphic Pyrobind',
+      title: 'Nonamorphic Pyrobind',
       content: `When the enemy target is defeated, existing <b>Ashen Roast</b> stacks will be transferred to a surviving enemy with the lowest amount of <b>Ashen Roast</b> stacks. Increases max <b>Ashen Roast</b> stacks to <span class="text-desc">9</span>. Every stack of <b>Ashen Roast</b> will reduce all enemies' All-Type RES by <span class="text-desc">3%</span>.`,
     },
   }
@@ -157,7 +157,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
         },
       ]
       base.SKILL_SCALING = [
@@ -168,7 +168,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           chance: { base: 1, fixed: false },
-          break: 60,
+          break: 20,
         },
         {
           name: 'Adjacent',
@@ -176,7 +176,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 30,
+          break: 10,
         },
       ]
       base.ULT_SCALING = [
@@ -187,7 +187,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           chance: { base: 0.6, fixed: false },
-          break: 60,
+          break: 20,
         },
       ]
 

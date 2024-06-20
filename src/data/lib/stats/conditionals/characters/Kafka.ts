@@ -62,41 +62,41 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Immediately attacks all enemies within a set range. After entering battle, deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">50%</span> of Kafka's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> equivalent to that applied by her Ultimate on every enemy target for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
-      title: 'A2: Torture',
+      title: 'Torture',
       content: `When the Ultimate is used, enemy targets will now receive DMG immediately from all currently applied DoT sources instead of just receiving DMG immediately from the currently applied <b class="text-hsr-lightning">Shock</b> state.`,
     },
     a4: {
-      title: 'A4: Plunder',
+      title: 'Plunder',
       content: `If an enemy is defeated while <b class="text-hsr-lightning">Shocked</b>, Kafka additionally regenerates <span class="text-desc">5</span> Energy.`,
     },
     a6: {
-      title: 'A6: Thorns',
+      title: 'Thorns',
       content: `The <u>base chance</u> for Ultimate, Technique, or the follow-up attack triggered by the Talent to inflict <b class="text-hsr-lightning">Shock</b> increases by <span class="text-desc">30%</span>.`,
     },
     c1: {
-      title: 'E1: Da Capo',
+      title: 'Da Capo',
       content: `When the Talent triggers a follow-up attack, there is a <span class="text-desc">100%</span> <u>base chance</u> to increase the DoT received by the target by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
-      title: `E2: Fortississimo`,
+      title: `Fortississimo`,
       content: `While Kafka is on the field, DoT dealt by all allies increases by <span class="text-desc">25%</span>.`,
     },
     c3: {
-      title: 'E3: Capriccio',
+      title: 'Capriccio',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
-      title: 'E4: Recitativo',
+      title: 'Recitativo',
       content: `When an enemy target takes DMG from the <b class="text-hsr-lightning">Shock</b> status inflicted by Kafka, Kafka additionally regenerates <span class="text-desc">2</span> Energy.`,
     },
     c5: {
-      title: `E5: Doloroso`,
+      title: `Doloroso`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
-      title: 'E6: Leggiero',
+      title: 'Leggiero',
       content: `The <b class="text-hsr-lightning">Shock</b> inflicted on the enemy target by the Ultimate, the Technique, or the Talent-triggered follow-up attack has a DMG multiplier increase of <span class="text-desc">156%</span> and lasts <span class="text-desc">1</span> turn(s) longer.`,
     },
   }
@@ -155,7 +155,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
-          break: 30,
+          break: 10,
           energy: 20,
         },
       ]
@@ -166,7 +166,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 60,
+          break: 20,
           energy: 30,
         },
         {
@@ -175,7 +175,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          break: 30,
+          break: 10,
           energy: 30,
         },
       ]
@@ -186,7 +186,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 60,
+          break: 20,
           energy: 5,
         },
       ]
