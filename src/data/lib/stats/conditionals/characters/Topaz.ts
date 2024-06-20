@@ -21,6 +21,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Deficit...	`,
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Topaz's ATK to a single enemy.`,
@@ -28,6 +29,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Difficulty Paying?',
       content: `Inflicts a single target enemy with a <b>Proof of Debt</b> status, increasing the DMG it takes from follow-up attacks by {{0}}%. <b>Proof of Debt</b> only takes effect on the most recent target it is applied to. If there are no enemies inflicted with <b>Proof of Debt</b> on the field when an ally's turn starts or when an ally takes action, Topaz will inflict a random enemy with <b>Proof of Debt</b>.
@@ -39,6 +41,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Turn a Profit!`,
       content: `Numby enters the <b>Windfall Bonanza!</b> state and its DMG multiplier increases by {{0}}% and CRIT DMG increases by {{1}}%. Also, when enemies with <b>Proof of Debt</b> are hit by an ally's Basic ATK, Skill, or Ultimate, Numby's action is Advanced Forward by <span class="text-desc">50%</span>. Numby exits the <b>Windfall Bonanza!</b> state after using <span class="text-desc">2</span> attacks.`,

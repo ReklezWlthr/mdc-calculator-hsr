@@ -21,6 +21,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Thwack',
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Seele's ATK to a single target enemy.`,
@@ -28,6 +29,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Sheathed Blade',
       content: `Increases Seele's SPD by <span class="text-desc">25%</span> for <span class="text-desc">2</span> turn(s) and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Seele's ATK to a single enemy.`,
@@ -35,6 +37,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Butterfly Flurry',
       content: `Seele enters the buffed state and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of her ATK to a single enemy.`,
@@ -99,8 +102,8 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: 'Shattering Shambles',
-      content: `After Seele uses her Ultimate, inflict the target enemy with Butterfly Flurry for <span class="text-desc">1</span> turn(s). Enemies suffering from Butterfly Flurry will take Additional Quantum DMG equal to <span class="text-desc">15%</span> of Seele's Ultimate DMG every time they are attacked. If the target enemy is defeated by the Butterfly Flurry DMG triggered by other allies' attacks, Seele's Talent will not be triggered.
-      <br />When Seele is knocked down, the Butterfly Flurry inflicted on the enemies will be removed.`,
+      content: `After Seele uses her Ultimate, inflict the target enemy with <b class="text-hsr-quantum">Butterfly Flurry</b> for <span class="text-desc">1</span> turn(s). Enemies suffering from <b class="text-hsr-quantum">Butterfly Flurry</b> will take Additional <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">15%</span> of Seele's Ultimate DMG every time they are attacked. If the target enemy is defeated by the <b class="text-hsr-quantum">Butterfly Flurry</b> DMG triggered by other allies' attacks, Seele's Talent will not be triggered.
+      <br />When Seele is knocked down, the <b class="text-hsr-quantum">Butterfly Flurry</b> inflicted on the enemies will be removed.`,
     },
   }
 

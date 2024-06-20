@@ -22,6 +22,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'My Sword Zaps Demons',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of March 7th's ATK to a single enemy and gains 1<span class="text-desc">1</span> <b>Charge(s)</b>.`,
@@ -29,6 +30,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: basic,
     },
     normal_alt: {
+      energy: 20,
       trace: 'Enhanced Basic ATK',
       title: 'Brows Be Smitten, Heart Be Bitten',
       content: `This attack deals <span class="text-desc">3</span> Hits Per Action initially. Each hit against the target enemy deals Imaginary DMG equal to {{0}}% of March 7th's ATK. After dealing the final hit, there is a <span class="text-desc">60%</span> <u>fixed chance</u> to deal <span class="text-desc">1</span> extra hit, up to <span class="text-desc">3</span> extra hit(s). Energy regenerated from using Enhanced Basic ATK does not increase with the number of Hits Per Action.
@@ -37,6 +39,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `Master, It's Tea Time!`,
       content: `Designates a single ally (excluding this character) as the <b class="text-hsr-imaginary">Master</b> and increases <b class="text-hsr-imaginary">Master</b>'s SPD by {{0}}%. Only the latest target of March 7th's Skill will be regarded as her "<b class="text-hsr-imaginary">Master</b>."
@@ -50,6 +53,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'March 7th, the Apex Heroine',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of March 7th's ATK to a single target enemy.

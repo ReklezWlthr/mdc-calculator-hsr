@@ -1,7 +1,6 @@
 import { getPathImage } from '@src/core/utils/fetcher'
 import { findCharacter } from '@src/core/utils/finder'
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
-import { ReverseConsList } from '@src/data/lib/stats/conditionals/conditionals'
 import { ITalent, ITalentDisplay } from '@src/domain/conditional'
 import { Element, Stats } from '@src/domain/constant'
 import { Tooltip } from '@src/presentation/components/tooltip'
@@ -71,11 +70,6 @@ export const ConsCircle = observer(
       U: 'Ultra',
       T: 'Passive',
     }
-    const onError = (e: SyntheticEvent<HTMLImageElement, Event>) => {
-      e.currentTarget.style.display = 'none'
-      e.currentTarget.nextElementSibling.className = 'block text-3xl font-bold opacity-80'
-    }
-    const onLoad = (e: SyntheticEvent<HTMLImageElement, Event>) => (e.currentTarget.style.display = 'block')
 
     return (
       <div className="space-y-5">

@@ -21,6 +21,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Galespin Summersault`,
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to a single enemy.`,
@@ -28,6 +29,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `Bladeborne Quake`,
       content: `Restores HP equal to {{2}}% of Yunli's ATK plus {{3}}, and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to a single enemy target and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Yunli's ATK to adjacent targets.`,
@@ -40,6 +42,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Earthbind, Etherbreak`,
       content: `Consumes <span class="text-desc">120</span> Energy. Yunli gains Block and Taunts all enemies, lasting until the end of the next turn of an allied or enemy unit. While Block is active, Yunli's CRIT DMG increases by {{3}}%. When the Counter Talent effect is triggered while Block is active, it will be switched to a <b>Counter Intuit: Cull</b> effect and also dispel Block. If no Counters are triggered while Block is active, when the effect ends, Yunli will immediately launch a <b>Counter Intuit: Slash</b> effect on a random enemy target. When an <b>Intuit: Slash</b> is inflicted, it will cause the next <b>Intuit: Slash</b> to become an <b>Intuit: Cull</b>.
@@ -54,6 +57,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      energy: 10,
       trace: 'Talent',
       title: `Flashforge`,
       content: `When Yunli is attacked by an enemy target, immediately launches a Counter on the attacker, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK, and <b class="text-hsr-physical">Physical DMG</b> to adjacent targets equal to {{1}}% of Yunli's ATK.`,

@@ -23,6 +23,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Threading Fragrance`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Ruan Mei's ATK to a single target enemy.`,
@@ -30,6 +31,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `String Sings Slow Swirls`,
       content: `After using her Skill, Ruan Mei gains <b>Overtone</b>, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> at the start of Ruan Mei's turn. When Ruan Mei has <b>Overtone</b>, all allies' DMG increases by {{0}}% and Weakness Break Efficiency increases by <span class="text-desc">50%</span>.`,
@@ -37,6 +39,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Petals to Stream, Repose in Dream`,
       content: `Ruan Mei deploys a field that lasts for <span class="text-desc">2</span> turns. The field's duration decreases by <span class="text-desc">1</span> at the start of her turn.

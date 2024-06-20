@@ -23,6 +23,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Order: Flare Propulsion`,
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of SAM's ATK to a single target enemy.`,
@@ -57,6 +58,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Fyrefly Type-IV: Complete Combustion`,
       content: `Upon entering the <b class="text-hsr-fire">Complete Combustion</b> state, Advances SAM's Action by <span class="text-desc">100%</span> and gains Enhanced Basic ATK and Enhanced Skill. While in <b class="text-hsr-fire">Complete Combustion</b>, increases SPD by {{0}}, and when using the Enhanced Basic ATK or Enhanced Skill, increases this unit's Weakness Break efficiency by <span class="text-desc">50%</span> and the Break DMG received by the enemy targets by {{1}}%, lasting until the current attack ends.

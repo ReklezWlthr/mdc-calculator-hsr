@@ -21,6 +21,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Frost Shot',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pela's ATK to a single enemy.`,
@@ -28,6 +29,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Frostbite',
       content: `Removes <span class="text-desc">1</span> buff(s) and deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pela's ATK as to a single enemy.`,
@@ -35,6 +37,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Zone Suppression`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pela's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b>Exposed</b> on all enemies.

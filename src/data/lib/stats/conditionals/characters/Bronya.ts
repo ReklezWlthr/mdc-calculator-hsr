@@ -23,6 +23,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Windrider Bullet',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Bronya's ATK to a single enemy.`,
@@ -30,6 +31,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Combat Redeployment',
       content: `Dispels a debuff from a single ally, allows them to immediately take action, and increases their DMG by {{0}}% for <span class="text-desc">1</span> turn(s).
@@ -38,6 +40,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `The Belobog March`,
       content: `Increases the ATK of all allies by {{0}}%, and increases their CRIT DMG equal to {{1}}% of Bronya's CRIT DMG plus {{2}}% for <span class="text-desc">2</span> turn(s).`,
@@ -92,6 +95,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
+      energy: 5,
       trace: 'Eidolon 4',
       title: 'Take by Surprise',
       content: `After an ally other than Bronya uses Basic ATK on an enemy with <b class="text-hsr-wind">Wind</b> Weakness, Bronya immediately launches a follow-up attack on the target, dealing <b class="text-hsr-wind">Wind DMG</b> equal to <span class="text-desc">80%</span> of Bronya's Basic ATK DMG. This effect can only be triggered <span class="text-desc">1</span> time per turn.`,

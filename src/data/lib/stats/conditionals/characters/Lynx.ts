@@ -23,6 +23,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Ice Crampon Technique`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of this character's Max HP to a single enemy.`,
@@ -30,6 +31,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Salted Camping Cans',
       content: `Applies "Survival Response" to a single target ally and increases their Max HP by {{0}}% of Lynx's Max HP plus {{1}}. If the target ally is a character on the Path of Destruction or Preservation, the chance of them being attacked by enemies will greatly increase. "Survival Response" lasts for <span class="text-desc">2</span> turn(s).
@@ -43,6 +45,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Snowfield First Aid`,
       content: `Dispels <span class="text-desc">1</span> debuff(s) from all allies and immediately restores their respective HP by an amount equal to {{0}}% of Lynx's Max HP plus {{1}}.`,

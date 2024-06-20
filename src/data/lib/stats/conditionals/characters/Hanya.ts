@@ -23,6 +23,7 @@ const Hanya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Oracle Brush`,
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Hanya's ATK to a single enemy.`,
@@ -30,6 +31,7 @@ const Hanya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `Samsara, Locked`,
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Hanya's ATK to a single enemy, then applies <b>Burden</b> to them.
@@ -38,6 +40,7 @@ const Hanya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Ten-Lords' Decree, All Shall Obey`,
       content: `Increases the SPD of a target ally by {{0}}% of Hanya's SPD and increases the same target ally's ATK by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).`,

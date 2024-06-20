@@ -21,6 +21,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Thorns of the Abyss',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Luocha's ATK to a single enemy.`,
@@ -28,6 +29,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Prayer of Abyss Flower',
       content: `After using his Skill, Luocha immediately restores the target ally's HP equal to {{0}}% of Luocha's ATK plus {{1}}. Meanwhile, Luocha gains <span class="text-desc">1</span> stack of <b>Abyss Flower</b>.
@@ -39,6 +41,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Death Wish',
       content: `Removes <span class="text-desc">1</span> buff(s) from all enemies and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Luocha's ATK to all enemies. Luocha gains <span class="text-desc">1</span> stack of <b>Abyss Flower</b>.`,

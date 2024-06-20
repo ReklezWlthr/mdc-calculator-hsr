@@ -21,6 +21,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Cloudfencer Art: Starshine`,
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Sushang's ATK to a single enemy.`,
@@ -28,6 +29,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `Cloudfencer Art: Mountainfall`,
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Sushang's ATK to a single enemy. In addition, there is a <span class="text-desc">33%</span> chance to trigger <b>Sword Stance</b> on the final hit, dealing Additional <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Sushang's ATK to the enemy.
@@ -39,6 +41,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Shape of Taixu: Dawn Herald',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Sushang's ATK to a single enemy target, and she immediately takes action again. In addition, Sushang's ATK increases by {{1}}% and using her Skill has <span class="text-desc">2</span> extra chances to trigger <b>Sword Stance</b> for <span class="text-desc">2</span> turn(s).

@@ -24,6 +24,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Standing Ovation`,
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Guinaifen's ATK to a single enemy.`,
@@ -31,6 +32,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `Blazing Welcome`,
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Guinaifen's ATK to a single enemy and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Guinaifen's ATK to any adjacent enemies with a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-fire">Burn</b> the target and adjacent targets. When <b class="text-hsr-fire">Burned</b>, enemies will take a <b class="text-hsr-fire">Fire DoT</b> equal to {{2}}% of Guinaifen's ATK at the beginning of each turn, lasting for <span class="text-desc">2</span> turn(s).`,
@@ -42,6 +44,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Watch This Showstopper',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Guinaifen's ATK to all enemies. If the target enemy is currently inflicted with <b class="text-hsr-fire">Burn</b>, then their <b class="text-hsr-fire">Burn</b> status immediately produce DMG equal to {{1}}% of their original DMG.`,

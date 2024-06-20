@@ -23,6 +23,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'System Warning',
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Silver Wolf's ATK to a single enemy.`,
@@ -30,6 +31,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Allow Changes?',
       content: `There is a {{0}}% <u>base chance</u> to add 1 Weakness of an on-field ally's Type to the target enemy. This also reduces the enemy's DMG RES to that Weakness Type by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s). If the enemy already has that Type Weakness, the effect of DMG RES reduction to that Weakness Type will not be triggered.
@@ -44,6 +46,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'User Banned',
       content: `There's a {{0}}% <u>base chance</u> to decrease the target enemy's DEF by {{1}}% for 3 turn(s). And at the same time, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{2}}% of Silver Wolf's ATK to the target enemy.`,

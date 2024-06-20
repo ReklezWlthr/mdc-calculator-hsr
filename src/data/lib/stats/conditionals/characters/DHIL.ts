@@ -21,6 +21,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Beneficent Lotus`,
       content: `Uses a 2-hit attack and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dan Heng • Imbibitor Lunae's ATK to a single enemy target.`,
@@ -28,14 +29,16 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: basic,
     },
     normal_alt1: {
-      trace: 'Enhanced Basic ATK',
+      energy: 30,
+      trace: 'Enhanced Basic ATK [1]',
       title: `Transcendence`,
       content: `Uses a 3-hit attack and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dan Heng • Imbibitor Lunae's ATK to a single enemy target.`,
       value: [{ base: 130, growth: 26, style: 'linear' }],
       level: basic,
     },
     normal_alt2: {
-      trace: 'Enhanced Basic ATK',
+      energy: 35,
+      trace: 'Enhanced Basic ATK [2]',
       title: `Divine Spear`,
       content: `Uses a 5-hit attack and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dan Heng • Imbibitor Lunae's ATK to a single enemy target. From the fourth hit onward, simultaneously deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Dan Heng • Imbibitor Lunae's ATK to adjacent targets.`,
       value: [
@@ -45,7 +48,8 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: basic,
     },
     normal_alt3: {
-      trace: 'Enhanced Basic ATK',
+      energy: 40,
+      trace: 'Enhanced Basic ATK [3]',
       title: `Fulgurant Leap`,
       content: `Uses a 7-hit attack and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dan Heng • Imbibitor Lunae's ATK to a single enemy target. From the fourth hit onward, simultaneously deal <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Dan Heng • Imbibitor Lunae's ATK to adjacent targets.`,
       value: [
@@ -66,6 +70,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Azure's Aqua Ablutes All`,
       content: `Uses a 3-hit attack and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dan Heng • Imbibitor Lunae's ATK to a single enemy target. At the same time, deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Dan Heng • Imbibitor Lunae's ATK to adjacent targets. Then, obtains <span class="text-desc">2</span> <b class="text-hsr-imaginary">Squama Sacrosancta</b>.

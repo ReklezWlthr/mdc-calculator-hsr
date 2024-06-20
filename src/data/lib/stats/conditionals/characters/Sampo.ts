@@ -24,6 +24,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Dazzling Blades',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Sampo's ATK to a single enemy.`,
@@ -31,6 +32,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
     },
     skill: {
+      energy: c >= 1 ? 36 : 30,
       trace: 'Skill',
       title: 'Ricochet Love',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Sampo's ATK to a single enemy, and further deals DMG for <span class="text-desc">4</span> extra time(s), with each time dealing <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Sampo's ATK to a random enemy.`,
@@ -38,6 +40,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Surprise Present`,
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Sampo's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> to increase the targets' DoT taken by {{1}}% for <span class="text-desc">2</span> turn(s).`,

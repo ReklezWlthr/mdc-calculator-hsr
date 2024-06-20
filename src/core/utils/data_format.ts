@@ -3,6 +3,8 @@ import { Element, IArtifactEquip, ICharacter, ITeamChar, Stats } from '@src/doma
 import _ from 'lodash'
 import { findCharacter } from './finder'
 import { TraceScaling } from '@src/domain/scaling'
+import { ITalentDisplay } from '@src/domain/conditional'
+import { calcScaling } from './calculator'
 
 export const findBaseLevel = (ascension: number) => {
   if (ascension < 0 || ascension > 6) return 0
@@ -123,3 +125,26 @@ export const formatMinorTrace = (stats: Stats[], defaultValue: boolean[]) => {
     { stat: stats?.[2], value: TraceScaling[stats?.[2]]?.[2], toggled: defaultValue[9] },
   ]
 }
+
+export const formatScaleString = (talent: ITalentDisplay, level: number) =>
+  _.reduce(
+    Array.from(talent?.content?.matchAll(/{{\d+}}\%?/g) || []),
+    (acc, curr) => {
+      const index = curr?.[0]?.match(/\d+/)?.[0]
+      const isPercentage = !!curr?.[0]?.match(/\%$/)
+      return _.replace(
+        acc,
+        curr[0],
+        `<span class="text-desc">${_.round(
+          calcScaling(
+            talent?.value?.[index]?.base,
+            talent?.value?.[index]?.growth,
+            level,
+            talent?.value?.[index]?.style
+          ),
+          1
+        ).toLocaleString()}${isPercentage ? '%' : ''}</span>`
+      )
+    },
+    talent?.content
+  )

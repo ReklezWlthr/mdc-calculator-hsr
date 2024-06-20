@@ -24,6 +24,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Glistening Light`,
       content: `Jing Yuan deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of his ATK to a single enemy.`,
@@ -31,6 +32,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `Rifting Zenith`,
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Jing Yuan's ATK to all enemies and increases <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action by <span class="text-desc">2</span> for the next turn.`,
@@ -38,6 +40,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Lightbringer',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Jing Yuan's ATK to all enemies and increases <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action by <span class="text-desc">3</span> for the next turn.`,

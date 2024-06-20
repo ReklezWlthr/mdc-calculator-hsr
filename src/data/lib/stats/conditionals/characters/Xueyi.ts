@@ -21,6 +21,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Mara-Sunder Awl`,
       content: `Deals {{0}}% of Xueyi's ATK as <b class="text-hsr-quantum">Quantum DMG</b> to a single target enemy.`,
@@ -28,6 +29,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `Iniquity Obliteration`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Xueyi's ATK to a single enemy, and <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Xueyi's ATK to any adjacent enemies.`,
@@ -38,6 +40,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Divine Castigation`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Xueyi's ATK to a single target enemy. This attack ignores Weakness Types and reduces the enemy's Toughness. When the enemy's Weakness is Broken, the <b class="text-hsr-quantum">Quantum</b> Weakness Break effect is triggered.
@@ -49,6 +52,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      energy: 6,
       trace: 'Talent',
       title: `Karmic Perpetuation`,
       content: `When Xueyi reduces enemy Toughness with attacks, <b>Karma</b> will be stacked. The more Toughness is reduced, the more stacks of <b>Karma</b> are added, up to <span class="text-desc">8</span> stacks.

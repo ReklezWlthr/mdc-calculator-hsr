@@ -2,6 +2,7 @@ import { ICharStore } from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
+import { Characters } from '../db/characters'
 
 enableStaticRendering(typeof window === 'undefined')
 
@@ -24,7 +25,7 @@ export const DefaultCharacterStore: ICharStore = {
   },
 }
 
-export const DefaultAccount = _.map([], (item) => ({ ...DefaultCharacterStore, cId: item }))
+export const DefaultAccount = _.map(['8001', '1001', '1002'], (item) => ({ ...DefaultCharacterStore, cId: item }))
 
 export interface CharacterStoreType {
   characters: ICharStore[]
@@ -47,7 +48,7 @@ export class CharacterStore {
 
   constructor() {
     this.characters = DefaultAccount
-    this.selected = ''
+    this.selected = _.head(_.orderBy(Characters, ['name'])).id
     this.loading = true
 
     makeAutoObservable(this)

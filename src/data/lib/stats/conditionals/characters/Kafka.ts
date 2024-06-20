@@ -24,6 +24,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Midnight Tumult',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to a single enemy.`,
@@ -31,6 +32,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Caressing Moonlight',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to a target enemy and <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Kafka's ATK to enemies adjacent to it.
@@ -43,6 +45,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Twilight Trill',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> for enemies hit to become <b class="text-hsr-lightning">Shocked</b> and immediately take DMG from their current <b class="text-hsr-lightning">Shock</b> state, equal to {{1}}% of its original DMG. <b class="text-hsr-lightning">Shock</b> lasts for <span class="text-desc">2</span> turn(s).
@@ -55,6 +58,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      energy: 10,
       trace: 'Talent',
       title: 'Gentle but Cruel',
       content: `After an ally of Kafka's uses Basic ATK on an enemy target, Kafka immediately launches <span class="text-desc">1</span> follow-up attack and deals Lightning DMG equal to {{0}}% of her ATK to that target, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> equivalent to that applied by her Ultimate to the attacked enemy target for <span class="text-desc">2</span> turns. This effect can only be triggered <span class="text-desc">1</span> time per turn.`,

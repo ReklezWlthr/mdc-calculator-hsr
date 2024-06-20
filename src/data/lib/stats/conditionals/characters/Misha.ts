@@ -21,6 +21,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `E—Excuse Me, Please!`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Misha's ATK to a single target enemy.`,
@@ -28,6 +29,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `R—Room Service`,
       content: `Increases the Hits Per Action for Misha's next Ultimate by <span class="text-desc">1</span> hit(s). Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Misha's ATK to a single target enemy, and <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Misha's ATK to adjacent targets.`,
@@ -38,6 +40,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `G—Gonna Be Late!`,
       content: `Has <span class="text-desc">3</span> Hits Per Action by default. First, uses <span class="text-desc">1</span> hit to deal <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Misha's ATK to a single target enemy. Then, the rest of the hits each deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Misha's ATK to a single random enemy. Just before each hit lands, there is a {{1}}% <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> the target, lasting for <span class="text-desc">1</span> turn.

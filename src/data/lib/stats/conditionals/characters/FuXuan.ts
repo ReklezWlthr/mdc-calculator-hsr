@@ -23,6 +23,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Novaburst',
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Fu Xuan's Max HP to a single target enemy.`,
@@ -30,6 +31,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Known by Stars, Shown by Hearts',
       content: `Activates <b>Matrix of Prescience</b>, via which other team members will Distribute <span class="text-desc">65%</span> of the DMG they receive (before this DMG is mitigated by any Shields) to Fu Xuan for <span class="text-desc">3</span> turn(s).
@@ -42,6 +44,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Woes of Many Morphed to One',
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Fu Xuan's Max HP to all enemies and obtains <span class="text-desc">1</span> trigger count for the HP Restore effect granted by Fu Xuan's Talent.`,

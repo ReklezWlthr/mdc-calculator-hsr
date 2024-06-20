@@ -21,6 +21,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Diagnostic Kick`,
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Bailu's ATK to a single enemy.`,
@@ -28,6 +29,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `Singing Among Clouds`,
       content: `Heals a single ally for {{0}}% of Bailu's Max HP plus {{1}}. Bailu then heals random allies <span class="text-desc">2</span> time(s). After each healing, HP restored from the next healing is reduced by <span class="text-desc">15%</span>.`,
@@ -38,6 +40,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Felicitous Thunderleap',
       content: `Heals all allies for {{0}}% of Bailu's Max HP plus {{1}}. Bailu applies <b>Invigoration</b> to allies that are not already <b>Invigorated</b>. For those already <b>Invigorated</b>, Bailu extends the duration of their <b>Invigoration</b> by <span class="text-desc">1</span> turn. The effect of <b>Invigoration</b> can last for <span class="text-desc">2</span> turn(s). This effect cannot stack.`,

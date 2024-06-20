@@ -21,6 +21,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Straight Bet`,
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Aventurine's DEF to a single target enemy.`,
@@ -28,6 +29,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `Cornerstone Deluxe`,
       content: `Provides all allies with a <b class="text-indigo-300">Fortified Wager</b> shield that can block DMG equal to {{0}}% of Aventurine's DEF plus {{1}}, lasting for <span class="text-desc">3</span> turn(s). When repeatedly gaining <b class="text-indigo-300">Fortified Wager</b>, the <b class="text-indigo-300">Shield</b> effect can stack, up to <span class="text-desc">200%</span> of the <b class="text-indigo-300">Shield</b> provided by the current Skill.`,
@@ -38,6 +40,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Roulette Shark`,
       content: `Randomly gains <span class="text-desc">1</span> to <span class="text-desc">7</span> points of <b>Blind Bet</b>. Then inflicts <b>Unnerved</b> on a single target enemy, lasting for <span class="text-desc">3</span> turn(s). And deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Aventurine's DEF to the single target enemy. When an ally hits an <b>Unnerved</b> enemy target, the CRIT DMG dealt increases by {{1}}%.`,
@@ -48,6 +51,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       level: ult,
     },
     talent: {
+      energy: c >= 4 ? 10 : 7,
       trace: 'Talent',
       title: `Shot Loaded Right`,
       content: `For any single ally with <b class="text-indigo-300">Fortified Wager</b>, their Effect RES increases by {{0}}%, and when they get attacked, Aventurine gains <span class="text-desc">1</span> point of <b>Blind Bet</b>. When Aventurine has <b class="text-indigo-300">Fortified Wager</b>, he can resist Crowd Control debuffs. This effect can trigger again after <span class="text-desc">2</span> turn(s). Aventurine additionally gains <span class="text-desc">1</span> point(s) of <b>Blind Bet</b> after getting attacked. Upon reaching <span class="text-desc">7</span> points of <b>Blind Bet</b>, Aventurine consumes the <span class="text-desc">7</span> points to launch a <span class="text-desc">7</span>-hit follow-up attack, with each hit dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Aventurine's DEF to a single random enemy. <b>Blind Bet</b> is capped at <span class="text-desc">10</span> points.`,

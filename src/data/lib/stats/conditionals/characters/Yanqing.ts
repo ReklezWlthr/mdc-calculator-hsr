@@ -21,6 +21,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Frost Thorn`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Yanqing's ATK to a single enemy.`,
@@ -28,6 +29,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `Darting Ironthorn`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Yanqing's ATK to a single enemy and activates <b>Soulsteel Sync</b> for <span class="text-desc">1</span> turn.`,
@@ -35,6 +37,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Amidst the Raining Bliss',
       content: `Increases Yanqing's CRIT Rate by <span class="text-desc">60%</span>. When <b>Soulsteel Sync</b> is active, increases Yanqing's CRIT DMG by an extra {{0}}%. This buff lasts for one turn. Afterwards, deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Yanqing's ATK to a single enemy.`,
@@ -45,6 +48,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: ult,
     },
     talent: {
+      energy: 10,
       trace: 'Talent',
       title: `One With the Sword`,
       content: `When <b>Soulsteel Sync</b> is active, Yanqing is less likely to be attacked by enemies. Yanqing's CRIT Rate increases by {{0}}% and his CRIT DMG increases by {{1}}%. After Yanqing attacks an enemy, there is {{2}}% <u>fixed chance</u> to perform a follow-up attack, dealing <b class="text-hsr-ice">Ice DMG</b> equal to {{3}}% of Yanqing's ATK to the enemy, which has a <span class="text-desc">65%</span> <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> the enemy for <span class="text-desc">1</span> turn.

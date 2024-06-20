@@ -93,6 +93,7 @@ export interface IWeaponContent {
 }
 
 export interface ITalentDisplay {
+  energy?: number
   trace: string
   title: string
   content: string

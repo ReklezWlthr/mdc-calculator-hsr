@@ -23,6 +23,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Wingflip White Noise`,
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Robin's ATK to a single target enemy.`,
@@ -30,6 +31,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `Pinion's Aria`,
       content: `Increase DMG dealt by all allies by {{0}}%, lasting for <span class="text-desc">3</span> turn(s). This duration reduces by <span class="text-desc">1</span> at the start of Robin's every turn.`,
@@ -37,6 +39,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Vox Harmonique, Opus Cosmique	`,
       content: `Robin enters the <b>Concerto</b> state and makes all other allies immediately take action.

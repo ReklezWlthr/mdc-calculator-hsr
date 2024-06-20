@@ -21,6 +21,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Lucent Moonglow`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's ATK to a single enemy.`,
@@ -28,6 +29,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: basic,
     },
     skill: {
+      energy: 20,
       trace: 'Skill',
       title: `Transcendent Flash`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's ATK to a single enemy and obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>.`,
@@ -35,6 +37,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     skill_alt: {
+      energy: 30,
       trace: 'Enhanced Skill',
       title: `Moon On Glacial River`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's ATK to a single enemy, and deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Jingliu's ATK to adjacent enemies. Consumes <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>. Using this ability does not consume Skill Points.`,
@@ -45,6 +48,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Florephemeral Dreamflux',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's ATK to a single enemy, and deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Jingliu's ATK to any adjacent enemies. Gains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b> after attack ends.`,

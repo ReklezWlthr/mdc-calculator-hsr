@@ -23,6 +23,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Sawblade Tuning',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Himeko's ATK to a single enemy.`,
@@ -30,6 +31,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Molten Detonation',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Himeko's ATK to a single enemy and <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Himeko's ATK to enemies adjacent to it.`,
@@ -40,6 +42,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Heavenly Flare',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Himeko's ATK to all enemies. Himeko regenerates <span class="text-desc">5</span> extra Energy for each enemy defeated.`,
@@ -47,6 +50,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: ult,
     },
     talent: {
+      energy: 10,
       trace: 'Talent',
       title: 'Victory Rush',
       content: `When an enemy is inflicted with Weakness Break, Himeko gains <span class="text-desc">1</span> point of <b>Charge</b> (max <span class="text-desc">3</span> points).

@@ -21,6 +21,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Arrowslinger`,
       content: `Deals {{0}}% of Yukong's ATK as <b class="text-hsr-imaginary">Imaginary DMG</b> to a target enemy.`,
@@ -28,6 +29,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `Emboldening Salvo`,
       content: `Obtains <span class="text-desc">2</span> stack(s) of "Roaring Bowstrings" (to a maximum of <span class="text-desc">2</span> stacks). When "Roaring Bowstrings" is active, the ATK of all allies increases by {{0}}%, and every time an ally's turn ends, Yukong loses <span class="text-desc">1</span> stack of "Roaring Bowstrings."
@@ -36,6 +38,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Diving Kestrel',
       content: `If "Roaring Bowstrings" is active on Yukong when her Ultimate is used, additionally increases all allies' CRIT Rate by {{0}}% and CRIT DMG by {{1}}%. At the same time, deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{2}}% of Yukong's ATK to a single enemy.`,

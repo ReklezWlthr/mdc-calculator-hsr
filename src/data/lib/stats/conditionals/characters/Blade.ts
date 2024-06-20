@@ -21,6 +21,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Shard Sword`,
       content: `Deals {{0}}% of Blade's ATK as <b class="text-hsr-wind">Wind DMG</b> to a target enemy.`,
@@ -28,6 +29,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
     },
     normal_alt: {
+      energy: 30,
       trace: 'Enhanced Basic ATK',
       title: `Forest of Swords`,
       content: `Consumes HP equal to <span class="text-desc">10%</span> of Blade's Max HP and deals <b class="text-hsr-wind">Wind DMG</b> equal to the sum of {{0}}% of his ATK and {{1}}% of his Max HP to a single enemy. In addition deals <b class="text-hsr-wind">Wind DMG</b> equal to the sum of {{2}}% of Blade's ATK and {{0}}% of his Max HP to adjacent targets.
@@ -51,6 +53,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Death Sentence',
       content: `Sets Blade's current HP to <span class="text-desc">50%</span> of his Max HP and deals to single enemy <b class="text-hsr-wind">Wind DMG</b> equal to the sum of {{0}}% of his ATK, {{1}}% of his Max HP, and {{1}}% of the total HP he has lost in the current battle. At the same time, deals <b class="text-hsr-wind">Wind DMG</b> to adjacent targets equal to the sum of {{2}}% of his ATK, {{3}}% of his Max HP, and {{3}}% of the total HP he has lost in the current battle. The total HP Blade has lost in the current battle is capped at <span class="text-desc">90%</span> of his Max HP. This value will be reset and re-accumulated after his Ultimate is used.`,
@@ -63,6 +66,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      energy: 10,
       trace: 'Talent',
       title: `Shuhu's Gift`,
       content: `When Blade sustains DMG or consumes his HP, he gains <span class="text-desc">1</span> stack of <b>Charge</b>, stacking up to <span class="text-desc">5</span> times. A max of <span class="text-desc">1</span> <b>Charge</b> stack can be gained every time he is attacked.

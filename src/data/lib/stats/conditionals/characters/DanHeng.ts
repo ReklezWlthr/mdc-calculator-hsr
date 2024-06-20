@@ -21,6 +21,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Cloudlancer Art: North Wind',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Dan Heng's ATK to a single enemy.`,
@@ -28,6 +29,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Cloudlancer Art: Torrent',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Dan Heng's ATK to a single enemy.
@@ -36,6 +38,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Ethereal Dream',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Dan Heng's ATK to a single enemy. If the enemy is <b>Slowed</b>, the Ultimate's DMG multiplier increases by {{1}}%.`,

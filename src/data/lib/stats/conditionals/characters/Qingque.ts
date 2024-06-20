@@ -21,6 +21,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Flower Pick`,
       content: `Tosses <span class="text-desc">1</span> jade tile from the suit with the fewest tiles in hand to deal <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Qingque's ATK to a single enemy.`,
@@ -28,6 +29,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: basic,
     },
     normal_alt: {
+      energy: 20,
       trace: 'Enhanced Basic ATK',
       title: `Cherry on Top!`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Qingque's ATK to a single enemy, and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Qingque's ATK to enemies adjacent to it.
@@ -46,6 +48,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `A Quartet? Woo-hoo!`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Qingque's ATK to all enemies, and obtains <span class="text-desc">4</span> jade tiles of the same suit.`,

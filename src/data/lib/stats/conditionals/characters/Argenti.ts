@@ -21,6 +21,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Fleeting Fragrance',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Argenti's ATK to a single target enemy.`,
@@ -28,6 +29,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Justice, Hereby Blooms',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Argenti's ATK to all enemies.`,
@@ -35,6 +37,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'For In This Garden Supreme Beauty Bestows',
       content: `Consumes <span class="text-desc">90</span> Energy and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Argenti's ATK to all enemies.`,
@@ -42,6 +45,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: ult,
     },
     ult_alt: {
+      energy: 5,
       trace: 'Enhanced Ultimate',
       title: 'Merit Bestowed in "My" Garden',
       content: `Consumes <span class="text-desc">180</span> Energy and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Argenti's ATK to all enemies, and further deals DMG for 6 extra time(s), with each time dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Argenti's ATK to a random enemy.`,

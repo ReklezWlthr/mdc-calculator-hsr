@@ -23,6 +23,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Spectrum Beam',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Asta's ATK to a single enemy.`,
@@ -30,6 +31,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: basic,
     },
     skill: {
+      energy: c >= 1 ? 36 : 30,
       trace: 'Skill',
       title: 'Meteor Storm',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Asta's ATK to a single enemy and further deals DMG for <span class="text-desc">4</span> extra times, with each time dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Asta's ATK to a random enemy.`,
@@ -37,6 +39,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Astral Blessing`,
       content: `Increases SPD of all allies by {{0}} for <span class="text-desc">2</span> turn(s).`,

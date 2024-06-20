@@ -24,6 +24,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Dislodged`,
       content: `Tingyun deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of her ATK to a single enemy.`,
@@ -31,6 +32,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `Soothing Melody`,
       content: `Grants a single ally with <b>Benediction</b> to increase their ATK by {{0}}%, up to {{1}}% of Tingyun's current ATK.
@@ -44,6 +46,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Amidst the Rejoicing Clouds',
       content: `Regenerates <span class="text-desc">50</span> Energy for a single ally and increases the target's DMG by {{0}}% for <span class="text-desc">2</span> turn(s).`,

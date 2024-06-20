@@ -21,6 +21,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Mind is Might',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK to a single target enemy.`,
@@ -28,6 +29,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Intellectual Midwifery',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK to a single target enemy.`,
@@ -35,6 +37,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Syllogistic Paradox',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK to a single target enemy and applies <b>Wiseman's Folly</b>. When Dr. Ratio's allies attack a target afflicted with <b>Wiseman's Folly</b>, Dr. Ratio launches his Talent's follow-up attack for <span class="text-desc">1</span> time against this target.
@@ -43,6 +46,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: ult,
     },
     talent: {
+      energy: 5,
       trace: 'Talent',
       title: 'Cogito, Ergo Sum',
       content: `When using his Skill, Dr. Ratio has a <span class="text-desc">40%</span> <u>fixed chance</u> of launching a follow-up attack against his target for <span class="text-desc">1</span> time, dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK. For each debuff the target enemy has, the <u>fixed chance</u> of launching follow-up attack increases by <span class="text-desc">20%</span>. If the target enemy is defeated before the follow-up attack triggers, the follow-up attack will be directed at a single random enemy instead.`,

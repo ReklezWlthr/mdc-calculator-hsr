@@ -136,7 +136,7 @@ export const BaseAggro = {
 }
 
 export enum TalentType {
-  BA = 'Basic Attack',
+  BA = 'Basic ATK',
   SKILL = 'Skill',
   ULT = 'Ultimate',
   TECH = 'Technique',

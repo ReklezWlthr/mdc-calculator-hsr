@@ -21,6 +21,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Skullcrush Spurs`,
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Boothill's ATK to a single target enemy.`,
@@ -28,6 +29,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       level: basic,
     },
     normal_alt: {
+      energy: 30,
       trace: 'Enhanced Basic ATK',
       title: `Fanning the Hammer`,
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Boothill's ATK to a single target enemy.
@@ -46,6 +48,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Dust Devil's Sunset Rodeo`,
       content: `Applies <b class="text-hsr-physical">Physical</b> Weakness to a single target enemy, lasting for <span class="text-desc">2</span> turn(s).

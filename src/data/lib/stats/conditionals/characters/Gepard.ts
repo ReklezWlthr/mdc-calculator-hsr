@@ -21,6 +21,7 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Fist of Conviction',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Gepard's ATK to a single enemy.`,
@@ -28,6 +29,7 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Daunting Smite',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Gepard's ATK to a single enemy, with a 65% <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> the enemy for <span class="text-desc">1</span> turn(s).
@@ -39,6 +41,7 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Enduring Bulwark`,
       content: `Applies a <b class="text-indigo-300">Shield</b> to all allies, absorbing DMG equal to {{0}}% of Gepard's DEF plus {{1}} for <span class="text-desc">3</span> turn(s).`,

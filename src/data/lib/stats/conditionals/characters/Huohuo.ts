@@ -23,6 +23,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Banner: Stormcaller`,
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Huohuo's Max HP to a target enemy.`,
@@ -30,6 +31,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `Talisman: Protection`,
       content: `Dispels <span class="text-desc">1</span> debuff(s) from a single target ally and immediately restores this ally's HP by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}. At the same time, restores HP for allies that are adjacent to this target ally by an amount equal to {{2}}% of Huohuo's Max HP plus {{3}}.`,
@@ -42,6 +44,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Tail: Spiritual Domination`,
       content: `Regenerates Energy for all allies (excluding this character) by an amount equal to {{0}}% of their respective Max Energy. At the same time, increases their ATK by {{1}}% for <span class="text-desc">2</span> turn(s).`,

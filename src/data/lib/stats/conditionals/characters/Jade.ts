@@ -23,6 +23,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Lash of Riches`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Jade's ATK to a single target enemy, and <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Jade's ATK to adjacent enemies.`,
@@ -33,6 +34,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: `Acquisition Surety`,
       content: `Makes a single target ally become the <b>Debt Collector</b> and increases their SPD by <span class="text-desc">30</span>, lasting for <span class="text-desc">3</span> turn(s).
@@ -43,6 +45,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Vow of the Deep`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Jade's ATK to all enemies. At the same time, Jade enhances her Talent's follow-up attack, increasing its DMG multiplier by {{1}}%. This enhancement can trigger <span class="text-desc">2</span> time(s).`,
@@ -53,6 +56,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: ult,
     },
     talent: {
+      energy: 10,
       trace: 'Talent',
       title: `Fang of Flare Flaying`,
       content: `After Jade or the <b>Debt Collector</b> unit attacks, gains <span class="text-desc">1</span> point of <b>Charge</b> for each enemy target hit. Upon reaching <span class="text-desc">8</span> points of <b>Charge</b>, consumes the <span class="text-desc">8</span> points to launch <span class="text-desc">1</span> instance of follow-up attack, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Jade's ATK to all enemies. This follow-up attack does not generate <b>Charge</b>.

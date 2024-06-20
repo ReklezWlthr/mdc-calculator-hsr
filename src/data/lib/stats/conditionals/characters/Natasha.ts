@@ -21,6 +21,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Behind the Kindness',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Natasha's ATK to a single enemy.`,
@@ -28,6 +29,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Love, Heal, and Choose',
       content: `Restores a single ally for {{0}}% of Natasha's Max HP plus {{1}}. Restores the ally for another {{2}}% of Natasha's Max HP plus {{3}} at the beginning of each turn for <span class="text-desc">2</span> turn(s).`,
@@ -40,6 +42,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Gift of Rebirth`,
       content: `Heals all allies for {{0}}% of Natasha's Max HP plus {{1}}.`,

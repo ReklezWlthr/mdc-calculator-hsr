@@ -24,6 +24,22 @@
     background-color: transparent;
   }
 
+  .customScrollbar {
+    overflow: overlay;
+  }
+
+  .customScrollbar::-webkit-scrollbar {
+    width: 12px;
+    height: 18px;
+  }
+
+  .customScrollbar::-webkit-scrollbar-thumb {
+    background: #d7d7d7;
+    border-radius: 10px;
+    border: solid transparent;
+    background-clip: padding-box;
+  }
+
   .hideScrollbar {
     overflow: overlay;
   }

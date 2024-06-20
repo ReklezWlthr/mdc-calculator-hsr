@@ -160,7 +160,7 @@ export const ImportExport = observer(() => {
   }, [uid])
 
   return (
-    <div className="w-full h-full pb-5 overflow-y-auto">
+    <div className="w-full h-full pb-5 customScrollbar">
       <div
         className={classNames(
           'flex flex-col w-full gap-5 p-5 text-white max-w-[1240px] mx-auto',

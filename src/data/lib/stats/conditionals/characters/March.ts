@@ -21,6 +21,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Frigid Cold Arrow',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of March 7th's ATK to a single enemy.`,
@@ -28,6 +29,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'The Power of Cuteness',
       content: `Provides a single ally with a <b class="text-indigo-300">Shield</b> that can absorb DMG equal to {{0}}% of March 7th's DEF plus {{1}} for <span class="text-desc">3</span> turn(s).
@@ -39,6 +41,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Glacial Cascade',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of March 7th's ATK to all enemies. Hit enemies have a <span class="text-desc">50%</span> <u>base chance</u> to be <b class="text-hsr-ice">Frozen</b> for <span class="text-desc">1</span> turn(s).
@@ -50,6 +53,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      energy: 10,
       trace: 'Talent',
       title: 'Girl Power',
       content: `After a <b class="text-indigo-300">Shielded</b> ally is attacked by an enemy, March 7th immediately Counters, dealing <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of her ATK. This effect can be triggered <span class="text-desc">2</span> time(s) each turn.`,

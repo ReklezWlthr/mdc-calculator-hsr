@@ -21,6 +21,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Corkage Fee',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Gallagher's ATK to a single target enemy.`,
@@ -28,6 +29,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: basic,
     },
     normal_alt: {
+      energy: 20,
       trace: 'Enhanced Basic ATK',
       title: 'Nectar Blitz',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Gallagher's ATK to a single target enemy. Reduces the target's ATK by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).`,
@@ -38,6 +40,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Special Brew',
       content: `Immediately heals a target ally for {{0}} HP.`,
@@ -45,6 +48,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: 'Champagne Etiquette',
       content: `Inflicts <b>Besotted</b> on all enemies, lasting for <span class="text-desc">2</span> turn(s). At the same time, deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Gallagher's ATK to all enemies, and enhances this unit's next Basic ATK to <b>Nectar Blitz</b>.`,

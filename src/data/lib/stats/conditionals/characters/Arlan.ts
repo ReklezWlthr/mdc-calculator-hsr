@@ -21,6 +21,7 @@ const Arlan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Lightning Rush',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Arlan's ATK to a single enemy.`,
@@ -28,6 +29,7 @@ const Arlan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Shackle Breaker',
       content: `Consumes Arlan's HP equal to <span class="text-desc">15%</span> of his Max HP to deal <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Arlan's ATK to a single enemy. If Arlan does not have sufficient HP, his HP will be reduced to <span class="text-desc">1</span> after using his Skill.`,
@@ -35,6 +37,7 @@ const Arlan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Frenzied Punishment`,
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Arlan's ATK to a single enemy and <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Arlan's ATK to enemies adjacent to it.`,

@@ -24,6 +24,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Direct Punch`,
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Luka's ATK to a single enemy.`,
@@ -31,6 +32,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: basic,
     },
     normal_alt: {
+      energy: 20,
       trace: 'Enhanced Basic ATK',
       title: `Sky-Shatter Fist`,
       content: `Consumes <span class="text-desc">2</span> stacks of <b>Fighting Will</b>. First, uses Direct Punch to deal <span class="text-desc">3</span> hits, with each hit dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Luka's ATK to a single enemy target.
@@ -42,6 +44,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Lacerating Fist',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Luka's ATK to a single enemy target. In addition, there is a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-physical">Bleed</b> on them, lasting for <span class="text-desc">3</span> turn(s).
@@ -53,6 +56,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Coup de Grâce`,
       content: `Receives <span class="text-desc">2</span> stack(s) of <b>Fighting Will</b>, with a <span class="text-desc">100%</span> <u>base chance</u> to increase a single enemy target's DMG received by {{0}}% for <span class="text-desc">3</span> turn(s). Then, deals <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Luka's ATK to the target.`,
@@ -216,7 +220,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               element: Element.PHYSICAL,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 10,
+              break: 10 / 3,
             },
             {
               name: 'Rising Uppercut DMG',

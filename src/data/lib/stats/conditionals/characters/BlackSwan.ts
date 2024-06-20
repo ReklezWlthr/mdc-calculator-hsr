@@ -23,6 +23,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Percipience, Silent Dawn',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Black Swan's ATK to a single target enemy, with a {{1}}% <u>base chance</u> of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b>. And if the hit target currently has <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-physical">Bleed</b>, <b class="text-hsr-fire">Burn</b>, or <b class="text-hsr-lightning">Shock</b> applied to them, each respectively has a {{1}}% <u>base chance</u> of inflicting <span class="text-desc">1</span> extra stack of <b>Arcana</b> onto the enemy.`,
@@ -33,6 +34,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Decadence, False Twilight',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Black Swan's ATK to a single target enemy and any adjacent targets. At the same time, there is a <span class="text-desc">100%</span> <u>base chance</u> of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b> on the target enemy and the adjacent targets. And there is a <span class="text-desc">100%</span> <u>base chance</u> of reducing the DEF of the target enemy and the adjacent targets by {{1}}%, lasting for <span class="text-desc">3</span> turn(s).`,
@@ -43,6 +45,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Bliss of Otherworld's Embrace`,
       content: `Inflicts <b>Epiphany</b> on all enemies for <span class="text-desc">2</span> turn(s).

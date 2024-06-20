@@ -23,6 +23,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: `Swing Dance Etiquette`,
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of the Trailblazer's ATK to a single target enemy.`,
@@ -30,6 +31,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       level: basic,
     },
     skill: {
+      energy: c >= 6 ? 42 : 30,
       trace: 'Skill',
       title: `Halftime to Make It Rain`,
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of the Trailblazer's ATK to a single target enemy and additionally deals DMG for <span class="text-desc">4</span> times, with each time dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of the Trailblazer's ATK to a random enemy.`,
@@ -37,6 +39,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `All-Out Footlight Parade`,
       content: `Grants all allies the <b class="text-hsr-imaginary">Backup Dancer</b> effect, lasting for <span class="text-desc">3</span> turn(s). This duration reduces by <span class="text-desc">1</span> at the start of Trailblazer's every turn. Allies that have the <b class="text-hsr-imaginary">Backup Dancer</b> effect have their Break Effect increased by {{0}}%. And when they attack enemy targets that are in the Weakness Broken state, the Toughness Reduction of this attack will be converted into <span class="text-desc">1</span> instance of Super Break DMG.`,

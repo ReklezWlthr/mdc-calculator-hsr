@@ -23,6 +23,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'What Are You Looking At?',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Herta's ATK to a single enemy.`,
@@ -30,6 +31,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'One-Time Offer',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Herta's ATK to all enemies. If the enemy's HP percentage is <span class="text-desc">50%</span> or higher, DMG dealt to this target increases by <span class="text-desc">20%</span>.`,
@@ -37,6 +39,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `It's Magic, I Added Some Magic`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Herta's ATK to all enemies.`,
@@ -44,6 +47,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      energy: 5,
       trace: 'Talent',
       title: `Fine, I'll Do It Myself`,
       content: `When an ally's attack causes an enemy's HP percentage to fall to <span class="text-desc">50%</span> or lower, Herta will launch a follow-up attack, dealing <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Herta's ATK to all enemies.`,

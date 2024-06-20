@@ -21,6 +21,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'I Want to Help',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Clara's ATK to a single enemy.`,
@@ -28,6 +29,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Svarog Watches Over You',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Clara's ATK to all enemies, and additionally deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Clara's ATK to enemies marked by Svarog with a <b>Mark of Counter</b>.
@@ -36,6 +38,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Promise, Not Command`,
       content: `After Clara uses Ultimate, DMG dealt to her is reduced by an extra {{0}}%, and she has greatly increased chances of being attacked by enemies for <span class="text-desc">2</span> turn(s).
@@ -47,6 +50,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: ult,
     },
     talent: {
+      energy: 5,
       trace: 'Talent',
       title: `Because We're Family`,
       content: `Under the protection of Svarog, DMG taken by Clara when hit by enemy attacks is reduced by <span class="text-desc">10%</span>. Svarog will mark enemies who attack Clara with his Mark of Counter and retaliate with a Counter, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Clara's ATK.`,

@@ -23,6 +23,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
 
   const talents: ITalent = {
     normal: {
+      energy: 20,
       trace: 'Basic ATK',
       title: 'Roaring Thunderclap',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to a single enemy.`,
@@ -30,6 +31,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: basic,
     },
     skill: {
+      energy: 30,
       trace: 'Skill',
       title: 'Lightning Flash	',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to a single enemy and <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Serval's ATK to enemies adjacent to it, with a <span class="text-desc">80%</span> <u>base chance</u> for enemies hit to become <b class="text-hsr-lightning">Shocked</b> for <span class="text-desc">2</span> turn(s).
@@ -42,6 +44,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: skill,
     },
     ult: {
+      energy: 5,
       trace: 'Ultimate',
       title: `Here Comes the Mechanical Fever`,
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to all enemies. Enemies already <b class="text-hsr-lightning">Shocked</b> will extend the duration of their <b class="text-hsr-lightning">Shock</b> state by <span class="text-desc">2</span> turn(s).`,

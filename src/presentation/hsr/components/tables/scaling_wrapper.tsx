@@ -1,4 +1,5 @@
 import { calcScaling } from '@src/core/utils/calculator'
+import { formatScaleString } from '@src/core/utils/data_format'
 import { ITalentDisplay, TalentScalingStyle } from '@src/domain/conditional'
 import { Element } from '@src/domain/constant'
 import { Tooltip } from '@src/presentation/components/tooltip'
@@ -28,6 +29,7 @@ interface TalentIconProps {
   active?: boolean
   type?: string
   energy?: number
+  hideTip?: boolean
 }
 
 export const TalentIcon = observer(
@@ -44,6 +46,7 @@ export const TalentIcon = observer(
     type,
     active = true,
     energy,
+    hideTip,
   }: TalentIconProps) => {
     const iconColor = {
       [Element.FIRE]: 'bg-hsr-fire ring-hsr-fire',
@@ -55,27 +58,7 @@ export const TalentIcon = observer(
       [Element.IMAGINARY]: 'bg-hsr-imaginary ring-hsr-imaginary',
     }
 
-    const formattedString = _.reduce(
-      Array.from(talent?.content?.matchAll(/{{\d+}}\%?/g) || []),
-      (acc, curr) => {
-        const index = curr?.[0]?.match(/\d+/)?.[0]
-        const isPercentage = !!curr?.[0]?.match(/\%$/)
-        return _.replace(
-          acc,
-          curr[0],
-          `<span class="text-desc">${_.round(
-            calcScaling(
-              talent?.value?.[index]?.base,
-              talent?.value?.[index]?.growth,
-              level + upgraded,
-              talent?.value?.[index]?.style
-            ),
-            1
-          ).toLocaleString()}${isPercentage ? '%' : ''}</span>`
-        )
-      },
-      talent?.content
-    )
+    const formattedString = formatScaleString(talent, level + upgraded)
 
     if (!talent)
       return (
@@ -86,6 +69,32 @@ export const TalentIcon = observer(
           )}
         />
       )
+
+    const IconComp = () => (
+      <div
+        className={classNames(
+          'p-1 rounded-full bg-opacity-50 ring-2 ring-offset-2 duration-200 ring-offset-primary-darker flex justify-center items-center shrink-0',
+          active ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50',
+          size || 'w-12 h-12',
+          { 'group-hover:ring-offset-4': !hideTip }
+        )}
+      >
+        <img
+          src={icon}
+          onError={(e) => {
+            e.currentTarget.style.display = 'none'
+            e.currentTarget.nextElementSibling.className = 'block text-3xl font-bold opacity-80'
+          }}
+          onLoad={(e) => {
+            e.currentTarget.style.display = 'block'
+            e.currentTarget.nextElementSibling.className = 'hidden'
+          }}
+        />
+        <div className="hidden">?</div>
+      </div>
+    )
+
+    if (hideTip) return <IconComp />
 
     return (
       <Tooltip
@@ -116,27 +125,7 @@ export const TalentIcon = observer(
         style={tooltipSize || 'w-[35vw]'}
       >
         <div className="relative group">
-          <div
-            className={classNames(
-              'p-1 rounded-full bg-opacity-50 ring-2 ring-offset-2 group-hover:ring-offset-4 duration-200 ring-offset-primary-darker flex justify-center items-center',
-              active ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50',
-              size || 'w-12 h-12'
-            )}
-          >
-            <img
-              src={icon}
-              onError={(e) => {
-                e.currentTarget.style.display = 'none'
-                e.currentTarget.nextElementSibling.className = 'block text-3xl font-bold opacity-80'
-              }}
-              onLoad={(e) => {
-                e.currentTarget.style.display = 'block'
-                e.currentTarget.nextElementSibling.className = 'hidden'
-              }}
-            />
-            <div className="hidden">?</div>
-          </div>
-
+          <IconComp />
           {!!level && showLevel && (
             <div
               className={classNames(
