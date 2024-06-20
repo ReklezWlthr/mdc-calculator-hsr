@@ -271,12 +271,18 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           source: 'Self',
           value: 0.3,
         })
-      if (c >= 6)
+      if (c >= 6) {
         base.BREAK_EFF.push({
           name: `Eidolon 6`,
           source: 'Self',
           value: 0.2,
         })
+        base[Stats.BE].push({
+          name: 'Eidolon 6',
+          source: 'Self',
+          value: 0.2,
+        })
+      }
 
       return base
     },

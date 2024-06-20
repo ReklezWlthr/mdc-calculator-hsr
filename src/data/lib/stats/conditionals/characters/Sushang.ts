@@ -145,9 +145,9 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       id: 'sushang_c2',
       text: `E2 DMG Reduction`,
       ...talents.c2,
-      show: c>=2,
+      show: c >= 2,
       default: true,
-      duration: 1
+      duration: 1,
     },
     {
       type: 'toggle',
@@ -156,7 +156,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ...talents.talent,
       show: c < 6,
       default: true,
-      duration: 2
+      duration: 2,
     },
     {
       type: 'number',
@@ -167,7 +167,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       default: 1,
       min: 0,
       max: 2,
-      duration: 2
+      duration: 2,
     },
   ]
 
@@ -293,10 +293,17 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Self',
           value: -0.5,
         })
-        if (form.sushang_c2) base.DMG_REDUCTION.push({
+      if (form.sushang_c2)
+        base.DMG_REDUCTION.push({
           name: 'Eidolon 2',
           source: 'Self',
           value: 0.2,
+        })
+      if (c >= 4)
+        base[Stats.BE].push({
+          name: 'Eidolon 4',
+          source: 'Self',
+          value: 0.4,
         })
 
       return base

@@ -77,11 +77,21 @@ export const TalentIcon = observer(
       talent?.content
     )
 
+    if (!talent)
+      return (
+        <div
+          className={classNames(
+            'p-1 rounded-full bg-opacity-50 ring-2 ring-offset-2 ring-offset-primary-darker bg-primary-light ring-primary-lighter opacity-50',
+            size || 'w-12 h-12'
+          )}
+        />
+      )
+
     return (
       <Tooltip
         title={
           <div className="flex items-center justify-between">
-            <div>
+            <div className="space-y-0.5">
               <p className="text-xs font-normal opacity-75 text-gray">{type}</p>
               <p>{talent?.title}</p>
             </div>
@@ -152,7 +162,14 @@ export const ScalingWrapper = observer(({ children, icon, talent, element, level
   return (
     <div className="flex w-full">
       <div className="flex flex-col items-center justify-center w-1/5 px-2 py-5 min-h-[132px]">
-        <TalentIcon talent={talent} icon={icon} element={element} level={level} upgraded={upgraded} type={talent.trace} />
+        <TalentIcon
+          talent={talent}
+          icon={icon}
+          element={element}
+          level={level}
+          upgraded={upgraded}
+          type={talent.trace}
+        />
         <p className="w-full mt-2 font-bold text-center min-h-5">{talent?.title}</p>
         {level && (
           <p className="text-xs text-gray">

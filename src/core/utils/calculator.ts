@@ -45,12 +45,12 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
   conditionals.ELEMENT = character?.element
   conditionals.PATH = character?.path
 
-  conditionals.BASE_ATK_C = getBaseStat(character?.stat?.baseAtk, char?.level, char?.ascension)
-  conditionals.BASE_HP_C = getBaseStat(character?.stat?.baseHp, char?.level, char?.ascension)
-  conditionals.BASE_DEF_C = getBaseStat(character?.stat?.baseDef, char?.level, char?.ascension)
-  conditionals.BASE_ATK_L = getWeaponBase(weaponData?.baseAtk, weapon?.level, weapon?.ascension)
-  conditionals.BASE_HP_L = getWeaponBase(weaponData?.baseHp, weapon?.level, weapon?.ascension)
-  conditionals.BASE_DEF_L = getWeaponBase(weaponData?.baseDef, weapon?.level, weapon?.ascension)
+  conditionals.BASE_ATK_C = getBaseStat(character?.stat?.baseAtk, char?.level, char?.ascension) || 0
+  conditionals.BASE_HP_C = getBaseStat(character?.stat?.baseHp, char?.level, char?.ascension) || 0
+  conditionals.BASE_DEF_C = getBaseStat(character?.stat?.baseDef, char?.level, char?.ascension) || 0
+  conditionals.BASE_ATK_L = getWeaponBase(weaponData?.baseAtk, weapon?.level, weapon?.ascension) || 0
+  conditionals.BASE_HP_L = getWeaponBase(weaponData?.baseHp, weapon?.level, weapon?.ascension) || 0
+  conditionals.BASE_DEF_L = getWeaponBase(weaponData?.baseDef, weapon?.level, weapon?.ascension) || 0
   const weaponBonus =
     character?.path === weaponData?.type ? _.find(LightConeBonus, (item) => item.id === weapon?.wId) : undefined
 
@@ -58,7 +58,7 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
   conditionals.BASE_ATK = conditionals.BASE_ATK_C + conditionals.BASE_ATK_L
   conditionals.BASE_HP = conditionals.BASE_HP_C + conditionals.BASE_HP_L
   conditionals.BASE_DEF = conditionals.BASE_DEF_C + conditionals.BASE_DEF_L
-  conditionals.BASE_SPD = character?.stat?.baseSpd
+  conditionals.BASE_SPD = character?.stat?.baseSpd || 0
   conditionals.MAX_ENERGY = character?.stat?.energy
 
   // Get Traces
@@ -81,39 +81,7 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
     })
   }
 
-  // Get Ascension
-  // conditionals[weaponData?.ascStat] += weaponSecondary
-  // conditionals[character?.stat?.ascStat] +=
-  //   _.max([0, char?.ascension - 2]) * AscensionGrowth[character?.stat?.ascStat]?.[character?.rarity - 4]
-
   conditionals = weaponBonus?.scaling(conditionals, weapon?.refinement) || conditionals
-
-  // Gallagher
-  if (character?.id === '1301' && char?.cons >= 6)
-    conditionals[Stats.BE].push({
-      name: 'Eidolon 6',
-      source: 'Self',
-      value: 0.2,
-    })
-
-  // Black Swan
-  if (character?.id === '1307' && char?.major_traces?.a6)
-    conditionals.CALLBACK.push((base) => {
-      base[Stats.ALL_DMG].push({
-        name: 'Ascension 6 Passive',
-        source: 'Self',
-        value: _.min([base[Stats.EHR] * 0.6, 0.72]),
-      })
-      return base
-    })
-
-  // Sushang
-  if (character?.id === '1206' && char?.cons >= 4)
-    conditionals[Stats.BE].push({
-      name: 'Eidolon 4',
-      source: 'Self',
-      value: 0.4,
-    })
 
   return conditionals
 }

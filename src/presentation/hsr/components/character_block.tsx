@@ -51,16 +51,22 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
   return (
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark">
       <div className="flex justify-center px-5 py-3 text-xl rounded-t-lg bg-primary-lighter">Character</div>
-      <div className="flex">
-        <div className="flex items-center w-1/2 px-5 py-3">
-          <img
-            src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
-              characterData?.id,
-              settingStore.settings?.travelerGender
-            )}.webp`}
-            className="object-cover object-top w-full duration-200 border rounded-lg cursor-pointer bg-primary-darker border-primary-border aspect-square hover:border-primary-light"
+      <div className="flex h-[200px]">
+        <div className="flex items-center w-1/2 px-3 py-3">
+          <div
+            className="w-full duration-200 border rounded-lg cursor-pointer bg-primary-darker border-primary-border aspect-square hover:border-primary-light"
             onClick={onOpenModal}
-          />
+          >
+            {characterData && (
+              <img
+                src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
+                  characterData?.id,
+                  settingStore.settings?.travelerGender
+                )}.webp`}
+                className="object-cover aspect-square object-[0_20%]"
+              />
+            )}
+          </div>
         </div>
         <div className="w-1/2 px-2 py-3 space-y-2">
           <div className="space-y-1">

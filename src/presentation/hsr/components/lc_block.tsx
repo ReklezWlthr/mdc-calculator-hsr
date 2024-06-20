@@ -96,32 +96,41 @@ export const LCBlock = observer(({ index = -1, wId, level = 1, ascension = 0, re
   )
 
   const onOpenModal = useCallback(() => {
-    modalStore.openModal(<LCModal index={index} />)
+    char && modalStore.openModal(<LCModal index={index} />)
   }, [modalStore, index])
 
   const invalid = weaponType !== weaponData?.type
+  const char = teamStore.characters[index]?.cId
 
   return (
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-[280px]">
       <div className="flex justify-center px-5 py-2 rounded-t-lg bg-primary-lighter">Light Cone</div>
       <div className="grid h-full grid-cols-2 gap-3 p-3">
-        <div className="flex flex-col justify-between gap-1 h-fit shrink-0" onClick={onOpenModal}>
+        <div
+          className={classNames('flex flex-col justify-between gap-1 h-fit shrink-0', { 'cursor-pointer': char })}
+          onClick={onOpenModal}
+        >
           {weaponData ? (
             <img
               src={`https://api.hakush.in/hsr/UI/lightconemaxfigures/${weaponData?.id}.webp`}
               className={classNames(
-                'object-contain h-[200px] py-2 border rounded-lg bg-primary-darker cursor-pointer duration-200',
+                'object-contain h-[200px] py-2 border rounded-lg bg-primary-darker duration-200',
                 invalid ? 'border-error hover:border-red' : 'border-primary-border hover:border-primary-light'
               )}
             />
           ) : (
-            <div className="h-[200px] border rounded-lg bg-primary-darker border-primary-border shrink-0" />
+            <div
+              className={classNames('h-[200px] border rounded-lg border-primary-border shrink-0', {
+                'bg-primary-darker hover:border-primary-light': char,
+                'bg-primary-bg': !char,
+              })}
+            />
           )}
           {!!rarity &&
             (invalid ? (
               <p className="text-xs text-center text-red">PATH MISMATCHED</p>
             ) : (
-              <RarityGauge rarity={rarity} />
+              <RarityGauge rarity={rarity} textSize="text-sm" />
             ))}
         </div>
         <div className="space-y-3">
@@ -150,7 +159,7 @@ export const LCBlock = observer(({ index = -1, wId, level = 1, ascension = 0, re
                 onChange={(value) => teamStore.setWeapon(index, { level: parseInt(value) || 0 })}
                 options={levels}
                 value={level?.toString()}
-                disabled={!canEdit}
+                disabled={!canEdit || !weaponData}
               />
               <SelectInput
                 onChange={(value) =>
@@ -162,7 +171,7 @@ export const LCBlock = observer(({ index = -1, wId, level = 1, ascension = 0, re
                 options={AscensionOptions}
                 value={ascension?.toString()}
                 style="w-fit"
-                disabled={!canEdit}
+                disabled={!canEdit || !weaponData}
               />
               <SelectInput
                 onChange={(value) =>
@@ -173,7 +182,7 @@ export const LCBlock = observer(({ index = -1, wId, level = 1, ascension = 0, re
                 options={SuperimposeOptions}
                 value={refinement?.toString()}
                 style="w-fit"
-                disabled={!canEdit || !weaponData || weaponData?.id === '2057'}
+                disabled={!canEdit || !weaponData}
               />
             </div>
           </div>

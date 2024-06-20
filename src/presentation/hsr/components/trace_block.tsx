@@ -19,14 +19,15 @@ export const TraceBlock = observer(({ id }: { id: string }) => {
       <div className="p-3 space-y-2 text-xs font-normal">
         {_.map(char.minor_traces, (trace, index) => (
           <div className="grid grid-cols-12 gap-3" key={index}>
-            <div className="col-span-7 text-center">{trace?.stat}</div>
+            <div className="col-span-7 text-center">{trace?.stat || '-'}</div>
             <div className="col-span-3 text-center text-gray">
-              {trace?.stat === Stats.SPD ? trace?.value : toPercentage(trace?.value)}
+              {id ? (trace?.stat === Stats.SPD ? trace?.value : toPercentage(trace?.value)) : '-'}
             </div>
             <div className="flex justify-center col-span-2">
               <CheckboxInput
                 checked={char?.minor_traces?.[index]?.toggled}
                 onClick={() => teamStore.toggleMinorTrace(charIndex, index)}
+                disabled={!id}
               />
             </div>
           </div>

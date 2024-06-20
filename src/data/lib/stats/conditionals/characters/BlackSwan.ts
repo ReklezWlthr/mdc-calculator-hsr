@@ -340,6 +340,16 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       weakness: Element[],
       broken: boolean
     ) => {
+      if (a.a6)
+        base.CALLBACK.push((base) => {
+          base[Stats.ALL_DMG].push({
+            name: 'Ascension 6 Passive',
+            source: 'Self',
+            value: _.min([base[Stats.EHR] * 0.6, 0.72]),
+          })
+          return base
+        })
+
       if (c >= 1) {
         const wind =
           _.sumBy(
