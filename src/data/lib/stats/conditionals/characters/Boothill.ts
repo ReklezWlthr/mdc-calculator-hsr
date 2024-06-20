@@ -240,7 +240,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
                 element: Element.PHYSICAL,
                 property: TalentProperty.BREAK,
                 type: TalentType.NONE,
-                toughCap: 16 * 30,
+                toughCap: 160,
               },
               ...c6Scale,
             ]

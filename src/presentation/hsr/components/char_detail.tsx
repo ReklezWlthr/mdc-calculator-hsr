@@ -192,7 +192,7 @@ export const CharDetail = observer(() => {
           }
         )}
         <p className="flex justify-center gap-2 mb-1 text-2xl font-bold">
-          <span className="text-desc">✦</span> Traces <span className="text-desc">✦</span>
+          <span className="text-desc">✦</span> Bonus Abilities <span className="text-desc">✦</span>
         </p>
         <div className="grid grid-cols-3 gap-5">
           {_.map([talent.a2, talent.a4, talent.a6], (item) => (
