@@ -218,7 +218,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
 
   const prob = scaling.chance?.fixed
     ? scaling.chance?.base
-    : (scaling.chance?.base || 0) * (1 + stats.getValue(Stats.EHR)) * (1 - calculatorStore.getEffRes())
+    : _.max([(scaling.chance?.base || 0) * (1 + stats.getValue(Stats.EHR)) * (1 - calculatorStore.getEffRes()), 0])
   const noCrit = _.includes(
     [
       TalentProperty.HEAL,
@@ -349,7 +349,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
       <p
         className={classNames(
           'text-xs text-center truncate',
-          prob ? (prob <= 0.6 ? 'text-red' : prob <= 0.8 ? 'text-desc' : 'text-heal') : 'text-gray'
+          scaling.chance?.base ? (prob <= 0.6 ? 'text-red' : prob <= 0.8 ? 'text-desc' : 'text-heal') : 'text-gray'
         )}
       >
         {scaling.chance ? toPercentage(prob, 1) : '-'}

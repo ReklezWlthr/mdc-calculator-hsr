@@ -69,9 +69,12 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
 
             const prob = content.chance?.fixed
               ? content.chance?.base
-              : (content.chance?.base || 0) *
-                (1 + calculatorStore.computedStats[content.index]?.getValue(Stats.EHR)) *
-                (1 - calculatorStore.getEffRes())
+              : _.max([
+                  (content.chance?.base || 0) *
+                    (1 + calculatorStore.computedStats[content.index]?.getValue(Stats.EHR)) *
+                    (1 - calculatorStore.getEffRes()),
+                  0,
+                ])
 
             return (
               content.show && (
@@ -80,7 +83,7 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                     <Tooltip
                       title={
                         <div className="flex items-center justify-between">
-                          <div className='space-y-0.5'>
+                          <div className="space-y-0.5">
                             <p className="text-xs font-normal opacity-75 text-gray">
                               {findCharacter(teamStore.characters[content.index]?.cId)?.name} - {content.trace}
                             </p>
@@ -114,10 +117,16 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                   <div
                     className={classNames(
                       'text-xs text-center truncate col-span-2',
-                      prob ? (prob <= 0.6 ? 'text-red' : prob <= 0.8 ? 'text-desc' : 'text-heal') : 'text-gray'
+                      content.chance?.base
+                        ? prob <= 0.6
+                          ? 'text-red'
+                          : prob <= 0.8
+                          ? 'text-desc'
+                          : 'text-heal'
+                        : 'text-gray'
                     )}
                   >
-                    {prob ? toPercentage(prob, 1) : '-'}
+                    {content.chance?.base ? toPercentage(prob, 1) : '-'}
                   </div>
                   {content.type === 'number' && (
                     <>

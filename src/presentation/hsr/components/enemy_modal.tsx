@@ -96,6 +96,14 @@ export const EnemyModal = observer(() => {
                 disabled={calculatorStore.enemy !== 'Custom'}
               />
             </div>
+            <div className="flex flex-col w-full gap-y-1">
+              <p className="text-sm">Effect RES</p>
+              <TextInput
+                value={(calculatorStore.effRes * 100)?.toString()}
+                onChange={(value) => calculatorStore.setValue('effRes', (Number(value) / 100) as any)}
+                disabled={calculatorStore.enemy !== 'Custom'}
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-y-1">
             <p>DEF</p>

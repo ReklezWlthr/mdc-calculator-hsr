@@ -3483,7 +3483,7 @@ export const Enemies = [
     toughness: 150,
     res: {
       [Element.PHYSICAL]: 0,
-      [Element.FIRE]: 0,
+      [Element.FIRE]: 0.2,
       [Element.ICE]: 0,
       [Element.LIGHTNING]: 0,
       [Element.WIND]: 0.2,
