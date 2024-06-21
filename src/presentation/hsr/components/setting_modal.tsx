@@ -26,7 +26,7 @@ export const SettingModal = observer(() => {
           </div>
         </div>
       </div>
-      <div className="p-3 space-y-1 rounded-lg bg-primary-darker">
+      <div className="p-3 space-y-2 rounded-lg bg-primary-darker">
         <p className="text-white">Default Data</p>
         <div className="flex items-center justify-between gap-x-2">
           <p className="text-sm text-gray">Default Enemy Level</p>
@@ -34,6 +34,13 @@ export const SettingModal = observer(() => {
             value={settingStore.settings?.defaultEnemyLevel?.toString()}
             onChange={(v) => settingStore.setSettingValue({ defaultEnemyLevel: parseInt(v) })}
             style="!w-1/4"
+          />
+        </div>
+        <div className="flex items-center justify-between gap-x-2">
+          <p className="text-sm text-gray">Show Enemy Variant</p>
+          <ToggleSwitch
+            enabled={settingStore.settings.variant}
+            onClick={(v) => settingStore.setSettingValue({ variant: v })}
           />
         </div>
       </div>

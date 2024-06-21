@@ -10,12 +10,14 @@ interface ISetting {
   defaultEnemyLevel: number
   travelerGender: 'PlayerBoy' | 'PlayerGirl'
   storeData: boolean
+  variant: boolean
 }
 
 const defaultSetting: ISetting = {
   defaultEnemyLevel: 1,
   travelerGender: 'PlayerBoy',
   storeData: false,
+  variant: false
 }
 
 export interface SettingStoreType {

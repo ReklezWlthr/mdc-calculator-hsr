@@ -14,7 +14,7 @@ import { Enemies } from '@src/data/db/enemies'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 
 export const EnemyModal = observer(() => {
-  const { calculatorStore, teamStore } = useStore()
+  const { calculatorStore, teamStore, settingStore } = useStore()
   const { res, level, computedStats, selected } = calculatorStore
   const charLevel = teamStore.characters[calculatorStore.selected]?.level
   const rawDef = 10 * level + 200
@@ -22,6 +22,10 @@ export const EnemyModal = observer(() => {
   const red = computedStats[selected]?.getValue(StatsObjectKeys.DEF_REDUCTION)
   const def = _.max([rawDef * (1 - pen - red), 0])
   const defMult = calculatorStore.getDefMult(charLevel, pen, red)
+
+  const enemies = settingStore.settings.variant
+    ? Enemies
+    : _.filter(Enemies, (item) => !item.name.match(/\((Complete|Bug)\)/g))
 
   return (
     <div className="w-[550px] p-4 text-white rounded-xl bg-primary-dark space-y-3 font-semibold">
@@ -47,7 +51,7 @@ export const EnemyModal = observer(() => {
             }}
             options={[
               { name: 'Custom', value: 'Custom' },
-              ..._.map(Enemies, (item) => ({
+              ..._.map(enemies, (item) => ({
                 name: item.name,
                 value: item.name,
               })),
