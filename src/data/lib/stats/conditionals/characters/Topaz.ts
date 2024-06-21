@@ -54,7 +54,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     talent: {
       trace: 'Talent',
       title: `Trotter Market!?`,
-      content: `Summons Numby at the start of battle. Numby has <span class="text-desc">80</span> SPD by default. When taking action, Numby launches follow-up attacks on a single enemy target afflicted with <b>Proof of Debt</b>, dealing Fire DMG equal to {{0}}% of Topaz's ATK.
+      content: `Summons Numby at the start of battle. Numby has <span class="text-desc">80</span> SPD by default. When taking action, Numby launches follow-up attacks on a single enemy target afflicted with <b>Proof of Debt</b>, dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Topaz's ATK.
       <br />When enemies afflicted with <b>Proof of Debt</b> receive an ally's follow-up attacks, Numby's action is Advanced Forward by <span class="text-desc">50%</span>. The action Advance Forward effect cannot be triggered during Numby's own turn.
       <br />When Topaz is downed, Numby disappears.`,
       value: [{ base: 75, growth: 7.5, style: 'curved' }],

@@ -79,7 +79,6 @@ export const SuperBreakSubRows = observer(({ scaling }: ScalingSubRowsProps) => 
   const dmg =
     raw *
     (1 + stats.getValue(Stats.BE)) *
-    (1 + stats.getValue(Stats.BE)) *
     (1 + stats.getValue(StatsObjectKeys.BREAK_DMG)) *
     (1 + stats.getValue(StatsObjectKeys.SUPER_BREAK_DMG)) *
     stats.getValue(StatsObjectKeys.SUPER_BREAK_MULT) *

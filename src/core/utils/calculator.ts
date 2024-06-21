@@ -41,7 +41,7 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
   const character = findCharacter(char?.cId)
   const weaponData = findLightCone(weapon?.wId)
 
-  conditionals.NAME = character?.name
+  conditionals.NAME = character?.name?.replaceAll(/\(\w+\)/g, '')?.trim()
   conditionals.ELEMENT = character?.element
   conditionals.PATH = character?.path
 

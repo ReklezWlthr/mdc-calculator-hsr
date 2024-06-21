@@ -333,17 +333,17 @@ export const TeamSetup = observer(() => {
           </div>
           <div className="space-y-2">
             <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
-              {_.every(set, (item) => item < 2) ? (
-                <p className="text-xs text-white">No Relic Set Bonus</p>
-              ) : (
+              {_.some(set, (item, key) => item >= 2 && _.head(key) === '1') ? (
                 _.map(set, (item, key) => <SetToolTip item={item} set={key} type="relic" key={key} />)
+              ) : (
+                <p className="text-xs text-white">No Relic Set Bonus</p>
               )}
             </div>
             <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
-              {_.every(set, (item) => item < 2) ? (
-                <p className="text-xs text-white">No Planar Ornament Bonus</p>
-              ) : (
+              {_.some(set, (item, key) => item >= 2 && _.head(key) === '3') ? (
                 _.map(set, (item, key) => <SetToolTip item={item} set={key} type="planar" key={key} />)
+              ) : (
+                <p className="text-xs text-white">No Planar Ornament Bonus</p>
               )}
             </div>
           </div>
