@@ -55,7 +55,7 @@ export class CalculatorStore {
     this.level = 1
     this.broken = false
     this.weakness = []
-    this.enemy = 'Custom'
+    this.enemy = ''
     this.res = {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,

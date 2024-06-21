@@ -49,13 +49,11 @@ export const EnemyModal = observer(() => {
                 calculatorStore.setValue('effRes', enemyData?.effRes)
               }
             }}
-            options={[
-              { name: 'Custom', value: 'Custom' },
-              ..._.map(enemies, (item) => ({
-                name: item.name,
-                value: item.name,
-              })),
-            ]}
+            options={_.map(enemies, (item) => ({
+              name: item.name,
+              value: item.name,
+            }))}
+            placeholder="Custom"
           />
         </div>
         <div className="flex flex-col gap-y-1">
@@ -76,7 +74,7 @@ export const EnemyModal = observer(() => {
           placeholder="No Weakness"
           options={_.map(Element, (item) => ({ name: item, value: item }))}
           onChange={(values) => calculatorStore.setValue('weakness', values as any)}
-          disabled={calculatorStore.enemy !== 'Custom'}
+          disabled={!!calculatorStore.enemy}
         />
       </div>
       <div className="flex justify-between gap-4">
@@ -88,7 +86,7 @@ export const EnemyModal = observer(() => {
                 value={calculatorStore.hp?.toString()}
                 onChange={(values) => calculatorStore.setValue('hp', values as any)}
                 min={0}
-                disabled={calculatorStore.enemy !== 'Custom'}
+                disabled={!!calculatorStore.enemy}
               />
             </div>
             <div className="flex flex-col w-full gap-y-1">
@@ -97,7 +95,7 @@ export const EnemyModal = observer(() => {
                 value={calculatorStore.toughness?.toString()}
                 onChange={(values) => calculatorStore.setValue('toughness', values as any)}
                 min={0}
-                disabled={calculatorStore.enemy !== 'Custom'}
+                disabled={!!calculatorStore.enemy}
               />
             </div>
             <div className="flex flex-col w-full gap-y-1">
@@ -105,7 +103,7 @@ export const EnemyModal = observer(() => {
               <TextInput
                 value={(calculatorStore.effRes * 100)?.toString()}
                 onChange={(value) => calculatorStore.setValue('effRes', (Number(value) / 100) as any)}
-                disabled={calculatorStore.enemy !== 'Custom'}
+                disabled={!!calculatorStore.enemy}
               />
             </div>
           </div>
@@ -163,7 +161,7 @@ export const EnemyModal = observer(() => {
                 value={res[key].toString()}
                 onChange={(value) => calculatorStore.setRes(key, value as any as number)}
                 style="!w-[50px]"
-                disabled={calculatorStore.enemy !== 'Custom'}
+                disabled={!!calculatorStore.enemy}
               />
             </div>
           ))}
