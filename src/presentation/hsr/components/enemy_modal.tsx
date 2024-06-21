@@ -25,7 +25,7 @@ export const EnemyModal = observer(() => {
 
   const enemies = settingStore.settings.variant
     ? Enemies
-    : _.filter(Enemies, (item) => !item.name.match(/\((Complete|Bug)\)/g))
+    : _.filter(Enemies, (item) => !item.name.match(/\((Complete|Bug|Complete - G&G)\)/g))
 
   return (
     <div className="w-[550px] p-4 text-white rounded-xl bg-primary-dark space-y-3 font-semibold">

@@ -37,7 +37,7 @@ export const SettingModal = observer(() => {
           />
         </div>
         <div className="flex items-center justify-between gap-x-2">
-          <p className="text-sm text-gray">Show Enemy Variant</p>
+          <p className="text-sm text-gray">Show Enemy SU Variant</p>
           <ToggleSwitch
             enabled={settingStore.settings.variant}
             onClick={(v) => settingStore.setSettingValue({ variant: v })}
