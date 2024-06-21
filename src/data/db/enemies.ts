@@ -3923,7 +3923,7 @@ export const Enemies = [
     effRes: 0,
   },
   {
-    name: `Twig of Wintry Element.WIND`,
+    name: `Twig of Wintry Wind`,
     type: 'Normal',
     weakness: [Element.ICE, Element.QUANTUM, Element.IMAGINARY],
     baseHp: 119.04,
@@ -3951,7 +3951,7 @@ export const Enemies = [
     effRes: 0,
   },
   {
-    name: `Twig of Wintry Element.WIND (Complete)`,
+    name: `Twig of Wintry Wind (Complete)`,
     type: 'Normal',
     weakness: [Element.ICE, Element.QUANTUM, Element.IMAGINARY],
     baseHp: 96.72,
