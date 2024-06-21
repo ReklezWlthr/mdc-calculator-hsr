@@ -113,13 +113,13 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     c3: {
       trace: 'Eidolon 3',
-      title: `Upon Lighted Fyrefly, I Soon Gaze`,
+      title: `Amidst Silenced Stars, I Deep Sleep`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
       trace: 'Eidolon 4',
-      title: `Dove in Tophat`,
+      title: `Upon Lighted Fyrefly, I Soon Gaze`,
       content: `While in <b class="text-hsr-fire">Complete Combustion</b>, increases SAM's Effect RES by <span class="text-desc">50%</span>.`,
     },
     c5: {

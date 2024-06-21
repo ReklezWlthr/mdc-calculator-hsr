@@ -74,7 +74,7 @@ export interface IArtifact {
   bonus: { stat: Stats; value: number }[]
   bonusAdd: { stat: Stats; value: number }[]
   half?: (conditionals: StatsObject) => StatsObject
-  add?: (conditionals: StatsObject, weapon: PathType, team: ITeamChar[]) => StatsObject
+  add?: (conditionals: StatsObject) => StatsObject
   desc: string[]
 }
 
@@ -155,7 +155,7 @@ export enum TalentProperty {
   FUA = 'Follow-Up DMG',
   FROZEN = 'Frozen',
   ENTANGLE = 'Entanglement',
-  PURE = 'Pure DMG'
+  PURE = 'Pure DMG',
 }
 
 export enum Element {

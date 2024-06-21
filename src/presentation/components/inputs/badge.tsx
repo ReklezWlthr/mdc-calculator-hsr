@@ -32,9 +32,7 @@ export const Badge = ({
   return (
     <div
       className={classNames(
-        'space-x-[6px] overflow-hidden px-[10px] flex items-center py-[2px]',
-        { 'h-[24px]': size === 'small' },
-        { 'h-[26px]': size === 'large' },
+        'space-x-[6px] overflow-hidden px-2 flex items-center py-[2px]',
         radius,
         bgColor,
         textColor,
@@ -45,7 +43,7 @@ export const Badge = ({
       {iconLeft && <i className={classNames(iconLeft)}></i>}
       <p
         data-cy={props['data-cy'] || dataCy}
-        className={classNames('truncate', { bodyS: size === 'small' }, { bodyM: size === 'large' })}
+        className={classNames('truncate', { 'text-xs': size === 'small' }, { 'text-base': size === 'large' })}
       >
         {text}
       </p>

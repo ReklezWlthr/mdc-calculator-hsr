@@ -1,4 +1,5 @@
 import { Combobox, Transition } from '@headlessui/react'
+import { escapeRegex } from '@src/core/utils/data_format'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { Fragment, useCallback, useMemo, useRef, useState } from 'react'
@@ -22,7 +23,7 @@ export const SelectTextInput = (props: SelectTextInputProps) => {
   const [searchWord, setSearchWord] = useState(valueFinder(props.value)?.name || '')
 
   const filteredOptions = useMemo(() => {
-    const regex = new RegExp(searchWord, 'i')
+    const regex = new RegExp(escapeRegex(searchWord), 'i')
     return _.filter(props.options, (option) => !!option.name.match(regex))
   }, [props.options, searchWord])
 
@@ -54,6 +55,7 @@ export const SelectTextInput = (props: SelectTextInputProps) => {
             displayValue={(item: OptionType) => item?.name}
             placeholder={props.placeholder}
             onChange={(event) => setSearchWord(event.target.value)}
+            onFocus={(e) => e.target.select()}
           />
         </Combobox.Button>
         <i
@@ -73,7 +75,7 @@ export const SelectTextInput = (props: SelectTextInputProps) => {
         leaveTo="transform scale-y-0 opacity-0"
         className="relative z-[1000]"
       >
-        <Combobox.Options className="absolute z-50 w-full mt-2 overflow-auto text-sm text-white rounded-md bg-primary-darker max-h-60 dropdownScrollbar">
+        <Combobox.Options className="absolute z-50 w-full mt-2 overflow-auto text-sm text-white rounded-md shadow-md bg-primary-darker max-h-60 dropdownScrollbar">
           {_.map(filteredOptions, (item, i) => (
             <Combobox.Option
               key={`${item.value}_${i}`}

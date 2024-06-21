@@ -9,6 +9,9 @@ import { observer } from 'mobx-react-lite'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
+import { SelectInput } from '@src/presentation/components/inputs/select_input'
+import { Enemies } from '@src/data/db/enemies'
+import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 
 export const EnemyModal = observer(() => {
   const { calculatorStore, teamStore } = useStore()
@@ -23,26 +26,76 @@ export const EnemyModal = observer(() => {
   return (
     <div className="w-[550px] p-4 text-white rounded-xl bg-primary-dark space-y-3 font-semibold">
       <p>Target Enemy Setting</p>
+      <div className="flex gap-4">
+        <div className="flex flex-col w-full gap-y-1">
+          <p className="text-sm">Enemy Preset</p>
+          <SelectTextInput
+            value={calculatorStore.enemy}
+            onChange={(v) => {
+              calculatorStore.setValue('enemy', v?.value)
+              const enemyData = _.find(Enemies, (item) => item.name === v?.value)
+              if (enemyData) {
+                calculatorStore.setValue(
+                  'res',
+                  _.mapValues(enemyData?.res, (item) => item * 100)
+                )
+                calculatorStore.setValue('weakness', enemyData?.weakness)
+                calculatorStore.setValue('hp', enemyData?.baseHp)
+                calculatorStore.setValue('toughness', enemyData?.toughness)
+                calculatorStore.setValue('effRes', enemyData?.effRes)
+              }
+            }}
+            options={[
+              { name: 'Custom', value: 'Custom' },
+              ..._.map(Enemies, (item) => ({
+                name: item.name,
+                value: item.name,
+              })),
+            ]}
+          />
+        </div>
+        <div className="flex flex-col gap-y-1">
+          <p className="text-sm">Level</p>
+          <TextInput
+            type="number"
+            min={1}
+            value={level.toString()}
+            onChange={(value) => calculatorStore.setValue('level', parseFloat(value) || 0)}
+            style="w-[80px]"
+          />
+        </div>
+      </div>
+      <div className="flex flex-col w-full gap-y-1">
+        <p className="text-sm">Weaknesses</p>
+        <TagSelectInput
+          values={calculatorStore.weakness}
+          placeholder="No Weakness"
+          options={_.map(Element, (item) => ({ name: item, value: item }))}
+          onChange={(values) => calculatorStore.setValue('weakness', values as any)}
+          disabled={calculatorStore.enemy !== 'Custom'}
+        />
+      </div>
       <div className="flex justify-between gap-4">
         <div className="space-y-5">
-          <div className="flex items-center gap-x-3">
-            <p>Level</p>
-            <TextInput
-              type="number"
-              min={1}
-              value={level.toString()}
-              onChange={(value) => calculatorStore.setValue('level', parseFloat(value) || 0)}
-              style="!w-[60px]"
-            />
-          </div>
-          <div className="flex items-center w-full gap-x-3">
-            <p>Weakness</p>
-            <TagSelectInput
-              values={calculatorStore.weakness}
-              options={_.map(Element, (item) => ({ name: item, value: item }))}
-              onChange={(values) => calculatorStore.setValue('weakness', values as any)}
-              style='w-[150px]'
-            />
+          <div className="flex gap-4">
+            <div className="flex flex-col w-full gap-y-1">
+              <p className="text-sm">Max HP</p>
+              <TextInput
+                value={calculatorStore.hp?.toString()}
+                onChange={(values) => calculatorStore.setValue('hp', values as any)}
+                min={0}
+                disabled={calculatorStore.enemy !== 'Custom'}
+              />
+            </div>
+            <div className="flex flex-col w-full gap-y-1">
+              <p className="text-sm">Toughness</p>
+              <TextInput
+                value={calculatorStore.toughness?.toString()}
+                onChange={(values) => calculatorStore.setValue('toughness', values as any)}
+                min={0}
+                disabled={calculatorStore.enemy !== 'Custom'}
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-y-1">
             <p>DEF</p>
@@ -90,16 +143,15 @@ export const EnemyModal = observer(() => {
           </div>
         </div>
         <div className="flex flex-col items-end gap-y-3">
-          <p className="text-sm">Initial DMG RES</p>
           {_.map(BaseElementColor, (item, key: Element) => (
             <div className="flex items-center gap-3" key={key}>
               <p className={classNames('whitespace-nowrap text-sm', item)}>{key} RES</p>
               <TextInput
-                type={res[key] === Infinity ? 'text' : 'number'}
-                value={res[key] === Infinity ? 'Immune' : res[key].toString()}
+                type="number"
+                value={res[key].toString()}
                 onChange={(value) => calculatorStore.setRes(key, value as any as number)}
                 style="!w-[50px]"
-                disabled={res[key] === Infinity}
+                disabled={calculatorStore.enemy !== 'Custom'}
               />
             </div>
           ))}

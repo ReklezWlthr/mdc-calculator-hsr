@@ -8,7 +8,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.LIGHTNING, Element.IMAGINARY],
     baseHp: 892.8,
     baseSpd: 100,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -36,7 +36,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.FIRE, Element.IMAGINARY],
     baseHp: 892.8,
     baseSpd: 120,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -64,7 +64,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.FIRE],
     baseHp: 119.04,
     baseSpd: 100,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -92,7 +92,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.FIRE],
     baseHp: 267.84,
     baseSpd: 100,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -120,7 +120,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE],
     baseHp: 204.6,
     baseSpd: 100,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -148,7 +148,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE],
     baseHp: 465,
     baseSpd: 100,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -176,7 +176,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.LIGHTNING],
     baseHp: 141.36,
     baseSpd: 100,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -204,7 +204,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.LIGHTNING],
     baseHp: 334.8,
     baseSpd: 100,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -232,7 +232,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.FIRE, Element.LIGHTNING],
     baseHp: 892.8,
     baseSpd: 100,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -255,40 +255,12 @@ export const Enemies = [
     effRes: 0.2,
   },
   {
-    name: `Abundance Lotus (Phase 1)`,
+    name: `Abundance Lotus`,
     type: 'Normal',
     weakness: [Element.WIND, Element.IMAGINARY],
     baseHp: 111.6,
     baseSpd: 120,
-    toughness: 60,
-    res: {
-      [Element.PHYSICAL]: 0,
-      [Element.FIRE]: 0.2,
-      [Element.ICE]: 0.2,
-      [Element.LIGHTNING]: 0.2,
-      [Element.WIND]: 0,
-      [Element.QUANTUM]: 0.2,
-      [Element.IMAGINARY]: 0,
-    },
-    statusRes: {
-      [DebuffTypes.BLEED]: 0,
-      [DebuffTypes.BURN]: 0,
-      [DebuffTypes.FROZEN]: 0,
-      [DebuffTypes.SHOCKED]: 0,
-      [DebuffTypes.WIND_SHEAR]: 0,
-      [DebuffTypes.ENTANGLE]: 0,
-      [DebuffTypes.IMPRISON]: 0,
-      [DebuffTypes.CONTROL]: 0,
-    },
-    effRes: 0.2,
-  },
-  {
-    name: `Abundance Lotus (Phase 3)`,
-    type: 'Normal',
-    weakness: [Element.WIND, Element.IMAGINARY],
-    baseHp: 111.6,
-    baseSpd: 120,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -316,7 +288,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.LIGHTNING, Element.QUANTUM],
     baseHp: 119.04,
     baseSpd: 118,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -344,7 +316,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.WIND],
     baseHp: 892.8,
     baseSpd: 144,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -372,7 +344,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.WIND],
     baseHp: 1339.2,
     baseSpd: 172,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -400,7 +372,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.WIND, Element.IMAGINARY],
     baseHp: 148.8,
     baseSpd: 100,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -428,7 +400,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.QUANTUM],
     baseHp: 818.4,
     baseSpd: 115,
-    toughness: 420,
+    toughness: 140,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -456,7 +428,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.QUANTUM],
     baseHp: 628,
     baseSpd: 144,
-    toughness: 420,
+    toughness: 140,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -484,7 +456,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.QUANTUM],
     baseHp: 44.64,
     baseSpd: 83,
-    toughness: 30,
+    toughness: 10,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -512,7 +484,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.FIRE],
     baseHp: 699.36,
     baseSpd: 100,
-    toughness: 180,
+    toughness: 60,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -540,7 +512,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.FIRE, Element.ICE],
     baseHp: 1116,
     baseSpd: 144,
-    toughness: 480,
+    toughness: 160,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -568,7 +540,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.FIRE, Element.ICE],
     baseHp: 1256,
     baseSpd: 144,
-    toughness: 480,
+    toughness: 160,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -596,7 +568,7 @@ export const Enemies = [
     weakness: [Element.LIGHTNING, Element.WIND, Element.QUANTUM],
     baseHp: 744,
     baseSpd: 100,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -624,7 +596,7 @@ export const Enemies = [
     weakness: [Element.LIGHTNING, Element.WIND, Element.QUANTUM],
     baseHp: 1423,
     baseSpd: 144,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -652,7 +624,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.IMAGINARY],
     baseHp: 892.8,
     baseSpd: 120,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -680,7 +652,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.IMAGINARY],
     baseHp: 1423,
     baseSpd: 144,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -708,7 +680,7 @@ export const Enemies = [
     weakness: [Element.LIGHTNING, Element.WIND, Element.IMAGINARY],
     baseHp: 104.16,
     baseSpd: 100,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -736,7 +708,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.LIGHTNING, Element.IMAGINARY],
     baseHp: 818.4,
     baseSpd: 144,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -764,7 +736,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.LIGHTNING, Element.IMAGINARY],
     baseHp: 1116,
     baseSpd: 144,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -792,7 +764,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.LIGHTNING, Element.IMAGINARY],
     baseHp: 372,
     baseSpd: 172,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -820,7 +792,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.LIGHTNING, Element.IMAGINARY],
     baseHp: 446.4,
     baseSpd: 172,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -848,7 +820,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.LIGHTNING],
     baseHp: 967,
     baseSpd: 120,
-    toughness: 420,
+    toughness: 140,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -876,7 +848,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.LIGHTNING],
     baseHp: 1339.2,
     baseSpd: 120,
-    toughness: 480,
+    toughness: 160,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -904,7 +876,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.LIGHTNING],
     baseHp: 744,
     baseSpd: 144,
-    toughness: 480,
+    toughness: 160,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -932,7 +904,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.LIGHTNING],
     baseHp: 818.4,
     baseSpd: 144,
-    toughness: 480,
+    toughness: 160,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -960,7 +932,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.LIGHTNING],
     baseHp: 104.16,
     baseSpd: 100,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -988,7 +960,7 @@ export const Enemies = [
     weakness: [Element.LIGHTNING, Element.WIND],
     baseHp: 55.8,
     baseSpd: 83,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -1016,7 +988,7 @@ export const Enemies = [
     weakness: [Element.LIGHTNING, Element.WIND, Element.QUANTUM],
     baseHp: 260.4,
     baseSpd: 120,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -1044,7 +1016,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.WIND],
     baseHp: 44.64,
     baseSpd: 83,
-    toughness: 30,
+    toughness: 10,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -1072,7 +1044,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE, Element.QUANTUM],
     baseHp: 744,
     baseSpd: 120,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.4,
@@ -1100,7 +1072,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE, Element.QUANTUM],
     baseHp: 1190.4,
     baseSpd: 144,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.4,
@@ -1128,7 +1100,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.FIRE, Element.IMAGINARY],
     baseHp: 892.8,
     baseSpd: 120,
-    toughness: 210,
+    toughness: 70,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -1156,7 +1128,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.FIRE, Element.IMAGINARY],
     baseHp: 446.4,
     baseSpd: 143,
-    toughness: 210,
+    toughness: 70,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -1184,7 +1156,7 @@ export const Enemies = [
     weakness: [Element.LIGHTNING, Element.WIND, Element.IMAGINARY],
     baseHp: 1116,
     baseSpd: 120,
-    toughness: 480,
+    toughness: 160,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -1212,7 +1184,7 @@ export const Enemies = [
     weakness: [Element.LIGHTNING, Element.WIND, Element.IMAGINARY],
     baseHp: 837,
     baseSpd: 144,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -1240,7 +1212,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.WIND, Element.IMAGINARY],
     baseHp: 119.04,
     baseSpd: 120,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -1268,7 +1240,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.LIGHTNING, Element.QUANTUM],
     baseHp: 1302,
     baseSpd: 120,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.4,
       [Element.FIRE]: 0,
@@ -1296,7 +1268,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.LIGHTNING, Element.QUANTUM],
     baseHp: 595.2,
     baseSpd: 144,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.4,
       [Element.FIRE]: 0,
@@ -1324,7 +1296,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.LIGHTNING, Element.QUANTUM],
     baseHp: 1414,
     baseSpd: 120,
-    toughness: 540,
+    toughness: 180,
     res: {
       [Element.PHYSICAL]: 0.4,
       [Element.FIRE]: 0,
@@ -1352,7 +1324,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.WIND],
     baseHp: 372,
     baseSpd: 120,
-    toughness: 120,
+    toughness: 40,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -1380,7 +1352,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.WIND],
     baseHp: 744,
     baseSpd: 172,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -1408,7 +1380,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.WIND],
     baseHp: 967,
     baseSpd: 207,
-    toughness: 390,
+    toughness: 130,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -1431,40 +1403,12 @@ export const Enemies = [
     effRes: 0.2,
   },
   {
-    name: `Destruction Lotus (Phase 2)`,
+    name: `Destruction Lotus`,
     type: 'Normal',
     weakness: [Element.LIGHTNING, Element.QUANTUM, Element.IMAGINARY],
     baseHp: 558,
     baseSpd: 100,
-    toughness: 180,
-    res: {
-      [Element.PHYSICAL]: 0.2,
-      [Element.FIRE]: 0.2,
-      [Element.ICE]: 0.2,
-      [Element.LIGHTNING]: 0,
-      [Element.WIND]: 0.2,
-      [Element.QUANTUM]: 0,
-      [Element.IMAGINARY]: 0,
-    },
-    statusRes: {
-      [DebuffTypes.BLEED]: 0,
-      [DebuffTypes.BURN]: 0,
-      [DebuffTypes.FROZEN]: 0,
-      [DebuffTypes.SHOCKED]: 0,
-      [DebuffTypes.WIND_SHEAR]: 0,
-      [DebuffTypes.ENTANGLE]: 0,
-      [DebuffTypes.IMPRISON]: 0,
-      [DebuffTypes.CONTROL]: 0,
-    },
-    effRes: 0.3,
-  },
-  {
-    name: `Destruction Lotus (Phase 3)`,
-    type: 'Normal',
-    weakness: [Element.LIGHTNING, Element.QUANTUM, Element.IMAGINARY],
-    baseHp: 558,
-    baseSpd: 100,
-    toughness: 180,
+    toughness: 60,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -1492,7 +1436,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE],
     baseHp: 372,
     baseSpd: 120,
-    toughness: 120,
+    toughness: 40,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -1520,7 +1464,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE, Element.WIND],
     baseHp: 163.68,
     baseSpd: 83,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -1548,7 +1492,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.IMAGINARY],
     baseHp: 89.28,
     baseSpd: 100,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -1576,7 +1520,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.WIND, Element.IMAGINARY],
     baseHp: 892.8,
     baseSpd: 120,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -1604,7 +1548,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.WIND, Element.IMAGINARY],
     baseHp: 1423,
     baseSpd: 144,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -1632,7 +1576,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.LIGHTNING, Element.WIND],
     baseHp: 1339.2,
     baseSpd: 100,
-    toughness: 480,
+    toughness: 160,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -1660,7 +1604,7 @@ export const Enemies = [
     weakness: [Element.LIGHTNING, Element.IMAGINARY],
     baseHp: 74.4,
     baseSpd: 83,
-    toughness: 30,
+    toughness: 10,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -1688,7 +1632,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.WIND],
     baseHp: 167.4,
     baseSpd: 100,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -1716,7 +1660,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.LIGHTNING, Element.IMAGINARY],
     baseHp: 204.6,
     baseSpd: 100,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -1744,7 +1688,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.WIND],
     baseHp: 167.4,
     baseSpd: 120,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -1772,7 +1716,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.WIND],
     baseHp: 74.4,
     baseSpd: 83,
-    toughness: 30,
+    toughness: 10,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -1800,7 +1744,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.FIRE, Element.IMAGINARY],
     baseHp: 1339.2,
     baseSpd: 144,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -1828,7 +1772,7 @@ export const Enemies = [
     weakness: [Element.LIGHTNING, Element.QUANTUM],
     baseHp: 130.2,
     baseSpd: 80,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -1856,7 +1800,7 @@ export const Enemies = [
     weakness: [Element.LIGHTNING, Element.QUANTUM],
     baseHp: 66.96,
     baseSpd: 83,
-    toughness: 30,
+    toughness: 10,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -1884,7 +1828,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.IMAGINARY],
     baseHp: 111.6,
     baseSpd: 100,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -1912,7 +1856,7 @@ export const Enemies = [
     weakness: [Element.WIND, Element.IMAGINARY],
     baseHp: 66.96,
     baseSpd: 83,
-    toughness: 30,
+    toughness: 10,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -1940,7 +1884,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.FIRE, Element.QUANTUM],
     baseHp: 111.6,
     baseSpd: 100,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -1968,7 +1912,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE],
     baseHp: 44.64,
     baseSpd: 83,
-    toughness: 30,
+    toughness: 10,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.4,
@@ -1996,7 +1940,7 @@ export const Enemies = [
     weakness: [Element.LIGHTNING, Element.WIND, Element.IMAGINARY],
     baseHp: 111.6,
     baseSpd: 100,
-    toughness: 30,
+    toughness: 10,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -2024,7 +1968,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.LIGHTNING, Element.QUANTUM],
     baseHp: 892.8,
     baseSpd: 100,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -2052,7 +1996,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.LIGHTNING, Element.QUANTUM],
     baseHp: 1100,
     baseSpd: 100,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -2080,7 +2024,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.WIND],
     baseHp: 44.64,
     baseSpd: 83,
-    toughness: 30,
+    toughness: 10,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -2108,7 +2052,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.IMAGINARY],
     baseHp: 818.4,
     baseSpd: 120,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -2136,7 +2080,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.IMAGINARY],
     baseHp: 483.6,
     baseSpd: 144,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -2164,7 +2108,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE],
     baseHp: 167.4,
     baseSpd: 118,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -2192,7 +2136,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE],
     baseHp: 119.04,
     baseSpd: 118,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -2220,7 +2164,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.FIRE, Element.ICE],
     baseHp: 163.68,
     baseSpd: 100,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -2248,7 +2192,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.WIND, Element.QUANTUM],
     baseHp: 818.4,
     baseSpd: 120,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -2276,7 +2220,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.WIND, Element.QUANTUM],
     baseHp: 967,
     baseSpd: 144,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -2299,12 +2243,12 @@ export const Enemies = [
     effRes: 0.2,
   },
   {
-    name: `Element.ICE Edge (1)`,
+    name: `Ice Edge (1)`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.LIGHTNING],
     baseHp: 55.8,
     baseSpd: 100,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -2327,12 +2271,12 @@ export const Enemies = [
     effRes: 0.2,
   },
   {
-    name: `Element.ICE Edge (2)`,
+    name: `Ice Edge (2)`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.QUANTUM],
     baseHp: 55.8,
     baseSpd: 100,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -2355,12 +2299,12 @@ export const Enemies = [
     effRes: 0.2,
   },
   {
-    name: `Element.ICE Out of Space`,
+    name: `Ice Out of Space`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.WIND, Element.QUANTUM],
     baseHp: 744,
     baseSpd: 100,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -2383,12 +2327,12 @@ export const Enemies = [
     effRes: 0.2,
   },
   {
-    name: `Element.ICE Out of Space (Bug)`,
+    name: `Ice Out of Space (Bug)`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.WIND, Element.QUANTUM],
     baseHp: 1116,
     baseSpd: 100,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -2411,12 +2355,12 @@ export const Enemies = [
     effRes: 0.2,
   },
   {
-    name: `Element.IMAGINARY Weaver`,
+    name: `Imaginary Weaver`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.QUANTUM],
     baseHp: 141.36,
     baseSpd: 120,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -2444,7 +2388,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.WIND, Element.IMAGINARY],
     baseHp: 111.6,
     baseSpd: 100,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.4,
@@ -2472,7 +2416,7 @@ export const Enemies = [
     weakness: [Element.QUANTUM, Element.IMAGINARY],
     baseHp: 167.4,
     baseSpd: 144,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -2500,7 +2444,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.LIGHTNING],
     baseHp: 119.04,
     baseSpd: 100,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -2528,7 +2472,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.QUANTUM],
     baseHp: 119.04,
     baseSpd: 100,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -2556,7 +2500,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.FIRE, Element.IMAGINARY],
     baseHp: 234.36,
     baseSpd: 144,
-    toughness: 120,
+    toughness: 40,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -2584,7 +2528,7 @@ export const Enemies = [
     weakness: [],
     baseHp: 3720,
     baseSpd: 144,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -2612,7 +2556,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.QUANTUM],
     baseHp: 89.28,
     baseSpd: 83,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -2640,7 +2584,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.LIGHTNING, Element.QUANTUM],
     baseHp: 148.8,
     baseSpd: 100,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -2668,7 +2612,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.QUANTUM],
     baseHp: 74.4,
     baseSpd: 100,
-    toughness: 30,
+    toughness: 10,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -2696,7 +2640,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.LIGHTNING],
     baseHp: 74.4,
     baseSpd: 100,
-    toughness: 30,
+    toughness: 10,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -2724,7 +2668,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.LIGHTNING],
     baseHp: 104.16,
     baseSpd: 100,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -2752,7 +2696,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.FIRE],
     baseHp: 93,
     baseSpd: 150,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -2780,7 +2724,7 @@ export const Enemies = [
     weakness: [Element.LIGHTNING, Element.QUANTUM, Element.IMAGINARY],
     baseHp: 1041.6,
     baseSpd: 132,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -2808,7 +2752,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.WIND, Element.IMAGINARY],
     baseHp: 119.04,
     baseSpd: 120,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -2836,7 +2780,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.WIND, Element.IMAGINARY],
     baseHp: 1636.8,
     baseSpd: 144,
-    toughness: 720,
+    toughness: 240,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -2864,7 +2808,7 @@ export const Enemies = [
     weakness: [Element.LIGHTNING, Element.WIND, Element.IMAGINARY],
     baseHp: 967,
     baseSpd: 120,
-    toughness: 480,
+    toughness: 160,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -2892,7 +2836,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.LIGHTNING, Element.IMAGINARY],
     baseHp: 818.4,
     baseSpd: 100,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.4,
@@ -2920,7 +2864,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.LIGHTNING, Element.IMAGINARY],
     baseHp: 1041.6,
     baseSpd: 120,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.4,
@@ -2948,7 +2892,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.IMAGINARY],
     baseHp: 1190.4,
     baseSpd: 120,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -2976,7 +2920,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.IMAGINARY],
     baseHp: 1413.6,
     baseSpd: 144,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -3004,7 +2948,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE, Element.IMAGINARY],
     baseHp: 267.84,
     baseSpd: 83,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -3032,7 +2976,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.WIND, Element.IMAGINARY],
     baseHp: 148.8,
     baseSpd: 100,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -3060,7 +3004,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE, Element.IMAGINARY],
     baseHp: 156.24,
     baseSpd: 100,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -3088,7 +3032,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE],
     baseHp: 81.84,
     baseSpd: 100,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -3116,7 +3060,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE, Element.QUANTUM],
     baseHp: 744,
     baseSpd: 120,
-    toughness: 240,
+    toughness: 80,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -3144,7 +3088,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE, Element.QUANTUM],
     baseHp: 1190.4,
     baseSpd: 120,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -3172,7 +3116,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE, Element.QUANTUM],
     baseHp: 558,
     baseSpd: 144,
-    toughness: 180,
+    toughness: 60,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -3200,7 +3144,7 @@ export const Enemies = [
     weakness: [Element.WIND, Element.QUANTUM],
     baseHp: 96.72,
     baseSpd: 83,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -3228,7 +3172,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.WIND, Element.IMAGINARY],
     baseHp: 0,
     baseSpd: 200,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -3256,7 +3200,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE, Element.IMAGINARY],
     baseHp: 1785.6,
     baseSpd: 120,
-    toughness: 540,
+    toughness: 180,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -3284,7 +3228,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.WIND, Element.IMAGINARY],
     baseHp: 1041.6,
     baseSpd: 119,
-    toughness: 450,
+    toughness: 150,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -3312,7 +3256,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.WIND, Element.IMAGINARY],
     baseHp: 669.6,
     baseSpd: 119,
-    toughness: 450,
+    toughness: 150,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -3340,7 +3284,7 @@ export const Enemies = [
     weakness: [Element.LIGHTNING, Element.QUANTUM, Element.IMAGINARY],
     baseHp: 3720,
     baseSpd: 120,
-    toughness: 600,
+    toughness: 200,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -3368,7 +3312,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.IMAGINARY],
     baseHp: 818.4,
     baseSpd: 100,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -3396,7 +3340,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.IMAGINARY],
     baseHp: 1116,
     baseSpd: 120,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -3424,7 +3368,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.LIGHTNING, Element.WIND],
     baseHp: 1190.4,
     baseSpd: 120,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -3452,7 +3396,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.LIGHTNING, Element.WIND],
     baseHp: 558,
     baseSpd: 144,
-    toughness: 360,
+    toughness: 120,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -3480,7 +3424,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.QUANTUM, Element.IMAGINARY],
     baseHp: 1339.2,
     baseSpd: 144,
-    toughness: 480,
+    toughness: 160,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -3508,7 +3452,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.QUANTUM, Element.IMAGINARY],
     baseHp: 1256,
     baseSpd: 144,
-    toughness: 540,
+    toughness: 180,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -3536,7 +3480,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE, Element.LIGHTNING],
     baseHp: 1785.6,
     baseSpd: 120,
-    toughness: 450,
+    toughness: 150,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -3564,7 +3508,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE, Element.LIGHTNING],
     baseHp: 818.4,
     baseSpd: 120,
-    toughness: 420,
+    toughness: 140,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -3592,7 +3536,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE, Element.LIGHTNING],
     baseHp: 1227.6,
     baseSpd: 144,
-    toughness: 420,
+    toughness: 140,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -3620,7 +3564,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.WIND],
     baseHp: 44.64,
     baseSpd: 83,
-    toughness: 30,
+    toughness: 10,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -3648,7 +3592,7 @@ export const Enemies = [
     weakness: [Element.LIGHTNING, Element.WIND, Element.QUANTUM],
     baseHp: 267.84,
     baseSpd: 83,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -3676,7 +3620,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.QUANTUM, Element.IMAGINARY],
     baseHp: 267.84,
     baseSpd: 83,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -3704,7 +3648,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.FIRE, Element.ICE],
     baseHp: 267.84,
     baseSpd: 83,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -3732,7 +3676,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.ICE],
     baseHp: 446.4,
     baseSpd: 83,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -3760,7 +3704,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.WIND, Element.QUANTUM],
     baseHp: 267.84,
     baseSpd: 83,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -3788,7 +3732,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.IMAGINARY],
     baseHp: 133.92,
     baseSpd: 83,
-    toughness: 30,
+    toughness: 10,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -3816,7 +3760,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.IMAGINARY],
     baseHp: 148.8,
     baseSpd: 100,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -3844,7 +3788,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.IMAGINARY],
     baseHp: 148.8,
     baseSpd: 120,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -3872,7 +3816,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.QUANTUM, Element.IMAGINARY],
     baseHp: 178.56,
     baseSpd: 100,
-    toughness: 120,
+    toughness: 40,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -3900,7 +3844,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.QUANTUM, Element.IMAGINARY],
     baseHp: 223.2,
     baseSpd: 120,
-    toughness: 120,
+    toughness: 40,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -3928,7 +3872,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.QUANTUM],
     baseHp: 148.8,
     baseSpd: 120,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -3956,7 +3900,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.QUANTUM],
     baseHp: 148.8,
     baseSpd: 144,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -3984,7 +3928,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.QUANTUM, Element.IMAGINARY],
     baseHp: 119.04,
     baseSpd: 100,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -4012,7 +3956,7 @@ export const Enemies = [
     weakness: [Element.ICE, Element.QUANTUM, Element.IMAGINARY],
     baseHp: 96.72,
     baseSpd: 120,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -4040,7 +3984,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.IMAGINARY],
     baseHp: 111.6,
     baseSpd: 100,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -4068,7 +4012,7 @@ export const Enemies = [
     weakness: [Element.WIND, Element.IMAGINARY],
     baseHp: 133.92,
     baseSpd: 120,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0.2,
@@ -4096,7 +4040,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.ICE, Element.QUANTUM],
     baseHp: 156.24,
     baseSpd: 100,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -4124,7 +4068,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.LIGHTNING],
     baseHp: 111.6,
     baseSpd: 100,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -4152,7 +4096,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.WIND, Element.IMAGINARY],
     baseHp: 818.4,
     baseSpd: 100,
-    toughness: 300,
+    toughness: 100,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -4180,7 +4124,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.WIND, Element.IMAGINARY],
     baseHp: 1116,
     baseSpd: 120,
-    toughness: 420,
+    toughness: 140,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -4208,7 +4152,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.QUANTUM, Element.IMAGINARY],
     baseHp: 267.84,
     baseSpd: 83,
-    toughness: 90,
+    toughness: 30,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
@@ -4231,12 +4175,12 @@ export const Enemies = [
     effRes: 0.2,
   },
   {
-    name: `Element.WINDspawn`,
+    name: `Windspawn`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.LIGHTNING],
     baseHp: 44.64,
     baseSpd: 83,
-    toughness: 30,
+    toughness: 10,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -4264,7 +4208,7 @@ export const Enemies = [
     weakness: [Element.PHYSICAL, Element.ICE, Element.WIND],
     baseHp: 111.6,
     baseSpd: 120,
-    toughness: 60,
+    toughness: 20,
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,

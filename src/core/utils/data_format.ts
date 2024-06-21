@@ -6,6 +6,10 @@ import { TraceScaling } from '@src/domain/scaling'
 import { ITalentDisplay } from '@src/domain/conditional'
 import { calcScaling } from './calculator'
 
+export const escapeRegex = (string: string) => {
+  return string.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&')
+}
+
 export const findBaseLevel = (ascension: number) => {
   if (ascension < 0 || ascension > 6) return 0
   if (ascension === 0) return 1

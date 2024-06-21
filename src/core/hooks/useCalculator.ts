@@ -18,6 +18,8 @@ import { Element, ITeamChar, Stats } from '@src/domain/constant'
 import { isFlat } from '@src/presentation/hsr/components/custom_modal'
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { DebuffTypes } from '@src/domain/conditional'
+import { getSetCount } from '../utils/data_format'
+import { AllRelicSets } from '@src/data/db/artifacts'
 
 export const useCalculator = () => {
   const { teamStore, artifactStore, calculatorStore } = useStore()
@@ -232,8 +234,27 @@ export const useCalculator = () => {
           calculatorStore.broken
         ) || postWeapon[index]
     )
+    const postArtifactCallback = _.map(postCompute, (base, index) => {
+      let x = base
+      const set = getSetCount(
+        _.map(teamStore.characters[index]?.equipments?.artifacts, (item) =>
+          _.find(artifactStore.artifacts, (a) => a.id === item)
+        )
+      )
+      _.forEach(set, (value, key) => {
+        if (value >= 2) {
+          const half = _.find(AllRelicSets, ['id', key])?.half
+          if (half) x = half(x)
+        }
+        if (value >= 4) {
+          const add = _.find(AllRelicSets, ['id', key])?.add
+          if (add) x = add(x)
+        }
+      })
+      return x
+    })
     // Cleanup callbacks for buffs that should be applied last
-    const final = _.map(postCompute, (base, index) => {
+    const final = _.map(postArtifactCallback, (base, index) => {
       let x = base
       _.forEach(base.CALLBACK, (cb) => {
         x = cb(x, debuffs, weakness, postCompute, true)
@@ -241,6 +262,7 @@ export const useCalculator = () => {
       return x
     })
     calculatorStore.setValue('computedStats', final)
+    calculatorStore.setValue('debuffs', debuffs)
   }, [baseStats, calculatorStore.form, calculatorStore.custom, teamStore.characters, calculatorStore.weakness])
 
   // =================

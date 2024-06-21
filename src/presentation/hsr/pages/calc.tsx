@@ -21,6 +21,7 @@ import { CustomConditionalBlock } from '../components/custom_conditional_block'
 import { formatIdIcon } from '@src/core/utils/data_format'
 import { StatsModal } from '../components/stats_modal'
 import { SuperBreakSubRows } from '../components/tables/super_break_sub_rows'
+import { DebuffModal } from '../components/debuff_modal'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
@@ -34,6 +35,7 @@ export const Calculator = observer(({}: {}) => {
   const { main, mainComputed, contents } = useCalculator()
 
   const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal />), [])
+  const onOpenDebuffModal = useCallback(() => modalStore.openModal(<DebuffModal />), [])
   const onOpenStatsModal = useCallback(
     () => modalStore.openModal(<StatsModal stats={mainComputed} path={charData.path} />),
     [mainComputed, charData]
@@ -43,7 +45,7 @@ export const Calculator = observer(({}: {}) => {
     <div className="w-full customScrollbar">
       <div className="grid w-full grid-cols-3 gap-5 p-5 text-white max-w-[1240px] mx-auto">
         <div className="col-span-2">
-          <div className="flex items-center">
+          <div className="flex items-center gap-3">
             <div className="flex justify-center w-full gap-4 pt-1 pb-3 pl-3">
               {_.map(teamStore?.characters, (item, index) => {
                 return (
@@ -57,6 +59,7 @@ export const Calculator = observer(({}: {}) => {
               })}
             </div>
             <PrimaryButton onClick={onOpenEnemyModal} title="Enemy Setting" style="whitespace-nowrap" />
+            <PrimaryButton onClick={onOpenDebuffModal} title="Debuffs" style="whitespace-nowrap" />
           </div>
           {teamStore?.characters[selected]?.cId ? (
             <>

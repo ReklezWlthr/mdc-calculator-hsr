@@ -91,7 +91,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     [Stats.ATK]: stats.getAtk(),
     [Stats.DEF]: stats.getDef(),
     [Stats.HP]: stats.getHP(),
-    [Stats.EHP]: 100000,
+    [Stats.EHP]: calculatorStore.hp,
   }
 
   const bonusDMG =
@@ -114,7 +114,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     talentFlat
   const breakElementMult = BreakElementMult[scaling.element]
   const breakLevel = BreakBaseLevel[teamStore.characters[index]?.level - 1]
-  const toughnessMult = 0.5 * (_.min([420, scaling.toughCap || 420]) / 120)
+  const toughnessMult = 0.5 * (_.min([calculatorStore.toughness, scaling.toughCap || calculatorStore.toughness]) / 40)
   const breakRaw = breakElementMult * breakLevel * toughnessMult
   const cap = scaling.cap
     ? scaling.cap?.scaling *
@@ -170,7 +170,11 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
   ).toLocaleString()}</b> = ${
     scaling.property === TalentProperty.BREAK ? baseBreakScaling : shouldWrap ? `(${baseWithFlat})` : baseWithFlat
   }${
-    (scaling.property === TalentProperty.BREAK ? stats.getValue(Stats.BE) > 0 : bonusDMG > 0)
+    scaling.property === TalentProperty.BREAK && stats.getValue(Stats.BE) > 0
+      ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconBreakUp.png" />${toPercentage(
+          stats.getValue(Stats.BE)
+        )}</b>)</span>`
+      : bonusDMG > 0
       ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(
           scaling.property === TalentProperty.BREAK ? stats.getValue(Stats.BE) : bonusDMG
         )}</b>)`
@@ -214,7 +218,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
 
   const prob = scaling.chance?.fixed
     ? scaling.chance?.base
-    : (scaling.chance?.base || 0) * (1 + stats.getValue(Stats.EHR)) * (1 - 0.3)
+    : (scaling.chance?.base || 0) * (1 + stats.getValue(Stats.EHR)) * (1 - calculatorStore.getEffRes())
   const noCrit = _.includes(
     [
       TalentProperty.HEAL,

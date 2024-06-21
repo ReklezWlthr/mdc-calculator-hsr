@@ -71,7 +71,7 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
               ? content.chance?.base
               : (content.chance?.base || 0) *
                 (1 + calculatorStore.computedStats[content.index]?.getValue(Stats.EHR)) *
-                (1 - 0.3)
+                (1 - calculatorStore.getEffRes())
 
             return (
               content.show && (

@@ -23,7 +23,7 @@ export const calculateOutOfCombat = (
 ) => {
   if (!_.size(team)) return conditionals
   const base = calculateBase(conditionals, team[selected], team[selected]?.equipments?.weapon)
-  const final = addArtifactStats(base, artifacts, findLightCone(team[selected]?.equipments?.weapon?.wId)?.type, team)
+  const final = addArtifactStats(base, artifacts)
 
   return final
 }
@@ -86,12 +86,7 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
   return conditionals
 }
 
-export const addArtifactStats = (
-  conditionals: StatsObject,
-  artifacts: IArtifactEquip[],
-  weapon: PathType,
-  team: ITeamChar[]
-) => {
+export const addArtifactStats = (conditionals: StatsObject, artifacts: IArtifactEquip[]) => {
   const setBonus = getSetCount(artifacts)
   const main = _.reduce(
     artifacts,
@@ -128,7 +123,6 @@ export const addArtifactStats = (
   _.forEach(setBonus, (value, key) => {
     if (value >= 2) {
       const bonuses = _.find(AllRelicSets, ['id', key])?.bonus
-      const half = _.find(AllRelicSets, ['id', key])?.half
       _.forEach(bonuses, (item) => {
         conditionals[item.stat].push({
           name: '2-Piece',
@@ -136,11 +130,9 @@ export const addArtifactStats = (
           value: item.value,
         })
       })
-      if (half) conditionals = half(conditionals)
     }
     if (value >= 4) {
       const bonuses = _.find(AllRelicSets, ['id', key])?.bonusAdd
-      const add = _.find(AllRelicSets, ['id', key])?.add
       _.forEach(bonuses, (item) => {
         conditionals[item.stat].push({
           name: '4-Piece',
@@ -148,7 +140,6 @@ export const addArtifactStats = (
           value: item.value,
         })
       })
-      if (add) conditionals = add(conditionals, weapon, team)
     }
   })
 

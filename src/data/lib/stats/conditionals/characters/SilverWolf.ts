@@ -281,7 +281,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         } else {
           form.sw_implant_ally = true
           weakness.push(Element.QUANTUM)
-          base[`${form.sw_implant.toUpperCase()}_RES_PEN`].push({
+          base[`${form.sw_implant.toUpperCase()}_RES_RED`].push({
             name: `Skill`,
             source: 'Self',
             value: 0.2,
@@ -290,7 +290,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         }
       }
       if (form.sw_skill) {
-        base.ALL_TYPE_RES_PEN.push({
+        base.ALL_TYPE_RES_RED.push({
           name: `Skill`,
           source: 'Self',
           value: calcScaling(0.075, 0.0025, skill, 'curved'),
@@ -350,13 +350,13 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       broken: boolean
     ) => {
       if (form.sw_implant_ally)
-        base[`${form.sw_implant.toUpperCase()}_RES_PEN`].push({
+        base[`${form.sw_implant.toUpperCase()}_RES_RED`].push({
           name: `Skill`,
           source: 'Silver Wolf',
           value: 0.2,
         })
       if (form.sw_skill)
-        base.ALL_TYPE_RES_PEN.push({
+        base.ALL_TYPE_RES_RED.push({
           name: `Skill`,
           source: 'Silver Wolf',
           value: calcScaling(0.075, 0.0025, skill, 'curved'),

@@ -122,7 +122,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       text: `Firekiss Stacks`,
       ...talents.talent,
       show: true,
-      default: 0,
+      default: 1,
       min: 0,
       max: c >= 6 ? 4 : 3,
       chance: { base: 1, fixed: false },
@@ -260,7 +260,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       }
       if (form.firekiss) {
         base.VULNERABILITY.push({
-          name: 'Ascension 4 Passive',
+          name: 'Firekiss',
           source: 'Self',
           value: calcScaling(0.04, 0.003, talent, 'curved') * form.firekiss,
         })
@@ -288,7 +288,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     ) => {
       if (form.firekiss)
         base.VULNERABILITY.push({
-          name: 'Ascension 4 Passive',
+          name: 'Firekiss',
           source: 'Guinaifen',
           value: calcScaling(0.04, 0.003, talent, 'curved') * form.firekiss,
         })

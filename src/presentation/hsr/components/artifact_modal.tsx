@@ -143,7 +143,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
               options={_.map(Array(maxLevel + 1), (_, index) => ({
                 name: '+' + index,
                 value: index.toString(),
-              }))}
+              })).reverse()}
               style="w-16"
               onChange={(value) => field.onChange(_.parseInt(value))}
             />

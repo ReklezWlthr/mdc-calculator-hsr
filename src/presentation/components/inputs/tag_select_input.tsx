@@ -3,6 +3,7 @@ import React from 'react'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { Badge } from './badge'
+import { CheckboxInput } from './checkbox'
 
 type TagSelectInputProps = {
   label?: string
@@ -46,10 +47,10 @@ export const TagSelectInput = ({
         <Badge
           key={item}
           text={_.find(options, { value: item })?.name || ''}
-          bgColor="bg-light-2"
-          textColor="text-dark-0"
+          bgColor="bg-primary"
+          textColor="text-gray"
           width="w-fit"
-          iconRight="fa-solid fa-times text-dark-3"
+          iconRight="fa-solid fa-times text-gray text-xs"
           actionIconRight={() => onToggleSelection(_.find(options, { value: item })?.value || '')}
         />
       ))
@@ -64,11 +65,10 @@ export const TagSelectInput = ({
   // RENDER
   //---------------------
   return (
-    <Popover>
+    <Popover className="w-full">
       <div
         className={classNames('relative', style, {
           'w-full': !style,
-          'pointer-events-none': disabled,
         })}
       >
         {label && <p className={classNames('mb-1', { 'bodyM text-dark-0': !classLabel }, classLabel)}>{label}</p>}
@@ -80,6 +80,7 @@ export const TagSelectInput = ({
             { 'text-gray': _.size(values) },
             { 'text-primary-light': !_.size(values) }
           )}
+          disabled={disabled}
         >
           <div className="flex flex-wrap gap-x-2 gap-y-1">{_.size(values) ? tagRender() : placeholder}</div>
         </Popover.Button>
@@ -102,12 +103,7 @@ export const TagSelectInput = ({
                     onToggleSelection(item.value)
                 }}
               >
-                <input
-                  className="border rounded cursor-pointer border-dark-4 focus:ring-0 text-primary"
-                  checked={isSelected(item.value)}
-                  type="checkbox"
-                  name="none"
-                />
+                <CheckboxInput checked={isSelected(item.value)} onClick={() => null} />
                 {item.img && <img src={item.img} className="object-cover w-5 h-5" />}
                 <span className="block truncate">{item.name}</span>
               </div>

@@ -1,8 +1,9 @@
 import { Element, ICharStore } from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
-import { enableStaticRendering } from 'mobx-react-lite'
 import { StatsObject, StatsObjectKeysT } from '../lib/stats/baseConstant'
+import { DebuffTypes } from '@src/domain/conditional'
+import { enableStaticRendering } from 'mobx-react-lite'
 
 enableStaticRendering(typeof window === 'undefined')
 
@@ -13,6 +14,11 @@ export interface CalculatorStoreType {
   res: Record<Element, number>
   broken: boolean
   weakness: Element[]
+  debuffs: { type: DebuffTypes; count: number }[]
+  enemy: string
+  hp: number
+  toughness: number
+  effRes: number
   level: number
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
@@ -21,6 +27,9 @@ export interface CalculatorStoreType {
   setCustomValue: (index: number, key: StatsObjectKeysT, value: any) => void
   removeCustomValue: (index: number, innerIndex: number) => void
   setRes: (element: Element, value: number) => void
+  getEffRes: () => number
+  getDefMult: (level: number, defPen: number, defRed: number) => number
+  getResMult: (element: Element, resPen: number) => number
   hydrate: (data: CalculatorStoreType) => void
 }
 
@@ -30,6 +39,11 @@ export class CalculatorStore {
   res: Record<Element, number>
   broken: boolean
   weakness: Element[]
+  hp: number
+  effRes: number
+  toughness: number
+  debuffs: { type: DebuffTypes; count: number }[]
+  enemy: string
   level: number
   selected: number
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
@@ -41,6 +55,7 @@ export class CalculatorStore {
     this.level = 1
     this.broken = false
     this.weakness = []
+    this.enemy = 'Custom'
     this.res = {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
@@ -51,6 +66,10 @@ export class CalculatorStore {
       [Element.IMAGINARY]: 0,
     }
     this.custom = Array(4)
+    this.debuffs = []
+    this.hp = 0
+    this.toughness = 0
+    this.effRes = 0
 
     makeAutoObservable(this)
   }
@@ -100,6 +119,10 @@ export class CalculatorStore {
     if (this.res[element] === Infinity) return 0
     const res = this.res[element] / 100 - resPen
     return 1 - res
+  }
+
+  getEffRes = () => {
+    return this.effRes + (this.level >= 51 ? _.min([0.1, 0.04 * (this.level - 50)]) : 0)
   }
 
   hydrate = (data: CalculatorStoreType) => {

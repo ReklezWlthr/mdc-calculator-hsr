@@ -15,7 +15,7 @@ export const CheckboxInput = ({ label, onClick, disabled, checked }: CheckboxInp
   return (
     <label htmlFor={label} onClick={() => !disabled && onClick(!checked)}>
       <div
-        className={classNames('w-4 h-4 rounded-[4px]', {
+        className={classNames('w-4 h-4 rounded-[4px] flex justify-center items-center', {
           'bg-white': !disabled && !checked,
           'bg-primary': disabled && !checked,
           'bg-primary-lighter': checked && !disabled,
@@ -25,7 +25,7 @@ export const CheckboxInput = ({ label, onClick, disabled, checked }: CheckboxInp
           'border border-dark-4': !checked,
         })}
       >
-        <i className="fa-solid w-4 h-4 text-[10px] flex justify-center items-center fa-check" />
+        <i className="text-xs fa-solid fa-check" />
       </div>
     </label>
   )
