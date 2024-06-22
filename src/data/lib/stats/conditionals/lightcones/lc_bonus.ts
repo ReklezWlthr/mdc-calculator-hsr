@@ -2,7 +2,7 @@ import { Element, Stats, TalentProperty, TalentType } from '@src/domain/constant
 import { StatsObject } from '../../baseConstant'
 import _ from 'lodash'
 import { calcRefinement } from '@src/core/utils/data_format'
-import { countDebuff, countDot } from '@src/core/utils/finder'
+import { checkBuffExist, countDebuff, countDot } from '@src/core/utils/finder'
 import { DebuffTypes } from '@src/domain/conditional'
 
 const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: number) => StatsObject }[] = [
@@ -150,12 +150,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
         source: 'Day One of My New Life',
         value: calcRefinement(0.16, 0.02, r),
       })
-      if (
-        !_.includes(
-          _.map(base.ALL_TYPE_RES, (item) => item.source),
-          'Day One of My New Life'
-        )
-      )
+      if (!checkBuffExist(base.ALL_TYPE_RES, { source: 'Day One of My New Life' }))
         base.ALL_TYPE_RES.push({
           name: 'Passive',
           source: 'Day One of My New Life',
@@ -1127,7 +1122,10 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       base.CALLBACK.push((x, _d, _w, all) => {
         const path = _.map(all, (item) => item.PATH)
         _.forEach(path, (item, i) => {
-          if (_.size(_.filter(path, (p) => p === item)) >= 2)
+          if (
+            _.size(_.filter(path, (p) => p === item)) >= 2 &&
+            !checkBuffExist(all[i][Stats.CRIT_DMG], { source: 'Poised to Bloom' })
+          )
             all[i][Stats.CRIT_DMG].push({
               name: 'Passive',
               source: 'Poised to Bloom',

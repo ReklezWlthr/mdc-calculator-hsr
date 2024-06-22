@@ -203,7 +203,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          chance: { base: 0.6, fixed: false },
+          chance: { base: calcScaling(0.09, 0.006, ult, 'curved'), fixed: false },
           break: 20,
         },
       ]
@@ -212,7 +212,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base.ULT_VUL.push({
           name: `Ultimate`,
           source: 'Self',
-          value: calcScaling(0.09, 0.006, ult, 'curved'),
+          value: calcScaling(0.5, 0.01, ult, 'curved'),
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
         if (a.a6) {

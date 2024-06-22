@@ -100,11 +100,14 @@ export const EnemyModal = observer(() => {
             </div>
             <div className="flex flex-col w-full gap-y-1">
               <p className="text-sm">Effect RES</p>
-              <TextInput
-                value={(calculatorStore.effRes * 100)?.toString()}
-                onChange={(value) => calculatorStore.setValue('effRes', (Number(value) / 100) as any)}
-                disabled={!!calculatorStore.enemy}
-              />
+              <div className="flex items-center gap-x-2">
+                <TextInput
+                  value={(calculatorStore.effRes * 100)?.toString()}
+                  onChange={(value) => calculatorStore.setValue('effRes', (Number(value) / 100) as any)}
+                  disabled={!!calculatorStore.enemy}
+                />
+                {calculatorStore.level >= 51 && <p className='text-xs font-normal'>+{_.min([10, 0.4 * (calculatorStore.level - 50)]).toFixed(1)}%</p>}
+              </div>
             </div>
           </div>
           <div className="flex flex-col gap-y-1">

@@ -127,9 +127,9 @@ export const useCalculator = () => {
   //
   // =================
 
-  // Calculate normal stats first, then ones from allies, then ones from artifacts
-  // Those above does not rely on character's own stat (except EoSF) so they are placed first
-  // Some weapon buffs scale off character's stat so we have to calculate ones above first
+  // Calculate normal stats first, then ones from allies, then ones from relics
+  // Those above does not rely on character's own stat so they are placed first
+  // Some Light Cone buffs scale off character's stat so we have to calculate ones above first
   // Reactions are placed last because they only provide damage buff, not stat buffs, and heavily relies on stats
   useEffect(() => {
     const weakness = _.cloneDeep(calculatorStore.weakness)
@@ -263,7 +263,15 @@ export const useCalculator = () => {
     })
     calculatorStore.setValue('computedStats', final)
     calculatorStore.setValue('debuffs', debuffs)
-  }, [baseStats, calculatorStore.form, calculatorStore.custom, teamStore.characters, calculatorStore.weakness])
+  }, [
+    baseStats,
+    calculatorStore.form,
+    calculatorStore.custom,
+    teamStore.characters,
+    calculatorStore.weakness,
+    calculatorStore.broken,
+    calculatorStore.toughness,
+  ])
 
   // =================
   //

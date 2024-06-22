@@ -83,7 +83,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c1: {
       trace: 'Eidolon 1',
       title: `Windfall of Lucky Springs`,
-      content: `After using their Ultimate, the ally with <b>Benediction</b>> gains a <span class="text-desc">20%</span> increase in SPD for <span class="text-desc">1</span> turn.`,
+      content: `After using their Ultimate, the ally with <b>Benediction</b> gains a <span class="text-desc">20%</span> increase in SPD for <span class="text-desc">1</span> turn.`,
     },
     c2: {
       trace: 'Eidolon 2',

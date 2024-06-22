@@ -85,7 +85,7 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                         <div className="flex items-center justify-between">
                           <div className="space-y-0.5">
                             <p className="text-xs font-normal opacity-75 text-gray">
-                              {findCharacter(teamStore.characters[content.index]?.cId)?.name} - {content.trace}
+                              {findCharacter(teamStore.characters[content.index]?.cId)?.name} - {content.trace || 'Relics'}
                             </p>
                             <p>{content.title}</p>
                           </div>

@@ -47,7 +47,10 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       source: 'Longevous Disciple',
       value: 0.08 * form['113'],
     })
-  if (form['114'] && !checkBuffExist(base[Stats.P_SPD], 'source', 'Messenger Traversing Hackerspace'))
+  if (
+    form['114'] &&
+    !checkBuffExist(base[Stats.P_SPD], { source: 'Messenger Traversing Hackerspace', name: '4-Piece' })
+  )
     base[Stats.P_SPD].push({
       name: `4-Piece`,
       source: 'Messenger Traversing Hackerspace',
@@ -69,7 +72,10 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       )
       return x
     })
-  if (form['118'] && !checkBuffExist(base[Stats.BE], 'source', 'Watchmaker, Master of Dream Machinations'))
+  if (
+    form['118'] &&
+    !checkBuffExist(base[Stats.BE], { source: 'Watchmaker, Master of Dream Machinations', name: '4-Piece' })
+  )
     base[Stats.BE].push({
       name: `4-Piece`,
       source: 'Watchmaker, Master of Dream Machinations',
@@ -116,13 +122,13 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
 }
 
 export const calculateTeamRelic = (base: StatsObject, form: Record<string, any>, owner: StatsObject) => {
-  if (form['114'] && !checkBuffExist(base[Stats.P_SPD], 'name', 'Messenger Traversing Hackerspace'))
+  if (form['114'] && !checkBuffExist(base[Stats.P_SPD], { name: 'Messenger Traversing Hackerspace' }))
     base[Stats.P_SPD].push({
       name: `Messenger Traversing Hackerspace`,
       source: owner.NAME,
       value: 0.12,
     })
-  if (form['118'] && !checkBuffExist(base[Stats.BE], 'name', 'Watchmaker, Master of Dream Machinations'))
+  if (form['118'] && !checkBuffExist(base[Stats.BE], { name: 'Watchmaker, Master of Dream Machinations' }))
     base[Stats.BE].push({
       name: `Watchmaker, Master of Dream Machinations`,
       source: owner.NAME,

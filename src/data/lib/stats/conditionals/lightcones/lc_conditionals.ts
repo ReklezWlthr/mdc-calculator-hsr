@@ -1,5 +1,5 @@
 import { calcRefinement } from '@src/core/utils/data_format'
-import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
+import { addDebuff, checkBuffExist, findCharacter, findContentById } from '@src/core/utils/finder'
 import { DebuffTypes, IWeaponContent } from '@src/domain/conditional'
 import { Element, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 import _ from 'lodash'
@@ -246,12 +246,12 @@ export const LCConditionals: IWeaponContent[] = [
     scaling: (base, form, r) => {
       if (form['23004']) {
         base[Stats.EHR].push({
-          name: `Cadenza`,
+          name: `Passive`,
           source: 'In the Name of the World',
           value: calcRefinement(0.18, 0.03, r),
         })
         base[Stats.P_ATK].push({
-          name: `Cadenza`,
+          name: `Passive`,
           source: 'In the Name of the World',
           value: calcRefinement(0.24, 0.04, r),
         })
@@ -1154,9 +1154,9 @@ export const LCTeamConditionals: IWeaponContent[] = [
     debuff: true,
     chance: { base: 1, fixed: false },
     duration: 1,
-    id: '23004',
+    id: '23007',
     scaling: (base, form, r, { debuffs, own }) => {
-      if (form['23004']) {
+      if (form['23007']) {
         base.VULNERABILITY.push({
           name: `Aether Code`,
           source: 'Incessant Rain',
@@ -1196,7 +1196,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     duration: 3,
     id: '23019',
     scaling: (base, form, r, { debuffs, own }) => {
-      if (form['23019']) {
+      if (form['23019'] && !checkBuffExist(base[Stats.ALL_DMG], { source: 'Past Self in Mirror' })) {
         base[Stats.ALL_DMG].push({
           name: `Passive`,
           source: 'Past Self in Mirror',
@@ -1272,7 +1272,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     id: '23025',
     scaling: (base, form, r, { debuffs, own }) => {
       if (form['23025']) {
-        base.VULNERABILITY.push({
+        base.BREAK_VUL.push({
           name: `Routed`,
           source: 'Whereabouts Should Dreams Rest',
           value: calcRefinement(0.24, 0.04, r),
@@ -1426,7 +1426,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     duration: 2,
     id: '20005',
     scaling: (base, form, r) => {
-      if (form['20005']) {
+      if (form['20005'] && !checkBuffExist(base[Stats.P_ATK], { source: 'Chorus' })) {
         base[Stats.P_ATK].push({
           name: `Passive`,
           source: 'Chorus',

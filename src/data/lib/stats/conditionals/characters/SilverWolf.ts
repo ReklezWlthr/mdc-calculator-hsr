@@ -49,7 +49,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       energy: 5,
       trace: 'Ultimate',
       title: 'User Banned',
-      content: `There's a {{0}}% <u>base chance</u> to decrease the target enemy's DEF by {{1}}% for 3 turn(s). And at the same time, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{2}}% of Silver Wolf's ATK to the target enemy.`,
+      content: `There's a {{0}}% <u>base chance</u> to decrease the target enemy's DEF by {{1}}% for <span class="text-desc">3</span> turn(s). And at the same time, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{2}}% of Silver Wolf's ATK to the target enemy.`,
       value: [
         { base: 85, growth: 1.5, style: 'curved' },
         { base: 36, growth: 0.9, style: 'curved' },
@@ -61,7 +61,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       trace: 'Talent',
       title: 'Awaiting System Response...',
       content: `Silver Wolf can create three types of Bugs: reduce ATK by {{0}}%, reduce DEF by {{1}}%, and reduce SPD by {{2}}%.
-      <br />Every time Silver Wolf attacks, she has a {{3}}% <u>base chance</u> to implant a random Bug that lasts for 3 turn(s) in the enemy target.`,
+      <br />Every time Silver Wolf attacks, she has a {{3}}% <u>base chance</u> to implant a random Bug that lasts for <span class="text-desc">3</span> turn(s) in the enemy target.`,
       value: [
         { base: 5, growth: 0.5, style: 'curved' },
         { base: 4, growth: 0.4, style: 'curved' },

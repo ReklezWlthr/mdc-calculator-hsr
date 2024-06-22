@@ -292,9 +292,8 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               source: 'Jade',
               value: 30,
             })
-          _.forEach(
-            [team[i].BASIC_SCALING, team[i].SKILL_SCALING, team[i].ULT_SCALING, team[i].TALENT_SCALING],
-            (s) => {
+          team[i].CALLBACK.push((x) => {
+            _.forEach([x.BASIC_SCALING, x.SKILL_SCALING, x.ULT_SCALING, x.TALENT_SCALING], (s) => {
               if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
                 s.push({
                   name: `Debt Collector's Additional DMG`,
@@ -303,8 +302,9 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
                   property: TalentProperty.ADD,
                   type: TalentType.NONE,
                 })
-            }
-          )
+            })
+            return x
+          })
         }
       })
 

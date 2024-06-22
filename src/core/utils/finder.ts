@@ -27,5 +27,5 @@ export const countDot = (debuffs: { type: DebuffTypes; count: number }[], type: 
 export const countDebuff = (debuffs: { type: DebuffTypes; count: number }[], type?: DebuffTypes) =>
   _.sumBy(type ? _.filter(debuffs, (d) => d.type === type) : debuffs, (item) => item.count)
 
-export const checkBuffExist = (array: StatsArray[], key: keyof StatsArray, value: any) =>
-  _.size(_.filter(array, (item) => item[key] === value)) >= 1
+export const checkBuffExist = (array: StatsArray[], predicate: Partial<StatsArray>) =>
+  _.size(_.filter(array, (item) => _.every(predicate, (value, key) => item[key] === value))) >= 1

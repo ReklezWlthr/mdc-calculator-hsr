@@ -190,6 +190,44 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ) => {
       const base = _.cloneDeep(x)
 
+      base.BASIC_SCALING = form.complete_combustion
+        ? [
+            {
+              name: 'Single Target',
+              value: [{ scaling: calcScaling(1, 0.2, basic, 'linear'), multiplier: Stats.ATK }],
+              element: Element.FIRE,
+              property: TalentProperty.NORMAL,
+              type: TalentType.BA,
+              break: 15,
+            },
+            {
+              name: 'Healing',
+              value: [{ scaling: 0.2, multiplier: Stats.HP }],
+              element: TalentProperty.HEAL,
+              property: TalentProperty.HEAL,
+              type: TalentType.NONE,
+            },
+          ]
+        : [
+            {
+              name: 'Single Target',
+              value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear'), multiplier: Stats.ATK }],
+              element: Element.FIRE,
+              property: TalentProperty.NORMAL,
+              type: TalentType.BA,
+              break: 10,
+            },
+          ]
+      base.SKILL_SCALING = [
+        {
+          name: 'Single Target',
+          value: [{ scaling: calcScaling(1, 0.1, skill, 'curved'), multiplier: Stats.ATK }],
+          element: Element.FIRE,
+          property: TalentProperty.NORMAL,
+          type: TalentType.SKILL,
+          break: 20,
+        },
+      ]
       base.TECHNIQUE_SCALING = [
         {
           name: 'AoE',
@@ -298,80 +336,43 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             value: superBreak,
           })
         }
-        x.BASIC_SCALING = form.complete_combustion
-          ? [
-              {
-                name: 'Single Target',
-                value: [{ scaling: calcScaling(1, 0.2, basic, 'linear'), multiplier: Stats.ATK }],
-                element: Element.FIRE,
-                property: TalentProperty.NORMAL,
-                type: TalentType.BA,
-                break: 15,
-              },
-              {
-                name: 'Healing',
-                value: [{ scaling: 0.2, multiplier: Stats.HP }],
-                element: TalentProperty.HEAL,
-                property: TalentProperty.HEAL,
-                type: TalentType.NONE,
-              },
-            ]
-          : [
-              {
-                name: 'Single Target',
-                value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear'), multiplier: Stats.ATK }],
-                element: Element.FIRE,
-                property: TalentProperty.NORMAL,
-                type: TalentType.BA,
-                break: 10,
-              },
-            ]
-        x.SKILL_SCALING = form.complete_combustion
-          ? [
-              {
-                name: 'Main',
-                value: [
-                  {
-                    scaling: calcScaling(1, 0.1, skill, 'curved') + _.min([x.getValue(Stats.BE), 3.6]) * 0.2,
-                    multiplier: Stats.ATK,
-                  },
-                ],
-                element: Element.FIRE,
-                property: TalentProperty.NORMAL,
-                type: TalentType.SKILL,
-                break: 30,
-              },
-              {
-                name: 'Adjacent',
-                value: [
-                  {
-                    scaling: calcScaling(0.5, 0.05, skill, 'curved') + _.min([x.getValue(Stats.BE), 3.6]) * 0.1,
-                    multiplier: Stats.ATK,
-                  },
-                ],
-                element: Element.FIRE,
-                property: TalentProperty.NORMAL,
-                type: TalentType.SKILL,
-                break: 15,
-              },
-              {
-                name: 'Healing',
-                value: [{ scaling: 0.25, multiplier: Stats.HP }],
-                element: TalentProperty.HEAL,
-                property: TalentProperty.HEAL,
-                type: TalentType.NONE,
-              },
-            ]
-          : [
-              {
-                name: 'Single Target',
-                value: [{ scaling: calcScaling(1, 0.1, skill, 'curved'), multiplier: Stats.ATK }],
-                element: Element.FIRE,
-                property: TalentProperty.NORMAL,
-                type: TalentType.SKILL,
-                break: 20,
-              },
-            ]
+        if (form.complete_combustion)
+          x.SKILL_SCALING = [
+            {
+              name: 'Main',
+              value: [
+                {
+                  scaling: calcScaling(1, 0.1, skill, 'curved') + _.min([x.getValue(Stats.BE), 3.6]) * 0.2,
+                  multiplier: Stats.ATK,
+                },
+              ],
+              element: Element.FIRE,
+              property: TalentProperty.NORMAL,
+              type: TalentType.SKILL,
+              break: 30,
+            },
+            {
+              name: 'Adjacent',
+              value: [
+                {
+                  scaling: calcScaling(0.5, 0.05, skill, 'curved') + _.min([x.getValue(Stats.BE), 3.6]) * 0.1,
+                  multiplier: Stats.ATK,
+                },
+              ],
+              element: Element.FIRE,
+              property: TalentProperty.NORMAL,
+              type: TalentType.SKILL,
+              break: 15,
+            },
+            {
+              name: 'Healing',
+              value: [{ scaling: 0.25, multiplier: Stats.HP }],
+              element: TalentProperty.HEAL,
+              property: TalentProperty.HEAL,
+              type: TalentType.NONE,
+            },
+          ]
+
         return x
       })
       return base

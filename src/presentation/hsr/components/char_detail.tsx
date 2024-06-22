@@ -46,7 +46,8 @@ export const CharDetail = observer(() => {
       _.forEach(range, (elm: HTMLInputElement) => {
         const bg = getComputedStyle(elm).getPropertyValue('--tw-gradient-to')
         const slider = getComputedStyle(elm).getPropertyValue('--tw-gradient-from')
-        const value = (Number(elm.value) - 1) * 10
+        const max = Number(elm.max)
+        const value = (Number(elm.value) / max) * 100
         elm.setAttribute('style', `background:linear-gradient(to right,${slider},${slider} ${value}%,${bg} ${value}%)`)
       })
     }
@@ -54,7 +55,7 @@ export const CharDetail = observer(() => {
 
   useEffect(() => {
     onCalcSlider()
-  }, [params])
+  }, [params, talent])
 
   const skillIcon = {
     [TalentType.BA]: 'Normal',
@@ -142,7 +143,7 @@ export const CharDetail = observer(() => {
               .trim()
             return (
               item && (
-                <div className="flex gap-x-3">
+                <div className="flex gap-x-3" key={item.trace}>
                   <TalentIcon
                     element={data.element}
                     talent={item}
@@ -165,7 +166,9 @@ export const CharDetail = observer(() => {
                       </div>
                       {item.trace !== TalentType.TECH && (
                         <div className="flex items-center justify-end w-1/3 gap-2 pr-4">
-                          <p className="text-xs">Level: {params[baseType]}</p>
+                          <p className="text-xs">
+                            Level: <span className="text-desc">{params[baseType]}</span>
+                          </p>
                           <input
                             type="range"
                             className="slider h-[8px] bg-gradient-to-r from-primary-lighter to-gray shrink-0"
@@ -196,7 +199,7 @@ export const CharDetail = observer(() => {
         </p>
         <div className="grid grid-cols-3 gap-5">
           {_.map([talent.a2, talent.a4, talent.a6], (item) => (
-            <div className="flex gap-x-3">
+            <div className="flex gap-x-3" key={item.trace}>
               <TalentIcon
                 element={data.element}
                 talent={item}
@@ -222,7 +225,7 @@ export const CharDetail = observer(() => {
         </p>
         <div className="space-y-5">
           {_.map([talent.c1, talent.c2, talent.c3, talent.c4, talent.c5, talent.c6], (item, i) => (
-            <div className="flex gap-x-3">
+            <div className="flex gap-x-3" key={item.trace}>
               <div className="w-28 h-28 shrink-0">
                 <img
                   src={`https://api.hakush.in/hsr/UI/rank/_dependencies/textures/${id}/${id}_Rank_${i + 1}.webp`}

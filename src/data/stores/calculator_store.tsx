@@ -122,7 +122,7 @@ export class CalculatorStore {
   }
 
   getEffRes = () => {
-    return this.effRes + (this.level >= 51 ? _.min([0.1, 0.04 * (this.level - 50)]) : 0)
+    return this.effRes + (this.level >= 51 ? _.min([0.1, 0.004 * (this.level - 50)]) : 0)
   }
 
   hydrate = (data: CalculatorStoreType) => {

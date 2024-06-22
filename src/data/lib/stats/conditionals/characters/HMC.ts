@@ -212,7 +212,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         base.SUPER_BREAK_MULT.push({
           name: 'Ultimate',
           source: 'Self',
-          value: 1,
+          value: 1 + (form.hmc_a2 ? 0.7 - 0.1 * form.hmc_a2 : 0),
         })
       }
       if (form.hmc_tech)
@@ -220,12 +220,6 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           name: 'Technique',
           source: 'Self',
           value: 0.3,
-        })
-      if (form.hmc_a2)
-        base.SUPER_BREAK_DMG.push({
-          name: 'Ascension 2 Passive',
-          source: 'Self',
-          value: 0.7 - 0.1 * form.hmc_a2,
         })
       if (form.hmc_c2)
         base[Stats.ERR].push({
@@ -255,7 +249,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         base.SUPER_BREAK_MULT.push({
           name: 'Ultimate',
           source: 'Trailblazer',
-          value: 1,
+          value: 1 + (form.hmc_a2 ? 0.7 - 0.1 * form.hmc_a2 : 0),
         })
       }
       if (form.hmc_tech)
@@ -263,12 +257,6 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           name: 'Technique',
           source: 'Trailblazer',
           value: 0.3,
-        })
-      if (form.hmc_a2)
-        base.SUPER_BREAK_DMG.push({
-          name: 'Ascension 2 Passive',
-          source: 'Trailblazer',
-          value: 0.7 - 0.1 * form.hmc_a2,
         })
 
       return base
@@ -288,7 +276,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       if (c >= 4)
         _.forEach(team, (t, i) => {
           if (index !== i)
-            base[Stats.CRIT_RATE].push({
+            t[Stats.BE].push({
               name: 'Eidolon 4',
               source: 'Trailblazer',
               value: 0.15 * base.getValue(Stats.BE),

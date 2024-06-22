@@ -48,4 +48,31 @@
     width: 0px;
     height: 0px;
   }
+
+  .slider {
+    appearance: none;
+    transition: 0.2s;
+    height: 8px;
+    transition: opacity 0.2s;
+    border-radius: 5px;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    border: 1px solid #c7c9d9;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    border: 1px solid #c7c9d9;
+  }
 }

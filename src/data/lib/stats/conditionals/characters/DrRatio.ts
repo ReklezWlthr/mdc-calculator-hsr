@@ -75,34 +75,34 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     c1: {
       trace: 'Eidolon 1',
-      title: 'C1: Pride Comes Before a Fall',
+      title: 'Pride Comes Before a Fall',
       content: `The maximum stackable count for the Trace "Summation" increases by <span class="text-desc">4</span>. When a battle begins, immediately obtains <span class="text-desc">4</span> stacks of Summation. Needs to unlock Summation first.`,
     },
     c2: {
       trace: 'Eidolon 2',
-      title: 'C2: The Divine Is in the Details',
+      title: 'The Divine Is in the Details',
       content: `When his Talent's follow-up attack hits a target, for every debuff the target has, additionally deals <b class="text-hsr-imaginary">Imaginary Additional DMG</b> equal to <span class="text-desc">20%</span> of Dr. Ratio's ATK. This effect can be triggered for a maximum of <span class="text-desc">4</span> time(s) during each follow-up attack.`,
     },
     c3: {
       trace: 'Eidolon 3',
-      title: 'C3: Know Thyself',
+      title: 'Know Thyself',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
       trace: 'Eidolon 4',
-      title: 'C4: Ignorance Is Blight',
+      title: 'Ignorance Is Blight',
       content: `When triggering the Talent, additionally regenerates <span class="text-desc">15</span> Energy for Dr. Ratio.`,
     },
     c5: {
       trace: 'Eidolon 5',
-      title: 'C5: Sic Itur Ad Astra',
+      title: 'Sic Itur Ad Astra',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
       trace: 'Eidolon 6',
-      title: 'C6: Vincit Omnia Veritas',
+      title: 'Vincit Omnia Veritas',
       content: `Increases the trigger count for <b>Wiseman's Folly</b> by <span class="text-desc">1</span>. The DMG dealt by the Talent's follow-up attack increases by <span class="text-desc">50%</span>.`,
     },
   }
