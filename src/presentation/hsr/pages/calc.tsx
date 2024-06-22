@@ -22,6 +22,7 @@ import { formatIdIcon } from '@src/core/utils/data_format'
 import { StatsModal } from '../components/stats_modal'
 import { SuperBreakSubRows } from '../components/tables/super_break_sub_rows'
 import { DebuffModal } from '../components/debuff_modal'
+import { BreakBlock } from '../components/break_block'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
@@ -194,6 +195,7 @@ export const Calculator = observer(({}: {}) => {
                   ))}
                 </ScalingWrapper>
               </div>
+              <BreakBlock stats={mainComputed} index={selected} />
             </>
           ) : (
             <div className="flex items-center justify-center w-full text-xl rounded-lg h-[66vh] bg-primary-darker">
@@ -237,21 +239,25 @@ export const Calculator = observer(({}: {}) => {
                 <PrimaryButton title="Stats Breakdown" onClick={onOpenStatsModal} />
               </div>
               <StatBlock index={selected} stat={computedStats[selected]} />
-              {/* <div className="w-[252px]">
-                <AscensionIcons
+              <div className="flex items-center justify-center w-full gap-4">
+                <div className="flex space-x-3">
+                  <p className="text-sm font-bold [writing-mode:vertical-rl] text-center rotate-180">Bonus Abilities</p>
+                  <AscensionIcons
+                    id={charData.id}
+                    talents={main?.talents}
+                    element={charData.element}
+                    stats={computedStats[selected]}
+                    ascension={char.major_traces}
+                  />
+                </div>
+                <ConsCircle
                   talents={main?.talents}
                   element={charData.element}
+                  id={char.cId}
+                  cons={char.cons}
                   stats={computedStats[selected]}
-                  ascension={char.ascension}
                 />
-              </div> */}
-              <ConsCircle
-                talents={main?.talents}
-                element={charData.element}
-                id={char.cId}
-                cons={char.cons}
-                stats={computedStats[selected]}
-              />
+              </div>
             </>
           )}
         </div>
