@@ -195,7 +195,7 @@ export const Calculator = observer(({}: {}) => {
                   ))}
                 </ScalingWrapper>
               </div>
-              <BreakBlock stats={mainComputed} index={selected} />
+              {mainComputed && <BreakBlock stats={mainComputed} index={selected} />}
             </>
           ) : (
             <div className="flex items-center justify-center w-full text-xl rounded-lg h-[66vh] bg-primary-darker">

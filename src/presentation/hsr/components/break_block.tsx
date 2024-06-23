@@ -67,7 +67,7 @@ export const BreakBlock = observer(({ stats, index }: { stats: StatsObject; inde
   const breakEffect = stats?.getValue(Stats.BE)
   const breakElementMult = BreakElementMult[stats?.ELEMENT]
   const breakLevel = BreakBaseLevel[teamStore.characters[index]?.level - 1]
-  const toughnessMult = 0.5 * (calculatorStore.toughness / 40)
+  const toughnessMult = 0.5 + calculatorStore.toughness / 40
   const base = breakElementMult * breakLevel * toughnessMult
   const final = base * (1 + breakEffect) * defMult * vulMult * resMult * 0.9
 
@@ -82,12 +82,12 @@ export const BreakBlock = observer(({ stats, index }: { stats: StatsObject; inde
   const delay =
     (stats?.ELEMENT === Element.QUANTUM ? 0.2 : stats?.ELEMENT === Element.IMAGINARY ? 0.3 : 0) * (1 + breakEffect)
 
-  const ccRes = enemy?.statusRes?.[DebuffTypes.CONTROL]
+  const ccRes = enemy?.statusRes?.[DebuffTypes.CONTROL] || 0
   const prob =
     1.5 *
     (1 - calculatorStore.getEffRes()) *
     (1 + stats.getValue(Stats.EHR)) *
-    (1 - enemy?.statusRes?.[type[stats?.ELEMENT]] - (isDoT ? 0 : ccRes))
+    (1 - (enemy?.statusRes?.[type[stats?.ELEMENT]] || 0) - (isDoT ? 0 : ccRes))
 
   const baseBreakScaling = `(<b class="${
     ElementColor[stats?.ELEMENT]
@@ -142,15 +142,7 @@ export const BreakBlock = observer(({ stats, index }: { stats: StatsObject; inde
             stats.getValue(Stats.BE)
           )}</b>)</span>`
         : ''
-    }${
-      stats.getValue(StatsObjectKeys.SUPER_BREAK_DMG) > 0
-        ? ` \u{00d7} (1 + <b class="">${toPercentage(stats.getValue(StatsObjectKeys.SUPER_BREAK_DMG))}</b>)`
-        : ''
-    }${
-      stats.getValue(StatsObjectKeys.SUPER_BREAK_MULT) > 0
-        ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(stats.getValue(StatsObjectKeys.SUPER_BREAK_MULT))}</b>`
-        : ''
-    } \u{00d7} <b class="text-orange-300">${toPercentage(
+    }\u{00d7} <b class="text-orange-300">${toPercentage(
       defMult,
       2
     )}</b> <i class="text-[10px]">DEF</i> \u{00d7} <b class="text-teal-200">${toPercentage(

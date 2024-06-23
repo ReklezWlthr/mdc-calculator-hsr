@@ -67,8 +67,8 @@ export class CalculatorStore {
     }
     this.custom = Array(4)
     this.debuffs = []
-    this.hp = 0
-    this.toughness = 0
+    this.hp = 1
+    this.toughness = 30
     this.effRes = 0
 
     makeAutoObservable(this)

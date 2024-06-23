@@ -2248,7 +2248,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.LIGHTNING, Element.IMAGINARY],
     baseHp: 4464,
     baseSpd: 144,
-    toughness: 180,
+    toughness: 60,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
@@ -2276,7 +2276,7 @@ export const Enemies = [
     weakness: [Element.FIRE, Element.LIGHTNING, Element.IMAGINARY],
     baseHp: 4464,
     baseSpd: 144,
-    toughness: 324,
+    toughness: 36,
     res: {
       [Element.PHYSICAL]: 0.2,
       [Element.FIRE]: 0,
