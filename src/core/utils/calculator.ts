@@ -222,7 +222,7 @@ export const calcScaling = (base: number, growth: number, level: number, type: T
     return _.reduce(
       Array(level - 1 || 0),
       (acc, _, index) =>
-        acc + (index <= 1 ? growth : index === 2 ? growth * 1.4 : index <= 10 ? growth * 1.1 : growth * 0.6),
+        acc + (index <= 1 ? growth : index === 2 ? growth * 1.4 : index <= 8 ? growth * 1.1 : growth * 0.6),
       base
     )
   if (type === 'arcana')

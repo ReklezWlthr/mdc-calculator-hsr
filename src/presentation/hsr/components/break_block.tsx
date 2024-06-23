@@ -203,7 +203,16 @@ export const BreakBlock = observer(({ stats, index }: { stats: StatsObject; inde
             </Tooltip>
           )}
         </p>
-        <p className="col-span-2">{toPercentage(0.25 + delay)}</p>
+        <p className="col-span-2">
+          {stats?.ELEMENT === Element.ICE ? (
+            <>
+              <span>25%</span>
+              <span className='ml-1 text-hsr-ice'>(+50%)</span>
+            </>
+          ) : (
+            toPercentage(0.25 + delay)
+          )}
+        </p>
         <p
           className={classNames(
             'text-center truncate',
