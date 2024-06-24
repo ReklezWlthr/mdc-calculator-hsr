@@ -189,6 +189,23 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
           <div className="space-y-2">
             <AttributeBlock stats={stats} stat="Weakness Break Efficiency" array={stats.BREAK_EFF} />
             <AttributeBlock stats={stats} stat="Shield Bonus" array={stats.SHIELD} />
+            <div className="space-y-1">
+              <p className="font-bold text-white">
+                Action Value <span className="text-red">{_.round(10000 / stats.getSpd(), 1)}</span>
+              </p>
+              <BulletPoint>
+                <span className="text-xs">
+                  <span className="text-desc">{_.round(10000 / stats.getSpd(), 1)}</span> = 10,000 ÷{' '}
+                  <span className="text-desc">{_.round(stats.getSpd(), 1)}</span>
+                </span>
+              </BulletPoint>
+              <BulletPoint>
+                <span className="text-xs">
+                  <span className="text-desc">{_.floor(250 / (10000 / stats.getSpd()))}</span> Turns in the first{' '}
+                  <span className="text-desc">2</span> MoC Cycles
+                </span>
+              </BulletPoint>
+            </div>
           </div>
           <div className="space-y-2">
             <AttributeBlock stats={stats} stat="DMG Reduction" array={stats.DMG_REDUCTION} />
