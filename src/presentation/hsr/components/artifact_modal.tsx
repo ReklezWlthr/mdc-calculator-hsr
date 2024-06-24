@@ -165,7 +165,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
               onChange={(value) => {
                 const quality = _.parseInt(value)
                 field.onChange(quality)
-                if (values.level > 20 - (5 - quality) * 4) setValue('level', 20 - (5 - quality) * 4)
+                if (values.level > 15 - (5 - quality) * 3) setValue('level', 15 - (5 - quality) * 3)
               }}
             />
           )}

@@ -8,7 +8,7 @@ import { useParams } from '@src/core/hooks/useParams'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 import { ArtifactModal } from '../components/artifact_modal'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
-import { RelicSets } from '@src/data/db/artifacts'
+import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
 import { MainStatOptions, RelicPieceIcon, Stats, SubStatOptions } from '@src/domain/constant'
 import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
 import { isSubsetOf } from '@src/core/utils/finder'
@@ -76,7 +76,7 @@ export const ArtifactInventory = observer(() => {
             </div>
             <SelectTextInput
               value={params.set}
-              options={_.map(RelicSets, (artifact) => ({
+              options={_.map(AllRelicSets, (artifact) => ({
                 name: artifact.name,
                 value: artifact.id.toString(),
                 img: `https://api.hakush.in/hsr/UI/itemfigures/${artifact?.icon}.webp`,

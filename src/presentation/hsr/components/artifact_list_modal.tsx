@@ -7,7 +7,7 @@ import { useParams } from '@src/core/hooks/useParams'
 import { useMemo } from 'react'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
-import { RelicSets } from '@src/data/db/artifacts'
+import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
 import { MainStatOptions, SubStatOptions } from '@src/domain/constant'
 import { isSubsetOf } from '@src/core/utils/finder'
 
@@ -37,14 +37,13 @@ export const ArtifactListModal = observer(({ index, type }: { index: number; typ
         <div className="flex items-center gap-3">
           <SelectTextInput
             value={params.set}
-            options={_.map(RelicSets, (artifact) => ({
+            options={_.map(AllRelicSets, (artifact) => ({
               name: artifact.name,
               value: artifact.id.toString(),
-              img: `https://enka.network/ui/hsr/${artifact.icon}_4.png`,
+              img: `https://api.hakush.in/hsr/UI/itemfigures/${artifact?.icon}.webp`,
             }))}
             placeholder="Artifact Set"
             onChange={(value) => setParams({ set: value?.value })}
-            style="w-[220px]"
           />
           <TagSelectInput
             values={params.main}
