@@ -44,7 +44,8 @@ export const SuperBreakSubRows = observer(({ scaling }: ScalingSubRowsProps) => 
   const defPen =
     (stats.getValue(StatsObjectKeys.DEF_PEN) || 0) +
     (stats.getValue(StatsObjectKeys.SUPER_BREAK_DEF_PEN) || 0) +
-    (stats.getValue(StatsObjectKeys.BREAK_DEF_PEN) || 0)
+    (stats.getValue(StatsObjectKeys.BREAK_DEF_PEN) || 0) +
+    (stats.getValue(`${TalentTypeMap[scaling.type]}_DEF_PEN`) || 0)
 
   const defMult =
     calculatorStore.getDefMult(
