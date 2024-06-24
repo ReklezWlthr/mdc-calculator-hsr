@@ -570,6 +570,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.NIHILITY,
     element: Element.FIRE,
+    beta: true,
   },
   {
     id: '1221',
@@ -585,6 +586,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.DESTRUCTION,
     element: Element.PHYSICAL,
+    beta: true,
   },
   {
     id: '1224',
@@ -600,6 +602,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.HUNT,
     element: Element.IMAGINARY,
+    beta: true,
   },
   {
     id: '1301',
@@ -780,6 +783,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.ERUDITION,
     element: Element.QUANTUM,
+    beta: true,
   },
   {
     id: '1315',

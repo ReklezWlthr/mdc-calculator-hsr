@@ -95,12 +95,12 @@ export const LCBlock = observer(({ index = -1, wId, level = 1, ascension = 0, re
     [ascension]
   )
 
+  const char = teamStore.characters[index]?.cId
+  const invalid = weaponType !== weaponData?.type
+
   const onOpenModal = useCallback(() => {
     char && modalStore.openModal(<LCModal index={index} />)
-  }, [modalStore, index])
-
-  const invalid = weaponType !== weaponData?.type
-  const char = teamStore.characters[index]?.cId
+  }, [modalStore, index, char])
 
   return (
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-[280px]">

@@ -1052,6 +1052,7 @@ export const LightCones = [
       detail: `Increases the wearer's ATK by {{0}}%. Upon entering the battle, if there are two or more allies in the team who follow the same Path, these characters' CRIT DMG increases by {{0}}%. Abilities of the same type cannot stack.`,
       properties: [{ base: 16, growth: 4 }],
     },
+    beta: true,
   },
   //---------------------
   //   Event 4 Star
@@ -1619,6 +1620,7 @@ export const LightCones = [
         { base: 20, growth: 4 },
       ],
     },
+    beta: true,
   },
   {
     id: '23029',
@@ -1637,6 +1639,7 @@ export const LightCones = [
         { base: 18, growth: 3 },
       ],
     },
+    beta: true,
   },
   {
     id: '23030',
@@ -1651,6 +1654,7 @@ export const LightCones = [
       detail: `Greatly increases the odds that the wearer will be attacked, increases the wearer's CRIT DMG by {{0}}%. After the wearer uses their Ultimate, they receive <span class="text-desc">1</span> stack of <b>Firedance</b>, lasting for <span class="text-desc">2</span> turns and up to <span class="text-desc">2</span> stacks. Each stack of <b>Firedance</b> increases the DMG dealt by the wearer's follow-up attack by {{0}}%.`,
       properties: [{ base: 36, growth: 6 }],
     },
+    beta: true,
   },
   //---------------------
   //   Herta 5 Star

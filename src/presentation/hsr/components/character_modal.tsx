@@ -119,8 +119,8 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
                   talents: char?.talents || { basic: 1, skill: 1, ult: 1, talent: 1 },
                   equipments: build ? { weapon: build.weapon, artifacts: build.artifacts } : DefaultBuild,
                   cons: char?.cons || 0,
-                  major_traces: char?.major_traces || {a2: false, a4: false, a6: false},
-                  minor_traces: char?.minor_traces || formatMinorTrace(item.trace, Array(10).fill(false))
+                  major_traces: char?.major_traces || { a2: false, a4: false, a6: false },
+                  minor_traces: char?.minor_traces || formatMinorTrace(item.trace, Array(10).fill(false)),
                 })
                 modalStore.closeModal()
               }}
@@ -133,11 +133,15 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
                     E{_.find(charStore.characters, ['cId', item.id])?.cons || 0}
                   </div>
                 )}
+                {item.beta && <div className="absolute left-0 px-2 py-0.5 bottom-2 bg-rose-600 rounded-r-md">Beta</div>}
                 <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
                   <RarityGauge rarity={item.rarity} />
                 </div>
                 <img
-                  src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(item.id, settingStore.settings?.travelerGender)}.webp`}
+                  src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
+                    item.id,
+                    settingStore.settings?.travelerGender
+                  )}.webp`}
                   className="object-cover rounded-t-lg bg-primary-darker aspect-[47/64]"
                 />
               </div>

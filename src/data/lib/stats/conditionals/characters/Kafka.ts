@@ -61,7 +61,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 10,
       trace: 'Talent',
       title: 'Gentle but Cruel',
-      content: `After an ally of Kafka's uses Basic ATK on an enemy target, Kafka immediately launches <span class="text-desc">1</span> follow-up attack and deals Lightning DMG equal to {{0}}% of her ATK to that target, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> equivalent to that applied by her Ultimate to the attacked enemy target for <span class="text-desc">2</span> turns. This effect can only be triggered <span class="text-desc">1</span> time per turn.`,
+      content: `After an ally of Kafka's uses Basic ATK on an enemy target, Kafka immediately launches <span class="text-desc">1</span> follow-up attack and deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of her ATK to that target, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> equivalent to that applied by her Ultimate to the attacked enemy target for <span class="text-desc">2</span> turns. This effect can only be triggered <span class="text-desc">1</span> time per turn.`,
       value: [{ base: 42, growth: 9.8, style: 'curved' }],
       level: talent,
     },
