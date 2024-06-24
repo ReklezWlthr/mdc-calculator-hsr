@@ -38,7 +38,7 @@ export const CharDetail = observer(() => {
   const [loading, setLoading] = useState(true)
 
   const { params, setParams } = useParams({
-    asc: 0,
+    asc: 7,
     [TalentType.BA]: 6,
     [TalentType.SKILL]: 10,
     [TalentType.ULT]: 10,
@@ -191,24 +191,32 @@ export const CharDetail = observer(() => {
                     Eidolon <span className="text-desc">{charUpgrade.cons}</span>
                   </p>
                 </div>
-                <p className="py-1.5 font-bold text-center">Traces</p>
+                <p className="py-1.5 font-bold text-center">Abilities</p>
                 <div className="grid grid-cols-5 gap-4">
                   <div className="col-span-3 space-y-1">
                     <div className="flex justify-between">
                       <p>Basic ATK</p>
-                      <p className="text-desc">{charUpgrade.talents?.basic}</p>
+                      <p className={cond.upgrade?.basic ? 'text-blue' : 'text-desc'}>
+                        {charUpgrade.talents?.basic + cond.upgrade?.basic}
+                      </p>
                     </div>
                     <div className="flex justify-between">
                       <p>Skill</p>
-                      <p className="text-desc">{charUpgrade.talents?.skill}</p>
+                      <p className={cond.upgrade?.skill ? 'text-blue' : 'text-desc'}>
+                        {charUpgrade.talents?.skill + cond.upgrade?.skill}
+                      </p>
                     </div>
                     <div className="flex justify-between">
                       <p>Ultimate</p>
-                      <p className="text-desc">{charUpgrade.talents?.ult}</p>
+                      <p className={cond.upgrade?.ult ? 'text-blue' : 'text-desc'}>
+                        {charUpgrade.talents?.ult + cond.upgrade?.ult}
+                      </p>
                     </div>
                     <div className="flex justify-between">
                       <p>Talent</p>
-                      <p className="text-desc">{charUpgrade.talents?.talent}</p>
+                      <p className={cond.upgrade?.talent ? 'text-blue' : 'text-desc'}>
+                        {charUpgrade.talents?.talent + cond.upgrade?.talent}
+                      </p>
                     </div>
                   </div>
                   <div className="col-span-2 space-y-1">

@@ -44,7 +44,7 @@ export const Sidebar = ({
         <p className="p-2 font-bold text-white">Account</p>
         <Pill name="My Characters" page={GenshinPage.CHAR} />
         <Pill name="My Builds" page={GenshinPage.BUILD} />
-        <Pill name="Artifact Inventory" page={GenshinPage.INVENTORY} />
+        <Pill name="Relic Inventory" page={GenshinPage.INVENTORY} />
       </div>
       <div className="flex items-end justify-between px-3">
         <div className="space-y-3 text-sm">
