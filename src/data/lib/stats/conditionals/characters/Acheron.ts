@@ -69,7 +69,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `When <b>Slashed Dream</b> reaches <span class="text-desc">9</span> point(s), the Ultimate can be activated. During the Ultimate, reduces enemies' Toughness regardless of Weakness Types and reduces all enemies' All-Type RES by {{0}}%, lasting until the end of the Ultimate.
       <br />When any unit inflicts debuffs on an enemy target while using their ability, Acheron gains <span class="text-desc">1</span> point of <b>Slashed Dream</b> and inflicts <span class="text-desc">1</span> stack of <b>Crimson Knot</b> on the target. If debuffs are inflicted on multiple targets, then the <span class="text-desc">1</span> stack of <b>Crimson Knot</b> will be inflicted on the enemy target with the most <b>Crimson Knot</b> stacks. This effect can only trigger once per every ability usage.
       <br />After an enemy target exits the field or gets defeated by any unit while Acheron is on the field, their <b>Crimson Knot</b> stacks will be transferred to the enemy target with the most <b>Crimson Knot</b> stacks on the whole field.`,
-      value: [{ base: 10, growth: 0.1, style: 'curved' }],
+      value: [{ base: 10, growth: 1, style: 'curved' }],
       level: talent,
     },
     technique: {

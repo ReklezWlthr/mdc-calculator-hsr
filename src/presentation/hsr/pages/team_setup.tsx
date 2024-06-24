@@ -1,19 +1,16 @@
-import { useCallback, useState } from 'react'
+import { useCallback } from 'react'
 import { CharacterBlock } from '../components/character_block'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import classNames from 'classnames'
 import { StatBlock } from '../components/stat_block'
 import { LCBlock } from '../components/lc_block'
 import { RelicBlock } from '../components/relic_block'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
-import { TextInput } from '@src/presentation/components/inputs/text_input'
-import { GhostButton } from '@src/presentation/components/ghost.button'
 import { BuildModal } from '../components/build_modal'
 import { findCharacter } from '@src/core/utils/finder'
-import { findMaxTalentLevel, getResonanceCount, getSetCount } from '@src/core/utils/data_format'
-import { AllRelicSets, PlanarSets, RelicSets } from '@src/data/db/artifacts'
+import { findMaxTalentLevel, getSetCount } from '@src/core/utils/data_format'
+import { PlanarSets, RelicSets } from '@src/data/db/artifacts'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { CommonModal } from '@src/presentation/components/common_modal'
 import { CharacterSelect } from '../components/character_select'
@@ -24,6 +21,7 @@ import { calculateFinal, calculateOutOfCombat } from '@src/core/utils/calculator
 import { baseStatsObject } from '@src/data/lib/stats/baseConstant'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { TraceBlock } from '../components/trace_block'
+import { SaveBuildModal } from '../components/save_build_modal'
 
 export const SetToolTip = observer(({ item, set, type }: { item: number; set: string; type: 'relic' | 'planar' }) => {
   const setDetail = _.find(type === 'relic' ? RelicSets : PlanarSets, ['id', set])
@@ -56,56 +54,6 @@ export const SetToolTip = observer(({ item, set, type }: { item: number; set: st
         </div>
       </Tooltip>
     )
-  )
-})
-
-const SaveBuildModal = observer(({ index }: { index: number }) => {
-  const [name, setName] = useState('')
-  const [isDefault, setDefault] = useState(true)
-
-  const { modalStore, teamStore, buildStore, toastStore } = useStore()
-
-  const onSaveBuild = useCallback(() => {
-    const id = crypto.randomUUID()
-    const character = teamStore.characters[index]
-
-    if (name) {
-      const pass = buildStore.saveBuild({
-        id,
-        name,
-        cId: character?.cId,
-        isDefault: false,
-        ...character?.equipments,
-      })
-      if (pass) {
-        isDefault && buildStore.setDefault(id)
-        modalStore.closeModal()
-        toastStore.openNotification({
-          title: 'Build Saved Successfully',
-          icon: 'fa-solid fa-circle-check',
-          color: 'green',
-        })
-      }
-    }
-  }, [index, name])
-
-  return (
-    <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark w-[350px]">
-      <div className="space-y-1">
-        <p className="font-semibold">
-          Build Name <span className="text-red">*</span>
-        </p>
-        <TextInput onChange={setName} value={name} />
-      </div>
-      <div className="flex items-center justify-end gap-x-2">
-        <p className="text-xs text-gray">Set Build as Default</p>
-        <CheckboxInput checked={isDefault} onClick={(v) => setDefault(v)} />
-      </div>
-      <div className="flex justify-end gap-2">
-        <GhostButton title="Cancel" onClick={() => modalStore.closeModal()} />
-        <PrimaryButton title="Confirm" onClick={onSaveBuild} />
-      </div>
-    </div>
   )
 })
 
@@ -181,8 +129,6 @@ export const TeamSetup = observer(() => {
           <StatBlock index={selected} stat={stats} />
         </div>
         <div className="w-1/5 space-y-5">
-          {/* <WeaponBlock index={selected} {...teamStore.characters[selected]?.equipments?.weapon} /> */}
-
           <div className="grid items-center justify-center grid-cols-2 gap-5 py-3">
             <p className="-mb-2 text-lg font-bold text-center text-white col-span-full">Traces</p>
             <div className="flex items-center gap-3">
@@ -328,7 +274,11 @@ export const TeamSetup = observer(() => {
               </div>
             </div>
             <div className="col-span-full">
-              <TraceBlock id={char?.cId} />
+              <TraceBlock
+                id={char?.cId}
+                data={char?.minor_traces}
+                onClick={(i) => teamStore.toggleMinorTrace(selected, i)}
+              />
             </div>
           </div>
           <div className="space-y-2">

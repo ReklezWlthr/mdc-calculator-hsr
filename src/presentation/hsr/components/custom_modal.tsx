@@ -41,27 +41,40 @@ export const CustomModal = observer(({ index }: { index: number }) => {
     ],
     element: [
       { name: 'Percentage Bonus', value: 'percentage' },
-      { name: 'Flat Bonus', value: 'flat' },
+      { name: 'RES PEN', value: 'pen' },
     ],
     talent: [
       { name: 'Percentage Bonus', value: '_DMG' },
-      { name: 'Flat Bonus', value: '_F_DMG' },
+      { name: 'DEF PEN', value: '_DEF_PEN' },
+      { name: 'CRIT Rate', value: '_CR' },
+      { name: 'CRIT DMG', value: '_CD' },
+    ],
+    property: [
+      { name: 'Percentage Bonus', value: '_DMG' },
+      { name: 'DEF PEN', value: '_DEF_PEN' },
       { name: 'CRIT Rate', value: '_CR' },
       { name: 'CRIT DMG', value: '_CD' },
     ],
     debuff: [
       { name: 'DEF Reduction', value: StatsObjectKeys.DEF_REDUCTION },
       { name: 'All-Type RES Reduction', value: StatsObjectKeys.ALL_TYPE_RES_PEN },
+      { name: 'Vulnerability', value: StatsObjectKeys.VULNERABILITY },
     ],
   }
 
   const elements = _.map(Element, (item) => ({ name: item, value: item }))
   const talent = [
-    { name: 'Normal Attack', value: 'BASIC' },
-    { name: 'Charged Attack', value: 'CHARGE' },
-    { name: 'Plunging Attack', value: 'PLUNGE' },
-    { name: 'Elemental Skill', value: 'SKILL' },
-    { name: 'Elemental Burst', value: 'BURST' },
+    { name: 'Basic ATK', value: 'BASIC' },
+    { name: 'Skill', value: 'SKILL' },
+    { name: 'Ultimate', value: 'ULT' },
+    { name: 'Talent', value: 'TALENT' },
+    { name: 'Technique', value: 'TECH' },
+  ]
+  const property = [
+    { name: 'Follow-Up DMG', value: 'FUA' },
+    { name: 'DoT', value: 'DOT' },
+    { name: 'Break DMG', value: 'BREAK' },
+    { name: 'Super Break DMG', value: 'SUPER_BREAK' },
   ]
 
   const Tab = ({ title, value, defaultKey }: { title: string; value: string; defaultKey: any }) => (
@@ -85,11 +98,11 @@ export const CustomModal = observer(({ index }: { index: number }) => {
     if (selectedTab === 'element') {
       if (key === 'percentage')
         calculatorStore.setCustomValue(index, -1, StatsObjectKeys[`${selectedElement} DMG%`] as any, value)
-      if (key === 'flat')
+      if (key === 'pen')
         calculatorStore.setCustomValue(
           index,
           -1,
-          StatsObjectKeys[`${selectedElement.toUpperCase()}_F_DMG`] as any,
+          StatsObjectKeys[`${selectedElement.toUpperCase()}_RES_PEN`] as any,
           value
         )
     }
@@ -109,6 +122,7 @@ export const CustomModal = observer(({ index }: { index: number }) => {
         <Tab title="Stats" value="stats" defaultKey={StatsObjectKeys[Stats.ALL_DMG]} />
         <Tab title="Element" value="element" defaultKey={options.element[0].value} />
         <Tab title="Talent" value="talent" defaultKey={options.talent[0].value} />
+        <Tab title="Property" value="property" defaultKey={options.property[0].value} />
         <Tab title="Debuffs" value="debuff" defaultKey={options.debuff[0].value} />
       </div>
       <div className="grid items-center grid-cols-3 pb-4 border-b gap-x-3 border-primary-border">

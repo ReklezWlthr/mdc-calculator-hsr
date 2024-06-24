@@ -19,7 +19,7 @@ interface ScalingWrapperProps {
 interface TalentIconProps {
   icon: string
   element: Element
-  talent: ITalentDisplay
+  talent?: ITalentDisplay
   size?: string
   tooltipSize?: string
   level?: number
@@ -71,26 +71,33 @@ export const TalentIcon = observer(
       )
 
     const IconComp = () => (
-      <div
-        className={classNames(
-          'p-1 rounded-full bg-opacity-40 ring-2 ring-offset-2 duration-200 ring-offset-primary-darker flex justify-center items-center shrink-0',
-          active ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50',
-          size || 'w-12 h-12',
-          { 'group-hover:ring-offset-4': !hideTip }
+      <div className="relative">
+        <div
+          className={classNames(
+            'p-1 rounded-full bg-opacity-40 ring-2 ring-offset-2 duration-200 ring-offset-primary-darker flex justify-center items-center shrink-0',
+            active ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50',
+            size || 'w-12 h-12',
+            { 'group-hover:ring-offset-4': !hideTip }
+          )}
+        >
+          <img
+            src={icon}
+            onError={(e) => {
+              e.currentTarget.style.display = 'none'
+              e.currentTarget.nextElementSibling.className = 'block text-3xl font-bold opacity-80'
+            }}
+            onLoad={(e) => {
+              e.currentTarget.style.display = 'block'
+              e.currentTarget.nextElementSibling.className = 'hidden'
+            }}
+          />
+          <div className="hidden">?</div>
+        </div>
+        {hideTip && showUpgrade && !!upgraded && (
+          <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-2 bg-cyan-600 text-white">
+            +{upgraded}
+          </div>
         )}
-      >
-        <img
-          src={icon}
-          onError={(e) => {
-            e.currentTarget.style.display = 'none'
-            e.currentTarget.nextElementSibling.className = 'block text-3xl font-bold opacity-80'
-          }}
-          onLoad={(e) => {
-            e.currentTarget.style.display = 'block'
-            e.currentTarget.nextElementSibling.className = 'hidden'
-          }}
-        />
-        <div className="hidden">?</div>
       </div>
     )
 
@@ -137,7 +144,7 @@ export const TalentIcon = observer(
             </div>
           )}
           {!showLevel && showUpgrade && !!upgraded && (
-            <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 bg-cyan-600 text-white">
+            <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-2 bg-cyan-600 text-white">
               +{upgraded}
             </div>
           )}

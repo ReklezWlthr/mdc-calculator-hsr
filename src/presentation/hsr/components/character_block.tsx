@@ -122,7 +122,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
                 options={EidolonOptions}
                 value={cons?.toString()}
                 style="w-fit"
-                disabled={isEmpty || props.disabled || characterData?.id === '10000062'}
+                disabled={isEmpty || props.disabled}
               />
             </div>
           </div>

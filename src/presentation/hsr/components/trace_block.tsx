@@ -8,27 +8,29 @@ import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 
-export const TraceBlock = observer(({ id }: { id: string }) => {
-  const { teamStore } = useStore()
-  const char = _.find(teamStore.characters, (item) => item.cId === id)
-  const charIndex = _.findIndex(teamStore.characters, (item) => item.cId === id)
+interface TraceBlockProps {
+  id: string
+  data: {
+    stat: Stats
+    value: number
+    toggled: boolean
+  }[]
+  onClick: (index: number) => void
+}
 
+export const TraceBlock = observer(({ id, data, onClick }: TraceBlockProps) => {
   return (
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark">
       <div className="flex justify-center px-5 py-1 rounded-t-lg bg-primary-lighter">Minor Traces</div>
       <div className="p-3 space-y-2 text-xs font-normal">
-        {_.map(char.minor_traces, (trace, index) => (
+        {_.map(data, (trace, index) => (
           <div className="grid grid-cols-12 gap-3" key={index}>
             <div className="col-span-7 text-center">{trace?.stat || '-'}</div>
             <div className="col-span-3 text-center text-gray">
               {id ? (trace?.stat === Stats.SPD ? trace?.value : toPercentage(trace?.value)) : '-'}
             </div>
             <div className="flex justify-center col-span-2">
-              <CheckboxInput
-                checked={char?.minor_traces?.[index]?.toggled}
-                onClick={() => teamStore.toggleMinorTrace(charIndex, index)}
-                disabled={!id}
-              />
+              <CheckboxInput checked={data?.[index]?.toggled} onClick={() => onClick(index)} disabled={!id} />
             </div>
           </div>
         ))}

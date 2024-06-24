@@ -1,4 +1,11 @@
-import { formatIdIcon, formatScaleString } from '@src/core/utils/data_format'
+import {
+  findBaseLevel,
+  findMaxLevel,
+  formatIdIcon,
+  formatMinorTrace,
+  formatScaleString,
+  getBaseStat,
+} from '@src/core/utils/data_format'
 import { findCharacter } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
@@ -9,11 +16,14 @@ import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import _ from 'lodash'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import { TalentIcon } from './tables/scaling_wrapper'
-import { TalentType } from '@src/domain/constant'
+import { Stats, TalentType } from '@src/domain/constant'
 import { useParams } from '@src/core/hooks/useParams'
+import { PrimaryButton } from '@src/presentation/components/primary.button'
+import { toPercentage } from '@src/core/utils/converter'
+import { CharDetailModal } from './char_detail_modal'
 
 export const CharDetail = observer(() => {
-  const { charStore, settingStore, teamStore } = useStore()
+  const { charStore, settingStore, teamStore, modalStore } = useStore()
   const selected = charStore.selected
   const data = findCharacter(selected)
   const charUpgrade = _.find(charStore.characters, ['cId', selected])
@@ -28,6 +38,7 @@ export const CharDetail = observer(() => {
   const [loading, setLoading] = useState(true)
 
   const { params, setParams } = useParams({
+    asc: 0,
     [TalentType.BA]: 6,
     [TalentType.SKILL]: 10,
     [TalentType.ULT]: 10,
@@ -82,39 +93,152 @@ export const CharDetail = observer(() => {
   }
 
   const id = formatIdIcon(selected, settingStore.settings?.travelerGender)
+  const baseLevel = params.asc === 7 ? 80 : findBaseLevel(params.asc)
+  const asc = _.min([params.asc, 6])
+
+  const totalTrace = _.groupBy(charUpgrade?.minor_traces, 'stat')
+
+  const onOpenEditModal = useCallback(
+    () => modalStore.openModal(<CharDetailModal char={charUpgrade} cId={selected} />),
+    [charUpgrade, charStore.selected]
+  )
 
   return (
     <div className="w-full h-full p-2 pr-5 text-white customScrollbar">
-      <div className="relative w-2/3 aspect-square">
-        <div
-          className={classNames(
-            'items-center justify-center w-full h-full aspect-square shrink-0',
-            loading ? 'flex' : 'hidden'
-          )}
-        >
-          <i className="text-6xl animate-spin fa-solid fa-circle-notch text-gray" />
-        </div>
-        <img
-          src={`https://api.hakush.in/hsr/UI/avatardrawcard/${id}.webp`}
-          className={loading ? 'hidden' : 'block'}
-          onLoad={() => setLoading(false)}
-        />
-        <div className="absolute left-0 flex flex-col space-y-1 bottom-10">
-          <div className="flex gap-4">
-            <img
-              src={getElementImage(data.element)}
-              className="w-10 h-10 p-1 bg-opacity-75 rounded-full shrink-0 bg-primary-bg"
-            />
-            <img
-              src={getPathImage(data.path)}
-              className="w-10 h-10 p-1 bg-opacity-75 rounded-full shrink-0 bg-primary-bg"
-            />
+      <div className="flex">
+        <div className="relative w-2/3 aspect-square">
+          <div
+            className={classNames(
+              'items-center justify-center w-full h-full aspect-square shrink-0',
+              loading ? 'flex' : 'hidden'
+            )}
+          >
+            <i className="text-6xl animate-spin fa-solid fa-circle-notch text-gray" />
           </div>
-          <p className="px-3 py-2 text-3xl font-semibold break-words bg-opacity-75 rounded-lg text-end bg-primary-bg">
-            {data.name}
-          </p>
-          <div className="ml-3 w-fit">
-            <RarityGauge rarity={data.rarity} textSize="text-xl" />
+          <img
+            src={`https://api.hakush.in/hsr/UI/avatardrawcard/${id}.webp`}
+            className={loading ? 'hidden' : 'block'}
+            onLoad={() => setLoading(false)}
+          />
+          <div className="absolute left-0 flex flex-col space-y-1 bottom-10">
+            <div className="flex gap-4">
+              <img
+                src={getElementImage(data.element)}
+                className="w-10 h-10 p-1 bg-opacity-75 rounded-full shrink-0 bg-primary-bg"
+              />
+              <img
+                src={getPathImage(data.path)}
+                className="w-10 h-10 p-1 bg-opacity-75 rounded-full shrink-0 bg-primary-bg"
+              />
+            </div>
+            <p className="px-3 py-2 text-3xl font-semibold break-words bg-opacity-75 rounded-lg text-end bg-primary-bg">
+              {data.name}
+            </p>
+            <div className="ml-3 w-fit">
+              <RarityGauge rarity={data.rarity} textSize="text-xl" />
+            </div>
+          </div>
+        </div>
+        <div className="w-1/3 px-3 space-y-3">
+          <div>
+            <p className="font-bold">Character Level</p>
+            <input
+              type="range"
+              className="w-full h-2 slider bg-gradient-to-r from-primary-lighter to-gray shrink-0"
+              step={1}
+              min="0"
+              max="7"
+              value={params.asc}
+              onChange={(e) => {
+                const value = Number(e.target.value)
+                setParams({ asc: value })
+              }}
+            />
+            <div className="flex justify-between pl-2 text-xs text-gray">
+              {_.map(Array(7), (_item, index) => (
+                <p>{findBaseLevel(index)}</p>
+              ))}
+              <p>80</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-2 px-5 py-3 text-sm rounded-lg bg-primary-dark">
+            <p>Base HP</p>
+            <p className="text-center">{_.round(getBaseStat(data?.stat?.baseHp, baseLevel, asc)).toLocaleString()}</p>
+            <p>Base ATK</p>
+            <p className="text-center">{_.round(getBaseStat(data?.stat?.baseAtk, baseLevel, asc)).toLocaleString()}</p>
+            <p>Base DEF</p>
+            <p className="text-center">{_.round(getBaseStat(data?.stat?.baseDef, baseLevel, asc)).toLocaleString()}</p>
+            <p>Base SPD</p>
+            <p className="text-center">{data?.stat?.baseSpd}</p>
+            <p>Max Energy</p>
+            <p className="text-center">{data?.stat?.energy}</p>
+          </div>
+          <div className="flex items-center justify-between">
+            <p className="font-bold">Account Data</p>
+            <PrimaryButton title="Edit" onClick={onOpenEditModal} />
+          </div>
+          <div className="px-5 py-3 rounded-lg bg-primary-darker">
+            {charUpgrade ? (
+              <div className="text-xs">
+                <div className="flex justify-around">
+                  <p>
+                    Level{' '}
+                    <span className="text-desc">
+                      {charUpgrade.level}/{findMaxLevel(charUpgrade.ascension)}
+                    </span>
+                  </p>
+                  <p>
+                    Eidolon <span className="text-desc">{charUpgrade.cons}</span>
+                  </p>
+                </div>
+                <p className="py-1.5 font-bold text-center">Traces</p>
+                <div className="grid grid-cols-5 gap-4">
+                  <div className="col-span-3 space-y-1">
+                    <div className="flex justify-between">
+                      <p>Basic ATK</p>
+                      <p className="text-desc">{charUpgrade.talents?.basic}</p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p>Skill</p>
+                      <p className="text-desc">{charUpgrade.talents?.skill}</p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p>Ultimate</p>
+                      <p className="text-desc">{charUpgrade.talents?.ult}</p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p>Talent</p>
+                      <p className="text-desc">{charUpgrade.talents?.talent}</p>
+                    </div>
+                  </div>
+                  <div className="col-span-2 space-y-1">
+                    {_.map(charUpgrade.major_traces, (item, index) => (
+                      <div className="flex justify-around">
+                        <p>{index.toUpperCase()}</p>
+                        <p className={classNames('font-bold', item ? 'text-heal' : 'text-red')}>{item ? 'Y' : 'N'}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <p className="py-1.5 font-bold text-center">Minor Traces</p>
+                <div className="space-y-1">
+                  {_.map(totalTrace, (item, key) => {
+                    const total = _.sumBy(
+                      _.filter(item, (v) => v.toggled),
+                      'value'
+                    )
+                    return (
+                      <div className="grid grid-cols-3">
+                        <p className="col-span-2 text-center">{key}</p>
+                        <p className="text-center text-gray">{key === Stats.SPD ? total : toPercentage(total)}</p>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            ) : (
+              <p className="text-center text-gray">Not Owned</p>
+            )}
           </div>
         </div>
       </div>

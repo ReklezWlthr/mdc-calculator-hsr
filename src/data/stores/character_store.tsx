@@ -3,6 +3,8 @@ import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
 import { Characters } from '../db/characters'
+import { formatMinorTrace } from '../../core/utils/data_format'
+import { findCharacter } from '@src/core/utils/finder'
 
 enableStaticRendering(typeof window === 'undefined')
 
@@ -25,7 +27,30 @@ export const DefaultCharacterStore: ICharStore = {
   },
 }
 
-export const DefaultAccount = _.map(['8001', '1001', '1002'], (item) => ({ ...DefaultCharacterStore, cId: item }))
+export const MaxedCharacterStore: ICharStore = {
+  level: 80,
+  ascension: 6,
+  cons: 0,
+  cId: null,
+  talents: {
+    basic: 6,
+    skill: 10,
+    ult: 10,
+    talent: 10,
+  },
+  minor_traces: Array(10),
+  major_traces: {
+    a2: true,
+    a4: true,
+    a6: true,
+  },
+}
+
+export const DefaultAccount = _.map(['8001', '1001', '1002'], (item) => ({
+  ...DefaultCharacterStore,
+  cId: item,
+  minor_traces: formatMinorTrace(findCharacter(item)?.trace, Array(10).fill(false)),
+}))
 
 export interface CharacterStoreType {
   characters: ICharStore[]
