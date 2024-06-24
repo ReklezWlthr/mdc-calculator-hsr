@@ -200,11 +200,6 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         },
       ]
 
-      base[Stats.P_SPD].push({
-        name: 'Talent',
-        source: 'Self',
-        value: calcScaling(0.08, 0.002, talent, 'curved'),
-      })
       if (a.a2)
         base[Stats.BE].push({
           name: 'Ascension 2 Passive',

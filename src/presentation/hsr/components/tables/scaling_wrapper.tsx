@@ -73,7 +73,7 @@ export const TalentIcon = observer(
     const IconComp = () => (
       <div
         className={classNames(
-          'p-1 rounded-full bg-opacity-50 ring-2 ring-offset-2 duration-200 ring-offset-primary-darker flex justify-center items-center shrink-0',
+          'p-1 rounded-full bg-opacity-40 ring-2 ring-offset-2 duration-200 ring-offset-primary-darker flex justify-center items-center shrink-0',
           active ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50',
           size || 'w-12 h-12',
           { 'group-hover:ring-offset-4': !hideTip }

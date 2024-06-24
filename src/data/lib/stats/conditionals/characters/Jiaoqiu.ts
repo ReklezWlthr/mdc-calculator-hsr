@@ -71,8 +71,8 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       title: 'Fiery Queller',
       content: `After using Technique, creates a special dimension that lasts for <span class="text-desc">15</span> second(s). After engaging enemies in the dimension, deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">100%</span> of Jiaoqiu's ATK to all enemies and has a <span class="text-desc">100%</span> <u>base chance</u> of applying 1 <b>Ashen Roast</b> stack. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
-    a2: {
-      trace: 'Ascension 2 Passive',
+    a6: {
+      trace: 'Ascension 6 Passive',
       title: 'Seared Scent',
       content: `When a Field exists, enemies entering combat will be inflicted with <b>Ashen Roast</b> stacks. The number of stacks applied will match the highest number of <b>Ashen Roast</b> stacks inflicted while the Field is active, with a minimum of <span class="text-desc">1</span> stack(s).`,
     },
@@ -81,8 +81,8 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       title: 'Hearth Kindle',
       content: `When Jiaoqiu's Effect Hit Rate is higher than <span class="text-desc">80%</span>, for each <span class="text-desc">15%</span> exceeded, Jiaoqiu additionally gains <span class="text-desc">60%</span> ATK, up to a maximum of <span class="text-desc">240%</span>.`,
     },
-    a6: {
-      trace: 'Ascension 6 Passive',
+    a2: {
+      trace: 'Ascension 2 Passive',
       title: 'Pyre Cleanse',
       content: `When a Field exists, the enemies' Effect Hit Rate is reduced by <span class="text-desc">30%</span>. At the start of each turn, they receive <b class="text-hsr-fire">Fire Additional DMG</b> equal to <span class="text-desc">150%</span> of Jiaoqiu's ATK.`,
     },
@@ -215,9 +215,9 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           value: calcScaling(0.5, 0.01, ult, 'curved'),
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
-        if (a.a6) {
+        if (a.a2) {
           base.EHR_RED.push({
-            name: `Ascension 6 Passive`,
+            name: `Ascension 2 Passive`,
             source: 'Self',
             value: 0.3,
           })
@@ -288,9 +288,9 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Jiaoqiu',
           value: calcScaling(0.09, 0.006, ult, 'curved'),
         })
-        if (a.a6) {
+        if (a.a2) {
           base.EHR_RED.push({
-            name: `Ascension 6 Passive`,
+            name: `Ascension 2 Passive`,
             source: 'Jiaoqiu',
             value: 0.3,
           })

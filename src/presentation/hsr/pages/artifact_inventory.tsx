@@ -9,7 +9,7 @@ import { SelectTextInput } from '@src/presentation/components/inputs/select_text
 import { ArtifactModal } from '../components/artifact_modal'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { RelicSets } from '@src/data/db/artifacts'
-import { MainStatOptions, Stats, SubStatOptions } from '@src/domain/constant'
+import { MainStatOptions, RelicPieceIcon, Stats, SubStatOptions } from '@src/domain/constant'
 import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
 import { isSubsetOf } from '@src/core/utils/finder'
 import getConfig from 'next/config'
@@ -65,45 +65,43 @@ export const ArtifactInventory = observer(() => {
         <div className="w-full space-y-1">
           <div className="flex items-center w-full gap-3">
             <div className="flex justify-center gap-2">
-              <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/flower_of_life.png`} value={4} />
-              <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/plume_of_death.png`} value={2} />
-              <TypeButton field="types" icon={`${publicRuntimeConfig.BASE_PATH}/icons/sands_of_eon.png`} value={5} />
-              <TypeButton
-                field="types"
-                icon={`${publicRuntimeConfig.BASE_PATH}/icons/goblet_of_eonothem.png`}
-                value={1}
-              />
-              <TypeButton
-                field="types"
-                icon={`${publicRuntimeConfig.BASE_PATH}/icons/circlet_of_logos.png`}
-                value={3}
-              />
+              {_.map(Array(6), (_item, index) => (
+                <TypeButton
+                  field="types"
+                  icon={`https://api.hakush.in/hsr/UI/relicfigures/IconRelic${RelicPieceIcon[index + 1]}.webp`}
+                  value={index + 1}
+                  key={index}
+                />
+              ))}
             </div>
             <SelectTextInput
               value={params.set}
               options={_.map(RelicSets, (artifact) => ({
                 name: artifact.name,
                 value: artifact.id.toString(),
-                img: `https://enka.network/ui/hsr/${artifact.icon}_4.png`,
+                img: `https://api.hakush.in/hsr/UI/itemfigures/${artifact?.icon}.webp`,
               }))}
               placeholder="Artifact Set"
               onChange={(value) => setParams({ set: value?.value })}
-              style="w-[300px]"
             />
             <TagSelectInput
               values={params.main}
-              options={_.map(MainStatOptions, (item) => ({ ...item, img: publicRuntimeConfig.BASE_PATH + item.img }))}
+              options={_.map(MainStatOptions, (item) => ({
+                ...item,
+                img: 'https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/' + item.img,
+              }))}
               onChange={(main) => setParams({ main })}
               placeholder="Main Stat"
-              renderAsText
               style="w-[300px]"
             />
             <TagSelectInput
               values={params.subs}
-              options={_.map(SubStatOptions, (item) => ({ ...item, img: publicRuntimeConfig.BASE_PATH + item.img }))}
+              options={_.map(SubStatOptions, (item) => ({
+                ...item,
+                img: 'https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/' + item.img,
+              }))}
               onChange={(subs) => setParams({ subs })}
               placeholder="Sub Stats"
-              renderAsText
               maxSelection={4}
               style="w-[300px]"
             />

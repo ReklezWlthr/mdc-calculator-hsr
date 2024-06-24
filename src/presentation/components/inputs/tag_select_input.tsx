@@ -104,7 +104,7 @@ export const TagSelectInput = ({
                 }}
               >
                 <CheckboxInput checked={isSelected(item.value)} onClick={() => null} />
-                {item.img && <img src={item.img} className="object-cover w-5 h-5" />}
+                {item.img && <img src={item.img} className="object-cover w-3.5" />}
                 <span className="block truncate">{item.name}</span>
               </div>
             ))}

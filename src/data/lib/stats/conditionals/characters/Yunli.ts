@@ -72,8 +72,8 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       title: `Posterior Precedence`,
       content: `Gains the Ward effect for <span class="text-desc">15</span> seconds. When entering combat by attacking enemies or receiving an attack, immediately inflicts <b>Intuit: Cull</b> on a random enemy target, and increases this attack's DMG by <span class="text-desc">80%</span>.`,
     },
-    a2: {
-      trace: 'Ascension 2 Passive',
+    a6: {
+      trace: 'Ascension 6 Passive',
       title: `True Sunder`,
       content: `When using a Counter, increases Yunli's ATK by <span class="text-desc">30%</span> for <span class="text-desc">1</span> turn.`,
     },
@@ -82,8 +82,8 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       title: `Demon Quell`,
       content: `While in the Block state, resists the Crowd Control debuff received and reduces DMG received by <span class="text-desc">20%</span>.`,
     },
-    a6: {
-      trace: 'Ascension 6 Passive',
+    a2: {
+      trace: 'Ascension 2 Passive',
       title: `Fiery Wheel`,
       content: `Upon being attacked, Yunli additionaly regenerates <span class="text-desc">15</span> extra Energy.`,
     },
@@ -132,10 +132,10 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     {
       type: 'toggle',
-      id: 'yunli_a2',
-      text: `A2 ATK Bonus`,
-      ...talents.a2,
-      show: a.a2,
+      id: 'yunli_a6',
+      text: `A6 ATK Bonus`,
+      ...talents.a6,
+      show: a.a6,
       default: true,
       duration: 1,
     },
@@ -292,9 +292,9 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             value: 0.2,
           })
       }
-      if (form.yunli_a2)
+      if (form.yunli_a6)
         base[Stats.P_ATK].push({
-          name: 'Ascension 2 Passive',
+          name: 'Ascension 6 Passive',
           source: 'Self',
           value: 0.3,
         })

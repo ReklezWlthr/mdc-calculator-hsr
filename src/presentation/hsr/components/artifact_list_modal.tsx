@@ -48,18 +48,22 @@ export const ArtifactListModal = observer(({ index, type }: { index: number; typ
           />
           <TagSelectInput
             values={params.main}
-            options={MainStatOptions}
+            options={_.map(MainStatOptions, (item) => ({
+              ...item,
+              img: 'https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/' + item.img,
+            }))}
             onChange={(main) => setParams({ main })}
             placeholder="Main Stat"
-            renderAsText
             style="w-[220px]"
           />
           <TagSelectInput
             values={params.subs}
-            options={SubStatOptions}
+            options={_.map(SubStatOptions, (item) => ({
+              ...item,
+              img: 'https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/' + item.img,
+            }))}
             onChange={(subs) => setParams({ subs })}
             placeholder="Sub Stats"
-            renderAsText
             maxSelection={4}
             style="w-[220px]"
           />

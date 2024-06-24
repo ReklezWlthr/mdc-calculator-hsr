@@ -189,7 +189,7 @@ export const BreakBlock = observer(({ stats, index }: { stats: StatsObject; inde
             <p className="font-normal text-gray">-</p>
           ) : (
             <Tooltip
-              title={`${stats?.ELEMENT} Break DMG`}
+              title={`${type[stats?.ELEMENT]} DMG`}
               body={
                 <p
                   dangerouslySetInnerHTML={{
