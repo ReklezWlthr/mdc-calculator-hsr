@@ -42,7 +42,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       title: `Order: Aerial Bombardment`,
       content: `Consumes SAM's HP equal to <span class="text-desc">40%</span> of SAM's Max HP and regenerates a fixed amount of Energy equal to {{1}}% of SAM's Max Energy. Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of SAM's ATK to a single target enemy. If the current HP is not sufficient, then SAM's HP is reduced to <span class="text-desc">1</span> when using this Skill. Enables this unit's next Action to be Advanced by <span class="text-desc">25%</span>.`,
       value: [
-        { base: 100, growth: 1, style: 'curved' },
+        { base: 100, growth: 10, style: 'curved' },
         { base: 50, growth: 1, style: 'curved' },
       ],
       level: skill,
