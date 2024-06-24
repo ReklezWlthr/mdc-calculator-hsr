@@ -406,7 +406,7 @@ export const PlanarSets: IArtifact[] = [
             item[Stats.P_ATK].push({
               name: 'Fleet of the Ageless',
               source: x.NAME === item.NAME ? 'Self' : x.NAME,
-              value: 0.8,
+              value: 0.08,
             })
           })
 
@@ -614,7 +614,7 @@ export const PlanarSets: IArtifact[] = [
     half: (base) => {
       base.CALLBACK.push((x: StatsObject, _d, _w, all) => {
         _.forEach(all, (item) => {
-          if (item.PATH === x.PATH && x.NAME !== item.NAME)
+          if (item.ELEMENT === x.ELEMENT && x.NAME !== item.NAME)
             item[Stats.ALL_DMG].push({
               name: `Penacony, Land of the Dreams [${x.ELEMENT}]`,
               source: x.NAME,

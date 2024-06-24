@@ -142,10 +142,10 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       duration: 3,
     },
     {
-      type: 'toggle',
-      id: 'aven_talent',
-      text: `Talent DEF Bonus`,
-      ...talents.talent,
+      type: 'number',
+      id: 'aven_tech',
+      text: `Technique DEF Bonus`,
+      ...talents.technique,
       show: true,
       default: 3,
       min: 0,
@@ -185,7 +185,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
 
   const teammateContent: IContent[] = [
     findContentById(content, 'aven_ult'),
-    findContentById(content, 'aven_talent'),
+    findContentById(content, 'aven_tech'),
     findContentById(content, 'aven_c2'),
   ]
 
@@ -279,11 +279,11 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
-      if (form.aven_talent)
+      if (form.aven_tech)
         base[Stats.P_DEF].push({
-          name: 'Talent',
+          name: 'Technique',
           source: 'Self',
-          value: form.aven_talent === 3 ? 0.6 : form.aven_talent === 2 ? 0.36 : 0.24,
+          value: form.aven_tech === 3 ? 0.6 : form.aven_tech === 2 ? 0.36 : 0.24,
         })
       if (a.a6)
         base.SKILL_SCALING.push(
@@ -355,11 +355,11 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           source: 'Aventurine',
           value: calcScaling(0.09, 0.006, ult, 'curved'),
         })
-      if (form.aven_talent)
+      if (form.aven_tech)
         base[Stats.P_DEF].push({
-          name: 'Talent',
+          name: 'Technique',
           source: 'Aventurine',
-          value: form.aven_talent === 3 ? 0.6 : form.aven_talent === 2 ? 0.36 : 0.24,
+          value: form.aven_tech === 3 ? 0.6 : form.aven_tech === 2 ? 0.36 : 0.24,
         })
       if (form.aven_c2)
         base.ALL_TYPE_RES_RED.push({

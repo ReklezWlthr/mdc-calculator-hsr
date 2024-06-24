@@ -286,12 +286,12 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         _.forEach(team, (t, i) => {
           t.CALLBACK.push((x) => {
             x.X_ATK.push({
-              name: 'Ultimate [Extra]',
+              name: 'Ultimate [Percentage]',
               source: index === i ? 'Self' : 'Robin',
               value: calcScaling(0.152, 0.0076, ult, 'curved') * team[index].getAtk(true),
             })
             x[Stats.ATK].push({
-              name: 'Ultimate',
+              name: 'Ultimate [Flat]',
               source: index === i ? 'Self' : 'Robin',
               value: calcScaling(50, 15, ult, 'curved'),
             })

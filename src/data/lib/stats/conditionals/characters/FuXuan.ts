@@ -251,7 +251,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           })
       }
       if (form.misfortune)
-        base.DMG_REDUCTION.push({ name: `Talent`, source: 'Self', value: calcScaling(0.1, 0.008, talent, 'curved') })
+        base.DMG_REDUCTION.push({ name: `Talent`, source: 'Fu Xuan', value: calcScaling(0.1, 0.008, talent, 'curved') })
 
       return base
     },

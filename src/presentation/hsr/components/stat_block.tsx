@@ -49,7 +49,11 @@ export const StatBlock = observer(({ index, stat }: StatBlockProps) => {
       <ExtraDataRow
         title="ATK"
         base={stat?.BASE_ATK}
-        bonus={stat?.BASE_ATK * stat?.getValue(Stats.P_ATK) + stat?.getValue(Stats.ATK)}
+        bonus={
+          stat?.BASE_ATK * stat?.getValue(Stats.P_ATK) +
+          stat?.getValue(Stats.ATK) +
+          stat?.getValue(StatsObjectKeys.X_ATK)
+        }
       />
       <ExtraDataRow
         title="DEF"

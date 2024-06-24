@@ -124,7 +124,7 @@ export const LCConditionals: IWeaponContent[] = [
     id: '24001_2',
     scaling: (base, form, r) => {
       if (form['24001_2']) {
-        base[Stats.CRIT_RATE].push({
+        base[Stats.P_ATK].push({
           name: `Passive`,
           source: 'Cruising in the Stellar Sea',
           value: calcRefinement(0.2, 0.05, r),

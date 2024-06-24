@@ -17,13 +17,16 @@ export const DebuffModal = observer(() => {
       <p className="font-bold text-white">{type}</p>
       <div className="space-y-1 text-xs">
         {_.map(
-          _.filter(
-            _.flatMap(calculatorStore.computedStats, (item) => item.DOT_SCALING),
-            (item) => item.dotType === type
+          _.groupBy(
+            _.filter(
+              _.flatMap(calculatorStore.computedStats, (item) => item.DOT_SCALING),
+              (item) => _.includes([type, DebuffTypes.DOT], item.dotType)
+            ),
+            'overrideIndex'
           ),
-          (item) => (
-            <BulletPoint key={item.name + item.overrideIndex}>
-              {calculatorStore.computedStats[item.overrideIndex].NAME} - <span className="text-desc">{1}</span>
+          (item, index) => (
+            <BulletPoint key={index}>
+              {calculatorStore.computedStats[index].NAME} - <span className="text-desc">{_.size(item)}</span>
             </BulletPoint>
           )
         )}

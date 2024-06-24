@@ -200,28 +200,29 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           value: 0.4,
         })
       if (a.a6) {
-        base[Stats.P_ATK].push({
-          name: `Ascension 6 Passive`,
-          source: 'Self',
-          value: 0.15,
-        })
-        if (quantumCount === 1)
-          base[Stats.P_ATK].push({
-            name: `Ascension 6 Passive`,
-            source: 'Self',
-            value: 0.05,
-          })
-        if (quantumCount === 2)
+        if (!quantumCount)
           base[Stats.P_ATK].push({
             name: `Ascension 6 Passive`,
             source: 'Self',
             value: 0.15,
           })
-        if (quantumCount === 3)
+        if (quantumCount === 1)
+          base[Stats.P_ATK].push({
+            name: `Ascension 6 Passive`,
+            source: 'Self',
+            value: 0.2,
+          })
+        if (quantumCount === 2)
           base[Stats.P_ATK].push({
             name: `Ascension 6 Passive`,
             source: 'Self',
             value: 0.3,
+          })
+        if (quantumCount === 3)
+          base[Stats.P_ATK].push({
+            name: `Ascension 6 Passive`,
+            source: 'Self',
+            value: 0.45,
           })
       }
 
@@ -268,30 +269,31 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           value: 0.4,
         })
       if (a.a6) {
-        base[Stats.P_ATK].push({
-          name: `Ascension 6 Passive`,
-          source: 'Sparkle',
-          value: 0.15,
-        })
         if (form.element === Element.QUANTUM) {
           if (quantumCount === 1)
             base[Stats.P_ATK].push({
               name: `Ascension 6 Passive`,
               source: 'Sparkle',
-              value: 0.05,
+              value: 0.2,
             })
           if (quantumCount === 2)
             base[Stats.P_ATK].push({
               name: `Ascension 6 Passive`,
               source: 'Sparkle',
-              value: 0.15,
+              value: 0.3,
             })
           if (quantumCount === 3)
             base[Stats.P_ATK].push({
               name: `Ascension 6 Passive`,
               source: 'Sparkle',
-              value: 0.3,
+              value: 0.45,
             })
+        } else {
+          base[Stats.P_ATK].push({
+            name: `Ascension 6 Passive`,
+            source: 'Sparkle',
+            value: 0.15,
+          })
         }
       }
       return base

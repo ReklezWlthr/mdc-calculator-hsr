@@ -99,9 +99,9 @@ export const BreakBlock = observer(({ stats, index }: { stats: StatsObject; inde
   const baseShockScaling = `(2 \u{00d7} <b>${_.round(breakLevel).toLocaleString()}</b> <i class="text-[10px]">BASE</i>)`
   const baseEntangleScaling = `(0.6 \u{00d7} <b>${_.round(
     breakLevel
-  ).toLocaleString()}</b> <i class="text-[10px]">BASE</i> \u{00d7} <b>${toughnessMult}</b> <i class="text-[10px]">TOUGHNESS</i>))`
+  ).toLocaleString()}</b> <i class="text-[10px]">BASE</i> \u{00d7} <b>${toughnessMult}</b> <i class="text-[10px]">TOUGHNESS</i>)`
   const baseBleedScaling =
-    bleedCap > bleedHp
+    bleedCap <= bleedHp
       ? `(2 \u{00d7} <b>${_.round(
           breakLevel
         ).toLocaleString()}</b> <i class="text-[10px]">BASE</i> \u{00d7} <b>${toughnessMult}</b> <i class="text-[10px]">TOUGHNESS</i>)`
