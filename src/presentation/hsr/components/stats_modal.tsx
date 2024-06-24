@@ -189,6 +189,17 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
           <div className="space-y-2">
             <AttributeBlock stats={stats} stat="Weakness Break Efficiency" array={stats.BREAK_EFF} />
             <AttributeBlock stats={stats} stat="Shield Bonus" array={stats.SHIELD} />
+            <AttributeBlock stats={stats} stat="DMG Reduction" array={stats.DMG_REDUCTION} />
+            <ExtraBlock
+              stats="Aggro"
+              cBase={baseAggro}
+              pArray={stats.AGGRO}
+              fArray={[]}
+              totalValue={_.round(baseAggro * (1 + stats.getValue(StatsObjectKeys.AGGRO)), 1).toLocaleString()}
+              round={1}
+            />
+          </div>
+          <div className="space-y-2">
             <div className="space-y-1">
               <p className="font-bold text-white">
                 Action Value <span className="text-red">{_.round(10000 / stats.getSpd(), 1)}</span>
@@ -201,22 +212,23 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
               </BulletPoint>
               <BulletPoint>
                 <span className="text-xs">
-                  <span className="text-desc">{_.floor(250 / (10000 / stats.getSpd()))}</span> Turns in the first{' '}
-                  <span className="text-desc">2</span> MoC Cycles
+                  <span className="text-desc">{_.floor(150 / (10000 / stats.getSpd()))}</span> Turns within Cycle{' '}
+                  <span className="text-desc">0</span>
+                </span>
+              </BulletPoint>
+              <BulletPoint>
+                <span className="text-xs">
+                  <span className="text-desc">{_.floor(250 / (10000 / stats.getSpd()))}</span> Turns within Cycle{' '}
+                  <span className="text-desc">1</span>
+                </span>
+              </BulletPoint>
+              <BulletPoint>
+                <span className="text-xs">
+                  <span className="text-desc">{_.floor(650 / (10000 / stats.getSpd()))}</span> Turns within Cycle{' '}
+                  <span className="text-desc">5</span>
                 </span>
               </BulletPoint>
             </div>
-          </div>
-          <div className="space-y-2">
-            <AttributeBlock stats={stats} stat="DMG Reduction" array={stats.DMG_REDUCTION} />
-            <ExtraBlock
-              stats="Aggro"
-              cBase={baseAggro}
-              pArray={stats.AGGRO}
-              fArray={[]}
-              totalValue={_.round(baseAggro * (1 + stats.getValue(StatsObjectKeys.AGGRO)), 1).toLocaleString()}
-              round={1}
-            />
           </div>
         </div>
       </Collapsible>
