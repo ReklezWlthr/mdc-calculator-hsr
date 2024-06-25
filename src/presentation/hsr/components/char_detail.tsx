@@ -16,7 +16,7 @@ import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import _ from 'lodash'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import { TalentIcon } from './tables/scaling_wrapper'
-import { Stats, TalentType } from '@src/domain/constant'
+import { StatIcons, Stats, TalentType } from '@src/domain/constant'
 import { useParams } from '@src/core/hooks/useParams'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { toPercentage } from '@src/core/utils/converter'
@@ -157,7 +157,7 @@ export const CharDetail = observer(() => {
             />
             <div className="flex justify-between pl-2 text-xs text-gray">
               {_.map(Array(7), (_item, index) => (
-                <p>{findBaseLevel(index)}</p>
+                <p key={index}>{findBaseLevel(index)}</p>
               ))}
               <p>80</p>
             </div>
@@ -246,8 +246,14 @@ export const CharDetail = observer(() => {
                     )
                     return (
                       <div className="grid grid-cols-3">
-                        <p className="col-span-2 text-center">{key}</p>
-                        <p className="text-center text-gray">{key === Stats.SPD ? total : toPercentage(total)}</p>
+                        <div className="flex items-center col-span-2 gap-1.5">
+                          <img
+                            className="w-3"
+                            src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[key]}`}
+                          />
+                          {key}
+                        </div>
+                        <p className="text-end text-gray">{key === Stats.SPD ? total : toPercentage(total)}</p>
                       </div>
                     )
                   })}
