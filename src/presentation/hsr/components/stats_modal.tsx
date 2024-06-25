@@ -1,4 +1,5 @@
 import { toPercentage } from '@src/core/utils/converter'
+import { getTurnWithinCycle } from '@src/core/utils/data_format'
 import { StatsArray, StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { BaseAggro, PathType, Stats } from '@src/domain/constant'
 import { BulletPoint, Collapsible } from '@src/presentation/components/collapsible'
@@ -190,6 +191,8 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
             <AttributeBlock stats={stats} stat="Weakness Break Efficiency" array={stats.BREAK_EFF} />
             <AttributeBlock stats={stats} stat="Shield Bonus" array={stats.SHIELD} />
             <AttributeBlock stats={stats} stat="DMG Reduction" array={stats.DMG_REDUCTION} />
+          </div>
+          <div className="space-y-2">
             <ExtraBlock
               stats="Aggro"
               cBase={baseAggro}
@@ -198,34 +201,21 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
               totalValue={_.round(baseAggro * (1 + stats.getValue(StatsObjectKeys.AGGRO)), 1).toLocaleString()}
               round={1}
             />
-          </div>
-          <div className="space-y-2">
             <div className="space-y-1">
               <p className="font-bold text-white">
                 Action Value <span className="text-red">{_.round(10000 / stats.getSpd(), 1)}</span>
+                <span className="text-xs font-normal">
+                  {' '}
+                  = 10,000 ÷ <span className="text-desc">{_.round(stats.getSpd(), 1)}</span>
+                </span>
               </p>
               <BulletPoint>
                 <span className="text-xs">
-                  <span className="text-desc">{_.round(10000 / stats.getSpd(), 1)}</span> = 10,000 ÷{' '}
-                  <span className="text-desc">{_.round(stats.getSpd(), 1)}</span>
-                </span>
-              </BulletPoint>
-              <BulletPoint>
-                <span className="text-xs">
-                  <span className="text-desc">{_.floor(150 / (10000 / stats.getSpd()))}</span> Turns within Cycle{' '}
-                  <span className="text-desc">0</span>
-                </span>
-              </BulletPoint>
-              <BulletPoint>
-                <span className="text-xs">
-                  <span className="text-desc">{_.floor(250 / (10000 / stats.getSpd()))}</span> Turns within Cycle{' '}
-                  <span className="text-desc">1</span>
-                </span>
-              </BulletPoint>
-              <BulletPoint>
-                <span className="text-xs">
-                  <span className="text-desc">{_.floor(650 / (10000 / stats.getSpd()))}</span> Turns within Cycle{' '}
-                  <span className="text-desc">5</span>
+                  <span className="text-desc">
+                    {getTurnWithinCycle(0, stats.getSpd())}-{getTurnWithinCycle(1, stats.getSpd())}-
+                    {getTurnWithinCycle(5, stats.getSpd())}
+                  </span>{' '}
+                  Turns within Cycle <span className="text-desc">0-1-5</span>
                 </span>
               </BulletPoint>
             </div>

@@ -109,6 +109,7 @@ export const MyCharacters = observer(() => {
                     <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
                       <RarityGauge rarity={item.rarity} />
                     </div>
+                    {item.beta && <div className="absolute left-0 px-1 rounded-r-sm bottom-1/4 bg-rose-600">Beta</div>}
                     <img
                       src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
                         item.id,

@@ -57,8 +57,9 @@ export const CharDetail = observer(() => {
       _.forEach(range, (elm: HTMLInputElement) => {
         const bg = getComputedStyle(elm).getPropertyValue('--tw-gradient-to')
         const slider = getComputedStyle(elm).getPropertyValue('--tw-gradient-from')
-        const max = Number(elm.max)
-        const value = (Number(elm.value) / max) * 100
+        const min = Number(elm.min)
+        const max = Number(elm.max) - min
+        const value = ((Number(elm.value) - min) / max) * 100
         elm.setAttribute('style', `background:linear-gradient(to right,${slider},${slider} ${value}%,${bg} ${value}%)`)
       })
     }
@@ -141,7 +142,7 @@ export const CharDetail = observer(() => {
         </div>
         <div className="w-1/3 px-3 space-y-3">
           <div>
-            <p className="font-bold">Character Level</p>
+            <p className="font-bold">Base Stats</p>
             <input
               type="range"
               className="w-full h-2 slider bg-gradient-to-r from-primary-lighter to-gray shrink-0"
@@ -161,7 +162,7 @@ export const CharDetail = observer(() => {
               <p>80</p>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-2 px-5 py-3 text-sm rounded-lg bg-primary-dark">
+          <div className="grid grid-cols-2 gap-2 px-5 py-3 text-xs rounded-lg bg-primary-dark">
             <p>Base HP</p>
             <p className="text-center">{_.round(getBaseStat(data?.stat?.baseHp, baseLevel, asc)).toLocaleString()}</p>
             <p>Base ATK</p>
@@ -174,7 +175,10 @@ export const CharDetail = observer(() => {
             <p className="text-center">{data?.stat?.energy}</p>
           </div>
           <div className="flex items-center justify-between">
-            <p className="font-bold">Account Data</p>
+            <div>
+              <p className="font-bold">Account Data</p>
+              <p className="text-[10px] font-normal text-gray">Will be used as Default Data</p>
+            </div>
             <PrimaryButton title="Edit" onClick={onOpenEditModal} />
           </div>
           <div className="px-5 py-3 rounded-lg bg-primary-darker">
@@ -221,9 +225,14 @@ export const CharDetail = observer(() => {
                   </div>
                   <div className="col-span-2 space-y-1">
                     {_.map(charUpgrade.major_traces, (item, index) => (
-                      <div className="flex justify-around">
+                      <div className="flex items-center justify-around">
                         <p>{index.toUpperCase()}</p>
-                        <p className={classNames('font-bold', item ? 'text-heal' : 'text-red')}>{item ? 'Y' : 'N'}</p>
+                        <i
+                          className={classNames(
+                            'font-bold fa-solid',
+                            item ? 'text-heal fa-check' : 'text-red fa-times'
+                          )}
+                        />
                       </div>
                     ))}
                   </div>

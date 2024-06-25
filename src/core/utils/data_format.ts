@@ -152,3 +152,5 @@ export const formatScaleString = (talent: ITalentDisplay, level: number) =>
     },
     talent?.content
   )
+
+export const getTurnWithinCycle = (cycle: number, spd: number) => _.floor((50 + 100 * (cycle + 1)) / (10000 / spd))
