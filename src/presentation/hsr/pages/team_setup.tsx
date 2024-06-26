@@ -22,6 +22,7 @@ import { baseStatsObject } from '@src/data/lib/stats/baseConstant'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { TraceBlock } from '../components/trace_block'
 import { SaveBuildModal } from '../components/save_build_modal'
+import { SaveTeamModal } from '../components/save_team_modal'
 
 export const SetToolTip = observer(({ item, set, type }: { item: number; set: string; type: 'relic' | 'planar' }) => {
   const setDetail = _.find(type === 'relic' ? RelicSets : PlanarSets, ['id', set])
@@ -73,6 +74,10 @@ export const TeamSetup = observer(() => {
   const onOpenSaveModal = useCallback(() => {
     modalStore.openModal(<SaveBuildModal index={selected} />)
   }, [selected])
+
+  const onOpenTeamModal = useCallback(() => {
+    modalStore.openModal(<SaveTeamModal />)
+  }, [])
 
   const onOpenBuildModal = useCallback(() => {
     modalStore.openModal(<BuildModal index={selected} />)
@@ -297,10 +302,11 @@ export const TeamSetup = observer(() => {
               )}
             </div>
           </div>
-          <div className="flex gap-x-2">
+          <div className="grid grid-cols-2 gap-2">
             <PrimaryButton title="Equip Build" onClick={onOpenBuildModal} />
-            <PrimaryButton title="Save Build" onClick={onOpenSaveModal} />
             <PrimaryButton title="Unequip All" onClick={onOpenConfirmModal} />
+            <PrimaryButton title="Save Build" onClick={onOpenSaveModal} />
+            <PrimaryButton title="Save Team" onClick={onOpenTeamModal} />
           </div>
         </div>
         <div className="w-1/5 space-y-5">

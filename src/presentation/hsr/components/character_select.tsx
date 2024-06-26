@@ -7,7 +7,7 @@ export const CharacterSelect = ({
   isSelected,
   id,
 }: {
-  onClick: () => void
+  onClick?: () => void
   isSelected: boolean
   id: string
 }) => {
@@ -16,10 +16,11 @@ export const CharacterSelect = ({
   return (
     <div
       className={classNames(
-        'w-12 h-12 rounded-full cursor-pointer bg-primary duration-200 relative shrink-0 overflow-hidden',
-        isSelected ? 'ring-4 ring-primary-lighter' : 'hover:ring-2 ring-primary-light'
+        'w-12 h-12 rounded-full bg-primary duration-200 relative shrink-0 overflow-hidden',
+        { [isSelected ? 'ring-4 ring-primary-lighter' : 'hover:ring-2 ring-primary-light']: onClick },
+        { 'cursor-pointer': onClick }
       )}
-      onClick={onClick}
+      onClick={() => onClick?.()}
     >
       <img
         src={

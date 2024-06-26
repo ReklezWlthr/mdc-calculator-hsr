@@ -44,7 +44,7 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
       </p>
       <div className={classNames('space-y-3 duration-300 ease-out px-4 overflow-hidden', open ? 'h-fit py-3' : 'h-0')}>
         {_.size(contents) ? (
-          _.map(_.orderBy(contents, ['debuff', 'unique'], ['desc', 'asc']), (content) => {
+          _.map(_.orderBy(contents, ['unique', 'debuff'], ['desc', 'desc']), (content) => {
             const formattedString = _.reduce(
               Array.from(content.content?.matchAll(/{{\d+}}\%?/g) || []),
               (acc, curr) => {

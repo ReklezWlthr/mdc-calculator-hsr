@@ -1,5 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { GenshinPage } from '@src/domain/constant'
+import { HsrPage } from '@src/domain/constant'
 import classNames from 'classnames'
 import { useCallback } from 'react'
 import { SettingModal } from './setting_modal'
@@ -10,12 +10,12 @@ export const Sidebar = ({
   currentPage,
   onChange,
 }: {
-  currentPage: GenshinPage
-  onChange: (page: GenshinPage) => void
+  currentPage: HsrPage
+  onChange: (page: HsrPage) => void
 }) => {
   const { modalStore } = useStore()
 
-  const Pill = ({ name, page }: { name: string; page: GenshinPage }) => {
+  const Pill = ({ name, page }: { name: string; page: HsrPage }) => {
     return (
       <div
         className={classNames(
@@ -37,14 +37,15 @@ export const Sidebar = ({
     <div className="flex flex-col justify-between w-1/6 p-2 bg-primary-darker shrink-0">
       <div className="space-y-2">
         <p className="p-2 font-bold text-white">Calculator</p>
-        <Pill name="Team Setup" page={GenshinPage.TEAM} />
-        <Pill name="Damage Calculator" page={GenshinPage.DMG} />
-        {/* <Pill name="ER Requirement" page={GenshinPage.ER} /> */}
-        <Pill name="Import / Export" page={GenshinPage.IMPORT} />
+        <Pill name="Team Setup" page={HsrPage.TEAM} />
+        <Pill name="Damage Calculator" page={HsrPage.DMG} />
+        {/* <Pill name="Turn Cycle" page={HsrPage.CYCLE} /> */}
+        <Pill name="Compare" page={HsrPage.COMPARE} />
+        <Pill name="Import / Export" page={HsrPage.IMPORT} />
         <p className="p-2 font-bold text-white">Account</p>
-        <Pill name="My Characters" page={GenshinPage.CHAR} />
-        <Pill name="My Builds" page={GenshinPage.BUILD} />
-        <Pill name="Relic Inventory" page={GenshinPage.INVENTORY} />
+        <Pill name="My Characters" page={HsrPage.CHAR} />
+        <Pill name="My Builds" page={HsrPage.BUILD} />
+        <Pill name="Relic Inventory" page={HsrPage.INVENTORY} />
       </div>
       <div className="flex items-end justify-between px-3">
         <div className="space-y-3 text-sm">

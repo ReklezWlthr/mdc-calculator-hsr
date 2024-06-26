@@ -1,9 +1,9 @@
 import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 
-export enum GenshinPage {
+export enum HsrPage {
   TEAM = 'team',
   DMG = 'dmg',
-  ER = 'er',
+  COMPARE = 'compare',
   IMPORT = 'import',
   BUILD = 'build',
   INVENTORY = 'inventory',

@@ -30,10 +30,11 @@ export const Calculator = observer(({}: {}) => {
 
   const [tab, setTab] = useState('mod')
 
-  const char = teamStore.characters[selected]
+  const team = _.cloneDeep(teamStore?.characters)
+  const char = team[selected]
   const charData = findCharacter(char.cId)
 
-  const { main, mainComputed, contents } = useCalculator()
+  const { main, mainComputed, contents } = useCalculator(false)
 
   const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal />), [])
   const onOpenDebuffModal = useCallback(() => modalStore.openModal(<DebuffModal />), [])
@@ -48,7 +49,7 @@ export const Calculator = observer(({}: {}) => {
         <div className="col-span-2">
           <div className="flex items-center gap-3">
             <div className="flex justify-center w-full gap-4 pt-1 pb-3 pl-3">
-              {_.map(teamStore?.characters, (item, index) => {
+              {_.map(team, (item, index) => {
                 return (
                   <CharacterSelect
                     key={`char_select_${index}`}

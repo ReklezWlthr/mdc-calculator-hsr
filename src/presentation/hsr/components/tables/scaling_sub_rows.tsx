@@ -114,7 +114,7 @@ export const ScalingSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
     talentFlat
   const breakElementMult = BreakElementMult[scaling.element]
   const breakLevel = BreakBaseLevel[teamStore.characters[index]?.level - 1]
-  const toughnessMult = 0.5 * (_.min([calculatorStore.toughness, scaling.toughCap || calculatorStore.toughness]) / 40)
+  const toughnessMult = 0.5 + (_.min([calculatorStore.toughness, scaling.toughCap || calculatorStore.toughness]) / 40)
   const breakRaw = breakElementMult * breakLevel * toughnessMult
   const cap = scaling.cap
     ? scaling.cap?.scaling *

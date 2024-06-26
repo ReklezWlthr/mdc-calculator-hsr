@@ -21,7 +21,7 @@ import { DebuffTypes } from '@src/domain/conditional'
 import { getSetCount } from '../utils/data_format'
 import { AllRelicSets } from '@src/data/db/artifacts'
 
-export const useCalculator = () => {
+export const useCalculator = (min?: boolean) => {
   const { teamStore, artifactStore, calculatorStore } = useStore()
   const { selected, computedStats } = calculatorStore
 
@@ -112,7 +112,7 @@ export const useCalculator = () => {
             ...weaponSelectable(index)
           ),
           (acc, curr) => {
-            if (curr?.show) acc[curr.id] = curr.default
+            if (curr?.show) acc[curr.id] = min ? false : curr.default
             return acc
           },
           {}

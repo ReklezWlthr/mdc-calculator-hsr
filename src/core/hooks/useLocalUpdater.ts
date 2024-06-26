@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 
 export const useLocalUpdater = (game: string) => {
   const router = useRouter()
-  const { teamStore, artifactStore, buildStore, charStore, settingStore, calculatorStore } = useStore()
+  const { teamStore, artifactStore, buildStore, charStore, settingStore, calculatorStore, setupStore } = useStore()
   const [data, setData] = useState(null)
   const [hydrated, setHydrated] = useState(false)
 
@@ -18,6 +18,7 @@ export const useLocalUpdater = (game: string) => {
     artifactStore.hydrateArtifacts(json?.artifacts)
     buildStore.hydrateBuilds(json?.builds)
     charStore.hydrateCharacters(json?.characters)
+    setupStore.hydrateTeams(json?.setup)
     setData(data)
   }
 
@@ -42,6 +43,7 @@ export const useLocalUpdater = (game: string) => {
           artifacts: artifactStore.artifacts,
           builds: buildStore.builds,
           characters: charStore.characters,
+          setup: setupStore.team,
         })
       )
     }
@@ -51,6 +53,7 @@ export const useLocalUpdater = (game: string) => {
     buildStore.builds,
     charStore.characters,
     settingStore.settings.storeData,
+    setupStore.team,
   ])
 
   useEffect(() => {

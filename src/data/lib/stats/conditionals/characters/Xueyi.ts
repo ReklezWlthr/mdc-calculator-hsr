@@ -231,7 +231,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         base.ULT_DMG.push({
           name: 'Ultimate',
           source: 'Self',
-          value: calcScaling(0.36, 0.024, ult, 'curved') * (form.xueyi_ult / 120),
+          value: calcScaling(0.36, 0.024, ult, 'curved') * (form.xueyi_ult / 40),
         })
       if (form.xueyi_a4)
         base.ULT_DMG.push({
