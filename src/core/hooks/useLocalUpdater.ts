@@ -68,6 +68,7 @@ export const useLocalUpdater = (game: string) => {
             artifacts: [],
             builds: [],
             characters: [],
+            setup: [],
           })
         )
     }
