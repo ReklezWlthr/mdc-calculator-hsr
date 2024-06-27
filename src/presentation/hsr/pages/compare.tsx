@@ -8,43 +8,114 @@ import { observer } from 'mobx-react-lite'
 import { useCallback, useEffect, useState } from 'react'
 import { CharacterSelect } from '../components/character_select'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
-import { TeamModal } from '../components/team_modal'
+import { TeamModal, TeamModalProps } from '../components/team_modal'
+import { TSetup } from '@src/data/stores/setup_store'
+import { CommonModal } from '@src/presentation/components/common_modal'
+import { findCharacter } from '@src/core/utils/finder'
 
 export const ComparePage = observer(() => {
-  const { teamStore, modalStore, calculatorStore, setupStore } = useStore()
-  const { computedStats } = calculatorStore
+  const { modalStore, setupStore } = useStore()
 
-  const { mainComputed } = useCalculator()
+  const { finalStats } = useCalculator({ teamOverride: setupStore.main?.char, doNotSaveStats: true })
 
-  const onOpenSaveModal = useCallback(() => {
-    modalStore.openModal(<TeamModal />)
+  const onOpenSaveModal = useCallback((props: TeamModalProps) => {
+    modalStore.openModal(<TeamModal {...props} />)
   }, [])
 
   return (
     <div className="w-full customScrollbar">
-      <div className="grid w-full grid-cols-4 gap-5 p-5 text-white max-w-[1240px] mx-auto">
-        <div className="space-y-1">
-          <p className="font-bold">Select Main Setup</p>
-          <div className="flex items-center justify-center w-full gap-3 pt-1">
-            {_.map(Array(4), (item, index) => {
-              const main = setupStore.findTeam(setupStore.main)?.char
+      <div className="grid w-full grid-cols-3 gap-5 p-5 text-white max-w-[1240px] mx-auto">
+        <div className="space-y-2">
+          <div className="flex items-center gap-3">
+            <p className="font-bold">Main Setup</p>
+            {setupStore.main && !setupStore.mainChar && (
+              <p className="text-xs text-red">Select A Character to Compare</p>
+            )}
+            {setupStore.main && setupStore.mainChar && (
+              <p className="text-xs text-gray">Comparing: {findCharacter(setupStore.mainChar)?.name}</p>
+            )}
+          </div>
+          <div className="flex items-center w-full gap-3 pt-1">
+            {_.map(Array(4), (_item, index) => {
+              const main = setupStore.main?.char
               if (main)
                 return (
                   <CharacterSelect
                     key={`char_select_${index}`}
-                    onClick={() => setupStore.setValue('mainChar', main[index].cId)}
+                    onClick={() => {
+                      if (
+                        _.every(setupStore.comparing, 'name') &&
+                        main[index].cId !== setupStore.mainChar &&
+                        setupStore.mainChar
+                      )
+                        modalStore.openModal(
+                          <CommonModal
+                            icon="fa-solid fa-question-circle text-hsr-imaginary"
+                            title="Comparing Session Exists"
+                            desc={`Do you want to change who to compare?\nConfirming to this will reset teams you are comparing to.`}
+                            onConfirm={() => setupStore.setValue('mainChar', main[index].cId)}
+                          />
+                        )
+                      else setupStore.setValue('mainChar', main[index].cId)
+                    }}
                     isSelected={main[index].cId === setupStore.mainChar}
                     id={main[index].cId}
                   />
                 )
               else
                 return (
-                  <div className="relative w-12 h-12 overflow-hidden duration-200 rounded-full bg-primary shrink-0" />
+                  <div
+                    key={index}
+                    className="relative w-12 h-12 overflow-hidden duration-200 rounded-full bg-primary shrink-0"
+                  />
                 )
             })}
-            <PrimaryButton icon="fa-solid fa-repeat" onClick={onOpenSaveModal} />
+            <PrimaryButton
+              icon="fa-solid fa-repeat"
+              onClick={() => onOpenSaveModal({ onSelect: (team) => setupStore.setValue('main', team) })}
+            />
           </div>
-          {setupStore.main && !setupStore.mainChar && <p className="text-xs text-red">Select A Character to Compare</p>}
+        </div>
+        <div className="space-y-2">
+          <p>Comparing To</p>
+          <div className="flex gap-2">
+            {_.map(setupStore.comparing, (_item, tI) => (
+              <div className="space-y-1" key={tI}>
+                <div
+                  className="flex gap-3 px-2 py-2 duration-200 rounded-lg cursor-pointer bg-primary-dark hover:ring-2 hover:ring-primary-light hover:ring-inset"
+                  key={tI}
+                  onClick={() =>
+                    onOpenSaveModal({
+                      onSelect: (team) => {
+                        setupStore.comparing.splice(tI, 1, team)
+                        setupStore.setValue('comparing', setupStore.comparing)
+                      },
+                      filterId: setupStore.mainChar,
+                    })
+                  }
+                >
+                  {_.map(Array(4), (_item, index) => {
+                    const team = setupStore.comparing?.[tI]?.char
+                    if (team)
+                      return (
+                        <CharacterSelect
+                          key={`char_select_${index}`}
+                          isSelected={team[index].cId === setupStore.mainChar}
+                          id={team[index].cId}
+                        />
+                      )
+                    else
+                      return (
+                        <div
+                          key={index}
+                          className="relative w-12 h-12 overflow-hidden duration-200 rounded-full bg-primary shrink-0"
+                        />
+                      )
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

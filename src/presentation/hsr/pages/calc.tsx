@@ -34,7 +34,7 @@ export const Calculator = observer(({}: {}) => {
   const char = team[selected]
   const charData = findCharacter(char.cId)
 
-  const { main, mainComputed, contents } = useCalculator(false)
+  const { main, mainComputed, contents } = useCalculator({})
 
   const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal />), [])
   const onOpenDebuffModal = useCallback(() => modalStore.openModal(<DebuffModal />), [])

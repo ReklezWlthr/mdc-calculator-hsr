@@ -28,7 +28,7 @@ import dayjs from 'dayjs'
 export const ImportExport = observer(() => {
   const { modalStore, settingStore, importStore, toastStore } = useStore()
 
-  const { data, updateData } = useLocalUpdater('genshin')
+  const { data, updateData } = useLocalUpdater('hsr')
 
   const [selected, setSelected] = useState(0)
   const [uid, setUid] = useState('')

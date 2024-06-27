@@ -164,7 +164,7 @@ export const ScalingWrapper = observer(({ children, icon, talent, element, level
           element={element}
           level={level}
           upgraded={upgraded}
-          type={talent.trace}
+          type={talent?.trace}
         />
         <p className="w-full mt-2 font-bold text-center min-h-5">{talent?.title}</p>
         {level && (

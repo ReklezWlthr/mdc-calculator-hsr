@@ -1,6 +1,6 @@
 import { useStore } from '@src/data/providers/app_store_provider'
 import { findCharacter, findLightCone } from '../utils/finder'
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { getTeamOutOfCombat } from '../utils/calculator'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import _ from 'lodash'
@@ -21,55 +21,60 @@ import { DebuffTypes } from '@src/domain/conditional'
 import { getSetCount } from '../utils/data_format'
 import { AllRelicSets } from '@src/data/db/artifacts'
 
-export const useCalculator = (min?: boolean) => {
+interface CalculatorOptions {
+  min?: boolean
+  teamOverride?: ITeamChar[]
+  formOverride?: []
+  doNotSaveStats?: boolean
+}
+
+export const useCalculator = ({ min, teamOverride, doNotSaveStats }: CalculatorOptions) => {
   const { teamStore, artifactStore, calculatorStore } = useStore()
-  const { selected, computedStats } = calculatorStore
+  const { selected } = calculatorStore
 
-  const char = teamStore.characters[selected]
-  const charData = findCharacter(char.cId)
+  const [finalStats, setFinalStats] = useState<StatsObject[]>(null)
 
-  const mainComputed = computedStats?.[selected]
+  const team = teamOverride || teamStore.characters
 
-  const baseStats = useMemo(
-    () => getTeamOutOfCombat(teamStore.characters, artifactStore.artifacts),
-    [teamStore.characters, artifactStore.artifacts]
-  )
+  const mainComputed = finalStats?.[selected]
+
+  const baseStats = useMemo(() => getTeamOutOfCombat(team, artifactStore.artifacts), [team, artifactStore.artifacts])
 
   // Conditional objects include talent descriptions, conditional contents and a calculator
   const conditionals = useMemo(
     () =>
-      _.map(teamStore.characters, (item) =>
+      _.map(team, (item) =>
         _.find(ConditionalsObject, ['id', item.cId])?.conditionals(
           item.cons,
           item.major_traces,
           {
             ...item.talents,
-            basic: item.talents.basic + (_.includes(_.map(teamStore.characters, 'cId'), '10000033') ? 1 : 0),
+            basic: item.talents.basic + (_.includes(_.map(team, 'cId'), '10000033') ? 1 : 0),
           },
-          teamStore.characters
+          team
         )
       ),
-    [teamStore.characters]
+    [team]
   )
   const main = conditionals[selected]
 
   const artifactConditionals = useMemo(
     () =>
-      _.map(teamStore.characters, (item) => {
+      _.map(team, (item) => {
         const artifacts = _.map(item.equipments.artifacts, (a) => _.find(artifactStore.artifacts, (b) => b.id === a))
         return getRelicConditionals(artifacts)
       }),
-    [teamStore.characters, artifactStore.artifacts]
+    [team, artifactStore.artifacts]
   )
   const checkValid = (item: ITeamChar) =>
     findLightCone(item?.equipments?.weapon?.wId)?.type === findCharacter(item.cId)?.path
-  const weaponConditionals = _.map(teamStore.characters, (item, index) =>
+  const weaponConditionals = _.map(team, (item, index) =>
     _.map(
       _.filter(LCConditionals, (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId) && checkValid(item)),
       (cond) => ({ ...cond, title: '', content: '', index })
     )
   )
-  const weaponTeamConditionals = _.map(teamStore.characters, (item, index) =>
+  const weaponTeamConditionals = _.map(team, (item, index) =>
     _.map(
       _.filter(
         LCTeamConditionals,
@@ -78,7 +83,7 @@ export const useCalculator = (min?: boolean) => {
       (cond) => ({ ...cond, title: '', content: '', index })
     )
   )
-  const weaponAllyConditionals = _.map(teamStore.characters, (item, index) =>
+  const weaponAllyConditionals = _.map(team, (item, index) =>
     _.map(
       _.filter(
         LCAllyConditionals,
@@ -119,7 +124,7 @@ export const useCalculator = (min?: boolean) => {
         )
       )
     )
-  }, [teamStore.characters])
+  }, [team])
 
   // =================
   //
@@ -152,8 +157,8 @@ export const useCalculator = (min?: boolean) => {
               x,
               {
                 ...calculatorStore.form[i],
-                path: findCharacter(teamStore.characters[index]?.cId)?.path,
-                element: findCharacter(teamStore.characters[index]?.cId)?.element,
+                path: findCharacter(team[index]?.cId)?.path,
+                element: findCharacter(team[index]?.cId)?.element,
               },
               calculatorStore.form[index],
               debuffs,
@@ -192,9 +197,9 @@ export const useCalculator = (min?: boolean) => {
             (c) => _.includes(_.keys(form), c.id)
           ),
           (c) => {
-            x = c.scaling(x, form, teamStore.characters[i]?.equipments?.weapon?.refinement, {
-              team: teamStore.characters,
-              element: findCharacter(teamStore.characters[i]?.cId)?.element,
+            x = c.scaling(x, form, team[i]?.equipments?.weapon?.refinement, {
+              team: team,
+              element: findCharacter(team[i]?.cId)?.element,
               own: postArtifact[i],
               owner: i,
               totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
@@ -208,9 +213,9 @@ export const useCalculator = (min?: boolean) => {
       _.forEach(
         _.filter(weaponAllySelectable(index), (c) => _.includes(_.keys(calculatorStore.form[index]), c.id)),
         (c) => {
-          x = c.scaling(x, calculatorStore.form[index], teamStore.characters[c.owner]?.equipments?.weapon?.refinement, {
-            team: teamStore.characters,
-            element: findCharacter(teamStore.characters[c.owner]?.cId)?.element,
+          x = c.scaling(x, calculatorStore.form[index], team[c.owner]?.equipments?.weapon?.refinement, {
+            team: team,
+            element: findCharacter(team[c.owner]?.cId)?.element,
             own: postArtifact[c.owner],
             totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
             index,
@@ -237,9 +242,7 @@ export const useCalculator = (min?: boolean) => {
     const postArtifactCallback = _.map(postCompute, (base, index) => {
       let x = base
       const set = getSetCount(
-        _.map(teamStore.characters[index]?.equipments?.artifacts, (item) =>
-          _.find(artifactStore.artifacts, (a) => a.id === item)
-        )
+        _.map(team[index]?.equipments?.artifacts, (item) => _.find(artifactStore.artifacts, (a) => a.id === item))
       )
       _.forEach(set, (value, key) => {
         if (value >= 2) {
@@ -261,13 +264,16 @@ export const useCalculator = (min?: boolean) => {
       })
       return x
     })
-    calculatorStore.setValue('computedStats', final)
-    calculatorStore.setValue('debuffs', debuffs)
+    if (!doNotSaveStats) {
+      calculatorStore.setValue('computedStats', final)
+      calculatorStore.setValue('debuffs', debuffs)
+    }
+    setFinalStats(final)
   }, [
     baseStats,
     calculatorStore.form,
     calculatorStore.custom,
-    teamStore.characters,
+    team,
     calculatorStore.weakness,
     calculatorStore.broken,
     calculatorStore.toughness,
@@ -300,6 +306,7 @@ export const useCalculator = (min?: boolean) => {
   return {
     main,
     mainComputed,
+    finalStats,
     contents: { main: mainContent, team: teamContent, weapon: weaponSelectable },
   }
 }

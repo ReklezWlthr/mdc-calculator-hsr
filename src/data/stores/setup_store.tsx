@@ -13,9 +13,9 @@ export interface TSetup {
 
 export interface SetupStoreType {
   team: TSetup[]
-  main: string
+  main: TSetup
   mainChar: string
-  comparing: string[]
+  comparing: TSetup[]
   hydrated: boolean
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   saveTeam: (team: TSetup) => boolean
@@ -28,15 +28,15 @@ export interface SetupStoreType {
 
 export class SetupStore {
   team: TSetup[]
-  main: string
+  main: TSetup
   mainChar: string
-  comparing: string[]
+  comparing: TSetup[]
   hydrated: boolean = false
 
   constructor() {
     this.team = []
-    this.main = ''
-    this.mainChar = ''
+    this.main = null
+    this.mainChar = null
     this.comparing = Array(3)
 
     makeAutoObservable(this)
