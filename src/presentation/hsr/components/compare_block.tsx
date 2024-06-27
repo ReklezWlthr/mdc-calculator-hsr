@@ -53,6 +53,7 @@ export const CompareBlock = observer(() => {
     sub2.finalStats?.[selectedS2],
     sub3.finalStats?.[selectedS3],
   ]
+  const allStats = [finalStats, sub1.finalStats, sub2.finalStats, sub3.finalStats]
   const levels = [
     setupStore.main?.char?.[selected]?.level,
     setupStore.comparing?.[0]?.char?.[selectedS1]?.level,
@@ -111,6 +112,7 @@ export const CompareBlock = observer(() => {
                 (s) => _.find(s, (a) => a.name === item.name)
               )}
               stats={sumStats}
+              allStats={allStats}
               level={levels}
               name={item.name}
               property={item.property}
@@ -146,6 +148,7 @@ export const CompareBlock = observer(() => {
                 (s) => _.find(s, (a) => a.name === item.name)
               )}
               stats={sumStats}
+              allStats={allStats}
               level={levels}
               name={item.name}
               property={item.property}
@@ -181,6 +184,7 @@ export const CompareBlock = observer(() => {
                 (s) => _.find(s, (a) => a.name === item.name)
               )}
               stats={sumStats}
+              allStats={allStats}
               level={levels}
               name={item.name}
               property={item.property}
@@ -214,6 +218,7 @@ export const CompareBlock = observer(() => {
                 (s) => _.find(s, (a) => a.name === item.name)
               )}
               stats={sumStats}
+              allStats={allStats}
               level={levels}
               name={item.name}
               property={item.property}
@@ -247,6 +252,7 @@ export const CompareBlock = observer(() => {
                 (s) => _.find(s, (a) => a.name === item.name)
               )}
               stats={sumStats}
+              allStats={allStats}
               level={levels}
               name={item.name}
               property={item.property}
