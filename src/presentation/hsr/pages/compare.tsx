@@ -49,7 +49,7 @@ export const ComparePage = observer(() => {
           <div className="flex items-center gap-3">
             <p className="font-bold">Main Setup</p>
             {setupStore.main && !setupStore.mainChar && (
-              <p className="text-xs text-red">Select a Character to Compare</p>
+              <p className="text-xs text-red">Click the icon to compare the character.</p>
             )}
             {setupStore.main && setupStore.mainChar && <p className="text-xs text-gray">Comparing: {charData?.name}</p>}
           </div>
@@ -104,9 +104,12 @@ export const ComparePage = observer(() => {
             {_.map(setupStore.comparing, (_item, tI) => (
               <div className="space-y-1" key={tI}>
                 <div
-                  className={classNames('flex gap-3 px-2 py-2 duration-200 rounded-lg bg-primary-dark', {
-                    'cursor-pointer hover:ring-2 hover:ring-primary-light hover:ring-inset': setupStore.mainChar,
-                  })}
+                  className={classNames(
+                    'flex gap-3 px-2 py-2 duration-200 rounded-lg bg-primary-dark h-[64px] w-[244px]',
+                    {
+                      'cursor-pointer hover:ring-2 hover:ring-primary-light hover:ring-inset': setupStore.mainChar,
+                    }
+                  )}
                   key={tI}
                   onClick={() => {
                     if (setupStore.mainChar)
@@ -119,9 +122,9 @@ export const ComparePage = observer(() => {
                       })
                   }}
                 >
-                  {_.map(Array(4), (_item, index) => {
-                    const team = setupStore.comparing?.[tI]?.char
-                    if (team)
+                  {setupStore.comparing?.[tI]?.char ? (
+                    _.map(Array(4), (_item, index) => {
+                      const team = setupStore.comparing?.[tI]?.char
                       return (
                         <CharacterSelect
                           key={`char_select_${index}`}
@@ -129,14 +132,10 @@ export const ComparePage = observer(() => {
                           id={team[index].cId}
                         />
                       )
-                    else
-                      return (
-                        <div
-                          key={index}
-                          className="relative w-12 h-12 overflow-hidden duration-200 rounded-full bg-primary shrink-0"
-                        />
-                      )
-                  })}
+                    })
+                  ) : (
+                    <p className="flex items-center justify-center w-full h-full text-gray">Click to Add Setup</p>
+                  )}
                 </div>
               </div>
             ))}
