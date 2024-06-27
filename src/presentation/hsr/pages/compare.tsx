@@ -28,6 +28,20 @@ export const ComparePage = observer(() => {
     modalStore.openModal(<TeamModal {...props} />)
   }, [])
 
+  const onOpenConfirmModal = useCallback((onConfirm: () => void) => {
+    modalStore.openModal(
+      <CommonModal
+        icon="fa-solid fa-question-circle text-hsr-imaginary"
+        title="Comparing Session Exists"
+        desc={`Do you want to change who to compare?\nConfirming to this will reset teams you are comparing to.`}
+        onConfirm={() => {
+          onConfirm()
+          setupStore.setValue('comparing', Array(3))
+        }}
+      />
+    )
+  }, [])
+
   return (
     <div className="w-full customScrollbar">
       <div className="grid w-full grid-cols-3 gap-5 p-5 text-white max-w-[1240px] mx-auto">
@@ -52,17 +66,7 @@ export const ComparePage = observer(() => {
                         main[index].cId !== setupStore.mainChar &&
                         setupStore.mainChar
                       )
-                        modalStore.openModal(
-                          <CommonModal
-                            icon="fa-solid fa-question-circle text-hsr-imaginary"
-                            title="Comparing Session Exists"
-                            desc={`Do you want to change who to compare?\nConfirming to this will reset teams you are comparing to.`}
-                            onConfirm={() => {
-                              setupStore.setValue('mainChar', main[index].cId)
-                              setupStore.setValue('comparing', Array(3))
-                            }}
-                          />
-                        )
+                        onOpenConfirmModal(() => setupStore.setValue('mainChar', main[index].cId))
                       else setupStore.setValue('mainChar', main[index].cId)
                     }}
                     isSelected={main[index].cId === setupStore.mainChar}
@@ -79,7 +83,18 @@ export const ComparePage = observer(() => {
             })}
             <PrimaryButton
               icon="fa-solid fa-repeat"
-              onClick={() => onOpenSaveModal({ onSelect: (team) => setupStore.setValue('main', team) })}
+              onClick={() =>
+                onOpenSaveModal({
+                  onSelect: (team) => {
+                    if (setupStore.main)
+                      onOpenConfirmModal(() => {
+                        setupStore.setValue('main', team)
+                        setupStore.setValue('mainChar', '')
+                      })
+                    else setupStore.setValue('main', team)
+                  },
+                })
+              }
             />
           </div>
         </div>
@@ -128,7 +143,7 @@ export const ComparePage = observer(() => {
           </div>
         </div>
       </div>
-      <div className="px-5">{charData && <CompareBlock />}</div>
+      <div className="grid grid-cols-3 gap-4 px-5">{charData && <CompareBlock />}</div>
     </div>
   )
 })

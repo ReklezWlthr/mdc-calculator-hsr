@@ -71,7 +71,7 @@ export const CompareBlock = observer(() => {
 
   return (
     _.some(sumStats) && (
-      <div className="flex flex-col w-3/4 mb-5 text-sm text-white rounded-lg bg-primary-darker h-fit">
+      <div className="flex flex-col col-span-2 mb-5 text-sm text-white rounded-lg bg-primary-darker h-fit">
         <div className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
           <p>Damage Comparison</p>
           {/* <p className='text-xs font-normal text-gray'>Hover Numbers for More Details</p> */}

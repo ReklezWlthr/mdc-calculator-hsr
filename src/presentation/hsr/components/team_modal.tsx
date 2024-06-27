@@ -9,7 +9,10 @@ import { useCallback, useMemo, useState } from 'react'
 import { CharacterSelect } from './character_select'
 import { TSetup } from '@src/data/stores/setup_store'
 
-export interface TeamModalProps { onSelect: (team: TSetup) => void; filterId?: string }
+export interface TeamModalProps {
+  onSelect: (team: TSetup) => void
+  filterId?: string
+}
 
 export const TeamModal = observer(({ onSelect, filterId }: TeamModalProps) => {
   const { modalStore, teamStore, setupStore, toastStore } = useStore()
@@ -45,8 +48,8 @@ export const TeamModal = observer(({ onSelect, filterId }: TeamModalProps) => {
                   <PrimaryButton
                     title="Select"
                     onClick={() => {
-                      onSelect(_.cloneDeep(team))
                       modalStore.closeModal()
+                      onSelect(_.cloneDeep(team))
                     }}
                   />
                 </div>

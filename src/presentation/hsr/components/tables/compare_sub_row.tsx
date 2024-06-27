@@ -53,17 +53,17 @@ export const CompareSubRows = observer(
     )
     const sub1 = useDamageStringConstruct(
       scaling[1],
-      scaling[1]?.overrideIndex ? allStats[1]?.[scaling[1]?.overrideIndex] : stats[0],
+      scaling[1]?.overrideIndex ? allStats[1]?.[scaling[1]?.overrideIndex] : stats[1],
       level[1]
     )
     const sub2 = useDamageStringConstruct(
       scaling[2],
-      scaling[2]?.overrideIndex ? allStats[2]?.[scaling[2]?.overrideIndex] : stats[0],
+      scaling[2]?.overrideIndex ? allStats[2]?.[scaling[2]?.overrideIndex] : stats[2],
       level[2]
     )
     const sub3 = useDamageStringConstruct(
       scaling[3],
-      scaling[3]?.overrideIndex ? allStats[3]?.[scaling[3]?.overrideIndex] : stats[0],
+      scaling[3]?.overrideIndex ? allStats[3]?.[scaling[3]?.overrideIndex] : stats[3],
       level[3]
     )
 
@@ -83,6 +83,23 @@ export const CompareSubRows = observer(
     const getDmg = (obj: StringConstructor) => {
       return obj?.number.dmg * (noCrit ? 1 : 1 + obj?.number.totalCd * obj?.number.totalCr) || 0
     }
+
+    const Body = ({ obj }: { obj: StringConstructor }) => (
+      <div className="space-y-1.5">
+        <div>
+          <p className="font-bold text-white">Base</p>
+          {obj.component.DmgBody}
+        </div>
+        <div className="pt-1.5 border-t-2 border-primary-border">
+          <p className="font-bold text-white">CRIT</p>
+          {obj.component.CritBody}
+        </div>
+        <div className="pt-1.5 border-t-2 border-primary-border">
+          <p className="font-bold text-white">Average</p>
+          {obj.component.AvgBody}
+        </div>
+      </div>
+    )
 
     return (
       <div className="grid items-center grid-cols-9 gap-2 pr-2">
@@ -105,95 +122,43 @@ export const CompareSubRows = observer(
         <p className="col-span-1 text-center text-gray">{_.round(main.nudmg).toLocaleString()}</p>
       </Tooltip> */}
         {main ? (
-          <Tooltip
-            title={'Main: ' + name}
-            body={
-              <div className="space-y-0.5">
-                <p className="font-bold text-white">Base</p>
-                {main.component.DmgBody}
-                <p className="font-bold text-white">CRIT</p>
-                {main.component.CritBody}
-                <p className="font-bold text-white">Average</p>
-                {main.component.AvgBody}
-              </div>
-            }
-            style="w-[400px]"
-          >
-            <p className="col-span-1 text-center">{_.round(getDmg(main)).toLocaleString()}</p>
+          <Tooltip title={'Main: ' + name} body={<Body obj={main} />} style="w-[400px]">
+            <p className="col-span-1 text-xs text-center">{_.round(getDmg(main)).toLocaleString()}</p>
           </Tooltip>
         ) : (
           <p className="col-span-1 text-center text-gray">-</p>
         )}
         {sub1 ? (
-          <Tooltip
-            title={'Sub 1: ' + name}
-            body={
-              <div className="space-y-0.5">
-                <p className="font-bold text-white">Base</p>
-                {sub1.component.DmgBody}
-                <p className="font-bold text-white">CRIT</p>
-                {sub1.component.CritBody}
-                <p className="font-bold text-white">Average</p>
-                {sub1.component.AvgBody}
-              </div>
-            }
-            style="w-[400px]"
-          >
-            <p className="col-span-1 text-center">
+          <Tooltip title={'Sub 1: ' + name} body={<Body obj={sub1} />} style="w-[400px]">
+            <p className="col-span-1 text-xs text-center">
               {_.round(getDmg(sub1)).toLocaleString()}
-              {getDmg(sub1) > getDmg(main) && <i className="ml-1 text-xs fa-solid fa-caret-up text-heal" />}
-              {getDmg(sub1) < getDmg(main) && <i className="ml-1 text-xs fa-solid fa-caret-down text-red" />}
-              {getDmg(sub1) === getDmg(main) && <i className="ml-1 text-xs fa-solid fa-minus text-blue" />}
+              {getDmg(sub1) > getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-caret-up text-heal" />}
+              {getDmg(sub1) < getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-caret-down text-red" />}
+              {getDmg(sub1) === getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-minus text-blue" />}
             </p>
           </Tooltip>
         ) : (
           <p className="col-span-1 text-center text-gray">-</p>
         )}
         {sub2 ? (
-          <Tooltip
-            title={'Sub 2: ' + name}
-            body={
-              <div className="space-y-0.5">
-                <p className="font-bold text-white">Base</p>
-                {sub2.component.DmgBody}
-                <p className="font-bold text-white">CRIT</p>
-                {sub2.component.CritBody}
-                <p className="font-bold text-white">Average</p>
-                {sub2.component.AvgBody}
-              </div>
-            }
-            style="w-[400px]"
-          >
-            <p className="col-span-1 text-center">
+          <Tooltip title={'Sub 2: ' + name} body={<Body obj={sub2} />} style="w-[400px]">
+            <p className="col-span-1 text-xs text-center">
               {_.round(getDmg(sub2)).toLocaleString()}
-              {getDmg(sub2) > getDmg(main) && <i className="ml-1 text-xs fa-solid fa-caret-up text-heal" />}
-              {getDmg(sub2) < getDmg(main) && <i className="ml-1 text-xs fa-solid fa-caret-down text-red" />}
-              {getDmg(sub2) === getDmg(main) && <i className="ml-1 text-xs fa-solid fa-minus text-blue" />}
+              {getDmg(sub2) > getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-caret-up text-heal" />}
+              {getDmg(sub2) < getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-caret-down text-red" />}
+              {getDmg(sub2) === getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-minus text-blue" />}
             </p>
           </Tooltip>
         ) : (
           <p className="col-span-1 text-center text-gray">-</p>
         )}
         {sub3 ? (
-          <Tooltip
-            title={'Sub 3: ' + name}
-            body={
-              <div className="space-y-0.5">
-                <p className="font-bold text-white">Base</p>
-                {sub3.component.DmgBody}
-                <p className="font-bold text-white">CRIT</p>
-                {sub3.component.CritBody}
-                <p className="font-bold text-white">Average</p>
-                {sub3.component.AvgBody}
-              </div>
-            }
-            style="w-[400px]"
-          >
-            <p className="col-span-1 text-center">
+          <Tooltip title={'Sub 3: ' + name} body={<Body obj={sub3} />} style="w-[400px]">
+            <p className="col-span-1 text-xs text-center">
               {_.round(getDmg(sub3)).toLocaleString()}
-              {getDmg(sub3) > getDmg(main) && <i className="ml-1 text-xs fa-solid fa-caret-up text-heal" />}
-              {getDmg(sub3) < getDmg(main) && <i className="ml-1 text-xs fa-solid fa-caret-down text-red" />}
-              {getDmg(sub3) === getDmg(main) && <i className="ml-1 text-xs fa-solid fa-minus text-blue" />}
+              {getDmg(sub3) > getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-caret-up text-heal" />}
+              {getDmg(sub3) < getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-caret-down text-red" />}
+              {getDmg(sub3) === getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-minus text-blue" />}
             </p>
           </Tooltip>
         ) : (
