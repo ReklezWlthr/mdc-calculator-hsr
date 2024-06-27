@@ -5,13 +5,14 @@ import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { toPercentage } from '@src/core/utils/converter'
-import { StatsObjectKeys, TalentPropertyMap } from '@src/data/lib/stats/baseConstant'
+import { StatsObject, StatsObjectKeys, TalentPropertyMap } from '@src/data/lib/stats/baseConstant'
 import { TalentTypeMap } from '../../../../data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { BreakBaseLevel } from '@src/domain/scaling'
 
 interface ScalingSubRowsProps {
   scaling: IScaling
+  statsOverride?: StatsObject
 }
 
 const propertyColor = {
@@ -34,10 +35,10 @@ export const ElementColor = {
   ...propertyColor,
 }
 
-export const SuperBreakSubRows = observer(({ scaling }: ScalingSubRowsProps) => {
+export const SuperBreakSubRows = observer(({ scaling, statsOverride }: ScalingSubRowsProps) => {
   const { calculatorStore, teamStore } = useStore()
   const index = scaling.overrideIndex ?? calculatorStore.selected
-  const stats = calculatorStore.computedStats[index]
+  const stats = statsOverride || calculatorStore.computedStats[index]
 
   const element = scaling.element
 

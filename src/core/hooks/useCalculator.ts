@@ -24,16 +24,26 @@ import { AllRelicSets } from '@src/data/db/artifacts'
 interface CalculatorOptions {
   min?: boolean
   teamOverride?: ITeamChar[]
-  formOverride?: []
+  formOverride?: Record<string, any>[]
   doNotSaveStats?: boolean
+  indexOverride?: number
+  initFormFunction?: (f: Record<string, any>[]) => void
 }
 
-export const useCalculator = ({ min, teamOverride, doNotSaveStats }: CalculatorOptions) => {
+export const useCalculator = ({
+  min,
+  teamOverride,
+  formOverride,
+  indexOverride,
+  doNotSaveStats,
+  initFormFunction,
+}: CalculatorOptions) => {
   const { teamStore, artifactStore, calculatorStore } = useStore()
-  const { selected } = calculatorStore
 
+  const selected = indexOverride || calculatorStore?.selected
   const [finalStats, setFinalStats] = useState<StatsObject[]>(null)
 
+  const forms = formOverride || calculatorStore.form
   const team = teamOverride || teamStore.characters
 
   const mainComputed = finalStats?.[selected]
@@ -105,25 +115,25 @@ export const useCalculator = ({ min, teamOverride, doNotSaveStats }: CalculatorO
     )
 
   useEffect(() => {
-    calculatorStore.initForm(
-      _.map(conditionals, (item, index) =>
-        _.reduce(
-          _.concat(
-            item?.content,
-            item?.teammateContent,
-            allyContents(index),
-            artifactConditionals[index]?.content,
-            artifactConditionals[index]?.teamContent,
-            ...weaponSelectable(index)
-          ),
-          (acc, curr) => {
-            if (curr?.show) acc[curr.id] = min ? false : curr.default
-            return acc
-          },
-          {}
-        )
+    const f = _.map(conditionals, (item, index) =>
+      _.reduce(
+        _.concat(
+          item?.content,
+          item?.teammateContent,
+          allyContents(index),
+          artifactConditionals[index]?.content,
+          artifactConditionals[index]?.teamContent,
+          ...weaponSelectable(index)
+        ),
+        (acc, curr) => {
+          if (curr?.show) acc[curr.id] = min ? false : curr.default
+          return acc
+        },
+        {}
       )
     )
+    if (initFormFunction) initFormFunction(f)
+    else calculatorStore.initForm(f)
   }, [team])
 
   // =================
@@ -137,13 +147,13 @@ export const useCalculator = ({ min, teamOverride, doNotSaveStats }: CalculatorO
   // Some Light Cone buffs scale off character's stat so we have to calculate ones above first
   // Reactions are placed last because they only provide damage buff, not stat buffs, and heavily relies on stats
   useEffect(() => {
+    if (!_.some(forms)) return
     const weakness = _.cloneDeep(calculatorStore.weakness)
     const debuffs = _.map(DebuffTypes, (v) => ({ type: v, count: 0 }))
     const preCompute = _.map(
       conditionals,
       (base, index) =>
-        base?.preCompute(baseStats[index], calculatorStore.form[index], debuffs, weakness, calculatorStore.broken) ||
-        baseStats[index]
+        base?.preCompute(baseStats[index], forms[index], debuffs, weakness, calculatorStore.broken) || baseStats[index]
     ) // Compute all self conditionals, return stats of each char
     const preComputeShared = _.map(preCompute, (base, index) => {
       // Compute all shared conditionals, call function for every char except the owner
@@ -156,11 +166,11 @@ export const useCalculator = ({ min, teamOverride, doNotSaveStats }: CalculatorO
               preCompute[i],
               x,
               {
-                ...calculatorStore.form[i],
+                ...forms[i],
                 path: findCharacter(team[index]?.cId)?.path,
                 element: findCharacter(team[index]?.cId)?.element,
               },
-              calculatorStore.form[index],
+              forms[index],
               debuffs,
               weakness,
               calculatorStore.broken
@@ -182,7 +192,7 @@ export const useCalculator = ({ min, teamOverride, doNotSaveStats }: CalculatorO
     // Always loop; artifact buffs are either self or team-wide so everything is in each character's own form
     const postArtifact = _.map(postCustom, (base, index) => {
       let x = base
-      _.forEach(calculatorStore.form, (form, i) => {
+      _.forEach(forms, (form, i) => {
         x = i === index ? calculateRelic(x, form) : calculateTeamRelic(x, form, postCustom[i])
       })
       return x
@@ -190,7 +200,7 @@ export const useCalculator = ({ min, teamOverride, doNotSaveStats }: CalculatorO
     const postWeapon = _.map(postArtifact, (base, index) => {
       let x = base
       // Apply self self buff then loop for team-wide buff that is in each character's own form
-      _.forEach(calculatorStore.form, (form, i) => {
+      _.forEach(forms, (form, i) => {
         _.forEach(
           _.filter(
             i === index ? [...weaponConditionals[i], ...weaponTeamConditionals[i]] : weaponTeamConditionals[i],
@@ -211,9 +221,9 @@ export const useCalculator = ({ min, teamOverride, doNotSaveStats }: CalculatorO
       })
       // Targeted buffs are in each team member form aside from the giver so no need to loop
       _.forEach(
-        _.filter(weaponAllySelectable(index), (c) => _.includes(_.keys(calculatorStore.form[index]), c.id)),
+        _.filter(weaponAllySelectable(index), (c) => _.includes(_.keys(forms[index]), c.id)),
         (c) => {
-          x = c.scaling(x, calculatorStore.form[index], team[c.owner]?.equipments?.weapon?.refinement, {
+          x = c.scaling(x, forms[index], team[c.owner]?.equipments?.weapon?.refinement, {
             team: team,
             element: findCharacter(team[c.owner]?.cId)?.element,
             own: postArtifact[c.owner],
@@ -231,9 +241,9 @@ export const useCalculator = ({ min, teamOverride, doNotSaveStats }: CalculatorO
       (base, index) =>
         base?.postCompute(
           postWeapon[index],
-          calculatorStore.form[index],
+          forms[index],
           postWeapon,
-          calculatorStore.form,
+          forms,
           debuffs,
           weakness,
           calculatorStore.broken
@@ -271,7 +281,7 @@ export const useCalculator = ({ min, teamOverride, doNotSaveStats }: CalculatorO
     setFinalStats(final)
   }, [
     baseStats,
-    calculatorStore.form,
+    forms,
     calculatorStore.custom,
     team,
     calculatorStore.weakness,

@@ -16,8 +16,10 @@ export interface SetupStoreType {
   main: TSetup
   mainChar: string
   comparing: TSetup[]
+  forms: Record<string, any>[][]
   hydrated: boolean
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
+  setForm: (index: number, value: Record<string, any>[]) => void
   saveTeam: (team: TSetup) => boolean
   editTeam: (tId: string, team: Partial<TSetup>) => boolean
   deleteTeam: (tId: string) => boolean
@@ -32,18 +34,24 @@ export class SetupStore {
   mainChar: string
   comparing: TSetup[]
   hydrated: boolean = false
+  forms: Record<string, any>[][]
 
   constructor() {
     this.team = []
     this.main = null
     this.mainChar = null
     this.comparing = Array(3)
+    this.forms = Array(4)
 
     makeAutoObservable(this)
   }
 
   setValue = <k extends keyof this>(key: k, value: this[k]) => {
     this[key] = value
+  }
+
+  setForm = (index: number, value: Record<string, any>[]) => {
+    this.forms[index] = value
   }
 
   saveTeam = (team: TSetup) => {
