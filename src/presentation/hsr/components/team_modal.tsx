@@ -22,14 +22,17 @@ export const TeamModal = observer(({ onSelect, filterId }: TeamModalProps) => {
       <p className="font-semibold">Select a Team</p>
       <div className="space-y-2 dropdownScrollbar max-h-[70vh]">
         {_.map(
-          filterId
-            ? _.filter(setupStore.team, (item) =>
-                _.includes(
-                  _.map(item.char, (c) => c.cId),
-                  filterId
+          [
+            { id: '', char: teamStore.characters, name: 'Current Team Setup' },
+            ...(filterId
+              ? _.filter(setupStore.team, (item) =>
+                  _.includes(
+                    _.map(item.char, (c) => c.cId),
+                    filterId
+                  )
                 )
-              )
-            : setupStore.team,
+              : setupStore.team),
+          ],
           (team) => {
             return (
               <div
