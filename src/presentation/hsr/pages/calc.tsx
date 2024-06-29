@@ -3,7 +3,7 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { Stats } from '@src/domain/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { ScalingSubRows } from '../components/tables/scaling_sub_rows'
 import { ScalingWrapper } from '../components/tables/scaling_wrapper'
 import { StatBlock } from '../components/stat_block'
@@ -23,18 +23,18 @@ import { StatsModal } from '../components/stats_modal'
 import { SuperBreakSubRows } from '../components/tables/super_break_sub_rows'
 import { DebuffModal } from '../components/debuff_modal'
 import { BreakBlock } from '../components/break_block'
+import { LCBlock } from '../components/lc_block'
+import { MiniRelicBlock } from '../components/mini_relic_block'
+import { BulletPoint } from '@src/presentation/components/collapsible'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
-  const { selected, computedStats } = calculatorStore
+  const { selected, computedStats, team, tab } = calculatorStore
 
-  const [tab, setTab] = useState('mod')
-
-  const team = _.cloneDeep(teamStore?.characters)
   const char = team[selected]
   const charData = findCharacter(char.cId)
 
-  const { main, mainComputed, contents } = useCalculator({})
+  const { main, mainComputed, contents } = useCalculator({ teamOverride: team })
 
   const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal />), [])
   const onOpenDebuffModal = useCallback(() => modalStore.openModal(<DebuffModal />), [])
@@ -210,7 +210,7 @@ export const Calculator = observer(({}: {}) => {
               className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
                 'bg-primary': tab === 'mod',
               })}
-              onClick={() => setTab('mod')}
+              onClick={() => calculatorStore.setValue('tab', 'mod')}
             >
               Modifiers
             </div>
@@ -218,9 +218,17 @@ export const Calculator = observer(({}: {}) => {
               className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
                 'bg-primary': tab === 'stats',
               })}
-              onClick={() => setTab('stats')}
+              onClick={() => calculatorStore.setValue('tab', 'stats')}
             >
               Stats
+            </div>
+            <div
+              className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
+                'bg-primary': tab === 'load',
+              })}
+              onClick={() => calculatorStore.setValue('tab', 'load')}
+            >
+              Loadout
             </div>
           </div>
           {tab === 'mod' && (
@@ -258,6 +266,33 @@ export const Calculator = observer(({}: {}) => {
                   cons={char.cons}
                   stats={computedStats[selected]}
                 />
+              </div>
+            </>
+          )}
+          {charData && tab === 'load' && (
+            <>
+              <div className="w-full text-center">
+                <p className="font-bold">Quick Loadout Edit</p>
+                <p className="p-2 text-xs rounded-lg bg-primary-dark text-gray">
+                  You can quickly change your character's loadout here without affecting data on other pages.
+                </p>
+              </div>
+              <LCBlock
+                {...char.equipments.weapon}
+                index={selected}
+                teamOverride={team}
+                setWeapon={(i, w) => {
+                  team[i].equipments.weapon = { ...team[i].equipments.weapon, ...w }
+                  calculatorStore.setValue('team', _.cloneDeep(team))
+                }}
+              />
+              <div className="w-full space-y-1">
+                <p className="font-bold text-center">Relics</p>
+                <div className="grid grid-cols-2 gap-2.5">
+                  {_.map(char.equipments.artifacts, (a) => (
+                    <MiniRelicBlock aId={a} index={selected} />
+                  ))}
+                </div>
               </div>
             </>
           )}

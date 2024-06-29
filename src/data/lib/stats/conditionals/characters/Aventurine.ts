@@ -142,14 +142,18 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       duration: 3,
     },
     {
-      type: 'number',
+      type: 'element',
       id: 'aven_tech',
       text: `Technique DEF Bonus`,
       ...talents.technique,
       show: true,
-      default: 3,
-      min: 0,
-      max: 3,
+      default: '3',
+      options: [
+        { name: 'None', value: '0' },
+        { name: '24%', value: '1' },
+        { name: '36%', value: '2' },
+        { name: '60%', value: '3' },
+      ],
       duration: 3,
     },
     {
@@ -222,7 +226,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       base.SKILL_SCALING = [
         {
           name: 'Fortified Wager Shield',
-          value: [{ scaling: calcScaling(0.16, 0.1, skill, 'heal'), multiplier: Stats.DEF }],
+          value: [{ scaling: calcScaling(0.16, 0.01, skill, 'heal'), multiplier: Stats.DEF }],
           flat: calcScaling(80, 48, skill, 'flat'),
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
@@ -230,7 +234,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         },
         {
           name: 'Max Stackable Shield',
-          value: [{ scaling: calcScaling(0.16, 0.1, skill, 'heal') * 2, multiplier: Stats.DEF }],
+          value: [{ scaling: calcScaling(0.16, 0.01, skill, 'heal') * 2, multiplier: Stats.DEF }],
           flat: calcScaling(80, 48, skill, 'flat') * 2,
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,

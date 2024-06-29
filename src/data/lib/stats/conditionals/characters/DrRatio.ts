@@ -194,7 +194,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         })
       }
       if (form.ratio_a4) {
-        base.E_RES_RED.push({
+        base.EHR_RED.push({
           name: `Skill`,
           source: 'Self',
           value: 0.1,
@@ -218,7 +218,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       debuffs: { type: DebuffTypes; count: number }[]
     ) => {
       if (form.ratio_a4)
-        base.E_RES_RED.push({
+        base.EHR_RED.push({
           name: `Skill`,
           source: 'Dr. Ratio',
           value: 0.1,

@@ -35,6 +35,10 @@ export const useLocalUpdater = (game: string) => {
   }, [])
 
   useEffect(() => {
+    calculatorStore.setValue('team', _.cloneDeep(teamStore?.characters))
+  }, [...teamStore.characters])
+
+  useEffect(() => {
     if (hydrated && settingStore.settings.storeData) {
       localStorage.setItem(
         key,

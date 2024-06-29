@@ -1595,7 +1595,7 @@ export const LightCones = [
     type: PathType.HUNT,
     desc: {
       name: 'Rough Water',
-      detail: `Increases the wearer's Break Effect by {{0}}%. The Break DMG dealt by the wearer ignores {{1}}% of the target's DEF. When the wearer's Break Effect in battle is at <span class="text-desc">1500%</span> or greater, increases their SPD by {{2}}%.`,
+      detail: `Increases the wearer's Break Effect by {{0}}%. The Break DMG dealt by the wearer ignores {{1}}% of the target's DEF. When the wearer's Break Effect in battle is at <span class="text-desc">150%</span> or greater, increases their SPD by {{2}}%.`,
       properties: [
         { base: 60, growth: 10 },
         { base: 20, growth: 3 },

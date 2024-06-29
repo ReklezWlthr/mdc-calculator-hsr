@@ -12,6 +12,7 @@ import { LCTooltip } from './lc_block'
 import { findCharacter } from '@src/core/utils/finder'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { toPercentage } from '@src/core/utils/converter'
+import { StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 
 interface IContentIndex extends IContent {
   index: number
@@ -55,12 +56,16 @@ export const WeaponConditionalBlock = observer(
         >
           {_.size(_.filter(contents, 'show')) ? (
             _.map(contents, (content) => {
+              const stats = calculatorStore.computedStats[content.index]
               const prob = content.chance?.fixed
-              ? content.chance?.base
-              : (content.chance?.base || 0) *
-                (1 + calculatorStore.computedStats[content.index]?.getValue(Stats.EHR)) *
-                (1 - 0.3)
-                
+                ? content.chance?.base
+                : _.max([
+                    (content.chance?.base || 0) *
+                      (1 + stats?.getValue(Stats.EHR)) *
+                      (1 - calculatorStore.getEffRes(stats?.getValue(StatsObjectKeys.EHR_RED))),
+                    0,
+                  ])
+
               return (
                 content.show && (
                   <div

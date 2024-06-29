@@ -95,14 +95,17 @@ export const useDamageStringConstruct = (scaling: IScaling, stats: StatsObject, 
     elementMult *
     enemyMod
 
-  const totalCr = _.max([_.min([stats.getValue(Stats.CRIT_RATE) + (scaling.cr || 0) + talentCr + propertyCr, 1]), 0])
+  const totalCr =
+    scaling.overrideCr ||
+    _.max([_.min([stats.getValue(Stats.CRIT_RATE) + (scaling.cr || 0) + talentCr + propertyCr, 1]), 0])
   const totalCd =
+    scaling.overrideCd ||
     stats.getValue(Stats.CRIT_DMG) +
-    stats.getValue(StatsObjectKeys.X_CRIT_DMG) +
-    (scaling.cd || 0) +
-    talentCd +
-    elementCd +
-    propertyCd
+      stats.getValue(StatsObjectKeys.X_CRIT_DMG) +
+      (scaling.cd || 0) +
+      talentCd +
+      elementCd +
+      propertyCd
   const totalFlat = (scaling.flat || 0) + elementFlat + talentFlat
 
   // String Construct

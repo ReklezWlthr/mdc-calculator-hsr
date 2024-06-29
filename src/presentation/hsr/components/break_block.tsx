@@ -85,7 +85,7 @@ export const BreakBlock = observer(({ stats, index }: { stats: StatsObject; inde
   const ccRes = enemy?.statusRes?.[DebuffTypes.CONTROL] || 0
   const prob =
     1.5 *
-    (1 - calculatorStore.getEffRes()) *
+    (1 - calculatorStore.getEffRes(stats.getValue(StatsObjectKeys.EHR_RED))) *
     (1 + stats.getValue(Stats.EHR)) *
     (1 - (enemy?.statusRes?.[type[stats?.ELEMENT]] || 0) - (isDoT ? 0 : ccRes))
 
@@ -207,7 +207,7 @@ export const BreakBlock = observer(({ stats, index }: { stats: StatsObject; inde
           {stats?.ELEMENT === Element.ICE ? (
             <>
               <span>25%</span>
-              <span className='ml-1 text-hsr-ice'>(+50%)</span>
+              <span className="ml-1 text-hsr-ice">(+50%)</span>
             </>
           ) : (
             toPercentage(0.25 + delay)

@@ -1,4 +1,4 @@
-import { Element, ICharStore } from '@src/domain/constant'
+import { Element, ICharStore, ITeamChar } from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { StatsObject, StatsObjectKeysT } from '../lib/stats/baseConstant'
@@ -8,6 +8,8 @@ import { enableStaticRendering } from 'mobx-react-lite'
 enableStaticRendering(typeof window === 'undefined')
 
 export interface CalculatorStoreType {
+  tab: string
+  team: ITeamChar[]
   form: Record<string, any>[]
   computedStats: StatsObject[]
   selected: number
@@ -34,6 +36,8 @@ export interface CalculatorStoreType {
 }
 
 export class CalculatorStore {
+  tab: string
+  team: ITeamChar[]
   form: Record<string, any>[]
   computedStats: StatsObject[]
   res: Record<Element, number>
@@ -49,6 +53,8 @@ export class CalculatorStore {
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
 
   constructor() {
+    this.tab = 'mod'
+    this.team = Array(4)
     this.form = Array(4)
     this.computedStats = Array(4)
     this.selected = 0
@@ -121,8 +127,8 @@ export class CalculatorStore {
     return 1 - res
   }
 
-  getEffRes = () => {
-    return this.effRes + (this.level >= 51 ? _.min([0.1, 0.004 * (this.level - 50)]) : 0)
+  getEffRes = (reduction?: number) => {
+    return this.effRes + (this.level >= 51 ? _.min([0.1, 0.004 * (this.level - 50)]) : 0) - reduction
   }
 
   hydrate = (data: CalculatorStoreType) => {

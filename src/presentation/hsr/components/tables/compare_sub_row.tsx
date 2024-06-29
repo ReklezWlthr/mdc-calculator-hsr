@@ -87,17 +87,21 @@ export const CompareSubRows = observer(
     const Body = ({ obj }: { obj: StringConstructor }) => (
       <div className="space-y-1.5">
         <div>
-          <p className="font-bold text-white">Base</p>
+          {!noCrit && <p className="font-bold text-white">Base</p>}
           {obj.component.DmgBody}
         </div>
-        <div className="pt-1.5 border-t-2 border-primary-border">
-          <p className="font-bold text-white">CRIT</p>
-          {obj.component.CritBody}
-        </div>
-        <div className="pt-1.5 border-t-2 border-primary-border">
-          <p className="font-bold text-white">Average</p>
-          {obj.component.AvgBody}
-        </div>
+        {!noCrit && (
+          <>
+            <div className="pt-1.5 border-t-2 border-primary-border">
+              <p className="font-bold text-white">CRIT</p>
+              {obj.component.CritBody}
+            </div>
+            <div className="pt-1.5 border-t-2 border-primary-border">
+              <p className="font-bold text-white">Average</p>
+              {obj.component.AvgBody}
+            </div>
+          </>
+        )}
       </div>
     )
 

@@ -307,8 +307,8 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
                       property: TalentProperty.ADD,
                       type: TalentType.NONE,
                       overrideIndex: index,
-                      cr: 1,
-                      cd: (form.robin_c6 ? 6 : 1.5) - team[index].getValue(Stats.CRIT_DMG),
+                      overrideCr: 1,
+                      overrideCd: form.robin_c6 ? 6 : 1.5,
                     })
                 }
               )

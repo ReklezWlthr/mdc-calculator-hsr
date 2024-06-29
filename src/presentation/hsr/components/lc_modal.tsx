@@ -6,7 +6,7 @@ import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { useParams } from '@src/core/hooks/useParams'
 import { useMemo } from 'react'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
-import { PathType, StatIcons, Stats } from '@src/domain/constant'
+import { IWeaponEquip, PathType, StatIcons, Stats } from '@src/domain/constant'
 import classNames from 'classnames'
 import { findCharacter } from '@src/core/utils/finder'
 import getConfig from 'next/config'
@@ -16,15 +16,18 @@ const { publicRuntimeConfig } = getConfig()
 
 interface LCModalProps {
   index: number
+  setWeapon?: (index: number, info: Partial<IWeaponEquip>) => void
 }
 
-export const LCModal = observer(({ index }: LCModalProps) => {
+export const LCModal = observer(({ index, setWeapon }: LCModalProps) => {
   const { teamStore, modalStore } = useStore()
   const { setParams, params } = useParams({
     searchWord: '',
     path: [findCharacter(teamStore.characters[index]?.cId)?.path],
     rarity: [],
   })
+
+  const set = setWeapon || teamStore.setWeapon
 
   const filteredWeapon = useMemo(
     () =>
@@ -79,8 +82,8 @@ export const LCModal = observer(({ index }: LCModalProps) => {
           <div
             className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95"
             onClick={() => {
-              teamStore.setWeapon(index, { wId: item.id })
-              if (item.id === '2057') teamStore.setWeapon(index, { refinement: 1 })
+              set(index, { wId: item.id })
+              if (item.id === '2057') set(index, { refinement: 1 })
               modalStore.closeModal()
             }}
             key={item.name}

@@ -68,7 +68,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     technique: {
       trace: 'Technique',
       title: 'Artisan Elixir',
-      content: `Immediately attacks the enemy. Upon entering battle, inflicts Besotted on all enemies, lasting for <span class="text-desc">2</span> turn(s). And deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of Gallagher's ATK to all enemies.`,
+      content: `Immediately attacks the enemy. Upon entering battle, inflicts <b>Besotted</b> on all enemies, lasting for <span class="text-desc">2</span> turn(s). And deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of Gallagher's ATK to all enemies.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
@@ -83,7 +83,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Bottoms Up',
-      content: `When Gallagher uses Nectar Blitz to attack Besotted enemies, the HP Restore effect of his Talent will also apply to other allies for this time.`,
+      content: `When Gallagher uses <b>Nectar Blitz</b> to attack <b>Besotted</b> enemies, the HP Restore effect of his Talent will also apply to other allies for this time.`,
     },
     c1: {
       trace: 'Eidolon 1',

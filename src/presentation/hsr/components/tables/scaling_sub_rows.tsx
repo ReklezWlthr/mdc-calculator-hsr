@@ -50,7 +50,12 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
 
   const prob = scaling.chance?.fixed
     ? scaling.chance?.base
-    : _.max([(scaling.chance?.base || 0) * (1 + stats.getValue(Stats.EHR)) * (1 - calculatorStore.getEffRes()), 0])
+    : _.max([
+        (scaling.chance?.base || 0) *
+          (1 + stats.getValue(Stats.EHR)) *
+          (1 - calculatorStore.getEffRes(stats.getValue(StatsObjectKeys.EHR_RED))),
+        0,
+      ])
   const noCrit = _.includes(
     [
       TalentProperty.HEAL,
@@ -93,7 +98,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
       )}
       {noCrit ? (
         <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
-          {_.round(dmg)}
+          {_.round(dmg).toLocaleString()}
         </p>
       ) : (
         <Tooltip title={'Average: ' + scaling.name} body={AvgBody} style="w-[400px]">

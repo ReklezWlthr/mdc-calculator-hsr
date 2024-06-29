@@ -1,6 +1,14 @@
 import { findBaseLevel, findMaxLevel, getWeaponBase, getWeaponBonus } from '@src/core/utils/data_format'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { AscensionOptions, SuperimposeOptions, StatIcons, Stats, PathType } from '@src/domain/constant'
+import {
+  AscensionOptions,
+  SuperimposeOptions,
+  StatIcons,
+  Stats,
+  PathType,
+  ITeamChar,
+  IWeaponEquip,
+} from '@src/domain/constant'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import _ from 'lodash'
@@ -68,161 +76,168 @@ interface LCBlockProps {
   level: number
   ascension: number
   refinement: number
+  teamOverride?: ITeamChar[]
+  setWeapon?: (index: number, info: Partial<IWeaponEquip>) => void
 }
 
-export const LCBlock = observer(({ index = -1, wId, level = 1, ascension = 0, refinement = 1 }: LCBlockProps) => {
-  const { modalStore, teamStore } = useStore()
+export const LCBlock = observer(
+  ({ index = -1, wId, level = 1, ascension = 0, refinement = 1, teamOverride, setWeapon }: LCBlockProps) => {
+    const { modalStore, teamStore } = useStore()
 
-  const weaponData = findLightCone(wId)
-  const weaponType = findCharacter(teamStore.characters[index]?.cId)?.path
-  const rarity = weaponData?.rarity
+    const team = teamOverride || teamStore.characters
+    const set = setWeapon || teamStore.setWeapon
 
-  const weaponBaseAtk = getWeaponBase(weaponData?.baseAtk, level, ascension)
-  const weaponBaseHp = getWeaponBase(weaponData?.baseHp, level, ascension)
-  const weaponBaseDef = getWeaponBase(weaponData?.baseDef, level, ascension)
+    const weaponData = findLightCone(wId)
+    const weaponType = findCharacter(team[index]?.cId)?.path
+    const rarity = weaponData?.rarity
 
-  const canEdit = index >= 0
+    const weaponBaseAtk = getWeaponBase(weaponData?.baseAtk, level, ascension)
+    const weaponBaseHp = getWeaponBase(weaponData?.baseHp, level, ascension)
+    const weaponBaseDef = getWeaponBase(weaponData?.baseDef, level, ascension)
 
-  const levels = useMemo(
-    () =>
-      _.map(
-        Array(findMaxLevel(ascension) - findBaseLevel(ascension) + 1 || 1).fill(findBaseLevel(ascension)),
-        (item, index) => ({
-          name: _.toString(item + index),
-          value: _.toString(item + index),
-        })
-      ).reverse(),
-    [ascension]
-  )
+    const canEdit = index >= 0
 
-  const char = teamStore.characters[index]?.cId
-  const invalid = weaponType !== weaponData?.type
+    const levels = useMemo(
+      () =>
+        _.map(
+          Array(findMaxLevel(ascension) - findBaseLevel(ascension) + 1 || 1).fill(findBaseLevel(ascension)),
+          (item, index) => ({
+            name: _.toString(item + index),
+            value: _.toString(item + index),
+          })
+        ).reverse(),
+      [ascension]
+    )
 
-  const onOpenModal = useCallback(() => {
-    char && modalStore.openModal(<LCModal index={index} />)
-  }, [modalStore, index, char])
+    const char = team[index]?.cId
+    const invalid = weaponType !== weaponData?.type
 
-  return (
-    <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-[280px]">
-      <div className="flex justify-center px-5 py-2 rounded-t-lg bg-primary-lighter">Light Cone</div>
-      <div className="grid h-full grid-cols-2 gap-3 p-3">
-        <div
-          className={classNames('flex flex-col justify-between gap-1 h-fit shrink-0', { 'cursor-pointer': char })}
-          onClick={onOpenModal}
-        >
-          {weaponData ? (
-            <img
-              src={`https://api.hakush.in/hsr/UI/lightconemaxfigures/${weaponData?.id}.webp`}
-              className={classNames(
-                'object-contain h-[200px] py-2 border rounded-lg bg-primary-darker duration-200',
-                invalid ? 'border-error hover:border-red' : 'border-primary-border hover:border-primary-light'
-              )}
-            />
-          ) : (
-            <div
-              className={classNames('h-[200px] border rounded-lg border-primary-border shrink-0', {
-                'bg-primary-darker hover:border-primary-light': char,
-                'bg-primary-bg': !char,
-              })}
-            />
-          )}
-          {!!rarity &&
-            (invalid ? (
-              <p className="text-xs text-center text-red">PATH MISMATCHED</p>
+    const onOpenModal = useCallback(() => {
+      char && modalStore.openModal(<LCModal index={index} setWeapon={setWeapon} />)
+    }, [modalStore, index, char, setWeapon])
+
+    return (
+      <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-[280px]">
+        <div className="flex justify-center px-5 py-2 rounded-t-lg bg-primary-lighter">Light Cone</div>
+        <div className="grid h-full grid-cols-2 gap-3 p-3">
+          <div
+            className={classNames('flex flex-col justify-between gap-1 h-fit shrink-0', { 'cursor-pointer': char })}
+            onClick={onOpenModal}
+          >
+            {weaponData ? (
+              <img
+                src={`https://api.hakush.in/hsr/UI/lightconemaxfigures/${weaponData?.id}.webp`}
+                className={classNames(
+                  'object-contain h-[200px] py-2 border rounded-lg bg-primary-darker duration-200',
+                  invalid ? 'border-error hover:border-red' : 'border-primary-border hover:border-primary-light'
+                )}
+              />
             ) : (
-              <RarityGauge rarity={rarity} textSize="text-sm" />
-            ))}
-        </div>
-        <div className="space-y-3">
-          <div className="space-y-1">
-            <div className="flex items-center justify-between w-full h-6">
-              <p className="text-sm font-semibold">Name</p>
-              {weaponData && (
-                <div className="flex items-center gap-x-1.5">
-                  <p className="text-xs font-normal text-gray">Passive</p>
-                  <LCTooltip wId={wId} refinement={refinement}>
-                    <i className="text-base fa-regular fa-question-circle" />
-                  </LCTooltip>
-                </div>
-              )}
-            </div>
-            <PillInput
-              onClick={onOpenModal}
-              onClear={() => teamStore.setWeapon(index, { wId: null, refinement: 1 })}
-              value={weaponData?.name}
-              disabled={!canEdit || !teamStore.characters[index]?.cId}
-              placeholder="Click to Select Light Cone"
-            />
-            <p className="pt-1 text-sm font-semibold">Level</p>
-            <div className="flex items-center w-full gap-2">
-              <SelectInput
-                onChange={(value) => teamStore.setWeapon(index, { level: parseInt(value) || 0 })}
-                options={levels}
-                value={level?.toString()}
-                disabled={!canEdit || !weaponData}
+              <div
+                className={classNames('h-[200px] border rounded-lg border-primary-border shrink-0', {
+                  'bg-primary-darker hover:border-primary-light': char,
+                  'bg-primary-bg': !char,
+                })}
               />
-              <SelectInput
-                onChange={(value) =>
-                  teamStore.setWeapon(index, {
-                    ascension: parseInt(value) || 0,
-                    level: findBaseLevel(parseInt(value) || 0),
-                  })
-                }
-                options={AscensionOptions}
-                value={ascension?.toString()}
-                style="w-fit"
-                disabled={!canEdit || !weaponData}
-              />
-              <SelectInput
-                onChange={(value) =>
-                  teamStore.setWeapon(index, {
-                    refinement: parseInt(value) || 1,
-                  })
-                }
-                options={SuperimposeOptions}
-                value={refinement?.toString()}
-                style="w-fit"
-                disabled={!canEdit || !weaponData}
-              />
-            </div>
+            )}
+            {!!rarity &&
+              (invalid ? (
+                <p className="text-xs text-center text-red">PATH MISMATCHED</p>
+              ) : (
+                <RarityGauge rarity={rarity} textSize="text-sm" />
+              ))}
           </div>
-          <div className="px-1 pt-1 space-y-3">
-            <div className="flex items-center gap-2 text-xs">
-              <div className="flex items-center gap-1.5 shrink-0">
-                <img
-                  className="w-3.5"
-                  src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[Stats.HP]}`}
-                />
-                <p>Base HP</p>
+          <div className="space-y-3">
+            <div className="space-y-1">
+              <div className="flex items-center justify-between w-full h-6">
+                <p className="text-sm font-semibold">Name</p>
+                {weaponData && (
+                  <div className="flex items-center gap-x-1.5">
+                    <p className="text-xs font-normal text-gray">Passive</p>
+                    <LCTooltip wId={wId} refinement={refinement}>
+                      <i className="text-base fa-regular fa-question-circle" />
+                    </LCTooltip>
+                  </div>
+                )}
               </div>
-              <hr className="w-full border border-primary-border" />
-              <p className="font-normal text-gray">{_.floor(weaponBaseHp).toLocaleString()}</p>
+              <PillInput
+                onClick={onOpenModal}
+                onClear={() => set(index, { wId: null, refinement: 1 })}
+                value={weaponData?.name}
+                disabled={!canEdit || !team[index]?.cId}
+                placeholder="Click to Select Light Cone"
+              />
+              <p className="pt-1 text-sm font-semibold">Level</p>
+              <div className="flex items-center w-full gap-2">
+                <SelectInput
+                  onChange={(value) => set(index, { level: parseInt(value) || 0 })}
+                  options={levels}
+                  value={level?.toString()}
+                  disabled={!canEdit || !weaponData}
+                />
+                <SelectInput
+                  onChange={(value) =>
+                    set(index, {
+                      ascension: parseInt(value) || 0,
+                      level: findBaseLevel(parseInt(value) || 0),
+                    })
+                  }
+                  options={AscensionOptions}
+                  value={ascension?.toString()}
+                  style="w-fit"
+                  disabled={!canEdit || !weaponData}
+                />
+                <SelectInput
+                  onChange={(value) =>
+                    set(index, {
+                      refinement: parseInt(value) || 1,
+                    })
+                  }
+                  options={SuperimposeOptions}
+                  value={refinement?.toString()}
+                  style="w-fit"
+                  disabled={!canEdit || !weaponData}
+                />
+              </div>
             </div>
-            <div className="flex items-center gap-2 text-xs">
-              <div className="flex items-center gap-1.5 shrink-0">
-                <img
-                  className="w-3.5"
-                  src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[Stats.ATK]}`}
-                />
-                <p>Base ATK</p>
+            <div className="px-1 pt-1 space-y-3">
+              <div className="flex items-center gap-2 text-xs">
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <img
+                    className="w-3.5"
+                    src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[Stats.HP]}`}
+                  />
+                  <p>Base HP</p>
+                </div>
+                <hr className="w-full border border-primary-border" />
+                <p className="font-normal text-gray">{_.floor(weaponBaseHp).toLocaleString()}</p>
               </div>
-              <hr className="w-full border border-primary-border" />
-              <p className="font-normal text-gray">{_.floor(weaponBaseAtk).toLocaleString()}</p>
-            </div>
-            <div className="flex items-center gap-2 text-xs">
-              <div className="flex items-center gap-1.5 shrink-0">
-                <img
-                  className="w-3.5"
-                  src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[Stats.DEF]}`}
-                />
-                <p>Base DEF</p>
+              <div className="flex items-center gap-2 text-xs">
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <img
+                    className="w-3.5"
+                    src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[Stats.ATK]}`}
+                  />
+                  <p>Base ATK</p>
+                </div>
+                <hr className="w-full border border-primary-border" />
+                <p className="font-normal text-gray">{_.floor(weaponBaseAtk).toLocaleString()}</p>
               </div>
-              <hr className="w-full border border-primary-border" />
-              <p className="font-normal text-gray">{_.floor(weaponBaseDef).toLocaleString()}</p>
+              <div className="flex items-center gap-2 text-xs">
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <img
+                    className="w-3.5"
+                    src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[Stats.DEF]}`}
+                  />
+                  <p>Base DEF</p>
+                </div>
+                <hr className="w-full border border-primary-border" />
+                <p className="font-normal text-gray">{_.floor(weaponBaseDef).toLocaleString()}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  )
-})
+    )
+  }
+)

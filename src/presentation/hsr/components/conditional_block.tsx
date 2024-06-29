@@ -1,6 +1,7 @@
 import { calcScaling } from '@src/core/utils/calculator'
 import { toPercentage } from '@src/core/utils/converter'
 import { findCharacter } from '@src/core/utils/finder'
+import { StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { IContent } from '@src/domain/conditional'
 import { Element, Stats } from '@src/domain/constant'
@@ -42,7 +43,7 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
           className={classNames('ml-2 text-base align-top fa-solid fa-caret-down duration-300', open && '-rotate-180')}
         />
       </p>
-      <div className={classNames('space-y-3 duration-300 ease-out px-4 overflow-hidden', open ? 'h-fit py-3' : 'h-0')}>
+      <div className={classNames('space-y-3 duration-300 ease-out px-4', open ? 'h-fit py-3' : 'h-0 overflow-hidden')}>
         {_.size(contents) ? (
           _.map(_.orderBy(contents, ['unique', 'debuff'], ['desc', 'desc']), (content) => {
             const formattedString = _.reduce(
@@ -67,12 +68,13 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
               content.content
             )
 
+            const stats = calculatorStore.computedStats[content.index]
             const prob = content.chance?.fixed
               ? content.chance?.base
               : _.max([
                   (content.chance?.base || 0) *
-                    (1 + calculatorStore.computedStats[content.index]?.getValue(Stats.EHR)) *
-                    (1 - calculatorStore.getEffRes()),
+                    (1 + stats?.getValue(Stats.EHR)) *
+                    (1 - calculatorStore.getEffRes(stats?.getValue(StatsObjectKeys.EHR_RED))),
                   0,
                 ])
 
@@ -85,7 +87,8 @@ export const ConditionalBlock = observer(({ title, contents, tooltipStyle = 'w-[
                         <div className="flex items-center justify-between">
                           <div className="space-y-0.5">
                             <p className="text-xs font-normal opacity-75 text-gray">
-                              {findCharacter(teamStore.characters[content.index]?.cId)?.name} - {content.trace || 'Relics'}
+                              {findCharacter(teamStore.characters[content.index]?.cId)?.name} -{' '}
+                              {content.trace || 'Relics'}
                             </p>
                             <p>{content.title}</p>
                           </div>

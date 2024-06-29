@@ -17,7 +17,7 @@ export const Collapsible = observer(
     children,
     childRight,
   }: {
-    label: string
+    label: React.ReactNode
     children: React.ReactNode | React.ReactNode[]
     childRight?: React.ReactNode
   }) => {

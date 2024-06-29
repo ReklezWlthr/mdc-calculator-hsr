@@ -134,7 +134,7 @@ export const ComparePage = observer(() => {
                       )
                     })
                   ) : (
-                    <p className="flex items-center justify-center w-full h-full text-gray">Click to Add Setup</p>
+                    <p className="flex items-center justify-center w-full h-full text-gray">Add Setup</p>
                   )}
                 </div>
               </div>

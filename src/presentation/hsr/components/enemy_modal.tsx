@@ -12,6 +12,7 @@ import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_i
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { Enemies } from '@src/data/db/enemies'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
+import { EnemyHpScaling } from '@src/domain/scaling'
 
 export const EnemyModal = observer(() => {
   const { calculatorStore, teamStore, settingStore } = useStore()
@@ -44,7 +45,10 @@ export const EnemyModal = observer(() => {
                   _.mapValues(enemyData?.res, (item) => item * 100)
                 )
                 calculatorStore.setValue('weakness', enemyData?.weakness)
-                calculatorStore.setValue('hp', enemyData?.baseHp)
+                calculatorStore.setValue(
+                  'hp',
+                  _.round((enemyData?.baseHp / _.head(EnemyHpScaling)) * EnemyHpScaling[calculatorStore.level - 1])
+                )
                 calculatorStore.setValue('toughness', enemyData?.toughness)
                 calculatorStore.setValue('effRes', enemyData?.effRes)
               }
@@ -62,7 +66,14 @@ export const EnemyModal = observer(() => {
             type="number"
             min={1}
             value={level.toString()}
-            onChange={(value) => calculatorStore.setValue('level', parseFloat(value) || 0)}
+            onChange={(value) => {
+              const enemyData = _.find(Enemies, (item) => item.name === calculatorStore.enemy)
+              calculatorStore.setValue(
+                'hp',
+                _.round((enemyData?.baseHp / _.head(EnemyHpScaling)) * EnemyHpScaling[parseFloat(value) - 1])
+              )
+              calculatorStore.setValue('level', parseFloat(value) || 0)
+            }}
             style="w-[80px]"
           />
         </div>
@@ -86,7 +97,6 @@ export const EnemyModal = observer(() => {
                 value={calculatorStore.hp?.toString()}
                 onChange={(values) => calculatorStore.setValue('hp', values as any)}
                 min={0}
-                disabled={!!calculatorStore.enemy}
               />
             </div>
             <div className="flex flex-col w-full gap-y-1">
@@ -106,7 +116,9 @@ export const EnemyModal = observer(() => {
                   onChange={(value) => calculatorStore.setValue('effRes', (Number(value) / 100) as any)}
                   disabled={!!calculatorStore.enemy}
                 />
-                {calculatorStore.level >= 51 && <p className='text-xs font-normal'>+{_.min([10, 0.4 * (calculatorStore.level - 50)]).toFixed(1)}%</p>}
+                {calculatorStore.level >= 51 && (
+                  <p className="text-xs font-normal">+{_.min([10, 0.4 * (calculatorStore.level - 50)]).toFixed(1)}%</p>
+                )}
               </div>
             </div>
           </div>
