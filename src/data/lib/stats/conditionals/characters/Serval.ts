@@ -250,7 +250,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           property: TalentProperty.DOT,
           type: TalentType.NONE,
         }
-        base.TECHNIQUE_SCALING.push(techniqueShock)
+        base.TECHNIQUE_SCALING.push({ ...techniqueShock, chance: { base: 1, fixed: false } })
         base.DOT_SCALING.push({ ...techniqueShock, overrideIndex: index, dotType: DebuffTypes.SHOCKED })
       }
       if (form.serval_a6)

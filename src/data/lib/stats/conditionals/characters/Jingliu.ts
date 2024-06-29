@@ -243,7 +243,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           name: 'Frozen DMG',
           value: [{ scaling: 0.8, multiplier: Stats.HP }],
           element: Element.ICE,
-          property: TalentProperty.ADD,
+          property: TalentProperty.FROZEN,
           type: TalentType.NONE,
           chance: { base: 1, fixed: false },
         },
