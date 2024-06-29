@@ -943,7 +943,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       })
       base.CALLBACK.push((x, _d, _w, _a, battle) => {
         if (battle && x.getValue(Stats.BE) >= 1.5)
-          x[Stats.SPD].push({
+          x[Stats.P_SPD].push({
             name: 'Passive',
             source: 'Sailing Towards A Second Life',
             value: calcRefinement(0.12, 0.02, r),
