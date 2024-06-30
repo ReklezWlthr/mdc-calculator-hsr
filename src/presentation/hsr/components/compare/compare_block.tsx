@@ -271,7 +271,13 @@ export const CompareBlock = observer(() => {
               Setup
             </div>
           </div>
-          {tab === 'mod' && <CompareConditionalBlock content={contents[setupIndex]} />}
+          {tab === 'mod' && (
+            <CompareConditionalBlock
+              stats={allStats[setupIndex]}
+              content={contents[setupIndex]}
+              team={team[setupIndex]}
+            />
+          )}
           {tab === 'stats' && (
             <>
               <div className="flex items-center justify-between w-full text-white">

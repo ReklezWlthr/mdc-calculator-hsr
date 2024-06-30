@@ -1,10 +1,10 @@
 import { calcScaling } from '@src/core/utils/calculator'
 import { toPercentage } from '@src/core/utils/converter'
 import { findCharacter } from '@src/core/utils/finder'
-import { StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
+import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { IContent } from '@src/domain/conditional'
-import { Element, Stats } from '@src/domain/constant'
+import { Element, ITeamChar, Stats } from '@src/domain/constant'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
@@ -25,16 +25,28 @@ interface ConditionalBlockProps {
   contents: IContentIndex[]
   tooltipStyle?: string
   formOverride?: Record<string, any>[]
+  statsOverride?: StatsObject[]
+  teamOverride?: ITeamChar[]
   setForm?: FormSetterT
 }
 
 export const ConditionalBlock = observer(
-  ({ title, contents, tooltipStyle = 'w-[40vw]', setForm, formOverride }: ConditionalBlockProps) => {
+  ({
+    title,
+    contents,
+    tooltipStyle = 'w-[40vw]',
+    setForm,
+    formOverride,
+    statsOverride,
+    teamOverride,
+  }: ConditionalBlockProps) => {
     const [open, setOpen] = useState(true)
 
     const { calculatorStore, teamStore } = useStore()
     const form = formOverride || calculatorStore.form
     const set = setForm || calculatorStore.setFormValue
+    const teamStats = statsOverride || calculatorStore.computedStats
+    const team = teamOverride || teamStore.characters
 
     return (
       <div className="w-full rounded-lg bg-primary-darker h-fit">
@@ -80,7 +92,7 @@ export const ConditionalBlock = observer(
                 content.content
               )
 
-              const stats = calculatorStore.computedStats[content.index]
+              const stats = teamStats[content.index]
               const prob = content.chance?.fixed
                 ? content.chance?.base
                 : _.max([
@@ -99,8 +111,7 @@ export const ConditionalBlock = observer(
                           <div className="flex items-center justify-between">
                             <div className="space-y-0.5">
                               <p className="text-xs font-normal opacity-75 text-gray">
-                                {findCharacter(teamStore.characters[content.index]?.cId)?.name} -{' '}
-                                {content.trace || 'Relics'}
+                                {findCharacter(team[content.index]?.cId)?.name} - {content.trace || 'Relics'}
                               </p>
                               <p>{content.title}</p>
                             </div>

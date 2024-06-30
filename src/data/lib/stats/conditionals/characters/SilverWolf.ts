@@ -19,7 +19,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
 
-  const index = _.findIndex(team, (item) => item.cId === '1208')
+  const elements = _.uniq(_.map(team, (item) => findCharacter(item.cId)?.element))
 
   const talents: ITalent = {
     normal: {
@@ -132,6 +132,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       ...talents.skill,
       show: true,
       default: Element.QUANTUM,
+      options: _.map(elements, (item) => ({ name: item, value: item })),
       duration: a.a4 ? 3 : 2,
       debuff: true,
       chance: { base: calcScaling(0.75, 0.01, skill, 'curved'), fixed: false },
