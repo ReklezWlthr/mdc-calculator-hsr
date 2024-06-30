@@ -254,7 +254,7 @@ export const CompareBlock = observer(() => {
                         : 'bg-primary-darker text-primary-lighter cursor-not-allowed',
                       { 'ring-2 ring-primary-border': index === setupIndex }
                     )}
-                    onClick={() => team[index] && setupStore.setValue('selected', [index, 0])}
+                    onClick={() => team[index] && setupStore.setValue('selected', [index, charIndex])}
                   >
                     {index === 0 ? <i className="text-desc fa-solid fa-star" /> : index}
                   </div>
