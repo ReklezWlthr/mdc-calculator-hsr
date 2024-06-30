@@ -1,6 +1,7 @@
 import { toPercentage } from '@src/core/utils/converter'
 import { getTurnWithinCycle } from '@src/core/utils/data_format'
 import { StatsArray, StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
+import { useStore } from '@src/data/providers/app_store_provider'
 import { BaseAggro, PathType, Stats } from '@src/domain/constant'
 import { BulletPoint, Collapsible } from '@src/presentation/components/collapsible'
 import _ from 'lodash'
@@ -45,6 +46,8 @@ export const AttributeBlock = ({ stat, array, stats }: NormalBlockProps) => (
 )
 
 export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path: PathType }) => {
+  const { calculatorStore } = useStore()
+
   const ExtraBlock = ({ stats, totalValue, cBase, lBase = 0, pArray, fArray, round = 0 }: ExtraBlockProps) => (
     <div className="space-y-1">
       <p className="font-bold text-white">
@@ -86,6 +89,7 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
   )
 
   const baseAggro = BaseAggro[path] * (1 + stats.getValue(StatsObjectKeys.BASE_AGGRO))
+  const defMult = 1 - stats.getDef() / (stats.getDef() + 200 + 10 * calculatorStore.level)
 
   return (
     <div className="w-[65vw] bg-primary-dark rounded-lg p-3 space-y-2">
@@ -191,6 +195,16 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
             <AttributeBlock stats={stats} stat="Weakness Break Efficiency" array={stats.BREAK_EFF} />
             <AttributeBlock stats={stats} stat="Shield Bonus" array={stats.SHIELD} />
             <AttributeBlock stats={stats} stat="DMG Reduction" array={stats.DMG_REDUCTION} />
+            <div className="space-y-1">
+              <p className="font-bold text-white">
+                eHP <span className="text-red">{_.round(stats.getHP() / defMult).toLocaleString()}</span>
+              </p>
+              <BulletPoint>
+                <span className="text-xs">
+                  DEF Multiplier <span className="text-desc">{toPercentage(defMult)}</span>
+                </span>
+              </BulletPoint>
+            </div>
           </div>
           <div className="space-y-2">
             <ExtraBlock
