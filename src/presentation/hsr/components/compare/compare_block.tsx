@@ -16,6 +16,7 @@ import { useCallback } from 'react'
 import { StatsModal } from '@src/presentation/hsr/components/modals/stats_modal'
 import { CompareTraceBlock } from '@src/presentation/hsr/components/compare/compare_trace_block'
 import { CompareSuperBreakSubRows } from '../tables/compare_super_break_sub_row '
+import { CharacterSelect } from '../character_select'
 
 export const CompareBlock = observer(() => {
   const { setupStore, modalStore } = useStore()
@@ -237,6 +238,39 @@ export const CompareBlock = observer(() => {
       )}
       {_.some(contents) && _.some(sumStats) && (
         <div className="flex flex-col items-center w-full gap-3">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="space-y-1">
+              <p className="text-sm font-bold text-center text-white">
+                {setupIndex === 0 ? 'Main Setup' : `Sub Setup ${setupIndex}`}
+              </p>
+              <div className="grid grid-cols-4 gap-2 text-xs text-white">
+                {_.map(Array(4), (_item, index) => (
+                  <div
+                    key={index}
+                    className={classNames(
+                      'flex items-center justify-center rounded-sm w-7 h-7',
+                      team[index]
+                        ? 'bg-primary-dark cursor-pointer'
+                        : 'bg-primary-darker text-primary-lighter cursor-not-allowed'
+                    )}
+                    onClick={() => team[index] && setupStore.setValue('selected', [index, 0])}
+                  >
+                    {index === 0 ? <i className="text-desc fa-solid fa-star" /> : index}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex gap-3">
+              {_.map(team[setupIndex], (item, index) => (
+                <CharacterSelect
+                  key={`char_select_${index}`}
+                  onClick={() => setupStore.setValue('selected', [setupIndex, index])}
+                  isSelected={index === charIndex}
+                  id={team[setupIndex][index].cId}
+                />
+              ))}
+            </div>
+          </div>
           <div className="flex gap-5">
             <div
               className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {

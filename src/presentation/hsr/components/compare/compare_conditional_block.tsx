@@ -11,49 +11,51 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { ITeamChar } from '@src/domain/constant'
 
-export const CompareConditionalBlock = observer(
-  ({
-    team,
-    stats,
-    content,
-  }: {
-    team: ITeamChar[]
-    stats: StatsObject[]
-    content: { main: IContentIndex[]; team: IContentIndex[]; weapon: (i: number) => IContentIndex[] }
-  }) => {
-    const { setupStore } = useStore()
-    const [setupIndex, charIndex] = setupStore.selected
-
-    return (
-      <div className="text-white">
-        <ConditionalBlock
-          title="Self Modifiers"
-          contents={_.filter(content.main, 'show')}
-          formOverride={setupStore.forms[setupIndex]}
-          statsOverride={stats}
-          teamOverride={team}
-          setForm={(...params) => setupStore.setFormValue(setupIndex, ...params)}
-        />
-        <ConditionalBlock
-          title="Team Modifiers"
-          contents={_.filter(content.team, 'show')}
-          formOverride={setupStore.forms[setupIndex]}
-          statsOverride={stats}
-          teamOverride={team}
-          setForm={(...params) => setupStore.setFormValue(setupIndex, ...params)}
-        />
-        <WeaponConditionalBlock
-          contents={content.weapon(setupStore.selected[1])}
-          formOverride={setupStore.forms[setupIndex]}
-          setForm={(...params) => setupStore.setFormValue(setupIndex, ...params)}
-        />
-        <CustomConditionalBlock
-          index={setupStore.selected[1]}
-          customOverride={setupStore.custom[setupIndex][charIndex]}
-          setValue={setupStore.setCustomValue}
-          removeValue={setupStore.removeCustomValue}
-        />
-      </div>
-    )
+interface CompareConditionalBlockProps {
+  team: ITeamChar[]
+  stats: StatsObject[]
+  content: {
+    main: IContentIndex[]
+    team: IContentIndex[]
+    weapon: (i: number) => IContentIndex[]
+    customMain: (selected: number) => IContentIndex[]
+    customTeam: (selected: number) => IContentIndex[]
   }
-)
+}
+
+export const CompareConditionalBlock = observer(({ team, stats, content }: CompareConditionalBlockProps) => {
+  const { setupStore } = useStore()
+  const [setupIndex, charIndex] = setupStore.selected
+
+  return (
+    <div className="space-y-3 text-white">
+      <ConditionalBlock
+        title="Self Modifiers"
+        contents={_.filter(content.customMain(charIndex), 'show')}
+        formOverride={setupStore.forms[setupIndex]}
+        statsOverride={stats}
+        teamOverride={team}
+        setForm={(...params) => setupStore.setFormValue(setupIndex, ...params)}
+      />
+      <ConditionalBlock
+        title="Team Modifiers"
+        contents={_.filter(content.customTeam(charIndex), 'show')}
+        formOverride={setupStore.forms[setupIndex]}
+        statsOverride={stats}
+        teamOverride={team}
+        setForm={(...params) => setupStore.setFormValue(setupIndex, ...params)}
+      />
+      <WeaponConditionalBlock
+        contents={content.weapon(charIndex)}
+        formOverride={setupStore.forms[setupIndex]}
+        setForm={(...params) => setupStore.setFormValue(setupIndex, ...params)}
+      />
+      <CustomConditionalBlock
+        index={setupStore.selected[1]}
+        customOverride={setupStore.custom[setupIndex][charIndex]}
+        setValue={setupStore.setCustomValue}
+        removeValue={setupStore.removeCustomValue}
+      />
+    </div>
+  )
+})

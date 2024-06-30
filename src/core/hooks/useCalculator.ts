@@ -296,26 +296,37 @@ export const useCalculator = ({
 
   // Mapped conditional contents that the selected character can toggle (Self + all team buffs from allies)
   // Soon might have to implement single target buff
-  const mapped = _.flatMap(
-    _.map(conditionals, (item, index) =>
-      index === selected
-        ? _.concat(item?.content, artifactConditionals[index]?.content)
-        : _.concat(item?.teammateContent, artifactConditionals[index]?.teamContent)
-    ),
-    (item, index) => _.map(item, (inner) => ({ ...inner, index }))
-  )
+  const customMapped = (selected: number) =>
+    _.flatMap(
+      _.map(conditionals, (item, index) =>
+        index === selected
+          ? _.concat(item?.content, artifactConditionals[index]?.content)
+          : _.concat(item?.teammateContent, artifactConditionals[index]?.teamContent)
+      ),
+      (item, index) => _.map(item, (inner) => ({ ...inner, index }))
+    )
+  const mapped = customMapped(selected)
   const allyMapped = _.map(allyContents(selected), (item) => ({ ...item, index: selected }))
   // Index is embedded into each conditional for the block to call back to
   // Because each of the form with represent ALL the buffs that each character has (including team buffs); not the value that we can change in their page
   // This helps separate buffs trigger of each character and prevent buff stacking
   // Update: This is with the exception of single target buffs that will be put in allies' form instead of the giver so that the buff will not activate all at once
   const mainContent = _.filter(mapped, ['index', selected])
-  const teamContent = [..._.filter(mapped, (item, index) => selected !== item.index), ...allyMapped]
+  const teamContent = [..._.filter(mapped, (item) => selected !== item.index), ...allyMapped]
 
   return {
     main,
     mainComputed,
     finalStats,
-    contents: { main: mainContent, team: teamContent, weapon: weaponSelectable },
+    contents: {
+      main: mainContent,
+      team: teamContent,
+      weapon: weaponSelectable,
+      customMain: (selected: number) => _.filter(customMapped(selected), ['index', selected]),
+      customTeam: (selected: number) => [
+        ..._.filter(customMapped(selected), (item) => selected !== item.index),
+        ..._.map(allyContents(selected), (item) => ({ ...item, index: selected })),
+      ],
+    },
   }
 }
