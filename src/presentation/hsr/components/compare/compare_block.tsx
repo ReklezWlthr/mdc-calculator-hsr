@@ -5,20 +5,17 @@ import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { findCharacter } from '@src/core/utils/finder'
 import { ScalingWrapper } from '@src/presentation/hsr/components/tables/scaling_wrapper'
-import { SuperBreakSubRows } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
 import { CompareSubRows } from '@src/presentation/hsr/components/tables/compare_sub_row'
-import { IScaling } from '@src/domain/conditional'
 import { CompareConditionalBlock } from '@src/presentation/hsr/components/compare/compare_conditional_block'
 import classNames from 'classnames'
 import { LCBlock } from '@src/presentation/hsr/components/lc_block'
 import { MiniRelicBlock } from '@src/presentation/hsr/components/mini_relic_block'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { StatBlock } from '@src/presentation/hsr/components/stat_block'
-import { AscensionIcons } from '@src/presentation/hsr/components/ascension_icons'
-import { ConsCircle } from '@src/presentation/hsr/components/cons_circle'
 import { useCallback } from 'react'
 import { StatsModal } from '@src/presentation/hsr/components/modals/stats_modal'
 import { CompareTraceBlock } from '@src/presentation/hsr/components/compare/compare_trace_block'
+import { CompareSuperBreakSubRows } from '../tables/compare_super_break_sub_row '
 
 export const CompareBlock = observer(() => {
   const { setupStore, modalStore } = useStore()
@@ -98,6 +95,48 @@ export const CompareBlock = observer(() => {
     [allStats, charData]
   )
 
+  const Rows = ({ type }: { type: string }) => (
+    <>
+      {_.map(getUniqueComponent(type), (item) => (
+        <CompareSubRows
+          key={item.name}
+          scaling={_.map(
+            _.map(sumStats, (f) => f?.[type]),
+            (s) => _.find(s, (a) => a.name === item.name)
+          )}
+          stats={sumStats}
+          allStats={allStats}
+          level={levels}
+          name={item.name}
+          property={item.property}
+          element={item.element}
+        />
+      ))}
+      {_.some(sumStats, (item) => item?.SUPER_BREAK) && (
+        <div className="pt-2 space-y-0.5">
+          {_.map(
+            _.filter(mainComputed?.[type], (item) => !!item.break),
+            (item) => (
+              <CompareSuperBreakSubRows
+                key={item.name}
+                scaling={_.map(
+                  _.map(sumStats, (f) => f?.[type]),
+                  (s) => _.find(s, (a) => a.name === item.name)
+                )}
+                stats={sumStats}
+                allStats={allStats}
+                level={levels}
+                name={item.name}
+                property={item.property}
+                element={item.element}
+              />
+            )
+          )}
+        </div>
+      )}
+    </>
+  )
+
   return (
     <div className="grid grid-cols-3 gap-4 px-5">
       {_.some(sumStats) && (
@@ -134,31 +173,7 @@ export const CompareBlock = observer(() => {
             level={char.talents?.basic}
             upgraded={main?.upgrade?.basic}
           >
-            {_.map(getUniqueComponent(StatsObjectKeys.BASIC_SCALING), (item) => (
-              <CompareSubRows
-                key={item.name}
-                scaling={_.map(
-                  _.map(sumStats, (f) => f?.BASIC_SCALING),
-                  (s) => _.find(s, (a) => a.name === item.name)
-                )}
-                stats={sumStats}
-                allStats={allStats}
-                level={levels}
-                name={item.name}
-                property={item.property}
-                element={item.element}
-              />
-            ))}
-            {/* {mainComputed?.SUPER_BREAK && (
-            <div className="pt-2 space-y-0.5">
-              {_.map(
-                _.filter(mainComputed?.BASIC_SCALING, (item) => !!item.break),
-                (item) => (
-                  <SuperBreakSubRows key={item.name} scaling={item} statsOverride={mainComputed} />
-                )
-              )}
-            </div>
-          )} */}
+            <Rows type={StatsObjectKeys.BASIC_SCALING} />
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
           <ScalingWrapper
@@ -170,31 +185,7 @@ export const CompareBlock = observer(() => {
             level={char.talents?.skill}
             upgraded={main?.upgrade?.skill}
           >
-            {_.map(getUniqueComponent(StatsObjectKeys.SKILL_SCALING), (item) => (
-              <CompareSubRows
-                key={item}
-                scaling={_.map(
-                  _.map(sumStats, (f) => f?.SKILL_SCALING),
-                  (s) => _.find(s, (a) => a.name === item.name)
-                )}
-                stats={sumStats}
-                allStats={allStats}
-                level={levels}
-                name={item.name}
-                property={item.property}
-                element={item.element}
-              />
-            ))}
-            {/* {mainComputed?.SUPER_BREAK && (
-            <div className="pt-2 space-y-0.5">
-              {_.map(
-                _.filter(mainComputed?.SKILL_SCALING, (item) => !!item.break),
-                (item) => (
-                  <SuperBreakSubRows key={item.name} scaling={item} statsOverride={mainComputed} />
-                )
-              )}
-            </div>
-          )} */}
+            <Rows type={StatsObjectKeys.SKILL_SCALING} />
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
           <ScalingWrapper
@@ -206,31 +197,7 @@ export const CompareBlock = observer(() => {
             level={char.talents?.ult}
             upgraded={main?.upgrade?.ult}
           >
-            {_.map(getUniqueComponent(StatsObjectKeys.ULT_SCALING), (item) => (
-              <CompareSubRows
-                key={item}
-                scaling={_.map(
-                  _.map(sumStats, (f) => f?.ULT_SCALING),
-                  (s) => _.find(s, (a) => a.name === item.name)
-                )}
-                stats={sumStats}
-                allStats={allStats}
-                level={levels}
-                name={item.name}
-                property={item.property}
-                element={item.element}
-              />
-            ))}
-            {/* {mainComputed?.SUPER_BREAK && (
-            <div className="pt-2 space-y-0.5">
-              {_.map(
-                _.filter(mainComputed?.ULT_SCALING, (item) => !!item.break),
-                (item) => (
-                  <SuperBreakSubRows key={item.name} scaling={item} statsOverride={mainComputed} />
-                )
-              )}
-            </div>
-          )} */}
+            <Rows type={StatsObjectKeys.ULT_SCALING} />
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
           <ScalingWrapper
@@ -240,31 +207,7 @@ export const CompareBlock = observer(() => {
             level={char.talents?.talent}
             upgraded={main?.upgrade?.talent}
           >
-            {_.map(getUniqueComponent(StatsObjectKeys.TALENT_SCALING), (item) => (
-              <CompareSubRows
-                key={item}
-                scaling={_.map(
-                  _.map(sumStats, (f) => f?.TALENT_SCALING),
-                  (s) => _.find(s, (a) => a.name === item.name)
-                )}
-                stats={sumStats}
-                allStats={allStats}
-                level={levels}
-                name={item.name}
-                property={item.property}
-                element={item.element}
-              />
-            ))}
-            {/* {mainComputed?.SUPER_BREAK && (
-            <div className="pt-2 space-y-0.5">
-              {_.map(
-                _.filter(mainComputed?.TALENT_SCALING, (item) => !!item.break),
-                (item) => (
-                  <SuperBreakSubRows key={item.name} scaling={item} statsOverride={mainComputed} />
-                )
-              )}
-            </div>
-          )} */}
+            <Rows type={StatsObjectKeys.TALENT_SCALING} />
           </ScalingWrapper>
           <div className="w-full my-2 border-t-2 border-primary-border" />
           <ScalingWrapper
@@ -337,7 +280,7 @@ export const CompareBlock = observer(() => {
                 </p>
                 <PrimaryButton title="Stats Breakdown" onClick={onOpenStatsModal} />
               </div>
-              <StatBlock index={selected} stat={sumStats[selected]} />
+              <StatBlock index={selected} stat={allStats[setupIndex][charIndex]} />
             </>
           )}
           {tab === 'load' && (

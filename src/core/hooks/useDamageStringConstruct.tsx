@@ -1,7 +1,7 @@
 import { StatsObject, StatsObjectKeys, TalentPropertyMap, TalentTypeMap } from '@src/data/lib/stats/baseConstant'
 import { IScaling } from '@src/domain/conditional'
 import { Element, StatIcons, Stats, TalentProperty } from '@src/domain/constant'
-import { toPercentage } from '../utils/converter'
+import { toPercentage } from '@src/core/utils/converter'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
 import _ from 'lodash'
 import { propertyColor } from '@src/presentation/hsr/components/tables/scaling_sub_rows'
@@ -10,7 +10,7 @@ import { useStore } from '@src/data/providers/app_store_provider'
 
 export const useDamageStringConstruct = (scaling: IScaling, stats: StatsObject, level: number) => {
   if (!scaling || !stats || !level) return
-  const { calculatorStore, teamStore } = useStore()
+  const { calculatorStore } = useStore()
 
   const element = scaling.element
 

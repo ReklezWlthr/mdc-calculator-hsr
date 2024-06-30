@@ -16,14 +16,15 @@ const { publicRuntimeConfig } = getConfig()
 
 interface LCModalProps {
   index: number
+  pathOverride?: PathType
   setWeapon?: (index: number, info: Partial<IWeaponEquip>) => void
 }
 
-export const LCModal = observer(({ index, setWeapon }: LCModalProps) => {
+export const LCModal = observer(({ index, setWeapon, pathOverride }: LCModalProps) => {
   const { teamStore, modalStore } = useStore()
   const { setParams, params } = useParams({
     searchWord: '',
-    path: [findCharacter(teamStore.characters[index]?.cId)?.path],
+    path: [pathOverride || findCharacter(teamStore.characters[index]?.cId)?.path],
     rarity: [],
   })
 

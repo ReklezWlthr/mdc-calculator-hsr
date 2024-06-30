@@ -16,7 +16,7 @@ export const CommonModal = observer(({ title, desc, onCancel, onConfirm, icon }:
   const { modalStore } = useStore()
 
   return (
-    <div className="w-[400px] p-4 text-white rounded-xl bg-primary-dark space-y-3 font-semibold">
+    <div className="w-[400px] p-4 text-white rounded-xl bg-primary-dark space-y-2 font-semibold">
       <div className="flex items-center gap-x-1">
         <i className={classNames('w-8 h-8 flex items-center justify-center text-xl', icon)} />
         <p className="text-lg">{title}</p>

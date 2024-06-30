@@ -10,7 +10,7 @@ import { TalentTypeMap } from '../../../../data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { findCharacter } from '@src/core/utils/finder'
 import { BreakBaseLevel, BreakElementMult } from '@src/domain/scaling'
-import { useDamageStringConstruct } from '@src/core/hooks/constructor'
+import { useDamageStringConstruct } from '@src/core/hooks/useDamageStringConstruct'
 
 interface ScalingSubRowsProps {
   scaling: IScaling

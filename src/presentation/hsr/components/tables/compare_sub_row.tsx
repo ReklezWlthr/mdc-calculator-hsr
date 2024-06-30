@@ -10,7 +10,7 @@ import { TalentTypeMap } from '../../../../data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { findCharacter } from '@src/core/utils/finder'
 import { BreakBaseLevel, BreakElementMult } from '@src/domain/scaling'
-import { StringConstructor, useDamageStringConstruct } from '@src/core/hooks/constructor'
+import { StringConstructor, useDamageStringConstruct } from '@src/core/hooks/useDamageStringConstruct'
 
 interface ScalingSubRowsProps {
   scaling: IScaling[]
@@ -78,7 +78,7 @@ export const CompareSubRows = observer(
       ],
       property
     )
-    // const toughness = scaling.break * (1 + stats.getValue(StatsObjectKeys.BREAK_EFF))
+    const toughness = _.map(scaling, (item, i) => item?.break * (1 + stats[i]?.getValue(StatsObjectKeys.BREAK_EFF)))
 
     const getDmg = (obj: StringConstructor) => {
       return obj?.number.dmg * (noCrit ? 1 : 1 + obj?.number.totalCd * obj?.number.totalCr) || 0
@@ -105,30 +105,37 @@ export const CompareSubRows = observer(
       </div>
     )
 
-    const SubDmgBlock = ({ title, obj }: { title: string; obj: StringConstructor }) => {
+    const SubDmgBlock = ({ title, obj, toughness }: { title: string; obj: StringConstructor; toughness: number }) => {
       const compare = getDmg(obj) - getDmg(main)
       return obj ? (
         <Tooltip
           title={
             <div className="flex items-center justify-between gap-2">
               <p>{`${title}: ${name}`}</p>
-              {main ? (
-                <div className="flex items-center gap-1">
-                  <p
-                    className={classNames('text-xs', {
-                      'text-heal': compare > 0,
-                      'text-red': compare < 0,
-                      'text-blue': compare === 0,
-                    })}
-                  >
-                    {compare >= 0 && '+'}
-                    {toPercentage(compare / getDmg(main))}
+              <div className='flex flex-col items-end gap-y-1'>
+                {!!toughness && (
+                  <p className="text-xs font-normal">
+                    Toughness Damage: <span className="text-desc">{_.round(toughness, 1).toLocaleString()}</span>
                   </p>
-                  <p className="text-xs font-normal">from Main</p>
-                </div>
-              ) : (
-                <p className="text-xs text-desc">NEW</p>
-              )}
+                )}
+                {main ? (
+                  <div className="flex items-center gap-1">
+                    <p
+                      className={classNames('text-xs', {
+                        'text-heal': compare > 0,
+                        'text-red': compare < 0,
+                        'text-blue': compare === 0,
+                      })}
+                    >
+                      {compare >= 0 && '+'}
+                      {toPercentage(compare / getDmg(main))}
+                    </p>
+                    <p className="text-xs font-normal">from Main</p>
+                  </div>
+                ) : (
+                  <p className="text-xs text-desc">NEW</p>
+                )}
+              </div>
             </div>
           }
           body={<Body obj={obj} />}
@@ -150,32 +157,29 @@ export const CompareSubRows = observer(
       <div className="grid items-center grid-cols-9 gap-2 pr-2">
         <p className="col-span-2 text-center">{property}</p>
         <p className={classNames('col-span-1 text-center', ElementColor[element])}>{element}</p>
-        {/* <Tooltip
-        title={
-          <div className="flex items-center justify-between">
-            <p>{scaling.name}</p>
-            {!!toughness && (
-              <p className="text-xs font-normal">
-                Toughness Damage: <span className="text-desc">{_.round(toughness, 1).toLocaleString()}</span>
-              </p>
-            )}
-          </div>
-        }
-        body={DmgBody}
-        style="w-[400px]"
-      >
-        <p className="col-span-1 text-center text-gray">{_.round(main.nudmg).toLocaleString()}</p>
-      </Tooltip> */}
         {main ? (
-          <Tooltip title={'Main: ' + name} body={<Body obj={main} />} style="w-[400px]">
+          <Tooltip
+            title={
+              <div className="flex items-center justify-between">
+                <p>{`Main: ${name}`}</p>
+                {!!toughness[0] && (
+                  <p className="text-xs font-normal">
+                    Toughness Damage: <span className="text-desc">{_.round(toughness[0], 1).toLocaleString()}</span>
+                  </p>
+                )}
+              </div>
+            }
+            body={<Body obj={main} />}
+            style="w-[400px]"
+          >
             <p className="col-span-1 text-xs text-center">{_.round(getDmg(main)).toLocaleString()}</p>
           </Tooltip>
         ) : (
           <p className="col-span-1 text-center text-gray">-</p>
         )}
-        <SubDmgBlock obj={sub1} title="Sub 1" />
-        <SubDmgBlock obj={sub2} title="Sub 2" />
-        <SubDmgBlock obj={sub3} title="Sub 3" />
+        <SubDmgBlock obj={sub1} title="Sub 1" toughness={toughness[1]} />
+        <SubDmgBlock obj={sub2} title="Sub 2" toughness={toughness[2]} />
+        <SubDmgBlock obj={sub3} title="Sub 3" toughness={toughness[3]} />
         <p className="col-span-2 text-xs truncate" title={name}>
           {name}
         </p>

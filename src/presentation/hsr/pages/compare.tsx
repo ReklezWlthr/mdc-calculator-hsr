@@ -1,22 +1,13 @@
-import { useCalculator } from '@src/core/hooks/useCalculator'
-import { StatsObject, StatsObjectKeys, StatsObjectKeysT } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { TalentType } from '@src/domain/constant'
-import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback } from 'react'
 import { CharacterSelect } from '../components/character_select'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { TeamModal, TeamModalProps } from '@src/presentation/hsr/components/modals/team_modal'
-import { TSetup } from '@src/data/stores/setup_store'
 import { CommonModal } from '@src/presentation/components/common_modal'
 import { findCharacter } from '@src/core/utils/finder'
 import classNames from 'classnames'
-import { ScalingWrapper } from '../components/tables/scaling_wrapper'
-import { SuperBreakSubRows } from '../components/tables/super_break_sub_rows'
-import { CompareSubRows } from '../components/tables/compare_sub_row'
-import { IScaling } from '@src/domain/conditional'
 import { CompareBlock } from '@src/presentation/hsr/components/compare/compare_block'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { BulletPoint } from '@src/presentation/components/collapsible'
@@ -33,13 +24,35 @@ export const ComparePage = observer(() => {
   const onOpenConfirmModal = useCallback((onConfirm: () => void) => {
     modalStore.openModal(
       <CommonModal
-        icon="fa-solid fa-question-circle text-hsr-imaginary"
+        icon="fa-solid fa-exclamation-circle text-hsr-imaginary"
         title="Comparing Session Exists"
-        desc={`Do you want to change who to compare?\nConfirming to this will reset teams you are comparing to.`}
+        desc={`Do you want to change the main comparison target?\nConfirming to this will remove any teams you are comparing to.`}
         onConfirm={() => {
           onConfirm()
           setupStore.setValue('comparing', Array(3))
         }}
+      />
+    )
+  }, [])
+
+  const onOpenSwapModal = useCallback((onConfirm: () => void) => {
+    modalStore.openModal(
+      <CommonModal
+        icon="fa-solid fa-question-circle text-hsr-imaginary"
+        title="Swap Main Setup"
+        desc={`By confirming, this setup will be swapped with the current Main setup. Do you wish to proceed?`}
+        onConfirm={onConfirm}
+      />
+    )
+  }, [])
+
+  const onOpenRemoveModal = useCallback((onConfirm: () => void) => {
+    modalStore.openModal(
+      <CommonModal
+        icon="fa-solid fa-question-circle text-hsr-imaginary"
+        title="Remove Setup"
+        desc={`Do you want to remove this setup? Any changes made will not be saved.`}
+        onConfirm={onConfirm}
       />
     )
   }, [])
@@ -51,7 +64,18 @@ export const ComparePage = observer(() => {
           <div className="flex items-center gap-3">
             <p className="flex items-center gap-2 font-bold">
               Main Setup
-              <Tooltip title="Quick Tip to Setup Comparison" body={<div></div>}>
+              <Tooltip
+                title="Quick Tip to Setup Comparison"
+                body={
+                  <div className="font-normal">
+                    <p>
+                      - Difference percentages shown in the tooltip are relative to the value of Main setup. Think of
+                      the Main value as <span className="text-desc">100%</span>.
+                    </p>
+                  </div>
+                }
+                style="w-[350px]"
+              >
                 <i className="fa-regular fa-question-circle" />
               </Tooltip>
             </p>
@@ -68,13 +92,19 @@ export const ComparePage = observer(() => {
                     <CharacterSelect
                       key={`char_select_${index}`}
                       onClick={() => {
+                        const handler = () => {
+                          setupStore.setValue('mainChar', main[index].cId)
+                          setupStore.setValue('selected', [0, index])
+                        }
                         if (
                           _.some(setupStore.comparing, 'name') &&
                           main[index].cId !== setupStore.mainChar &&
                           setupStore.mainChar
                         )
-                          onOpenConfirmModal(() => setupStore.setValue('mainChar', main[index].cId))
-                        else setupStore.setValue('mainChar', main[index].cId)
+                          onOpenConfirmModal(handler)
+                        else {
+                          handler()
+                        }
                       }}
                       isSelected={main[index].cId === setupStore.mainChar}
                       id={main[index].cId}
@@ -114,7 +144,36 @@ export const ComparePage = observer(() => {
             {setupStore.mainChar &&
               _.map(setupStore.comparing, (item, tI) => (
                 <div className="space-y-1" key={tI}>
-                  <p className="font-bold">Sub Setup {tI + 1}</p>
+                  <div className="flex items-center justify-between">
+                    <p className="font-bold">Sub Setup {tI + 1}</p>
+                    {!!item && (
+                      <div className="flex items-center gap-2 mr-2">
+                        <i
+                          title="Swap with Main"
+                          className="flex items-center justify-center w-6 h-6 text-xs rounded-sm cursor-pointer fa-solid fa-star bg-primary text-desc"
+                          onClick={() =>
+                            onOpenSwapModal(() => {
+                              const main = setupStore.main
+                              const toBeSwapped = setupStore.comparing[tI]
+                              setupStore.comparing.splice(tI, 1, main)
+                              setupStore.setValue('main', toBeSwapped)
+                              setupStore.setValue('comparing', setupStore.comparing)
+                            })
+                          }
+                        />
+                        <i
+                          title="Remove Setup"
+                          className="flex items-center justify-center w-6 h-6 text-xs rounded-sm cursor-pointer fa-solid fa-trash bg-primary text-red"
+                          onClick={() =>
+                            onOpenRemoveModal(() => {
+                              setupStore.comparing.splice(tI, 1, null)
+                              setupStore.setValue('comparing', setupStore.comparing)
+                            })
+                          }
+                        />
+                      </div>
+                    )}
+                  </div>
                   <div
                     className={classNames(
                       'flex gap-3 px-2 py-2 duration-200 rounded-lg bg-primary-dark h-[64px] w-[244px]',

@@ -113,7 +113,8 @@ export const LCBlock = observer(
     const invalid = weaponType !== weaponData?.type
 
     const onOpenModal = useCallback(() => {
-      char && modalStore.openModal(<LCModal index={index} setWeapon={setWeapon} />)
+      char &&
+        modalStore.openModal(<LCModal index={index} setWeapon={setWeapon} pathOverride={findCharacter(char)?.path} />)
     }, [modalStore, index, char, setWeapon])
 
     return (
