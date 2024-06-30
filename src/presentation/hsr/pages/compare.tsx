@@ -86,6 +86,11 @@ export const ComparePage = observer(() => {
                       the Main setup will be marked as <b className="text-desc">NEW</b>.
                     </p>
                     <p>- All setups share the same enemy target setup.</p>
+                    <p>
+                      - Although the calculator allows multiple ability levels to be compared together, it is
+                      recommended to use the same ability level across all setups for the best result, unless you really
+                      want to compare them.
+                    </p>
                   </div>
                 }
                 style="w-[450px]"

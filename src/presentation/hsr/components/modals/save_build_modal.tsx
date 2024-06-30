@@ -77,7 +77,7 @@ export const SaveBuildModal = observer(({ index }: { index: number }) => {
                 >
                   <div className="flex items-center w-full gap-2">
                     {build.isDefault && <i className="text-xs fa-solid fa-star text-yellow" title="Default Build" />}
-                    <p className="w-full truncate">{build.name}</p>
+                    <p className="w-full font-bold truncate">{build.name}</p>
                   </div>
                   <div className="flex gap-x-2">
                     <PrimaryButton

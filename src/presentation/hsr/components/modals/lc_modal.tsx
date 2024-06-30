@@ -78,7 +78,7 @@ export const LCModal = observer(({ index, setWeapon, pathOverride }: LCModalProp
           <FilterIcon path={PathType.ABUNDANCE} />
         </div>
       </div>
-      <div className="grid w-full grid-cols-9 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
+      <div className="grid w-full grid-cols-10 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
         {_.map(filteredWeapon, (item) => (
           <div
             className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95"
