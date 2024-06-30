@@ -41,7 +41,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Ultimate',
       title: 'Syllogistic Paradox',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK to a single target enemy and applies <b>Wiseman's Folly</b>. When Dr. Ratio's allies attack a target afflicted with <b>Wiseman's Folly</b>, Dr. Ratio launches his Talent's follow-up attack for <span class="text-desc">1</span> time against this target.
-      <br />,<b>Wiseman's Folly</b> can be triggered for up to <span class="text-desc">2</span> times and only affects the most recent target of Dr. Ratio's Ultimate. This trigger count resets after Dr. Ratio's Ultimate is used.`,
+      <br /><b>Wiseman's Folly</b> can be triggered for up to <span class="text-desc">2</span> times and only affects the most recent target of Dr. Ratio's Ultimate. This trigger count resets after Dr. Ratio's Ultimate is used.`,
       value: [{ base: 144, growth: 9.6, style: 'curved' }],
       level: ult,
     },
