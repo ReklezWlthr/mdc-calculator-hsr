@@ -181,6 +181,7 @@ export const ComparePage = observer(() => {
                               setupStore.setValue('comparing', setupStore.comparing)
                               setupStore.setValue('forms', swapElement(setupStore.forms, 0, tI + 1))
                               setupStore.setValue('custom', swapElement(setupStore.custom, 0, tI + 1))
+                              setupStore.setValue('selected', [0, setupStore.selected[1]])
                             })
                           }
                         />
@@ -191,6 +192,7 @@ export const ComparePage = observer(() => {
                             onOpenRemoveModal(() => {
                               setupStore.comparing.splice(tI, 1, null)
                               setupStore.setValue('comparing', setupStore.comparing)
+                              setupStore.setValue('selected', [0, 0])
                             })
                           }
                         />
