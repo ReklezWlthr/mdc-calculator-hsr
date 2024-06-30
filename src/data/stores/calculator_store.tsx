@@ -99,7 +99,8 @@ export class CalculatorStore {
     this.form = _.cloneDeep(this.form)
   }
 
-  setCustomValue = (index: number, innerIndex: number, key: StatsObjectKeysT, value: any, debuff: boolean = false) => {
+  setCustomValue = (innerIndex: number, key: StatsObjectKeysT, value: any, debuff: boolean = false) => {
+    const index = this.selected
     if (innerIndex < 0) {
       this.custom[index] = [...(this.custom[index] || []), { name: key, value, debuff }]
     } else {

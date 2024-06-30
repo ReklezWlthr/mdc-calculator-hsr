@@ -31,6 +31,7 @@ export const CompareBlock = observer(() => {
     doNotSaveStats: true,
     formOverride: setupStore.forms[0],
     indexOverride: selected,
+    customOverride: setupStore.custom[0],
     initFormFunction: (f) => setupStore.setForm(0, f),
   })
   const sub1 = useCalculator({
@@ -38,6 +39,7 @@ export const CompareBlock = observer(() => {
     doNotSaveStats: true,
     formOverride: setupStore.forms[1],
     indexOverride: selectedS1,
+    customOverride: setupStore.custom[1],
     initFormFunction: (f) => setupStore.setForm(1, f),
   })
   const sub2 = useCalculator({
@@ -45,6 +47,7 @@ export const CompareBlock = observer(() => {
     doNotSaveStats: true,
     formOverride: setupStore.forms[2],
     indexOverride: selectedS2,
+    customOverride: setupStore.custom[2],
     initFormFunction: (f) => setupStore.setForm(2, f),
   })
   const sub3 = useCalculator({
@@ -52,6 +55,7 @@ export const CompareBlock = observer(() => {
     doNotSaveStats: true,
     formOverride: setupStore.forms[3],
     indexOverride: selectedS3,
+    customOverride: setupStore.custom[3],
     initFormFunction: (f) => setupStore.setForm(3, f),
   })
 

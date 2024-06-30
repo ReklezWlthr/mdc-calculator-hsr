@@ -2,6 +2,7 @@ import { Element, IArtifactEquip, IBuild, ITeamChar, IWeapon, IWeaponEquip, Path
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
+import { StatsObjectKeysT } from '../lib/stats/baseConstant'
 
 enableStaticRendering(typeof window === 'undefined')
 
@@ -11,6 +12,9 @@ export interface TSetup {
   id: string
 }
 
+export type CustomSetterT = (innerIndex: number, key: StatsObjectKeysT, value: any, debuff: boolean) => void
+export type CustomRemoverT = (innerIndex: number) => void
+
 export interface SetupStoreType {
   team: TSetup[]
   tab: string
@@ -18,12 +22,19 @@ export interface SetupStoreType {
   main: TSetup
   mainChar: string
   comparing: TSetup[]
+  custom: {
+    name: StatsObjectKeysT
+    value: number
+    debuff: boolean
+  }[][][]
   forms: Record<string, any>[][]
   hydrated: boolean
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   setForm: (index: number, value: Record<string, any>[]) => void
   setFormValue: (setupIndex: number, charIndex: number, key: string, value: any) => void
   setComparing: (value: Partial<ITeamChar>) => void
+  setCustomValue: CustomSetterT
+  removeCustomValue: CustomRemoverT
   saveTeam: (team: TSetup) => boolean
   editTeam: (tId: string, team: Partial<TSetup>) => boolean
   deleteTeam: (tId: string) => boolean
@@ -39,6 +50,11 @@ export class SetupStore {
   main: TSetup
   mainChar: string
   comparing: TSetup[]
+  custom: {
+    name: StatsObjectKeysT
+    value: number
+    debuff: boolean
+  }[][][]
   hydrated: boolean = false
   forms: Record<string, any>[][]
 
@@ -46,6 +62,7 @@ export class SetupStore {
     this.team = []
     this.tab = 'mod'
     this.selected = [0, 0]
+    this.custom = Array(4).fill(Array(4))
     this.main = null
     this.mainChar = null
     this.comparing = Array(3)
@@ -77,6 +94,22 @@ export class SetupStore {
       this.comparing[setupIndex - 1].char[charIndex] = { ...this.comparing[setupIndex - 1].char[charIndex], ...value }
       this.comparing = _.cloneDeep(this.comparing)
     }
+  }
+
+  setCustomValue = (innerIndex: number, key: StatsObjectKeysT, value: any, debuff: boolean = false) => {
+    const [setupIndex, charIndex] = this.selected
+    if (innerIndex < 0) {
+      this.custom[setupIndex][charIndex] = [...(this.custom[setupIndex][charIndex] || []), { name: key, value, debuff }]
+    } else {
+      this.custom[setupIndex][charIndex].splice(innerIndex, 1, { name: key, value, debuff })
+    }
+    this.custom = _.cloneDeep(this.custom)
+  }
+
+  removeCustomValue = (innerIndex: number) => {
+    const [setupIndex, charIndex] = this.selected
+    this.custom[setupIndex][charIndex].splice(innerIndex, 1)
+    this.custom = _.cloneDeep(this.custom)
   }
 
   saveTeam = (team: TSetup) => {

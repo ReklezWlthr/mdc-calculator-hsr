@@ -32,7 +32,12 @@ export const CompareConditionalBlock = observer(
           formOverride={setupStore.forms[setupStore.selected[0]]}
           setForm={(i, k, v) => setupStore.setFormValue(setupStore.selected[0], i, k, v)}
         />
-        <CustomConditionalBlock index={setupStore.selected[1]} />
+        <CustomConditionalBlock
+          index={setupStore.selected[1]}
+          customOverride={setupStore.custom[setupStore.selected[0]][setupStore.selected[1]]}
+          setValue={setupStore.setCustomValue}
+          removeValue={setupStore.removeCustomValue}
+        />
       </div>
     )
   }

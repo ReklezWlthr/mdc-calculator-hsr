@@ -16,7 +16,7 @@ import {
 } from '@src/data/lib/stats/conditionals/lightcones/lc_conditionals'
 import { Element, ITeamChar, Stats } from '@src/domain/constant'
 import { isFlat } from '@src/presentation/hsr/components/custom_modal'
-import { StatsObject } from '@src/data/lib/stats/baseConstant'
+import { StatsObject, StatsObjectKeysT } from '@src/data/lib/stats/baseConstant'
 import { DebuffTypes } from '@src/domain/conditional'
 import { getSetCount } from '../utils/data_format'
 import { AllRelicSets } from '@src/data/db/artifacts'
@@ -25,6 +25,11 @@ interface CalculatorOptions {
   min?: boolean
   teamOverride?: ITeamChar[]
   formOverride?: Record<string, any>[]
+  customOverride?: {
+    name: StatsObjectKeysT
+    value: number
+    debuff: boolean
+  }[][]
   doNotSaveStats?: boolean
   indexOverride?: number
   initFormFunction?: (f: Record<string, any>[]) => void
@@ -34,6 +39,7 @@ export const useCalculator = ({
   min,
   teamOverride,
   formOverride,
+  customOverride,
   indexOverride,
   doNotSaveStats,
   initFormFunction,
@@ -45,6 +51,7 @@ export const useCalculator = ({
 
   const forms = formOverride || calculatorStore.form
   const team = teamOverride || teamStore.characters
+  const custom = customOverride || calculatorStore.custom
 
   const mainComputed = finalStats?.[selected]
 
@@ -180,7 +187,7 @@ export const useCalculator = ({
     })
     const postCustom = _.map(preComputeShared, (base, index) => {
       let x = base
-      _.forEach(calculatorStore.custom[index], (v) => {
+      _.forEach(custom[index], (v) => {
         x[v.name as any].push({
           name: 'Custom',
           source: 'Manual',
@@ -279,15 +286,7 @@ export const useCalculator = ({
       calculatorStore.setValue('debuffs', debuffs)
     }
     setFinalStats(final)
-  }, [
-    baseStats,
-    forms,
-    calculatorStore.custom,
-    team,
-    calculatorStore.weakness,
-    calculatorStore.broken,
-    calculatorStore.toughness,
-  ])
+  }, [baseStats, forms, custom, team, calculatorStore.weakness, calculatorStore.broken, calculatorStore.toughness])
 
   // =================
   //

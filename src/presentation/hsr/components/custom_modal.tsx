@@ -8,16 +8,19 @@ import _ from 'lodash'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
+import { CustomSetterT } from '@src/data/stores/setup_store'
 
 export const isFlat = (key: string) =>
   _.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.SPD], key) || _.includes(key, '_F_')
 
-export const CustomModal = observer(({ index }: { index: number }) => {
+export const CustomModal = observer(({ setCustomValue }: { setCustomValue?: CustomSetterT }) => {
   const { calculatorStore, modalStore } = useStore()
 
   const [selectedTab, setSelectedTab] = useState('stats')
   const [selectedElement, setSelectedElement] = useState(Element.PHYSICAL)
   const [selectedTalent, setSelectedTalent] = useState('BASIC')
+
+  const set = setCustomValue || calculatorStore.setCustomValue
 
   const [key, setKey] = useState(StatsObjectKeys[Stats.ALL_DMG])
   const [value, setValue] = useState(0)
@@ -93,24 +96,19 @@ export const CustomModal = observer(({ index }: { index: number }) => {
 
   const onAddMod = () => {
     if (selectedTab === 'stats') {
-      calculatorStore.setCustomValue(index, -1, StatsObjectKeys[key], value)
+      set(-1, StatsObjectKeys[key], value)
     }
     if (selectedTab === 'element') {
       if (key === 'percentage')
-        calculatorStore.setCustomValue(index, -1, StatsObjectKeys[`${selectedElement} DMG%`] as any, value)
+        set(-1, StatsObjectKeys[`${selectedElement} DMG%`] as any, value)
       if (key === 'pen')
-        calculatorStore.setCustomValue(
-          index,
-          -1,
-          StatsObjectKeys[`${selectedElement.toUpperCase()}_RES_PEN`] as any,
-          value
-        )
+        set(-1, StatsObjectKeys[`${selectedElement.toUpperCase()}_RES_PEN`] as any, value)
     }
     if (selectedTab === 'talent') {
-      calculatorStore.setCustomValue(index, -1, StatsObjectKeys[selectedTalent + key] as any, value)
+      set(-1, StatsObjectKeys[selectedTalent + key] as any, value)
     }
     if (_.includes(['reaction', 'debuff'], selectedTab)) {
-      calculatorStore.setCustomValue(index, -1, key as any, value, selectedTab === 'debuff')
+      set(-1, key as any, value, selectedTab === 'debuff')
     }
     modalStore.closeModal()
   }
