@@ -353,7 +353,7 @@ export const CompareBlock = observer(() => {
               </div>
             </>
           )}
-          {tab === 'trace' && <CompareTraceBlock team={team} char={char} />}
+          {tab === 'trace' && <CompareTraceBlock team={team} char={team[setupIndex][charIndex]} />}
         </div>
       )}
     </div>
