@@ -2,9 +2,9 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { HsrPage } from '@src/domain/constant'
 import classNames from 'classnames'
 import { useCallback } from 'react'
-import { SettingModal } from './setting_modal'
-import { HelpModal } from './help_modal'
-import { IntroModal } from './intro_modal'
+import { SettingModal } from '@src/presentation/hsr/components/modals/setting_modal'
+import { HelpModal } from '@src/presentation/hsr/components/modals/help_modal'
+import { IntroModal } from '@src/presentation/hsr/components/modals/intro_modal'
 
 export const Sidebar = ({
   currentPage,

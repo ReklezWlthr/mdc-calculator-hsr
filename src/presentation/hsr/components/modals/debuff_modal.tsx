@@ -2,9 +2,9 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { BulletPoint, Collapsible } from '@src/presentation/components/collapsible'
-import { AttributeBlock } from './stats_modal'
+import { AttributeBlock } from '@src/presentation/hsr/components/modals/stats_modal'
 import { countDebuff, countDot } from '@src/core/utils/finder'
-import { DebuffTypes } from '../../../domain/conditional'
+import { DebuffTypes } from '@src/domain/conditional'
 
 export const DebuffModal = observer(() => {
   const { calculatorStore } = useStore()

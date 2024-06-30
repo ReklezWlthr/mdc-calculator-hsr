@@ -10,7 +10,7 @@ import { ImportExport } from './import'
 import { Calculator } from './calc'
 import { MyCharacters } from './my_chars'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { IntroModal } from '../components/intro_modal'
+import { IntroModal } from '@src/presentation/hsr/components/modals/intro_modal'
 // import { CyclePage } from './cycle'
 import { ComparePage } from './compare'
 

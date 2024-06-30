@@ -22,7 +22,7 @@ import { RelicBlock } from '../components/relic_block'
 import { LCBlock } from '../components/lc_block'
 import { SetToolTip } from './team_setup'
 import { getSetCount } from '@src/core/utils/data_format'
-import { ImportModal } from '../components/import_modal'
+import { ImportModal } from '@src/presentation/hsr/components/modals/import_modal'
 import dayjs from 'dayjs'
 
 export const ImportExport = observer(() => {

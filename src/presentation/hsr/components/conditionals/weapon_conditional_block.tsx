@@ -8,12 +8,12 @@ import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { Dispatch, SetStateAction, useState } from 'react'
-import { LCTooltip } from './lc_block'
+import { LCTooltip } from '@src/presentation/hsr/components/lc_block'
 import { findCharacter } from '@src/core/utils/finder'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { toPercentage } from '@src/core/utils/converter'
 import { StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
-import { FormSetterT } from './conditional_block'
+import { FormSetterT } from '@src/presentation/hsr/components/conditionals/conditional_block'
 
 export interface IContentIndexOwner extends IContent {
   index: number

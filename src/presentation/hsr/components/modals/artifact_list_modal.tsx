@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { RelicBlock } from './relic_block'
+import { RelicBlock } from '@src/presentation/hsr/components/relic_block'
 import classNames from 'classnames'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { useParams } from '@src/core/hooks/useParams'

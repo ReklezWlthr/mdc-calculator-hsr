@@ -1,8 +1,8 @@
 import { observer } from 'mobx-react-lite'
-import { TalentIcon } from './tables/scaling_wrapper'
+import { TalentIcon } from '@src/presentation/hsr/components/tables/scaling_wrapper'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import _ from 'lodash'
-import { TraceBlock } from './trace_block'
+import { TraceBlock } from '@src/presentation/hsr/components/trace_block'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { AscensionOptions, EidolonOptions, ITeamChar } from '@src/domain/constant'
 import { findCharacter } from '@src/core/utils/finder'
@@ -11,8 +11,8 @@ import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { findBaseLevel, findMaxLevel, findMaxTalentLevel } from '@src/core/utils/data_format'
 import { useMemo } from 'react'
-import { AbilityBlock } from './ability_block'
-import { BonusAbilityBlock } from './bonus_ability_block'
+import { AbilityBlock } from '@src/presentation/hsr/components/ability_block'
+import { BonusAbilityBlock } from '@src/presentation/hsr/components/bonus_ability_block'
 
 export const CompareTraceBlock = observer(({ char, team }: { char: ITeamChar; team: ITeamChar[][] }) => {
   const { setupStore } = useStore()

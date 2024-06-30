@@ -9,7 +9,7 @@ import classNames from 'classnames'
 import _, { remove } from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { Dispatch, SetStateAction, useCallback, useState } from 'react'
-import { CustomModal } from './custom_modal'
+import { CustomModal } from '@src/presentation/hsr/components/modals/custom_modal'
 import { CustomRemoverT, CustomSetterT } from '@src/data/stores/setup_store'
 import { StatsObjectKeysT } from '@src/data/lib/stats/baseConstant'
 

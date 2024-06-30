@@ -1,6 +1,6 @@
 import { useStore } from '@src/data/providers/app_store_provider'
 import { useCallback, useMemo } from 'react'
-import { CharacterModal } from './character_modal'
+import { CharacterModal } from '@src/presentation/hsr/components/modals/character_modal'
 import { observer } from 'mobx-react-lite'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
 import { AscensionOptions, EidolonOptions, ITeamChar } from '@src/domain/constant'

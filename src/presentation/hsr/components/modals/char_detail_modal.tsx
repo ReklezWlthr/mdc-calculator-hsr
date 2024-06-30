@@ -7,14 +7,14 @@ import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useCallback, useMemo } from 'react'
-import { TalentIcon } from './tables/scaling_wrapper'
+import { TalentIcon } from '@src/presentation/hsr/components/tables/scaling_wrapper'
 import { ITalent } from '@src/domain/conditional'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
-import { TraceBlock } from './trace_block'
+import { TraceBlock } from '@src/presentation/hsr/components/trace_block'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { AbilityBlock } from './ability_block'
+import { AbilityBlock } from '@src/presentation/hsr/components/ability_block'
 
 export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId: string }) => {
   const { charStore, toastStore, modalStore } = useStore()

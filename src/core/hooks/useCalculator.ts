@@ -15,7 +15,7 @@ import {
   LCTeamConditionals,
 } from '@src/data/lib/stats/conditionals/lightcones/lc_conditionals'
 import { Element, ITalentLevel, ITeamChar, Stats } from '@src/domain/constant'
-import { isFlat } from '@src/presentation/hsr/components/custom_modal'
+import { isFlat } from '@src/presentation/hsr/components/modals/custom_modal'
 import { StatsObject, StatsObjectKeysT } from '@src/data/lib/stats/baseConstant'
 import { DebuffTypes } from '@src/domain/conditional'
 import { getSetCount } from '../utils/data_format'

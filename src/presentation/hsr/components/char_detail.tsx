@@ -20,7 +20,7 @@ import { StatIcons, Stats, TalentType } from '@src/domain/constant'
 import { useParams } from '@src/core/hooks/useParams'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { toPercentage } from '@src/core/utils/converter'
-import { CharDetailModal } from './char_detail_modal'
+import { CharDetailModal } from '@src/presentation/hsr/components/modals/char_detail_modal'
 
 export const CharDetail = observer(() => {
   const { charStore, settingStore, teamStore, modalStore } = useStore()

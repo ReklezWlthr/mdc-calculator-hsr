@@ -6,7 +6,7 @@ import { PrimaryButton } from '@src/presentation/components/primary.button'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useCallback, useMemo, useState } from 'react'
-import { CharacterSelect } from './character_select'
+import { CharacterSelect } from '@src/presentation/hsr/components/character_select'
 import { TSetup } from '@src/data/stores/setup_store'
 
 export interface TeamModalProps {

@@ -7,7 +7,7 @@ import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useCallback, useMemo } from 'react'
-import { ArtifactListModal, RelicSetterT } from './artifact_list_modal'
+import { ArtifactListModal, RelicSetterT } from '@src/presentation/hsr/components/modals/artifact_list_modal'
 
 export const MiniRelicBlock = observer(
   ({ aId, index, setRelic, type }: { aId: string; index: number; setRelic: RelicSetterT, type: number }) => {
