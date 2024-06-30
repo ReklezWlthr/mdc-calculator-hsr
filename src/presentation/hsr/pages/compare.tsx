@@ -27,7 +27,7 @@ export const ComparePage = observer(() => {
       <CommonModal
         icon="fa-solid fa-exclamation-circle text-hsr-imaginary"
         title="Comparing Session Exists"
-        desc={`Do you want to change the main comparison target?\nConfirming to this will remove any teams you are comparing to.`}
+        desc={`Do you want to change the main comparison target?\nConfirming to this will remove any Sub setups you are comparing to.`}
         onConfirm={() => {
           onConfirm()
           setupStore.setValue('comparing', Array(3))
@@ -64,18 +64,31 @@ export const ComparePage = observer(() => {
         <div className="space-y-2">
           <div className="flex items-center gap-3">
             <p className="flex items-center gap-2 font-bold">
+              <i className="text-desc fa-solid fa-star" />
               Main Setup
               <Tooltip
-                title="Quick Tip to Setup Comparison"
+                title="Quick Tips to Setup Comparison"
                 body={
                   <div className="font-normal">
                     <p>
-                      - Difference percentages shown in the tooltip are relative to the value of Main setup. Think of
-                      the Main value as <span className="text-desc">100%</span>.
+                      - You can only compare <span className="text-desc">one</span> character at a time. Selecting a new
+                      character to focus on will remove all Sub setups without affecting the Main setup. It is
+                      recommended to switch your Main setup to the desired one before switching character.
                     </p>
+                    <p>- Sub setups eligible for comparison must contain the selected character.</p>
+                    <p>
+                      - Any changes made to setups within this page will <span className="text-red">not</span> be
+                      reflected on other pages. All changes made will also be lost when closing/refreshing the site.
+                    </p>
+                    <p>
+                      - Difference percentages shown in the tooltip are relative to the value of Main setup. Think of
+                      the Main value as <span className="text-desc">100%</span>. Any damage components not present in
+                      the Main setup will be marked as <b className="text-desc">NEW</b>.
+                    </p>
+                    <p>- All setups share the same enemy target setup.</p>
                   </div>
                 }
-                style="w-[350px]"
+                style="w-[450px]"
               >
                 <i className="fa-regular fa-question-circle" />
               </Tooltip>
