@@ -105,6 +105,40 @@ export const CompareSubRows = observer(
       </div>
     )
 
+    const SubDmgBlock = ({ title, obj }: { title: string; obj: StringConstructor }) => {
+      const compare = getDmg(obj) - getDmg(main)
+      return obj ? (
+        <Tooltip
+          title={
+            <div className="flex items-center gap-2">
+              {`${title}: ${name}`}
+              <p
+                className={classNames({
+                  'text-heal': compare > 0,
+                  'text-red': compare < 0,
+                  'text-blue': compare === 0,
+                })}
+              >
+                {compare > 0 && '+'}
+                {toPercentage(compare / getDmg(main))}
+              </p>
+            </div>
+          }
+          body={<Body obj={obj} />}
+          style="w-[400px]"
+        >
+          <p className="col-span-1 text-xs text-center">
+            {_.round(getDmg(obj)).toLocaleString()}
+            {compare > 0 && <i className="ml-1 text-[10px] fa-solid fa-caret-up text-heal" />}
+            {compare < 0 && <i className="ml-1 text-[10px] fa-solid fa-caret-down text-red" />}
+            {compare === 0 && <i className="ml-1 text-[10px] fa-solid fa-minus text-blue" />}
+          </p>
+        </Tooltip>
+      ) : (
+        <p className="col-span-1 text-center text-gray">-</p>
+      )
+    }
+
     return (
       <div className="grid items-center grid-cols-9 gap-2 pr-2">
         <p className="col-span-2 text-center">{property}</p>
@@ -132,42 +166,10 @@ export const CompareSubRows = observer(
         ) : (
           <p className="col-span-1 text-center text-gray">-</p>
         )}
-        {sub1 ? (
-          <Tooltip title={'Sub 1: ' + name} body={<Body obj={sub1} />} style="w-[400px]">
-            <p className="col-span-1 text-xs text-center">
-              {_.round(getDmg(sub1)).toLocaleString()}
-              {getDmg(sub1) > getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-caret-up text-heal" />}
-              {getDmg(sub1) < getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-caret-down text-red" />}
-              {getDmg(sub1) === getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-minus text-blue" />}
-            </p>
-          </Tooltip>
-        ) : (
-          <p className="col-span-1 text-center text-gray">-</p>
-        )}
-        {sub2 ? (
-          <Tooltip title={'Sub 2: ' + name} body={<Body obj={sub2} />} style="w-[400px]">
-            <p className="col-span-1 text-xs text-center">
-              {_.round(getDmg(sub2)).toLocaleString()}
-              {getDmg(sub2) > getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-caret-up text-heal" />}
-              {getDmg(sub2) < getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-caret-down text-red" />}
-              {getDmg(sub2) === getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-minus text-blue" />}
-            </p>
-          </Tooltip>
-        ) : (
-          <p className="col-span-1 text-center text-gray">-</p>
-        )}
-        {sub3 ? (
-          <Tooltip title={'Sub 3: ' + name} body={<Body obj={sub3} />} style="w-[400px]">
-            <p className="col-span-1 text-xs text-center">
-              {_.round(getDmg(sub3)).toLocaleString()}
-              {getDmg(sub3) > getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-caret-up text-heal" />}
-              {getDmg(sub3) < getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-caret-down text-red" />}
-              {getDmg(sub3) === getDmg(main) && <i className="ml-1 text-[10px] fa-solid fa-minus text-blue" />}
-            </p>
-          </Tooltip>
-        ) : (
-          <p className="col-span-1 text-center text-gray">-</p>
-        )}
+        <SubDmgBlock obj={sub1} title="Sub 1" />
+        <SubDmgBlock obj={sub2} title="Sub 2" />
+        <SubDmgBlock obj={sub3} title="Sub 3" />
+
         <p className="col-span-2 text-xs truncate" title={name}>
           {name}
         </p>

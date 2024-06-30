@@ -142,7 +142,7 @@ export const ComparePage = observer(() => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-4 px-5">{charData && <CompareBlock />}</div>
+      {charData && <CompareBlock />}
     </div>
   )
 })

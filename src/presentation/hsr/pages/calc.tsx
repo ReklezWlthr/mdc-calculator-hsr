@@ -235,7 +235,7 @@ export const Calculator = observer(({}: {}) => {
             <>
               <ConditionalBlock title="Self Modifiers" contents={_.filter(contents.main, 'show')} />
               <ConditionalBlock title="Team Modifiers" contents={_.filter(contents.team, 'show')} />
-              <WeaponConditionalBlock contents={contents.weapon(selected)} index={selected} />
+              <WeaponConditionalBlock contents={contents.weapon(selected)} />
               <CustomConditionalBlock index={selected} />
             </>
           )}
@@ -289,8 +289,17 @@ export const Calculator = observer(({}: {}) => {
               <div className="w-full space-y-1">
                 <p className="font-bold text-center">Relics</p>
                 <div className="grid grid-cols-2 gap-2.5">
-                  {_.map(char.equipments.artifacts, (a) => (
-                    <MiniRelicBlock aId={a} index={selected} />
+                  {_.map(char.equipments.artifacts, (a, index) => (
+                    <MiniRelicBlock
+                      key={index}
+                      type={index + 1}
+                      aId={a}
+                      index={selected}
+                      setRelic={(i, t, a) => {
+                        team[i].equipments.artifacts.splice(t - 1, 1, a)
+                        calculatorStore.setValue('team', _.cloneDeep(team))
+                      }}
+                    />
                   ))}
                 </div>
               </div>

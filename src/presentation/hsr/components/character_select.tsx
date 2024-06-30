@@ -15,11 +15,11 @@ export const CharacterSelect = ({
 
   return (
     <div
-      className={classNames(
-        'w-12 h-12 rounded-full bg-primary duration-200 relative shrink-0 overflow-hidden',
-        { [isSelected ? 'ring-4 ring-primary-lighter' : 'hover:ring-2 ring-primary-light']: onClick },
-        { 'cursor-pointer': onClick }
-      )}
+      className={classNames('w-12 h-12 rounded-full bg-primary duration-200 relative shrink-0 overflow-hidden', {
+        'hover:ring-2 ring-primary-light': onClick && !isSelected,
+        'ring-4 ring-primary-lighter': isSelected,
+        'cursor-pointer': onClick,
+      })}
       onClick={() => onClick?.()}
     >
       <img

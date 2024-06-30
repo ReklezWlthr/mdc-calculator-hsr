@@ -13,6 +13,8 @@ export interface TSetup {
 
 export interface SetupStoreType {
   team: TSetup[]
+  tab: string
+  selected: number[]
   main: TSetup
   mainChar: string
   comparing: TSetup[]
@@ -20,6 +22,8 @@ export interface SetupStoreType {
   hydrated: boolean
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   setForm: (index: number, value: Record<string, any>[]) => void
+  setFormValue: (setupIndex: number, charIndex: number, key: string, value: any) => void
+  setComparing: (value: Partial<ITeamChar>) => void
   saveTeam: (team: TSetup) => boolean
   editTeam: (tId: string, team: Partial<TSetup>) => boolean
   deleteTeam: (tId: string) => boolean
@@ -29,6 +33,8 @@ export interface SetupStoreType {
 }
 
 export class SetupStore {
+  selected: number[]
+  tab: string
   team: TSetup[]
   main: TSetup
   mainChar: string
@@ -38,6 +44,8 @@ export class SetupStore {
 
   constructor() {
     this.team = []
+    this.tab = 'mod'
+    this.selected = [0, 0]
     this.main = null
     this.mainChar = null
     this.comparing = Array(3)
@@ -52,6 +60,23 @@ export class SetupStore {
 
   setForm = (index: number, value: Record<string, any>[]) => {
     this.forms[index] = value
+    this.forms = _.cloneDeep(this.forms)
+  }
+
+  setFormValue = (setupIndex: number, charIndex: number, key: string, value: any) => {
+    this.forms[setupIndex][charIndex][key] = value
+    this.forms = _.cloneDeep(this.forms)
+  }
+
+  setComparing = (value: Partial<ITeamChar>) => {
+    const [setupIndex, charIndex] = this.selected
+    if (setupIndex === 0) {
+      this.main.char[charIndex] = { ...this.main.char[charIndex], ...value }
+      this.main = _.cloneDeep(this.main)
+    } else {
+      this.comparing[setupIndex - 1].char[charIndex] = { ...this.comparing[setupIndex - 1].char[charIndex], ...value }
+      this.comparing = _.cloneDeep(this.comparing)
+    }
   }
 
   saveTeam = (team: TSetup) => {
