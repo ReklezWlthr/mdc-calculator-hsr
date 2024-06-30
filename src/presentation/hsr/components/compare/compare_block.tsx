@@ -248,10 +248,11 @@ export const CompareBlock = observer(() => {
                   <div
                     key={index}
                     className={classNames(
-                      'flex items-center justify-center rounded-sm w-7 h-7',
+                      'flex items-center justify-center rounded-sm w-7 h-7 duration-200',
                       team[index]
                         ? 'bg-primary-dark cursor-pointer'
-                        : 'bg-primary-darker text-primary-lighter cursor-not-allowed'
+                        : 'bg-primary-darker text-primary-lighter cursor-not-allowed',
+                      { 'ring-2 ring-primary-border': index === setupIndex }
                     )}
                     onClick={() => team[index] && setupStore.setValue('selected', [index, 0])}
                   >
@@ -327,7 +328,7 @@ export const CompareBlock = observer(() => {
             <>
               <LCBlock
                 {...focusedChar.equipments.weapon}
-                index={selected}
+                index={charIndex}
                 teamOverride={team[setupIndex]}
                 setWeapon={(i, w) => {
                   focusedChar.equipments.weapon = { ...focusedChar.equipments.weapon, ...w }
