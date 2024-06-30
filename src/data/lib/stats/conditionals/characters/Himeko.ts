@@ -199,7 +199,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       ]
       base.SKILL_SCALING = [
         {
-          name: 'Main',
+          name: 'Main Target',
           value: [{ scaling: calcScaling(1, 0.1, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.FIRE,
           property: TalentProperty.NORMAL,

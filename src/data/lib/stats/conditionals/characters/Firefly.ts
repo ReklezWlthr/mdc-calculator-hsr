@@ -339,7 +339,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         if (form.complete_combustion)
           x.SKILL_SCALING = [
             {
-              name: 'Main',
+              name: 'Main Target',
               value: [
                 {
                   scaling: calcScaling(1, 0.1, skill, 'curved') + _.min([x.getValue(Stats.BE), 3.6]) * 0.2,

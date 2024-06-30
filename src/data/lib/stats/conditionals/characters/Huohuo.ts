@@ -209,7 +209,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       ]
       base.SKILL_SCALING = [
         {
-          name: 'Main',
+          name: 'Main Target',
           value: [{ scaling: calcScaling(0.14, 0.00875, skill, 'heal'), multiplier: Stats.HP }],
           flat: calcScaling(140, 84, skill, 'flat'),
           element: TalentProperty.HEAL,

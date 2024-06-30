@@ -194,7 +194,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ]
       base.SKILL_SCALING = [
         {
-          name: 'Main',
+          name: 'Main Target',
           value: [{ scaling: calcScaling(0.8, 0.08, skill, 'linear'), multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,

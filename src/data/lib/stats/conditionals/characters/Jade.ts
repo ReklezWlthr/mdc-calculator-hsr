@@ -178,7 +178,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
 
       base.BASIC_SCALING = [
         {
-          name: 'Main',
+          name: 'Main Target',
           value: [{ scaling: calcScaling(0.45, 0.09, basic, 'linear'), multiplier: Stats.ATK }],
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,

@@ -30,6 +30,7 @@ export interface SetupStoreType {
   forms: Record<string, any>[][]
   hydrated: boolean
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
+  initForm: (i: number, initData: Record<string, any>[]) => void
   setForm: (index: number, value: Record<string, any>[]) => void
   setFormValue: (setupIndex: number, charIndex: number, key: string, value: any, sync: boolean) => void
   setComparing: (value: Partial<ITeamChar>) => void
@@ -73,6 +74,16 @@ export class SetupStore {
 
   setValue = <k extends keyof this>(key: k, value: this[k]) => {
     this[key] = value
+  }
+
+  initForm = (i: number, initData: Record<string, any>[]) => {
+    const mergedData = _.map(initData, (item, index) =>
+      _.mapValues(item, (value, key) => {
+        const old = this.forms[i]?.[index]?.[key]
+        return _.isUndefined(old) ? value : old
+      })
+    )
+    this.forms[i] = _.cloneDeep(mergedData)
   }
 
   setForm = (index: number, value: Record<string, any>[]) => {

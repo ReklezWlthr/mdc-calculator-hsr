@@ -37,7 +37,7 @@ export const CompareBlock = observer(() => {
     formOverride: setupStore.forms[0],
     indexOverride: selected,
     customOverride: setupStore.custom[0],
-    initFormFunction: (f) => setupStore.setForm(0, f),
+    initFormFunction: (f) => setupStore.initForm(0, f),
   })
   const sub1 = useCalculator({
     teamOverride: setupStore.comparing[0]?.char,
@@ -45,7 +45,7 @@ export const CompareBlock = observer(() => {
     formOverride: setupStore.forms[1],
     indexOverride: selectedS1,
     customOverride: setupStore.custom[1],
-    initFormFunction: (f) => setupStore.setForm(1, f),
+    initFormFunction: (f) => setupStore.initForm(1, f),
   })
   const sub2 = useCalculator({
     teamOverride: setupStore.comparing[1]?.char,
@@ -53,7 +53,7 @@ export const CompareBlock = observer(() => {
     formOverride: setupStore.forms[2],
     indexOverride: selectedS2,
     customOverride: setupStore.custom[2],
-    initFormFunction: (f) => setupStore.setForm(2, f),
+    initFormFunction: (f) => setupStore.initForm(2, f),
   })
   const sub3 = useCalculator({
     teamOverride: setupStore.comparing[2]?.char,
@@ -61,7 +61,7 @@ export const CompareBlock = observer(() => {
     formOverride: setupStore.forms[3],
     indexOverride: selectedS3,
     customOverride: setupStore.custom[3],
-    initFormFunction: (f) => setupStore.setForm(3, f),
+    initFormFunction: (f) => setupStore.initForm(3, f),
   })
 
   const sumStats = [

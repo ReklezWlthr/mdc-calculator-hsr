@@ -192,7 +192,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       base.BASIC_SCALING = form.pmc_enhance
         ? [
             {
-              name: 'Main',
+              name: 'Main Target',
               value: [{ scaling: calcScaling(0.9, 0.09, basic, 'linear'), multiplier: Stats.ATK }, ...c1Scaling],
               element: Element.FIRE,
               property: TalentProperty.NORMAL,

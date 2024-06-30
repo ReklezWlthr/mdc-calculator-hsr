@@ -180,7 +180,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ]
       base.SKILL_SCALING = [
         {
-          name: 'Main',
+          name: 'Main Target',
           value: [{ scaling: calcScaling(0.7, 0.07, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,

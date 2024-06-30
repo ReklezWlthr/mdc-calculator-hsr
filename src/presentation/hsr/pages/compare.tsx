@@ -11,6 +11,7 @@ import classNames from 'classnames'
 import { CompareBlock } from '@src/presentation/hsr/components/compare/compare_block'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { BulletPoint } from '@src/presentation/components/collapsible'
+import { swapElement } from '@src/core/utils/data_format'
 
 export const ComparePage = observer(() => {
   const { modalStore, setupStore } = useStore()
@@ -40,7 +41,7 @@ export const ComparePage = observer(() => {
       <CommonModal
         icon="fa-solid fa-question-circle text-hsr-imaginary"
         title="Swap Main Setup"
-        desc={`By confirming, this setup will be swapped with the current Main setup. Do you wish to proceed?`}
+        desc={`By confirming, this setup will be swapped with the current Main setup, along with any changes made to it. Do you wish to proceed?`}
         onConfirm={onConfirm}
       />
     )
@@ -158,6 +159,8 @@ export const ComparePage = observer(() => {
                               setupStore.comparing.splice(tI, 1, main)
                               setupStore.setValue('main', toBeSwapped)
                               setupStore.setValue('comparing', setupStore.comparing)
+                              setupStore.setValue('forms', swapElement(setupStore.forms, 0, tI + 1))
+                              setupStore.setValue('custom', swapElement(setupStore.custom, 0, tI + 1))
                             })
                           }
                         />

@@ -168,7 +168,7 @@ const Arlan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ]
       base.ULT_SCALING = [
         {
-          name: 'Main',
+          name: 'Main Target',
           value: [{ scaling: calcScaling(1.92, 0.128, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,

@@ -179,7 +179,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ]
       base.SKILL_SCALING = [
         {
-          name: 'Main',
+          name: 'Main Target',
           value: [{ scaling: calcScaling(0.9, 0.09, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.FIRE,
           property: TalentProperty.NORMAL,

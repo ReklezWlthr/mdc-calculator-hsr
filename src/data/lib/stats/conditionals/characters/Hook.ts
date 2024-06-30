@@ -205,7 +205,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       base.SKILL_SCALING = form.hook_enhanced_skill
         ? [
             {
-              name: 'Main',
+              name: 'Main Target',
               value: [{ scaling: calcScaling(1.4, 0.14, skill, 'curved'), multiplier: Stats.ATK }],
               element: Element.FIRE,
               property: TalentProperty.NORMAL,

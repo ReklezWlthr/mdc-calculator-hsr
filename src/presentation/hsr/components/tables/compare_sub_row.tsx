@@ -112,7 +112,7 @@ export const CompareSubRows = observer(
           title={
             <div className="flex items-center justify-between gap-2">
               <p>{`${title}: ${name}`}</p>
-              <div className='flex flex-col items-end gap-y-1'>
+              <div className="flex flex-col items-end gap-y-1">
                 {!!toughness && (
                   <p className="text-xs font-normal">
                     Toughness Damage: <span className="text-desc">{_.round(toughness, 1).toLocaleString()}</span>

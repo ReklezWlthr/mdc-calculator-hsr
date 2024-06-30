@@ -175,7 +175,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base.BASIC_SCALING = form.qq_enhance
         ? [
             {
-              name: 'Main',
+              name: 'Main Target',
               value: [{ scaling: calcScaling(1.2, 0.24, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.QUANTUM,
               property: TalentProperty.NORMAL,

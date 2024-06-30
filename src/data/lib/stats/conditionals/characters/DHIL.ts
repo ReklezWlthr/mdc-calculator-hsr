@@ -257,7 +257,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         case 2:
           base.BASIC_SCALING = [
             {
-              name: 'Main',
+              name: 'Main Target',
               value: [{ scaling: calcScaling(1.9, 0.38, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
@@ -281,7 +281,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         case 3:
           base.BASIC_SCALING = [
             {
-              name: 'Main',
+              name: 'Main Target',
               value: [{ scaling: calcScaling(2.5, 0.5, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
@@ -320,7 +320,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       }
       base.ULT_SCALING = [
         {
-          name: 'Main',
+          name: 'Main Target',
           value: [{ scaling: calcScaling(1.8, 0.12, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,

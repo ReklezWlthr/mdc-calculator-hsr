@@ -154,3 +154,8 @@ export const formatScaleString = (talent: ITalentDisplay, level: number) =>
   )
 
 export const getTurnWithinCycle = (cycle: number, spd: number) => _.floor((50 + 100 * (cycle + 1)) / (10000 / spd))
+
+export const swapElement = (array: any[], index1: number, index2: number) => {
+  ;[array[index1], array[index2]] = [array[index2], array[index1]]
+  return array
+}

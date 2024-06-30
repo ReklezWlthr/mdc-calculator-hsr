@@ -200,7 +200,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       base.BASIC_SCALING = form.hellscape
         ? [
             {
-              name: 'Main',
+              name: 'Main Target',
               value: [
                 { scaling: calcScaling(0.2, 0.04, basic, 'linear'), multiplier: Stats.ATK },
                 { scaling: calcScaling(0.5, 0.1, basic, 'linear'), multiplier: Stats.HP },
@@ -335,7 +335,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         const loss = _.min([form.blade_hp_loss, x.getHP() * 0.9])
         base.ULT_SCALING = [
           {
-            name: 'Main',
+            name: 'Main Target',
             value: [
               { scaling: calcScaling(0.24, 0.016, ult, 'curved'), multiplier: Stats.ATK },
               { scaling: calcScaling(0.6, 0.04, ult, 'curved'), multiplier: Stats.HP },

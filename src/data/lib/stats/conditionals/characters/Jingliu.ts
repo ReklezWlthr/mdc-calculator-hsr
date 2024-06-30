@@ -195,7 +195,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base.SKILL_SCALING = form.spectral_transmigration
         ? [
             {
-              name: 'Main',
+              name: 'Main Target',
               value: [{ scaling: calcScaling(1.25, 0.125, skill, 'curved'), multiplier: Stats.ATK }],
               element: Element.ICE,
               property: TalentProperty.NORMAL,
@@ -223,7 +223,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           ]
       base.ULT_SCALING = [
         {
-          name: 'Main',
+          name: 'Main Target',
           value: [{ scaling: calcScaling(1.8, 0.12, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.ICE,
           property: TalentProperty.NORMAL,
