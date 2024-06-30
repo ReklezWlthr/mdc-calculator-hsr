@@ -126,6 +126,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       show: true,
       unique: true,
       default: true,
+      sync: true
     },
     {
       type: 'number',

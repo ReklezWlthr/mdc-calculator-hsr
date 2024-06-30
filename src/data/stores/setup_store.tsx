@@ -31,7 +31,7 @@ export interface SetupStoreType {
   hydrated: boolean
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   setForm: (index: number, value: Record<string, any>[]) => void
-  setFormValue: (setupIndex: number, charIndex: number, key: string, value: any) => void
+  setFormValue: (setupIndex: number, charIndex: number, key: string, value: any, sync: boolean) => void
   setComparing: (value: Partial<ITeamChar>) => void
   setCustomValue: CustomSetterT
   removeCustomValue: CustomRemoverT
@@ -80,8 +80,16 @@ export class SetupStore {
     this.forms = _.cloneDeep(this.forms)
   }
 
-  setFormValue = (setupIndex: number, charIndex: number, key: string, value: any) => {
+  setFormValue = (setupIndex: number, charIndex: number, key: string, value: any, sync: boolean) => {
     this.forms[setupIndex][charIndex][key] = value
+    if (sync) {
+      console.log(sync, this.forms)
+      for (const form of this.forms) {
+        for (const char of form) {
+          if (_.has(char, key)) char[key] = value
+        }
+      }
+    }
     this.forms = _.cloneDeep(this.forms)
   }
 

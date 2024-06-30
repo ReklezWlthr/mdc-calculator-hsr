@@ -1,5 +1,5 @@
 import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
-import { Characters as GIChar } from '@src/data/db/characters'
+import { Characters } from '@src/data/db/characters'
 import { LightCones } from '@src/data/db/lightcone'
 import { StatsArray } from '@src/data/lib/stats/baseConstant'
 import { DebuffTypes } from '@src/domain/conditional'
@@ -7,7 +7,7 @@ import _ from 'lodash'
 
 export const findLightCone = (wId: string) => _.find(LightCones, (item) => item.id === wId)
 
-export const findCharacter = (cId: string) => _.find(GIChar, (item) => item.id === cId)
+export const findCharacter = (cId: string) => _.find(Characters, (item) => item.id === cId)
 
 export const findArtifactSet = (id: string) => _.find(AllRelicSets, (item) => item.id === id)
 

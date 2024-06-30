@@ -135,6 +135,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       show: true,
       default: true,
       unique: true,
+      sync: true
     },
     {
       type: 'toggle',

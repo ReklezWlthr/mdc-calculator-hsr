@@ -17,22 +17,21 @@ export interface TeamModalProps {
 export const TeamModal = observer(({ onSelect, filterId }: TeamModalProps) => {
   const { modalStore, teamStore, setupStore, toastStore } = useStore()
 
+  const team = [{ id: '', char: teamStore.characters, name: 'Current Team Setup' }, ...setupStore.team]
+
   return (
     <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark w-[400px]">
       <p className="font-semibold">Select a Team</p>
       <div className="space-y-2 dropdownScrollbar max-h-[70vh]">
         {_.map(
-          [
-            { id: '', char: teamStore.characters, name: 'Current Team Setup' },
-            ...(filterId
-              ? _.filter(setupStore.team, (item) =>
-                  _.includes(
-                    _.map(item.char, (c) => c.cId),
-                    filterId
-                  )
+          filterId
+            ? _.filter(team, (item) =>
+                _.includes(
+                  _.map(item.char, (c) => c.cId),
+                  filterId
                 )
-              : setupStore.team),
-          ],
+              )
+            : team,
           (team) => {
             return (
               <div

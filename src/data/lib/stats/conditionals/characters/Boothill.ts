@@ -136,6 +136,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       show: true,
       default: true,
       unique: true,
+      sync: true
     },
     {
       type: 'number',

@@ -14,7 +14,7 @@ import {
   LCConditionals,
   LCTeamConditionals,
 } from '@src/data/lib/stats/conditionals/lightcones/lc_conditionals'
-import { Element, ITeamChar, Stats } from '@src/domain/constant'
+import { Element, ITalentLevel, ITeamChar, Stats } from '@src/domain/constant'
 import { isFlat } from '@src/presentation/hsr/components/custom_modal'
 import { StatsObject, StatsObjectKeysT } from '@src/data/lib/stats/baseConstant'
 import { DebuffTypes } from '@src/domain/conditional'
@@ -32,6 +32,7 @@ interface CalculatorOptions {
   }[][]
   doNotSaveStats?: boolean
   indexOverride?: number
+  talentOverride?: ITeamChar
   initFormFunction?: (f: Record<string, any>[]) => void
 }
 
@@ -41,6 +42,7 @@ export const useCalculator = ({
   formOverride,
   customOverride,
   indexOverride,
+  talentOverride,
   doNotSaveStats,
   initFormFunction,
 }: CalculatorOptions) => {
@@ -60,17 +62,15 @@ export const useCalculator = ({
   // Conditional objects include talent descriptions, conditional contents and a calculator
   const conditionals = useMemo(
     () =>
-      _.map(team, (item) =>
-        _.find(ConditionalsObject, ['id', item.cId])?.conditionals(
-          item.cons,
-          item.major_traces,
-          {
-            ...item.talents,
-            basic: item.talents.basic + (_.includes(_.map(team, 'cId'), '10000033') ? 1 : 0),
-          },
+      _.map(team, (item) => {
+        const data = talentOverride?.cId === item.cId ? talentOverride : item
+        return _.find(ConditionalsObject, ['id', item.cId])?.conditionals(
+          data.cons,
+          data.major_traces,
+          data.talents,
           team
         )
-      ),
+      }),
     [team]
   )
   const main = conditionals[selected]

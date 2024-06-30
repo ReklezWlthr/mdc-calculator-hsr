@@ -143,6 +143,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       show: true,
       default: true,
       duration: 3,
+      sync: true
     },
     {
       type: 'number',

@@ -127,6 +127,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ...talents.ult,
       show: true,
       default: true,
+      sync: true
     },
     {
       type: 'toggle',

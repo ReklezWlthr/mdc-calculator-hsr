@@ -14,6 +14,7 @@ import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { TraceBlock } from './trace_block'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { useStore } from '@src/data/providers/app_store_provider'
+import { AbilityBlock } from './ability_block'
 
 export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId: string }) => {
   const { charStore, toastStore, modalStore } = useStore()
@@ -48,7 +49,7 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
     params?.talents,
     []
   )
-  console.log(talent)
+
   const maxTalentLevel = findMaxTalentLevel(params?.ascension)
   const talentLevels = _.map(Array(maxTalentLevel), (_, index) => ({
     name: (index + 1).toString(),

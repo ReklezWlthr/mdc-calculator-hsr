@@ -19,18 +19,18 @@ export const CompareConditionalBlock = observer(
           title="Self Modifiers"
           contents={_.filter(content.main, 'show')}
           formOverride={setupStore.forms[setupStore.selected[0]]}
-          setForm={(i, k, v) => setupStore.setFormValue(setupStore.selected[0], i, k, v)}
+          setForm={(...params) => setupStore.setFormValue(setupStore.selected[0], ...params)}
         />
         <ConditionalBlock
           title="Team Modifiers"
           contents={_.filter(content.team, 'show')}
           formOverride={setupStore.forms[setupStore.selected[0]]}
-          setForm={(i, k, v) => setupStore.setFormValue(setupStore.selected[0], i, k, v)}
+          setForm={(...params) => setupStore.setFormValue(setupStore.selected[0], ...params)}
         />
         <WeaponConditionalBlock
           contents={content.weapon(setupStore.selected[1])}
           formOverride={setupStore.forms[setupStore.selected[0]]}
-          setForm={(i, k, v) => setupStore.setFormValue(setupStore.selected[0], i, k, v)}
+          setForm={(...params) => setupStore.setFormValue(setupStore.selected[0], ...params)}
         />
         <CustomConditionalBlock
           index={setupStore.selected[1]}

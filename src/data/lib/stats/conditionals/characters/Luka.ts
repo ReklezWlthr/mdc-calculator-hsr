@@ -147,6 +147,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       show: true,
       default: true,
       unique: true,
+      sync: true
     },
     {
       type: 'toggle',

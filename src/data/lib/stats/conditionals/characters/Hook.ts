@@ -133,6 +133,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       ...talents.ult,
       show: true,
       default: true,
+      sync: true
     },
     {
       type: 'toggle',

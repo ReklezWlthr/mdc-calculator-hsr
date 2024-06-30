@@ -23,6 +23,8 @@ import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { TraceBlock } from '../components/trace_block'
 import { SaveBuildModal } from '../components/save_build_modal'
 import { SaveTeamModal } from '../components/save_team_modal'
+import { AbilityBlock } from '../components/ability_block'
+import { BonusAbilityBlock } from '../components/bonus_ability_block'
 
 export const SetToolTip = observer(({ item, set, type }: { item: number; set: string; type: 'relic' | 'planar' }) => {
   const setDetail = _.find(type === 'relic' ? RelicSets : PlanarSets, ['id', set])
@@ -103,16 +105,6 @@ export const TeamSetup = observer(() => {
     teamStore.characters
   )
 
-  const maxTalentLevel = findMaxTalentLevel(char?.ascension)
-  const talentLevels = _.map(Array(maxTalentLevel), (_, index) => ({
-    name: (index + 1).toString(),
-    value: (index + 1).toString(),
-  })).reverse()
-  const basicLevels = _.map(Array(char?.ascension || 1), (_, index) => ({
-    name: (index + 1).toString(),
-    value: (index + 1).toString(),
-  })).reverse()
-
   return (
     <div className="w-full customScrollbar">
       <div className="flex justify-center w-full gap-5 p-5 max-w-[1240px] mx-auto">
@@ -136,148 +128,18 @@ export const TeamSetup = observer(() => {
         <div className="w-1/5 space-y-5">
           <div className="grid items-center justify-center grid-cols-2 gap-5 py-3">
             <p className="-mb-2 text-lg font-bold text-center text-white col-span-full">Traces</p>
-            <div className="flex items-center gap-3">
-              <TalentIcon
-                talent={talent?.talents?.normal}
-                element={charData?.element}
-                icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_Normal.png`}
-                size="w-9 h-9"
-                upgraded={talent?.upgrade?.basic}
-                level={char?.talents?.basic}
-                showUpgrade
-                type={talent?.talents?.basic?.trace}
-              />
-              <div>
-                <p className="text-xs text-primary-lighter">Basic ATK</p>
-                <SelectInput
-                  value={char?.talents?.basic?.toString()}
-                  onChange={(value) => teamStore.setTalentLevel(selected, 'basic', parseInt(value))}
-                  options={basicLevels}
-                  style="w-14"
-                  disabled={!charData}
-                />
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <TalentIcon
-                talent={talent?.talents?.skill}
-                element={charData?.element}
-                icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_BP.png`}
-                size="w-9 h-9"
-                upgraded={talent?.upgrade?.skill}
-                level={char?.talents?.skill}
-                showUpgrade
-                type={talent?.talents?.skill?.trace}
-              />
-              <div>
-                <p className="text-xs text-primary-lighter">Skill</p>
-                <SelectInput
-                  value={char?.talents?.skill?.toString()}
-                  onChange={(value) => teamStore.setTalentLevel(selected, 'skill', parseInt(value))}
-                  options={talentLevels}
-                  style="w-14"
-                  disabled={!charData}
-                />
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <TalentIcon
-                talent={talent?.talents?.ult}
-                element={charData?.element}
-                icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_Ultra.png`}
-                size="w-9 h-9"
-                upgraded={talent?.upgrade?.ult}
-                level={char?.talents?.ult}
-                showUpgrade
-                type={talent?.talents?.ult?.trace}
-              />
-              <div>
-                <p className="text-xs text-primary-lighter">Ultimate</p>
-                <SelectInput
-                  value={char?.talents?.ult?.toString()}
-                  onChange={(value) => teamStore.setTalentLevel(selected, 'ult', parseInt(value))}
-                  options={talentLevels}
-                  style="w-14"
-                  disabled={!charData}
-                />
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <TalentIcon
-                talent={talent?.talents?.talent}
-                element={charData?.element}
-                icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_Passive.png`}
-                size="w-9 h-9"
-                upgraded={talent?.upgrade?.talent}
-                level={char?.talents?.talent}
-                showUpgrade
-                type={talent?.talents?.talent?.trace}
-              />
-              <div>
-                <p className="text-xs text-primary-lighter">Talent</p>
-                <SelectInput
-                  value={char?.talents?.talent?.toString()}
-                  onChange={(value) => teamStore.setTalentLevel(selected, 'talent', parseInt(value))}
-                  options={talentLevels}
-                  style="w-14"
-                  disabled={!charData}
-                />
-              </div>
-            </div>
+            <AbilityBlock
+              char={char}
+              talents={talent?.talents}
+              upgrade={talent?.upgrade}
+              onChange={(key, value) => teamStore.setTalentLevel(selected, key as any, value)}
+            />
             <p className="-mb-2 font-bold text-center text-white col-span-full">Ascension Passives</p>
-            <div className="flex justify-around col-span-full">
-              <div className="flex flex-col items-center gap-3">
-                <TalentIcon
-                  talent={talent?.talents?.a2}
-                  element={charData?.element}
-                  icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_SkillTree1.png`}
-                  size="w-9 h-9"
-                  type={talent?.talents?.a2?.trace}
-                />
-                <div className="flex gap-2">
-                  <p className="text-xs text-primary-lighter">A2</p>
-                  <CheckboxInput
-                    checked={char?.major_traces?.a2}
-                    onClick={() => teamStore.toggleMajorTrace(selected, 'a2')}
-                    disabled={char?.ascension < 2}
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col items-center gap-3">
-                <TalentIcon
-                  talent={talent?.talents?.a4}
-                  element={charData?.element}
-                  icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_SkillTree2.png`}
-                  size="w-9 h-9"
-                  type={talent?.talents?.a4?.trace}
-                />
-                <div className="flex gap-2">
-                  <p className="text-xs text-primary-lighter">A4</p>
-                  <CheckboxInput
-                    checked={char?.major_traces?.a4}
-                    onClick={() => teamStore.toggleMajorTrace(selected, 'a4')}
-                    disabled={char?.ascension < 4}
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col items-center gap-3">
-                <TalentIcon
-                  talent={talent?.talents?.a6}
-                  element={charData?.element}
-                  icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_SkillTree3.png`}
-                  size="w-9 h-9"
-                  type={talent?.talents?.a6?.trace}
-                />
-                <div className="flex gap-2">
-                  <p className="text-xs text-primary-lighter">A6</p>
-                  <CheckboxInput
-                    checked={char?.major_traces?.a6}
-                    onClick={() => teamStore.toggleMajorTrace(selected, 'a6')}
-                    disabled={char?.ascension < 6}
-                  />
-                </div>
-              </div>
-            </div>
+            <BonusAbilityBlock
+              char={char}
+              talents={talent?.talents}
+              onChange={(key) => teamStore.toggleMajorTrace(selected, key)}
+            />
             <div className="col-span-full">
               <TraceBlock
                 id={char?.cId}

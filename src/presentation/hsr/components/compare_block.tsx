@@ -12,13 +12,21 @@ import { CompareConditionalBlock } from './compare_conditional_block'
 import classNames from 'classnames'
 import { LCBlock } from './lc_block'
 import { MiniRelicBlock } from './mini_relic_block'
+import { PrimaryButton } from '@src/presentation/components/primary.button'
+import { StatBlock } from './stat_block'
+import { AscensionIcons } from './ascension_icons'
+import { ConsCircle } from './cons_circle'
+import { useCallback } from 'react'
+import { StatsModal } from './stats_modal'
+import { CompareTraceBlock } from './compare_trace_block'
 
 export const CompareBlock = observer(() => {
-  const { setupStore } = useStore()
+  const { setupStore, modalStore } = useStore()
 
   const tab = setupStore.tab
   const team = [setupStore.main.char, ..._.map(setupStore.comparing, (item) => item?.char)]
-  const focusedChar = team[setupStore.selected[0]][setupStore.selected[1]]
+  const [setupIndex, charIndex] = setupStore.selected
+  const focusedChar = team[setupIndex][charIndex]
 
   const selected = _.findIndex(setupStore.main?.char, (item) => item.cId === setupStore.mainChar)
   const selectedS1 = _.findIndex(setupStore.comparing[0]?.char, (item) => item.cId === setupStore.mainChar)
@@ -81,6 +89,14 @@ export const CompareBlock = observer(() => {
         (item) => item?.name
       )
     )
+
+  const onOpenStatsModal = useCallback(
+    () =>
+      modalStore.openModal(
+        <StatsModal stats={allStats[setupIndex][charIndex]} path={findCharacter(focusedChar.cId)?.path} />
+      ),
+    [allStats, charData]
+  )
 
   return (
     <div className="grid grid-cols-3 gap-4 px-5">
@@ -276,7 +292,7 @@ export const CompareBlock = observer(() => {
           </ScalingWrapper>
         </div>
       )}
-      {_.some(contents) && (
+      {_.some(contents) && _.some(sumStats) && (
         <div className="flex flex-col items-center w-full gap-3">
           <div className="flex gap-5">
             <div
@@ -303,14 +319,33 @@ export const CompareBlock = observer(() => {
             >
               Loadout
             </div>
+            <div
+              className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
+                'bg-primary': tab === 'trace',
+              })}
+              onClick={() => setupStore.setValue('tab', 'trace')}
+            >
+              Setup
+            </div>
           </div>
-          {tab === 'mod' && <CompareConditionalBlock content={contents[setupStore.selected[0]]} />}
+          {tab === 'mod' && <CompareConditionalBlock content={contents[setupIndex]} />}
+          {tab === 'stats' && (
+            <>
+              <div className="flex items-center justify-between w-full text-white">
+                <p className="px-4 text-lg font-bold">
+                  <span className="text-desc">✦</span> Final Stats <span className="text-desc">✦</span>
+                </p>
+                <PrimaryButton title="Stats Breakdown" onClick={onOpenStatsModal} />
+              </div>
+              <StatBlock index={selected} stat={sumStats[selected]} />
+            </>
+          )}
           {tab === 'load' && (
             <>
               <LCBlock
                 {...focusedChar.equipments.weapon}
                 index={selected}
-                teamOverride={team[setupStore.selected[0]]}
+                teamOverride={team[setupIndex]}
                 setWeapon={(i, w) => {
                   focusedChar.equipments.weapon = { ...focusedChar.equipments.weapon, ...w }
                   setupStore.setComparing(focusedChar)
@@ -335,6 +370,7 @@ export const CompareBlock = observer(() => {
               </div>
             </>
           )}
+          {tab === 'trace' && <CompareTraceBlock team={team} char={char} />}
         </div>
       )}
     </div>

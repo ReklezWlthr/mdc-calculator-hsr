@@ -153,6 +153,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       min: 0,
       max: 3,
       unique: true,
+      sync: true
     },
     {
       type: 'number',

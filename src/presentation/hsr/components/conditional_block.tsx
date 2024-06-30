@@ -18,7 +18,7 @@ export interface IContentIndex extends IContent {
   index: number
 }
 
-export type FormSetterT = (index: number, key: string, value: any) => void
+export type FormSetterT = (index: number, key: string, value: any, sync?: boolean) => void
 
 interface ConditionalBlockProps {
   title: string
@@ -163,7 +163,7 @@ export const ConditionalBlock = observer(
                       <div className="flex items-center justify-center col-span-2">
                         <CheckboxInput
                           checked={form[content.index]?.[content.id]}
-                          onClick={(v) => set(content.index, content.id, v)}
+                          onClick={(v) => set(content.index, content.id, v, content.sync)}
                         />
                       </div>
                     )}
@@ -177,7 +177,7 @@ export const ConditionalBlock = observer(
                               ..._.map(Element, (item) => ({ name: item, value: item })),
                             ]
                           }
-                          onChange={(value) => set(content.index, content.id, value)}
+                          onChange={(value) => set(content.index, content.id, value, content.sync)}
                           placeholder="None"
                         />
                       </div>

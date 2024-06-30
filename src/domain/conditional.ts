@@ -62,6 +62,7 @@ export interface IContent {
   duration?: number
   value?: { base: number; growth: number; style: TalentScalingStyle }[]
   level?: number
+  sync?: boolean // Determine if this modifier should be synced when comparing builds
 }
 
 export interface IWeaponContent {
