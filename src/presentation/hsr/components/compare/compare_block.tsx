@@ -17,6 +17,7 @@ import { StatsModal } from '@src/presentation/hsr/components/modals/stats_modal'
 import { CompareTraceBlock } from '@src/presentation/hsr/components/compare/compare_trace_block'
 import { CompareSuperBreakSubRows } from '../tables/compare_super_break_sub_row '
 import { CharacterSelect } from '../character_select'
+import { SelectInput } from '@src/presentation/components/inputs/select_input'
 
 export const CompareBlock = observer(() => {
   const { setupStore, modalStore } = useStore()
@@ -141,7 +142,20 @@ export const CompareBlock = observer(() => {
   return (
     <div className="grid grid-cols-3 gap-4 px-5">
       {_.some(sumStats) && (
-        <div className="flex flex-col col-span-2 mb-5 text-sm text-white rounded-lg bg-primary-darker h-fit">
+        <div className="flex flex-col col-span-2 mb-5 text-sm text-white h-fit">
+          <div className="flex items-center gap-2 mb-3">
+            <p>Damage Mode</p>
+            <SelectInput
+              value={setupStore.mode}
+              options={[
+                { name: 'Base', value: 'base' },
+                { name: 'CRIT', value: 'crit' },
+                { name: 'Average', value: 'avg' },
+              ]}
+              onChange={(v) => setupStore.setValue('mode', v)}
+              style="w-[100px]"
+            />
+          </div>
           <div className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
             <p>Damage Comparison</p>
             {/* <p className='text-xs font-normal text-gray'>Hover Numbers for More Details</p> */}
@@ -157,83 +171,85 @@ export const CompareBlock = observer(() => {
               <p className="col-span-2">DMG Component</p>
             </div>
           </div>
-          <ScalingWrapper
-            talent={
-              mainComputed?.BA_ALT
-                ? main?.talents?.[`normal_alt${setupStore.forms[0][selected]?.dhil_sp}`] || main?.talents?.normal_alt
-                : main?.talents?.normal
-            }
-            icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Normal${
-              mainComputed?.BA_ALT
-                ? setupStore.forms[0][selected]?.dhil_sp
-                  ? `0${setupStore.forms[0][selected]?.dhil_sp + 1}`
-                  : '02'
-                : ''
-            }.png`}
-            element={charData.element}
-            level={char.talents?.basic}
-            upgraded={main?.upgrade?.basic}
-          >
-            <Rows type={StatsObjectKeys.BASIC_SCALING} />
-          </ScalingWrapper>
-          <div className="w-full my-2 border-t-2 border-primary-border" />
-          <ScalingWrapper
-            talent={mainComputed?.SKILL_ALT ? main?.talents?.skill_alt : main?.talents?.skill}
-            icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_BP${
-              mainComputed?.SKILL_ALT && char.cId !== '1109' ? '02' : ''
-            }.png`}
-            element={charData.element}
-            level={char.talents?.skill}
-            upgraded={main?.upgrade?.skill}
-          >
-            <Rows type={StatsObjectKeys.SKILL_SCALING} />
-          </ScalingWrapper>
-          <div className="w-full my-2 border-t-2 border-primary-border" />
-          <ScalingWrapper
-            talent={mainComputed?.ULT_ALT ? main?.talents?.ult_alt : main?.talents?.ult}
-            icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Ultra${
-              mainComputed?.ULT_ALT ? '02' : ''
-            }.png`}
-            element={charData.element}
-            level={char.talents?.ult}
-            upgraded={main?.upgrade?.ult}
-          >
-            <Rows type={StatsObjectKeys.ULT_SCALING} />
-          </ScalingWrapper>
-          <div className="w-full my-2 border-t-2 border-primary-border" />
-          <ScalingWrapper
-            talent={main?.talents?.talent}
-            icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Passive.png`}
-            element={charData.element}
-            level={char.talents?.talent}
-            upgraded={main?.upgrade?.talent}
-          >
-            <Rows type={StatsObjectKeys.TALENT_SCALING} />
-          </ScalingWrapper>
-          <div className="w-full my-2 border-t-2 border-primary-border" />
-          <ScalingWrapper
-            talent={main?.talents?.technique}
-            icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Maze.png`}
-            element={charData.element}
-            level={1}
-            upgraded={0}
-          >
-            {_.map(getUniqueComponent(StatsObjectKeys.TECHNIQUE_SCALING), (item) => (
-              <CompareSubRows
-                key={item}
-                scaling={_.map(
-                  _.map(sumStats, (f) => f?.TECHNIQUE_SCALING),
-                  (s) => _.find(s, (a) => a.name === item.name)
-                )}
-                stats={sumStats}
-                allStats={allStats}
-                level={levels}
-                name={item.name}
-                property={item.property}
-                element={item.element}
-              />
-            ))}
-          </ScalingWrapper>
+          <div className="bg-primary-darker">
+            <ScalingWrapper
+              talent={
+                mainComputed?.BA_ALT
+                  ? main?.talents?.[`normal_alt${setupStore.forms[0][selected]?.dhil_sp}`] || main?.talents?.normal_alt
+                  : main?.talents?.normal
+              }
+              icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Normal${
+                mainComputed?.BA_ALT
+                  ? setupStore.forms[0][selected]?.dhil_sp
+                    ? `0${setupStore.forms[0][selected]?.dhil_sp + 1}`
+                    : '02'
+                  : ''
+              }.png`}
+              element={charData.element}
+              level={char.talents?.basic}
+              upgraded={main?.upgrade?.basic}
+            >
+              <Rows type={StatsObjectKeys.BASIC_SCALING} />
+            </ScalingWrapper>
+            <div className="w-full my-2 border-t-2 border-primary-border" />
+            <ScalingWrapper
+              talent={mainComputed?.SKILL_ALT ? main?.talents?.skill_alt : main?.talents?.skill}
+              icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_BP${
+                mainComputed?.SKILL_ALT && char.cId !== '1109' ? '02' : ''
+              }.png`}
+              element={charData.element}
+              level={char.talents?.skill}
+              upgraded={main?.upgrade?.skill}
+            >
+              <Rows type={StatsObjectKeys.SKILL_SCALING} />
+            </ScalingWrapper>
+            <div className="w-full my-2 border-t-2 border-primary-border" />
+            <ScalingWrapper
+              talent={mainComputed?.ULT_ALT ? main?.talents?.ult_alt : main?.talents?.ult}
+              icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Ultra${
+                mainComputed?.ULT_ALT ? '02' : ''
+              }.png`}
+              element={charData.element}
+              level={char.talents?.ult}
+              upgraded={main?.upgrade?.ult}
+            >
+              <Rows type={StatsObjectKeys.ULT_SCALING} />
+            </ScalingWrapper>
+            <div className="w-full my-2 border-t-2 border-primary-border" />
+            <ScalingWrapper
+              talent={main?.talents?.talent}
+              icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Passive.png`}
+              element={charData.element}
+              level={char.talents?.talent}
+              upgraded={main?.upgrade?.talent}
+            >
+              <Rows type={StatsObjectKeys.TALENT_SCALING} />
+            </ScalingWrapper>
+            <div className="w-full my-2 border-t-2 border-primary-border" />
+            <ScalingWrapper
+              talent={main?.talents?.technique}
+              icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Maze.png`}
+              element={charData.element}
+              level={1}
+              upgraded={0}
+            >
+              {_.map(getUniqueComponent(StatsObjectKeys.TECHNIQUE_SCALING), (item) => (
+                <CompareSubRows
+                  key={item}
+                  scaling={_.map(
+                    _.map(sumStats, (f) => f?.TECHNIQUE_SCALING),
+                    (s) => _.find(s, (a) => a.name === item.name)
+                  )}
+                  stats={sumStats}
+                  allStats={allStats}
+                  level={levels}
+                  name={item.name}
+                  property={item.property}
+                  element={item.element}
+                />
+              ))}
+            </ScalingWrapper>
+          </div>
         </div>
       )}
       {_.some(contents) && _.some(sumStats) && (

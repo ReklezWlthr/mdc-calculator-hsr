@@ -44,8 +44,9 @@ export const ElementColor = {
 
 export const CompareSubRows = observer(
   ({ scaling, stats, allStats, level, name, property, element }: ScalingSubRowsProps) => {
-    const { calculatorStore, teamStore } = useStore()
+    const { setupStore } = useStore()
 
+    const mode = setupStore.mode
     const main = useDamageStringConstruct(
       scaling[0],
       scaling[0]?.overrideIndex ? allStats[0]?.[scaling[0]?.overrideIndex] : stats[0],
@@ -81,7 +82,10 @@ export const CompareSubRows = observer(
     const toughness = _.map(scaling, (item, i) => item?.break * (1 + stats[i]?.getValue(StatsObjectKeys.BREAK_EFF)))
 
     const getDmg = (obj: StringConstructor) => {
-      return obj?.number.dmg * (noCrit ? 1 : 1 + obj?.number.totalCd * obj?.number.totalCr) || 0
+      return (
+        obj?.number.dmg *
+          (noCrit || mode === 'base' ? 1 : 1 + obj?.number.totalCd * (mode === 'crit' ? 1 : obj?.number.totalCr)) || 0
+      )
     }
 
     const Body = ({ obj }: { obj: StringConstructor }) => (

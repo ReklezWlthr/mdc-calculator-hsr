@@ -16,6 +16,7 @@ export type CustomSetterT = (innerIndex: number, key: StatsObjectKeysT, value: a
 export type CustomRemoverT = (innerIndex: number) => void
 
 export interface SetupStoreType {
+  mode: string
   team: TSetup[]
   tab: string
   selected: number[]
@@ -45,6 +46,7 @@ export interface SetupStoreType {
 }
 
 export class SetupStore {
+  mode: string
   selected: number[]
   tab: string
   team: TSetup[]
@@ -60,6 +62,7 @@ export class SetupStore {
   forms: Record<string, any>[][]
 
   constructor() {
+    this.mode = 'avg'
     this.team = []
     this.tab = 'mod'
     this.selected = [0, 0]
