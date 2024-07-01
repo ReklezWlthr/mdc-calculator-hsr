@@ -92,7 +92,7 @@ export const CompareSuperBreakSubRows = observer(
                 <div className="flex items-center gap-1">
                   <p
                     className={classNames('text-xs', {
-                      'text-heal': compare > 0,
+                      'text-lime-300': compare > 0,
                       'text-red': compare < 0,
                       'text-blue': compare === 0,
                     })}
@@ -115,7 +115,7 @@ export const CompareSuperBreakSubRows = observer(
               'col-span-1 text-xs text-center',
               diff
                 ? {
-                    'text-lime-400': compare > 0 && getDmg(main),
+                    'text-lime-300': compare > 0 && getDmg(main),
                     'text-desc': compare > 0 && !getDmg(main),
                     'text-red': compare < 0,
                     'text-blue': compare === 0,
@@ -124,7 +124,7 @@ export const CompareSuperBreakSubRows = observer(
             )}
           >
             {mode === 'percent' ? percent : mode === 'abs' ? abs : _.round(getDmg(obj)).toLocaleString()}
-            {compare > 0 && !diff && <i className="ml-1 text-[10px] fa-solid fa-caret-up text-lime-400" />}
+            {compare > 0 && !diff && <i className="ml-1 text-[10px] fa-solid fa-caret-up text-lime-300" />}
             {compare < 0 && !diff && <i className="ml-1 text-[10px] fa-solid fa-caret-down text-red" />}
             {compare === 0 && !diff && <i className="ml-1 text-[10px] fa-solid fa-minus text-blue" />}
           </p>
