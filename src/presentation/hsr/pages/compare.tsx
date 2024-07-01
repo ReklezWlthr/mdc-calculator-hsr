@@ -146,6 +146,7 @@ export const ComparePage = observer(() => {
                     const handler = () => {
                       setupStore.setValue('main', team)
                       setupStore.setValue('mainChar', team.char[0].cId)
+                      setupStore.setValue('selected', [0, 0])
                     }
                     if (setupStore.mainChar) onOpenConfirmModal(handler)
                     else {

@@ -17,7 +17,7 @@ const defaultSetting: ISetting = {
   defaultEnemyLevel: 1,
   travelerGender: 'PlayerBoy',
   storeData: false,
-  variant: false
+  variant: false,
 }
 
 export interface SettingStoreType {

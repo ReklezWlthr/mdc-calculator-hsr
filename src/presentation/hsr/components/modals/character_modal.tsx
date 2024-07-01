@@ -98,14 +98,6 @@ export const CharacterModal = observer(({ index, teamOverride, setChar, setLc }:
           <FilterIcon type="path" value={PathType.PRESERVATION} />
           <FilterIcon type="path" value={PathType.ABUNDANCE} />
         </div>
-        <img
-          src={`${publicRuntimeConfig.BASE_PATH}/icons/artifact_icon.png`}
-          className={classNames('w-8 h-8 duration-200 rounded-full cursor-pointer hover:bg-primary-lighter', {
-            'bg-primary-lighter': params.hasBuild,
-          })}
-          onClick={() => setParams({ hasBuild: !params.hasBuild })}
-          title="Has Default Build"
-        />
       </div>
       <div className="grid w-full grid-cols-10 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
         {_.map(filteredChar, (item) => {
@@ -139,7 +131,7 @@ export const CharacterModal = observer(({ index, teamOverride, setChar, setLc }:
                     E{_.find(charStore.characters, ['cId', item.id])?.cons || 0}
                   </div>
                 )}
-                {item.beta && <div className="absolute left-0 px-2 py-0.5 bottom-2 bg-rose-600 rounded-r-md">Beta</div>}
+                {item.beta && <div className="absolute left-0 px-2 py-0.5 bottom-7 bg-rose-600 rounded-r-md">Beta</div>}
                 <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
                   <RarityGauge rarity={item.rarity} />
                 </div>

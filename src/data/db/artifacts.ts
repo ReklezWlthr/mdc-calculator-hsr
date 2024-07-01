@@ -380,11 +380,14 @@ export const PlanarSets: IArtifact[] = [
     half: (base) => {
       base.CALLBACK.push((x: StatsObject) => {
         if (x.getSpd() >= 120)
-          x[Stats.P_ATK].push({
-            name: '2-Piece',
-            source: 'Space Sealing Station',
-            value: 0.12,
-          })
+          x[Stats.P_ATK] = _.map(x[Stats.P_ATK], (item) =>
+            item.source === 'Space Sealing Station'
+              ? {
+                  ...item,
+                  value: item.value + 0.12,
+                }
+              : item
+          )
         return x
       })
       return base
@@ -448,11 +451,14 @@ export const PlanarSets: IArtifact[] = [
     half: (base) => {
       base.CALLBACK.push((x: StatsObject) => {
         if (x.getValue(Stats.EHR) >= 0.5)
-          x[Stats.P_DEF].push({
-            name: '2-Piece',
-            source: 'Belobog of the Architects',
-            value: 0.15,
-          })
+          x[Stats.P_DEF] = _.map(x[Stats.P_DEF], (item) =>
+            item.source === 'Belobog of the Architects'
+              ? {
+                  ...item,
+                  value: item.value + 0.15,
+                }
+              : item
+          )
         return x
       })
       return base
@@ -508,11 +514,14 @@ export const PlanarSets: IArtifact[] = [
     half: (base) => {
       base.CALLBACK.push((x: StatsObject) => {
         if (x.getSpd() >= 145)
-          x[Stats.BE].push({
-            name: '2-Piece',
-            source: 'Talia: Kingdom of Banditry',
-            value: 0.2,
-          })
+          x[Stats.BE] = _.map(x[Stats.BE], (item) =>
+            item.source === 'Talia: Kingdom of Banditry'
+              ? {
+                  ...item,
+                  value: item.value + 0.2,
+                }
+              : item
+          )
         return x
       })
       return base
@@ -567,10 +576,10 @@ export const PlanarSets: IArtifact[] = [
     bonusAdd: [],
     half: (base) => {
       base.CALLBACK.push((x: StatsObject, _d, _w, all) => {
-        if (x.getValue(Stats.E_RES) >= 145)
+        if (x.getValue(Stats.E_RES) >= 0.3)
           _.forEach(all, (item) => {
             item[Stats.CRIT_DMG].push({
-              name: 'Talia: Kingdom of Banditry',
+              name: 'Broken Keel',
               source: x.NAME === item.NAME ? 'Self' : x.NAME,
               value: 0.2,
             })

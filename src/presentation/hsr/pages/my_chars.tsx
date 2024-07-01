@@ -57,34 +57,35 @@ export const MyCharacters = observer(() => {
   return (
     <div className="flex flex-col items-center w-full gap-5 py-5 pl-5 max-w-[1240px] mx-auto">
       <div className="flex w-full h-full gap-x-10">
-        <div className="flex flex-col w-1/3 h-full gap-y-2 shrink-0">
-          <div className="flex items-center justify-between">
-            <p className="text-2xl font-bold text-white">My Characters</p>
-            <TextInput
-              onChange={(value) => setParams({ searchWord: value })}
-              value={params.searchWord}
-              placeholder="Search Character Name"
-              style="!w-1/2"
-            />
-          </div>
-          <div className="flex items-center gap-6 my-1">
-            <div className="flex gap-2">
-              <FilterIcon type="element" value={Element.PHYSICAL} />
-              <FilterIcon type="element" value={Element.FIRE} />
-              <FilterIcon type="element" value={Element.ICE} />
-              <FilterIcon type="element" value={Element.LIGHTNING} />
-              <FilterIcon type="element" value={Element.WIND} />
-              <FilterIcon type="element" value={Element.QUANTUM} />
-              <FilterIcon type="element" value={Element.IMAGINARY} />
+        <div className="flex flex-col w-1/3 h-full gap-y-4 shrink-0">
+          <div className="flex items-end gap-5">
+            <div className='space-y-1.5'>
+              <p className="text-2xl font-bold text-white">My Characters</p>
+              <TextInput
+                onChange={(value) => setParams({ searchWord: value })}
+                value={params.searchWord}
+                placeholder="Search Character Name"
+              />
             </div>
-            <div className="flex gap-2">
-              <FilterIcon type="path" value={PathType.DESTRUCTION} />
-              <FilterIcon type="path" value={PathType.HUNT} />
-              <FilterIcon type="path" value={PathType.ERUDITION} />
-              <FilterIcon type="path" value={PathType.HARMONY} />
-              <FilterIcon type="path" value={PathType.NIHILITY} />
-              <FilterIcon type="path" value={PathType.PRESERVATION} />
-              <FilterIcon type="path" value={PathType.ABUNDANCE} />
+            <div className="my-1 space-y-2">
+              <div className="flex gap-2">
+                <FilterIcon type="element" value={Element.PHYSICAL} />
+                <FilterIcon type="element" value={Element.FIRE} />
+                <FilterIcon type="element" value={Element.ICE} />
+                <FilterIcon type="element" value={Element.LIGHTNING} />
+                <FilterIcon type="element" value={Element.WIND} />
+                <FilterIcon type="element" value={Element.QUANTUM} />
+                <FilterIcon type="element" value={Element.IMAGINARY} />
+              </div>
+              <div className="flex gap-2">
+                <FilterIcon type="path" value={PathType.DESTRUCTION} />
+                <FilterIcon type="path" value={PathType.HUNT} />
+                <FilterIcon type="path" value={PathType.ERUDITION} />
+                <FilterIcon type="path" value={PathType.HARMONY} />
+                <FilterIcon type="path" value={PathType.NIHILITY} />
+                <FilterIcon type="path" value={PathType.PRESERVATION} />
+                <FilterIcon type="path" value={PathType.ABUNDANCE} />
+              </div>
             </div>
           </div>
           <div className="grid grid-cols-4 gap-4 pr-2 rounded-lg customScrollbar">
