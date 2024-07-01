@@ -40,7 +40,7 @@ export const ComparePage = observer(() => {
     modalStore.openModal(
       <CommonModal
         icon="fa-solid fa-question-circle text-hsr-imaginary"
-        title="Swap Main Setup"
+        title="Set As Main"
         desc={`By confirming, this setup will be swapped with the current Main setup, along with any changes made to it. Do you wish to proceed?`}
         onConfirm={onConfirm}
       />
