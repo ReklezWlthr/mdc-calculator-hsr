@@ -1,5 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { checkIsDoT, findCharacter, findLightCone } from '../utils/finder'
+import { addDebuff, checkIsDoT, findCharacter, findLightCone } from '../utils/finder'
 import { useEffect, useMemo, useState } from 'react'
 import { getTeamOutOfCombat } from '../utils/calculator'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
@@ -28,6 +28,7 @@ import { StatsObject, StatsObjectKeysT } from '@src/data/lib/stats/baseConstant'
 import { DebuffTypes, IContent } from '@src/domain/conditional'
 import { getSetCount } from '../utils/data_format'
 import { AllRelicSets } from '@src/data/db/artifacts'
+import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
 
 interface CalculatorOptions {
   enabled?: boolean
@@ -131,15 +132,17 @@ export const useCalculator = ({
         (_, index) => (inverse ? index === i : index !== i)
       )
     )
-  const breakContents: IContent[] = _.map(baseStats, (item) =>
-    checkIsDoT(item.ELEMENT)
+  const breakContents: IContent[] = _.map(baseStats, (item) => {
+    const color = ElementColor[item.ELEMENT]
+    const type = BreakDebuffType[item.ELEMENT]
+    return checkIsDoT(item.ELEMENT)
       ? {
           type: 'toggle',
           id: `break_${item.NAME}`,
-          title: `${item.NAME}'s Break ${BreakDebuffType[item.ELEMENT]}`,
-          text: `${item.NAME}'s Break ${BreakDebuffType[item.ELEMENT]}`,
-          trace: 'Break Effect',
-          content: '',
+          title: `${item.NAME}'s Break ${type}`,
+          text: `${item.NAME}'s Break ${type}`,
+          trace: 'Weakness Break',
+          content: `Using <b class="${color}">${item.ELEMENT}</b> attacks to trigger Weakness Break will deal <b class="${color}">${item.ELEMENT} DMG</b> and apply the <b class="${color}">${type}</b> Effect, dealing <b class="${color}">${item.ELEMENT} DoT</b>.`,
           show: true,
           default: false,
           debuff: true,
@@ -147,7 +150,7 @@ export const useCalculator = ({
           duration: 2,
         }
       : null
-  )
+  })
 
   useEffect(() => {
     if (enabled) {
@@ -193,7 +196,7 @@ export const useCalculator = ({
         let x =
           base?.preCompute(baseStats[index], forms[index], debuffs, weakness, calculatorStore.broken) ||
           baseStats[index]
-        if (forms[index][`break_${x.NAME}`])
+        if (forms[index][`break_${x.NAME}`]) {
           x.DOT_SCALING.push({
             name: `Break ${BreakDebuffType[x.ELEMENT]} DMG`,
             value: [],
@@ -203,6 +206,8 @@ export const useCalculator = ({
             overrideIndex: index,
             dotType: BreakDebuffType[x.ELEMENT],
           })
+          addDebuff(debuffs, BreakDebuffType[x.ELEMENT])
+        }
         return x
       }) // Compute all self conditionals, return stats of each char
       const preComputeShared = _.map(preCompute, (base, index) => {

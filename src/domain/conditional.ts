@@ -4,11 +4,11 @@ import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } f
 export type TalentScalingStyle = 'linear' | 'curved' | 'flat' | 'heal' | 'pure' | 'arcana' | 'dot'
 
 export enum DebuffTypes {
-  WIND_SHEAR = 'Wind Sheared',
-  BURN = 'Burning',
+  WIND_SHEAR = 'Wind Shear',
+  BURN = 'Burn',
   FROZEN = 'Frozen',
-  SHOCKED = 'Shocked',
-  BLEED = 'Bleeding',
+  SHOCKED = 'Shock',
+  BLEED = 'Bleed',
   ENTANGLE = 'Entangled',
   IMPRISON = 'Imprisoned',
   ATK_RED = 'ATK Reduced',
