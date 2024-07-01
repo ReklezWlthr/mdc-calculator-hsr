@@ -139,7 +139,7 @@ export const ComparePage = observer(() => {
               )}
             </div>
             <PrimaryButton
-              icon="fa-solid fa-repeat"
+              icon={setupStore.main?.char ? 'fa-solid fa-repeat' : 'fa-solid fa-plus'}
               onClick={() =>
                 onOpenSaveModal({
                   onSelect: (team) => {
