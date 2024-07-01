@@ -1,6 +1,7 @@
 import { useStore } from '@src/data/providers/app_store_provider'
 import { CommonModal } from '@src/presentation/components/common_modal'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
+import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
@@ -24,7 +25,7 @@ export const SettingModal = observer(() => {
           <p>Stelle</p>
         </div>
       </div>
-      <div className="p-3 space-y-2 rounded-lg bg-primary-darker">
+      <div className="p-3 space-y-3 rounded-lg bg-primary-darker">
         <p className="text-white">Default Data</p>
         <div className="flex items-center justify-between gap-x-2">
           <p className="text-sm text-gray">Default Enemy Level</p>
@@ -40,6 +41,26 @@ export const SettingModal = observer(() => {
             enabled={settingStore.settings.variant}
             onClick={(v) => settingStore.setSettingValue({ variant: v })}
           />
+        </div>
+        <div className="space-y-0.5">
+          <div className="flex items-center justify-between gap-x-2">
+            <p className="text-sm text-gray">Modifiers Initial Value</p>
+            <SelectInput
+              value={settingStore.settings.formMode}
+              options={[
+                { name: 'Default', value: 'default' },
+                { name: 'Maximum', value: 'max' },
+                { name: 'Minimum', value: 'min' },
+              ]}
+              onChange={(v) => settingStore.setSettingValue({ formMode: v as any })}
+              style="w-[100px]"
+            />
+          </div>
+          <p className="text-xs italic text-red">
+            ✦ Maximum value does not always translate to higher damage as some modifiers scale inversely.
+          </p>
+          <p className="text-xs italic text-desc">✦ This setting has no effect on single-target modifiers.</p>
+          <p className="text-xs italic text-desc">✦ Only take effect after a change to setup data or page refresh.</p>
         </div>
       </div>
       <div className="p-3 space-y-1 rounded-lg bg-primary-darker">

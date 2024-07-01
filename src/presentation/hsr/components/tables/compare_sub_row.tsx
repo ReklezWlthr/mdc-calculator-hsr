@@ -115,6 +115,10 @@ export const CompareSubRows = observer(
 
     const SubDmgBlock = ({ title, obj, toughness }: { title: string; obj: StringConstructor; toughness: number }) => {
       const compare = getDmg(obj) - getDmg(main)
+      const p = (getDmg(obj) - getDmg(main)) / getDmg(main)
+      const percent = getDmg(main) ? (compare >= 0 ? '+' : '') + toPercentage(p) : 'NEW'
+      const abs = (compare >= 0 ? '+' : '') + _.round(getDmg(obj) - getDmg(main)).toLocaleString()
+      const diff = _.includes(['percent', 'abs'], mode)
       return obj ? (
         <Tooltip
           title={
@@ -149,11 +153,23 @@ export const CompareSubRows = observer(
           body={<Body obj={obj} />}
           style="w-[400px]"
         >
-          <p className="col-span-1 text-xs text-center">
-            {_.round(getDmg(obj)).toLocaleString()}
-            {compare > 0 && <i className="ml-1 text-[10px] fa-solid fa-caret-up text-heal" />}
-            {compare < 0 && <i className="ml-1 text-[10px] fa-solid fa-caret-down text-red" />}
-            {compare === 0 && <i className="ml-1 text-[10px] fa-solid fa-minus text-blue" />}
+          <p
+            className={classNames(
+              'col-span-1 text-xs text-center',
+              diff
+                ? {
+                    'text-lime-400': compare > 0 && getDmg(main),
+                    'text-desc': compare > 0 && !getDmg(main),
+                    'text-red': compare < 0,
+                    'text-blue': compare === 0,
+                  }
+                : ''
+            )}
+          >
+            {mode === 'percent' ? percent : mode === 'abs' ? abs : _.round(getDmg(obj)).toLocaleString()}
+            {compare > 0 && !diff && <i className="ml-1 text-[10px] fa-solid fa-caret-up text-lime-400" />}
+            {compare < 0 && !diff && <i className="ml-1 text-[10px] fa-solid fa-caret-down text-red" />}
+            {compare === 0 && !diff && <i className="ml-1 text-[10px] fa-solid fa-minus text-blue" />}
           </p>
         </Tooltip>
       ) : (

@@ -1458,7 +1458,9 @@ export const LCTeamConditionals: IWeaponContent[] = [
     type: 'element',
     text: `Those Many Springs Tier`,
     show: true,
-    default: '0',
+    default: '1',
+    max: '2',
+    min: '0',
     options: [
       { name: 'None', value: '0' },
       { name: 'Unarmored', value: '1' },

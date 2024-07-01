@@ -147,7 +147,9 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       text: `Technique DEF Bonus`,
       ...talents.technique,
       show: true,
-      default: '3',
+      default: '2',
+      min: '0',
+      max: '3',
       options: [
         { name: 'None', value: '0' },
         { name: '24%', value: '1' },

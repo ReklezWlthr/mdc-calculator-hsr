@@ -32,7 +32,6 @@ import { ElementColor } from '@src/presentation/hsr/components/tables/super_brea
 
 interface CalculatorOptions {
   enabled?: boolean
-  min?: boolean
   teamOverride?: ITeamChar[]
   formOverride?: Record<string, any>[]
   customOverride?: {
@@ -48,7 +47,6 @@ interface CalculatorOptions {
 
 export const useCalculator = ({
   enabled = true,
-  min,
   teamOverride,
   formOverride,
   customOverride,
@@ -57,7 +55,7 @@ export const useCalculator = ({
   doNotSaveStats,
   initFormFunction,
 }: CalculatorOptions) => {
-  const { teamStore, artifactStore, calculatorStore } = useStore()
+  const { teamStore, artifactStore, calculatorStore, settingStore } = useStore()
 
   const selected = indexOverride || calculatorStore?.selected
   const [finalStats, setFinalStats] = useState<StatsObject[]>(null)
@@ -165,8 +163,21 @@ export const useCalculator = ({
             ...weaponSelectable(index),
             breakContents[index]
           ),
-          (acc, curr) => {
-            if (curr?.show) acc[curr.id] = min ? false : curr.default
+          (acc, curr: IContent & { owner?: number }) => {
+            if (curr?.show) {
+              let value = curr.default
+              if (settingStore.settings.formMode === 'max') {
+                if (curr.type === 'toggle' && !_.isNumber(curr.owner)) value = true
+                if (curr.type === 'number') value = curr.max
+                if (curr.type === 'element') value = curr.max || curr.default
+              }
+              if (settingStore.settings.formMode === 'min') {
+                if (curr.type === 'toggle') value = false
+                if (curr.type === 'number') value = curr.min
+                if (curr.type === 'element') value = curr.min || curr.default
+              }
+              acc[curr.id] = value
+            }
             return acc
           },
           {}
@@ -175,7 +186,7 @@ export const useCalculator = ({
       if (initFormFunction) initFormFunction(f)
       else calculatorStore.initForm(f)
     }
-  }, [team, conditionals, min, enabled])
+  }, [team, conditionals, settingStore.settings.formMode, enabled])
 
   // =================
   //

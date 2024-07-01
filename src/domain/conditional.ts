@@ -53,13 +53,14 @@ export interface IContent {
   content: string
   show: boolean
   default?: any
-  max?: number
-  min?: number
+  max?: number | string
+  min?: number | string
   debuff?: boolean
   unique?: boolean
   options?: { name: string; value: string }[]
   chance?: { base: number; fixed: boolean }
   duration?: number
+  expireTurnStart?: boolean // Apply to Aura-type buffs that reduce count on turn start
   value?: { base: number; growth: number; style: TalentScalingStyle }[]
   level?: number
   sync?: boolean // Determine if this modifier should be synced when comparing builds
@@ -69,8 +70,8 @@ export interface IWeaponContent {
   type?: 'toggle' | 'number' | 'element'
   id: string
   default?: any
-  max?: number
-  min?: number
+  max?: number | string
+  min?: number | string
   debuff?: boolean
   chance?: { base: number; fixed: boolean }
   duration?: number

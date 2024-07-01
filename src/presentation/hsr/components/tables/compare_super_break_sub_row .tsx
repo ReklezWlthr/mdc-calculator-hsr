@@ -7,7 +7,10 @@ import { Tooltip } from '@src/presentation/components/tooltip'
 import { toPercentage } from '@src/core/utils/converter'
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { SuperBreakStringConstructor, superBreakStringConstruct } from '@src/core/utils/constructor/superBreakStringConstruct'
+import {
+  SuperBreakStringConstructor,
+  superBreakStringConstruct,
+} from '@src/core/utils/constructor/superBreakStringConstruct'
 
 interface ScalingSubRowsProps {
   scaling: IScaling[]
@@ -41,8 +44,10 @@ export const ElementColor = {
 
 export const CompareSuperBreakSubRows = observer(
   ({ scaling, stats, allStats, level, name, property, element }: ScalingSubRowsProps) => {
-    const { calculatorStore } = useStore()
-    
+    const { calculatorStore, setupStore } = useStore()
+
+    const mode = setupStore.mode
+
     const main = superBreakStringConstruct(
       calculatorStore,
       scaling[0],
@@ -74,6 +79,10 @@ export const CompareSuperBreakSubRows = observer(
 
     const SubDmgBlock = ({ title, obj }: { title: string; obj: SuperBreakStringConstructor }) => {
       const compare = getDmg(obj) - getDmg(main)
+      const p = (getDmg(obj) - getDmg(main)) / getDmg(main)
+      const percent = (compare >= 0 ? '+' : '') + (getDmg(main) ? toPercentage(p) : 'NEW')
+      const abs = (compare >= 0 ? '+' : '') + _.round(getDmg(obj) - getDmg(main)).toLocaleString()
+      const diff = _.includes(['percent', 'abs'], mode)
       return obj ? (
         <Tooltip
           title={
@@ -101,11 +110,23 @@ export const CompareSuperBreakSubRows = observer(
           body={<div dangerouslySetInnerHTML={{ __html: obj.formulaString }} />}
           style="w-[400px]"
         >
-          <p className="col-span-1 text-xs text-center">
-            {_.round(getDmg(obj)).toLocaleString()}
-            {compare > 0 && <i className="ml-1 text-[10px] fa-solid fa-caret-up text-heal" />}
-            {compare < 0 && <i className="ml-1 text-[10px] fa-solid fa-caret-down text-red" />}
-            {compare === 0 && <i className="ml-1 text-[10px] fa-solid fa-minus text-blue" />}
+          <p
+            className={classNames(
+              'col-span-1 text-xs text-center',
+              diff
+                ? {
+                    'text-lime-400': compare > 0 && getDmg(main),
+                    'text-desc': compare > 0 && !getDmg(main),
+                    'text-red': compare < 0,
+                    'text-blue': compare === 0,
+                  }
+                : ''
+            )}
+          >
+            {mode === 'percent' ? percent : mode === 'abs' ? abs : _.round(getDmg(obj)).toLocaleString()}
+            {compare > 0 && !diff && <i className="ml-1 text-[10px] fa-solid fa-caret-up text-lime-400" />}
+            {compare < 0 && !diff && <i className="ml-1 text-[10px] fa-solid fa-caret-down text-red" />}
+            {compare === 0 && !diff && <i className="ml-1 text-[10px] fa-solid fa-minus text-blue" />}
           </p>
         </Tooltip>
       ) : (

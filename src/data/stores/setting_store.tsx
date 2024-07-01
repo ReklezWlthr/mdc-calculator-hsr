@@ -11,6 +11,7 @@ interface ISetting {
   travelerGender: 'PlayerBoy' | 'PlayerGirl'
   storeData: boolean
   variant: boolean
+  formMode: 'default' | 'min' | 'max'
 }
 
 const defaultSetting: ISetting = {
@@ -18,6 +19,7 @@ const defaultSetting: ISetting = {
   travelerGender: 'PlayerBoy',
   storeData: false,
   variant: false,
+  formMode: 'default',
 }
 
 export interface SettingStoreType {

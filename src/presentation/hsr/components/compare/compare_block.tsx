@@ -154,9 +154,11 @@ export const CompareBlock = observer(() => {
                 { name: 'Base', value: 'base' },
                 { name: 'CRIT', value: 'crit' },
                 { name: 'Average', value: 'avg' },
+                { name: 'Percentage Avg.', value: 'percent' },
+                { name: 'Absolute Avg.', value: 'abs' },
               ]}
               onChange={(v) => setupStore.setValue('mode', v)}
-              style="w-[100px]"
+              style="w-[125px]"
             />
           </div>
           <div className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
