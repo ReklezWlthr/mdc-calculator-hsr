@@ -144,7 +144,7 @@ export const CompareBlock = observer(() => {
       {_.some(sumStats) && (
         <div className="flex flex-col col-span-2 mb-5 text-sm text-white h-fit">
           <div className="flex items-center gap-2 mb-3">
-            <p>Damage Mode</p>
+            <p>Compare Mode</p>
             <SelectInput
               value={setupStore.mode}
               options={[
