@@ -1,4 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
+import { EnemyHpScaling } from '@src/domain/scaling'
 import _ from 'lodash'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -26,6 +27,7 @@ export const useLocalUpdater = (game: string) => {
     const json = JSON.parse(data)
     settingStore.setSettingValue(json)
     calculatorStore.setValue('level', json?.defaultEnemyLevel || 1)
+    calculatorStore.setValue('hp', EnemyHpScaling[(json?.defaultEnemyLevel || 1) - 1])
   }
 
   useEffect(() => {
