@@ -116,7 +116,7 @@ export const useCalculator = ({
   const allyContents = (i: number, inverse?: boolean) =>
     _.flatten(
       _.filter(
-        _.map(conditionals, (item) => _.map(item?.allyContent, (content) => ({ ...content }))),
+        _.map(conditionals, (item, index) => _.map(item?.allyContent, (content) => ({ ...content, owner: index }))),
         (_, index) => (inverse ? index === i : index !== i)
       )
     )
@@ -306,7 +306,7 @@ export const useCalculator = ({
       (item, index) => _.map(item, (inner) => ({ ...inner, index }))
     )
   const mapped = customMapped(selected)
-  const allyMapped = _.map(allyContents(selected), (item) => ({ ...item, index: selected }))
+  const allyMapped = _.map(allyContents(selected), (item, index) => ({ ...item, index: selected }))
   // Index is embedded into each conditional for the block to call back to
   // Because each of the form with represent ALL the buffs that each character has (including team buffs); not the value that we can change in their page
   // This helps separate buffs trigger of each character and prevent buff stacking

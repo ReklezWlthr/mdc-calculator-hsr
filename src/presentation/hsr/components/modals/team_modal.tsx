@@ -21,7 +21,7 @@ export const TeamModal = observer(({ onSelect, filterId }: TeamModalProps) => {
 
   return (
     <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark w-[400px]">
-      <p className="font-semibold">Select a Team</p>
+      <p className="font-semibold">Select a Setup</p>
       <div className="space-y-2 dropdownScrollbar max-h-[70vh]">
         {_.map(
           filterId

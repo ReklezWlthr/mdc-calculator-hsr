@@ -16,6 +16,7 @@ import { Dispatch, SetStateAction, useState } from 'react'
 
 export interface IContentIndex extends IContent {
   index: number
+  owner?: number
 }
 
 export type FormSetterT = (index: number, key: string, value: any, sync?: boolean) => void
@@ -111,7 +112,8 @@ export const ConditionalBlock = observer(
                           <div className="flex items-center justify-between">
                             <div className="space-y-0.5">
                               <p className="text-xs font-normal opacity-75 text-gray">
-                                {findCharacter(team[content.index]?.cId)?.name} - {content.trace || 'Relics'}
+                                {findCharacter(team[content.owner || content.index]?.cId)?.name} -{' '}
+                                {content.trace || 'Relics'}
                               </p>
                               <p>{content.title}</p>
                             </div>
