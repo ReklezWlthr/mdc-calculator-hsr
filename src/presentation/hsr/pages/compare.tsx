@@ -110,23 +110,27 @@ export const ComparePage = observer(() => {
                   return (
                     <CharacterSelect
                       key={`char_select_${index}`}
-                      onClick={() => {
-                        const handler = () => {
-                          setupStore.setValue('mainChar', main[index].cId)
-                          setupStore.setValue('selected', [0, index])
-                        }
-                        if (
-                          _.some(setupStore.comparing, 'name') &&
-                          main[index].cId !== setupStore.mainChar &&
-                          setupStore.mainChar
-                        )
-                          onOpenConfirmModal(handler)
-                        else {
-                          handler()
-                        }
-                      }}
-                      isSelected={main[index].cId === setupStore.mainChar}
-                      id={main[index].cId}
+                      onClick={
+                        main[index]
+                          ? () => {
+                              const handler = () => {
+                                setupStore.setValue('mainChar', main[index].cId)
+                                setupStore.setValue('selected', [0, index])
+                              }
+                              if (
+                                _.some(setupStore.comparing, 'name') &&
+                                main[index].cId !== setupStore.mainChar &&
+                                setupStore.mainChar
+                              )
+                                onOpenConfirmModal(handler)
+                              else {
+                                handler()
+                              }
+                            }
+                          : null
+                      }
+                      isSelected={main[index]?.cId === setupStore.mainChar}
+                      id={main[index]?.cId}
                     />
                   )
                 })

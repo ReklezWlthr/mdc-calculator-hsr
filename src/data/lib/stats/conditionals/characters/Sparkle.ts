@@ -19,7 +19,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
 
-  const index = _.findIndex(team, (item) => item.cId === '1306')
+  const index = _.findIndex(team, (item) => item?.cId === '1306')
   const quantumCount = _.filter(team, (item) => findCharacter(item.cId)?.element === Element.QUANTUM).length - 1
 
   const talents: ITalent = {

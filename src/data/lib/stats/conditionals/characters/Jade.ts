@@ -19,7 +19,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
 
-  const index = _.findIndex(team, (item) => item.cId === '1314')
+  const index = _.findIndex(team, (item) => item?.cId === '1314')
 
   const talents: ITalent = {
     normal: {

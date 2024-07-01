@@ -35,6 +35,7 @@ export interface SetupStoreType {
   setForm: (index: number, value: Record<string, any>[]) => void
   setFormValue: (setupIndex: number, charIndex: number, key: string, value: any, sync: boolean) => void
   setComparing: (value: Partial<ITeamChar>) => void
+  clearComparing: () => void
   setCustomValue: CustomSetterT
   removeCustomValue: CustomRemoverT
   saveTeam: (team: TSetup) => boolean
@@ -114,6 +115,17 @@ export class SetupStore {
       this.main = _.cloneDeep(this.main)
     } else {
       this.comparing[setupIndex - 1].char[charIndex] = { ...this.comparing[setupIndex - 1].char[charIndex], ...value }
+      this.comparing = _.cloneDeep(this.comparing)
+    }
+  }
+
+  clearComparing = () => {
+    const [setupIndex, charIndex] = this.selected
+    if (setupIndex === 0) {
+      this.main.char[charIndex] = null
+      this.main = _.cloneDeep(this.main)
+    } else {
+      this.comparing[setupIndex - 1].char[charIndex] = null
       this.comparing = _.cloneDeep(this.comparing)
     }
   }

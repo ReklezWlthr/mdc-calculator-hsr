@@ -20,7 +20,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
   const talent = t.talent + upgrade.talent
 
   const names = _.map(team, (item) => findCharacter(item.cId)?.name)
-  const index = _.findIndex(team, (item) => item.cId === '1210')
+  const index = _.findIndex(team, (item) => item?.cId === '1210')
 
   const talents: ITalent = {
     normal: {

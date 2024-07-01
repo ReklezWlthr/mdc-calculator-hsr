@@ -19,7 +19,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
 
-  const index = _.findIndex(team, (item) => item.cId === '8005')
+  const index = _.findIndex(team, (item) => item?.cId === '8005')
 
   const talents: ITalent = {
     normal: {

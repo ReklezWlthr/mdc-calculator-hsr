@@ -2,7 +2,7 @@ import _ from 'lodash'
 import { Characters } from '@src/data/db/characters'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
-import { Element, PathType } from '@src/domain/constant'
+import { Element, ITeamChar, IWeaponEquip, PathType } from '@src/domain/constant'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { useParams } from '@src/core/hooks/useParams'
 import classNames from 'classnames'
@@ -19,9 +19,12 @@ const { publicRuntimeConfig } = getConfig()
 
 interface CharacterModalProps {
   index: number
+  teamOverride?: ITeamChar[]
+  setChar?: (index: number, value: Partial<ITeamChar>) => void
+  setLc?: (index: number, value: Partial<IWeaponEquip>) => void
 }
 
-export const CharacterModal = observer(({ index }: CharacterModalProps) => {
+export const CharacterModal = observer(({ index, teamOverride, setChar, setLc }: CharacterModalProps) => {
   const { teamStore, modalStore, buildStore, charStore, settingStore } = useStore()
   const { setParams, params } = useParams({
     searchWord: '',
@@ -30,7 +33,10 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
     hasBuild: false,
   })
 
-  const selectedWeaponData = findLightCone(teamStore.characters[index]?.equipments?.weapon?.wId)
+  const charSetter = setChar || teamStore.setMemberInfo
+  const lcSetter = setLc || teamStore.setWeapon
+  const team = teamOverride || teamStore.characters
+  const selectedWeaponData = findLightCone(team[index]?.equipments?.weapon?.wId)
 
   const filteredChar = useMemo(
     () =>
@@ -110,9 +116,9 @@ export const CharacterModal = observer(({ index }: CharacterModalProps) => {
               onClick={() => {
                 const build = _.find(buildStore.builds, (build) => build.isDefault && build.cId === item.id)
                 const char = _.find(charStore.characters, (char) => char.cId === item.id)
-                if (item.path !== selectedWeaponData?.type && teamStore.characters[index]?.equipments?.weapon)
-                  teamStore.setWeapon(index, DefaultWeapon)
-                teamStore.setMemberInfo(index, {
+                if (item.path !== selectedWeaponData?.type && team[index]?.equipments?.weapon)
+                  lcSetter(index, DefaultWeapon)
+                charSetter(index, {
                   cId: item.id,
                   ascension: char?.ascension || 0,
                   level: char?.level || 1,

@@ -19,7 +19,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
 
-  const index = _.findIndex(team, (item) => item.cId === '1009')
+  const index = _.findIndex(team, (item) => item?.cId === '1009')
 
   const talents: ITalent = {
     normal: {

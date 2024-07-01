@@ -7,10 +7,15 @@ import _ from 'lodash'
 import { propertyColor } from '@src/presentation/hsr/components/tables/scaling_sub_rows'
 import { BreakBaseLevel, BreakElementMult } from '@src/domain/scaling'
 import { useStore } from '@src/data/providers/app_store_provider'
+import { CalculatorStoreType } from '@src/data/stores/calculator_store'
 
-export const useSuperBreakStringConstruct = (scaling: IScaling, stats: StatsObject, level: number) => {
+export const superBreakStringConstruct = (
+  calculatorStore: CalculatorStoreType,
+  scaling: IScaling,
+  stats: StatsObject,
+  level: number
+) => {
   if (!scaling || !stats || !level) return
-  const { calculatorStore, teamStore } = useStore()
 
   const element = scaling.element
 
@@ -94,4 +99,4 @@ export const useSuperBreakStringConstruct = (scaling: IScaling, stats: StatsObje
   }
 }
 
-export type SuperBreakStringConstructor = ReturnType<typeof useSuperBreakStringConstruct>
+export type SuperBreakStringConstructor = ReturnType<typeof superBreakStringConstruct>

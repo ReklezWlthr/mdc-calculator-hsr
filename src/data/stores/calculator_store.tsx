@@ -29,7 +29,7 @@ export interface CalculatorStoreType {
   setCustomValue: (index: number, key: StatsObjectKeysT, value: any) => void
   removeCustomValue: (index: number, innerIndex: number) => void
   setRes: (element: Element, value: number) => void
-  getEffRes: () => number
+  getEffRes: (reduction?: number) => number
   getDefMult: (level: number, defPen: number, defRed: number) => number
   getResMult: (element: Element, resPen: number) => number
   hydrate: (data: CalculatorStoreType) => void

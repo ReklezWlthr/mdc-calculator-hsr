@@ -1,5 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { findCharacter, findLightCone } from '../utils/finder'
+import { checkIsDoT, findCharacter, findLightCone } from '../utils/finder'
 import { useEffect, useMemo, useState } from 'react'
 import { getTeamOutOfCombat } from '../utils/calculator'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
@@ -14,14 +14,23 @@ import {
   LCConditionals,
   LCTeamConditionals,
 } from '@src/data/lib/stats/conditionals/lightcones/lc_conditionals'
-import { Element, ITalentLevel, ITeamChar, Stats } from '@src/domain/constant'
+import {
+  BreakDebuffType,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 import { isFlat } from '@src/presentation/hsr/components/modals/custom_modal'
 import { StatsObject, StatsObjectKeysT } from '@src/data/lib/stats/baseConstant'
-import { DebuffTypes } from '@src/domain/conditional'
+import { DebuffTypes, IContent } from '@src/domain/conditional'
 import { getSetCount } from '../utils/data_format'
 import { AllRelicSets } from '@src/data/db/artifacts'
 
 interface CalculatorOptions {
+  enabled?: boolean
   min?: boolean
   teamOverride?: ITeamChar[]
   formOverride?: Record<string, any>[]
@@ -37,6 +46,7 @@ interface CalculatorOptions {
 }
 
 export const useCalculator = ({
+  enabled = true,
   min,
   teamOverride,
   formOverride,
@@ -63,7 +73,8 @@ export const useCalculator = ({
   const conditionals = useMemo(
     () =>
       _.map(team, (item) => {
-        const data = talentOverride?.cId === item.cId ? talentOverride : item
+        if (!item) return null
+        const data = talentOverride?.cId === item?.cId ? talentOverride : item
         return _.find(ConditionalsObject, ['id', item.cId])?.conditionals(
           data.cons,
           data.major_traces,
@@ -78,7 +89,7 @@ export const useCalculator = ({
   const artifactConditionals = useMemo(
     () =>
       _.map(team, (item) => {
-        const artifacts = _.map(item.equipments.artifacts, (a) => _.find(artifactStore.artifacts, (b) => b.id === a))
+        const artifacts = _.map(item?.equipments?.artifacts, (a) => _.find(artifactStore.artifacts, (b) => b.id === a))
         return getRelicConditionals(artifacts)
       }),
     [team, artifactStore.artifacts]
@@ -120,28 +131,48 @@ export const useCalculator = ({
         (_, index) => (inverse ? index === i : index !== i)
       )
     )
+  const breakContents: IContent[] = _.map(baseStats, (item) =>
+    checkIsDoT(item.ELEMENT)
+      ? {
+          type: 'toggle',
+          id: `break_${item.NAME}`,
+          title: `${item.NAME}'s Break ${BreakDebuffType[item.ELEMENT]}`,
+          text: `${item.NAME}'s Break ${BreakDebuffType[item.ELEMENT]}`,
+          trace: 'Break Effect',
+          content: '',
+          show: true,
+          default: false,
+          debuff: true,
+          chance: { base: 1.5, fixed: false },
+          duration: 2,
+        }
+      : null
+  )
 
   useEffect(() => {
-    const f = _.map(conditionals, (item, index) =>
-      _.reduce(
-        _.concat(
-          item?.content,
-          item?.teammateContent,
-          allyContents(index),
-          artifactConditionals[index]?.content,
-          artifactConditionals[index]?.teamContent,
-          ...weaponSelectable(index)
-        ),
-        (acc, curr) => {
-          if (curr?.show) acc[curr.id] = min ? false : curr.default
-          return acc
-        },
-        {}
+    if (enabled) {
+      const f = _.map(conditionals, (item, index) =>
+        _.reduce(
+          _.concat(
+            item?.content,
+            item?.teammateContent,
+            allyContents(index),
+            artifactConditionals[index]?.content,
+            artifactConditionals[index]?.teamContent,
+            ...weaponSelectable(index),
+            breakContents[index]
+          ),
+          (acc, curr) => {
+            if (curr?.show) acc[curr.id] = min ? false : curr.default
+            return acc
+          },
+          {}
+        )
       )
-    )
-    if (initFormFunction) initFormFunction(f)
-    else calculatorStore.initForm(f)
-  }, [team])
+      if (initFormFunction) initFormFunction(f)
+      else calculatorStore.initForm(f)
+    }
+  }, [team, conditionals, min, enabled])
 
   // =================
   //
@@ -155,137 +186,150 @@ export const useCalculator = ({
   // Reactions are placed last because they only provide damage buff, not stat buffs, and heavily relies on stats
   useEffect(() => {
     if (!_.some(forms)) return
-    const weakness = _.cloneDeep(calculatorStore.weakness)
-    const debuffs = _.map(DebuffTypes, (v) => ({ type: v, count: 0 }))
-    const preCompute = _.map(
-      conditionals,
-      (base, index) =>
-        base?.preCompute(baseStats[index], forms[index], debuffs, weakness, calculatorStore.broken) || baseStats[index]
-    ) // Compute all self conditionals, return stats of each char
-    const preComputeShared = _.map(preCompute, (base, index) => {
-      // Compute all shared conditionals, call function for every char except the owner
-      let x = base
-      _.forEach(conditionals, (item, i) => {
-        // Loop characters, exclude index of the current parent iteration
-        if (i !== index)
-          x =
-            item?.preComputeShared(
-              preCompute[i],
-              x,
-              {
-                ...forms[i],
-                path: findCharacter(team[index]?.cId)?.path,
-                element: findCharacter(team[index]?.cId)?.element,
-              },
-              forms[index],
-              debuffs,
-              weakness,
-              calculatorStore.broken
-            ) || x
-      })
-      return x
-    })
-    const postCustom = _.map(preComputeShared, (base, index) => {
-      let x = base
-      _.forEach(custom[index], (v) => {
-        x[v.name as any].push({
-          name: 'Custom',
-          source: 'Manual',
-          value: v.value / (isFlat(v.name) ? 1 : 100),
+    if (enabled) {
+      const weakness = _.cloneDeep(calculatorStore.weakness)
+      const debuffs = _.map(DebuffTypes, (v) => ({ type: v, count: 0 }))
+      const preCompute = _.map(conditionals, (base, index) => {
+        let x =
+          base?.preCompute(baseStats[index], forms[index], debuffs, weakness, calculatorStore.broken) ||
+          baseStats[index]
+        if (forms[index][`break_${x.NAME}`])
+          x.DOT_SCALING.push({
+            name: `Break ${BreakDebuffType[x.ELEMENT]} DMG`,
+            value: [],
+            element: x.ELEMENT,
+            property: TalentProperty.BREAK_DOT,
+            type: TalentType.NONE,
+            overrideIndex: index,
+            dotType: BreakDebuffType[x.ELEMENT],
+          })
+        return x
+      }) // Compute all self conditionals, return stats of each char
+      const preComputeShared = _.map(preCompute, (base, index) => {
+        // Compute all shared conditionals, call function for every char except the owner
+        let x = base
+        _.forEach(conditionals, (item, i) => {
+          // Loop characters, exclude index of the current parent iteration
+          if (i !== index)
+            x =
+              item?.preComputeShared(
+                preCompute[i],
+                x,
+                {
+                  ...forms[i],
+                  path: findCharacter(team[index]?.cId)?.path,
+                  element: findCharacter(team[index]?.cId)?.element,
+                },
+                forms[index],
+                debuffs,
+                weakness,
+                calculatorStore.broken
+              ) || x
         })
+        return x
       })
-      return x
-    })
-    // Always loop; artifact buffs are either self or team-wide so everything is in each character's own form
-    const postArtifact = _.map(postCustom, (base, index) => {
-      let x = base
-      _.forEach(forms, (form, i) => {
-        x = i === index ? calculateRelic(x, form) : calculateTeamRelic(x, form, postCustom[i])
+      const postCustom = _.map(preComputeShared, (base, index) => {
+        let x = base
+        _.forEach(custom[index], (v) => {
+          x[v.name as any].push({
+            name: 'Custom',
+            source: 'Manual',
+            value: v.value / (isFlat(v.name) ? 1 : 100),
+          })
+        })
+        return x
       })
-      return x
-    })
-    const postWeapon = _.map(postArtifact, (base, index) => {
-      let x = base
-      // Apply self self buff then loop for team-wide buff that is in each character's own form
-      _.forEach(forms, (form, i) => {
+      // Always loop; artifact buffs are either self or team-wide so everything is in each character's own form
+      const postArtifact = _.map(postCustom, (base, index) => {
+        let x = base
+        _.forEach(forms, (form, i) => {
+          x = i === index ? calculateRelic(x, form) : calculateTeamRelic(x, form, postCustom[i])
+        })
+        return x
+      })
+      const postWeapon = _.map(postArtifact, (base, index) => {
+        let x = base
+        // Apply self self buff then loop for team-wide buff that is in each character's own form
+        _.forEach(forms, (form, i) => {
+          _.forEach(
+            _.filter(
+              i === index ? [...weaponConditionals[i], ...weaponTeamConditionals[i]] : weaponTeamConditionals[i],
+              (c) => _.includes(_.keys(form), c.id)
+            ),
+            (c) => {
+              x = c.scaling(x, form, team[i]?.equipments?.weapon?.refinement, {
+                team: team,
+                element: findCharacter(team[i]?.cId)?.element,
+                own: postArtifact[i],
+                owner: i,
+                totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
+                index: i,
+                debuffs,
+              })
+            }
+          )
+        })
+        // Targeted buffs are in each team member form aside from the giver so no need to loop
         _.forEach(
-          _.filter(
-            i === index ? [...weaponConditionals[i], ...weaponTeamConditionals[i]] : weaponTeamConditionals[i],
-            (c) => _.includes(_.keys(form), c.id)
-          ),
+          _.filter(weaponAllySelectable(index), (c) => _.includes(_.keys(forms[index]), c.id)),
           (c) => {
-            x = c.scaling(x, form, team[i]?.equipments?.weapon?.refinement, {
+            x = c.scaling(x, forms[index], team[c.owner]?.equipments?.weapon?.refinement, {
               team: team,
-              element: findCharacter(team[i]?.cId)?.element,
-              own: postArtifact[i],
-              owner: i,
+              element: findCharacter(team[c.owner]?.cId)?.element,
+              own: postArtifact[c.owner],
               totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
-              index: i,
+              index,
+              owner: c.owner,
               debuffs,
             })
           }
         )
+        return x
       })
-      // Targeted buffs are in each team member form aside from the giver so no need to loop
-      _.forEach(
-        _.filter(weaponAllySelectable(index), (c) => _.includes(_.keys(forms[index]), c.id)),
-        (c) => {
-          x = c.scaling(x, forms[index], team[c.owner]?.equipments?.weapon?.refinement, {
-            team: team,
-            element: findCharacter(team[c.owner]?.cId)?.element,
-            own: postArtifact[c.owner],
-            totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
-            index,
-            owner: c.owner,
+      const postCompute = _.map(
+        conditionals,
+        (base, index) =>
+          base?.postCompute(
+            postWeapon[index],
+            forms[index],
+            postWeapon,
+            forms,
             debuffs,
-          })
-        }
+            weakness,
+            calculatorStore.broken
+          ) || postWeapon[index]
       )
-      return x
-    })
-    const postCompute = _.map(
-      conditionals,
-      (base, index) =>
-        base?.postCompute(
-          postWeapon[index],
-          forms[index],
-          postWeapon,
-          forms,
-          debuffs,
-          weakness,
-          calculatorStore.broken
-        ) || postWeapon[index]
-    )
-    const postArtifactCallback = _.map(postCompute, (base, index) => {
-      let x = base
-      const set = getSetCount(
-        _.map(team[index]?.equipments?.artifacts, (item) => _.find(artifactStore.artifacts, (a) => a.id === item))
-      )
-      _.forEach(set, (value, key) => {
-        if (value >= 2) {
-          const half = _.find(AllRelicSets, ['id', key])?.half
-          if (half) x = half(x)
-        }
-        if (value >= 4) {
-          const add = _.find(AllRelicSets, ['id', key])?.add
-          if (add) x = add(x)
-        }
+      const postArtifactCallback = _.map(postCompute, (base, index) => {
+        let x = base
+        const set = getSetCount(
+          _.map(team[index]?.equipments?.artifacts, (item) => _.find(artifactStore.artifacts, (a) => a.id === item))
+        )
+        _.forEach(set, (value, key) => {
+          if (value >= 2) {
+            const half = _.find(AllRelicSets, ['id', key])?.half
+            if (half) x = half(x)
+          }
+          if (value >= 4) {
+            const add = _.find(AllRelicSets, ['id', key])?.add
+            if (add) x = add(x)
+          }
+        })
+        return x
       })
-      return x
-    })
-    // Cleanup callbacks for buffs that should be applied last
-    const final = _.map(postArtifactCallback, (base, index) => {
-      let x = base
-      _.forEach(base.CALLBACK, (cb) => {
-        x = cb(x, debuffs, weakness, postCompute, true)
+      // Cleanup callbacks for buffs that should be applied last
+      const final = _.map(postArtifactCallback, (base, index) => {
+        let x = base
+        _.forEach(base.CALLBACK, (cb) => {
+          x = cb(x, debuffs, weakness, postCompute, true)
+        })
+        return x
       })
-      return x
-    })
-    if (!doNotSaveStats) {
-      calculatorStore.setValue('computedStats', final)
-      calculatorStore.setValue('debuffs', debuffs)
+      if (!doNotSaveStats) {
+        calculatorStore.setValue('computedStats', final)
+        calculatorStore.setValue('debuffs', debuffs)
+      }
+      setFinalStats(final)
     }
-    setFinalStats(final)
   }, [baseStats, forms, custom, team, calculatorStore.weakness, calculatorStore.broken, calculatorStore.toughness])
 
   // =================
@@ -300,8 +344,8 @@ export const useCalculator = ({
     _.flatMap(
       _.map(conditionals, (item, index) =>
         index === selected
-          ? _.concat(item?.content, artifactConditionals[index]?.content)
-          : _.concat(item?.teammateContent, artifactConditionals[index]?.teamContent)
+          ? _.concat(item?.content, artifactConditionals[index]?.content, breakContents[index])
+          : _.concat(item?.teammateContent, artifactConditionals[index]?.teamContent, breakContents[index])
       ),
       (item, index) => _.map(item, (inner) => ({ ...inner, index }))
     )

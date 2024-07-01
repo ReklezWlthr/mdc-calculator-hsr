@@ -3,6 +3,7 @@ import { Characters } from '@src/data/db/characters'
 import { LightCones } from '@src/data/db/lightcone'
 import { StatsArray } from '@src/data/lib/stats/baseConstant'
 import { DebuffTypes } from '@src/domain/conditional'
+import { Element } from '@src/domain/constant'
 import _ from 'lodash'
 
 export const findLightCone = (wId: string) => _.find(LightCones, (item) => item.id === wId)
@@ -29,3 +30,6 @@ export const countDebuff = (debuffs: { type: DebuffTypes; count: number }[], typ
 
 export const checkBuffExist = (array: StatsArray[], predicate: Partial<StatsArray>) =>
   _.size(_.filter(array, (item) => _.every(predicate, (value, key) => item[key] === value))) >= 1
+
+export const checkIsDoT = (element: Element) =>
+  _.includes([Element.FIRE, Element.PHYSICAL, Element.LIGHTNING, Element.WIND], element)

@@ -10,7 +10,7 @@ import { TalentTypeMap } from '../../../../data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { findCharacter } from '@src/core/utils/finder'
 import { BreakBaseLevel, BreakElementMult } from '@src/domain/scaling'
-import { StringConstructor, useDamageStringConstruct } from '@src/core/hooks/useDamageStringConstruct'
+import { StringConstructor, damageStringConstruct } from '@src/core/utils/constructor/damageStringConstruct'
 
 interface ScalingSubRowsProps {
   scaling: IScaling[]
@@ -44,25 +44,29 @@ export const ElementColor = {
 
 export const CompareSubRows = observer(
   ({ scaling, stats, allStats, level, name, property, element }: ScalingSubRowsProps) => {
-    const { setupStore } = useStore()
+    const { setupStore, calculatorStore } = useStore()
 
     const mode = setupStore.mode
-    const main = useDamageStringConstruct(
+    const main = damageStringConstruct(
+      calculatorStore,
       scaling[0],
       scaling[0]?.overrideIndex ? allStats[0]?.[scaling[0]?.overrideIndex] : stats[0],
       level[0]
     )
-    const sub1 = useDamageStringConstruct(
+    const sub1 = damageStringConstruct(
+      calculatorStore,
       scaling[1],
       scaling[1]?.overrideIndex ? allStats[1]?.[scaling[1]?.overrideIndex] : stats[1],
       level[1]
     )
-    const sub2 = useDamageStringConstruct(
+    const sub2 = damageStringConstruct(
+      calculatorStore,
       scaling[2],
       scaling[2]?.overrideIndex ? allStats[2]?.[scaling[2]?.overrideIndex] : stats[2],
       level[2]
     )
-    const sub3 = useDamageStringConstruct(
+    const sub3 = damageStringConstruct(
+      calculatorStore,
       scaling[3],
       scaling[3]?.overrideIndex ? allStats[3]?.[scaling[3]?.overrideIndex] : stats[3],
       level[3]

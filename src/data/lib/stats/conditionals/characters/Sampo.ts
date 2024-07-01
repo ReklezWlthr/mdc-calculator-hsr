@@ -20,7 +20,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
   const talent = t.talent + upgrade.talent
 
   const names = _.map(team, (item) => findCharacter(item.cId)?.name)
-  const index = _.findIndex(team, (item) => item.cId === '1108')
+  const index = _.findIndex(team, (item) => item?.cId === '1108')
 
   const talents: ITalent = {
     normal: {

@@ -1,4 +1,5 @@
 import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
+import { DebuffTypes } from './conditional'
 
 export enum HsrPage {
   TEAM = 'team',
@@ -152,6 +153,7 @@ export enum TalentProperty {
   BREAK = 'Break DMG',
   SUPER_BREAK = 'Super Break DMG',
   DOT = 'DoT',
+  BREAK_DOT = 'Break DoT',
   FUA = 'Follow-Up DMG',
   FROZEN = 'Frozen',
   ENTANGLE = 'Entanglement',
@@ -383,4 +385,14 @@ export const CustomConditionalMap = {
   ANEMO_RES_PEN: 'Anemo RES Reduction',
   GEO_RES_PEN: 'Geo RES Reduction',
   DENDRO_RES_PEN: 'Dendro RES Reduction',
+}
+
+export const BreakDebuffType = {
+  [Element.PHYSICAL]: DebuffTypes.BLEED,
+  [Element.FIRE]: DebuffTypes.BURN,
+  [Element.ICE]: DebuffTypes.FROZEN,
+  [Element.LIGHTNING]: DebuffTypes.SHOCKED,
+  [Element.WIND]: DebuffTypes.WIND_SHEAR,
+  [Element.QUANTUM]: DebuffTypes.ENTANGLE,
+  [Element.IMAGINARY]: DebuffTypes.IMPRISON,
 }

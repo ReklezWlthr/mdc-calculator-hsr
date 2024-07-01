@@ -30,9 +30,9 @@ export interface IScaling {
   flat?: number
   bonus?: number //Bonus dmg for each component
   cr?: number //Bonus crit rate for each component
-  overrideCr?: number,
+  overrideCr?: number
   cd?: number //Bonus crit dmg for each component
-  overrideCd?: number,
+  overrideCd?: number
   res_pen?: number
   break?: number
   energy?: number

@@ -19,7 +19,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
 
-  const index = _.findIndex(team, (item) => item.cId === '1303')
+  const index = _.findIndex(team, (item) => item?.cId === '1303')
 
   const talents: ITalent = {
     normal: {

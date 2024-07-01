@@ -7,12 +7,18 @@ import _ from 'lodash'
 import { propertyColor } from '@src/presentation/hsr/components/tables/scaling_sub_rows'
 import { BreakBaseLevel, BreakElementMult } from '@src/domain/scaling'
 import { useStore } from '@src/data/providers/app_store_provider'
+import { CalculatorStoreType } from '@src/data/stores/calculator_store'
 
-export const useDamageStringConstruct = (scaling: IScaling, stats: StatsObject, level: number) => {
+export const damageStringConstruct = (
+  calculatorStore: CalculatorStoreType,
+  scaling: IScaling,
+  stats: StatsObject,
+  level: number
+) => {
   if (!scaling || !stats || !level) return
-  const { calculatorStore } = useStore()
 
   const element = scaling.element
+  const breakScale = scaling.property === TalentProperty.BREAK
 
   const talentDmg = stats.getValue(`${TalentPropertyMap[scaling.property]}_DMG`) || 0
   const typeDmg = stats.getValue(`${TalentTypeMap[scaling.type]}_DMG`) || 0
@@ -89,8 +95,8 @@ export const useDamageStringConstruct = (scaling: IScaling, stats: StatsObject, 
     : 0
   const capped = scaling.cap ? cap < raw : false
   const dmg =
-    (capped ? cap : scaling.property === TalentProperty.BREAK ? breakRaw : raw) *
-    (1 + (scaling.property === TalentProperty.BREAK ? stats.getValue(Stats.BE) : bonusDMG)) *
+    (capped ? cap : breakScale ? breakRaw : raw) *
+    (1 + (breakScale ? stats.getValue(Stats.BE) : bonusDMG)) *
     (scaling.multiplier || 1) *
     elementMult *
     enemyMod
@@ -136,16 +142,14 @@ export const useDamageStringConstruct = (scaling: IScaling, stats: StatsObject, 
 
   const formulaString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(
     dmg
-  ).toLocaleString()}</b> = ${
-    scaling.property === TalentProperty.BREAK ? baseBreakScaling : shouldWrap ? `(${baseWithFlat})` : baseWithFlat
-  }${
-    scaling.property === TalentProperty.BREAK && stats.getValue(Stats.BE) > 0
+  ).toLocaleString()}</b> = ${breakScale ? baseBreakScaling : shouldWrap ? `(${baseWithFlat})` : baseWithFlat}${
+    breakScale && stats.getValue(Stats.BE) > 0
       ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconBreakUp.png" />${toPercentage(
           stats.getValue(Stats.BE)
         )}</b>)</span>`
       : bonusDMG > 0
       ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(
-          scaling.property === TalentProperty.BREAK ? stats.getValue(Stats.BE) : bonusDMG
+          breakScale ? stats.getValue(Stats.BE) : bonusDMG
         )}</b>)`
       : ''
   }${scaling.multiplier > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(scaling.multiplier, 2)}</b>` : ''}${
@@ -265,4 +269,4 @@ export const useDamageStringConstruct = (scaling: IScaling, stats: StatsObject, 
   }
 }
 
-export type StringConstructor = ReturnType<typeof useDamageStringConstruct>
+export type StringConstructor = ReturnType<typeof damageStringConstruct>

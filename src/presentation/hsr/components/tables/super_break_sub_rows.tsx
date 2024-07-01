@@ -9,7 +9,7 @@ import { StatsObject, StatsObjectKeys, TalentPropertyMap } from '@src/data/lib/s
 import { TalentTypeMap } from '../../../../data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { BreakBaseLevel } from '@src/domain/scaling'
-import { useSuperBreakStringConstruct } from '@src/core/hooks/useSuperBreakStringConstruct'
+import { superBreakStringConstruct } from '@src/core/utils/constructor/superBreakStringConstruct'
 
 interface ScalingSubRowsProps {
   scaling: IScaling
@@ -43,7 +43,12 @@ export const SuperBreakSubRows = observer(({ scaling, statsOverride }: ScalingSu
 
   const element = scaling.element
 
-  const { dmg, formulaString } = useSuperBreakStringConstruct(scaling, stats, teamStore.characters[index]?.level)
+  const { dmg, formulaString } = superBreakStringConstruct(
+    calculatorStore,
+    scaling,
+    stats,
+    teamStore.characters[index]?.level
+  )
 
   return (
     <div className="grid items-center grid-cols-9 gap-2 pr-2">

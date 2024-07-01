@@ -216,6 +216,7 @@ export const TalentTypeMap = {
 export const TalentPropertyMap = {
   [TalentProperty.BREAK]: 'BREAK',
   [TalentProperty.DOT]: 'DOT',
+  [TalentProperty.BREAK_DOT]: 'DOT',
   [TalentProperty.SUPER_BREAK]: 'SUPER_BREAK',
   [TalentProperty.FUA]: 'FUA',
 }

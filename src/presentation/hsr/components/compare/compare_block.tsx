@@ -48,6 +48,7 @@ export const CompareBlock = observer(() => {
     indexOverride: selectedS1,
     customOverride: setupStore.custom[1],
     initFormFunction: (f) => setupStore.initForm(1, f),
+    enabled: !!setupStore.comparing[0]?.char,
   })
   const sub2 = useCalculator({
     teamOverride: setupStore.comparing[1]?.char,
@@ -56,6 +57,7 @@ export const CompareBlock = observer(() => {
     indexOverride: selectedS2,
     customOverride: setupStore.custom[2],
     initFormFunction: (f) => setupStore.initForm(2, f),
+    enabled: !!setupStore.comparing[1]?.char,
   })
   const sub3 = useCalculator({
     teamOverride: setupStore.comparing[2]?.char,
@@ -64,6 +66,7 @@ export const CompareBlock = observer(() => {
     indexOverride: selectedS3,
     customOverride: setupStore.custom[3],
     initFormFunction: (f) => setupStore.initForm(3, f),
+    enabled: !!setupStore.comparing[2]?.char,
   })
 
   const sumStats = [
@@ -160,7 +163,7 @@ export const CompareBlock = observer(() => {
             <p>Damage Comparison</p>
             {/* <p className='text-xs font-normal text-gray'>Hover Numbers for More Details</p> */}
           </div>
-          <div className="flex justify-end w-full mb-1.5 bg-primary-dark">
+          <div className="flex justify-end w-full bg-primary-dark">
             <div className="grid w-4/5 grid-cols-9 gap-2 py-0.5 pr-2 text-sm font-bold text-center bg-primary-dark">
               <p className="col-span-2">Property</p>
               <p className="col-span-1">Element</p>
@@ -281,38 +284,17 @@ export const CompareBlock = observer(() => {
               {_.map(team[setupIndex], (item, index) => (
                 <CharacterSelect
                   key={`char_select_${index}`}
-                  onClick={() => setupStore.setValue('selected', [setupIndex, index])}
+                  onClick={() => {
+                    if (!team[setupIndex][index]) setupStore.setValue('tab', 'trace')
+                    setupStore.setValue('selected', [setupIndex, index])
+                  }}
                   isSelected={index === charIndex}
-                  id={team[setupIndex][index].cId}
+                  id={team[setupIndex][index]?.cId}
                 />
               ))}
             </div>
           </div>
           <div className="flex gap-5">
-            <div
-              className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
-                'bg-primary': tab === 'mod',
-              })}
-              onClick={() => setupStore.setValue('tab', 'mod')}
-            >
-              Modifiers
-            </div>
-            <div
-              className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
-                'bg-primary': tab === 'stats',
-              })}
-              onClick={() => setupStore.setValue('tab', 'stats')}
-            >
-              Stats
-            </div>
-            <div
-              className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
-                'bg-primary': tab === 'load',
-              })}
-              onClick={() => setupStore.setValue('tab', 'load')}
-            >
-              Loadout
-            </div>
             <div
               className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
                 'bg-primary': tab === 'trace',
@@ -321,15 +303,43 @@ export const CompareBlock = observer(() => {
             >
               Setup
             </div>
+            {focusedChar && (
+              <>
+                <div
+                  className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
+                    'bg-primary': tab === 'mod',
+                  })}
+                  onClick={() => setupStore.setValue('tab', 'mod')}
+                >
+                  Modifiers
+                </div>
+                <div
+                  className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
+                    'bg-primary': tab === 'stats',
+                  })}
+                  onClick={() => setupStore.setValue('tab', 'stats')}
+                >
+                  Stats
+                </div>
+                <div
+                  className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
+                    'bg-primary': tab === 'load',
+                  })}
+                  onClick={() => setupStore.setValue('tab', 'load')}
+                >
+                  Loadout
+                </div>
+              </>
+            )}
           </div>
-          {tab === 'mod' && (
+          {tab === 'mod' && focusedChar && (
             <CompareConditionalBlock
               stats={allStats[setupIndex]}
               content={contents[setupIndex]}
               team={team[setupIndex]}
             />
           )}
-          {tab === 'stats' && (
+          {tab === 'stats' && focusedChar && (
             <>
               <div className="flex items-center justify-between w-full text-white">
                 <p className="px-4 text-lg font-bold">
@@ -340,7 +350,7 @@ export const CompareBlock = observer(() => {
               <StatBlock index={selected} stat={allStats[setupIndex][charIndex]} />
             </>
           )}
-          {tab === 'load' && (
+          {tab === 'load' && focusedChar && (
             <>
               <LCBlock
                 {...focusedChar.equipments.weapon}
@@ -370,7 +380,7 @@ export const CompareBlock = observer(() => {
               </div>
             </>
           )}
-          {tab === 'trace' && <CompareTraceBlock team={team} char={team[setupIndex][charIndex]} />}
+          {tab === 'trace' && <CompareTraceBlock team={team} char={focusedChar} />}
         </div>
       )}
     </div>

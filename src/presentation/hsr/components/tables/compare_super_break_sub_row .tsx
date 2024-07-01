@@ -7,7 +7,7 @@ import { Tooltip } from '@src/presentation/components/tooltip'
 import { toPercentage } from '@src/core/utils/converter'
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { SuperBreakStringConstructor, useSuperBreakStringConstruct } from '@src/core/hooks/useSuperBreakStringConstruct'
+import { SuperBreakStringConstructor, superBreakStringConstruct } from '@src/core/utils/constructor/superBreakStringConstruct'
 
 interface ScalingSubRowsProps {
   scaling: IScaling[]
@@ -41,22 +41,28 @@ export const ElementColor = {
 
 export const CompareSuperBreakSubRows = observer(
   ({ scaling, stats, allStats, level, name, property, element }: ScalingSubRowsProps) => {
-    const main = useSuperBreakStringConstruct(
+    const { calculatorStore } = useStore()
+    
+    const main = superBreakStringConstruct(
+      calculatorStore,
       scaling[0],
       scaling[0]?.overrideIndex ? allStats[0]?.[scaling[0]?.overrideIndex] : stats[0],
       level[0]
     )
-    const sub1 = useSuperBreakStringConstruct(
+    const sub1 = superBreakStringConstruct(
+      calculatorStore,
       scaling[1],
       scaling[1]?.overrideIndex ? allStats[1]?.[scaling[1]?.overrideIndex] : stats[1],
       level[1]
     )
-    const sub2 = useSuperBreakStringConstruct(
+    const sub2 = superBreakStringConstruct(
+      calculatorStore,
       scaling[2],
       scaling[2]?.overrideIndex ? allStats[2]?.[scaling[2]?.overrideIndex] : stats[2],
       level[2]
     )
-    const sub3 = useSuperBreakStringConstruct(
+    const sub3 = superBreakStringConstruct(
+      calculatorStore,
       scaling[3],
       scaling[3]?.overrideIndex ? allStats[3]?.[scaling[3]?.overrideIndex] : stats[3],
       level[3]

@@ -1,16 +1,15 @@
-import { IScaling } from '@src/domain/conditional'
-import { Element, StatIcons, Stats, TalentProperty, PathType, TalentType } from '@src/domain/constant'
+import { DebuffTypes, IScaling } from '@src/domain/conditional'
+import { Element, Stats, TalentProperty } from '@src/domain/constant'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { toPercentage } from '@src/core/utils/converter'
-import { StatsObject, StatsObjectKeys, TalentPropertyMap } from '@src/data/lib/stats/baseConstant'
-import { TalentTypeMap } from '../../../../data/lib/stats/baseConstant'
+import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { findCharacter } from '@src/core/utils/finder'
-import { BreakBaseLevel, BreakElementMult } from '@src/domain/scaling'
-import { useDamageStringConstruct } from '@src/core/hooks/useDamageStringConstruct'
+import { damageStringConstruct } from '@src/core/utils/constructor/damageStringConstruct'
+import { Enemies } from '@src/data/db/enemies'
+import { breakDamageStringConstruct } from '@src/core/utils/constructor/breakDamageStringConstruct'
 
 interface ScalingSubRowsProps {
   scaling: IScaling
@@ -46,14 +45,24 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
   const {
     component: { DmgBody, AvgBody, CritBody },
     number: { dmg, totalCd, totalCr },
-  } = useDamageStringConstruct(scaling, stats, teamStore.characters[index]?.level)
+  } = damageStringConstruct(calculatorStore, scaling, stats, teamStore.characters[index]?.level)
+  const {
+    string: { debuffString },
+    number: { finalDebuff },
+  } = breakDamageStringConstruct(calculatorStore, stats, teamStore.characters[index]?.level, scaling.multiplier)
+  const breakDoT = scaling.property === TalentProperty.BREAK_DOT
 
+  const isCC = _.includes([TalentProperty.FROZEN, TalentProperty.ENTANGLE], scaling.property)
+
+  const enemy = _.find(Enemies, (item) => item.name === calculatorStore.enemy)
+  const ccRes = enemy?.statusRes?.[DebuffTypes.CONTROL] || 0
   const prob = scaling.chance?.fixed
     ? scaling.chance?.base
     : _.max([
         (scaling.chance?.base || 0) *
           (1 + stats.getValue(Stats.EHR)) *
-          (1 - calculatorStore.getEffRes(stats.getValue(StatsObjectKeys.EHR_RED))),
+          (1 - calculatorStore.getEffRes(stats.getValue(StatsObjectKeys.EHR_RED))) *
+          (1 - (enemy?.statusRes?.[scaling.property] || 0) - (isCC ? ccRes : 0)),
         0,
       ])
   const noCrit = _.includes(
@@ -62,6 +71,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
       TalentProperty.SHIELD,
       TalentProperty.DOT,
       TalentProperty.BREAK,
+      TalentProperty.BREAK_DOT,
       TalentProperty.SUPER_BREAK,
       TalentProperty.FROZEN,
     ],
@@ -84,10 +94,10 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
             )}
           </div>
         }
-        body={DmgBody}
+        body={breakDoT ? <div dangerouslySetInnerHTML={{ __html: debuffString }} /> : DmgBody}
         style="w-[400px]"
       >
-        <p className="col-span-1 text-center text-gray">{_.round(dmg).toLocaleString()}</p>
+        <p className="col-span-1 text-center text-gray">{_.round(breakDoT ? finalDebuff : dmg).toLocaleString()}</p>
       </Tooltip>
       {noCrit ? (
         <p className="col-span-1 text-center text-gray">-</p>
@@ -98,7 +108,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
       )}
       {noCrit ? (
         <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
-          {_.round(dmg).toLocaleString()}
+          {_.round(breakDoT ? finalDebuff : dmg).toLocaleString()}
         </p>
       ) : (
         <Tooltip title={'Average: ' + scaling.name} body={AvgBody} style="w-[400px]">
