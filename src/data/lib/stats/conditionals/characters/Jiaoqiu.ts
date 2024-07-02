@@ -37,7 +37,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       title: `Scorch Onslaught`,
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to a single enemy and <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Jiaoqiu's ATK to enemies adjacent to it. Has a <span class="text-desc">100%</span> <u>base chance</u> to inflict <span class="text-desc">1</span> stack of <b>Ashen Roast</b> on the primary target.`,
       value: [
-        { base: 90, growth: 9, style: 'curved' },
+        { base: 75, growth: 7.5, style: 'curved' },
         { base: 45, growth: 4.5, style: 'curved' },
       ],
       level: skill,
@@ -50,7 +50,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       <br />While inside the field, enemy targets take {{1}}% increased Ultimate DMG, with a {{2}}% <u>base chance</u> of being inflicted with <span class="text-desc">1</span> stack of <b>Ashen Roast</b> when taking action. This effect can only be triggered once for enemies in each turn.
       <br />The Field lasts for <span class="text-desc">3</span> turn(s), and its duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn. If Jiaoqiu is knocked down, the Field will also be dispelled.`,
       value: [
-        { base: 120, growth: 8, style: 'curved' },
+        { base: 60, growth: 4, style: 'curved' },
         { base: 50, growth: 1, style: 'curved' },
         { base: 9, growth: 0.6, style: 'curved' },
       ],
@@ -59,10 +59,13 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: `Quartet Finesse, Octave Finery`,
-      content: `When Jiaoqiu uses his Basic ATK, Skill, or Ultimate to hit an enemy, there is a <span class="text-desc">100%</span> <u>base chance</u> of dealing <span class="text-desc">1</span> stack of <b>Ashen Roast</b>, increasing the initial DMG enemies receive by {{0}}%, with each stack additionally increasing DMG by {{1}}% to a max of <span class="text-desc">5</span> stack(s). <b>Ashen Roast</b> will last <span class="text-desc">2</span> turn(s).`,
+      content: `When Jiaoqiu uses his Basic ATK, Skill, or Ultimate to hit an enemy, there is a <span class="text-desc">100%</span> <u>base chance</u> of dealing <span class="text-desc">1</span> stack of <b>Ashen Roast</b>, with <span class="text-desc">1</span> stack increasing the initial DMG enemies receive by {{0}}%, and each subsequent stack increasing DMG by {{1}}%.
+      <br /><b>Ashen Roast</b> has a max of <span class="text-desc">5</span> stack(s) and last <span class="text-desc">2</span> turn(s).
+      <br />When the enemy target is in the <b>Ashen Roast</b> state, they are also considered as being in the <b class="text-hsr-fire">Burned</b> state, and take {{2}}% DoT equal to Jiaoqiu's <b class="text-hsr-fire">Fire DMG</b> at the start of each turn.`,
       value: [
         { base: 7.5, growth: 0.75, style: 'curved' },
         { base: 2.5, growth: 0.25, style: 'curved' },
+        { base: 90, growth: 9, style: 'curved' },
       ],
       level: talent,
     },
@@ -84,7 +87,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Pyre Cleanse',
-      content: `When a Field exists, the enemies' Effect Hit Rate is reduced by <span class="text-desc">30%</span>. At the start of each turn, they receive <b class="text-hsr-fire">Fire Additional DMG</b> equal to <span class="text-desc">150%</span> of Jiaoqiu's ATK.`,
+      content: `At the start of the battle, immediately regenerates <span class="text-desc">15</span> Energy.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -94,7 +97,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c2: {
       trace: 'Eidolon 2',
       title: `From Savor Comes Suffer`,
-      content: `<b>Ashen Roast</b> can be considered as a <b class="text-hsr-fire">Burn</b> status. Enemies with <b>Ashen Roast</b> will suffer <b class="text-hsr-fire">Fire DoT</b> equal to <span class="text-desc">300%</span> of Jiaoqiu's ATK at the start of each turn.`,
+      content: `When an enemy is in <b>Ashen Roast</b> state, increases the DMG multiplier of <b class="text-hsr-fire">Fire DoT</b> inflicted by <b>Ashen Roast</b> by <span class="text-desc">300%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -180,7 +183,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base.SKILL_SCALING = [
         {
           name: 'Main Target',
-          value: [{ scaling: calcScaling(0.9, 0.09, skill, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.75, 0.075, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
@@ -199,7 +202,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base.ULT_SCALING = [
         {
           name: 'AoE',
-          value: [{ scaling: calcScaling(1.2, 0.08, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.6, 0.04, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
@@ -246,22 +249,20 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             calcScaling(0.075, 0.0075, ult, 'curved') + calcScaling(0.025, 0.0025, ult, 'curved') * form.ashen_roast,
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
-        if (c >= 2) {
-          const burn = {
-            name: 'Burn DMG',
-            value: [{ scaling: 3, multiplier: Stats.ATK }],
-            element: Element.FIRE,
-            property: TalentProperty.DOT,
-            type: TalentType.NONE,
-          }
-          base.TALENT_SCALING.push(burn)
-          base.DOT_SCALING.push({
-            ...burn,
-            overrideIndex: index,
-            dotType: DebuffTypes.BURN,
-          })
-          addDebuff(debuffs, DebuffTypes.BURN)
+        const burn = {
+          name: 'Burn DMG',
+          value: [{ scaling: calcScaling(0.9, 0.09, ult, 'curved') + (c >= 2 ? 3 : 0), multiplier: Stats.ATK }],
+          element: Element.FIRE,
+          property: TalentProperty.DOT,
+          type: TalentType.NONE,
         }
+        base.TALENT_SCALING.push(burn)
+        base.DOT_SCALING.push({
+          ...burn,
+          overrideIndex: index,
+          dotType: DebuffTypes.BURN,
+        })
+        addDebuff(debuffs, DebuffTypes.BURN)
         if (c >= 6) {
           base.ALL_TYPE_RES_RED.push({
             name: `Eidolon 6`,
