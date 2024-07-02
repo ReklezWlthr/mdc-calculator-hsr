@@ -56,15 +56,12 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
 
   const enemy = _.find(Enemies, (item) => item.name === calculatorStore.enemy)
   const ccRes = enemy?.statusRes?.[DebuffTypes.CONTROL] || 0
+  const ehr = stats.getValue(Stats.EHR)
+  const effRes = calculatorStore.getEffRes(stats.getValue(StatsObjectKeys.EHR_RED))
+  const debuffRes = enemy?.statusRes?.[scaling.property] || 0
   const prob = scaling.chance?.fixed
     ? scaling.chance?.base
-    : _.max([
-        (scaling.chance?.base || 0) *
-          (1 + stats.getValue(Stats.EHR)) *
-          (1 - calculatorStore.getEffRes(stats.getValue(StatsObjectKeys.EHR_RED))) *
-          (1 - (enemy?.statusRes?.[scaling.property] || 0) - (isCC ? ccRes : 0)),
-        0,
-      ])
+    : _.max([(scaling.chance?.base || 0) * (1 + ehr) * (1 - effRes) * (1 - debuffRes - (isCC ? ccRes : 0)), 0])
   const noCrit = _.includes(
     [
       TalentProperty.HEAL,
@@ -117,14 +114,36 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
           </p>
         </Tooltip>
       )}
-      <p
-        className={classNames(
-          'text-xs text-center truncate',
-          scaling.chance?.base ? (prob <= 0.6 ? 'text-red' : prob <= 0.8 ? 'text-desc' : 'text-heal') : 'text-gray'
-        )}
-      >
-        {scaling.chance ? toPercentage(prob, 1) : '-'}
-      </p>
+      {scaling.chance ? (
+        <Tooltip
+          title="Real Effect Hit Chance"
+          body={
+            <div>
+              <b className="text-red">{toPercentage(prob)}</b> = <b>{toPercentage(scaling.chance.base)}</b> × (1 +{' '}
+              <b>{toPercentage(ehr)}</b>) × (1 - <b>{toPercentage(effRes)}</b>)
+              {debuffRes ? (
+                <span>
+                  × (1 - <b>{toPercentage(debuffRes)}</b>)
+                </span>
+              ) : (
+                ''
+              )}
+            </div>
+          }
+          style="w-[400px]"
+        >
+          <p
+            className={classNames(
+              'text-xs text-center truncate',
+              prob <= 0.6 ? 'text-red' : prob <= 0.8 ? 'text-desc' : 'text-heal'
+            )}
+          >
+            {toPercentage(prob, 1)}
+          </p>
+        </Tooltip>
+      ) : (
+        <p className="text-xs text-center truncate text-gray">-</p>
+      )}
       <p className="col-span-2 text-xs truncate" title={scaling.name}>
         {scaling.name}
       </p>

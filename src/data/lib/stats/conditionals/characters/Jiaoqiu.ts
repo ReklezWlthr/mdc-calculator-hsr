@@ -218,20 +218,6 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           value: calcScaling(0.5, 0.01, ult, 'curved'),
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
-        if (a.a2) {
-          base.EHR_RED.push({
-            name: `Ascension 2 Passive`,
-            source: 'Self',
-            value: 0.3,
-          })
-          base.ULT_SCALING.push({
-            name: 'Additional DMG',
-            value: [{ scaling: 1.5, multiplier: Stats.ATK }],
-            element: Element.FIRE,
-            property: TalentProperty.ADD,
-            type: TalentType.NONE,
-          })
-        }
         if (c >= 4) {
           base.ATK_REDUCTION.push({
             name: `Eidolon 4`,
@@ -289,13 +275,6 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Jiaoqiu',
           value: calcScaling(0.09, 0.006, ult, 'curved'),
         })
-        if (a.a2) {
-          base.EHR_RED.push({
-            name: `Ascension 2 Passive`,
-            source: 'Jiaoqiu',
-            value: 0.3,
-          })
-        }
         if (c >= 4) {
           base.ATK_REDUCTION.push({
             name: `Eidolon 4`,
