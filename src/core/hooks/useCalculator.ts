@@ -145,7 +145,7 @@ export const useCalculator = ({
           show: true,
           default: windShear ? 0 : false,
           min: 0,
-          max: 5,
+          max: 3,
           debuff: true,
           chance: { base: 1.5, fixed: false },
           duration: 2,
