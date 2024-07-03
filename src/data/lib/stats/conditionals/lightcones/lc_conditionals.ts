@@ -1476,7 +1476,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
         base.VULNERABILITY.push({
           name: `Ensnare`,
           source: 'Resolution Shines As Pearls of Sweat',
-          value: tier === 1 ? calcRefinement(0.1, 0.02, r) : calcRefinement(0.18, 0.03, r),
+          value: tier === 1 ? calcRefinement(0.1, 0.02, r) : calcRefinement(0.14, 0.02, r),
         })
         if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.DEF_RED)
       }

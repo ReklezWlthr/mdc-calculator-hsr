@@ -1,5 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { addDebuff, checkIsDoT, findCharacter, findLightCone } from '../utils/finder'
+import { addDebuff, checkIsDoT, findCharacter, findEnemy, findLightCone } from '../utils/finder'
 import { useEffect, useMemo, useState } from 'react'
 import { getTeamOutOfCombat } from '../utils/calculator'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
@@ -133,16 +133,19 @@ export const useCalculator = ({
   const breakContents: IContent[] = _.map(baseStats, (item) => {
     const color = ElementColor[item.ELEMENT]
     const type = BreakDebuffType[item.ELEMENT]
+    const windShear = item.ELEMENT === Element.WIND
     return checkIsDoT(item.ELEMENT)
       ? {
-          type: 'toggle',
+          type: windShear ? 'number' : 'toggle',
           id: `break_${item.NAME}`,
           title: `${item.NAME}'s Break ${type}`,
           text: `${item.NAME}'s Break ${type}`,
           trace: 'Weakness Break',
           content: `Using <b class="${color}">${item.ELEMENT}</b> attacks to trigger Weakness Break will deal <b class="${color}">${item.ELEMENT} DMG</b> and apply the <b class="${color}">${type}</b> Effect, dealing <b class="${color}">${item.ELEMENT} DoT</b>.`,
           show: true,
-          default: false,
+          default: windShear ? 0 : false,
+          min: 0,
+          max: 5,
           debuff: true,
           chance: { base: 1.5, fixed: false },
           duration: 2,
@@ -216,6 +219,7 @@ export const useCalculator = ({
             type: TalentType.NONE,
             overrideIndex: index,
             dotType: BreakDebuffType[x.ELEMENT],
+            multiplier: forms[index][`break_${x.NAME}`],
           })
           addDebuff(debuffs, BreakDebuffType[x.ELEMENT])
         }

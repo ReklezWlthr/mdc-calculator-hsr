@@ -1,5 +1,6 @@
 import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
 import { Characters } from '@src/data/db/characters'
+import { Enemies } from '@src/data/db/enemies'
 import { LightCones } from '@src/data/db/lightcone'
 import { StatsArray } from '@src/data/lib/stats/baseConstant'
 import { DebuffTypes } from '@src/domain/conditional'
@@ -11,6 +12,8 @@ export const findLightCone = (wId: string) => _.find(LightCones, (item) => item.
 export const findCharacter = (cId: string) => _.find(Characters, (item) => item.id === cId)
 
 export const findArtifactSet = (id: string) => _.find(AllRelicSets, (item) => item.id === id)
+
+export const findEnemy = (name: string) => _.find(Enemies, (item) => item.name === name)
 
 export const findContentById = (content: any[], id: string) => _.find(content, ['id', id])
 

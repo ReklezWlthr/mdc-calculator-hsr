@@ -89,7 +89,7 @@ export const CompareSuperBreakSubRows = observer(
             <div className="flex items-center justify-between gap-2">
               <p>{`${title}: ${name}`}</p>
               {main ? (
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1 whitespace-nowrap">
                   <p
                     className={classNames('text-xs', {
                       'text-lime-300': compare > 0,

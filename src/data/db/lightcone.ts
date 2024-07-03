@@ -1632,11 +1632,11 @@ export const LightCones = [
     type: PathType.NIHILITY,
     desc: {
       name: 'Worldly Affairs Leave No Mark',
-      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. If the target is not under the <b>Unarmored</b> effect dealt by the wearer, when the wearer uses a Basic ATK, Skill, or Ultimate on enemy targets, there is a <span class="text-desc">60%</span> <u>base chance</u> to inflict <b>Unarmored</b> to the enemy. Under the <b>Unarmored</b> state, the target enemy's DMG received is increased by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). When the wearer deals DMG to an enemy with the <b>Unarmored</b> effect inflicted by themselves, there is a <span class="text-desc">60%</span> <u>base chance</u> to escalate the <b>Unarmored</b> state from them into the <b>Cornered</b> state, which increases the target enemy's DMG received by {{2}}%.`,
+      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. After the wearer uses Basic ATK, Skill, or Ultimate to attack enemy target(s), there is a <span class="text-desc">60%</span> <u>base chance</u> to inflict <b>Unarmored</b> to the target. While in the <b>Unarmored</b> state, increase the DMG the target enemy receives by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). When the target is under the DoT state the wearer inflicted, there is a <span class="text-desc">60%</span> <u>base chance</u> to escalate the <b>Unarmored</b> state inflicted by the wearer to the <b>Cornered</b> state, further increases the DMG the target enemy receives by {{2}}%, lasting for <span class="text-desc">2</span> turn(s). During this period, the wearer will not be able to apply <b>Unarmored</b>.`,
       properties: [
         { base: 60, growth: 10 },
         { base: 10, growth: 2 },
-        { base: 18, growth: 3 },
+        { base: 14, growth: 2 },
       ],
     },
     beta: true,
@@ -1651,7 +1651,7 @@ export const LightCones = [
     type: PathType.DESTRUCTION,
     desc: {
       name: 'Deeply Engrossed',
-      detail: `Greatly increases the odds that the wearer will be attacked, increases the wearer's CRIT DMG by {{0}}%. After the wearer uses their Ultimate, they receive <span class="text-desc">1</span> stack of <b>Firedance</b>, lasting for <span class="text-desc">2</span> turns and up to <span class="text-desc">2</span> stacks. Each stack of <b>Firedance</b> increases the DMG dealt by the wearer's follow-up attack by {{0}}%.`,
+      detail: `Greatly increases the odds that the wearer will be attacked and increases the wearer's CRIT DMG by {{0}}%. After the wearer uses their Ultimate, they receive <span class="text-desc">1</span> stack of <b>Firedance</b>, lasting for <span class="text-desc">2</span> turns and up to <span class="text-desc">2</span> stacks. Each stack of <b>Firedance</b> increases the DMG dealt by the wearer's follow-up attack by {{0}}%.`,
       properties: [{ base: 36, growth: 6 }],
     },
     beta: true,

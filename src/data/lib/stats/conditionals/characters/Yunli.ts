@@ -10,8 +10,8 @@ import { calcScaling } from '@src/core/utils/calculator'
 const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
     basic: c >= 3 ? 1 : 0,
-    skill: c >= 3 ? 2 : 0,
-    ult: c >= 5 ? 2 : 0,
+    skill: c >= 5 ? 2 : 0,
+    ult: c >= 3 ? 2 : 0,
     talent: c >= 5 ? 2 : 0,
   }
   const basic = t.basic + upgrade.basic
@@ -71,7 +71,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     technique: {
       trace: 'Technique',
       title: `Posterior Precedence`,
-      content: `Gains the Ward effect for <span class="text-desc">20</span> seconds. When entering combat by attacking enemies or receiving an attack, immediately inflicts <b>Intuit: Cull</b> on a random enemy target, and increases this attack's DMG by <span class="text-desc">80%</span>.`,
+      content: `Gains the Ward effect for <span class="text-desc">20</span> seconds. When entering combat by attacking enemies or receiving an attack, immediately inflicts <b>Intuit: Cull</b> on a random enemy target, and increases the DMG dealt by this attack by <span class="text-desc">80%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -101,7 +101,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c3: {
       trace: 'Eidolon 3',
       title: `Mastlength Twirls Mountweight`,
-      content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
+      content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
@@ -112,7 +112,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c5: {
       trace: 'Eidolon 5',
       title: `Blade of Old Outlasts All`,
-      content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
+      content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {

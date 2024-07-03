@@ -46,11 +46,6 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
     component: { DmgBody, AvgBody, CritBody },
     number: { dmg, totalCd, totalCr },
   } = damageStringConstruct(calculatorStore, scaling, stats, teamStore.characters[index]?.level)
-  const {
-    string: { debuffString },
-    number: { finalDebuff },
-  } = breakDamageStringConstruct(calculatorStore, stats, teamStore.characters[index]?.level, scaling.multiplier)
-  const breakDoT = scaling.property === TalentProperty.BREAK_DOT
 
   const isCC = _.includes([TalentProperty.FROZEN, TalentProperty.ENTANGLE], scaling.property)
 
@@ -91,10 +86,10 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
             )}
           </div>
         }
-        body={breakDoT ? <div dangerouslySetInnerHTML={{ __html: debuffString }} /> : DmgBody}
+        body={DmgBody}
         style="w-[400px]"
       >
-        <p className="col-span-1 text-center text-gray">{_.round(breakDoT ? finalDebuff : dmg).toLocaleString()}</p>
+        <p className="col-span-1 text-center text-gray">{_.round(dmg).toLocaleString()}</p>
       </Tooltip>
       {noCrit ? (
         <p className="col-span-1 text-center text-gray">-</p>
@@ -105,7 +100,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
       )}
       {noCrit ? (
         <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
-          {_.round(breakDoT ? finalDebuff : dmg).toLocaleString()}
+          {_.round(dmg).toLocaleString()}
         </p>
       ) : (
         <Tooltip title={'Average: ' + scaling.name} body={AvgBody} style="w-[400px]">

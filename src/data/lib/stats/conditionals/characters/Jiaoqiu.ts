@@ -61,7 +61,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       title: `Quartet Finesse, Octave Finery`,
       content: `When Jiaoqiu uses his Basic ATK, Skill, or Ultimate to hit an enemy, there is a <span class="text-desc">100%</span> <u>base chance</u> of dealing <span class="text-desc">1</span> stack of <b>Ashen Roast</b>, with <span class="text-desc">1</span> stack increasing the initial DMG enemies receive by {{0}}%, and each subsequent stack increasing DMG by {{1}}%.
       <br /><b>Ashen Roast</b> has a max of <span class="text-desc">5</span> stack(s) and last <span class="text-desc">2</span> turn(s).
-      <br />When the enemy target is in the <b>Ashen Roast</b> state, they are also considered as being in the <b class="text-hsr-fire">Burned</b> state, and take {{2}}% DoT equal to Jiaoqiu's <b class="text-hsr-fire">Fire DMG</b> at the start of each turn.`,
+      <br />When the enemy target is in the <b>Ashen Roast</b> state, they are also considered as being in the <b class="text-hsr-fire">Burned</b> state, and take <b class="text-hsr-fire">Fire DoT</b> equal to {{2}}% Jiaoqiu's ATK at the start of each turn.`,
       value: [
         { base: 7.5, growth: 0.75, style: 'curved' },
         { base: 2.5, growth: 0.25, style: 'curved' },
@@ -128,7 +128,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       type: 'toggle',
       id: 'jq_ult',
       text: `Pyrograph Arcanum`,
-      ...talents.talent,
+      ...talents.ult,
       show: true,
       default: true,
       duration: 3,
@@ -232,12 +232,13 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           name: `Ultimate`,
           source: 'Self',
           value:
-            calcScaling(0.075, 0.0075, ult, 'curved') + calcScaling(0.025, 0.0025, ult, 'curved') * form.ashen_roast,
+            calcScaling(0.075, 0.0075, talent, 'curved') +
+            calcScaling(0.025, 0.0025, talent, 'curved') * (form.ashen_roast - 1),
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
         const burn = {
           name: 'Burn DMG',
-          value: [{ scaling: calcScaling(0.9, 0.09, ult, 'curved') + (c >= 2 ? 3 : 0), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.9, 0.09, talent, 'curved') + (c >= 2 ? 3 : 0), multiplier: Stats.ATK }],
           element: Element.FIRE,
           property: TalentProperty.DOT,
           type: TalentType.NONE,
@@ -273,7 +274,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base.ULT_VUL.push({
           name: `Ultimate`,
           source: 'Jiaoqiu',
-          value: calcScaling(0.09, 0.006, ult, 'curved'),
+          value: calcScaling(0.5, 0.01, ult, 'curved'),
         })
         if (c >= 4) {
           base.ATK_REDUCTION.push({
@@ -288,7 +289,8 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           name: `Ultimate`,
           source: 'Jiaoqiu',
           value:
-            calcScaling(0.075, 0.0075, ult, 'curved') + calcScaling(0.025, 0.0025, ult, 'curved') * form.ashen_roast,
+            calcScaling(0.075, 0.0075, talent, 'curved') +
+            calcScaling(0.025, 0.0025, talent, 'curved') * (form.ashen_roast - 1),
         })
         if (c >= 1)
           base[Stats.ALL_DMG].push({

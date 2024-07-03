@@ -78,6 +78,7 @@ export const CompareSubRows = observer(
         TalentProperty.SHIELD,
         TalentProperty.DOT,
         TalentProperty.BREAK,
+        TalentProperty.BREAK_DOT,
         TalentProperty.SUPER_BREAK,
         TalentProperty.FROZEN,
       ],
@@ -131,7 +132,7 @@ export const CompareSubRows = observer(
                   </p>
                 )}
                 {main ? (
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1 whitespace-nowrap">
                     <p
                       className={classNames('text-xs', {
                         'text-lime-300': compare > 0,

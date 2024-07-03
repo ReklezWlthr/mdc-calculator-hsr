@@ -25,7 +25,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       energy: 20,
       trace: 'Basic ATK',
       title: 'My Sword Zaps Demons',
-      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of March 7th's ATK to a single enemy and gains 1<span class="text-desc">1</span> <b>Charge(s)</b>.`,
+      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of March 7th's ATK to a single enemy and gains <span class="text-desc">1</span> <b>Charge(s)</b>.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
@@ -33,9 +33,9 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       energy: 20,
       trace: 'Enhanced Basic ATK',
       title: 'Brows Be Smitten, Heart Be Bitten',
-      content: `This attack deals <span class="text-desc">3</span> Hits Per Action initially. Each hit against the target enemy deals Imaginary DMG equal to {{0}}% of March 7th's ATK. After dealing the final hit, there is a <span class="text-desc">60%</span> <u>fixed chance</u> to deal <span class="text-desc">1</span> extra hit, up to <span class="text-desc">3</span> extra hit(s). Energy regenerated from using Enhanced Basic ATK does not increase with the number of Hits Per Action.
+      content: `This attack deals DMG <span class="text-desc">3</span> time(s) initially. Each hit against the target enemy deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of March 7th's ATK. After dealing the final hit, there is a <span class="text-desc">60%</span> <u>fixed chance</u> to deal <span class="text-desc">1</span> extra hit, up to <span class="text-desc">3</span> extra hit(s). Energy regenerated from using Enhanced Basic ATK does not increase with the number of Hits Per Action.
       <br />Enhanced Basic ATK cannot recover Skill Points.`,
-      value: [{ base: 50, growth: 10, style: 'linear' }],
+      value: [{ base: 40, growth: 8, style: 'linear' }],
       level: basic,
     },
     skill: {
@@ -44,8 +44,8 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       title: `Master, It's Tea Time!`,
       content: `Designates a single ally (excluding this character) as the <b class="text-hsr-imaginary">Master</b> and increases <b class="text-hsr-imaginary">Master</b>'s SPD by {{0}}%. Only the latest target of March 7th's Skill will be regarded as her "<b class="text-hsr-imaginary">Master</b>."
       <br />When using Basic ATK or dealing DMG from <span class="text-desc">1</span> hit of her Enhanced Basic ATK, triggers the following effects based on the specific Path of the <b class="text-hsr-imaginary">Master</b>:
-      <br />Erudition, Destruction, The Hunt: Additionally deals Additional DMG (Combat Type based on the <b class="text-hsr-imaginary">Master</b>'s Combat Type) equal to {{1}}% of March 7th's ATK.
-      <br />Harmony, Nihility, Preservation, Abundance: The Toughness Reduction for this DMG increases by <span class="text-desc">100%</span>.`,
+      <br /><b>Erudition, Destruction, The Hunt</b>: Additionally deals Additional DMG (Combat Type based on the <b class="text-hsr-imaginary">Master</b>'s Combat Type) equal to {{1}}% of March 7th's ATK.
+      <br /><b>Harmony, Nihility, Preservation, Abundance</b>: The Toughness Reduction for this DMG increases by <span class="text-desc">100%</span>.`,
       value: [
         { base: 6, growth: 0.4, style: 'curved' },
         { base: 10, growth: 1, style: 'curved' },
@@ -65,7 +65,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       trace: 'Talent',
       title: `Master, I've Ascended!`,
       content: `After the <b class="text-hsr-imaginary">Master</b> uses an attack or Ultimate, March 7th gains up to <span class="text-desc">1</span> <b>Charge</b> each time.
-      <br />When the <b>Charge</b> is at <span class="text-desc">7</span> or more, March 7th immediately takes action again, and increases the DMG she deals by {{0}}%. Her Basic ATK is Enhanced, and only her Enhanced Basic ATK can be used. After using Enhanced Basic ATK, consumes <span class="text-desc">7</span> <b>Charge</b>.`,
+      <br />When the <b>Charge</b> is at <span class="text-desc">7</span> or more, March 7th immediately takes action again, and increases the DMG she deals by {{0}}%. Her Basic ATK is Enhanced, and her Skill can't be used. After using Enhanced Basic ATK, consumes <span class="text-desc">7</span> <b>Charge</b>. <b>Charge</b> max is at <span class="text-desc">10</span>.`,
       value: [{ base: 40, growth: 4, style: 'curved' }],
       level: talent,
     },
@@ -75,30 +75,30 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       content: `If March 7th is in the team, every time an ally uses Technique, March 7th gains a <b>Charge</b> upon entering the next battle, up to <span class="text-desc">3</span> <b>Charge(s)</b>.
       <br />After using her Technique, March 7th regenerates <span class="text-desc">30</span> Energy upon entering the next battle.`,
     },
-    a2: {
-      trace: 'Ascension 2 Passive',
-      title: 'Gliding Waves',
-      content: `When <b class="text-hsr-imaginary">Master</b> is on the field, increases March 7th's SPD by <span class="text-desc">10%</span>.`,
+    a6: {
+      trace: 'Ascension 6 Passive',
+      title: 'Tide Tamer',
+      content: `After using Enhanced Basic ATK, increases the <b class="text-hsr-imaginary">Master</b>'s CRIT DMG by <span class="text-desc">60%</span> and Break Effect by <span class="text-desc">36%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
-      title: 'Acute Smarts',
+      title: 'Filigree',
       content: `March 7th can reduce the Toughness of enemies with Weakness of <b class="text-hsr-imaginary">Master</b>'s Type. When inflicting Weakness Break, also triggers the <b class="text-hsr-imaginary">Imaginary</b> Weakness Break effect.`,
     },
-    a6: {
-      trace: 'Ascension 6 Passive',
-      title: 'Soaring Swan',
+    a2: {
+      trace: 'Ascension 2 Passive',
+      title: 'Swan Soar',
       content: `When the battle starts, March 7th's action is Advanced Forward by <span class="text-desc">25%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'My Sword Stirs Starlight',
-      content: `After using Ultimate, increases the CRIT DMG of the next Enhanced Basic ATK by <span class="text-desc">36%</span>.`,
+      content: `When <b class="text-hsr-imaginary">Master</b> is on the field, increases March 7th's SPD by <span class="text-desc">10%</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Blade Dances on Waves' Fight`,
-      content: `After the <b class="text-hsr-imaginary">Master</b> uses their Basic ATK or Skill to attack an enemy, March 7th immediately launches a follow-up attack and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to <span class="text-desc">60%</span> of March 7th's ATK to the target enemy. Additionally, triggers an effect corresponding to <b class="text-hsr-imaginary">Master</b>'s Path and gains <span class="text-desc">1</span> Charge(s). If there is no target enemy that can be attacked, March 7th attacks a random enemy. This effect can only be triggered once per turn.`,
+      content: `After the <b class="text-hsr-imaginary">Master</b> uses their Basic ATK or Skill to attack an enemy, March 7th immediately launches a follow-up attack and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to <span class="text-desc">60%</span> of March 7th's ATK to the target enemy. Additionally, triggers an effect corresponding to <b class="text-hsr-imaginary">Master</b>'s Path and gains <span class="text-desc">1</span> <b>Charge(s)</b>. If there is no target enemy that can be attacked, March 7th attacks a random enemy. This effect can only be triggered once per turn.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -120,7 +120,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c6: {
       trace: 'Eidolon 6',
       title: 'Me, the Best Girl on Sight',
-      content: `After using Enhanced Basic ATK, increases the <b class="text-hsr-imaginary">Master</b>'s CRIT DMG by <span class="text-desc">60%</span> and Break Effect by <span class="text-desc">36%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `After using Ultimate, increases the CRIT DMG of the next Enhanced Basic ATK by <span class="text-desc">50%</span>.`,
     },
   }
 
@@ -132,7 +132,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ...talents.talent,
       show: true,
       default: true,
-      sync: true
+      sync: true,
     },
     {
       type: 'toggle',
@@ -144,10 +144,10 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     {
       type: 'toggle',
-      id: 'h_march_c1',
-      text: `E1 CRIT DMG Bonus`,
-      ...talents.c1,
-      show: c >= 1,
+      id: 'h_march_c6',
+      text: `E6 CRIT DMG Bonus`,
+      ...talents.c6,
+      show: c >= 6,
       default: true,
     },
   ]
@@ -165,11 +165,11 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     {
       type: 'toggle',
-      id: 'h_march_c6',
-      text: `E6 Master's Bonus`,
-      ...talents.c6,
+      id: 'h_march_a6',
+      text: `A6 Master's Bonus`,
+      ...talents.a6,
       duration: 2,
-      show: c >= 6,
+      show: a.a6,
       default: true,
     },
   ]
@@ -196,7 +196,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         ? [
             {
               name: 'Initial DMG',
-              value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.4, 0.08, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
@@ -205,7 +205,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             },
             {
               name: 'Extra Attack DMG [x3]',
-              value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.4, 0.08, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
@@ -241,11 +241,11 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           source: 'Self',
           value: calcScaling(0.4, 0.04, skill, 'curved'),
         })
-        if (form.h_march_c1)
+        if (form.h_march_c6)
           base.BASIC_CD.push({
-            name: `Eidolon 1`,
+            name: `Eidolon 6`,
             source: 'Self',
-            value: 0.36,
+            value: 0.5,
           })
       }
 
@@ -260,14 +260,14 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       weakness: Element[],
       broken: boolean
     ) => {
-      if (aForm.march_master && aForm.h_march_c6) {
+      if (aForm.march_master && aForm.h_march_a6) {
         base[Stats.CRIT_DMG].push({
-          name: `Eidolon 6`,
+          name: `Ascension 6 Passive`,
           source: 'March 7th',
           value: 0.6,
         })
         base[Stats.BE].push({
-          name: `Eidolon 6`,
+          name: `Ascension 6 Passive`,
           source: 'March 7th',
           value: 0.36,
         })
@@ -293,9 +293,9 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           source: 'March 7th',
           value: calcScaling(0.06, 0.004, skill, 'curved'),
         })
-        if (a.a2)
+        if (c >= 1)
           base[Stats.P_SPD].push({
-            name: 'Ascension 2 Passive',
+            name: 'Eidolon 1',
             source: 'Self',
             value: 0.1,
           })
@@ -306,6 +306,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             element: Element.IMAGINARY,
             property: TalentProperty.FUA,
             type: TalentType.NONE,
+            break: 5,
           })
         if (_.includes([PathType.DESTRUCTION, PathType.HUNT, PathType.ERUDITION], team[masterIndex].PATH)) {
           base.CALLBACK.push((x, _d, _w, all) => {

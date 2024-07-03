@@ -8,6 +8,7 @@ import { propertyColor } from '@src/presentation/hsr/components/tables/scaling_s
 import { BreakBaseLevel, BreakElementMult } from '@src/domain/scaling'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { CalculatorStoreType } from '@src/data/stores/calculator_store'
+import { breakDamageStringConstruct } from './breakDamageStringConstruct'
 
 export const damageStringConstruct = (
   calculatorStore: CalculatorStoreType,
@@ -19,6 +20,12 @@ export const damageStringConstruct = (
 
   const element = scaling.element
   const breakScale = scaling.property === TalentProperty.BREAK
+  const breakDoT = scaling.property === TalentProperty.BREAK_DOT
+
+  const {
+    string: { debuffString },
+    number: { finalDebuff },
+  } = breakDamageStringConstruct(calculatorStore, stats, level, scaling.multiplier)
 
   const talentDmg = stats.getValue(`${TalentPropertyMap[scaling.property]}_DMG`) || 0
   const typeDmg = stats.getValue(`${TalentTypeMap[scaling.type]}_DMG`) || 0
@@ -264,8 +271,12 @@ export const damageStringConstruct = (
 
   return {
     string: { formulaString, critString, avgString },
-    component: { DmgBody, CritBody, AvgBody },
-    number: { dmg, totalCd, totalCr },
+    component: {
+      DmgBody: breakDoT ? <div dangerouslySetInnerHTML={{ __html: debuffString }} /> : DmgBody,
+      CritBody,
+      AvgBody,
+    },
+    number: { dmg: breakDoT ? finalDebuff : dmg, totalCd, totalCr },
   }
 }
 

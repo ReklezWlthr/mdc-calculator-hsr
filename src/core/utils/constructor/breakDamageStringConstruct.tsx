@@ -116,8 +116,8 @@ export const breakDamageStringConstruct = (
       ? bleed
       : breakLevel) *
     (1 + breakEffect) *
-    defMult *
-    vulMult *
+    debuffDefMult *
+    debuffVulMult *
     resMult *
     (calculatorStore.broken ? 1 : 0.9) *
     (multiplier || 1)
