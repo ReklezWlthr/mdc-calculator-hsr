@@ -5,6 +5,7 @@ import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
+import { Tooltip } from '@src/presentation/components/tooltip'
 import { observer } from 'mobx-react-lite'
 import { useCallback } from 'react'
 
@@ -36,7 +37,26 @@ export const SettingModal = observer(() => {
           />
         </div>
         <div className="flex items-center justify-between gap-x-2">
-          <p className="text-sm text-gray">Show Enemy SU Variant</p>
+          <div className="flex items-center gap-2">
+            <p className="text-sm text-gray">Show Enemy SU Variant</p>
+            <Tooltip
+              title="Show Enemy SU Variant"
+              body={
+                <div>
+                  Some Elite and Boss enemies will show up in <b>Simulated/Divergent Universe</b> in either{' '}
+                  <b>Complete</b> or <b>Bug</b> variant. These variants are hidden by default but you can disable it
+                  here.
+                  <p className="text-xs italic text-red">
+                    ✦ Do note that enemy's Max HP may differ across different contents. Feel free to modify it if the
+                    value provided is not the one you are looking for.
+                  </p>
+                </div>
+              }
+              style="w-[400px]"
+            >
+              <i className="fa-regular fa-question-circle" />
+            </Tooltip>
+          </div>
           <ToggleSwitch
             enabled={settingStore.settings.variant}
             onClick={(v) => settingStore.setSettingValue({ variant: v })}
@@ -44,7 +64,36 @@ export const SettingModal = observer(() => {
         </div>
         <div className="space-y-0.5">
           <div className="flex items-center justify-between gap-x-2">
-            <p className="text-sm text-gray">Modifiers Initial Value</p>
+            <div className="flex items-center gap-2">
+              <p className="text-sm text-gray">Modifiers Initial Values</p>
+              <Tooltip
+                title="Modifiers Initial Values"
+                body={
+                  <div>
+                    <p>
+                      Determines the initial value of your character's modifiers in <b>Damage Calculator</b> and{' '}
+                      <b>Compare</b> page.
+                    </p>
+                    <p>
+                      <b>Default</b> will use the base value from the system as I see appropriate while <b>Maximum</b>/
+                      <b>Minimum</b> will respectively use the highest/lowest value possible for each modifier.
+                    </p>
+                    <p className="text-xs italic text-red">
+                      ✦ Maximum value does not always translate to higher damage as some modifiers scale inversely.
+                    </p>
+                    <p className="text-xs italic text-desc">
+                      ✦ This setting has no effect on single-target modifiers. They are toggled off by default.
+                    </p>
+                    <p className="text-xs italic text-desc">
+                      ✦ Only take effect after a change to setup data or a page refresh.
+                    </p>
+                  </div>
+                }
+                style="w-[400px]"
+              >
+                <i className="fa-regular fa-question-circle" />
+              </Tooltip>
+            </div>
             <SelectInput
               value={settingStore.settings.formMode}
               options={[
@@ -56,11 +105,6 @@ export const SettingModal = observer(() => {
               style="w-[100px]"
             />
           </div>
-          <p className="text-xs italic text-red">
-            ✦ Maximum value does not always translate to higher damage as some modifiers scale inversely.
-          </p>
-          <p className="text-xs italic text-desc">✦ This setting has no effect on single-target modifiers.</p>
-          <p className="text-xs italic text-desc">✦ Only take effect after a change to setup data or page refresh.</p>
         </div>
       </div>
       <div className="p-3 space-y-1 rounded-lg bg-primary-darker">

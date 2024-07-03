@@ -124,6 +124,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       debuff: true,
       chance: { base: a.a2 ? 1 : 0.8, fixed: false },
       duration: 2,
+      debuffElement: Element.LIGHTNING,
     },
     {
       type: 'toggle',
@@ -237,6 +238,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.LIGHTNING,
           property: TalentProperty.DOT,
           type: TalentType.NONE,
+          debuffElement: Element.LIGHTNING,
         }
         base.SKILL_SCALING.push({ ...skillShock, chance: { base: a.a2 ? 1 : 0.8, fixed: false } })
         if (c >= 4) base.ULT_SCALING.push({ ...skillShock, chance: { base: 1, fixed: false } })
@@ -249,6 +251,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.LIGHTNING,
           property: TalentProperty.DOT,
           type: TalentType.NONE,
+          debuffElement: Element.LIGHTNING,
         }
         base.TECHNIQUE_SCALING.push({ ...techniqueShock, chance: { base: 1, fixed: false } })
         base.DOT_SCALING.push({ ...techniqueShock, overrideIndex: index, dotType: DebuffTypes.SHOCKED })

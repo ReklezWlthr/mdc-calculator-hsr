@@ -95,11 +95,12 @@ export class SetupStore {
     this.forms = _.cloneDeep(this.forms)
   }
 
-  setFormValue = (setupIndex: number, charIndex: number, key: string, value: any, sync: boolean) => {
-    this.forms[setupIndex][charIndex][key] = value
+  setFormValue = (setupIndex: number, index: number, key: string, value: any, sync: boolean) => {
+    this.forms[setupIndex][index][key] = value
     if (sync) {
-      console.log(sync, this.forms)
+      console.log(sync, _.cloneDeep(this.forms))
       for (const form of this.forms) {
+        if (!form) continue
         for (const char of form) {
           if (_.has(char, key)) char[key] = value
         }

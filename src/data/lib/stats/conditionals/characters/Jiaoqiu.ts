@@ -145,6 +145,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       default: c >= 6 ? 9 : 5,
       min: 0,
       max: c >= 6 ? 9 : 5,
+      debuffElement: Element.FIRE,
     },
   ]
 

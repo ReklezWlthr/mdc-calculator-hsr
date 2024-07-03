@@ -10,6 +10,7 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { damageStringConstruct } from '@src/core/utils/constructor/damageStringConstruct'
 import { Enemies } from '@src/data/db/enemies'
 import { breakDamageStringConstruct } from '@src/core/utils/constructor/breakDamageStringConstruct'
+import { chanceStringConstruct } from '@src/core/utils/constructor/chanceStringConstruct'
 
 interface ScalingSubRowsProps {
   scaling: IScaling
@@ -47,16 +48,13 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
     number: { dmg, totalCd, totalCr },
   } = damageStringConstruct(calculatorStore, scaling, stats, teamStore.characters[index]?.level)
 
-  const isCC = _.includes([TalentProperty.FROZEN, TalentProperty.ENTANGLE], scaling.property)
-
-  const enemy = _.find(Enemies, (item) => item.name === calculatorStore.enemy)
-  const ccRes = enemy?.statusRes?.[DebuffTypes.CONTROL] || 0
-  const ehr = stats.getValue(Stats.EHR)
-  const effRes = calculatorStore.getEffRes(stats.getValue(StatsObjectKeys.EHR_RED))
-  const debuffRes = enemy?.statusRes?.[scaling.property] || 0
-  const prob = scaling.chance?.fixed
-    ? scaling.chance?.base
-    : _.max([(scaling.chance?.base || 0) * (1 + ehr) * (1 - effRes) * (1 - debuffRes - (isCC ? ccRes : 0)), 0])
+  const { prob, ProbComponent } = chanceStringConstruct(
+    calculatorStore,
+    stats,
+    scaling.chance?.base,
+    scaling.chance?.fixed,
+    scaling.debuffElement
+  )
   const noCrit = _.includes(
     [
       TalentProperty.HEAL,
@@ -110,23 +108,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
         </Tooltip>
       )}
       {scaling.chance ? (
-        <Tooltip
-          title="Real Effect Hit Chance"
-          body={
-            <div>
-              <b className="text-red">{toPercentage(prob)}</b> = <b>{toPercentage(scaling.chance.base)}</b> × (1 +{' '}
-              <b>{toPercentage(ehr)}</b>) × (1 - <b>{toPercentage(effRes)}</b>)
-              {debuffRes ? (
-                <span>
-                  × (1 - <b>{toPercentage(debuffRes)}</b>)
-                </span>
-              ) : (
-                ''
-              )}
-            </div>
-          }
-          style="w-[400px]"
-        >
+        <Tooltip title="Real Effect Hit Chance" body={<ProbComponent />} style="w-[400px]">
           <p
             className={classNames(
               'text-xs text-center truncate',

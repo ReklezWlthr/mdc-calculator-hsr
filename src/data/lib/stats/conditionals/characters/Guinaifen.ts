@@ -139,6 +139,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       chance: { base: 1, fixed: false },
       debuff: true,
       duration: 2,
+      debuffElement: Element.FIRE,
     },
     {
       type: 'toggle',
@@ -248,6 +249,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           property: TalentProperty.DOT,
           type: TalentType.NONE,
           chance: { base: 1, fixed: false },
+          debuffElement: Element.FIRE,
         }
         base.SKILL_SCALING.push(burn)
         base.DOT_SCALING.push({

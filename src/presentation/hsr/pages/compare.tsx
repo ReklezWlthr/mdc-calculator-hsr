@@ -36,6 +36,17 @@ export const ComparePage = observer(() => {
     )
   }, [])
 
+  const onOpenCopyModal = useCallback((onConfirm: () => void) => {
+    modalStore.openModal(
+      <CommonModal
+        icon="fa-solid fa-question-circle text-hsr-imaginary"
+        title="Duplicate Main Setup"
+        desc={`You are about to overwrite this current setup with a copy from Main. Do you wish to proceed?`}
+        onConfirm={onConfirm}
+      />
+    )
+  }, [])
+
   const onOpenSwapModal = useCallback((onConfirm: () => void) => {
     modalStore.openModal(
       <CommonModal
@@ -172,37 +183,55 @@ export const ComparePage = observer(() => {
                 <div className="space-y-1" key={tI}>
                   <div className="flex items-center justify-between">
                     <p className="font-bold">Sub Setup {tI + 1}</p>
-                    {!!item && (
-                      <div className="flex items-center gap-2 mr-2">
-                        <i
-                          title="Swap with Main"
-                          className="flex items-center justify-center w-6 h-6 text-xs rounded-sm cursor-pointer fa-solid fa-star bg-primary text-desc"
-                          onClick={() =>
-                            onOpenSwapModal(() => {
-                              const main = setupStore.main
-                              const toBeSwapped = setupStore.comparing[tI]
-                              setupStore.comparing.splice(tI, 1, main)
-                              setupStore.setValue('main', toBeSwapped)
-                              setupStore.setValue('comparing', setupStore.comparing)
-                              setupStore.setValue('forms', swapElement(setupStore.forms, 0, tI + 1))
-                              setupStore.setValue('custom', swapElement(setupStore.custom, 0, tI + 1))
-                              setupStore.setValue('selected', [0, setupStore.selected[1]])
-                            })
+                    <div className="flex items-center gap-2 mr-2">
+                      <i
+                        title="Duplicate Main"
+                        className="flex items-center justify-center w-6 h-6 text-xs rounded-sm cursor-pointer fa-solid fa-file bg-primary text-blue"
+                        onClick={() => {
+                          const handler = () => {
+                            const main = setupStore.main
+                            setupStore.comparing.splice(tI, 1, _.cloneDeep(main))
+                            setupStore.custom.splice(tI + 1, 1, _.cloneDeep(setupStore.custom[0]))
+                            setupStore.setValue('comparing', setupStore.comparing)
+                            setupStore.setForm(tI + 1, _.cloneDeep(setupStore.forms[0]))
+                            setupStore.setValue('custom', setupStore.custom)
                           }
-                        />
-                        <i
-                          title="Remove Setup"
-                          className="flex items-center justify-center w-6 h-6 text-xs rounded-sm cursor-pointer fa-solid fa-trash bg-primary text-red"
-                          onClick={() =>
-                            onOpenRemoveModal(() => {
-                              setupStore.comparing.splice(tI, 1, null)
-                              setupStore.setValue('comparing', setupStore.comparing)
-                              setupStore.setValue('selected', [0, 0])
-                            })
-                          }
-                        />
-                      </div>
-                    )}
+                          if (setupStore.comparing[tI]?.char) onOpenCopyModal(handler)
+                          else handler()
+                        }}
+                      />
+                      {!!item && (
+                        <>
+                          <i
+                            title="Swap with Main"
+                            className="flex items-center justify-center w-6 h-6 text-xs rounded-sm cursor-pointer fa-solid fa-star bg-primary text-desc"
+                            onClick={() =>
+                              onOpenSwapModal(() => {
+                                const main = setupStore.main
+                                const toBeSwapped = setupStore.comparing[tI]
+                                setupStore.comparing.splice(tI, 1, main)
+                                setupStore.setValue('main', toBeSwapped)
+                                setupStore.setValue('comparing', setupStore.comparing)
+                                setupStore.setValue('forms', swapElement(setupStore.forms, 0, tI + 1))
+                                setupStore.setValue('custom', swapElement(setupStore.custom, 0, tI + 1))
+                                setupStore.setValue('selected', [0, setupStore.selected[1]])
+                              })
+                            }
+                          />
+                          <i
+                            title="Remove Setup"
+                            className="flex items-center justify-center w-6 h-6 text-xs rounded-sm cursor-pointer fa-solid fa-trash bg-primary text-red"
+                            onClick={() =>
+                              onOpenRemoveModal(() => {
+                                setupStore.comparing.splice(tI, 1, null)
+                                setupStore.setValue('comparing', setupStore.comparing)
+                                setupStore.setValue('selected', [0, 0])
+                              })
+                            }
+                          />
+                        </>
+                      )}
+                    </div>
                   </div>
                   <div
                     className={classNames(

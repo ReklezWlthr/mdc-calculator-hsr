@@ -133,7 +133,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       ...talents.ult,
       show: true,
       default: true,
-      sync: true
+      sync: true,
     },
     {
       type: 'toggle',
@@ -145,6 +145,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       debuff: true,
       chance: { base: 1, fixed: false },
       duration: c >= 2 ? 3 : 2,
+      debuffElement: Element.FIRE,
     },
     {
       type: 'toggle',
@@ -159,10 +160,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
   ]
 
-  const teammateContent: IContent[] = [
-    findContentById(content, 'hook_skill'),
-    findContentById(content, 'hook_tech'),
-  ]
+  const teammateContent: IContent[] = [findContentById(content, 'hook_skill'), findContentById(content, 'hook_tech')]
 
   const allyContent: IContent[] = []
 
@@ -201,6 +199,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         property: TalentProperty.DOT,
         type: TalentType.NONE,
         chance: { base: 1, fixed: false },
+        debuffElement: Element.FIRE,
       }
       base.SKILL_SCALING = form.hook_enhanced_skill
         ? [
@@ -233,7 +232,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           ]
       base.ULT_SCALING = [
         {
-          name: 'Technique Burn DMG',
+          name: 'Single Target',
           value: [{ scaling: calcScaling(2.4, 0.16, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
@@ -258,6 +257,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         property: TalentProperty.DOT,
         type: TalentType.NONE,
         chance: { base: 1, fixed: false },
+        debuffElement: Element.FIRE,
       }
       base.TECHNIQUE_SCALING = [
         {

@@ -137,6 +137,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       debuff: true,
       chance: { base: 0.65, fixed: false },
       duration: a.a2 ? 4 : 3,
+      debuffElement: Element.WIND,
     },
   ]
 
@@ -211,6 +212,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         type: TalentType.NONE,
         chance: { base: 0.65, fixed: false },
         multiplier: form.sampo_wind_shear,
+        debuffElement: Element.WIND,
       }
       base.TALENT_SCALING = form.sampo_wind_shear ? [wind_shear] : []
 

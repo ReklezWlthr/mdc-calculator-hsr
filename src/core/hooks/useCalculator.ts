@@ -57,7 +57,7 @@ export const useCalculator = ({
 }: CalculatorOptions) => {
   const { teamStore, artifactStore, calculatorStore, settingStore } = useStore()
 
-  const selected = indexOverride || calculatorStore?.selected
+  const selected = indexOverride ?? calculatorStore?.selected
   const [finalStats, setFinalStats] = useState<StatsObject[]>(null)
 
   const forms = formOverride || calculatorStore.form
@@ -149,6 +149,7 @@ export const useCalculator = ({
           debuff: true,
           chance: { base: 1.5, fixed: false },
           duration: 2,
+          debuffElement: item.ELEMENT,
         }
       : null
   })

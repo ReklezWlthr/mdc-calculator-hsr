@@ -139,6 +139,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       debuff: true,
       duration: 3,
       chance: { base: 0.8, fixed: false },
+      debuffElement: Element.FIRE,
     },
   ]
 
@@ -238,6 +239,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.DOT,
           type: TalentType.NONE,
           chance: { base: 0.8, fixed: false },
+          debuffElement: Element.FIRE,
         }
 
         base.BASIC_SCALING.push(burn)

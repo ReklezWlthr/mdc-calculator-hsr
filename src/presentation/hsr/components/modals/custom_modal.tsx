@@ -39,6 +39,7 @@ export const CustomModal = observer(({ setCustomValue }: { setCustomValue?: Cust
       { name: Stats.CRIT_RATE, value: Stats.CRIT_RATE },
       { name: Stats.CRIT_DMG, value: Stats.CRIT_DMG },
       { name: Stats.BE, value: Stats.BE },
+      { name: Stats.EHR, value: Stats.EHR },
       { name: Stats.HEAL, value: Stats.HEAL },
       { name: Stats.ERR, value: Stats.ERR },
     ],
@@ -99,10 +100,8 @@ export const CustomModal = observer(({ setCustomValue }: { setCustomValue?: Cust
       set(-1, StatsObjectKeys[key], value)
     }
     if (selectedTab === 'element') {
-      if (key === 'percentage')
-        set(-1, StatsObjectKeys[`${selectedElement} DMG%`] as any, value)
-      if (key === 'pen')
-        set(-1, StatsObjectKeys[`${selectedElement.toUpperCase()}_RES_PEN`] as any, value)
+      if (key === 'percentage') set(-1, StatsObjectKeys[`${selectedElement} DMG%`] as any, value)
+      if (key === 'pen') set(-1, StatsObjectKeys[`${selectedElement.toUpperCase()}_RES_PEN`] as any, value)
     }
     if (selectedTab === 'talent') {
       set(-1, StatsObjectKeys[selectedTalent + key] as any, value)

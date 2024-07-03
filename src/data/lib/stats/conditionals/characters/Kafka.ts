@@ -141,6 +141,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       debuff: true,
       chance: { base: 1 + (a.a6 ? 0.3 : 0), fixed: false },
       duration: c >= 6 ? 3 : 2,
+      debuffElement: Element.LIGHTNING,
     },
   ]
 
@@ -235,6 +236,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.DOT,
           type: TalentType.NONE,
           chance: { base: 1 + (a.a6 ? 0.3 : 0), fixed: false },
+          debuffElement: Element.LIGHTNING,
         }
 
         base.ULT_SCALING.push(shock)

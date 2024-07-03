@@ -42,6 +42,7 @@ export interface IScaling {
   cap?: { scaling: number; multiplier: Stats; override?: number } //Bleed Cap
   toughCap?: number
   vul?: number
+  debuffElement?: Element // Only used for chance
 }
 
 export interface IContent {
@@ -64,6 +65,7 @@ export interface IContent {
   value?: { base: number; growth: number; style: TalentScalingStyle }[]
   level?: number
   sync?: boolean // Determine if this modifier should be synced when comparing builds
+  debuffElement?: Element // Only used for chance
 }
 
 export interface IWeaponContent {
@@ -78,6 +80,7 @@ export interface IWeaponContent {
   text: string
   show: boolean
   options?: { name: string; value: string }[]
+  debuffElement?: Element // Only used for chance
   scaling: (
     base: StatsObject, // Stats of the character
     form: Record<string, any>,

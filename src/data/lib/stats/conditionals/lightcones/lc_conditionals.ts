@@ -1215,6 +1215,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     chance: { base: 1, fixed: false },
     duration: 1,
     id: '23006_1',
+    debuffElement: Element.LIGHTNING,
     scaling: (base, form, r, { debuffs, own, owner }) => {
       if (form['23006_1']) {
         if (base.NAME === own.NAME) {
@@ -1225,6 +1226,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
             property: TalentProperty.DOT,
             type: TalentType.NONE,
             chance: { base: 1, fixed: false },
+            debuffElement: Element.LIGHTNING,
           }
           _.forEach(
             [base.BASIC_SCALING, base.SKILL_SCALING, base.ULT_SCALING, base.TALENT_SCALING, base.TECHNIQUE_SCALING],
@@ -1395,6 +1397,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     chance: { base: calcRefinement(1, 0.05, 1), fixed: false },
     duration: 2,
     id: '21016',
+    debuffElement: Element.FIRE,
     scaling: (base, form, r, { debuffs, own, owner }) => {
       if (form['21016']) {
         if (base.NAME === own.NAME) {
@@ -1405,6 +1408,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
             property: TalentProperty.DOT,
             type: TalentType.NONE,
             chance: { base: calcRefinement(1, 0.05, r), fixed: false },
+            debuffElement: Element.FIRE,
           }
           base.SKILL_SCALING.push(burn)
           base.DOT_SCALING.push({

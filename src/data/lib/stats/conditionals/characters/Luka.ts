@@ -147,7 +147,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       show: true,
       default: true,
       unique: true,
-      sync: true
+      sync: true,
     },
     {
       type: 'toggle',
@@ -170,6 +170,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       debuff: true,
       chance: { base: 1, fixed: false },
       duration: 3,
+      debuffElement: Element.PHYSICAL,
     },
     {
       type: 'toggle',
@@ -281,6 +282,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         type: TalentType.NONE,
         cap: { scaling: calcScaling(1.3, 0.13, skill, 'dot'), multiplier: Stats.ATK },
         chance: { base: 1, fixed: false },
+        debuffElement: Element.PHYSICAL,
       }
       if (form.luka_bleed) {
         base.SKILL_SCALING.push(bleed)

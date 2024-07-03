@@ -1,10 +1,11 @@
 import { calcScaling } from '@src/core/utils/calculator'
+import { chanceStringConstruct } from '@src/core/utils/constructor/chanceStringConstruct'
 import { toPercentage } from '@src/core/utils/converter'
 import { findCharacter } from '@src/core/utils/finder'
 import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { IContent } from '@src/domain/conditional'
-import { Element, ITeamChar, Stats } from '@src/domain/constant'
+import { Element, ITeamChar, Stats, TalentProperty } from '@src/domain/constant'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
@@ -94,14 +95,13 @@ export const ConditionalBlock = observer(
               )
 
               const stats = teamStats[content.index]
-              const prob = content.chance?.fixed
-                ? content.chance?.base
-                : _.max([
-                    (content.chance?.base || 0) *
-                      (1 + stats?.getValue(Stats.EHR)) *
-                      (1 - calculatorStore.getEffRes(stats?.getValue(StatsObjectKeys.EHR_RED))),
-                    0,
-                  ])
+              const { prob, ProbComponent } = chanceStringConstruct(
+                calculatorStore,
+                stats,
+                content.chance?.base,
+                content.chance?.fixed,
+                content.debuffElement
+              )
 
               return (
                 content.show && (
@@ -142,28 +142,39 @@ export const ConditionalBlock = observer(
                     >
                       {content.debuff ? 'Debuff' : content.unique ? 'Other' : 'Buff'}
                     </div>
-                    <div
-                      className={classNames(
-                        'text-xs text-center truncate col-span-2',
-                        content.chance?.base
-                          ? prob <= 0.6
-                            ? 'text-red'
-                            : prob <= 0.8
-                            ? 'text-desc'
-                            : 'text-heal'
-                          : 'text-gray'
-                      )}
-                    >
-                      {content.chance?.base ? toPercentage(prob, 1) : '-'}
-                    </div>
+                    {content.chance?.base ? (
+                      <Tooltip
+                        title="Real Effect Hit Chance"
+                        body={<ProbComponent />}
+                        style="w-[400px]"
+                        containerStyle="col-span-2"
+                      >
+                        <div
+                          className={classNames(
+                            'text-xs text-center truncate',
+                            content.chance?.base
+                              ? prob <= 0.6
+                                ? 'text-red'
+                                : prob <= 0.8
+                                ? 'text-desc'
+                                : 'text-heal'
+                              : 'text-gray'
+                          )}
+                        >
+                          {toPercentage(prob, 1)}
+                        </div>
+                      </Tooltip>
+                    ) : (
+                      <p className="col-span-2 text-xs text-center truncate text-gray">-</p>
+                    )}
                     {content.type === 'number' && (
                       <>
                         <TextInput
                           type="number"
                           value={form[content.index]?.[content.id]}
-                          onChange={(value) => set(content.index, content.id, parseFloat(value) ?? '')}
-                          max={content.max}
-                          min={content.min}
+                          onChange={(value) => set(content.index, content.id, parseFloat(value) ?? '', content.sync)}
+                          max={content.max as number}
+                          min={content.min as number}
                           style="col-span-2"
                           small
                         />
