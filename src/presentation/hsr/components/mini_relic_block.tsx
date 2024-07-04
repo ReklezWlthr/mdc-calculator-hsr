@@ -8,9 +8,10 @@ import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useCallback, useMemo } from 'react'
 import { ArtifactListModal, RelicSetterT } from '@src/presentation/hsr/components/modals/artifact_list_modal'
+import classNames from 'classnames'
 
 export const MiniRelicBlock = observer(
-  ({ aId, index, setRelic, type }: { aId: string; index: number; setRelic: RelicSetterT, type: number }) => {
+  ({ aId, index, setRelic, type }: { aId: string; index?: number; setRelic?: RelicSetterT; type: number }) => {
     const { artifactStore, modalStore } = useStore()
 
     const relic = _.find(artifactStore.artifacts, ['id', aId])
@@ -31,13 +32,14 @@ export const MiniRelicBlock = observer(
     }, [relic])
 
     const onOpenSwapModal = useCallback(() => {
-      console.log(relic?.type)
-      modalStore.openModal(<ArtifactListModal index={index} type={type} setRelic={setRelic} />)
+      if (setRelic) modalStore.openModal(<ArtifactListModal index={index} type={type} setRelic={setRelic} />)
     }, [index, aId, setRelic, relic, type])
 
     return (
       <div
-        className="px-3 py-1.5 min-h-24 rounded-lg bg-primary-dark cursor-pointer hover:scale-[97%] duration-200 hover:ring-2 ring-primary-light"
+        className={classNames('px-3 py-1.5 min-h-24 rounded-lg bg-primary-dark duration-200 text-white', {
+          'hover:scale-[97%] hover:ring-2 ring-primary-light cursor-pointer': index,
+        })}
         onClick={onOpenSwapModal}
       >
         {aId ? (

@@ -1,3 +1,4 @@
+import { formatIdIcon } from '@src/core/utils/data_format'
 import { findCharacter } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { IBuild } from '@src/domain/constant'
@@ -14,7 +15,7 @@ interface BuildBlockProps {
 }
 
 export const BuildBlock = observer(({ build, onClick, onDelete }: BuildBlockProps) => {
-  const { buildStore, modalStore, toastStore } = useStore()
+  const { buildStore, modalStore, toastStore, settingStore } = useStore()
 
   const char = findCharacter(build.cId)
 
@@ -39,17 +40,27 @@ export const BuildBlock = observer(({ build, onClick, onDelete }: BuildBlockProp
 
   return (
     <div
-      className="flex items-center justify-between w-full px-4 py-3 text-white duration-200 rounded-lg cursor-pointer bg-primary-dark active:scale-95"
+      className="flex items-center w-full h-16 overflow-hidden text-white duration-200 rounded-lg cursor-pointer bg-primary-dark active:scale-95 shrink-0"
       onClick={onClick}
     >
-      <div className="w-1/2">
+      <div className="relative w-16 h-full overflow-hidden shrink-0">
+        <div className="absolute top-0 left-0 z-10 w-full h-full from-8% to-40% bg-gradient-to-l from-primary-dark to-transparent" />
+        <img
+          src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
+            build.cId,
+            settingStore.settings?.travelerGender
+          )}.webp`}
+          className="object-cover h-16 aspect-[47/64] scale-[300%] mt-11"
+        />
+      </div>
+      <div className="w-full px-1 py-3">
         <div className="flex items-center gap-2">
           {build.isDefault && <i className="text-xs fa-solid fa-star text-yellow" title="Default Build" />}
-          <p className="w-full truncate">{build.name}</p>
+          <p className="w-full line-clamp-1">{build.name}</p>
         </div>
-        <p className="text-xs text-gray">Equipped By: {char?.name}</p>
+        <p className="text-xs line-clamp-1 text-gray">Equipped By: {char?.name}</p>
       </div>
-      <div className="flex gap-x-2">
+      <div className="flex items-center pr-4 gap-x-2 shrink-0">
         <PrimaryButton
           title="Set Default"
           onClick={(event) => {
@@ -59,7 +70,7 @@ export const BuildBlock = observer(({ build, onClick, onDelete }: BuildBlockProp
           disabled={build.isDefault}
         />
         <GhostButton
-          icon="fa-regular fa-trash-alt"
+          icon="fa-solid fa-trash"
           onClick={(event) => {
             event.stopPropagation()
             onOpenConfirmModal()

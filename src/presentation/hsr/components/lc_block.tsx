@@ -78,10 +78,11 @@ interface LCBlockProps {
   refinement: number
   teamOverride?: ITeamChar[]
   setWeapon?: (index: number, info: Partial<IWeaponEquip>) => void
+  disabled?: boolean
 }
 
 export const LCBlock = observer(
-  ({ index = -1, wId, level = 1, ascension = 0, refinement = 1, teamOverride, setWeapon }: LCBlockProps) => {
+  ({ index = -1, wId, level = 1, ascension = 0, refinement = 1, teamOverride, setWeapon, disabled }: LCBlockProps) => {
     const { modalStore, teamStore } = useStore()
 
     const team = teamOverride || teamStore.characters
@@ -95,7 +96,7 @@ export const LCBlock = observer(
     const weaponBaseHp = getWeaponBase(weaponData?.baseHp, level, ascension)
     const weaponBaseDef = getWeaponBase(weaponData?.baseDef, level, ascension)
 
-    const canEdit = index >= 0
+    const canEdit = index >= 0 && !disabled
 
     const levels = useMemo(
       () =>
