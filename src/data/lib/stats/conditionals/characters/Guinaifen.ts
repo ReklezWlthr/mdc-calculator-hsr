@@ -111,7 +111,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c6: {
       trace: 'Eidolon 6',
       title: `Catching Bullet with Hands`,
-      content: `Increases the stackable Firekiss count by <span class="text-desc">1</span>.`,
+      content: `Increases the stackable <b>Firekiss</b> count by <span class="text-desc">1</span>.`,
     },
   }
 

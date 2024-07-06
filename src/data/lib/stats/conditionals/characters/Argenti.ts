@@ -9,10 +9,10 @@ import { calcScaling } from '@src/core/utils/calculator'
 
 const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
-    basic: c >= 3 ? 1 : 0,
-    skill: c >= 5 ? 2 : 0,
-    ult: c >= 3 ? 2 : 0,
-    talent: c >= 5 ? 2 : 0,
+    basic: c >= 5 ? 1 : 0,
+    skill: c >= 3 ? 2 : 0,
+    ult: c >= 5 ? 2 : 0,
+    talent: c >= 3 ? 2 : 0,
   }
   const basic = t.basic + upgrade.basic
   const skill = t.skill + upgrade.skill
@@ -85,35 +85,35 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     c1: {
       trace: 'Eidolon 1',
-      title: 'Suspension of Disbelief',
-      content: `The Cipher effect applied by the Ultimate lasts for <span class="text-desc">1</span> extra turn. All allies affected by Cipher have their ATK increased by <span class="text-desc">40%</span>.`,
+      title: 'A Lacuna in Kingdom of Aesthetics',
+      content: `Each stack of <b>Apotheosis</b> additionally increases CRIT DMG by <span class="text-desc">4%</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
-      title: 'Purely Fictitious',
-      content: `Each Talent stack allows allies to ignore <span class="text-desc">8%</span> of the enemy target's DEF when dealing DMG to enemies.`,
+      title: `Agate's Humility`,
+      content: `If the number of enemies on the field equals to <span class="text-desc">3</span> or more when the Ultimate is used, ATK increases by <span class="text-desc">40%</span> for <span class="text-desc">1</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
-      title: 'Pipedream',
+      title: `Thorny Road's Glory`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
-      <br />Basic Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
+      <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
       trace: 'Eidolon 4',
-      title: 'Flitting Phantasm',
-      content: `The Ultimate recovers <span class="text-desc">1</span> more Skill Point. The Talent additionally increases Max Skill Points by <span class="text-desc">1</span>.`,
+      title: `Trumpet's Dedication`,
+      content: `At the start of battle, gains <span class="text-desc">2</span> stack(s) of <b>Apotheosis</b> and increases the maximum stack limit of the Talent's effect by <span class="text-desc">2</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
-      title: 'Parallax Truth',
+      title: 'Snow, From Somewhere in Cosmos',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
-      <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
+      <br />Basic Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
       trace: 'Eidolon 6',
-      title: 'Narrative Polysemy',
-      content: `The CRIT DMG Boost effect of Sparkle's Skill additionally increases by <span class="text-desc">30%</span> of Sparkle's CRIT DMG, and when she uses her Skill, the CRIT DMG Boost effect will apply to all allies currently with Cipher. When Sparkle uses her Ultimate, this effect will spread to all allies with Cipher should the allied target have the CRIT DMG increase effect provided by the Skill active on them.`,
+      title: '"Your" Resplendence',
+      content: `When using Ultimate, ignores <span class="text-desc">30%</span> of enemy targets' DEF.`,
     },
   }
 
@@ -126,7 +126,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       show: true,
       unique: true,
       default: true,
-      sync: true
+      sync: true,
     },
     {
       type: 'number',
