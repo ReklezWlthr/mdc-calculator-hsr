@@ -23,7 +23,7 @@ module.exports = {
         blue: '#6fa8dd',
         heal: '#84cf7c',
         hsr: {
-          physical: '#b0b0b0',
+          physical: '#9c9c9c',
           wind: '#59cf97',
           lightning: '#d376f0',
           imaginary: '#ffd438',
