@@ -783,7 +783,6 @@ export const Characters = [
     rarity: 5,
     path: PathType.ERUDITION,
     element: Element.QUANTUM,
-    beta: true,
   },
   {
     id: '1315',

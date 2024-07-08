@@ -53,6 +53,7 @@ export const MyBuilds = observer(() => {
                   build={build}
                   onClick={() => setSelected(build.id)}
                   onDelete={() => setSelected('')}
+                  selected={build.id === selected}
                 />
               ))
             ) : (
@@ -65,6 +66,8 @@ export const MyBuilds = observer(() => {
         {selected ? (
           <div className="grid grid-cols-11 gap-5 mx-auto">
             <div className="col-span-5">
+              <p className="text-sm text-primary-lighter">{findCharacter(selectedBuild.cId)?.name}</p>
+              <p className="mb-3 text-2xl font-bold text-white">{selectedBuild.name}</p>
               <LCBlock
                 {...selectedBuild.weapon}
                 index={0}

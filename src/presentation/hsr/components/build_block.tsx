@@ -5,19 +5,39 @@ import { IBuild } from '@src/domain/constant'
 import { CommonModal } from '@src/presentation/components/common_modal'
 import { GhostButton } from '@src/presentation/components/ghost.button'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
+import classNames from 'classnames'
 import { observer } from 'mobx-react-lite'
 import { useCallback } from 'react'
 
 interface BuildBlockProps {
+  selected: boolean
   build: IBuild
   onClick: () => void
   onDelete: () => void
 }
 
-export const BuildBlock = observer(({ build, onClick, onDelete }: BuildBlockProps) => {
+export const BuildBlock = observer(({ selected, build, onClick, onDelete }: BuildBlockProps) => {
   const { buildStore, modalStore, toastStore, settingStore } = useStore()
 
   const char = findCharacter(build.cId)
+
+  const onOpenDefaultModal = useCallback(() => {
+    modalStore.openModal(
+      <CommonModal
+        icon="fa-solid fa-star text-desc"
+        title="Set Build as Default"
+        desc="Are you sure you want to set this build as default? Default build will be automatically equipped when selecting a character."
+        onConfirm={() => {
+          buildStore.setDefault(build.id)
+          toastStore.openNotification({
+            title: 'Set Default Successfully',
+            icon: 'fa-solid fa-circle-check',
+            color: 'green',
+          })
+        }}
+      />
+    )
+  }, [build.id])
 
   const onOpenConfirmModal = useCallback(() => {
     modalStore.openModal(
@@ -50,7 +70,7 @@ export const BuildBlock = observer(({ build, onClick, onDelete }: BuildBlockProp
             build.cId,
             settingStore.settings?.travelerGender
           )}.webp`}
-          className="object-cover h-16 aspect-[47/64] scale-[300%] mt-11"
+          className="object-cover h-16 aspect-[47/64] scale-[300%] mt-11 ml-1.5"
         />
       </div>
       <div className="w-full px-1 py-3">
@@ -62,10 +82,10 @@ export const BuildBlock = observer(({ build, onClick, onDelete }: BuildBlockProp
       </div>
       <div className="flex items-center pr-4 gap-x-2 shrink-0">
         <PrimaryButton
-          title="Set Default"
+          icon={classNames('fa-solid fa-star text-desc', { 'opacity-30': build.isDefault })}
           onClick={(event) => {
             event.stopPropagation()
-            buildStore.setDefault(build.id)
+            onOpenDefaultModal()
           }}
           disabled={build.isDefault}
         />
