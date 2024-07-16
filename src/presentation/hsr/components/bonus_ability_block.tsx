@@ -20,7 +20,7 @@ export const BonusAbilityBlock = observer(({ char, onChange, talents }: BonusAbi
         <TalentIcon
           talent={talents?.a2}
           element={charData?.element}
-          icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_SkillTree1.png`}
+          icon={`SkillIcon_${charData?.id}_SkillTree1.png`}
           size="w-9 h-9"
           type={talents?.a2?.trace}
         />
@@ -37,7 +37,7 @@ export const BonusAbilityBlock = observer(({ char, onChange, talents }: BonusAbi
         <TalentIcon
           talent={talents?.a4}
           element={charData?.element}
-          icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_SkillTree2.png`}
+          icon={`SkillIcon_${charData?.id}_SkillTree2.png`}
           size="w-9 h-9"
           type={talents?.a4?.trace}
         />
@@ -54,7 +54,7 @@ export const BonusAbilityBlock = observer(({ char, onChange, talents }: BonusAbi
         <TalentIcon
           talent={talents?.a6}
           element={charData?.element}
-          icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_SkillTree3.png`}
+          icon={`SkillIcon_${charData?.id}_SkillTree3.png`}
           size="w-9 h-9"
           type={talents?.a6?.trace}
         />

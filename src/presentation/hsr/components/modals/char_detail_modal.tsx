@@ -133,7 +133,7 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
             <TalentIcon
               talent={talent?.talents?.normal}
               element={charData?.element}
-              icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_Normal.png`}
+              icon={`SkillIcon_${charData?.id}_Normal.png`}
               size="w-9 h-9"
               upgraded={talent?.upgrade?.basic}
               showUpgrade
@@ -155,7 +155,7 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
             <TalentIcon
               talent={talent?.talents?.skill}
               element={charData?.element}
-              icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_BP.png`}
+              icon={`SkillIcon_${charData?.id}_BP.png`}
               size="w-9 h-9"
               upgraded={talent?.upgrade?.skill}
               level={char?.talents?.skill}
@@ -178,7 +178,7 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
             <TalentIcon
               talent={talent?.talents?.ult}
               element={charData?.element}
-              icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_Ultra.png`}
+              icon={`SkillIcon_${charData?.id}_Ultra.png`}
               size="w-9 h-9"
               upgraded={talent?.upgrade?.ult}
               level={char?.talents?.ult}
@@ -201,7 +201,7 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
             <TalentIcon
               talent={talent?.talents?.talent}
               element={charData?.element}
-              icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_Passive.png`}
+              icon={`SkillIcon_${charData?.id}_Passive.png`}
               size="w-9 h-9"
               upgraded={talent?.upgrade?.talent}
               level={char?.talents?.talent}
@@ -226,7 +226,7 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
               <TalentIcon
                 talent={talent?.talents?.a2}
                 element={charData?.element}
-                icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_SkillTree1.png`}
+                icon={`SkillIcon_${charData?.id}_SkillTree1.png`}
                 size="w-9 h-9"
                 type={talent?.talents?.a2?.trace}
                 hideTip
@@ -244,7 +244,7 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
               <TalentIcon
                 talent={talent?.talents?.a4}
                 element={charData?.element}
-                icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_SkillTree2.png`}
+                icon={`SkillIcon_${charData?.id}_SkillTree2.png`}
                 size="w-9 h-9"
                 type={talent?.talents?.a4?.trace}
                 hideTip
@@ -262,7 +262,7 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
               <TalentIcon
                 talent={talent?.talents?.a6}
                 element={charData?.element}
-                icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_SkillTree3.png`}
+                icon={`SkillIcon_${charData?.id}_SkillTree3.png`}
                 size="w-9 h-9"
                 type={talent?.talents?.a6?.trace}
                 hideTip

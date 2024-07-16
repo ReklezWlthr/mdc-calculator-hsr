@@ -183,7 +183,7 @@ export const CompareBlock = observer(() => {
                   ? main?.talents?.[`normal_alt${setupStore.forms[0][selected]?.dhil_sp}`] || main?.talents?.normal_alt
                   : main?.talents?.normal
               }
-              icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Normal${
+              icon={`SkillIcon_${charData.id}_Normal${
                 mainComputed?.BA_ALT
                   ? setupStore.forms[0][selected]?.dhil_sp
                     ? `0${setupStore.forms[0][selected]?.dhil_sp + 1}`
@@ -199,7 +199,7 @@ export const CompareBlock = observer(() => {
             <div className="w-full my-2 border-t-2 border-primary-border" />
             <ScalingWrapper
               talent={mainComputed?.SKILL_ALT ? main?.talents?.skill_alt : main?.talents?.skill}
-              icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_BP${
+              icon={`SkillIcon_${charData.id}_BP${
                 mainComputed?.SKILL_ALT && char.cId !== '1109' ? '02' : ''
               }.png`}
               element={charData.element}
@@ -211,7 +211,7 @@ export const CompareBlock = observer(() => {
             <div className="w-full my-2 border-t-2 border-primary-border" />
             <ScalingWrapper
               talent={mainComputed?.ULT_ALT ? main?.talents?.ult_alt : main?.talents?.ult}
-              icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Ultra${
+              icon={`SkillIcon_${charData.id}_Ultra${
                 mainComputed?.ULT_ALT ? '02' : ''
               }.png`}
               element={charData.element}
@@ -223,7 +223,7 @@ export const CompareBlock = observer(() => {
             <div className="w-full my-2 border-t-2 border-primary-border" />
             <ScalingWrapper
               talent={main?.talents?.talent}
-              icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Passive.png`}
+              icon={`SkillIcon_${charData.id}_Passive.png`}
               element={charData.element}
               level={char.talents?.talent}
               upgraded={main?.upgrade?.talent}
@@ -233,7 +233,7 @@ export const CompareBlock = observer(() => {
             <div className="w-full my-2 border-t-2 border-primary-border" />
             <ScalingWrapper
               talent={main?.talents?.technique}
-              icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData.id}_Maze.png`}
+              icon={`SkillIcon_${charData.id}_Maze.png`}
               element={charData.element}
               level={1}
               upgraded={0}

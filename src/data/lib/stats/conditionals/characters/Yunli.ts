@@ -24,7 +24,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 20,
       trace: 'Basic ATK',
       title: `Galespin Summersault`,
-      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to a single enemy.`,
+      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
@@ -32,7 +32,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: `Bladeborne Quake`,
-      content: `Restores HP equal to {{2}}% of Yunli's ATK plus {{3}}, and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to a single enemy target and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Yunli's ATK to adjacent targets.`,
+      content: `Restores HP equal to {{2}}% of Yunli's ATK plus {{3}}. Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to a single target enemy and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Yunli's ATK to adjacent targets.`,
       value: [
         { base: 60, growth: 6, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },
@@ -45,14 +45,15 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: `Earthbind, Etherbreak`,
-      content: `Consumes <span class="text-desc">120</span> Energy. Yunli gains Parry and Taunts all enemies, lasting until the end of the next turn of an ally or an enemy, and increases the CRIT DMG of Yunli's next Counter by {{3}}%. When the Counter Talent effect is triggered while Parry is active, it will be switched to a <b>Counter Intuit: Cull</b> effect and also dispel Parry. If no Counters are triggered while Parry is active, when the effect ends, Yunli will immediately launch a <b>Counter Intuit: Slash</b> effect on a random enemy target.
-      <br /><b>Intuit: Slash</b>: Deals <b class="text-hsr-physical">Physical DMG</b> to the target equal to {{0}}% of Yunli's ATK, and deals <b class="text-hsr-physical">Physical DMG</b> to adjacent targets equal to {{1}}% of Yunli's ATK.
-      <br /><b>Intuit: Cull</b>: Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to the target, and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Yunli's ATK to adjacent targets. Then, additionally deals <span class="text-desc">6</span> instance(s) of DMG, with each instance dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{2}}% of Yunli's ATK to a random single enemy target.
-      <br />When Yunli deals DMG through this ability, it will be viewed as Ultimate DMG.`,
+      content: `Consumes <span class="text-desc">120</span> Energy. Yunli gains Parry and Taunts all enemies, lasting until the end of the next ally's or enemy's turn. Increases the CRIT DMG dealt by Yunli's next Counter by {{3}}%. When triggering the Counter effect from Talent, launches the <b>Counter Intuit: Cull</b> instead and removes the Parry effect. If no Counter is triggered while Parry is active, Yunli will immediately launch the <b>Counter Intuit: Slash</b> on a random enemy target.
+      <br /><b>Intuit: Slash</b>: Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to the target, and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Yunli's ATK to adjacent targets.
+      <br /><b>Intuit: Cull</b>: Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to the target, and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Yunli's ATK to adjacent targets. Then, additionally deals <span class="text-desc">6</span> instances of DMG, each dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{2}}% of Yunli's ATK to a random single enemy.
+      <br />When Yunli deals DMG via this ability, it will be viewed as Ultimate DMG.
+      <br />Each instance of <b>Intuit: Cull</b>'s bounce DMG deals <span class="text-desc">25%</span> of the Toughness reduction DMG of this skill's central target DMG.`,
       value: [
-        { base: 120, growth: 8, style: 'curved' },
-        { base: 60, growth: 4, style: 'curved' },
-        { base: 36, growth: 2.4, style: 'curved' },
+        { base: 132, growth: 8.8, style: 'curved' },
+        { base: 66, growth: 4.4, style: 'curved' },
+        { base: 43.2, growth: 2.88, style: 'curved' },
         { base: 60, growth: 4, style: 'curved' },
       ],
       level: ult,
@@ -61,7 +62,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 10,
       trace: 'Talent',
       title: `Flashforge`,
-      content: `When Yunli is attacked by an enemy target, additionally regenerates <span class="text-desc">15</span> Energy and immediately launches a Counter on the attacker, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK, and <b class="text-hsr-physical">Physical DMG</b> to adjacent targets equal to {{1}}% of Yunli's ATK.`,
+      content: `When Yunli gets attacked by an enemy target, additionally regenerates <span class="text-desc">15</span> Energy and immediately launches a Counter on the attacker, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to the attacker, and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Yunli's ATK to adjacent targets. If there is no immediate target to Counter, then Counters a random enemy target instead.`,
       value: [
         { base: 60, growth: 6, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },
@@ -71,12 +72,12 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     technique: {
       trace: 'Technique',
       title: `Posterior Precedence`,
-      content: `Gains the Ward effect for <span class="text-desc">20</span> seconds. When entering combat by attacking enemies or receiving an attack, immediately inflicts <b>Intuit: Cull</b> on a random enemy target, and increases the DMG dealt by this attack by <span class="text-desc">80%</span>.`,
+      content: `This unit gains the Ward effect, lasting for <span class="text-desc">20</span> seconds. During this time, upon entering combat by either attacking enemies or receiving an attack, immediately casts <b>Intuit: Cull</b> on a random enemy, and increases the DMG dealt by this attack by <span class="text-desc">80%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `True Sunder`,
-      content: `When using a Counter, increases Yunli's ATK by <span class="text-desc">30%</span> for <span class="text-desc">1</span> turn.`,
+      content: `When using a Counter, increases Yunli's ATK by <span class="text-desc">30%</span>. lasting for <span class="text-desc">1</span> turn.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -86,17 +87,17 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Fiery Wheel`,
-      content: `Every time <span class="text-desc">1</span> <b>Intuit: Slash</b> is used, the next <b>Intuit: Slash</b> will become <b>Intuit: Cull</b>.`,
+      content: `After each use of <b>Intuit: Slash</b>, the next <b>Intuit: Slash</b> will be replaced by <b>Intuit: Cull</b>.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Weathered Blade Does Not Sully`,
-      content: `DMG from <b>Intuit: Slash</b> and <b>Intuit: Cull</b> increases by <span class="text-desc">20%</span>, and <b>Intuit: Cull</b>'s extra DMG Hits increases by <span class="text-desc">3</span>.`,
+      content: `Increases DMG dealt by <b>Intuit: Slash</b> and <b>Intuit: Cull</b> increases by <span class="text-desc">20%</span>. Increases the number of additional DMG instances for <b>Intuit: Cull</b> by <span class="text-desc">3</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `First Luster Breaks Dawn`,
-      content: `When dealing DMG by launching a Counter, ignores <span class="text-desc">20%</span> of the target's DEF.`,
+      content: `When dealing DMG via Counter, ignores <span class="text-desc">20%</span> of the target's DEF.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -118,7 +119,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: `Walk in Blade, Talk in Zither`,
-      content: `After using Ultimate, if the next unit to act is an enemy unit, <b>Intuit: Cull</b> will be triggered regardless if they attack Yunli, and when dealing DMG via <b>Intuit: Slash</b> or <b>Intuit: Cull</b>, increases Yunli's CRIT Rate by <span class="text-desc">15%</span> and <b class="text-hsr-physical">Physical RES PEN</b> by <span class="text-desc">20%</span>.`,
+      content: `While Parry is active, if an enemy actively uses their abilities, regardless of whether it attacks Yunli or not, it will trigger <b>Intuit: Cull</b> and remove the Parry effect. When dealing DMG via <b>Intuit: Slash</b> or <b>Intuit: Cull</b>, increases CRIT Rate by <span class="text-desc">15%</span> and <b class="text-hsr-physical">Physical RES PEN</b> by <span class="text-desc">20%</span>.`,
     },
   }
 
@@ -212,7 +213,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       base.ULT_SCALING = [
         {
           name: 'Intuit Main',
-          value: [{ scaling: calcScaling(1.2, 0.08, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.32, 0.088, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.FUA,
           type: TalentType.ULT,
@@ -222,7 +223,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         },
         {
           name: 'Intuit Adjacent',
-          value: [{ scaling: calcScaling(0.6, 0.04, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.66, 0.047, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.FUA,
           type: TalentType.ULT,
@@ -232,16 +233,17 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         },
         {
           name: `Cull Extra DMG [x${c >= 1 ? 9 : 6}]`,
-          value: [{ scaling: calcScaling(0.36, 0.024, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.432, 0.0288, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.FUA,
           type: TalentType.ULT,
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
+          break: 5,
         },
         {
           name: `Total Cull Extra DMG`,
-          value: [{ scaling: calcScaling(0.36, 0.024, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.432, 0.0288, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.FUA,
           type: TalentType.ULT,
@@ -271,7 +273,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       base.TECHNIQUE_SCALING = [
         {
           name: 'Intuit Main',
-          value: [{ scaling: calcScaling(1.2, 0.08, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.32, 0.088, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.FUA,
           type: TalentType.ULT,
@@ -282,7 +284,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         },
         {
           name: 'Intuit Adjacent',
-          value: [{ scaling: calcScaling(0.6, 0.04, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.66, 0.044, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.FUA,
           type: TalentType.ULT,

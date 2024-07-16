@@ -294,7 +294,7 @@ export const CharDetail = observer(() => {
                   <TalentIcon
                     element={data.element}
                     talent={item}
-                    icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${selected}_${
+                    icon={`SkillIcon_${selected}_${
                       skillIcon[item.trace === 'Enhanced Skill' && selected === '1109' ? TalentType.SKILL : item.trace]
                     }.png`}
                     size="w-10 h-10 mt-1"
@@ -350,7 +350,7 @@ export const CharDetail = observer(() => {
               <TalentIcon
                 element={data.element}
                 talent={item}
-                icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${selected}_${
+                icon={`SkillIcon_${selected}_${
                   skillIcon[item.trace]
                 }.png`}
                 size="w-10 h-10"
@@ -385,7 +385,7 @@ export const CharDetail = observer(() => {
                   <TalentIcon
                     element={data.element}
                     talent={item}
-                    icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${selected}_${
+                    icon={`SkillIcon_${selected}_${
                       i === 2 || i === 4 ? consImage[_.head(item?.content)] : `Rank${i + 1}`
                     }.png`}
                     size="w-10 h-10"

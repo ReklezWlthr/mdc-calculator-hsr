@@ -81,14 +81,10 @@ export const TalentIcon = observer(
           )}
         >
           <img
-            src={icon}
+            src={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/${icon}`}
             onError={(e) => {
-              e.currentTarget.style.display = 'none'
-              e.currentTarget.nextElementSibling.className = 'block text-3xl font-bold opacity-80'
-            }}
-            onLoad={(e) => {
-              e.currentTarget.style.display = 'block'
-              e.currentTarget.nextElementSibling.className = 'hidden'
+              const id = icon.split('_')[1]
+              e.currentTarget.src = `https://homdgcat.wiki/images/skillicons/avatar/${id}/${icon}`
             }}
           />
           <div className="hidden">?</div>

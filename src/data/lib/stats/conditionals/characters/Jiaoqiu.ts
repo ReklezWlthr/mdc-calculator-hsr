@@ -27,7 +27,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 20,
       trace: 'Basic ATK',
       title: 'Heart Afire',
-      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to a single enemy.`,
+      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
     },
@@ -35,7 +35,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 30,
       trace: 'Skill',
       title: `Scorch Onslaught`,
-      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to a single enemy and <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Jiaoqiu's ATK to enemies adjacent to it. Has a <span class="text-desc">100%</span> <u>base chance</u> to inflict <span class="text-desc">1</span> stack of <b>Ashen Roast</b> on the primary target.`,
+      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to a single target enemy and <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Jiaoqiu's ATK to adjacent targets, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <span class="text-desc">1</span> stack of <b>Ashen Roast</b> on the primary target.`,
       value: [
         { base: 75, growth: 7.5, style: 'curved' },
         { base: 45, growth: 4.5, style: 'curved' },
@@ -46,9 +46,10 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Ultimate',
       title: 'Pyrograph Arcanum',
-      content: `Sets the number of "<b>Ashen Roast</b>" stacks on enemy targets to the highest number of "<b>Ashen Roast</b>" stacks present on the battlefield. Then, activates a Field and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to all enemies.
-      <br />While inside the field, enemy targets take {{1}}% increased Ultimate DMG, with a {{2}}% <u>base chance</u> of being inflicted with <span class="text-desc">1</span> stack of <b>Ashen Roast</b> when taking action. This effect can only be triggered once for enemies in each turn.
-      <br />The Field lasts for <span class="text-desc">3</span> turn(s), and its duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn. If Jiaoqiu is knocked down, the Field will also be dispelled.`,
+      content: `Sets the number of "<b>Ashen Roast</b>" stacks on enemy targets to the highest number of "<b>Ashen Roast</b>" stacks present on the battlefield. Then, activates a Domain and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to all enemies.
+      <br />While inside the Domain, enemy targets take {{1}}% increased Ultimate DMG, with a {{2}}% <u>base chance</u> of being inflicted with <span class="text-desc">1</span> stack of <b>Ashen Roast</b> when taking action. This effect can only be triggered once for enemies in each turn.
+      <br />The Domain lasts for <span class="text-desc">3</span> turn(s), and its duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn. If Jiaoqiu is knocked down, the Domain will also be dispelled.
+      <br />The automatic <b>Ashen Roast</b> application can be triggered <span class="text-desc">6</span> times. Casting Ultimate resets the number of remaining triggers.`,
       value: [
         { base: 60, growth: 4, style: 'curved' },
         { base: 50, growth: 1, style: 'curved' },
@@ -59,9 +60,9 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: `Quartet Finesse, Octave Finery`,
-      content: `When Jiaoqiu uses his Basic ATK, Skill, or Ultimate to hit an enemy, there is a <span class="text-desc">100%</span> <u>base chance</u> of dealing <span class="text-desc">1</span> stack of <b>Ashen Roast</b>, with <span class="text-desc">1</span> stack increasing the initial DMG enemies receive by {{0}}%, and each subsequent stack increasing DMG by {{1}}%.
-      <br /><b>Ashen Roast</b> has a max of <span class="text-desc">5</span> stack(s) and last <span class="text-desc">2</span> turn(s).
-      <br />When the enemy target is in the <b>Ashen Roast</b> state, they are also considered as being in the <b class="text-hsr-fire">Burned</b> state, and take <b class="text-hsr-fire">Fire DoT</b> equal to {{2}}% Jiaoqiu's ATK at the start of each turn.`,
+      content: `When Jiaoqiu hits an enemy with Basic ATK, Skill or Ultimate, there is a <span class="text-desc">100%</span> <u>base chance</u> of dealing <span class="text-desc">1</span> stack of <b>Ashen Roast</b> on them. At <span class="text-desc">1</span> stack, increases DMG received by the enemy by {{0}}%. Then, each subsequent stack increases this by {{1}}%.
+      <br /><b>Ashen Roast</b> is capped at <span class="text-desc">5</span> stack(s) and last <span class="text-desc">2</span> turn(s).
+      <br />When the enemy target is in the <b>Ashen Roast</b> state, they are also considered as being <b class="text-hsr-fire">Burned</b> at the same time, taking <b class="text-hsr-fire">Fire DoT</b> equal to {{2}}% Jiaoqiu's ATK at the start of each turn.`,
       value: [
         { base: 7.5, growth: 0.75, style: 'curved' },
         { base: 2.5, growth: 0.25, style: 'curved' },
@@ -72,32 +73,32 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: 'Fiery Queller',
-      content: `After using Technique, creates a special dimension that lasts for <span class="text-desc">15</span> second(s). After engaging enemies in the dimension, deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">100%</span> of Jiaoqiu's ATK to all enemies and has a <span class="text-desc">100%</span> <u>base chance</u> of applying 1 <b>Ashen Roast</b> stack. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
+      content: `After using Technique, creates a special dimension that lasts for <span class="text-desc">15</span> second(s). After entering enemies in this special dimension, deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">100%</span> of Jiaoqiu's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> of applying 1 <b>Ashen Roast</b> stack. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Seared Scent',
-      content: `When a Field exists, enemies entering combat will be inflicted with <b>Ashen Roast</b> stacks. The number of stacks applied will match the highest number of <b>Ashen Roast</b> stacks inflicted while the Field is active, with a minimum of <span class="text-desc">1</span> stack(s).`,
+      content: `When a Domain exists, enemies entering combat will be inflicted with <b>Ashen Roast</b> stacks. The number of stacks applied will match the highest number of <b>Ashen Roast</b> stacks inflicted while the Domain is active, with a minimum of <span class="text-desc">1</span> stack(s).`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Hearth Kindle',
-      content: `When Jiaoqiu's Effect Hit Rate is higher than <span class="text-desc">80%</span>, for each <span class="text-desc">15%</span> exceeded, Jiaoqiu additionally gains <span class="text-desc">60%</span> ATK, up to a maximum of <span class="text-desc">240%</span>.`,
+      content: `For every <span class="text-desc">15%</span> of Jiaoqiu's Effect Hit Rate that exceeds <span class="text-desc">80%</span>, additionally increases ATK by <span class="text-desc">60%</span>, up to <span class="text-desc">240%</span>.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Pyre Cleanse',
-      content: `At the start of the battle, immediately regenerates <span class="text-desc">15</span> Energy.`,
+      content: `When battle starts, immediately regenerates <span class="text-desc">15</span> Energy.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Pentapathic Transference',
-      content: `When an ally attacks an enemy target afflicted with <b>Ashen Roast</b>, increases DMG dealt by <span class="text-desc">48%</span>. Each time the Talent triggers <b>Ashen Roast</b>, additionally increases the present <b>Ashen Roast</b> stacks by <span class="text-desc">1</span>.`,
+      content: `Allies deal <span class="text-desc">40%</span> increased DMG to enemy targets afflicted with <b>Ashen Roast</b>. Whenever inflicting <b>Ashen Roast</b> on an enemy target via triggering the Talent's effect, additionally increases the number of <b>Ashen Roast</b> applied this time by <span class="text-desc">1</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `From Savor Comes Suffer`,
-      content: `When an enemy is in <b>Ashen Roast</b> state, increases the DMG multiplier of <b class="text-hsr-fire">Fire DoT</b> inflicted by <b>Ashen Roast</b> by <span class="text-desc">300%</span>.`,
+      content: `When an enemy target is afflicted with <b>Ashen Roast</b>, increases the multiplier for the <b class="text-hsr-fire">Fire DoT</b> dealt by <b>Ashen Roast</b> to the target by <span class="text-desc">300%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -108,7 +109,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: 'Leisure In, Luster Out',
-      content: `When the Field exists, reduces enemy target's ATK by <span class="text-desc">15%</span>.`,
+      content: `When the Domain exists, reduces enemy target's ATK by <span class="text-desc">15%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -119,7 +120,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: 'Nonamorphic Pyrobind',
-      content: `When the enemy target is defeated, existing <b>Ashen Roast</b> stacks will be transferred to a surviving enemy with the lowest amount of <b>Ashen Roast</b> stacks. Increases max <b>Ashen Roast</b> stacks to <span class="text-desc">9</span>. Every stack of <b>Ashen Roast</b> will reduce all enemies' All-Type RES by <span class="text-desc">3%</span>.`,
+      content: `When the enemy target gets defeated, their accumulated <b>Ashen Roast</b> stacks will transfer to the enemy with the lowest number <b>Ashen Roast</b> stacks on the battlefield. The maximum stack limit of <b>Ashen Roast</b> increases to <span class="text-desc">9</span>, and each <b>Ashen Roast</b> stack reduces the target's All-Type RES by <span class="text-desc">3%</span>.`,
     },
   }
 

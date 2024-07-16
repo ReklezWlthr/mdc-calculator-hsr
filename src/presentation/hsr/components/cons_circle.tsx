@@ -78,7 +78,7 @@ export const ConsCircle = observer(
             <div className="rounded-full bg-primary-bg">
               <TalentIcon
                 talent={talents?.c1}
-                icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${id}_Rank1.png`}
+                icon={`SkillIcon_${id}_Rank1.png`}
                 element={element}
                 active={cons >= 1}
                 tooltipSize="w-[30vw]"
@@ -90,7 +90,7 @@ export const ConsCircle = observer(
             <div className="rounded-full bg-primary-bg">
               <TalentIcon
                 talent={talents?.c6}
-                icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${id}_Rank6.png`}
+                icon={`SkillIcon_${id}_Rank6.png`}
                 element={element}
                 active={cons >= 6}
                 tooltipSize="w-[30vw]"
@@ -100,7 +100,7 @@ export const ConsCircle = observer(
             <div className="rounded-full bg-primary-bg">
               <TalentIcon
                 talent={talents?.c2}
-                icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${id}_Rank2.png`}
+                icon={`SkillIcon_${id}_Rank2.png`}
                 element={element}
                 active={cons >= 2}
                 tooltipSize="w-[30vw]"
@@ -127,7 +127,7 @@ export const ConsCircle = observer(
             <div className="rounded-full bg-primary-bg">
               <TalentIcon
                 talent={talents?.c5}
-                icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${id}_${
+                icon={`SkillIcon_${id}_${
                   consImage[_.head(talents?.c5?.content)]
                 }.png`}
                 element={element}
@@ -139,7 +139,7 @@ export const ConsCircle = observer(
             <div className="rounded-full bg-primary-bg">
               <TalentIcon
                 talent={talents?.c3}
-                icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${id}_${
+                icon={`SkillIcon_${id}_${
                   consImage[_.head(talents?.c3?.content)]
                 }.png`}
                 element={element}
@@ -153,7 +153,7 @@ export const ConsCircle = observer(
             <div className="rounded-full bg-primary-bg">
               <TalentIcon
                 talent={talents?.c4}
-                icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${id}_Rank4.png`}
+                icon={`SkillIcon_${id}_Rank4.png`}
                 element={element}
                 active={cons >= 4}
                 tooltipSize="w-[30vw]"

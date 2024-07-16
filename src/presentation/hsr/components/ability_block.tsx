@@ -33,7 +33,7 @@ export const AbilityBlock = observer(({ char, onChange, upgrade, talents }: Abil
         <TalentIcon
           talent={talents?.normal}
           element={charData?.element}
-          icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_Normal.png`}
+          icon={`SkillIcon_${charData?.id}_Normal.png`}
           size="w-9 h-9"
           upgraded={upgrade?.basic}
           level={char?.talents?.basic}
@@ -55,7 +55,7 @@ export const AbilityBlock = observer(({ char, onChange, upgrade, talents }: Abil
         <TalentIcon
           talent={talents?.skill}
           element={charData?.element}
-          icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_BP.png`}
+          icon={`SkillIcon_${charData?.id}_BP.png`}
           size="w-9 h-9"
           upgraded={upgrade?.skill}
           level={char?.talents?.skill}
@@ -77,7 +77,7 @@ export const AbilityBlock = observer(({ char, onChange, upgrade, talents }: Abil
         <TalentIcon
           talent={talents?.ult}
           element={charData?.element}
-          icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_Ultra.png`}
+          icon={`SkillIcon_${charData?.id}_Ultra.png`}
           size="w-9 h-9"
           upgraded={upgrade?.ult}
           level={char?.talents?.ult}
@@ -99,7 +99,7 @@ export const AbilityBlock = observer(({ char, onChange, upgrade, talents }: Abil
         <TalentIcon
           talent={talents?.talent}
           element={charData?.element}
-          icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${charData?.id}_Passive.png`}
+          icon={`SkillIcon_${charData?.id}_Passive.png`}
           size="w-9 h-9"
           upgraded={upgrade?.talent}
           level={char?.talents?.talent}

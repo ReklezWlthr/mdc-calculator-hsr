@@ -24,7 +24,7 @@ export const AscensionIcons = (props: AscensionProps) => {
     <div className="flex flex-col items-center justify-around gap-1">
       <TalentIcon
         element={props.element}
-        icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${props.id}_SkillTree1.png`}
+        icon={`SkillIcon_${props.id}_SkillTree1.png`}
         talent={props.talents?.a2}
         active={props.ascension?.a2}
         type={props.talents?.a2?.trace}
@@ -32,7 +32,7 @@ export const AscensionIcons = (props: AscensionProps) => {
       <div className={classNames('opacity-30', ElementColor[props.element])}>✦</div>
       <TalentIcon
         element={props.element}
-        icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${props.id}_SkillTree2.png`}
+        icon={`SkillIcon_${props.id}_SkillTree2.png`}
         talent={props.talents?.a4}
         active={props.ascension?.a4}
         type={props.talents?.a4?.trace}
@@ -40,7 +40,7 @@ export const AscensionIcons = (props: AscensionProps) => {
       <div className={classNames('opacity-30', ElementColor[props.element])}>✦</div>
       <TalentIcon
         element={props.element}
-        icon={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_${props.id}_SkillTree3.png`}
+        icon={`SkillIcon_${props.id}_SkillTree3.png`}
         talent={props.talents?.a6}
         active={props.ascension?.a6}
         type={props.talents?.a6?.trace}

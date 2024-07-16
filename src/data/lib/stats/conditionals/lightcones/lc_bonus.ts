@@ -1007,6 +1007,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
         })
+        return x
       })
       return base
     },
