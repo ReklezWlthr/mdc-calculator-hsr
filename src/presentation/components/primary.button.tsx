@@ -16,10 +16,11 @@ export const PrimaryButton = ({ onClick, title, disabled, icon, style, loading }
   //---------------------
   const colorClasses = classNames(
     {
-      'bg-primary-lighter hover:bg-primary-light active:scale-95 text-white cursor-pointer duration-200': !disabled,
+      'border-primary-lighter hover:border-primary-light bg-primary-lighter hover:bg-primary-light active:scale-95 text-white cursor-pointer duration-200':
+        !disabled,
     },
     {
-      'bg-primary-darker border border-primary text-primary-border cursor-not-allowed': disabled,
+      'bg-primary-darker border-primary text-primary-border cursor-not-allowed': disabled,
     }
   )
 
@@ -28,7 +29,7 @@ export const PrimaryButton = ({ onClick, title, disabled, icon, style, loading }
   //---------------------
   return (
     <button
-      className={classNames('py-2 px-3 rounded-lg h-fit', colorClasses, style)}
+      className={classNames('py-2 px-3 rounded-lg h-fit border', colorClasses, style)}
       disabled={disabled || loading}
       onClick={!(disabled || loading) ? onClick : undefined}
     >

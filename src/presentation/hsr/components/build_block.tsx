@@ -2,65 +2,26 @@ import { formatIdIcon } from '@src/core/utils/data_format'
 import { findCharacter } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { IBuild } from '@src/domain/constant'
-import { CommonModal } from '@src/presentation/components/common_modal'
-import { GhostButton } from '@src/presentation/components/ghost.button'
-import { PrimaryButton } from '@src/presentation/components/primary.button'
 import classNames from 'classnames'
 import { observer } from 'mobx-react-lite'
-import { useCallback } from 'react'
 
 interface BuildBlockProps {
-  selected: boolean
   build: IBuild
   onClick: () => void
-  onDelete: () => void
+  selected: boolean
 }
 
-export const BuildBlock = observer(({ selected, build, onClick, onDelete }: BuildBlockProps) => {
-  const { buildStore, modalStore, toastStore, settingStore } = useStore()
+export const BuildBlock = observer(({ build, onClick, selected }: BuildBlockProps) => {
+  const { settingStore } = useStore()
 
   const char = findCharacter(build.cId)
 
-  const onOpenDefaultModal = useCallback(() => {
-    modalStore.openModal(
-      <CommonModal
-        icon="fa-solid fa-star text-desc"
-        title="Set Build as Default"
-        desc="Are you sure you want to set this build as default? Default build will be automatically equipped when selecting a character."
-        onConfirm={() => {
-          buildStore.setDefault(build.id)
-          toastStore.openNotification({
-            title: 'Set Default Successfully',
-            icon: 'fa-solid fa-circle-check',
-            color: 'green',
-          })
-        }}
-      />
-    )
-  }, [build.id])
-
-  const onOpenConfirmModal = useCallback(() => {
-    modalStore.openModal(
-      <CommonModal
-        icon="fa-solid fa-exclamation-circle text-red"
-        title="Delete Build"
-        desc="Are you sure you want to delete this build? Deleting build will NOT delete designated artifacts."
-        onConfirm={() => {
-          buildStore.deleteBuild(build.id)
-          onDelete()
-          toastStore.openNotification({
-            title: 'Build Deleted Successfully',
-            icon: 'fa-solid fa-circle-check',
-            color: 'green',
-          })
-        }}
-      />
-    )
-  }, [build.id])
-
   return (
     <div
-      className="flex items-center w-full h-16 overflow-hidden text-white duration-200 rounded-lg cursor-pointer bg-primary-dark active:scale-95 shrink-0"
+      className={classNames(
+        'flex items-center w-full h-16 overflow-hidden text-white duration-200 rounded-lg cursor-pointer active:scale-95 shrink-0',
+        selected ? 'bg-primary-darker' : 'bg-primary-dark'
+      )}
       onClick={onClick}
     >
       <div className="relative w-16 h-full overflow-hidden shrink-0">
@@ -80,23 +41,12 @@ export const BuildBlock = observer(({ selected, build, onClick, onDelete }: Buil
         </div>
         <p className="text-xs line-clamp-1 text-gray">Equipped By: {char?.name}</p>
       </div>
-      <div className="flex items-center pr-4 gap-x-2 shrink-0">
-        <PrimaryButton
-          icon={classNames('fa-solid fa-star text-desc', { 'opacity-30': build.isDefault })}
-          onClick={(event) => {
-            event.stopPropagation()
-            onOpenDefaultModal()
-          }}
-          disabled={build.isDefault}
-        />
-        <GhostButton
-          icon="fa-solid fa-trash"
-          onClick={(event) => {
-            event.stopPropagation()
-            onOpenConfirmModal()
-          }}
-        />
-      </div>
+      <i
+        className={classNames(
+          'fa-solid fa-caret-right duration-300 mr-2 text-4xl text-primary-light',
+          selected ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'
+        )}
+      />
     </div>
   )
 })

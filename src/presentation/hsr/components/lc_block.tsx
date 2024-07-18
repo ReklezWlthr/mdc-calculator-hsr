@@ -115,6 +115,8 @@ export const LCBlock = observer(
 
     const onOpenModal = useCallback(() => {
       char &&
+        canEdit &&
+        team[index]?.cId &&
         modalStore.openModal(<LCModal index={index} setWeapon={setWeapon} pathOverride={findCharacter(char)?.path} />)
     }, [modalStore, index, char, setWeapon])
 
@@ -123,7 +125,9 @@ export const LCBlock = observer(
         <div className="flex justify-center px-5 py-2 rounded-t-lg bg-primary-lighter">Light Cone</div>
         <div className="grid h-full grid-cols-2 gap-3 p-3">
           <div
-            className={classNames('flex flex-col justify-between gap-1 h-fit shrink-0', { 'cursor-pointer': char })}
+            className={classNames('flex flex-col justify-between gap-1 h-fit shrink-0', {
+              'cursor-pointer': char && canEdit && team[index]?.cId,
+            })}
             onClick={onOpenModal}
           >
             {weaponData ? (
@@ -131,7 +135,8 @@ export const LCBlock = observer(
                 src={`https://api.hakush.in/hsr/UI/lightconemaxfigures/${weaponData?.id}.webp`}
                 className={classNames(
                   'object-contain h-[200px] py-2 border rounded-lg bg-primary-darker duration-200',
-                  invalid ? 'border-error hover:border-red' : 'border-primary-border hover:border-primary-light'
+                  invalid ? 'border-error' : 'border-primary-border',
+                  { [invalid ? 'hover:border-red' : 'hover:border-primary-light']: char && canEdit && team[index]?.cId }
                 )}
               />
             ) : (
