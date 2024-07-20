@@ -23,13 +23,7 @@ export const ImportModal = observer(({ char, artifacts }: { char: ITeamChar; art
   const onSubmit = useCallback(() => {
     if (params.character && char) {
       const exist = _.find(charStore.characters, ['id', char.cId])
-      const data = {
-        cId: char.cId,
-        ascension: char.ascension,
-        talents: char.talents,
-        cons: char.cons,
-        level: char.level,
-      }
+      const data = _.omit(char, 'equipment')
       if (exist) {
         charStore.editChar(char.cId, data)
       } else {
@@ -41,9 +35,8 @@ export const ImportModal = observer(({ char, artifacts }: { char: ITeamChar; art
     }
     if (params.build && char && artifacts) {
       const id = crypto.randomUUID()
-      const a = char.equipments.artifacts
       buildStore.saveBuild({
-        artifacts: [a[3], a[1], a[4], a[0], a[2]],
+        artifacts: char.equipments.artifacts,
         isDefault: false,
         cId: char.cId,
         name: params.buildName,
@@ -68,13 +61,13 @@ export const ImportModal = observer(({ char, artifacts }: { char: ITeamChar; art
         <div className="border-t border-primary-border" />
         <div className="flex items-center justify-between gap-x-2">
           <div>
-            <p className="text-sm text-gray">✦ Level, Talents and Constellations</p>
+            <p className="text-sm text-gray">✦ Level, Traces and Eidolons</p>
             <p className="text-xs italic text-red">✦ This will overwrite the current character data in the storage.</p>
           </div>
           <CheckboxInput checked={params.character} onClick={(v) => setParams({ character: v })} />
         </div>
         <div className="flex items-center justify-between gap-x-2">
-          <p className="text-sm text-gray">✦ Equipped Artifacts</p>
+          <p className="text-sm text-gray">✦ Equipped Relics</p>
           <CheckboxInput checked={params.artifacts} onClick={(v) => setParams({ artifacts: v })} />
         </div>
       </div>

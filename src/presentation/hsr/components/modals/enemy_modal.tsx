@@ -129,7 +129,7 @@ export const EnemyModal = observer(() => {
               <p>=</p>
               <div className="flex flex-wrap items-center gap-x-2">
                 <p>
-                  ((<b className="text-red">{level}</b> &#215; 10) + 200)
+                  (<b className="text-red">{level}</b> &#215; 10 + 200)
                 </p>
                 {!!(pen || red) && (
                   <p>

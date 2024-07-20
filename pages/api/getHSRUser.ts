@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function getAccountData(req: NextApiRequest, res: NextApiResponse<any>) {
-  const response = await fetch(`https://enka.network/api/uid/${req.query.uid}`, {
+  const response = await fetch(`https://enka.network/api/hsr/uid/${req.query.uid}`, {
     method: 'GET',
     headers: { 'content-type': 'application/json;charset=UTF-8', 'User-Agent': 'Cinnamon-HYV-Calc' },
   })

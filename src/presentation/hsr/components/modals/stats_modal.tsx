@@ -1,5 +1,6 @@
 import { toPercentage } from '@src/core/utils/converter'
 import { getTurnWithinCycle } from '@src/core/utils/data_format'
+import { checkBuffExist } from '@src/core/utils/finder'
 import { StatsArray, StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { BaseAggro, PathType, Stats } from '@src/domain/constant'
@@ -91,6 +92,21 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
   const baseAggro = BaseAggro[path] * (1 + stats.getValue(StatsObjectKeys.BASE_AGGRO))
   const defMult = 1 - stats.getDef() / (stats.getDef() + 200 + 10 * calculatorStore.level)
 
+  const mergeBuffs = (arr: StatsArray[]) =>
+    _.reduce(
+      arr,
+      (acc, curr) => {
+        const exist = _.find(acc, (item) => item.name === curr.name && item.source === curr.source)
+        if (exist) {
+          exist.value += curr.value
+        } else {
+          acc.push(curr)
+        }
+        return _.cloneDeep(acc)
+      },
+      []
+    )
+
   return (
     <div className="w-[65vw] bg-primary-dark rounded-lg p-3 space-y-2">
       <p className="text-lg font-bold text-white">Stats Breakdown</p>
@@ -103,7 +119,7 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
               lBase={stats.BASE_HP_L}
               totalValue={_.floor(stats.getHP()).toLocaleString()}
               pArray={stats[Stats.P_HP]}
-              fArray={_.concat(stats[Stats.HP], stats.X_HP)}
+              fArray={mergeBuffs(_.concat(stats[Stats.HP], stats.X_HP))}
             />
             <ExtraBlock
               stats="ATK"
@@ -111,7 +127,7 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
               lBase={stats.BASE_ATK_L}
               totalValue={_.floor(stats.getAtk()).toLocaleString()}
               pArray={stats[Stats.P_ATK]}
-              fArray={_.concat(stats[Stats.ATK], stats.X_ATK)}
+              fArray={mergeBuffs(_.concat(stats[Stats.ATK], stats.X_ATK))}
             />
             <ExtraBlock
               stats="DEF"

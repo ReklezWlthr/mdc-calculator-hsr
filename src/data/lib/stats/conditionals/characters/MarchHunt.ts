@@ -306,25 +306,18 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             element: Element.IMAGINARY,
             property: TalentProperty.FUA,
             type: TalentType.NONE,
-            break: 1,
+            break: 10,
           })
         if (_.includes([PathType.DESTRUCTION, PathType.HUNT, PathType.ERUDITION], team[masterIndex].PATH)) {
           base.CALLBACK.push((x, _d, _w, all) => {
             const add = {
               name: `${team[masterIndex].NAME}'s Additional DMG`,
-              value: [
-                {
-                  scaling: calcScaling(0.1, 0.01, ult, 'curved'),
-                  multiplier: Stats.ATK,
-                  override: all[masterIndex].getAtk(),
-                },
-              ],
+              value: [{ scaling: calcScaling(0.1, 0.01, ult, 'curved'), multiplier: Stats.ATK }],
               element: team[masterIndex].ELEMENT,
               property: TalentProperty.ADD,
               type: TalentType.NONE,
             }
             x.BASIC_SCALING.push(add)
-            if (c >= 2) x.SKILL_SCALING.push(add)
             return x
           })
         } else {

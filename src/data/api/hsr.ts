@@ -5,6 +5,6 @@ import getConfig from 'next/config'
 
 const { publicRuntimeConfig } = getConfig()
 
-export const useGetGenshinData = (uid: string, options?: UseQueryOptions<any, AxiosError, any, QueryKeyT>) => {
-  return useFetch<any>(`${publicRuntimeConfig.BASE_PATH}/api/getGIUser`, { uid }, { staleTime: 60 * 1000, ...options })
+export const useGetData = (uid: string, options?: UseQueryOptions<any, AxiosError, any, QueryKeyT>) => {
+  return useFetch<any>(`${publicRuntimeConfig.BASE_PATH}/api/getHSRUser`, { uid }, { staleTime: 60 * 1000, ...options })
 }

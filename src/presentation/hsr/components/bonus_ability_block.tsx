@@ -9,9 +9,10 @@ export interface BonusAbilityBlockProps {
   char: ITeamChar
   talents: ITalent
   onChange: (key: string) => void
+  disabled?: boolean
 }
 
-export const BonusAbilityBlock = observer(({ char, onChange, talents }: BonusAbilityBlockProps) => {
+export const BonusAbilityBlock = observer(({ char, onChange, talents, disabled }: BonusAbilityBlockProps) => {
   const charData = findCharacter(char.cId)
 
   return (
@@ -29,7 +30,7 @@ export const BonusAbilityBlock = observer(({ char, onChange, talents }: BonusAbi
           <CheckboxInput
             checked={char?.major_traces?.a2}
             onClick={() => onChange('a2')}
-            disabled={char?.ascension < 2}
+            disabled={char?.ascension < 2 || disabled}
           />
         </div>
       </div>
@@ -46,7 +47,7 @@ export const BonusAbilityBlock = observer(({ char, onChange, talents }: BonusAbi
           <CheckboxInput
             checked={char?.major_traces?.a4}
             onClick={() => onChange('a4')}
-            disabled={char?.ascension < 4}
+            disabled={char?.ascension < 4 || disabled}
           />
         </div>
       </div>
@@ -63,7 +64,7 @@ export const BonusAbilityBlock = observer(({ char, onChange, talents }: BonusAbi
           <CheckboxInput
             checked={char?.major_traces?.a6}
             onClick={() => onChange('a6')}
-            disabled={char?.ascension < 6}
+            disabled={char?.ascension < 6 || disabled}
           />
         </div>
       </div>

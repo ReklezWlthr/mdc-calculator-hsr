@@ -2,14 +2,13 @@ import classNames from 'classnames'
 import _ from 'lodash'
 import { useLocalUpdater } from '@src/core/hooks/useLocalUpdater'
 import { toLocalStructure } from '@src/core/utils/converter'
-import { useGetGenshinData } from '@src/data/api/genshin'
+import { useGetData } from '@src/data/api/hsr'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { CommonModal } from '@src/presentation/components/common_modal'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { observer } from 'mobx-react-lite'
 import { useCallback, useEffect, useState } from 'react'
-import { IArtifactEquip, ITeamChar, TravelerIconName, WeaponIcon } from '@src/domain/constant'
 import { findCharacter } from '@src/core/utils/finder'
 import { CharacterSelect } from '../components/character_select'
 import { CharacterBlock } from '../components/character_block'
@@ -24,6 +23,10 @@ import { SetToolTip } from './team_setup'
 import { getSetCount } from '@src/core/utils/data_format'
 import { ImportModal } from '@src/presentation/hsr/components/modals/import_modal'
 import dayjs from 'dayjs'
+import { AbilityBlock } from '../components/ability_block'
+import { DefaultCharacter } from '@src/data/stores/team_store'
+import { BonusAbilityBlock } from '../components/bonus_ability_block'
+import { TraceBlock } from '../components/trace_block'
 
 export const ImportExport = observer(() => {
   const { modalStore, settingStore, importStore, toastStore } = useStore()
@@ -32,7 +35,7 @@ export const ImportExport = observer(() => {
 
   const [selected, setSelected] = useState(0)
   const [uid, setUid] = useState('')
-  const { data: accountData, refetch, isFetching, error } = useGetGenshinData(uid, { enabled: false, retry: false })
+  const { data: accountData, refetch, isFetching, error } = useGetData(uid.trim(), { enabled: false, retry: false })
 
   useEffect(() => {
     if (accountData) {
@@ -90,25 +93,16 @@ export const ImportExport = observer(() => {
   }, [error])
 
   const char = importStore.characters[selected]
-  const selectedCharData = findCharacter(char?.cId)
   const talent = _.find(ConditionalsObject, ['id', char?.cId])?.conditionals(
     char?.cons,
-    char?.ascension,
+    char?.major_traces,
     char?.talents,
     []
   )
   const equippedArtifacts = _.filter(importStore.artifacts, (item) => _.includes(char?.equipments?.artifacts, item.id))
-  const raw = calculateOutOfCombat(
-    _.cloneDeep(baseStatsObject),
-    selected,
-    importStore.characters,
-    equippedArtifacts,
-    false
-  )
+  const raw = calculateOutOfCombat(_.cloneDeep(baseStatsObject), selected, importStore.characters, equippedArtifacts)
   const stats = calculateFinal(raw)
   const set = getSetCount(equippedArtifacts)
-  const iconCodeName =
-    selectedCharData?.codeName === 'Player' ? TravelerIconName[selectedCharData.element] : selectedCharData?.codeName
 
   const saveFile = async (blob: Blob, suggestedName: string) => {
     const blobURL = URL.createObjectURL(blob)
@@ -226,14 +220,12 @@ export const ImportExport = observer(() => {
             <div className="flex items-center justify-between px-3">
               <div className="flex justify-center w-full gap-4">
                 {_.map(importStore.characters, (item, index) => {
-                  const x = findCharacter(item.cId)?.codeName
-                  const y = x === 'Player' ? settingStore.settings.travelerGender : x
                   return (
                     <CharacterSelect
                       key={`char_select_${index}`}
                       onClick={() => setSelected(index)}
                       isSelected={index === selected}
-                      codeName={y}
+                      id={item.cId}
                     />
                   )
                 })}
@@ -241,99 +233,68 @@ export const ImportExport = observer(() => {
               <PrimaryButton title="Import Character" onClick={onOpenImportModal} style="shrink-0" />
             </div>
             <div className="flex justify-center w-full gap-5">
-              <div className="w-1/3">
+              <div className="w-1/3 space-y-3">
                 <CharacterBlock index={selected} override={importStore.characters} disabled />
-                {_.size(importStore.characters) ? (
-                  <div className="flex items-center justify-center gap-6 py-3">
-                    <div className="relative">
-                      <TalentIcon
-                        talent={talent?.talents?.normal}
-                        element={selectedCharData?.element}
-                        icon={`https://enka.network/ui/hsr${WeaponIcon[selectedCharData?.weapon]}`}
-                        size="w-9 h-9"
-                      />
-                      <div
-                        className={classNames(
-                          'absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 text-white',
-                          talent?.upgrade?.basic ? 'bg-cyan-600' : 'bg-primary-light'
-                        )}
-                      >
-                        {char?.talents?.basic + (talent?.upgrade?.basic ? 3 : 0)}
-                      </div>
-                    </div>
-                    <div className="relative ml-3">
-                      <TalentIcon
-                        talent={talent?.talents?.skill}
-                        element={selectedCharData?.element}
-                        icon={`https://enka.network/ui/hsr/Skill_${
-                          iconCodeName === 'PlayerGrass' ? 'E' : 'S'
-                        }_${iconCodeName}${iconCodeName === 'Qin' ? '_02' : '_01'}${
-                          iconCodeName === 'Diluc' ? '_01' : ''
-                        }.png`}
-                        size="w-9 h-9"
-                      />
-                      <div
-                        className={classNames(
-                          'absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 text-white',
-                          talent?.upgrade?.skill ? 'bg-cyan-600' : 'bg-primary-light'
-                        )}
-                      >
-                        {char?.talents?.skill + (talent?.upgrade?.skill ? 3 : 0)}
-                      </div>
-                    </div>
-                    <div className="relative ml-3">
-                      <TalentIcon
-                        talent={talent?.talents?.burst}
-                        element={selectedCharData?.element}
-                        icon={`https://enka.network/ui/hsr/Skill_${
-                          iconCodeName === 'PlayerGrass' ? 'S' : 'E'
-                        }_${iconCodeName}${_.includes(['Ayaka', 'Ambor'], iconCodeName) ? '' : '_01'}.png`}
-                        size="w-9 h-9"
-                      />
-                      <div
-                        className={classNames(
-                          'absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-2 -right-3 text-white',
-                          talent?.upgrade?.ult ? 'bg-cyan-600' : 'bg-primary-light'
-                        )}
-                      >
-                        {char?.talents?.ult + (talent?.upgrade?.ult ? 3 : 0)}
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="h-5" />
-                )}
+                <LCBlock
+                  {...char?.equipments?.weapon}
+                  index={0}
+                  teamOverride={[{ ...DefaultCharacter, cId: char.cId }]}
+                  disabled
+                />
                 <StatBlock index={selected} stat={stats} />
               </div>
               <div className="w-1/5 space-y-5">
-                <LCBlock {...char?.equipments?.weapon} />
-                <RelicBlock
-                  index={selected}
-                  piece={5}
-                  aId={char?.equipments?.artifacts?.[2]}
-                  override={importStore.artifacts}
-                  canEdit={false}
-                />
-                <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
-                  {_.every(set, (item) => item < 2) ? (
-                    <p className="text-xs text-white">No Set Bonus</p>
-                  ) : (
-                    _.map(set, (item, key) => <SetToolTip item={item} set={key} key={key} />)
-                  )}
+                <div className="grid items-center justify-center grid-cols-2 gap-5 py-3">
+                  <p className="-mb-2 text-lg font-bold text-center text-white col-span-full">Traces</p>
+                  <AbilityBlock
+                    char={char}
+                    talents={talent?.talents}
+                    upgrade={talent?.upgrade}
+                    onChange={null}
+                    disabled
+                  />
+                  <p className="-mb-2 font-bold text-center text-white col-span-full">Ascension Passives</p>
+                  <BonusAbilityBlock char={char} talents={talent?.talents} onChange={null} disabled />
+                  <div className="col-span-full">
+                    <TraceBlock id={char?.cId} data={char?.minor_traces} onClick={null} disabled />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
+                    {_.some(set, (item, key) => item >= 2 && _.head(key) === '1') ? (
+                      _.map(set, (item, key) => <SetToolTip item={item} set={key} type="relic" key={key} />)
+                    ) : (
+                      <p className="text-xs text-white">No Relic Set Bonus</p>
+                    )}
+                  </div>
+                  <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
+                    {_.some(set, (item, key) => item >= 2 && _.head(key) === '3') ? (
+                      _.map(set, (item, key) => <SetToolTip item={item} set={key} type="planar" key={key} />)
+                    ) : (
+                      <p className="text-xs text-white">No Planar Ornament Bonus</p>
+                    )}
+                  </div>
                 </div>
               </div>
               <div className="w-1/5 space-y-5">
                 <RelicBlock
                   index={selected}
-                  piece={4}
+                  piece={1}
                   aId={char?.equipments?.artifacts?.[0]}
                   override={importStore.artifacts}
                   canEdit={false}
                 />
                 <RelicBlock
                   index={selected}
-                  piece={1}
-                  aId={char?.equipments?.artifacts?.[3]}
+                  piece={3}
+                  aId={char?.equipments?.artifacts?.[2]}
+                  override={importStore.artifacts}
+                  canEdit={false}
+                />
+                <RelicBlock
+                  index={selected}
+                  piece={5}
+                  aId={char?.equipments?.artifacts?.[4]}
                   override={importStore.artifacts}
                   canEdit={false}
                 />
@@ -348,8 +309,15 @@ export const ImportExport = observer(() => {
                 />
                 <RelicBlock
                   index={selected}
-                  piece={3}
-                  aId={char?.equipments?.artifacts?.[4]}
+                  piece={4}
+                  aId={char?.equipments?.artifacts?.[3]}
+                  override={importStore.artifacts}
+                  canEdit={false}
+                />
+                <RelicBlock
+                  index={selected}
+                  piece={6}
+                  aId={char?.equipments?.artifacts?.[5]}
                   override={importStore.artifacts}
                   canEdit={false}
                 />

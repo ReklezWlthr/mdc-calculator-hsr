@@ -12,9 +12,10 @@ export interface AbilityBlockProps {
   talents: ITalent
   upgrade: { basic: number; skill: number; ult: number; talent: number }
   onChange: (key: string, value: number) => void
+  disabled?: boolean
 }
 
-export const AbilityBlock = observer(({ char, onChange, upgrade, talents }: AbilityBlockProps) => {
+export const AbilityBlock = observer(({ char, onChange, upgrade, talents, disabled }: AbilityBlockProps) => {
   const charData = findCharacter(char.cId)
 
   const maxTalentLevel = findMaxTalentLevel(char?.ascension)
@@ -47,7 +48,7 @@ export const AbilityBlock = observer(({ char, onChange, upgrade, talents }: Abil
             onChange={(value) => onChange('basic', parseInt(value))}
             options={basicLevels}
             style="w-14"
-            disabled={!charData}
+            disabled={!charData || disabled}
           />
         </div>
       </div>
@@ -69,7 +70,7 @@ export const AbilityBlock = observer(({ char, onChange, upgrade, talents }: Abil
             onChange={(value) => onChange('skill', parseInt(value))}
             options={talentLevels}
             style="w-14"
-            disabled={!charData}
+            disabled={!charData || disabled}
           />
         </div>
       </div>
@@ -91,7 +92,7 @@ export const AbilityBlock = observer(({ char, onChange, upgrade, talents }: Abil
             onChange={(value) => onChange('ult', parseInt(value))}
             options={talentLevels}
             style="w-14"
-            disabled={!charData}
+            disabled={!charData || disabled}
           />
         </div>
       </div>
@@ -113,7 +114,7 @@ export const AbilityBlock = observer(({ char, onChange, upgrade, talents }: Abil
             onChange={(value) => onChange('talent', parseInt(value))}
             options={talentLevels}
             style="w-14"
-            disabled={!charData}
+            disabled={!charData || disabled}
           />
         </div>
       </div>

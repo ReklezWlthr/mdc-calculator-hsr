@@ -154,18 +154,10 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
                 <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs bg-opacity-75 rounded-full -bottom-0 -right-2 bg-primary-light">
                   +{artifact?.level}
                 </div>
-                {/* {props.showWearer && (
-                  <div className="absolute flex items-center justify-center p-1 text-xs bg-opacity-75 rounded-full -top-1 w-7 h-7 -right-3 bg-primary-light">
-                    <img
-                      src={`https://enka.network/ui/hsr/UI_AvatarIcon_Side_${codeName}.png`}
-                      className="absolute scale-125 bottom-1.5"
-                    />
-                  </div>
-                )} */}
               </div>
               <div className="flex flex-col items-center w-full gap-1">
                 <RarityGauge rarity={artifact?.quality} textSize="text-sm" />
-                <p className="text-xs text-center">{setData?.name}</p>
+                <p className="text-xs text-center line-clamp-2">{setData?.name}</p>
               </div>
             </div>
             <div className="flex items-center gap-2 text-xs">
@@ -173,6 +165,7 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
                 <img
                   className="w-3.5"
                   src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[artifact?.main]}`}
+                  onError={(e) => (e.currentTarget.src = `/icons/${StatIcons[artifact?.main]}`)}
                 />
                 {artifact?.main}
               </div>

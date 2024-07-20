@@ -6,7 +6,6 @@ import { ElementColor } from '@src/presentation/hsr/components/tables/super_brea
 import _ from 'lodash'
 import { propertyColor } from '@src/presentation/hsr/components/tables/scaling_sub_rows'
 import { BreakBaseLevel, BreakElementMult } from '@src/domain/scaling'
-import { useStore } from '@src/data/providers/app_store_provider'
 import { CalculatorStoreType } from '@src/data/stores/calculator_store'
 import { breakDamageStringConstruct } from './breakDamageStringConstruct'
 
@@ -157,7 +156,7 @@ export const damageStringConstruct = (
       : bonusDMG > 0
       ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(
           breakScale ? stats.getValue(Stats.BE) : bonusDMG
-        )}</b>)`
+        )}</b> <i class="text-[10px]">BONUS</i>)`
       : ''
   }${scaling.multiplier > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(scaling.multiplier, 2)}</b>` : ''}${
     elementMult > 1 ? ` \u{00d7} <b class="text-amber-400">${toPercentage(elementMult, 2)}</b>` : ''
@@ -201,7 +200,7 @@ export const damageStringConstruct = (
       <p dangerouslySetInnerHTML={{ __html: formulaString }} />
       {!!scaling.bonus && (
         <p className="text-xs">
-          Component Bonus: <span className="text-desc">{toPercentage(scaling.bonus)}</span>
+          Exclusive Bonus: <span className="text-desc">{toPercentage(scaling.bonus)}</span>
         </p>
       )}
       {!!stats.getValue(`${element} DMG%`) && (

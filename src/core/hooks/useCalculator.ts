@@ -328,7 +328,7 @@ export const useCalculator = ({
         _.forEach(set, (value, key) => {
           if (value >= 2) {
             const half = _.find(AllRelicSets, ['id', key])?.half
-            if (half) x = half(x)
+            if (half) x = half(x, postCompute)
           }
           if (value >= 4) {
             const add = _.find(AllRelicSets, ['id', key])?.add
@@ -341,7 +341,7 @@ export const useCalculator = ({
       const final = _.map(postArtifactCallback, (base, index) => {
         let x = base
         _.forEach(base.CALLBACK, (cb) => {
-          x = cb(x, debuffs, weakness, postCompute, true)
+          x = cb(x, debuffs, weakness, postArtifactCallback, true)
         })
         return x
       })

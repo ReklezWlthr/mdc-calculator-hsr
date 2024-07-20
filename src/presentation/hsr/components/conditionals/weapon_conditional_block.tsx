@@ -117,7 +117,7 @@ export const WeaponConditionalBlock = observer(({ contents, formOverride, setFor
                       <TextInput
                         type="number"
                         value={form[content.index]?.[content.id]}
-                        onChange={(value) => setForm(content.index, content.id, parseFloat(value) ?? '')}
+                        onChange={(value) => set(content.index, content.id, parseFloat(value) ?? '')}
                         max={content.max as number}
                         min={content.min as number}
                         style="col-span-2"
@@ -132,7 +132,7 @@ export const WeaponConditionalBlock = observer(({ contents, formOverride, setFor
                     <div className="flex items-center justify-center col-span-2">
                       <CheckboxInput
                         checked={form[content.index]?.[content.id]}
-                        onClick={(v) => setForm(content.index, content.id, v)}
+                        onClick={(v) => set(content.index, content.id, v)}
                       />
                     </div>
                   )}
@@ -146,7 +146,7 @@ export const WeaponConditionalBlock = observer(({ contents, formOverride, setFor
                             ..._.map(Element, (item) => ({ name: item, value: item })),
                           ]
                         }
-                        onChange={(value) => setForm(content.index, content.id, value)}
+                        onChange={(value) => set(content.index, content.id, value)}
                         placeholder="None"
                       />
                     </div>

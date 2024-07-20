@@ -74,7 +74,7 @@ export interface IArtifact {
   icon: string
   bonus: { stat: Stats; value: number }[]
   bonusAdd: { stat: Stats; value: number }[]
-  half?: (conditionals: StatsObject) => StatsObject
+  half?: (conditionals: StatsObject, all: StatsObject[]) => StatsObject
   add?: (conditionals: StatsObject) => StatsObject
   desc: string[]
 }
@@ -209,7 +209,7 @@ export const StatIcons = {
   [Stats.DEF]: 'IconDefence.png',
   [Stats.CRIT_RATE]: 'IconCriticalChance.png',
   [Stats.CRIT_DMG]: 'IconCriticalDamage.png',
-  [Stats.HEAL]: 'IconHeal.png',
+  [Stats.HEAL]: 'IconHealRatio.png',
   [Stats.BE]: 'IconBreakUp.png',
   [Stats.E_RES]: 'IconStatusResistance.png',
   [Stats.PHYSICAL_DMG]: 'IconPhysicalAddedRatio.png',
@@ -311,24 +311,31 @@ export const PropMap = {
 }
 
 export const EnkaStatsMap = {
-  // FIGHT_PROP_HP: Stats.HP,
-  // FIGHT_PROP_ATTACK: Stats.ATK,
-  // FIGHT_PROP_DEFENSE: Stats.DEF,
-  // FIGHT_PROP_HP_PERCENT: Stats.P_HP,
-  // FIGHT_PROP_ATTACK_PERCENT: Stats.P_ATK,
-  // FIGHT_PROP_DEFENSE_PERCENT: Stats.P_DEF,
-  // FIGHT_PROP_CRITICAL: Stats.CRIT_RATE,
-  // FIGHT_PROP_CRITICAL_HURT: Stats.CRIT_DMG,
-  // FIGHT_PROP_CHARGE_EFFICIENCY: Stats.ER,
-  // FIGHT_PROP_HEAL_ADD: Stats.HEAL,
-  // FIGHT_PROP_ELEMENT_MASTERY: Stats.EM,
-  // FIGHT_PROP_PHYSICAL_ADD_HURT: Stats.PHYSICAL_DMG,
-  // FIGHT_PROP_FIRE_ADD_HURT: Stats.FIRE_DMG,
-  // FIGHT_PROP_ELEC_ADD_HURT: Stats.LIGHTNING_DMG,
-  // FIGHT_PROP_WIND_ADD_HURT: Stats.WIND_DMG,
-  // FIGHT_PROP_ICE_ADD_HURT: Stats.ICE_DMG,
-  // FIGHT_PROP_ROCK_ADD_HURT: Stats.QUANTUM_DMG,
-  // FIGHT_PROP_GRASS_ADD_HURT: Stats.IMAGINARY_DMG,
+  HPDelta: Stats.HP,
+  AttackDelta: Stats.ATK,
+  DefenceDelta: Stats.DEF,
+  HPAddedRatio: Stats.P_HP,
+  AttackAddedRatio: Stats.P_ATK,
+  DefenceAddedRatio: Stats.P_DEF,
+  CriticalChance: Stats.CRIT_RATE,
+  CriticalChanceBase: Stats.CRIT_RATE,
+  CriticalDamage: Stats.CRIT_DMG,
+  CriticalDamageBase: Stats.CRIT_DMG,
+  SPRatioBase: Stats.ERR,
+  HealRatioBase: Stats.HEAL,
+  StatusProbability: Stats.EHR,
+  StatusProbabilityBase: Stats.EHR,
+  SpeedDelta: Stats.SPD,
+  StatusResistance: Stats.E_RES,
+  BreakDamageAddedRatio: Stats.BE,
+  BreakDamageAddedRatioBase: Stats.BE,
+  PhysicalAddedRatio: Stats.PHYSICAL_DMG,
+  FireAddedRatio: Stats.FIRE_DMG,
+  ThunderAddedRatio: Stats.LIGHTNING_DMG,
+  WindAddedRatio: Stats.WIND_DMG,
+  IceAddedRatio: Stats.ICE_DMG,
+  QuantumAddedRatio: Stats.QUANTUM_DMG,
+  ImaginaryAddedRatio: Stats.IMAGINARY_DMG,
 }
 
 export const EnkaArtifactTypeMap = {

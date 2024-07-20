@@ -283,15 +283,15 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       broken: boolean
     ) => {
       if (form.concerto) {
-        _.forEach(team, (t, i) => {
-          t.CALLBACK.push((x) => {
+        _.last(team).CALLBACK.push((b, _d, _w, a) => {
+          _.forEach(a, (x, i) => {
             x.X_ATK.push({
-              name: 'Ultimate [Percentage]',
+              name: 'Ultimate',
               source: index === i ? 'Self' : 'Robin',
-              value: calcScaling(0.152, 0.0076, ult, 'curved') * team[index].getAtk(true),
+              value: calcScaling(0.152, 0.0076, ult, 'curved') * a[index].getAtk(true),
             })
             x[Stats.ATK].push({
-              name: 'Ultimate [Flat]',
+              name: 'Ultimate',
               source: index === i ? 'Self' : 'Robin',
               value: calcScaling(50, 15, ult, 'curved'),
             })
@@ -312,8 +312,8 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
                     })
                 }
               )
-            return x
           })
+          return b
         })
       }
 

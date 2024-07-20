@@ -16,9 +16,10 @@ interface TraceBlockProps {
     toggled: boolean
   }[]
   onClick: (index: number) => void
+  disabled?: boolean
 }
 
-export const TraceBlock = observer(({ id, data, onClick }: TraceBlockProps) => {
+export const TraceBlock = observer(({ id, data, onClick, disabled }: TraceBlockProps) => {
   return (
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark">
       <div className="flex justify-center px-5 py-1 rounded-t-lg bg-primary-lighter">Minor Traces</div>
@@ -30,7 +31,11 @@ export const TraceBlock = observer(({ id, data, onClick }: TraceBlockProps) => {
               {id ? (trace?.stat === Stats.SPD ? trace?.value : toPercentage(trace?.value)) : '-'}
             </div>
             <div className="flex justify-center col-span-2">
-              <CheckboxInput checked={data?.[index]?.toggled} onClick={() => onClick(index)} disabled={!id} />
+              <CheckboxInput
+                checked={data?.[index]?.toggled}
+                onClick={() => onClick(index)}
+                disabled={!id || disabled}
+              />
             </div>
           </div>
         ))}

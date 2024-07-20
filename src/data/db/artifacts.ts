@@ -37,7 +37,7 @@ export const RelicSets: IArtifact[] = [
     },
     desc: [
       `ATK increases by <span class="text-desc">12%</span>.`,
-      `The wearer's SPD increases by <span class="text-desc">6%</span> and Basic ATK DMG increases by <span class="text-desc">10%</span>.`,
+      `The wearer's SPD increases by <span class="text-desc">6%</span> and DMG dealt by Basic ATK increases by <span class="text-desc">10%</span>.`,
     ],
   },
   {
@@ -116,7 +116,7 @@ export const RelicSets: IArtifact[] = [
     },
     desc: [
       `Increases <b class="text-hsr-fire">Fire DMG</b> by <span class="text-desc">10%</span>.`,
-      `Increases the wearer's Skill DMG by <span class="text-desc">12%</span>. After unleashing Ultimate, increases the wearer's <b class="text-hsr-fire">Fire DMG</b> by <span class="text-desc">12%</span> for the next attack.`,
+      `Increases DMG by the wearer's Skill by <span class="text-desc">12%</span>. After unleashing Ultimate, increases the wearer's <b class="text-hsr-fire">Fire DMG</b> by <span class="text-desc">12%</span> for the next attack.`,
     ],
   },
   {
@@ -240,7 +240,7 @@ export const RelicSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases the DMG dealt by follow-up attacks by <span class="text-desc">20%</span>.`,
+      `Increases the DMG dealt by follow-up attack by <span class="text-desc">20%</span>.`,
       `When the wearer uses follow-up attacks, increases the wearer's ATK by <span class="text-desc">6%</span> for every time the follow-up attack deals DMG. This effect can stack up to <span class="text-desc">8</span> time(s) and lasts for <span class="text-desc">3</span> turn(s). This effect is removed the next time the wearer uses a follow-up attack.`,
     ],
   },
@@ -273,7 +273,7 @@ export const RelicSets: IArtifact[] = [
     },
     desc: [
       `ATK increases by <span class="text-desc">12%</span>.`,
-      `For every DoT the target enemy is afflicted with, the wearer will ignore <span class="text-desc">6%</span> of its DEF when dealing DMG to it. This effect is valid for a max of <span class="text-desc">3</span> DoTs.`,
+      `For every DoT the enemy target is afflicted with, the wearer will ignore <span class="text-desc">6%</span> of its DEF when dealing DMG to it. This effect is valid for a max of <span class="text-desc">3</span> DoTs.`,
     ],
   },
   {
@@ -365,7 +365,7 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [{ stat: Stats.CRIT_RATE, value: 0.06 }],
     desc: [
       `ATK increases by <span class="text-desc">12%</span>.`,
-      `Increases the wearer's CRIT Rate by <span class="text-desc">6%</span>. When the wearer uses a follow-up attack, increase the DMG dealt by their Ultimate by <span class="text-desc">36%</span>, lasting for <span class="text-desc">1</span> turn(s).`,
+      `Increases the wearer's CRIT Rate by <span class="text-desc">6%</span>. After the wearer uses follow-up attack, increases DMG dealt by Ultimate by <span class="text-desc">36%</span>, lasting for <span class="text-desc">1</span> turn(s).`,
     ],
   },
 ]
@@ -378,18 +378,16 @@ export const PlanarSets: IArtifact[] = [
     bonus: [{ stat: Stats.P_ATK, value: 0.12 }],
     bonusAdd: [],
     half: (base) => {
-      base.CALLBACK.push((x: StatsObject) => {
-        if (x.getSpd() >= 120)
-          x[Stats.P_ATK] = _.map(x[Stats.P_ATK], (item) =>
-            item.source === 'Space Sealing Station'
-              ? {
-                  ...item,
-                  value: item.value + 0.12,
-                }
-              : item
-          )
-        return x
-      })
+      if (base.getSpd() >= 120)
+        base[Stats.P_ATK] = _.map(base[Stats.P_ATK], (item) =>
+          item.source === 'Space Sealing Station'
+            ? {
+                ...item,
+                value: item.value + 0.12,
+              }
+            : item
+        )
+
       return base
     },
     desc: [
@@ -402,19 +400,16 @@ export const PlanarSets: IArtifact[] = [
     icon: '71013',
     bonus: [{ stat: Stats.P_HP, value: 0.12 }],
     bonusAdd: [],
-    half: (base) => {
-      base.CALLBACK.push((x: StatsObject, _d, _w, all) => {
-        if (x.getSpd() >= 120)
-          _.forEach(all, (item) => {
-            item[Stats.P_ATK].push({
-              name: 'Fleet of the Ageless',
-              source: x.NAME === item.NAME ? 'Self' : x.NAME,
-              value: 0.08,
-            })
+    half: (base, all) => {
+      if (base.getSpd() >= 120)
+        _.forEach(all, (item) => {
+          item[Stats.P_ATK].push({
+            name: 'Fleet of the Ageless',
+            source: base.NAME === item.NAME ? 'Self' : base.NAME,
+            value: 0.08,
           })
+        })
 
-        return x
-      })
       return base
     },
     desc: [
@@ -428,13 +423,10 @@ export const PlanarSets: IArtifact[] = [
     bonus: [{ stat: Stats.EHR, value: 0.1 }],
     bonusAdd: [],
     half: (base) => {
-      base.CALLBACK.push((x) => {
-        x[Stats.P_ATK].push({
-          name: '2-Piece',
-          source: 'Pan-Cosmic Commercial Enterprise',
-          value: _.min([0.25 * x.getValue(Stats.EHR), 0.25]),
-        })
-        return x
+      base[Stats.P_ATK].push({
+        name: '2-Piece',
+        source: 'Pan-Cosmic Commercial Enterprise',
+        value: _.min([0.25 * base.getValue(Stats.EHR), 0.25]),
       })
       return base
     },
@@ -502,7 +494,7 @@ export const PlanarSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases the wearer's CRIT Rate by <span class="text-desc">8%</span>. When the wearer's current CRIT Rate reaches <span class="text-desc">50%</span> or higher, the wearer's Ultimate and follow-up attack DMG increases by <span class="text-desc">15%</span>.`,
+      `Increases the wearer's CRIT Rate by <span class="text-desc">8%</span>. When the wearer's current CRIT Rate reaches <span class="text-desc">50%</span> or higher, the DMG dealt by the wearer's Ultimate and follow-up attack increases by <span class="text-desc">15%</span>.`,
     ],
   },
   {
@@ -512,18 +504,15 @@ export const PlanarSets: IArtifact[] = [
     bonus: [{ stat: Stats.BE, value: 0.16 }],
     bonusAdd: [],
     half: (base) => {
-      base.CALLBACK.push((x: StatsObject) => {
-        if (x.getSpd() >= 145)
-          x[Stats.BE] = _.map(x[Stats.BE], (item) =>
-            item.source === 'Talia: Kingdom of Banditry'
-              ? {
-                  ...item,
-                  value: item.value + 0.2,
-                }
-              : item
-          )
-        return x
-      })
+      if (base.getSpd() >= 145)
+        base[Stats.BE] = _.map(base[Stats.BE], (item) =>
+          item.source === 'Talia: Kingdom of Banditry'
+            ? {
+                ...item,
+                value: item.value + 0.2,
+              }
+            : item
+        )
       return base
     },
     desc: [
@@ -565,7 +554,7 @@ export const PlanarSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases the wearer's CRIT Rate by <span class="text-desc">8%</span>. When the wearer's current CRIT Rate reaches <span class="text-desc">70%</span> or higher, the wearer's Basic ATK and Skill DMG increase by <span class="text-desc">20%</span>.`,
+      `Increases the wearer's CRIT Rate by <span class="text-desc">8%</span>. When the wearer's current CRIT Rate reaches <span class="text-desc">70%</span> or higher, DMG dealt by Basic ATK and Skill increases by <span class="text-desc">20%</span>.`,
     ],
   },
   {
@@ -678,7 +667,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [],
     bonusAdd: [],
     desc: [
-      `When allies use follow-up attacks, the wearer receives <span class="text-desc">1</span> stack of <b>Merit</b>, stacking up to <span class="text-desc">5</span> times. Every stack of <b>Merit</b> increases the DMG dealt by the wearer's follow-up attacks by <span class="text-desc">5%</span>. When there are <span class="text-desc">5</span> stacks, additionally increases the wearer's CRIT DMG by <span class="text-desc">25%</span>.`,
+      `When an ally uses follow-up attack, the wearer receives <span class="text-desc">1</span> stack of <b>Merit</b>, stacking up to <span class="text-desc">5</span> times. Every stack of <b>Merit</b> increases the DMG dealt by the wearer's follow-up attacks by <span class="text-desc">5%</span>. When there are <span class="text-desc">5</span> stacks, additionally increases the wearer's CRIT DMG by <span class="text-desc">25%</span>.`,
     ],
   },
   {

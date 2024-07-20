@@ -225,7 +225,7 @@ export const CharDetail = observer(() => {
                   </div>
                   <div className="col-span-2 space-y-1">
                     {_.map(charUpgrade.major_traces, (item, index) => (
-                      <div className="flex items-center justify-around">
+                      <div className="flex items-center justify-around" key={index}>
                         <p>{index.toUpperCase()}</p>
                         <i
                           className={classNames(

@@ -1160,7 +1160,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       base.AGGRO.push({
         name: 'Passive',
         source: 'Dance at Sunset',
-        value: 2,
+        value: 5,
       })
       return base
     },
