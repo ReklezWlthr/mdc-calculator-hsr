@@ -182,8 +182,13 @@ export const baseStatsObject = {
   getSpd: function () {
     return this.BASE_SPD * (1 + _.sumBy(this[Stats.P_SPD], 'value')) + _.sumBy(this[Stats.SPD], 'value')
   },
-  getValue: function (key: string) {
-    return _.sumBy(this[key], 'value')
+  getValue: function (key: string, exclude?: StatsArray[]) {
+    return _.sumBy(
+      _.size(exclude)
+        ? _.filter(this[key], (item) => _.every(exclude, (e) => e.source !== item.source && e.name !== item.name))
+        : this[key],
+      'value'
+    )
   },
   getDmgRed: function () {
     return _.min([1 - _.reduce(this.DMG_REDUCTION, (acc, curr) => acc * (1 - curr.value), 1), 0.99])

@@ -113,7 +113,7 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
     })
   if (form['120'])
     base.ULT_DMG.push({
-      name: `Merit`,
+      name: `4-Piece`,
       source: 'The Wind-Soaring Valorous',
       value: 0.36,
     })
