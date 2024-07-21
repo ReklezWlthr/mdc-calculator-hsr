@@ -293,6 +293,28 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
         },
+        {
+          name: `Cull Extra DMG [x${c >= 1 ? 9 : 6}]`,
+          value: [{ scaling: calcScaling(0.432, 0.0288, ult, 'curved'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.FUA,
+          type: TalentType.ULT,
+          bonus: 0.8,
+          cr: c >= 6 ? 0.15 : 0,
+          res_pen: c >= 6 ? 0.2 : 0,
+          break: 5,
+        },
+        {
+          name: `Total Cull Extra DMG`,
+          value: [{ scaling: calcScaling(0.432, 0.0288, ult, 'curved'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.FUA,
+          type: TalentType.ULT,
+          bonus: 0.8,
+          multiplier: c >= 1 ? 9 : 6,
+          cr: c >= 6 ? 0.15 : 0,
+          res_pen: c >= 6 ? 0.2 : 0,
+        },
       ]
 
       if (form.yunli_block) {
