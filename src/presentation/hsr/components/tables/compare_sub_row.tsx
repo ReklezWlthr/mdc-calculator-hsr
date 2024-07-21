@@ -16,7 +16,7 @@ interface ScalingSubRowsProps {
   scaling: IScaling[]
   stats: StatsObject[]
   allStats: StatsObject[][]
-  level: number[]
+  level: { level: number[]; selected: number }[]
   name: string
   property: string
   element: string
@@ -47,29 +47,13 @@ export const CompareSubRows = observer(
     const { setupStore, calculatorStore } = useStore()
 
     const mode = setupStore.mode
-    const main = damageStringConstruct(
-      calculatorStore,
-      scaling[0],
-      scaling[0]?.overrideIndex ? allStats[0]?.[scaling[0]?.overrideIndex] : stats[0],
-      level[0]
-    )
-    const sub1 = damageStringConstruct(
-      calculatorStore,
-      scaling[1],
-      scaling[1]?.overrideIndex ? allStats[1]?.[scaling[1]?.overrideIndex] : stats[1],
-      level[1]
-    )
-    const sub2 = damageStringConstruct(
-      calculatorStore,
-      scaling[2],
-      scaling[2]?.overrideIndex ? allStats[2]?.[scaling[2]?.overrideIndex] : stats[2],
-      level[2]
-    )
-    const sub3 = damageStringConstruct(
-      calculatorStore,
-      scaling[3],
-      scaling[3]?.overrideIndex ? allStats[3]?.[scaling[3]?.overrideIndex] : stats[3],
-      level[3]
+    const [main, sub1, sub2, sub3] = _.map(Array(4), (_v, index) =>
+      damageStringConstruct(
+        calculatorStore,
+        scaling[index],
+        scaling[index]?.overrideIndex ? allStats[index]?.[scaling[0]?.overrideIndex] : stats[index],
+        level[index].level[scaling[index]?.overrideIndex ?? level[index].selected]
+      )
     )
 
     const noCrit = _.includes(

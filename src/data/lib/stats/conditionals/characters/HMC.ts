@@ -193,12 +193,21 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           break: a.a4 ? 20 : 10,
         },
         {
-          name: `Bounce [x${c >= 6 ? 6 : 4}]`,
+          name: `Bounce`,
           value: [{ scaling: calcScaling(0.25, 0.025, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 5,
+        },
+        {
+          name: `Max Single Target DMG`,
+          value: [{ scaling: calcScaling(0.25, 0.025, skill, 'curved'), multiplier: Stats.ATK }],
+          element: Element.IMAGINARY,
+          property: TalentProperty.NORMAL,
+          type: TalentType.SKILL,
+          multiplier: c >= 6 ? 7 : 5,
+          break: (a.a4 ? 20 : 10) + (c >= 6 ? 6 : 4) * 5,
         },
       ]
 

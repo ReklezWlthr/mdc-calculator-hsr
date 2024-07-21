@@ -204,13 +204,23 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               break: 5 * (form.h_march_ult ? 5 : 3),
             },
             {
-              name: 'Extra Attack DMG [x3]',
+              name: 'Extra Attack DMG',
               value: [{ scaling: calcScaling(0.4, 0.08, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 5,
               chance: { base: form.h_march_ult ? 0.8 : 0.6, fixed: true },
+            },
+            {
+              name: 'Max Single Target DMG',
+              value: [{ scaling: calcScaling(0.4, 0.08, basic, 'linear'), multiplier: Stats.ATK }],
+              element: Element.IMAGINARY,
+              property: TalentProperty.NORMAL,
+              type: TalentType.BA,
+              multiplier: form.h_march_ult ? 8 : 6,
+              break: 5 * (form.h_march_ult ? 8 : 6),
+              chance: { base: (form.h_march_ult ? 0.8 : 0.6) ** 3, fixed: true },
             },
           ]
         : [

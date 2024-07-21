@@ -19,7 +19,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
 
-  const names = _.map(team, (item) => findCharacter(item.cId)?.name)
+  const names = _.map(team, (item) => findCharacter(item?.cId)?.name)
   const index = _.findIndex(team, (item) => item?.cId === '1202')
 
   const talents: ITalent = {
@@ -253,7 +253,9 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
                 s.push({
                   name: `Benediction's Additional DMG`,
-                  value: [{ scaling: calcScaling(0.2, 0.02, skill, 'curved'), multiplier: Stats.ATK }],
+                  value: [
+                    { scaling: calcScaling(0.2, 0.02, skill, 'curved') + (c >= 4 ? 0.2 : 0), multiplier: Stats.ATK },
+                  ],
                   element: Element.LIGHTNING,
                   property: TalentProperty.ADD,
                   type: TalentType.NONE,
@@ -273,7 +275,9 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             if (i !== index)
               team[index].TALENT_SCALING.push({
                 name: `${names[i]}'s Additional DMG`,
-                value: [{ scaling: calcScaling(0.3, 0.03, talent, 'curved'), multiplier: Stats.ATK }],
+                value: [
+                  { scaling: calcScaling(0.3, 0.03, talent, 'curved') + (c >= 4 ? 0.2 : 0), multiplier: Stats.ATK },
+                ],
                 element: Element.LIGHTNING,
                 property: TalentProperty.ADD,
                 type: TalentType.NONE,

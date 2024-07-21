@@ -284,11 +284,12 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     ) => {
       if (form.concerto) {
         _.last(team).CALLBACK.push((b, _d, _w, a) => {
+          const atk = a[index].getAtk(true)
           _.forEach(a, (x, i) => {
             x.X_ATK.push({
               name: 'Ultimate',
               source: index === i ? 'Self' : 'Robin',
-              value: calcScaling(0.152, 0.0076, ult, 'curved') * a[index].getAtk(true),
+              value: calcScaling(0.152, 0.0076, ult, 'curved') * atk,
             })
             x[Stats.ATK].push({
               name: 'Ultimate',

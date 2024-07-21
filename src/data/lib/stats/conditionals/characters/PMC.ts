@@ -19,7 +19,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
 
-  const names = _.map(team, (item) => findCharacter(item.cId)?.name)
+  const names = _.map(team, (item) => findCharacter(item?.cId)?.name)
 
   const talents: ITalent = {
     normal: {
