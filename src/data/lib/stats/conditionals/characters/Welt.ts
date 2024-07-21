@@ -190,18 +190,25 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
-          energy: 20,
         },
       ]
       base.SKILL_SCALING = [
         {
-          name: `Bounce [x${c >= 6 ? 4 : 3}]`,
+          name: `Bounce`,
           value: [{ scaling: calcScaling(0.36, 0.036, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 10,
-          energy: 10,
+        },
+        {
+          name: `Max Single Target DMG`,
+          value: [{ scaling: calcScaling(0.36, 0.036, skill, 'curved'), multiplier: Stats.ATK }],
+          element: Element.IMAGINARY,
+          property: TalentProperty.NORMAL,
+          type: TalentType.SKILL,
+          multiplier: c >= 6 ? 4 : 3,
+          break: (c >= 6 ? 4 : 3) * 10,
         },
       ]
       base.ULT_SCALING = [

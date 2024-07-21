@@ -209,7 +209,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               break: 20,
             },
             {
-              name: 'Bounce [x6]',
+              name: 'Bounce',
               value: [{ scaling: calcScaling(0.57, 0.038, ult, 'curved'), multiplier: Stats.ATK }],
               element: Element.PHYSICAL,
               property: TalentProperty.NORMAL,

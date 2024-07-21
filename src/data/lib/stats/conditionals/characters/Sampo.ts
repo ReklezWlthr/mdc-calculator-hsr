@@ -186,12 +186,21 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           break: 10,
         },
         {
-          name: `Bounce [x${c >= 1 ? 5 : 4}]`,
+          name: `Bounce`,
           value: [{ scaling: calcScaling(0.28, 0.028, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 5,
+        },
+        {
+          name: `Max Single Target DMG`,
+          value: [{ scaling: calcScaling(0.28, 0.028, skill, 'curved'), multiplier: Stats.ATK }],
+          element: Element.WIND,
+          property: TalentProperty.NORMAL,
+          type: TalentType.SKILL,
+          multiplier: c >= 1 ? 6 : 5,
+          break: 10 + (c >= 1 ? 5 : 4) * 5,
         },
       ]
       base.ULT_SCALING = [

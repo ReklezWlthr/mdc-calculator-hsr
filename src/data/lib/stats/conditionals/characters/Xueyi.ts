@@ -208,12 +208,21 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ]
       base.TALENT_SCALING = [
         {
-          name: 'Bounce [x3]',
+          name: 'Bounce',
           value: [{ scaling: calcScaling(0.45, 0.045, talent, 'curved'), multiplier: Stats.ATK }],
           element: Element.QUANTUM,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
           break: 5,
+        },
+        {
+          name: 'Max Single Target DMG',
+          value: [{ scaling: calcScaling(0.45, 0.045, talent, 'curved'), multiplier: Stats.ATK }],
+          element: Element.QUANTUM,
+          property: TalentProperty.FUA,
+          type: TalentType.TALENT,
+          multiplier: 3,
+          break: 15,
         },
       ]
       base.TECHNIQUE_SCALING = [
