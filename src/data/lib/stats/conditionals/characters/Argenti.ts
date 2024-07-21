@@ -109,6 +109,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       title: 'Snow, From Somewhere in Cosmos',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
+      image: 'SkillIcon_1302_Ultra02.png',
     },
     c6: {
       trace: 'Eidolon 6',

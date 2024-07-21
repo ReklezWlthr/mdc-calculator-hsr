@@ -27,7 +27,8 @@ export const MyBuilds = observer(() => {
     ? _.filter(
         buildStore.builds,
         (item) =>
-          _.includes(findCharacter(item.cId)?.name, params.searchWord) || _.includes(item.name, params.searchWord)
+          _.includes(findCharacter(item.cId)?.name?.toLowerCase(), params.searchWord.toLowerCase()) ||
+          _.includes(item.name.toLowerCase(), params.searchWord.toLowerCase())
       )
     : buildStore.builds
 
@@ -86,7 +87,7 @@ export const MyBuilds = observer(() => {
               placeholder={`Search for Build's Name or Owner`}
             />
           </div>
-          <div className="flex flex-col w-full gap-2 pr-1 overflow-y-auto rounded-lg customScrollbar">
+          <div className="flex flex-col w-full h-full gap-2 pr-1 overflow-y-auto rounded-lg customScrollbar">
             {_.size(builds) ? (
               _.map(builds, (build) => (
                 <BuildBlock

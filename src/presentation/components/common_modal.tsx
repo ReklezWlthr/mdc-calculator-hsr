@@ -26,15 +26,15 @@ export const CommonModal = observer(({ title, desc, onCancel, onConfirm, icon }:
         <GhostButton
           title="Cancel"
           onClick={() => {
-            onCancel?.()
             modalStore.closeModal()
+            onCancel?.()
           }}
         />
         <PrimaryButton
           title="Confirm"
           onClick={() => {
-            onConfirm()
             modalStore.closeModal()
+            onConfirm()
           }}
         />
       </div>

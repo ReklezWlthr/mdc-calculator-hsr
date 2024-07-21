@@ -82,14 +82,14 @@ export const ComparePage = observer(() => {
                 body={
                   <div className="font-normal">
                     <p>
-                      - You can only compare <span className="text-desc">one</span> character at a time. Selecting a new
-                      character to focus on will remove all Sub setups without affecting the Main setup. It is
-                      recommended to switch your Main setup to the desired one before switching character.
+                      - You can only compare <span className="text-desc">one</span> character at a time. Switching a
+                      character will end the current session and remove all Sub setups. It is recommended to switch your
+                      Main setup to the desired one before switching character.
                     </p>
                     <p>- Sub setups eligible for comparison must contain the selected character.</p>
                     <p>
                       - Any changes made to setups within this page will <span className="text-red">not</span> be
-                      reflected on other pages. All changes made will also be lost when closing/refreshing the site.
+                      reflected on other pages, and vice versa.
                     </p>
                     <p>
                       - Difference percentages shown in the tooltip are relative to the value of Main setup. Think of

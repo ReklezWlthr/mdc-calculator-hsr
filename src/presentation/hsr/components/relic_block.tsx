@@ -25,16 +25,33 @@ interface RelicBlockProps {
   override?: IArtifactEquip[]
 }
 
-const MenuButton = ({ icon, onClick, title }: { icon: string; onClick: () => void; title: string }) => {
+const MenuButton = ({
+  icon,
+  onClick,
+  title,
+  duration,
+}: {
+  icon: string
+  onClick: () => void
+  title: string
+  duration: string
+}) => {
   return (
-    <i
+    <div
       className={classNames(
-        'flex items-center justify-center w-11 h-11 p-2 text-xl rounded-full opacity-0 translate-x-full group-hover:translate-x-0 cursor-pointer bg-primary-light hover:bg-primary group-hover:opacity-100',
-        icon
+        'flex items-center gap-1.5 translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100',
+        duration
       )}
-      onClick={onClick}
-      title={title}
-    />
+    >
+      <p className='text-sm'>{title}</p>
+      <i
+        className={classNames(
+          'flex items-center justify-center w-11 h-11 p-2 text-xl rounded-full bg-primary-light hover:bg-primary cursor-pointer duration-200',
+          icon
+        )}
+        onClick={onClick}
+      />
+    </div>
   )
 }
 
@@ -197,26 +214,34 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
             ))}
           </div>
           {canEdit && (
-            <div className="absolute flex flex-col gap-2 pr-2 pt-2 items-end top-0 w-full h-[260px] from-transparent group-hover:bg-opacity-80 bg-gradient-to-l group-hover:from-primary-darker duration-200 overflow-hidden">
+            <div className="absolute flex flex-col gap-2 pr-2 pt-2 items-end top-0 w-full h-[260px] from-transparent group-hover:bg-opacity-80 bg-gradient-to-l group-hover:from-primary-darker from-30% duration-200 overflow-hidden">
               <MenuButton
-                icon="fa-solid fa-pen-to-square duration-[200ms]"
+                icon="fa-solid fa-pen-to-square"
+                duration="duration-[200ms]"
                 onClick={onOpenEditModal}
-                title="Edit Relic"
+                title="Edit"
               />
               {props.index >= 0 && (
                 <>
-                  <MenuButton icon="fa-solid fa-repeat duration-[250ms]" onClick={onOpenSwapModal} title="Swap Relic" />
                   <MenuButton
-                    icon="fa-solid fa-arrow-right-from-bracket rotate-90 duration-[300ms]"
+                    icon="fa-solid fa-repeat"
+                    duration="duration-[250ms]"
+                    onClick={onOpenSwapModal}
+                    title="Swap"
+                  />
+                  <MenuButton
+                    icon="fa-solid fa-arrow-right-from-bracket rotate-90"
+                    duration="duration-[300ms]"
                     onClick={onOpenConfirmModal}
-                    title="Unequip Relic"
+                    title="Unequip"
                   />
                 </>
               )}
               <MenuButton
-                icon={classNames('fa-solid fa-trash', props.index >= 0 ? 'duration-[350ms]' : 'duration-[250ms]')}
+                icon="fa-solid fa-trash"
+                duration={props.index >= 0 ? 'duration-[350ms]' : 'duration-[250ms]'}
                 onClick={onOpenDeleteModal}
-                title="Delete Relic"
+                title="Delete"
               />
             </div>
           )}

@@ -8,13 +8,12 @@ import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useCallback, useMemo } from 'react'
 import { TalentIcon } from '@src/presentation/hsr/components/tables/scaling_wrapper'
-import { ITalent } from '@src/domain/conditional'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { TraceBlock } from '@src/presentation/hsr/components/trace_block'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { AbilityBlock } from '@src/presentation/hsr/components/ability_block'
+import { CommonModal } from '@src/presentation/components/common_modal'
 
 export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId: string }) => {
   const { charStore, toastStore, modalStore } = useStore()
@@ -60,6 +59,36 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
     value: (index + 1).toString(),
   })).reverse()
 
+  const onDelete = useCallback(() => {
+    modalStore.openModal(
+      <CommonModal
+        title="Remove Character"
+        desc="Are you sure you want to remove this character from you account?"
+        icon="fa-solid fa-exclamation-circle text-red"
+        onConfirm={() => {
+          const pass = charStore.deleteChar(cId)
+          if (pass) {
+            toastStore.openNotification({
+              title: 'Character Removed Successfully',
+              icon: 'fa-solid fa-circle-check',
+              color: 'green',
+            })
+            modalStore.closeModal()
+          } else {
+            toastStore.openNotification({
+              title: 'Something Went Wrong',
+              icon: 'fa-solid fa-exclamation-circle',
+              color: 'red',
+            })
+          }
+        }}
+        onCancel={() => {
+          modalStore.openModal(<CharDetailModal char={char} cId={cId} />)
+        }}
+      />
+    )
+  }, [char, cId])
+
   const onSave = useCallback(() => {
     let pass = false
     if (_.find(charStore.characters, (item) => item.cId === cId)) {
@@ -85,45 +114,64 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
 
   return (
     <div className="w-[550px] p-4 text-white rounded-xl bg-primary-dark space-y-4 font-semibold">
-      <p>Edit Account Data: {charData?.name}</p>
-      <div className="space-y-1">
-        <p className="w-full text-sm font-semibold">Level</p>
-        <div className="flex w-full gap-2">
-          <SelectInput
-            onChange={(value) => setParams({ level: parseInt(value) || 0 })}
-            options={levels}
-            value={params.level?.toString()}
-            style="w-[120px]"
-          />
-          <SelectInput
-            onChange={(value) => {
-              const max = findMaxTalentLevel(parseInt(value))
-              setParams({
-                ascension: parseInt(value) || 0,
-                level: findBaseLevel(parseInt(value) || 0),
-                major_traces: {
-                  a2: parseInt(value) < 2 ? false : params.major_traces?.a2,
-                  a4: parseInt(value) < 4 ? false : params.major_traces?.a4,
-                  a6: parseInt(value) < 6 ? false : params.major_traces?.a6,
-                },
-              })
-              const t = params.talents
-              _.forEach(params.talents, (item, key: 'basic' | 'skill' | 'ult' | 'talent') => {
-                const m = key === 'basic' ? parseInt(value) || 1 : max
-                if (item >= m) t[key] = m
-              })
-              setParams({ talents: t })
-            }}
-            options={AscensionOptions}
-            value={params.ascension?.toString()}
-            style="w-fit"
-          />
-          <SelectInput
-            onChange={(value) => setParams({ cons: parseInt(value) || 0 })}
-            options={EidolonOptions}
-            value={params.cons?.toString()}
-            style="w-fit"
-          />
+      <div className="flex justify-between gap-x-4">
+        <div className="space-y-1">
+          <p>Edit Account Data: {charData?.name}</p>
+          <p className="w-full pt-3 text-sm font-semibold">Level</p>
+          <div className="flex w-full gap-2">
+            <SelectInput
+              onChange={(value) => setParams({ level: parseInt(value) || 0 })}
+              options={levels}
+              value={params.level?.toString()}
+              style="w-[120px]"
+            />
+            <SelectInput
+              onChange={(value) => {
+                const max = findMaxTalentLevel(parseInt(value))
+                setParams({
+                  ascension: parseInt(value) || 0,
+                  level: findBaseLevel(parseInt(value) || 0),
+                  major_traces: {
+                    a2: parseInt(value) < 2 ? false : params.major_traces?.a2,
+                    a4: parseInt(value) < 4 ? false : params.major_traces?.a4,
+                    a6: parseInt(value) < 6 ? false : params.major_traces?.a6,
+                  },
+                })
+                const t = params.talents
+                _.forEach(params.talents, (item, key: 'basic' | 'skill' | 'ult' | 'talent') => {
+                  const m = key === 'basic' ? parseInt(value) || 1 : max
+                  if (item >= m) t[key] = m
+                })
+                setParams({ talents: t })
+              }}
+              options={AscensionOptions}
+              value={params.ascension?.toString()}
+              style="w-fit"
+            />
+            <SelectInput
+              onChange={(value) => setParams({ cons: parseInt(value) || 0 })}
+              options={EidolonOptions}
+              value={params.cons?.toString()}
+              style="w-fit"
+            />
+          </div>
+        </div>
+        <div className="space-y-2">
+          <p className="w-full text-sm font-semibold text-center">Quick Max Setting</p>
+          <div className="flex gap-2">
+            <PrimaryButton
+              title="All"
+              onClick={() =>
+                setParams({
+                  ...MaxedCharacterStore,
+                  cId,
+                  minor_traces: maxedTrace,
+                })
+              }
+            />
+            <PrimaryButton title="Level" onClick={() => setParams({ ascension: 6, level: 80 })} />
+            <PrimaryButton title="Minor Traces" onClick={() => setParams({ minor_traces: maxedTrace })} />
+          </div>
         </div>
       </div>
       <div className="flex justify-between gap-4 px-3">
@@ -291,19 +339,11 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
         </div>
       </div>
       <div className="flex justify-between">
-        <div className="flex gap-2">
-          <PrimaryButton
-            title="Max All"
-            onClick={() =>
-              setParams({
-                ...MaxedCharacterStore,
-                cId,
-                minor_traces: maxedTrace,
-              })
-            }
-          />
-          <PrimaryButton title="Max Minor Traces" onClick={() => setParams({ minor_traces: maxedTrace })} />
-        </div>
+        {_.find(charStore.characters, (item) => item.cId === cId) ? (
+          <PrimaryButton title="Remove" onClick={onDelete} />
+        ) : (
+          <div />
+        )}
         <PrimaryButton title="Save" onClick={onSave} />
       </div>
     </div>

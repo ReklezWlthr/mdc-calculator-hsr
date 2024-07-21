@@ -269,78 +269,63 @@ export const CharDetail = observer(() => {
         <span className="text-desc">✦</span> Abilities <span className="text-desc">✦</span>
       </p>
       <div className="grid gap-6">
-        {_.map(
-          [
-            talent.normal,
-            talent.normal_alt || null,
-            talent.normal_alt1 || null,
-            talent.normal_alt2 || null,
-            talent.normal_alt3 || null,
-            talent.skill,
-            talent.skill_alt || null,
-            talent.ult,
-            talent.ult_alt || null,
-            talent.talent,
-            talent.technique,
-          ],
-          (item) => {
-            const baseType = item?.trace
-              ?.replaceAll('Enhanced', '')
-              .replaceAll(/\[\d\]$/g, '')
-              .trim()
-            return (
-              item && (
-                <div className="flex gap-x-3" key={item.trace}>
-                  <TalentIcon
-                    element={data.element}
-                    talent={item}
-                    icon={`SkillIcon_${selected}_${
-                      skillIcon[item.trace === 'Enhanced Skill' && selected === '1109' ? TalentType.SKILL : item.trace]
-                    }.png`}
-                    size="w-10 h-10 mt-1"
-                    hideTip
-                  />
-                  <div className="w-full">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm font-normal text-primary-lighter">{item.trace}</p>
-                        <p className="font-semibold">{item.title}</p>
-                        {!!item.energy && (
-                          <p className="text-xs font-normal opacity-80 text-gray">
-                            Energy Regen: <span className="text-desc">{item.energy}</span>
-                          </p>
-                        )}
-                      </div>
-                      {item.trace !== TalentType.TECH && (
-                        <div className="flex items-center justify-end w-1/3 gap-2 pr-4">
-                          <p className="text-xs">
-                            Level: <span className="text-desc">{params[baseType]}</span>
-                          </p>
-                          <input
-                            type="range"
-                            className="slider h-[8px] bg-gradient-to-r from-primary-lighter to-gray shrink-0"
-                            step={1}
-                            min="1"
-                            max={_.includes(item.trace, TalentType.BA) ? 7 : 12}
-                            value={params[baseType]}
-                            onChange={(e) => {
-                              const value = Number(e.target.value)
-                              setParams({ [baseType]: value })
-                            }}
-                          />
-                        </div>
+        {_.map(_.omit(talent, 'a2', 'a4', 'a6', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6'), (item) => {
+          const baseType = item?.trace
+            ?.replaceAll('Enhanced', '')
+            .replaceAll(/\[\d\]$/g, '')
+            .trim()
+          return (
+            item && (
+              <div className="flex gap-x-3" key={item.trace}>
+                <TalentIcon
+                  element={data.element}
+                  talent={item}
+                  icon={`SkillIcon_${selected}_${
+                    skillIcon[item.trace === 'Enhanced Skill' && selected === '1109' ? TalentType.SKILL : item.trace]
+                  }.png`}
+                  size="w-10 h-10 mt-1"
+                  hideTip
+                />
+                <div className="w-full">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-normal text-primary-lighter">{item.trace}</p>
+                      <p className="font-semibold">{item.title}</p>
+                      {!!item.energy && (
+                        <p className="text-xs font-normal opacity-80 text-gray">
+                          Energy Regen: <span className="text-desc">{item.energy}</span>
+                        </p>
                       )}
                     </div>
-                    <p
-                      className="pt-1.5 text-sm font-normal text-gray"
-                      dangerouslySetInnerHTML={{ __html: formatScaleString(item, params[baseType]) }}
-                    />
+                    {item.trace !== TalentType.TECH && (
+                      <div className="flex items-center justify-end w-1/3 gap-2 pr-4">
+                        <p className="text-xs">
+                          Level: <span className="text-desc">{params[baseType]}</span>
+                        </p>
+                        <input
+                          type="range"
+                          className="slider h-[8px] bg-gradient-to-r from-primary-lighter to-gray shrink-0"
+                          step={1}
+                          min="1"
+                          max={_.includes(item.trace, TalentType.BA) ? 7 : 12}
+                          value={params[baseType]}
+                          onChange={(e) => {
+                            const value = Number(e.target.value)
+                            setParams({ [baseType]: value })
+                          }}
+                        />
+                      </div>
+                    )}
                   </div>
+                  <p
+                    className="pt-1.5 text-sm font-normal text-gray"
+                    dangerouslySetInnerHTML={{ __html: formatScaleString(item, params[baseType]) }}
+                  />
                 </div>
-              )
+              </div>
             )
-          }
-        )}
+          )
+        })}
         <p className="flex justify-center gap-2 mb-1 text-2xl font-bold">
           <span className="text-desc">✦</span> Bonus Abilities <span className="text-desc">✦</span>
         </p>
@@ -350,9 +335,7 @@ export const CharDetail = observer(() => {
               <TalentIcon
                 element={data.element}
                 talent={item}
-                icon={`SkillIcon_${selected}_${
-                  skillIcon[item.trace]
-                }.png`}
+                icon={`SkillIcon_${selected}_${skillIcon[item.trace]}.png`}
                 size="w-10 h-10"
                 hideTip
               />
@@ -385,9 +368,12 @@ export const CharDetail = observer(() => {
                   <TalentIcon
                     element={data.element}
                     talent={item}
-                    icon={`SkillIcon_${selected}_${
-                      i === 2 || i === 4 ? consImage[_.head(item?.content)] : `Rank${i + 1}`
-                    }.png`}
+                    icon={
+                      item?.image ||
+                      `SkillIcon_${selected}_${
+                        i === 2 || i === 4 ? consImage[_.head(item?.content)] : `Rank${i + 1}`
+                      }.png`
+                    }
                     size="w-10 h-10"
                     hideTip
                   />

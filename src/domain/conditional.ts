@@ -107,6 +107,7 @@ export interface ITalentDisplay {
   upgrade?: string[]
   value?: { base: number; growth: number; style: TalentScalingStyle }[]
   level?: number
+  image?: string
 }
 
 export interface ITalent {

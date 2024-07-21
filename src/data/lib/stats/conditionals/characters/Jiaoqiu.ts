@@ -46,7 +46,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Ultimate',
       title: 'Pyrograph Arcanum',
-      content: `Sets the number of "<b>Ashen Roast</b>" stacks on enemy targets to the highest number of "<b>Ashen Roast</b>" stacks present on the battlefield. Then, activates a Domain and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to all enemies.
+      content: `Sets the number of <b>Ashen Roast</b> stacks on enemy targets to the highest number of <b>Ashen Roast</b> stacks present on the battlefield. Then, activates a Domain and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to all enemies.
       <br />While inside the Domain, enemy targets take {{1}}% increased Ultimate DMG, with a {{2}}% <u>base chance</u> of being inflicted with <span class="text-desc">1</span> stack of <b>Ashen Roast</b> when taking action. This effect can only be triggered once for enemies in each turn.
       <br />The Domain lasts for <span class="text-desc">3</span> turn(s), and its duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn. If Jiaoqiu is knocked down, the Domain will also be dispelled.
       <br />The automatic <b>Ashen Roast</b> application can be triggered <span class="text-desc">6</span> times. Casting Ultimate resets the number of remaining triggers.`,

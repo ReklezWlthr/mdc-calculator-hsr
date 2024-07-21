@@ -127,9 +127,7 @@ export const ConsCircle = observer(
             <div className="rounded-full bg-primary-bg">
               <TalentIcon
                 talent={talents?.c5}
-                icon={`SkillIcon_${id}_${
-                  consImage[_.head(talents?.c5?.content)]
-                }.png`}
+                icon={talents?.c5?.image || `SkillIcon_${id}_${consImage[_.head(talents?.c5?.content)]}.png`}
                 element={element}
                 active={cons >= 5}
                 tooltipSize="w-[30vw]"
@@ -139,9 +137,7 @@ export const ConsCircle = observer(
             <div className="rounded-full bg-primary-bg">
               <TalentIcon
                 talent={talents?.c3}
-                icon={`SkillIcon_${id}_${
-                  consImage[_.head(talents?.c3?.content)]
-                }.png`}
+                icon={talents?.c3?.image || `SkillIcon_${id}_${consImage[_.head(talents?.c3?.content)]}.png`}
                 element={element}
                 active={cons >= 3}
                 tooltipSize="w-[30vw]"
