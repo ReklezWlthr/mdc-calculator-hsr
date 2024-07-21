@@ -77,7 +77,7 @@ export const Calculator = observer(({}: {}) => {
                     <p className="col-span-1">Base</p>
                     <p className="col-span-1">CRIT</p>
                     <p className="col-span-1">Average</p>
-                    <p className="col-span-1">Prob.</p>
+                    <p className="col-span-1">Chance</p>
                     <p className="col-span-2">DMG Component</p>
                   </div>
                 </div>

@@ -1001,7 +1001,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       })
       base.CALLBACK.push((x) => {
         x.SKILL_SCALING.push({
-          name: 'On-Kill/Attacked Healing',
+          name: 'Kinship Healing',
           value: [{ scaling: calcRefinement(0.08, 0.01, r), multiplier: Stats.ATK }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,

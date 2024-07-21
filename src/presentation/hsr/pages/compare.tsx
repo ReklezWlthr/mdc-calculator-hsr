@@ -146,7 +146,10 @@ export const ComparePage = observer(() => {
                   )
                 })
               ) : (
-                <p className="flex items-center justify-center w-full h-full text-gray">No Main Setup</p>
+                <div className="flex flex-col items-center justify-center w-full h-full gap-1 text-gray">
+                  <p>No Main Setup</p>
+                  <p className="text-xs text-zinc-400">Click + to Start Comparing</p>
+                </div>
               )}
             </div>
             <PrimaryButton

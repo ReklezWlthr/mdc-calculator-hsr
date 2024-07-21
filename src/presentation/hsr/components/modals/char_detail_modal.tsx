@@ -156,7 +156,7 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
             />
           </div>
         </div>
-        <div className="space-y-2">
+        <div className="space-y-2 shrink-0">
           <p className="w-full text-sm font-semibold text-center">Quick Max Setting</p>
           <div className="flex gap-2">
             <PrimaryButton

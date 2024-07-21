@@ -425,7 +425,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `On-Attacked/Kill DMG Bonus`,
+    text: `Kinship DMG Bonus`,
     show: true,
     default: true,
     id: '23002',

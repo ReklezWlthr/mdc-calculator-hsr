@@ -328,6 +328,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               type: TalentType.NONE,
             }
             x.BASIC_SCALING.push(add)
+            if (c >= 2) x.SKILL_SCALING.push(add)
             return x
           })
         } else {
