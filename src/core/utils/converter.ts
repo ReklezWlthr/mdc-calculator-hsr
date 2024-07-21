@@ -4,7 +4,7 @@ import { formatMinorTrace } from './data_format'
 import { findCharacter } from './finder'
 
 export const toPercentage = (value: number, precision: number = 1) => {
-  return _.floor(value * 100, precision) + '%'
+  return _.floor(value * 100, precision).toLocaleString() + '%'
 }
 
 export const toLocalStructure = (rawData: Record<string, any>) => {

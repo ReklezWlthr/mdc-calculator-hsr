@@ -258,8 +258,8 @@ export const ComparePage = observer(() => {
                         return (
                           <CharacterSelect
                             key={`char_select_${index}`}
-                            isSelected={team[index].cId === setupStore.mainChar}
-                            id={team[index].cId}
+                            isSelected={team[index]?.cId === setupStore.mainChar}
+                            id={team[index]?.cId}
                           />
                         )
                       })

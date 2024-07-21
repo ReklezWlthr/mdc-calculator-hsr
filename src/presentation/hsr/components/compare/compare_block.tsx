@@ -27,7 +27,7 @@ export const CompareBlock = observer(() => {
   const [setupIndex, charIndex] = setupStore.selected
   const focusedChar = team[setupIndex][charIndex]
 
-  const selected = _.findIndex(setupStore.main?.char, (item) => item.cId === setupStore.mainChar)
+  const selected = _.findIndex(setupStore.main?.char, (item) => item?.cId === setupStore.mainChar)
   const selectedS1 = _.findIndex(setupStore.comparing[0]?.char, (item) => item.cId === setupStore.mainChar)
   const selectedS2 = _.findIndex(setupStore.comparing[1]?.char, (item) => item.cId === setupStore.mainChar)
   const selectedS3 = _.findIndex(setupStore.comparing[2]?.char, (item) => item.cId === setupStore.mainChar)
@@ -77,10 +77,10 @@ export const CompareBlock = observer(() => {
   ]
   const allStats = [finalStats, sub1.finalStats, sub2.finalStats, sub3.finalStats]
   const levels = [
-    setupStore.main?.char?.[selected]?.level,
-    setupStore.comparing?.[0]?.char?.[selectedS1]?.level,
-    setupStore.comparing?.[1]?.char?.[selectedS2]?.level,
-    setupStore.comparing?.[2]?.char?.[selectedS3]?.level,
+    { level: _.map(setupStore.main?.char, 'level'), selected },
+    { level: _.map(setupStore.comparing?.[0]?.char, 'level'), selected: selectedS1 },
+    { level: _.map(setupStore.comparing?.[1]?.char, 'level'), selected: selectedS2 },
+    { level: _.map(setupStore.comparing?.[2]?.char, 'level'), selected: selectedS3 },
   ]
   const contents = [mainContent.contents, sub1.contents, sub2.contents, sub3.contents]
 
@@ -132,7 +132,6 @@ export const CompareBlock = observer(() => {
                 allStats={allStats}
                 level={levels}
                 name={item.name}
-                property={item.property}
                 element={item.element}
               />
             )
@@ -199,9 +198,7 @@ export const CompareBlock = observer(() => {
             <div className="w-full my-2 border-t-2 border-primary-border" />
             <ScalingWrapper
               talent={mainComputed?.SKILL_ALT ? main?.talents?.skill_alt : main?.talents?.skill}
-              icon={`SkillIcon_${charData.id}_BP${
-                mainComputed?.SKILL_ALT && char.cId !== '1109' ? '02' : ''
-              }.png`}
+              icon={`SkillIcon_${charData.id}_BP${mainComputed?.SKILL_ALT && char.cId !== '1109' ? '02' : ''}.png`}
               element={charData.element}
               level={char.talents?.skill}
               upgraded={main?.upgrade?.skill}
@@ -211,9 +208,7 @@ export const CompareBlock = observer(() => {
             <div className="w-full my-2 border-t-2 border-primary-border" />
             <ScalingWrapper
               talent={mainComputed?.ULT_ALT ? main?.talents?.ult_alt : main?.talents?.ult}
-              icon={`SkillIcon_${charData.id}_Ultra${
-                mainComputed?.ULT_ALT ? '02' : ''
-              }.png`}
+              icon={`SkillIcon_${charData.id}_Ultra${mainComputed?.ULT_ALT ? '02' : ''}.png`}
               element={charData.element}
               level={char.talents?.ult}
               upgraded={main?.upgrade?.ult}
@@ -303,7 +298,7 @@ export const CompareBlock = observer(() => {
               })}
               onClick={() => setupStore.setValue('tab', 'trace')}
             >
-              Setup
+              Character
             </div>
             {focusedChar && (
               <>
