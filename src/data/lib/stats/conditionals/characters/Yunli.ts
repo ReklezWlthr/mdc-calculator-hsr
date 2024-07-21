@@ -250,6 +250,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           multiplier: c >= 1 ? 9 : 6,
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
+          break: (c >= 1 ? 9 : 6) * 5,
         },
       ]
       base.TALENT_SCALING = [
@@ -314,6 +315,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           multiplier: c >= 1 ? 9 : 6,
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
+          break: (c >= 1 ? 9 : 6) * 5,
         },
       ]
 
