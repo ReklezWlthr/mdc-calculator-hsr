@@ -36,7 +36,6 @@ export const CharacterModal = observer(({ index, teamOverride, setChar, setLc }:
   const charSetter = setChar || teamStore.setMemberInfo
   const lcSetter = setLc || teamStore.setWeapon
   const team = teamOverride || teamStore.characters
-  const selectedWeaponData = findLightCone(team[index]?.equipments?.weapon?.wId)
 
   const filteredChar = useMemo(
     () =>
@@ -108,8 +107,6 @@ export const CharacterModal = observer(({ index, teamOverride, setChar, setLc }:
               onClick={() => {
                 const build = _.find(buildStore.builds, (build) => build.isDefault && build.cId === item.id)
                 const char = _.find(charStore.characters, (char) => char.cId === item.id)
-                if (item.path !== selectedWeaponData?.type && team[index]?.equipments?.weapon)
-                  lcSetter(index, DefaultWeapon)
                 charSetter(index, {
                   cId: item.id,
                   ascension: char?.ascension || 0,
@@ -120,6 +117,11 @@ export const CharacterModal = observer(({ index, teamOverride, setChar, setLc }:
                   major_traces: char?.major_traces || { a2: false, a4: false, a6: false },
                   minor_traces: char?.minor_traces || formatMinorTrace(item.trace, Array(10).fill(false)),
                 })
+                if (
+                  item.path !== findLightCone(team[index]?.equipments?.weapon?.wId)?.type &&
+                  team[index]?.equipments?.weapon
+                )
+                  lcSetter(index, DefaultWeapon)
                 modalStore.closeModal()
               }}
               key={item.name}

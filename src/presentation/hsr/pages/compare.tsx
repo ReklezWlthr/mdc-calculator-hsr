@@ -80,7 +80,7 @@ export const ComparePage = observer(() => {
               <Tooltip
                 title="Quick Tips to Setup Comparison"
                 body={
-                  <div className="font-normal">
+                  <div className="font-normal space-y-0.5">
                     <p>
                       - You can only compare <span className="text-desc">one</span> character at a time. Switching a
                       character will end the current session and remove all Sub setups. It is recommended to switch your
@@ -101,6 +101,11 @@ export const ComparePage = observer(() => {
                       - Although the calculator allows multiple ability levels to be compared together, it is
                       recommended to use the same ability level across all setups for the best result, unless you really
                       want to compare them.
+                    </p>
+                    <p>
+                      - The calculator only compare damage <span className="text-desc">per hit</span> which may be
+                      inaccurate to live rotation due to aspects like energy gain or speed boosts. Only take it at face
+                      value.
                     </p>
                   </div>
                 }

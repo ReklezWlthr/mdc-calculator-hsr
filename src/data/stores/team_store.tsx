@@ -3,6 +3,7 @@ import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
 import { DefaultBuild } from './build_store'
+import { swapElement } from '@src/core/utils/data_format'
 
 enableStaticRendering(typeof window === 'undefined')
 
@@ -76,6 +77,8 @@ export class Team {
 
   setMemberInfo = (index: number, info: Partial<ITeamChar>) => {
     if (index < 0 || index > 4) return
+    const dupeIndex = _.findIndex(this.characters, ['cId', info?.cId])
+    const oldData = _.cloneDeep(this.characters[index]) || null
     if (info?.equipments?.artifacts)
       _.forEach(info.equipments.artifacts, (aId) =>
         _.forEach(this.characters, (character, cI) => {
@@ -83,6 +86,8 @@ export class Team {
         })
       )
     this.characters[index] = { ...this.characters[index], ...info }
+    if (dupeIndex >= 0 && dupeIndex !== index) this.characters[dupeIndex] = oldData
+    this.characters = [...this.characters]
   }
 
   equipBuild = (index: number, build: IBuild) => {

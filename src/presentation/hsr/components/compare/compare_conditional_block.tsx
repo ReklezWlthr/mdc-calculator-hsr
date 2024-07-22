@@ -28,7 +28,7 @@ export const CompareConditionalBlock = observer(({ team, stats, content }: Compa
   const [setupIndex, charIndex] = setupStore.selected
 
   return (
-    <div className="space-y-3 text-white">
+    <div className="w-full space-y-3 text-white">
       <ConditionalBlock
         title="Self Modifiers"
         contents={_.filter(content.customMain(charIndex), 'show')}

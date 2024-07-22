@@ -112,10 +112,17 @@ export class SetupStore {
   setComparing = (value: Partial<ITeamChar>) => {
     const [setupIndex, charIndex] = this.selected
     if (setupIndex === 0) {
+      const dupeIndex = _.findIndex(this.main.char, ['cId', value?.cId])
+      const oldData = _.cloneDeep(this.main.char[charIndex]) || null
       this.main.char[charIndex] = { ...this.main.char[charIndex], ...value }
+      if (dupeIndex >= 0 && dupeIndex !== charIndex) this.main.char[dupeIndex] = oldData
       this.main = _.cloneDeep(this.main)
     } else {
-      this.comparing[setupIndex - 1].char[charIndex] = { ...this.comparing[setupIndex - 1].char[charIndex], ...value }
+      const arr = this.comparing[setupIndex - 1]
+      const dupeIndex = _.findIndex(arr.char, ['cId', value?.cId])
+      const oldData = _.cloneDeep(arr.char[charIndex]) || null
+      arr.char[charIndex] = { ...arr.char[charIndex], ...value }
+      if (dupeIndex >= 0 && dupeIndex !== charIndex) this.comparing[setupIndex - 1].char[dupeIndex] = oldData
       this.comparing = _.cloneDeep(this.comparing)
     }
   }
