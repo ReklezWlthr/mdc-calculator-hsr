@@ -9,6 +9,7 @@ import { useCallback, useMemo, useState } from 'react'
 
 export const SaveBuildModal = observer(({ index }: { index: number }) => {
   const [name, setName] = useState('')
+  const [note, setNote] = useState('')
   const [isDefault, setDefault] = useState(true)
 
   const { modalStore, teamStore, buildStore, toastStore } = useStore()
@@ -31,6 +32,7 @@ export const SaveBuildModal = observer(({ index }: { index: number }) => {
       const pass = buildStore.saveBuild({
         id,
         name,
+        note,
         cId: char?.cId,
         isDefault: false,
         ...char?.equipments,
@@ -45,16 +47,23 @@ export const SaveBuildModal = observer(({ index }: { index: number }) => {
         })
       }
     }
-  }, [index, name])
+  }, [index, name, note])
 
   return (
     <div className="space-y-4">
       <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark w-[350px]">
-        <div className="space-y-1">
-          <p className="font-semibold">
-            Create New Build <span className="text-red">*</span>
-          </p>
-          <TextInput onChange={setName} value={name} placeholder="Enter Build Name" />
+        <div className="space-y-2">
+          <p className="font-semibold">Create New Build</p>
+          <div className="flex items-center gap-2">
+            <p className="text-sm shrink-0">
+              Build Name <span className="text-red">*</span>
+            </p>
+            <TextInput onChange={setName} value={name} placeholder="Enter Build Name" />
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm shrink-0">Build Note</p>
+            <TextInput onChange={setNote} value={note} placeholder="Enter Build Note" />
+          </div>
         </div>
         <div className="flex items-center justify-end gap-x-2">
           <p className="text-xs text-gray">Set Build as Default</p>

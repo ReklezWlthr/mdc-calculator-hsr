@@ -62,6 +62,7 @@ export interface ITeamChar extends ICharStoreBase {
 export interface IBuild {
   id: string
   name: string
+  note?: string
   cId: string
   isDefault: boolean
   weapon: IWeaponEquip

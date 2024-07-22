@@ -138,6 +138,12 @@ export const MyBuilds = observer(() => {
                 teamOverride={[{ ...DefaultCharacter, cId: selectedBuild.cId }]}
                 disabled
               />
+              {selectedBuild.note && (
+                <div className="p-3 mt-3 text-xs rounded-lg text-gray bg-primary-darker">
+                  <p className='mb-1 text-sm text-white'>Note:</p>
+                  {selectedBuild.note}
+                </div>
+              )}
             </div>
             <div className="col-span-3 space-y-4">
               <p className="-mb-3 font-bold text-center text-white">Cavern Relics</p>
