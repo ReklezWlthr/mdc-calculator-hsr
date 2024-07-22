@@ -1,5 +1,4 @@
 import { Fragment, useState } from 'react'
-import { NavBar } from '../src/presentation/components/navbar'
 import '../styles/globals.css'
 import '../styles/index.css'
 import Head from 'next/head'
@@ -35,7 +34,6 @@ function MyApp({ Component, pageProps }) {
       <QueryClientProvider client={queryClient}>
         <Toast />
         <div className="flex flex-col w-screen h-screen max-h-screen overflow-x-hidden min-w-[1440px]">
-          <NavBar />
           <Modal />
           <Component {...pageProps} />
         </div>

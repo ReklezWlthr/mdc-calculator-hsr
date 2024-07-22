@@ -320,7 +320,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ]
 
       if (form.yunli_block) {
-        base.FUA_CD.push({
+        base.ULT_CD.push({
           name: 'Ultimate',
           source: 'Self',
           value: calcScaling(0.6, 0.04, ult, 'curved'),

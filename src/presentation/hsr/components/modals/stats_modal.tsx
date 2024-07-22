@@ -5,6 +5,7 @@ import { StatsArray, StatsObject, StatsObjectKeys } from '@src/data/lib/stats/ba
 import { useStore } from '@src/data/providers/app_store_provider'
 import { BaseAggro, PathType, Stats } from '@src/domain/constant'
 import { BulletPoint, Collapsible } from '@src/presentation/components/collapsible'
+import { Tooltip } from '@src/presentation/components/tooltip'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 
@@ -199,9 +200,25 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
             <AttributeBlock stats={stats} stat="Skill DEF PEN" array={stats.SKILL_DEF_PEN} />
             <AttributeBlock stats={stats} stat="Ultimate DEF PEN" array={stats.ULT_DEF_PEN} />
             <AttributeBlock stats={stats} stat="DoT DEF PEN" array={stats.DOT_DEF_PEN} />
-            <AttributeBlock stats={stats} stat="Follow-Up DMG DEF PEN" array={stats.FUA_DEF_PEN} />
+            <AttributeBlock stats={stats} stat="Follow-Up DEF PEN" array={stats.FUA_DEF_PEN} />
             <AttributeBlock stats={stats} stat="Break DMG DEF PEN" array={stats.BREAK_DEF_PEN} />
             <AttributeBlock stats={stats} stat="Super Break DMG DEF PEN" array={stats.SUPER_BREAK_DEF_PEN} />
+          </div>
+        </div>
+      </Collapsible>
+      <Collapsible label="Advanced CRIT">
+        <div className="grid grid-cols-2 gap-10">
+          <div className="space-y-2">
+            <AttributeBlock stats={stats} stat="Basic ATK CRIT Rate" array={stats.BASIC_CR} />
+            <AttributeBlock stats={stats} stat="Skill CRIT Rate" array={stats.SKILL_CR} />
+            <AttributeBlock stats={stats} stat="Ultimate CRIT Rate" array={stats.ULT_CR} />
+            <AttributeBlock stats={stats} stat="Follow-Up CRIT Rate" array={stats.FUA_CR} />
+          </div>
+          <div className="space-y-2">
+            <AttributeBlock stats={stats} stat="Basic ATK CRIT DMG" array={stats.BASIC_CD} />
+            <AttributeBlock stats={stats} stat="Skill CRIT DMG" array={stats.SKILL_CD} />
+            <AttributeBlock stats={stats} stat="Ultimate CRIT DMG" array={stats.ULT_CD} />
+            <AttributeBlock stats={stats} stat="Follow-Up CRIT DMG" array={stats.FUA_CD} />
           </div>
         </div>
       </Collapsible>
@@ -213,11 +230,30 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
             <AttributeBlock stats={stats} stat="DMG Reduction" array={stats.DMG_REDUCTION} />
             <div className="space-y-1">
               <p className="font-bold text-white">
-                eHP <span className="text-red">{_.round(stats.getHP() / defMult).toLocaleString()}</span>
+                eHP{' '}
+                <span className="text-red">
+                  {_.round(
+                    stats.getHP() / defMult / (1 - stats.getValue(StatsObjectKeys.DMG_REDUCTION))
+                  ).toLocaleString()}
+                </span>
+                <Tooltip
+                  title="eHP: Effective HP"
+                  body="Represents the amount of raw damage a unit can sustain without considering their DEF and DMG Reduction. Useful when comparing a unit's tankiness."
+                  style="w-[350px] font-normal"
+                  containerStyle="inline-block ml-2"
+                >
+                  <i className="fa-regular fa-question-circle" />
+                </Tooltip>
               </p>
               <BulletPoint>
                 <span className="text-xs">
                   DEF Multiplier <span className="text-desc">{toPercentage(defMult)}</span>
+                </span>
+              </BulletPoint>
+              <BulletPoint>
+                <span className="text-xs">
+                  DMG Reduction Multiplier{' '}
+                  <span className="text-desc">{toPercentage(1 - stats.getValue(StatsObjectKeys.DMG_REDUCTION))}</span>
                 </span>
               </BulletPoint>
             </div>

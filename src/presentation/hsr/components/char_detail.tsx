@@ -245,13 +245,13 @@ export const CharDetail = observer(() => {
                       'value'
                     )
                     return (
-                      <div className="grid grid-cols-3">
-                        <div className="flex items-center col-span-2 gap-1.5">
+                      <div className="grid grid-cols-5" key={key}>
+                        <div className="flex items-center col-span-4 gap-1.5">
                           <img
                             className="w-3"
                             src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[key]}`}
                           />
-                          {key}
+                          <p className="line-clamp-1">{key}</p>
                         </div>
                         <p className="text-end text-gray">{key === Stats.SPD ? total : toPercentage(total)}</p>
                       </div>

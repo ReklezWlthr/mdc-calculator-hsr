@@ -281,7 +281,7 @@ export const Characters = [
       baseSpd: 100,
       energy: 100,
     },
-    trace: [Stats.P_HP, Stats.E_RES, Stats.DEF],
+    trace: [Stats.P_HP, Stats.E_RES, Stats.P_DEF],
     rarity: 4,
     path: PathType.ABUNDANCE,
     element: Element.QUANTUM,

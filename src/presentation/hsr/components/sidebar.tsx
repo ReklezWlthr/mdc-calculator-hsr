@@ -5,14 +5,9 @@ import { useCallback } from 'react'
 import { SettingModal } from '@src/presentation/hsr/components/modals/setting_modal'
 import { HelpModal } from '@src/presentation/hsr/components/modals/help_modal'
 import { IntroModal } from '@src/presentation/hsr/components/modals/intro_modal'
+import Link from 'next/link'
 
-export const Sidebar = ({
-  currentPage,
-  onChange,
-}: {
-  currentPage: HsrPage
-  onChange: (page: HsrPage) => void
-}) => {
+export const Sidebar = ({ currentPage, onChange }: { currentPage: HsrPage; onChange: (page: HsrPage) => void }) => {
   const { modalStore } = useStore()
 
   const Pill = ({ name, page }: { name: string; page: HsrPage }) => {
@@ -36,6 +31,13 @@ export const Sidebar = ({
   return (
     <div className="flex flex-col justify-between w-1/6 p-2 bg-primary-darker shrink-0">
       <div className="space-y-2">
+        <Link href="/" className="flex flex-col items-end py-2 mx-3 text-white gap-x-2">
+          <p className="flex items-center w-full text-2xl">
+            MD<span className="text-base text-desc">✦</span>C Calculator
+          </p>
+          <p className="text-xs font-normal text-gray">Honkai: Star Rail</p>
+        </Link>
+        <div className='border-t border-primary-light' />
         <p className="p-2 font-bold text-white">Calculator</p>
         <Pill name="Team Setup" page={HsrPage.TEAM} />
         <Pill name="Damage Calculator" page={HsrPage.DMG} />
