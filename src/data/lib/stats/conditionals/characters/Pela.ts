@@ -41,7 +41,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       trace: 'Ultimate',
       title: `Zone Suppression`,
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pela's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b>Exposed</b> on all enemies.
-      <br />When <b>Exposed</b>, enemies' DEF is reduced by {{1}}% for 2 turn(s).`,
+      <br />When <b>Exposed</b>, enemies' DEF is reduced by {{1}}% for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 60, growth: 4, style: 'curved' },
         { base: 30, growth: 1, style: 'curved' },

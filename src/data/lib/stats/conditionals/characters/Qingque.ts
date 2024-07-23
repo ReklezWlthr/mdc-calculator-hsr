@@ -128,7 +128,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       show: true,
       default: true,
       unique: true,
-      sync: true
+      sync: true,
     },
     {
       type: 'number',
@@ -224,7 +224,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base[Stats.ALL_DMG].push({
           name: 'Skill',
           source: 'Self',
-          value: form.qq_skill * calcScaling(0.14, 0.014, skill, 'curved'),
+          value: form.qq_skill * (calcScaling(0.14, 0.014, skill, 'curved') + (a.a4 ? 0.1 : 0)),
         })
       }
       if (form.qq_a6) {
@@ -234,7 +234,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           value: 0.1,
         })
       }
-      if (a.a4)
+      if (c >= 4)
         base.BASIC_SCALING.push(
           ...(form.qq_enhance
             ? [

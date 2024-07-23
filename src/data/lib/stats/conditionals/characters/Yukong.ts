@@ -32,8 +32,8 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 30,
       trace: 'Skill',
       title: `Emboldening Salvo`,
-      content: `Obtains <span class="text-desc">2</span> stack(s) of "Roaring Bowstrings" (to a maximum of <span class="text-desc">2</span> stacks). When "Roaring Bowstrings" is active, the ATK of all allies increases by {{0}}%, and every time an ally's turn ends, Yukong loses <span class="text-desc">1</span> stack of "Roaring Bowstrings."
-      <br />When it's the turn where Yukong gains "Roaring Bowstrings" by using Skill, "Roaring Bowstrings" will not be removed.`,
+      content: `Obtains <span class="text-desc">2</span> stack(s) of <b>Roaring Bowstrings</b> (to a maximum of <span class="text-desc">2</span> stacks). When <b>Roaring Bowstrings</b> is active, the ATK of all allies increases by {{0}}%, and every time an ally's turn ends, Yukong loses <span class="text-desc">1</span> stack of <b>Roaring Bowstrings</b>.
+      <br />When it's the turn where Yukong gains <b>Roaring Bowstrings</b> by using Skill, <b>Roaring Bowstrings</b> will not be removed.`,
       value: [{ base: 40, growth: 4, style: 'curved' }],
       level: skill,
     },
@@ -41,7 +41,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 5,
       trace: 'Ultimate',
       title: 'Diving Kestrel',
-      content: `If "Roaring Bowstrings" is active on Yukong when her Ultimate is used, additionally increases all allies' CRIT Rate by {{0}}% and CRIT DMG by {{1}}%. At the same time, deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{2}}% of Yukong's ATK to a single enemy.`,
+      content: `If <b>Roaring Bowstrings</b> is active on Yukong when her Ultimate is used, additionally increases all allies' CRIT Rate by {{0}}% and CRIT DMG by {{1}}%. At the same time, deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{2}}% of Yukong's ATK to a single enemy.`,
       value: [
         { base: 21, growth: 0.7, style: 'curved' },
         { base: 39, growth: 2.6, style: 'curved' },
@@ -59,7 +59,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     technique: {
       trace: 'Technique',
       title: `Chasing the Wind`,
-      content: `After using her Technique, Yukong enters Sprint mode for <span class="text-desc">20</span> seconds. In Sprint mode, her Movement SPD increases by <span class="text-desc">35%</span>, and Yukong gains <span class="text-desc">2</span> stack(s) of "Roaring Bowstrings" when she enters battle by attacking enemies.`,
+      content: `After using her Technique, Yukong enters Sprint mode for <span class="text-desc">20</span> seconds. In Sprint mode, her Movement SPD increases by <span class="text-desc">35%</span>, and Yukong gains <span class="text-desc">2</span> stack(s) of <b>Roaring Bowstrings</b> when she enters battle by attacking enemies.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
@@ -74,7 +74,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Majestas`,
-      content: `When "Roaring Bowstrings" is active, Yukong regenerates <span class="text-desc">2</span> additional Energy every time an ally takes action.`,
+      content: `When <b>Roaring Bowstrings</b> is active, Yukong regenerates <span class="text-desc">2</span> additional Energy every time an ally takes action.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -95,7 +95,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c4: {
       trace: 'Eidolon 4',
       title: `Zephyrean Echoes`,
-      content: `When "Roaring Bowstrings" is active, Yukong deals <span class="text-desc">30%</span> more DMG to enemies.`,
+      content: `When <b>Roaring Bowstrings</b> is active, Yukong deals <span class="text-desc">30%</span> more DMG to enemies.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -106,7 +106,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c6: {
       trace: 'Eidolon 6',
       title: `Bowstring Thunderclap`,
-      content: `When Yukong uses her Ultimate, she immediately gains <span class="text-desc">1</span> stack(s) of "Roaring Bowstrings."`,
+      content: `When Yukong uses her Ultimate, she immediately gains <span class="text-desc">1</span> stack(s) of <b>Roaring Bowstrings</b>.`,
     },
   }
 
