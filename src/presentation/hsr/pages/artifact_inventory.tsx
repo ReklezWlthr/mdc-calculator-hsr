@@ -60,7 +60,7 @@ export const ArtifactInventory = observer(() => {
       <div className="flex flex-col items-center w-full gap-5 p-5 max-w-[1240px] mx-auto h-full">
         <div className="flex items-center justify-between w-full">
           <p className="text-2xl font-bold text-white w-fit">Relic Inventory</p>
-          <PrimaryButton title="Add New Artifact" onClick={onOpenModal} />
+          <PrimaryButton title="Add New Relic" onClick={onOpenModal} />
         </div>
         <div className="w-full space-y-1">
           <div className="flex items-center w-full gap-3">
@@ -81,7 +81,7 @@ export const ArtifactInventory = observer(() => {
                 value: artifact.id.toString(),
                 img: `https://api.hakush.in/hsr/UI/itemfigures/${artifact?.icon}.webp`,
               }))}
-              placeholder="Artifact Set"
+              placeholder="Relic Set"
               onChange={(value) => setParams({ set: value?.value })}
             />
             <TagSelectInput

@@ -586,7 +586,6 @@ export const Characters = [
     rarity: 5,
     path: PathType.DESTRUCTION,
     element: Element.PHYSICAL,
-    beta: true,
   },
   {
     id: '1224',
@@ -602,7 +601,6 @@ export const Characters = [
     rarity: 4,
     path: PathType.HUNT,
     element: Element.IMAGINARY,
-    beta: true,
   },
   {
     id: '1301',

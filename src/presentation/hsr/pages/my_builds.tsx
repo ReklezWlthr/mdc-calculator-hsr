@@ -16,6 +16,7 @@ import { CommonModal } from '@src/presentation/components/common_modal'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import classNames from 'classnames'
 import { GhostButton } from '@src/presentation/components/ghost.button'
+import { RelicSetterT } from '../components/modals/artifact_list_modal'
 
 export const MyBuilds = observer(() => {
   const { buildStore, artifactStore, modalStore, toastStore } = useStore()
@@ -33,7 +34,7 @@ export const MyBuilds = observer(() => {
     : buildStore.builds
 
   const [selected, setSelected] = useState('')
-  const selectedBuild = useMemo(() => _.find(buildStore.builds, ['id', selected]), [selected])
+  const selectedBuild = _.find(buildStore.builds, ['id', selected])
 
   const artifactData = _.filter(artifactStore.artifacts, (item) => _.includes(selectedBuild?.artifacts, item.id))
   const set = getSetCount(artifactData)
@@ -74,6 +75,12 @@ export const MyBuilds = observer(() => {
       />
     )
   }, [selected])
+
+  const setRelic: RelicSetterT = (_i, type, value) => {
+    const clone = _.cloneDeep(selectedBuild.artifacts)
+    clone.splice(type - 1, 1, value)
+    buildStore.editBuild(selected, { artifacts: clone })
+  }
 
   return (
     <div className="flex flex-col items-center w-full gap-5 p-5 max-w-[1240px] mx-auto">
@@ -136,26 +143,28 @@ export const MyBuilds = observer(() => {
                 {...selectedBuild.weapon}
                 index={0}
                 teamOverride={[{ ...DefaultCharacter, cId: selectedBuild.cId }]}
-                disabled
+                setWeapon={(_i, value) =>
+                  buildStore.editBuild(selected, { weapon: { ...selectedBuild.weapon, ...value } })
+                }
               />
               {selectedBuild.note && (
                 <div className="p-3 mt-3 text-xs rounded-lg text-gray bg-primary-darker">
-                  <p className='mb-1 text-sm text-white'>Note:</p>
+                  <p className="mb-1 text-sm text-white">Note:</p>
                   {selectedBuild.note}
                 </div>
               )}
             </div>
             <div className="col-span-3 space-y-4">
               <p className="-mb-3 font-bold text-center text-white">Cavern Relics</p>
-              <MiniRelicBlock type={1} aId={selectedBuild?.artifacts?.[0]} />
-              <MiniRelicBlock type={2} aId={selectedBuild?.artifacts?.[1]} />
-              <MiniRelicBlock type={3} aId={selectedBuild?.artifacts?.[2]} />
-              <MiniRelicBlock type={4} aId={selectedBuild?.artifacts?.[3]} />
+              <MiniRelicBlock type={1} aId={selectedBuild?.artifacts?.[0]} setRelic={setRelic} />
+              <MiniRelicBlock type={2} aId={selectedBuild?.artifacts?.[1]} setRelic={setRelic} />
+              <MiniRelicBlock type={3} aId={selectedBuild?.artifacts?.[2]} setRelic={setRelic} />
+              <MiniRelicBlock type={4} aId={selectedBuild?.artifacts?.[3]} setRelic={setRelic} />
             </div>
             <div className="col-span-3 space-y-4">
               <p className="-mb-3 font-bold text-center text-white">Planar Ornaments</p>
-              <MiniRelicBlock type={6} aId={selectedBuild?.artifacts?.[5]} />
-              <MiniRelicBlock type={5} aId={selectedBuild?.artifacts?.[4]} />
+              <MiniRelicBlock type={6} aId={selectedBuild?.artifacts?.[5]} setRelic={setRelic} />
+              <MiniRelicBlock type={5} aId={selectedBuild?.artifacts?.[4]} setRelic={setRelic} />
               <div className="space-y-2">
                 <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
                   {_.some(set, (item, key) => item >= 2 && _.head(key) === '1') ? (

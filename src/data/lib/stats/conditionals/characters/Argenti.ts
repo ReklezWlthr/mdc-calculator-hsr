@@ -48,7 +48,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Enhanced Ultimate',
       title: 'Merit Bestowed in "My" Garden',
-      content: `Consumes <span class="text-desc">180</span> Energy and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Argenti's ATK to all enemies, and further deals DMG for 6 extra time(s), with each time dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Argenti's ATK to a random enemy.`,
+      content: `Consumes <span class="text-desc">180</span> Energy and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Argenti's ATK to all enemies, and further deals DMG for <span class="text-desc">6</span> extra time(s), with each time dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Argenti's ATK to a random enemy.`,
       value: [
         { base: 168, growth: 11.2, style: 'curved' },
         { base: 57, growth: 3.8, style: 'curved' },

@@ -116,7 +116,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
         <Controller
           name="setId"
           control={control}
-          rules={{ required: { value: true, message: 'Artifact set is required.' } }}
+          rules={{ required: { value: true, message: 'Relic set is required.' } }}
           render={({ field }) => (
             <SelectTextInput
               value={field.value}
@@ -125,7 +125,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
                 value: artifact.id.toString(),
                 img: `https://api.hakush.in/hsr/UI/itemfigures/${artifact.icon}.webp`,
               }))}
-              placeholder="Artifact Set"
+              placeholder="Relic Set"
               onChange={(value) => field.onChange(value?.value)}
             />
           )}
