@@ -13,7 +13,7 @@ import { PillInput } from '@src/presentation/components/inputs/pill_input'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { useCallback, useEffect, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { LCModal } from '@src/presentation/hsr/components/modals/lc_modal'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { findCharacter, findLightCone } from '@src/core/utils/finder'
@@ -98,6 +98,11 @@ export const LCBlock = observer(
 
     const canEdit = index >= 0 && !disabled
 
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
+      setLoading(true)
+    }, [wId])
+
     const levels = useMemo(
       () =>
         _.map(
@@ -131,14 +136,29 @@ export const LCBlock = observer(
             onClick={onOpenModal}
           >
             {weaponData ? (
-              <img
-                src={`https://api.hakush.in/hsr/UI/lightconemaxfigures/${weaponData?.id}.webp`}
-                className={classNames(
-                  'object-contain h-[200px] py-2 border rounded-lg bg-primary-darker duration-200',
-                  invalid ? 'border-error' : 'border-primary-border',
-                  { [invalid ? 'hover:border-red' : 'hover:border-primary-light']: char && canEdit && team[index]?.cId }
-                )}
-              />
+              <>
+                <div
+                  className={classNames(
+                    'items-center justify-center rounded-lg h-[200px] bg-primary-darker shrink-0 border border-primary-border',
+                    loading ? 'flex' : 'hidden'
+                  )}
+                >
+                  <i className="text-5xl animate-spin fa-solid fa-circle-notch text-gray" />
+                </div>
+                <img
+                  src={`https://api.hakush.in/hsr/UI/lightconemaxfigures/${weaponData?.id}.webp`}
+                  className={classNames(
+                    'object-contain h-[200px] py-2 border rounded-lg bg-primary-darker duration-200',
+                    loading ? 'hidden' : 'block',
+                    invalid ? 'border-error' : 'border-primary-border',
+                    {
+                      [invalid ? 'hover:border-red' : 'hover:border-primary-light']:
+                        char && canEdit && team[index]?.cId,
+                    }
+                  )}
+                  onLoad={() => setLoading(false)}
+                />
+              </>
             ) : (
               <div
                 className={classNames('h-[200px] border rounded-lg border-primary-border shrink-0', {
