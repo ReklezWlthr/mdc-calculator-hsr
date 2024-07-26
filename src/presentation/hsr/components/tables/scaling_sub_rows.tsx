@@ -118,7 +118,11 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
         </Tooltip>
       )}
       {scaling.chance ? (
-        <Tooltip title="Real Effect Hit Chance" body={<ProbComponent />} style="w-[400px]">
+        <Tooltip
+          title="Real Effect Hit Chance"
+          body={<ProbComponent />}
+          style={scaling.chance?.fixed ? 'w-[200px]' : 'w-[400px]'}
+        >
           <p
             className={classNames(
               'text-xs text-center truncate',
