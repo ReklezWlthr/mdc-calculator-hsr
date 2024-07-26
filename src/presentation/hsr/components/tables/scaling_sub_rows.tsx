@@ -69,26 +69,38 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
   )
   const toughness = scaling.break * (1 + stats.getValue(StatsObjectKeys.BREAK_EFF))
 
+  const DmgBlock = ({ highlight }: { highlight?: boolean }) => (
+    <Tooltip
+      title={
+        <div className="flex items-center justify-between">
+          <p>{scaling.name}</p>
+          {!!toughness && (
+            <p className="text-xs font-normal">
+              Toughness Damage: <span className="text-desc">{_.round(toughness, 1).toLocaleString()}</span>
+            </p>
+          )}
+        </div>
+      }
+      body={DmgBody}
+      style="w-[400px]"
+    >
+      <p
+        className={classNames(
+          'col-span-1 text-center text-gray',
+          { 'font-bold': highlight },
+          highlight ? propertyColor[scaling.property] || 'text-red' : 'text-gray'
+        )}
+      >
+        {_.round(dmg).toLocaleString()}
+      </p>
+    </Tooltip>
+  )
+
   return (
     <div className="grid items-center grid-cols-9 gap-2 pr-2">
       <p className="col-span-2 text-center">{scaling.property}</p>
       <p className={classNames('col-span-1 text-center', ElementColor[element])}>{element}</p>
-      <Tooltip
-        title={
-          <div className="flex items-center justify-between">
-            <p>{scaling.name}</p>
-            {!!toughness && (
-              <p className="text-xs font-normal">
-                Toughness Damage: <span className="text-desc">{_.round(toughness, 1).toLocaleString()}</span>
-              </p>
-            )}
-          </div>
-        }
-        body={DmgBody}
-        style="w-[400px]"
-      >
-        <p className="col-span-1 text-center text-gray">{_.round(dmg).toLocaleString()}</p>
-      </Tooltip>
+      <DmgBlock />
       {noCrit ? (
         <p className="col-span-1 text-center text-gray">-</p>
       ) : (
@@ -97,9 +109,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
         </Tooltip>
       )}
       {noCrit ? (
-        <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
-          {_.round(dmg).toLocaleString()}
-        </p>
+        <DmgBlock highlight />
       ) : (
         <Tooltip title={'Average: ' + scaling.name} body={AvgBody} style="w-[400px]">
           <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>

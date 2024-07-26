@@ -124,7 +124,7 @@ export const ImportExport = observer(() => {
       <CommonModal
         icon="fa-solid fa-circle-question text-yellow"
         title="Overwrite Data?"
-        desc={`The file contains ${char} characters, ${build} builds and ${artifact} artifacts.\nAre you sure you want to overwrite the current data with this?`}
+        desc={`The file contains ${char} characters, ${build} builds and ${artifact} relics.\nAre you sure you want to overwrite the current data with this?`}
         onConfirm={onConfirm}
       />
     )
@@ -190,15 +190,20 @@ export const ImportExport = observer(() => {
                 const reader = new FileReader()
                 reader.addEventListener('load', (event) => {
                   const data = JSON.parse(event.target.result.toString())
-                  onOpenConfirmModal(data?.characters?.length, data?.builds?.length, data?.artifacts?.length, () => {
-                    localStorage.setItem(`genshin_local_storage`, event.target.result.toString())
-                    updateData(event.target.result.toString())
-                    toastStore.openNotification({
-                      title: 'Data Imported Successfully',
-                      icon: 'fa-solid fa-circle-check',
-                      color: 'green',
-                    })
-                  })
+                  onOpenConfirmModal(
+                    data?.characters?.length || 0,
+                    data?.builds?.length || 0,
+                    data?.artifacts?.length || 0,
+                    () => {
+                      localStorage.setItem(`hsr_local_storage`, event.target.result.toString())
+                      updateData(event.target.result.toString())
+                      toastStore.openNotification({
+                        title: 'Data Imported Successfully',
+                        icon: 'fa-solid fa-circle-check',
+                        color: 'green',
+                      })
+                    }
+                  )
                 })
                 reader.readAsText(file)
               }}
