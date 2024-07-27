@@ -223,6 +223,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -233,6 +234,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
           type: TalentType.NONE,
+          sum: true,
         },
         {
           name: 'Max Stackable Shield',
@@ -251,16 +253,27 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 30,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
         {
-          name: `Bounce [x${c >= 4 ? 10 : 7}]`,
+          name: `Bounce`,
           value: [{ scaling: calcScaling(0.125, 0.0125, skill, 'curved'), multiplier: Stats.DEF }],
           element: Element.IMAGINARY,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
           break: 10 / 3,
+        },
+        {
+          name: 'Max Single Target DMG',
+          value: [{ scaling: calcScaling(0.125, 0.0125, skill, 'curved'), multiplier: Stats.DEF }],
+          element: Element.IMAGINARY,
+          property: TalentProperty.FUA,
+          type: TalentType.TALENT,
+          multiplier: c >= 4 ? 10 : 7,
+          break: (10 / 3) * (c >= 4 ? 10 : 7),
+          sum: true,
         },
       ]
 

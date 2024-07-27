@@ -193,6 +193,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -203,6 +204,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 20,
+          sum: true,
         },
       ]
       base.ULT_SCALING = [
@@ -213,6 +215,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 30,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -224,6 +227,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.TALENT,
           break: 10,
           chance: { base: calcScaling(50, 1, talent, 'curved') / 100, fixed: true },
+          sum: true,
         },
         {
           name: 'Frozen DMG',
@@ -328,6 +332,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.ICE,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
+          sum: true,
         })
       if (countDebuff(debuffs, DebuffTypes.FROZEN) && c >= 1)
         base.TALENT_SCALING.push({
@@ -336,6 +341,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.ICE,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
+          sum: true,
         })
       return base
     },

@@ -136,7 +136,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       show: true,
       default: true,
       unique: true,
-      sync: true
+      sync: true,
     },
     {
       type: 'number',
@@ -219,6 +219,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
                 property: TalentProperty.BREAK,
                 type: TalentType.NONE,
                 toughCap: 16 * 30,
+                sum: true,
               },
               {
                 name: 'E6 Adjacent Break DMG',
@@ -242,6 +243,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
                 property: TalentProperty.BREAK,
                 type: TalentType.NONE,
                 toughCap: 160,
+                sum: true,
               },
               ...c6Scale,
             ]
@@ -255,6 +257,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: (1 + form.trickshot * 0.5) * 20,
+              sum: true,
             },
             ...talentScale,
           ]
@@ -266,6 +269,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 10,
+              sum: true,
             },
           ]
       base.ULT_SCALING = [
@@ -276,6 +280,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 30,
+          sum: true,
         },
       ]
 

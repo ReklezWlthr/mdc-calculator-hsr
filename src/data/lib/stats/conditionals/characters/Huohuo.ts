@@ -205,6 +205,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -215,6 +216,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
+          sum: true,
         },
         {
           name: 'Adjacent',
@@ -233,6 +235,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
+          sum: true,
         },
       ]
 
@@ -313,18 +316,6 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       weakness: Element[],
       broken: boolean
     ) => {
-      _.forEach(team, (t, i) => {
-        if (allForm[i].hanya_ult)
-          t.CALLBACK.push((x, d, w, all) => {
-            x[Stats.SPD].push({
-              name: 'Ultimate',
-              source: index === i ? 'Self' : 'Hanya',
-              value: calcScaling(0.15, 0.005, ult, 'curved') * all[index].getSpd(),
-            })
-            return x
-          })
-      })
-
       return base
     },
   }

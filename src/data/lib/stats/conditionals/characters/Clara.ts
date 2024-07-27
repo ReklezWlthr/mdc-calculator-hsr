@@ -189,11 +189,12 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
         {
-          name: 'Single Target',
+          name: 'AoE',
           value: [
             {
               scaling: calcScaling(0.6, 0.06, skill, 'curved') * (form.mark_of_counter ? 2 : 1),
@@ -204,6 +205,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 10,
+          sum: true,
         },
       ]
       const ult_adj = form.clara_ult
@@ -238,6 +240,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
           break: 20,
+          sum: true,
         },
         ...ult_adj,
       ]

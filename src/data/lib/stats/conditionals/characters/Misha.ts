@@ -174,6 +174,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -184,6 +185,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 20,
+          sum: true,
         },
         {
           name: 'Adjacent',
@@ -203,6 +205,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.ULT,
           break: 10,
           chance: { base: calcScaling(0.12, 0.008, ult, 'curved') + (a.a2 ? 0.8 : 0), fixed: false },
+          sum: true,
         },
         {
           name: `Bounce [x2~${c >= 1 ? 14 : 9}]`,

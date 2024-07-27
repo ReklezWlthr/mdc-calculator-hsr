@@ -198,6 +198,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           break: 10,
           energy: 20,
           chance: { base: calcScaling(0.5, 0.03, basic, 'linear'), fixed: false },
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -210,6 +211,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           break: 20,
           energy: 30,
           chance: { base: 1, fixed: false },
+          sum: true,
         },
         {
           name: 'Adjacent',
@@ -231,6 +233,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           type: TalentType.ULT,
           break: 20,
           energy: 5,
+          sum: true,
         },
       ]
       const arcana = {
@@ -246,6 +249,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         property: TalentProperty.DOT,
         type: TalentType.NONE,
         chance: { base: calcScaling(0.5, 0.015, talent, 'curved'), fixed: false },
+        sum: true,
       }
       base.TALENT_SCALING = form.arcana ? [arcana] : []
 
@@ -291,7 +295,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         if (c >= 4)
           base.E_RES_RED.push({
             name: `Eidolon 4`,
-            source: 'Asta',
+            source: 'Self',
             value: 0.1,
           })
         addDebuff(debuffs, DebuffTypes.OTHER)
@@ -318,7 +322,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       if (form.epiphany) {
         base.VULNERABILITY.push({
           name: `Ultimate (Epiphany)`,
-          source: 'Asta',
+          source: 'Black Swan',
           value: calcScaling(0.15, 0.01, ult, 'curved'),
         })
         if (c >= 4)
@@ -377,32 +381,33 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
 
         addDebuff(debuffs, DebuffTypes.OTHER, _.sum([wind, physical, fire, lightning]))
 
-        for (const x of team) {
+        _.forEach(team, (x, i) => {
+          const source = index === i ? 'Self' : 'Black Swan'
           if (wind)
             x.WIND_RES_PEN.push({
               name: `Eidolon 1`,
-              source: 'Asta',
+              source,
               value: 0.25,
             })
           if (physical)
             x.PHYSICAL_RES_PEN.push({
               name: `Eidolon 1`,
-              source: 'Asta',
+              source,
               value: 0.25,
             })
           if (fire)
             x.FIRE_RES_PEN.push({
               name: `Eidolon 1`,
-              source: 'Asta',
+              source,
               value: 0.25,
             })
           if (lightning)
             x.LIGHTNING_RES_PEN.push({
               name: `Eidolon 1`,
-              source: 'Asta',
+              source,
               value: 0.25,
             })
-        }
+        })
       }
 
       return base

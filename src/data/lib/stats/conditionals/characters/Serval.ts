@@ -181,6 +181,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -191,6 +192,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 20,
+          sum: true,
         },
         {
           name: 'Adjacent',
@@ -209,6 +211,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 20,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -218,6 +221,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.LIGHTNING,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
+          sum: true,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -228,6 +232,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
           break: 20,
+          sum: true,
         },
       ]
 

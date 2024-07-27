@@ -173,6 +173,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.BA,
           break: 10,
           energy: 20,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -183,6 +184,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
+          sum: true,
         },
       ]
       base.ULT_SCALING = [
@@ -194,6 +196,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.ULT,
           break: 20,
           energy: 5,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -204,6 +207,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
+          sum: true,
         },
       ]
 
@@ -231,7 +235,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         })
       if (c >= 2)
         base.SKILL_SCALING.push({
-          name: 'Healing On-Hit',
+          name: 'E2 Shield',
           value: [{ scaling: 0.1, multiplier: Stats.ATK }],
           flat: 240,
           element: TalentProperty.SHIELD,

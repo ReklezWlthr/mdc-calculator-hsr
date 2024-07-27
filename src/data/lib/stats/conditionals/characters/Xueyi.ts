@@ -176,6 +176,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -186,6 +187,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 20,
+          sum: true,
         },
         {
           name: 'Adjacent',
@@ -204,6 +206,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 40,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -223,6 +226,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.TALENT,
           multiplier: 3,
           break: 15,
+          sum: true,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -233,6 +237,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
           break: 20,
+          sum: true,
         },
       ]
 

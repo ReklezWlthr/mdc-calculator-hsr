@@ -130,7 +130,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ...talents.talent,
       show: true,
       default: true,
-      sync: true
+      sync: true,
     },
     {
       type: 'toggle',
@@ -148,7 +148,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ...talents.c1,
       show: c >= 1,
       default: true,
-      duration: 1
+      duration: 1,
     },
     {
       type: 'toggle',
@@ -190,6 +190,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = form.spectral_transmigration
@@ -201,6 +202,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
               break: 20,
+              sum: true,
             },
             {
               name: 'Adjacent',
@@ -219,6 +221,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
               break: 20,
+              sum: true,
             },
           ]
       base.ULT_SCALING = [
@@ -229,6 +232,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 20,
+          sum: true,
         },
         {
           name: 'Adjacent',
@@ -242,7 +246,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base.TECHNIQUE_SCALING = [
         {
           name: 'Frozen DMG',
-          value: [{ scaling: 0.8, multiplier: Stats.HP }],
+          value: [{ scaling: 0.8, multiplier: Stats.ATK }],
           element: Element.ICE,
           property: TalentProperty.FROZEN,
           type: TalentType.NONE,
@@ -296,6 +300,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.ICE,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
+          sum: true,
         })
         if (form.spectral_transmigration)
           base.SKILL_SCALING.push({
@@ -304,6 +309,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             element: Element.ICE,
             property: TalentProperty.ADD,
             type: TalentType.NONE,
+            sum: true,
           })
       }
       if (form.jingliu_c2 && form.spectral_transmigration)

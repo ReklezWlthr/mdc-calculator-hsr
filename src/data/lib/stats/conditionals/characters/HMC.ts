@@ -181,6 +181,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -208,6 +209,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           type: TalentType.SKILL,
           multiplier: c >= 6 ? 7 : 5,
           break: (a.a4 ? 20 : 10) + (c >= 6 ? 6 : 4) * 5,
+          sum: true,
         },
       ]
 

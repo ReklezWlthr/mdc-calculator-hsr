@@ -174,6 +174,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -201,6 +202,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.SKILL,
           multiplier: c >= 1 ? 6 : 5,
           break: 10 + (c >= 1 ? 5 : 4) * 5,
+          sum: true,
         },
       ]
       base.ULT_SCALING = [
@@ -211,6 +213,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 20,
+          sum: true,
         },
       ]
       const wind_shear = {
@@ -222,6 +225,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         chance: { base: 0.65, fixed: false },
         multiplier: form.sampo_wind_shear,
         debuffElement: Element.WIND,
+        sum: true,
       }
       base.TALENT_SCALING = form.sampo_wind_shear ? [wind_shear] : []
 
@@ -296,6 +300,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               chance: undefined,
               name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
               multiplier: (item.multiplier || 1) * 0.08,
+              sum: true,
             }))
           )
           return x

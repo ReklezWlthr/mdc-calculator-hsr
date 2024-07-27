@@ -190,6 +190,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       const baseHeal = {
@@ -198,6 +199,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         element: TalentProperty.HEAL,
         property: TalentProperty.HEAL,
         type: TalentType.NONE,
+        sum: true,
       }
       base.SKILL_SCALING = [
         {
@@ -223,6 +225,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -233,6 +236,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
+          sum: true,
         },
         {
           name: 'Revive Healing',

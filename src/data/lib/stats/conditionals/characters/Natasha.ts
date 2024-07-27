@@ -167,6 +167,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 element: Element.PHYSICAL,
                 property: TalentProperty.ADD,
                 type: TalentType.NONE,
+                sum: true,
               },
             ]
           : []
@@ -178,6 +179,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
         ...c6,
       ]
@@ -189,6 +191,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
+          sum: true,
         },
         {
           name: 'Healing Over Time',
@@ -207,6 +210,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
+          sum: true,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -217,6 +221,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
           break: 20,
+          sum: true,
         },
       ]
 

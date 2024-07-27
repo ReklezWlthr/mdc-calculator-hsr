@@ -141,7 +141,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ...talents.ult,
       show: true,
       default: true,
-      sync: true
+      sync: true,
     },
     {
       type: 'toggle',
@@ -197,6 +197,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 15,
+              sum: true,
             },
             {
               name: 'Healing',
@@ -214,6 +215,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 10,
+              sum: true,
             },
           ]
       base.SKILL_SCALING = [
@@ -224,6 +226,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 20,
+          sum: true,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -234,6 +237,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
           break: 20,
+          sum: true,
         },
       ]
 
@@ -348,6 +352,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
               break: 30,
+              sum: true,
             },
             {
               name: 'Adjacent',

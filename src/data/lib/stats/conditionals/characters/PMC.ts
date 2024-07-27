@@ -135,7 +135,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       show: true,
       default: true,
       unique: true,
-      sync: true
+      sync: true,
     },
     {
       type: 'toggle',
@@ -198,6 +198,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 20,
+              sum: true,
             },
             {
               name: 'Adjacent',
@@ -216,6 +217,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 10,
+              sum: true,
             },
           ]
       base.ULT_SCALING = [
@@ -229,6 +231,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 20,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -239,6 +242,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
           type: TalentType.NONE,
+          sum: true,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -249,6 +253,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
           type: TalentType.NONE,
+          sum: true,
         },
       ]
 

@@ -196,6 +196,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.BA,
           break: 10,
           energy: 20,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -207,6 +208,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.SKILL,
           break: 20,
           energy: 30,
+          sum: true,
         },
         {
           name: 'Adjacent',
@@ -227,6 +229,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.ULT,
           break: 20,
           energy: 5,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -238,6 +241,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.TALENT,
           break: 10,
           energy: 10,
+          sum: true,
         },
       ]
 
@@ -297,6 +301,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.FIRE,
           property: TalentProperty.ADD,
           type: TalentType.ULT,
+          sum: true,
         })
 
       return base

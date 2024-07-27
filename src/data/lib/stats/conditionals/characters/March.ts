@@ -157,6 +157,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.BA,
           break: 10,
           energy: 20,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -167,6 +168,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
           type: TalentType.NONE,
+          sum: true,
         },
       ]
       base.ULT_SCALING = [
@@ -178,6 +180,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.ULT,
           break: 20,
           energy: 5,
+          sum: true,
         },
         {
           name: 'Frozen DMG',
@@ -196,6 +199,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.ICE,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
+          sum: true,
         },
       ]
       base.TECHNIQUE_SCALING = [

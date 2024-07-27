@@ -176,6 +176,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
 
@@ -310,6 +311,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
                       overrideIndex: index,
                       overrideCr: 1,
                       overrideCd: form.robin_c6 ? 6 : 1.5,
+                      sum: true,
                     })
                 }
               )

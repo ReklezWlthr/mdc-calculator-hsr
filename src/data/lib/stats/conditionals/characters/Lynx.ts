@@ -171,6 +171,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -181,6 +182,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
+          sum: true,
         },
       ]
       base.ULT_SCALING = [
@@ -191,6 +193,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -201,9 +204,10 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
+          sum: true,
         },
         {
-          name: '<b>Survival Response</b> Healing Over Time',
+          name: 'Survival Response Healing Over Time',
           value: [{ scaling: calcScaling(0.03, 0.001875, ult, 'heal'), multiplier: Stats.HP }],
           flat: calcScaling(30, 18, skill, 'flat'),
           element: TalentProperty.HEAL,

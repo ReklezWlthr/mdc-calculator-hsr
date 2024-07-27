@@ -174,6 +174,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -184,6 +185,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 10,
+          sum: true,
         },
       ]
       base.ULT_SCALING = [
@@ -194,6 +196,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 20,
+          sum: true,
         },
       ]
       const vul =
@@ -233,6 +236,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           multiplier: form.jingyuan_talent,
           cd: form.jingyuan_talent >= 6 && a.a2 ? 0.25 : 0,
           vul,
+          sum: true,
         },
         {
           name: 'Total Adjacent',

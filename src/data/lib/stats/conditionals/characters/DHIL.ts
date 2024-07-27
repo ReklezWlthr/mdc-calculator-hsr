@@ -153,7 +153,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       min: 0,
       max: 3,
       unique: true,
-      sync: true
+      sync: true,
     },
     {
       type: 'number',
@@ -251,6 +251,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               break: 20,
               bonus: righteous_heart(3),
               cd: outroar_norm,
+              sum: true,
             },
           ]
           break
@@ -265,6 +266,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               break: 30,
               bonus: righteous_heart(5),
               cd: outroar(5),
+              sum: true,
             },
             {
               name: 'Adjacent',
@@ -290,6 +292,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               bonus: righteous_heart(7),
               cd: outroar(7),
               res_pen: form.dhil_e6 * 0.2,
+              sum: true,
             },
             {
               name: 'Adjacent',
@@ -315,6 +318,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               break: 10,
               bonus: righteous_heart(2),
               cd: outroar_norm,
+              sum: true,
             },
           ]
       }
@@ -326,6 +330,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 20,
+          sum: true,
         },
         {
           name: 'Adjacent',
@@ -344,6 +349,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
           break: 20,
+          sum: true,
         },
       ]
 

@@ -204,6 +204,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       const sword_stance = form.dawn_herald
@@ -233,6 +234,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               property: TalentProperty.ADD,
               type: TalentType.NONE,
               bonus: form.sushang_a4 ? form.sushang_a4 * 0.02 : 0,
+              sum: true,
             },
           ]
         : [
@@ -244,6 +246,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               type: TalentType.NONE,
               chance: { base: broken ? 1 : 0.33, fixed: true },
               bonus: form.sushang_a4 ? form.sushang_a4 * 0.02 : 0,
+              sum: true,
             },
           ]
       base.SKILL_SCALING = [
@@ -254,6 +257,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 20,
+          sum: true,
         },
         ...sword_stance,
       ]
@@ -265,6 +269,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 30,
+          sum: true,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -275,6 +280,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
           break: 20,
+          sum: true,
         },
       ]
 

@@ -190,6 +190,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.BA,
           break: 10,
           energy: 20,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -201,6 +202,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.SKILL,
           break: 20,
           energy: 30,
+          sum: true,
         },
       ]
       base.ULT_SCALING = [
@@ -212,6 +214,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.ULT,
           break: 30,
           energy: 5,
+          sum: true,
         },
       ]
 

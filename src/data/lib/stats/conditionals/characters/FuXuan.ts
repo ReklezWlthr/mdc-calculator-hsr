@@ -177,17 +177,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.BA,
           break: 10,
           energy: 20,
-        },
-      ]
-      base.ULT_SCALING = [
-        {
-          name: 'AoE',
-          value: [{ scaling: calcScaling(0.6, 0.04, ult, 'curved'), multiplier: Stats.HP }],
-          element: Element.QUANTUM,
-          property: TalentProperty.NORMAL,
-          type: TalentType.ULT,
-          break: 20,
-          energy: 5,
+          sum: true,
         },
       ]
 
@@ -267,12 +257,19 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           source: 'Self',
           value: calcScaling(0.03, 0.003, skill, 'curved') * base.getHP(true),
         })
-      if (form.fx_c6)
-        base.ULT_F_DMG.push({
-          name: `Eidolon 6`,
-          source: 'Self',
-          value: _.min([base.getHP() * 1.2, form.fx_c6 * 2]),
-        })
+      base.ULT_SCALING = [
+        {
+          name: 'AoE',
+          value: [{ scaling: calcScaling(0.6, 0.04, ult, 'curved'), multiplier: Stats.HP }],
+          flat: form.fx_c6 ? _.min([base.getHP() * 1.2, form.fx_c6 * 2]) : 0,
+          element: Element.QUANTUM,
+          property: TalentProperty.NORMAL,
+          type: TalentType.ULT,
+          break: 20,
+          energy: 5,
+          sum: true,
+        },
+      ]
 
       return base
     },

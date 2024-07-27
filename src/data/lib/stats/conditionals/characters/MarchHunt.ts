@@ -221,6 +221,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               multiplier: form.h_march_ult ? 8 : 6,
               break: 5 * (form.h_march_ult ? 8 : 6),
               chance: { base: (form.h_march_ult ? 0.8 : 0.6) ** 3, fixed: true },
+              sum: true,
             },
           ]
         : [
@@ -231,6 +232,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 10,
+              sum: true,
             },
           ]
       base.ULT_SCALING = [
@@ -241,6 +243,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 30,
+          sum: true,
         },
       ]
 
@@ -317,6 +320,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             property: TalentProperty.FUA,
             type: TalentType.NONE,
             break: 10,
+            sum: true,
           })
         if (_.includes([PathType.DESTRUCTION, PathType.HUNT, PathType.ERUDITION], team[masterIndex].PATH)) {
           base.CALLBACK.push((x, _d, _w, all) => {
@@ -326,6 +330,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               element: team[masterIndex].ELEMENT,
               property: TalentProperty.ADD,
               type: TalentType.NONE,
+              sum: true,
             }
             x.BASIC_SCALING.push(add)
             if (c >= 2) x.SKILL_SCALING.push(add)

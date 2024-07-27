@@ -177,6 +177,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.ULT_SCALING = [
@@ -187,6 +188,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.ICE,
           property: TalentProperty.BREAK,
           type: TalentType.NONE,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -197,6 +199,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.ICE,
           property: TalentProperty.BREAK,
           type: TalentType.NONE,
+          sum: true,
         },
       ]
 

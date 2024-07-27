@@ -196,6 +196,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.BA,
           break: 10,
           energy: 20,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -207,6 +208,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.SKILL,
           break: 20,
           energy: 30,
+          sum: true,
         },
       ]
 
@@ -296,6 +298,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.ULT,
           break: 30,
           energy: 5,
+          sum: true,
         },
       ]
       if (slowed && a.a6)

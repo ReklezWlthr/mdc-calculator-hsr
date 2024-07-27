@@ -37,7 +37,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill: {
       trace: 'Skill',
       title: 'Octobolt Flash',
-      content: `Gains <span class="text-desc">1</span> point(s) of <b class="text-hsr-lightning">Slashed Dream</b>. Inflicts <span class="text-desc">1</span> stack(s) of <b class="text-hsr-fire">Crimson Knot</b> on a single target enemy, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Acheron's ATK to this target, as well as <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Acheron's ATK to adjacent targets.`,
+      content: `Gains <span class="text-desc">1</span> point(s) of <b class="text-hsr-lightning">Slashed Dream</b>. Inflicts <span class="text-desc">1</span> stack(s) of <b class="text-hsr-fire">Crimson Knot</b> on a single target enemy, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Acheron's ATK to this target, as well as <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Acheron's ATK to adjacent targets.`,
       value: [
         { base: 80, growth: 8, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },
@@ -190,21 +190,23 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: c >= 6 ? TalentType.ULT : TalentType.BA,
           break: 10,
           multiplier,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
         {
           name: 'Main Target',
-          value: [{ scaling: calcScaling(0.8, 0.08, skill, 'linear'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.8, 0.08, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: c >= 6 ? TalentType.ULT : TalentType.SKILL,
           break: 20,
           multiplier,
+          sum: true,
         },
         {
           name: 'Adjacent',
-          value: [{ scaling: calcScaling(0.3, 0.03, skill, 'linear'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.3, 0.03, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: c >= 6 ? TalentType.ULT : TalentType.SKILL,
@@ -212,12 +214,12 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           multiplier,
         },
       ]
-      const r1 = calcScaling(0.09, 0.006, ult, 'linear') * _.min([form.crimson_knot + (form.crimson_knot > 0), 4])
+      const r1 = calcScaling(0.09, 0.006, ult, 'curved') * _.min([form.crimson_knot + (form.crimson_knot > 0), 4])
       const r2 =
-        calcScaling(0.09, 0.006, ult, 'linear') *
+        calcScaling(0.09, 0.006, ult, 'curved') *
         _.min([_.max([form.crimson_knot - 3 + Number(form.crimson_knot > 3), 0]), 4])
       const r3 =
-        calcScaling(0.09, 0.006, ult, 'linear') *
+        calcScaling(0.09, 0.006, ult, 'curved') *
         _.min([_.max([form.crimson_knot - 6 + Number(form.crimson_knot > 6), 0]), 4])
       const ra = _.sum([r1, r2, r3])
 
@@ -281,7 +283,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base.ULT_SCALING = [
         {
           name: 'Rainblade Main',
-          value: [{ scaling: calcScaling(0.144, 0.0096, ult, 'linear'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.144, 0.0096, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
@@ -293,22 +295,24 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         ...rs3,
         {
           name: 'Total Rainblade Main',
-          value: [{ scaling: calcScaling(0.144, 0.0096, ult, 'linear') * 3 + ra, multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.144, 0.0096, ult, 'curved') * 3 + ra, multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 5 * (3 + _.ceil(form.crimson_knot / 3)),
           multiplier,
+          sum: true,
         },
         ...trs,
         {
           name: 'Stygian Resurge',
-          value: [{ scaling: calcScaling(0.72, 0.048, ult, 'linear'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.72, 0.048, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 5,
           multiplier,
+          sum: true,
         },
       ]
       base.TECHNIQUE_SCALING.push({
@@ -318,6 +322,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         property: TalentProperty.NORMAL,
         type: TalentType.TECH,
         break: 20,
+        sum: true,
       })
 
       base.ULT_RES_PEN.push({
@@ -334,6 +339,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.ADD,
           type: TalentType.ULT,
           multiplier,
+          sum: true,
         })
       }
       if (form.arch_a6)

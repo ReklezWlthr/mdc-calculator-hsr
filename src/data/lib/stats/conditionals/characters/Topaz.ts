@@ -179,6 +179,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: a.a2 ? TalentProperty.FUA : TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -198,6 +199,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           break: 20,
           res_pen: form.windfall && c >= 6 ? 0.1 : 0,
           cd: form.windfall ? calcScaling(0.125, 0.0125, ult, 'curved') : 0,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -217,6 +219,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           break: 20,
           res_pen: form.windfall && c >= 6 ? 0.1 : 0,
           cd: form.windfall ? calcScaling(0.125, 0.0125, ult, 'curved') : 0,
+          sum: true,
         },
       ]
 

@@ -127,7 +127,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ...talents.ult,
       show: true,
       default: true,
-      sync: true
+      sync: true,
     },
     {
       type: 'toggle',
@@ -192,6 +192,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               type: TalentType.BA,
               break: 30,
               energy: 20,
+              sum: true,
             },
           ]
         : [
@@ -203,6 +204,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               type: TalentType.BA,
               break: 10,
               energy: 20,
+              sum: true,
             },
           ]
       base.SKILL_SCALING = [
@@ -213,6 +215,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
+          sum: true,
         },
       ]
       base.ULT_SCALING = [
@@ -224,6 +227,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           type: TalentType.ULT,
           break: 20,
           energy: 5,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -234,6 +238,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
+          sum: true,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -244,6 +249,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
           break: 20,
+          sum: true,
         },
       ]
 

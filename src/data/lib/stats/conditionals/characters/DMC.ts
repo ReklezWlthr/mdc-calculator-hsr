@@ -156,6 +156,7 @@ const DMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -167,6 +168,7 @@ const DMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           type: TalentType.SKILL,
           bonus: a.a6 ? 0.25 : 0,
           break: 20,
+          sum: true,
         },
         {
           name: 'Adjacent',
@@ -185,6 +187,7 @@ const DMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 30,
+          sum: true,
         },
         {
           name: 'Blowout: RIP Home Run Main',

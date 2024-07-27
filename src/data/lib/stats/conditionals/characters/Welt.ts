@@ -190,6 +190,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -209,6 +210,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           type: TalentType.SKILL,
           multiplier: c >= 6 ? 4 : 3,
           break: (c >= 6 ? 4 : 3) * 10,
+          sum: true,
         },
       ]
       base.ULT_SCALING = [
@@ -220,6 +222,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           type: TalentType.ULT,
           break: 20,
           energy: 5,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -229,6 +232,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.IMAGINARY,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
+          sum: true,
         },
       ]
 
@@ -274,19 +278,31 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         })
       if (c >= 1) {
         base.BASIC_SCALING.push({
-          name: 'E1 Additional Damage',
+          name: 'E1 Additional DMG',
           value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear') * 0.5, multiplier: Stats.ATK }],
           element: Element.IMAGINARY,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
+          sum: true,
         })
-        base.SKILL_SCALING.push({
-          name: 'E1 Additional Damage',
-          value: [{ scaling: calcScaling(0.36, 0.036, skill, 'curved') * 0.8, multiplier: Stats.ATK }],
-          element: Element.IMAGINARY,
-          property: TalentProperty.ADD,
-          type: TalentType.NONE,
-        })
+        base.SKILL_SCALING.push(
+          {
+            name: 'E1 Additional DMG',
+            value: [{ scaling: calcScaling(0.36, 0.036, skill, 'curved') * 0.8, multiplier: Stats.ATK }],
+            element: Element.IMAGINARY,
+            property: TalentProperty.ADD,
+            type: TalentType.NONE,
+          },
+          {
+            name: `E1 Max Single Target Additional DMG`,
+            value: [{ scaling: calcScaling(0.36, 0.036, skill, 'curved') * 0.8, multiplier: Stats.ATK }],
+            element: Element.IMAGINARY,
+            property: TalentProperty.ADD,
+            type: TalentType.NONE,
+            multiplier: c >= 6 ? 4 : 3,
+            sum: true,
+          }
+        )
       }
 
       return base

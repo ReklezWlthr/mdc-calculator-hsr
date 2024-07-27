@@ -181,6 +181,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 20,
+              sum: true,
             },
             {
               name: 'Adjacent',
@@ -199,6 +200,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 10,
+              sum: true,
             },
           ]
       base.ULT_SCALING = [
@@ -209,6 +211,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 20,
+          sum: true,
         },
       ]
 
@@ -246,6 +249,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                   type: TalentType.BA,
                   break: 20,
                   chance: { base: 0.24, fixed: true },
+                  sum: true,
                 },
                 {
                   name: 'Autarky Adjacent',
@@ -266,6 +270,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                   type: TalentType.BA,
                   break: 10,
                   chance: { base: 0.24, fixed: true },
+                  sum: true,
                 },
               ])
         )

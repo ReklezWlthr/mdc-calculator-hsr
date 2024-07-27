@@ -158,6 +158,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -168,6 +169,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 20,
+          sum: true,
         },
       ]
       base.ULT_SCALING = [
@@ -178,6 +180,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 30,
+          sum: true,
         },
       ]
 
@@ -243,6 +246,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             type: TalentType.TALENT,
             break: 10,
             chance: { base: _.min([0.4 + count * 0.2, 1]), fixed: true },
+            sum: true,
           },
         ]
         if (a.a6 && count >= 3)
@@ -258,6 +262,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             element: Element.IMAGINARY,
             property: TalentProperty.ADD,
             type: TalentType.NONE,
+            sum: true,
           })
         return x
       })

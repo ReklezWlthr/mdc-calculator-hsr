@@ -192,6 +192,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
         {
           name: 'Adjacent',
@@ -210,6 +211,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 20,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -226,6 +228,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
           break: 10,
+          sum: true,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -236,6 +239,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
           break: 20,
+          sum: true,
         },
       ]
 
@@ -323,6 +327,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
                   property: TalentProperty.ADD,
                   type: TalentType.NONE,
                   overrideIndex: index,
+                  sum: true,
                 })
             })
             return x

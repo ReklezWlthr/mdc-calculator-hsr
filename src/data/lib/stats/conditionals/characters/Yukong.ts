@@ -187,6 +187,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: form.yukong_talent ? 20 : 10,
+          sum: true,
         },
       ]
       base.ULT_SCALING = [
@@ -197,6 +198,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 30,
+          sum: true,
         },
       ]
 

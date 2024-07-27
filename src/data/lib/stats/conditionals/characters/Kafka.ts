@@ -176,6 +176,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.BA,
           break: 10,
           energy: 20,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -187,6 +188,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.SKILL,
           break: 20,
           energy: 30,
+          sum: true,
         },
         {
           name: 'Adjacent',
@@ -207,6 +209,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.ULT,
           break: 20,
           energy: 5,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -216,6 +219,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.LIGHTNING,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
+          sum: true,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -225,6 +229,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
+          sum: true,
         },
       ]
 
@@ -311,6 +316,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             chance: undefined,
             name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
             multiplier: (item.multiplier || 1) * calcScaling(0.6, 0.015, skill, 'curved'),
+            sum: true,
           }))
         )
         x.ULT_SCALING.push(
@@ -319,6 +325,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             chance: undefined,
             name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
             multiplier: (item.multiplier || 1) * calcScaling(0.8, 0.02, ult, 'curved'),
+            sum: true,
           }))
         )
 

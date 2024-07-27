@@ -186,6 +186,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -196,6 +197,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 10,
+          sum: true,
         },
       ]
 
@@ -229,6 +231,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               property: TalentProperty.NORMAL,
               type: TalentType.ULT,
               break: 20 + 5 * 6,
+              sum: true,
             },
           ]
         : [
@@ -239,6 +242,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               property: TalentProperty.NORMAL,
               type: TalentType.ULT,
               break: 20,
+              sum: true,
             },
           ]
       base.TECHNIQUE_SCALING.push({
@@ -247,6 +251,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         element: Element.PHYSICAL,
         property: TalentProperty.NORMAL,
         type: TalentType.TECH,
+        sum: true,
       })
 
       if (form.arg_enhanced_ult) base.ULT_ALT = true

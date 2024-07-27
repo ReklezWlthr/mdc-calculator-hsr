@@ -178,6 +178,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           type: TalentType.BA,
           break: 10,
           energy: 20,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -188,16 +189,24 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 10,
-          energy: 6,
         },
         {
-          name: `Bounce [x${c >= 1 ? 5 : 4}]`,
+          name: `Bounce`,
           value: [{ scaling: calcScaling(0.25, 0.025, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 5,
-          energy: 6,
+        },
+        {
+          name: 'Max Single Target DMG',
+          value: [{ scaling: calcScaling(0.25, 0.025, skill, 'curved'), multiplier: Stats.ATK }],
+          element: Element.FIRE,
+          property: TalentProperty.NORMAL,
+          type: TalentType.SKILL,
+          multiplier: c >= 1 ? 6 : 5,
+          break: 10 + 5 * (c >= 1 ? 6 : 5),
+          sum: true,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -208,6 +217,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
           break: 20,
+          sum: true,
         },
       ]
 

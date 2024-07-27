@@ -43,6 +43,7 @@ export interface IScaling {
   toughCap?: number
   vul?: number
   debuffElement?: Element // Only used for chance
+  sum?: boolean
 }
 
 export interface IContent {

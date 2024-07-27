@@ -185,6 +185,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
 
@@ -259,6 +260,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                   element: Element.LIGHTNING,
                   property: TalentProperty.ADD,
                   type: TalentType.NONE,
+                  sum: true,
                 })
             }
           )
@@ -282,6 +284,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 property: TalentProperty.ADD,
                 type: TalentType.NONE,
                 overrideIndex: i,
+                sum: true,
               })
 
             return x

@@ -143,7 +143,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       show: true,
       default: true,
       duration: 3,
-      sync: true
+      sync: true,
     },
     {
       type: 'number',
@@ -209,6 +209,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 20,
+              sum: true,
             },
             {
               name: 'Adjacent',
@@ -230,6 +231,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 10,
+              sum: true,
             },
           ]
       base.TALENT_SCALING = [
@@ -243,6 +245,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 20,
+          sum: true,
         },
         {
           name: 'Healing',
@@ -260,6 +263,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
           break: 20,
+          sum: true,
         },
       ]
 
@@ -345,6 +349,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             property: TalentProperty.NORMAL,
             type: TalentType.ULT,
             break: 20,
+            sum: true,
           },
           {
             name: 'Adjacent',

@@ -223,6 +223,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 10 / 3,
+              sum: true,
             },
             {
               name: 'Rising Uppercut DMG',
@@ -231,6 +232,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 10,
+              sum: true,
             },
           ]
         : [
@@ -241,6 +243,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 10,
+              sum: true,
             },
           ]
       base.SKILL_SCALING = [
@@ -251,6 +254,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 20,
+          sum: true,
         },
       ]
       base.ULT_SCALING = [
@@ -261,6 +265,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 30,
+          sum: true,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -271,6 +276,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
           break: 20,
+          sum: true,
         },
       ]
 
@@ -360,6 +366,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               chance: undefined,
               name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
               multiplier: (item.multiplier || 1) * (calcScaling(0.68, 0.017, talent, 'curved') + form.luka_c6 * 0.08),
+              sum: true,
             }))
           )
           return x

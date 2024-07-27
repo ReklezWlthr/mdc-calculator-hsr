@@ -186,6 +186,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.BA,
           break: 10,
           energy: 20,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -197,6 +198,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.SKILL,
           break: 10,
           energy: 30,
+          sum: true,
         },
       ]
       base.ULT_SCALING = [
@@ -208,6 +210,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.ULT,
           break: 20,
           energy: 5,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -219,6 +222,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.TALENT,
           break: 5,
           energy: 5,
+          sum: true,
         },
       ]
 
@@ -241,6 +245,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.ICE,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
+          sum: true,
         })
       if (form.herta_c2)
         base[Stats.CRIT_RATE].push({

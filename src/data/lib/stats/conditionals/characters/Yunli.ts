@@ -182,6 +182,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -192,6 +193,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 20,
+          sum: true,
         },
         {
           name: 'Adjacent',
@@ -220,6 +222,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           break: 20,
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
+          sum: true,
         },
         {
           name: 'Intuit Adjacent',
@@ -251,6 +254,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
           break: (c >= 1 ? 9 : 6) * 5,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -261,6 +265,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
           break: 10,
+          sum: true,
         },
         {
           name: 'Counter Adjacent',
@@ -282,6 +287,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           break: 20,
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
+          sum: true,
         },
         {
           name: 'Intuit Adjacent',
@@ -316,6 +322,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
           break: (c >= 1 ? 9 : 6) * 5,
+          sum: true,
         },
       ]
 

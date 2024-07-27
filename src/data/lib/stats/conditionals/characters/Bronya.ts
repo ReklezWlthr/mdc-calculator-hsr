@@ -187,6 +187,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.BA,
           break: 10,
           energy: 20,
+          sum: true,
         },
       ]
 
@@ -326,6 +327,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.NONE,
           break: 10,
           energy: 5,
+          sum: true,
         })
 
       return base

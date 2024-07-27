@@ -240,6 +240,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           type: TalentType.BA,
           break: 10,
           energy: 20,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -251,6 +252,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           type: TalentType.SKILL,
           break: 20,
           energy: 30,
+          sum: true,
         },
       ]
       base.ULT_SCALING = [
@@ -262,6 +264,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           type: TalentType.ULT,
           break: 30,
           energy: 5,
+          sum: true,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -272,6 +275,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
           break: 20,
+          sum: true,
         },
       ]
 
@@ -414,6 +418,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           element: Element.QUANTUM,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
+          sum: true,
         })
       if (c >= 6)
         base[Stats.ALL_DMG].push({

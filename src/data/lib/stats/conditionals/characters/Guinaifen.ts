@@ -198,6 +198,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -208,6 +209,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 20,
+          sum: true,
         },
         {
           name: 'Adjacent',
@@ -226,16 +228,27 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 20,
+          sum: true,
         },
       ]
       base.TECHNIQUE_SCALING = [
         {
-          name: 'Bounce [x4]',
+          name: 'Bounce',
           value: [{ scaling: 0.5, multiplier: Stats.ATK }],
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
+          break: 5,
+        },
+        {
+          name: 'Max Single Target DMG',
+          value: [{ scaling: 0.5, multiplier: Stats.ATK }],
+          element: Element.FIRE,
+          property: TalentProperty.NORMAL,
+          type: TalentType.TECH,
+          multiplier: 4,
           break: 20,
+          sum: true,
         },
       ]
 
@@ -250,6 +263,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           type: TalentType.NONE,
           chance: { base: 1, fixed: false },
           debuffElement: Element.FIRE,
+          sum: true,
         }
         base.SKILL_SCALING.push(burn)
         base.DOT_SCALING.push({
@@ -332,6 +346,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             chance: undefined,
             name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
             multiplier: (item.multiplier || 1) * calcScaling(0.72, 0.02, talent, 'curved'),
+            sum: true,
           }))
         )
         return x

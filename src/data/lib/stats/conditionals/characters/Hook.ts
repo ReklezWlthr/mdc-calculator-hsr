@@ -190,6 +190,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       const burn = {
@@ -210,6 +211,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
               break: 20,
+              sum: true,
             },
             {
               name: `Adjacent`,
@@ -228,6 +230,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
               break: 20,
+              sum: true,
             },
           ]
       base.ULT_SCALING = [
@@ -238,6 +241,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 30,
+          sum: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -248,6 +252,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.ADD,
           type: TalentType.NONE,
           break: 30,
+          sum: true,
         },
       ]
       const talentBurn = {
@@ -267,6 +272,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 30,
+          sum: true,
         },
       ]
 

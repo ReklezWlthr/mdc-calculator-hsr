@@ -174,6 +174,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.BA,
           break: 10,
           energy: a.a2 ? 30 : 20,
+          sum: true,
         },
       ]
 

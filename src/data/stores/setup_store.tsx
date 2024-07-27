@@ -66,6 +66,7 @@ export interface SetupStoreType {
   setComparing: (value: Partial<ITeamChar>) => void
   setTotal: (key: TalentType, index: number, name: string, value: number) => void
   getTotal: (key: TalentType, index: number) => number
+  clearTotal: () => void
   clearComparing: () => void
   setCustomValue: CustomSetterT
   removeCustomValue: CustomRemoverT
@@ -146,6 +147,13 @@ export class SetupStore {
     } else {
       _.assign(this.comparing[index - 1].total[key], { [name]: value })
     }
+  }
+
+  clearTotal = () => {
+    if (this.main) this.main.total = defaultTotal
+    if (this.comparing[0]) this.comparing[0].total = defaultTotal
+    if (this.comparing[1]) this.comparing[1].total = defaultTotal
+    if (this.comparing[2]) this.comparing[2].total = defaultTotal
   }
 
   getTotal = (key: TalentType, index: number) => {

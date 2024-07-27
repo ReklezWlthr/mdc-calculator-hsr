@@ -1,7 +1,7 @@
 import { useStore } from '@src/data/providers/app_store_provider'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import { CharacterSelect } from '../components/character_select'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { TeamModal, TeamModalProps } from '@src/presentation/hsr/components/modals/team_modal'

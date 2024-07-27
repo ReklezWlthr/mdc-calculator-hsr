@@ -180,6 +180,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
+          sum: true,
         },
       ]
       base.SKILL_SCALING = [
@@ -191,6 +192,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.SKILL,
           chance: { base: 1, fixed: false },
           break: 20,
+          sum: true,
         },
         {
           name: 'Adjacent',
@@ -210,6 +212,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.ULT,
           chance: { base: calcScaling(0.09, 0.006, ult, 'curved'), fixed: false },
           break: 20,
+          sum: true,
         },
       ]
 
@@ -245,7 +248,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.DOT,
           type: TalentType.NONE,
         }
-        base.TALENT_SCALING.push(burn)
+        base.TALENT_SCALING.push({ ...burn, sum: true })
         base.DOT_SCALING.push({
           ...burn,
           overrideIndex: index,
