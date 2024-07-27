@@ -56,7 +56,7 @@ export const CompareSuperBreakSubRows = observer(
       superBreakStringConstruct(
         calculatorStore,
         scaling[index],
-        scaling[index]?.overrideIndex ? allStats[index]?.[scaling[0]?.overrideIndex] : stats[index],
+        scaling[index]?.overrideIndex >= 0 ? allStats[index]?.[scaling[0]?.overrideIndex] : stats[index],
         level[index].level[scaling[index]?.overrideIndex ?? level[index].selected]
       )
     )

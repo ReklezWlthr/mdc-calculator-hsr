@@ -56,7 +56,7 @@ export const CompareSubRows = observer(
       damageStringConstruct(
         calculatorStore,
         scaling[index],
-        scaling[index]?.overrideIndex ? allStats[index]?.[scaling[index]?.overrideIndex] : stats[index],
+        scaling[index]?.overrideIndex >= 0 ? allStats[index]?.[scaling[index]?.overrideIndex] : stats[index],
         level[index].level[scaling[index]?.overrideIndex ?? level[index].selected]
       )
     )

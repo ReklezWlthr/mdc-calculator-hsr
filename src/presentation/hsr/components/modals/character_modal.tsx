@@ -19,12 +19,10 @@ const { publicRuntimeConfig } = getConfig()
 
 interface CharacterModalProps {
   index: number
-  teamOverride?: ITeamChar[]
   setChar?: (index: number, value: Partial<ITeamChar>) => void
-  setLc?: (index: number, value: Partial<IWeaponEquip>) => void
 }
 
-export const CharacterModal = observer(({ index, teamOverride, setChar, setLc }: CharacterModalProps) => {
+export const CharacterModal = observer(({ index, setChar }: CharacterModalProps) => {
   const { teamStore, modalStore, buildStore, charStore, settingStore } = useStore()
   const { setParams, params } = useParams({
     searchWord: '',
@@ -34,8 +32,6 @@ export const CharacterModal = observer(({ index, teamOverride, setChar, setLc }:
   })
 
   const charSetter = setChar || teamStore.setMemberInfo
-  const lcSetter = setLc || teamStore.setWeapon
-  const team = teamOverride || teamStore.characters
 
   const filteredChar = useMemo(
     () =>
@@ -117,11 +113,6 @@ export const CharacterModal = observer(({ index, teamOverride, setChar, setLc }:
                   major_traces: char?.major_traces || { a2: false, a4: false, a6: false },
                   minor_traces: char?.minor_traces || formatMinorTrace(item.trace, Array(10).fill(false)),
                 })
-                if (
-                  item.path !== findLightCone(team[index]?.equipments?.weapon?.wId)?.type &&
-                  team[index]?.equipments?.weapon
-                )
-                  lcSetter(index, DefaultWeapon)
                 modalStore.closeModal()
               }}
               key={item.name}

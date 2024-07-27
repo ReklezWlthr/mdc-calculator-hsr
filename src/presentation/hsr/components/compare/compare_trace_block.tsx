@@ -46,18 +46,7 @@ export const CompareTraceBlock = observer(({ char, team }: { char: ITeamChar; te
   )
 
   const onOpenModal = useCallback(() => {
-    modalStore.openModal(
-      <CharacterModal
-        index={charIndex}
-        teamOverride={team[setupIndex]}
-        setChar={(_i, value) => setupStore.setComparing(value)}
-        setLc={(_i, value) =>
-          setupStore.setComparing({
-            equipments: { ...char.equipments, weapon: { ...char.equipments.weapon, ...value } },
-          })
-        }
-      />
-    )
+    modalStore.openModal(<CharacterModal index={charIndex} setChar={(_i, value) => setupStore.setComparing(value)} />)
   }, [modalStore])
 
   return (
