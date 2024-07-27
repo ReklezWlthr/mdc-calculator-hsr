@@ -1,5 +1,5 @@
 import { IScaling } from '@src/domain/conditional'
-import { Element, TalentProperty } from '@src/domain/constant'
+import { Element, TalentProperty, TalentType } from '@src/domain/constant'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
@@ -11,13 +11,17 @@ import {
   SuperBreakStringConstructor,
   superBreakStringConstruct,
 } from '@src/core/utils/constructor/superBreakStringConstruct'
+import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
+import { useEffect, useState } from 'react'
 
 interface ScalingSubRowsProps {
   scaling: IScaling[]
   stats: StatsObject[]
   allStats: StatsObject[][]
   level: { level: number[]; selected: number }[]
+  setupNames: string[]
   name: string
+  type: TalentType
   element: string
 }
 
@@ -42,8 +46,9 @@ export const ElementColor = {
 }
 
 export const CompareSuperBreakSubRows = observer(
-  ({ scaling, stats, allStats, level, name, element }: ScalingSubRowsProps) => {
+  ({ scaling, stats, allStats, level, name, element, type, setupNames }: ScalingSubRowsProps) => {
     const { calculatorStore, setupStore } = useStore()
+    const [sum, setSum] = useState(_.some(scaling, (item) => item?.sum))
 
     const mode = setupStore.mode
 
@@ -60,6 +65,22 @@ export const CompareSuperBreakSubRows = observer(
       return obj?.dmg || 0
     }
 
+    useEffect(() => {
+      const arr = [main, sub1, sub2, sub3]
+      _.forEach(scaling, (item, i) => {
+        item && setupStore.setTotal(type, i, item?.name + '_SB', sum ? getDmg(arr[i]) : 0)
+      })
+      return () => {
+        _.forEach(scaling, (item, i) => {
+          item && setupStore.setTotal(type, i, item?.name + '_SB', undefined)
+        })
+      }
+    }, [main, sub1, sub2, sub3, scaling, sum])
+
+    useEffect(() => {
+      setSum(_.some(scaling, (item) => item?.sum))
+    }, [scaling[0]])
+
     const SubDmgBlock = ({ title, obj }: { title: string; obj: SuperBreakStringConstructor }) => {
       const compare = getDmg(obj) - getDmg(main)
       const p = (getDmg(obj) - getDmg(main)) / getDmg(main)
@@ -70,7 +91,10 @@ export const CompareSuperBreakSubRows = observer(
         <Tooltip
           title={
             <div className="flex items-center justify-between gap-2">
-              <p>{`${title}: ${name}`}</p>
+              <div>
+                <p className="text-xs font-normal text-gray">{title}</p>
+                <p>{name}</p>
+              </div>
               {main ? (
                 <div className="flex items-center gap-1 whitespace-nowrap">
                   <p
@@ -123,7 +147,12 @@ export const CompareSuperBreakSubRows = observer(
         <p className={classNames('col-span-1 text-center', ElementColor[element])}>{element}</p>
         {main ? (
           <Tooltip
-            title={'Main: ' + name}
+            title={
+              <div>
+                <p className="text-xs font-normal text-gray">{setupNames[0]}</p>
+                <p>{name}</p>
+              </div>
+            }
             body={<div dangerouslySetInnerHTML={{ __html: main.formulaString }} />}
             style="w-[400px]"
           >
@@ -132,12 +161,13 @@ export const CompareSuperBreakSubRows = observer(
         ) : (
           <p className="col-span-1 text-center text-gray">-</p>
         )}
-        <SubDmgBlock obj={sub1} title="Sub 1" />
-        <SubDmgBlock obj={sub2} title="Sub 2" />
-        <SubDmgBlock obj={sub3} title="Sub 3" />
-        <p className="col-span-2 text-xs truncate" title={name}>
-          {name}
-        </p>
+        <SubDmgBlock obj={sub1} title={setupNames[1]} />
+        <SubDmgBlock obj={sub2} title={setupNames[2]} />
+        <SubDmgBlock obj={sub3} title={setupNames[3]} />
+        <div className="flex col-span-2 gap-1 text-xs" title={name}>
+          <p className="w-full truncate">{name}</p>
+          <CheckboxInput checked={sum} onClick={setSum} />
+        </div>
       </div>
     )
   }

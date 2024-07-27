@@ -137,6 +137,8 @@ export const CompareBlock = observer(() => {
                 level={levels}
                 name={item.name}
                 element={item.element}
+                type={talent}
+                setupNames={_.map([setupStore.main, ...setupStore.comparing], 'name')}
               />
             )
           )}
