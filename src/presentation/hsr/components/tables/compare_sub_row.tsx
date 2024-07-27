@@ -11,6 +11,8 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { findCharacter } from '@src/core/utils/finder'
 import { BreakBaseLevel, BreakElementMult } from '@src/domain/scaling'
 import { StringConstructor, damageStringConstruct } from '@src/core/utils/constructor/damageStringConstruct'
+import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
+import { useEffect, useState } from 'react'
 
 interface ScalingSubRowsProps {
   scaling: IScaling[]
@@ -19,6 +21,7 @@ interface ScalingSubRowsProps {
   level: { level: number[]; selected: number }[]
   name: string
   property: string
+  type: TalentType
   element: string
 }
 
@@ -43,15 +46,16 @@ export const ElementColor = {
 }
 
 export const CompareSubRows = observer(
-  ({ scaling, stats, allStats, level, name, property, element }: ScalingSubRowsProps) => {
+  ({ scaling, stats, allStats, level, name, property, type, element }: ScalingSubRowsProps) => {
     const { setupStore, calculatorStore } = useStore()
+    const [sum, setSum] = useState(false)
 
     const mode = setupStore.mode
     const [main, sub1, sub2, sub3] = _.map(Array(4), (_v, index) =>
       damageStringConstruct(
         calculatorStore,
         scaling[index],
-        scaling[index]?.overrideIndex ? allStats[index]?.[scaling[0]?.overrideIndex] : stats[index],
+        scaling[index]?.overrideIndex ? allStats[index]?.[scaling[index]?.overrideIndex] : stats[index],
         level[index].level[scaling[index]?.overrideIndex ?? level[index].selected]
       )
     )
@@ -76,6 +80,13 @@ export const CompareSubRows = observer(
           (noCrit || mode === 'base' ? 1 : 1 + obj?.number.totalCd * (mode === 'crit' ? 1 : obj?.number.totalCr)) || 0
       )
     }
+
+    useEffect(() => {
+      const arr = [main, sub1, sub2, sub3]
+      _.forEach(scaling, (item, i) => {
+        item && setupStore.setTotal(type, i, item?.name, sum ? getDmg(arr[i]) : 0)
+      })
+    }, [main, sub1, sub2, sub3, scaling, sum])
 
     const Body = ({ obj }: { obj: StringConstructor }) => (
       <div className="space-y-1.5">
@@ -189,9 +200,10 @@ export const CompareSubRows = observer(
         <SubDmgBlock obj={sub1} title="Sub 1" toughness={toughness[1]} />
         <SubDmgBlock obj={sub2} title="Sub 2" toughness={toughness[2]} />
         <SubDmgBlock obj={sub3} title="Sub 3" toughness={toughness[3]} />
-        <p className="col-span-2 text-xs truncate" title={name}>
-          {name}
-        </p>
+        <div className="flex col-span-2 gap-1 text-xs" title={name}>
+          <p className="w-full truncate">{name}</p>
+          <CheckboxInput checked={sum} onClick={setSum} />
+        </div>
       </div>
     )
   }

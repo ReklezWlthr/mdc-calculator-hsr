@@ -12,6 +12,7 @@ import { CompareBlock } from '@src/presentation/hsr/components/compare/compare_b
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { BulletPoint } from '@src/presentation/components/collapsible'
 import { swapElement } from '@src/core/utils/data_format'
+import { defaultTotal } from '@src/data/stores/setup_store'
 
 export const ComparePage = observer(() => {
   const { modalStore, setupStore } = useStore()
@@ -163,7 +164,7 @@ export const ComparePage = observer(() => {
                 onOpenSaveModal({
                   onSelect: (team) => {
                     const handler = () => {
-                      setupStore.setValue('main', team)
+                      setupStore.setValue('main', { ...team, total: defaultTotal })
                       setupStore.setValue('mainChar', team.char[0].cId)
                       setupStore.setValue('selected', [0, 0])
                     }
@@ -198,11 +199,13 @@ export const ComparePage = observer(() => {
                         onClick={() => {
                           const handler = () => {
                             const main = setupStore.main
-                            setupStore.comparing.splice(tI, 1, _.cloneDeep(main))
-                            setupStore.custom.splice(tI + 1, 1, _.cloneDeep(setupStore.custom[0]))
-                            setupStore.setValue('comparing', setupStore.comparing)
+                            const newCompare = _.cloneDeep(setupStore.comparing)
+                            newCompare.splice(tI, 1, _.cloneDeep(main))
+                            const newCustom = _.cloneDeep(setupStore.custom)
+                            newCustom.splice(tI + 1, 1, _.cloneDeep(setupStore.custom[0]))
+                            setupStore.setValue('comparing', newCompare)
                             setupStore.setForm(tI + 1, _.cloneDeep(setupStore.forms[0]))
-                            setupStore.setValue('custom', setupStore.custom)
+                            setupStore.setValue('custom', newCustom)
                           }
                           if (setupStore.comparing[tI]?.char) onOpenCopyModal(handler)
                           else handler()
@@ -253,7 +256,7 @@ export const ComparePage = observer(() => {
                       if (setupStore.mainChar)
                         onOpenSaveModal({
                           onSelect: (team) => {
-                            setupStore.comparing.splice(tI, 1, team)
+                            setupStore.comparing.splice(tI, 1, { ...team, total: defaultTotal })
                             setupStore.setValue('comparing', setupStore.comparing)
                           },
                           filterId: setupStore.mainChar,

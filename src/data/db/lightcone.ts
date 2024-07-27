@@ -543,7 +543,7 @@ export const LightCones = [
     baseHp: 43.2,
     baseAtk: 21.6,
     baseDef: 15,
-    type: PathType.ABUNDANCE,
+    type: PathType.NIHILITY,
     desc: {
       name: 'Glance Back',
       detail: `When the wearer hits an enemy and if the hit enemy is not already Ensnared, then there is a {{0}}% <u>base chance</u> to Ensnare the hit enemy. Ensnared enemies' DEF decreases by {{1}}% for <span class="text-desc">1</span> turn(s).`,

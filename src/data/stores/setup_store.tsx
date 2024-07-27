@@ -1,4 +1,13 @@
-import { Element, IArtifactEquip, IBuild, ITeamChar, IWeapon, IWeaponEquip, PathType } from '@src/domain/constant'
+import {
+  Element,
+  IArtifactEquip,
+  IBuild,
+  ITeamChar,
+  IWeapon,
+  IWeaponEquip,
+  PathType,
+  TalentType,
+} from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
@@ -12,17 +21,37 @@ export interface TSetup {
   id: string
 }
 
+export interface TSetupPlus extends TSetup {
+  total: TotalT
+}
+
+export const defaultTotal = {
+  [TalentType.BA]: {},
+  [TalentType.SKILL]: {},
+  [TalentType.ULT]: {},
+  [TalentType.TALENT]: {},
+  [TalentType.TECH]: {},
+}
+
 export type CustomSetterT = (innerIndex: number, key: StatsObjectKeysT, value: any, debuff: boolean) => void
 export type CustomRemoverT = (innerIndex: number) => void
+
+export type TotalT = {
+  [TalentType.BA]: Record<string, number>
+  [TalentType.SKILL]: Record<string, number>
+  [TalentType.ULT]: Record<string, number>
+  [TalentType.TALENT]: Record<string, number>
+  [TalentType.TECH]: Record<string, number>
+}
 
 export interface SetupStoreType {
   mode: string
   team: TSetup[]
   tab: string
   selected: number[]
-  main: TSetup
+  main: TSetupPlus
   mainChar: string
-  comparing: TSetup[]
+  comparing: TSetupPlus[]
   custom: {
     name: StatsObjectKeysT
     value: number
@@ -35,6 +64,8 @@ export interface SetupStoreType {
   setForm: (index: number, value: Record<string, any>[]) => void
   setFormValue: (setupIndex: number, charIndex: number, key: string, value: any, sync: boolean) => void
   setComparing: (value: Partial<ITeamChar>) => void
+  setTotal: (key: TalentType, index: number, name: string, value: number) => void
+  getTotal: (key: TalentType, index: number) => number
   clearComparing: () => void
   setCustomValue: CustomSetterT
   removeCustomValue: CustomRemoverT
@@ -51,9 +82,9 @@ export class SetupStore {
   selected: number[]
   tab: string
   team: TSetup[]
-  main: TSetup
+  main: TSetupPlus
   mainChar: string
-  comparing: TSetup[]
+  comparing: TSetupPlus[]
   custom: {
     name: StatsObjectKeysT
     value: number
@@ -107,6 +138,22 @@ export class SetupStore {
       }
     }
     this.forms = _.cloneDeep(this.forms)
+  }
+
+  setTotal = (key: TalentType, index: number, name: string, value: number) => {
+    if (index === 0) {
+      _.assign(this.main.total[key], { [name]: value })
+    } else {
+      _.assign(this.comparing[index - 1].total[key], { [name]: value })
+    }
+  }
+
+  getTotal = (key: TalentType, index: number) => {
+    if (index === 0) {
+      return _.sum(_.map(this.main.total[key]))
+    } else {
+      return _.sum(_.map(this.comparing[index - 1]?.total[key]))
+    }
   }
 
   setComparing = (value: Partial<ITeamChar>) => {

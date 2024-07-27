@@ -18,6 +18,8 @@ import { CompareTraceBlock } from '@src/presentation/hsr/components/compare/comp
 import { CompareSuperBreakSubRows } from '../tables/compare_super_break_sub_row '
 import { CharacterSelect } from '../character_select'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
+import { TalentType } from '@src/domain/constant'
+import { CompareTotalRows } from '../tables/compare_total_row'
 
 export const CompareBlock = observer(() => {
   const { setupStore, modalStore } = useStore()
@@ -100,8 +102,8 @@ export const CompareBlock = observer(() => {
     [allStats, charData]
   )
 
-  const Rows = ({ type }: { type: string }) => (
-    <>
+  const renderRow = (type: string, talent: TalentType) => (
+    <div>
       {_.map(getUniqueComponent(type), (item) => (
         <CompareSubRows
           key={item.name}
@@ -115,6 +117,7 @@ export const CompareBlock = observer(() => {
           name={item.name}
           property={item.property}
           element={item.element}
+          type={talent}
         />
       ))}
       {_.some(sumStats, (item) => item?.SUPER_BREAK) && (
@@ -138,7 +141,7 @@ export const CompareBlock = observer(() => {
           )}
         </div>
       )}
-    </>
+    </div>
   )
 
   return (
@@ -175,7 +178,7 @@ export const CompareBlock = observer(() => {
               <p className="col-span-2">DMG Component</p>
             </div>
           </div>
-          <div className="bg-primary-darker">
+          <div className="rounded-b-lg bg-primary-darker">
             <ScalingWrapper
               talent={
                 mainComputed?.BA_ALT
@@ -193,7 +196,10 @@ export const CompareBlock = observer(() => {
               level={char.talents?.basic}
               upgraded={main?.upgrade?.basic}
             >
-              <Rows type={StatsObjectKeys.BASIC_SCALING} />
+              <div className="flex flex-col justify-between h-full gap-4">
+                {renderRow(StatsObjectKeys.BASIC_SCALING, TalentType.BA)}
+                <CompareTotalRows type={TalentType.BA} />
+              </div>
             </ScalingWrapper>
             <div className="w-full my-2 border-t-2 border-primary-border" />
             <ScalingWrapper
@@ -203,7 +209,10 @@ export const CompareBlock = observer(() => {
               level={char.talents?.skill}
               upgraded={main?.upgrade?.skill}
             >
-              <Rows type={StatsObjectKeys.SKILL_SCALING} />
+              <div className="flex flex-col justify-between h-full gap-4">
+                {renderRow(StatsObjectKeys.SKILL_SCALING, TalentType.SKILL)}
+                <CompareTotalRows type={TalentType.SKILL} />
+              </div>
             </ScalingWrapper>
             <div className="w-full my-2 border-t-2 border-primary-border" />
             <ScalingWrapper
@@ -213,7 +222,10 @@ export const CompareBlock = observer(() => {
               level={char.talents?.ult}
               upgraded={main?.upgrade?.ult}
             >
-              <Rows type={StatsObjectKeys.ULT_SCALING} />
+              <div className="flex flex-col justify-between h-full gap-4">
+                {renderRow(StatsObjectKeys.ULT_SCALING, TalentType.ULT)}
+                <CompareTotalRows type={TalentType.ULT} />
+              </div>
             </ScalingWrapper>
             <div className="w-full my-2 border-t-2 border-primary-border" />
             <ScalingWrapper
@@ -223,7 +235,10 @@ export const CompareBlock = observer(() => {
               level={char.talents?.talent}
               upgraded={main?.upgrade?.talent}
             >
-              <Rows type={StatsObjectKeys.TALENT_SCALING} />
+              <div className="flex flex-col justify-between h-full gap-4">
+                {renderRow(StatsObjectKeys.TALENT_SCALING, TalentType.TALENT)}
+                <CompareTotalRows type={TalentType.TALENT} />
+              </div>
             </ScalingWrapper>
             <div className="w-full my-2 border-t-2 border-primary-border" />
             <ScalingWrapper
@@ -233,21 +248,27 @@ export const CompareBlock = observer(() => {
               level={1}
               upgraded={0}
             >
-              {_.map(getUniqueComponent(StatsObjectKeys.TECHNIQUE_SCALING), (item) => (
-                <CompareSubRows
-                  key={item}
-                  scaling={_.map(
-                    _.map(sumStats, (f) => f?.TECHNIQUE_SCALING),
-                    (s) => _.find(s, (a) => a.name === item.name)
-                  )}
-                  stats={sumStats}
-                  allStats={allStats}
-                  level={levels}
-                  name={item.name}
-                  property={item.property}
-                  element={item.element}
-                />
-              ))}
+              <div className="flex flex-col justify-between h-full gap-4 pb-2">
+                <div>
+                  {_.map(getUniqueComponent(StatsObjectKeys.TECHNIQUE_SCALING), (item) => (
+                    <CompareSubRows
+                      key={item.name}
+                      scaling={_.map(
+                        _.map(sumStats, (f) => f?.TECHNIQUE_SCALING),
+                        (s) => _.find(s, (a) => a.name === item.name)
+                      )}
+                      stats={sumStats}
+                      allStats={allStats}
+                      level={levels}
+                      name={item.name}
+                      property={item.property}
+                      element={item.element}
+                      type={TalentType.TECH}
+                    />
+                  ))}
+                </div>
+                <CompareTotalRows type={TalentType.TECH} />
+              </div>
             </ScalingWrapper>
           </div>
         </div>

@@ -14,7 +14,7 @@ export const Sidebar = ({ currentPage, onChange }: { currentPage: HsrPage; onCha
     return (
       <div
         className={classNames(
-          'flex items-center gap-2 px-4 py-2 text-sm font-normal duration-200 rounded-lg cursor-pointer text-gray',
+          'flex items-center gap-2 px-3 py-2 text-sm font-normal duration-200 rounded-lg cursor-pointer text-gray',
           page === currentPage ? 'bg-primary' : 'hover:bg-primary-dark'
         )}
         onClick={() => onChange(page)}

@@ -142,7 +142,7 @@ export const CharacterModal = observer(({ index, teamOverride, setChar, setLc }:
                     item.id,
                     settingStore.settings?.travelerGender
                   )}.webp`}
-                  className="object-cover rounded-t-lg bg-primary-darker aspect-[47/64]"
+                  className="object-cover rounded-t-lg bg-primary-darker aspect-[47/64] w-full"
                 />
               </div>
               <p className="w-full px-2 py-1 text-center truncate">{item.name}</p>

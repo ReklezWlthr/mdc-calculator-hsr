@@ -101,7 +101,7 @@ export const LCModal = observer(({ index, setWeapon, pathOverride }: LCModalProp
               {item.beta && <div className="absolute left-0 px-2 py-0.5 bottom-2 bg-rose-600 rounded-r-md">Beta</div>}
               <img
                 src={`https://api.hakush.in/hsr/UI/lightconemediumicon/${item.id}.webp`}
-                className="object-contain rounded-t-lg bg-primary-darker aspect-square"
+                className="object-contain w-full rounded-t-lg bg-primary-darker aspect-square"
               />
             </div>
             <div className="w-full h-10 px-2 py-1">

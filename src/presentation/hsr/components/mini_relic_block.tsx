@@ -54,6 +54,7 @@ export const MiniRelicBlock = observer(
                 <img
                   className="w-3.5"
                   src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[relic?.main]}`}
+                  onError={(e) => (e.currentTarget.src = `/icons/${StatIcons[relic?.main]}`)}
                 />
                 <p className="font-bold text-gray">
                   {_.includes([Stats.HP, Stats.ATK, Stats.SPD], relic?.main)
