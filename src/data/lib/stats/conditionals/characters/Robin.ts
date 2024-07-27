@@ -73,7 +73,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Impromptu Flourish`,
-      content: `While the Concerto state is active, the CRIT DMG dealt when all allies launch follow-up attacks increases by <span class="text-desc">25%</span>.`,
+      content: `While the Concerto state is active, the CRIT DMG dealt when all allies launch <u>follow-up attack</u>s increases by <span class="text-desc">25%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',

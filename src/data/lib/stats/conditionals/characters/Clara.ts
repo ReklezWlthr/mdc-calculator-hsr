@@ -42,7 +42,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Ultimate',
       title: `Promise, Not Command`,
       content: `After Clara uses Ultimate, DMG dealt to her is reduced by an extra {{0}}%, and she has greatly increased chances of being attacked by enemies for <span class="text-desc">2</span> turn(s).
-      <br />In addition, Svarog's Counter is enhanced. When an ally is attacked, Svarog immediately launches a Counter, and its DMG multiplier against the enemy increases by {{1}}%. Enemies adjacent to it take <span class="text-desc">50%</span> of the DMG dealt to the target enemy. Enhanced Counter(s) can take effect <span class="text-desc">2</span> time(s).`,
+      <br />In addition, Svarog's <u>Counter</u> is enhanced. When an ally is attacked, Svarog immediately launches a <u>Counter</u>, and its DMG multiplier against the enemy increases by {{1}}%. Enemies adjacent to it take <span class="text-desc">50%</span> of the DMG dealt to the target enemy. Enhanced <u>Counter(s)</u> can take effect <span class="text-desc">2</span> time(s).`,
       value: [
         { base: 15, growth: 1, style: 'curved' },
         { base: 96, growth: 6.4, style: 'curved' },
@@ -53,7 +53,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Talent',
       title: `Because We're Family`,
-      content: `Under the protection of Svarog, DMG taken by Clara when hit by enemy attacks is reduced by <span class="text-desc">10%</span>. Svarog will mark enemies who attack Clara with his Mark of Counter and retaliate with a Counter, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Clara's ATK.`,
+      content: `Under the protection of Svarog, DMG taken by Clara when hit by enemy attacks is reduced by <span class="text-desc">10%</span>. Svarog will mark enemies who attack Clara with his <b>Mark of Counter</b> and retaliate with a <u>Counter</u>, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Clara's ATK.`,
       value: [{ base: 80, growth: 8, style: 'curved' }],
       level: talent,
     },
@@ -75,12 +75,12 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Revenge`,
-      content: `Increases Svarog's Counter DMG by <span class="text-desc">30%</span>.`,
+      content: `Increases Svarog's <u>Counter</u> DMG by <span class="text-desc">30%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `A Tall Figure`,
-      content: `Using Skill will not remove Marks of Counter on the enemy.`,
+      content: `Using Skill will not remove <b>Marks of Counter</b> on the enemy.`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -107,7 +107,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: `Long Company`,
-      content: `After other allies are hit, Svarog also has a <span class="text-desc">50%</span> <u>fixed chance</u> to trigger a Counter on the attacker and mark them with a <b>Mark of Counter</b>. When using Ultimate, the number of Enhanced Counters increases by <span class="text-desc">1</span>.`,
+      content: `After other allies are hit, Svarog also has a <span class="text-desc">50%</span> <u>fixed chance</u> to trigger a <u>Counter</u> on the attacker and mark them with a <b>Mark of Counter</b>. When using Ultimate, the number of Enhanced <u>Counters</u> increases by <span class="text-desc">1</span>.`,
     },
   }
 

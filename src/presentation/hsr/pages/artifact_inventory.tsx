@@ -31,7 +31,7 @@ export const ArtifactInventory = observer(() => {
 
     return (
       <div
-        className={classNames('w-10 h-10 p-2 duration-200 rounded-full cursor-pointer hover:bg-primary-light', {
+        className={classNames('w-[30px] h-[30px] p-1 duration-200 rounded-full cursor-pointer hover:bg-primary-light', {
           'bg-primary-light': _.includes(params[field], value),
         })}
         onClick={() => setParams({ [field]: checked ? _.without(params[field], value) : [...params[field], value] })}
@@ -63,7 +63,7 @@ export const ArtifactInventory = observer(() => {
           <PrimaryButton title="Add New Relic" onClick={onOpenModal} />
         </div>
         <div className="w-full space-y-1">
-          <div className="flex items-center w-full gap-3">
+          <div className="flex items-start w-full gap-3">
             <div className="flex justify-center gap-2">
               {_.map(Array(6), (_item, index) => (
                 <TypeButton
@@ -93,7 +93,7 @@ export const ArtifactInventory = observer(() => {
                   item.img,
               }))}
               onChange={(main) => setParams({ main })}
-              placeholder="Main Stat"
+              placeholder="Main Stat - Match Any"
               style="w-[300px]"
             />
             <TagSelectInput
@@ -103,7 +103,7 @@ export const ArtifactInventory = observer(() => {
                 img: 'https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/' + item.img,
               }))}
               onChange={(subs) => setParams({ subs })}
-              placeholder="Sub Stats"
+              placeholder="Sub Stats - Include All"
               maxSelection={4}
               style="w-[300px]"
             />

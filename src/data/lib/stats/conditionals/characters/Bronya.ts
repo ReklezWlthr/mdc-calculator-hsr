@@ -98,7 +98,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 5,
       trace: 'Eidolon 4',
       title: 'Take by Surprise',
-      content: `After an ally other than Bronya uses Basic ATK on an enemy with <b class="text-hsr-wind">Wind</b> Weakness, Bronya immediately launches a follow-up attack on the target, dealing <b class="text-hsr-wind">Wind DMG</b> equal to <span class="text-desc">80%</span> of Bronya's Basic ATK DMG. This effect can only be triggered <span class="text-desc">1</span> time per turn.`,
+      content: `After an ally other than Bronya uses Basic ATK on an enemy with <b class="text-hsr-wind">Wind</b> Weakness, Bronya immediately launches a <u>follow-up attack</u> on the target, dealing <b class="text-hsr-wind">Wind DMG</b> equal to <span class="text-desc">80%</span> of Bronya's Basic ATK DMG. This effect can only be triggered <span class="text-desc">1</span> time per turn.`,
     },
     c5: {
       trace: 'Eidolon 5',

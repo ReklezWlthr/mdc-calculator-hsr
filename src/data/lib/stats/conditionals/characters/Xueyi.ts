@@ -57,7 +57,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       title: `Karmic Perpetuation`,
       content: `When Xueyi reduces enemy Toughness with attacks, <b>Karma</b> will be stacked. The more Toughness is reduced, the more stacks of <b>Karma</b> are added, up to <span class="text-desc">8</span> stacks.
       <br />When Xueyi's allies reduce enemy Toughness with attacks, Xueyi gains <span class="text-desc">1</span> stacks of <b>Karma</b>.
-      <br />When <b>Karma</b> reaches the max number of stacks, consumes all current <b>Karma</b> stacks and immediately launches a follow-up attack against an enemy target, dealing DMG for <span class="text-desc">3</span> times, with each time dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Xueyi's ATK to a single random enemy. This follow-up attack will not add <b>Karma</b> stacks.`,
+      <br />When <b>Karma</b> reaches the max number of stacks, consumes all current <b>Karma</b> stacks and immediately launches a <u>follow-up attack</u> against an enemy target, dealing DMG for <span class="text-desc">3</span> times, with each time dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Xueyi's ATK to a single random enemy. This <u>follow-up attack</u> will not add <b>Karma</b> stacks.`,
       value: [{ base: 45, growth: 4.5, style: 'curved' }],
       level: talent,
     },
@@ -84,12 +84,12 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c1: {
       trace: 'Eidolon 1',
       title: `Dvesha, Inhibited`,
-      content: `Increases the DMG dealt by the Talent's follow-up attack by <span class="text-desc">40%</span>.`,
+      content: `Increases the DMG dealt by the Talent's <u>follow-up attack</u> by <span class="text-desc">40%</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Klesha, Breached`,
-      content: `Talent's follow-up attack reduces enemy Toughness regardless of Weakness types. At the same time, restores Xueyi's HP by an amount equal to <span class="text-desc">5%</span> of her Max HP. When breaking Weakness, triggers the <b class="text-hsr-quantum">Quantum</b> Break Effect.`,
+      content: `Talent's <u>follow-up attack</u> reduces enemy Toughness regardless of Weakness types. At the same time, restores Xueyi's HP by an amount equal to <span class="text-desc">5%</span> of her Max HP. When breaking Weakness, triggers the <b class="text-hsr-quantum">Quantum</b> Break Effect.`,
     },
     c3: {
       trace: 'Eidolon 3',

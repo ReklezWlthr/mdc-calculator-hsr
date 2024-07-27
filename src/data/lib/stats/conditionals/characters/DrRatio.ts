@@ -40,7 +40,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Ultimate',
       title: 'Syllogistic Paradox',
-      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK to a single target enemy and applies <b>Wiseman's Folly</b>. When Dr. Ratio's allies attack a target afflicted with <b>Wiseman's Folly</b>, Dr. Ratio launches his Talent's follow-up attack for <span class="text-desc">1</span> time against this target.
+      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK to a single target enemy and applies <b>Wiseman's Folly</b>. When Dr. Ratio's allies attack a target afflicted with <b>Wiseman's Folly</b>, Dr. Ratio launches his Talent's <u>follow-up attack</u> for <span class="text-desc">1</span> time against this target.
       <br /><b>Wiseman's Folly</b> can be triggered for up to <span class="text-desc">2</span> times and only affects the most recent target of Dr. Ratio's Ultimate. This trigger count resets after Dr. Ratio's Ultimate is used.`,
       value: [{ base: 144, growth: 9.6, style: 'curved' }],
       level: ult,
@@ -49,7 +49,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Talent',
       title: 'Cogito, Ergo Sum',
-      content: `When using his Skill, Dr. Ratio has a <span class="text-desc">40%</span> <u>fixed chance</u> of launching a follow-up attack against his target for <span class="text-desc">1</span> time, dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK. For each debuff the target enemy has, the <u>fixed chance</u> of launching follow-up attack increases by <span class="text-desc">20%</span>. If the target enemy is defeated before the follow-up attack triggers, the follow-up attack will be directed at a single random enemy instead.`,
+      content: `When using his Skill, Dr. Ratio has a <span class="text-desc">40%</span> <u>fixed chance</u> of launching a <u>follow-up attack</u> against his target for <span class="text-desc">1</span> time, dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dr. Ratio's ATK. For each debuff the target enemy has, the <u>fixed chance</u> of launching <u>follow-up attack</u> increases by <span class="text-desc">20%</span>. If the target enemy is defeated before the <u>follow-up attack</u> triggers, the <u>follow-up attack</u> will be directed at a single random enemy instead.`,
       value: [{ base: 135, growth: 13.5, style: 'curved' }],
       level: talent,
     },
@@ -81,7 +81,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c2: {
       trace: 'Eidolon 2',
       title: 'The Divine Is in the Details',
-      content: `When his Talent's follow-up attack hits a target, for every debuff the target has, additionally deals <b class="text-hsr-imaginary">Imaginary Additional DMG</b> equal to <span class="text-desc">20%</span> of Dr. Ratio's ATK. This effect can be triggered for a maximum of <span class="text-desc">4</span> time(s) during each follow-up attack.`,
+      content: `When his Talent's <u>follow-up attack</u> hits a target, for every debuff the target has, additionally deals <b class="text-hsr-imaginary">Imaginary Additional DMG</b> equal to <span class="text-desc">20%</span> of Dr. Ratio's ATK. This effect can be triggered for a maximum of <span class="text-desc">4</span> time(s) during each <u>follow-up attack</u>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -103,7 +103,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: 'Vincit Omnia Veritas',
-      content: `Increases the trigger count for <b>Wiseman's Folly</b> by <span class="text-desc">1</span>. The DMG dealt by the Talent's follow-up attack increases by <span class="text-desc">50%</span>.`,
+      content: `Increases the trigger count for <b>Wiseman's Folly</b> by <span class="text-desc">1</span>. The DMG dealt by the Talent's <u>follow-up attack</u> increases by <span class="text-desc">50%</span>.`,
     },
   }
 

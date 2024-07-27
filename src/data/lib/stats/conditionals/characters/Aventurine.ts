@@ -54,7 +54,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       energy: c >= 4 ? 10 : 7,
       trace: 'Talent',
       title: `Shot Loaded Right`,
-      content: `For any single ally with <b class="text-indigo-300">Fortified Wager</b>, their Effect RES increases by {{0}}%, and when they get attacked, Aventurine gains <span class="text-desc">1</span> point of <b>Blind Bet</b>. When Aventurine has <b class="text-indigo-300">Fortified Wager</b>, he can resist Crowd Control debuffs. This effect can trigger again after <span class="text-desc">2</span> turn(s). Aventurine additionally gains <span class="text-desc">1</span> point(s) of <b>Blind Bet</b> after getting attacked. Upon reaching <span class="text-desc">7</span> points of <b>Blind Bet</b>, Aventurine consumes the <span class="text-desc">7</span> points to launch a <span class="text-desc">7</span>-hit follow-up attack, with each hit dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Aventurine's DEF to a single random enemy. <b>Blind Bet</b> is capped at <span class="text-desc">10</span> points.`,
+      content: `For any single ally with <b class="text-indigo-300">Fortified Wager</b>, their Effect RES increases by {{0}}%, and when they get attacked, Aventurine gains <span class="text-desc">1</span> point of <b>Blind Bet</b>. When Aventurine has <b class="text-indigo-300">Fortified Wager</b>, he can resist Crowd Control debuffs. This effect can trigger again after <span class="text-desc">2</span> turn(s). Aventurine additionally gains <span class="text-desc">1</span> point(s) of <b>Blind Bet</b> after getting attacked. Upon reaching <span class="text-desc">7</span> points of <b>Blind Bet</b>, Aventurine consumes the <span class="text-desc">7</span> points to launch a <span class="text-desc">7</span>-hit <u>follow-up attack</u>, with each hit dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Aventurine's DEF to a single random enemy. <b>Blind Bet</b> is capped at <span class="text-desc">10</span> points.`,
       value: [
         { base: 25, growth: 2.5, style: 'curved' },
         { base: 12.5, growth: 1.25, style: 'curved' },
@@ -85,7 +85,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Bingo!`,
-      content: `After an ally with <b class="text-indigo-300">Fortified Wager</b> launches a follow-up attack, Aventurine accumulates <span class="text-desc">1</span> Blind Bet point. This effect can trigger up to <span class="text-desc">3</span> time(s). And its trigger count resets at the start of Aventurine's turn. After Aventurine launches his Talent's follow-up attack, provides all allies with a <b class="text-indigo-300">Fortified Wager</b> that can block DMG equal to <span class="text-desc">7.2%</span> of Aventurine's DEF plus <span class="text-desc">96</span>, and additionally grants a <b class="text-indigo-300">Fortified Wager</b> that can block DMG equal to <span class="text-desc">7.2%</span> of Aventurine's DEF plus <span class="text-desc">96</span> to the ally with the lowest <b class="text-indigo-300">Shield</b> effect, lasting for <span class="text-desc">3</span> turns.`,
+      content: `After an ally with <b class="text-indigo-300">Fortified Wager</b> launches a <u>follow-up attack</u>, Aventurine accumulates <span class="text-desc">1</span> Blind Bet point. This effect can trigger up to <span class="text-desc">3</span> time(s). And its trigger count resets at the start of Aventurine's turn. After Aventurine launches his Talent's <u>follow-up attack</u>, provides all allies with a <b class="text-indigo-300">Fortified Wager</b> that can block DMG equal to <span class="text-desc">7.2%</span> of Aventurine's DEF plus <span class="text-desc">96</span>, and additionally grants a <b class="text-indigo-300">Fortified Wager</b> that can block DMG equal to <span class="text-desc">7.2%</span> of Aventurine's DEF plus <span class="text-desc">96</span> to the ally with the lowest <b class="text-indigo-300">Shield</b> effect, lasting for <span class="text-desc">3</span> turns.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -106,7 +106,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     c4: {
       trace: 'Eidolon 4',
       title: `Unexpected Hanging Paradox`,
-      content: `When triggering his Talent's follow-up attack, first increases Aventurine's DEF by <span class="text-desc">40%</span> for <span class="text-desc">2</span> turn(s), and additionally increases the Hits Per Action for his talent's follow-up attack by <span class="text-desc">3</span>.`,
+      content: `When triggering his Talent's <u>follow-up attack</u>, first increases Aventurine's DEF by <span class="text-desc">40%</span> for <span class="text-desc">2</span> turn(s), and additionally increases the Hits Per Action for his talent's <u>follow-up attack</u> by <span class="text-desc">3</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',

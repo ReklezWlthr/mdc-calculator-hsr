@@ -56,7 +56,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 10,
       trace: 'Talent',
       title: 'Girl Power',
-      content: `After a <b class="text-indigo-300">Shielded</b> ally is attacked by an enemy, March 7th immediately Counters, dealing <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of her ATK. This effect can be triggered <span class="text-desc">2</span> time(s) each turn.`,
+      content: `After a <b class="text-indigo-300">Shielded</b> ally is attacked by an enemy, March 7th immediately <u>Counters</u>, dealing <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of her ATK. This effect can be triggered <span class="text-desc">2</span> time(s) each turn.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: talent,
     },
@@ -100,7 +100,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c4: {
       trace: 'Eidolon 4',
       title: 'Never Forfeit Again',
-      content: `The Talent's Counter effect can be triggered <span class="text-desc">1</span> more time in each turn. The DMG dealt by Counter increases by an amount that is equal to <span class="text-desc">30%</span> of March 7th's DEF.`,
+      content: `The Talent's <u>Counter</u> effect can be triggered <span class="text-desc">1</span> more time in each turn. The DMG dealt by <u>Counter</u> increases by an amount that is equal to <span class="text-desc">30%</span> of March 7th's DEF.`,
     },
     c5: {
       trace: 'Eidolon 5',

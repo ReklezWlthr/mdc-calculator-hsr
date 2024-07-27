@@ -70,7 +70,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Talent',
       title: `Shuhu's Gift`,
       content: `When Blade sustains DMG or consumes his HP, he gains <span class="text-desc">1</span> stack of <b>Charge</b>, stacking up to <span class="text-desc">5</span> times. A max of <span class="text-desc">1</span> <b>Charge</b> stack can be gained every time he is attacked.
-      <br />When <b>Charge</b> stack reaches maximum, immediately launches a follow-up attack on all enemies, dealing <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Blade's ATK plus {{1}}% of his Max HP. At the same time, restores Blade's HP by <span class="text-desc">25%</span> of his Max HP. After the follow-up attack, all <b>Charges</b> are consumed.`,
+      <br />When <b>Charge</b> stack reaches maximum, immediately launches a <u>follow-up attack</u> on all enemies, dealing <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Blade's ATK plus {{1}}% of his Max HP. At the same time, restores Blade's HP by <span class="text-desc">25%</span> of his Max HP. After the <u>follow-up attack</u>, all <b>Charges</b> are consumed.`,
       value: [
         { base: 22, growth: 2.2, style: 'curved' },
         { base: 55, growth: 5.5, style: 'curved' },
@@ -97,7 +97,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Cyclone of Destruction`,
-      content: `DMG dealt by Talent's follow-up attack increases by <span class="text-desc">20%</span>.`,
+      content: `DMG dealt by Talent's <u>follow-up attack</u> increases by <span class="text-desc">20%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -130,7 +130,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: `Reborn Into an Empty Husk`,
-      content: `The maximum number of <b>Charge</b> stacks is reduced to <span class="text-desc">4</span>. The DMG of the follow-up attack triggered by Blade's Talent additionally increases by <span class="text-desc">50%</span> of his Max HP.`,
+      content: `The maximum number of <b>Charge</b> stacks is reduced to <span class="text-desc">4</span>. The DMG of the <u>follow-up attack</u> triggered by Blade's Talent additionally increases by <span class="text-desc">50%</span> of his Max HP.`,
     },
   }
 

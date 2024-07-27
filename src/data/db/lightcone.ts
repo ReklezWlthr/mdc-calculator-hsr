@@ -407,7 +407,7 @@ export const LightCones = [
     type: PathType.ERUDITION,
     desc: {
       name: 'The Maiden in the Painting',
-      detail: `Increases DMG dealt by the wearer's follow-up attacks by {{0}}%. If the current HP of the target enemy is below <span class="text-desc">50%</span> of Max HP, increases DMG dealt by follow-up attacks by an extra {{0}}%.`,
+      detail: `Increases DMG dealt by the wearer's <u>follow-up attack</u>s by {{0}}%. If the current HP of the target enemy is below <span class="text-desc">50%</span> of Max HP, increases DMG dealt by <u>follow-up attack</u>s by an extra {{0}}%.`,
       properties: [{ base: 24, growth: 6 }],
     },
   },
@@ -1291,7 +1291,7 @@ export const LightCones = [
     type: PathType.ERUDITION,
     desc: {
       name: 'Long Night',
-      detail: `Increases the wearer's CRIT DMG by {{0}}%. Increases the wearer's Skill and Ultimate DMG by {{1}}%. After the wearer uses their Skill or Ultimate, they gain <b>Somnus Corpus</b>. Upon triggering a follow-up attack, <b>Somnus Corpus</b> will be consumed and the follow-up attack DMG increases by {{2}}%.`,
+      detail: `Increases the wearer's CRIT DMG by {{0}}%. Increases the wearer's Skill and Ultimate DMG by {{1}}%. After the wearer uses their Skill or Ultimate, they gain <b>Somnus Corpus</b>. Upon triggering a <u>follow-up attack</u>, <b>Somnus Corpus</b> will be consumed and the <u>follow-up attack</u> DMG increases by {{2}}%.`,
       properties: [
         { base: 36, growth: 6 },
         { base: 18, growth: 3 },
@@ -1399,7 +1399,7 @@ export const LightCones = [
     type: PathType.HUNT,
     desc: {
       name: 'One At A Time',
-      detail: `Increase the wearer's CRIT Rate by {{0}}% and their follow-up attacks' DMG by {{1}}%. After the wearer uses a follow-up attack, apply the <b>Tame</b> state to the target, stacking up to <span class="text-desc">2</span> stacks. When allies hit enemy targets under the <b>Tame</b> state, every <b>Tame</b> stack increases the CRIT DMG dealt by {{2}}%.`,
+      detail: `Increase the wearer's CRIT Rate by {{0}}% and their <u>follow-up attack</u>s' DMG by {{1}}%. After the wearer uses a <u>follow-up attack</u>, apply the <b>Tame</b> state to the target, stacking up to <span class="text-desc">2</span> stacks. When allies hit enemy targets under the <b>Tame</b> state, every <b>Tame</b> stack increases the CRIT DMG dealt by {{2}}%.`,
       properties: [
         { base: 18, growth: 3 },
         { base: 30, growth: 5 },
@@ -1470,7 +1470,7 @@ export const LightCones = [
     type: PathType.HUNT,
     desc: {
       name: 'Mental Training',
-      detail: `Increases the wearer's CRIT DMG by {{0}}%. For every debuff on the enemy target, the wearer's CRIT DMG dealt against this target increases by {{1}}%, stacking up to <span class="text-desc">3</span> times. When using their Ultimate to attack the enemy target, the wearer receives the <b>Disputation</b> effect, which increases DMG dealt by {{2}}% and enables their follow-up attacks to ignore {{3}}% of the target's DEF. This effect lasts for <span class="text-desc">2</span> turns.`,
+      detail: `Increases the wearer's CRIT DMG by {{0}}%. For every debuff on the enemy target, the wearer's CRIT DMG dealt against this target increases by {{1}}%, stacking up to <span class="text-desc">3</span> times. When using their Ultimate to attack the enemy target, the wearer receives the <b>Disputation</b> effect, which increases DMG dealt by {{2}}% and enables their <u>follow-up attack</u>s to ignore {{3}}% of the target's DEF. This effect lasts for <span class="text-desc">2</span> turns.`,
       properties: [
         { base: 20, growth: 3 },
         { base: 8, growth: 1 },
@@ -1525,7 +1525,7 @@ export const LightCones = [
     type: PathType.PRESERVATION,
     desc: {
       name: 'All-In',
-      detail: `Increases the wearer's DEF by {{0}}%. When the wearer provides a <b class="text-indigo-300">Shield</b> to an ally, the wearer's CRIT DMG increases by {{0}}%, lasting for <span class="text-desc">2</span> turn(s). When the wearer's follow-up attack hits an enemy target, there is a {{1}}% <u>base chance</u> to increase the DMG taken by the attacked enemy target by {{2}}%, lasting for <span class="text-desc">2</span> turn(s).`,
+      detail: `Increases the wearer's DEF by {{0}}%. When the wearer provides a <b class="text-indigo-300">Shield</b> to an ally, the wearer's CRIT DMG increases by {{0}}%, lasting for <span class="text-desc">2</span> turn(s). When the wearer's <u>follow-up attack</u> hits an enemy target, there is a {{1}}% <u>base chance</u> to increase the DMG taken by the attacked enemy target by {{2}}%, lasting for <span class="text-desc">2</span> turn(s).`,
       properties: [
         { base: 40, growth: 6 },
         { base: 100, growth: 15 },
@@ -1613,7 +1613,7 @@ export const LightCones = [
     type: PathType.ERUDITION,
     desc: {
       name: 'Promise',
-      detail: `Increases the wearer's CRIT Rate by {{0}}%. While the wearer is in battle, for every <span class="text-desc">20%</span> CRIT DMG that exceeds <span class="text-desc">120%</span>, the DMG of the wearer's follow-up attack is increased by {{1}}%. This effect can stack up to <span class="text-desc">4</span> time(s). When the battle starts or after the wearer uses their Basic ATK, enables the Ultimate and the follow-up attack to ignore {{2}}% of the target's DEF, lasting for <span class="text-desc">2</span> turn(s).`,
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. While the wearer is in battle, for every <span class="text-desc">20%</span> CRIT DMG that exceeds <span class="text-desc">120%</span>, the DMG of the wearer's <u>follow-up attack</u> is increased by {{1}}%. This effect can stack up to <span class="text-desc">4</span> time(s). When the battle starts or after the wearer uses their Basic ATK, enables the Ultimate and the <u>follow-up attack</u> to ignore {{2}}% of the target's DEF, lasting for <span class="text-desc">2</span> turn(s).`,
       properties: [
         { base: 16, growth: 3 },
         { base: 12, growth: 2 },
@@ -1650,7 +1650,7 @@ export const LightCones = [
     type: PathType.DESTRUCTION,
     desc: {
       name: 'Deeply Engrossed',
-      detail: `Greatly increases the odds that the wearer will be attacked and increases the wearer's CRIT DMG by {{0}}%. After the wearer uses their Ultimate, they receive <span class="text-desc">1</span> stack of <b>Firedance</b>, lasting for <span class="text-desc">2</span> turns and up to <span class="text-desc">2</span> stacks. Each stack of <b>Firedance</b> increases the DMG dealt by the wearer's follow-up attack by {{0}}%.`,
+      detail: `Greatly increases the odds that the wearer will be attacked and increases the wearer's CRIT DMG by {{0}}%. After the wearer uses their Ultimate, they receive <span class="text-desc">1</span> stack of <b>Firedance</b>, lasting for <span class="text-desc">2</span> turns and up to <span class="text-desc">2</span> stacks. Each stack of <b>Firedance</b> increases the DMG dealt by the wearer's <u>follow-up attack</u> by {{0}}%.`,
       properties: [{ base: 36, growth: 6 }],
     },
   },

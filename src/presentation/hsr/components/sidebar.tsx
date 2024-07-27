@@ -10,16 +10,17 @@ import Link from 'next/link'
 export const Sidebar = ({ currentPage, onChange }: { currentPage: HsrPage; onChange: (page: HsrPage) => void }) => {
   const { modalStore } = useStore()
 
-  const Pill = ({ name, page }: { name: string; page: HsrPage }) => {
+  const Pill = ({ name, page, icon }: { name: string; page: HsrPage; icon: string }) => {
     return (
       <div
         className={classNames(
-          'px-4 py-2 text-sm font-normal duration-200 rounded-lg cursor-pointer text-gray',
+          'flex items-center gap-2 px-4 py-2 text-sm font-normal duration-200 rounded-lg cursor-pointer text-gray',
           page === currentPage ? 'bg-primary' : 'hover:bg-primary-dark'
         )}
         onClick={() => onChange(page)}
       >
-        {name}
+        <i className={classNames(icon, 'w-5 flex items-center justify-center text-white')} />
+        <p>{name}</p>
       </div>
     )
   }
@@ -37,17 +38,17 @@ export const Sidebar = ({ currentPage, onChange }: { currentPage: HsrPage; onCha
           </p>
           <p className="text-xs font-normal text-gray">Honkai: Star Rail</p>
         </Link>
-        <div className='border-t border-primary-light' />
+        <div className="border-t border-primary-light" />
         <p className="p-2 font-bold text-white">Calculator</p>
-        <Pill name="Team Setup" page={HsrPage.TEAM} />
-        <Pill name="Damage Calculator" page={HsrPage.DMG} />
+        <Pill name="Team Setup" page={HsrPage.TEAM} icon="fa-solid fa-user" />
+        <Pill name="Damage Calculator" page={HsrPage.DMG} icon="fa-solid fa-chart-simple" />
         {/* <Pill name="Turn Cycle" page={HsrPage.CYCLE} /> */}
-        <Pill name="Compare" page={HsrPage.COMPARE} />
-        <Pill name="Import / Export" page={HsrPage.IMPORT} />
+        <Pill name="Compare" page={HsrPage.COMPARE} icon="fa-solid fa-arrow-right-arrow-left" />
+        <Pill name="Import / Export" page={HsrPage.IMPORT} icon="fa-solid fa-file-import" />
         <p className="p-2 font-bold text-white">Account</p>
-        <Pill name="My Characters" page={HsrPage.CHAR} />
-        <Pill name="My Builds" page={HsrPage.BUILD} />
-        <Pill name="Relic Inventory" page={HsrPage.INVENTORY} />
+        <Pill name="My Characters" page={HsrPage.CHAR} icon="fa-solid fa-user-group" />
+        <Pill name="My Builds" page={HsrPage.BUILD} icon="fa-solid fa-screwdriver-wrench" />
+        <Pill name="Relic Inventory" page={HsrPage.INVENTORY} icon="fa-solid fa-briefcase" />
       </div>
       <div className="flex items-end justify-between px-3">
         <div className="space-y-3 text-sm">

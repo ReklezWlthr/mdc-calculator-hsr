@@ -48,7 +48,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       energy: 5,
       trace: 'Ultimate',
       title: `Vow of the Deep`,
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Jade's ATK to all enemies. At the same time, Jade enhances her Talent's follow-up attack, increasing its DMG multiplier by {{1}}%. This enhancement can trigger <span class="text-desc">2</span> time(s).`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Jade's ATK to all enemies. At the same time, Jade enhances her Talent's <u>follow-up attack</u>, increasing its DMG multiplier by {{1}}%. This enhancement can trigger <span class="text-desc">2</span> time(s).`,
       value: [
         { base: 120, growth: 12, style: 'curved' },
         { base: 40, growth: 4, style: 'curved' },
@@ -59,8 +59,8 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       energy: 10,
       trace: 'Talent',
       title: `Fang of Flare Flaying`,
-      content: `After Jade or the <b>Debt Collector</b> unit attacks, gains <span class="text-desc">1</span> point of <b>Charge</b> for each enemy target hit. Upon reaching <span class="text-desc">8</span> points of <b>Charge</b>, consumes the <span class="text-desc">8</span> points to launch <span class="text-desc">1</span> instance of follow-up attack, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Jade's ATK to all enemies. This follow-up attack does not generate <b>Charge</b>.
-      <br />When launching her Talent's follow-up attack, Jade immediately gains <span class="text-desc">5</span> stack(s) of <b class="text-hsr-quantum">Pawned Asset</b>, with each stack increasing CRIT DMG by {{1}}%, stacking up to <span class="text-desc">50</span> times.`,
+      content: `After Jade or the <b>Debt Collector</b> unit attacks, gains <span class="text-desc">1</span> point of <b>Charge</b> for each enemy target hit. Upon reaching <span class="text-desc">8</span> points of <b>Charge</b>, consumes the <span class="text-desc">8</span> points to launch <span class="text-desc">1</span> instance of <u>follow-up attack</u>, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Jade's ATK to all enemies. This <u>follow-up attack</u> does not generate <b>Charge</b>.
+      <br />When launching her Talent's <u>follow-up attack</u>, Jade immediately gains <span class="text-desc">5</span> stack(s) of <b class="text-hsr-quantum">Pawned Asset</b>, with each stack increasing CRIT DMG by {{1}}%, stacking up to <span class="text-desc">50</span> times.`,
       value: [
         { base: 60, growth: 6, style: 'curved' },
         { base: 1.2, growth: 0.12, style: 'curved' },
@@ -90,7 +90,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c1: {
       trace: 'Eidolon 1',
       title: `Altruism? Nevertheless Tradable`,
-      content: `The follow-up attack DMG from Jade's Talent increases by <span class="text-desc">32%</span>. After the <b>Debt Collector</b> character attacks and the number of the enemy target(s) hit is either <span class="text-desc">2</span> or <span class="text-desc">1</span>, Jade additionally gains <span class="text-desc">1</span> or <span class="text-desc">2</span> point(s) of <b>Charge</b> respectively.`,
+      content: `The <u>follow-up attack</u> DMG from Jade's Talent increases by <span class="text-desc">32%</span>. After the <b>Debt Collector</b> character attacks and the number of the enemy target(s) hit is either <span class="text-desc">2</span> or <span class="text-desc">1</span>, Jade additionally gains <span class="text-desc">1</span> or <span class="text-desc">2</span> point(s) of <b>Charge</b> respectively.`,
     },
     c2: {
       trace: 'Eidolon 2',

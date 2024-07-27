@@ -50,7 +50,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Talent',
       title: `Fine, I'll Do It Myself`,
-      content: `When an ally's attack causes an enemy's HP percentage to fall to <span class="text-desc">50%</span> or lower, Herta will launch a follow-up attack, dealing <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Herta's ATK to all enemies.`,
+      content: `When an ally's attack causes an enemy's HP percentage to fall to <span class="text-desc">50%</span> or lower, Herta will launch a <u>follow-up attack</u>, dealing <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Herta's ATK to all enemies.`,
       value: [{ base: 25, growth: 1.5, style: 'curved' }],
       level: talent,
     },

@@ -240,8 +240,8 @@ export const RelicSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases the DMG dealt by follow-up attack by <span class="text-desc">20%</span>.`,
-      `When the wearer uses follow-up attacks, increases the wearer's ATK by <span class="text-desc">6%</span> for every time the follow-up attack deals DMG. This effect can stack up to <span class="text-desc">8</span> time(s) and lasts for <span class="text-desc">3</span> turn(s). This effect is removed the next time the wearer uses a follow-up attack.`,
+      `Increases the DMG dealt by <u>follow-up attack</u> by <span class="text-desc">20%</span>.`,
+      `When the wearer uses <u>follow-up attack</u>s, increases the wearer's ATK by <span class="text-desc">6%</span> for every time the <u>follow-up attack</u> deals DMG. This effect can stack up to <span class="text-desc">8</span> time(s) and lasts for <span class="text-desc">3</span> turn(s). This effect is removed the next time the wearer uses a <u>follow-up attack</u>.`,
     ],
   },
   {
@@ -332,8 +332,8 @@ export const RelicSets: IArtifact[] = [
     id: '119',
     name: 'Iron Cavalry Against the Scourge',
     icon: '71032',
-    bonus: [],
-    bonusAdd: [{ stat: Stats.BE, value: 0.16 }],
+    bonus: [{ stat: Stats.BE, value: 0.16 }],
+    bonusAdd: [],
     add: (base) => {
       base.CALLBACK.push((x: StatsObject) => {
         if (x.getValue(Stats.BE) >= 2.5)
@@ -365,7 +365,7 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [{ stat: Stats.CRIT_RATE, value: 0.06 }],
     desc: [
       `ATK increases by <span class="text-desc">12%</span>.`,
-      `Increases the wearer's CRIT Rate by <span class="text-desc">6%</span>. After the wearer uses follow-up attack, increases DMG dealt by Ultimate by <span class="text-desc">36%</span>, lasting for <span class="text-desc">1</span> turn(s).`,
+      `Increases the wearer's CRIT Rate by <span class="text-desc">6%</span>. After the wearer uses <u>follow-up attack</u>, increases DMG dealt by Ultimate by <span class="text-desc">36%</span>, lasting for <span class="text-desc">1</span> turn(s).`,
     ],
   },
 ]
@@ -494,7 +494,7 @@ export const PlanarSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases the wearer's CRIT Rate by <span class="text-desc">8%</span>. When the wearer's current CRIT Rate reaches <span class="text-desc">50%</span> or higher, the DMG dealt by the wearer's Ultimate and follow-up attack increases by <span class="text-desc">15%</span>.`,
+      `Increases the wearer's CRIT Rate by <span class="text-desc">8%</span>. When the wearer's current CRIT Rate reaches <span class="text-desc">50%</span> or higher, the DMG dealt by the wearer's Ultimate and <u>follow-up attack</u> increases by <span class="text-desc">15%</span>.`,
     ],
   },
   {
@@ -667,7 +667,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [],
     bonusAdd: [],
     desc: [
-      `When an ally uses follow-up attack, the wearer receives <span class="text-desc">1</span> stack of <b>Merit</b>, stacking up to <span class="text-desc">5</span> times. Every stack of <b>Merit</b> increases the DMG dealt by the wearer's follow-up attacks by <span class="text-desc">5%</span>. When there are <span class="text-desc">5</span> stacks, additionally increases the wearer's CRIT DMG by <span class="text-desc">25%</span>.`,
+      `When an ally uses <u>follow-up attack</u>, the wearer receives <span class="text-desc">1</span> stack of <b>Merit</b>, stacking up to <span class="text-desc">5</span> times. Every stack of <b>Merit</b> increases the DMG dealt by the wearer's <u>follow-up attack</u>s by <span class="text-desc">5%</span>. When there are <span class="text-desc">5</span> stacks, additionally increases the wearer's CRIT DMG by <span class="text-desc">25%</span>.`,
     ],
   },
   {

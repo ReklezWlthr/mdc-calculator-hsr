@@ -45,10 +45,10 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: `Earthbind, Etherbreak`,
-      content: `Consumes <span class="text-desc">120</span> Energy. Yunli gains Parry and Taunts all enemies, lasting until the end of the next ally's or enemy's turn. Increases the CRIT DMG dealt by Yunli's next Counter by {{3}}%. When triggering the Counter effect from Talent, launches the <b>Counter Intuit: Cull</b> instead and removes the Parry effect. If no Counter is triggered while Parry is active, Yunli will immediately launch the <b>Counter Intuit: Slash</b> on a random enemy target.
-      <br /><b>Intuit: Slash</b>: Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to the target, and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Yunli's ATK to adjacent targets.
+      content: `Consumes <span class="text-desc">120</span> Energy. Yunli gains Parry and Taunts all enemies, lasting until the end of the next ally's or enemy's turn. Increases the CRIT DMG dealt by Yunli's next <u>Counter</u> by {{3}}%. When triggering the <u>Counter</u> effect from Talent, launches the <u>Counter</u> <b>Intuit: Cull</b> instead and removes the Parry effect. If no <u>Counter</u> is triggered while Parry is active, Yunli will immediately launch the <u>Counter</u> <b>Intuit: Slash</b> on a random enemy target.
+      <br /><br /><b>Intuit: Slash</b>: Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to the target, and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Yunli's ATK to adjacent targets.
       <br /><b>Intuit: Cull</b>: Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to the target, and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Yunli's ATK to adjacent targets. Then, additionally deals <span class="text-desc">6</span> instances of DMG, each dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{2}}% of Yunli's ATK to a random single enemy.
-      <br />When Yunli deals DMG via this ability, it will be viewed as Ultimate DMG.
+      <br /><br />When Yunli deals DMG via this ability, it will be viewed as Ultimate DMG.
       <br />Each instance of <b>Intuit: Cull</b>'s bounce DMG deals <span class="text-desc">25%</span> of the Toughness reduction DMG of this skill's central target DMG.`,
       value: [
         { base: 132, growth: 8.8, style: 'curved' },
@@ -62,7 +62,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 10,
       trace: 'Talent',
       title: `Flashforge`,
-      content: `When Yunli gets attacked by an enemy target, additionally regenerates <span class="text-desc">15</span> Energy and immediately launches a Counter on the attacker, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to the attacker, and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Yunli's ATK to adjacent targets. If there is no immediate target to Counter, then Counters a random enemy target instead.`,
+      content: `When Yunli gets attacked by an enemy target, additionally regenerates <span class="text-desc">15</span> Energy and immediately launches a <u>Counter</u> on the attacker, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to the attacker, and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Yunli's ATK to adjacent targets. If there is no immediate target to <u>Counter</u>, then <u>Counters</u> a random enemy target instead.`,
       value: [
         { base: 60, growth: 6, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },
@@ -77,7 +77,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a6: {
       trace: 'Ascension 6 Passive',
       title: `True Sunder`,
-      content: `When using a Counter, increases Yunli's ATK by <span class="text-desc">30%</span>. lasting for <span class="text-desc">1</span> turn.`,
+      content: `When using a <u>Counter</u>, increases Yunli's ATK by <span class="text-desc">30%</span>. lasting for <span class="text-desc">1</span> turn.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -97,7 +97,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c2: {
       trace: 'Eidolon 2',
       title: `First Luster Breaks Dawn`,
-      content: `When dealing DMG via Counter, ignores <span class="text-desc">20%</span> of the target's DEF.`,
+      content: `When dealing DMG via <u>Counter</u>, ignores <span class="text-desc">20%</span> of the target's DEF.`,
     },
     c3: {
       trace: 'Eidolon 3',

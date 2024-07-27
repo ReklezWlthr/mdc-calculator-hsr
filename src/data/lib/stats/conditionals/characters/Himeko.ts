@@ -54,7 +54,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: 'Talent',
       title: 'Victory Rush',
       content: `When an enemy is inflicted with Weakness Break, Himeko gains <span class="text-desc">1</span> point of <b>Charge</b> (max <span class="text-desc">3</span> points).
-      <br />If Himeko is fully <b>Charged</b> when an ally performs an attack, Himeko immediately performs <span class="text-desc">1</span> follow-up attack and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of her ATK to all enemies, consuming all <b>Charge</b> points.
+      <br />If Himeko is fully <b>Charged</b> when an ally performs an attack, Himeko immediately performs <span class="text-desc">1</span> <u>follow-up attack</u> and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of her ATK to all enemies, consuming all <b>Charge</b> points.
       <br />At the start of the battle, Himeko gains <span class="text-desc">1</span> point of <b>Charge</b>.`,
       value: [{ base: 70, growth: 7, style: 'curved' }],
       level: talent,

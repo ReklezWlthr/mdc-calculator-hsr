@@ -39,7 +39,7 @@ export const ArtifactListModal = observer(
       <div className="w-[65vw] p-4 text-white rounded-xl bg-primary-darker space-y-4">
         <div className="flex items-center justify-between w-full">
           <p className="text-lg font-bold">Choose a Relic</p>
-          <div className="flex items-center gap-3">
+          <div className="flex items-start gap-3">
             <SelectTextInput
               value={params.set}
               options={_.map(AllRelicSets, (artifact) => ({
@@ -57,7 +57,7 @@ export const ArtifactListModal = observer(
                 img: 'https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/' + item.img,
               }))}
               onChange={(main) => setParams({ main })}
-              placeholder="Main Stat"
+              placeholder="Main Stat - Match Any"
               style="w-[220px]"
             />
             <TagSelectInput
@@ -67,7 +67,7 @@ export const ArtifactListModal = observer(
                 img: 'https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/' + item.img,
               }))}
               onChange={(subs) => setParams({ subs })}
-              placeholder="Sub Stats"
+              placeholder="Sub Stats - Include All"
               maxSelection={4}
               style="w-[220px]"
             />

@@ -61,7 +61,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 10,
       trace: 'Talent',
       title: 'Gentle but Cruel',
-      content: `After an ally of Kafka's uses Basic ATK on an enemy target, Kafka immediately launches <span class="text-desc">1</span> follow-up attack and deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of her ATK to that target, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> equivalent to that applied by her Ultimate to the attacked enemy target for <span class="text-desc">2</span> turns. This effect can only be triggered <span class="text-desc">1</span> time per turn.`,
+      content: `After an ally of Kafka's uses Basic ATK on an enemy target, Kafka immediately launches <span class="text-desc">1</span> <u>follow-up attack</u> and deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of her ATK to that target, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> equivalent to that applied by her Ultimate to the attacked enemy target for <span class="text-desc">2</span> turns. This effect can only be triggered <span class="text-desc">1</span> time per turn.`,
       value: [{ base: 42, growth: 9.8, style: 'curved' }],
       level: talent,
     },
@@ -83,12 +83,12 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Thorns',
-      content: `The <u>base chance</u> for Ultimate, Technique, or the follow-up attack triggered by the Talent to inflict <b class="text-hsr-lightning">Shock</b> increases by <span class="text-desc">30%</span>.`,
+      content: `The <u>base chance</u> for Ultimate, Technique, or the <u>follow-up attack</u> triggered by the Talent to inflict <b class="text-hsr-lightning">Shock</b> increases by <span class="text-desc">30%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Da Capo',
-      content: `When the Talent triggers a follow-up attack, there is a <span class="text-desc">100%</span> <u>base chance</u> to increase the DoT received by the target by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `When the Talent triggers a <u>follow-up attack</u>, there is a <span class="text-desc">100%</span> <u>base chance</u> to increase the DoT received by the target by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -115,7 +115,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: 'Leggiero',
-      content: `The <b class="text-hsr-lightning">Shock</b> inflicted on the enemy target by the Ultimate, the Technique, or the Talent-triggered follow-up attack has a DMG multiplier increase of <span class="text-desc">156%</span> and lasts <span class="text-desc">1</span> turn(s) longer.`,
+      content: `The <b class="text-hsr-lightning">Shock</b> inflicted on the enemy target by the Ultimate, the Technique, or the Talent-triggered <u>follow-up attack</u> has a DMG multiplier increase of <span class="text-desc">156%</span> and lasts <span class="text-desc">1</span> turn(s) longer.`,
     },
   }
 

@@ -74,7 +74,7 @@ export const TagSelectInput = ({
         {label && <p className={classNames('mb-1', { 'bodyM text-dark-0': !classLabel }, classLabel)}>{label}</p>}
         <Popover.Button
           className={classNames(
-            'relative flex shadow-light-01 justify-between items-center px-2 py-1 border rounded-lg text-sm transition-all duration-300 w-full min-h-[30px]',
+            'relative flex gap-1 shadow-light-01 justify-between items-center px-2 py-1 border rounded-lg text-sm transition-all duration-300 w-full min-h-[30px]',
             { 'cursor-not-allowed bg-primary-bg border-primary text-primary-light': disabled },
             { 'cursor-pointer hover:border-primary-lighter bg-primary-darker border-primary-light': !disabled },
             { 'text-gray': _.size(values) },
@@ -83,6 +83,15 @@ export const TagSelectInput = ({
           disabled={disabled}
         >
           <div className="flex flex-wrap gap-x-2 gap-y-1">{_.size(values) ? tagRender() : placeholder}</div>
+          {!!_.size(values) && (
+            <i
+              className="cursor-pointer fa-solid fa-times-circle text-primary-light"
+              onClick={(e) => {
+                e.stopPropagation()
+                onChange([])
+              }}
+            />
+          )}
         </Popover.Button>
         <Transition
           enter="transition duration-150 ease-out origin-top"

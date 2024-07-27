@@ -32,8 +32,8 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: 'Difficulty Paying?',
-      content: `Inflicts a single target enemy with a <b>Proof of Debt</b> status, increasing the DMG it takes from follow-up attacks by {{0}}%. <b>Proof of Debt</b> only takes effect on the most recent target it is applied to. If there are no enemies inflicted with <b>Proof of Debt</b> on the field when an ally's turn starts or when an ally takes action, Topaz will inflict a random enemy with <b>Proof of Debt</b>.
-      <br />Numby deals <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Topaz's ATK to this target. Using this Skill to deal DMG is considered as launching a follow-up attack.`,
+      content: `Inflicts a single target enemy with a <b>Proof of Debt</b> status, increasing the DMG it takes from <u>follow-up attack</u>s by {{0}}%. <b>Proof of Debt</b> only takes effect on the most recent target it is applied to. If there are no enemies inflicted with <b>Proof of Debt</b> on the field when an ally's turn starts or when an ally takes action, Topaz will inflict a random enemy with <b>Proof of Debt</b>.
+      <br />Numby deals <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Topaz's ATK to this target. Using this Skill to deal DMG is considered as launching a <u>follow-up attack</u>.`,
       value: [
         { base: 25, growth: 2.5, style: 'curved' },
         { base: 75, growth: 7.5, style: 'curved' },
@@ -54,8 +54,8 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     talent: {
       trace: 'Talent',
       title: `Trotter Market!?`,
-      content: `Summons Numby at the start of battle. Numby has <span class="text-desc">80</span> SPD by default. When taking action, Numby launches follow-up attacks on a single enemy target afflicted with <b>Proof of Debt</b>, dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Topaz's ATK.
-      <br />When enemies afflicted with <b>Proof of Debt</b> receive an ally's follow-up attacks, Numby's action is Advanced Forward by <span class="text-desc">50%</span>. The action Advance Forward effect cannot be triggered during Numby's own turn.
+      content: `Summons Numby at the start of battle. Numby has <span class="text-desc">80</span> SPD by default. When taking action, Numby launches <u>follow-up attack</u>s on a single enemy target afflicted with <b>Proof of Debt</b>, dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Topaz's ATK.
+      <br />When enemies afflicted with <b>Proof of Debt</b> receive an ally's <u>follow-up attack</u>s, Numby's action is Advanced Forward by <span class="text-desc">50%</span>. The action Advance Forward effect cannot be triggered during Numby's own turn.
       <br />When Topaz is downed, Numby disappears.`,
       value: [{ base: 75, growth: 7.5, style: 'curved' }],
       level: talent,
@@ -71,7 +71,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Overdraft`,
-      content: `When Topaz uses Basic ATK to deal DMG, it will be considered as a follow-up attack.`,
+      content: `When Topaz uses Basic ATK to deal DMG, it will be considered as a <u>follow-up attack</u>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -86,8 +86,8 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c1: {
       trace: 'Eidolon 1',
       title: `Future Market`,
-      content: `When enemies afflicted with <b>Proof of Debt</b> receive follow-up attacks, they will enter the <b>Debtor</b> state. This can take effect only once within a single action.
-      <br />The <b>Debtor</b> state increases the CRIT DMG of follow-up attacks inflicted on the target enemies by <span class="text-desc">25%</span>, stacking up to <span class="text-desc">2</span> time(s). When <b>Proof of Debt</b> is removed, the <b>Debtor</b> state is also removed.`,
+      content: `When enemies afflicted with <b>Proof of Debt</b> receive <u>follow-up attack</u>s, they will enter the <b>Debtor</b> state. This can take effect only once within a single action.
+      <br />The <b>Debtor</b> state increases the CRIT DMG of <u>follow-up attack</u>s inflicted on the target enemies by <span class="text-desc">25%</span>, stacking up to <span class="text-desc">2</span> time(s). When <b>Proof of Debt</b> is removed, the <b>Debtor</b> state is also removed.`,
     },
     c2: {
       trace: 'Eidolon 2',
