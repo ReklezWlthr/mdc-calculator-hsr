@@ -3,7 +3,7 @@ import { getTurnWithinCycle } from '@src/core/utils/data_format'
 import { checkBuffExist } from '@src/core/utils/finder'
 import { StatsArray, StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { BaseAggro, PathType, Stats } from '@src/domain/constant'
+import { BaseAggro, BreakPoints, PathType, Stats } from '@src/domain/constant'
 import { BulletPoint, Collapsible } from '@src/presentation/components/collapsible'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import _ from 'lodash'
@@ -92,6 +92,9 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
 
   const baseAggro = BaseAggro[path] * (1 + stats.getValue(StatsObjectKeys.BASE_AGGRO))
   const defMult = 1 - stats.getDef() / (stats.getDef() + 200 + 10 * calculatorStore.level)
+
+  const breakPoint = _.max(_.filter(_.map(BreakPoints, 'value'), (item) => item <= stats.getSpd()))
+  const bpDesc = _.find(BreakPoints, (item) => item.value === breakPoint)?.desc
 
   const mergeBuffs = (arr: StatsArray[]) =>
     _.reduce(
@@ -277,11 +280,16 @@ export const StatsModal = observer(({ stats, path }: { stats: StatsObject; path:
               </p>
               <BulletPoint>
                 <span className="text-xs">
+                  Achieved Breakpoint: <span className="text-desc">{breakPoint}</span> - {bpDesc}
+                </span>
+              </BulletPoint>
+              <BulletPoint>
+                <span className="text-xs">
                   <span className="text-desc">
                     {getTurnWithinCycle(0, stats.getSpd())}-{getTurnWithinCycle(1, stats.getSpd())}-
-                    {getTurnWithinCycle(5, stats.getSpd())}
+                    {getTurnWithinCycle(2, stats.getSpd())}-{getTurnWithinCycle(3, stats.getSpd())}
                   </span>{' '}
-                  Turns within Cycle <span className="text-desc">0-1-5</span>
+                  Turns within Cycle <span className="text-desc">0 to 3</span>
                 </span>
               </BulletPoint>
             </div>
