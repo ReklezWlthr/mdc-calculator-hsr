@@ -34,7 +34,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 30,
       trace: 'Skill',
       title: `String Sings Slow Swirls`,
-      content: `After using her Skill, Ruan Mei gains <b>Overtone</b>, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> at the start of Ruan Mei's turn. When Ruan Mei has <b>Overtone</b>, all allies' DMG increases by {{0}}% and Weakness Break Efficiency increases by <span class="text-desc">50%</span>.`,
+      content: `After using her Skill, Ruan Mei gains <b class="text-hsr-ice">Overtone</b>, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> at the start of Ruan Mei's turn. When Ruan Mei has <b class="text-hsr-ice">Overtone</b>, all allies' DMG increases by {{0}}% and Weakness Break Efficiency increases by <span class="text-desc">50%</span>.`,
       value: [{ base: 16, growth: 1.6, style: 'curved' }],
       level: skill,
     },
@@ -65,7 +65,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: `Silken Serenade`,
-      content: `After using the Technique, gains <b>Silken Serenade</b>. At the start of the next battle, automatically triggers the Skill for <span class="text-desc">1</span> time(s) without consuming Skill Points.
+      content: `After using the Technique, gains Silken Serenade. At the start of the next battle, automatically triggers the Skill for <span class="text-desc">1</span> time(s) without consuming Skill Points.
       <br />In Simulated Universe, when Ruan Mei has <b>Silken Serenade</b>, the team actively attacking enemies will always be regarded as attacking their Weakness to enter battle, and this attack can reduce all enemies' Toughness regardless of Weakness types. When breaking Weakness, triggers Weakness Break Effect corresponding to the attacker's Type. For every Blessing in possession up to <span class="text-desc">20</span> Blessing(s), additionally increases the Toughness-Reducing DMG of this attack by <span class="text-desc">100%</span>. After breaking an enemy target's Weakness, additionally deals to the enemy target Break DMG equal to <span class="text-desc">100%</span> of Ruan Mei's <b class="text-hsr-ice">Ice Break DMG</b>.`,
     },
     a2: {

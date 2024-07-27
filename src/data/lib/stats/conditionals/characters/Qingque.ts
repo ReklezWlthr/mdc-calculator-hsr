@@ -33,7 +33,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Enhanced Basic ATK',
       title: `Cherry on Top!`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Qingque's ATK to a single enemy, and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Qingque's ATK to enemies adjacent to it.
-      <br />"Cherry on Top!" cannot recover Skill Points.`,
+      <br /><b>Cherry on Top!</b> cannot recover Skill Points.`,
       value: [
         { base: 120, growth: 24, style: 'linear' },
         { base: 50, growth: 10, style: 'linear' },
@@ -59,8 +59,8 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Talent',
       title: `Celestial Jade`,
       content: `When an ally's turn starts, Qingque randomly draws <span class="text-desc">1</span> tile from <span class="text-desc">3</span> different suits and can hold up to <span class="text-desc">4</span> tiles at one time.
-      <br />If Qingque starts her turn with <span class="text-desc">4</span> tiles of the same suit, she consumes all tiles to enter the "Hidden Hand" state.
-      <br />While in this state, Qingque cannot use her Skill again. At the same time, Qingque's ATK increases by {{0}}%, and her Basic ATK "Flower Pick" is enhanced, becoming "Cherry on Top!" The "Hidden Hand" state ends after using "Cherry on Top!".`,
+      <br />If Qingque starts her turn with <span class="text-desc">4</span> tiles of the same suit, she consumes all tiles to enter the <b>Hidden Hand</b> state.
+      <br />While in this state, Qingque cannot use her Skill again. At the same time, Qingque's ATK increases by {{0}}%, and her Basic ATK <b>Flower Pick</b> is enhanced, becoming <b>Cherry on Top!</b>. The <b>Hidden Hand</b> state ends after using <b>Cherry on Top!</b>.`,
       value: [{ base: 36, growth: 3.6, style: 'curved' }],
       level: talent,
     },
@@ -92,7 +92,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c2: {
       trace: 'Eidolon 2',
       title: `Sleep on the Tiles`,
-      content: `Every time Draw Tile is triggered, Qingque immediately regenerates <span class="text-desc">1</span> Energy.`,
+      content: `Every time <b>Draw Tile</b> is triggered, Qingque immediately regenerates <span class="text-desc">1</span> Energy.`,
     },
     c3: {
       trace: 'Eidolon 3',

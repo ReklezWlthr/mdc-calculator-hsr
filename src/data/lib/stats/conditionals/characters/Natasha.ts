@@ -68,7 +68,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Soothe`,
-      content: `Skill has a <span class="text-desc">20%</span> increased <u>base chance</u> to <b class="text-hsr-lightning">Shock</b> enemies.`,
+      content: `The Skill removes <span class="text-desc">1</span> debuff(s) from a target ally.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -158,16 +158,28 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ) => {
       const base = _.cloneDeep(x)
 
-      const c6 = c >= 6 ? [{ scaling: 0.4, multiplier: Stats.HP }] : []
+      const c6 =
+        c >= 6
+          ? [
+              {
+                name: 'E6 Additional DMG',
+                value: [{ scaling: 0.4, multiplier: Stats.HP }],
+                element: Element.PHYSICAL,
+                property: TalentProperty.ADD,
+                type: TalentType.NONE,
+              },
+            ]
+          : []
       base.BASIC_SCALING = [
         {
           name: 'Single Target',
-          value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear'), multiplier: Stats.ATK }, ...c6],
+          value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 10,
         },
+        ...c6,
       ]
       base.SKILL_SCALING = [
         {

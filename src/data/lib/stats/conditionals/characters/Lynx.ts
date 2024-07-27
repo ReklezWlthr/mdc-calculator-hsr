@@ -34,7 +34,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       energy: 30,
       trace: 'Skill',
       title: 'Salted Camping Cans',
-      content: `Applies "Survival Response" to a single target ally and increases their Max HP by {{0}}% of Lynx's Max HP plus {{1}}. If the target ally is a character on the Path of Destruction or Preservation, the chance of them being attacked by enemies will greatly increase. "Survival Response" lasts for <span class="text-desc">2</span> turn(s).
+      content: `Applies <b>Survival Response</b> to a single target ally and increases their Max HP by {{0}}% of Lynx's Max HP plus {{1}}. If the target ally is a character on the Path of Destruction or Preservation, the chance of them being attacked by enemies will greatly increase. <b>Survival Response</b> lasts for <span class="text-desc">2</span> turn(s).
       <br />Restores the target's HP by {{2}}% of Lynx's Max HP plus {{3}}.`,
       value: [
         { base: 5, growth: 0.25, style: 'curved' },
@@ -58,7 +58,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     talent: {
       trace: 'Talent',
       title: `Outdoor Survival Experience`,
-      content: `When using Lynx's Skill or Ultimate, applies continuous healing to the target ally for <span class="text-desc">2</span> turn(s), restoring the target ally's HP by an amount equal to {{0}}% of Lynx's Max HP plus {{1}} at the start of each their turn. If the target has "Survival Response", the continuous healing effect additionally restores HP by an amount equal to {{2}}% of Lynx's Max HP plus {{3}}.`,
+      content: `When using Lynx's Skill or Ultimate, applies continuous healing to the target ally for <span class="text-desc">2</span> turn(s), restoring the target ally's HP by an amount equal to {{0}}% of Lynx's Max HP plus {{1}} at the start of each their turn. If the target has <b>Survival Response</b>, the continuous healing effect additionally restores HP by an amount equal to {{2}}% of Lynx's Max HP plus {{3}}.`,
       value: [
         { base: 2.4, growth: 0.15, style: 'heal' },
         { base: 24, growth: 14.4, style: 'flat' },
@@ -75,7 +75,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Advance Surveying`,
-      content: `After a target with "Survival Response" is hit, Lynx regenerates <span class="text-desc">2</span> Energy immediately.`,
+      content: `After a target with <b>Survival Response</b> is hit, Lynx regenerates <span class="text-desc">2</span> Energy immediately.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -95,7 +95,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c2: {
       trace: 'Eidolon 2',
       title: `Noon of Portable Furnace`,
-      content: `A target with "Survival Response" can resist debuff application for <span class="text-desc">1</span> time(s).`,
+      content: `A target with <b>Survival Response</b> can resist debuff application for <span class="text-desc">1</span> time(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -106,7 +106,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c4: {
       trace: 'Eidolon 4',
       title: `Dusk of Warm Campfire`,
-      content: `When "Survival Response" is gained, increases the target's ATK by an amount equal to <span class="text-desc">3%</span> of Lynx's Max HP for <span class="text-desc">1</span> turn(s).`,
+      content: `When <b>Survival Response</b> is gained, increases the target's ATK by an amount equal to <span class="text-desc">3%</span> of Lynx's Max HP for <span class="text-desc">1</span> turn(s).`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -117,7 +117,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c6: {
       trace: 'Eidolon 6',
       title: `Dawn of Explorers' Chart`,
-      content: `Additionally boosts the Max HP increasing effect of "Survival Response" by an amount equal to <span class="text-desc">6%</span> of Lynx's Max HP and increases Effect RES by <span class="text-desc">30%</span>.`,
+      content: `Additionally boosts the Max HP increasing effect of <b>Survival Response</b> by an amount equal to <span class="text-desc">6%</span> of Lynx's Max HP and increases Effect RES by <span class="text-desc">30%</span>.`,
     },
   }
 
@@ -203,7 +203,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           type: TalentType.NONE,
         },
         {
-          name: '"Survival Response" Healing Over Time',
+          name: '<b>Survival Response</b> Healing Over Time',
           value: [{ scaling: calcScaling(0.03, 0.001875, ult, 'heal'), multiplier: Stats.HP }],
           flat: calcScaling(30, 18, skill, 'flat'),
           element: TalentProperty.HEAL,

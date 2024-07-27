@@ -47,7 +47,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Ultimate',
       title: 'The Hero with a Thousand Faces',
-      content: `Recovers <span class="text-desc">4</span> Skill Points for the team and grants all allies <b>Cipher</b>. When allies with <b>Cipher</b> trigger the DMG Boost effect provided by Sparkle's Talent, each stack additionally increases its effect by {{0}}%, lasting for <span class="text-desc">2</span> turns.`,
+      content: `Recovers <span class="text-desc">4</span> Skill Points for the team and grants all allies <b class="text-hsr-quantum">Cipher</b>. When allies with <b class="text-hsr-quantum">Cipher</b> trigger the DMG Boost effect provided by Sparkle's Talent, each stack additionally increases its effect by {{0}}%, lasting for <span class="text-desc">2</span> turns.`,
       value: [{ base: 6, growth: 0.4, style: 'curved' }],
       level: ult,
     },
@@ -81,7 +81,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c1: {
       trace: 'Eidolon 1',
       title: 'Suspension of Disbelief',
-      content: `The <b>Cipher</b> effect applied by the Ultimate lasts for <span class="text-desc">1</span> extra turn. All allies affected by <b>Cipher</b> have their ATK increased by <span class="text-desc">40%</span>.`,
+      content: `The <b class="text-hsr-quantum">Cipher</b> effect applied by the Ultimate lasts for <span class="text-desc">1</span> extra turn. All allies affected by <b class="text-hsr-quantum">Cipher</b> have their ATK increased by <span class="text-desc">40%</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -108,7 +108,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: 'Narrative Polysemy',
-      content: `The CRIT DMG Boost effect of Sparkle's Skill additionally increases by <span class="text-desc">30%</span> of Sparkle's CRIT DMG, and when she uses her Skill, the CRIT DMG Boost effect will apply to all allies currently with <b>Cipher</b>. When Sparkle uses her Ultimate, this effect will spread to all allies with <b>Cipher</b> should the allied target have the CRIT DMG increase effect provided by the Skill active on them.`,
+      content: `The CRIT DMG Boost effect of Sparkle's Skill additionally increases by <span class="text-desc">30%</span> of Sparkle's CRIT DMG, and when she uses her Skill, the CRIT DMG Boost effect will apply to all allies currently with <b class="text-hsr-quantum">Cipher</b>. When Sparkle uses her Ultimate, this effect will spread to all allies with <b class="text-hsr-quantum">Cipher</b> should the allied target have the CRIT DMG increase effect provided by the Skill active on them.`,
     },
   }
 

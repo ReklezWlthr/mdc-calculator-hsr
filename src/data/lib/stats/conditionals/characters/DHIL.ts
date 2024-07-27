@@ -62,10 +62,10 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       trace: 'Skill',
       title: `Dracore Libre`,
       content: `Enhances Basic ATK. Enhancements may be applied up to <span class="text-desc">3</span> times consecutively. Using this ability does not consume Skill Points and is not considered as using a Skill.
-      <br />Enhanced once, Beneficent Lotus becomes Transcendence.
-      <br />Enhanced twice, Beneficent Lotus becomes Divine Spear.
-      <br />Enhanced thrice, Beneficent Lotus becomes Fulgurant Leap.
-      <br />When using Divine Spear or Fulgurant Leap, starting from the fourth hit, 1 stack of <b>Outroar</b> is gained before every hit. Each stack of <b>Outroar</b> increases Dan Heng • Imbibitor Lunae's CRIT DMG by {{0}}%, for a max of <span class="text-desc">4</span> stacks. These stacks last until the end of his turn.`,
+      <br />Enhanced once, <b>Beneficent Lotus</b> becomes <b>Transcendence</b>.
+      <br />Enhanced twice, <b>Beneficent Lotus</b> becomes <b>Divine Spear</b>.
+      <br />Enhanced thrice, <b>Beneficent Lotus</b> becomes <b>Fulgurant Leap</b>.
+      <br />When using <b>Divine Spear</b> or <b>Fulgurant Leap</b>, starting from the fourth hit, 1 stack of <b>Outroar</b> is gained before every hit. Each stack of <b>Outroar</b> increases Dan Heng • Imbibitor Lunae's CRIT DMG by {{0}}%, for a max of <span class="text-desc">4</span> stacks. These stacks last until the end of his turn.`,
       value: [{ base: 6, growth: 0.6, style: 'curved' }],
       level: skill,
     },
@@ -138,7 +138,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c6: {
       trace: 'Eidolon 6',
       title: `Reign, Returned`,
-      content: `After any other ally uses their Ultimate, the <b class="text-hsr-imaginary">Imaginary RES PEN</b> of Dan Heng • Imbibitor Lunae's next Fulgurant Leap attack increases by <span class="text-desc">20%</span>. This effect can stack up to <span class="text-desc">3</span> time(s).`,
+      content: `After any other ally uses their Ultimate, the <b class="text-hsr-imaginary">Imaginary RES PEN</b> of Dan Heng • Imbibitor Lunae's next <b>Fulgurant Leap</b> attack increases by <span class="text-desc">20%</span>. This effect can stack up to <span class="text-desc">3</span> time(s).`,
     },
   }
 

@@ -33,8 +33,8 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Enhanced Basic ATK',
       title: `Forest of Swords`,
       content: `Consumes HP equal to <span class="text-desc">10%</span> of Blade's Max HP and deals <b class="text-hsr-wind">Wind DMG</b> equal to the sum of {{0}}% of his ATK and {{1}}% of his Max HP to a single enemy. In addition deals <b class="text-hsr-wind">Wind DMG</b> equal to the sum of {{2}}% of Blade's ATK and {{0}}% of his Max HP to adjacent targets.
-      <br />If Blade's current HP is insufficient, his HP will be reduced to <span class="text-desc">1</span> when using Forest of Swords.
-      <br />Forest of Swords cannot regenerate Skill Points.`,
+      <br />If Blade's current HP is insufficient, his HP will be reduced to <span class="text-desc">1</span> when using <b>Forest of Swords</b>.
+      <br /><b>Forest of Swords</b> cannot regenerate Skill Points.`,
       value: [
         { base: 20, growth: 4, style: 'linear' },
         { base: 50, growth: 10, style: 'linear' },
@@ -46,7 +46,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Skill',
       title: `Hellscape`,
       content: `Consumes HP equal to <span class="text-desc">30%</span> of Blade's Max HP to enter the <b>Hellscape</b> state.
-      <br />When <b>Hellscape</b> is active, his Skill cannot be used, his DMG dealt increases by {{0}}%, and his Basic ATK Shard Sword is enhanced to Forest of Swords for <span class="text-desc">3</span> turn(s).
+      <br />When <b>Hellscape</b> is active, his Skill cannot be used, his DMG dealt increases by {{0}}%, and his Basic ATK <b>Shard Sword</b> is enhanced to <b>Forest of Swords</b> for <span class="text-desc">3</span> turn(s).
       <br />If Blade's current HP is insufficient, his HP will be reduced to <span class="text-desc">1</span> when he uses his Skill.
       <br />This Skill does not regenerate Energy. Using this Skill does not end the current turn.`,
       value: [{ base: 12, growth: 2.8, style: 'curved' }],

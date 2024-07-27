@@ -73,7 +73,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Sanctified',
-      content: `When any enemy in the Field is attacked by an ally, all allies (except the attacker) restore HP equal to <span class="text-desc">7%</span> of Luocha's ATK plus <span class="text-desc">93</span>.`,
+      content: `When any enemy in the <b>Field</b> is attacked by an ally, all allies (except the attacker) restore HP equal to <span class="text-desc">7%</span> of Luocha's ATK plus <span class="text-desc">93</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -83,7 +83,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c1: {
       trace: 'Eidolon 1',
       title: 'Ablution of the Quick',
-      content: `While the Field is active, ATK of all allies increases by <span class="text-desc">20%</span>.`,
+      content: `While the <b>Field</b> is active, ATK of all allies increases by <span class="text-desc">20%</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',

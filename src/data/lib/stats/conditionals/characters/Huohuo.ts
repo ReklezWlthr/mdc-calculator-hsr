@@ -57,8 +57,8 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     talent: {
       trace: 'Talent',
       title: `Possession: Ethereal Metaflow`,
-      content: `After using her Skill, Huohuo gains <b>Divine Provision</b>, lasting for <span class="text-desc">2</span> turn(s). This duration decreases by <span class="text-desc">1</span> turn at the start of each Huohuo's turn. If Huohuo has <b>Divine Provision</b> when an ally's turn starts or when an ally uses their Ultimate, restores HP for that ally by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}. At the same time, every ally with <span class="text-desc">50%</span> HP or lower receives healing once.
-      <br />When <b>Divine Provision</b> is triggered to heal an ally, dispel <span class="text-desc">1</span> debuff(s) from that ally. This effect can be triggered up to <span class="text-desc">6</span> time(s). Using the skill again resets the effect's trigger count.`,
+      content: `After using her Skill, Huohuo gains <b class="text-hsr-wind">Divine Provision</b>, lasting for <span class="text-desc">2</span> turn(s). This duration decreases by <span class="text-desc">1</span> turn at the start of each Huohuo's turn. If Huohuo has <b class="text-hsr-wind">Divine Provision</b> when an ally's turn starts or when an ally uses their Ultimate, restores HP for that ally by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}. At the same time, every ally with <span class="text-desc">50%</span> HP or lower receives healing once.
+      <br />When <b class="text-hsr-wind">Divine Provision</b> is triggered to heal an ally, dispel <span class="text-desc">1</span> debuff(s) from that ally. This effect can be triggered up to <span class="text-desc">6</span> time(s). Using the skill again resets the effect's trigger count.`,
       value: [
         { base: 3, growth: 0.1875, style: 'heal' },
         { base: 30, growth: 18, style: 'flat' },
@@ -73,7 +73,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Fearful to Act`,
-      content: `When battle starts, Huohuo gains <b>Divine Provision</b>, lasting for <span class="text-desc">1</span> turn(s).`,
+      content: `When battle starts, Huohuo gains <b class="text-hsr-wind">Divine Provision</b>, lasting for <span class="text-desc">1</span> turn(s).`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -88,12 +88,12 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c1: {
       trace: 'Eidolon 1',
       title: `Anchored to Vessel, Specters Nestled`,
-      content: `The duration of <b>Divine Provision</b> produced by the Talent is extended by <span class="text-desc">1</span> turn(s). When Huohuo possesses <b>Divine Provision</b>, all allies' SPD increases by <span class="text-desc">12%</span>.`,
+      content: `The duration of <b class="text-hsr-wind">Divine Provision</b> produced by the Talent is extended by <span class="text-desc">1</span> turn(s). When Huohuo possesses <b class="text-hsr-wind">Divine Provision</b>, all allies' SPD increases by <span class="text-desc">12%</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Sealed in Tail, Wraith Subdued`,
-      content: `If Huohuo possesses <b>Divine Provision</b> when an ally is struck by a killing blow, the ally will not be knocked down, and their HP will immediately be restored by an amount equal to <span class="text-desc">50%</span> of their Max HP. This reduces the duration of <b>Divine Provision</b> by <span class="text-desc">1</span> turn. This effect can only be triggered <span class="text-desc">2</span> time(s) per battle.`,
+      content: `If Huohuo possesses <b class="text-hsr-wind">Divine Provision</b> when an ally is struck by a killing blow, the ally will not be knocked down, and their HP will immediately be restored by an amount equal to <span class="text-desc">50%</span> of their Max HP. This reduces the duration of <b class="text-hsr-wind">Divine Provision</b> by <span class="text-desc">1</span> turn. This effect can only be triggered <span class="text-desc">2</span> time(s) per battle.`,
     },
     c3: {
       trace: 'Eidolon 3',

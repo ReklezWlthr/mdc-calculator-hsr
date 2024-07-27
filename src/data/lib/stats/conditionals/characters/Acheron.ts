@@ -37,7 +37,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill: {
       trace: 'Skill',
       title: 'Octobolt Flash',
-      content: `Gains <span class="text-desc">1</span> point(s) of <b>Slashed Dream</b>. Inflicts <span class="text-desc">1</span> stack(s) of <b>Crimson Knot</b> on a single target enemy, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Acheron's ATK to this target, as well as <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Acheron's ATK to adjacent targets.`,
+      content: `Gains <span class="text-desc">1</span> point(s) of <b class="text-hsr-lightning">Slashed Dream</b>. Inflicts <span class="text-desc">1</span> stack(s) of <b class="text-hsr-fire">Crimson Knot</b> on a single target enemy, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Acheron's ATK to this target, as well as <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Acheron's ATK to adjacent targets.`,
       value: [
         { base: 80, growth: 8, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },
@@ -49,10 +49,10 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       title: 'Slashed Dream Cries in Red',
       content: `Sequentially unleash <b>Rainblade</b> <span class="text-desc">3</span> times and <b>Stygian Resurge</b> <span class="text-desc">1</span> time, dealing <b class="text-hsr-lightning">Lightning DMG</b> up to {{0}}% of Acheron's ATK to a single target enemy, as well as <b class="text-hsr-lightning">Lightning DMG</b> up to {{1}}% of Acheron's ATK to other targets.
       <br />
-      <br /><b>Rainblade</b>: Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{2}}% of Acheron's ATK to a single target enemy and removes up to <span class="text-desc">3</span> stacks of <b>Crimson Knot</b> from the target. When <b>Crimson Knot</b> is removed, immediately deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{3}}% of Acheron's ATK to all enemies. For every stack of <b>Crimson Knot</b> removed, this DMG Multiplier is additionally increased, up to a maximum of {{4}}%.
+      <br /><b>Rainblade</b>: Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{2}}% of Acheron's ATK to a single target enemy and removes up to <span class="text-desc">3</span> stacks of <b class="text-hsr-fire">Crimson Knot</b> from the target. When <b class="text-hsr-fire">Crimson Knot</b> is removed, immediately deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{3}}% of Acheron's ATK to all enemies. For every stack of <b class="text-hsr-fire">Crimson Knot</b> removed, this DMG Multiplier is additionally increased, up to a maximum of {{4}}%.
       <br />
       <br /><b>Stygian Resurge</b>: Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{5}}% of Acheron's ATK to all enemies and remove all <b>Crimson Knots</b>.
-      <br /><b>Crimson Knot</b> cannot be applied to enemies during the Ultimate.`,
+      <br /><b class="text-hsr-fire">Crimson Knot</b> cannot be applied to enemies during the Ultimate.`,
       value: [
         { base: 223.2, growth: 14.88, style: 'curved' },
         { base: 180, growth: 12, style: 'curved' },
@@ -66,9 +66,9 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: 'Atop Rainleaf Hangs Oneness',
-      content: `When <b>Slashed Dream</b> reaches <span class="text-desc">9</span> point(s), the Ultimate can be activated. During the Ultimate, reduces enemies' Toughness regardless of Weakness Types and reduces all enemies' All-Type RES by {{0}}%, lasting until the end of the Ultimate.
-      <br />When any unit inflicts debuffs on an enemy target while using their ability, Acheron gains <span class="text-desc">1</span> point of <b>Slashed Dream</b> and inflicts <span class="text-desc">1</span> stack of <b>Crimson Knot</b> on the target. If debuffs are inflicted on multiple targets, then the <span class="text-desc">1</span> stack of <b>Crimson Knot</b> will be inflicted on the enemy target with the most <b>Crimson Knot</b> stacks. This effect can only trigger once per every ability usage.
-      <br />After an enemy target exits the field or gets defeated by any unit while Acheron is on the field, their <b>Crimson Knot</b> stacks will be transferred to the enemy target with the most <b>Crimson Knot</b> stacks on the whole field.`,
+      content: `When <b class="text-hsr-lightning">Slashed Dream</b> reaches <span class="text-desc">9</span> point(s), the Ultimate can be activated. During the Ultimate, reduces enemies' Toughness regardless of Weakness Types and reduces all enemies' All-Type RES by {{0}}%, lasting until the end of the Ultimate.
+      <br />When any unit inflicts debuffs on an enemy target while using their ability, Acheron gains <span class="text-desc">1</span> point of <b class="text-hsr-lightning">Slashed Dream</b> and inflicts <span class="text-desc">1</span> stack of <b class="text-hsr-fire">Crimson Knot</b> on the target. If debuffs are inflicted on multiple targets, then the <span class="text-desc">1</span> stack of <b class="text-hsr-fire">Crimson Knot</b> will be inflicted on the enemy target with the most <b class="text-hsr-fire">Crimson Knot</b> stacks. This effect can only trigger once per every ability usage.
+      <br />After an enemy target exits the field or gets defeated by any unit while Acheron is on the field, their <b class="text-hsr-fire">Crimson Knot</b> stacks will be transferred to the enemy target with the most <b class="text-hsr-fire">Crimson Knot</b> stacks on the whole field.`,
       value: [{ base: 10, growth: 1, style: 'curved' }],
       level: talent,
     },
@@ -76,13 +76,13 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Technique',
       title: 'Quadrivalent Ascendance',
       content: `Immediately attacks the enemy. At the start of each wave, gains <b>Quadrivalent Ascendance</b>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">200%</span> of Acheron's ATK to all enemies and reducing Toughness of all enemies irrespective of Weakness Types. When Weakness is broken, triggers the <b class="text-hsr-lightning">Lightning</b> Weakness Break effect.
-      <br /><b>Quadrivalent Ascendance</b>: After using the Ultimate, Acheron gains <span class="text-desc">1</span> point(s) of <b>Slashed Dream</b> and inflicts <span class="text-desc">1</span> stack(s) of <b>Crimson Knot</b> on a single random enemy.
+      <br /><b>Quadrivalent Ascendance</b>: After using the Ultimate, Acheron gains <span class="text-desc">1</span> point(s) of <b class="text-hsr-lightning">Slashed Dream</b> and inflicts <span class="text-desc">1</span> stack(s) of <b class="text-hsr-fire">Crimson Knot</b> on a single random enemy.
       <br />If attacking a normal enemy, immediately defeats them without entering combat. When not hitting enemies, no Technique Points are consumed.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Red Oni',
-      content: `When battle starts, immediately gains <span class="text-desc">5</span> point(s) of <b>Slashed Dream</b> and applies <span class="text-desc">5</span> stack(s) of <b>Crimson Knot</b> to a random enemy. When <b>Slashed Dream</b> reaches its upper limit, for every point of <b>Slashed Dream</b> that exceeds the limit, gains <span class="text-desc">1</span> stack of <b>Quadrivalent Ascendance</b>. Increases the maximum stackable count for <b>Quadrivalent Ascendance</b> to <span class="text-desc">3</span>.`,
+      content: `When battle starts, immediately gains <span class="text-desc">5</span> point(s) of <b class="text-hsr-lightning">Slashed Dream</b> and applies <span class="text-desc">5</span> stack(s) of <b class="text-hsr-fire">Crimson Knot</b> to a random enemy. When <b class="text-hsr-lightning">Slashed Dream</b> reaches its upper limit, for every point of <b class="text-hsr-lightning">Slashed Dream</b> that exceeds the limit, gains <span class="text-desc">1</span> stack of <b>Quadrivalent Ascendance</b>. Increases the maximum stackable count for <b>Quadrivalent Ascendance</b> to <span class="text-desc">3</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -92,7 +92,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Thunder Core',
-      content: `When the Rainblade from Acheron's Ultimate hits enemy targets with <b>Crimson Knot</b>, her DMG increases by <span class="text-desc">30%</span>, stacking up to <span class="text-desc">3</span> time(s) and lasting for <span class="text-desc">3</span> turn(s). And when Stygian Resurge triggers, additionally deals DMG for <span class="text-desc">6</span> times. Each time deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">25%</span> of Acheron's ATK to a single random enemy and is viewed as part of the Ultimate DMG.`,
+      content: `When the Rainblade from Acheron's Ultimate hits enemy targets with <b class="text-hsr-fire">Crimson Knot</b>, her DMG increases by <span class="text-desc">30%</span>, stacking up to <span class="text-desc">3</span> time(s) and lasting for <span class="text-desc">3</span> turn(s). And when Stygian Resurge triggers, additionally deals DMG for <span class="text-desc">6</span> times. Each time deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">25%</span> of Acheron's ATK to a single random enemy and is viewed as part of the Ultimate DMG.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -102,7 +102,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c2: {
       trace: 'Eidolon 2',
       title: 'Mute Thunder in Still Tempest',
-      content: `The number of Nihility characters required for the Trace "The Abyss" to achieve its highest possible effect is reduced by <span class="text-desc">1</span>. When this unit's turn starts, gains <span class="text-desc">1</span> point of <b>Slashed Dream</b> and inflicts <span class="text-desc">1</span> stack of <b>Crimson Knot</b> on the enemy with the most <b>Crimson Knot</b> stacks.`,
+      content: `The number of Nihility characters required for the Trace <b>The Abyss</b> to achieve its highest possible effect is reduced by <span class="text-desc">1</span>. When this unit's turn starts, gains <span class="text-desc">1</span> point of <b class="text-hsr-lightning">Slashed Dream</b> and inflicts <span class="text-desc">1</span> stack of <b class="text-hsr-fire">Crimson Knot</b> on the enemy with the most <b class="text-hsr-fire">Crimson Knot</b> stacks.`,
     },
     c3: {
       trace: 'Eidolon 3',

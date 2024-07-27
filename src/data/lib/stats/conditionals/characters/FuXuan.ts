@@ -101,7 +101,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c4: {
       trace: 'Eidolon 4',
       title: 'Fortuna Stellaris',
-      content: `When other allies under Matrix of Prescience are attacked, Fu Xuan regenerates <span class="text-desc">5</span> Energy.`,
+      content: `When other allies under <b>Matrix of Prescience</b> are attacked, Fu Xuan regenerates <span class="text-desc">5</span> Energy.`,
     },
     c5: {
       trace: 'Eidolon 5',

@@ -35,8 +35,8 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       energy: 20,
       trace: 'Enhanced Basic ATK',
       title: `Sky-Shatter Fist`,
-      content: `Consumes <span class="text-desc">2</span> stacks of <b>Fighting Will</b>. First, uses Direct Punch to deal <span class="text-desc">3</span> hits, with each hit dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Luka's ATK to a single enemy target.
-      <br />Then, uses Rising Uppercut to deal <span class="text-desc">1</span> hit, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Luka's ATK to the single enemy target.`,
+      content: `Consumes <span class="text-desc">2</span> stacks of <b>Fighting Will</b>. First, uses <b>Direct Punch</b> to deal <span class="text-desc">3</span> hits, with each hit dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Luka's ATK to a single enemy target.
+      <br />Then, uses <b>Rising Uppercut</b> to deal <span class="text-desc">1</span> hit, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Luka's ATK to the single enemy target.`,
       value: [
         { base: 10, growth: 2, style: 'linear' },
         { base: 40, growth: 8, style: 'linear' },
@@ -69,7 +69,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     talent: {
       trace: 'Talent',
       title: `Flying Sparks`,
-      content: `After Luka uses his Basic ATK "Direct Punch" or Skill "Lacerating Fist," he receives <span class="text-desc">1</span> stack(s) of <b>Fighting Will</b>, up to <span class="text-desc">4</span> stacks. When he has <span class="text-desc">2</span> or more stacks of <b>Fighting Will</b>, his Basic ATK "Direct Punch" is enhanced to "Sky-Shatter Fist." After his Enhanced Basic ATK's "Rising Uppercut" hits a <b class="text-hsr-physical">Bleeding</b> enemy target, the <b class="text-hsr-physical">Bleed</b> status will immediately deal DMG for <span class="text-desc">1</span> time equal to {{0}}% of the original DMG to the target. At the start of battle, Luka will possess <span class="text-desc">1</span> stack of <b>Fighting Will</b>.`,
+      content: `After Luka uses his Basic ATK <b>Direct Punch</b> or Skill <b>Lacerating Fist</b>, he receives <span class="text-desc">1</span> stack(s) of <b>Fighting Will</b>, up to <span class="text-desc">4</span> stacks. When he has <span class="text-desc">2</span> or more stacks of <b>Fighting Will</b>, his Basic ATK <b>Direct Punch</b> is enhanced to <b>Sky-Shatter Fist</b>. After his Enhanced Basic ATK's <b>Rising Uppercut</b> hits a <b class="text-hsr-physical">Bleeding</b> enemy target, the <b class="text-hsr-physical">Bleed</b> status will immediately deal DMG for <span class="text-desc">1</span> time equal to {{0}}% of the original DMG to the target. At the start of battle, Luka will possess <span class="text-desc">1</span> stack of <b>Fighting Will</b>.`,
       value: [{ base: 68, growth: 1.7, style: 'curved' }],
       level: talent,
     },
@@ -123,7 +123,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c6: {
       trace: 'Eidolon 6',
       title: `A Champion's Applause`,
-      content: `After the Enhanced Basic ATK's "Rising Uppercut" hits a <b class="text-hsr-physical">Bleeding</b> enemy target, the <b class="text-hsr-physical">Bleed</b> status will immediately deal DMG <span class="text-desc">1</span> time equal to <span class="text-desc">8%</span> of the original DMG for every hit of Direct Punch already unleashed during the current Enhanced Basic ATK.`,
+      content: `After the Enhanced Basic ATK's <b>Rising Uppercut</b> hits a <b class="text-hsr-physical">Bleeding</b> enemy target, the <b class="text-hsr-physical">Bleed</b> status will immediately deal DMG <span class="text-desc">1</span> time equal to <span class="text-desc">8%</span> of the original DMG for every hit of <b>Direct Punch</b> already unleashed during the current Enhanced Basic ATK.`,
     },
   }
 

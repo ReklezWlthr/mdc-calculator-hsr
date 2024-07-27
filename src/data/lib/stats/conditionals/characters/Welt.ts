@@ -98,7 +98,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c4: {
       trace: 'Eidolon 4',
       title: 'Appellation of Justice',
-      content: `<u>base chance</u> for Skill to inflict SPD Reduction increases by <span class="text-desc">35%</span>.`,
+      content: `<u>Base chance</u> for Skill to inflict SPD Reduction increases by <span class="text-desc">35%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',

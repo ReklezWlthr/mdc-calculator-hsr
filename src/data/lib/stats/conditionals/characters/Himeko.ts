@@ -83,7 +83,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c1: {
       trace: 'Eidolon 1',
       title: 'Childhood',
-      content: `After "Victory Rush" is triggered, Himeko's SPD increases by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `After <b>Victory Rush</b> is triggered, Himeko's SPD increases by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
       trace: 'Eidolon 2',
