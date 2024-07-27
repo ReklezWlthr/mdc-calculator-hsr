@@ -8,6 +8,7 @@ import { observer } from 'mobx-react-lite'
 import { useCallback, useMemo, useState } from 'react'
 import { CharacterSelect } from '@src/presentation/hsr/components/character_select'
 import { TSetup } from '@src/data/stores/setup_store'
+import { findValidName } from '@src/core/utils/finder'
 
 export interface TeamModalProps {
   onSelect: (team: TSetup) => void
@@ -15,7 +16,7 @@ export interface TeamModalProps {
 }
 
 export const TeamModal = observer(({ onSelect, filterId }: TeamModalProps) => {
-  const { modalStore, teamStore, setupStore, toastStore } = useStore()
+  const { modalStore, teamStore, setupStore } = useStore()
 
   const team = [{ id: '', char: teamStore.characters, name: 'Current Team Setup' }, ...setupStore.team]
 
@@ -51,7 +52,8 @@ export const TeamModal = observer(({ onSelect, filterId }: TeamModalProps) => {
                     title="Select"
                     onClick={() => {
                       modalStore.closeModal()
-                      onSelect(_.cloneDeep(team))
+                      const name = findValidName(_.map([setupStore.main, ...setupStore.comparing], 'name'), team.name)
+                      onSelect(_.cloneDeep({ ...team, name }))
                     }}
                   />
                 </div>

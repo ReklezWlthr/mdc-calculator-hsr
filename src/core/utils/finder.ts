@@ -36,3 +36,11 @@ export const checkBuffExist = (array: StatsArray[], predicate: Partial<StatsArra
 
 export const checkIsDoT = (element: Element) =>
   _.includes([Element.FIRE, Element.PHYSICAL, Element.LIGHTNING, Element.WIND], element)
+
+export const findValidName = (names: string[], name: string, count: number = 0) => {
+  if (_.some(names, (n) => (count > 0 ? n === `${name} (${count})` : n === name))) {
+    return findValidName(names, name, count + 1)
+  } else {
+    return count > 0 ? `${name} (${count})` : name
+  }
+}

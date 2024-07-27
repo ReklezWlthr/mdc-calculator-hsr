@@ -48,7 +48,7 @@ export const ElementColor = {
 export const CompareSubRows = observer(
   ({ scaling, stats, allStats, level, name, property, type, element }: ScalingSubRowsProps) => {
     const { setupStore, calculatorStore } = useStore()
-    const [sum, setSum] = useState(!!scaling[0]?.sum)
+    const [sum, setSum] = useState(_.some(scaling, (item) => item?.sum))
 
     const mode = setupStore.mode
     const [main, sub1, sub2, sub3] = _.map(Array(4), (_v, index) =>
@@ -94,7 +94,7 @@ export const CompareSubRows = observer(
     }, [main, sub1, sub2, sub3, scaling, sum])
 
     useEffect(() => {
-      setSum(!!scaling[0]?.sum)
+      setSum(_.some(scaling, (item) => item?.sum))
     }, [scaling[0]])
 
     const Body = ({ obj }: { obj: StringConstructor }) => (

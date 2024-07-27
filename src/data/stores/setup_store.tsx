@@ -145,7 +145,7 @@ export class SetupStore {
     if (index === 0) {
       _.assign(this.main.total[key], { [name]: value })
     } else {
-      _.assign(this.comparing[index - 1].total[key], { [name]: value })
+      this.comparing[index - 1] && _.assign(this.comparing[index - 1].total[key], { [name]: value })
     }
   }
 

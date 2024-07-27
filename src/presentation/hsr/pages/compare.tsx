@@ -6,13 +6,14 @@ import { CharacterSelect } from '../components/character_select'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { TeamModal, TeamModalProps } from '@src/presentation/hsr/components/modals/team_modal'
 import { CommonModal } from '@src/presentation/components/common_modal'
-import { findCharacter } from '@src/core/utils/finder'
+import { findCharacter, findValidName } from '@src/core/utils/finder'
 import classNames from 'classnames'
 import { CompareBlock } from '@src/presentation/hsr/components/compare/compare_block'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { BulletPoint } from '@src/presentation/components/collapsible'
 import { swapElement } from '@src/core/utils/data_format'
 import { defaultTotal } from '@src/data/stores/setup_store'
+import { RenameModal } from '../components/modals/rename_modal'
 
 export const ComparePage = observer(() => {
   const { modalStore, setupStore } = useStore()
@@ -48,6 +49,10 @@ export const ComparePage = observer(() => {
     )
   }, [])
 
+  const onOpenRenameModal = useCallback((onConfirm: (name: string) => void) => {
+    modalStore.openModal(<RenameModal onSave={onConfirm} />)
+  }, [])
+
   const onOpenSwapModal = useCallback((onConfirm: () => void) => {
     modalStore.openModal(
       <CommonModal
@@ -73,50 +78,59 @@ export const ComparePage = observer(() => {
   return (
     <div className="w-full customScrollbar">
       <div className="grid w-full grid-cols-3 gap-5 p-5 text-white max-w-[1240px] mx-auto items-end">
-        <div className="space-y-2">
-          <div className="flex items-center gap-3">
-            <p className="flex items-center gap-2 font-bold">
-              <i className="text-desc fa-solid fa-star" />
-              Main Setup
-              <Tooltip
-                title="Quick Tips to Setup Comparison"
-                body={
-                  <div className="font-normal space-y-0.5">
-                    <p>
-                      - You can only compare <span className="text-desc">one</span> character at a time. Switching a
-                      character will end the current session and remove all Sub setups. It is recommended to switch your
-                      Main setup to the desired one before switching character.
-                    </p>
-                    <p>- Sub setups eligible for comparison must contain the selected character.</p>
-                    <p>
-                      - Any changes made to setups within this page will <span className="text-red">not</span> be
-                      reflected on other pages, and vice versa.
-                    </p>
-                    <p>
-                      - Difference percentages shown in the tooltip are relative to the value of Main setup. Think of
-                      the Main value as <span className="text-desc">100%</span>. Any damage components not present in
-                      the Main setup will be marked as <b className="text-desc">NEW</b>.
-                    </p>
-                    <p>- All setups share the same enemy target setup.</p>
-                    <p>
-                      - Although the calculator allows multiple ability levels to be compared together, it is
-                      recommended to use the same ability level across all setups for the best result, unless you really
-                      want to compare them.
-                    </p>
-                    <p>
-                      - The calculator only compare damage <span className="text-desc">per hit</span> which may be
-                      inaccurate to live rotation due to aspects like energy gain or speed boosts. Only take it at face
-                      value.
-                    </p>
-                  </div>
-                }
-                style="w-[450px]"
-              >
-                <i className="fa-regular fa-question-circle" />
-              </Tooltip>
-            </p>
-            {setupStore.main && !setupStore.mainChar && (
-              <p className="text-xs text-red">Click the icon to compare the character.</p>
+        <div className="space-y-1">
+          <div className="flex items-center justify-between w-[244px] pr-2">
+            <div className="flex items-center gap-3 pb-1">
+              <p className="flex items-center gap-2 font-bold">
+                <i className="text-desc fa-solid fa-star" />
+                Main Setup
+                <Tooltip
+                  title="Quick Tips to Setup Comparison"
+                  body={
+                    <div className="font-normal space-y-0.5">
+                      <p>
+                        - You can only compare <span className="text-desc">one</span> character at a time. Switching a
+                        character will end the current session and remove all Sub setups. It is recommended to switch
+                        your Main setup to the desired one before switching character.
+                      </p>
+                      <p>- Sub setups eligible for comparison must contain the selected character.</p>
+                      <p>
+                        - Any changes made to setups within this page will <span className="text-red">not</span> be
+                        reflected on other pages, and vice versa.
+                      </p>
+                      <p>
+                        - Difference percentages shown in the tooltip are relative to the value of Main setup. Think of
+                        the Main value as <span className="text-desc">100%</span>. Any damage components not present in
+                        the Main setup will be marked as <b className="text-desc">NEW</b>.
+                      </p>
+                      <p>- All setups share the same enemy target setup.</p>
+                      <p>
+                        - Although the calculator allows multiple ability levels to be compared together, it is
+                        recommended to use the same ability level across all setups for the best result, unless you
+                        really want to compare them.
+                      </p>
+                      <p>
+                        - The calculator only compare damage <span className="text-desc">per hit</span> which may be
+                        inaccurate to live rotation due to aspects like energy gain or speed boosts. Only take it at
+                        face value.
+                      </p>
+                    </div>
+                  }
+                  style="w-[450px]"
+                >
+                  <i className="fa-regular fa-question-circle" />
+                </Tooltip>
+              </p>
+              {setupStore.main && !setupStore.mainChar && (
+                <p className="text-xs text-red">Click the icon to compare the character.</p>
+              )}
+            </div>
+            {setupStore.main && (
+              <i
+                title="Rename Setup"
+                className="flex items-center justify-center w-6 h-6 text-xs text-orange-300 rounded-sm cursor-pointer fa-solid fa-pen bg-primary"
+                onClick={() => onOpenRenameModal((name) => setupStore.setValue('main', { ...setupStore.main, name }))}
+              />
             )}
           </div>
           <div className="flex items-center gap-3">
@@ -184,6 +198,7 @@ export const ComparePage = observer(() => {
               </div>
             )}
           </div>
+          <p className="text-xs text-gray">{setupStore.main?.name}</p>
         </div>
         <div className="space-y-2">
           <div className="flex gap-2">
@@ -200,7 +215,11 @@ export const ComparePage = observer(() => {
                           const handler = () => {
                             const main = setupStore.main
                             const newCompare = _.cloneDeep(setupStore.comparing)
-                            newCompare.splice(tI, 1, _.cloneDeep(main))
+                            const name = findValidName(
+                              _.map([setupStore.main, ...setupStore.comparing], 'name'),
+                              main.name
+                            )
+                            newCompare.splice(tI, 1, { ...main, name })
                             const newCustom = _.cloneDeep(setupStore.custom)
                             newCustom.splice(tI + 1, 1, _.cloneDeep(setupStore.custom[0]))
                             setupStore.setValue('comparing', newCompare)
@@ -214,15 +233,27 @@ export const ComparePage = observer(() => {
                       {!!item && (
                         <>
                           <i
+                            title="Rename Setup"
+                            className="flex items-center justify-center w-6 h-6 text-xs text-orange-300 rounded-sm cursor-pointer fa-solid fa-pen bg-primary"
+                            onClick={() =>
+                              onOpenRenameModal((name) => {
+                                const newCompare = _.cloneDeep(setupStore.comparing)
+                                newCompare.splice(tI, 1, { ...setupStore.comparing[tI], name })
+                                setupStore.setValue('comparing', newCompare)
+                              })
+                            }
+                          />
+                          <i
                             title="Swap with Main"
                             className="flex items-center justify-center w-6 h-6 text-xs rounded-sm cursor-pointer fa-solid fa-star bg-primary text-desc"
                             onClick={() =>
                               onOpenSwapModal(() => {
                                 const main = setupStore.main
                                 const toBeSwapped = setupStore.comparing[tI]
-                                setupStore.comparing.splice(tI, 1, main)
+                                const newCompare = _.cloneDeep(setupStore.comparing)
+                                newCompare.splice(tI, 1, main)
                                 setupStore.setValue('main', toBeSwapped)
-                                setupStore.setValue('comparing', setupStore.comparing)
+                                setupStore.setValue('comparing', newCompare)
                                 setupStore.setValue('forms', swapElement(setupStore.forms, 0, tI + 1))
                                 setupStore.setValue('custom', swapElement(setupStore.custom, 0, tI + 1))
                                 setupStore.setValue('selected', [0, setupStore.selected[1]])
@@ -234,8 +265,10 @@ export const ComparePage = observer(() => {
                             className="flex items-center justify-center w-6 h-6 text-xs rounded-sm cursor-pointer fa-solid fa-trash bg-primary text-red"
                             onClick={() =>
                               onOpenRemoveModal(() => {
-                                setupStore.comparing.splice(tI, 1, null)
-                                setupStore.setValue('comparing', setupStore.comparing)
+                                const newCompare = _.cloneDeep(setupStore.comparing)
+                                newCompare.splice(tI, 1)
+                                newCompare.push(null)
+                                setupStore.setValue('comparing', newCompare)
                                 setupStore.setValue('selected', [0, 0])
                               })
                             }
@@ -278,6 +311,7 @@ export const ComparePage = observer(() => {
                       <p className="flex items-center justify-center w-full h-full text-gray">Add Setup</p>
                     )}
                   </div>
+                  <p className="h-4 text-xs text-gray">{item?.name}</p>
                 </div>
               ))}
           </div>
