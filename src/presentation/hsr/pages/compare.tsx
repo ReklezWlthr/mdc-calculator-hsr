@@ -198,7 +198,7 @@ export const ComparePage = observer(() => {
               </div>
             )}
           </div>
-          <p className="text-xs text-gray">{setupStore.main?.name}</p>
+          <p className="text-xs text-gray truncate w-[244px]">{setupStore.main?.name}</p>
         </div>
         <div className="space-y-2">
           <div className="flex gap-2">
@@ -311,7 +311,7 @@ export const ComparePage = observer(() => {
                       <p className="flex items-center justify-center w-full h-full text-gray">Add Setup</p>
                     )}
                   </div>
-                  <p className="h-4 text-xs text-gray">{item?.name}</p>
+                  <p className="h-4 text-xs text-gray truncate w-[244px]">{item?.name}</p>
                 </div>
               ))}
           </div>

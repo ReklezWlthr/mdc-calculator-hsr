@@ -91,8 +91,8 @@ export const CompareSuperBreakSubRows = observer(
         <Tooltip
           title={
             <div className="flex items-center justify-between gap-2">
-              <div>
-                <p className="text-xs font-normal text-gray">{title}</p>
+              <div className="w-1/2">
+                <p className="w-full text-xs font-normal truncate text-gray">{title}</p>
                 <p>{name}</p>
               </div>
               {main ? (
@@ -148,8 +148,8 @@ export const CompareSuperBreakSubRows = observer(
         {main ? (
           <Tooltip
             title={
-              <div>
-                <p className="text-xs font-normal text-gray">{setupNames[0]}</p>
+              <div className="w-1/2">
+                <p className="w-full text-xs font-normal truncate text-gray">{setupNames[0]}</p>
                 <p>{name}</p>
               </div>
             }

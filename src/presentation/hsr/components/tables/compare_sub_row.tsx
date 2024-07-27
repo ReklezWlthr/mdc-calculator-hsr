@@ -129,11 +129,11 @@ export const CompareSubRows = observer(
         <Tooltip
           title={
             <div className="flex items-center justify-between gap-2">
-              <div>
-                <p className="text-xs font-normal text-gray">{title}</p>
+              <div className="w-1/2">
+                <p className="w-full text-xs font-normal truncate text-gray">{title}</p>
                 <p>{name}</p>
               </div>
-              <div className="flex flex-col items-end gap-y-1">
+              <div className="flex flex-col items-end gap-y-1 shrink-0">
                 {!!toughness && (
                   <p className="text-xs font-normal">
                     Toughness Damage: <span className="text-desc">{_.round(toughness, 1).toLocaleString()}</span>
@@ -194,8 +194,8 @@ export const CompareSubRows = observer(
           <Tooltip
             title={
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs font-normal text-gray">{setupNames[0]}</p>
+                <div className="w-1/2">
+                  <p className="w-full text-xs font-normal truncate text-gray">{setupNames[0]}</p>
                   <p>{name}</p>
                 </div>
                 {!!toughness[0] && (
