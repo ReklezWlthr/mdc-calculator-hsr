@@ -145,6 +145,14 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
     {
       type: 'toggle',
+      id: 'jade_ult',
+      text: `Ult FuA Multiplier Buff`,
+      ...talents.ult,
+      show: true,
+      default: true,
+    },
+    {
+      type: 'toggle',
       id: 'jade_c4',
       text: `E4 DEF PEN`,
       ...talents.c4,
@@ -207,7 +215,13 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       base.TALENT_SCALING = [
         {
           name: 'AoE',
-          value: [{ scaling: calcScaling(0.6, 0.06, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [
+            {
+              scaling:
+                calcScaling(0.6, 0.06, talent, 'curved') + (form.jade_ult ? calcScaling(0.4, 0.04, ult, 'curved') : 0),
+              multiplier: Stats.ATK,
+            },
+          ],
           element: Element.QUANTUM,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
@@ -283,7 +297,14 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       broken: boolean
     ) => {
       const dc = _.map(allForm, (item) => item.debt_collector)
-      dc[index] = c >= 6 && _.some(dc) ? true : dc[index]
+      const c6 = c >= 6 && _.some(dc)
+      dc[index] = c6 ? true : dc[index]
+      if (c6)
+        base.QUANTUM_RES_PEN.push({
+          name: 'Eidolon 6',
+          source: 'Self',
+          value: 0.2,
+        })
       _.forEach(dc, (f, i) => {
         if (f) {
           if (i !== index)
@@ -301,6 +322,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
                   element: Element.QUANTUM,
                   property: TalentProperty.ADD,
                   type: TalentType.NONE,
+                  overrideIndex: index,
                 })
             })
             return x
