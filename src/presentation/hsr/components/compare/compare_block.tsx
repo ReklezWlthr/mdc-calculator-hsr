@@ -118,6 +118,7 @@ export const CompareBlock = observer(() => {
           property={item.property}
           element={item.element}
           type={talent}
+          setupNames={_.map([setupStore.main, ...setupStore.comparing], 'name')}
         />
       ))}
       {_.some(sumStats, (item) => item?.SUPER_BREAK) && (
@@ -264,6 +265,7 @@ export const CompareBlock = observer(() => {
                       property={item.property}
                       element={item.element}
                       type={TalentType.TECH}
+                      setupNames={_.map([setupStore.main, ...setupStore.comparing], 'name')}
                     />
                   ))}
                 </div>

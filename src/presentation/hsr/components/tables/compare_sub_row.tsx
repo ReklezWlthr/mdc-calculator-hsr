@@ -20,6 +20,7 @@ interface ScalingSubRowsProps {
   allStats: StatsObject[][]
   level: { level: number[]; selected: number }[]
   name: string
+  setupNames: string[]
   property: string
   type: TalentType
   element: string
@@ -46,7 +47,7 @@ export const ElementColor = {
 }
 
 export const CompareSubRows = observer(
-  ({ scaling, stats, allStats, level, name, property, type, element }: ScalingSubRowsProps) => {
+  ({ scaling, stats, allStats, level, name, property, type, element, setupNames }: ScalingSubRowsProps) => {
     const { setupStore, calculatorStore } = useStore()
     const [sum, setSum] = useState(_.some(scaling, (item) => item?.sum))
 
@@ -128,7 +129,10 @@ export const CompareSubRows = observer(
         <Tooltip
           title={
             <div className="flex items-center justify-between gap-2">
-              <p>{`${title}: ${name}`}</p>
+              <div>
+                <p className="text-xs font-normal text-gray">{title}</p>
+                <p>{name}</p>
+              </div>
               <div className="flex flex-col items-end gap-y-1">
                 {!!toughness && (
                   <p className="text-xs font-normal">
@@ -190,7 +194,10 @@ export const CompareSubRows = observer(
           <Tooltip
             title={
               <div className="flex items-center justify-between">
-                <p>{`Main: ${name}`}</p>
+                <div>
+                  <p className="text-xs font-normal text-gray">{setupNames[0]}</p>
+                  <p>{name}</p>
+                </div>
                 {!!toughness[0] && (
                   <p className="text-xs font-normal">
                     Toughness Damage: <span className="text-desc">{_.round(toughness[0], 1).toLocaleString()}</span>
@@ -206,9 +213,9 @@ export const CompareSubRows = observer(
         ) : (
           <p className="col-span-1 text-center text-gray">-</p>
         )}
-        <SubDmgBlock obj={sub1} title="Sub 1" toughness={toughness[1]} />
-        <SubDmgBlock obj={sub2} title="Sub 2" toughness={toughness[2]} />
-        <SubDmgBlock obj={sub3} title="Sub 3" toughness={toughness[3]} />
+        <SubDmgBlock obj={sub1} title={setupNames[1]} toughness={toughness[1]} />
+        <SubDmgBlock obj={sub2} title={setupNames[2]} toughness={toughness[2]} />
+        <SubDmgBlock obj={sub3} title={setupNames[3]} toughness={toughness[3]} />
         <div className="flex col-span-2 gap-1 text-xs" title={name}>
           <p className="w-full truncate">{name}</p>
           <CheckboxInput checked={sum} onClick={setSum} />
