@@ -15,7 +15,7 @@ export const RenameModal = observer(({ onSave }: { onSave: (name: string) => voi
     <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark w-[350px]">
       <div className="space-y-2">
         <div>
-          <p className="font-semibold">New Setup Name</p>
+          <p className="font-semibold">Rename Setup</p>
           <p className="text-xs italic text-red">* Only applies to this comparing session *</p>
         </div>
         <TextInput onChange={setName} value={name} placeholder="Enter New Setup Name" />
