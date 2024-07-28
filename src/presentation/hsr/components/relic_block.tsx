@@ -43,7 +43,7 @@ const MenuButton = ({
         duration
       )}
     >
-      <p className='text-sm'>{title}</p>
+      <p className="text-sm">{title}</p>
       <i
         className={classNames(
           'flex items-center justify-center w-11 h-11 p-2 text-xl rounded-full bg-primary-light hover:bg-primary cursor-pointer duration-200',
@@ -214,7 +214,7 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
             ))}
           </div>
           {canEdit && (
-            <div className="absolute flex flex-col gap-2 pr-2 pt-2 items-end top-0 w-full h-[260px] from-transparent group-hover:bg-opacity-80 bg-gradient-to-l group-hover:from-primary-darker from-30% duration-200 overflow-hidden">
+            <div className="absolute flex flex-col gap-2 pr-2 pt-2 items-end top-0 w-full h-[250px] rounded-b-lg from-transparent group-hover:bg-opacity-80 bg-gradient-to-l group-hover:from-primary-darker from-30% duration-200 overflow-hidden">
               <MenuButton
                 icon="fa-solid fa-pen-to-square"
                 duration="duration-[200ms]"

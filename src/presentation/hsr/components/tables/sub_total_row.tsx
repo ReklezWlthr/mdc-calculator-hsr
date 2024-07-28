@@ -31,8 +31,9 @@ export const SubTotalRow = observer(({ type }: CompareTotalRowsProps) => {
   const { calculatorStore } = useStore()
 
   return (
-    <div className="grid items-center grid-cols-9 gap-2 pt-2 pr-2 border-t border-primary-border">
-      <p className="col-span-1 col-start-3 text-center">Total</p>
+    <div className="grid items-center grid-cols-9 gap-2 pr-2">
+      <div className="col-span-2 border-t-2 border-dashed border-primary-border" />
+      <p className="col-span-1 text-center">Total</p>
       <p className="col-span-1 text-center text-gray">
         {calculatorStore.getTotal(type, 0) ? _.round(calculatorStore.getTotal(type, 0)).toLocaleString() : '-'}
       </p>
@@ -43,6 +44,7 @@ export const SubTotalRow = observer(({ type }: CompareTotalRowsProps) => {
         {calculatorStore.getTotal(type, 2) ? _.round(calculatorStore.getTotal(type, 2)).toLocaleString() : '-'}
       </p>
       <p className="text-xs text-center truncate text-gray">-</p>
+      <div className="col-span-2 border-t-2 border-dashed border-primary-border" />
     </div>
   )
 })

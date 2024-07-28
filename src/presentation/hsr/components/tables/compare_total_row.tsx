@@ -67,14 +67,16 @@ export const CompareTotalRows = observer(({ type }: CompareTotalRowsProps) => {
   }
 
   return (
-    <div className="grid items-center grid-cols-9 gap-2 pt-2 pr-2 border-t border-primary-border">
-      <p className="col-span-1 col-start-3 text-center">Total</p>
+    <div className="grid items-center grid-cols-9 gap-2 pr-2">
+      <div className="col-span-2 border-t-2 border-dashed border-primary-border" />
+      <p className="col-span-1 text-center">Total</p>
       <p className="col-span-1 text-xs text-center text-gray">
         {setupStore.getTotal(type, 0) ? _.round(setupStore.getTotal(type, 0)).toLocaleString() : '-'}
       </p>
       {renderSubDmgBlock(1)}
       {renderSubDmgBlock(2)}
       {renderSubDmgBlock(3)}
+      <div className="col-span-2 border-t-2 border-dashed border-primary-border" />
     </div>
   )
 })
