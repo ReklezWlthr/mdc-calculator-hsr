@@ -43,8 +43,7 @@ export const SubTotalRow = observer(({ type }: CompareTotalRowsProps) => {
       <p className="col-span-1 font-bold text-center text-red">
         {calculatorStore.getTotal(type, 2) ? _.round(calculatorStore.getTotal(type, 2)).toLocaleString() : '-'}
       </p>
-      <p className="text-xs text-center truncate text-gray">-</p>
-      <div className="col-span-2 border-t-2 border-dashed border-primary-border" />
+      <div className="col-span-3 border-t-2 border-dashed border-primary-border" />
     </div>
   )
 })
