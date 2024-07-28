@@ -6,11 +6,11 @@ import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { Stats } from '@src/domain/constant'
 
 interface StatBlockProps {
-  index: number
+  expands?: boolean
   stat: StatsObject
 }
 
-export const StatBlock = observer(({ index, stat }: StatBlockProps) => {
+export const StatBlock = observer(({ stat, expands }: StatBlockProps) => {
   const DataRow = ({ title, value }: { title: string; value: number | string }) => {
     return (
       <div className="flex items-center gap-2 text-xs">

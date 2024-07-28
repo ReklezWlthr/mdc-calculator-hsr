@@ -123,7 +123,7 @@ export const TeamSetup = observer(() => {
           </div>
           <CharacterBlock index={selected} />
           <LCBlock index={selected} {...teamStore.characters[selected]?.equipments?.weapon} />
-          <StatBlock index={selected} stat={stats} />
+          <StatBlock stat={stats} />
         </div>
         <div className="w-1/5 space-y-5">
           <div className="grid items-center justify-center grid-cols-2 gap-5 py-3">

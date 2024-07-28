@@ -51,7 +51,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
   return (
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark">
       <div className="flex justify-center px-5 py-3 text-xl rounded-t-lg bg-primary-lighter">Character</div>
-      <div className="flex h-[200px]">
+      <div className="flex h-[190px]">
         <div className="flex items-center w-1/2 px-3 py-3">
           <div
             className="w-full duration-200 border rounded-lg cursor-pointer bg-primary-darker border-primary-border aspect-square hover:border-primary-light"
@@ -130,7 +130,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
             <div className="flex items-center justify-between gap-2 px-3 pt-1">
               <div className="flex gap-0.5">
                 <div
-                  className="lex items-center justify-center p-1.5 rounded-full w-11 h-11 bg-primary"
+                  className="lex items-center justify-center p-1.5 rounded-full w-10 h-10 bg-primary"
                   title={characterData?.path}
                 >
                   <img src={getPathImage(characterData?.path)} />
@@ -139,7 +139,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
               <RarityGauge rarity={rarity} />
               <div className="flex gap-0.5">
                 <div
-                  className="flex items-center justify-center p-1 rounded-full w-11 h-11 bg-primary"
+                  className="flex items-center justify-center w-10 h-10 p-2 rounded-full bg-primary"
                   title={characterData?.element}
                 >
                   <img src={getElementImage(characterData?.element)} />

@@ -2,14 +2,16 @@ import classNames from 'classnames'
 import { observer } from 'mobx-react-lite'
 import { useState } from 'react'
 
-export const BulletPoint = observer(({ children }: { children: React.ReactNode }) => {
-  return (
-    <p className="pl-3">
-      <span className="mr-2 text-blue">✦</span>
-      {children}
-    </p>
-  )
-})
+export const BulletPoint = observer(
+  ({ children, color = 'text-blue' }: { children: React.ReactNode; color?: string }) => {
+    return (
+      <p className="pl-3">
+        <span className={classNames('mr-2', color)}>✦</span>
+        {children}
+      </p>
+    )
+  }
+)
 
 export const Collapsible = observer(
   ({

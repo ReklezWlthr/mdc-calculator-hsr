@@ -1,5 +1,5 @@
 import { DebuffTypes, IScaling } from '@src/domain/conditional'
-import { Element, Stats, TalentProperty } from '@src/domain/constant'
+import { Element, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
@@ -11,10 +11,13 @@ import { damageStringConstruct } from '@src/core/utils/constructor/damageStringC
 import { Enemies } from '@src/data/db/enemies'
 import { breakDamageStringConstruct } from '@src/core/utils/constructor/breakDamageStringConstruct'
 import { chanceStringConstruct } from '@src/core/utils/constructor/chanceStringConstruct'
+import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
+import { useEffect, useState } from 'react'
 
 interface ScalingSubRowsProps {
   scaling: IScaling
   statsOverride?: StatsObject
+  type: TalentType
 }
 
 export const propertyColor = {
@@ -37,11 +40,12 @@ export const ElementColor = {
   ...propertyColor,
 }
 
-export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRowsProps) => {
+export const ScalingSubRows = observer(({ scaling, statsOverride, type }: ScalingSubRowsProps) => {
   const { calculatorStore, teamStore } = useStore()
   const index = scaling.overrideIndex ?? calculatorStore.selected
   const stats = statsOverride || calculatorStore.computedStats[index]
   const element = scaling.element
+  const [sum, setSum] = useState(scaling.sum)
 
   const {
     component: { DmgBody, AvgBody, CritBody },
@@ -96,6 +100,22 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
     </Tooltip>
   )
 
+  useEffect(() => {
+    const arr = [dmg, dmg * (1 + totalCd), dmg * (1 + totalCd * totalCr)]
+    _.forEach(arr, (item, i) => {
+      item && calculatorStore.setTotal(type, i, scaling.name, sum ? item : 0)
+    })
+    return () => {
+      _.forEach(arr, (item, i) => {
+        item && calculatorStore.setTotal(type, i, scaling.name, undefined)
+      })
+    }
+  }, [dmg, totalCd, totalCr, scaling, sum])
+
+  useEffect(() => {
+    setSum(scaling.sum)
+  }, [scaling])
+
   return (
     <div className="grid items-center grid-cols-9 gap-2 pr-2">
       <p className="col-span-2 text-center">{scaling.property}</p>
@@ -135,9 +155,10 @@ export const ScalingSubRows = observer(({ scaling, statsOverride }: ScalingSubRo
       ) : (
         <p className="text-xs text-center truncate text-gray">-</p>
       )}
-      <p className="col-span-2 text-xs truncate" title={scaling.name}>
-        {scaling.name}
-      </p>
+      <div className="flex col-span-2 gap-1 text-xs" title={scaling.name}>
+        <p className="w-full truncate">{scaling.name}</p>
+        <CheckboxInput checked={sum} onClick={setSum} />
+      </div>
     </div>
   )
 })

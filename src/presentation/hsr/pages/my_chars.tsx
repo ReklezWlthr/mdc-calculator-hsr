@@ -13,13 +13,12 @@ import { getElementImage, getPathImage } from '@src/core/utils/fetcher'
 import { CharDetail } from '../components/char_detail'
 
 export const MyCharacters = observer(() => {
-  const { teamStore, charStore, settingStore } = useStore()
+  const { charStore, settingStore } = useStore()
   const { setParams, params } = useParams({
     searchWord: '',
     element: [],
     path: [],
   })
-  const { selected } = charStore
 
   const filteredChar = useMemo(
     () =>
@@ -30,11 +29,12 @@ export const MyCharacters = observer(() => {
           const nameMatch = item.name.match(regex)
           const elmMatch = _.size(params.element) ? _.includes(params.element, item.element) : true
           const pathMatch = _.size(params.path) ? _.includes(params.path, item.path) : true
+          const liveMatch = !(item.beta && settingStore.settings.liveOnly)
 
-          return nameMatch && elmMatch && pathMatch
+          return nameMatch && elmMatch && pathMatch && liveMatch
         }
       ),
-    [params]
+    [params, settingStore.settings.liveOnly]
   )
 
   const FilterIcon = ({ type, value }: { type: 'element' | 'path'; value: Element | PathType }) => {
@@ -59,7 +59,7 @@ export const MyCharacters = observer(() => {
       <div className="flex w-full h-full gap-x-10">
         <div className="flex flex-col w-1/3 min-w-[400px] h-full gap-y-4 shrink-0">
           <div className="flex items-end gap-5">
-            <div className='space-y-1.5'>
+            <div className="space-y-1.5">
               <p className="text-2xl font-bold text-white">My Characters</p>
               <TextInput
                 onChange={(value) => setParams({ searchWord: value })}

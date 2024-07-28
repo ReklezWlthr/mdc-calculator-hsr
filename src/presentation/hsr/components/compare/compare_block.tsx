@@ -18,7 +18,7 @@ import { CompareTraceBlock } from '@src/presentation/hsr/components/compare/comp
 import { CompareSuperBreakSubRows } from '../tables/compare_super_break_sub_row '
 import { CharacterSelect } from '../character_select'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
-import { TalentType } from '@src/domain/constant'
+import { BaseAggro, TalentType } from '@src/domain/constant'
 import { CompareTotalRows } from '../tables/compare_total_row'
 
 export const CompareBlock = observer(() => {
@@ -97,13 +97,23 @@ export const CompareBlock = observer(() => {
   const onOpenStatsModal = useCallback(
     () =>
       modalStore.openModal(
-        <StatsModal stats={allStats[setupIndex][charIndex]} path={findCharacter(focusedChar.cId)?.path} />
+        <StatsModal
+          stats={allStats[setupIndex][charIndex]}
+          path={findCharacter(focusedChar.cId)?.path}
+          sumAggro={_.sumBy(
+            allStats[setupIndex],
+            (item) =>
+              BaseAggro[item.PATH] *
+              (1 + item.getValue(StatsObjectKeys.BASE_AGGRO)) *
+              (1 + item.getValue(StatsObjectKeys.AGGRO))
+          )}
+        />
       ),
     [allStats, charData]
   )
 
   const renderRow = (type: string, talent: TalentType) => (
-    <div>
+    <div className="space-y-0.5">
       {_.map(getUniqueComponent(type), (item) => (
         <CompareSubRows
           key={item.name}
@@ -369,7 +379,7 @@ export const CompareBlock = observer(() => {
                 </p>
                 <PrimaryButton title="Stats Breakdown" onClick={onOpenStatsModal} />
               </div>
-              <StatBlock index={selected} stat={allStats[setupIndex][charIndex]} />
+              <StatBlock expands stat={allStats[setupIndex][charIndex]} />
             </>
           )}
           {tab === 'load' && focusedChar && (

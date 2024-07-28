@@ -1,15 +1,17 @@
-import { Element, ICharStore, ITeamChar } from '@src/domain/constant'
+import { Element, ICharStore, ITeamChar, TalentType } from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { StatsObject, StatsObjectKeysT } from '../lib/stats/baseConstant'
 import { DebuffTypes } from '@src/domain/conditional'
 import { enableStaticRendering } from 'mobx-react-lite'
+import { defaultTotal, TotalT } from './setup_store'
 
 enableStaticRendering(typeof window === 'undefined')
 
 export interface CalculatorStoreType {
   tab: string
   team: ITeamChar[]
+  total: TotalT[]
   form: Record<string, any>[]
   computedStats: StatsObject[]
   selected: number
@@ -28,6 +30,8 @@ export interface CalculatorStoreType {
   setFormValue: (index: number, key: string, value: any) => void
   setCustomValue: (index: number, key: StatsObjectKeysT, value: any) => void
   removeCustomValue: (index: number, innerIndex: number) => void
+  setTotal: (key: TalentType, index: number, name: string, value: number) => void
+  getTotal: (key: TalentType, index: number) => number
   setRes: (element: Element, value: number) => void
   getEffRes: (reduction?: number) => number
   getDefMult: (level: number, defPen: number, defRed: number) => number
@@ -38,6 +42,7 @@ export interface CalculatorStoreType {
 export class CalculatorStore {
   tab: string
   team: ITeamChar[]
+  total: TotalT[]
   form: Record<string, any>[]
   computedStats: StatsObject[]
   res: Record<Element, number>
@@ -54,6 +59,7 @@ export class CalculatorStore {
 
   constructor() {
     this.tab = 'mod'
+    this.total = Array(3).fill(defaultTotal)
     this.team = Array(4)
     this.form = Array(4)
     this.computedStats = Array(4)
@@ -112,6 +118,14 @@ export class CalculatorStore {
   removeCustomValue = (index: number, innerIndex: number) => {
     this.custom[index].splice(innerIndex, 1)
     this.custom = _.cloneDeep(this.custom)
+  }
+
+  setTotal = (key: TalentType, index: number, name: string, value: number) => {
+    _.assign(this.total[index][key], { [name]: value })
+  }
+
+  getTotal = (key: TalentType, index: number) => {
+    return _.sum(_.map(this.total[index][key]))
   }
 
   setRes = (element: Element, value: number) => {

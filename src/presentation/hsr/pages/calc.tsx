@@ -1,6 +1,6 @@
 import { findCharacter } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { Stats } from '@src/domain/constant'
+import { BaseAggro, Stats, TalentType } from '@src/domain/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useCallback, useMemo, useState } from 'react'
@@ -26,6 +26,8 @@ import { BreakBlock } from '../components/break_block'
 import { LCBlock } from '../components/lc_block'
 import { MiniRelicBlock } from '../components/mini_relic_block'
 import { BulletPoint } from '@src/presentation/components/collapsible'
+import { SubTotalRow } from '../components/tables/sub_total_row'
+import { StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
@@ -34,13 +36,26 @@ export const Calculator = observer(({}: {}) => {
   const char = team[selected]
   const charData = findCharacter(char.cId)
 
-  const { main, mainComputed, contents } = useCalculator({ teamOverride: team })
+  const { main, mainComputed, contents, finalStats } = useCalculator({ teamOverride: team })
 
   const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal />), [])
   const onOpenDebuffModal = useCallback(() => modalStore.openModal(<DebuffModal />), [])
   const onOpenStatsModal = useCallback(
-    () => modalStore.openModal(<StatsModal stats={mainComputed} path={charData.path} />),
-    [mainComputed, charData]
+    () =>
+      modalStore.openModal(
+        <StatsModal
+          stats={mainComputed}
+          path={charData.path}
+          sumAggro={_.sumBy(
+            finalStats,
+            (item) =>
+              BaseAggro[item.PATH] *
+              (1 + item.getValue(StatsObjectKeys.BASE_AGGRO)) *
+              (1 + item.getValue(StatsObjectKeys.AGGRO))
+          )}
+        />
+      ),
+    [mainComputed, charData, finalStats]
   )
 
   return (
@@ -99,19 +114,24 @@ export const Calculator = observer(({}: {}) => {
                   level={char.talents?.basic}
                   upgraded={main?.upgrade?.basic}
                 >
-                  {_.map(mainComputed?.BASIC_SCALING, (item) => (
-                    <ScalingSubRows key={item.name} scaling={item} />
-                  ))}
-                  {mainComputed?.SUPER_BREAK && (
-                    <div className="pt-2 space-y-0.5">
-                      {_.map(
-                        _.filter(mainComputed?.BASIC_SCALING, (item) => !!item.break),
-                        (item) => (
-                          <SuperBreakSubRows key={item.name} scaling={item} />
-                        )
+                  <div className="flex flex-col justify-between h-full gap-4">
+                    <div className="space-y-0.5">
+                      {_.map(mainComputed?.BASIC_SCALING, (item) => (
+                        <ScalingSubRows key={item.name} scaling={item} type={TalentType.BA} />
+                      ))}
+                      {mainComputed?.SUPER_BREAK && (
+                        <div className="pt-2 space-y-0.5">
+                          {_.map(
+                            _.filter(mainComputed?.BASIC_SCALING, (item) => !!item.break),
+                            (item) => (
+                              <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.BA} />
+                            )
+                          )}
+                        </div>
                       )}
                     </div>
-                  )}
+                    <SubTotalRow type={TalentType.BA} />
+                  </div>
                 </ScalingWrapper>
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
@@ -121,19 +141,24 @@ export const Calculator = observer(({}: {}) => {
                   level={char.talents?.skill}
                   upgraded={main?.upgrade?.skill}
                 >
-                  {_.map(mainComputed?.SKILL_SCALING, (item) => (
-                    <ScalingSubRows key={item.name} scaling={item} />
-                  ))}
-                  {mainComputed?.SUPER_BREAK && (
-                    <div className="pt-2 space-y-0.5">
-                      {_.map(
-                        _.filter(mainComputed?.SKILL_SCALING, (item) => !!item.break),
-                        (item) => (
-                          <SuperBreakSubRows key={item.name} scaling={item} />
-                        )
+                  <div className="flex flex-col justify-between h-full gap-4">
+                    <div className="space-y-0.5">
+                      {_.map(mainComputed?.SKILL_SCALING, (item) => (
+                        <ScalingSubRows key={item.name} scaling={item} type={TalentType.SKILL} />
+                      ))}
+                      {mainComputed?.SUPER_BREAK && (
+                        <div className="pt-2 space-y-0.5">
+                          {_.map(
+                            _.filter(mainComputed?.SKILL_SCALING, (item) => !!item.break),
+                            (item) => (
+                              <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.SKILL} />
+                            )
+                          )}
+                        </div>
                       )}
                     </div>
-                  )}
+                    <SubTotalRow type={TalentType.SKILL} />
+                  </div>
                 </ScalingWrapper>
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
@@ -143,19 +168,24 @@ export const Calculator = observer(({}: {}) => {
                   level={char.talents?.ult}
                   upgraded={main?.upgrade?.ult}
                 >
-                  {_.map(mainComputed?.ULT_SCALING, (item) => (
-                    <ScalingSubRows key={item.name} scaling={item} />
-                  ))}
-                  {mainComputed?.SUPER_BREAK && (
-                    <div className="pt-2 space-y-0.5">
-                      {_.map(
-                        _.filter(mainComputed?.ULT_SCALING, (item) => !!item.break),
-                        (item) => (
-                          <SuperBreakSubRows key={item.name} scaling={item} />
-                        )
+                  <div className="flex flex-col justify-between h-full gap-4">
+                    <div className="space-y-0.5">
+                      {_.map(mainComputed?.ULT_SCALING, (item) => (
+                        <ScalingSubRows key={item.name} scaling={item} type={TalentType.ULT} />
+                      ))}
+                      {mainComputed?.SUPER_BREAK && (
+                        <div className="pt-2 space-y-0.5">
+                          {_.map(
+                            _.filter(mainComputed?.ULT_SCALING, (item) => !!item.break),
+                            (item) => (
+                              <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.ULT} />
+                            )
+                          )}
+                        </div>
                       )}
                     </div>
-                  )}
+                    <SubTotalRow type={TalentType.ULT} />
+                  </div>
                 </ScalingWrapper>
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
@@ -165,19 +195,24 @@ export const Calculator = observer(({}: {}) => {
                   level={char.talents?.talent}
                   upgraded={main?.upgrade?.talent}
                 >
-                  {_.map(mainComputed?.TALENT_SCALING, (item) => (
-                    <ScalingSubRows key={item.name} scaling={item} />
-                  ))}
-                  {mainComputed?.SUPER_BREAK && (
-                    <div className="pt-2 space-y-0.5">
-                      {_.map(
-                        _.filter(mainComputed?.TALENT_SCALING, (item) => !!item.break),
-                        (item) => (
-                          <SuperBreakSubRows key={item.name} scaling={item} />
-                        )
+                  <div className="flex flex-col justify-between h-full gap-4">
+                    <div className="space-y-0.5">
+                      {_.map(mainComputed?.TALENT_SCALING, (item) => (
+                        <ScalingSubRows key={item.name} scaling={item} type={TalentType.TALENT} />
+                      ))}
+                      {mainComputed?.SUPER_BREAK && (
+                        <div className="pt-2 space-y-0.5">
+                          {_.map(
+                            _.filter(mainComputed?.TALENT_SCALING, (item) => !!item.break),
+                            (item) => (
+                              <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.TALENT} />
+                            )
+                          )}
+                        </div>
                       )}
                     </div>
-                  )}
+                    <SubTotalRow type={TalentType.TALENT} />
+                  </div>
                 </ScalingWrapper>
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
@@ -187,9 +222,14 @@ export const Calculator = observer(({}: {}) => {
                   level={1}
                   upgraded={0}
                 >
-                  {_.map(mainComputed?.TECHNIQUE_SCALING, (item) => (
-                    <ScalingSubRows key={item.name} scaling={item} />
-                  ))}
+                  <div className="flex flex-col justify-between h-full gap-4 pb-2">
+                    <div className="space-y-0.5">
+                      {_.map(mainComputed?.TECHNIQUE_SCALING, (item) => (
+                        <ScalingSubRows key={item.name} scaling={item} type={TalentType.TECH} />
+                      ))}
+                    </div>
+                    <SubTotalRow type={TalentType.TECH} />
+                  </div>
                 </ScalingWrapper>
               </div>
               {mainComputed && <BreakBlock stats={mainComputed} index={selected} />}
@@ -244,7 +284,7 @@ export const Calculator = observer(({}: {}) => {
                 </p>
                 <PrimaryButton title="Stats Breakdown" onClick={onOpenStatsModal} />
               </div>
-              <StatBlock index={selected} stat={computedStats[selected]} />
+              <StatBlock expands stat={computedStats[selected]} />
               <div className="flex items-center justify-center w-full gap-4">
                 <div className="flex space-x-3">
                   <p className="text-sm font-bold [writing-mode:vertical-rl] text-center rotate-180">Bonus Abilities</p>
