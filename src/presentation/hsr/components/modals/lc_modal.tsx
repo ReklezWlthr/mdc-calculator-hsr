@@ -21,7 +21,7 @@ interface LCModalProps {
 }
 
 export const LCModal = observer(({ index, setWeapon, pathOverride }: LCModalProps) => {
-  const { teamStore, modalStore } = useStore()
+  const { teamStore, modalStore, settingStore } = useStore()
   const { setParams, params } = useParams({
     searchWord: '',
     path: [pathOverride || findCharacter(teamStore.characters[index]?.cId)?.path],
@@ -36,10 +36,11 @@ export const LCModal = observer(({ index, setWeapon, pathOverride }: LCModalProp
         const regex = new RegExp(params.searchWord, 'i')
         const nameMatch = item.name.match(regex)
         const typeMatch = _.size(params.path) ? _.includes(params.path, item.type) : true
+        const liveMatch = !(item.beta && settingStore.settings.liveOnly)
 
-        return nameMatch && typeMatch
+        return nameMatch && typeMatch && liveMatch
       }),
-    [params]
+    [params, settingStore.settings.liveOnly]
   )
 
   const FilterIcon = ({ path }: { path: PathType }) => {

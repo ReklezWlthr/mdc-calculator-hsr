@@ -215,11 +215,9 @@ export const ComparePage = observer(() => {
                           const handler = () => {
                             const main = setupStore.main
                             const newCompare = _.cloneDeep(setupStore.comparing)
-                            const name = findValidName(
-                              _.map([setupStore.main, ...setupStore.comparing], 'name'),
-                              main.name
-                            )
-                            newCompare.splice(tI, 1, { ...main, name })
+                            newCompare.splice(tI, 1, _.cloneDeep(main))
+                            const name = findValidName(_.map([setupStore.main, ...newCompare], 'name'), main.name)
+                            newCompare[tI].name = name
                             const newCustom = _.cloneDeep(setupStore.custom)
                             newCustom.splice(tI + 1, 1, _.cloneDeep(setupStore.custom[0]))
                             setupStore.setValue('comparing', newCompare)
@@ -289,8 +287,11 @@ export const ComparePage = observer(() => {
                       if (setupStore.mainChar)
                         onOpenSaveModal({
                           onSelect: (team) => {
-                            setupStore.comparing.splice(tI, 1, { ...team, total: defaultTotal })
-                            setupStore.setValue('comparing', setupStore.comparing)
+                            const newCompare = _.cloneDeep(setupStore.comparing)
+                            newCompare.splice(tI, 1, { ...team, total: defaultTotal })
+                            const name = findValidName(_.map([setupStore.main, ...newCompare], 'name'), team.name)
+                            newCompare[tI].name = name
+                            setupStore.setValue('comparing', newCompare)
                           },
                           filterId: setupStore.mainChar,
                         })

@@ -116,9 +116,7 @@ export const Calculator = observer(({}: {}) => {
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
                   talent={mainComputed?.SKILL_ALT ? main?.talents?.skill_alt : main?.talents?.skill}
-                  icon={`SkillIcon_${charData.id}_BP${
-                    mainComputed?.SKILL_ALT && char.cId !== '1109' ? '02' : ''
-                  }.png`}
+                  icon={`SkillIcon_${charData.id}_BP${mainComputed?.SKILL_ALT && char.cId !== '1109' ? '02' : ''}.png`}
                   element={charData.element}
                   level={char.talents?.skill}
                   upgraded={main?.upgrade?.skill}
@@ -140,9 +138,7 @@ export const Calculator = observer(({}: {}) => {
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
                   talent={mainComputed?.ULT_ALT ? main?.talents?.ult_alt : main?.talents?.ult}
-                  icon={`SkillIcon_${charData.id}_Ultra${
-                    mainComputed?.ULT_ALT ? '02' : ''
-                  }.png`}
+                  icon={`SkillIcon_${charData.id}_Ultra${mainComputed?.ULT_ALT ? '02' : ''}.png`}
                   element={charData.element}
                   level={char.talents?.ult}
                   upgraded={main?.upgrade?.ult}
@@ -236,6 +232,7 @@ export const Calculator = observer(({}: {}) => {
               <ConditionalBlock title="Self Modifiers" contents={_.filter(contents.main, 'show')} />
               <ConditionalBlock title="Team Modifiers" contents={_.filter(contents.team, 'show')} />
               <WeaponConditionalBlock contents={contents.weapon(selected)} />
+              <ConditionalBlock title="Relic Modifiers" contents={contents.artifact(selected)} />
               <CustomConditionalBlock index={selected} />
             </>
           )}

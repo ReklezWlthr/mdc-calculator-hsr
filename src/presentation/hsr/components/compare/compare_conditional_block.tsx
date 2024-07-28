@@ -18,6 +18,7 @@ interface CompareConditionalBlockProps {
     main: IContentIndex[]
     team: IContentIndex[]
     weapon: (i: number) => IContentIndex[]
+    artifact: (i: number) => IContentIndex[]
     customMain: (selected: number) => IContentIndex[]
     customTeam: (selected: number) => IContentIndex[]
   }
@@ -48,6 +49,14 @@ export const CompareConditionalBlock = observer(({ team, stats, content }: Compa
       <WeaponConditionalBlock
         contents={content.weapon(charIndex)}
         formOverride={setupStore.forms[setupIndex]}
+        setForm={(...params) => setupStore.setFormValue(setupIndex, ...params)}
+      />
+      <ConditionalBlock
+        title="Relic Modifiers"
+        contents={content.artifact(charIndex)}
+        formOverride={setupStore.forms[setupIndex]}
+        statsOverride={stats}
+        teamOverride={team}
         setForm={(...params) => setupStore.setFormValue(setupIndex, ...params)}
       />
       <CustomConditionalBlock

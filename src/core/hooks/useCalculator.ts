@@ -365,8 +365,8 @@ export const useCalculator = ({
     _.flatMap(
       _.map(conditionals, (item, index) =>
         index === selected
-          ? _.concat(item?.content, artifactConditionals[index]?.content, breakContents[index])
-          : _.concat(item?.teammateContent, artifactConditionals[index]?.teamContent, breakContents[index])
+          ? _.concat(item?.content, breakContents[index])
+          : _.concat(item?.teammateContent, breakContents[index])
       ),
       (item, index) => _.map(item, (inner) => ({ ...inner, index }))
     )
@@ -378,6 +378,13 @@ export const useCalculator = ({
   // Update: This is with the exception of single target buffs that will be put in allies' form instead of the giver so that the buff will not activate all at once
   const mainContent = _.filter(mapped, ['index', selected])
   const teamContent = [..._.filter(mapped, (item) => selected !== item.index), ...allyMapped]
+  const artifactContents = (selected: number) =>
+    _.flatMap(
+      _.map(conditionals, (item, index) =>
+        index === selected ? artifactConditionals[index]?.content : artifactConditionals[index]?.teamContent
+      ),
+      (item, index) => _.map(item, (inner) => ({ ...inner, index }))
+    )
 
   return {
     main,
@@ -387,6 +394,7 @@ export const useCalculator = ({
       main: mainContent,
       team: teamContent,
       weapon: weaponSelectable,
+      artifact: artifactContents,
       customMain: (selected: number) => _.filter(customMapped(selected), ['index', selected]),
       customTeam: (selected: number) => [
         ..._.filter(customMapped(selected), (item) => selected !== item.index),

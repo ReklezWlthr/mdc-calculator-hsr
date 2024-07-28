@@ -42,11 +42,12 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
           const nameMatch = item.name.match(regex)
           const elmMatch = _.size(params.element) ? _.includes(params.element, item.element) : true
           const weaponMatch = _.size(params.path) ? _.includes(params.path, item.path) : true
+          const liveMatch = !(item.beta && settingStore.settings.liveOnly)
 
-          return nameMatch && elmMatch && weaponMatch
+          return nameMatch && elmMatch && weaponMatch && liveMatch
         }
       ),
-    [params]
+    [params, settingStore.settings.liveOnly]
   )
 
   const FilterIcon = ({ type, value }: { type: 'element' | 'path'; value: Element | PathType }) => {

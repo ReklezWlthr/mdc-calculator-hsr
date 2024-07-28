@@ -26,6 +26,18 @@ export const SettingModal = observer(() => {
           <p>Stelle</p>
         </div>
       </div>
+      <div className="flex items-center justify-between p-3 rounded-lg bg-primary-darker gap-x-2">
+        <div className="w-2/3">
+          <p className="text-sm text-gray">
+            Only Show <b>Live Server</b> Contents
+          </p>
+          <p className="text-xs italic text-red">✦ Does not apply to ones already in the account data.</p>
+        </div>{' '}
+        <ToggleSwitch
+          enabled={settingStore.settings.liveOnly}
+          onClick={(v) => settingStore.setSettingValue({ liveOnly: v })}
+        />
+      </div>
       <div className="p-3 space-y-3 rounded-lg bg-primary-darker">
         <p className="text-white">Default Data</p>
         <div className="flex items-center justify-between gap-x-2">
@@ -97,9 +109,9 @@ export const SettingModal = observer(() => {
             <SelectInput
               value={settingStore.settings.formMode}
               options={[
+                { name: 'Minimum', value: 'min' },
                 { name: 'Default', value: 'default' },
                 { name: 'Maximum', value: 'max' },
-                { name: 'Minimum', value: 'min' },
               ]}
               onChange={(v) => settingStore.setSettingValue({ formMode: v as any })}
               style="w-[100px]"
@@ -111,8 +123,8 @@ export const SettingModal = observer(() => {
         <p className="text-white">Account Data</p>
         <div className="flex gap-x-2">
           <p className="text-sm text-gray">Automatically save my account data to the browser's local storage</p>
-          <CheckboxInput
-            checked={settingStore.settings.storeData}
+          <ToggleSwitch
+            enabled={settingStore.settings.storeData}
             onClick={(v) => settingStore.setSettingValue({ storeData: v })}
           />
         </div>

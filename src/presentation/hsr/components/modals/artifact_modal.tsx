@@ -19,7 +19,7 @@ import getConfig from 'next/config'
 const { publicRuntimeConfig } = getConfig()
 
 export const ArtifactModal = ({ type, index, aId }: { type: number; index?: number; aId?: string }) => {
-  const { teamStore, artifactStore, modalStore, toastStore } = useStore()
+  const { teamStore, artifactStore, modalStore, toastStore, settingStore } = useStore()
   const [error, setError] = useState('')
 
   const { watch, control, setValue, handleSubmit, reset, formState } = useForm({
@@ -120,11 +120,14 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
           render={({ field }) => (
             <SelectTextInput
               value={field.value}
-              options={_.map(values.type >= 5 ? PlanarSets : RelicSets, (artifact) => ({
-                name: artifact.name,
-                value: artifact.id.toString(),
-                img: `https://api.hakush.in/hsr/UI/itemfigures/${artifact.icon}.webp`,
-              }))}
+              options={_.map(
+                _.filter(values.type >= 5 ? PlanarSets : RelicSets, (a) => !(a.beta && settingStore.settings.liveOnly)),
+                (artifact) => ({
+                  name: artifact.name,
+                  value: artifact.id.toString(),
+                  img: `https://api.hakush.in/hsr/UI/itemfigures/${artifact.icon}.webp`,
+                })
+              )}
               placeholder="Relic Set"
               onChange={(value) => field.onChange(value?.value)}
             />

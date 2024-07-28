@@ -22,7 +22,7 @@ export const ArtifactListModal = observer(
       type,
     })
 
-    const { artifactStore, modalStore, teamStore } = useStore()
+    const { artifactStore, modalStore, teamStore, settingStore } = useStore()
 
     const set = setRelic || teamStore.setArtifact
 
@@ -42,11 +42,14 @@ export const ArtifactListModal = observer(
           <div className="flex items-start gap-3">
             <SelectTextInput
               value={params.set}
-              options={_.map(AllRelicSets, (artifact) => ({
-                name: artifact.name,
-                value: artifact.id.toString(),
-                img: `https://api.hakush.in/hsr/UI/itemfigures/${artifact?.icon}.webp`,
-              }))}
+              options={_.map(
+                _.filter(AllRelicSets, (a) => !(a.beta && settingStore.settings.liveOnly)),
+                (artifact) => ({
+                  name: artifact.name,
+                  value: artifact.id.toString(),
+                  img: `https://api.hakush.in/hsr/UI/itemfigures/${artifact?.icon}.webp`,
+                })
+              )}
               placeholder="Artifact Set"
               onChange={(value) => setParams({ set: value?.value })}
             />

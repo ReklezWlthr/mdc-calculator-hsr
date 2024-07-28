@@ -12,9 +12,6 @@ import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
 import { MainStatOptions, RelicPieceIcon, Stats, SubStatOptions } from '@src/domain/constant'
 import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
 import { isSubsetOf } from '@src/core/utils/finder'
-import getConfig from 'next/config'
-
-const { publicRuntimeConfig } = getConfig()
 
 export const ArtifactInventory = observer(() => {
   const { params, setParams } = useParams({
@@ -24,7 +21,7 @@ export const ArtifactInventory = observer(() => {
     subs: [],
   })
 
-  const { artifactStore, modalStore } = useStore()
+  const { artifactStore, modalStore, settingStore } = useStore()
 
   const TypeButton = ({ field, icon, value }: { field: string; icon: string; value: string | number }) => {
     const checked = _.includes(params[field], value)
@@ -76,11 +73,14 @@ export const ArtifactInventory = observer(() => {
             </div>
             <SelectTextInput
               value={params.set}
-              options={_.map(AllRelicSets, (artifact) => ({
-                name: artifact.name,
-                value: artifact.id.toString(),
-                img: `https://api.hakush.in/hsr/UI/itemfigures/${artifact?.icon}.webp`,
-              }))}
+              options={_.map(
+                _.filter(AllRelicSets, (a) => !(a.beta && settingStore.settings.liveOnly)),
+                (artifact) => ({
+                  name: artifact.name,
+                  value: artifact.id.toString(),
+                  img: `https://api.hakush.in/hsr/UI/itemfigures/${artifact?.icon}.webp`,
+                })
+              )}
               placeholder="Relic Set"
               onChange={(value) => setParams({ set: value?.value })}
             />

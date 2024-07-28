@@ -78,6 +78,7 @@ export interface IArtifact {
   half?: (conditionals: StatsObject, all: StatsObject[]) => StatsObject
   add?: (conditionals: StatsObject) => StatsObject
   desc: string[]
+  beta?: boolean
 }
 
 export interface IArtifactEquip {

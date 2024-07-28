@@ -302,7 +302,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         base[Stats.P_DEF].push({
           name: 'Technique',
           source: 'Self',
-          value: form.aven_tech === 3 ? 0.6 : form.aven_tech === 2 ? 0.36 : 0.24,
+          value: form.aven_tech === '3' ? 0.6 : form.aven_tech === '2' ? 0.36 : form.aven_tech === '1' ? 0.24 : 0,
         })
       if (a.a6)
         base.SKILL_SCALING.push(
@@ -378,7 +378,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         base[Stats.P_DEF].push({
           name: 'Technique',
           source: 'Aventurine',
-          value: form.aven_tech === 3 ? 0.6 : form.aven_tech === 2 ? 0.36 : 0.24,
+          value: form.aven_tech === '3' ? 0.6 : form.aven_tech === '2' ? 0.36 : form.aven_tech === '1' ? 0.24 : 0,
         })
       if (form.aven_c2)
         base.ALL_TYPE_RES_RED.push({

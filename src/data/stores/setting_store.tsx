@@ -12,6 +12,7 @@ interface ISetting {
   storeData: boolean
   variant: boolean
   formMode: 'default' | 'min' | 'max'
+  liveOnly: boolean
 }
 
 const defaultSetting: ISetting = {
@@ -20,6 +21,7 @@ const defaultSetting: ISetting = {
   storeData: false,
   variant: false,
   formMode: 'default',
+  liveOnly: true,
 }
 
 export interface SettingStoreType {

@@ -1,14 +1,9 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { GhostButton } from '@src/presentation/components/ghost.button'
-import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
-import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { useCallback, useMemo, useState } from 'react'
 import { CharacterSelect } from '@src/presentation/hsr/components/character_select'
 import { TSetup } from '@src/data/stores/setup_store'
-import { findValidName } from '@src/core/utils/finder'
 
 export interface TeamModalProps {
   onSelect: (team: TSetup) => void
@@ -52,8 +47,7 @@ export const TeamModal = observer(({ onSelect, filterId }: TeamModalProps) => {
                     title="Select"
                     onClick={() => {
                       modalStore.closeModal()
-                      const name = findValidName(_.map([setupStore.main, ...setupStore.comparing], 'name'), team.name)
-                      onSelect(_.cloneDeep({ ...team, name }))
+                      onSelect(_.cloneDeep(team))
                     }}
                   />
                 </div>
