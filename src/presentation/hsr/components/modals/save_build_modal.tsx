@@ -6,6 +6,7 @@ import { PrimaryButton } from '@src/presentation/components/primary.button'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useCallback, useMemo, useState } from 'react'
+import { BuildModalBlock } from './build_modal'
 
 export const SaveBuildModal = observer(({ index }: { index: number }) => {
   const [name, setName] = useState('')
@@ -51,17 +52,17 @@ export const SaveBuildModal = observer(({ index }: { index: number }) => {
 
   return (
     <div className="space-y-4">
-      <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark w-[350px]">
+      <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark w-[400px]">
         <div className="space-y-2">
           <p className="font-semibold">Create New Build</p>
           <div className="flex items-center gap-2">
-            <p className="text-sm shrink-0">
+            <p className="text-sm shrink-0 w-[85px]">
               Build Name <span className="text-red">*</span>
             </p>
             <TextInput onChange={setName} value={name} placeholder="Enter Build Name" />
           </div>
-          <div className="space-y-2">
-            <p className="text-sm shrink-0">Build Note</p>
+          <div className="flex items-center gap-2">
+            <p className="text-sm shrink-0 w-[85px]">Build Note</p>
             <TextInput onChange={setNote} value={note} placeholder="Enter Build Note" />
           </div>
         </div>
@@ -75,20 +76,14 @@ export const SaveBuildModal = observer(({ index }: { index: number }) => {
         </div>
       </div>
       {_.size(filteredBuilds) > 0 && (
-        <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark w-[350px]">
+        <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark w-[400px]">
           <p className="font-semibold">Or Update An Existing Build</p>
           <div className="space-y-2 dropdownScrollbar max-h-[30vh]">
             {_.map(filteredBuilds, (build) => {
               return (
-                <div
-                  className="flex justify-between w-full px-3 py-2 text-white rounded-lg bg-primary-darker"
-                  key={build.id}
-                >
-                  <div className="flex items-center w-full gap-2">
-                    {build.isDefault && <i className="text-xs fa-solid fa-star text-yellow" title="Default Build" />}
-                    <p className="w-full font-bold truncate">{build.name}</p>
-                  </div>
-                  <div className="flex gap-x-2">
+                <BuildModalBlock
+                  build={build}
+                  button={
                     <PrimaryButton
                       title="Update"
                       onClick={() => {
@@ -101,8 +96,8 @@ export const SaveBuildModal = observer(({ index }: { index: number }) => {
                         modalStore.closeModal()
                       }}
                     />
-                  </div>
-                </div>
+                  }
+                />
               )
             })}
           </div>

@@ -6,11 +6,17 @@ import { PrimaryButton } from '@src/presentation/components/primary.button'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useCallback, useMemo, useState } from 'react'
+import { TeamModalBlock } from './team_modal'
 
 export const SaveTeamModal = observer(() => {
   const [name, setName] = useState('')
+  const [search, setSearch] = useState('')
 
   const { modalStore, teamStore, setupStore, toastStore } = useStore()
+
+  const filteredTeam = search
+    ? _.filter(setupStore.team, (item) => !!item.name.match(new RegExp(search, 'gi')))
+    : setupStore.team
 
   const onSaveBuild = useCallback(() => {
     const id = crypto.randomUUID()
@@ -34,7 +40,7 @@ export const SaveTeamModal = observer(() => {
 
   return (
     <div className="space-y-4">
-      <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark w-[350px]">
+      <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark w-[410px]">
         <div className="space-y-1">
           <p className="font-semibold">
             Create New Team <span className="text-red">*</span>
@@ -46,20 +52,19 @@ export const SaveTeamModal = observer(() => {
           <PrimaryButton title="Confirm" onClick={onSaveBuild} />
         </div>
       </div>
-      {_.size(setupStore.team) > 0 && (
-        <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark w-[350px]">
-          <p className="font-semibold">Or Update An Existing Team</p>
-          <div className="space-y-2 dropdownScrollbar max-h-[30vh]">
-            {_.map(setupStore.team, (team) => {
+      {_.size(filteredTeam) > 0 && (
+        <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark w-[410px]">
+          <div className="flex items-center gap-3">
+            <p className="font-semibold shrink-0">Or Update An Existing Team</p>
+            <TextInput value={search} onChange={setSearch} placeholder="Search Setup Name" />
+          </div>
+          <div className="space-y-2 dropdownScrollbar max-h-[35vh]">
+            {_.map(filteredTeam, (team) => {
               return (
-                <div
-                  className="flex justify-between w-full px-3 py-2 text-white rounded-lg bg-primary-darker"
+                <TeamModalBlock
                   key={team.id}
-                >
-                  <div className="flex items-center w-full gap-2">
-                    <p className="w-full truncate">{team.name}</p>
-                  </div>
-                  <div className="flex gap-x-2">
+                  team={team}
+                  button={
                     <PrimaryButton
                       title="Update"
                       onClick={() => {
@@ -72,8 +77,8 @@ export const SaveTeamModal = observer(() => {
                         modalStore.closeModal()
                       }}
                     />
-                  </div>
-                </div>
+                  }
+                />
               )
             })}
           </div>

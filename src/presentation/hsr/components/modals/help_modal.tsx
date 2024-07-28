@@ -71,6 +71,8 @@ export const HelpModal = observer(() => {
         </p>
         <BulletPoint>
           Each damage and hit chance number in the table can be hovered for a damage formula breakdown of that number.
+          You can also toggle the checkbox at the end of each damage row to include it in the Total row down below. Some
+          are toggled on by default. Adjust as you see fit.
         </BulletPoint>
         <BulletPoint>
           The <span className="text-desc">Modifiers</span> tab on the right allows you to toggle the character's
