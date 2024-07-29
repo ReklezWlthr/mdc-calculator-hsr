@@ -56,11 +56,37 @@ export const getMainStat = (main: Stats, quality: number, level: number) => {
   return entry?.base + entry?.growth * level
 }
 
-export const getRolls = (stat: Stats, value: number) => {
-  const low = _.find(SubStatMap, (item) => item.stat === stat)?.min
-  const roundValue = value / (_.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.SPD], stat) ? 1 : 100)
+export const findCoefficient = (x: number, y: number, z: number, d: number, flat: boolean) => {
+  const minSum = 1
+  const maxSum = 6
 
-  return _.min([6, _.max([roundValue > 0 ? 1 : 0, _.floor(roundValue / low)])])
+  for (let a = 0; a <= maxSum; a++) {
+    for (let b = 0; b <= maxSum; b++) {
+      for (let c = 0; c <= maxSum; c++) {
+        if (a + b + c >= minSum && a + b + c <= maxSum) {
+          if (
+            _.includes(
+              [_.round(a * x + b * y + c * z, flat ? 0 : 3), _.floor(a * x + b * y + c * z, flat ? 0 : 3)],
+              _.round(d, flat ? 0 : 3)
+            )
+          ) {
+            return { a, b, c }
+          }
+        }
+      }
+    }
+  }
+
+  return { a: 0, b: 0, c: 0 }
+}
+
+export const getRolls = (stat: Stats, value: number) => {
+  const flat = _.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.SPD], stat)
+  const { min, bonus } = _.find(SubStatMap, (item) => item.stat === stat)
+
+  const roundValue = value / (flat ? 1 : 100)
+
+  return findCoefficient(min, min + bonus, min + bonus * 2, roundValue, flat)
 }
 
 export const correctSubStat = (stat: Stats, value: number) => {
@@ -68,13 +94,12 @@ export const correctSubStat = (stat: Stats, value: number) => {
   const low = data?.min
   const bonus = data?.bonus
 
-  const roundValue = value / (_.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.SPD], stat) ? 1 : 100)
+  const { a, b, c } = getRolls(stat, value)
+  const accLow = low * a
+  const accMed = (low + bonus) * b
+  const accHigh = (low + bonus * 2) * c
 
-  const rolls = getRolls(stat, value)
-  const accLow = low * rolls
-  const bonusRolls = _.round((_.max([roundValue, accLow]) % accLow) / bonus)
-
-  return accLow + bonus * bonusRolls
+  return accLow + accMed + accHigh
 }
 
 export const getSetCount = (artifacts: IArtifactEquip[]) => {

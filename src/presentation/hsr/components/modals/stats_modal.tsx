@@ -100,7 +100,7 @@ export const StatsModal = observer(
     const baseAggro = BaseAggro[path] * (1 + stats.getValue(StatsObjectKeys.BASE_AGGRO))
     const defMult = 1 - stats.getDef() / (stats.getDef() + 200 + 10 * calculatorStore.level)
 
-    const breakPoint = _.max(_.filter(_.map(BreakPoints, 'value'), (item) => item <= stats.getSpd()))
+    const breakPoint = _.min(_.filter(_.map(BreakPoints, 'value'), (item) => item >= 10000 / stats.getSpd()))
     const bpDesc = _.find(BreakPoints, (item) => item.value === breakPoint)?.desc
 
     const mergeBuffs = (arr: StatsArray[]) =>
@@ -287,7 +287,7 @@ export const StatsModal = observer(
                 </p>
                 <BulletPoint>
                   <span className="text-xs">
-                    Achieved Breakpoint: <span className="text-desc">{breakPoint}</span> - {bpDesc}
+                    Achieved Breakpoint: <span className="text-desc">{_.ceil(10000 / breakPoint, 1)}</span> - {bpDesc}
                   </span>
                 </BulletPoint>
                 <BulletPoint>

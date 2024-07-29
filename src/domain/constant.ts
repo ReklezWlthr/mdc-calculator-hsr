@@ -407,15 +407,15 @@ export const BreakDebuffType = {
 }
 
 export const BreakPoints = [
-  { value: 0, desc: 'Base SPD' },
-  { value: 111.112, desc: '5 actions in the first 4 cycles' },
-  { value: 114.286, desc: '4 actions in the first 3 cycles' },
-  { value: 120.0, desc: '3 actions in the first 2 cycles' },
-  { value: 133.334, desc: '2 actions in the first cycle' },
-  { value: 142.858, desc: '5 actions in the first 3 cycles' },
-  { value: 155.556, desc: '7 actions in the first 4 cycles' },
-  { value: 160.0, desc: '4 actions in the first 2 cycles' },
-  { value: 171.429, desc: '6 actions in the first 3 cycles' },
-  { value: 177.778, desc: '8 actions in the first 4 cycles' },
-  { value: 200.0, desc: '3 actions in the first cycle' },
+  { value: Infinity, desc: 'Base SPD' },
+  { value: 90, desc: '5 actions in the first 4 cycles' },
+  { value: 87.5, desc: '4 actions in the first 3 cycles' },
+  { value: 250 / 3, desc: '3 actions in the first 2 cycles' },
+  { value: 75, desc: '2 actions in the first cycle' },
+  { value: 70, desc: '5 actions in the first 3 cycles' },
+  { value: 450 / 7, desc: '7 actions in the first 4 cycles' },
+  { value: 62.5, desc: '4 actions in the first 2 cycles' },
+  { value: 350 / 6, desc: '6 actions in the first 3 cycles' },
+  { value: 56.25, desc: '8 actions in the first 4 cycles' },
+  { value: 50, desc: '3 actions in the first cycle' },
 ]

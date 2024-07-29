@@ -100,7 +100,7 @@ export const MyCharacters = observer(() => {
                   onClick={() => charStore.setValue('selected', item.id)}
                   key={item.name}
                 >
-                  <div className="relative">
+                  <div className="relative w-full">
                     <img src={getElementImage(item.element)} className="absolute w-6 h-6 top-1 left-1" />
                     {owned && (
                       <div className="absolute px-1.5 py-1 rounded-full top-1 right-1 bg-primary-light font-bold">
@@ -116,7 +116,7 @@ export const MyCharacters = observer(() => {
                         item.id,
                         settingStore.settings?.travelerGender
                       )}.webp`}
-                      className="object-contain rounded-t-lg bg-primary-darker aspect-[47/64]"
+                      className="object-contain rounded-t-lg bg-primary-darker aspect-[47/64] w-full"
                     />
                   </div>
                   <p className="w-full px-2 py-1 text-center truncate">{item.name}</p>

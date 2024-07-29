@@ -179,13 +179,19 @@ export const calcScaling = (base: number, growth: number, level: number, type: T
   if (level === 1) return base
   if (type === 'linear') return base + growth * (level - 1)
   if (type === 'curved')
-    return _.reduce(
-      Array(level - 1 || 0),
-      (acc, _, index) => acc + (index > 4 && index <= 8 ? growth * 1.25 : growth),
-      base
+    return _.round(
+      _.reduce(
+        Array(level - 1 || 0),
+        (acc, _, index) => acc + (index > 4 && index <= 8 ? growth * 1.25 : growth),
+        base
+      ),
+      2
     )
   if (type === 'heal')
-    return _.reduce(Array(level - 1 || 0), (acc, _, index) => acc + (index <= 3 ? growth : growth * 0.8), base)
+    return _.round(
+      _.reduce(Array(level - 1 || 0), (acc, _, index) => acc + (index <= 3 ? growth : growth * 0.8), base),
+      2
+    )
   if (type === 'flat')
     return _.reduce(
       Array(level - 1 || 0),

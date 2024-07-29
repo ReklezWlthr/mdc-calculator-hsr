@@ -21,7 +21,7 @@ export const MiniRelicBlock = observer(
     const mainStat = getMainStat(relic?.main, relic?.quality, relic?.level)
 
     const subListWithRolls = useMemo(() => {
-      const rolls = _.map(relic?.subList, (item) => getRolls(item.stat, item.value))
+      const rolls = _.map(relic?.subList, (item) => _.sum(_.map(getRolls(item.stat, item.value))))
       const sum = _.sum(rolls)
       if (sum > 9) {
         const max = _.max(rolls)

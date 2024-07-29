@@ -65,7 +65,7 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
   const mainStat = getMainStat(artifact?.main, artifact?.quality, artifact?.level)
 
   const subListWithRolls = useMemo(() => {
-    const rolls = _.map(artifact?.subList, (item) => getRolls(item.stat, item.value))
+    const rolls = _.map(artifact?.subList, (item) => _.sum(_.map(getRolls(item.stat, item.value))))
     const sum = _.sum(rolls)
     if (sum > 9) {
       const max = _.max(rolls)
