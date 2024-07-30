@@ -1054,6 +1054,24 @@ export const LightCones = [
     },
     beta: true,
   },
+  {
+    id: '21047',
+    name: 'Shadowed by Night',
+    rarity: 4,
+    baseHp: 38.4,
+    baseAtk: 21.6,
+    baseDef: 18,
+    type: PathType.HUNT,
+    desc: {
+      name: 'Concealment',
+      detail: `Increases the wearer's Break Effect by {{0}}% . Upon entering battle or dealing Break DMG, increases SPD by {{1}}% , lasting for <span class="text-desc">2</span> turn(s). This effect can only be triggered <span class="text-desc">1</span> time per turn.`,
+      properties: [
+        { base: 28, growth: 7 },
+        { base: 8, growth: 1 },
+      ],
+    },
+    beta: true,
+  },
   //---------------------
   //   Event 4 Star
   //---------------------
@@ -1653,6 +1671,43 @@ export const LightCones = [
       detail: `Greatly increases the odds that the wearer will be attacked and increases the wearer's CRIT DMG by {{0}}%. After the wearer uses their Ultimate, they receive <span class="text-desc">1</span> stack of <b>Firedance</b>, lasting for <span class="text-desc">2</span> turns and up to <span class="text-desc">2</span> stacks. Each stack of <b>Firedance</b> increases the DMG dealt by the wearer's <u>follow-up attack</u> by {{0}}%.`,
       properties: [{ base: 36, growth: 6 }],
     },
+  },
+  {
+    id: '23031',
+    name: 'I Venture Forth to Hunt',
+    rarity: 5,
+    baseHp: 43,
+    baseAtk: 28.8,
+    baseDef: 21,
+    type: PathType.HUNT,
+    desc: {
+      name: 'Intimidation',
+      detail: `Increases the wearer's CRIT Rate by {{0}}% . When any single ally uses an attack, the wearer gains <span class="text-desc">1</span> stack of <b>Luminflux</b> to a max of <span class="text-desc">6</span> stack(s). Each stack of <b>Luminflux</b> enables the Ultimate DMG deal by the wearer to ignore {{1}}% of the target's DEF. This effect will be dispelled after the wearer uses their Ultimate.`,
+      properties: [
+        { base: 15, growth: 2.5 },
+        { base: 9, growth: 1 },
+      ],
+    },
+    beta: true,
+  },
+  {
+    id: '23032',
+    name: 'Scent Alone Stays True',
+    rarity: 5,
+    baseHp: 48,
+    baseAtk: 24,
+    baseDef: 24,
+    type: PathType.ABUNDANCE,
+    desc: {
+      name: 'Contentment',
+      detail: `Increases wearer's Break Effect by {{0}}% . After wearer attacks an enemy with an Ultimate, causes them to enter the <b>Woefree</b> state for <span class="text-desc">2</span> turn(s). During the <b>Woefree</b> state, increases DMG dealt to enemy targets by {{1}}% and if the wearer's current Break Effect is greater or equal to <span class="text-desc">150%</span>, additionally increases DMG received effect by {{2}}% .`,
+      properties: [
+        { base: 60, growth: 10 },
+        { base: 10, growth: 2 },
+        { base: 8, growth: 2 },
+      ],
+    },
+    beta: true,
   },
   //---------------------
   //   Herta 5 Star

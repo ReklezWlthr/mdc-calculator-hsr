@@ -117,6 +117,10 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       source: 'The Wind-Soaring Valorous',
       value: 0.36,
     })
+  if (form['318']) {
+    const buff = _.find(base[Stats.CRIT_DMG], (item) => item.source === 'The Wondrous BananAmusement Park')
+    if (buff) buff.value += 0.28
+  }
 
   return base
 }

@@ -71,8 +71,8 @@ export const ArtifactForm = () => {
     },
     {
       type: 'number',
-      text: `The Ashblazing Grand Duke`,
-      title: `The Ashblazing Grand Duke`,
+      text: `Grand Duke Stacks`,
+      title: `Grand Duke Stacks`,
       content: `When the wearer uses <u>follow-up attack</u>s, increases the wearer's ATK by <span class="text-desc">6%</span> for every time the <u>follow-up attack</u> deals DMG. This effect can stack up to <span class="text-desc">8</span> time(s) and lasts for <span class="text-desc">3</span> turn(s). This effect is removed the next time the wearer uses a <u>follow-up attack</u>.`,
       show: true,
       duration: 3,
@@ -112,8 +112,8 @@ export const ArtifactForm = () => {
     },
     {
       type: 'number',
-      text: `Sigonia, the Unclaimed Desolation`,
-      title: `Sigonia, the Unclaimed Desolation`,
+      text: `Sigonia Stacks`,
+      title: `Sigonia Stacks`,
       content: `Increases the wearer's CRIT Rate by <span class="text-desc">4%</span>. When an enemy target gets defeated, the wearer's CRIT DMG increases by <span class="text-desc">4%</span>, stacking up to <span class="text-desc">10</span> time(s).`,
       show: true,
       default: 0,
@@ -123,8 +123,8 @@ export const ArtifactForm = () => {
     },
     {
       type: 'number',
-      text: `Duran, Dynasty of Running Wolves`,
-      title: `Duran, Dynasty of Running Wolves`,
+      text: `Merit Stacks`,
+      title: `Merit Stacks`,
       content: `When allies use <u>follow-up attack</u>s, the wearer receives <span class="text-desc">1</span> stack of <b>Merit</b>, stacking up to <span class="text-desc">5</span> times. Every stack of <b>Merit</b> increases the DMG dealt by the wearer's <u>follow-up attack</u>s by <span class="text-desc">5%</span>. When there are <span class="text-desc">5</span> stacks, additionally increases the wearer's CRIT DMG by <span class="text-desc">25%</span>.`,
       show: true,
       default: 0,
@@ -150,6 +150,15 @@ export const ArtifactForm = () => {
       default: true,
       duration: 1,
       id: '120',
+    },
+    {
+      type: 'toggle',
+      text: `Summons CRIT DMG Bonus`,
+      title: `Summons CRIT DMG Bonus`,
+      content: `Increases the wearer's CRIT DMG by <span class="text-desc">16%</span>. When a target summoned by the wearer is on the field, CRIT DMG additionally increases by <span class="text-desc">28%</span>.`,
+      show: true,
+      default: true,
+      id: '318',
     },
   ]
 

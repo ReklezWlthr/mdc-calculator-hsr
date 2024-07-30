@@ -3,7 +3,7 @@ import { addDebuff, checkBuffExist, findCharacter, findContentById } from '@src/
 import { DebuffTypes, IWeaponContent } from '@src/domain/conditional'
 import { Element, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 import _ from 'lodash'
-import { StatsObject, TalentTypeMap } from '../../baseConstant'
+import { StatsObject, StatsObjectKeys, TalentTypeMap } from '../../baseConstant'
 
 export const LCConditionals: IWeaponContent[] = [
   {
@@ -1018,6 +1018,76 @@ export const LCConditionals: IWeaponContent[] = [
           name: 'Firedance',
           source: 'Dance at Sunset',
           value: calcRefinement(0.36, 0.06, r) * form['23030'],
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Luminflux Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 6,
+    id: '23031',
+    scaling: (base, form, r) => {
+      if (form['23031']) {
+        base.ULT_DEF_PEN.push({
+          name: 'Luminflux',
+          source: 'I Venture Forth to Hunt',
+          value: calcRefinement(0.09, 0.01, r) * form['23031'],
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Woefree`,
+    show: true,
+    default: false,
+    duration: 2,
+    id: '23032',
+    scaling: (base, form, r) => {
+      if (form['23032']) {
+        base[Stats.ALL_DMG].push({
+          name: 'Woefree',
+          source: 'Scene Alone Stays True',
+          value: calcRefinement(0.1, 0.02, r),
+        })
+        base.CALLBACK.push((x, _d, _w, a: StatsObject[]) => {
+          if (x.getValue(Stats.BE) >= 1.5) {
+            const keys = _.filter(StatsObjectKeys, (item) => _.includes(item, 'VUL'))
+            _.forEach(a, (member) => {
+              _.forEach(keys, (key) => {
+                member[key] = _.map(member[key], (item) => {
+                  if (item.source === (member.NAME === x.NAME ? 'Self' : x.NAME))
+                    return { ...item, value: item.value + calcRefinement(0.08, 0.02, r) }
+                  return item
+                })
+              })
+            })
+          }
+          return x
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Break Effect Bonus`,
+    show: true,
+    default: false,
+    duration: 2,
+    id: '21047',
+    scaling: (base, form, r) => {
+      if (form['21047']) {
+        base[Stats.P_SPD].push({
+          name: 'Passive',
+          source: 'Shadowed by Night',
+          value: calcRefinement(0.08, 0.01, r),
         })
       }
       return base

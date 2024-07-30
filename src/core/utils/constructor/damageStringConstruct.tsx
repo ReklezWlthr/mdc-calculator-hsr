@@ -132,7 +132,7 @@ export const damageStringConstruct = (
           (item.multiplier === Stats.HP ? stats.getValue(StatsObjectKeys.X_HP) : 0)
       ).toLocaleString()}</b>${
         item.multiplier === Stats.EHP ? `<i class="text-[10px] ml-1">Enemy HP</i>` : ''
-      }<span class="mx-1"> \u{00d7} </span><b>${toPercentage(item.scaling, 2)}</b>)</span>`
+      }<span class="mx-1"> \u{00d7} </span><b>${toPercentage(item.scaling, 2, true)}</b>)</span>`
   )
   const baseScaling = _.join(scalingArray, ' + ')
   const baseBreakScaling = `(<b class="${

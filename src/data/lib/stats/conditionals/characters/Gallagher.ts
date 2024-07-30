@@ -340,10 +340,13 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       broken: boolean
     ) => {
       if (a.a2)
-        base[Stats.HEAL].push({
-          name: `Ascension 2 Passive`,
-          source: 'Self',
-          value: _.min([base.getValue(Stats.BE) * 0.5, 0.75]),
+        base.CALLBACK.push((x) => {
+          x[Stats.HEAL].push({
+            name: `Ascension 2 Passive`,
+            source: 'Self',
+            value: _.min([base.getValue(Stats.BE) * 0.5, 0.75]),
+          })
+          return x
         })
 
       return base

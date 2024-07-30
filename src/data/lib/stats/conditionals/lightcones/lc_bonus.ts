@@ -1165,6 +1165,39 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23031',
+    scaling: (base, r) => {
+      base[Stats.CRIT_RATE].push({
+        name: 'Passive',
+        source: 'I Venture Forth to Hunt',
+        value: calcRefinement(0.15, 0.025, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23032',
+    scaling: (base, r) => {
+      base[Stats.BE].push({
+        name: 'Passive',
+        source: 'Scene Alone Stays True',
+        value: calcRefinement(0.6, 0.1, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '21047',
+    scaling: (base, r) => {
+      base[Stats.BE].push({
+        name: 'Passive',
+        source: 'Shadowed by Night',
+        value: calcRefinement(0.28, 0.07, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

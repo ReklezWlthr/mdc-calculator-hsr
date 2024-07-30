@@ -54,6 +54,9 @@ import Jiaoqiu from './characters/Jiaoqiu'
 import Yunli from './characters/Yunli'
 import DMC from './characters/DMC'
 import PMC from './characters/PMC'
+import Feixiao from './characters/Feixiao'
+import Lingsha from './characters/Lingsha'
+import Moze from './characters/Moze'
 
 export default [
   { id: '1001', conditionals: March },
@@ -94,7 +97,10 @@ export default [
   { id: '1215', conditionals: Hanya },
   { id: '1217', conditionals: Huohuo },
   { id: '1218', conditionals: Jiaoqiu },
+  { id: '1220', conditionals: Feixiao },
   { id: '1221', conditionals: Yunli },
+  { id: '1222', conditionals: Lingsha },
+  { id: '1223', conditionals: Moze },
   { id: '1224', conditionals: MarchHunt },
   { id: '1301', conditionals: Gallagher },
   { id: '1302', conditionals: Argenti },
