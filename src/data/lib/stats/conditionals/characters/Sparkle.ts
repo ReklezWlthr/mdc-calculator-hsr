@@ -35,8 +35,8 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 30,
       trace: 'Skill',
       title: 'Dreamdiver',
-      content: `Increases the CRIT DMG of a single ally by {{0}}% of Sparkle's CRIT DMG plus {{1}}%, lasting for <span class="text-desc">1</span> turn(s). And at the same time, Advances Forward this ally's action by <span class="text-desc">50%</span>.
-      <br />When Sparkle uses this ability on herself, the Action Advance effect will not trigger.`,
+      content: `Increases the CRIT DMG of a single ally by {{0}}% of Sparkle's CRIT DMG plus {{1}}%, lasting for <span class="text-desc">1</span> turn(s). And at the same time, <u>Advances Forward</u> this ally's action by <span class="text-desc">50%</span>.
+      <br />When Sparkle uses this ability on herself, the <u>Action Advance</u> effect will not trigger.`,
       value: [
         { base: 12, growth: 1.2, style: 'curved' },
         { base: 27, growth: 1.8, style: 'curved' },

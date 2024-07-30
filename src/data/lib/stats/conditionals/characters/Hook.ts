@@ -89,7 +89,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Playing With Fire`,
-      content: `When using her Ultimate, Hook has her action Advanced Forward by <span class="text-desc">20%</span> and Hook additionally regenerates <span class="text-desc">5</span> Energy.`,
+      content: `When using her Ultimate, Hook has her action <u>Advanced Forward</u> by <span class="text-desc">20%</span> and Hook additionally regenerates <span class="text-desc">5</span> Energy.`,
     },
     c1: {
       trace: 'Eidolon 1',

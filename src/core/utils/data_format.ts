@@ -56,7 +56,7 @@ export const getMainStat = (main: Stats, quality: number, level: number) => {
   return entry?.base + entry?.growth * level
 }
 
-export const findCoefficient = (x: number, y: number, z: number, d: number, flat: boolean) => {
+export const findCoefficient = (x: number, y: number, z: number, d: number, precision: number) => {
   const minSum = 1
   const maxSum = 6
 
@@ -66,8 +66,8 @@ export const findCoefficient = (x: number, y: number, z: number, d: number, flat
         if (a + b + c >= minSum && a + b + c <= maxSum) {
           if (
             _.includes(
-              [_.round(a * x + b * y + c * z, flat ? 0 : 3), _.floor(a * x + b * y + c * z, flat ? 0 : 3)],
-              _.round(d, flat ? 0 : 3)
+              [_.round(a * x + b * y + c * z, precision), _.floor(a * x + b * y + c * z, precision)],
+              _.round(d, precision)
             )
           ) {
             return { a, b, c }
@@ -86,7 +86,7 @@ export const getRolls = (stat: Stats, value: number) => {
 
   const roundValue = value / (flat ? 1 : 100)
 
-  return findCoefficient(min, min + bonus, min + bonus * 2, roundValue, flat)
+  return findCoefficient(min, min + bonus, min + bonus * 2, roundValue, flat ? (stat === Stats.SPD ? 1 : 0) : 3)
 }
 
 export const correctSubStat = (stat: Stats, value: number) => {

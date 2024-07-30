@@ -81,7 +81,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Sword Champion`,
-      content: `After using Transcendent Flash, the next action will be Advanced Forward by <span class="text-desc">10%</span>.`,
+      content: `After using Transcendent Flash, the next action will be <u>Advanced Forward</u> by <span class="text-desc">10%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',

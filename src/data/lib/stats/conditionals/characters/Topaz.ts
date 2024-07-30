@@ -44,7 +44,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: `Turn a Profit!`,
-      content: `Numby enters the <b>Windfall Bonanza!</b> state and its DMG multiplier increases by {{0}}% and CRIT DMG increases by {{1}}%. Also, when enemies with <b>Proof of Debt</b> are hit by an ally's Basic ATK, Skill, or Ultimate, Numby's action is Advanced Forward by <span class="text-desc">50%</span>. Numby exits the <b>Windfall Bonanza!</b> state after using <span class="text-desc">2</span> attacks.`,
+      content: `Numby enters the <b>Windfall Bonanza!</b> state and its DMG multiplier increases by {{0}}% and CRIT DMG increases by {{1}}%. Also, when enemies with <b>Proof of Debt</b> are hit by an ally's Basic ATK, Skill, or Ultimate, Numby's action is <u>Advanced Forward</u> by <span class="text-desc">50%</span>. Numby exits the <b>Windfall Bonanza!</b> state after using <span class="text-desc">2</span> attacks.`,
       value: [
         { base: 75, growth: 7.5, style: 'curved' },
         { base: 12.5, growth: 1.25, style: 'curved' },
@@ -55,7 +55,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Talent',
       title: `Trotter Market!?`,
       content: `Summons Numby at the start of battle. Numby has <span class="text-desc">80</span> SPD by default. When taking action, Numby launches <u>follow-up attack</u>s on a single enemy target afflicted with <b>Proof of Debt</b>, dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Topaz's ATK.
-      <br />When enemies afflicted with <b>Proof of Debt</b> receive an ally's <u>follow-up attack</u>s, Numby's action is Advanced Forward by <span class="text-desc">50%</span>. The action Advance Forward effect cannot be triggered during Numby's own turn.
+      <br />When enemies afflicted with <b>Proof of Debt</b> receive an ally's <u>follow-up attack</u>s, Numby's action is <u>Advanced Forward</u> by <span class="text-desc">50%</span>. The action <u>Advance Forward</u> effect cannot be triggered during Numby's own turn.
       <br />When Topaz is downed, Numby disappears.`,
       value: [{ base: 75, growth: 7.5, style: 'curved' }],
       level: talent,
@@ -103,7 +103,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c4: {
       trace: 'Eidolon 4',
       title: `Agile Operation`,
-      content: `After Numby's turn begins, Topaz's action is Advanced Forward by <span class="text-desc">20%</span>.`,
+      content: `After Numby's turn begins, Topaz's action is <u>Advanced Forward</u> by <span class="text-desc">20%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',

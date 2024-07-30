@@ -74,7 +74,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Daggerhold`,
-      content: `Moze's Action is Advanced Forward by <span class="text-desc">30%</span> when his <b>Departed</b> status is dispelled. If Moze's current <b>Charge</b> equals <span class="text-desc">4</span> or greater, then his action will instead be Advanced Forward by <span class="text-desc">60%</span>.`,
+      content: `Moze's Action is <u>Advanced Forward</u> by <span class="text-desc">30%</span> when his <b>Departed</b> status is dispelled. If Moze's current <b>Charge</b> equals <span class="text-desc">4</span> or greater, then his action will instead be <u>Advanced Forward</u> by <span class="text-desc">60%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',

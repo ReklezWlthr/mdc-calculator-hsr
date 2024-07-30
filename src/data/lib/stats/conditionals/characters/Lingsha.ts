@@ -32,7 +32,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 30,
       trace: 'Skill',
       title: 'Smoke and Splendor',
-      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Lingsha's ATK to all enemies, restores HP equal to {{1}}% of Lingsha's ATK plus {{2}} for all allies, and Action Advances Fuyuan by <span class="text-desc">20%</span>.`,
+      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Lingsha's ATK to all enemies, restores HP equal to {{1}}% of Lingsha's ATK plus {{2}} for all allies, and <u>Action Advances</u> Fuyuan by <span class="text-desc">20%</span>.`,
       value: [
         { base: 40, growth: 4, style: 'curved' },
         { base: 10, growth: 0.5, style: 'heal' },
@@ -45,7 +45,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Ultimate',
       title: `Dripping Mistscape`,
       content: `Inflicts <b>Befog</b> on all enemies. When in the <b>Befog</b> state, Break DMG taken by affected enemies increases by {{0}}%, lasting for <span class="text-desc">2</span> turn(s).
-        <br />Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Lingsha's ATK to all enemies, and at the same time restores HP equal to {{2}}% of Lingsha's ATK plus {{3}} for all allies. Action Advances Fuyuan by <span class="text-desc">100%</span>.`,
+        <br />Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Lingsha's ATK to all enemies, and at the same time restores HP equal to {{2}}% of Lingsha's ATK plus {{3}} for all allies. <u>Action Advances</u> Fuyuan by <span class="text-desc">100%</span>.`,
       value: [
         { base: 15, growth: 1, style: 'curved' },
         { base: 75, growth: 7.5, style: 'curved' },

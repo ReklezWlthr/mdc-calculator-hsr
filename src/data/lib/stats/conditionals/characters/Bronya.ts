@@ -54,7 +54,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     talent: {
       trace: 'Talent',
       title: `Leading the Way`,
-      content: `After using her Basic ATK, Bronya's next action will be Advanced Forward by {{0}}%.`,
+      content: `After using her Basic ATK, Bronya's next action will be <u>Advanced Forward</u> by {{0}}%.`,
       value: [{ base: 15, growth: 1.5, style: 'curved' }],
       level: talent,
     },

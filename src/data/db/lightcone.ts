@@ -226,7 +226,7 @@ export const LightCones = [
     type: PathType.ABUNDANCE,
     desc: {
       name: 'Denizens of Abundance',
-      detail: `After the wearer uses their Basic ATK, their next action will be Advanced Forward by {{0}}%.`,
+      detail: `After the wearer uses their Basic ATK, their next action will be <u>Advanced Forward</u> by {{0}}%.`,
       properties: [{ base: 12, growth: 2 }],
     },
   },
@@ -595,7 +595,7 @@ export const LightCones = [
     type: PathType.HARMONY,
     desc: {
       name: 'Cannot Stop It!',
-      detail: `When the wearer uses their Ultimate, all allies' actions are Advanced Forward by {{0}}%.`,
+      detail: `When the wearer uses their Ultimate, all allies' actions are <u>Advanced Forward</u> by {{0}}%.`,
       properties: [{ base: 16, growth: 2 }],
     },
   },

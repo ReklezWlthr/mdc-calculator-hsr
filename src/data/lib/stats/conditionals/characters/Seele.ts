@@ -70,7 +70,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Rippling Waves',
-      content: `After using a Basic ATK, Seele's next action will be Advanced Forward by <span class="text-desc">20%</span>.`,
+      content: `After using a Basic ATK, Seele's next action will be <u>Advanced Forward</u> by <span class="text-desc">20%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',

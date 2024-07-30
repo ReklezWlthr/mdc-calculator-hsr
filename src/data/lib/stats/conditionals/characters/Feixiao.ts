@@ -32,7 +32,7 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 30,
       trace: 'Skill',
       title: 'Waraxe',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Feixiao's ATK to a single target enemy, then Advances Forward Feixiao's next action by {{1}}%.`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Feixiao's ATK to a single target enemy, then <u>Advances Forward</u> Feixiao's next action by {{1}}%.`,
       value: [
         { base: 120, growth: 12, style: 'curved' },
         { base: 5, growth: 0.5, style: 'curved' },

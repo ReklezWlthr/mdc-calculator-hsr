@@ -68,7 +68,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Coloratura Cadenza`,
-      content: `When the battle begins, this character's action is Advanced Forward by <span class="text-desc">25%</span>.`,
+      content: `When the battle begins, this character's action is <u>Advanced Forward</u> by <span class="text-desc">25%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',

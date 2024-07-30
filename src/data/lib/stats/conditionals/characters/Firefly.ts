@@ -38,7 +38,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill: {
       trace: 'Skill',
       title: `Order: Aerial Bombardment`,
-      content: `Consumes SAM's HP equal to <span class="text-desc">40%</span> of SAM's Max HP and regenerates a fixed amount of Energy equal to {{1}}% of SAM's Max Energy. Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of SAM's ATK to a single target enemy. If the current HP is not sufficient, then SAM's HP is reduced to <span class="text-desc">1</span> when using this Skill. Enables this unit's next Action to be Advanced by <span class="text-desc">25%</span>.`,
+      content: `Consumes SAM's HP equal to <span class="text-desc">40%</span> of SAM's Max HP and regenerates a fixed amount of Energy equal to {{1}}% of SAM's Max Energy. Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of SAM's ATK to a single target enemy. If the current HP is not sufficient, then SAM's HP is reduced to <span class="text-desc">1</span> when using this Skill. <u>Advances</u> this unit's next Action by <span class="text-desc">25%</span>.`,
       value: [
         { base: 100, growth: 10, style: 'curved' },
         { base: 50, growth: 1, style: 'curved' },
@@ -59,7 +59,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Ultimate',
       title: `Fyrefly Type-IV: Complete Combustion`,
-      content: `Upon entering the <b class="text-hsr-fire">Complete Combustion</b> state, Advances SAM's Action by <span class="text-desc">100%</span> and gains Enhanced Basic ATK and Enhanced Skill. While in <b class="text-hsr-fire">Complete Combustion</b>, increases SPD by {{0}}, and when using the Enhanced Basic ATK or Enhanced Skill, increases this unit's Weakness Break efficiency by <span class="text-desc">50%</span> and the Break DMG received by the enemy targets by {{1}}%, lasting until the current attack ends.
+      content: `Upon entering the <b class="text-hsr-fire">Complete Combustion</b> state, <u>Advances</u> SAM's Action by <span class="text-desc">100%</span> and gains Enhanced Basic ATK and Enhanced Skill. While in <b class="text-hsr-fire">Complete Combustion</b>, increases SPD by {{0}}, and when using the Enhanced Basic ATK or Enhanced Skill, increases this unit's Weakness Break efficiency by <span class="text-desc">50%</span> and the Break DMG received by the enemy targets by {{1}}%, lasting until the current attack ends.
       <br />A countdown timer for the <b class="text-hsr-fire">Complete Combustion</b> state appears on the Action Order. When the countdown turn starts, SAM exits the <b class="text-hsr-fire">Complete Combustion</b> state. The countdown has a fixed SPD of <span class="text-desc">70</span>.
       <br />SAM cannot use Ultimate while in <b class="text-hsr-fire">Complete Combustion</b>.`,
       value: [

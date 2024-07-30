@@ -99,7 +99,9 @@ export const LCModal = observer(({ index, setWeapon, pathOverride }: LCModalProp
               <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
                 <RarityGauge rarity={item.rarity} />
               </div>
-              {item.beta && <div className="absolute left-0 px-2 py-0.5 bottom-2 bg-rose-600 rounded-r-md">Beta</div>}
+              {item.beta && (
+                <div className="absolute right-0 px-1.5 py-0.5 bottom-6 bg-rose-600 rounded-l-md">Beta</div>
+              )}
               <img
                 src={`https://api.hakush.in/hsr/UI/lightconemediumicon/${item.id}.webp`}
                 className="object-contain w-full rounded-t-lg bg-primary-darker aspect-square"

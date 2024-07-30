@@ -80,7 +80,7 @@ const Hanya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c1: {
       trace: 'Eidolon 1',
       title: `One Heart`,
-      content: `When an ally with Hanya's Ultimate's effect defeats an enemy, Hanya's action is Advanced Forward by <span class="text-desc">15%</span>. This effect can only be triggered <span class="text-desc">1</span> time(s) per turn.`,
+      content: `When an ally with Hanya's Ultimate's effect defeats an enemy, Hanya's action is <u>Advanced Forward</u> by <span class="text-desc">15%</span>. This effect can only be triggered <span class="text-desc">1</span> time(s) per turn.`,
     },
     c2: {
       trace: 'Eidolon 2',

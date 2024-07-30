@@ -116,7 +116,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c2: {
       trace: 'Eidolon 2',
       title: `Imperium On Cloud Nine`,
-      content: `After using his Ultimate, Dan Heng • Imbibitor Lunae's action is Advanced Forward by <span class="text-desc">100%</span> and gains <span class="text-desc">1</span> extra <b class="text-hsr-imaginary">Squama Sacrosancta</b>.`,
+      content: `After using his Ultimate, Dan Heng • Imbibitor Lunae's action is <u>Advanced Forward</u> by <span class="text-desc">100%</span> and gains <span class="text-desc">1</span> extra <b class="text-hsr-imaginary">Squama Sacrosancta</b>.`,
     },
     c3: {
       trace: 'Eidolon 3',

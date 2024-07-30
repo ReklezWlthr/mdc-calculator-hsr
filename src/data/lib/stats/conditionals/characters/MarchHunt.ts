@@ -88,7 +88,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Swan Soar',
-      content: `When the battle starts, March 7th's action is Advanced Forward by <span class="text-desc">25%</span>.`,
+      content: `When the battle starts, March 7th's action is <u>Advanced Forward</u> by <span class="text-desc">25%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',

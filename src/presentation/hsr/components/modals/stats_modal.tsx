@@ -83,7 +83,7 @@ export const StatsModal = observer(
               !!item.value && (
                 <BulletPoint key={item.source + item.name}>
                   {item.source} / {item.name}{' '}
-                  <span className="text-desc">{_.floor(item.value, round).toLocaleString()}</span>
+                  <span className="text-desc">{_.round(item.value, round).toLocaleString()}</span>
                 </BulletPoint>
               )
           )}

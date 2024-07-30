@@ -153,8 +153,8 @@ export const ArtifactForm = () => {
     },
     {
       type: 'toggle',
-      text: `Summons CRIT DMG Bonus`,
-      title: `Summons CRIT DMG Bonus`,
+      text: `Summons On-Field`,
+      title: `Summons On-Field`,
       content: `Increases the wearer's CRIT DMG by <span class="text-desc">16%</span>. When a target summoned by the wearer is on the field, CRIT DMG additionally increases by <span class="text-desc">28%</span>.`,
       show: true,
       default: true,

@@ -160,7 +160,7 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [],
     desc: [
       `Increases <b class="text-hsr-wind">Wind DMG</b> by <span class="text-desc">10%</span>.`,
-      `After the wearer uses their Ultimate, their action is Advanced Forward by <span class="text-desc">25%</span>.`,
+      `After the wearer uses their Ultimate, their action is <u>Advanced Forward</u> by <span class="text-desc">25%</span>.`,
     ],
   },
   {
@@ -526,7 +526,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [{ stat: Stats.ERR, value: 0.05 }],
     bonusAdd: [],
     desc: [
-      `Increases the wearer's Energy Regeneration Rate by <span class="text-desc">5%</span>. When the wearer's SPD reaches <span class="text-desc">120</span> or higher, the wearer's action is Advanced Forward by <span class="text-desc">40%</span> immediately upon entering battle.`,
+      `Increases the wearer's Energy Regeneration Rate by <span class="text-desc">5%</span>. When the wearer's SPD reaches <span class="text-desc">120</span> or higher, the wearer's action is <u>Advanced Forward</u> by <span class="text-desc">40%</span> immediately upon entering battle.`,
     ],
   },
   {

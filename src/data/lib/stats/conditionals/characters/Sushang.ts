@@ -79,7 +79,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Vanquisher`,
-      content: `After using Basic ATK or Skill, if there are enemies on the field with Weakness Break, Sushang's action is Advanced Forward by <span class="text-desc">15%</span>.`,
+      content: `After using Basic ATK or Skill, if there are enemies on the field with Weakness Break, Sushang's action is <u>Advanced Forward</u> by <span class="text-desc">15%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
