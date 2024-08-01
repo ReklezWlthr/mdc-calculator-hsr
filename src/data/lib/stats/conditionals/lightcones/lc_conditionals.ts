@@ -1077,9 +1077,9 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Break Effect Bonus`,
+    text: `Break SPD Bonus`,
     show: true,
-    default: false,
+    default: true,
     duration: 2,
     id: '21047',
     scaling: (base, form, r) => {

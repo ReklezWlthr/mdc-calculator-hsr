@@ -340,9 +340,10 @@ export const useCalculator = ({
       // Cleanup callbacks for buffs that should be applied last
       const final = _.map(postArtifactCallback, (base, index) => {
         let x = base
-        _.forEach(base.CALLBACK, (cb) => {
-          x = cb(x, debuffs, weakness, postArtifactCallback, true)
+        _.forEach(base.CALLBACK, (cb, i) => {
+          if (cb) x = cb(x, debuffs, weakness, postArtifactCallback, true)
         })
+
         return x
       })
       if (!doNotSaveStats) {

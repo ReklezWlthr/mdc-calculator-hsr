@@ -90,7 +90,9 @@ export const StatsModal = observer(
           {stats === 'Aggro' && (
             <BulletPoint color="text-red">
               Target Probability{' '}
-              <span className="text-desc">{toPercentage(Number(totalValue) / sumAggro).toLocaleString()}</span>
+              <span className="text-desc">
+                {toPercentage(Number(totalValue.replaceAll(',', '')) / sumAggro).toLocaleString()}
+              </span>
             </BulletPoint>
           )}
         </div>

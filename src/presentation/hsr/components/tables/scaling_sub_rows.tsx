@@ -101,7 +101,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
   )
 
   useEffect(() => {
-    const arr = [dmg, dmg * (1 + totalCd), dmg * (1 + totalCd * totalCr)]
+    const arr = noCrit ? Array(3).fill(dmg) : [dmg, dmg * (1 + totalCd), dmg * (1 + totalCd * totalCr)]
     _.forEach(arr, (item, i) => {
       item && calculatorStore.setTotal(type, i, scaling.name, sum ? item : 0)
     })

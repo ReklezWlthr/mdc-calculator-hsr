@@ -80,11 +80,30 @@ export const findCoefficient = (x: number, y: number, z: number, d: number, prec
   return { a: 0, b: 0, c: 0 }
 }
 
+export const getNearestSpd = (value: number) => {
+  const { min, bonus } = _.find(SubStatMap, (item) => item.stat === Stats.SPD)
+  const { coefficient, base } = _.minBy(
+    _.reduce<number, { coefficient: number; base: number }[]>(
+      [min, min + bonus, min + bonus * 2],
+      (acc, curr) => {
+        acc.push({ coefficient: value / curr, base: curr })
+        return acc
+      },
+      []
+    ),
+    ({ coefficient, base }) => {
+      const decimal = coefficient - _.floor(coefficient)
+      return _.inRange(decimal, 0.5, 1) ? Math.abs(decimal - 1) : decimal
+    }
+  )
+  return _.round(coefficient) * base
+}
+
 export const getRolls = (stat: Stats, value: number) => {
   const flat = _.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.SPD], stat)
   const { min, bonus } = _.find(SubStatMap, (item) => item.stat === stat)
 
-  const roundValue = value / (flat ? 1 : 100)
+  const roundValue = stat === Stats.SPD ? getNearestSpd(value) : value / (flat ? 1 : 100)
 
   return findCoefficient(min, min + bonus, min + bonus * 2, roundValue, flat ? (stat === Stats.SPD ? 1 : 0) : 3)
 }

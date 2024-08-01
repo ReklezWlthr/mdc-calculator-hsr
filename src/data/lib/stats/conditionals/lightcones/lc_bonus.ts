@@ -999,15 +999,12 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
         source: 'Something Irreplaceable',
         value: calcRefinement(0.24, 0.04, r),
       })
-      base.CALLBACK.push((x) => {
-        x.SKILL_SCALING.push({
-          name: 'Kinship Healing',
-          value: [{ scaling: calcRefinement(0.08, 0.01, r), multiplier: Stats.ATK }],
-          element: TalentProperty.HEAL,
-          property: TalentProperty.HEAL,
-          type: TalentType.NONE,
-        })
-        return x
+      base.SKILL_SCALING.push({
+        name: 'Kinship Healing',
+        value: [{ scaling: calcRefinement(0.08, 0.01, r), multiplier: Stats.ATK }],
+        element: TalentProperty.HEAL,
+        property: TalentProperty.HEAL,
+        type: TalentType.NONE,
       })
       return base
     },
@@ -1020,14 +1017,12 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
         source: 'Texture of Memories',
         value: calcRefinement(0.08, 0.02, r),
       })
-      base.CALLBACK.push((x) => {
-        x.SKILL_SCALING.push({
-          name: 'On-Attacked Shield',
-          value: [{ scaling: calcRefinement(0.16, 0.04, r), multiplier: Stats.HP }],
-          element: TalentProperty.SHIELD,
-          property: TalentProperty.SHIELD,
-          type: TalentType.NONE,
-        })
+      base.SKILL_SCALING.push({
+        name: 'On-Attacked Shield',
+        value: [{ scaling: calcRefinement(0.16, 0.04, r), multiplier: Stats.HP }],
+        element: TalentProperty.SHIELD,
+        property: TalentProperty.SHIELD,
+        type: TalentType.NONE,
       })
       return base
     },

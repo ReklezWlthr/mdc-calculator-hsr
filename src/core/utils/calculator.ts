@@ -185,12 +185,12 @@ export const calcScaling = (base: number, growth: number, level: number, type: T
         (acc, _, index) => acc + (index > 4 && index <= 8 ? growth * 1.25 : growth),
         base
       ),
-      2
+      4
     )
   if (type === 'heal')
     return _.round(
       _.reduce(Array(level - 1 || 0), (acc, _, index) => acc + (index <= 3 ? growth : growth * 0.8), base),
-      2
+      4
     )
   if (type === 'flat')
     return _.reduce(

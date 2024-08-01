@@ -169,6 +169,13 @@ export class SetupStore {
     if (setupIndex === 0) {
       const dupeIndex = _.findIndex(this.main.char, ['cId', value?.cId])
       const oldData = _.cloneDeep(this.main.char[charIndex]) || null
+      if (value?.equipments?.artifacts)
+        _.forEach(value.equipments.artifacts, (aId) =>
+          _.forEach(this.main.char, (character, cI) => {
+            const i = _.findIndex(character.equipments.artifacts, (item) => item === aId)
+            if (i >= 0 && cI !== charIndex) character.equipments.artifacts[i] = null
+          })
+        )
       this.main.char[charIndex] = { ...this.main.char[charIndex], ...value }
       if (dupeIndex >= 0 && dupeIndex !== charIndex) this.main.char[dupeIndex] = oldData
       this.main = _.cloneDeep(this.main)
@@ -176,6 +183,13 @@ export class SetupStore {
       const arr = this.comparing[setupIndex - 1]
       const dupeIndex = _.findIndex(arr.char, ['cId', value?.cId])
       const oldData = _.cloneDeep(arr.char[charIndex]) || null
+      if (value?.equipments?.artifacts)
+        _.forEach(value.equipments.artifacts, (aId) =>
+          _.forEach(arr.char, (character, cI) => {
+            const i = _.findIndex(character.equipments.artifacts, (item) => item === aId)
+            if (i >= 0 && cI !== charIndex) character.equipments.artifacts[i] = null
+          })
+        )
       arr.char[charIndex] = { ...arr.char[charIndex], ...value }
       if (dupeIndex >= 0 && dupeIndex !== charIndex) this.comparing[setupIndex - 1].char[dupeIndex] = oldData
       this.comparing = _.cloneDeep(this.comparing)

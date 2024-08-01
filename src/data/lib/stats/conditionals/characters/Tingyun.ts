@@ -246,30 +246,30 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       weakness: Element[],
       broken: boolean
     ) => {
-      _.forEach(allForm, (f, i) => {
-        if (f.tingyun_skill) {
-          _.forEach(
-            [team[i].BASIC_SCALING, team[i].SKILL_SCALING, team[i].ULT_SCALING, team[i].TALENT_SCALING],
-            (s) => {
-              if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
-                s.push({
-                  name: `Benediction's Additional DMG`,
-                  value: [
-                    { scaling: calcScaling(0.2, 0.02, skill, 'curved') + (c >= 4 ? 0.2 : 0), multiplier: Stats.ATK },
-                  ],
-                  element: Element.LIGHTNING,
-                  property: TalentProperty.ADD,
-                  type: TalentType.NONE,
-                  sum: true,
-                })
-            }
-          )
-          team[i].CALLBACK.push((x, d, w, all) => {
+      _.last(team).CALLBACK.push((x, d, w, all) => {
+        _.forEach(all, (f, i) => {
+          if (allForm[i].tingyun_skill) {
+            _.forEach(
+              [team[i].BASIC_SCALING, team[i].SKILL_SCALING, team[i].ULT_SCALING, team[i].TALENT_SCALING],
+              (s) => {
+                if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
+                  s.push({
+                    name: `Benediction's Additional DMG`,
+                    value: [
+                      { scaling: calcScaling(0.2, 0.02, skill, 'curved') + (c >= 4 ? 0.2 : 0), multiplier: Stats.ATK },
+                    ],
+                    element: Element.LIGHTNING,
+                    property: TalentProperty.ADD,
+                    type: TalentType.NONE,
+                    sum: true,
+                  })
+              }
+            )
             const buff = _.min([
-              calcScaling(0.25, 0.025, skill, 'curved') * x.BASE_ATK,
+              calcScaling(0.25, 0.025, skill, 'curved') * f.BASE_ATK,
               calcScaling(0.15, 0.01, skill, 'curved') * all[index].getAtk(),
             ])
-            x[Stats.ATK].push({
+            f[Stats.ATK].push({
               name: 'Skill',
               source: index === i ? 'Self' : 'Tingyun',
               value: buff,
@@ -286,11 +286,10 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 overrideIndex: i,
                 sum: true,
               })
-
-            return x
-          })
-        }
-      })
+          }
+        })
+        return x
+      }, 2)
 
       return base
     },

@@ -136,7 +136,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       id: 'lingsha_c2',
       text: `E2 Break Effect Bonus`,
       ...talents.c2,
-      show: true,
+      show: c >= 2,
       default: true,
       duration: 3,
     },
@@ -268,6 +268,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Self',
           value: calcScaling(0.15, 0.01, ult, 'curved'),
         })
+        addDebuff(debuffs, DebuffTypes.OTHER)
       }
       if (c >= 1) {
         base.BREAK_EFF.push({

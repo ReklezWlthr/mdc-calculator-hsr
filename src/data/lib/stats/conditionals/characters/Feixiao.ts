@@ -21,7 +21,6 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
-      energy: 20,
       trace: 'Basic ATK',
       title: `Boltsunder`,
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Feixiao's ATK to a single target enemy.`,
@@ -29,7 +28,6 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: basic,
     },
     skill: {
-      energy: 30,
       trace: 'Skill',
       title: 'Waraxe',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Feixiao's ATK to a single target enemy, then <u>Advances Forward</u> Feixiao's next action by {{1}}%.`,
@@ -40,7 +38,6 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
     },
     ult: {
-      energy: 5,
       trace: 'Ultimate',
       title: `Terrasplit`,
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% - {{1}}% of Feixiao's ATK to a single enemy, reducing its Toughness regardless of Weakness Type. If the target is not Weakness Broken, Feixiao's Weakness Break Efficiency increases by <span class="text-desc">100%</span>.
@@ -71,7 +68,7 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Technique',
       title: 'Stormborn',
       content: `After using the Technique, this character enters the Onrush state, lasting for <span class="text-desc">20</span> seconds. While in the Onrush state, this character pulls in enemies within a certain range, increases SPD by <span class="text-desc">35%</span>, and receives <span class="text-desc">1</span> point(s) of <b class="text-hsr-wind">Flying Aureus</b> after entering battle.
-        <br />Active attacks in the Onrush state will strike all pulled enemies and enter combat. After entering battle, deal <b class="text-hsr-wind">Wind DMG</b> equal to <span class="text-desc">200%</span> of Feixiao's ATK to all enemies at the start of each wave. This DMG is guaranteed to CRIT. When more than <span class="text-desc">1</span> enemy is pulled in, increase the multiplier of this DMG by <span class="text-desc">100%</span> for each additional enemy pulled in, up to an increase of <span class="text-desc">1000%</span>.`,
+        <br />Active attacks in the Onrush state will strike all pulled enemies and enter combat. After entering battle, deal <b class="text-hsr-wind">Wind DMG</b> equal to <span class="text-desc">200%</span> of Feixiao's ATK to all enemies at the start of each wave. This DMG is guaranteed to CRIT. When more than <span class="text-desc">1</span> enemy is pulled in, increase the multiplier of this DMG by <span class="text-desc">100%</span> for each additional enemy pulled in, up to an increase of <span class="text-desc">1,000%</span>.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',

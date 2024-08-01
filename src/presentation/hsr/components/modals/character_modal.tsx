@@ -125,7 +125,9 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
                     E{_.find(charStore.characters, ['cId', item.id])?.cons || 0}
                   </div>
                 )}
-                {item.beta && <div className="absolute right-0 px-1.5 py-0.5 bottom-7 bg-rose-600 rounded-l-md">Beta</div>}
+                {item.beta && (
+                  <div className="absolute right-0 px-1.5 py-0.5 bottom-7 bg-rose-600 rounded-l-md">Beta</div>
+                )}
                 <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
                   <RarityGauge rarity={item.rarity} />
                 </div>

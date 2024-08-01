@@ -284,40 +284,43 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       broken: boolean
     ) => {
       if (form.concerto) {
-        _.last(team).CALLBACK.push((b, _d, _w, a) => {
-          const atk = a[index].getAtk(true)
-          _.forEach(a, (x, i) => {
-            x.X_ATK.push({
-              name: 'Ultimate',
-              source: index === i ? 'Self' : 'Robin',
-              value: calcScaling(0.152, 0.0076, ult, 'curved') * atk,
+        _.last(team).CALLBACK.push(
+          (b, _d, _w, a) => {
+            const atk = a[index].getAtk(true)
+            _.forEach(a, (x, i) => {
+              x.X_ATK.push({
+                name: 'Ultimate',
+                source: index === i ? 'Self' : 'Robin',
+                value: calcScaling(0.152, 0.0076, ult, 'curved') * atk,
+              })
+              x[Stats.ATK].push({
+                name: 'Ultimate',
+                source: index === i ? 'Self' : 'Robin',
+                value: calcScaling(50, 15, ult, 'curved'),
+              })
+              if (index !== i)
+                _.forEach(
+                  [team[i].BASIC_SCALING, team[i].SKILL_SCALING, team[i].ULT_SCALING, team[i].TALENT_SCALING],
+                  (s) => {
+                    if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
+                      s.push({
+                        name: `Concerto's Additional DMG`,
+                        value: [{ scaling: calcScaling(0.72, 0.048, skill, 'curved'), multiplier: Stats.ATK }],
+                        element: Element.PHYSICAL,
+                        property: TalentProperty.ADD,
+                        type: TalentType.NONE,
+                        overrideIndex: index,
+                        overrideCr: 1,
+                        overrideCd: form.robin_c6 ? 6 : 1.5,
+                        sum: true,
+                      })
+                  }
+                )
             })
-            x[Stats.ATK].push({
-              name: 'Ultimate',
-              source: index === i ? 'Self' : 'Robin',
-              value: calcScaling(50, 15, ult, 'curved'),
-            })
-            if (index !== i)
-              _.forEach(
-                [team[i].BASIC_SCALING, team[i].SKILL_SCALING, team[i].ULT_SCALING, team[i].TALENT_SCALING],
-                (s) => {
-                  if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
-                    s.push({
-                      name: `Concerto's Additional DMG`,
-                      value: [{ scaling: calcScaling(0.72, 0.048, skill, 'curved'), multiplier: Stats.ATK }],
-                      element: Element.PHYSICAL,
-                      property: TalentProperty.ADD,
-                      type: TalentType.NONE,
-                      overrideIndex: index,
-                      overrideCr: 1,
-                      overrideCd: form.robin_c6 ? 6 : 1.5,
-                      sum: true,
-                    })
-                }
-              )
-          })
-          return b
-        })
+            return b
+          },
+          form.tingyun_skill ? 3 : 1
+        )
       }
 
       return base

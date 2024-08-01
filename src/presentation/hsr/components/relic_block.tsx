@@ -114,7 +114,10 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
       teamStore.setArtifact(char, oldType, null)
     }
     _.forEach(build, (item) => {
-      buildStore.editBuild(item.id, { artifacts: _.without(item.artifacts, props.aId) })
+      const i = _.findIndex(item.artifacts, (a) => a === props.aId)
+      const newArr = _.cloneDeep(item.artifacts)
+      newArr.splice(i, 1, null)
+      buildStore.editBuild(item.id, { artifacts: newArr })
     })
   }, [artifactStore.artifacts, teamStore.characters, buildStore.builds, props.aId])
 
