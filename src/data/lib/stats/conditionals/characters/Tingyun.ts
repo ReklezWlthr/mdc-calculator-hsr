@@ -201,6 +201,12 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Self',
           value: 0.2,
         })
+      if (a.a4)
+        base.BASIC_DMG.push({
+          name: 'Ascension 4 Passive',
+          source: 'Self',
+          value: 0.4,
+        })
       if (form.tingyun_c1)
         base[Stats.P_SPD].push({
           name: 'Eidolon 1',
@@ -277,9 +283,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             if (i !== index)
               team[index].TALENT_SCALING.push({
                 name: `${names[i]}'s Additional DMG`,
-                value: [
-                  { scaling: calcScaling(0.3, 0.03, talent, 'curved') + (c >= 4 ? 0.2 : 0), multiplier: Stats.ATK },
-                ],
+                value: [{ scaling: calcScaling(0.3, 0.03, talent, 'curved'), multiplier: Stats.ATK }],
                 element: Element.LIGHTNING,
                 property: TalentProperty.ADD,
                 type: TalentType.NONE,

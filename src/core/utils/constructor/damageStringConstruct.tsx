@@ -147,7 +147,7 @@ export const damageStringConstruct = (
       : _.round(totalFlat).toLocaleString()
     : baseScaling
 
-  const formulaString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(
+  const formulaString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.floor(
     dmg
   ).toLocaleString()}</b> = ${breakScale ? baseBreakScaling : shouldWrap ? `(${baseWithFlat})` : baseWithFlat}${
     breakScale && stats.getValue(Stats.BE) > 0
@@ -178,7 +178,7 @@ export const damageStringConstruct = (
       : ''
   }`
 
-  const critString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(
+  const critString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.floor(
     dmg * (1 + totalCd)
   ).toLocaleString()}</b> = <b>${_.round(
     dmg
@@ -186,7 +186,7 @@ export const damageStringConstruct = (
     totalCd
   )}</b>)</span>`
 
-  const avgString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(
+  const avgString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.floor(
     dmg * (1 + totalCd * totalCr)
   ).toLocaleString()}</b> = <b>${_.round(
     dmg

@@ -1468,11 +1468,11 @@ export const Enemies = [
     res: {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0.2,
-      [Element.ICE]: 0.2,
-      [Element.LIGHTNING]: 0.4,
-      [Element.WIND]: 0.2,
+      [Element.ICE]: 0,
+      [Element.LIGHTNING]: 0.2,
+      [Element.WIND]: 0,
       [Element.QUANTUM]: 0.2,
-      [Element.IMAGINARY]: 0,
+      [Element.IMAGINARY]: 0.2,
     },
     statusRes: {
       [DebuffTypes.BLEED]: 0,

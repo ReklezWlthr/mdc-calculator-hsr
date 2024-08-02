@@ -95,7 +95,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
           highlight ? propertyColor[scaling.property] || 'text-red' : 'text-gray'
         )}
       >
-        {_.round(dmg).toLocaleString()}
+        {_.floor(dmg).toLocaleString()}
       </p>
     </Tooltip>
   )
@@ -125,7 +125,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
         <p className="col-span-1 text-center text-gray">-</p>
       ) : (
         <Tooltip title={'CRIT: ' + scaling.name} body={CritBody} style="w-[400px]">
-          <p className="col-span-1 text-center text-gray">{_.round(dmg * (1 + totalCd)).toLocaleString()}</p>
+          <p className="col-span-1 text-center text-gray">{_.floor(dmg * (1 + totalCd)).toLocaleString()}</p>
         </Tooltip>
       )}
       {noCrit ? (
@@ -133,7 +133,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
       ) : (
         <Tooltip title={'Average: ' + scaling.name} body={AvgBody} style="w-[400px]">
           <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
-            {_.round(dmg * (1 + totalCd * totalCr)).toLocaleString()}
+            {_.floor(dmg * (1 + totalCd * totalCr)).toLocaleString()}
           </p>
         </Tooltip>
       )}

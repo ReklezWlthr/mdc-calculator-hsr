@@ -35,13 +35,13 @@ export const SubTotalRow = observer(({ type }: CompareTotalRowsProps) => {
       <div className="col-span-2 border-t-2 border-dashed border-primary-border" />
       <p className="col-span-1 text-center">Total</p>
       <p className="col-span-1 text-center text-gray">
-        {calculatorStore.getTotal(type, 0) ? _.round(calculatorStore.getTotal(type, 0)).toLocaleString() : '-'}
+        {calculatorStore.getTotal(type, 0) ? _.floor(calculatorStore.getTotal(type, 0)).toLocaleString() : '-'}
       </p>
       <p className="col-span-1 text-center text-gray">
-        {calculatorStore.getTotal(type, 1) ? _.round(calculatorStore.getTotal(type, 1)).toLocaleString() : '-'}
+        {calculatorStore.getTotal(type, 1) ? _.floor(calculatorStore.getTotal(type, 1)).toLocaleString() : '-'}
       </p>
       <p className="col-span-1 font-bold text-center text-red">
-        {calculatorStore.getTotal(type, 2) ? _.round(calculatorStore.getTotal(type, 2)).toLocaleString() : '-'}
+        {calculatorStore.getTotal(type, 2) ? _.floor(calculatorStore.getTotal(type, 2)).toLocaleString() : '-'}
       </p>
       <div className="col-span-3 border-t-2 border-dashed border-primary-border" />
     </div>

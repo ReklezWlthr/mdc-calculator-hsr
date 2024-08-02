@@ -83,11 +83,11 @@ export const SuperBreakSubRows = observer(({ scaling, statsOverride, type }: Sca
         }
         style="w-[400px]"
       >
-        <p className="col-span-1 text-center text-gray">{_.round(dmg).toLocaleString()}</p>
+        <p className="col-span-1 text-center text-gray">{_.floor(dmg).toLocaleString()}</p>
       </Tooltip>
       <p className="col-span-1 text-center text-gray">-</p>
       <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
-        {_.round(dmg).toLocaleString()}
+        {_.floor(dmg).toLocaleString()}
       </p>
       <p className="text-xs text-center truncate text-gray">-</p>
       <div className="flex col-span-2 gap-1 text-xs" title={scaling.name}>

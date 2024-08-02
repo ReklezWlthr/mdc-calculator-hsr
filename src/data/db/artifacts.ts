@@ -570,7 +570,7 @@ export const PlanarSets: IArtifact[] = [
             item[Stats.CRIT_DMG].push({
               name: 'Broken Keel',
               source: x.NAME === item.NAME ? 'Self' : x.NAME,
-              value: 0.2,
+              value: 0.1,
             })
           })
         return x

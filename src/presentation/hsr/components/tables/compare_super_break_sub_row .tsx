@@ -85,7 +85,7 @@ export const CompareSuperBreakSubRows = observer(
       const compare = getDmg(obj) - getDmg(main)
       const p = (getDmg(obj) - getDmg(main)) / getDmg(main)
       const percent = (compare >= 0 ? '+' : '') + (getDmg(main) ? toPercentage(p) : 'NEW')
-      const abs = (compare >= 0 ? '+' : '') + _.round(getDmg(obj) - getDmg(main)).toLocaleString()
+      const abs = (compare >= 0 ? '+' : '') + _.floor(getDmg(obj) - getDmg(main)).toLocaleString()
       const diff = _.includes(['percent', 'abs'], mode)
       return obj ? (
         <Tooltip
@@ -130,7 +130,7 @@ export const CompareSuperBreakSubRows = observer(
                 : ''
             )}
           >
-            {mode === 'percent' ? percent : mode === 'abs' ? abs : _.round(getDmg(obj)).toLocaleString()}
+            {mode === 'percent' ? percent : mode === 'abs' ? abs : _.floor(getDmg(obj)).toLocaleString()}
             {compare > 0 && !diff && <i className="ml-1 text-[10px] fa-solid fa-caret-up text-lime-400" />}
             {compare < 0 && !diff && <i className="ml-1 text-[10px] fa-solid fa-caret-down text-red" />}
             {compare === 0 && !diff && <i className="ml-1 text-[10px] fa-solid fa-minus text-blue" />}
@@ -156,7 +156,7 @@ export const CompareSuperBreakSubRows = observer(
             body={<div dangerouslySetInnerHTML={{ __html: main.formulaString }} />}
             style="w-[400px]"
           >
-            <p className="col-span-1 text-xs text-center">{_.round(getDmg(main)).toLocaleString()}</p>
+            <p className="col-span-1 text-xs text-center">{_.floor(getDmg(main)).toLocaleString()}</p>
           </Tooltip>
         ) : (
           <p className="col-span-1 text-center text-gray">-</p>

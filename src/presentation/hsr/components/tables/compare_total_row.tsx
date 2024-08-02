@@ -40,7 +40,7 @@ export const CompareTotalRows = observer(({ type }: CompareTotalRowsProps) => {
     const compare = target - main
     const p = (target - main) / main
     const percent = main ? (compare >= 0 ? '+' : '') + toPercentage(p) : 'NEW'
-    const abs = (compare >= 0 ? '+' : '') + _.round(target - main).toLocaleString()
+    const abs = (compare >= 0 ? '+' : '') + _.floor(target - main).toLocaleString()
     const diff = _.includes(['percent', 'abs'], mode)
     return target ? (
       <p
@@ -56,7 +56,7 @@ export const CompareTotalRows = observer(({ type }: CompareTotalRowsProps) => {
             : 'text-gray'
         )}
       >
-        {mode === 'percent' ? percent : mode === 'abs' ? abs : _.round(target).toLocaleString()}
+        {mode === 'percent' ? percent : mode === 'abs' ? abs : _.floor(target).toLocaleString()}
         {compare > 0 && !diff && <i className="ml-1 text-[10px] fa-solid fa-caret-up text-lime-400" />}
         {compare < 0 && !diff && <i className="ml-1 text-[10px] fa-solid fa-caret-down text-red" />}
         {compare === 0 && !diff && <i className="ml-1 text-[10px] fa-solid fa-minus text-blue" />}
@@ -71,7 +71,7 @@ export const CompareTotalRows = observer(({ type }: CompareTotalRowsProps) => {
       <div className="col-span-2 border-t-2 border-dashed border-primary-border" />
       <p className="col-span-1 text-center">Total</p>
       <p className="col-span-1 text-xs text-center text-gray">
-        {setupStore.getTotal(type, 0) ? _.round(setupStore.getTotal(type, 0)).toLocaleString() : '-'}
+        {setupStore.getTotal(type, 0) ? _.floor(setupStore.getTotal(type, 0)).toLocaleString() : '-'}
       </p>
       {renderSubDmgBlock(1)}
       {renderSubDmgBlock(2)}
