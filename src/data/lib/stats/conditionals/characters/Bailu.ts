@@ -43,7 +43,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: 'Felicitous Thunderleap',
-      content: `Heals all allies for {{0}}% of Bailu's Max HP plus {{1}}. Bailu applies <b>Invigoration</b> to allies that are not already <b>Invigorated</b>. For those already <b>Invigorated</b>, Bailu extends the duration of their <b>Invigoration</b> by <span class="text-desc">1</span> turn. The effect of <b>Invigoration</b> can last for <span class="text-desc">2</span> turn(s). This effect cannot stack.`,
+      content: `Heals all allies for {{0}}% of Bailu's Max HP plus {{1}}. Bailu applies <b class="text-hsr-lightning">Invigoration</b> to allies that are not already <b class="text-hsr-lightning">Invigorated</b>. For those already <b class="text-hsr-lightning">Invigorated</b>, Bailu extends the duration of their <b class="text-hsr-lightning">Invigoration</b> by <span class="text-desc">1</span> turn. The effect of <b>Invigoration</b> can last for <span class="text-desc">2</span> turn(s). This effect cannot stack.`,
       value: [
         { base: 9, growth: 0.5625, style: 'heal' },
         { base: 90, growth: 54, style: 'flat' },
@@ -53,7 +53,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     talent: {
       trace: 'Talent',
       title: `Gourdful of Elixir`,
-      content: `After an ally with <b>Invigoration</b> is hit, restores the ally's HP for {{0}}% of Bailu's Max HP plus {{1}}. This effect can trigger <span class="text-desc">2</span> time(s). When an ally receives a killing blow, they will not be knocked down. Bailu immediately heals the ally for {{2}}% of Bailu's Max HP plus {{3}} HP. This effect can be triggered <span class="text-desc">1</span> time per battle.`,
+      content: `After an ally with <b class="text-hsr-lightning">Invigoration</b> is hit, restores the ally's HP for {{0}}% of Bailu's Max HP plus {{1}}. This effect can trigger <span class="text-desc">2</span> time(s). When an ally receives a killing blow, they will not be knocked down. Bailu immediately heals the ally for {{2}}% of Bailu's Max HP plus {{3}} HP. This effect can be triggered <span class="text-desc">1</span> time per battle.`,
       value: [
         { base: 3.6, growth: 0.225, style: 'heal' },
         { base: 36, growth: 21.6, style: 'flat' },
@@ -80,12 +80,12 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Aquatic Benediction`,
-      content: `Characters with <b>Invigoration</b> receive <span class="text-desc">10%</span> less DMG.`,
+      content: `Characters with <b class="text-hsr-lightning">Invigoration</b> receive <span class="text-desc">10%</span> less DMG.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Ambrosial Aqua`,
-      content: `If the target ally's current HP is equal to their Max HP when <b>Invigoration</b> ends, regenerates <span class="text-desc">8</span> extra Energy for this target.`,
+      content: `If the target ally's current HP is equal to their Max HP when <b class="text-hsr-lightning">Invigoration</b> ends, regenerates <span class="text-desc">8</span> extra Energy for this target.`,
     },
     c2: {
       trace: 'Eidolon 2',

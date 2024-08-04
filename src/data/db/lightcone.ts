@@ -1064,7 +1064,7 @@ export const LightCones = [
     type: PathType.HUNT,
     desc: {
       name: 'Concealment',
-      detail: `Increases the wearer's Break Effect by {{0}}% . Upon entering battle or dealing Break DMG, increases SPD by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). This effect can only be triggered <span class="text-desc">1</span> time per turn.`,
+      detail: `Increases the wearer's Break Effect by {{0}}%. Upon entering battle or dealing Break DMG, increases SPD by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). This effect can only be triggered <span class="text-desc">1</span> time per turn.`,
       properties: [
         { base: 28, growth: 7 },
         { base: 8, growth: 1 },

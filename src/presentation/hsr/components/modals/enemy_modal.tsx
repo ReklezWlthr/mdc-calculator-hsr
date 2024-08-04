@@ -68,11 +68,12 @@ export const EnemyModal = observer(() => {
             value={level.toString()}
             onChange={(value) => {
               const enemyData = _.find(Enemies, (item) => item.name === calculatorStore.enemy)
-              calculatorStore.setValue(
-                'hp',
-                _.round((enemyData?.baseHp / _.head(EnemyHpScaling)) * EnemyHpScaling[parseFloat(value) - 1])
-              )
-              calculatorStore.setValue('level', parseFloat(value) || 0)
+              if (enemyData)
+                calculatorStore.setValue(
+                  'hp',
+                  _.round((enemyData?.baseHp / _.head(EnemyHpScaling)) * EnemyHpScaling[(Number(value) || 1) - 1])
+                )
+              calculatorStore.setValue('level', Number(value) || 1)
             }}
             style="w-[80px]"
           />

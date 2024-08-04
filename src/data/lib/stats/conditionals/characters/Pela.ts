@@ -52,7 +52,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       trace: 'Talent',
       title: `Data Collecting`,
       content: `If the enemy is debuffed after Pela's attack, Pela will restore {{0}} extra Energy. This effect can only be triggered <span class="text-desc">1</span> time per attack.`,
-      value: [{ base: 25, growth: 2.5, style: 'curved' }],
+      value: [{ base: 5, growth: 0.5, style: 'curved' }],
       level: talent,
     },
     technique: {

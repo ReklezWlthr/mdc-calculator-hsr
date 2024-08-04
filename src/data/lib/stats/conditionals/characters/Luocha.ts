@@ -51,7 +51,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     talent: {
       trace: 'Talent',
       title: 'Cycle of Life',
-      content: `When Abyss Flower reaches <span class="text-desc">2</span> stacks, Luocha consumes all stacks of <b>Abyss Flower</b> to deploy a <b>Field</b> against the enemy.
+      content: `When <b>Abyss Flower</b> reaches <span class="text-desc">2</span> stacks, Luocha consumes all stacks of <b>Abyss Flower</b> to deploy a <b>Field</b> against the enemy.
       <br />When any enemy in the <b>Field</b> is attacked by an ally, the attacking ally's HP is immediately restored by an amount equal to {{0}}% of Luocha's ATK plus {{1}}.
       <br />The <b>Field</b>'s effect lasts for <span class="text-desc">2</span> turns. When Luocha is knocked down, the <b>Field</b> will be dispelled.`,
       value: [

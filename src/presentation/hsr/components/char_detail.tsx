@@ -49,6 +49,7 @@ export const CharDetail = observer(() => {
     setLoading(true)
     const elms = document.getElementsByClassName('cons')
     _.forEach(elms, (elm: HTMLImageElement) => (elm.style.display = 'none'))
+    document.getElementById('detail_container').scrollTo(0, 0)
   }, [charStore.selected])
 
   const onCalcSlider = useCallback(() => {
@@ -105,7 +106,7 @@ export const CharDetail = observer(() => {
   )
 
   return (
-    <div className="w-full h-full p-2 pr-5 text-white customScrollbar">
+    <div className="w-full h-full p-2 pr-5 text-white customScrollbar" id="detail_container">
       <div className="flex">
         <div className="relative w-2/3 aspect-square">
           <div
@@ -329,7 +330,7 @@ export const CharDetail = observer(() => {
         <p className="flex justify-center gap-2 mb-1 text-2xl font-bold">
           <span className="text-desc">✦</span> Bonus Abilities <span className="text-desc">✦</span>
         </p>
-        <div className="grid grid-cols-3 gap-5">
+        <div className="flex flex-col gap-5">
           {_.map([talent.a2, talent.a4, talent.a6], (item) => (
             <div className="flex gap-x-3" key={item.trace}>
               <TalentIcon
