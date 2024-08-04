@@ -15,6 +15,12 @@ export const RelicSets: IArtifact[] = [
       `Increases Outgoing Healing by <span class="text-desc">10%</span>.`,
       `At the start of the battle, immediately regenerates <span class="text-desc">1</span> Skill Point.`,
     ],
+    set: [
+      `Passerby's Rejuvenated Wooden Hairstick`,
+      `Passerby's Roaming Dragon Bracer`,
+      `Passerby's Ragged Embroided Coat`,
+      `Passerby's Stygian Hiking Boots`,
+    ],
   },
   {
     id: '102',
@@ -39,6 +45,12 @@ export const RelicSets: IArtifact[] = [
       `ATK increases by <span class="text-desc">12%</span>.`,
       `The wearer's SPD increases by <span class="text-desc">6%</span> and DMG dealt by Basic ATK increases by <span class="text-desc">10%</span>.`,
     ],
+    set: [
+      `Musketeer's Wild Wheat Felt Hat`,
+      `Musketeer's Coarse Leather Gloves`,
+      `Musketeer's Wind-Hunting Shawl`,
+      `Musketeer's Rivets Riding Boots`,
+    ],
   },
   {
     id: '103',
@@ -58,6 +70,12 @@ export const RelicSets: IArtifact[] = [
       `Increases DEF by <span class="text-desc">15%</span>.`,
       `Increases the max DMG that can be absorbed by the <b class="text-indigo-300">Shield</b> created by the wearer by <span class="text-desc">20%</span>.`,
     ],
+    set: [
+      `Knight's Forgiving Casque`,
+      `Knight's Silent Oath Ring`,
+      `Knight's Solemn Breastplate`,
+      `Knight's Iron Boots of Order`,
+    ],
   },
   {
     id: '104',
@@ -68,6 +86,12 @@ export const RelicSets: IArtifact[] = [
     desc: [
       `Increases <b class="text-hsr-ice">Ice DMG</b> by <span class="text-desc">10%</span>.`,
       `After the wearer uses their Ultimate, their CRIT DMG increases by <span class="text-desc">25%</span> for <span class="text-desc">2</span> turn(s).`,
+    ],
+    set: [
+      `Hunter's Artaius Hood`,
+      `Hunter's Lizard Gloves`,
+      `Hunter's Ice Dragon Cloak`,
+      `Hunter's Soft Elkskin Boots`,
     ],
   },
   {
@@ -80,6 +104,7 @@ export const RelicSets: IArtifact[] = [
       `Increases <b class="text-hsr-physical">Physical DMG</b> by <span class="text-desc">10%</span>.`,
       `After the wearer attacks or is hit, their ATK increases by <span class="text-desc">5%</span> for the rest of the battle. This effect can stack up to <span class="text-desc">5</span> time(s).`,
     ],
+    set: [`Champion's Headgear`, `Champion's Heavy Gloves`, `Champion's Chest Guard`, `Champion's Fleetfoot Boots`],
   },
   {
     id: '106',
@@ -99,6 +124,7 @@ export const RelicSets: IArtifact[] = [
       `Reduces DMG taken by <span class="text-desc">8%</span>.`,
       `At the beginning of the turn, if the wearer's HP is equal to or less than <span class="text-desc">50%</span>, restores HP equal to <span class="text-desc">8%</span> of their Max HP and regenerates <span class="text-desc">5</span> Energy.`,
     ],
+    set: [`Guard's Cast Iron Helmet`, `Guard's Shining Gauntlets`, `Guard's Uniform of Old`, `Guard's Silver Greaves`],
   },
   {
     id: '107',
@@ -117,6 +143,12 @@ export const RelicSets: IArtifact[] = [
     desc: [
       `Increases <b class="text-hsr-fire">Fire DMG</b> by <span class="text-desc">10%</span>.`,
       `Increases DMG by the wearer's Skill by <span class="text-desc">12%</span>. After unleashing Ultimate, increases the wearer's <b class="text-hsr-fire">Fire DMG</b> by <span class="text-desc">12%</span> for the next attack.`,
+    ],
+    set: [
+      `Firesmith's Obsidian Goggles`,
+      `Firesmith's Ring of Flame-Mastery`,
+      `Firesmith's Fireproof Apron`,
+      `Firesmith's Alloy Leg`,
     ],
   },
   {
@@ -140,6 +172,12 @@ export const RelicSets: IArtifact[] = [
       `Increases <b class="text-hsr-quantum">Quantum DMG</b> by <span class="text-desc">10%</span>.`,
       `When the wearer deals DMG to the target enemy, ignores <span class="text-desc">10%</span> DEF. If the target enemy has <b class="text-hsr-quantum">Quantum</b> Weakness, the wearer additionally ignores <span class="text-desc">10%</span> DEF.`,
     ],
+    set: [
+      `Genius's Ultraremote Sensing Visor`,
+      `Genius's Frequency Catcher`,
+      `Genius's Metafield Suit`,
+      `Genius's Gravity Walker`,
+    ],
   },
   {
     id: '109',
@@ -150,6 +188,12 @@ export const RelicSets: IArtifact[] = [
     desc: [
       `Increases <b class="text-hsr-lightning">Lightning DMG</b> by <span class="text-desc">10%</span>.`,
       `When the wearer uses their Skill, increases the wearer's ATK by <span class="text-desc">20%</span> for <span class="text-desc">1</span> turn(s).`,
+    ],
+    set: [
+      `Band's Polarized Sunglasses`,
+      `Band's Touring Bracelet`,
+      `Band's Leather Jacket With Studs`,
+      `Band's Ankle Boots With Rivets`,
     ],
   },
   {
@@ -162,6 +206,7 @@ export const RelicSets: IArtifact[] = [
       `Increases <b class="text-hsr-wind">Wind DMG</b> by <span class="text-desc">10%</span>.`,
       `After the wearer uses their Ultimate, their action is <u>Advanced Forward</u> by <span class="text-desc">25%</span>.`,
     ],
+    set: [`Eagle's Beaked Helmet`, `Eagle's Soaring Ring`, `Eagle's Winged Suit Harness`, `Eagle's Quilted Puttees`],
   },
   {
     id: '111',
@@ -172,6 +217,12 @@ export const RelicSets: IArtifact[] = [
     desc: [
       `Increases Break Effect by <span class="text-desc">16%</span>.`,
       `Increases the wearer's Break Effect by <span class="text-desc">16%</span>. After the wearer inflicts Weakness Break on an enemy, regenerates <span class="text-desc">3</span> Energy.`,
+    ],
+    set: [
+      `Thief's Myriad-Faced Mask`,
+      `Thief's Gloves With Prints`,
+      `Thief's Steel Grappling Hook`,
+      `Thief's Meteor Boots`,
     ],
   },
   {
@@ -202,6 +253,12 @@ export const RelicSets: IArtifact[] = [
       `Increases <b class="text-hsr-imaginary">Imaginary DMG</b> by <span class="text-desc">10%</span>.`,
       `When attacking debuffed enemies, the wearer's CRIT Rate increases by <span class="text-desc">10%</span>, and their CRIT DMG increases by <span class="text-desc">20%</span> against <b class="text-hsr-imaginary">Imprisoned</b> enemies.`,
     ],
+    set: [
+      `Wastelander's Breathing Mask`,
+      `Wastelander's Desert Terminal`,
+      `Wastelander's Friar Robe`,
+      `Wastelander's Powered Greaves`,
+    ],
   },
   {
     id: '113',
@@ -213,6 +270,12 @@ export const RelicSets: IArtifact[] = [
       `Increases Max HP by <span class="text-desc">12%</span>.`,
       `When the wearer is hit or has their HP consumed by an ally or themselves, their CRIT Rate increases by <span class="text-desc">8%</span> for <span class="text-desc">2</span> turn(s) and up to <span class="text-desc">2</span> stacks.`,
     ],
+    set: [
+      `Disciple's Prosthetic Eye`,
+      `Disciple's Ingenium Hand`,
+      `Disciple's Dewy Feather Garb`,
+      `Disciple's Celestial Silk Sandals`,
+    ],
   },
   {
     id: '114',
@@ -223,6 +286,12 @@ export const RelicSets: IArtifact[] = [
     desc: [
       `Increases SPD by <span class="text-desc">6%</span>.`,
       `When the wearer uses their Ultimate on an ally, SPD for all allies increases by <span class="text-desc">12%</span> for <span class="text-desc">1</span> turn(s). This effect cannot be stacked.`,
+    ],
+    set: [
+      `Messenger's Holovisor`,
+      `Messenger's Transformative Arm`,
+      `Messenger's Secret Satchel`,
+      `Messenger's Par-kool Sneakers`,
     ],
   },
   {
@@ -242,6 +311,12 @@ export const RelicSets: IArtifact[] = [
     desc: [
       `Increases the DMG dealt by <u>follow-up attack</u> by <span class="text-desc">20%</span>.`,
       `When the wearer uses <u>follow-up attack</u>s, increases the wearer's ATK by <span class="text-desc">6%</span> for every time the <u>follow-up attack</u> deals DMG. This effect can stack up to <span class="text-desc">8</span> time(s) and lasts for <span class="text-desc">3</span> turn(s). This effect is removed the next time the wearer uses a <u>follow-up attack</u>.`,
+    ],
+    set: [
+      `Grand Duke's Crown of Netherflame`,
+      `Grand Duke's Gloves of Fieryfur`,
+      `Grand Duke's Robe of Grace`,
+      `Grand Duke's Ceremonial Boots`,
     ],
   },
   {
@@ -274,6 +349,12 @@ export const RelicSets: IArtifact[] = [
     desc: [
       `ATK increases by <span class="text-desc">12%</span>.`,
       `For every DoT the enemy target is afflicted with, the wearer will ignore <span class="text-desc">6%</span> of its DEF when dealing DMG to it. This effect is valid for a max of <span class="text-desc">3</span> DoTs.`,
+    ],
+    set: [
+      `Prisoner's Sealed Muzzle`,
+      `Prisoner's Leadstone Shackles`,
+      `Prisoner's Repressive Straitjacket`,
+      `Prisoner's Restrictive Fetters`,
     ],
   },
   {
@@ -316,6 +397,12 @@ export const RelicSets: IArtifact[] = [
       `Increases DMG dealt to enemies with debuffs by <span class="text-desc">12%</span>.`,
       `Increases CRIT Rate by <span class="text-desc">4%</span>. The wearer deals <span class="text-desc">8%</span>/<span class="text-desc">12%</span> increased CRIT DMG to enemies with at least <span class="text-desc">2</span>/<span class="text-desc">3</span> debuffs. After the wearer inflicts a debuff on enemy targets, the aforementioned effects increase by <span class="text-desc">100%</span>, lasting for <span class="text-desc">1</span> turn(s).`,
     ],
+    set: [
+      `Pioneer's Heatproof Shell`,
+      `Pioneer's Lacuna Compass`,
+      `Pioneer's Sealed Lead Apron`,
+      `Pioneer's Starfaring Anchor`,
+    ],
   },
   {
     id: '118',
@@ -326,6 +413,12 @@ export const RelicSets: IArtifact[] = [
     desc: [
       `Increases Break Effect by <span class="text-desc">16%</span>.`,
       `When the wearer uses their Ultimate on an ally, all allies' Break Effect increases by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s). This effect cannot be stacked.`,
+    ],
+    set: [
+      `Watchmaker's Telescoping Lens`,
+      `Watchmaker's Fortuitous Wristwatch`,
+      `Watchmaker's Illusory Formal Suit`,
+      `Watchmaker's Dream-Concealing Dress Shoes`,
     ],
   },
   {
@@ -356,6 +449,12 @@ export const RelicSets: IArtifact[] = [
       `Increases Break Effect by <span class="text-desc">16%</span>.`,
       `If the wearer's Break Effect is <span class="text-desc">150%</span> or higher, ignores <span class="text-desc">10%</span> of the enemy target's DEF when dealing Break DMG to them. When the wearer's Break Effect is <span class="text-desc">250%</span> or higher, the Super Break DMG they deal to enemy targets additionally ignores <span class="text-desc">15%</span> of the targets' DEF.`,
     ],
+    set: [
+      `Iron Cavalry's Homing Helm`,
+      `Iron Cavalry's Crushing Wristguard`,
+      `Iron Cavalry's Silvery Armor`,
+      `Iron Cavalry's Skywalk Greaves`,
+    ],
   },
   {
     id: '120',
@@ -366,6 +465,12 @@ export const RelicSets: IArtifact[] = [
     desc: [
       `ATK increases by <span class="text-desc">12%</span>.`,
       `Increases the wearer's CRIT Rate by <span class="text-desc">6%</span>. After the wearer uses <u>follow-up attack</u>, increases DMG dealt by Ultimate by <span class="text-desc">36%</span>, lasting for <span class="text-desc">1</span> turn(s).`,
+    ],
+    set: [
+      `Valorous Mask of Northern Skies`,
+      `Valorous Bracelet of Grappling Hooks`,
+      `Valorous Plate of Soaring Flight`,
+      `Valorous Greaves of Pursuing Hunt`,
     ],
   },
 ]
@@ -393,6 +498,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's ATK by <span class="text-desc">12%</span>. When the wearer's SPD reaches <span class="text-desc">120</span> or higher, the wearer's ATK increases by an extra <span class="text-desc">12%</span>.`,
     ],
+    set: [`Herta's Space Station`, `Herta's Wandering Trek`],
   },
   {
     id: '302',
@@ -415,6 +521,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's Max HP by <span class="text-desc">12%</span>. When the wearer's SPD reaches <span class="text-desc">120</span> or higher, all allies' ATK increases by <span class="text-desc">8%</span>.`,
     ],
+    set: [`The Xianzhou Luofu's Celestial Ark`, `The Xianzhou Luofu's Ambrosial Arbor Vines`],
   },
   {
     id: '303',
@@ -433,6 +540,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's Effect Hit Rate by <span class="text-desc">10%</span>. Meanwhile, the wearer's ATK increases by an amount that is equal to <span class="text-desc">25%</span> of the current Effect Hit Rate, up to a maximum of <span class="text-desc">25%</span>.`,
     ],
+    set: [`The IPC's Mega HQ`, `The IPC's Trade Route`],
   },
   {
     id: '304',
@@ -458,6 +566,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's DEF by <span class="text-desc">12%</span>. When the wearer's Effect Hit Rate is <span class="text-desc">50%</span> or higher, the wearer gains an extra <span class="text-desc">15%</span> DEF.`,
     ],
+    set: [`Belobog's Fortress of Preservation`, `Belobog's Iron Defense`],
   },
   {
     id: '305',
@@ -468,6 +577,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's CRIT DMG by <span class="text-desc">16%</span>. When the wearer's current CRIT DMG reaches <span class="text-desc">120%</span> or higher, after entering battle, the wearer's CRIT Rate increases by <span class="text-desc">60%</span> until the end of their first attack.`,
     ],
+    set: [`Planet Screwllum's Mechanical Sun`, `Planet Screwllum's Ring System`],
   },
   {
     id: '306',
@@ -496,6 +606,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's CRIT Rate by <span class="text-desc">8%</span>. When the wearer's current CRIT Rate reaches <span class="text-desc">50%</span> or higher, the DMG dealt by the wearer's Ultimate and <u>follow-up attack</u> increases by <span class="text-desc">15%</span>.`,
     ],
+    set: [`Salsotto's Moving City`, `Salsotto's Terminator Line`],
   },
   {
     id: '307',
@@ -518,6 +629,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's Break Effect by <span class="text-desc">16%</span>. When the wearer's SPD reaches <span class="text-desc">145</span> or higher, the wearer's Break Effect increases by an extra <span class="text-desc">20%</span>.`,
     ],
+    set: [`Talia's Nailscrap Town`, `Talia's Exposed Electric Wire`],
   },
   {
     id: '308',
@@ -528,6 +640,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's Energy Regeneration Rate by <span class="text-desc">5%</span>. When the wearer's SPD reaches <span class="text-desc">120</span> or higher, the wearer's action is <u>Advanced Forward</u> by <span class="text-desc">40%</span> immediately upon entering battle.`,
     ],
+    set: [`Vonwacq's Island of Birth`, `Vonwacq's Islandic Coast`],
   },
   {
     id: '309',
@@ -556,6 +669,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's CRIT Rate by <span class="text-desc">8%</span>. When the wearer's current CRIT Rate reaches <span class="text-desc">70%</span> or higher, DMG dealt by Basic ATK and Skill increases by <span class="text-desc">20%</span>.`,
     ],
+    set: [`Taikiyan Laser Stadium`, `Taikiyan's Arclight Race Track`],
   },
   {
     id: '310',
@@ -580,6 +694,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's Effect RES by <span class="text-desc">10%</span>. When the wearer's Effect RES is at <span class="text-desc">30%</span> or higher, all allies' CRIT DMG increases by <span class="text-desc">10%</span>.`,
     ],
+    set: [`Insumousu's Whalefall Ship`, `Insumousu's Frayed Hawser`],
   },
   {
     id: '311',
@@ -602,6 +717,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's ATK by <span class="text-desc">12%</span>. When the wearer's SPD is equal to or higher than <span class="text-desc">135</span>/<span class="text-desc">160</span>, the wearer deals <span class="text-desc">12%</span>/<span class="text-desc">18%</span> more DMG.`,
     ],
+    set: [`Glamoth's Iron Cavalry Regiment`, `Glamoth's Silent Tombstone`],
   },
   {
     id: '312',
@@ -626,6 +742,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases wearer's Energy Regeneration Rate by <span class="text-desc">5%</span>. Increases DMG by <span class="text-desc">10%</span> for all other allies that are of the same Type as the wearer.`,
     ],
+    set: [`Penacony's Grand Hotel`, `Penacony's Dream-Seeking Tracks`],
   },
   {
     id: '313',
@@ -636,6 +753,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's CRIT Rate by <span class="text-desc">4%</span>. When an enemy target gets defeated, the wearer's CRIT DMG increases by <span class="text-desc">4%</span>, stacking up to <span class="text-desc">10</span> time(s).`,
     ],
+    set: [`Sigonia's Gaiathra Berth`, `Sigonia's Knot of Cyclicality`],
   },
   {
     id: '314',
@@ -659,6 +777,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's ATK by <span class="text-desc">12%</span>. When entering battle, if at least one other ally follows the same Path as the wearer, then the wearer's CRIT Rate increases by <span class="text-desc">12%</span>.`,
     ],
+    set: [`Izumo's Magatsu no Morokami`, `Izumo's Blades of Origin and End`],
   },
   {
     id: '315',
@@ -669,6 +788,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `When an ally uses <u>follow-up attack</u>, the wearer receives <span class="text-desc">1</span> stack of <b>Merit</b>, stacking up to <span class="text-desc">5</span> times. Every stack of <b>Merit</b> increases the DMG dealt by the wearer's <u>follow-up attack</u>s by <span class="text-desc">5%</span>. When there are <span class="text-desc">5</span> stacks, additionally increases the wearer's CRIT DMG by <span class="text-desc">25%</span>.`,
     ],
+    set: [`Duran's Tent of Golden Sky`, `Duran's Mechabeast Bridle`],
   },
   {
     id: '316',
@@ -679,6 +799,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increase the wearer's SPD by <span class="text-desc">6%</span>. When the wearer hits enemy targets with <b class="text-hsr-fire">Fire</b> Weakness, the wearer's Break Effect increases by <span class="text-desc">40%</span>, lasting for <span class="text-desc">1</span> turn(s).`,
     ],
+    set: [`Forge's Lotus Lantern Wick`, `Forge's Heavenly Flamewheel Silk`],
   },
   {
     id: '317',
@@ -701,6 +822,7 @@ export const PlanarSets: IArtifact[] = [
       return base
     },
     beta: true,
+    set: [`Lushaka's Waterscape`, `Lushaka's Twinlanes`],
   },
   {
     id: '318',
@@ -712,6 +834,7 @@ export const PlanarSets: IArtifact[] = [
       `Increases the wearer's CRIT DMG by <span class="text-desc">16%</span>. When a target summoned by the wearer is on the field, CRIT DMG additionally increases by <span class="text-desc">28%</span>.`,
     ],
     beta: true,
+    set: [`BananAmusement Park's BananAxis Plaza`, `BananAmusement Park's Memetic Cables`],
   },
 ]
 

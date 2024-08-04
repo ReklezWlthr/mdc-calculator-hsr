@@ -4,7 +4,7 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { useParams } from '@src/core/hooks/useParams'
 import { BuildBlock } from '../components/build_block'
 import { LCBlock } from '../components/lc_block'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { RelicBlock } from '../components/relic_block'
 import { MiniRelicBlock } from '../components/mini_relic_block'
 import { findCharacter } from '@src/core/utils/finder'
@@ -32,9 +32,17 @@ export const MyBuilds = observer(() => {
           _.includes(item.name.toLowerCase(), params.searchWord.toLowerCase())
       )
     : buildStore.builds
+  const groupedBuild = _.groupBy(builds, 'cId')
 
   const [selected, setSelected] = useState('')
   const selectedBuild = _.find(buildStore.builds, ['id', selected])
+
+  const [note, setNote] = useState(selectedBuild?.note || '')
+  const [editing, setEditing] = useState(false)
+  useEffect(() => {
+    setNote(selectedBuild?.note || '')
+    setEditing(false)
+  }, [selectedBuild])
 
   const artifactData = _.filter(artifactStore.artifacts, (item) => _.includes(selectedBuild?.artifacts, item.id))
   const set = getSetCount(artifactData)
@@ -56,6 +64,25 @@ export const MyBuilds = observer(() => {
       />
     )
   }, [selected])
+
+  const onOpenNoteModal = useCallback(() => {
+    modalStore.openModal(
+      <CommonModal
+        icon="fa-solid fa-question-circle text-desc"
+        title="Save Change"
+        desc="Are you sure you want to save the change?"
+        onConfirm={() => {
+          buildStore.editBuild(selected, { note })
+          setEditing(false)
+          toastStore.openNotification({
+            title: 'Note Edited Successfully',
+            icon: 'fa-solid fa-circle-check',
+            color: 'green',
+          })
+        }}
+      />
+    )
+  }, [selected, note])
 
   const onOpenConfirmModal = useCallback(() => {
     modalStore.openModal(
@@ -96,12 +123,13 @@ export const MyBuilds = observer(() => {
           </div>
           <div className="flex flex-col w-full h-full gap-2 pr-1 overflow-y-auto rounded-lg customScrollbar">
             {_.size(builds) ? (
-              _.map(builds, (build) => (
+              _.map(groupedBuild, (build, owner) => (
                 <BuildBlock
-                  key={build.id}
+                  key={_.join(_.map(build, 'id'), '_')}
+                  owner={owner}
                   build={build}
-                  onClick={() => setSelected(build.id)}
-                  selected={selected === build.id}
+                  onClick={setSelected}
+                  selected={selected}
                 />
               ))
             ) : (
@@ -127,7 +155,7 @@ export const MyBuilds = observer(() => {
                       onOpenDefaultModal()
                     }}
                     disabled={selectedBuild.isDefault}
-                    style="w-10 px-0"
+                    style="w-10"
                   />
                   <PrimaryButton
                     icon="fa-solid fa-trash"
@@ -147,33 +175,63 @@ export const MyBuilds = observer(() => {
                   buildStore.editBuild(selected, { weapon: { ...selectedBuild.weapon, ...value } })
                 }
               />
-              {selectedBuild.note && (
-                <div className="p-3 mt-3 text-xs rounded-lg text-gray bg-primary-darker">
-                  <p className="mb-1 text-sm text-white">Note:</p>
-                  {selectedBuild.note}
+              <div className="p-3 mt-3 space-y-1.5 text-xs rounded-lg text-gray bg-primary-darker">
+                <div className="flex items-center justify-between">
+                  <p className="text-sm text-white">Note:</p>
+                  {editing ? (
+                    <div className="flex gap-1">
+                      <i
+                        className="flex items-center justify-center w-5 h-5 text-xs rounded-sm cursor-pointer fa-solid fa-times text-red bg-primary"
+                        onClick={() => {
+                          setNote(selectedBuild?.note || '')
+                          setEditing(false)
+                        }}
+                      />
+                      <i
+                        className="flex items-center justify-center w-5 h-5 text-xs rounded-sm cursor-pointer fa-solid fa-check text-heal bg-primary"
+                        onClick={onOpenNoteModal}
+                      />
+                    </div>
+                  ) : (
+                    <i
+                      className="flex items-center justify-center w-5 h-5 text-xs rounded-sm cursor-pointer fa-solid fa-pen bg-primary"
+                      onClick={() => setEditing(true)}
+                    />
+                  )}
                 </div>
-              )}
+                {editing ? (
+                  <TextInput value={note} onChange={setNote} small placeholder='Enter Build Note' />
+                ) : (
+                  <p className="px-1">{selectedBuild?.note || 'None'}</p>
+                )}
+              </div>
             </div>
-            <div className="col-span-3 space-y-4">
-              <p className="-mb-3 font-bold text-center text-white">Cavern Relics</p>
-              <MiniRelicBlock type={1} aId={selectedBuild?.artifacts?.[0]} setRelic={setRelic} />
-              <MiniRelicBlock type={2} aId={selectedBuild?.artifacts?.[1]} setRelic={setRelic} />
-              <MiniRelicBlock type={3} aId={selectedBuild?.artifacts?.[2]} setRelic={setRelic} />
-              <MiniRelicBlock type={4} aId={selectedBuild?.artifacts?.[3]} setRelic={setRelic} />
-            </div>
-            <div className="col-span-3 space-y-4">
-              <p className="-mb-3 font-bold text-center text-white">Planar Ornaments</p>
-              <MiniRelicBlock type={6} aId={selectedBuild?.artifacts?.[5]} setRelic={setRelic} />
-              <MiniRelicBlock type={5} aId={selectedBuild?.artifacts?.[4]} setRelic={setRelic} />
-              <div className="space-y-2">
-                <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
+            <div className="col-span-6 space-y-2">
+              <p className="font-bold text-center text-white">Cavern Relics</p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-4">
+                  <MiniRelicBlock type={1} aId={selectedBuild?.artifacts?.[0]} setRelic={setRelic} />
+                  <MiniRelicBlock type={3} aId={selectedBuild?.artifacts?.[2]} setRelic={setRelic} />
+                </div>
+                <div className="space-y-4">
+                  <MiniRelicBlock type={2} aId={selectedBuild?.artifacts?.[1]} setRelic={setRelic} />
+                  <MiniRelicBlock type={4} aId={selectedBuild?.artifacts?.[3]} setRelic={setRelic} />
+                </div>
+              </div>
+              <p className="font-bold text-center text-white">Planar Ornaments</p>
+              <div className="grid grid-cols-2 gap-4">
+                <MiniRelicBlock type={5} aId={selectedBuild?.artifacts?.[4]} setRelic={setRelic} />
+                <MiniRelicBlock type={6} aId={selectedBuild?.artifacts?.[5]} setRelic={setRelic} />
+              </div>
+              <div className="grid grid-cols-2 gap-2 pt-3">
+                <div className="w-full px-3 py-2 space-y-1 rounded-lg h-fit bg-primary-dark">
                   {_.some(set, (item, key) => item >= 2 && _.head(key) === '1') ? (
                     _.map(set, (item, key) => <SetToolTip item={item} set={key} type="relic" key={key} />)
                   ) : (
                     <p className="text-xs text-white">No Relic Set Bonus</p>
                   )}
                 </div>
-                <div className="w-full px-3 py-2 space-y-1 rounded-lg bg-primary-dark">
+                <div className="w-full px-3 py-2 space-y-1 rounded-lg h-fit bg-primary-dark">
                   {_.some(set, (item, key) => item >= 2 && _.head(key) === '3') ? (
                     _.map(set, (item, key) => <SetToolTip item={item} set={key} type="planar" key={key} />)
                   ) : (

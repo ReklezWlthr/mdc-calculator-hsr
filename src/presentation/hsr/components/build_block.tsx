@@ -4,49 +4,74 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { IBuild } from '@src/domain/constant'
 import classNames from 'classnames'
 import { observer } from 'mobx-react-lite'
+import { useState } from 'react'
+import { BuildModalBlock } from './modals/build_modal'
+import _ from 'lodash'
 
 interface BuildBlockProps {
-  build: IBuild
-  onClick: () => void
-  selected: boolean
+  owner: string
+  build: IBuild[]
+  onClick: (id: string) => void
+  selected: string
 }
 
-export const BuildBlock = observer(({ build, onClick, selected }: BuildBlockProps) => {
+export const BuildBlock = observer(({ build, owner, onClick, selected }: BuildBlockProps) => {
   const { settingStore } = useStore()
 
-  const char = findCharacter(build.cId)
+  const char = findCharacter(owner)
+
+  const [open, setOpen] = useState(false)
 
   return (
-    <div
-      className={classNames(
-        'flex items-center w-full h-16 overflow-hidden text-white duration-200 rounded-lg cursor-pointer active:scale-95 shrink-0',
-        selected ? 'bg-primary-darker' : 'bg-primary-dark'
-      )}
-      onClick={onClick}
-    >
-      <div className="relative w-16 h-full overflow-hidden shrink-0">
-        <div className="absolute top-0 left-0 z-10 w-full h-full from-8% to-40% bg-gradient-to-l from-primary-dark to-transparent" />
-        <img
-          src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
-            build.cId,
-            settingStore.settings?.travelerGender
-          )}.webp`}
-          className="object-cover h-16 aspect-[47/64] scale-[300%] mt-11 ml-1.5"
-        />
-      </div>
-      <div className="w-full px-1 py-3">
-        <div className="flex items-center gap-2">
-          {build.isDefault && <i className="text-xs fa-solid fa-star text-yellow" title="Default Build" />}
-          <p className="w-full line-clamp-1">{build.name}</p>
+    <div>
+      <div
+        className="flex items-center w-full h-10 overflow-hidden text-white duration-200 rounded-lg cursor-pointer shrink-0 bg-primary-dark"
+        onClick={() => setOpen((prev) => !prev)}
+      >
+        <div className="relative w-16 h-full overflow-hidden shrink-0">
+          <div className="absolute top-0 left-0 z-10 w-full h-full from-8% to-40% bg-gradient-to-l from-primary-dark to-transparent" />
+          <img
+            src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
+              owner,
+              settingStore.settings?.travelerGender
+            )}.webp`}
+            className="object-cover h-16 aspect-[47/64] scale-[300%] mt-6 ml-1.5"
+          />
         </div>
-        <p className="text-xs line-clamp-1 text-gray">Equipped By: {char?.name}</p>
+        <div className="flex items-center justify-between w-full px-2">
+          <div className="flex items-center justify-center gap-2">
+            <p className="font-bold text-gray line-clamp-1">{char.name}</p>
+            <p className="flex items-center justify-center w-5 h-5 text-xs font-bold rounded-md bg-primary-light">
+              {_.size(build)}
+            </p>
+          </div>
+          <i
+            className={classNames('duration-150 fa-solid fa-caret-down text-primary-lighter', { 'rotate-180': open })}
+          />
+        </div>
       </div>
-      <i
+      <div
         className={classNames(
-          'fa-solid fa-caret-right duration-300 mr-2 text-4xl text-primary-light',
-          selected ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'
+          'text-white overflow-hidden duration-200 pl-2 ml-3 border-l-2 border-primary-lighter',
+          open ? 'max-h-screen' : 'max-h-0'
         )}
-      />
+      >
+        {_.map(build, (item) => (
+          <div className="mt-2 duration-150 cursor-pointer active:scale-95" onClick={() => onClick(item.id)}>
+            <BuildModalBlock
+              build={item}
+              button={
+                <i
+                  className={classNames(
+                    'fa-solid fa-caret-right duration-300 mr-2 text-4xl text-primary-light',
+                    selected === item.id ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'
+                  )}
+                />
+              }
+            />
+          </div>
+        ))}
+      </div>
     </div>
   )
 })

@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite'
 import { useCallback, useMemo } from 'react'
 import { ArtifactModal } from '@src/presentation/hsr/components/modals/artifact_modal'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
-import { getMainStat, getRolls } from '@src/core/utils/data_format'
+import { getMainStat, getNearestSpd, getRolls } from '@src/core/utils/data_format'
 import { toPercentage } from '@src/core/utils/converter'
 import { StatIcons } from '../../../domain/constant'
 import { findArtifactSet, findCharacter } from '@src/core/utils/finder'
@@ -177,7 +177,9 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
               </div>
               <div className="flex flex-col items-center w-full gap-1">
                 <RarityGauge rarity={artifact?.quality} textSize="text-sm" />
-                <p className="text-xs text-center line-clamp-2">{setData?.name}</p>
+                <p className="text-xs text-center line-clamp-2">
+                  {setData?.set[artifact?.type - (artifact?.type >= 5 ? 5 : 1)]}
+                </p>
               </div>
             </div>
             <div className="flex items-center gap-2 text-xs">
@@ -210,7 +212,9 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
                 <hr className="w-full border border-primary-border" />
                 <p className="font-normal text-gray">
                   {_.includes([Stats.HP, Stats.ATK, Stats.DEF, Stats.SPD], item.stat)
-                    ? _.round(item.value, item.stat === Stats.SPD ? 1 : 0).toLocaleString()
+                    ? item.stat === Stats.SPD
+                      ? _.round(getNearestSpd(item.value), 1).toLocaleString()
+                      : _.round(item.value, 0).toLocaleString()
                     : toPercentage(item.value / 100)}
                 </p>
               </div>
