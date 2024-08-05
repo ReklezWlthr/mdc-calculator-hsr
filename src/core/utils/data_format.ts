@@ -203,3 +203,7 @@ export const swapElement = (array: any[], index1: number, index2: number) => {
   ;[array[index1], array[index2]] = [array[index2], array[index1]]
   return array
 }
+
+export const padArray = (array: any[], length: number, fill: any) => {
+  return length > array.length ? array.concat(Array(length - array.length).fill(fill)) : array
+}

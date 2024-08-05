@@ -1,7 +1,7 @@
 import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -32,6 +32,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         { base: 50, growth: 3, style: 'linear' },
       ],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -43,6 +44,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         { base: 14.8, growth: 0.6, style: 'curved' },
       ],
       level: skill,
+      tag: AbilityTag.BLAST,
     },
     ult: {
       energy: 5,
@@ -56,6 +58,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         { base: 72, growth: 4.8, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.AOE,
     },
     talent: {
       trace: 'Talent',
@@ -72,11 +75,13 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         { base: 72, growth: 9, style: 'arcana' },
       ],
       level: talent,
+      tag: AbilityTag.IMPAIR,
     },
     technique: {
       trace: 'Technique',
       title: 'From Façade to Vérité',
       content: `After this Technique is used, there is a <span class="text-desc">150%</span> <u>base chance</u> for each enemy to be inflicted with <span class="text-desc">1</span> stack of <b>Arcana</b> at the start of the next battle. For each successful application of <b>Arcana</b> on a target, inflicts another stack of <b>Arcana</b> on the same target. This process repeats until <b>Arcana</b> fails to be inflicted on this target. For each successive application of <b>Arcana</b> on a target, its <u>base chance</u> of success is equal to <span class="text-desc">50%</span> of the <u>base chance</u> of the previous successful infliction of <b>Arcana</b> on that target.`,
+      tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',

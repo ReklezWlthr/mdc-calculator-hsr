@@ -1,7 +1,7 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +27,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pela's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -35,6 +36,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Removes <span class="text-desc">1</span> buff(s) and deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pela's ATK as to a single enemy.`,
       value: [{ base: 105, growth: 10.5, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.ST,
     },
     ult: {
       energy: 5,
@@ -47,6 +49,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 30, growth: 1, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.AOE,
     },
     talent: {
       trace: 'Talent',
@@ -54,6 +57,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `If the enemy is debuffed after Pela's attack, Pela will restore {{0}} extra Energy. This effect can only be triggered <span class="text-desc">1</span> time per attack.`,
       value: [{ base: 5, growth: 0.5, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',

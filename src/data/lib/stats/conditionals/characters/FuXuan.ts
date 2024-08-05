@@ -1,7 +1,7 @@
 import { findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -29,6 +29,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Fu Xuan's Max HP to a single target enemy.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -42,6 +43,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         { base: 6, growth: 0.6, style: 'curved' },
       ],
       level: skill,
+      tag: AbilityTag.DEFENSE,
     },
     ult: {
       energy: 5,
@@ -50,6 +52,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Fu Xuan's Max HP to all enemies and obtains <span class="text-desc">1</span> trigger count for the HP Restore effect granted by Fu Xuan's Talent.`,
       value: [{ base: 60, growth: 4, style: 'curved' }],
       level: ult,
+      tag: AbilityTag.AOE,
     },
     talent: {
       trace: 'Talent',
@@ -61,11 +64,13 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         { base: 80, growth: 1, style: 'curved' },
       ],
       level: talent,
+      tag: AbilityTag.RESTORE,
     },
     technique: {
       trace: 'Technique',
       title: 'Of Fortune Comes Fate',
       content: `After the Technique is used, all team members receive a Barrier, lasting for <span class="text-desc">20</span> seconds. This Barrier can block all enemy attacks, and the team will not enter battle when attacked. Entering battle while the Barrier is active will have Fu Xuan automatically activate <b>Matrix of Prescience</b> at the start of the battle, lasting for <span class="text-desc">2</span> turn(s).`,
+      tag: AbilityTag.DEFENSE,
     },
     a2: {
       trace: 'Ascension 2 Passive',

@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +36,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Uses a 2-hit attack and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dan Heng • Imbibitor Lunae's ATK to a single enemy target.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     normal_alt1: {
       energy: 30,
@@ -35,6 +45,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Uses a 3-hit attack and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Dan Heng • Imbibitor Lunae's ATK to a single enemy target.`,
       value: [{ base: 130, growth: 26, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     normal_alt2: {
       energy: 35,
@@ -46,6 +57,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 30, growth: 6, style: 'linear' },
       ],
       level: basic,
+      tag: AbilityTag.BLAST,
     },
     normal_alt3: {
       energy: 40,
@@ -57,6 +69,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 90, growth: 18, style: 'linear' },
       ],
       level: basic,
+      tag: AbilityTag.BLAST,
     },
     skill: {
       trace: 'Skill',
@@ -68,6 +81,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       <br />When using <b>Divine Spear</b> or <b>Fulgurant Leap</b>, starting from the fourth hit, 1 stack of <b>Outroar</b> is gained before every hit. Each stack of <b>Outroar</b> increases Dan Heng • Imbibitor Lunae's CRIT DMG by {{0}}%, for a max of <span class="text-desc">4</span> stacks. These stacks last until the end of his turn.`,
       value: [{ base: 6, growth: 0.6, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.ENHANCE,
     },
     ult: {
       energy: 5,
@@ -80,6 +94,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 84, growth: 5.6, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.BLAST,
     },
     talent: {
       trace: 'Talent',
@@ -87,11 +102,13 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `After each hit dealt during an attack, Dan Heng • Imbibitor Lunae gains <span class="text-desc">1</span> stack of <b>Righteous Heart</b>, increasing his DMG by {{0}}%. This effect can stack up to <span class="text-desc">6</span> time(s), lasting until the end of his turn.`,
       value: [{ base: 5, growth: 0.5, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',
       title: `Heaven-Quelling Prismadrakon`,
       content: `After using his Technique, Dan Heng • Imbibitor Lunae enters the Leaping Dragon state for <span class="text-desc">20</span> seconds. While in the Leaping Dragon state, using his attack enables him to move forward rapidly for a set distance, attacking all enemies he touches and blocking all incoming attacks. After entering combat via attacking enemies in the Leaping Dragon state, Dan Heng • Imbibitor Lunae deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to <span class="text-desc">120%</span> of his ATK to all enemies, and gains <span class="text-desc">1</span> <b class="text-hsr-imaginary">Squama Sacrosancta</b>.`,
+      tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',

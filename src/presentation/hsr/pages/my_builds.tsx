@@ -131,7 +131,7 @@ export const MyBuilds = observer(() => {
                   onClick={setSelected}
                   selected={selected}
                 />
-              ))
+              )).sort((a, b) => findCharacter(a.props.owner)?.name?.localeCompare(findCharacter(b.props.owner)?.name))
             ) : (
               <div className="flex items-center justify-center w-full h-full rounded-lg bg-primary-darker text-gray">
                 {params.searchWord ? 'Build Not Found' : 'No Saved Build'}
@@ -140,7 +140,7 @@ export const MyBuilds = observer(() => {
           </div>
         </div>
         {selected ? (
-          <div className="grid grid-cols-11 gap-5 mx-auto">
+          <div className="grid w-full grid-cols-11 gap-5">
             <div className="col-span-5">
               <div className="flex items-center justify-between">
                 <div>
@@ -174,6 +174,7 @@ export const MyBuilds = observer(() => {
                 setWeapon={(_i, value) =>
                   buildStore.editBuild(selected, { weapon: { ...selectedBuild.weapon, ...value } })
                 }
+                noClear
               />
               <div className="p-3 mt-3 space-y-1.5 text-xs rounded-lg text-gray bg-primary-darker">
                 <div className="flex items-center justify-between">
@@ -200,7 +201,7 @@ export const MyBuilds = observer(() => {
                   )}
                 </div>
                 {editing ? (
-                  <TextInput value={note} onChange={setNote} small placeholder='Enter Build Note' />
+                  <TextInput value={note} onChange={setNote} small placeholder="Enter Build Note" />
                 ) : (
                   <p className="px-1">{selectedBuild?.note || 'None'}</p>
                 )}

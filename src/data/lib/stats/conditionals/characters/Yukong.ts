@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,27 +36,30 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `Deals {{0}}% of Yukong's ATK as <b class="text-hsr-imaginary">Imaginary DMG</b> to a target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
       trace: 'Skill',
       title: `Emboldening Salvo`,
-      content: `Obtains <span class="text-desc">2</span> stack(s) of <b>Roaring Bowstrings</b> (to a maximum of <span class="text-desc">2</span> stacks). When <b>Roaring Bowstrings</b> is active, the ATK of all allies increases by {{0}}%, and every time an ally's turn ends, Yukong loses <span class="text-desc">1</span> stack of <b>Roaring Bowstrings</b>.
-      <br />When it's the turn where Yukong gains <b>Roaring Bowstrings</b> by using Skill, <b>Roaring Bowstrings</b> will not be removed.`,
+      content: `Obtains <span class="text-desc">2</span> stack(s) of <b class="text-hsr-imaginary">Roaring Bowstrings</b> (to a maximum of <span class="text-desc">2</span> stacks). When <b class="text-hsr-imaginary">Roaring Bowstrings</b> is active, the ATK of all allies increases by {{0}}%, and every time an ally's turn ends, Yukong loses <span class="text-desc">1</span> stack of <b class="text-hsr-imaginary">Roaring Bowstrings</b>.
+      <br />When it's the turn where Yukong gains <b class="text-hsr-imaginary">Roaring Bowstrings</b> by using Skill, <b class="text-hsr-imaginary">Roaring Bowstrings</b> will not be removed.`,
       value: [{ base: 40, growth: 4, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.SUPPORT,
     },
     ult: {
       energy: 5,
       trace: 'Ultimate',
       title: 'Diving Kestrel',
-      content: `If <b>Roaring Bowstrings</b> is active on Yukong when her Ultimate is used, additionally increases all allies' CRIT Rate by {{0}}% and CRIT DMG by {{1}}%. At the same time, deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{2}}% of Yukong's ATK to a single enemy.`,
+      content: `If <b class="text-hsr-imaginary">Roaring Bowstrings</b> is active on Yukong when her Ultimate is used, additionally increases all allies' CRIT Rate by {{0}}% and CRIT DMG by {{1}}%. At the same time, deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{2}}% of Yukong's ATK to a single enemy.`,
       value: [
         { base: 21, growth: 0.7, style: 'curved' },
         { base: 39, growth: 2.6, style: 'curved' },
         { base: 228, growth: 15.2, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.ST,
     },
     talent: {
       trace: 'Talent',
@@ -55,11 +67,13 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `Basic ATK additionally deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Yukong's ATK, and increases the Toughness-Reducing DMG of this attack by <span class="text-desc">100%</span>. This effect can be triggered again in <span class="text-desc">1</span> turn(s).`,
       value: [{ base: 40, growth: 4, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',
       title: `Chasing the Wind`,
-      content: `After using her Technique, Yukong enters Sprint mode for <span class="text-desc">20</span> seconds. In Sprint mode, her Movement SPD increases by <span class="text-desc">35%</span>, and Yukong gains <span class="text-desc">2</span> stack(s) of <b>Roaring Bowstrings</b> when she enters battle by attacking enemies.`,
+      content: `After using her Technique, Yukong enters Sprint mode for <span class="text-desc">20</span> seconds. In Sprint mode, her Movement SPD increases by <span class="text-desc">35%</span>, and Yukong gains <span class="text-desc">2</span> stack(s) of <b class="text-hsr-imaginary">Roaring Bowstrings</b> when she enters battle by attacking enemies.`,
+      tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',
@@ -74,7 +88,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Majestas`,
-      content: `When <b>Roaring Bowstrings</b> is active, Yukong regenerates <span class="text-desc">2</span> additional Energy every time an ally takes action.`,
+      content: `When <b class="text-hsr-imaginary">Roaring Bowstrings</b> is active, Yukong regenerates <span class="text-desc">2</span> additional Energy every time an ally takes action.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -95,7 +109,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c4: {
       trace: 'Eidolon 4',
       title: `Zephyrean Echoes`,
-      content: `When <b>Roaring Bowstrings</b> is active, Yukong deals <span class="text-desc">30%</span> more DMG to enemies.`,
+      content: `When <b class="text-hsr-imaginary">Roaring Bowstrings</b> is active, Yukong deals <span class="text-desc">30%</span> more DMG to enemies.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -106,7 +120,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c6: {
       trace: 'Eidolon 6',
       title: `Bowstring Thunderclap`,
-      content: `When Yukong uses her Ultimate, she immediately gains <span class="text-desc">1</span> stack(s) of <b>Roaring Bowstrings</b>.`,
+      content: `When Yukong uses her Ultimate, she immediately gains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-imaginary">Roaring Bowstrings</b>.`,
     },
   }
 

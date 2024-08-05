@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -29,6 +38,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Ruan Mei's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -37,6 +47,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `After using her Skill, Ruan Mei gains <b class="text-hsr-ice">Overtone</b>, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> at the start of Ruan Mei's turn. When Ruan Mei has <b class="text-hsr-ice">Overtone</b>, all allies' DMG increases by {{0}}% and Weakness Break Efficiency increases by <span class="text-desc">50%</span>.`,
       value: [{ base: 16, growth: 1.6, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.SUPPORT,
     },
     ult: {
       energy: 5,
@@ -51,6 +62,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 30, growth: 2, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.SUPPORT,
     },
     talent: {
       trace: 'Talent',
@@ -61,12 +73,14 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 60, growth: 6, style: 'curved' },
       ],
       level: talent,
+      tag: AbilityTag.SUPPORT,
     },
     technique: {
       trace: 'Technique',
       title: `Silken Serenade`,
       content: `After using the Technique, gains Silken Serenade. At the start of the next battle, automatically triggers the Skill for <span class="text-desc">1</span> time(s) without consuming Skill Points.
       <br />In Simulated Universe, when Ruan Mei has <b>Silken Serenade</b>, the team actively attacking enemies will always be regarded as attacking their Weakness to enter battle, and this attack can reduce all enemies' Toughness regardless of Weakness types. When breaking Weakness, triggers Weakness Break Effect corresponding to the attacker's Type. For every Blessing in possession up to <span class="text-desc">20</span> Blessing(s), additionally increases the Toughness-Reducing DMG of this attack by <span class="text-desc">100%</span>. After breaking an enemy target's Weakness, additionally deals to the enemy target Break DMG equal to <span class="text-desc">100%</span> of Ruan Mei's <b class="text-hsr-ice">Ice Break DMG</b>.`,
+      tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',

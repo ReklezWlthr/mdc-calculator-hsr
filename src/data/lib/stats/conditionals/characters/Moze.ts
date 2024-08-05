@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -29,6 +38,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Moze's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -38,6 +48,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         <br />When there are no other characters on the field that are capable of combat, Moze cannot use his Skill and dispels the enemy's <b class="text-hsr-lightning">Prey</b> state.`,
       value: [{ base: 75, growth: 7.5, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.ST,
     },
     ult: {
       energy: 5,
@@ -49,6 +60,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 210, growth: 14, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.ST,
     },
     talent: {
       trace: 'Talent',
@@ -60,11 +72,13 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 100, growth: 10, style: 'curved' },
       ],
       level: talent,
+      tag: AbilityTag.ST,
     },
     technique: {
       trace: 'Technique',
       title: 'Bated Wings',
       content: `After using his Technique, Moze gains Stealth for <span class="text-desc">20</span> second(s). While Stealth is active, Moze cannot be detected by enemies. Action Advances by <span class="text-desc">50%</span> and increases the DMG Moze deals by <span class="text-desc">30%</span> when he enters combat by attacking enemies while in Stealth mode, lasting for <span class="text-desc">1</span> turn(s).`,
+      tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',

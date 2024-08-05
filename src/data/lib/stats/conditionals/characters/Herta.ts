@@ -1,7 +1,7 @@
 import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -19,8 +19,6 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
 
-  const index = _.findIndex(team, (item) => item?.cId === '1009')
-
   const talents: ITalent = {
     normal: {
       energy: 20,
@@ -29,6 +27,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Herta's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -37,6 +36,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Herta's ATK to all enemies. If the enemy's HP percentage is <span class="text-desc">50%</span> or higher, DMG dealt to this target increases by <span class="text-desc">20%</span>.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.AOE,
     },
     ult: {
       energy: 5,
@@ -45,6 +45,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Herta's ATK to all enemies.`,
       value: [{ base: 120, growth: 8, style: 'curved' }],
       level: ult,
+      tag: AbilityTag.AOE,
     },
     talent: {
       energy: 5,
@@ -53,11 +54,13 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `When an ally's attack causes an enemy's HP percentage to fall to <span class="text-desc">50%</span> or lower, Herta will launch a <u>follow-up attack</u>, dealing <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Herta's ATK to all enemies.`,
       value: [{ base: 25, growth: 1.5, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.AOE,
     },
     technique: {
       trace: 'Technique',
       title: 'It Can Still Be Optimized',
       content: `After using her Technique, Herta's ATK increases by <span class="text-desc">40%</span> for <span class="text-desc">3</span> turn(s) at the beginning of the next battle.`,
+      tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',

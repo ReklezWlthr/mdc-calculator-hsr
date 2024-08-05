@@ -1,7 +1,7 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -30,6 +30,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Hook's ATK to a target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -42,6 +43,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 25, growth: 2.5, style: 'dot' },
       ],
       level: skill,
+      tag: AbilityTag.ST,
     },
     skill_alt: {
       energy: 30,
@@ -55,6 +57,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 25, growth: 2.5, style: 'dot' },
       ],
       level: skill,
+      tag: AbilityTag.BLAST,
     },
     ult: {
       energy: 5,
@@ -63,6 +66,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Hook's ATK to a single enemy. After using Ultimate, the next Skill to be used is Enhanced, which deals DMG to a single enemy and enemies adjacent to it.`,
       value: [{ base: 240, growth: 16, style: 'curved' }],
       level: ult,
+      tag: AbilityTag.ST,
     },
     talent: {
       trace: 'Talent',
@@ -70,6 +74,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `When attacking a target afflicted with <b class="text-hsr-fire">Burn</b>, deals Additional <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Hook's ATK and regenerates <span class="text-desc">5</span> extra Energy.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',

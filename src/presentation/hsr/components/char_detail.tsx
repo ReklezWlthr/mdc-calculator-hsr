@@ -292,11 +292,10 @@ export const CharDetail = observer(() => {
                     <div>
                       <p className="text-sm font-normal text-primary-lighter">{item.trace}</p>
                       <p className="font-semibold">{item.title}</p>
-                      {!!item.energy && (
-                        <p className="text-xs font-normal opacity-80 text-gray">
-                          Energy Regen: <span className="text-desc">{item.energy}</span>
-                        </p>
-                      )}
+                      <div className="flex gap-1 text-xs opacity-80">
+                        {!!item.tag && <p className="text-desc">[{item.tag}]</p>}
+                        {!!item.energy && <p className="font-normal text-rose-300">[{item.energy} Energy]</p>}
+                      </div>
                     </div>
                     {item.trace !== TalentType.TECH && (
                       <div className="flex items-center justify-end w-1/3 gap-2 pr-4">

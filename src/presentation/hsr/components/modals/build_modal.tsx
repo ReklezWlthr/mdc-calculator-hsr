@@ -5,8 +5,9 @@ import { useMemo } from 'react'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { getEmote } from '@src/core/utils/fetcher'
 import { findArtifactSet, findLightCone } from '@src/core/utils/finder'
-import { findMaxLevel, getSetCount } from '@src/core/utils/data_format'
+import { findMaxLevel, getSetCount, padArray } from '@src/core/utils/data_format'
 import { IBuild } from '@src/domain/constant'
+import { romanize } from '../../../../core/utils/converter'
 
 export const BuildModalBlock = ({ build, button }: { build: IBuild; button: React.ReactNode }) => {
   const { artifactStore } = useStore()
@@ -16,9 +17,9 @@ export const BuildModalBlock = ({ build, button }: { build: IBuild; button: Reac
 
   return (
     <div className="flex items-center justify-between w-full pr-4 overflow-hidden rounded-lg bg-primary-darker">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center h-[72px] gap-2">
         {lc && (
-          <div className="relative w-24 h-[72px] overflow-hidden shrink-0">
+          <div className="relative w-24 h-full overflow-hidden shrink-0">
             <div className="absolute top-0 left-0 z-10 w-full h-full from-12% to-60% bg-gradient-to-l from-primary-darker to-transparent" />
             <img
               src={`https://api.hakush.in/hsr/UI/lightconemaxfigures/${lc.id}.webp`}
@@ -28,18 +29,18 @@ export const BuildModalBlock = ({ build, button }: { build: IBuild; button: Reac
               Lv. {build.weapon?.level}/
               <span className="text-desc opacity-80">{findMaxLevel(build.weapon?.ascension)}</span>
             </div>
-            <div className="absolute z-10 p-1 text-xs text-white rounded-md top-1 left-1 bg-primary-dark">
+            <div className="absolute z-10 w-6 h-6 p-1 text-xs text-center rounded-full text-gray top-1 right-1 bg-primary-dark">
               S{build.weapon?.refinement}
             </div>
           </div>
         )}
-        <div className="space-y-1">
-          <div className="flex items-center gap-2">
+        <div className="flex flex-col h-full gap-1 py-1.5">
+          <div className="flex items-center gap-2 h">
             {build.isDefault && <i className="text-xs fa-solid fa-star text-yellow" title="Default Build" />}
             <p className="w-[150px] truncate">{build.name}</p>
           </div>
           <div className="flex gap-2">
-            {_.map(
+            {_.flatMap(
               set,
               (value, key) =>
                 value >= 2 &&

@@ -1,7 +1,7 @@
 import { addDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -29,6 +29,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Himeko's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -40,6 +41,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         { base: 40, growth: 4, style: 'curved' },
       ],
       level: skill,
+      tag: AbilityTag.BLAST,
     },
     ult: {
       energy: 5,
@@ -48,6 +50,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Himeko's ATK to all enemies. Himeko regenerates <span class="text-desc">5</span> extra Energy for each enemy defeated.`,
       value: [{ base: 138, growth: 9.2, style: 'curved' }],
       level: ult,
+      tag: AbilityTag.AOE,
     },
     talent: {
       energy: 10,
@@ -58,11 +61,13 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       <br />At the start of the battle, Himeko gains <span class="text-desc">1</span> point of <b>Charge</b>.`,
       value: [{ base: 70, growth: 7, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.AOE,
     },
     technique: {
       trace: 'Technique',
       title: 'Incomplete Combustion',
       content: `After using Technique, creates a dimension that lasts for <span class="text-desc">15</span> second(s). After entering battle with enemies in the dimension, there is a <span class="text-desc">100%</span> <u>base chance</u> to increase <b class="text-hsr-fire">Fire DMG</b> taken by enemies by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s). Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
+      tag: AbilityTag.IMPAIR,
     },
     a2: {
       trace: 'Ascension 2 Passive',

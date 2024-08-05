@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -29,6 +38,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of this character's Max HP to a single enemy.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -43,6 +53,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 80, growth: 48, style: 'flat' },
       ],
       level: skill,
+      tag: AbilityTag.RESTORE,
     },
     ult: {
       energy: 5,
@@ -54,6 +65,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 90, growth: 54, style: 'flat' },
       ],
       level: ult,
+      tag: AbilityTag.RESTORE,
     },
     talent: {
       trace: 'Talent',
@@ -66,11 +78,13 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 30, growth: 18, style: 'flat' },
       ],
       level: talent,
+      tag: AbilityTag.RESTORE,
     },
     technique: {
       trace: 'Technique',
       title: 'Chocolate Energy Bar',
       content: `After Lynx uses her Technique, at the start of the next battle, all allies are granted her Talent's continuous healing effect, lasting for <span class="text-desc">2</span> turn(s).`,
+      tag: AbilityTag.RESTORE,
     },
     a2: {
       trace: 'Ascension 2 Passive',

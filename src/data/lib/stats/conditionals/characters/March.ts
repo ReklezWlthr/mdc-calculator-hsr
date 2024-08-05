@@ -1,7 +1,7 @@
 import { findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +27,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of March 7th's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -39,6 +40,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 190, growth: 114, style: 'flat' },
       ],
       level: skill,
+      tag: AbilityTag.DEFENSE,
     },
     ult: {
       energy: 5,
@@ -51,6 +53,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 30, growth: 3, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.AOE,
     },
     talent: {
       energy: 10,
@@ -59,6 +62,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `After a <b class="text-indigo-300">Shielded</b> ally is attacked by an enemy, March 7th immediately <u>Counters</u>, dealing <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of her ATK. This effect can be triggered <span class="text-desc">2</span> time(s) each turn.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ST,
     },
     technique: {
       trace: 'Technique',

@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +36,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yunli's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -40,6 +50,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 50, growth: 30, style: 'flat' },
       ],
       level: skill,
+      tag: AbilityTag.BLAST,
     },
     ult: {
       energy: 5,
@@ -57,6 +68,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 60, growth: 4, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.ENHANCE,
     },
     talent: {
       energy: 10,
@@ -68,11 +80,13 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 30, growth: 3, style: 'curved' },
       ],
       level: talent,
+      tag: AbilityTag.BLAST,
     },
     technique: {
       trace: 'Technique',
       title: `Posterior Precedence`,
       content: `This unit gains the Ward effect, lasting for <span class="text-desc">20</span> seconds. During this time, upon entering combat by either attacking enemies or receiving an attack, immediately casts <b>Intuit: Cull</b> on a random enemy, and increases the DMG dealt by this attack by <span class="text-desc">80%</span>.`,
+      tag: AbilityTag.ENHANCE,
     },
     a6: {
       trace: 'Ascension 6 Passive',

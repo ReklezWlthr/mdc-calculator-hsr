@@ -420,3 +420,15 @@ export const BreakPoints = [
   { value: 56.25, desc: '8 actions in the first 4 cycles' },
   { value: 50, desc: '3 actions in the first cycle' },
 ]
+
+export enum AbilityTag {
+  ST = 'Single Target',
+  BLAST = 'Blast',
+  AOE = 'AoE',
+  BOUNCE = 'Bounce',
+  ENHANCE = 'Enhance',
+  SUPPORT = 'Support',
+  DEFENSE = 'Defense',
+  IMPAIR = 'Impair',
+  RESTORE = 'Restore',
+}

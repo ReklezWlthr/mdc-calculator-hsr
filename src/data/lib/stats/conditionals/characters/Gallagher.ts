@@ -1,7 +1,7 @@
 import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +27,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Gallagher's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     normal_alt: {
       energy: 20,
@@ -38,6 +39,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         { base: 10, growth: 1, style: 'linear' },
       ],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -46,6 +48,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       content: `Immediately heals a target ally for {{0}} HP.`,
       value: [{ base: 200, growth: 140, style: 'pure' }],
       level: skill,
+      tag: AbilityTag.RESTORE,
     },
     ult: {
       energy: 5,
@@ -54,6 +57,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       content: `Inflicts <b>Besotted</b> on all enemies, lasting for <span class="text-desc">2</span> turn(s). At the same time, deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Gallagher's ATK to all enemies, and enhances this unit's next Basic ATK to <b>Nectar Blitz</b>.`,
       value: [{ base: 75, growth: 7.5, style: 'curved' }],
       level: ult,
+      tag: AbilityTag.AOE,
     },
     talent: {
       trace: 'Talent',
@@ -64,6 +68,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         { base: 80, growth: 56, style: 'pure' },
       ],
       level: talent,
+      tag: AbilityTag.RESTORE,
     },
     technique: {
       trace: 'Technique',

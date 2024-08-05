@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -29,6 +38,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Huohuo's Max HP to a target enemy.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -42,6 +52,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         { base: 112, growth: 67.2, style: 'flat' },
       ],
       level: skill,
+      tag: AbilityTag.RESTORE,
     },
     ult: {
       energy: 5,
@@ -53,6 +64,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         { base: 24, growth: 1.6, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.SUPPORT,
     },
     talent: {
       trace: 'Talent',
@@ -64,11 +76,13 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         { base: 30, growth: 18, style: 'flat' },
       ],
       level: talent,
+      tag: AbilityTag.RESTORE,
     },
     technique: {
       trace: 'Technique',
       title: `Fiend: Impeachment of Evil`,
       content: `Huohuo terrorizes surrounding enemies, afflicting Horror-Struck on them. Enemies in Horror-Struck will flee away from Huohuo for <span class="text-desc">10</span> second(s). When entering battle with enemies in Horror-Struck, there is a <span class="text-desc">100%</span> <u>base chance</u> of reducing every single enemy's ATK by <span class="text-desc">25%</span> for <span class="text-desc">2</span> turn(s).`,
+      tag: AbilityTag.IMPAIR,
     },
     a2: {
       trace: 'Ascension 2 Passive',

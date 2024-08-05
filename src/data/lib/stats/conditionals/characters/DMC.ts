@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { add, chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -29,6 +38,7 @@ const DMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of the Trailblazer's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -37,6 +47,7 @@ const DMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of the Trailblazer's ATK to a single enemy and enemies adjacent to it.`,
       value: [{ base: 62.5, growth: 6.25, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.BLAST,
     },
     ult: {
       energy: 5,
@@ -51,6 +62,7 @@ const DMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         { base: 108, growth: 5.4, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.ENHANCE,
     },
     talent: {
       trace: 'Talent',
@@ -58,11 +70,13 @@ const DMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       content: `Each time after this character inflicts Weakness Break on an enemy, ATK increases by {{0}}%. This effect stacks up to <span class="text-desc">2</span> time(s).`,
       value: [{ base: 10, growth: 1, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',
       title: `Immortal Third Strike`,
       content: `Immediately heals all allies for <span class="text-desc">15%</span> of their respective Max HP after using this Technique.`,
+      tag: AbilityTag.RESTORE,
     },
     a2: {
       trace: 'Ascension 2 Passive',

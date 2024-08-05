@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +36,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 20,
@@ -35,6 +45,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's ATK to a single enemy and obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>.`,
       value: [{ base: 100, growth: 10, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.ST,
     },
     skill_alt: {
       energy: 30,
@@ -46,6 +57,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 62.5, growth: 6.25, style: 'curved' },
       ],
       level: skill,
+      tag: AbilityTag.BLAST,
     },
     ult: {
       energy: 5,
@@ -57,6 +69,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 90, growth: 6, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.BLAST,
     },
     talent: {
       trace: 'Talent',
@@ -67,11 +80,13 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 90, growth: 9, style: 'curved' },
       ],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',
       title: `Shine of Truth`,
       content: `After using this Technique, creates a dimension around Jingliu that lasts for <span class="text-desc">20</span> seconds, and all enemies in this dimension will become <b class="text-hsr-ice">Frozen</b>. After entering combat with enemies in the dimension, Jingliu immediately regenerates <span class="text-desc">15</span> Energy and obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>, with a <span class="text-desc">100%</span> <u>base chance</u> of <b class="text-hsr-ice">Freezing</b> enemy targets for <span class="text-desc">1</span> turn(s). While <b class="text-hsr-ice">Frozen</b>, enemy targets cannot take action, and receive Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">80%</span> of Jingliu's ATK at the start of every turn. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
+      tag: AbilityTag.IMPAIR,
     },
     a2: {
       trace: 'Ascension 2 Passive',

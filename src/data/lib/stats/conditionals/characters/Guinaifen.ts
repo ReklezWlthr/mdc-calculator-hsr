@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -30,6 +39,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Guinaifen's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -42,6 +52,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         { base: 83.904, growth: 8.394, style: 'dot' },
       ],
       level: skill,
+      tag: AbilityTag.BLAST,
     },
     ult: {
       energy: 5,
@@ -53,6 +64,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         { base: 72, growth: 2, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.AOE,
     },
     talent: {
       trace: 'Talent',
@@ -60,6 +72,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       content: `When Guinaifen is on the field, there is a <span class="text-desc">100%</span> <u>base chance</u> to apply <b>Firekiss</b> to an enemy after their <b class="text-hsr-fire">Burn</b> status causes DMG. While inflicted with <b>Firekiss</b>, the enemy receives {{0}}% increased DMG, which lasts for <span class="text-desc">3</span> turn(s) and can stack up to <span class="text-desc">3</span> time(s).`,
       value: [{ base: 4, growth: 0.3, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.IMPAIR,
     },
     technique: {
       trace: 'Technique',

@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { add, chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -29,6 +38,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of the Trailblazer's ATK to a single enemy and gains <span class="text-desc">1</span> stack of <b class="text-hsr-fire">Magma Will</b>.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     normal_alt: {
       energy: 30,
@@ -40,6 +50,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         { base: 36, growth: 3.6, style: 'linear' },
       ],
       level: basic,
+      tag: AbilityTag.BLAST,
     },
     skill: {
       energy: 30,
@@ -48,6 +59,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       content: `Increases the Trailblazer's DMG Mitigation by {{0}}% and gains <span class="text-desc">1</span> stack of <b class="text-hsr-fire">Magma Will</b>, with a <span class="text-desc">100%</span> <u>base chance</u> to Taunt all enemies for <span class="text-desc">1</span> turn(s).`,
       value: [{ base: 40, growth: 1, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.DEFENSE,
     },
     ult: {
       energy: 5,
@@ -59,6 +71,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         { base: 75, growth: 7.5, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.AOE,
     },
     talent: {
       trace: 'Talent',
@@ -71,11 +84,13 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         { base: 20, growth: 12, style: 'flat' },
       ],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',
       title: `Call of the Guardian`,
       content: `After using Technique, at the start of the next battle, gains a <b class="text-indigo-300">Shield</b> that absorbs DMG equal to <span class="text-desc">30%</span> of the Trailblazer's DEF plus <span class="text-desc">384</span> for <span class="text-desc">1</span> turn(s).`,
+      tag: AbilityTag.DEFENSE,
     },
     a2: {
       trace: 'Ascension 2 Passive',

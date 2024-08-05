@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +36,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Bailu's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -38,6 +48,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 78, growth: 46.8, style: 'flat' },
       ],
       level: skill,
+      tag: AbilityTag.RESTORE,
     },
     ult: {
       energy: 5,
@@ -49,6 +60,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 90, growth: 54, style: 'flat' },
       ],
       level: ult,
+      tag: AbilityTag.RESTORE,
     },
     talent: {
       trace: 'Talent',
@@ -61,11 +73,13 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 120, growth: 72, style: 'flat' },
       ],
       level: talent,
+      tag: AbilityTag.RESTORE,
     },
     technique: {
       trace: 'Technique',
       title: `Saunter in the Rain`,
       content: `After using Technique, at the start of the next battle, all allies are granted <b>Invigoration</b> for <span class="text-desc">2</span> turn(s).`,
+      tag: AbilityTag.RESTORE,
     },
     a2: {
       trace: 'Ascension 2 Passive',

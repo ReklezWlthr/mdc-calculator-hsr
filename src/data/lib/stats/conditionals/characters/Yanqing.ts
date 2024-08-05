@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +36,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Yanqing's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -35,6 +45,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Yanqing's ATK to a single enemy and activates <b>Soulsteel Sync</b> for <span class="text-desc">1</span> turn.`,
       value: [{ base: 110, growth: 11, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.ST,
     },
     ult: {
       energy: 5,
@@ -46,6 +57,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 210, growth: 14, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.ST,
     },
     talent: {
       energy: 10,
@@ -61,11 +73,13 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 25, growth: 2.5, style: 'curved' },
       ],
       level: talent,
+      tag: AbilityTag.ST,
     },
     technique: {
       trace: 'Technique',
       title: `The One True Sword`,
       content: `After using his Technique, at the start of the next battle, Yanqing deals <span class="text-desc">30%</span> more DMG for <span class="text-desc">2</span> turn(s) to enemies whose current HP is <span class="text-desc">50%</span> or higher.`,
+      tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',

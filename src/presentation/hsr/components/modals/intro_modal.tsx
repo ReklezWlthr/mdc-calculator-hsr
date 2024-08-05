@@ -26,24 +26,32 @@ export const IntroModal = observer(() => {
       </Collapsible>
       <Collapsible label="Notes & Limitations">
         <BulletPoint>
-          UX Design is really not my forte. If you find some parts that is confusing or counterintuitive and should be
-          improved, please let me know.
+          This calculator only calculates an instance of damage at a point of time against a single target enemy which
+          may not reflect the character's or team's true potential (e.g. AoE characters or Turn/Energy manipulation).
+          Take it with a grain of salt.
         </BulletPoint>
         <BulletPoint>
           The resulting stats may be slightly off due to hidden decimals and some mathematical wizardry, but the
-          differences should be negligible. Sub stat rolls may also become inaccurate when the roll quality is too high.
+          differences should be negligible. SPD subs should be confirmed or imported for an accurate decimal value. The
+          calculator will actively try to round the value to the nearest possible value.
+        </BulletPoint>
+        <BulletPoint>
+          Some buffs that may take effect recursively or rely on each other (e.g. Tingyun's skill and Robin's ultimate)
+          may require ordering the character in the right order to work properly. This is because the calculator
+          calculates the characters' stats from left to right. It also does not support recursive calculation since the
+          performance will drop significantly, and it requires a complete overhaul of the infrastructure.
+        </BulletPoint>
+        <BulletPoint>
+          To add to the point above, some buffs like Tingyun's or Lynx's skill <u>snapshot</u> its value while others
+          like Robin's ultimate does not. Be wary that the calculator assumes that all buffs are applied
+          near-simultaneously. For example, normally, if Tingyun applies her skill to a DPS before Robin uses her
+          ultimate, the skill will not be affected by the ultimate. However, if you toggle on both buffs in the
+          calculator, Tingyun's skill will always be affected by Robin's ultimate. Finding a workaround to this issue
+          could result in a very messy interface since it needs to determine which buffs is applied at what time.
         </BulletPoint>
         <BulletPoint>
           It is not recommended to use this app on mobiles or vertical screens. This is partly due to most information
           being presented in tooltips.
-        </BulletPoint>
-        <BulletPoint>
-          I also work full-time as a programmer, and usually develop this app in my free time. As a result, updates may
-          be slow at times.
-        </BulletPoint>
-        <BulletPoint>
-          As of now, the calculator sadly does not support comparing builds since it calculates every character's stats
-          at once. This makes comparing builds quite hard. I will try to find a workaround soon.
         </BulletPoint>
       </Collapsible>
       <div className="p-3 space-y-1 text-sm transition-all duration-200 rounded-lg bg-primary-darker text-gray">
@@ -82,24 +90,34 @@ export const IntroModal = observer(() => {
           <BulletPoint>
             <a
               className="cursor-pointer focus:outline-none text-desc"
-              href="https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki"
+              href="https://honkai-star-rail.fandom.com/wiki/Honkai:_Star_Rail_Wiki"
               target="_blank"
             >
-              Genshin Impact Wiki
+              Honkai: Star Rail Wiki
             </a>{' '}
-            for formulas, descriptions and constellation images.
+            - Formulas and Descriptions
           </BulletPoint>
           <BulletPoint>
             <a className="cursor-pointer focus:outline-none text-desc" href="https://enka.network" target="_blank">
               EnkaNetwork
             </a>{' '}
-            for images of characters, talents, weapons and artifacts as well as APIs for in-game data import.
+            - Stats Icons and Data Import API
           </BulletPoint>
           <BulletPoint>
             <a className="cursor-pointer focus:outline-none text-desc" href="https://wanderer.moe" target="_blank">
               Wanderer.moe
             </a>{' '}
-            for images of elements and emotes.
+            - Emotes
+          </BulletPoint>
+          <BulletPoint>
+            <a className="cursor-pointer focus:outline-none text-desc" href="https://hsr17.hakush.in/" target="_blank">
+              Hakush.in
+            </a>{' '}
+            and{' '}
+            <a className="cursor-pointer focus:outline-none text-desc" href="https://homdgcat.wiki/sr/" target="_blank">
+              Homdgcat.wiki
+            </a>{' '}
+            - Images and Information on Beta Contents
           </BulletPoint>
         </div>
       </div>

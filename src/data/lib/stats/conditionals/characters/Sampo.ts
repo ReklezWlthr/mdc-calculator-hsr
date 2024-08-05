@@ -1,7 +1,7 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -30,6 +30,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Sampo's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: c >= 1 ? 36 : 30,
@@ -38,6 +39,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Sampo's ATK to a single enemy, and further deals DMG for <span class="text-desc">4</span> extra time(s), with each time dealing <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Sampo's ATK to a random enemy.`,
       value: [{ base: 28, growth: 2.8, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.BOUNCE,
     },
     ult: {
       energy: 5,
@@ -49,6 +51,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 20, growth: 1, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.AOE,
     },
     talent: {
       trace: 'Talent',
@@ -57,12 +60,14 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       <br />Enemies inflicted with <b class="text-hsr-wind">Wind Shear</b> will take <b class="text-hsr-wind">Wind DoT</b> equal to {{0}}% of Sampo's ATK at the beginning of each turn. <b class="text-hsr-wind">Wind Shear</b> can stack up to <span class="text-desc">5</span> time(s).`,
       value: [{ base: 20, growth: 2, style: 'dot' }],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',
       title: 'Shining Bright',
       content: `After Sampo uses Technique, enemies in a set area are inflicted with <b>Blind</b> for <span class="text-desc">10</span> second(s). <b>Blinded</b> enemies cannot detect your team.
       <br />When initiating combat against a <b>Blinded</b> enemy, there is a <span class="text-desc">100%</span> <u>fixed chance</u> to delay all enemies' action by <span class="text-desc">25%</span>.`,
+      tag: AbilityTag.IMPAIR,
     },
     a2: {
       trace: 'Ascension 2 Passive',

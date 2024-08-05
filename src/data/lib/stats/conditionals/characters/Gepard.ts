@@ -1,7 +1,7 @@
 import { addDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +27,7 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Gepard's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -39,6 +40,7 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         { base: 30, growth: 3, style: 'curved' },
       ],
       level: skill,
+      tag: AbilityTag.ST,
     },
     ult: {
       energy: 5,
@@ -50,6 +52,7 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         { base: 150, growth: 90, style: 'flat' },
       ],
       level: ult,
+      tag: AbilityTag.DEFENSE,
     },
     talent: {
       trace: 'Talent',
@@ -57,11 +60,13 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `When struck with a killing blow, instead of becoming knocked down, Gepard's HP immediately restores to {{0}}% of his Max HP. This effect can only trigger once per battle.`,
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.RESTORE,
     },
     technique: {
       trace: 'Technique',
       title: 'Comradery',
       content: `After Gepard uses his Technique, when the next battle begins, a <b class="text-indigo-300">Shield</b> will be applied to all allies, absorbing DMG equal to <span class="text-desc">24%</span> of Gepard's DEF plus <span class="text-desc">150</span> for <span class="text-desc">2</span> turn(s).`,
+      tag: AbilityTag.DEFENSE,
     },
     a2: {
       trace: 'Ascension 2 Passive',

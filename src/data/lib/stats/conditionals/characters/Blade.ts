@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +36,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Deals {{0}}% of Blade's ATK as <b class="text-hsr-wind">Wind DMG</b> to a target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     normal_alt: {
       energy: 30,
@@ -41,6 +51,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 8, growth: 1.6, style: 'linear' },
       ],
       level: basic,
+      tag: AbilityTag.BLAST,
     },
     skill: {
       trace: 'Skill',
@@ -51,6 +62,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       <br />This Skill does not regenerate Energy. Using this Skill does not end the current turn.`,
       value: [{ base: 12, growth: 2.8, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.ENHANCE,
     },
     ult: {
       energy: 5,
@@ -64,6 +76,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 24, growth: 1.6, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.BLAST,
     },
     talent: {
       energy: 10,
@@ -76,6 +89,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 55, growth: 5.5, style: 'curved' },
       ],
       level: talent,
+      tag: AbilityTag.AOE,
     },
     technique: {
       trace: 'Technique',

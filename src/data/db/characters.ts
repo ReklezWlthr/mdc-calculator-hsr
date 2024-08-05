@@ -645,7 +645,7 @@ export const Characters = [
       baseSpd: 107,
       energy: 110,
     },
-    trace: [Stats.P_ATK, Stats.P_DEF, Stats.CRIT_RATE],
+    trace: [Stats.P_ATK, Stats.P_DEF, Stats.CRIT_DMG],
     rarity: 4,
     path: PathType.HUNT,
     element: Element.IMAGINARY,

@@ -1,7 +1,7 @@
 import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -30,6 +30,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -43,6 +44,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 60, growth: 1.5, style: 'curved' },
       ],
       level: skill,
+      tag: AbilityTag.BLAST,
     },
     ult: {
       energy: 5,
@@ -56,6 +58,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 116, growth: 10.875, style: 'dot' },
       ],
       level: ult,
+      tag: AbilityTag.AOE,
     },
     talent: {
       energy: 10,
@@ -64,6 +67,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `After an ally of Kafka's uses Basic ATK on an enemy target, Kafka immediately launches <span class="text-desc">1</span> <u>follow-up attack</u> and deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of her ATK to that target, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> equivalent to that applied by her Ultimate to the attacked enemy target for <span class="text-desc">2</span> turns. This effect can only be triggered <span class="text-desc">1</span> time per turn.`,
       value: [{ base: 42, growth: 9.8, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ST,
     },
     technique: {
       trace: 'Technique',

@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { add, chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -32,6 +41,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 15, growth: 3, style: 'linear' },
       ],
       level: basic,
+      tag: AbilityTag.BLAST,
     },
     skill: {
       energy: 30,
@@ -43,6 +53,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       <br />When the <b>Debt Collector</b> exists on the field, Jade cannot use her Skill. At the start of Jade's every turn, the Debt Collector's duration reduces by <span class="text-desc">1</span> turn.`,
       value: [{ base: 15, growth: 1, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.SUPPORT,
     },
     ult: {
       energy: 5,
@@ -54,6 +65,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 40, growth: 4, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.AOE,
     },
     talent: {
       energy: 10,
@@ -66,11 +78,13 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 1.2, growth: 0.12, style: 'curved' },
       ],
       level: talent,
+      tag: AbilityTag.AOE,
     },
     technique: {
       trace: 'Technique',
       title: `Visionary Predation`,
       content: `After using the Technique, inflicts enemies within a set area with Blind Fealty for <span class="text-desc">10</span> second(s). Enemies inflicted with Blind Fealty will not initiate attacks on allies. When entering battle via actively attacking enemies inflicted with Blind Fealty, all enemies with Blind Fealty will enter combat simultaneously. After entering battle, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">50%</span> of Jade's ATK to all enemies, and immediately gains <span class="text-desc">15</span> stack(s) of <b class="text-hsr-quantum">Pawned Asset</b>.`,
+      tag: AbilityTag.IMPAIR,
     },
     a2: {
       trace: 'Ascension 2 Passive',

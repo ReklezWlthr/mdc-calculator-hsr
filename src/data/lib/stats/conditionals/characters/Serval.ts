@@ -1,7 +1,7 @@
 import { addDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -29,6 +29,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -42,6 +43,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         { base: 40, growth: 4, style: 'curved' },
       ],
       level: skill,
+      tag: AbilityTag.BLAST,
     },
     ult: {
       energy: 5,
@@ -50,6 +52,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to all enemies. Enemies already <b class="text-hsr-lightning">Shocked</b> will extend the duration of their <b class="text-hsr-lightning">Shock</b> state by <span class="text-desc">2</span> turn(s).`,
       value: [{ base: 108, growth: 7.2, style: 'curved' }],
       level: ult,
+      tag: AbilityTag.AOE,
     },
     talent: {
       trace: 'Talent',
@@ -57,6 +60,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `After Serval attacks, deals Additional <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to all <b class="text-hsr-lightning">Shocked</b> enemies.`,
       value: [{ base: 36, growth: 3.6, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',

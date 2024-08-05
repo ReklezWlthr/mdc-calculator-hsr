@@ -1,7 +1,7 @@
 import { addDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +27,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Natasha's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -40,6 +41,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 48, growth: 28.8, style: 'flat' },
       ],
       level: skill,
+      tag: AbilityTag.RESTORE,
     },
     ult: {
       energy: 5,
@@ -51,6 +53,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 92, growth: 55.2, style: 'heal' },
       ],
       level: ult,
+      tag: AbilityTag.RESTORE,
     },
     talent: {
       trace: 'Talent',
@@ -58,6 +61,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `When healing allies with HP percentage at <span class="text-desc">30%</span> or lower, increases Natasha's Outgoing Healing by {{0}}%. This effect also works on continuous healing.`,
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',

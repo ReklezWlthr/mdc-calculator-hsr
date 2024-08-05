@@ -57,13 +57,17 @@ export const BuildBlock = observer(({ build, owner, onClick, selected }: BuildBl
         )}
       >
         {_.map(build, (item) => (
-          <div className="mt-2 duration-150 cursor-pointer active:scale-95" onClick={() => onClick(item.id)}>
+          <div
+            key={item.id}
+            className="mt-2 duration-150 cursor-pointer active:scale-95"
+            onClick={() => onClick(item.id)}
+          >
             <BuildModalBlock
               build={item}
               button={
                 <i
                   className={classNames(
-                    'fa-solid fa-caret-right duration-300 mr-2 text-4xl text-primary-light',
+                    'fa-solid fa-caret-right duration-300 mr-1 text-4xl text-primary-light',
                     selected === item.id ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'
                   )}
                 />

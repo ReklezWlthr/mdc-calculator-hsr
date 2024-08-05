@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 import { CharacterBlock } from '../components/character_block'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
@@ -73,9 +73,22 @@ export const TeamSetup = observer(() => {
   const raw = calculateOutOfCombat(_.cloneDeep(baseStatsObject), selected, teamStore.characters, artifactData)
   const stats = calculateFinal(raw)
 
+  const InvalidModal = useCallback(
+    () => (
+      <CommonModal
+        icon="fa-solid fa-exclamation-circle text-red"
+        title="Missing Light Cone"
+        desc="A build must include a Light Cone."
+        onConfirm={() => modalStore.closeModal()}
+        oneButton
+      />
+    ),
+    []
+  )
+
   const onOpenSaveModal = useCallback(() => {
-    modalStore.openModal(<SaveBuildModal index={selected} />)
-  }, [selected])
+    modalStore.openModal(char.equipments.weapon?.wId ? <SaveBuildModal index={selected} /> : <InvalidModal />)
+  }, [selected, char])
 
   const onOpenTeamModal = useCallback(() => {
     modalStore.openModal(<SaveTeamModal />)

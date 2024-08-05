@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { add, chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -29,6 +38,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Robin's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -37,6 +47,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Increase DMG dealt by all allies by {{0}}%, lasting for <span class="text-desc">3</span> turn(s). This duration reduces by <span class="text-desc">1</span> at the start of Robin's every turn.`,
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.SUPPORT,
     },
     ult: {
       energy: 5,
@@ -52,6 +63,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 9, growth: 0.6, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.SUPPORT,
     },
     talent: {
       trace: 'Talent',
@@ -59,11 +71,13 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Increase all allies' CRIT DMG by {{0}}%. Moreover, after allies attack enemy targets, Robin additionally regenerates <span class="text-desc">2</span> Energy for herself.`,
       value: [{ base: 5, growth: 1.5, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.SUPPORT,
     },
     technique: {
       trace: 'Technique',
       title: `Overture of Inebriation`,
       content: `After using Technique, creates a special dimension around the character that lasts for <span class="text-desc">15</span> seconds. Enemies within this dimension will not attack Robin and will follow Robin while the dimension is active. After entering battle while the dimension is active, Robin regenerates <span class="text-desc">5</span> Energy at the start of each wave. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
+      tag: AbilityTag.SUPPORT,
     },
     a2: {
       trace: 'Ascension 2 Passive',

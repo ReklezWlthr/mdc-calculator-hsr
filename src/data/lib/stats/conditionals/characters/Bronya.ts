@@ -1,7 +1,7 @@
 import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -29,6 +29,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Bronya's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -38,6 +39,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       <br />When this Skill is used on Bronya herself, she cannot immediately take action again.`,
       value: [{ base: 33, growth: 3.3, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.SUPPORT,
     },
     ult: {
       energy: 5,
@@ -50,6 +52,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         { base: 12, growth: 0.8, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.SUPPORT,
     },
     talent: {
       trace: 'Talent',
@@ -57,11 +60,13 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       content: `After using her Basic ATK, Bronya's next action will be <u>Advanced Forward</u> by {{0}}%.`,
       value: [{ base: 15, growth: 1.5, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',
       title: 'Banner of Command',
       content: `After using Bronya's Technique, at the start of the next battle, all allies' ATK increases by <span class="text-desc">15%</span> for <span class="text-desc">2</span> turn(s).`,
+      tag: AbilityTag.SUPPORT,
     },
     a2: {
       trace: 'Ascension 2 Passive',

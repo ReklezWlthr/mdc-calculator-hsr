@@ -1,7 +1,7 @@
 import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +27,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Dan Heng's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -36,6 +37,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       <br />On a CRIT Hit, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce the target's SPD by <span class="text-desc">12%</span> for <span class="text-desc">2</span> turn(s).`,
       value: [{ base: 130, growth: 13, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.ST,
     },
     ult: {
       energy: 5,
@@ -47,6 +49,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 72, growth: 4.8, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.ST,
     },
     talent: {
       trace: 'Talent',
@@ -54,11 +57,13 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `When Dan Heng is the target of an ally's Ability, his next attack's <b class="text-hsr-wind">Wind RES PEN</b> increases by {{0}}%. This effect can be triggered again after <span class="text-desc">2</span> turn(s).`,
       value: [{ base: 18, growth: 1.8, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',
       title: 'Splitting Spearhead',
       content: `After Dan Heng uses his Technique, his ATK increases by <span class="text-desc">40%</span> at the start of the next battle for <span class="text-desc">3</span> turn(s).`,
+      tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',

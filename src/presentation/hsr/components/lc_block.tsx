@@ -79,10 +79,21 @@ interface LCBlockProps {
   teamOverride?: ITeamChar[]
   setWeapon?: (index: number, info: Partial<IWeaponEquip>) => void
   disabled?: boolean
+  noClear?: boolean
 }
 
 export const LCBlock = observer(
-  ({ index = -1, wId, level = 1, ascension = 0, refinement = 1, teamOverride, setWeapon, disabled }: LCBlockProps) => {
+  ({
+    index = -1,
+    wId,
+    level = 1,
+    ascension = 0,
+    refinement = 1,
+    teamOverride,
+    setWeapon,
+    disabled,
+    noClear,
+  }: LCBlockProps) => {
     const { modalStore, teamStore } = useStore()
 
     const team = teamOverride || teamStore.characters
@@ -189,7 +200,7 @@ export const LCBlock = observer(
               </div>
               <PillInput
                 onClick={onOpenModal}
-                onClear={() => set(index, { wId: null, refinement: 1 })}
+                onClear={noClear ? undefined : () => set(index, { wId: null, refinement: 1 })}
                 value={weaponData?.name}
                 disabled={!canEdit || !team[index]?.cId}
                 placeholder="Click to Select Light Cone"

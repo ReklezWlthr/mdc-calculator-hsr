@@ -1,7 +1,7 @@
 import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -29,6 +29,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Asta's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: c >= 1 ? 36 : 30,
@@ -37,6 +38,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Asta's ATK to a single enemy and further deals DMG for <span class="text-desc">4</span> extra times, with each time dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Asta's ATK to a random enemy.`,
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.BOUNCE,
     },
     ult: {
       energy: 5,
@@ -45,6 +47,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Increases SPD of all allies by {{0}} for <span class="text-desc">2</span> turn(s).`,
       value: [{ base: 36, growth: 1.4, style: 'curved' }],
       level: ult,
+      tag: AbilityTag.SUPPORT,
     },
     talent: {
       trace: 'Talent',
@@ -52,8 +55,9 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Gains <span class="text-desc">1</span> stack of <b>Charging</b> for every different enemy hit by Asta plus an extra stack if the enemy hit has <b class="text-hsr-fire">Fire</b> Weakness.
       <br />For every stack of <b>Charging</b> Asta has, all allies' ATK increases by {{0}}%, up to <span class="text-desc">5</span> time(s).
       <br />Starting from her second turn, Asta's <b>Charging</b> stack count is reduced by <span class="text-desc">3</span> at the beginning of every turn.`,
-      value: [{ base: 36, growth: 3.6, style: 'curved' }],
+      value: [{ base: 7, growth: 0.7, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.SUPPORT,
     },
     technique: {
       trace: 'Technique',

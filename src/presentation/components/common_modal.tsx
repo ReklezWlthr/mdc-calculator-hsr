@@ -10,9 +10,10 @@ interface CommonModalProps {
   icon?: string
   onCancel?: () => void
   onConfirm: () => void
+  oneButton?: boolean
 }
 
-export const CommonModal = observer(({ title, desc, onCancel, onConfirm, icon }: CommonModalProps) => {
+export const CommonModal = observer(({ title, desc, onCancel, onConfirm, icon, oneButton }: CommonModalProps) => {
   const { modalStore } = useStore()
 
   return (
@@ -23,13 +24,15 @@ export const CommonModal = observer(({ title, desc, onCancel, onConfirm, icon }:
       </div>
       <p className="text-sm font-normal whitespace-pre-wrap">{desc}</p>
       <div className="flex justify-end gap-x-2">
-        <GhostButton
-          title="Cancel"
-          onClick={() => {
-            modalStore.closeModal()
-            onCancel?.()
-          }}
-        />
+        {!oneButton && (
+          <GhostButton
+            title="Cancel"
+            onClick={() => {
+              modalStore.closeModal()
+              onCancel?.()
+            }}
+          />
+        )}
         <PrimaryButton
           title="Confirm"
           onClick={() => {

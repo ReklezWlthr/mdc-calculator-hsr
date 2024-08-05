@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +36,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Tosses <span class="text-desc">1</span> jade tile from the suit with the fewest tiles in hand to deal <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Qingque's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     normal_alt: {
       energy: 20,
@@ -39,6 +49,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 50, growth: 10, style: 'linear' },
       ],
       level: basic,
+      tag: AbilityTag.BLAST,
     },
     skill: {
       trace: 'Skill',
@@ -46,6 +57,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Immediately draws <span class="text-desc">2</span> jade tile(s) and increases DMG by {{0}}% until the end of the current turn. This effect can stack up to <span class="text-desc">4</span> time(s). The turn will not end after this Skill is used.`,
       value: [{ base: 14, growth: 1.4, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.ENHANCE,
     },
     ult: {
       energy: 5,
@@ -54,6 +66,7 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Qingque's ATK to all enemies, and obtains <span class="text-desc">4</span> jade tiles of the same suit.`,
       value: [{ base: 120, growth: 8, style: 'curved' }],
       level: ult,
+      tag: AbilityTag.AOE,
     },
     talent: {
       trace: 'Talent',
@@ -63,11 +76,13 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       <br />While in this state, Qingque cannot use her Skill again. At the same time, Qingque's ATK increases by {{0}}%, and her Basic ATK <b>Flower Pick</b> is enhanced, becoming <b>Cherry on Top!</b>. The <b>Hidden Hand</b> state ends after using <b>Cherry on Top!</b>.`,
       value: [{ base: 36, growth: 3.6, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',
       title: 'Game Solitaire',
       content: `After using Technique, Qingque draws <span class="text-desc">2</span> jade tile(s) when the battle starts.`,
+      tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',

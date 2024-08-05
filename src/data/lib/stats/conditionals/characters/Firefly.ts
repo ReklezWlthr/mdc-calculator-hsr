@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { add, chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +36,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of SAM's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     normal_alt: {
       trace: 'Enhanced Basic ATK',
@@ -34,6 +44,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Restores HP by an amount equal to <span class="text-desc">20%</span> of this unit's Max HP. Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of SAM's ATK to a single target enemy.`,
       value: [{ base: 100, growth: 20, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       trace: 'Skill',
@@ -44,6 +55,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 50, growth: 1, style: 'curved' },
       ],
       level: skill,
+      tag: AbilityTag.ST,
     },
     skill_alt: {
       trace: 'Enhanced Skill',
@@ -54,6 +66,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 50, growth: 5, style: 'curved' },
       ],
       level: skill,
+      tag: AbilityTag.BLAST,
     },
     ult: {
       energy: 5,
@@ -67,6 +80,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 10, growth: 1, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.ENHANCE,
     },
     talent: {
       trace: 'Talent',
@@ -78,6 +92,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 10, growth: 2, style: 'curved' },
       ],
       level: talent,
+      tag: AbilityTag.DEFENSE,
     },
     technique: {
       trace: 'Technique',

@@ -1,7 +1,7 @@
 import { findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +27,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Argenti's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST
     },
     skill: {
       energy: 30,
@@ -35,6 +36,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Argenti's ATK to all enemies.`,
       value: [{ base: 60, growth: 6, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.AOE
     },
     ult: {
       energy: 5,
@@ -43,6 +45,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Consumes <span class="text-desc">90</span> Energy and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Argenti's ATK to all enemies.`,
       value: [{ base: 96, growth: 6.4, style: 'curved' }],
       level: ult,
+      tag: AbilityTag.AOE
     },
     ult_alt: {
       energy: 5,
@@ -54,6 +57,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 57, growth: 3.8, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.AOE
     },
     talent: {
       trace: 'Talent',
@@ -61,12 +65,14 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `For every enemy hit when Argenti uses his Basic Attack, Skill, or Ultimate, regenerates Argenti's Energy by <span class="text-desc">3</span>, and grants him a stack of <b>Apotheosis</b>, increasing his CRIT Rate by {{0}}%. This effect can stack up to <span class="text-desc">10</span> time(s).`,
       value: [{ base: 1, growth: 0.15, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ENHANCE
     },
     technique: {
       trace: 'Technique',
       title: 'Manifesto of Purest Virtue',
       content: `After using the Technique, enemies in a set area are inflicted with <b>Daze</b> for <span class="text-desc">10</span> second(s). <b>Dazed</b> enemies will not actively attack the team.
       <br />When attacking a <b>Dazed</b> enemy to enter combat, deals <b class="text-hsr-physical">Physical DMG</b> to all enemies equal to <span class="text-desc">80%</span> of Argenti's ATK and regenerates his Energy by <span class="text-desc">15</span>.`,
+      tag: AbilityTag.IMPAIR
     },
     a2: {
       trace: 'Ascension 2 Passive',

@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { add, chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +36,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Boothill's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     normal_alt: {
       energy: 30,
@@ -36,6 +46,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       <br />The Enhanced Basic Attack cannot recover Skill Points and can only target the enemy that is in the <b>Standoff</b>.`,
       value: [{ base: 110, growth: 22, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       trace: 'Skill',
@@ -46,6 +57,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       <br />This Skill cannot regenerate Energy. After using this Skill, the current turn does not end.`,
       value: [{ base: 15, growth: 1.5, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.IMPAIR,
     },
     ult: {
       energy: 5,
@@ -59,6 +71,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         { base: 18, growth: 1.2, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.ST,
     },
     talent: {
       trace: 'Talent',
@@ -72,11 +85,13 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         { base: 85, growth: 8.5, style: 'curved' },
       ],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',
       title: `3-9x Smile`,
       content: `After the Technique is used, when casting the Skill for the first time in the next battle, applies the same <b class="text-hsr-physical">Physical</b> Weakness to the target as the one induced by the Ultimate, lasting for 2 turn(s).`,
+      tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',

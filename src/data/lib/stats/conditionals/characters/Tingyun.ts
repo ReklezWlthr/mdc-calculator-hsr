@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -30,6 +39,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Tingyun deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of her ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -44,6 +54,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 20, growth: 2, style: 'curved' },
       ],
       level: skill,
+      tag: AbilityTag.SUPPORT,
     },
     ult: {
       energy: 5,
@@ -52,6 +63,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Regenerates <span class="text-desc">50</span> Energy for a single ally and increases the target's DMG by {{0}}% for <span class="text-desc">2</span> turn(s).`,
       value: [{ base: 20, growth: 3, style: 'curved' }],
       level: ult,
+      tag: AbilityTag.SUPPORT,
     },
     talent: {
       trace: 'Talent',
@@ -59,11 +71,13 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `When an enemy is attacked by Tingyun, the ally with <b>Benediction</b> immediately deals Additional <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of that ally's ATK to the same enemy.`,
       value: [{ base: 30, growth: 3, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',
       title: 'Gentle Breeze',
       content: `Tingyun immediately regenerates <span class="text-desc">50</span> Energy upon using her Technique.`,
+      tag: AbilityTag.SUPPORT,
     },
     a2: {
       trace: 'Ascension 2 Passive',

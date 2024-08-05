@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -30,6 +39,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Luka's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     normal_alt: {
       energy: 20,
@@ -42,6 +52,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 40, growth: 8, style: 'linear' },
       ],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -54,6 +65,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 130, growth: 13, style: 'dot' },
       ],
       level: skill,
+      tag: AbilityTag.ST,
     },
     ult: {
       energy: 5,
@@ -65,6 +77,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         { base: 198, growth: 13.2, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.ST,
     },
     talent: {
       trace: 'Talent',
@@ -72,6 +85,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `After Luka uses his Basic ATK <b>Direct Punch</b> or Skill <b>Lacerating Fist</b>, he receives <span class="text-desc">1</span> stack(s) of <b>Fighting Will</b>, up to <span class="text-desc">4</span> stacks. When he has <span class="text-desc">2</span> or more stacks of <b>Fighting Will</b>, his Basic ATK <b>Direct Punch</b> is enhanced to <b>Sky-Shatter Fist</b>. After his Enhanced Basic ATK's <b>Rising Uppercut</b> hits a <b class="text-hsr-physical">Bleeding</b> enemy target, the <b class="text-hsr-physical">Bleed</b> status will immediately deal DMG for <span class="text-desc">1</span> time equal to {{0}}% of the original DMG to the target. At the start of battle, Luka will possess <span class="text-desc">1</span> stack of <b>Fighting Will</b>.`,
       value: [{ base: 68, growth: 1.7, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',

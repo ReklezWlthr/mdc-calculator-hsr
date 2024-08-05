@@ -109,6 +109,7 @@ export interface ITalentDisplay {
   value?: { base: number; growth: number; style: TalentScalingStyle }[]
   level?: number
   image?: string
+  tag?: string
 }
 
 export interface ITalent {

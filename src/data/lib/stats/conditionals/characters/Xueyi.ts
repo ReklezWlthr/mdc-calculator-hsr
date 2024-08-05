@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +36,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Deals {{0}}% of Xueyi's ATK as <b class="text-hsr-quantum">Quantum DMG</b> to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -38,6 +48,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 35, growth: 3.5, style: 'curved' },
       ],
       level: skill,
+      tag: AbilityTag.BLAST,
     },
     ult: {
       energy: 5,
@@ -50,6 +61,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 36, growth: 2.4, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.ST,
     },
     talent: {
       energy: 6,
@@ -60,6 +72,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       <br />When <b>Karma</b> reaches the max number of stacks, consumes all current <b>Karma</b> stacks and immediately launches a <u>follow-up attack</u> against an enemy target, dealing DMG for <span class="text-desc">3</span> times, with each time dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Xueyi's ATK to a single random enemy. This <u>follow-up attack</u> will not add <b>Karma</b> stacks.`,
       value: [{ base: 45, growth: 4.5, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.BOUNCE,
     },
     technique: {
       trace: 'Technique',

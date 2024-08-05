@@ -1,7 +1,7 @@
 import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -27,6 +27,7 @@ const Arlan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Arlan's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -35,6 +36,7 @@ const Arlan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Consumes Arlan's HP equal to <span class="text-desc">15%</span> of his Max HP to deal <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Arlan's ATK to a single enemy. If Arlan does not have sufficient HP, his HP will be reduced to <span class="text-desc">1</span> after using his Skill.`,
       value: [{ base: 120, growth: 12, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.ST,
     },
     ult: {
       energy: 5,
@@ -46,6 +48,7 @@ const Arlan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 96, growth: 6.4, style: 'curved' },
       ],
       level: ult,
+      tag: AbilityTag.BLAST,
     },
     talent: {
       trace: 'Talent',
@@ -53,6 +56,7 @@ const Arlan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Increases Arlan's DMG for every percent of HP below his Max HP, up to a max of {{0}}% more DMG.`,
       value: [{ base: 36, growth: 3.6, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',

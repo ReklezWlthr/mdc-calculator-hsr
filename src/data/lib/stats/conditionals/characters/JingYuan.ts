@@ -1,7 +1,16 @@
 import { addDebuff, countDebuff, countDot, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -19,9 +28,6 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
 
-  const names = _.map(team, (item) => findCharacter(item?.cId)?.name)
-  const index = _.findIndex(team, (item) => item?.cId === '1202')
-
   const talents: ITalent = {
     normal: {
       energy: 20,
@@ -30,6 +36,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       content: `Jing Yuan deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of his ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -38,6 +45,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Jing Yuan's ATK to all enemies and increases <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action by <span class="text-desc">2</span> for the next turn.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: skill,
+      tag: AbilityTag.AOE,
     },
     ult: {
       energy: 5,
@@ -46,6 +54,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Jing Yuan's ATK to all enemies and increases <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action by <span class="text-desc">3</span> for the next turn.`,
       value: [{ base: 20, growth: 3, style: 'curved' }],
       level: ult,
+      tag: AbilityTag.AOE,
     },
     talent: {
       trace: 'Talent',
@@ -56,11 +65,13 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       <br />When Jing Yuan is affected by Crowd Control debuff, the <b class="text-hsr-lightning">Lightning-Lord</b> is unable to take action.`,
       value: [{ base: 30, growth: 3, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.BOUNCE,
     },
     technique: {
       trace: 'Technique',
       title: 'Spirit Invocation',
       content: `After the Technique is used, the <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action in the first turn increases by <span class="text-desc">3</span> at the start of the next battle.`,
+      tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',

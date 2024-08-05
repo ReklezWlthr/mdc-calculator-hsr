@@ -1,7 +1,7 @@
 import { findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -28,6 +28,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of March 7th's ATK to a single enemy and gains <span class="text-desc">1</span> point(s) of <b>Charge</b>.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     normal_alt: {
       energy: 20,
@@ -37,6 +38,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       <br />Enhanced Basic ATK cannot recover Skill Points.`,
       value: [{ base: 40, growth: 8, style: 'linear' }],
       level: basic,
+      tag: AbilityTag.ST,
     },
     skill: {
       energy: 30,
@@ -51,6 +53,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         { base: 10, growth: 1, style: 'curved' },
       ],
       level: skill,
+      tag: AbilityTag.SUPPORT,
     },
     ult: {
       energy: 5,
@@ -60,6 +63,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       <br />Increases the initial Hits Per Action of the next Enhanced Basic ATK by <span class="text-desc">2</span> hits and increase the <u>fixed chance</u> of additionally dealing DMG by <span class="text-desc">20%</span>.`,
       value: [{ base: 144, growth: 9.6, style: 'curved' }],
       level: ult,
+      tag: AbilityTag.ST,
     },
     talent: {
       trace: 'Talent',
@@ -68,12 +72,14 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       <br />Upon reaching <span class="text-desc">7</span> or more points of <b>Charge</b>, March 7th immediately takes action again and increases the DMG she deals by {{0}}%. Her Basic ATK gets Enhanced, and her Skill cannot be used. After using Enhanced Basic ATK, consumes <span class="text-desc">7</span> point(s) of <b>Charge</b>. <b>Charge</b> is capped at <span class="text-desc">10</span>.`,
       value: [{ base: 40, growth: 4, style: 'curved' }],
       level: talent,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',
       title: 'Feast in One Go',
       content: `If March 7th is in the team, she gains <span class="text-desc">1</span> point of <b>Charge</b> at the start of the next battle whenever an ally uses Technique, up to a max of <span class="text-desc">3</span> point(s).
       <br />After using Technique, March 7th regenerates <span class="text-desc">30</span> Energy when the next battle starts.`,
+      tag: AbilityTag.ENHANCE,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -252,7 +258,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         base[Stats.ALL_DMG].push({
           name: `Talent`,
           source: 'Self',
-          value: calcScaling(0.4, 0.04, skill, 'curved'),
+          value: calcScaling(0.4, 0.04, talent, 'curved'),
         })
         if (form.h_march_c6)
           base.BASIC_CD.push({
@@ -332,7 +338,14 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               type: TalentType.NONE,
               sum: true,
             }
-            x.BASIC_SCALING.push(add)
+            x.BASIC_SCALING.push(
+              { ...add, multiplier: form.h_march_ult ? 5 : 3, sum: false },
+              {
+                ...add,
+                name: `${team[masterIndex].NAME}'s Maximum Additional DMG`,
+                multiplier: form.h_march_ult ? 8 : 6,
+              }
+            )
             if (c >= 2) x.SKILL_SCALING.push(add)
             return x
           })
