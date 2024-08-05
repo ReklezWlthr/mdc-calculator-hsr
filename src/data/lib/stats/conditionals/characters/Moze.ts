@@ -63,6 +63,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       tag: AbilityTag.ST,
     },
     talent: {
+      energy: 10,
       trace: 'Talent',
       title: `Cascading Featherblade`,
       content: `Moze will enter the <b>Departed</b> state while a <b class="text-hsr-lightning">Prey</b> exists on the field.
@@ -77,7 +78,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     technique: {
       trace: 'Technique',
       title: 'Bated Wings',
-      content: `After using his Technique, Moze gains Stealth for <span class="text-desc">20</span> second(s). While Stealth is active, Moze cannot be detected by enemies. Action Advances by <span class="text-desc">50%</span> and increases the DMG Moze deals by <span class="text-desc">30%</span> when he enters combat by attacking enemies while in Stealth mode, lasting for <span class="text-desc">1</span> turn(s).`,
+      content: `After using his Technique, Moze gains Stealth for <span class="text-desc">20</span> second(s). While Stealth is active, Moze cannot be detected by enemies. <u>Action Advances</u> by <span class="text-desc">50%</span> and increases the DMG Moze deals by <span class="text-desc">30%</span> when he enters combat by attacking enemies while in Stealth mode, lasting for <span class="text-desc">1</span> turn(s).`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {

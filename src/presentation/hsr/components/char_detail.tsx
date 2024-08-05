@@ -281,9 +281,7 @@ export const CharDetail = observer(() => {
                 <TalentIcon
                   element={data.element}
                   talent={item}
-                  icon={`SkillIcon_${selected}_${
-                    skillIcon[item.trace === 'Enhanced Skill' && selected === '1109' ? TalentType.SKILL : item.trace]
-                  }.png`}
+                  icon={`SkillIcon_${selected}_${skillIcon[item.trace]}.png`}
                   size="w-10 h-10 mt-1"
                   hideTip
                 />

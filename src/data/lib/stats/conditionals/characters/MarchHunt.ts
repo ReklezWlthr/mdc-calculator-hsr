@@ -105,6 +105,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       trace: 'Eidolon 2',
       title: `Blade Dances on Waves' Fight`,
       content: `After <b class="text-hsr-imaginary">Shifu</b> uses their Basic ATK or Skill to attack an enemy, March 7th immediately launches a <u>follow-up attack</u> and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to <span class="text-desc">60%</span> of March 7th's ATK to the primary target of this attack. Additionally, triggers the corresponding effect based on <b class="text-hsr-imaginary">Shifu</b>'s Path and then gains <span class="text-desc">1</span> point(s) of <b>Charge</b>. If there is no primary target available to attack, then attacks a single random enemy instead. This effect can only be triggered once per turn.`,
+      energy: 5,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -325,7 +326,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             element: Element.IMAGINARY,
             property: TalentProperty.FUA,
             type: TalentType.NONE,
-            break: 10,
+            break: 15,
             sum: true,
           })
         if (_.includes([PathType.DESTRUCTION, PathType.HUNT, PathType.ERUDITION], team[masterIndex].PATH)) {
