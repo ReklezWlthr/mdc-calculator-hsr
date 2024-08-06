@@ -22,6 +22,7 @@ import { BaseAggro, TalentType } from '@src/domain/constant'
 import { CompareTotalRows } from '../tables/compare_total_row'
 import { EnemyModal } from '../modals/enemy_modal'
 import { DebuffModal } from '../modals/debuff_modal'
+import { AdditionalCompareBlock } from './additional_compare_block'
 
 export const CompareBlock = observer(() => {
   const { setupStore, modalStore } = useStore()
@@ -105,6 +106,7 @@ export const CompareBlock = observer(() => {
     () =>
       modalStore.openModal(
         <StatsModal
+          compare
           stats={allStats[setupIndex][charIndex]}
           path={findCharacter(focusedChar.cId)?.path}
           sumAggro={_.sumBy(
@@ -314,14 +316,15 @@ export const CompareBlock = observer(() => {
               </div>
             </ScalingWrapper>
           </div>
+          <AdditionalCompareBlock stats={sumStats} />
         </div>
       )}
       {_.some(contents) && _.some(sumStats) && (
         <div className="flex flex-col items-center w-full gap-3">
           <div className="flex items-center gap-3 mb-2">
             <div className="space-y-1">
-              <p className="text-sm font-bold text-center text-white">
-                {setupIndex === 0 ? 'Main Setup' : `Sub Setup ${setupIndex}`}
+              <p className="w-[136px] text-xs font-bold text-center text-white truncate">
+                {setupIndex ? setupStore.comparing[setupIndex - 1]?.name : setupStore.main?.name}
               </p>
               <div className="grid grid-cols-4 gap-2 text-xs text-white">
                 {_.map(Array(4), (_item, index) => (

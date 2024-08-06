@@ -213,6 +213,9 @@ export const baseStatsObject = {
   TALENT_ALT: false,
 
   SUPER_BREAK: false,
+
+  COUNTDOWN: 0,
+  EXTRA_C_TURN: 0,
 }
 
 export const TalentTypeMap = {

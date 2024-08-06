@@ -48,8 +48,8 @@ export const AttributeBlock = ({ stat, array, stats }: NormalBlockProps) => (
 )
 
 export const StatsModal = observer(
-  ({ stats, path, sumAggro }: { stats: StatsObject; path: PathType; sumAggro: number }) => {
-    const { calculatorStore } = useStore()
+  ({ stats, path, sumAggro, compare }: { stats: StatsObject; path: PathType; sumAggro: number; compare?: boolean }) => {
+    const { calculatorStore, setupStore } = useStore()
 
     const ExtraBlock = ({ stats, totalValue, cBase, lBase = 0, pArray, fArray, round = 0 }: ExtraBlockProps) => (
       <div className="space-y-1">
@@ -100,7 +100,8 @@ export const StatsModal = observer(
     )
 
     const baseAggro = BaseAggro[path] * (1 + stats.getValue(StatsObjectKeys.BASE_AGGRO))
-    const defMult = 1 - stats.getDef() / (stats.getDef() + 200 + 10 * calculatorStore.level)
+    const defMult =
+      1 - stats.getDef() / (stats.getDef() + 200 + 10 * +(compare ? setupStore.level : calculatorStore.level))
 
     const breakPoint = _.min(_.filter(_.map(BreakPoints, 'value'), (item) => item >= 10000 / stats.getSpd()))
     const bpDesc = _.find(BreakPoints, (item) => item.value === breakPoint)?.desc
@@ -284,7 +285,7 @@ export const StatsModal = observer(
                   Action Value <span className="text-red">{_.round(10000 / stats.getSpd(), 1)}</span>
                   <span className="text-xs font-normal">
                     {' '}
-                    = 10,000 ÷ <span className="text-desc">{_.round(stats.getSpd(), 1)}</span>
+                    = 10,000 ÷ <span className="text-desc">{_.floor(stats.getSpd(), 1)}</span>
                   </span>
                 </p>
                 <BulletPoint>
@@ -301,6 +302,16 @@ export const StatsModal = observer(
                     Turns within Cycle <span className="text-desc">0 to 3</span>
                   </span>
                 </BulletPoint>
+                {!!stats.COUNTDOWN && (
+                  <BulletPoint color="text-red">
+                    <span className="text-xs">
+                      <span className="text-desc">
+                        {_.floor(stats.getSpd() / stats.COUNTDOWN) + stats.EXTRA_C_TURN}
+                      </span>{' '}
+                      Turns before Countdown ends
+                    </span>
+                  </BulletPoint>
+                )}
               </div>
             </div>
           </div>

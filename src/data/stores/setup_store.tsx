@@ -76,6 +76,7 @@ export interface SetupStoreType {
   getTotal: (key: TalentType, index: number) => number
   setRes: (element: Element, value: number) => void
   getEffRes: (reduction?: number) => number
+  getEhr: (reduction?: number) => number
   getDefMult: (level: number, defPen: number, defRed: number) => number
   getResMult: (element: Element, resPen: number) => number
   clearTotal: () => void
@@ -220,6 +221,10 @@ export class SetupStore {
 
   getEffRes = (reduction?: number) => {
     return this.effRes + (+this.level >= 51 ? _.min([0.1, 0.004 * (+this.level - 50)]) : 0) - reduction
+  }
+
+  getEhr = (reduction?: number) => {
+    return (+this.level >= 51 ? _.min([0.36, 0.008 * (+this.level - 50)]) : 0) - reduction
   }
 
   setComparing = (value: Partial<ITeamChar>) => {
