@@ -310,7 +310,7 @@ export const RelicSets: IArtifact[] = [
     },
     desc: [
       `Increases the DMG dealt by <u>follow-up attack</u> by <span class="text-desc">20%</span>.`,
-      `When the wearer uses <u>follow-up attack</u>s, increases the wearer's ATK by <span class="text-desc">6%</span> for every time the <u>follow-up attack</u> deals DMG. This effect can stack up to <span class="text-desc">8</span> time(s) and lasts for <span class="text-desc">3</span> turn(s). This effect is removed the next time the wearer uses a <u>follow-up attack</u>.`,
+      `When the wearer uses <u>follow-up attacks</u>, increases the wearer's ATK by <span class="text-desc">6%</span> for every time the <u>follow-up attack</u> deals DMG. This effect can stack up to <span class="text-desc">8</span> time(s) and lasts for <span class="text-desc">3</span> turn(s). This effect is removed the next time the wearer uses a <u>follow-up attack</u>.`,
     ],
     set: [
       `Grand Duke's Crown of Netherflame`,
@@ -786,7 +786,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [],
     bonusAdd: [],
     desc: [
-      `When an ally uses <u>follow-up attack</u>, the wearer receives <span class="text-desc">1</span> stack of <b>Merit</b>, stacking up to <span class="text-desc">5</span> times. Every stack of <b>Merit</b> increases the DMG dealt by the wearer's <u>follow-up attack</u>s by <span class="text-desc">5%</span>. When there are <span class="text-desc">5</span> stacks, additionally increases the wearer's CRIT DMG by <span class="text-desc">25%</span>.`,
+      `When an ally uses <u>follow-up attack</u>, the wearer receives <span class="text-desc">1</span> stack of <b>Merit</b>, stacking up to <span class="text-desc">5</span> times. Every stack of <b>Merit</b> increases the DMG dealt by the wearer's <u>follow-up attacks</u> by <span class="text-desc">5%</span>. When there are <span class="text-desc">5</span> stacks, additionally increases the wearer's CRIT DMG by <span class="text-desc">25%</span>.`,
     ],
     set: [`Duran's Tent of Golden Sky`, `Duran's Mechabeast Bridle`],
   },

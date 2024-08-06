@@ -407,7 +407,7 @@ export const LightCones = [
     type: PathType.ERUDITION,
     desc: {
       name: 'The Maiden in the Painting',
-      detail: `Increases DMG dealt by the wearer's <u>follow-up attack</u>s by {{0}}%. If the current HP of the target enemy is below <span class="text-desc">50%</span> of Max HP, increases DMG dealt by <u>follow-up attack</u>s by an extra {{0}}%.`,
+      detail: `Increases DMG dealt by the wearer's <u>follow-up attacks</u> by {{0}}%. If the current HP of the target enemy is below <span class="text-desc">50%</span> of Max HP, increases DMG dealt by <u>follow-up attacks</u> by an extra {{0}}%.`,
       properties: [{ base: 24, growth: 6 }],
     },
   },
@@ -1417,7 +1417,7 @@ export const LightCones = [
     type: PathType.HUNT,
     desc: {
       name: 'One At A Time',
-      detail: `Increase the wearer's CRIT Rate by {{0}}% and their <u>follow-up attack</u>s' DMG by {{1}}%. After the wearer uses a <u>follow-up attack</u>, apply the <b>Tame</b> state to the target, stacking up to <span class="text-desc">2</span> stacks. When allies hit enemy targets under the <b>Tame</b> state, every <b>Tame</b> stack increases the CRIT DMG dealt by {{2}}%.`,
+      detail: `Increase the wearer's CRIT Rate by {{0}}% and their <u>follow-up attacks</u>' DMG by {{1}}%. After the wearer uses a <u>follow-up attack</u>, apply the <b>Tame</b> state to the target, stacking up to <span class="text-desc">2</span> stacks. When allies hit enemy targets under the <b>Tame</b> state, every <b>Tame</b> stack increases the CRIT DMG dealt by {{2}}%.`,
       properties: [
         { base: 18, growth: 3 },
         { base: 30, growth: 5 },
@@ -1488,7 +1488,7 @@ export const LightCones = [
     type: PathType.HUNT,
     desc: {
       name: 'Mental Training',
-      detail: `Increases the wearer's CRIT DMG by {{0}}%. For every debuff on the enemy target, the wearer's CRIT DMG dealt against this target increases by {{1}}%, stacking up to <span class="text-desc">3</span> times. When using their Ultimate to attack the enemy target, the wearer receives the <b>Disputation</b> effect, which increases DMG dealt by {{2}}% and enables their <u>follow-up attack</u>s to ignore {{3}}% of the target's DEF. This effect lasts for <span class="text-desc">2</span> turns.`,
+      detail: `Increases the wearer's CRIT DMG by {{0}}%. For every debuff on the enemy target, the wearer's CRIT DMG dealt against this target increases by {{1}}%, stacking up to <span class="text-desc">3</span> times. When using their Ultimate to attack the enemy target, the wearer receives the <b>Disputation</b> effect, which increases DMG dealt by {{2}}% and enables their <u>follow-up attacks</u> to ignore {{3}}% of the target's DEF. This effect lasts for <span class="text-desc">2</span> turns.`,
       properties: [
         { base: 20, growth: 3 },
         { base: 8, growth: 1 },
