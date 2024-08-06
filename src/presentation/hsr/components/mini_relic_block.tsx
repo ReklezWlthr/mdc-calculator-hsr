@@ -1,5 +1,5 @@
 import { toPercentage } from '@src/core/utils/converter'
-import { getMainStat, getRolls } from '@src/core/utils/data_format'
+import { getMainStat, getNearestSpd, getRolls } from '@src/core/utils/data_format'
 import { findArtifactSet } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { RelicPiece, RelicPieceIcon, StatIcons, Stats } from '@src/domain/constant'
@@ -77,7 +77,9 @@ export const MiniRelicBlock = observer(
                   <hr className="w-full border border-primary-border" />
                   <p className="font-normal text-gray">
                     {_.includes([Stats.HP, Stats.ATK, Stats.DEF, Stats.SPD], item.stat)
-                      ? _.round(item.value, item.stat === Stats.SPD ? 1 : 0).toLocaleString()
+                      ? item.stat === Stats.SPD
+                        ? _.round(getNearestSpd(item.value), 1).toLocaleString()
+                        : _.round(item.value, 0).toLocaleString()
                       : toPercentage(item.value / 100)}
                   </p>
                 </div>

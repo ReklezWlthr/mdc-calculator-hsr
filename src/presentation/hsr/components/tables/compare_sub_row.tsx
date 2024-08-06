@@ -69,7 +69,6 @@ export const CompareSubRows = observer(
         TalentProperty.BREAK,
         TalentProperty.BREAK_DOT,
         TalentProperty.SUPER_BREAK,
-        TalentProperty.FROZEN,
       ],
       property
     )

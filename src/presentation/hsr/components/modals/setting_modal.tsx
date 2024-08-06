@@ -29,7 +29,7 @@ export const SettingModal = observer(() => {
       <div className="flex items-center justify-between p-3 rounded-lg bg-primary-darker gap-x-2">
         <div className="w-2/3">
           <p className="text-sm text-gray">
-            Only Show <b>Live Server</b> Contents
+            Hide <b>Beta</b> Contents
           </p>
           <p className="text-xs italic text-red">✦ Does not apply to ones already in the account data.</p>
         </div>{' '}

@@ -135,9 +135,9 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       text: `Ult Toughness DMG Dealt`,
       ...talents.ult,
       show: true,
-      default: 120,
+      default: 40,
       min: 0,
-      max: 120,
+      max: 40,
       unique: true,
     },
     {
@@ -319,15 +319,6 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             source: 'Self',
             value: _.min([x.getValue(Stats.BE), 2.4]),
           })
-          return x
-        })
-      if (form.xueyi_ult)
-        base.CALLBACK.push((x) => {
-          x.ULT_SCALING = _.map(x.ULT_SCALING, (item) =>
-            item.property === TalentProperty.ADD
-              ? { ...item, bonus: calcScaling(0.36, 0.024, ult, 'curved') * (form.xueyi_ult / 120) }
-              : item
-          )
           return x
         })
       return base

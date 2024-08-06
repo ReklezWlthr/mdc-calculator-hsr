@@ -67,7 +67,6 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
       TalentProperty.BREAK,
       TalentProperty.BREAK_DOT,
       TalentProperty.SUPER_BREAK,
-      TalentProperty.FROZEN,
     ],
     scaling.property
   )

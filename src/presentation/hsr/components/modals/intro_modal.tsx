@@ -31,7 +31,7 @@ export const IntroModal = observer(() => {
           Take it with a grain of salt.
         </BulletPoint>
         <BulletPoint>
-          The resulting stats may be slightly off due to hidden decimals and some mathematical wizardry, but the
+          The resulting stats/damage may be slightly off due to hidden decimals and some programming wizardry, but the
           differences should be negligible. SPD subs should be confirmed or imported for an accurate decimal value. The
           calculator will actively try to round the value to the nearest possible value.
         </BulletPoint>

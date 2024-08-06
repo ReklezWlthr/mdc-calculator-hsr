@@ -130,13 +130,13 @@ export const PathMap = {
 }
 
 export const BaseAggro = {
-  [PathType.PRESERVATION]: 150,
-  [PathType.HUNT]: 75,
-  [PathType.ERUDITION]: 75,
-  [PathType.ABUNDANCE]: 100,
-  [PathType.DESTRUCTION]: 125,
-  [PathType.HARMONY]: 100,
-  [PathType.NIHILITY]: 100,
+  [PathType.PRESERVATION]: 6,
+  [PathType.HUNT]: 3,
+  [PathType.ERUDITION]: 3,
+  [PathType.ABUNDANCE]: 4,
+  [PathType.DESTRUCTION]: 5,
+  [PathType.HARMONY]: 4,
+  [PathType.NIHILITY]: 4,
 }
 
 export enum TalentType {

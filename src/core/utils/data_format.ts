@@ -60,16 +60,17 @@ export const findCoefficient = (x: number, y: number, z: number, d: number, prec
   const minSum = 1
   const maxSum = 6
 
+  const results: { value: number; co: { a: number; b: number; c: number } }[] = []
+
   for (let a = 0; a <= maxSum; a++) {
     for (let b = 0; b <= maxSum; b++) {
       for (let c = 0; c <= maxSum; c++) {
         if (a + b + c >= minSum && a + b + c <= maxSum) {
-          if (
-            _.includes(
-              [_.round(a * x + b * y + c * z, precision), _.floor(a * x + b * y + c * z, precision)],
-              _.round(d, precision)
-            )
-          ) {
+          const rd = _.round(d, precision)
+          const rs = _.round(a * x + b * y + c * z, precision)
+          const fs = _.floor(a * x + b * y + c * z, precision)
+          results.push({ value: fs, co: { a, b, c } })
+          if (_.includes([rs, fs], rd)) {
             return { a, b, c }
           }
         }
@@ -77,33 +78,22 @@ export const findCoefficient = (x: number, y: number, z: number, d: number, prec
     }
   }
 
-  return { a: 0, b: 0, c: 0 }
+  results.sort((a, b) => a.value - b.value)
+
+  return _.find(results, (v) => v.value >= d)?.co || { a: 0, b: 0, c: 0 }
 }
 
 export const getNearestSpd = (value: number) => {
   const { min, bonus } = _.find(SubStatMap, (item) => item.stat === Stats.SPD)
-  const { coefficient, base } = _.minBy(
-    _.reduce<number, { coefficient: number; base: number }[]>(
-      [min, min + bonus, min + bonus * 2],
-      (acc, curr) => {
-        acc.push({ coefficient: value / curr, base: curr })
-        return acc
-      },
-      []
-    ),
-    ({ coefficient, base }) => {
-      const decimal = coefficient - _.floor(coefficient)
-      return _.inRange(decimal, 0.5, 1) ? Math.abs(decimal - 1) : decimal
-    }
-  )
-  return _.round(coefficient) * base
+  const { a, b, c } = findCoefficient(min, min + bonus, min + bonus * 2, value, 1)
+  return _.sum([a * min, b * (min + bonus), c * (min + bonus * 2)])
 }
 
 export const getRolls = (stat: Stats, value: number) => {
   const flat = _.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.SPD], stat)
   const { min, bonus } = _.find(SubStatMap, (item) => item.stat === stat)
 
-  const roundValue = stat === Stats.SPD ? getNearestSpd(value) : value / (flat ? 1 : 100)
+  const roundValue = value / (flat ? 1 : 100)
 
   return findCoefficient(min, min + bonus, min + bonus * 2, roundValue, flat ? (stat === Stats.SPD ? 1 : 0) : 3)
 }

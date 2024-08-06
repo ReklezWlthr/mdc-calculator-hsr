@@ -5,6 +5,40 @@ export const HelpModal = observer(() => {
   return (
     <div className="w-[50vw] bg-primary-dark rounded-lg p-3 space-y-2">
       <p className="text-lg font-bold text-white">Quick Guide</p>
+      <Collapsible label="Terms and Descriptions">
+        <p>
+          <b className="text-desc">Damage Properties</b>:
+        </p>
+        <BulletPoint>
+          <b>Normal</b> - A default damage type. Can be affected by every damage modifiers.
+        </BulletPoint>
+        <BulletPoint>
+          <b>Additional DMG</b> - A separated damage from the main attack. Not considered a hit nor an attack. Only
+          benefits from All-Type and Elemental damage modifiers.
+        </BulletPoint>
+        <BulletPoint>
+          <b>Frozen</b> - A sub-type of Additional DMG dealt when a <b className="text-hsr-ice">Frozen</b> unit is
+          unfrozen. <b className="text-hsr-ice">Frozen</b> DMG triggered by abilities can CRIT; those triggered by
+          Weakness Break cannot.
+        </BulletPoint>
+        <BulletPoint>
+          <b>DoT</b> - Damage dealt by DoT debuffs at the start of a unit's turn or when detonated. Can be affected by
+          damage modifiers but <i>cannot</i> CRIT.
+        </BulletPoint>
+        <BulletPoint>
+          <b>Follow-Up DMG</b> - Damage dealt by <u>follow-up attacks</u> triggered by certain abilities or summons.{' '}
+          <u>Counters</u> are also considered <u>follow-up attacks</u>.
+        </BulletPoint>
+        <BulletPoint>
+          <b>Break DMG</b> - Damage dealt via breaking enemy Weakness or certain abilities. Scales with the attacker's
+          Break Effect and the target's Max Toughness. Does not benefit from All-Type damage modifiers and <i>cannot</i>{' '}
+          CRIT.
+        </BulletPoint>
+        <BulletPoint>
+          <b>Super Break DMG</b> - A sub-type of Break DMG. Scales with the attacker's Break Effect and the attack's
+          Toughness DMG instead.
+        </BulletPoint>
+      </Collapsible>
       <Collapsible label="Team Setup">
         <p>This page contains 3 main sections:</p>
         <p>
@@ -70,9 +104,8 @@ export const HelpModal = observer(() => {
           formula breakdown.
         </p>
         <BulletPoint>
-          Each damage and hit chance number in the table can be hovered for a damage formula breakdown of that number.
-          You can also toggle the checkbox at the end of each damage row to include it in the Total row down below. Some
-          are toggled on by default. Adjust as you see fit.
+          Toggle the checkbox at the end of each damage row to include it in the Total row down below. Some are toggled
+          on by default. Adjust as you see fit.
         </BulletPoint>
         <BulletPoint>
           The <span className="text-desc">Modifiers</span> tab on the right allows you to toggle the character's
