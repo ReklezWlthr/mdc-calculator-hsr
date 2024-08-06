@@ -1,18 +1,17 @@
 import { StatsObject, StatsObjectKeys, TalentPropertyMap, TalentTypeMap } from '@src/data/lib/stats/baseConstant'
-import { DebuffTypes, IScaling } from '@src/domain/conditional'
-import { BreakDebuffType, Element, StatIcons, Stats, TalentProperty } from '@src/domain/constant'
+import { DebuffTypes } from '@src/domain/conditional'
+import { BreakDebuffType, Element, StatIcons, Stats } from '@src/domain/constant'
 import { toPercentage } from '@src/core/utils/converter'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
 import _ from 'lodash'
-import { propertyColor } from '@src/presentation/hsr/components/tables/scaling_sub_rows'
 import { BreakBaseLevel, BreakElementMult } from '@src/domain/scaling'
-import { useStore } from '@src/data/providers/app_store_provider'
-import { CalculatorStoreType } from '@src/data/stores/calculator_store'
+import { CalculatorStore } from '@src/data/stores/calculator_store'
 import { Enemies } from '@src/data/db/enemies'
 import { checkIsDoT } from '../finder'
+import { SetupStore } from '@src/data/stores/setup_store'
 
 export const breakDamageStringConstruct = (
-  calculatorStore: CalculatorStoreType,
+  calculatorStore: CalculatorStore | SetupStore,
   stats: StatsObject,
   level: number,
   multiplier?: number
@@ -42,7 +41,9 @@ export const breakDamageStringConstruct = (
     _.min([
       calculatorStore.getResMult(
         stats.ELEMENT,
-        (stats.getValue(`${stats.ELEMENT.toUpperCase()}_RES_PEN`) || 0) +
+        (stats.getValue(`${stats.ELEMENT.toUpperCase()}_RES_RED`) || 0) +
+          (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_RED) || 0) +
+          (stats.getValue(`${stats.ELEMENT.toUpperCase()}_RES_PEN`) || 0) +
           (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0)
       ),
       2,

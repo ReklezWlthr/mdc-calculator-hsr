@@ -246,7 +246,7 @@ export const ImportExport = observer(() => {
                   teamOverride={[{ ...DefaultCharacter, cId: char.cId }]}
                   disabled
                 />
-                <StatBlock index={selected} stat={stats} />
+                <StatBlock stat={stats} />
               </div>
               <div className="w-1/5 space-y-5">
                 <div className="grid items-center justify-center grid-cols-2 gap-5 py-3">

@@ -160,6 +160,8 @@ export const baseStatsObject = {
   TALENT_SCALING: [] as IScaling[],
   TECHNIQUE_SCALING: [] as IScaling[],
 
+  ADD_DEBUFF: [] as Omit<StatsArray, 'value'>[],
+
   DOT_SCALING: [] as IScaling[],
   WIND_SHEAR_STACK: 0,
 

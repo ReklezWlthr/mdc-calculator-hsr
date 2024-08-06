@@ -239,7 +239,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
       if (form.debt) {
         base.FUA_VUL.push({
-          name: 'Skill',
+          name: 'Proof of Debt',
           source: 'Self',
           value: calcScaling(0.25, 0.025, skill, 'curved'),
         })
@@ -247,7 +247,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       }
       if (form.debtor) {
         base.FUA_CD.push({
-          name: 'Skill',
+          name: 'Debtor',
           source: 'Self',
           value: form.debtor * 0.25,
         })
@@ -267,13 +267,13 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     ) => {
       if (form.debt)
         base.FUA_VUL.push({
-          name: 'Skill',
+          name: 'Proof of Debt',
           source: 'Topaz and Numby',
           value: calcScaling(0.25, 0.025, skill, 'curved'),
         })
       if (form.debtor)
         base.FUA_CD.push({
-          name: 'Skill',
+          name: 'Debtor',
           source: 'Topaz and Numby',
           value: form.debtor * 0.25,
         })

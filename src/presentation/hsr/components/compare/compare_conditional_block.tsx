@@ -37,6 +37,7 @@ export const CompareConditionalBlock = observer(({ team, stats, content }: Compa
         statsOverride={stats}
         teamOverride={team}
         setForm={(...params) => setupStore.setFormValue(setupIndex, ...params)}
+        compare
       />
       <ConditionalBlock
         title="Team Modifiers"
@@ -45,11 +46,13 @@ export const CompareConditionalBlock = observer(({ team, stats, content }: Compa
         statsOverride={stats}
         teamOverride={team}
         setForm={(...params) => setupStore.setFormValue(setupIndex, ...params)}
+        compare
       />
       <WeaponConditionalBlock
         contents={content.weapon(charIndex)}
         formOverride={setupStore.forms[setupIndex]}
         setForm={(...params) => setupStore.setFormValue(setupIndex, ...params)}
+        compare
       />
       <ConditionalBlock
         title="Relic Modifiers"
@@ -58,6 +61,7 @@ export const CompareConditionalBlock = observer(({ team, stats, content }: Compa
         statsOverride={stats}
         teamOverride={team}
         setForm={(...params) => setupStore.setFormValue(setupIndex, ...params)}
+        compare
       />
       <CustomConditionalBlock
         index={setupStore.selected[1]}

@@ -7,9 +7,10 @@ import _ from 'lodash'
 import { toPercentage } from '../converter'
 import classNames from 'classnames'
 import { ElementColor } from '@src/presentation/hsr/components/tables/scaling_sub_rows'
+import { SetupStore } from '@src/data/stores/setup_store'
 
 export const chanceStringConstruct = (
-  calculatorStore: CalculatorStore,
+  calculatorStore: CalculatorStore | SetupStore,
   stats: StatsObject,
   base: number,
   fixed: boolean,
@@ -60,13 +61,8 @@ export const chanceStringConstruct = (
       )}
       {!!debuffRes && !fixed && (
         <span>
-          {` \u{00d7} `}(1 -{' '}
-          <b
-            className={classNames(ElementColor[element])}
-          >
-            {toPercentage(debuffRes)}
-          </b>
-          )<i className="text-[10px] ml-0.5">DEBUFF RES</i>
+          {` \u{00d7} `}(1 - <b className={classNames(ElementColor[element])}>{toPercentage(debuffRes)}</b>)
+          <i className="text-[10px] ml-0.5">DEBUFF RES</i>
         </span>
       )}
     </div>

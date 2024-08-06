@@ -8,6 +8,8 @@ import { formatIdIcon } from '@src/core/utils/data_format'
 import classNames from 'classnames'
 import { ElementIconColor } from '../cons_circle'
 import { findCharacter } from '@src/core/utils/finder'
+import { useMemo, useState } from 'react'
+import { TextInput } from '@src/presentation/components/inputs/text_input'
 
 export interface TeamModalProps {
   onSelect: (team: TSetup) => void
@@ -52,11 +54,28 @@ export const TeamModalBlock = ({ team, button }: { team: TSetup; button: React.R
 export const TeamModal = observer(({ onSelect, filterId }: TeamModalProps) => {
   const { modalStore, teamStore, setupStore, settingStore } = useStore()
 
-  const team = [{ id: '', char: teamStore.characters, name: 'Current Team Setup' }, ...setupStore.team]
+  const [search, setSearch] = useState('')
+
+  const team = useMemo(
+    () => [
+      { id: '', char: teamStore.characters, name: 'Current Team Setup' },
+      ...(search
+        ? _.filter(setupStore.team, (item) =>
+            _.some([..._.map(item.char, (c) => findCharacter(c?.cId)?.name), item.name], (q) =>
+              _.includes(q?.toLowerCase(), search?.toLowerCase())
+            )
+          )
+        : setupStore.team),
+    ],
+    [setupStore.team, teamStore.characters, search]
+  )
 
   return (
     <div className="px-5 py-3 space-y-3 text-white rounded-lg bg-primary-dark w-[400px]">
-      <p className="font-semibold">Select a Setup</p>
+      <div className="flex items-center justify-between w-full gap-3">
+        <p className="font-semibold shrink-0">Select a Setup</p>
+        <TextInput value={search} onChange={setSearch} placeholder="Search Setup Name or Members" />
+      </div>
       <div className="space-y-2 dropdownScrollbar max-h-[70vh]">
         {_.map(
           filterId

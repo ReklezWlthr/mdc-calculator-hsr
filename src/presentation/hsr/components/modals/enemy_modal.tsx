@@ -7,22 +7,26 @@ import { BaseElementColor } from '@src/presentation/hsr/components/tables/scalin
 import { toPercentage } from '@src/core/utils/converter'
 import { observer } from 'mobx-react-lite'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
-import { StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
+import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { Enemies } from '@src/data/db/enemies'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 import { EnemyHpScaling } from '@src/domain/scaling'
+import { Tooltip } from '@src/presentation/components/tooltip'
 
-export const EnemyModal = observer(() => {
-  const { calculatorStore, teamStore, settingStore } = useStore()
-  const { res, level, computedStats, selected } = calculatorStore
+export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; compare?: boolean }) => {
+  const { calculatorStore, teamStore, settingStore, setupStore } = useStore()
+  const store = compare ? setupStore : calculatorStore
+  const setValue: (key: string, value: any) => void = store.setValue
+  const { res, level, enemy } = compare ? setupStore : calculatorStore
+  const isTrotter = _.includes(enemy, 'Trot')
   const charLevel = teamStore.characters[calculatorStore.selected]?.level
-  const rawDef = 10 * level + 200
-  const pen = computedStats[selected]?.getValue(StatsObjectKeys.DEF_PEN)
-  const red = computedStats[selected]?.getValue(StatsObjectKeys.DEF_REDUCTION)
+  const rawDef = isTrotter ? 15 * (+level || 1) + 300 : 10 * (+level || 1) + 200
+  const pen = stats?.getValue(StatsObjectKeys.DEF_PEN) || 0
+  const red = stats?.getValue(StatsObjectKeys.DEF_REDUCTION) || 0
   const def = _.max([rawDef * (1 - pen - red), 0])
-  const defMult = calculatorStore.getDefMult(charLevel, pen, red)
+  const defMult = store.getDefMult(charLevel, pen, red)
 
   const enemies = settingStore.settings.variant
     ? Enemies
@@ -35,22 +39,19 @@ export const EnemyModal = observer(() => {
         <div className="flex flex-col w-full gap-y-1">
           <p className="text-sm">Enemy Preset</p>
           <SelectTextInput
-            value={calculatorStore.enemy}
+            value={enemy}
             onChange={(v) => {
-              calculatorStore.setValue('enemy', v?.value)
+              setValue('enemy', v?.value)
               const enemyData = _.find(Enemies, (item) => item.name === v?.value)
               if (enemyData) {
-                calculatorStore.setValue(
+                setValue(
                   'res',
                   _.mapValues(enemyData?.res, (item) => item * 100)
                 )
-                calculatorStore.setValue('weakness', enemyData?.weakness)
-                calculatorStore.setValue(
-                  'hp',
-                  _.round((enemyData?.baseHp / _.head(EnemyHpScaling)) * EnemyHpScaling[calculatorStore.level - 1])
-                )
-                calculatorStore.setValue('toughness', enemyData?.toughness)
-                calculatorStore.setValue('effRes', enemyData?.effRes)
+                setValue('weakness', enemyData?.weakness)
+                setValue('hp', _.round((enemyData?.baseHp / _.head(EnemyHpScaling)) * EnemyHpScaling[+level - 1]))
+                setValue('toughness', enemyData?.toughness)
+                setValue('effRes', enemyData?.effRes)
               }
             }}
             options={_.map(enemies, (item) => ({
@@ -67,59 +68,70 @@ export const EnemyModal = observer(() => {
             min={1}
             value={level.toString()}
             onChange={(value) => {
-              const enemyData = _.find(Enemies, (item) => item.name === calculatorStore.enemy)
+              const enemyData = _.find(Enemies, (item) => item.name === enemy)
               if (enemyData)
-                calculatorStore.setValue(
+                setValue(
                   'hp',
                   _.round((enemyData?.baseHp / _.head(EnemyHpScaling)) * EnemyHpScaling[(Number(value) || 1) - 1])
                 )
-              calculatorStore.setValue('level', Number(value) || 1)
+              setValue('level', value === '' ? '' : value)
             }}
             style="w-[80px]"
           />
         </div>
       </div>
       <div className="flex flex-col w-full gap-y-1">
-        <p className="text-sm">Weaknesses</p>
+        <p className="text-sm">Innate Weaknesses</p>
         <TagSelectInput
-          values={calculatorStore.weakness}
+          values={store.weakness}
           placeholder="No Weakness"
           options={_.map(Element, (item) => ({ name: item, value: item }))}
-          onChange={(values) => calculatorStore.setValue('weakness', values as any)}
-          disabled={!!calculatorStore.enemy}
+          onChange={(values) => setValue('weakness', values as any)}
+          disabled={!!enemy}
         />
       </div>
       <div className="flex justify-between gap-4">
         <div className="space-y-5">
           <div className="flex gap-4">
             <div className="flex flex-col w-full gap-y-1">
-              <p className="text-sm">Max HP</p>
-              <TextInput
-                value={calculatorStore.hp?.toString()}
-                onChange={(values) => calculatorStore.setValue('hp', values as any)}
-                min={0}
-              />
+              <div className="flex items-center gap-2">
+                <p className="text-sm">Max HP</p>
+                <Tooltip
+                  title="Enemy Max HP"
+                  body={
+                    <p className="text-xs font-normal">
+                      The calculator automatically fills the enemy's Max HP, but the value may be inaccurate. Feel free
+                      to change it.
+                      <br />
+                      Currently, this value is only used to calculate Bleed damage, so in most cases, it will not affect
+                      the calculation.
+                    </p>
+                  }
+                  style="w-[450px]"
+                >
+                  <i className="fa-regular fa-question-circle text-gray" />
+                </Tooltip>
+              </div>
+              <TextInput value={store.hp?.toString()} onChange={(values) => setValue('hp', values as any)} min={0} />
             </div>
             <div className="flex flex-col w-full gap-y-1">
               <p className="text-sm">Toughness</p>
               <TextInput
-                value={calculatorStore.toughness?.toString()}
-                onChange={(values) => calculatorStore.setValue('toughness', values as any)}
+                value={store.toughness?.toString()}
+                onChange={(values) => setValue('toughness', values as any)}
                 min={0}
-                disabled={!!calculatorStore.enemy}
+                disabled={!!store.enemy}
               />
             </div>
             <div className="flex flex-col w-full gap-y-1">
               <p className="text-sm">Effect RES</p>
               <div className="flex items-center gap-x-2">
                 <TextInput
-                  value={(calculatorStore.effRes * 100)?.toString()}
-                  onChange={(value) => calculatorStore.setValue('effRes', (Number(value) / 100) as any)}
-                  disabled={!!calculatorStore.enemy}
+                  value={(store.effRes * 100)?.toString()}
+                  onChange={(value) => setValue('effRes', (Number(value) / 100) as any)}
+                  disabled={!!store.enemy}
                 />
-                {calculatorStore.level >= 51 && (
-                  <p className="text-xs font-normal">+{_.min([10, 0.4 * (calculatorStore.level - 50)]).toFixed(1)}%</p>
-                )}
+                {+level >= 51 && <p className="text-xs font-normal">+{_.min([10, 0.4 * (+level - 50)]).toFixed(1)}%</p>}
               </div>
             </div>
           </div>
@@ -130,7 +142,7 @@ export const EnemyModal = observer(() => {
               <p>=</p>
               <div className="flex flex-wrap items-center gap-x-2">
                 <p>
-                  (<b className="text-red">{level}</b> &#215; 10 + 200)
+                  ({isTrotter ? 300 : 200} + {isTrotter ? 15 : 10} &#215; <b className="text-red">{level || 1}</b>)
                 </p>
                 {!!(pen || red) && (
                   <p>
@@ -144,6 +156,17 @@ export const EnemyModal = observer(() => {
                 )}
               </div>
             </div>
+            {!!pen && (
+              <p className="ml-2 text-xs font-normal">
+                <span className="text-desc">✦</span> DEF PEN: <span className="text-red">{toPercentage(pen)}</span>
+              </p>
+            )}
+            {!!red && (
+              <p className="ml-2 text-xs font-normal">
+                <span className="text-desc">✦</span> DEF Reduction:{' '}
+                <span className="text-desc">{toPercentage(red)}</span>
+              </p>
+            )}
             <p className="pt-2">DEF Multiplier</p>
             <div className="flex items-center gap-2 px-2 py-1 text-sm font-normal rounded-lg bg-primary-darker w-fit text-gray">
               <p className="font-bold text-orange-300">{toPercentage(defMult)}</p>
@@ -163,7 +186,7 @@ export const EnemyModal = observer(() => {
               <p className="text-sm font-normal">Weakness Broken</p>
               <CheckboxInput
                 checked={calculatorStore.broken}
-                onClick={() => calculatorStore.setValue('broken', !calculatorStore.broken)}
+                onClick={() => setValue('broken', !calculatorStore.broken)}
               />
             </div>
           </div>

@@ -239,7 +239,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       }
       if (form.ashen_roast) {
         base.VULNERABILITY.push({
-          name: `Ultimate`,
+          name: `Ashen Roast`,
           source: 'Self',
           value:
             calcScaling(0.075, 0.0075, talent, 'curved') +
@@ -296,7 +296,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       }
       if (form.ashen_roast) {
         base.VULNERABILITY.push({
-          name: `Ultimate`,
+          name: `Ashen Roast`,
           source: 'Jiaoqiu',
           value:
             calcScaling(0.075, 0.0075, talent, 'curved') +

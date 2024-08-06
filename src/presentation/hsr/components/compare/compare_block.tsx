@@ -20,6 +20,8 @@ import { CharacterSelect } from '../character_select'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { BaseAggro, TalentType } from '@src/domain/constant'
 import { CompareTotalRows } from '../tables/compare_total_row'
+import { EnemyModal } from '../modals/enemy_modal'
+import { DebuffModal } from '../modals/debuff_modal'
 
 export const CompareBlock = observer(() => {
   const { setupStore, modalStore } = useStore()
@@ -41,6 +43,7 @@ export const CompareBlock = observer(() => {
     formOverride: setupStore.forms[0],
     indexOverride: selected,
     customOverride: setupStore.custom[0],
+    weaknessOverride: setupStore.weakness,
     initFormFunction: (f) => setupStore.initForm(0, f),
   })
   const sub1 = useCalculator({
@@ -49,6 +52,7 @@ export const CompareBlock = observer(() => {
     formOverride: setupStore.forms[1],
     indexOverride: selectedS1,
     customOverride: setupStore.custom[1],
+    weaknessOverride: setupStore.weakness,
     initFormFunction: (f) => setupStore.initForm(1, f),
     enabled: !!setupStore.comparing[0]?.char,
   })
@@ -58,6 +62,7 @@ export const CompareBlock = observer(() => {
     formOverride: setupStore.forms[2],
     indexOverride: selectedS2,
     customOverride: setupStore.custom[2],
+    weaknessOverride: setupStore.weakness,
     initFormFunction: (f) => setupStore.initForm(2, f),
     enabled: !!setupStore.comparing[1]?.char,
   })
@@ -67,6 +72,7 @@ export const CompareBlock = observer(() => {
     formOverride: setupStore.forms[3],
     indexOverride: selectedS3,
     customOverride: setupStore.custom[3],
+    weaknessOverride: setupStore.weakness,
     initFormFunction: (f) => setupStore.initForm(3, f),
     enabled: !!setupStore.comparing[2]?.char,
   })
@@ -78,6 +84,7 @@ export const CompareBlock = observer(() => {
     sub3.finalStats?.[selectedS3],
   ]
   const allStats = [finalStats, sub1.finalStats, sub2.finalStats, sub3.finalStats]
+  const allDebuffs = [mainContent.finalDebuff, sub1.finalDebuff, sub2.finalDebuff, sub3.finalDebuff]
   const levels = [
     { level: _.map(setupStore.main?.char, 'level'), selected },
     { level: _.map(setupStore.comparing?.[0]?.char, 'level'), selected: selectedS1 },
@@ -110,6 +117,22 @@ export const CompareBlock = observer(() => {
         />
       ),
     [allStats, charData]
+  )
+  const onOpenEnemyModal = useCallback(
+    () => modalStore.openModal(<EnemyModal stats={allStats[setupIndex][charIndex]} compare />),
+    [allStats, setupIndex, charIndex]
+  )
+  const onOpenDebuffModal = useCallback(
+    () =>
+      modalStore.openModal(
+        <DebuffModal
+          statsOverride={allStats[setupIndex]}
+          selectedOverride={charIndex}
+          debuffOverride={allDebuffs[setupIndex]}
+          setup={setupIndex ? setupStore.comparing[setupIndex - 1]?.name : setupStore.main?.name}
+        />
+      ),
+    [allStats, setupIndex, charIndex, allDebuffs]
   )
 
   const renderRow = (type: string, talent: TalentType) => (
@@ -161,20 +184,26 @@ export const CompareBlock = observer(() => {
     <div className="grid grid-cols-3 gap-4 px-5">
       {_.some(sumStats) && (
         <div className="flex flex-col col-span-2 mb-5 text-sm text-white h-fit">
-          <div className="flex items-center gap-2 mb-3">
-            <p>Compare Mode</p>
-            <SelectInput
-              value={setupStore.mode}
-              options={[
-                { name: 'Base', value: 'base' },
-                { name: 'CRIT', value: 'crit' },
-                { name: 'Average', value: 'avg' },
-                { name: 'Percentage Avg.', value: 'percent' },
-                { name: 'Absolute Avg.', value: 'abs' },
-              ]}
-              onChange={(v) => setupStore.setValue('mode', v)}
-              style="w-[125px]"
-            />
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <p>Compare Mode</p>
+              <SelectInput
+                value={setupStore.mode}
+                options={[
+                  { name: 'Base', value: 'base' },
+                  { name: 'CRIT', value: 'crit' },
+                  { name: 'Average', value: 'avg' },
+                  { name: 'Percentage Avg.', value: 'percent' },
+                  { name: 'Absolute Avg.', value: 'abs' },
+                ]}
+                onChange={(v) => setupStore.setValue('mode', v)}
+                style="w-[125px]"
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <PrimaryButton onClick={onOpenEnemyModal} title="Enemy Setting" style="whitespace-nowrap" />
+              <PrimaryButton onClick={onOpenDebuffModal} title="Debuffs" style="whitespace-nowrap" />
+            </div>
           </div>
           <div className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
             <p>Damage Comparison</p>

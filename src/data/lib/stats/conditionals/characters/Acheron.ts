@@ -1,7 +1,16 @@
 import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { AbilityTag, Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
@@ -33,7 +42,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Acheron's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
-      tag: AbilityTag.ST
+      tag: AbilityTag.ST,
     },
     skill: {
       trace: 'Skill',
@@ -44,7 +53,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 30, growth: 3, style: 'curved' },
       ],
       level: skill,
-      tag: AbilityTag.BLAST
+      tag: AbilityTag.BLAST,
     },
     ult: {
       trace: 'Ultimate',
@@ -64,7 +73,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 72, growth: 4.8, style: 'curved' },
       ],
       level: ult,
-      tag: AbilityTag.AOE
+      tag: AbilityTag.AOE,
     },
     talent: {
       trace: 'Talent',
@@ -74,7 +83,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       <br />After an enemy target exits the field or gets defeated by any unit while Acheron is on the field, their <b class="text-hsr-fire">Crimson Knot</b> stacks will be transferred to the enemy target with the most <b class="text-hsr-fire">Crimson Knot</b> stacks on the whole field.`,
       value: [{ base: 10, growth: 1, style: 'curved' }],
       level: talent,
-      tag: AbilityTag.ENHANCE
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',
@@ -335,6 +344,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         value: calcScaling(0.1, 0.01, talent, 'curved'),
       })
 
+      if (form.crimson_knot) addDebuff(debuffs, DebuffTypes.OTHER)
       if (a.a6) {
         base.ULT_SCALING.push({
           name: 'Thunder Core Total DMG',

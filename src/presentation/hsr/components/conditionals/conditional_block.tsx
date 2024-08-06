@@ -30,6 +30,7 @@ interface ConditionalBlockProps {
   statsOverride?: StatsObject[]
   teamOverride?: ITeamChar[]
   setForm?: FormSetterT
+  compare?: boolean
 }
 
 export const ConditionalBlock = observer(
@@ -41,10 +42,11 @@ export const ConditionalBlock = observer(
     formOverride,
     statsOverride,
     teamOverride,
+    compare,
   }: ConditionalBlockProps) => {
     const [open, setOpen] = useState(true)
 
-    const { calculatorStore, teamStore } = useStore()
+    const { calculatorStore, teamStore, setupStore } = useStore()
     const form = formOverride || calculatorStore.form
     const set = setForm || calculatorStore.setFormValue
     const teamStats = statsOverride || calculatorStore.computedStats
@@ -96,7 +98,7 @@ export const ConditionalBlock = observer(
 
               const stats = teamStats[content.index]
               const { prob, ProbComponent } = chanceStringConstruct(
-                calculatorStore,
+                compare ? setupStore : calculatorStore,
                 stats,
                 content.chance?.base,
                 content.chance?.fixed,

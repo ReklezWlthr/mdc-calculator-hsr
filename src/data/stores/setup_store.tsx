@@ -59,6 +59,14 @@ export interface SetupStoreType {
   }[][][]
   forms: Record<string, any>[][]
   hydrated: boolean
+  res: Record<Element, number>
+  level: number | string
+  enemy: string
+  hp: number
+  toughness: number
+  effRes: number
+  broken: boolean
+  weakness: Element[]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (i: number, initData: Record<string, any>[]) => void
   setForm: (index: number, value: Record<string, any>[]) => void
@@ -66,6 +74,10 @@ export interface SetupStoreType {
   setComparing: (value: Partial<ITeamChar>) => void
   setTotal: (key: TalentType, index: number, name: string, value: number) => void
   getTotal: (key: TalentType, index: number) => number
+  setRes: (element: Element, value: number) => void
+  getEffRes: (reduction?: number) => number
+  getDefMult: (level: number, defPen: number, defRed: number) => number
+  getResMult: (element: Element, resPen: number) => number
   clearTotal: () => void
   clearComparing: () => void
   setCustomValue: CustomSetterT
@@ -93,6 +105,14 @@ export class SetupStore {
   }[][][]
   hydrated: boolean = false
   forms: Record<string, any>[][]
+  res: Record<Element, number>
+  level: number | string
+  enemy: string
+  hp: number
+  toughness: number
+  effRes: number
+  broken: boolean
+  weakness: Element[]
 
   constructor() {
     this.mode = 'avg'
@@ -104,6 +124,22 @@ export class SetupStore {
     this.mainChar = null
     this.comparing = Array(3)
     this.forms = Array(4)
+    this.res = {
+      [Element.PHYSICAL]: 0,
+      [Element.FIRE]: 0,
+      [Element.ICE]: 0,
+      [Element.LIGHTNING]: 0,
+      [Element.WIND]: 0,
+      [Element.QUANTUM]: 0,
+      [Element.IMAGINARY]: 0,
+    }
+    this.level = 1
+    this.enemy = ''
+    this.hp = 1
+    this.toughness = 30
+    this.effRes = 0
+    this.broken = false
+    this.weakness = []
 
     makeAutoObservable(this)
   }
@@ -162,6 +198,28 @@ export class SetupStore {
     } else {
       return _.sum(_.map(this.comparing[index - 1]?.total[key]))
     }
+  }
+
+  setRes = (element: Element, value: number) => {
+    this.res[element] = value
+  }
+
+  getDefMult = (level: number, defPen: number = 0, defRed: number = 0) => {
+    const base = _.includes(this.enemy, 'Trot') ? 300 : 200
+    const growth = _.includes(this.enemy, 'Trot') ? 15 : 10
+    const def = (base + growth * (+this.level || 1)) * (1 - defPen - defRed)
+
+    return _.min([1 - def / (def + 200 + 10 * level), 1])
+  }
+
+  getResMult = (element: Element, resPen: number) => {
+    if (this.res[element] === Infinity) return 0
+    const res = this.res[element] / 100 - resPen
+    return 1 - res
+  }
+
+  getEffRes = (reduction?: number) => {
+    return this.effRes + (+this.level >= 51 ? _.min([0.1, 0.004 * (+this.level - 50)]) : 0) - reduction
   }
 
   setComparing = (value: Partial<ITeamChar>) => {

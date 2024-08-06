@@ -72,7 +72,7 @@ export const SaveBuildModal = observer(({ index }: { index: number }) => {
         </div>
         <div className="flex justify-end gap-2">
           <GhostButton title="Cancel" onClick={() => modalStore.closeModal()} />
-          <PrimaryButton title="Confirm" onClick={onSaveBuild} />
+          <PrimaryButton title="Confirm" onClick={onSaveBuild} disabled={!name} />
         </div>
       </div>
       {_.size(filteredBuilds) > 0 && (

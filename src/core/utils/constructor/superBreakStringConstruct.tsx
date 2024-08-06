@@ -7,10 +7,11 @@ import _ from 'lodash'
 import { propertyColor } from '@src/presentation/hsr/components/tables/scaling_sub_rows'
 import { BreakBaseLevel, BreakElementMult } from '@src/domain/scaling'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { CalculatorStoreType } from '@src/data/stores/calculator_store'
+import { CalculatorStore, CalculatorStoreType } from '@src/data/stores/calculator_store'
+import { SetupStore } from '@src/data/stores/setup_store'
 
 export const superBreakStringConstruct = (
-  calculatorStore: CalculatorStoreType,
+  calculatorStore: CalculatorStore | SetupStore,
   scaling: IScaling,
   stats: StatsObject,
   level: number
@@ -35,7 +36,9 @@ export const superBreakStringConstruct = (
     _.min([
       calculatorStore.getResMult(
         element as Element,
-        (stats.getValue(`${element.toUpperCase()}_RES_PEN`) || 0) +
+        (stats.getValue(`${element.toUpperCase()}_RES_RED`) || 0) +
+          (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_RED) || 0) +
+          (stats.getValue(`${element.toUpperCase()}_RES_PEN`) || 0) +
           (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0) +
           (scaling.res_pen || 0) // Counted as Elemental RES PEN
       ),

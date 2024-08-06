@@ -38,7 +38,7 @@ export const Calculator = observer(({}: {}) => {
 
   const { main, mainComputed, contents, finalStats } = useCalculator({ teamOverride: team })
 
-  const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal />), [])
+  const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal stats={mainComputed} />), [mainComputed])
   const onOpenDebuffModal = useCallback(() => modalStore.openModal(<DebuffModal />), [])
   const onOpenStatsModal = useCallback(
     () =>

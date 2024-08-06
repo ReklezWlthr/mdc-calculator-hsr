@@ -10,11 +10,11 @@ export const HelpModal = observer(() => {
           <b className="text-desc">Damage Properties</b>:
         </p>
         <BulletPoint>
-          <b>Normal</b> - A default damage type. Can be affected by every damage modifiers.
+          <b>Normal</b> - A default damage type. Can be affected by every type of DMG Boost.
         </BulletPoint>
         <BulletPoint>
-          <b>Additional DMG</b> - A separated damage from the main attack. Not considered a hit nor an attack. Only
-          benefits from All-Type and Elemental damage modifiers.
+          <b>Additional DMG</b> - A single instance of damage dealt at the end of the main attack. Not considered a hit
+          nor an attack. Only benefits from All-Type and Elemental DMG Boost.
         </BulletPoint>
         <BulletPoint>
           <b>Frozen</b> - A sub-type of Additional DMG dealt when a <b className="text-hsr-ice">Frozen</b> unit is
@@ -23,7 +23,7 @@ export const HelpModal = observer(() => {
         </BulletPoint>
         <BulletPoint>
           <b>DoT</b> - Damage dealt by DoT debuffs at the start of a unit's turn or when detonated. Can be affected by
-          damage modifiers but <i>cannot</i> CRIT.
+          DMG Boost but <i>cannot</i> CRIT. Break DoT does not benefit from DMG Boost.
         </BulletPoint>
         <BulletPoint>
           <b>Follow-Up DMG</b> - Damage dealt by <u>follow-up attacks</u> triggered by certain abilities or summons.{' '}
@@ -31,12 +31,11 @@ export const HelpModal = observer(() => {
         </BulletPoint>
         <BulletPoint>
           <b>Break DMG</b> - Damage dealt via breaking enemy Weakness or certain abilities. Scales with the attacker's
-          Break Effect and the target's Max Toughness. Does not benefit from All-Type damage modifiers and <i>cannot</i>{' '}
-          CRIT.
+          Break Effect and the target's Max Toughness. Does not benefit from DMG Boost and <i>cannot</i> CRIT.
         </BulletPoint>
         <BulletPoint>
-          <b>Super Break DMG</b> - A sub-type of Break DMG. Scales with the attacker's Break Effect and the attack's
-          Toughness DMG instead.
+          <b>Super Break DMG</b> - A sub-type of Break DMG dealt by certain abilities while the target is Weakness
+          Broken. Scales with the attacker's Break Effect and the attack's Toughness DMG instead. Affected by Hit Split.
         </BulletPoint>
       </Collapsible>
       <Collapsible label="Team Setup">

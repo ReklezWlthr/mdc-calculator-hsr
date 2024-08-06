@@ -59,7 +59,7 @@ export const BuildBlock = observer(({ build, owner, onClick, selected }: BuildBl
         {_.map(build, (item) => (
           <div
             key={item.id}
-            className="mt-2 duration-150 cursor-pointer active:scale-95"
+            className="mt-2 duration-150 cursor-pointer active:scale-[98%]"
             onClick={() => onClick(item.id)}
           >
             <BuildModalBlock

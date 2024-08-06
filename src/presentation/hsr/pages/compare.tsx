@@ -289,7 +289,10 @@ export const ComparePage = observer(() => {
                           onSelect: (team) => {
                             const newCompare = _.cloneDeep(setupStore.comparing)
                             newCompare.splice(tI, 1, { ...team, total: defaultTotal })
-                            const name = findValidName(_.map([setupStore.main, ...newCompare], 'name'), team.name)
+                            const name = findValidName(
+                              _.map([setupStore.main, ...setupStore.comparing], 'name'),
+                              team.name
+                            )
                             newCompare[tI].name = name
                             setupStore.setValue('comparing', newCompare)
                           },

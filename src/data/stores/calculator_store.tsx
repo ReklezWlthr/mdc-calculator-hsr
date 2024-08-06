@@ -23,7 +23,7 @@ export interface CalculatorStoreType {
   hp: number
   toughness: number
   effRes: number
-  level: number
+  level: number | string
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (initData: Record<string, any>[]) => void
@@ -53,7 +53,7 @@ export class CalculatorStore {
   toughness: number
   debuffs: { type: DebuffTypes; count: number }[]
   enemy: string
-  level: number
+  level: number | string
   selected: number
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
 
@@ -133,7 +133,11 @@ export class CalculatorStore {
   }
 
   getDefMult = (level: number, defPen: number = 0, defRed: number = 0) => {
-    return _.min([(level + 20) / ((this.level + 20) * (1 - defPen - defRed) + level + 20), 1])
+    const base = _.includes(this.enemy, 'Trot') ? 300 : 200
+    const growth = _.includes(this.enemy, 'Trot') ? 15 : 10
+    const def = (base + growth * (+this.level || 1)) * (1 - defPen - defRed)
+
+    return _.min([1 - def / (def + 200 + 10 * level), 1])
   }
 
   getResMult = (element: Element, resPen: number) => {
@@ -143,7 +147,7 @@ export class CalculatorStore {
   }
 
   getEffRes = (reduction?: number) => {
-    return this.effRes + (this.level >= 51 ? _.min([0.1, 0.004 * (this.level - 50)]) : 0) - reduction
+    return this.effRes + (+this.level >= 51 ? _.min([0.1, 0.004 * (+this.level - 50)]) : 0) - reduction
   }
 
   hydrate = (data: CalculatorStoreType) => {

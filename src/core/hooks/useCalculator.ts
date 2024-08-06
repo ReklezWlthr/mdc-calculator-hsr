@@ -42,6 +42,7 @@ interface CalculatorOptions {
   doNotSaveStats?: boolean
   indexOverride?: number
   talentOverride?: ITeamChar
+  weaknessOverride?: Element[]
   initFormFunction?: (f: Record<string, any>[]) => void
 }
 
@@ -52,6 +53,7 @@ export const useCalculator = ({
   customOverride,
   indexOverride,
   talentOverride,
+  weaknessOverride,
   doNotSaveStats,
   initFormFunction,
 }: CalculatorOptions) => {
@@ -59,6 +61,7 @@ export const useCalculator = ({
 
   const selected = indexOverride ?? calculatorStore?.selected
   const [finalStats, setFinalStats] = useState<StatsObject[]>(null)
+  const [finalDebuff, setFinalDebuff] = useState<{ type: DebuffTypes; count: number }[]>([])
 
   const forms = formOverride || calculatorStore.form
   const team = teamOverride || teamStore.characters
@@ -205,7 +208,7 @@ export const useCalculator = ({
   useEffect(() => {
     if (!_.some(forms)) return
     if (enabled) {
-      const weakness = _.cloneDeep(calculatorStore.weakness)
+      const weakness = _.cloneDeep(weaknessOverride || calculatorStore.weakness)
       const debuffs = _.map(DebuffTypes, (v) => ({ type: v, count: 0 }))
       const preCompute = _.map(conditionals, (base, index) => {
         let x =
@@ -351,6 +354,7 @@ export const useCalculator = ({
         calculatorStore.setValue('debuffs', debuffs)
       }
       setFinalStats(final)
+      setFinalDebuff(debuffs)
     }
   }, [baseStats, forms, custom, team, calculatorStore.weakness, calculatorStore.broken, calculatorStore.toughness])
 
@@ -391,6 +395,7 @@ export const useCalculator = ({
     main,
     mainComputed,
     finalStats,
+    finalDebuff,
     contents: {
       main: mainContent,
       team: teamContent,

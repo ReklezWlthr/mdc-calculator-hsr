@@ -48,13 +48,13 @@ export const ElementColor = {
 
 export const CompareSubRows = observer(
   ({ scaling, stats, allStats, level, name, property, type, element, setupNames }: ScalingSubRowsProps) => {
-    const { setupStore, calculatorStore } = useStore()
+    const { setupStore } = useStore()
     const [sum, setSum] = useState(_.some(scaling, (item) => item?.sum))
 
     const mode = setupStore.mode
     const [main, sub1, sub2, sub3] = _.map(Array(4), (_v, index) =>
       damageStringConstruct(
-        calculatorStore,
+        setupStore,
         scaling[index],
         scaling[index]?.overrideIndex >= 0 ? allStats[index]?.[scaling[index]?.overrideIndex] : stats[index],
         level[index].level[scaling[index]?.overrideIndex ?? level[index].selected]

@@ -5,12 +5,24 @@ import { BulletPoint, Collapsible } from '@src/presentation/components/collapsib
 import { AttributeBlock } from '@src/presentation/hsr/components/modals/stats_modal'
 import { countDebuff, countDot } from '@src/core/utils/finder'
 import { DebuffTypes } from '@src/domain/conditional'
+import { StatsObject } from '@src/data/lib/stats/baseConstant'
 
-export const DebuffModal = observer(() => {
+interface DebuffModalProps {
+  statsOverride?: StatsObject[]
+  selectedOverride?: number
+  debuffOverride?: {
+    type: DebuffTypes
+    count: number
+  }[]
+  setup?: string
+}
+
+export const DebuffModal = observer(({ statsOverride, selectedOverride, debuffOverride, setup }: DebuffModalProps) => {
   const { calculatorStore } = useStore()
   const { computedStats, selected } = calculatorStore
 
-  const stats = computedStats[selected]
+  const allStats = statsOverride || computedStats
+  const stats = allStats[selectedOverride ?? selected]
 
   const DoTBlock = ({ type }: { type: DebuffTypes }) => (
     <div className="space-y-1">
@@ -19,19 +31,20 @@ export const DebuffModal = observer(() => {
         {_.map(
           _.groupBy(
             _.filter(
-              _.flatMap(calculatorStore.computedStats, (item) => item.DOT_SCALING),
+              _.flatMap(allStats, (item) => item.DOT_SCALING),
               (item) => _.includes([type, DebuffTypes.DOT], item.dotType)
             ),
             'overrideIndex'
           ),
           (item, index) => (
             <BulletPoint key={index}>
-              {calculatorStore.computedStats[index].NAME} - <span className="text-desc">{_.size(item)}</span>
+              {allStats[index].NAME} - <span className="text-desc">{_.size(item)}</span>
             </BulletPoint>
           )
         )}
         <BulletPoint key="total">
-          <b>Total Count</b> - <span className="text-red">{countDot(calculatorStore.debuffs, type)}</span>
+          <b>Total Count</b> -{' '}
+          <span className="text-red">{countDot(debuffOverride || calculatorStore.debuffs, type)}</span>
         </BulletPoint>
       </div>
     </div>
@@ -40,9 +53,11 @@ export const DebuffModal = observer(() => {
   return (
     <div className="w-[50vw] p-4 text-white rounded-xl bg-primary-dark space-y-3 font-semibold">
       <div className="flex items-end justify-between">
-        <p>Debuffs</p>
+        <p className="font-bold">
+          Debuff Breakdown{!!setup && <span className="ml-2 text-sm font-normal text-gray">[{setup}]</span>}
+        </p>
         <p className="text-sm">
-          Debuff Count: <span className="text-red">{countDebuff(calculatorStore.debuffs)}</span>
+          Debuff Count: <span className="text-red">{countDebuff(debuffOverride || calculatorStore.debuffs)}</span>
         </p>
       </div>
       <Collapsible label="Attribute Reduction">

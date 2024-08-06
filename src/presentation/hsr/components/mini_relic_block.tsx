@@ -37,7 +37,7 @@ export const MiniRelicBlock = observer(
 
     return (
       <div
-        className={classNames('px-3 py-1.5 min-h-24 rounded-lg bg-primary-dark duration-200 text-white', {
+        className={classNames('px-3 py-1.5 min-h-24 h-24 rounded-lg bg-primary-dark duration-200 text-white', {
           'hover:scale-[97%] hover:ring-2 ring-primary-light cursor-pointer': setRelic,
         })}
         onClick={onOpenSwapModal}

@@ -47,14 +47,14 @@ export const ElementColor = {
 
 export const CompareSuperBreakSubRows = observer(
   ({ scaling, stats, allStats, level, name, element, type, setupNames }: ScalingSubRowsProps) => {
-    const { calculatorStore, setupStore } = useStore()
+    const { setupStore } = useStore()
     const [sum, setSum] = useState(_.some(scaling, (item) => item?.sum))
 
     const mode = setupStore.mode
 
     const [main, sub1, sub2, sub3] = _.map(Array(4), (_v, index) =>
       superBreakStringConstruct(
-        calculatorStore,
+        setupStore,
         scaling[index],
         scaling[index]?.overrideIndex >= 0 ? allStats[index]?.[scaling[0]?.overrideIndex] : stats[index],
         level[index].level[scaling[index]?.overrideIndex ?? level[index].selected]

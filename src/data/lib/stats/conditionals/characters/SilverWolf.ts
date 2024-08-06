@@ -316,7 +316,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       }
       if (form.atk_bug) {
         base.ATK_REDUCTION.push({
-          name: `Talent`,
+          name: `Bug [ATK]`,
           source: 'Self',
           value: calcScaling(0.05, 0.005, ult, 'curved'),
         })
@@ -324,7 +324,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       }
       if (form.def_bug) {
         base.DEF_REDUCTION.push({
-          name: `Talent`,
+          name: `Bug [DEF]`,
           source: 'Self',
           value: calcScaling(0.04, 0.004, ult, 'curved'),
         })
@@ -332,7 +332,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       }
       if (form.spd_bug) {
         base.SPD_REDUCTION.push({
-          name: `Talent`,
+          name: `Bug [SPD]`,
           source: 'Self',
           value: calcScaling(0.03, 0.003, ult, 'curved'),
         })
@@ -378,19 +378,19 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         })
       if (form.atk_bug)
         base.ATK_REDUCTION.push({
-          name: `Talent`,
+          name: `Bug [ATK]`,
           source: 'Silver Wolf',
           value: calcScaling(0.05, 0.005, ult, 'curved'),
         })
       if (form.def_bug)
         base.DEF_REDUCTION.push({
-          name: `Talent`,
+          name: `Bug [DEF]`,
           source: 'Silver Wolf',
           value: calcScaling(0.04, 0.004, ult, 'curved'),
         })
       if (form.spd_bug)
         base.SPD_REDUCTION.push({
-          name: `Talent`,
+          name: `Bug [SPD]`,
           source: 'Silver Wolf',
           value: calcScaling(0.03, 0.003, ult, 'curved'),
         })
