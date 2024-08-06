@@ -70,6 +70,7 @@ export const TalentIcon = observer(
         />
       )
 
+    const id = icon.split('_')[1]
     const IconComp = () => (
       <div className="relative">
         <div
@@ -80,13 +81,7 @@ export const TalentIcon = observer(
             { 'group-hover:ring-offset-4': !hideTip }
           )}
         >
-          <img
-            src={`https://enka.network/ui/hsr/SpriteOutput/SkillIcons/${icon}`}
-            onError={(e) => {
-              const id = icon.split('_')[1]
-              e.currentTarget.src = `https://homdgcat.wiki/images/skillicons/avatar/${id}/${icon}`
-            }}
-          />
+          <img src={`https://homdgcat.wiki/images/skillicons/avatar/${id}/${icon}`} />
           <div className="hidden">?</div>
         </div>
         {hideTip && showUpgrade && !!upgraded && (
