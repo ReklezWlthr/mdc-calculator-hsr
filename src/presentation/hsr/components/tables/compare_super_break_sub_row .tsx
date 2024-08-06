@@ -115,7 +115,7 @@ export const CompareSuperBreakSubRows = observer(
             </div>
           }
           body={<div dangerouslySetInnerHTML={{ __html: obj.formulaString }} />}
-          style="w-[400px]"
+          style="w-[450px]"
         >
           <p
             className={classNames(
@@ -154,7 +154,7 @@ export const CompareSuperBreakSubRows = observer(
               </div>
             }
             body={<div dangerouslySetInnerHTML={{ __html: main.formulaString }} />}
-            style="w-[400px]"
+            style="w-[450px]"
           >
             <p className="col-span-1 text-xs text-center">{_.floor(getDmg(main)).toLocaleString()}</p>
           </Tooltip>
