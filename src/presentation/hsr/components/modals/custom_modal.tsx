@@ -61,6 +61,7 @@ export const CustomModal = observer(({ setCustomValue }: { setCustomValue?: Cust
     ],
     debuff: [
       { name: 'DEF Reduction', value: StatsObjectKeys.DEF_REDUCTION },
+      { name: 'SPD Reduction', value: StatsObjectKeys.SPD_REDUCTION },
       { name: 'All-Type RES Reduction', value: StatsObjectKeys.ALL_TYPE_RES_PEN },
       { name: 'Vulnerability', value: StatsObjectKeys.VULNERABILITY },
     ],
@@ -97,17 +98,17 @@ export const CustomModal = observer(({ setCustomValue }: { setCustomValue?: Cust
 
   const onAddMod = () => {
     if (selectedTab === 'stats') {
-      set(-1, StatsObjectKeys[key], value)
+      set(StatsObjectKeys[key], value)
     }
     if (selectedTab === 'element') {
-      if (key === 'percentage') set(-1, StatsObjectKeys[`${selectedElement} DMG%`] as any, value)
-      if (key === 'pen') set(-1, StatsObjectKeys[`${selectedElement.toUpperCase()}_RES_PEN`] as any, value)
+      if (key === 'percentage') set(StatsObjectKeys[`${selectedElement} DMG%`] as any, value)
+      if (key === 'pen') set(StatsObjectKeys[`${selectedElement.toUpperCase()}_RES_PEN`] as any, value)
     }
     if (selectedTab === 'talent') {
-      set(-1, StatsObjectKeys[selectedTalent + key] as any, value)
+      set(StatsObjectKeys[selectedTalent + key] as any, value)
     }
     if (_.includes(['reaction', 'debuff'], selectedTab)) {
-      set(-1, key as any, value, selectedTab === 'debuff')
+      set(key as any, value, selectedTab === 'debuff')
     }
     modalStore.closeModal()
   }

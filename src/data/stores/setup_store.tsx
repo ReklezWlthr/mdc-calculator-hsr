@@ -33,7 +33,7 @@ export const defaultTotal = {
   [TalentType.TECH]: {},
 }
 
-export type CustomSetterT = (innerIndex: number, key: StatsObjectKeysT, value: any, debuff: boolean) => void
+export type CustomSetterT = (key: StatsObjectKeysT, value: any, debuff: boolean) => void
 export type CustomRemoverT = (innerIndex: number) => void
 
 export type TotalT = {
@@ -270,8 +270,9 @@ export class SetupStore {
     }
   }
 
-  setCustomValue = (innerIndex: number, key: StatsObjectKeysT, value: any, debuff: boolean = false) => {
+  setCustomValue = (key: StatsObjectKeysT, value: any, debuff: boolean = false) => {
     const [setupIndex, charIndex] = this.selected
+    const innerIndex = _.findIndex(this.custom[setupIndex][charIndex], (item) => item.name === key)
     if (innerIndex < 0) {
       this.custom[setupIndex][charIndex] = [...(this.custom[setupIndex][charIndex] || []), { name: key, value, debuff }]
     } else {

@@ -93,7 +93,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
                   const max = findMaxTalentLevel(parseInt(value))
                   teamStore.setMemberInfo(props.index, {
                     ascension: parseInt(value) || 0,
-                    level: findBaseLevel(parseInt(value) || 0),
+                    level: findMaxLevel(parseInt(value) || 0),
                     major_traces: {
                       a2: parseInt(value) < 2 ? false : selectedChar?.major_traces?.a2,
                       a4: parseInt(value) < 4 ? false : selectedChar?.major_traces?.a4,

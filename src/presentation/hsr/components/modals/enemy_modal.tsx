@@ -14,6 +14,7 @@ import { Enemies } from '@src/data/db/enemies'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 import { EnemyHpScaling } from '@src/domain/scaling'
 import { Tooltip } from '@src/presentation/components/tooltip'
+import { countDebuff } from '@src/core/utils/finder'
 
 export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; compare?: boolean }) => {
   const { calculatorStore, teamStore, settingStore, setupStore } = useStore()
@@ -57,7 +58,7 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
             options={_.map(enemies, (item) => ({
               name: item.name,
               value: item.name,
-            }))}
+            })).sort((a, b) => a.name.localeCompare(b.name))}
             placeholder="Custom"
           />
         </div>
@@ -99,12 +100,13 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
                 <Tooltip
                   title="Enemy Max HP"
                   body={
-                    <p className="text-xs font-normal">
-                      The calculator automatically fills the enemy's Max HP, but the value may be inaccurate. Feel free
-                      to change it.
+                    <p className="font-normal">
+                      The calculator will try to scale the target's Max HP and automatically fills the value, but the
+                      value may be inaccurate. Feel free to change it.
                       <br />
-                      Currently, this value is only used to calculate Bleed damage, so in most cases, it will not affect
-                      the calculation.
+                      Currently, this value is only used to calculate Bleed DMG, so in most cases, it will not affect
+                      the calculation. Additionally, most high-level bosses have so much HP that the Bleed DMG will be
+                      capped out before the result starts to become inaccurate.
                     </p>
                   }
                   style="w-[450px]"
@@ -182,12 +184,25 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
                 </p>
               </div>
             </div>
-            <div className="flex items-center pt-2 gap-x-3">
+            <div className="flex items-center pt-2">
               <p className="text-sm font-normal">Weakness Broken</p>
-              <CheckboxInput
-                checked={calculatorStore.broken}
-                onClick={() => setValue('broken', !calculatorStore.broken)}
-              />
+              <Tooltip
+                title="Weakness Broken"
+                body={
+                  <p className="font-normal">
+                    This toggle only affects the Weakness Broken DMG Multiplier and enables some mechanics that require
+                    attacking a Weakness Broken enemy (e.g. Boothill's Talent or Ruan Mei's E2). Super Break are enabled
+                    by default and is not tied to this toggle.
+                    <br />
+                    For debuffs related to Weakness Break, please refer to the toggles in the{' '}
+                    <span className="text-desc">Modifiers</span> tab.
+                  </p>
+                }
+                style="w-[450px]"
+              >
+                <i className="pl-2 pr-3 fa-regular fa-question-circle text-gray" />
+              </Tooltip>
+              <CheckboxInput checked={store.broken} onClick={() => setValue('broken', !store.broken)} />
             </div>
           </div>
         </div>

@@ -217,7 +217,7 @@ export const LCBlock = observer(
                   onChange={(value) =>
                     set(index, {
                       ascension: parseInt(value) || 0,
-                      level: findBaseLevel(parseInt(value) || 0),
+                      level: findMaxLevel(parseInt(value) || 0),
                     })
                   }
                   options={AscensionOptions}
@@ -226,11 +226,7 @@ export const LCBlock = observer(
                   disabled={!canEdit || !weaponData}
                 />
                 <SelectInput
-                  onChange={(value) =>
-                    set(index, {
-                      refinement: parseInt(value) || 1,
-                    })
-                  }
+                  onChange={(value) => set(index, { refinement: parseInt(value) || 1 })}
                   options={SuperimposeOptions}
                   value={refinement?.toString()}
                   style="w-fit"

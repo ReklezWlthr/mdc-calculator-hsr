@@ -28,7 +28,7 @@ export interface CalculatorStoreType {
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (initData: Record<string, any>[]) => void
   setFormValue: (index: number, key: string, value: any) => void
-  setCustomValue: (index: number, key: StatsObjectKeysT, value: any) => void
+  setCustomValue: (key: StatsObjectKeysT, value: any) => void
   removeCustomValue: (index: number, innerIndex: number) => void
   setTotal: (key: TalentType, index: number, name: string, value: number) => void
   getTotal: (key: TalentType, index: number) => number
@@ -105,8 +105,9 @@ export class CalculatorStore {
     this.form = _.cloneDeep(this.form)
   }
 
-  setCustomValue = (innerIndex: number, key: StatsObjectKeysT, value: any, debuff: boolean = false) => {
+  setCustomValue = (key: StatsObjectKeysT, value: any, debuff: boolean = false) => {
     const index = this.selected
+    const innerIndex = _.findIndex(this.custom[index], (item) => item.name === key)
     if (innerIndex < 0) {
       this.custom[index] = [...(this.custom[index] || []), { name: key, value, debuff }]
     } else {
