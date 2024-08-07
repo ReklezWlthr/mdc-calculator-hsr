@@ -33,8 +33,14 @@ export const defaultTotal = {
   [TalentType.TECH]: {},
 }
 
-export type CustomSetterT = (key: StatsObjectKeysT, value: any, debuff: boolean) => void
-export type CustomRemoverT = (innerIndex: number) => void
+export type CustomSetterT = (
+  innerIndex: number,
+  key: StatsObjectKeysT,
+  value: any,
+  toggled: boolean,
+  debuff?: boolean
+) => void
+export type CustomRemoverT = (_index: number, innerIndex: number) => void
 
 export type TotalT = {
   [TalentType.BA]: Record<string, number>
@@ -56,6 +62,7 @@ export interface SetupStoreType {
     name: StatsObjectKeysT
     value: number
     debuff: boolean
+    toggled: boolean
   }[][][]
   forms: Record<string, any>[][]
   hydrated: boolean
@@ -103,6 +110,7 @@ export class SetupStore {
     name: StatsObjectKeysT
     value: number
     debuff: boolean
+    toggled: boolean
   }[][][]
   hydrated: boolean = false
   forms: Record<string, any>[][]
@@ -270,18 +278,26 @@ export class SetupStore {
     }
   }
 
-  setCustomValue = (key: StatsObjectKeysT, value: any, debuff: boolean = false) => {
+  setCustomValue = (
+    innerIndex: number,
+    key: StatsObjectKeysT,
+    value: any,
+    toggled: boolean,
+    debuff: boolean = false
+  ) => {
     const [setupIndex, charIndex] = this.selected
-    const innerIndex = _.findIndex(this.custom[setupIndex][charIndex], (item) => item.name === key)
     if (innerIndex < 0) {
-      this.custom[setupIndex][charIndex] = [...(this.custom[setupIndex][charIndex] || []), { name: key, value, debuff }]
+      this.custom[setupIndex][charIndex] = [
+        ...(this.custom[setupIndex][charIndex] || []),
+        { name: key, value, debuff, toggled },
+      ]
     } else {
-      this.custom[setupIndex][charIndex].splice(innerIndex, 1, { name: key, value, debuff })
+      this.custom[setupIndex][charIndex].splice(innerIndex, 1, { name: key, value, debuff, toggled })
     }
     this.custom = _.cloneDeep(this.custom)
   }
 
-  removeCustomValue = (innerIndex: number) => {
+  removeCustomValue = (_index: number, innerIndex: number) => {
     const [setupIndex, charIndex] = this.selected
     this.custom[setupIndex][charIndex].splice(innerIndex, 1)
     this.custom = _.cloneDeep(this.custom)

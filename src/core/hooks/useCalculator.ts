@@ -38,6 +38,7 @@ interface CalculatorOptions {
     name: StatsObjectKeysT
     value: number
     debuff: boolean
+    toggled: boolean
   }[][]
   doNotSaveStats?: boolean
   indexOverride?: number
@@ -255,11 +256,12 @@ export const useCalculator = ({
       const postCustom = _.map(preComputeShared, (base, index) => {
         let x = base
         _.forEach(custom[index], (v) => {
-          x[v.name as any].push({
-            name: 'Custom',
-            source: 'Manual',
-            value: v.value / (isFlat(v.name) ? 1 : 100),
-          })
+          if (v.toggled)
+            x[v.name as any].push({
+              name: 'Manual',
+              source: 'Custom',
+              value: v.value / (isFlat(v.name) ? 1 : 100),
+            })
         })
         return x
       })

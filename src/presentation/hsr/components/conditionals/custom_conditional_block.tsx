@@ -21,6 +21,7 @@ interface CustomConditionalBlockProps {
     name: StatsObjectKeysT
     value: number
     debuff: boolean
+    toggled: boolean
   }[]
 }
 
@@ -66,7 +67,7 @@ export const CustomConditionalBlock = observer(
             {!_.isEmpty(custom) &&
               _.map(custom, (mod, i) => (
                 <div className="grid items-center grid-cols-12 text-xs gap-x-1" key={mod.name}>
-                  <div className="col-span-6">
+                  <div className="col-span-5">
                     <p className="w-full text-xs text-center text-white truncate">
                       {CustomConditionalMap[mod.name] || mod.name}
                     </p>
@@ -77,14 +78,22 @@ export const CustomConditionalBlock = observer(
                   <TextInput
                     type="number"
                     value={mod.value?.toString()}
-                    onChange={(value) => set(i, mod.name, parseFloat(value) ?? '', mod.debuff)}
+                    onChange={(value) => set(i, mod.name, parseFloat(value) ?? '', mod.toggled, mod.debuff)}
                     style="col-span-2"
                     small
                   />
-                  <i
-                    className="flex items-center justify-center h-6 cursor-pointer fa-solid fa-trash"
-                    onClick={() => remove(index, i)}
-                  />
+                  <div className="flex justify-center col-span-2">
+                    <CheckboxInput
+                      onClick={(value) => set(i, mod.name, mod.value, value, mod.debuff)}
+                      checked={mod.toggled}
+                    />
+                  </div>
+                  <div className="flex justify-center">
+                    <i
+                      className="flex items-center justify-center h-6 cursor-pointer fa-solid fa-trash"
+                      onClick={() => remove(index, i)}
+                    />
+                  </div>
                 </div>
               ))}
           </div>

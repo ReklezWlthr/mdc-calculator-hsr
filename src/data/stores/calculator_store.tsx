@@ -24,11 +24,11 @@ export interface CalculatorStoreType {
   toughness: number
   effRes: number
   level: number | string
-  custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
+  custom: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean }[][]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (initData: Record<string, any>[]) => void
   setFormValue: (index: number, key: string, value: any) => void
-  setCustomValue: (key: StatsObjectKeysT, value: any) => void
+  setCustomValue: (innerIndex: number, key: StatsObjectKeysT, value: any, toggled: boolean, debuff?: boolean) => void
   removeCustomValue: (index: number, innerIndex: number) => void
   setTotal: (key: TalentType, index: number, name: string, value: number) => void
   getTotal: (key: TalentType, index: number) => number
@@ -55,7 +55,7 @@ export class CalculatorStore {
   enemy: string
   level: number | string
   selected: number
-  custom: { name: StatsObjectKeysT; value: number; debuff: boolean }[][]
+  custom: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean }[][]
 
   constructor() {
     this.tab = 'mod'
@@ -105,13 +105,18 @@ export class CalculatorStore {
     this.form = _.cloneDeep(this.form)
   }
 
-  setCustomValue = (key: StatsObjectKeysT, value: any, debuff: boolean = false) => {
+  setCustomValue = (
+    innerIndex: number,
+    key: StatsObjectKeysT,
+    value: any,
+    toggled: boolean,
+    debuff: boolean = false
+  ) => {
     const index = this.selected
-    const innerIndex = _.findIndex(this.custom[index], (item) => item.name === key)
     if (innerIndex < 0) {
-      this.custom[index] = [...(this.custom[index] || []), { name: key, value, debuff }]
+      this.custom[index] = [...(this.custom[index] || []), { name: key, value, debuff, toggled }]
     } else {
-      this.custom[index].splice(innerIndex, 1, { name: key, value, debuff })
+      this.custom[index].splice(innerIndex, 1, { name: key, value, debuff, toggled })
     }
     this.custom = _.cloneDeep(this.custom)
   }

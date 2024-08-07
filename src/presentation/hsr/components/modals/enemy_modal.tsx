@@ -50,7 +50,7 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
                   _.mapValues(enemyData?.res, (item) => item * 100)
                 )
                 setValue('weakness', enemyData?.weakness)
-                setValue('hp', _.round((enemyData?.baseHp / _.head(EnemyHpScaling)) * EnemyHpScaling[+level - 1]))
+                setValue('hp', _.round((enemyData?.baseHp / _.head(EnemyHpScaling)) * EnemyHpScaling[+level - 1], 2))
                 setValue('toughness', enemyData?.toughness)
                 setValue('effRes', enemyData?.effRes)
               }
@@ -73,7 +73,7 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
               if (enemyData)
                 setValue(
                   'hp',
-                  _.round((enemyData?.baseHp / _.head(EnemyHpScaling)) * EnemyHpScaling[(Number(value) || 1) - 1])
+                  _.round((enemyData?.baseHp / _.head(EnemyHpScaling)) * EnemyHpScaling[(Number(value) || 1) - 1], 2)
                 )
               setValue('level', value === '' ? '' : value)
             }}
@@ -104,9 +104,10 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
                       The calculator will try to scale the target's Max HP and automatically fills the value, but the
                       value may be inaccurate. Feel free to change it.
                       <br />
-                      Currently, this value is only used to calculate Bleed DMG, so in most cases, it will not affect
-                      the calculation. Additionally, most high-level bosses have so much HP that the Bleed DMG will be
-                      capped out before the result starts to become inaccurate.
+                      Currently, this value is only used to calculate <b className="text-hsr-physical">Bleed DMG</b>, so
+                      in most cases, it will not affect the calculation. Additionally, most high-level bosses have so
+                      much HP that the <b className="text-hsr-physical">Bleed DMG</b> will be capped out before the
+                      result starts to become inaccurate.
                     </p>
                   }
                   style="w-[450px]"
