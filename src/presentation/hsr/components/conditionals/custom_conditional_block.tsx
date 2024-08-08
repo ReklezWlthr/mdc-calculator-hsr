@@ -72,13 +72,11 @@ export const CustomConditionalBlock = observer(
                       {CustomConditionalMap[mod.name] || mod.name}
                     </p>
                   </div>
-                  <div className={classNames('col-span-2 text-center', mod.debuff ? 'text-red' : 'text-blue')}>
-                    {mod.debuff ? 'Debuff' : 'Buff'}
-                  </div>
+                  <div className="col-span-2 text-center text-desc">Custom</div>
                   <TextInput
                     type="number"
                     value={mod.value?.toString()}
-                    onChange={(value) => set(i, mod.name, parseFloat(value) ?? '', mod.toggled, mod.debuff)}
+                    onChange={(value) => set(i, mod.name, value ?? '', mod.toggled, mod.debuff)}
                     style="col-span-2"
                     small
                   />

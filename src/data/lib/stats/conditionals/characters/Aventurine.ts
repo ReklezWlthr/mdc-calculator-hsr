@@ -328,7 +328,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
             type: TalentType.NONE,
           },
           {
-            name: 'A6 Extra Shield',
+            name: 'A6 Enhanced Shield',
             value: [{ scaling: 0.072 * 2, multiplier: Stats.DEF }],
             flat: 96 * 2,
             element: TalentProperty.SHIELD,

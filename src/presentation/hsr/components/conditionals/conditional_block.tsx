@@ -142,7 +142,7 @@ export const ConditionalBlock = observer(
                         content.debuff ? 'text-red' : content.unique ? 'text-desc' : 'text-blue'
                       )}
                     >
-                      {content.debuff ? 'Debuff' : content.unique ? 'Other' : 'Buff'}
+                      {content.debuff ? 'Debuff' : content.unique ? 'Unique' : 'Buff'}
                     </div>
                     {content.chance?.base ? (
                       <Tooltip
@@ -205,6 +205,7 @@ export const ConditionalBlock = observer(
                           }
                           onChange={(value) => set(content.index, content.id, value, content.sync)}
                           placeholder="None"
+                          small
                         />
                       </div>
                     )}

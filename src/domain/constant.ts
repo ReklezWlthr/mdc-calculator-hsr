@@ -355,7 +355,7 @@ export const CustomConditionalMap = {
   BREAK_EFF: 'Weakness Break Efficiency',
   SHIELD: 'Shield Bonus',
   DMG_REDUCTION: 'DMG Reduction',
-  AGGRO: 'Aggro Bonus (%)',
+  AGGRO: 'Percentage Aggro Bonus',
 
   PHYSICAL_RES_PEN: 'Physical RES PEN',
   FIRE_RES_PEN: 'Fire RES PEN',

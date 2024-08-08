@@ -261,7 +261,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `On-Shield CRIT DMG Bonus`,
+    text: `Shielded CRIT DMG Bonus`,
     show: true,
     default: false,
     duration: 2,
@@ -279,7 +279,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `On-Attacked DEF Bonus`,
+    text: `Attacked DEF Bonus`,
     show: true,
     default: false,
     id: '23005',
@@ -296,7 +296,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'number',
-    text: `Number of Enemies on Field`,
+    text: `Enemy Count ATK Bonus`,
     show: true,
     default: 1,
     min: 1,
@@ -333,7 +333,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'number',
-    text: `On-Attack ATK Bonus`,
+    text: `ATK Bonus Stacks`,
     show: true,
     default: 0,
     min: 0,
@@ -370,7 +370,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'number',
-    text: `On-Attack SPD Bonus`,
+    text: `SPD Bonus Stacks`,
     show: true,
     default: 0,
     min: 0,
@@ -389,7 +389,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Non-CRIT CRIT Rate Bonus`,
+    text: `Missed CRIT Rate Bonus`,
     show: true,
     default: true,
     duration: 1,
@@ -442,7 +442,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `On-Attacked with Shield`,
+    text: `Shielded DMG Reduction`,
     show: true,
     default: true,
     id: '24002',
@@ -459,7 +459,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `On-HP-Reduced DMG Bonus`,
+    text: `HP Loss DMG Bonus`,
     show: true,
     default: true,
     id: '23009',
@@ -507,7 +507,7 @@ export const LCConditionals: IWeaponContent[] = [
     scaling: (base, form, r) => {
       if (form['21012']) {
         base[Stats.ALL_DMG] = _.map(base[Stats.ALL_DMG], (item) =>
-          item.name === '' ? { ...item, value: item.value * 2 } : item
+          item.source === 'A Secret Vow' ? { ...item, value: item.value * 2 } : item
         )
       }
       return base
@@ -515,7 +515,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `On-Ult SPD Bonus`,
+    text: `Post-Ult SPD Bonus`,
     show: true,
     default: true,
     duration: 2,
@@ -533,7 +533,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'number',
-    text: `Number of Shielded Allies`,
+    text: `Shielded Ally Count`,
     show: true,
     default: 4,
     min: 0,
@@ -625,7 +625,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Post-Heal Healing Bonus`,
+    text: `Skill Healing Bonus`,
     show: true,
     default: true,
     duration: 2,
@@ -680,7 +680,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Enemies on Field <= 2`,
+    text: `Enemies Count <= 2`,
     show: true,
     default: true,
     id: '21003',
@@ -697,7 +697,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `River Flows in Spring`,
+    text: `Un-Hit Bonuses`,
     show: true,
     default: true,
     id: '21024',
@@ -719,7 +719,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Full Energy`,
+    text: `Full Energy Bonus`,
     show: true,
     default: true,
     id: '21017',
@@ -739,7 +739,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'number',
-    text: `Hits Against the Same Target`,
+    text: `Swordplay Stacks`,
     show: true,
     default: 0,
     min: 0,
@@ -810,7 +810,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'number',
-    text: `Number of Enemies Killed`,
+    text: `Enemy Kill Count`,
     show: true,
     default: 0,
     min: 0,
@@ -1260,7 +1260,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `On-Ult DMG Bonus`,
+    text: `Post-Ult DMG Bonus`,
     show: true,
     default: true,
     duration: 3,
@@ -1318,7 +1318,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Wearer HP Reduced`,
+    text: `Wearer HP Loss`,
     show: true,
     default: true,
     duration: 2,
@@ -1361,7 +1361,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
   },
   {
     type: 'number',
-    text: `Tame`,
+    text: `Tame Stacks`,
     show: true,
     default: 0,
     min: 0,
@@ -1460,7 +1460,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Trend Burn`,
+    text: `Trends Burn`,
     show: true,
     default: true,
     debuff: true,
@@ -1530,7 +1530,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
   },
   {
     type: 'element',
-    text: `Those Many Springs Tier`,
+    text: `Those Many Springs`,
     show: true,
     default: '1',
     max: '2',

@@ -49,7 +49,7 @@ export const CustomModal = observer(({ setCustomValue }: { setCustomValue?: Cust
       { name: 'Weakness Break Efficiency', value: StatsObjectKeys.BREAK_EFF },
       { name: 'Shield Bonus', value: StatsObjectKeys.SHIELD },
       { name: 'DMG Reduction', value: StatsObjectKeys.DMG_REDUCTION },
-      { name: 'Aggro', value: StatsObjectKeys.AGGRO },
+      { name: 'Percentage Aggro Bonus', value: StatsObjectKeys.AGGRO },
     ],
     element: [
       { name: 'Percentage Bonus', value: 'percentage' },
@@ -123,8 +123,8 @@ export const CustomModal = observer(({ setCustomValue }: { setCustomValue?: Cust
           title="Custom Modifiers"
           body={
             <p>
-              Add custom modifiers to the character to simulate certain scenarios not available through normal means.
-              The value may also be negative to simulate debuff on self.
+              Add custom modifiers to the character to quickly simulate certain scenarios. The value may also be
+              negative to simulate <span className="text-red">Debuff</span> on self.
             </p>
           }
           style="w-[450px]"
@@ -177,12 +177,7 @@ export const CustomModal = observer(({ setCustomValue }: { setCustomValue?: Cust
             />
           </>
         )}
-        <TextInput
-          type="number"
-          value={value?.toString()}
-          onChange={(v) => v.match(/^-?\d*$/) && setValue(v)}
-          style="col-start-3 !w-1/2 mx-auto"
-        />
+        <TextInput type="number" value={value?.toString()} onChange={setValue} style="col-start-3 !w-1/2 mx-auto" />
       </div>
       <div className="flex justify-end">
         <PrimaryButton title="Add Modifier" onClick={onAddMod} />
