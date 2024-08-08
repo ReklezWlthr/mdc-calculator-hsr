@@ -137,21 +137,25 @@ export const LCBlock = observer(
     }, [modalStore, index, char, setWeapon])
 
     return (
-      <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-[280px]">
+      <div className="w-full font-bold text-white rounded-lg bg-primary-dark h-[275px]">
         <div className="flex justify-center px-5 py-2 rounded-t-lg bg-primary-lighter">Light Cone</div>
-        <div className="grid h-full grid-cols-2 gap-3 p-3">
+        <div className="flex gap-3 p-3 h-fit">
           <div
-            className={classNames('flex flex-col justify-between gap-1 h-fit shrink-0', {
-              'cursor-pointer': char && canEdit && team[index]?.cId,
-            })}
+            className={classNames(
+              'flex flex-col h-[200px] w-fit aspect-[226/315] justify-between gap-1 shrink-0 relative',
+              {
+                'cursor-pointer': char && canEdit && team[index]?.cId,
+              }
+            )}
             onClick={onOpenModal}
           >
             {weaponData ? (
               <>
                 <div
                   className={classNames(
-                    'items-center justify-center rounded-lg h-[200px] bg-primary-darker shrink-0 border border-primary-border',
-                    loading ? 'flex' : 'hidden'
+                    'items-center justify-center h-full rounded-lg bg-primary-darker shrink-0 border',
+                    loading ? 'flex' : 'hidden',
+                    invalid ? 'border-error' : 'border-primary-border'
                   )}
                 >
                   <i className="text-5xl animate-spin fa-solid fa-circle-notch text-gray" />
@@ -159,7 +163,7 @@ export const LCBlock = observer(
                 <img
                   src={`https://api.hakush.in/hsr/UI/lightconemaxfigures/${weaponData?.id}.webp`}
                   className={classNames(
-                    'object-contain h-[200px] py-2 border rounded-lg bg-primary-darker duration-200',
+                    'object-contain p-2 flex h-full justify-center border rounded-lg bg-primary-darker duration-200',
                     loading ? 'hidden' : 'block',
                     invalid ? 'border-error' : 'border-primary-border',
                     {
@@ -178,14 +182,20 @@ export const LCBlock = observer(
                 })}
               />
             )}
-            {!!rarity &&
-              (invalid ? (
-                <p className="text-xs text-center text-red">PATH MISMATCHED</p>
-              ) : (
-                <RarityGauge rarity={rarity} textSize="text-sm" />
-              ))}
+            {!!rarity && (
+              <div className="absolute bottom-2 right-2 bg-primary-bg px-1.5 py-0.5 rounded-lg">
+                {invalid ? (
+                  <p className="text-xs text-red">
+                    <i className="mr-1 fa-solid fa-ban text-error" />
+                    INVALID
+                  </p>
+                ) : (
+                  <RarityGauge rarity={rarity} textSize="text-xs" />
+                )}
+              </div>
+            )}
           </div>
-          <div className="space-y-3">
+          <div className="w-[calc(100%-155px)] space-y-3">
             <div className="space-y-1">
               <div className="flex items-center justify-between w-full h-6">
                 <p className="text-sm font-semibold">Name</p>

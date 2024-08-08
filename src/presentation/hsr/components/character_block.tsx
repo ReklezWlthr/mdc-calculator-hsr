@@ -50,14 +50,14 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
 
   return (
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark">
-      <div className="flex justify-center px-5 py-3 text-xl rounded-t-lg bg-primary-lighter">Character</div>
-      <div className="flex h-[190px]">
-        <div className="flex items-center w-1/2 px-3 py-3">
-          <div
-            className="w-full duration-200 border rounded-lg cursor-pointer bg-primary-darker border-primary-border aspect-square hover:border-primary-light"
-            onClick={onOpenModal}
-          >
-            {characterData && (
+      <div className="flex justify-center px-5 py-2 text-xl rounded-t-lg bg-primary-lighter">Character</div>
+      <div className="flex">
+        <div
+          className="relative h-[136px] m-3 duration-200 border rounded-lg cursor-pointer bg-primary-darker border-primary-border aspect-square hover:border-primary-light"
+          onClick={onOpenModal}
+        >
+          {characterData && (
+            <>
               <img
                 src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
                   characterData?.id,
@@ -65,10 +65,29 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
                 )}.webp`}
                 className="object-cover aspect-square object-[0_20%]"
               />
-            )}
-          </div>
+              <div className="flex gap-0.5 absolute bottom-1 left-1">
+                <div
+                  className="flex items-center justify-center w-8 h-8 p-1 bg-opacity-75 rounded-full bg-primary-darker"
+                  title={characterData?.path}
+                >
+                  <img src={getPathImage(characterData?.path)} />
+                </div>
+              </div>
+              <div className="absolute px-1.5 py-0.5 rounded-lg bottom-1 right-1 bg-primary-darker">
+                <RarityGauge rarity={rarity} textSize="text-xs" />
+              </div>
+              <div className="flex gap-0.5 absolute bottom-10 left-1">
+                <div
+                  className="flex items-center justify-center w-8 h-8 p-1.5 rounded-full bg-primary-darker bg-opacity-75"
+                  title={characterData?.element}
+                >
+                  <img src={getElementImage(characterData?.element)} />
+                </div>
+              </div>
+            </>
+          )}
         </div>
-        <div className="w-1/2 px-2 py-3 space-y-2">
+        <div className="w-full py-3 pl-2 pr-3 space-y-2">
           <div className="space-y-1">
             <p className="text-sm font-semibold">Name</p>
             <PillInput
@@ -126,27 +145,6 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
               />
             </div>
           </div>
-          {characterData && (
-            <div className="flex items-center justify-between gap-2 px-3 pt-1">
-              <div className="flex gap-0.5">
-                <div
-                  className="lex items-center justify-center p-1.5 rounded-full w-10 h-10 bg-primary"
-                  title={characterData?.path}
-                >
-                  <img src={getPathImage(characterData?.path)} />
-                </div>
-              </div>
-              <RarityGauge rarity={rarity} />
-              <div className="flex gap-0.5">
-                <div
-                  className="flex items-center justify-center w-10 h-10 p-2 rounded-full bg-primary"
-                  title={characterData?.element}
-                >
-                  <img src={getElementImage(characterData?.element)} />
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>

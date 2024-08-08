@@ -25,6 +25,7 @@ import { SaveBuildModal } from '@src/presentation/hsr/components/modals/save_bui
 import { SaveTeamModal } from '@src/presentation/hsr/components/modals/save_team_modal'
 import { AbilityBlock } from '../components/ability_block'
 import { BonusAbilityBlock } from '../components/bonus_ability_block'
+import { TeamModal } from '../components/modals/team_modal'
 
 export const SetToolTip = observer(({ item, set, type }: { item: number; set: string; type: 'relic' | 'planar' }) => {
   const setDetail = _.find(type === 'relic' ? RelicSets : PlanarSets, ['id', set])
@@ -98,6 +99,10 @@ export const TeamSetup = observer(() => {
     modalStore.openModal(<BuildModal index={selected} />)
   }, [selected])
 
+  const onOpenSetupModal = useCallback(() => {
+    modalStore.openModal(<TeamModal onSelect={(team) => teamStore.setValue('characters', team.char)} hideCurrent />)
+  }, [selected])
+
   const onOpenConfirmModal = useCallback(() => {
     modalStore.openModal(
       <CommonModal
@@ -122,17 +127,24 @@ export const TeamSetup = observer(() => {
     <div className="w-full customScrollbar">
       <div className="flex justify-center w-full gap-5 p-5 max-w-[1240px] mx-auto">
         <div className="w-1/3 space-y-3">
-          <div className="flex justify-center w-full gap-4 pt-1">
-            {_.map(teamStore?.characters, (item, index) => {
-              return (
-                <CharacterSelect
-                  key={`char_select_${index}`}
-                  onClick={() => teamStore.setValue('selected', index)}
-                  isSelected={index === selected}
-                  id={item.cId}
-                />
-              )
-            })}
+          <div className="flex items-center justify-between pt-1">
+            <div className="flex justify-center w-full gap-4">
+              {_.map(teamStore?.characters, (item, index) => {
+                return (
+                  <CharacterSelect
+                    key={`char_select_${index}`}
+                    onClick={() => teamStore.setValue('selected', index)}
+                    isSelected={index === selected}
+                    id={item.cId}
+                  />
+                )
+              })}
+            </div>
+            <PrimaryButton
+              onClick={onOpenSetupModal}
+              icon="fa-solid fa-user-group text-sm"
+              style="!rounded-full w-[42px]"
+            />
           </div>
           <CharacterBlock index={selected} />
           <LCBlock index={selected} {...teamStore.characters[selected]?.equipments?.weapon} />

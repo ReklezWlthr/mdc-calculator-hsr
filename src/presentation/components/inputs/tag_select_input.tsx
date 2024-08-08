@@ -112,7 +112,11 @@ export const TagSelectInput = ({
                     onToggleSelection(item.value)
                 }}
               >
-                <CheckboxInput checked={isSelected(item.value)} onClick={() => null} />
+                <CheckboxInput
+                  checked={isSelected(item.value)}
+                  onClick={() => null}
+                  disabled={_.size(values) >= maxSelection && !isSelected(item.value)}
+                />
                 {item.img && <img src={item.img} className="object-cover w-3.5" />}
                 <span className="block truncate">{item.name}</span>
               </div>

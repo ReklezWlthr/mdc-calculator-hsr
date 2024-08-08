@@ -2,7 +2,6 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { CharacterSelect } from '@src/presentation/hsr/components/character_select'
 import { TSetup } from '@src/data/stores/setup_store'
 import { formatIdIcon } from '@src/core/utils/data_format'
 import classNames from 'classnames'
@@ -14,6 +13,7 @@ import { TextInput } from '@src/presentation/components/inputs/text_input'
 export interface TeamModalProps {
   onSelect: (team: TSetup) => void
   filterId?: string
+  hideCurrent?: boolean
 }
 
 export const TeamModalBlock = ({ team, button }: { team: TSetup; button: React.ReactNode }) => {
@@ -51,14 +51,14 @@ export const TeamModalBlock = ({ team, button }: { team: TSetup; button: React.R
   )
 }
 
-export const TeamModal = observer(({ onSelect, filterId }: TeamModalProps) => {
-  const { modalStore, teamStore, setupStore, settingStore } = useStore()
+export const TeamModal = observer(({ onSelect, filterId, hideCurrent }: TeamModalProps) => {
+  const { modalStore, teamStore, setupStore } = useStore()
 
   const [search, setSearch] = useState('')
 
   const team = useMemo(
     () => [
-      { id: '', char: teamStore.characters, name: 'Current Team Setup' },
+      ...(hideCurrent ? [] : [{ id: '', char: teamStore.characters, name: 'Current Team Setup' }]),
       ...(search
         ? _.filter(setupStore.team, (item) =>
             _.some([..._.map(item.char, (c) => findCharacter(c?.cId)?.name), item.name], (q) =>

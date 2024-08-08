@@ -43,10 +43,10 @@ const MenuButton = ({
         duration
       )}
     >
-      <p className="text-sm">{title}</p>
+      <p className="text-xs">{title}</p>
       <i
         className={classNames(
-          'flex items-center justify-center w-11 h-11 p-2 text-xl rounded-full bg-primary-light hover:bg-primary cursor-pointer duration-200',
+          'flex items-center justify-center w-10 h-10 p-2 text-lg rounded-full bg-primary-light hover:bg-primary cursor-pointer duration-200',
           icon
         )}
         onClick={onClick}
@@ -138,33 +138,21 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
   return (
     <div
       className={classNames(
-        'flex flex-col w-full font-bold text-white duration-200 rounded-lg bg-primary-dark h-[290px] group',
+        'flex flex-col w-full font-bold text-white duration-200 rounded-lg bg-primary-dark h-[250px] group ring-inset ring-1 ring-primary-light relative',
         {
           'hover:scale-[97%]': canEdit,
         }
       )}
     >
-      <div className="h-10 overflow-hidden rounded-t-lg bg-primary-light shrink-0">
-        <div
-          className={classNames('px-5 py-2 space-y-5 duration-200', {
-            'group-hover:-translate-y-1/2': canEdit && props.aId,
-          })}
-        >
-          <div className="flex items-center justify-center gap-1">
-            <img
-              src={`https://api.hakush.in/hsr/UI/relicfigures/IconRelic${RelicPieceIcon[props.piece]}.webp`}
-              className="w-5 h-5"
-            />
-            <p>{pieceName}</p>
-          </div>
-          <div className="flex items-center justify-center gap-1">
-            <p>Relic Menu</p>
-          </div>
-        </div>
+      <div className="absolute top-0 right-0 flex items-center justify-center h-8 pointer-events-none w-9 rounded-se-lg rounded-es-lg bg-primary-light">
+        <img
+          src={`https://api.hakush.in/hsr/UI/relicfigures/IconRelic${RelicPieceIcon[props.piece]}.webp`}
+          className="w-5 h-5"
+        />
       </div>
       {props.aId ? (
         <div className="relative w-full">
-          <div className="p-3 space-y-3">
+          <div className="px-3 py-4 space-y-3">
             <div className="flex gap-4">
               <div className="relative w-14 h-14 shrink-0">
                 <img
@@ -198,7 +186,7 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
                   : toPercentage(mainStat)}
               </p>
             </div>
-            <p className="flex items-center justify-center text-xs text-primary-lighter">✦✦✦✦✦</p>
+            <div className="border-t-2 border-dashed border-primary-light !my-4 opacity-40" />
             {_.map(subListWithRolls, (item) => (
               <div className="flex items-center gap-2 text-xs" key={item.stat}>
                 <div className="flex items-center gap-1.5 shrink-0">
@@ -221,7 +209,7 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
             ))}
           </div>
           {canEdit && (
-            <div className="absolute flex flex-col gap-2 pr-2 pt-2 items-end top-0 w-full h-[250px] rounded-b-lg from-transparent group-hover:bg-opacity-80 bg-gradient-to-l group-hover:from-primary-darker from-30% duration-200 overflow-hidden">
+            <div className="absolute flex flex-col gap-2 pr-2 pt-2 items-end top-px left-px w-[calc(100%-2px)] h-[calc(100%-2px)] rounded-lg from-transparent group-hover:bg-opacity-80 bg-gradient-to-l group-hover:from-primary-darker from-30% duration-200 overflow-hidden">
               <MenuButton
                 icon="fa-solid fa-pen-to-square"
                 duration="duration-[200ms]"
@@ -254,16 +242,16 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
           )}
         </div>
       ) : canEdit ? (
-        <div className="flex flex-col items-center justify-center w-full h-full">
+        <div className="flex flex-col items-center justify-center w-full h-full p-px">
           <div
-            className="flex items-center justify-center w-full h-full transition-colors duration-200 cursor-pointer hover:bg-primary-darker"
+            className="flex items-center justify-center w-full h-full transition-colors duration-200 rounded-t-lg cursor-pointer hover:bg-primary-darker"
             onClick={onOpenEditModal}
           >
             Add New Relic
           </div>
-          <div className="w-full h-0 border-t-2 border-primary-border" />
+          <div className="w-full h-0 border-t-2 border-primary" />
           <div
-            className="flex items-center justify-center w-full h-full transition-colors duration-200 cursor-pointer hover:bg-primary-darker"
+            className="flex items-center justify-center w-full h-full transition-colors duration-200 rounded-b-lg cursor-pointer hover:bg-primary-darker"
             onClick={onOpenSwapModal}
           >
             Equip a Relic

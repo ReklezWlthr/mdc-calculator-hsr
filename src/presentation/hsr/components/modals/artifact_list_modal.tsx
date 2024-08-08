@@ -70,7 +70,7 @@ export const ArtifactListModal = observer(
                 img: 'https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/' + item.img,
               }))}
               onChange={(subs) => setParams({ subs })}
-              placeholder="Sub Stats - Include All"
+              placeholder="Sub Stats - Include All (Max 4)"
               maxSelection={4}
               style="w-[220px]"
             />

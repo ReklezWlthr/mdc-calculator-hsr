@@ -230,6 +230,12 @@ const Qingque = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         },
       ]
 
+      if (c >= 1)
+        base.ULT_DMG.push({
+          name: 'Eidolon 1',
+          source: 'Self',
+          value: 0.1,
+        })
       if (form.qq_enhance) {
         base.BA_ALT = true
         base[Stats.P_ATK].push({

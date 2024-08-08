@@ -58,10 +58,8 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Sushang's ATK to a single enemy target, and she immediately takes action again. In addition, Sushang's ATK increases by {{1}}% and using her Skill has <span class="text-desc">2</span> extra chances to trigger <b>Sword Stance</b> for <span class="text-desc">2</span> turn(s).
       <br /><b>Sword Stance</b> triggered from the extra chances deals <span class="text-desc">50%</span> of the original DMG.`,
       value: [
-        { base: 24, growth: 1.6, style: 'curved' },
-        { base: 60, growth: 4, style: 'curved' },
-        { base: 9.6, growth: 0.64, style: 'curved' },
-        { base: 24, growth: 1.6, style: 'curved' },
+        { base: 192, growth: 12.8, style: 'curved' },
+        { base: 18, growth: 1.2, style: 'curved' },
       ],
       level: ult,
       tag: AbilityTag.ST,
@@ -247,6 +245,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               property: TalentProperty.ADD,
               type: TalentType.NONE,
               bonus: form.sushang_a4 ? form.sushang_a4 * 0.02 : 0,
+              chance: { base: broken ? 1 : 0.33 ** 3, fixed: true },
               sum: true,
             },
           ]
