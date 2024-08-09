@@ -125,7 +125,7 @@ export const TeamSetup = observer(() => {
 
   return (
     <div className="w-full customScrollbar">
-      <div className="flex justify-center w-full gap-5 p-5 max-w-[1240px] mx-auto">
+      <div className="flex justify-center w-full gap-5 p-5 max-w-[1200px] mx-auto">
         <div className="w-1/3 space-y-3">
           <div className="flex items-center justify-between pt-1">
             <div className="flex justify-center w-full gap-4">

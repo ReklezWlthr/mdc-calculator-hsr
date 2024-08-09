@@ -50,7 +50,7 @@ export const CyclePage = observer(() => {
 
   return (
     <div className="w-full customScrollbar">
-      <div className="grid w-full grid-cols-3 gap-5 p-5 text-white max-w-[1240px] mx-auto">
+      <div className="grid w-full grid-cols-3 gap-5 p-5 text-white max-w-[1200px] mx-auto">
         <div className="w-full col-span-2 text-xs font-normal rounded-lg bg-primary-darker">
           <div className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
             <p>Turn Cycle</p>

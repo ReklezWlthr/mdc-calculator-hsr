@@ -183,7 +183,7 @@ export const LCBlock = observer(
               />
             )}
             {!!rarity && (
-              <div className="absolute bottom-2 right-2 bg-primary-bg px-1.5 py-0.5 rounded-lg">
+              <div className="absolute -bottom-1.5 -right-1 bg-primary-bg px-1.5 py-0.5 rounded-lg">
                 {invalid ? (
                   <p className="text-xs text-red">
                     <i className="mr-1 fa-solid fa-ban text-error" />

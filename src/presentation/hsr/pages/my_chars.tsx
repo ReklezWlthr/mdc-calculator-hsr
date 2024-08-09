@@ -55,7 +55,7 @@ export const MyCharacters = observer(() => {
   }
 
   return (
-    <div className="flex flex-col items-center w-full gap-5 py-5 pl-5 max-w-[1240px] mx-auto">
+    <div className="flex flex-col items-center w-full gap-5 py-5 pl-5 max-w-[1200px] mx-auto">
       <div className="flex w-full h-full gap-x-10">
         <div className="flex flex-col w-1/3 min-w-[400px] h-full gap-y-4 shrink-0">
           <div className="flex items-end gap-5">

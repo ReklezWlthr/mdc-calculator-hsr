@@ -110,7 +110,7 @@ export const MyBuilds = observer(() => {
   }
 
   return (
-    <div className="flex flex-col items-center w-full gap-5 p-5 max-w-[1240px] mx-auto">
+    <div className="flex flex-col items-center w-full gap-5 p-5 max-w-[1200px] mx-auto">
       <div className="flex w-full h-full gap-x-5">
         <div className="flex flex-col w-1/3 h-full gap-2 shrink-0">
           <div className="flex items-center gap-6">

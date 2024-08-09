@@ -157,7 +157,7 @@ export const ImportExport = observer(() => {
     <div className="w-full h-full pb-5 customScrollbar">
       <div
         className={classNames(
-          'flex flex-col w-full gap-5 p-5 text-white max-w-[1240px] mx-auto',
+          'flex flex-col w-full gap-5 p-5 text-white max-w-[1200px] mx-auto',
           _.size(importStore.characters) ? 'h-fit' : 'h-full'
         )}
       >
