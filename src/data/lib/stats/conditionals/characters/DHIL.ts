@@ -226,7 +226,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       weakness: Element[],
       broken: boolean
     ) => {
-      const base = x
+      const base = _.cloneDeep(x)
 
       // For attacks that can't increase stack
       const outroar_norm = form.outroar * calcScaling(0.06, 0.006, skill, 'curved')

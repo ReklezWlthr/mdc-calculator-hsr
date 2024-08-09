@@ -182,7 +182,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[]
     ) => {
-      const base = x
+      const base = _.cloneDeep(x)
 
       base.BASIC_SCALING = [
         {

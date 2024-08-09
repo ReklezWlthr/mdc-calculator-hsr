@@ -215,7 +215,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       weakness: Element[],
       broken: boolean
     ) => {
-      const base = x
+      const base = _.cloneDeep(x)
 
       const breakScale =
         form.trickshot === 3

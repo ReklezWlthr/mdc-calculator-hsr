@@ -552,7 +552,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
         x.BASIC_SCALING.push(...scaling)
         x.SKILL_SCALING.push(...scaling)
         return x
-      })
+      }, 999)
       return base
     },
   },

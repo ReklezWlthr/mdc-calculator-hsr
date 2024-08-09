@@ -9,7 +9,6 @@ export class WeightedArray<T> extends Array {
     return new Proxy(this, {
       get: function (target, name) {
         if (typeof name === 'symbol' || _.isNaN(Number(name))) return target[name]
-        console.log(name, target.__ref, target.__ref[name])
         return target.__ref[name]?.value
       },
     })

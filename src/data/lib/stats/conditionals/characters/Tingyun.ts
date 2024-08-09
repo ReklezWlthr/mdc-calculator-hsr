@@ -189,7 +189,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       weakness: Element[],
       broken: boolean
     ) => {
-      const base = x
+      const base = _.cloneDeep(x)
 
       base.BASIC_SCALING = [
         {
