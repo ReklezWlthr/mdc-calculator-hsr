@@ -1044,39 +1044,6 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Woefree`,
-    show: true,
-    default: false,
-    duration: 2,
-    id: '23032',
-    scaling: (base, form, r) => {
-      if (form['23032']) {
-        base[Stats.ALL_DMG].push({
-          name: 'Woefree',
-          source: 'Scene Alone Stays True',
-          value: calcRefinement(0.1, 0.02, r),
-        })
-        base.CALLBACK.push((x, _d, _w, a: StatsObject[]) => {
-          if (x.getValue(Stats.BE) >= 1.5) {
-            const keys = _.filter(StatsObjectKeys, (item) => _.includes(item, 'VUL'))
-            _.forEach(a, (member) => {
-              _.forEach(keys, (key) => {
-                member[key] = _.map(member[key], (item) => {
-                  if (item.source === (member.NAME === x.NAME ? 'Self' : x.NAME))
-                    return { ...item, value: item.value + calcRefinement(0.08, 0.02, r) }
-                  return item
-                })
-              })
-            })
-          }
-          return x
-        })
-      }
-      return base
-    },
-  },
-  {
-    type: 'toggle',
     text: `Break SPD Bonus`,
     show: true,
     default: true,
@@ -1548,11 +1515,34 @@ export const LCTeamConditionals: IWeaponContent[] = [
       const tier = Number(form['23029'])
       if (tier) {
         base.VULNERABILITY.push({
-          name: `Ensnare`,
-          source: 'Resolution Shines As Pearls of Sweat',
+          name: tier === 1 ? `Unarmored` : `Cornered`,
+          source: 'Those Many Springs',
           value: tier === 1 ? calcRefinement(0.1, 0.02, r) : calcRefinement(0.14, 0.02, r),
         })
-        if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.DEF_RED)
+        if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Woefree`,
+    show: true,
+    default: false,
+    debuff: true,
+    duration: 2,
+    id: '23032',
+    scaling: (base, form, r, { debuffs, own }) => {
+      if (form['23032']) {
+        base.CALLBACK.push((x, d, _w) => {
+          x.VULNERABILITY.push({
+            name: 'Woefree',
+            source: 'Scene Alone Stays True',
+            value: calcRefinement(0.1, 0.02, r) + (x.getValue(Stats.BE) >= 1.5 ? calcRefinement(0.08, 0.02, r) : 0),
+          })
+          return x
+        })
+        if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }
       return base
     },

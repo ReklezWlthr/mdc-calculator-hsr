@@ -192,7 +192,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[]
     ) => {
-      const base = _.cloneDeep(x)
+      const base = x
 
       base.BASIC_SCALING = [
         {

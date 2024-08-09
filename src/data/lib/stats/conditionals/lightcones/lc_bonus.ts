@@ -535,16 +535,22 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
         source: 'Warmth Shortens Cold Nights',
         value: calcRefinement(0.16, 0.04, r),
       })
-      base.CALLBACK.push((x) => {
-        const scaling = {
-          name: 'AoE Healing',
-          value: [{ scaling: calcRefinement(0.02, 0.005, r), multiplier: Stats.HP, override: x.getHp() }],
-          element: TalentProperty.HEAL,
-          property: TalentProperty.HEAL,
-          type: TalentType.NONE,
-        }
-        x.BASIC_SCALING.push(scaling)
-        x.SKILL_SCALING.push(scaling)
+      base.CALLBACK.push((x, _d, _w, a) => {
+        const scaling = _.filter(
+          _.map(a, (item) =>
+            item.NAME
+              ? {
+                  name: `Warmth - ${item.NAME}`,
+                  value: [{ scaling: calcRefinement(0.02, 0.005, r), multiplier: Stats.HP, override: item.getHP() }],
+                  element: TalentProperty.HEAL,
+                  property: TalentProperty.HEAL,
+                  type: TalentType.NONE,
+                }
+              : undefined
+          )
+        )
+        x.BASIC_SCALING.push(...scaling)
+        x.SKILL_SCALING.push(...scaling)
         return x
       })
       return base

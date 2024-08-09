@@ -201,7 +201,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       weakness: Element[],
       broken: boolean
     ) => {
-      const base = _.cloneDeep(x)
+      const base = x
 
       base.COUNTDOWN = 70
       base.EXTRA_C_TURN = 1

@@ -209,7 +209,7 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
             ))}
           </div>
           {canEdit && (
-            <div className="absolute flex flex-col gap-2 pr-2 pt-2 items-end top-px left-px w-[calc(100%-2px)] h-[calc(100%-2px)] rounded-lg from-transparent group-hover:bg-opacity-80 bg-gradient-to-l group-hover:from-primary-darker from-30% duration-200 overflow-hidden">
+            <div className="absolute flex flex-col gap-2 pr-2 pt-2 items-end top-px left-px w-[calc(100%-2px)] h-[248px] rounded-lg from-transparent group-hover:bg-opacity-80 bg-gradient-to-l group-hover:from-primary-darker from-30% duration-200 overflow-hidden">
               <MenuButton
                 icon="fa-solid fa-pen-to-square"
                 duration="duration-[200ms]"

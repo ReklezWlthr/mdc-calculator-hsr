@@ -1649,7 +1649,7 @@ export const LightCones = [
     type: PathType.NIHILITY,
     desc: {
       name: 'Worldly Affairs Leave No Mark',
-      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. After the wearer uses Basic ATK, Skill, or Ultimate to attack enemy target(s), there is a <span class="text-desc">60%</span> <u>base chance</u> to inflict <b>Unarmored</b> to the target. While in the <b>Unarmored</b> state, the enemy target receives {{1}}% increased DMG, lasting for <span class="text-desc">2</span> turn(s). If the target is under a DoT state inflicted by the wearer, there is a <span class="text-desc">60%</span> <u>base chance</u> to upgrade the <b>Unarmored</b> state inflicted by the wearer to the <b>Cornered</b> state, which additionally increases the DMG the target enemy receives by {{2}}%, lasting for <span class="text-desc">2</span> turn(s). During this period, the wearer cannot inflict <b>Unarmored</b> on the target.`,
+      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. After the wearer uses Basic ATK, Skill, or Ultimate to attack an enemy target, there is a <span class="text-desc">60%</span> <u>base chance</u> to inflict <b>Unarmored</b> on the target. While in the <b>Unarmored</b> state, the enemy target receives {{1}}% increased DMG, lasting for <span class="text-desc">2</span> turn(s). If the target is under a DoT state inflicted by the wearer, there is a <span class="text-desc">60%</span> <u>base chance</u> to upgrade the <b>Unarmored</b> state inflicted by the wearer to the <b>Cornered</b> state, which additionally increases the DMG the target enemy receives by {{2}}%, lasting for <span class="text-desc">2</span> turn(s). During this period, the wearer cannot inflict <b>Unarmored</b> on the target.`,
       properties: [
         { base: 60, growth: 10 },
         { base: 10, growth: 2 },
@@ -1682,7 +1682,7 @@ export const LightCones = [
     type: PathType.HUNT,
     desc: {
       name: 'Intimidation',
-      detail: `Increases the wearer's CRIT Rate by {{0}}% . When any single ally uses an attack, the wearer gains <span class="text-desc">1</span> stack of <b>Luminflux</b> to a max of <span class="text-desc">6</span> stack(s). Each stack of <b>Luminflux</b> enables the Ultimate DMG deal by the wearer to ignore {{1}}% of the target's DEF. This effect will be dispelled after the wearer uses their Ultimate.`,
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. When any single ally uses an attack, the wearer gains <span class="text-desc">1</span> stack of <b>Luminflux</b> to a max of <span class="text-desc">6</span> stack(s). Each stack of <b>Luminflux</b> enables the Ultimate DMG deal by the wearer to ignore {{1}}% of the target's DEF. This effect will be dispelled after the wearer uses their Ultimate.`,
       properties: [
         { base: 15, growth: 2.5 },
         { base: 9, growth: 1 },
@@ -1700,7 +1700,7 @@ export const LightCones = [
     type: PathType.ABUNDANCE,
     desc: {
       name: 'Contentment',
-      detail: `Increases wearer's Break Effect by {{0}}% . After wearer attacks an enemy with an Ultimate, causes them to enter the <b>Woefree</b> state for <span class="text-desc">2</span> turn(s). During the <b>Woefree</b> state, increases DMG dealt to enemy targets by {{1}}% and if the wearer's current Break Effect is greater or equal to <span class="text-desc">150%</span>, additionally increases DMG received effect by {{2}}% .`,
+      detail: `Increases wearer's Break Effect by {{0}}%. After the wearer uses their Ultimate to attack enemy targets, afflict the target(s) with the <b>Woefree</b> state, lasting for <span class="text-desc">2</span> turn(s). Enemy targets in the <b>Woefree</b> take {{1}}% more DMG. The effect of increasing DMG taken is additionally boosted by {{2}}% if the wearer's current Break Effect is <span class="text-desc">150%</span> or higher.`,
       properties: [
         { base: 60, growth: 10 },
         { base: 10, growth: 2 },

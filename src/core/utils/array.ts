@@ -9,6 +9,7 @@ export class WeightedArray<T> extends Array {
     return new Proxy(this, {
       get: function (target, name) {
         if (typeof name === 'symbol' || _.isNaN(Number(name))) return target[name]
+        console.log(name, target.__ref, target.__ref[name])
         return target.__ref[name]?.value
       },
     })
@@ -16,7 +17,9 @@ export class WeightedArray<T> extends Array {
 
   push(value: T, weight: number = 0) {
     const length = super.push(value)
-    this.__ref = _.orderBy([...this.__ref, { value, weight }], 'weight', 'asc')
+    const newRef = _.cloneDeep(this.__ref)
+    newRef.push({ value, weight })
+    this.__ref = newRef.sort((a, b) => a.weight - b.weight)
     return length
   }
 

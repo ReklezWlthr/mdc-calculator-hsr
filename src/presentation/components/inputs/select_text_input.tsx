@@ -41,7 +41,7 @@ export const SelectTextInput = (props: SelectTextInputProps) => {
         props.style || 'w-full'
       )}
     >
-      <div className="flex items-center w-full">
+      <div className="flex items-center w-full gap-1">
         <Combobox.Button as="div" className="w-full">
           <Combobox.Input
             className={classNames(
@@ -59,7 +59,7 @@ export const SelectTextInput = (props: SelectTextInputProps) => {
           />
         </Combobox.Button>
         <i
-          className="text-sm duration-100 opacity-0 cursor-pointer fa-solid fa-times-circle text-primary-light group-hover:opacity-100 w-fit"
+          className="text-sm duration-200 opacity-0 cursor-pointer fa-solid fa-times-circle text-primary-light group-hover:opacity-100 w-fit"
           onClick={() => {
             props.onChange(null)
             setSearchWord('')

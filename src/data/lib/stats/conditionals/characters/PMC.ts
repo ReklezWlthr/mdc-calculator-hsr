@@ -201,7 +201,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       weakness: Element[],
       broken: boolean
     ) => {
-      const base = _.cloneDeep(x)
+      const base = x
 
       const c1Scaling = c >= 1 ? [{ scaling: 0.25 * (form.pmc_enhance ? 2 : 1), multiplier: Stats.DEF }] : []
       base.BASIC_SCALING = form.pmc_enhance

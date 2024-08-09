@@ -30,12 +30,9 @@ export const PillInput = ({
       <p className="w-full truncate transition-none">{value || placeholder || '-'}</p>
       {onClear && (
         <i
-          className={classNames(
-            'text-sm transition duration-100 opacity-0 fa-solid fa-times-circle text-primary-light w-0',
-            {
-              'group-hover:opacity-100 group-hover:w-fit cursor-pointer': !disabled,
-            }
-          )}
+          className={classNames('text-sm duration-200 opacity-0 fa-solid fa-times-circle text-primary-light', {
+            'group-hover:opacity-100 cursor-pointer': !disabled,
+          })}
           onClick={(event) => {
             event.stopPropagation()
             !disabled && onClear()

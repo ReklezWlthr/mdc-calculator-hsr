@@ -163,7 +163,7 @@ export const LCBlock = observer(
                 <img
                   src={`https://api.hakush.in/hsr/UI/lightconemaxfigures/${weaponData?.id}.webp`}
                   className={classNames(
-                    'object-contain p-2 flex h-full justify-center border rounded-lg bg-primary-darker duration-200',
+                    'object-contain p-1 flex h-full justify-center border rounded-lg bg-primary-darker duration-200',
                     loading ? 'hidden' : 'block',
                     invalid ? 'border-error' : 'border-primary-border',
                     {
@@ -183,7 +183,7 @@ export const LCBlock = observer(
               />
             )}
             {!!rarity && (
-              <div className="absolute -bottom-1.5 -right-1 bg-primary-bg px-1.5 py-0.5 rounded-lg">
+              <div className="absolute -bottom-1.5 -right-1 bg-primary-bg px-1.5 py-0.5 rounded-lg pointer-events-none">
                 {invalid ? (
                   <p className="text-xs text-red">
                     <i className="mr-1 fa-solid fa-ban text-error" />

@@ -346,6 +346,7 @@ export const useCalculator = ({
       const final = _.map(postArtifactCallback, (base, index) => {
         let x = base
         _.forEach(base.CALLBACK, (cb, i) => {
+          // console.log(base.CALLBACK, cb)
           if (cb) x = cb(x, debuffs, weakness, postArtifactCallback, true)
         })
 
