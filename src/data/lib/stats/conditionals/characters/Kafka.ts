@@ -181,6 +181,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           break: 10,
           energy: 20,
           sum: true,
+          hitSplit: [0.5, 0.5],
         },
       ]
       base.SKILL_SCALING = [
@@ -193,6 +194,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           break: 20,
           energy: 30,
           sum: true,
+          hitSplit: [0.2, 0.3, 0.5],
         },
         {
           name: 'Adjacent',
@@ -224,6 +226,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
           sum: true,
+          hitSplit: [0.15, 0.15, 0.15, 0.15, 0.15, 0.25],
         },
       ]
       base.TECHNIQUE_SCALING = [

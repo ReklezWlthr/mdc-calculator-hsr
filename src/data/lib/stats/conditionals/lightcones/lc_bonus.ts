@@ -52,12 +52,16 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
   {
     id: '20018',
     scaling: (base, r) => {
-      base.BASIC_SCALING.push({
-        name: 'Hidden Shadow DMG',
-        value: [{ scaling: calcRefinement(0.6, 0.15, r), multiplier: Stats.ATK }],
-        element: base.ELEMENT,
-        property: TalentProperty.ADD,
-        type: TalentType.NONE,
+      base.CALLBACK.push((x) => {
+        x.BASIC_SCALING.push({
+          name: 'Hidden Shadow DMG',
+          value: [{ scaling: calcRefinement(0.6, 0.15, r), multiplier: Stats.ATK }],
+          element: base.ELEMENT,
+          property: TalentProperty.ADD,
+          type: TalentType.NONE,
+          sum: true,
+        })
+        return x
       })
       return base
     },
@@ -565,6 +569,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
           element: x.ELEMENT,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
+          sum: true,
         }
         x.BASIC_SCALING.push(scaling)
         x.SKILL_SCALING.push(scaling)
@@ -819,6 +824,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
             source: 'Incessant Rain',
             value: calcRefinement(0.12, 0.02, r),
           })
+        return x
       })
       return base
     },

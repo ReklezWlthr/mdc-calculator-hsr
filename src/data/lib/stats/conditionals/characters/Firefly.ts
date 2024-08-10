@@ -216,6 +216,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               type: TalentType.BA,
               break: 15,
               sum: true,
+              hitSplit: [0.15, 0.15, 0.15, 0.15, 0.4],
             },
             {
               name: 'Healing',
@@ -245,6 +246,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.SKILL,
           break: 20,
           sum: true,
+          hitSplit: [0.4, 0.6],
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -371,6 +373,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               type: TalentType.SKILL,
               break: 30,
               sum: true,
+              hitSplit: [0.15, 0.15, 0.15, 0.15, 0.4],
             },
             {
               name: 'Adjacent',
@@ -384,6 +387,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
               break: 15,
+              hitSplit: [0.15, 0.15, 0.15, 0.15, 0.4],
             },
             {
               name: 'Healing',

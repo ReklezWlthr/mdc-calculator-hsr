@@ -228,6 +228,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               type: TalentType.NONE,
               chance: { base: broken ? 1 : 0.33, fixed: true },
               bonus: form.sushang_a4 ? form.sushang_a4 * 0.02 : 0,
+              hitSplit: [0.3, 0.7],
             },
             {
               name: 'Extra Sword Stance DMG',

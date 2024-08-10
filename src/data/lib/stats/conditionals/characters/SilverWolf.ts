@@ -245,6 +245,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           break: 10,
           energy: 20,
           sum: true,
+          hitSplit: [0.25, 0.25, 0.5],
         },
       ]
       base.SKILL_SCALING = [

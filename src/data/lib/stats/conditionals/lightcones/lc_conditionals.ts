@@ -1385,7 +1385,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
   },
   {
     type: 'element',
-    text: `Dreamville Adventure`,
+    text: `Childishness Type`,
     show: true,
     default: TalentType.BA,
     options: [
@@ -1396,11 +1396,18 @@ export const LCTeamConditionals: IWeaponContent[] = [
     id: '21036',
     scaling: (base, form, r) => {
       if (form['21036']) {
-        base[`${TalentTypeMap[form['21036']]}_DMG`].push({
-          name: `Passive`,
-          source: 'Dreamville Adventure',
-          value: calcRefinement(0.12, 0.02, r),
-        })
+        const exist = _.find(
+          base[`${TalentTypeMap[form['21036']]}_DMG`],
+          (item) => item.source === 'Dreamville Adventure'
+        )
+        const value = calcRefinement(0.12, 0.02, r)
+        if (!exist)
+          base[`${TalentTypeMap[form['21036']]}_DMG`].push({
+            name: `Passive`,
+            source: 'Dreamville Adventure',
+            value,
+          })
+        if (exist && exist.value < value) exist.value = value
       }
       return base
     },

@@ -15,6 +15,7 @@ import {
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/calculator'
+import { WeightedArray } from '@src/core/utils/array'
 
 const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {

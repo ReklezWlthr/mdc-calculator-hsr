@@ -224,6 +224,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               type: TalentType.BA,
               break: 20,
               sum: true,
+              hitSplit: [0.5, 0.5],
             },
             {
               name: 'Adjacent',
@@ -246,6 +247,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               type: TalentType.BA,
               break: 10,
               sum: true,
+              hitSplit: [0.5, 0.5],
             },
           ]
       base.TALENT_SCALING = [
@@ -260,6 +262,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.ULT,
           break: 20,
           sum: true,
+          hitSplit: [0.33, 0.33, 0.34],
         },
         {
           name: 'Healing',

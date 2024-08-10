@@ -147,32 +147,14 @@ export const addArtifactStats = (conditionals: StatsObject, artifacts: IArtifact
 }
 
 export const getTeamOutOfCombat = (chars: ITeamChar[], artifacts: IArtifactEquip[]) => {
-  return [
+  return _.map(Array(4), (_v, i) =>
     calculateOutOfCombat(
       _.cloneDeep(baseStatsObject),
-      0,
+      i,
       chars,
-      _.filter(artifacts, (item) => _.includes(chars?.[0]?.equipments?.artifacts, item.id))
-    ),
-    calculateOutOfCombat(
-      _.cloneDeep(baseStatsObject),
-      1,
-      chars,
-      _.filter(artifacts, (item) => _.includes(chars?.[1]?.equipments?.artifacts, item.id))
-    ),
-    calculateOutOfCombat(
-      _.cloneDeep(baseStatsObject),
-      2,
-      chars,
-      _.filter(artifacts, (item) => _.includes(chars?.[2]?.equipments?.artifacts, item.id))
-    ),
-    calculateOutOfCombat(
-      _.cloneDeep(baseStatsObject),
-      3,
-      chars,
-      _.filter(artifacts, (item) => _.includes(chars?.[3]?.equipments?.artifacts, item.id))
-    ),
-  ]
+      _.filter(artifacts, (item) => _.includes(chars?.[i]?.equipments?.artifacts, item.id))
+    )
+  )
 }
 
 export const calcScaling = (base: number, growth: number, level: number, type: TalentScalingStyle) => {

@@ -208,157 +208,155 @@ export const useCalculator = ({
   // Reactions are placed last because they only provide damage buff, not stat buffs, and heavily relies on stats
   useEffect(() => {
     if (!_.some(forms)) return
-    if (enabled) {
-      const weakness = _.cloneDeep(weaknessOverride || calculatorStore.weakness)
-      const debuffs = _.map(DebuffTypes, (v) => ({ type: v, count: 0 }))
-      const preCompute = _.map(conditionals, (base, index) => {
-        let x =
-          base?.preCompute(baseStats[index], forms[index], debuffs, weakness, calculatorStore.broken) ||
-          baseStats[index]
-        if (forms[index][`break_${x.NAME}`]) {
-          x.DOT_SCALING.push({
-            name: `Break ${BreakDebuffType[x.ELEMENT]} DMG`,
-            value: [],
-            element: x.ELEMENT,
-            property: TalentProperty.BREAK_DOT,
-            type: TalentType.NONE,
-            overrideIndex: index,
-            dotType: BreakDebuffType[x.ELEMENT],
-            multiplier: forms[index][`break_${x.NAME}`],
+    if (!enabled) return
+    const weakness = _.cloneDeep(weaknessOverride || calculatorStore.weakness)
+    const debuffs = _.map(DebuffTypes, (v) => ({ type: v, count: 0 }))
+    const preCompute = _.map(conditionals, (base, index) => {
+      let x =
+        base?.preCompute(baseStats[index], forms[index], debuffs, weakness, calculatorStore.broken) || baseStats[index]
+      if (forms[index][`break_${x.NAME}`]) {
+        x.DOT_SCALING.push({
+          name: `Break ${BreakDebuffType[x.ELEMENT]} DMG`,
+          value: [],
+          element: x.ELEMENT,
+          property: TalentProperty.BREAK_DOT,
+          type: TalentType.NONE,
+          overrideIndex: index,
+          dotType: BreakDebuffType[x.ELEMENT],
+          multiplier: forms[index][`break_${x.NAME}`],
+        })
+        addDebuff(debuffs, BreakDebuffType[x.ELEMENT])
+      }
+      return x
+    }) // Compute all self conditionals, return stats of each char
+    const preComputeShared = _.map(preCompute, (base, index) => {
+      // Compute all shared conditionals, call function for every char except the owner
+      let x = base
+      _.forEach(conditionals, (item, i) => {
+        // Loop characters, exclude index of the current parent iteration
+        if (i !== index)
+          x =
+            item?.preComputeShared(
+              preCompute[i],
+              x,
+              {
+                ...forms[i],
+                path: findCharacter(team[index]?.cId)?.path,
+                element: findCharacter(team[index]?.cId)?.element,
+              },
+              forms[index],
+              debuffs,
+              weakness,
+              calculatorStore.broken
+            ) || x
+      })
+      return x
+    })
+    const postCustom = _.map(preComputeShared, (base, index) => {
+      let x = base
+      _.forEach(custom[index], (v) => {
+        if (v.toggled)
+          x[v.name as any].push({
+            name: 'Manual',
+            source: 'Custom',
+            value: v.value / (isFlat(v.name) ? 1 : 100),
           })
-          addDebuff(debuffs, BreakDebuffType[x.ELEMENT])
-        }
-        return x
-      }) // Compute all self conditionals, return stats of each char
-      const preComputeShared = _.map(preCompute, (base, index) => {
-        // Compute all shared conditionals, call function for every char except the owner
-        let x = base
-        _.forEach(conditionals, (item, i) => {
-          // Loop characters, exclude index of the current parent iteration
-          if (i !== index)
-            x =
-              item?.preComputeShared(
-                preCompute[i],
-                x,
-                {
-                  ...forms[i],
-                  path: findCharacter(team[index]?.cId)?.path,
-                  element: findCharacter(team[index]?.cId)?.element,
-                },
-                forms[index],
-                debuffs,
-                weakness,
-                calculatorStore.broken
-              ) || x
-        })
-        return x
       })
-      const postCustom = _.map(preComputeShared, (base, index) => {
-        let x = base
-        _.forEach(custom[index], (v) => {
-          if (v.toggled)
-            x[v.name as any].push({
-              name: 'Manual',
-              source: 'Custom',
-              value: v.value / (isFlat(v.name) ? 1 : 100),
-            })
-        })
-        return x
+      return x
+    })
+    // Always loop; artifact buffs are either self or team-wide so everything is in each character's own form
+    const postArtifact = _.map(postCustom, (base, index) => {
+      let x = base
+      _.forEach(forms, (form, i) => {
+        x = i === index ? calculateRelic(x, form) : calculateTeamRelic(x, form, postCustom[i])
       })
-      // Always loop; artifact buffs are either self or team-wide so everything is in each character's own form
-      const postArtifact = _.map(postCustom, (base, index) => {
-        let x = base
-        _.forEach(forms, (form, i) => {
-          x = i === index ? calculateRelic(x, form) : calculateTeamRelic(x, form, postCustom[i])
-        })
-        return x
-      })
-      const postWeapon = _.map(postArtifact, (base, index) => {
-        let x = base
-        // Apply self self buff then loop for team-wide buff that is in each character's own form
-        _.forEach(forms, (form, i) => {
-          _.forEach(
-            _.filter(
-              i === index ? [...weaponConditionals[i], ...weaponTeamConditionals[i]] : weaponTeamConditionals[i],
-              (c) => _.includes(_.keys(form), c.id)
-            ),
-            (c) => {
-              x = c.scaling(x, form, team[i]?.equipments?.weapon?.refinement, {
-                team: team,
-                element: findCharacter(team[i]?.cId)?.element,
-                own: postArtifact[i],
-                owner: i,
-                totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
-                index: i,
-                debuffs,
-              })
-            }
-          )
-        })
-        // Targeted buffs are in each team member form aside from the giver so no need to loop
+      return x
+    })
+    const postWeapon = _.map(postArtifact, (base, index) => {
+      let x = base
+      // Apply self self buff then loop for team-wide buff that is in each character's own form
+      _.forEach(forms, (form, i) => {
         _.forEach(
-          _.filter(weaponAllySelectable(index), (c) => _.includes(_.keys(forms[index]), c.id)),
+          _.filter(
+            i === index ? [...weaponConditionals[i], ...weaponTeamConditionals[i]] : weaponTeamConditionals[i],
+            (c) => _.includes(_.keys(form), c.id)
+          ),
           (c) => {
-            x = c.scaling(x, forms[index], team[c.owner]?.equipments?.weapon?.refinement, {
+            x = c.scaling(x, form, team[i]?.equipments?.weapon?.refinement, {
               team: team,
-              element: findCharacter(team[c.owner]?.cId)?.element,
-              own: postArtifact[c.owner],
+              element: findCharacter(team[i]?.cId)?.element,
+              own: postArtifact[i],
+              owner: i,
               totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
-              index,
-              owner: c.owner,
+              index: i,
               debuffs,
             })
           }
         )
-        return x
       })
-      const postCompute = _.map(
-        conditionals,
-        (base, index) =>
-          base?.postCompute(
-            postWeapon[index],
-            forms[index],
-            postWeapon,
-            forms,
+      // Targeted buffs are in each team member form aside from the giver so no need to loop
+      _.forEach(
+        _.filter(weaponAllySelectable(index), (c) => _.includes(_.keys(forms[index]), c.id)),
+        (c) => {
+          x = c.scaling(x, forms[index], team[c.owner]?.equipments?.weapon?.refinement, {
+            team: team,
+            element: findCharacter(team[c.owner]?.cId)?.element,
+            own: postArtifact[c.owner],
+            totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
+            index,
+            owner: c.owner,
             debuffs,
-            weakness,
-            calculatorStore.broken
-          ) || postWeapon[index]
+          })
+        }
       )
-      const postArtifactCallback = _.map(postCompute, (base, index) => {
-        let x = base
-        const set = getSetCount(
-          _.map(team[index]?.equipments?.artifacts, (item) => _.find(artifactStore.artifacts, (a) => a.id === item))
-        )
-        _.forEach(set, (value, key) => {
-          if (value >= 2) {
-            const half = _.find(AllRelicSets, ['id', key])?.half
-            if (half) x = half(x, postCompute)
-          }
-          if (value >= 4) {
-            const add = _.find(AllRelicSets, ['id', key])?.add
-            if (add) x = add(x)
-          }
-        })
-        return x
+      return x
+    })
+    const postCompute = _.map(
+      conditionals,
+      (base, index) =>
+        base?.postCompute(
+          postWeapon[index],
+          forms[index],
+          postWeapon,
+          forms,
+          debuffs,
+          weakness,
+          calculatorStore.broken
+        ) || postWeapon[index]
+    )
+    const postArtifactCallback = _.map(postCompute, (base, index) => {
+      let x = base
+      const set = getSetCount(
+        _.map(team[index]?.equipments?.artifacts, (item) => _.find(artifactStore.artifacts, (a) => a.id === item))
+      )
+      _.forEach(set, (value, key) => {
+        if (value >= 2) {
+          const half = _.find(AllRelicSets, ['id', key])?.half
+          if (half) x = half(x, postCompute)
+        }
+        if (value >= 4) {
+          const add = _.find(AllRelicSets, ['id', key])?.add
+          if (add) x = add(x)
+        }
       })
-      // Cleanup callbacks for buffs that should be applied last
-      const final = _.map(postArtifactCallback, (base, index) => {
-        let x = base
-        const cbs = base.CALLBACK.sort((a, b) => compareWeight(a.name, b.name))
-        _.forEach(cbs, (cb) => {
-          if (cb) x = cb(x, debuffs, weakness, postArtifactCallback, true)
-        })
+      return x
+    })
+    // Cleanup callbacks for buffs that should be applied last
+    const final = _.map(postArtifactCallback, (base, index) => {
+      let x = base
+      const cbs = base.CALLBACK.sort((a, b) => compareWeight(a.name, b.name))
+      _.forEach(cbs, (cb) => {
+        if (cb) x = cb(x, debuffs, weakness, postArtifactCallback, true)
+      })
 
-        return x
-      })
-      if (!doNotSaveStats) {
-        calculatorStore.setValue('computedStats', final)
-        calculatorStore.setValue('debuffs', debuffs)
-      }
-      setFinalStats(final)
-      setFinalDebuff(debuffs)
+      return x
+    })
+    if (!doNotSaveStats) {
+      calculatorStore.setValue('computedStats', final)
+      calculatorStore.setValue('debuffs', debuffs)
     }
+    setFinalStats(final)
+    setFinalDebuff(debuffs)
   }, [baseStats, forms, custom, team, calculatorStore.weakness, calculatorStore.broken, calculatorStore.toughness])
 
   // =================

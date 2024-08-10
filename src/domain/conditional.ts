@@ -44,6 +44,9 @@ export interface IScaling {
   vul?: number
   debuffElement?: Element // Only used for chance
   sum?: boolean
+  hitSplit?: number[]
+  bonusSplit?: number[] // Used by DHIL
+  cdSplit?: number[] // Used by DHIL
 }
 
 export interface IContent {

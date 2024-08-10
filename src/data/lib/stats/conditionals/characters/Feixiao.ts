@@ -178,6 +178,7 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.BA,
           break: 10,
           sum: true,
+          hitSplit: [0.2, 0.2, 0.6],
         },
       ]
       base.SKILL_SCALING = [
@@ -189,6 +190,7 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.SKILL,
           break: 20,
           sum: true,
+          hitSplit: [0.34, 0.33, 0.33],
         },
       ]
       const c1Scaling =
@@ -226,6 +228,7 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: a.a4 ? TalentProperty.FUA : TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 5,
+          hitSplit: [0.1, 0.9],
         },
         {
           name: 'Waraxe Skyward DMG',
@@ -234,6 +237,7 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: a.a4 ? TalentProperty.FUA : TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 5,
+          hitSplit: [0.1, 0.9],
         },
         {
           name: 'Final Hit DMG',

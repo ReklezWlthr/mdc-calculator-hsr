@@ -185,6 +185,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           break: 20,
           energy: 5,
           sum: true,
+          hitSplit: [0.25, 0.25, 0.25, 0.25],
         },
         {
           name: 'Frozen DMG',

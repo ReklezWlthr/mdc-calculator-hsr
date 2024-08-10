@@ -12,6 +12,7 @@ import { BreakBaseLevel } from '@src/domain/scaling'
 import { superBreakStringConstruct } from '@src/core/utils/constructor/superBreakStringConstruct'
 import { useEffect, useState } from 'react'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
+import { HitSplit } from '@src/core/utils/constructor/damageStringConstruct'
 
 interface ScalingSubRowsProps {
   scaling: IScaling
@@ -79,6 +80,9 @@ export const SuperBreakSubRows = observer(({ scaling, statsOverride, type }: Sca
         body={
           <div className="space-y-1">
             <p dangerouslySetInnerHTML={{ __html: formulaString }} />
+            {!!_.size(scaling.hitSplit) && (
+              <HitSplit split={scaling.hitSplit} dmgSplit={_.map(scaling.hitSplit, (item) => dmg * item)} />
+            )}
           </div>
         }
         style="w-[400px]"
@@ -86,9 +90,20 @@ export const SuperBreakSubRows = observer(({ scaling, statsOverride, type }: Sca
         <p className="col-span-1 text-center text-gray">{_.floor(dmg).toLocaleString()}</p>
       </Tooltip>
       <p className="col-span-1 text-center text-gray">-</p>
-      <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
-        {_.floor(dmg).toLocaleString()}
-      </p>
+      <Tooltip
+        title={scaling.name}
+        body={
+          <div className="space-y-1">
+            <p dangerouslySetInnerHTML={{ __html: formulaString }} />
+            {!!_.size(scaling.hitSplit) && (
+              <HitSplit split={scaling.hitSplit} dmgSplit={_.map(scaling.hitSplit, (item) => dmg * item)} />
+            )}
+          </div>
+        }
+        style="w-[400px]"
+      >
+        <p className="col-span-1 font-bold text-center text-red">{_.floor(dmg).toLocaleString()}</p>
+      </Tooltip>
       <p className="text-xs text-center truncate text-gray">-</p>
       <div className="flex col-span-2 gap-1 text-xs" title={scaling.name}>
         <p className="w-full truncate">{scaling.name}</p>

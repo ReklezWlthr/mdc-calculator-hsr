@@ -243,6 +243,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           type: TalentType.TALENT,
           break: 10,
           sum: true,
+          hitSplit: form.jade_ult ? [0.1, 0.1, 0.1, 0.1, 0.6] : [0.15, 0.15, 0.15, 0.15, 0.4],
         },
       ]
       base.TECHNIQUE_SCALING = [

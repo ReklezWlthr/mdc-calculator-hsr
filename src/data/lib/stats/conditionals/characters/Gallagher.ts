@@ -198,6 +198,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               break: 30,
               energy: 20,
               sum: true,
+              hitSplit: [0.25, 0.15, 0.6],
             },
           ]
         : [
@@ -210,6 +211,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               break: 10,
               energy: 20,
               sum: true,
+              hitSplit: [0.5, 0.5],
             },
           ]
       base.SKILL_SCALING = [

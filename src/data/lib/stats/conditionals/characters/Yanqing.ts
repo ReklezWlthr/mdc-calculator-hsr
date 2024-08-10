@@ -208,6 +208,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.BA,
           break: 10,
           sum: true,
+          hitSplit: [0.5, 0.25, 0.25],
         },
       ]
       base.SKILL_SCALING = [
@@ -219,6 +220,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.SKILL,
           break: 20,
           sum: true,
+          hitSplit: [0.25, 0.25, 0.25, 0.25],
         },
       ]
       base.ULT_SCALING = [
@@ -242,6 +244,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           break: 10,
           chance: { base: calcScaling(50, 1, talent, 'curved') / 100, fixed: true },
           sum: true,
+          hitSplit: [0.3, 0.7],
         },
         {
           name: 'Frozen DMG',

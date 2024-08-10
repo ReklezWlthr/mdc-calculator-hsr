@@ -180,6 +180,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.BA,
           break: 10,
           sum: true,
+          hitSplit: [0.3, 0.3, 0.4],
         },
       ]
       base.SKILL_SCALING = [
@@ -219,6 +220,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.ULT,
           break: 20,
           sum: true,
+          hitSplit: [0.25, 0.25, 0.25, 0.25],
         },
       ]
       const wind_shear = {

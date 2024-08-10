@@ -190,6 +190,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.BA,
           break: 10,
           sum: true,
+          hitSplit: [0.4, 0.6],
         },
       ]
       base.SKILL_SCALING = [

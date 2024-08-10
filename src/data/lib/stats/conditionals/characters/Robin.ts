@@ -191,6 +191,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.BA,
           break: 10,
           sum: true,
+          hitSplit: [0.33, 0.33, 0.34],
         },
       ]
 

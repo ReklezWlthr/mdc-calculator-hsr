@@ -209,6 +209,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               type: TalentType.BA,
               multiplier: form.h_march_ult ? 5 : 3,
               break: 5 * (form.h_march_ult ? 5 : 3),
+              hitSplit: form.h_march_ult ? [1 / 5, 1 / 5, 1 / 5, 1 / 5, 1 / 5] : [1 / 3, 1 / 3, 1 / 3],
             },
             {
               name: 'Extra Attack DMG',
@@ -229,6 +230,9 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               break: 5 * (form.h_march_ult ? 8 : 6),
               chance: { base: (form.h_march_ult ? 0.8 : 0.6) ** 3, fixed: true },
               sum: true,
+              hitSplit: form.h_march_ult
+                ? [0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125]
+                : [1 / 6, 1 / 6, 1 / 6, 1 / 6, 1 / 6, 1 / 6],
             },
           ]
         : [
@@ -240,6 +244,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               type: TalentType.BA,
               break: 10,
               sum: true,
+              hitSplit: [0.4, 0.6],
             },
           ]
       base.ULT_SCALING = [
@@ -328,6 +333,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             type: TalentType.NONE,
             break: 15,
             sum: true,
+            hitSplit: [0.4, 0.6],
           })
         if (_.includes([PathType.DESTRUCTION, PathType.HUNT, PathType.ERUDITION], team[masterIndex].PATH)) {
           base.CALLBACK.push((x, _d, _w, all) => {

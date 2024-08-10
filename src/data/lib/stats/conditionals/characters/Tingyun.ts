@@ -200,6 +200,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.BA,
           break: 10,
           sum: true,
+          hitSplit: [0.3, 0.7],
         },
       ]
 

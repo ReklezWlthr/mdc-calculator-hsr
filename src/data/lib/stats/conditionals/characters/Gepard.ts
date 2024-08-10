@@ -161,6 +161,7 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.BA,
           break: 10,
           sum: true,
+          hitSplit: [0.5, 0.5],
         },
       ]
       base.SKILL_SCALING = [
@@ -172,6 +173,7 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.SKILL,
           break: 20,
           sum: true,
+          hitSplit: [0.15, 0.35, 0.5],
         },
         {
           name: 'Frozen DMG',

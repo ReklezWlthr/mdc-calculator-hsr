@@ -7,6 +7,19 @@ export const HelpModal = observer(() => {
       <p className="text-lg font-bold text-white">Quick Guide</p>
       <Collapsible label="Terms and Descriptions">
         <p>
+          <b className="text-desc">Mechanics</b>:
+        </p>
+        <BulletPoint>
+          <b>Hit Split</b> - When a character uses an attack that has multiple hit, each hit of the attack will deal a
+          fixed percentage of the attack's total DMG to its target. Each hit has its own chance to score CRIT hit. Some
+          combat effects are also affected by Hit Split. E.g. <b>DHIL</b>'s <b>Righteous Heart</b> and <b>Outroar</b>,{' '}
+          <b>Swordplay</b> Light Cone, or Super Break DMG.
+          <BulletPoint color="text-desc">
+            Tooltips for DMG formula will also display DMG of each hit of the attack if it has Hit Split. Some hit that
+            has a DMG Bonus/CRIT DMG applied exclusively to that hit will also display it as <b>Hit Boost</b>.
+          </BulletPoint>
+        </BulletPoint>
+        <p>
           <b className="text-desc">Damage Properties</b>:
         </p>
         <BulletPoint>

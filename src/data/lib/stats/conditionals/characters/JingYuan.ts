@@ -186,6 +186,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           type: TalentType.BA,
           break: 10,
           sum: true,
+          hitSplit: [0.45, 0.55],
         },
       ]
       base.SKILL_SCALING = [
@@ -197,6 +198,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           type: TalentType.SKILL,
           break: 10,
           sum: true,
+          hitSplit: [0.4, 0.3, 0.3],
         },
       ]
       base.ULT_SCALING = [

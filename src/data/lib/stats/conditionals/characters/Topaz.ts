@@ -214,6 +214,9 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           res_pen: form.windfall && c >= 6 ? 0.1 : 0,
           cd: form.windfall ? calcScaling(0.125, 0.0125, ult, 'curved') : 0,
           sum: true,
+          hitSplit: form.windfall
+            ? [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.3]
+            : [1 / 7, 1 / 7, 1 / 7, 1 / 7, 1 / 7, 1 / 7, 1 / 7],
         },
       ]
       base.TALENT_SCALING = [
@@ -234,6 +237,9 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           res_pen: form.windfall && c >= 6 ? 0.1 : 0,
           cd: form.windfall ? calcScaling(0.125, 0.0125, ult, 'curved') : 0,
           sum: true,
+          hitSplit: form.windfall
+            ? [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.3]
+            : [1 / 7, 1 / 7, 1 / 7, 1 / 7, 1 / 7, 1 / 7, 1 / 7],
         },
       ]
 

@@ -210,6 +210,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.SKILL,
           break: 10,
           sum: true,
+          hitSplit: form.mark_of_counter ? [0.125, 0.125, 0.125, 0.125, 0.5] : undefined,
         },
       ]
       const ult_adj = form.clara_ult

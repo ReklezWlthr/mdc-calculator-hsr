@@ -216,6 +216,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           break: 20,
           multiplier,
           sum: true,
+          hitSplit: [0.1, 0.1, 0.1, 0.7],
         },
         {
           name: 'Adjacent',
@@ -225,6 +226,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: c >= 6 ? TalentType.ULT : TalentType.SKILL,
           break: 10,
           multiplier,
+          hitSplit: [0.1, 0.1, 0.1, 0.7],
         },
       ]
       const r1 = calcScaling(0.09, 0.006, ult, 'curved') * _.min([form.crimson_knot + (form.crimson_knot > 0), 4])
@@ -302,6 +304,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.ULT,
           break: 5,
           multiplier,
+          hitSplit: [0.5, 0.5],
         },
         ...rs1,
         ...rs2,
@@ -326,6 +329,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           break: 5,
           multiplier,
           sum: true,
+          hitSplit: [0.1, 0.9],
         },
       ]
       base.TECHNIQUE_SCALING.push({

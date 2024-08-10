@@ -202,6 +202,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.BA,
           break: form.yukong_talent ? 20 : 10,
           sum: true,
+          hitSplit: form.yukong_talent ? [0.2, 0.2, 0.6] : undefined,
         },
       ]
       base.ULT_SCALING = [

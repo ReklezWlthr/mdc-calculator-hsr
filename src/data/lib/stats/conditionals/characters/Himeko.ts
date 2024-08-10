@@ -202,6 +202,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           break: 10,
           energy: 20,
           sum: true,
+          hitSplit: [0.4, 0.6],
         },
       ]
       base.SKILL_SCALING = [
@@ -214,6 +215,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           break: 20,
           energy: 30,
           sum: true,
+          hitSplit: [0.2, 0.2, 0.05, 0.05, 0.05, 0.05, 0.4],
         },
         {
           name: 'Adjacent',
@@ -223,6 +225,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.SKILL,
           break: 10,
           energy: 30,
+          hitSplit: [0.2, 0.2, 0.6],
         },
       ]
       base.ULT_SCALING = [
@@ -247,6 +250,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           break: 10,
           energy: 10,
           sum: true,
+          hitSplit: [0.2, 0.2, 0.2, 0.4],
         },
       ]
 

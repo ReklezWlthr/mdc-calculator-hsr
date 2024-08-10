@@ -227,23 +227,13 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         c >= 6
           ? [
               {
-                name: 'E6 Main Add Break DMG',
-                value: [],
-                multiplier: breakScale * 0.4,
-                element: Element.PHYSICAL,
-                property: TalentProperty.BREAK,
-                type: TalentType.NONE,
-                toughCap: 16 * 30,
-                sum: true,
-              },
-              {
-                name: 'E6 Adjacent Break DMG',
+                name: 'Adjacent Break DMG',
                 value: [],
                 multiplier: breakScale * 0.7,
                 element: Element.PHYSICAL,
                 property: TalentProperty.BREAK,
                 type: TalentType.NONE,
-                toughCap: 16 * 30,
+                toughCap: 160,
               },
             ]
           : []
@@ -253,12 +243,13 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               {
                 name: 'Additional Break DMG',
                 value: [],
-                multiplier: breakScale,
+                multiplier: breakScale * (c >= 6 ? 1.4 : 1),
                 element: Element.PHYSICAL,
                 property: TalentProperty.BREAK,
                 type: TalentType.NONE,
                 toughCap: 160,
                 sum: true,
+                hitSplit: [0.2, 0.2, 0.6],
               },
               ...c6Scale,
             ]
@@ -273,6 +264,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               type: TalentType.BA,
               break: (1 + form.trickshot * 0.5) * 20,
               sum: true,
+              hitSplit: [1 / 6, 1 / 6, 1 / 6, 1 / 6, 1 / 6, 1 / 6],
             },
             ...talentScale,
           ]
@@ -285,6 +277,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               type: TalentType.BA,
               break: 10,
               sum: true,
+              hitSplit: [0.3, 0.7],
             },
           ]
       base.ULT_SCALING = [
@@ -296,6 +289,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           type: TalentType.ULT,
           break: 30,
           sum: true,
+          hitSplit: [0.2, 0.8],
         },
       ]
 

@@ -214,6 +214,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
               type: TalentType.BA,
               break: 20,
               sum: true,
+              hitSplit: [0.5, 0.5],
             },
             {
               name: 'Adjacent',

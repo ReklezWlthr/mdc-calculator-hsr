@@ -191,6 +191,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           type: TalentType.BA,
           break: 10,
           sum: true,
+          hitSplit: [0.15, 0.15, 0.7],
         },
       ]
       base.SKILL_SCALING = [
@@ -224,6 +225,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           type: TalentType.TALENT,
           break: 20,
           sum: true,
+          hitSplit: [0.08, 0.08, 0.08, 0.08, 0.08, 0.6],
         },
       ]
 

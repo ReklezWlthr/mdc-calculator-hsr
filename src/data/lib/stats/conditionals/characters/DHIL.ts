@@ -175,7 +175,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     {
       type: 'number',
       id: 'righteous_heart',
-      text: `Starting Righteous Heart Stacks`,
+      text: `Initial Righteous Heart Stacks`,
       ...talents.talent,
       show: true,
       default: 0,
@@ -186,7 +186,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     {
       type: 'number',
       id: 'outroar',
-      text: `Starting Outroar Stacks`,
+      text: `Initial Outroar Stacks`,
       ...talents.skill,
       show: true,
       default: 0,
@@ -232,29 +232,23 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       const outroar_norm = form.outroar * calcScaling(0.06, 0.006, skill, 'curved')
 
       const righteous_heart = (hit: number, offset: number = 0) =>
-        _.reduce(
-          // Offset is used for adjacent attack that starts from 4th hit
-          // Stack is gained AFTER the previous hit land (Start from 0)
-          Array(hit - offset).fill(form.righteous_heart),
-          (acc, curr, i) => {
-            const currentStacks = _.min([c >= 1 ? 10 : 6, curr + (offset + i) * (c >= 1 ? 2 : 1)])
-            const hitSplit = hit > 2 ? 1 / (hit - offset) : i ? 0.7 : 0.3 // DHIL's Base Basic ATK has 30/70 Hit Split
-            return acc + currentStacks * hitSplit * (calcScaling(5, 0.5, talent, 'curved') / 100)
-          },
-          0
-        )
-      const outroar = (hit: number, offset: number = 0) =>
-        _.reduce(
-          // Stack is gained BEFORE the previous hit land (Start from 1, at 4th hit)
-          // +1 Stack before calculating the first hit
-          Array(hit).fill(form.outroar),
-          (acc, curr, i) => {
-            const currentStacks = _.min([4, curr + _.max([0, i - 2])])
-            const hitSplit = 1 / (hit - offset)
-            return acc + currentStacks * hitSplit * calcScaling(0.06, 0.006, skill, 'curved')
-          },
-          0
-        )
+        // Offset is used for adjacent attack that starts from 4th hit
+        // Stack is gained AFTER the previous hit land (Start from 0)
+        _.map(Array(hit - offset).fill(form.righteous_heart), (value, i) => {
+          const currentStacks = _.min([c >= 1 ? 10 : 6, value + (offset + i) * (c >= 1 ? 2 : 1)])
+          return currentStacks * (calcScaling(5, 0.5, talent, 'curved') / 100)
+        })
+
+      const outroar = (hit: number, padding: number = 0) =>
+        // Stack is gained BEFORE the previous hit land (Start from 1, at 4th hit)
+        // +1 Stack before calculating the first hit
+        [
+          ...(padding ? _.map(Array(padding), () => calcScaling(0.06, 0.006, skill, 'curved') * form.outroar) : []),
+          ..._.map(Array(hit - 3).fill(form.outroar), (value, i) => {
+            const currentStacks = _.min([4, value + i + 1])
+            return currentStacks * calcScaling(0.06, 0.006, skill, 'curved')
+          }),
+        ]
 
       switch (form.dhil_sp) {
         case 1:
@@ -266,9 +260,10 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 20,
-              bonus: righteous_heart(3),
+              bonusSplit: righteous_heart(3),
               cd: outroar_norm,
               sum: true,
+              hitSplit: [0.33, 0.33, 0.34],
             },
           ]
           break
@@ -281,9 +276,10 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 30,
-              bonus: righteous_heart(5),
-              cd: outroar(5),
+              bonusSplit: righteous_heart(5),
+              cdSplit: outroar(5, 3),
               sum: true,
+              hitSplit: [0.2, 0.2, 0.2, 0.2, 0.2],
             },
             {
               name: 'Adjacent',
@@ -292,8 +288,9 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 10,
-              bonus: righteous_heart(5, 3),
-              cd: outroar(5, 3),
+              bonusSplit: righteous_heart(5, 3),
+              cdSplit: outroar(5),
+              hitSplit: [0.5, 0.5],
             },
           ]
           break
@@ -306,10 +303,11 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 40,
-              bonus: righteous_heart(7),
-              cd: outroar(7),
+              bonusSplit: righteous_heart(7),
+              cdSplit: outroar(7, 3),
               res_pen: form.dhil_e6 * 0.2,
               sum: true,
+              hitSplit: [0.142, 0.142, 0.142, 0.142, 0.142, 0.142, 0.148],
             },
             {
               name: 'Adjacent',
@@ -318,9 +316,10 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 20,
-              bonus: righteous_heart(7, 3),
-              cd: outroar(7, 3),
+              bonusSplit: righteous_heart(7, 3),
+              cdSplit: outroar(7),
               res_pen: form.dhil_e6 * 0.2,
+              hitSplit: [0.25, 0.25, 0.25, 0.25],
             },
           ]
           break
@@ -333,9 +332,10 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 10,
-              bonus: righteous_heart(2),
+              bonusSplit: righteous_heart(2),
               cd: outroar_norm,
               sum: true,
+              hitSplit: [0.3, 0.7],
             },
           ]
       }
@@ -348,6 +348,9 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           type: TalentType.ULT,
           break: 20,
           sum: true,
+          hitSplit: [0.3, 0.3, 0.4],
+          cd: outroar_norm,
+          bonusSplit: righteous_heart(3),
         },
         {
           name: 'Adjacent',
@@ -356,6 +359,8 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 20,
+          cd: outroar_norm,
+          bonusSplit: righteous_heart(3),
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -367,6 +372,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           type: TalentType.TECH,
           break: 20,
           sum: true,
+          bonusSplit: righteous_heart(3),
         },
       ]
 
@@ -412,17 +418,6 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         )
 
         return x
-      })
-
-      base.ULT_DMG.push({
-        name: 'Talent',
-        source: 'Self',
-        value: righteous_heart(3),
-      })
-      base.ULT_CD.push({
-        name: 'Skill',
-        source: 'Self',
-        value: outroar_norm,
       })
 
       return base

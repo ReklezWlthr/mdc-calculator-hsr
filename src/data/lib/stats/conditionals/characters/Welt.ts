@@ -228,6 +228,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           break: 20,
           energy: 5,
           sum: true,
+          hitSplit: [0.1, 0.9],
         },
       ]
       base.TALENT_SCALING = [

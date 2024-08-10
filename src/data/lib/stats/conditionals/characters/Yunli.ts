@@ -237,6 +237,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
           sum: true,
+          hitSplit: [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.16],
         },
         {
           name: 'Intuit Adjacent',
@@ -247,6 +248,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           break: 10,
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
+          hitSplit: [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.16],
         },
         {
           name: `Cull Extra DMG`,
@@ -302,6 +304,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
           sum: true,
+          hitSplit: [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.16],
         },
         {
           name: 'Intuit Adjacent',
@@ -313,6 +316,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           break: 10,
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
+          hitSplit: [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.16],
         },
         {
           name: `Cull Extra DMG`,

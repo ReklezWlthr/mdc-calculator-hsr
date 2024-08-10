@@ -10,11 +10,51 @@ import { CalculatorStore } from '@src/data/stores/calculator_store'
 import { breakDamageStringConstruct } from './breakDamageStringConstruct'
 import { SetupStore } from '@src/data/stores/setup_store'
 
+export const HitSplit = ({
+  split,
+  dmgSplit,
+  bonusSplit,
+  cdSplit,
+}: {
+  split: number[]
+  dmgSplit: number[]
+  bonusSplit?: number[]
+  cdSplit?: number[]
+}) => {
+  return (
+    <div className="pt-2 !mt-2 border-t border-dashed border-primary-border text-xs space-y-0.5">
+      <p>
+        <b>Hit Split</b> - <span className="text-desc">{_.size(split)}</span> Hit(s)
+      </p>
+      {_.map(split, (item, i) => (
+        <div key={i}>
+          <span className="text-desc">✦</span> Hit {i + 1} -{' '}
+          <b className="text-red">{_.floor(dmgSplit[i]).toLocaleString()}</b> [
+          <span className="text-desc">{toPercentage(item)}</span>]
+          {!!bonusSplit?.[i] && (
+            <span className="pl-1">
+              <span className="pr-1 text-blue">✦</span>
+              Hit Boost: <span className="text-desc">{toPercentage(bonusSplit[i])}</span>
+            </span>
+          )}
+          {!!cdSplit?.[i] && (
+            <span className="pl-1">
+              <span className="pr-1 text-blue">✦</span>
+              Hit Boost: <span className="text-desc">{toPercentage(cdSplit[i])}</span>
+            </span>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export const damageStringConstruct = (
   calculatorStore: CalculatorStore | SetupStore,
   scaling: IScaling,
   stats: StatsObject,
-  level: number
+  level: number,
+  showSplit?: boolean
 ) => {
   if (!scaling || !stats || !level) return
 
@@ -22,6 +62,7 @@ export const damageStringConstruct = (
   const breakScale = scaling.property === TalentProperty.BREAK
   const breakDoT = scaling.property === TalentProperty.BREAK_DOT
   const isPure = scaling.property === TalentProperty.PURE
+  const isSplit = !!_.size(scaling.hitSplit)
 
   const {
     string: { debuffString },
@@ -80,13 +121,13 @@ export const damageStringConstruct = (
     [Stats.EHP]: calculatorStore.hp,
   }
 
-  const bonusDMG =
-    (scaling.bonus || 0) +
+  const bonusDMG = (override?: number) =>
+    (override ?? (scaling.bonus || 0)) +
     (TalentProperty.SHIELD === scaling.property
       ? 0
       : TalentProperty.HEAL === scaling.property
       ? stats.getValue(Stats.HEAL) + stats.getValue(`${TalentTypeMap[scaling.type]}_HEAL`)
-      : stats.getValue(Stats.ALL_DMG) + stats.getValue(`${element} DMG%`) + talentDmg + typeDmg) // Vulnerability effectively stacks with DMG Bonuses
+      : stats.getValue(Stats.ALL_DMG) + stats.getValue(`${element} DMG%`) + talentDmg + typeDmg)
   const raw =
     _.sumBy(
       scaling.value,
@@ -108,25 +149,51 @@ export const damageStringConstruct = (
         (scaling.cap?.multiplier === Stats.HP ? stats.getValue(StatsObjectKeys.X_HP) : 0))
     : 0
   const capped = scaling.cap ? cap < raw : false
-  const dmg =
-    (capped ? cap : breakScale ? breakRaw : raw) *
-    (1 + (breakScale ? stats.getValue(Stats.BE) : isPure ? 0 : bonusDMG)) *
-    (scaling.multiplier || 1) *
-    elementMult *
-    enemyMod
+  const dmgSplit = isSplit
+    ? _.map(
+        scaling.hitSplit,
+        (split, i) =>
+          (capped ? cap : breakScale ? breakRaw : raw) *
+          (1 + (breakScale ? stats.getValue(Stats.BE) : isPure ? 0 : bonusDMG(scaling.bonusSplit?.[i]))) *
+          (scaling.multiplier || 1) *
+          elementMult *
+          enemyMod *
+          split
+      )
+    : [
+        (capped ? cap : breakScale ? breakRaw : raw) *
+          (1 + (breakScale ? stats.getValue(Stats.BE) : isPure ? 0 : bonusDMG())) *
+          (scaling.multiplier || 1) *
+          elementMult *
+          enemyMod,
+      ]
+  const dmg = _.sum(dmgSplit)
 
   const totalCr =
     scaling.overrideCr ||
     _.max([_.min([stats.getValue(Stats.CRIT_RATE) + (scaling.cr || 0) + talentCr + propertyCr, 1]), 0])
-  const totalCd =
+  const totalCd = (override?: number) =>
     scaling.overrideCd ||
     stats.getValue(Stats.CRIT_DMG) +
       stats.getValue(StatsObjectKeys.X_CRIT_DMG) +
-      (scaling.cd || 0) +
+      (override ?? (scaling.cd || 0)) +
       talentCd +
       elementCd +
       propertyCd
+  const globalCd = _.size(scaling.cdSplit)
+    ? _.sum(_.map(scaling.cdSplit, (item, i) => item * scaling.hitSplit?.[i])) + totalCd()
+    : totalCd()
   const totalFlat = (scaling.flat || 0) + elementFlat + talentFlat
+
+  const splitCrit = isSplit
+    ? _.map(scaling.hitSplit, (split, i) => dmg * (1 + totalCd(scaling.cdSplit?.[i])) * split)
+    : [dmg * (1 + totalCd())]
+  const totalCrit = _.sum(splitCrit)
+
+  const splitAvg = isSplit
+    ? _.map(scaling.hitSplit, (split, i) => dmg * (1 + totalCd(scaling.cdSplit?.[i]) * totalCr) * split)
+    : [dmg * (1 + totalCd() * totalCr)]
+  const totalAvg = _.sum(splitAvg)
 
   // String Construct
   const scalingArray = _.map(
@@ -161,9 +228,13 @@ export const damageStringConstruct = (
       ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconBreakUp.png" />${toPercentage(
           stats.getValue(Stats.BE)
         )}</b>)</span>`
-      : bonusDMG > 0 && !isPure
+      : bonusDMG() > 0 && !isPure
       ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(
-          breakScale ? stats.getValue(Stats.BE) : bonusDMG
+          breakScale
+            ? stats.getValue(Stats.BE)
+            : _.size(scaling.bonusSplit)
+            ? _.sum(_.map(scaling.bonusSplit, (item, i) => item * scaling.hitSplit?.[i])) + bonusDMG()
+            : bonusDMG()
         )}</b> <i class="text-[10px]">BONUS</i>)`
       : ''
   }${scaling.multiplier > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(scaling.multiplier, 2)}</b>` : ''}${
@@ -186,19 +257,19 @@ export const damageStringConstruct = (
   }`
 
   const critString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.floor(
-    dmg * (1 + totalCd)
+    totalCrit
   ).toLocaleString()}</b> = <b>${_.round(
     dmg
   ).toLocaleString()}</b> \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconCriticalDamage.png" />${toPercentage(
-    totalCd
+    globalCd
   )}</b>)</span>`
 
   const avgString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.floor(
-    dmg * (1 + totalCd * totalCr)
+    totalAvg
   ).toLocaleString()}</b> = <b>${_.floor(
     dmg
   ).toLocaleString()}</b> \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconCriticalDamage.png" />${toPercentage(
-    totalCd
+    globalCd
   )}</b><span class="ml-1"> \u{00d7} </span><b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconCriticalChance.png" />${toPercentage(
     totalCr
   )}</b>)</span>`
@@ -226,6 +297,9 @@ export const damageStringConstruct = (
           {scaling.type} Bonus: <span className="text-desc">{toPercentage(typeDmg)}</span>
         </p>
       )}
+      {isSplit && showSplit && (
+        <HitSplit split={scaling.hitSplit} dmgSplit={dmgSplit} bonusSplit={scaling.bonusSplit} />
+      )}
     </div>
   )
 
@@ -252,6 +326,7 @@ export const damageStringConstruct = (
           {scaling.property} CRIT DMG: <span className="text-desc">{toPercentage(propertyCd)}</span>
         </p>
       )}
+      {isSplit && showSplit && <HitSplit split={scaling.hitSplit} dmgSplit={splitCrit} cdSplit={scaling.cdSplit} />}
     </div>
   )
 
@@ -273,6 +348,7 @@ export const damageStringConstruct = (
           {scaling.property} CRIT Rate: <span className="text-desc">{toPercentage(propertyCr)}</span>
         </p>
       )}
+      {isSplit && showSplit && <HitSplit split={scaling.hitSplit} dmgSplit={splitAvg} />}
     </div>
   )
 
@@ -283,7 +359,7 @@ export const damageStringConstruct = (
       CritBody,
       AvgBody,
     },
-    number: { dmg: breakDoT ? finalDebuff : dmg, totalCd, totalCr },
+    number: { dmg: breakDoT ? finalDebuff : dmg, totalCrit, totalAvg },
   }
 }
 

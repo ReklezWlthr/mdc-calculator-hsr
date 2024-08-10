@@ -196,6 +196,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           break: 10,
           energy: 20,
           sum: true,
+          hitSplit: [0.3, 0.7],
         },
       ]
       base.SKILL_SCALING = [
@@ -208,6 +209,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           break: 20,
           energy: 30,
           sum: true,
+          hitSplit: [0.2, 0.1, 0.1, 0.6],
         },
       ]
       base.ULT_SCALING = [

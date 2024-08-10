@@ -76,8 +76,11 @@ export const CompareSubRows = observer(
 
     const getDmg = (obj: StringConstructor) => {
       return (
-        obj?.number.dmg *
-          (noCrit || mode === 'base' ? 1 : 1 + obj?.number.totalCd * (mode === 'crit' ? 1 : obj?.number.totalCr)) || 0
+        (noCrit || mode === 'base'
+          ? obj?.number.dmg
+          : mode === 'crit'
+          ? obj?.number.totalCrit
+          : obj?.number.totalAvg) || 0
       )
     }
 

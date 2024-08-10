@@ -49,8 +49,8 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
 
   const {
     component: { DmgBody, AvgBody, CritBody },
-    number: { dmg, totalCd, totalCr },
-  } = damageStringConstruct(calculatorStore, scaling, stats, teamStore.characters[index]?.level)
+    number: { dmg, totalCrit, totalAvg },
+  } = damageStringConstruct(calculatorStore, scaling, stats, teamStore.characters[index]?.level, true)
 
   const { prob, ProbComponent } = chanceStringConstruct(
     calculatorStore,
@@ -100,7 +100,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
   )
 
   useEffect(() => {
-    const arr = noCrit ? Array(3).fill(dmg) : [dmg, dmg * (1 + totalCd), dmg * (1 + totalCd * totalCr)]
+    const arr = noCrit ? Array(3).fill(dmg) : [dmg, totalCrit, totalAvg]
     _.forEach(arr, (item, i) => {
       item && calculatorStore.setTotal(type, i, scaling.name, sum ? item : 0)
     })
@@ -109,7 +109,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
         item && calculatorStore.setTotal(type, i, scaling.name, undefined)
       })
     }
-  }, [dmg, totalCd, totalCr, scaling, sum])
+  }, [dmg, totalCrit, totalAvg, scaling, sum])
 
   useEffect(() => {
     setSum(scaling.sum)
@@ -124,7 +124,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
         <p className="col-span-1 text-center text-gray">-</p>
       ) : (
         <Tooltip title={'CRIT: ' + scaling.name} body={CritBody} style="w-[400px]">
-          <p className="col-span-1 text-center text-gray">{_.floor(dmg * (1 + totalCd)).toLocaleString()}</p>
+          <p className="col-span-1 text-center text-gray">{_.floor(totalCrit).toLocaleString()}</p>
         </Tooltip>
       )}
       {noCrit ? (
@@ -132,7 +132,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
       ) : (
         <Tooltip title={'Average: ' + scaling.name} body={AvgBody} style="w-[400px]">
           <p className={classNames('col-span-1 font-bold text-center', propertyColor[scaling.property] || 'text-red')}>
-            {_.floor(dmg * (1 + totalCd * totalCr)).toLocaleString()}
+            {_.floor(totalAvg).toLocaleString()}
           </p>
         </Tooltip>
       )}
