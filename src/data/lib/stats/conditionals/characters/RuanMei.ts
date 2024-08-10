@@ -229,6 +229,11 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Self',
           value: calcScaling(0.15, 0.01, ult, 'curved'),
         })
+        base.ADD_DEBUFF.push({
+          name: 'Thanatoplum Rebloom',
+          source: 'Self',
+        })
+        addDebuff(debuffs, DebuffTypes.OTHER)
         if (c >= 1)
           base.DEF_PEN.push({
             name: 'Eidolon 1',
@@ -276,6 +281,10 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           name: 'Ultimate',
           source: 'Ruan Mei',
           value: calcScaling(0.15, 0.01, ult, 'curved'),
+        })
+        base.ADD_DEBUFF.push({
+          name: 'Thanatoplum Rebloom',
+          source: 'Ruan Mei',
         })
         if (c >= 1)
           base.DEF_PEN.push({

@@ -22,7 +22,7 @@ export const chanceStringConstruct = (
   const enemy = findEnemy(calculatorStore.enemy)
   const ccRes = enemy?.statusRes?.[DebuffTypes.CONTROL] || 0
   const ehr = stats?.getValue(Stats.EHR)
-  const effRes = calculatorStore.getEffRes(stats?.getValue(StatsObjectKeys.EHR_RED))
+  const effRes = calculatorStore.getEffRes(stats?.getValue(StatsObjectKeys.E_RES_RED))
   const debuffRes = enemy?.statusRes?.[property === TalentProperty.DOT ? BreakDebuffType[element] : property] || 0
   const prob = fixed ? base : _.max([(base || 0) * (1 + ehr) * (1 - effRes) * (1 - debuffRes - (isCC ? ccRes : 0)), 0])
 

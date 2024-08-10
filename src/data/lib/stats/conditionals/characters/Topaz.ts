@@ -257,6 +257,10 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           source: 'Self',
           value: form.debtor * 0.25,
         })
+        base.ADD_DEBUFF.push({
+          name: 'Debtor',
+          source: 'Self',
+        })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
 
@@ -277,12 +281,17 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           source: 'Topaz and Numby',
           value: calcScaling(0.25, 0.025, skill, 'curved'),
         })
-      if (form.debtor)
+      if (form.debtor) {
         base.FUA_CD.push({
           name: 'Debtor',
           source: 'Topaz and Numby',
           value: form.debtor * 0.25,
         })
+        base.ADD_DEBUFF.push({
+          name: 'Debtor',
+          source: 'Topaz and Numby',
+        })
+      }
 
       return base
     },

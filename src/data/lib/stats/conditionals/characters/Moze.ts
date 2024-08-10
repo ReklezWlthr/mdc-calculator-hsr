@@ -244,6 +244,11 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         })
       }
       if (form.prey) {
+        base.ADD_DEBUFF.push({
+          name: 'Prey',
+          source: 'Self',
+        })
+        addDebuff(debuffs, DebuffTypes.OTHER)
         if (a.a6) {
           base[Stats.CRIT_DMG].push({
             name: 'Ascension 6 Passive',
@@ -272,6 +277,10 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       broken: boolean
     ) => {
       if (form.prey) {
+        base.ADD_DEBUFF.push({
+          name: 'Prey',
+          source: 'Moze',
+        })
         if (a.a6) {
           base[Stats.CRIT_DMG].push({
             name: 'Ascension 6 Passive',

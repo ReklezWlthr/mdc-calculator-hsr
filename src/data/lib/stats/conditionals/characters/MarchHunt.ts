@@ -212,7 +212,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               hitSplit: form.h_march_ult ? [1 / 5, 1 / 5, 1 / 5, 1 / 5, 1 / 5] : [1 / 3, 1 / 3, 1 / 3],
             },
             {
-              name: 'Extra Attack DMG',
+              name: 'DMG Per Hit',
               value: [{ scaling: calcScaling(0.4, 0.08, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,

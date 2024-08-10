@@ -60,12 +60,45 @@ export const DebuffModal = observer(({ statsOverride, selectedOverride, debuffOv
           Debuff Count: <span className="text-red">{countDebuff(debuffOverride || calculatorStore.debuffs)}</span>
         </p>
       </div>
-      <Collapsible label="Attribute Reduction">
+      <Collapsible
+        label={
+          <div className="flex items-center gap-2">
+            <p>Attribute Reduction</p>
+            <div className="flex items-center justify-center w-6 h-6 text-sm rounded-md bg-primary-light">
+              {_.size(
+                _.concat(
+                  stats.ATK_REDUCTION,
+                  stats.DEF_REDUCTION,
+                  stats.SPD_REDUCTION,
+                  stats.E_RES_RED,
+                  stats.EHR_RED,
+                  stats.WEAKEN
+                )
+              ) + (countDebuff(debuffOverride || calculatorStore.debuffs, DebuffTypes.IMPRISON) ? 1 : 0)}
+            </div>
+          </div>
+        }
+      >
         <div className="grid grid-cols-2 gap-10">
           <div className="space-y-2">
             <AttributeBlock stats={stats} stat="ATK Reduction" array={stats.ATK_REDUCTION} />
             <AttributeBlock stats={stats} stat="DEF Reduction" array={stats.DEF_REDUCTION} />
-            <AttributeBlock stats={stats} stat="SPD Reduction" array={stats.SPD_REDUCTION} />
+            <AttributeBlock
+              stats={stats}
+              stat="SPD Reduction"
+              array={
+                countDebuff(debuffOverride || calculatorStore.debuffs, DebuffTypes.IMPRISON)
+                  ? [
+                      ...stats.SPD_REDUCTION,
+                      {
+                        name: `Auto-Application`,
+                        source: 'Imprisonment',
+                        value: 0.1,
+                      },
+                    ]
+                  : stats.SPD_REDUCTION
+              }
+            />
           </div>
           <div className="space-y-2">
             <AttributeBlock stats={stats} stat="Effect RES Reduction" array={stats.E_RES_RED} />
@@ -74,7 +107,25 @@ export const DebuffModal = observer(({ statsOverride, selectedOverride, debuffOv
           </div>
         </div>
       </Collapsible>
-      <Collapsible label="Vulnerability">
+      <Collapsible
+        label={
+          <div className="flex items-center gap-2">
+            <p>Vulnerability</p>
+            <div className="flex items-center justify-center w-6 h-6 text-sm rounded-md bg-primary-light">
+              {_.size(
+                _.concat(
+                  stats.VULNERABILITY,
+                  stats.DOT_VUL,
+                  stats.FUA_VUL,
+                  stats.BREAK_VUL,
+                  stats.ULT_VUL,
+                  stats.FIRE_VUL
+                )
+              )}
+            </div>
+          </div>
+        }
+      >
         <div className="grid grid-cols-2 gap-10">
           <div className="space-y-2">
             <AttributeBlock stats={stats} stat="All-Type Vulnerability" array={stats.VULNERABILITY} />
@@ -88,7 +139,27 @@ export const DebuffModal = observer(({ statsOverride, selectedOverride, debuffOv
           </div>
         </div>
       </Collapsible>
-      <Collapsible label="DMG RES Reduction">
+      <Collapsible
+        label={
+          <div className="flex items-center gap-2">
+            <p>DMG RES Reduction</p>
+            <div className="flex items-center justify-center w-6 h-6 text-sm rounded-md bg-primary-light">
+              {_.size(
+                _.concat(
+                  stats.ALL_TYPE_RES_RED,
+                  stats.PHYSICAL_RES_RED,
+                  stats.FIRE_RES_RED,
+                  stats.ICE_RES_RED,
+                  stats.LIGHTNING_RES_RED,
+                  stats.WIND_RES_RED,
+                  stats.QUANTUM_RES_RED,
+                  stats.IMAGINARY_RES_RED
+                )
+              )}
+            </div>
+          </div>
+        }
+      >
         <div className="grid grid-cols-2 gap-10">
           <div className="space-y-2">
             <AttributeBlock stats={stats} stat="All-Type RES Reduction" array={stats.ALL_TYPE_RES_RED} />
@@ -104,7 +175,16 @@ export const DebuffModal = observer(({ statsOverride, selectedOverride, debuffOv
           </div>
         </div>
       </Collapsible>
-      <Collapsible label="Damage Over Time">
+      <Collapsible
+        label={
+          <div className="flex items-center gap-2">
+            <p>Damage Over Time</p>
+            <div className="flex items-center justify-center w-6 h-6 text-sm rounded-md bg-primary-light">
+              {countDot(debuffOverride || calculatorStore.debuffs)}
+            </div>
+          </div>
+        }
+      >
         <div className="grid grid-cols-2 gap-10">
           <div className="space-y-2">
             <DoTBlock type={DebuffTypes.BLEED} />
@@ -116,9 +196,24 @@ export const DebuffModal = observer(({ statsOverride, selectedOverride, debuffOv
           </div>
         </div>
       </Collapsible>
-      {/* <Collapsible label="Crowd Control">
-        <div className="grid grid-cols-2 gap-10"></div>
-      </Collapsible> */}
+      <Collapsible
+        label={
+          <div className="flex items-center gap-2">
+            <p>Miscellaneous</p>
+            <div className="flex items-center justify-center w-6 h-6 text-sm rounded-md bg-primary-light">
+              {_.size(stats.ADD_DEBUFF)}
+            </div>
+          </div>
+        }
+      >
+        <div className="space-y-1 text-xs">
+          {_.map(stats.ADD_DEBUFF, (item) => (
+            <BulletPoint key={item.source + item.name}>
+              {item.source} / <span className="text-desc">{item.name}</span>
+            </BulletPoint>
+          ))}
+        </div>
+      </Collapsible>
     </div>
   )
 })

@@ -309,6 +309,10 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           source: 'Self',
           value: calcScaling(0.09, 0.006, ult, 'curved'),
         })
+        base.ADD_DEBUFF.push({
+          name: 'Unnerved',
+          source: 'Self',
+        })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
       if (form.aven_tech)
@@ -381,12 +385,17 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
             value: 0.2,
           })
       }
-      if (form.aven_ult)
+      if (form.aven_ult) {
         base[Stats.CRIT_DMG].push({
           name: 'Ultimate',
           source: 'Aventurine',
           value: calcScaling(0.09, 0.006, ult, 'curved'),
         })
+        base.ADD_DEBUFF.push({
+          name: 'Unnerved',
+          source: 'Aventurine',
+        })
+      }
       if (form.aven_tech)
         base[Stats.P_DEF].push({
           name: 'Technique',

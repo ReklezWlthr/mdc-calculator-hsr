@@ -26,6 +26,16 @@ export const LCConditionals: IWeaponContent[] = [
           source: 'Along the Passing Shore',
           value: calcRefinement(0.24, 0.04, r),
         })
+        base.CALLBACK.push((x, d, _w, a) => {
+          _.forEach(a, (t) => {
+            t.ADD_DEBUFF.push({
+              name: 'Mirage Fizzle',
+              source: t.NAME === x.NAME ? 'Self' : x.NAME,
+            })
+          })
+          addDebuff(d, DebuffTypes.OTHER)
+          return x
+        })
       }
       return base
     },
@@ -82,12 +92,12 @@ export const LCConditionals: IWeaponContent[] = [
     scaling: (base, form, r) => {
       if (form['23015']) {
         base[Stats.P_ATK].push({
-          name: `Dragon's Call Stacks`,
+          name: `Dragon's Call`,
           source: 'Brighter Than the Sun',
           value: calcRefinement(0.18, 0.03, r) * form['23015'],
         })
         base[Stats.ERR].push({
-          name: `Dragon's Call Stacks`,
+          name: `Dragon's Call`,
           source: 'Brighter Than the Sun',
           value: calcRefinement(0.06, 0.01, r) * form['23015'],
         })
@@ -741,7 +751,7 @@ export const LCConditionals: IWeaponContent[] = [
     type: 'number',
     text: `Swordplay Stacks`,
     show: true,
-    default: 0,
+    default: 5,
     min: 0,
     max: 5,
     id: '21010',
@@ -1341,6 +1351,10 @@ export const LCTeamConditionals: IWeaponContent[] = [
           name: `Tame`,
           source: 'Worrisome, Blissful',
           value: calcRefinement(0.12, 0.02, r) * form['23016'],
+        })
+        base.ADD_DEBUFF.push({
+          name: 'Tame',
+          source: base.NAME === own.NAME ? 'Self' : own.NAME,
         })
         if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }

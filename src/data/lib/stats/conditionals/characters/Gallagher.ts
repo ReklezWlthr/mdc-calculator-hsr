@@ -251,7 +251,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       base.TECHNIQUE_SCALING = [
         {
           name: 'AoE',
-          value: [{ scaling: 0.8, multiplier: Stats.ATK }],
+          value: [{ scaling: 0.5, multiplier: Stats.ATK }],
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,

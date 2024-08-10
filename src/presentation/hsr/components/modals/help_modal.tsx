@@ -15,9 +15,17 @@ export const HelpModal = observer(() => {
           combat effects are also affected by Hit Split. E.g. <b>DHIL</b>'s <b>Righteous Heart</b> and <b>Outroar</b>,{' '}
           <b>Swordplay</b> Light Cone, or Super Break DMG.
           <BulletPoint color="text-desc">
-            Tooltips for DMG formula will also display DMG of each hit of the attack if it has Hit Split. Some hit that
-            has a DMG Bonus/CRIT DMG applied exclusively to that hit will also display it as <b>Hit Boost</b>.
+            Tooltips for DMG formula will also display DMG of each hit of the attack if it has Hit Split; otherwise,
+            nothing will be shown. Some hit that has a DMG Bonus/CRIT DMG applied exclusively to that hit will also
+            display it as <b>Hit Boost</b>.
           </BulletPoint>
+        </BulletPoint>
+        <BulletPoint>
+          <b>Action Advance</b> - When a character's Action is <u>Advanced Forward</u>, their Action Value is reduced by
+          a fixed percentage of their <b>Maximum</b> Action Value. 100% <u>Action Advancement</u> should not be confused
+          with effects that cause a unit to immediately take action as the unit may still not take their turn if their
+          action has been delayed beyond the <b>Maximum</b> value. The latter, however, forces the unit's Action Value
+          to become 0, regardless of its current value.
         </BulletPoint>
         <p>
           <b className="text-desc">Damage Properties</b>:

@@ -348,7 +348,13 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         value: calcScaling(0.1, 0.01, talent, 'curved'),
       })
 
-      if (form.crimson_knot) addDebuff(debuffs, DebuffTypes.OTHER)
+      if (form.crimson_knot) {
+        base.ADD_DEBUFF.push({
+          name: 'Crimson Knot',
+          source: 'Self',
+        })
+        addDebuff(debuffs, DebuffTypes.OTHER)
+      }
       if (a.a6) {
         base.ULT_SCALING.push({
           name: 'Thunder Core Total DMG',
@@ -396,10 +402,16 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[]
     ) => {
+      if (form.crimson_knot) {
+        base.ADD_DEBUFF.push({
+          name: 'Crimson Knot',
+          source: 'Acheron',
+        })
+      }
       if (form.arch_c4)
         base.ULT_VUL.push({
           name: `Eidolon 4`,
-          source: 'Archeron',
+          source: 'Acheron',
           value: 0.08,
         })
 

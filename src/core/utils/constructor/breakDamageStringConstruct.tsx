@@ -72,7 +72,7 @@ export const breakDamageStringConstruct = (
   const ccRes = enemy?.statusRes?.[DebuffTypes.CONTROL] || 0
   const prob =
     1.5 *
-    (1 - calculatorStore.getEffRes(stats.getValue(StatsObjectKeys.EHR_RED))) *
+    (1 - calculatorStore.getEffRes(stats.getValue(StatsObjectKeys.E_RES_RED))) *
     (1 + stats.getValue(Stats.EHR)) *
     (1 - (enemy?.statusRes?.[BreakDebuffType[stats?.ELEMENT]] || 0) - (isDoT ? 0 : ccRes))
 

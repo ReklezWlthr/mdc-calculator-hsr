@@ -58,7 +58,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       trace: 'Talent',
       title: 'Time Distortion',
       content: `When hitting an enemy that is already <b>Slowed</b>, Welt deals Additional <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of his ATK to the enemy.`,
-      value: [{ base: 360, growth: 3, style: 'curved' }],
+      value: [{ base: 30, growth: 3, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
     },
@@ -133,22 +133,11 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     {
       type: 'toggle',
       id: 'welt_ult',
-      text: `Ult Imprisonment`,
+      text: `Welt's Imprisonment`,
       ...talents.ult,
       show: true,
       default: true,
       debuff: true,
-      chance: { base: 1, fixed: false },
-      duration: 1,
-    },
-    {
-      type: 'toggle',
-      id: 'welt_tech',
-      text: `Technique Imprisonment`,
-      ...talents.technique,
-      show: true,
-      default: true,
-      debuff: false,
       chance: { base: 1, fixed: false },
       duration: 1,
     },
@@ -251,21 +240,6 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         addDebuff(debuffs, DebuffTypes.SPD_RED)
       }
       if (form.welt_ult) {
-        base.SPD_REDUCTION.push({
-          name: `Ultimmate`,
-          source: 'Self',
-          value: 0.1,
-        })
-        addDebuff(debuffs, DebuffTypes.SPD_RED)
-        addDebuff(debuffs, DebuffTypes.IMPRISON)
-      }
-      if (form.welt_tech) {
-        base.SPD_REDUCTION.push({
-          name: `Technique`,
-          source: 'Self',
-          value: 0.1,
-        })
-        addDebuff(debuffs, DebuffTypes.SPD_RED)
         addDebuff(debuffs, DebuffTypes.IMPRISON)
       }
       if (form.welt_a2) {

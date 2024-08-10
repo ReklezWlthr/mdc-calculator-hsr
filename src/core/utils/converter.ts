@@ -4,7 +4,12 @@ import { formatMinorTrace } from './data_format'
 import { findCharacter } from './finder'
 
 export const toPercentage = (value: number, precision: number = 1, round?: boolean) => {
-  return _[round ? 'round' : 'floor'](value * 100, precision).toLocaleString() + '%'
+  return (
+    (round
+      ? _.round(value * 100, precision)
+      : _.floor(_.round(value * 100, precision + 1), precision)
+    ).toLocaleString() + '%'
+  )
 }
 
 export const toLocalStructure = (rawData: Record<string, any>) => {

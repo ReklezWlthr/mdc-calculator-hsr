@@ -5,6 +5,7 @@ import { findCharacter } from './finder'
 import { TraceScaling } from '@src/domain/scaling'
 import { ITalentDisplay } from '@src/domain/conditional'
 import { calcScaling } from './calculator'
+import { toPercentage } from './converter'
 
 export const escapeRegex = (string: string) => {
   return string.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&')
@@ -170,18 +171,18 @@ export const formatScaleString = (talent: ITalentDisplay, level: number) =>
     (acc, curr) => {
       const index = curr?.[0]?.match(/\d+/)?.[0]
       const isPercentage = !!curr?.[0]?.match(/\%$/)
+      const raw = calcScaling(
+        talent?.value?.[index]?.base,
+        talent?.value?.[index]?.growth,
+        level,
+        talent?.value?.[index]?.style
+      )
       return _.replace(
         acc,
         curr[0],
-        `<span class="text-desc">${_.round(
-          calcScaling(
-            talent?.value?.[index]?.base,
-            talent?.value?.[index]?.growth,
-            level,
-            talent?.value?.[index]?.style
-          ),
-          1
-        ).toLocaleString()}${isPercentage ? '%' : ''}</span>`
+        `<span class="text-desc">${
+          isPercentage ? toPercentage(raw / 100, 2) : _.floor(_.round(raw, 3), 2).toLocaleString()
+        }</span>`
       )
     },
     talent?.content

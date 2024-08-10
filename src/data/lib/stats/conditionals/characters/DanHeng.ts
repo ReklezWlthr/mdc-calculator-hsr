@@ -1,4 +1,4 @@
-import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
+import { addDebuff, countDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
 import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
@@ -290,7 +290,7 @@ const DanHeng = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       weakness: Element[],
       broken: boolean
     ) => {
-      const slowed = _.sumBy(debuffs, (item) => Number(item.type === DebuffTypes.SPD_RED) * item.count) >= 1
+      const slowed = countDebuff(debuffs, DebuffTypes.SPD_RED) + countDebuff(debuffs, DebuffTypes.IMPRISON)
       base.ULT_SCALING = [
         {
           name: 'Single Target',

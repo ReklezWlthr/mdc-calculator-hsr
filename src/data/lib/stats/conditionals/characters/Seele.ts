@@ -265,6 +265,10 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.ADD,
           type: TalentType.ULT,
         })
+        base.ADD_DEBUFF.push({
+          name: 'Butterfly Flurry',
+          source: 'Self',
+        })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
 
@@ -277,6 +281,12 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[]
     ) => {
+      if (form.seele_c6) {
+        base.ADD_DEBUFF.push({
+          name: 'Butterfly Flurry',
+          source: 'Seele',
+        })
+      }
       return base
     },
     postCompute: (

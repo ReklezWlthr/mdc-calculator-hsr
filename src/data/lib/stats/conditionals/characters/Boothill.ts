@@ -52,7 +52,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       trace: 'Skill',
       title: `Sizzlin' Tango`,
       content: `Forces Boothill and a single target enemy into the <b>Standoff</b> state. Boothill's Basic ATK gets Enhanced, and he cannot use his Skill, lasting for <span class="text-desc">2</span> turn(s). This duration reduces by <span class="text-desc">1</span> at the start of Boothill's every turn.
-      <br />The enemy target in the <b>Standoff</b> becomes Taunted. When this enemy target/Boothill gets attacked by the other party in the Standoff, the DMG they receive increases by {{0}}%/<span class="text-desc">15%</span>.
+      <br />The enemy target in the <b>Standoff</b> becomes Taunted. When this enemy target/Boothill gets attacked by the other party in the <b>Standoff</b>, the DMG they receive increases by {{0}}%/<span class="text-desc">15%</span>.
       <br />After this target is defeated or becomes Weakness Broken, Boothill gains <span class="text-desc">1</span> stack of <b>Pocket Trickshot</b>, then dispels the <b>Standoff</b>.
       <br />This Skill cannot regenerate Energy. After using this Skill, the current turn does not end.`,
       value: [{ base: 15, growth: 1.5, style: 'curved' }],
@@ -66,9 +66,8 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       content: `Applies <b class="text-hsr-physical">Physical</b> Weakness to a single target enemy, lasting for <span class="text-desc">2</span> turn(s).
       <br />Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Boothill's ATK to the target and delays their action by {{1}}%.`,
       value: [
-        { base: 36, growth: 2.4, style: 'curved' },
-        { base: 12, growth: 0.8, style: 'curved' },
-        { base: 18, growth: 1.2, style: 'curved' },
+        { base: 240, growth: 16, style: 'curved' },
+        { base: 30, growth: 1, style: 'curved' },
       ],
       level: ult,
       tag: AbilityTag.ST,
@@ -77,7 +76,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       trace: 'Talent',
       title: `Five Peas in a Pod`,
       content: `Each stack of <b>Pocket Trickshot</b> increases the Enhanced Basic Attack's Toughness Reduction by <span class="text-desc">50%</span>, stacking up to <span class="text-desc">3</span> time(s).
-      <br />If the target is Weakness Broken when the Enhanced Basic Attack is used, based on the number of <b>Pocket Trickshot</b> stacks, deals Break DMG to this target equal to {{0}}%/{{1}}%/{{2}}% of Boothill's <b class="text-hsr-physical">Physical Break DMG</b>. The max Toughness taken into account for this DMG cannot exceed <span class="text-desc">16</span> times the base Toughness Reduction of the Basic Attack "Skullcrush Spurs."
+      <br />If the target is Weakness Broken when the Enhanced Basic Attack is used, based on the number of <b>Pocket Trickshot</b> stacks, deals Break DMG to this target equal to {{0}}%/{{1}}%/{{2}}% of Boothill's <b class="text-hsr-physical">Physical Break DMG</b>. The max Toughness taken into account for this DMG cannot exceed <span class="text-desc">16</span> times the base Toughness Reduction of the Basic Attack <b>Skullcrush Spurs</b>.
       <br />After winning the battle, Boothill can retain <b>Pocket Trickshot</b> for the next battle.`,
       value: [
         { base: 35, growth: 3.5, style: 'curved' },
@@ -90,7 +89,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     technique: {
       trace: 'Technique',
       title: `3-9x Smile`,
-      content: `After the Technique is used, when casting the Skill for the first time in the next battle, applies the same <b class="text-hsr-physical">Physical</b> Weakness to the target as the one induced by the Ultimate, lasting for 2 turn(s).`,
+      content: `After the Technique is used, when casting the Skill for the first time in the next battle, applies the same <b class="text-hsr-physical">Physical</b> Weakness to the target as the one induced by the Ultimate, lasting for <span class="text-desc">2</span> turn(s).`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {
@@ -234,6 +233,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
                 property: TalentProperty.BREAK,
                 type: TalentType.NONE,
                 toughCap: 160,
+                hitSplit: [0.2, 0.2, 0.6],
               },
             ]
           : []
@@ -241,7 +241,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         broken && form.trickshot
           ? [
               {
-                name: 'Additional Break DMG',
+                name: 'Final-Hit Break DMG',
                 value: [],
                 multiplier: breakScale * (c >= 6 ? 1.4 : 1),
                 element: Element.PHYSICAL,
@@ -303,7 +303,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           source: 'Self',
           value: calcScaling(0.15, 0.015, skill, 'curved') + (c >= 4 ? 0.12 : 0),
         })
-        addDebuff(debuffs, DebuffTypes.OTHER)
+        addDebuff(debuffs, DebuffTypes.CONTROL)
       }
       if (c >= 1)
         base.DEF_PEN.push({
@@ -329,6 +329,12 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       weakness: Element[],
       broken: boolean
     ) => {
+      if (form.standoff) {
+        base.ADD_DEBUFF.push({
+          name: 'Standoff',
+          source: 'Boothill',
+        })
+      }
       return base
     },
     postCompute: (

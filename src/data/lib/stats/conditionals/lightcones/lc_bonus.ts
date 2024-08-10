@@ -124,7 +124,11 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
         value: calcRefinement(0.08, 0.02, r),
       })
       base.CALLBACK.push((x, d) => {
-        if (countDebuff(d, DebuffTypes.DEF_RED) || countDebuff(d, DebuffTypes.SPD_RED))
+        if (
+          countDebuff(d, DebuffTypes.DEF_RED) ||
+          countDebuff(d, DebuffTypes.SPD_RED) ||
+          countDebuff(d, DebuffTypes.IMPRISON)
+        )
           x[Stats.CRIT_DMG].push({
             name: 'Passive',
             source: 'Boundless Choreo',

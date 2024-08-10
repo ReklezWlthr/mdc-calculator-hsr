@@ -22,9 +22,16 @@ export const isSubsetOf = (a: any[], b: any[]) => _.every(a, (item) => _.include
 export const addDebuff = (debuffs: { type: DebuffTypes; count: number }[], type: DebuffTypes, count: number = 1) =>
   (_.find(debuffs, (item) => item.type === type).count += count)
 
-export const countDot = (debuffs: { type: DebuffTypes; count: number }[], type: DebuffTypes) =>
+export const countDot = (debuffs: { type: DebuffTypes; count: number }[], type?: DebuffTypes) =>
   _.sumBy(
-    _.filter(debuffs, (d) => _.includes([DebuffTypes.DOT, type], d.type)),
+    _.filter(debuffs, (d) =>
+      _.includes(
+        type
+          ? [DebuffTypes.DOT, type]
+          : _.map([DebuffTypes.DOT, DebuffTypes.BURN, DebuffTypes.BLEED, DebuffTypes.WIND_SHEAR, DebuffTypes.SHOCKED]),
+        d.type
+      )
+    ),
     (item) => item.count
   )
 
