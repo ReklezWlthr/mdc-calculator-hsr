@@ -13,7 +13,7 @@ export const IntroModal = observer(() => {
       >
         <div className="space-y-2">
           {_.map(changelog, (item) => (
-            <div className="space-y-1">
+            <div className="space-y-1" key={item.version}>
               <p className="ml-3 text-amber-200">
                 <b className="text-desc">v{item.version}</b> - {item.date}
               </p>
@@ -28,7 +28,8 @@ export const IntroModal = observer(() => {
         <BulletPoint>
           This calculator only calculates an instance of damage at a point of time against a single target enemy which
           may not reflect the character's or team's true potential (e.g. AoE characters or Turn/Energy manipulation).
-          Take it with a grain of salt.
+          This makes a really good Light Cones like <b>Multiplication</b> seems weaker than they actually are. Take it
+          with a grain of salt.
         </BulletPoint>
         <BulletPoint>
           The resulting stats/damage may be slightly off due to hidden decimals and some programming wizardry, but the

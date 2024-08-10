@@ -266,7 +266,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       weakness: Element[],
       broken: boolean
     ) => {
-      _.last(team).CALLBACK.push((x, d, w, all) => {
+      _.last(team).CALLBACK.push(function P2(x, _d, _w, all) {
         _.forEach(all, (f, i) => {
           if (allForm[i].tingyun_skill) {
             _.forEach(
@@ -307,7 +307,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           }
         })
         return x
-      }, 2)
+      })
 
       return base
     },

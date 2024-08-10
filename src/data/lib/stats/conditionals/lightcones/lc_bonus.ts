@@ -535,7 +535,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
         source: 'Warmth Shortens Cold Nights',
         value: calcRefinement(0.16, 0.04, r),
       })
-      base.CALLBACK.push((x, _d, _w, a) => {
+      base.CALLBACK.push(function P999(x, _d, _w, a) {
         const scaling = _.filter(
           _.map(a, (item) =>
             item.NAME
@@ -550,9 +550,8 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
           )
         )
         x.BASIC_SCALING.push(...scaling)
-        x.SKILL_SCALING.push(...scaling)
         return x
-      }, 999)
+      })
       return base
     },
   },
@@ -864,19 +863,20 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
         source: 'Night of Fright',
         value: calcRefinement(0.12, 0.02, r),
       })
-      // base.CALLBACK.push((x, _d, _w, all) => {
-      //   _.forEach(all, item => {
-      //     item.ULT_SCALING.push({
-      //       name: 'Self Healing',
-      //     value: [{ scaling: calcRefinement(0.1, 0.01, r), multiplier: Stats.HP }],
-      //     element: TalentProperty.HEAL,
-      //     property: TalentProperty.HEAL,
-      //     type: TalentType.NONE,
-      //     overrideIndex:
-      //     })
-      //   })
-      //   return x
-      // })
+      base.CALLBACK.push(function P999(x, _d, _w, a) {
+        const index = _.findIndex(a, (t) => t.NAME === x.NAME)
+        _.forEach(a, (t) =>
+          t.ULT_SCALING.push({
+            name: `Night of Fright Healing`,
+            value: [{ scaling: calcRefinement(0.1, 0.01, r), multiplier: Stats.HP, override: t.getHP() }],
+            element: TalentProperty.HEAL,
+            property: TalentProperty.HEAL,
+            type: TalentType.NONE,
+            overrideIndex: index,
+          })
+        )
+        return x
+      })
       return base
     },
   },

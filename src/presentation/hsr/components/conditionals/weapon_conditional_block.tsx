@@ -155,6 +155,7 @@ export const WeaponConditionalBlock = observer(
                           }
                           onChange={(value) => set(content.index, content.id, value)}
                           placeholder="None"
+                          small
                         />
                       </div>
                     )}

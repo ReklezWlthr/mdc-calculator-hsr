@@ -21,6 +21,7 @@ export const damageStringConstruct = (
   const element = scaling.element
   const breakScale = scaling.property === TalentProperty.BREAK
   const breakDoT = scaling.property === TalentProperty.BREAK_DOT
+  const isPure = scaling.property === TalentProperty.PURE
 
   const {
     string: { debuffString },
@@ -43,7 +44,8 @@ export const damageStringConstruct = (
     (stats.getValue(`${TalentTypeMap[scaling.type]}_DEF_PEN`) || 0) +
     (stats.getValue(`${TalentPropertyMap[scaling.property]}_DEF_PEN`) || 0)
 
-  const defMult = calculatorStore.getDefMult(level, defPen, stats.getValue(StatsObjectKeys.DEF_REDUCTION)) || 1
+  const defMult =
+    calculatorStore.getDefMult(level, isPure ? 0 : defPen, stats.getValue(StatsObjectKeys.DEF_REDUCTION)) || 1
   const vulMult =
     1 +
     stats.getValue(StatsObjectKeys.VULNERABILITY) +
@@ -57,9 +59,11 @@ export const damageStringConstruct = (
         element as Element,
         (stats.getValue(`${element.toUpperCase()}_RES_RED`) || 0) +
           (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_RED) || 0) +
-          (stats.getValue(`${element.toUpperCase()}_RES_PEN`) || 0) +
-          (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0) +
-          (scaling.res_pen || 0) // Counted as Elemental RES PEN
+          (isPure
+            ? 0
+            : (stats.getValue(`${element.toUpperCase()}_RES_PEN`) || 0) +
+              (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0) +
+              (scaling.res_pen || 0)) // Counted as Elemental RES PEN
       ),
       2,
     ]),
@@ -106,7 +110,7 @@ export const damageStringConstruct = (
   const capped = scaling.cap ? cap < raw : false
   const dmg =
     (capped ? cap : breakScale ? breakRaw : raw) *
-    (1 + (breakScale ? stats.getValue(Stats.BE) : bonusDMG)) *
+    (1 + (breakScale ? stats.getValue(Stats.BE) : isPure ? 0 : bonusDMG)) *
     (scaling.multiplier || 1) *
     elementMult *
     enemyMod
@@ -157,7 +161,7 @@ export const damageStringConstruct = (
       ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconBreakUp.png" />${toPercentage(
           stats.getValue(Stats.BE)
         )}</b>)</span>`
-      : bonusDMG > 0
+      : bonusDMG > 0 && !isPure
       ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(
           breakScale ? stats.getValue(Stats.BE) : bonusDMG
         )}</b> <i class="text-[10px]">BONUS</i>)`

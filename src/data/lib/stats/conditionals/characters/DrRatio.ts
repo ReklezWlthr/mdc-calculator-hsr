@@ -240,7 +240,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       team: StatsObject[],
       allForm: Record<string, any>[]
     ) => {
-      base.CALLBACK.push((x, d) => {
+      base.CALLBACK.push(function N999(x, d) {
         const count = _.sumBy(d, (item) => item.count)
         base.TALENT_SCALING = [
           {
@@ -270,7 +270,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             sum: true,
           })
         return x
-      }, -99)
+      })
       return base
     },
   }

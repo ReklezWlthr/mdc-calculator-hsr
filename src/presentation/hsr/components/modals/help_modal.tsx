@@ -14,12 +14,19 @@ export const HelpModal = observer(() => {
         </BulletPoint>
         <BulletPoint>
           <b>Additional DMG</b> - A single instance of damage dealt at the end of the main attack. Not considered a hit
-          nor an attack. Only benefits from All-Type and Elemental DMG Boost.
+          nor an attack. Usually only benefits from All-Type and Elemental DMG Boost.
         </BulletPoint>
         <BulletPoint>
           <b>Frozen</b> - A sub-type of Additional DMG dealt when a <b className="text-hsr-ice">Frozen</b> unit is
-          unfrozen. <b className="text-hsr-ice">Frozen</b> DMG triggered by abilities can CRIT; those triggered by
-          Weakness Break cannot.
+          unfrozen. Frozen DMG triggered by abilities can CRIT; those triggered by Weakness Break cannot.
+        </BulletPoint>
+        <BulletPoint>
+          <b>Pure DMG</b> - A sub-type of Additional DMG dealt that is not affected by any of the attacker's buffs. As
+          of now, the only source of Pure DMG is the Light Cone <b>Time Waits for No One</b>.
+          <BulletPoint color="text-red">
+            The calculation is still a bit janky because I can't really find how many things are taken into account when
+            calculating this type of DMG and I sadly don't own one.
+          </BulletPoint>
         </BulletPoint>
         <BulletPoint>
           <b>DoT</b> - Damage dealt by DoT debuffs at the start of a unit's turn or when detonated. Can be affected by

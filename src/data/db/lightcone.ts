@@ -1364,7 +1364,7 @@ export const LightCones = [
     type: PathType.ABUNDANCE,
     desc: {
       name: 'Morn, Noon, Dusk, and Night',
-      detail: `Increases the wearer's Max HP by {{0}}% and Outgoing Healing by {{1}}%. When the wearer heals allies, record the amount of Outgoing Healing. When any ally launches an attack, a random attacked enemy takes additional DMG equal to {{2}}% of the recorded Outgoing Healing value. The type of this Additional DMG is of the same Type as the wearer's. This Additional DMG is not affected by other buffs, and can only occur <span class="text-desc">1</span> time per turn.`,
+      detail: `Increases the wearer's Max HP by {{0}}% and Outgoing Healing by {{1}}%. When the wearer heals allies, record the amount of Outgoing Healing. When any ally launches an attack, a random attacked enemy takes Additional DMG equal to {{2}}% of the recorded Outgoing Healing value. The type of this Additional DMG is of the same Type as the wearer's. This Additional DMG is not affected by other buffs, and can only occur <span class="text-desc">1</span> time per turn.`,
       properties: [
         { base: 18, growth: 3 },
         { base: 12, growth: 2 },

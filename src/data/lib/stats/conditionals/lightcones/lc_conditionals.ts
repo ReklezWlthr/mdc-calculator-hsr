@@ -1,5 +1,5 @@
 import { calcRefinement } from '@src/core/utils/data_format'
-import { addDebuff, checkBuffExist, findCharacter, findContentById } from '@src/core/utils/finder'
+import { addDebuff, checkBuffExist, checkInclusiveKey, findCharacter, findContentById } from '@src/core/utils/finder'
 import { DebuffTypes, IWeaponContent } from '@src/domain/conditional'
 import { Element, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 import _ from 'lodash'
@@ -1070,8 +1070,8 @@ export const LCAllyConditionals: IWeaponContent[] = [
     default: true,
     duration: 1,
     id: '23003',
-    scaling: (base, form, r, { own }) => {
-      if (form['23003']) {
+    scaling: (base, form, r, { own, owner }) => {
+      if (form[`23003_${owner}`]) {
         base[Stats.ALL_DMG].push({
           name: `But the Battle Isn't Over`,
           source: own.NAME,
@@ -1083,19 +1083,19 @@ export const LCAllyConditionals: IWeaponContent[] = [
   },
   {
     type: 'number',
-    text: `On-Healed ATK Bonus`,
+    text: `Night of Fright Stacks`,
     show: true,
     default: 0,
     min: 0,
     max: 5,
     duration: 2,
     id: '23017',
-    scaling: (base, form, r, { own }) => {
-      if (form['23017']) {
+    scaling: (base, form, r, { own, owner }) => {
+      if (form[`23017_${owner}`]) {
         base[Stats.P_ATK].push({
           name: `Night of Fright`,
           source: own.NAME,
-          value: calcRefinement(0.024, 0.004, r) * form['23017'],
+          value: calcRefinement(0.024, 0.004, r) * form[`23017_${owner}`],
         })
       }
       return base
@@ -1108,12 +1108,12 @@ export const LCAllyConditionals: IWeaponContent[] = [
     default: 0,
     min: 0,
     id: '23013',
-    scaling: (base, form, r) => {
-      if (form['23013']) {
+    scaling: (base, form, r, { own, owner }) => {
+      if (form[`23013_${owner}`]) {
         base.BASIC_SCALING.push({
           name: 'Recorded Healing DMG',
-          value: [{ scaling: calcRefinement(0.36, 0.06, r), multiplier: Stats.HEAL, override: form['23013'] }],
-          element: base.ELEMENT,
+          value: [{ scaling: calcRefinement(0.36, 0.06, r), multiplier: Stats.HEAL, override: form[`23013_${owner}`] }],
+          element: own.ELEMENT,
           property: TalentProperty.PURE,
           type: TalentType.NONE,
         })
@@ -1128,8 +1128,8 @@ export const LCAllyConditionals: IWeaponContent[] = [
     default: true,
     duration: 1,
     id: '21025',
-    scaling: (base, form, r, { own }) => {
-      if (form['21025']) {
+    scaling: (base, form, r, { own, owner }) => {
+      if (form[`21025_${owner}`]) {
         base[Stats.ALL_DMG].push({
           name: `Past and Future`,
           source: own.NAME,

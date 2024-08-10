@@ -1,5 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { addDebuff, checkIsDoT, findCharacter, findEnemy, findLightCone } from '../utils/finder'
+import { addDebuff, checkIsDoT, compareWeight, findCharacter, findEnemy, findLightCone } from '../utils/finder'
 import { useEffect, useMemo, useState } from 'react'
 import { getTeamOutOfCombat } from '../utils/calculator'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
@@ -345,8 +345,8 @@ export const useCalculator = ({
       // Cleanup callbacks for buffs that should be applied last
       const final = _.map(postArtifactCallback, (base, index) => {
         let x = base
-        _.forEach(base.CALLBACK, (cb, i) => {
-          // console.log(base.CALLBACK, cb)
+        const cbs = base.CALLBACK.sort((a, b) => compareWeight(a.name, b.name))
+        _.forEach(cbs, (cb) => {
           if (cb) x = cb(x, debuffs, weakness, postArtifactCallback, true)
         })
 

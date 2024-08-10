@@ -44,3 +44,13 @@ export const findValidName = (names: string[], name: string, count: number = 0) 
     return count > 0 ? `${name} (${count})` : name
   }
 }
+
+export const compareWeight = (a: string, b: string) => {
+  const aWeight = a ? Number(a.replaceAll('P', '').replaceAll('N', '-')) : 0
+  const bWeight = b ? Number(b.replaceAll('P', '').replaceAll('N', '-')) : 0
+
+  return aWeight - bWeight
+}
+
+export const checkInclusiveKey = (form: Record<string, any>, id: string) =>
+  _.some(form, (value, key) => !!value && _.startsWith(key, id))
