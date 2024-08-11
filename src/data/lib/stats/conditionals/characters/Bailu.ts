@@ -228,7 +228,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         {
           name: 'Bounce 2 Healing',
           ...baseHeal,
-          multiplier: 0.7,
+          multiplier: 0.85 * 0.85,
         },
       ]
       base.ULT_SCALING = [

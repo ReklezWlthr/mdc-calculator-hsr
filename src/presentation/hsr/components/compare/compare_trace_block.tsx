@@ -77,7 +77,7 @@ export const CompareTraceBlock = observer(({ char, team }: { char: ITeamChar; te
               const max = findMaxTalentLevel(parseInt(value))
               setupStore.setComparing({
                 ascension: parseInt(value) || 0,
-                level: findBaseLevel(parseInt(value) || 0),
+                level: findMaxLevel(parseInt(value) || 0),
                 major_traces: {
                   a2: parseInt(value) < 2 ? false : char.major_traces?.a2,
                   a4: parseInt(value) < 4 ? false : char.major_traces?.a4,
