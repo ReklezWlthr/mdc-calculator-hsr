@@ -17,7 +17,7 @@ interface Order {
 export const CyclePage = observer(() => {
   const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
   const { computedStats } = calculatorStore
-  useCalculator({ min: true })
+  useCalculator({})
 
   const [order, setOrder] = useState<Order[]>([])
   const [actions, setActions] = useState([])

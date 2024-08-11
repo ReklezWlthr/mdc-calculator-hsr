@@ -76,7 +76,7 @@ export const ComparePage = observer(() => {
   }, [])
 
   return (
-    <div className="w-full customScrollbar">
+    <div className="w-full px-5 customScrollbar">
       <div className="grid w-full grid-cols-3 gap-5 p-5 text-white max-w-[1200px] mx-auto items-end">
         <div className="space-y-1">
           <div className="flex items-center justify-between w-[244px] pr-2">

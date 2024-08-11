@@ -7,8 +7,9 @@ import { formatIdIcon } from '@src/core/utils/data_format'
 import classNames from 'classnames'
 import { ElementIconColor } from '../cons_circle'
 import { findCharacter } from '@src/core/utils/finder'
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
+import { CommonModal } from '@src/presentation/components/common_modal'
 
 export interface TeamModalProps {
   onSelect: (team: TSetup) => void
@@ -52,7 +53,7 @@ export const TeamModalBlock = ({ team, button }: { team: TSetup; button: React.R
 }
 
 export const TeamModal = observer(({ onSelect, filterId, hideCurrent }: TeamModalProps) => {
-  const { modalStore, teamStore, setupStore } = useStore()
+  const { modalStore, teamStore, setupStore, toastStore } = useStore()
 
   const [search, setSearch] = useState('')
 
@@ -68,6 +69,40 @@ export const TeamModal = observer(({ onSelect, filterId, hideCurrent }: TeamModa
         : setupStore.team),
     ],
     [setupStore.team, teamStore.characters, search]
+  )
+
+  const onOpenConfirmModal = useCallback(
+    (tId: string) => {
+      modalStore.closeModal()
+      modalStore.openModal(
+        <CommonModal
+          icon="fa-solid fa-exclamation-circle text-red"
+          title="Delete Setup"
+          desc="Are you sure you want to delete this setup?"
+          onConfirm={() => {
+            const pass = setupStore.deleteTeam(tId)
+            if (pass) {
+              toastStore.openNotification({
+                title: 'Setup Deleted Successfully',
+                icon: 'fa-solid fa-circle-check',
+                color: 'green',
+              })
+            } else {
+              toastStore.openNotification({
+                title: 'Something Went Wrong',
+                icon: 'fa-solid fa-exclamation-circle',
+                color: 'red',
+              })
+            }
+          }}
+          onCancel={() => {
+            modalStore.closeModal()
+            modalStore.openModal(<TeamModal onSelect={onSelect} filterId={filterId} hideCurrent={hideCurrent} />)
+          }}
+        />
+      )
+    },
+    [onSelect, filterId, hideCurrent]
   )
 
   return (
@@ -91,13 +126,18 @@ export const TeamModal = observer(({ onSelect, filterId, hideCurrent }: TeamModa
               <TeamModalBlock
                 team={team}
                 button={
-                  <PrimaryButton
-                    title="Select"
-                    onClick={() => {
-                      modalStore.closeModal()
-                      onSelect(_.cloneDeep(team))
-                    }}
-                  />
+                  <div className="flex flex-col items-center gap-1">
+                    <PrimaryButton
+                      title="Select"
+                      small
+                      onClick={() => {
+                        modalStore.closeModal()
+                        onSelect(_.cloneDeep(team))
+                      }}
+                      style="w-[55px]"
+                    />
+                    <PrimaryButton title="Delete" small onClick={() => onOpenConfirmModal(team.id)} style="w-[55px]" />
+                  </div>
                 }
               />
             )
