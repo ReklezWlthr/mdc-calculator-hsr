@@ -143,16 +143,6 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
 
   const content: IContent[] = [
     {
-      type: 'toggle',
-      id: 'boothill_enhance',
-      text: `Enhanced Basic ATK`,
-      ...talents.skill,
-      show: true,
-      default: true,
-      unique: true,
-      sync: true,
-    },
-    {
       type: 'number',
       id: 'trickshot',
       text: `Pocket Trickshot Stacks`,
@@ -180,7 +170,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       ...talents.skill,
       show: true,
       default: true,
-      debuff: true,
+      unique: true,
       duration: 2,
     },
     {
@@ -293,11 +283,11 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         },
       ]
 
-      if (form.boothill_enhance) base.BA_ALT = true
       if (form.boothill_implant && !_.includes(weakness, Element.PHYSICAL)) {
         weakness.push(Element.PHYSICAL)
       }
       if (form.standoff) {
+        base.BA_ALT = true
         base.VULNERABILITY.push({
           name: 'Skill',
           source: 'Self',
