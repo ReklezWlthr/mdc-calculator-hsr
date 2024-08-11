@@ -32,17 +32,19 @@ export const TeamModalBlock = ({ team, button }: { team: TSetup; button: React.R
             <div
               className={classNames(
                 'relative overflow-hidden rounded-lg w-14 h-7 bg-opacity-25',
-                ElementIconColor[findCharacter(item.cId)?.element]
+                ElementIconColor[findCharacter(item.cId)?.element] || 'bg-primary'
               )}
               key={item.cId}
             >
-              <img
-                src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
-                  item.cId,
-                  settingStore.settings?.travelerGender
-                )}.webp`}
-                className="absolute object-cover scale-[1.75]"
-              />
+              {!!item.cId && (
+                <img
+                  src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
+                    item.cId,
+                    settingStore.settings?.travelerGender
+                  )}.webp`}
+                  className="absolute object-cover scale-[1.75]"
+                />
+              )}
             </div>
           ))}
         </div>
@@ -59,7 +61,9 @@ export const TeamModal = observer(({ onSelect, filterId, hideCurrent }: TeamModa
 
   const team = useMemo(
     () => [
-      ...(hideCurrent ? [] : [{ id: '', char: teamStore.characters, name: 'Current Team Setup' }]),
+      ...(hideCurrent || _.every(teamStore.characters, (item) => !item.cId)
+        ? []
+        : [{ id: '', char: teamStore.characters, name: 'Current Team Setup' }]),
       ...(search
         ? _.filter(setupStore.team, (item) =>
             _.some([..._.map(item.char, (c) => findCharacter(c?.cId)?.name), item.name], (q) =>
