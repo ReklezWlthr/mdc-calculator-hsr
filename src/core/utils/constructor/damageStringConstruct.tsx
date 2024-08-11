@@ -121,17 +121,20 @@ export const damageStringConstruct = (
     [Stats.EHP]: calculatorStore.hp,
   }
 
-  const bonusDMG = (override?: number) =>
-    (override ?? (scaling.bonus || 0)) +
+  const bonusDMG = (splitBonus?: number) =>
+    (splitBonus || 0) +
+    (scaling.bonus || 0) +
     (TalentProperty.SHIELD === scaling.property
       ? 0
       : TalentProperty.HEAL === scaling.property
       ? stats.getValue(Stats.HEAL) + stats.getValue(`${TalentTypeMap[scaling.type]}_HEAL`)
       : stats.getValue(Stats.ALL_DMG) + stats.getValue(`${element} DMG%`) + talentDmg + typeDmg)
-  const raw =
+  const globalBonus = _.sum(_.map(scaling.bonusSplit, (item, i) => item * scaling.hitSplit?.[i])) + bonusDMG()
+  const raw = (split: number) =>
     _.sumBy(
       scaling.value,
       (item) =>
+        split *
         item.scaling *
         ((item.override || statForScale[item.multiplier]) +
           (item.multiplier === Stats.HP ? stats.getValue(StatsObjectKeys.X_HP) : 0))
@@ -148,35 +151,27 @@ export const damageStringConstruct = (
       (statForScale[scaling.cap?.multiplier] +
         (scaling.cap?.multiplier === Stats.HP ? stats.getValue(StatsObjectKeys.X_HP) : 0))
     : 0
-  const capped = scaling.cap ? cap < raw : false
-  const dmgSplit = isSplit
-    ? _.map(
-        scaling.hitSplit,
-        (split, i) =>
-          (capped ? cap : breakScale ? breakRaw : raw) *
-          (1 + (breakScale ? stats.getValue(Stats.BE) : isPure ? 0 : bonusDMG(scaling.bonusSplit?.[i]))) *
-          (scaling.multiplier || 1) *
-          elementMult *
-          enemyMod *
-          split
-      )
-    : [
-        (capped ? cap : breakScale ? breakRaw : raw) *
-          (1 + (breakScale ? stats.getValue(Stats.BE) : isPure ? 0 : bonusDMG())) *
-          (scaling.multiplier || 1) *
-          elementMult *
-          enemyMod,
-      ]
+  const capped = scaling.cap ? cap < raw(1) : false
+  const dmgSplit = _.map(
+    scaling.hitSplit || [1],
+    (split, i) =>
+      (capped ? cap : breakScale ? breakRaw : raw(split)) *
+      (1 + (breakScale ? stats.getValue(Stats.BE) : isPure ? 0 : bonusDMG(scaling.bonusSplit?.[i]))) *
+      (scaling.multiplier || 1) *
+      elementMult *
+      enemyMod
+  )
   const dmg = _.sum(dmgSplit)
 
   const totalCr =
     scaling.overrideCr ||
     _.max([_.min([stats.getValue(Stats.CRIT_RATE) + (scaling.cr || 0) + talentCr + propertyCr, 1]), 0])
-  const totalCd = (override?: number) =>
+  const totalCd = (splitCd?: number) =>
     scaling.overrideCd ||
     stats.getValue(Stats.CRIT_DMG) +
       stats.getValue(StatsObjectKeys.X_CRIT_DMG) +
-      (override ?? (scaling.cd || 0)) +
+      (splitCd || 0) +
+      (scaling.cd || 0) +
       talentCd +
       elementCd +
       propertyCd
@@ -185,14 +180,13 @@ export const damageStringConstruct = (
     : totalCd()
   const totalFlat = (scaling.flat || 0) + elementFlat + talentFlat
 
-  const splitCrit = isSplit
-    ? _.map(scaling.hitSplit, (split, i) => dmg * (1 + totalCd(scaling.cdSplit?.[i])) * split)
-    : [dmg * (1 + totalCd())]
+  const splitCrit = _.map(scaling.hitSplit || [1], (split, i) => dmg * (1 + totalCd(scaling.cdSplit?.[i])) * split)
   const totalCrit = _.sum(splitCrit)
 
-  const splitAvg = isSplit
-    ? _.map(scaling.hitSplit, (split, i) => dmg * (1 + totalCd(scaling.cdSplit?.[i]) * totalCr) * split)
-    : [dmg * (1 + totalCd() * totalCr)]
+  const splitAvg = _.map(
+    scaling.hitSplit || [1],
+    (split, i) => dmg * (1 + totalCd(scaling.cdSplit?.[i]) * totalCr) * split
+  )
   const totalAvg = _.sum(splitAvg)
 
   // String Construct
@@ -228,13 +222,9 @@ export const damageStringConstruct = (
       ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconBreakUp.png" />${toPercentage(
           stats.getValue(Stats.BE)
         )}</b>)</span>`
-      : bonusDMG() > 0 && !isPure
+      : globalBonus > 0 && !isPure
       ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(
-          breakScale
-            ? stats.getValue(Stats.BE)
-            : _.size(scaling.bonusSplit)
-            ? _.sum(_.map(scaling.bonusSplit, (item, i) => item * scaling.hitSplit?.[i])) + bonusDMG()
-            : bonusDMG()
+          breakScale ? stats.getValue(Stats.BE) : globalBonus
         )}</b> <i class="text-[10px]">BONUS</i>)`
       : ''
   }${scaling.multiplier > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(scaling.multiplier, 2)}</b>` : ''}${

@@ -78,7 +78,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       <br />Enhanced once, <b>Beneficent Lotus</b> becomes <b>Transcendence</b>.
       <br />Enhanced twice, <b>Beneficent Lotus</b> becomes <b>Divine Spear</b>.
       <br />Enhanced thrice, <b>Beneficent Lotus</b> becomes <b>Fulgurant Leap</b>.
-      <br />When using <b>Divine Spear</b> or <b>Fulgurant Leap</b>, starting from the fourth hit, 1 stack of <b>Outroar</b> is gained before every hit. Each stack of <b>Outroar</b> increases Dan Heng • Imbibitor Lunae's CRIT DMG by {{0}}%, for a max of <span class="text-desc">4</span> stacks. These stacks last until the end of his turn.`,
+      <br />When using <b>Divine Spear</b> or <b>Fulgurant Leap</b>, starting from the fourth hit, <span class="text-desc">1</span> stack of <b>Outroar</b> is gained before every hit. Each stack of <b>Outroar</b> increases Dan Heng • Imbibitor Lunae's CRIT DMG by {{0}}%, for a max of <span class="text-desc">4</span> stacks. These stacks last until the end of his turn.`,
       value: [{ base: 6, growth: 0.6, style: 'curved' }],
       level: skill,
       tag: AbilityTag.ENHANCE,
@@ -166,7 +166,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       text: `Skill Point Consumed`,
       ...talents.skill,
       show: true,
-      default: 0,
+      default: 3,
       min: 0,
       max: 3,
       unique: true,

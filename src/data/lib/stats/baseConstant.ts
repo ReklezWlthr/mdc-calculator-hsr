@@ -196,16 +196,6 @@ export const baseStatsObject = {
     return _.min([1 - _.reduce(this.DMG_REDUCTION, (acc, curr) => acc * (1 - curr.value), 1), 0.99])
   },
 
-  // CALLBACK: new WeightedArray<
-  //   (
-  //     base: any,
-  //     debuffs: { type: DebuffTypes; count: number }[],
-  //     weakness: Element[],
-  //     all: any[],
-  //     battle: boolean
-  //   ) => any
-  // >(),
-
   CALLBACK: [] as ((
     base: any,
     debuffs: { type: DebuffTypes; count: number }[],
