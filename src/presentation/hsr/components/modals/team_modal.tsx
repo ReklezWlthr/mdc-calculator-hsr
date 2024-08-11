@@ -140,7 +140,14 @@ export const TeamModal = observer(({ onSelect, filterId, hideCurrent }: TeamModa
                       }}
                       style="w-[55px]"
                     />
-                    <PrimaryButton title="Delete" small onClick={() => onOpenConfirmModal(team.id)} style="w-[55px]" />
+                    {team.id && (
+                      <PrimaryButton
+                        title="Delete"
+                        small
+                        onClick={() => onOpenConfirmModal(team.id)}
+                        style="w-[55px]"
+                      />
+                    )}
                   </div>
                 }
               />
