@@ -1039,14 +1039,14 @@ export const LCConditionals: IWeaponContent[] = [
     show: true,
     default: 0,
     min: 0,
-    max: 6,
+    max: 2,
     id: '23031',
     scaling: (base, form, r) => {
       if (form['23031']) {
         base.ULT_DEF_PEN.push({
           name: 'Luminflux',
           source: 'I Venture Forth to Hunt',
-          value: calcRefinement(0.09, 0.01, r) * form['23031'],
+          value: calcRefinement(0.27, 0.03, r) * form['23031'],
         })
       }
       return base

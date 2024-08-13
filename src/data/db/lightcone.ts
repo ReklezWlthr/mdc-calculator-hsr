@@ -1682,10 +1682,10 @@ export const LightCones = [
     type: PathType.HUNT,
     desc: {
       name: 'Intimidation',
-      detail: `Increases the wearer's CRIT Rate by {{0}}%. When any single ally uses an attack, the wearer gains <span class="text-desc">1</span> stack of <b>Luminflux</b> to a max of <span class="text-desc">6</span> stack(s). Each stack of <b>Luminflux</b> enables the Ultimate DMG deal by the wearer to ignore {{1}}% of the target's DEF. This effect will be dispelled after the wearer uses their Ultimate.`,
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer launches a <u>follow-up attack</u>, they gain <span class="text-desc">1</span> stack of <b>Luminflux</b> to a max of <span class="text-desc">1</span> stack(s). Each stack of <b>Luminflux</b> enables the Ultimate DMG deal by the wearer to ignore {{1}}% of the target's DEF. When the wearer's turn ends, removes <span class="text-desc">1</span> stack of <b>Luminflux</b>.`,
       properties: [
         { base: 15, growth: 2.5 },
-        { base: 9, growth: 1 },
+        { base: 27, growth: 3 },
       ],
     },
     beta: true,

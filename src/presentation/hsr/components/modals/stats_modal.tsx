@@ -206,6 +206,7 @@ export const StatsModal = observer(
               <AttributeBlock stats={stats} stat="Wind RES PEN" array={stats.WIND_RES_PEN} />
               <AttributeBlock stats={stats} stat="Quantum RES PEN" array={stats.QUANTUM_RES_PEN} />
               <AttributeBlock stats={stats} stat="Imaginary RES PEN" array={stats.IMAGINARY_RES_PEN} />
+              <AttributeBlock stats={stats} stat="Ultimate RES PEN" array={stats.ULT_RES_PEN} />
             </div>
             <div className="space-y-2">
               <AttributeBlock stats={stats} stat="All-Type DEF PEN" array={stats.DEF_PEN} />

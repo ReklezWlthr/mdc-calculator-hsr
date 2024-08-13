@@ -102,7 +102,8 @@ export const damageStringConstruct = (
           (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_RED) || 0) +
           (isPure
             ? 0
-            : (stats.getValue(`${element.toUpperCase()}_RES_PEN`) || 0) +
+            : (stats.getValue(`${TalentTypeMap[scaling.type]}_RES_PEN`) || 0) +
+              (stats.getValue(`${element.toUpperCase()}_RES_PEN`) || 0) +
               (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0) +
               (scaling.res_pen || 0)) // Counted as Elemental RES PEN
       ),

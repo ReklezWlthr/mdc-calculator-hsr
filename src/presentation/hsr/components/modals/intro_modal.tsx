@@ -18,7 +18,9 @@ export const IntroModal = observer(() => {
                 <b className="text-desc">v{item.version}</b> - {item.date}
               </p>
               {_.map(item.desc, (desc) => (
-                <BulletPoint>{desc}</BulletPoint>
+                <BulletPoint key={desc}>
+                  <span dangerouslySetInnerHTML={{ __html: desc }} />
+                </BulletPoint>
               ))}
             </div>
           ))}

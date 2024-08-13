@@ -805,10 +805,10 @@ export const PlanarSets: IArtifact[] = [
     id: '317',
     name: 'Lushaka, the Sunken Seas',
     icon: '71036',
-    bonus: [{ stat: Stats.E_RES, value: 0.1 }],
+    bonus: [{ stat: Stats.ERR, value: 0.05 }],
     bonusAdd: [],
     desc: [
-      `Increases the wearer's Effect RES by <span class="text-desc">10%</span>. If the wearer is not the first character in the team lineup, then increase the ATK of the first character in the team lineup by <span class="text-desc">16%</span>.`,
+      `Increases the wearer's Energy Regeneration Rate by <span class="text-desc">5%</span>. If the wearer is not the first character in the team lineup, then increase the ATK of the first character in the team lineup by <span class="text-desc">15%</span>.`,
     ],
     half: (base, all) => {
       const index = _.findIndex(all, (item) => item.NAME === base.NAME)
@@ -816,7 +816,7 @@ export const PlanarSets: IArtifact[] = [
         all[0][Stats.P_ATK].push({
           name: `Lushaka, the Sunken Seas`,
           source: base.NAME,
-          value: 0.16,
+          value: 0.15,
         })
       }
       return base
@@ -831,7 +831,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [{ stat: Stats.CRIT_DMG, value: 0.16 }],
     bonusAdd: [],
     desc: [
-      `Increases the wearer's CRIT DMG by <span class="text-desc">16%</span>. When a target summoned by the wearer is on the field, CRIT DMG additionally increases by <span class="text-desc">28%</span>.`,
+      `Increases the wearer's CRIT DMG by <span class="text-desc">16%</span>. When a target summoned by the wearer is on the field, CRIT DMG additionally increases by <span class="text-desc">32%</span>.`,
     ],
     beta: true,
     set: [`BananAmusement Park's BananAxis Plaza`, `BananAmusement Park's Memetic Cables`],

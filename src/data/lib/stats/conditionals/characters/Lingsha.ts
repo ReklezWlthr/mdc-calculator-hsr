@@ -69,7 +69,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: `Mistdance Manifest`,
-      content: `Summons Fuyuan when using Skill. Fuyuan has an initial SPD of <span class="text-desc">80</span> and an initial action count of <span class="text-desc">3</span>. During Fuyuan's action, launch <u>follow-up attack</u> on all enemies, dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% Lingsha's ATK, dispels <span class="text-desc">1</span> debuff(s) from all allies, and restores HP equal to {{1}}% of Lingsha's ATK plus {{2}} to all allies.
+      content: `Summons Fuyuan when using Skill. Fuyuan has an initial SPD of <span class="text-desc">90</span> and an initial action count of <span class="text-desc">3</span>. During Fuyuan's action, launch <u>follow-up attack</u> on all enemies, dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% Lingsha's ATK, dispels <span class="text-desc">1</span> debuff(s) from all allies, and restores HP equal to {{1}}% of Lingsha's ATK plus {{2}} to all allies.
         <br />Fuyuan can accumulate a maximum of <span class="text-desc">5</span> action counts. When the action count reaches <span class="text-desc">0</span> or when Lingsha is downed, Fuyuan disappears.
         <br />While Fuyuan is present on the battlefield, using Lingsha's Skill increases Fuyuan's action count by <span class="text-desc">3</span>.`,
       value: [
@@ -89,7 +89,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Vermilion Waft`,
-      content: `Increases this unit's ATK/Outgoing Healing by an amount equal to <span class="text-desc">20%</span>/<span class="text-desc">8%</span> of their Break Effect, up to a maximum ATK/Outgoing Healing increase of <span class="text-desc">50%</span>/<span class="text-desc">20%</span>.`,
+      content: `Increases this unit's ATK/Outgoing Healing by an amount equal to <span class="text-desc">25%</span>/<span class="text-desc">10%</span> of their Break Effect, up to a maximum ATK/Outgoing Healing increase of <span class="text-desc">50%</span>/<span class="text-desc">20%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -131,7 +131,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: `Arcadia Under Deep Seclusion`,
-      content: `While Fuyuan is present on the battlefield, all enemies' All-Type RES reduces by <span class="text-desc">20%</span>. Fuyuan's attack additionally deals <span class="text-desc">3</span> hit(s) of DMG, with each hit dealing <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of Lingsha's ATK and <span class="text-desc">5</span> Toughness Reduction.`,
+      content: `While Fuyuan is present on the battlefield, all enemies' All-Type RES reduces by <span class="text-desc">20%</span>. Fuyuan's attack additionally deals <span class="text-desc">4</span> hit(s) of DMG, with each hit dealing <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of Lingsha's ATK and <span class="text-desc">5</span> Toughness Reduction.`,
     },
   }
 
@@ -187,9 +187,10 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 element: Element.FIRE,
                 property: TalentProperty.NORMAL,
                 type: TalentType.BA,
-                multiplier: 3,
+                multiplier: 4,
                 break: 15,
                 sum: true,
+                hitSplit: [0.25, 0.25, 0.25, 0.25],
               },
             ]
           : []
@@ -262,7 +263,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.FIRE,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
-          break: 15,
+          break: 10,
           sum: true,
         },
         {
@@ -374,12 +375,12 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           x[Stats.HEAL].push({
             name: `Ascension 2 Passive`,
             source: 'Self',
-            value: _.min([x.getValue(Stats.BE) * 0.08, 0.2]),
+            value: _.min([x.getValue(Stats.BE) * 0.1, 0.2]),
           })
           x[Stats.P_ATK].push({
             name: `Ascension 2 Passive`,
             source: 'Self',
-            value: _.min([x.getValue(Stats.BE) * 0.2, 0.5]),
+            value: _.min([x.getValue(Stats.BE) * 0.25, 0.5]),
           })
           return x
         })

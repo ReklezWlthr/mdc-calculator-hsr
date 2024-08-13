@@ -1,5 +1,15 @@
 [
   {
+    "version": "1.0.1",
+    "date": "August 11th, 2024",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v2.5v3</span>",
+      "Updated Characters: <span class=\"text-desc\">Feixiao</span>, <span class=\"text-desc\">Lingsha</span>, and <span class=\"text-desc\">Moze</span>",
+      "Updated Light Cone: <span class=\"text-desc\">I Venture Forth to Hunt</span>",
+      "Updated Planar Ornaments: <span class=\"text-desc\">Lushaka, the Sunken Seas</span>, and <span class=\"text-desc\">The Wondrous BananAmusement Park</span>"
+    ]
+  },
+  {
     "version": "1.0.0",
     "date": "August 11th, 2024",
     "desc": ["Public launch day"]
