@@ -25,7 +25,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       energy: 20,
       trace: 'Basic ATK',
       title: 'My Sword Zaps Demons',
-      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of March 7th's ATK to a single enemy and gains <span class="text-desc">1</span> point(s) of <b>Charge</b>.`,
+      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of March 7th's ATK to a single target enemy and gains <span class="text-desc">1</span> point(s) of <b>Charge</b>.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
@@ -34,7 +34,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       energy: 20,
       trace: 'Enhanced Basic ATK',
       title: 'Brows Be Smitten, Heart Be Bitten',
-      content: `Initially, deals <span class="text-desc">3</span> hits, each causing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of March 7th's ATK to a single target enemy. After dealing the final hit, there is a <span class="text-desc">60%</span> <u>fixed chance</u> to deal <span class="text-desc">1</span> extra hit, up to a max of <span class="text-desc">3</span> extra hit(s). Energy regenerated from using Enhanced Basic ATK does not increase with the number of hits.
+      content: `Initially, deals <span class="text-desc">3</span> hits, each causing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of March 7th's ATK to a single target enemy. Whenever dealing the final hit, there is a <span class="text-desc">60%</span> <u>fixed chance</u> to deal <span class="text-desc">1</span> additional hit of DMG, up to a max of <span class="text-desc">3</span> additional hit(s). Energy regenerated from using Enhanced Basic ATK does not increase with the number of hits.
       <br />Enhanced Basic ATK cannot recover Skill Points.`,
       value: [{ base: 40, growth: 8, style: 'linear' }],
       level: basic,
@@ -45,7 +45,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       trace: 'Skill',
       title: `Shifu, It's Tea Time!`,
       content: `Designates a single ally (excluding this unit) as <b class="text-hsr-imaginary">Shifu</b> and increases <b class="text-hsr-imaginary">Shifu</b>'s SPD by {{0}}%. Only the most recent target of March 7th's Skill is considered as <b class="text-hsr-imaginary">Shifu</b>.
-      <br />When using Basic ATK or dealing <span class="text-desc">1</span> hit of Enhanced Basic ATK's DMG, triggers the corresponding effect based on the specific Path of <b class="text-hsr-imaginary">Shifu</b>:
+      <br />When using Basic ATK or dealing <span class="text-desc">1</span> hit of Enhanced Basic ATK's DMG, triggers the corresponding effect if <b class="text-hsr-imaginary">Shifu</b> with the specified Path is present on the field:
       <br /><b>Erudition, Destruction, The Hunt</b>: Deals Additional DMG (DMG Type based on <b class="text-hsr-imaginary">Shifu</b>'s Combat Type) equal to {{1}}% of March 7th's ATK.
       <br /><b>Harmony, Nihility, Preservation, Abundance</b>: Increases the Toughness Reduction of this instance of DMG by <span class="text-desc">100%</span>.`,
       value: [
@@ -202,7 +202,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       base.BASIC_SCALING = form.march_enhance
         ? [
             {
-              name: 'Initial DMG',
+              name: 'Base DMG',
               value: [{ scaling: calcScaling(0.4, 0.08, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,

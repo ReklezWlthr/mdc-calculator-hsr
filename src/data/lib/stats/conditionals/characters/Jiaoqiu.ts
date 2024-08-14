@@ -48,9 +48,9 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Ultimate',
       title: 'Pyrograph Arcanum',
-      content: `Sets the number of <b>Ashen Roast</b> stacks on enemy targets to the highest number of <b>Ashen Roast</b> stacks present on the battlefield. Then, activates a Domain and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to all enemies.
-      <br />While inside the Domain, enemy targets take {{1}}% increased Ultimate DMG, with a {{2}}% <u>base chance</u> of being inflicted with <span class="text-desc">1</span> stack of <b>Ashen Roast</b> when taking action. This effect can only be triggered once for enemies in each turn.
-      <br />The Domain lasts for <span class="text-desc">3</span> turn(s), and its duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn. If Jiaoqiu is knocked down, the Domain will also be dispelled.
+      content: `Sets the number of <b>Ashen Roast</b> stacks on enemy targets to the highest number of <b>Ashen Roast</b> stacks present on the battlefield. Then, activates a Zone and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to all enemies.
+      <br />While inside the Zone, enemy targets take {{1}}% increased Ultimate DMG, with a {{2}}% <u>base chance</u> of being inflicted with <span class="text-desc">1</span> stack of <b>Ashen Roast</b> when taking action. This effect can only be triggered once for enemies in each turn.
+      <br />The Zone lasts for <span class="text-desc">3</span> turn(s), and its duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn. If Jiaoqiu is knocked down, the Zone will also be dispelled.
       <br />The automatic <b>Ashen Roast</b> application can be triggered <span class="text-desc">6</span> times. Casting Ultimate resets the number of remaining triggers.`,
       value: [
         { base: 60, growth: 4, style: 'curved' },
@@ -83,7 +83,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Seared Scent',
-      content: `When a Domain exists, enemies entering combat will be inflicted with <b>Ashen Roast</b> stacks. The number of stacks applied will match the highest number of <b>Ashen Roast</b> stacks inflicted while the Domain is active, with a minimum of <span class="text-desc">1</span> stack(s).`,
+      content: `When a Zone exists, enemies entering combat will be inflicted with <b>Ashen Roast</b> stacks. The number of stacks applied will match the highest number of <b>Ashen Roast</b> stacks inflicted while the Zone is active, with a minimum of <span class="text-desc">1</span> stack(s).`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -98,12 +98,12 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c1: {
       trace: 'Eidolon 1',
       title: 'Pentapathic Transference',
-      content: `Allies deal <span class="text-desc">40%</span> increased DMG to enemy targets afflicted with <b>Ashen Roast</b>. Whenever inflicting <b>Ashen Roast</b> on an enemy target via triggering the Talent's effect, additionally increases the number of <b>Ashen Roast</b> applied this time by <span class="text-desc">1</span>.`,
+      content: `Allies deal <span class="text-desc">40%</span> increased DMG to enemy targets afflicted with <b>Ashen Roast</b>. Whenever inflicting <b>Ashen Roast</b> on an enemy target via triggering the Talent's effect, additionally increases the number of <b>Ashen Roast</b> stacks applied this time by <span class="text-desc">1</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `From Savor Comes Suffer`,
-      content: `When an enemy target is afflicted with <b>Ashen Roast</b>, increases the multiplier for the <b class="text-hsr-fire">Fire DoT</b> dealt by <b>Ashen Roast</b> to the target by <span class="text-desc">300%</span>.`,
+      content: `When an enemy target is afflicted with <b>Ashen Roast</b>, increases the multiplier for the <b class="text-hsr-fire">Fire DoT</b> dealt by <b>Ashen Roast</b> to this target by <span class="text-desc">300%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -114,7 +114,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: 'Leisure In, Luster Out',
-      content: `When the Domain exists, reduces enemy target's ATK by <span class="text-desc">15%</span>.`,
+      content: `When the Zone exists, reduces enemy target's ATK by <span class="text-desc">15%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',

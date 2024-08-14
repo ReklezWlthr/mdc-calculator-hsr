@@ -570,7 +570,6 @@ export const Characters = [
     rarity: 5,
     path: PathType.NIHILITY,
     element: Element.FIRE,
-    beta: true,
   },
   {
     id: '1220',

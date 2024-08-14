@@ -1049,10 +1049,9 @@ export const LightCones = [
     type: PathType.HARMONY,
     desc: {
       name: 'Lose Not, Forget Not',
-      detail: `Increases the wearer's ATK by {{0}}%. Upon entering the battle, if there are two or more allies in the team who follow the same Path, these characters' CRIT DMG increases by {{0}}%. Abilities of the same type cannot stack.`,
+      detail: `Increases the wearer's ATK by {{0}}%. Upon entering battle, if two or more characters follow the same Path, then these characters' CRIT DMG increases by {{0}}%. Abilities of the same type cannot stack.`,
       properties: [{ base: 16, growth: 4 }],
     },
-    beta: true,
   },
   {
     id: '21047',
@@ -1656,7 +1655,6 @@ export const LightCones = [
         { base: 14, growth: 2 },
       ],
     },
-    beta: true,
   },
   {
     id: '23030',

@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.0.2",
+    "date": "August 14th, 2024",
+    "desc": [
+      "Lowers <span class=\"text-desc\">Yunli</span>'s Ultimate Toughness DMG (20 → <span class=\"text-red\">10</span>)",
+      "Updated Wording: <span class=\"text-desc\">March 7th (The Hunt)</span>",
+      "Now <b class=\"text-red\">Live</b>: <span class=\"text-desc\">Jiaoqiu</span>, and Light Cone <span class=\"text-desc\">Those Many Springs</span>"
+    ]
+  },
+  {
     "version": "1.0.1",
     "date": "August 11th, 2024",
     "desc": [
