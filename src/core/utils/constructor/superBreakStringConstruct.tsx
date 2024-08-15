@@ -69,7 +69,7 @@ export const superBreakStringConstruct = (
     1
   ).toLocaleString()}</b> <i class="text-[10px]">TOUGHNESS</i>)`
 
-  const formulaString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.round(
+  const formulaString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.floor(
     dmg
   ).toLocaleString()}</b> = ${baseBreakScaling}${
     stats.getValue(Stats.BE) > 0

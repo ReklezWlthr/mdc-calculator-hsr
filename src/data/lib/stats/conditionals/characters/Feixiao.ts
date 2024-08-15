@@ -40,7 +40,7 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill: {
       trace: 'Skill',
       title: 'Waraxe',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Feixiao's ATK to an enemy, and immediately launches Talent's follow-up attack against the target <span class="text-desc">1</span> time`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Feixiao's ATK to an enemy, and immediately launches Talent's <u>follow-up attack</u> against the target <span class="text-desc">1</span> time.`,
       value: [{ base: 100, growth: 10, style: 'curved' }],
       level: skill,
       tag: AbilityTag.ST,
@@ -66,7 +66,7 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Talent',
       title: `Thunderhunt`,
       content: `The Ultimate can be activated when <b class="text-hsr-wind">Flying Aureus</b> reaches <span class="text-desc">6</span> points, up to <span class="text-desc">12</span> points. Feixiao gains <span class="text-desc">1</span> point of <b class="text-hsr-wind">Flying Aureus</b> for every <span class="text-desc">2</span> attacks used by ally targets. Attacks from Feixiao's Ultimate are not counted.
-        <br />After other teammates use an attack against an enemy, Feixiao immediately launches <u>follow-up attacks</u> against the primary target, deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Feixiao's ATK. If no primary targets are available to attack, Feixiao attacks a single random enemy instead. This effect can only trigger <span class="text-desc">1</span> time per turn and the trigger count is reset at the start of Feixiao's turn and the trigger count is reset at the start of Feixiao's turn. When using this attack, increases DMG dealt by Feixiao by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).`,
+        <br />After other teammates use an attack against an enemy, Feixiao immediately launches <u>follow-up attacks</u> against the primary target, deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Feixiao's ATK. If no primary targets are available to attack, Feixiao attacks a single random enemy instead. This effect can only trigger <span class="text-desc">1</span> time per turn and the trigger count is reset at the start of Feixiao's turn. When using this attack, increases DMG dealt by Feixiao by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 55, growth: 5.5, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },

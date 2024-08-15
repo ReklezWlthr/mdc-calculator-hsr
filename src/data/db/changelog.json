@@ -1,5 +1,13 @@
 [
   {
+    "version": "1.0.2-1",
+    "date": "August 15th, 2024",
+    "desc": [
+      "Fixes <span class=\"text-desc\">Lingsha</span>'s Eidolon 6 (Applied to Basic ATK → <span class=\"text-red\">Talent [Bounce]</span>)",
+      "Updated Wording: <span class=\"text-desc\">Feixiao</span>"
+    ]
+  },
+  {
     "version": "1.0.2",
     "date": "August 14th, 2024",
     "desc": [

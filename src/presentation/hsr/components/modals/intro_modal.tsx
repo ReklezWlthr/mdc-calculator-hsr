@@ -9,7 +9,7 @@ export const IntroModal = observer(() => {
       <p className="text-lg font-bold text-white">About</p>
       <Collapsible
         label="Changelogs"
-        childRight={<div className="px-2 py-1 font-bold rounded-md bg-primary">v{_.head(changelog).version}</div>}
+        childRight={<div className="px-2 py-1 font-bold rounded-md bg-primary whitespace-nowrap">v{_.head(changelog).version}</div>}
       >
         <div className="space-y-2">
           {_.map(changelog, (item) => (

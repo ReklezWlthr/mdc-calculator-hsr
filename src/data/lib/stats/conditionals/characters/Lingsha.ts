@@ -178,22 +178,48 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ) => {
       const base = _.cloneDeep(x)
 
+      const talentBase = calcScaling(0.45, 0.045, talent, 'curved')
+      const percentage = (v: number) => v / (talentBase + 2)
       const c6Scaling =
         c >= 6
           ? [
               {
-                name: 'E6 Extra Hits',
+                name: 'Max Single Target DMG',
+                value: [{ scaling: talentBase + 2, multiplier: Stats.ATK }],
+                element: Element.FIRE,
+                property: TalentProperty.FUA,
+                type: TalentType.TALENT,
+                break: 30,
+                sum: true,
+              },
+              {
+                name: 'AoE',
+                value: [{ scaling: talentBase, multiplier: Stats.ATK }],
+                element: Element.FIRE,
+                property: TalentProperty.FUA,
+                type: TalentType.TALENT,
+                break: 10,
+              },
+              {
+                name: 'E6 Extra Hit',
                 value: [{ scaling: 0.5, multiplier: Stats.ATK }],
                 element: Element.FIRE,
-                property: TalentProperty.NORMAL,
-                type: TalentType.BA,
-                multiplier: 4,
-                break: 15,
-                sum: true,
-                hitSplit: [0.25, 0.25, 0.25, 0.25],
+                property: TalentProperty.FUA,
+                type: TalentType.TALENT,
+                break: 5,
               },
             ]
-          : []
+          : [
+              {
+                name: 'AoE',
+                value: [{ scaling: talentBase, multiplier: Stats.ATK }],
+                element: Element.FIRE,
+                property: TalentProperty.FUA,
+                type: TalentType.TALENT,
+                break: 10,
+                sum: true,
+              },
+            ]
       base.BASIC_SCALING = [
         {
           name: 'Single Target',
@@ -204,7 +230,6 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           break: 10,
           sum: true,
         },
-        ...c6Scaling,
       ]
       base.SKILL_SCALING = [
         {
@@ -257,15 +282,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             ]
           : []
       base.TALENT_SCALING = [
-        {
-          name: 'AoE',
-          value: [{ scaling: calcScaling(0.45, 0.045, talent, 'curved'), multiplier: Stats.ATK }],
-          element: Element.FIRE,
-          property: TalentProperty.FUA,
-          type: TalentType.TALENT,
-          break: 10,
-          sum: true,
-        },
+        ...c6Scaling,
         {
           name: 'Healing',
           value: [{ scaling: calcScaling(0.08, 0.005, talent, 'heal'), multiplier: Stats.ATK }],
