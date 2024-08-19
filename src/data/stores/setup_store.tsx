@@ -1,13 +1,4 @@
-import {
-  Element,
-  IArtifactEquip,
-  IBuild,
-  ITeamChar,
-  IWeapon,
-  IWeaponEquip,
-  PathType,
-  TalentType,
-} from '@src/domain/constant'
+import { Element, ITeamChar, TalentType } from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
@@ -70,6 +61,7 @@ export interface SetupStoreType {
   level: number | string
   enemy: string
   hp: number
+  scaling: string
   toughness: number
   effRes: number
   broken: boolean
@@ -122,6 +114,7 @@ export class SetupStore {
   effRes: number
   broken: boolean
   weakness: Element[]
+  scaling: string
 
   constructor() {
     this.mode = 'avg'
@@ -133,6 +126,7 @@ export class SetupStore {
     this.mainChar = null
     this.comparing = Array(3)
     this.forms = Array(4)
+    this.scaling = '1'
     this.res = {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,

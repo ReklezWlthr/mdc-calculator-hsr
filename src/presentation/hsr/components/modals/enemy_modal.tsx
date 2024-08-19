@@ -1,5 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { Element } from '@src/domain/constant'
+import { DebuffIcon, Element } from '@src/domain/constant'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import _ from 'lodash'
 import classNames from 'classnames'
@@ -20,7 +20,7 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
   const { calculatorStore, teamStore, settingStore, setupStore } = useStore()
   const store = compare ? setupStore : calculatorStore
   const setValue: (key: string, value: any) => void = store.setValue
-  const { res, level, enemy } = compare ? setupStore : calculatorStore
+  const { res, level, enemy, scaling } = compare ? setupStore : calculatorStore
   const isTrotter = _.includes(enemy, 'Trot')
   const charLevel = teamStore.characters[calculatorStore.selected]?.level
   const rawDef = isTrotter ? 15 * (+level || 1) + 300 : 10 * (+level || 1) + 200
@@ -28,6 +28,9 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
   const red = stats?.getValue(StatsObjectKeys.DEF_REDUCTION) || 0
   const def = _.max([rawDef * (1 - pen - red), 0])
   const defMult = store.getDefMult(charLevel, pen, red)
+
+  const enemyData = _.find(Enemies, (item) => item.name === enemy)
+  const spd = (+level >= 86 ? 1.32 : +level >= 78 ? 1.2 : +level >= 65 ? 1.1 : 1) * (enemyData?.baseSpd || 0)
 
   const enemies = settingStore.settings.variant
     ? Enemies
@@ -50,7 +53,7 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
                   _.mapValues(enemyData?.res, (item) => item * 100)
                 )
                 setValue('weakness', enemyData?.weakness)
-                setValue('hp', _.round((enemyData?.baseHp / _.head(EnemyHpScaling)) * EnemyHpScaling[+level - 1], 2))
+                setValue('hp', _.round(enemyData?.baseHp * EnemyHpScaling[scaling][+level - 1]))
                 setValue('toughness', enemyData?.toughness)
                 setValue('effRes', enemyData?.effRes)
               }
@@ -69,15 +72,25 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
             min={1}
             value={level.toString()}
             onChange={(value) => {
-              const enemyData = _.find(Enemies, (item) => item.name === enemy)
-              if (enemyData)
-                setValue(
-                  'hp',
-                  _.round((enemyData?.baseHp / _.head(EnemyHpScaling)) * EnemyHpScaling[(Number(value) || 1) - 1], 2)
-                )
+              if (enemyData) setValue('hp', _.round(enemyData?.baseHp * EnemyHpScaling[scaling][(+value || 1) - 1]))
               setValue('level', value === '' ? '' : value)
             }}
-            style="w-[80px]"
+            style="w-[50px]"
+          />
+        </div>
+        <div className="flex flex-col gap-y-1">
+          <p className="text-sm">Scaling</p>
+          <SelectInput
+            options={[
+              { name: 'Base', value: '1' },
+              { name: 'MoC', value: '2' },
+            ]}
+            value={scaling}
+            onChange={(value) => {
+              if (enemyData) setValue('hp', _.round(enemyData?.baseHp * EnemyHpScaling[value][(+level || 1) - 1]))
+              setValue('scaling', value)
+            }}
+            style="w-[60px]"
           />
         </div>
       </div>
@@ -205,6 +218,21 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
               </Tooltip>
               <CheckboxInput checked={store.broken} onClick={() => setValue('broken', !store.broken)} />
             </div>
+          </div>
+          <p>Advanced Stats</p>
+          <div className="flex items-center gap-x-2 !mt-2">
+            <img className="w-3.5" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconSpeed.png" />
+            <p className="pr-3 text-sm text-gray">{spd}</p>
+            {_.map(
+              enemyData?.statusRes,
+              (item, key) =>
+                !!item && (
+                  <>
+                    <img className="h-4" src={`https://homdgcat.wiki/images/Debuff/${DebuffIcon[key]}`} />
+                    <p className="pr-3 text-sm text-gray">{toPercentage(item)}</p>
+                  </>
+                )
+            )}
           </div>
         </div>
         <div className="flex flex-col items-end gap-y-3">

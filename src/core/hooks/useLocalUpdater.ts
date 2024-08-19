@@ -28,8 +28,8 @@ export const useLocalUpdater = (game: string) => {
     settingStore.setSettingValue(json)
     calculatorStore.setValue('level', json?.defaultEnemyLevel || 1)
     setupStore.setValue('level', json?.defaultEnemyLevel || 1)
-    calculatorStore.setValue('hp', EnemyHpScaling[(json?.defaultEnemyLevel || 1) - 1])
-    setupStore.setValue('hp', EnemyHpScaling[(json?.defaultEnemyLevel || 1) - 1])
+    calculatorStore.setValue('hp', _.round(EnemyHpScaling[1][(json?.defaultEnemyLevel || 1) - 1]))
+    setupStore.setValue('hp', _.round(EnemyHpScaling[1][(json?.defaultEnemyLevel || 1) - 1]))
   }
 
   useEffect(() => {

@@ -222,9 +222,20 @@ export const StatIcons = {
   [Stats.WIND_DMG]: 'IconWindAddedRatio.png',
   [Stats.QUANTUM_DMG]: 'IconQuantumAddedRatio.png',
   [Stats.IMAGINARY_DMG]: 'IconImaginaryAddedRatio.png',
-  [Stats.ERR]: 'IconSPRatio.png',
+  [Stats.ERR]: 'IconEnergyRecovery.png',
   [Stats.EHR]: 'IconStatusProbability.png',
   [Stats.EHP]: 'IconMaxHP.png',
+}
+
+export const DebuffIcon = {
+  [DebuffTypes.FROZEN]: 'IconDotFrozen_B.png',
+  [DebuffTypes.IMPRISON]: 'IconDotCage_B.png',
+  [DebuffTypes.ENTANGLE]: 'IconDotTangle_B.png',
+  [DebuffTypes.BURN]: 'IconDotBurn_B.png',
+  [DebuffTypes.WIND_SHEAR]: 'IconDotPoison_B.png',
+  [DebuffTypes.SHOCKED]: 'IconDotElectric_B.png',
+  [DebuffTypes.BLEED]: 'IconDotBleed_B.png',
+  [DebuffTypes.CONTROL]: 'Icon1307Dot_B.png',
 }
 
 export const RelicPiece = Object.freeze({

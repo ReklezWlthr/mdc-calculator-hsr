@@ -17,7 +17,7 @@ export const chanceStringConstruct = (
   element?: string
 ) => {
   const property = BreakDebuffType[element]
-  const isCC = _.includes([TalentProperty.FROZEN, TalentProperty.ENTANGLE], property)
+  const isCC = _.includes([DebuffTypes.FROZEN, DebuffTypes.ENTANGLE, DebuffTypes.IMPRISON], property)
 
   const enemy = findEnemy(calculatorStore.enemy)
   const ccRes = enemy?.statusRes?.[DebuffTypes.CONTROL] || 0

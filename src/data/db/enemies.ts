@@ -6,7 +6,7 @@ export const Enemies = [
     name: `"Past Confined and Caged"`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 892.8,
+    baseHp: 12,
     baseSpd: 100,
     toughness: 100,
     res: {
@@ -34,7 +34,7 @@ export const Enemies = [
     name: `"Present Inebriated in Revelry"`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.FIRE, Element.IMAGINARY],
-    baseHp: 892.8,
+    baseHp: 12,
     baseSpd: 120,
     toughness: 100,
     res: {
@@ -62,7 +62,7 @@ export const Enemies = [
     name: `"Speartip"`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.FIRE],
-    baseHp: 119.04,
+    baseHp: 1.6,
     baseSpd: 100,
     toughness: 30,
     res: {
@@ -90,7 +90,7 @@ export const Enemies = [
     name: `"Speartip" (Complete)`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.FIRE],
-    baseHp: 267.84,
+    baseHp: 3.6,
     baseSpd: 100,
     toughness: 30,
     res: {
@@ -118,7 +118,7 @@ export const Enemies = [
     name: `"The Honored"`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.ICE],
-    baseHp: 204.6,
+    baseHp: 2.75,
     baseSpd: 100,
     toughness: 30,
     res: {
@@ -146,7 +146,7 @@ export const Enemies = [
     name: `"The Honored" (Complete)`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.ICE],
-    baseHp: 465,
+    baseHp: 6.25,
     baseSpd: 100,
     toughness: 30,
     res: {
@@ -174,7 +174,7 @@ export const Enemies = [
     name: `"The Shield"`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.LIGHTNING],
-    baseHp: 141.36,
+    baseHp: 1.9,
     baseSpd: 100,
     toughness: 30,
     res: {
@@ -202,7 +202,7 @@ export const Enemies = [
     name: `"The Shield" (Complete)`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.LIGHTNING],
-    baseHp: 334.8,
+    baseHp: 4.5,
     baseSpd: 100,
     toughness: 30,
     res: {
@@ -230,7 +230,7 @@ export const Enemies = [
     name: `"Tomorrow in Harmonious Chords"`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.FIRE, Element.LIGHTNING],
-    baseHp: 892.8,
+    baseHp: 12,
     baseSpd: 100,
     toughness: 100,
     res: {
@@ -258,7 +258,7 @@ export const Enemies = [
     name: `Abundance Lotus`,
     type: 'Normal',
     weakness: [Element.WIND, Element.IMAGINARY],
-    baseHp: 111.6,
+    baseHp: 1.5,
     baseSpd: 120,
     toughness: 20,
     res: {
@@ -286,7 +286,7 @@ export const Enemies = [
     name: `Abundance Sprite: Golden Hound`,
     type: 'Normal',
     weakness: [Element.ICE, Element.LIGHTNING, Element.QUANTUM],
-    baseHp: 119.04,
+    baseHp: 1.6,
     baseSpd: 118,
     toughness: 30,
     res: {
@@ -314,7 +314,7 @@ export const Enemies = [
     name: `Abundance Sprite: Malefic Ape`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.ICE, Element.WIND],
-    baseHp: 892.8,
+    baseHp: 12,
     baseSpd: 144,
     toughness: 120,
     res: {
@@ -342,7 +342,7 @@ export const Enemies = [
     name: `Abundance Sprite: Malefic Ape (Bug)`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.ICE, Element.WIND],
-    baseHp: 1339.2,
+    baseHp: 18,
     baseSpd: 172,
     toughness: 120,
     res: {
@@ -370,7 +370,7 @@ export const Enemies = [
     name: `Abundance Sprite: Wooden Lepus`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.WIND, Element.IMAGINARY],
-    baseHp: 148.8,
+    baseHp: 2,
     baseSpd: 100,
     toughness: 30,
     res: {
@@ -398,7 +398,7 @@ export const Enemies = [
     name: `Abundant Ebon Deer`,
     type: 'Boss',
     weakness: [Element.FIRE, Element.ICE, Element.QUANTUM],
-    baseHp: 818.4,
+    baseHp: 11,
     baseSpd: 115,
     toughness: 140,
     res: {
@@ -426,7 +426,7 @@ export const Enemies = [
     name: `Abundant Ebon Deer (Complete)`,
     type: 'Boss',
     weakness: [Element.FIRE, Element.ICE, Element.QUANTUM],
-    baseHp: 628,
+    baseHp: 7.5,
     baseSpd: 144,
     toughness: 140,
     res: {
@@ -454,7 +454,7 @@ export const Enemies = [
     name: `Antibaryon`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.QUANTUM],
-    baseHp: 44.64,
+    baseHp: 0.6,
     baseSpd: 83,
     toughness: 10,
     res: {
@@ -482,7 +482,7 @@ export const Enemies = [
     name: `Antimatter Engine`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.FIRE],
-    baseHp: 699.36,
+    baseHp: 9.4,
     baseSpd: 100,
     toughness: 60,
     res: {
@@ -510,7 +510,7 @@ export const Enemies = [
     name: `Argenti`,
     type: 'Boss',
     weakness: [Element.PHYSICAL, Element.FIRE, Element.ICE],
-    baseHp: 1116,
+    baseHp: 15,
     baseSpd: 144,
     toughness: 160,
     res: {
@@ -538,7 +538,7 @@ export const Enemies = [
     name: `Argenti (Complete)`,
     type: 'Boss',
     weakness: [Element.PHYSICAL, Element.FIRE, Element.ICE],
-    baseHp: 1256,
+    baseHp: 15,
     baseSpd: 144,
     toughness: 160,
     res: {
@@ -566,7 +566,7 @@ export const Enemies = [
     name: `Aurumaton Gatekeeper`,
     type: 'Elite',
     weakness: [Element.LIGHTNING, Element.WIND, Element.QUANTUM],
-    baseHp: 744,
+    baseHp: 10,
     baseSpd: 100,
     toughness: 100,
     res: {
@@ -594,7 +594,7 @@ export const Enemies = [
     name: `Aurumaton Gatekeeper (Bug)`,
     type: 'Elite',
     weakness: [Element.LIGHTNING, Element.WIND, Element.QUANTUM],
-    baseHp: 1423,
+    baseHp: 15,
     baseSpd: 144,
     toughness: 120,
     res: {
@@ -622,7 +622,7 @@ export const Enemies = [
     name: `Aurumaton Spectral Envoy`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 892.8,
+    baseHp: 12,
     baseSpd: 120,
     toughness: 100,
     res: {
@@ -650,7 +650,7 @@ export const Enemies = [
     name: `Aurumaton Spectral Envoy (Bug)`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 1423,
+    baseHp: 17,
     baseSpd: 144,
     toughness: 120,
     res: {
@@ -678,7 +678,7 @@ export const Enemies = [
     name: `Automaton Beetle`,
     type: 'Normal',
     weakness: [Element.LIGHTNING, Element.WIND, Element.IMAGINARY],
-    baseHp: 104.16,
+    baseHp: 1.4,
     baseSpd: 100,
     toughness: 20,
     res: {
@@ -706,7 +706,7 @@ export const Enemies = [
     name: `Automaton Direwolf`,
     type: 'Elite',
     weakness: [Element.ICE, Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 818.4,
+    baseHp: 11,
     baseSpd: 144,
     toughness: 100,
     res: {
@@ -734,7 +734,7 @@ export const Enemies = [
     name: `Automaton Direwolf (Bug)`,
     type: 'Elite',
     weakness: [Element.ICE, Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 1116,
+    baseHp: 15,
     baseSpd: 144,
     toughness: 120,
     res: {
@@ -762,7 +762,7 @@ export const Enemies = [
     name: `Automaton Direwolf (Complete - G&G)`,
     type: 'Elite',
     weakness: [Element.ICE, Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 372,
+    baseHp: 5,
     baseSpd: 172,
     toughness: 100,
     res: {
@@ -790,7 +790,7 @@ export const Enemies = [
     name: `Automaton Direwolf (Complete)`,
     type: 'Elite',
     weakness: [Element.ICE, Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 446.4,
+    baseHp: 6,
     baseSpd: 172,
     toughness: 100,
     res: {
@@ -818,7 +818,7 @@ export const Enemies = [
     name: `Automaton Grizzly`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.ICE, Element.LIGHTNING],
-    baseHp: 967,
+    baseHp: 13,
     baseSpd: 120,
     toughness: 140,
     res: {
@@ -846,7 +846,7 @@ export const Enemies = [
     name: `Automaton Grizzly (Bug)`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.ICE, Element.LIGHTNING],
-    baseHp: 1339.2,
+    baseHp: 18,
     baseSpd: 120,
     toughness: 160,
     res: {
@@ -874,7 +874,7 @@ export const Enemies = [
     name: `Automaton Grizzly (Complete - G&G)`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.ICE, Element.LIGHTNING],
-    baseHp: 744,
+    baseHp: 10,
     baseSpd: 144,
     toughness: 160,
     res: {
@@ -902,7 +902,7 @@ export const Enemies = [
     name: `Automaton Grizzly (Complete)`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.ICE, Element.LIGHTNING],
-    baseHp: 818.4,
+    baseHp: 11,
     baseSpd: 144,
     toughness: 160,
     res: {
@@ -930,7 +930,7 @@ export const Enemies = [
     name: `Automaton Hound`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.LIGHTNING],
-    baseHp: 104.16,
+    baseHp: 1.4,
     baseSpd: 100,
     toughness: 20,
     res: {
@@ -958,7 +958,7 @@ export const Enemies = [
     name: `Automaton Spider`,
     type: 'Normal',
     weakness: [Element.LIGHTNING, Element.WIND],
-    baseHp: 55.8,
+    baseHp: 0.75,
     baseSpd: 83,
     toughness: 20,
     res: {
@@ -986,7 +986,7 @@ export const Enemies = [
     name: `Auxiliary Robot Arm Unit`,
     type: 'Normal',
     weakness: [Element.LIGHTNING, Element.WIND, Element.QUANTUM],
-    baseHp: 260.4,
+    baseHp: 3.5,
     baseSpd: 120,
     toughness: 30,
     res: {
@@ -1014,7 +1014,7 @@ export const Enemies = [
     name: `Baryon`,
     type: 'Normal',
     weakness: [Element.ICE, Element.WIND],
-    baseHp: 44.64,
+    baseHp: 0.6,
     baseSpd: 83,
     toughness: 10,
     res: {
@@ -1042,7 +1042,7 @@ export const Enemies = [
     name: `Blaze Out of Space`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.ICE, Element.QUANTUM],
-    baseHp: 744,
+    baseHp: 10,
     baseSpd: 120,
     toughness: 100,
     res: {
@@ -1070,7 +1070,7 @@ export const Enemies = [
     name: `Blaze Out of Space (Bug)`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.ICE, Element.QUANTUM],
-    baseHp: 1190.4,
+    baseHp: 16,
     baseSpd: 144,
     toughness: 120,
     res: {
@@ -1098,7 +1098,7 @@ export const Enemies = [
     name: `Bronya`,
     type: 'Boss',
     weakness: [Element.PHYSICAL, Element.FIRE, Element.IMAGINARY],
-    baseHp: 892.8,
+    baseHp: 12,
     baseSpd: 120,
     toughness: 70,
     res: {
@@ -1126,7 +1126,7 @@ export const Enemies = [
     name: `Bronya (Complete)`,
     type: 'Boss',
     weakness: [Element.PHYSICAL, Element.FIRE, Element.IMAGINARY],
-    baseHp: 446.4,
+    baseHp: 6,
     baseSpd: 143,
     toughness: 70,
     res: {
@@ -1154,7 +1154,7 @@ export const Enemies = [
     name: `Cloud Knight Lieutenant: Yanqing`,
     type: 'Boss',
     weakness: [Element.LIGHTNING, Element.WIND, Element.IMAGINARY],
-    baseHp: 1116,
+    baseHp: 15,
     baseSpd: 120,
     toughness: 160,
     res: {
@@ -1182,7 +1182,7 @@ export const Enemies = [
     name: `Cloud Knight Lieutenant: Yanqing (Complete)`,
     type: 'Boss',
     weakness: [Element.LIGHTNING, Element.WIND, Element.IMAGINARY],
-    baseHp: 837,
+    baseHp: 10,
     baseSpd: 144,
     toughness: 120,
     res: {
@@ -1210,7 +1210,7 @@ export const Enemies = [
     name: `Cloud Knights Patroller`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.WIND, Element.IMAGINARY],
-    baseHp: 119.04,
+    baseHp: 1.6,
     baseSpd: 120,
     toughness: 20,
     res: {
@@ -1238,7 +1238,7 @@ export const Enemies = [
     name: `Cocolia`,
     type: 'Boss',
     weakness: [Element.FIRE, Element.LIGHTNING, Element.QUANTUM],
-    baseHp: 1302,
+    baseHp: 17.5,
     baseSpd: 120,
     toughness: 120,
     res: {
@@ -1266,7 +1266,7 @@ export const Enemies = [
     name: `Cocolia (Complete)`,
     type: 'Boss',
     weakness: [Element.FIRE, Element.LIGHTNING, Element.QUANTUM],
-    baseHp: 595.2,
+    baseHp: 8,
     baseSpd: 144,
     toughness: 120,
     res: {
@@ -1294,7 +1294,7 @@ export const Enemies = [
     name: `Cocolia, Mother of Deception`,
     type: 'Boss',
     weakness: [Element.FIRE, Element.LIGHTNING, Element.QUANTUM],
-    baseHp: 1414,
+    baseHp: 19,
     baseSpd: 120,
     toughness: 180,
     res: {
@@ -1322,7 +1322,7 @@ export const Enemies = [
     name: `Dawn's Left Hand`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.WIND],
-    baseHp: 372,
+    baseHp: 5,
     baseSpd: 120,
     toughness: 40,
     res: {
@@ -1350,7 +1350,7 @@ export const Enemies = [
     name: `Decaying Shadow`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.WIND],
-    baseHp: 744,
+    baseHp: 10,
     baseSpd: 172,
     toughness: 100,
     res: {
@@ -1378,7 +1378,7 @@ export const Enemies = [
     name: `Decaying Shadow (Bug)`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.WIND],
-    baseHp: 967,
+    baseHp: 13,
     baseSpd: 207,
     toughness: 130,
     res: {
@@ -1406,7 +1406,7 @@ export const Enemies = [
     name: `Destruction Lotus`,
     type: 'Normal',
     weakness: [Element.LIGHTNING, Element.QUANTUM, Element.IMAGINARY],
-    baseHp: 558,
+    baseHp: 7.5,
     baseSpd: 100,
     toughness: 60,
     res: {
@@ -1434,7 +1434,7 @@ export const Enemies = [
     name: `Disaster's Right Hand`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.ICE],
-    baseHp: 372,
+    baseHp: 5,
     baseSpd: 120,
     toughness: 40,
     res: {
@@ -1462,7 +1462,7 @@ export const Enemies = [
     name: `Disciples of Sanctus Medicus: Ballistarius`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.ICE, Element.WIND],
-    baseHp: 163.68,
+    baseHp: 2.2,
     baseSpd: 83,
     toughness: 30,
     res: {
@@ -1490,7 +1490,7 @@ export const Enemies = [
     name: `Disciples of Sanctus Medicus: Internal Alchemist`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.IMAGINARY],
-    baseHp: 89.28,
+    baseHp: 1.2,
     baseSpd: 100,
     toughness: 20,
     res: {
@@ -1518,7 +1518,7 @@ export const Enemies = [
     name: `Disciples of Sanctus Medicus: Shape Shifter`,
     type: 'Elite',
     weakness: [Element.ICE, Element.WIND, Element.IMAGINARY],
-    baseHp: 892.8,
+    baseHp: 12,
     baseSpd: 120,
     toughness: 120,
     res: {
@@ -1546,7 +1546,7 @@ export const Enemies = [
     name: `Disciples of Sanctus Medicus: Shape Shifter (Bug)`,
     type: 'Elite',
     weakness: [Element.ICE, Element.WIND, Element.IMAGINARY],
-    baseHp: 1423,
+    baseHp: 17,
     baseSpd: 144,
     toughness: 120,
     res: {
@@ -1574,7 +1574,7 @@ export const Enemies = [
     name: `Dreamjolt Troupe's Beyond Overcooked`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.LIGHTNING, Element.WIND],
-    baseHp: 1339.2,
+    baseHp: 18,
     baseSpd: 100,
     toughness: 160,
     res: {
@@ -1602,7 +1602,7 @@ export const Enemies = [
     name: `Dreamjolt Troupe's Birdskull`,
     type: 'Normal',
     weakness: [Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 74.4,
+    baseHp: 1,
     baseSpd: 83,
     toughness: 10,
     res: {
@@ -1630,7 +1630,7 @@ export const Enemies = [
     name: `Dreamjolt Troupe's Bubble Hound`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.WIND],
-    baseHp: 167.4,
+    baseHp: 2.25,
     baseSpd: 100,
     toughness: 30,
     res: {
@@ -1658,7 +1658,7 @@ export const Enemies = [
     name: `Dreamjolt Troupe's Domescreen`,
     type: 'Normal',
     weakness: [Element.ICE, Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 204.6,
+    baseHp: 2.75,
     baseSpd: 100,
     toughness: 30,
     res: {
@@ -1686,7 +1686,7 @@ export const Enemies = [
     name: `Dreamjolt Troupe's Fortune Seller`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.WIND],
-    baseHp: 167.4,
+    baseHp: 2.25,
     baseSpd: 120,
     toughness: 20,
     res: {
@@ -1714,7 +1714,7 @@ export const Enemies = [
     name: `Dreamjolt Troupe's Spring Loader`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.WIND],
-    baseHp: 74.4,
+    baseHp: 1,
     baseSpd: 83,
     toughness: 10,
     res: {
@@ -1742,7 +1742,7 @@ export const Enemies = [
     name: `Dreamjolt Troupe's Sweet Gorilla`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.FIRE, Element.IMAGINARY],
-    baseHp: 1339.2,
+    baseHp: 18,
     baseSpd: 144,
     toughness: 100,
     res: {
@@ -1770,7 +1770,7 @@ export const Enemies = [
     name: `Dreamjolt Troupe's Winder Goon`,
     type: 'Normal',
     weakness: [Element.LIGHTNING, Element.QUANTUM],
-    baseHp: 130.2,
+    baseHp: 1.75,
     baseSpd: 80,
     toughness: 30,
     res: {
@@ -1798,7 +1798,7 @@ export const Enemies = [
     name: `Entranced Ingenium: Golden Cloud Toad`,
     type: 'Normal',
     weakness: [Element.LIGHTNING, Element.QUANTUM],
-    baseHp: 66.96,
+    baseHp: 0.9,
     baseSpd: 83,
     toughness: 10,
     res: {
@@ -1826,7 +1826,7 @@ export const Enemies = [
     name: `Entranced Ingenium: Illumination Dragonfish`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 111.6,
+    baseHp: 1.5,
     baseSpd: 100,
     toughness: 20,
     res: {
@@ -1854,7 +1854,7 @@ export const Enemies = [
     name: `Entranced Ingenium: Obedient Dracolion`,
     type: 'Normal',
     weakness: [Element.WIND, Element.IMAGINARY],
-    baseHp: 66.96,
+    baseHp: 0.9,
     baseSpd: 83,
     toughness: 10,
     res: {
@@ -1882,7 +1882,7 @@ export const Enemies = [
     name: `Everwinter Shadewalker`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.FIRE, Element.QUANTUM],
-    baseHp: 111.6,
+    baseHp: 1.5,
     baseSpd: 100,
     toughness: 20,
     res: {
@@ -1910,7 +1910,7 @@ export const Enemies = [
     name: `Flamespawn`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.ICE],
-    baseHp: 44.64,
+    baseHp: 0.6,
     baseSpd: 83,
     toughness: 10,
     res: {
@@ -1938,7 +1938,7 @@ export const Enemies = [
     name: `Flying Sword`,
     type: 'Normal',
     weakness: [Element.LIGHTNING, Element.WIND, Element.IMAGINARY],
-    baseHp: 111.6,
+    baseHp: 1.5,
     baseSpd: 100,
     toughness: 10,
     res: {
@@ -1966,7 +1966,7 @@ export const Enemies = [
     name: `Frigid Prowler`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.LIGHTNING, Element.QUANTUM],
-    baseHp: 892.8,
+    baseHp: 12,
     baseSpd: 100,
     toughness: 100,
     res: {
@@ -1994,7 +1994,7 @@ export const Enemies = [
     name: `Frigid Prowler (Bug)`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.LIGHTNING, Element.QUANTUM],
-    baseHp: 1100,
+    baseHp: 15,
     baseSpd: 100,
     toughness: 120,
     res: {
@@ -2022,7 +2022,7 @@ export const Enemies = [
     name: `Frostspawn`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.WIND],
-    baseHp: 44.64,
+    baseHp: 0.6,
     baseSpd: 83,
     toughness: 10,
     res: {
@@ -2050,7 +2050,7 @@ export const Enemies = [
     name: `Gepard`,
     type: 'Boss',
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 818.4,
+    baseHp: 11,
     baseSpd: 120,
     toughness: 100,
     res: {
@@ -2078,7 +2078,7 @@ export const Enemies = [
     name: `Gepard (Complete)`,
     type: 'Boss',
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 483.6,
+    baseHp: 6.5,
     baseSpd: 144,
     toughness: 100,
     res: {
@@ -2106,7 +2106,7 @@ export const Enemies = [
     name: `Gnaw Sting`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.ICE],
-    baseHp: 167.4,
+    baseHp: 2.25,
     baseSpd: 118,
     toughness: 30,
     res: {
@@ -2134,7 +2134,7 @@ export const Enemies = [
     name: `Grunt: Field Personnel`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.ICE],
-    baseHp: 119.04,
+    baseHp: 1.6,
     baseSpd: 118,
     toughness: 20,
     res: {
@@ -2162,7 +2162,7 @@ export const Enemies = [
     name: `Grunt: Security Personnel`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.FIRE, Element.ICE],
-    baseHp: 163.68,
+    baseHp: 2.2,
     baseSpd: 100,
     toughness: 30,
     res: {
@@ -2190,7 +2190,7 @@ export const Enemies = [
     name: `Guardian Shadow`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.WIND, Element.QUANTUM],
-    baseHp: 818.4,
+    baseHp: 11,
     baseSpd: 120,
     toughness: 100,
     res: {
@@ -2218,7 +2218,7 @@ export const Enemies = [
     name: `Guardian Shadow (Bug)`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.WIND, Element.QUANTUM],
-    baseHp: 967,
+    baseHp: 13,
     baseSpd: 144,
     toughness: 120,
     res: {
@@ -2246,7 +2246,7 @@ export const Enemies = [
     name: `"Harmonious Choir" The Great Septimus`,
     type: 'Boss',
     weakness: [Element.FIRE, Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 4464,
+    baseHp: 60,
     baseSpd: 144,
     toughness: 60,
     res: {
@@ -2274,7 +2274,7 @@ export const Enemies = [
     name: `"Embryo of Philosophy" Sunday`,
     type: 'Boss',
     weakness: [Element.FIRE, Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 4464,
+    baseHp: 60,
     baseSpd: 144,
     toughness: 36,
     res: {
@@ -2302,7 +2302,7 @@ export const Enemies = [
     name: `Ice Edge (1)`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.LIGHTNING],
-    baseHp: 55.8,
+    baseHp: 0.75,
     baseSpd: 100,
     toughness: 20,
     res: {
@@ -2330,7 +2330,7 @@ export const Enemies = [
     name: `Ice Edge (2)`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.QUANTUM],
-    baseHp: 55.8,
+    baseHp: 0.75,
     baseSpd: 100,
     toughness: 20,
     res: {
@@ -2358,7 +2358,7 @@ export const Enemies = [
     name: `Ice Out of Space`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.WIND, Element.QUANTUM],
-    baseHp: 744,
+    baseHp: 10,
     baseSpd: 100,
     toughness: 100,
     res: {
@@ -2386,7 +2386,7 @@ export const Enemies = [
     name: `Ice Out of Space (Bug)`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.WIND, Element.QUANTUM],
-    baseHp: 1116,
+    baseHp: 15,
     baseSpd: 100,
     toughness: 120,
     res: {
@@ -2414,7 +2414,7 @@ export const Enemies = [
     name: `Imaginary Weaver`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.QUANTUM],
-    baseHp: 141.36,
+    baseHp: 1.9,
     baseSpd: 120,
     toughness: 20,
     res: {
@@ -2442,7 +2442,7 @@ export const Enemies = [
     name: `Incineration Shadewalker`,
     type: 'Normal',
     weakness: [Element.ICE, Element.WIND, Element.IMAGINARY],
-    baseHp: 111.6,
+    baseHp: 1.5,
     baseSpd: 100,
     toughness: 20,
     res: {
@@ -2470,7 +2470,7 @@ export const Enemies = [
     name: `Juvenile Sting`,
     type: 'Normal',
     weakness: [Element.QUANTUM, Element.IMAGINARY],
-    baseHp: 167.4,
+    baseHp: 2.25,
     baseSpd: 144,
     toughness: 30,
     res: {
@@ -2498,7 +2498,7 @@ export const Enemies = [
     name: `Lance of the Eternal Freeze (1)`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.LIGHTNING],
-    baseHp: 119.04,
+    baseHp: 1.6,
     baseSpd: 100,
     toughness: 30,
     res: {
@@ -2526,7 +2526,7 @@ export const Enemies = [
     name: `Lance of the Eternal Freeze (2)`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.QUANTUM],
-    baseHp: 119.04,
+    baseHp: 1.6,
     baseSpd: 100,
     toughness: 30,
     res: {
@@ -2554,7 +2554,7 @@ export const Enemies = [
     name: `Lesser Sting`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.FIRE, Element.IMAGINARY],
-    baseHp: 234.36,
+    baseHp: 3.15,
     baseSpd: 144,
     toughness: 40,
     res: {
@@ -2582,7 +2582,7 @@ export const Enemies = [
     name: `Lordly Trashcan`,
     type: 'Normal',
     weakness: [],
-    baseHp: 3720,
+    baseHp: 50,
     baseSpd: 144,
     toughness: 120,
     res: {
@@ -2610,7 +2610,7 @@ export const Enemies = [
     name: `Mara-Struck Soldier`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.ICE, Element.QUANTUM],
-    baseHp: 89.28,
+    baseHp: 1.2,
     baseSpd: 83,
     toughness: 20,
     res: {
@@ -2638,7 +2638,7 @@ export const Enemies = [
     name: `Mara-Struck Warden`,
     type: 'Normal',
     weakness: [Element.ICE, Element.LIGHTNING, Element.QUANTUM],
-    baseHp: 148.8,
+    baseHp: 2,
     baseSpd: 100,
     toughness: 30,
     res: {
@@ -2666,7 +2666,7 @@ export const Enemies = [
     name: `Mask of No Thought`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.QUANTUM],
-    baseHp: 74.4,
+    baseHp: 1,
     baseSpd: 100,
     toughness: 10,
     res: {
@@ -2694,7 +2694,7 @@ export const Enemies = [
     name: `Memory Zone Meme "Allseer"`,
     type: 'Normal',
     weakness: [Element.ICE, Element.LIGHTNING],
-    baseHp: 74.4,
+    baseHp: 1,
     baseSpd: 100,
     toughness: 10,
     res: {
@@ -2722,7 +2722,7 @@ export const Enemies = [
     name: `Memory Zone Meme "Heartbreaker"`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.ICE, Element.LIGHTNING],
-    baseHp: 104.16,
+    baseHp: 1.4,
     baseSpd: 100,
     toughness: 20,
     res: {
@@ -2750,7 +2750,7 @@ export const Enemies = [
     name: `Memory Zone Meme "Insatiable Vanity"`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.FIRE],
-    baseHp: 93,
+    baseHp: 1.25,
     baseSpd: 150,
     toughness: 30,
     res: {
@@ -2778,7 +2778,7 @@ export const Enemies = [
     name: `Memory Zone Meme "Shell of Faded Rage"`,
     type: 'Elite',
     weakness: [Element.LIGHTNING, Element.QUANTUM, Element.IMAGINARY],
-    baseHp: 1041.6,
+    baseHp: 14,
     baseSpd: 132,
     toughness: 120,
     res: {
@@ -2806,7 +2806,7 @@ export const Enemies = [
     name: `Memory Zone Meme "Something in the Mirror"`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.WIND, Element.IMAGINARY],
-    baseHp: 119.04,
+    baseHp: 1.6,
     baseSpd: 120,
     toughness: 20,
     res: {
@@ -2834,7 +2834,7 @@ export const Enemies = [
     name: `Memory Zone Meme "Something Unto Death"`,
     type: 'Boss',
     weakness: [Element.FIRE, Element.WIND, Element.IMAGINARY],
-    baseHp: 1636.8,
+    baseHp: 22,
     baseSpd: 144,
     toughness: 240,
     res: {
@@ -2862,7 +2862,7 @@ export const Enemies = [
     name: `Phantylia the Undying`,
     type: 'Boss',
     weakness: [Element.LIGHTNING, Element.WIND, Element.IMAGINARY],
-    baseHp: 967,
+    baseHp: 13,
     baseSpd: 120,
     toughness: 160,
     res: {
@@ -2890,7 +2890,7 @@ export const Enemies = [
     name: `Searing Prowler`,
     type: 'Elite',
     weakness: [Element.ICE, Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 818.4,
+    baseHp: 11,
     baseSpd: 100,
     toughness: 100,
     res: {
@@ -2918,7 +2918,7 @@ export const Enemies = [
     name: `Searing Prowler (Bug)`,
     type: 'Elite',
     weakness: [Element.ICE, Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 1041.6,
+    baseHp: 14,
     baseSpd: 120,
     toughness: 120,
     res: {
@@ -2946,7 +2946,7 @@ export const Enemies = [
     name: `Senior Staff: Team Leader`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.ICE, Element.IMAGINARY],
-    baseHp: 1190.4,
+    baseHp: 16,
     baseSpd: 120,
     toughness: 120,
     res: {
@@ -2974,7 +2974,7 @@ export const Enemies = [
     name: `Senior Staff: Team Leader (Bug)`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.ICE, Element.IMAGINARY],
-    baseHp: 1413.6,
+    baseHp: 19,
     baseSpd: 144,
     toughness: 120,
     res: {
@@ -3002,7 +3002,7 @@ export const Enemies = [
     name: `Sequence Trotter`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.ICE, Element.IMAGINARY],
-    baseHp: 267.84,
+    baseHp: 3.6,
     baseSpd: 83,
     toughness: 30,
     res: {
@@ -3030,7 +3030,7 @@ export const Enemies = [
     name: `Shadow Jackyena`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.WIND, Element.IMAGINARY],
-    baseHp: 148.8,
+    baseHp: 2,
     baseSpd: 100,
     toughness: 20,
     res: {
@@ -3058,7 +3058,7 @@ export const Enemies = [
     name: `Silvermane Cannoneer`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.ICE, Element.IMAGINARY],
-    baseHp: 156.24,
+    baseHp: 2.1,
     baseSpd: 100,
     toughness: 30,
     res: {
@@ -3086,7 +3086,7 @@ export const Enemies = [
     name: `SIlvermane Gunner`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.ICE],
-    baseHp: 81.84,
+    baseHp: 1.1,
     baseSpd: 100,
     toughness: 20,
     res: {
@@ -3114,7 +3114,7 @@ export const Enemies = [
     name: `Silvermane Lieutenant`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.ICE, Element.QUANTUM],
-    baseHp: 744,
+    baseHp: 10,
     baseSpd: 120,
     toughness: 80,
     res: {
@@ -3142,7 +3142,7 @@ export const Enemies = [
     name: `Silvermane Lieutenant (Bug)`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.ICE, Element.QUANTUM],
-    baseHp: 1190.4,
+    baseHp: 16,
     baseSpd: 120,
     toughness: 120,
     res: {
@@ -3170,7 +3170,7 @@ export const Enemies = [
     name: `Silvermane Lieutenant (Complete)`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.ICE, Element.QUANTUM],
-    baseHp: 558,
+    baseHp: 7.5,
     baseSpd: 144,
     toughness: 60,
     res: {
@@ -3198,7 +3198,7 @@ export const Enemies = [
     name: `Silvermane Soldier`,
     type: 'Normal',
     weakness: [Element.WIND, Element.QUANTUM],
-    baseHp: 96.72,
+    baseHp: 1.3,
     baseSpd: 83,
     toughness: 20,
     res: {
@@ -3254,7 +3254,7 @@ export const Enemies = [
     name: `Starcrusher Swarm King: Skaracabaz (Synthetic)`,
     type: 'Boss',
     weakness: [Element.PHYSICAL, Element.ICE, Element.IMAGINARY],
-    baseHp: 1785.6,
+    baseHp: 24,
     baseSpd: 120,
     toughness: 180,
     res: {
@@ -3282,7 +3282,7 @@ export const Enemies = [
     name: `Stellaron Hunter: Kafka`,
     type: 'Boss',
     weakness: [Element.PHYSICAL, Element.WIND, Element.IMAGINARY],
-    baseHp: 1041.6,
+    baseHp: 14,
     baseSpd: 119,
     toughness: 150,
     res: {
@@ -3310,7 +3310,7 @@ export const Enemies = [
     name: `Stellaron Hunter: Kafka (Complete)`,
     type: 'Boss',
     weakness: [Element.PHYSICAL, Element.WIND, Element.IMAGINARY],
-    baseHp: 669.6,
+    baseHp: 9,
     baseSpd: 119,
     toughness: 150,
     res: {
@@ -3338,7 +3338,7 @@ export const Enemies = [
     name: `Stellaron Hunter: Sam`,
     type: 'Boss',
     weakness: [Element.LIGHTNING, Element.QUANTUM, Element.IMAGINARY],
-    baseHp: 3720,
+    baseHp: 50,
     baseSpd: 120,
     toughness: 200,
     res: {
@@ -3366,7 +3366,7 @@ export const Enemies = [
     name: `Stellaron Hunter: Sam (Complete)`,
     type: 'Boss',
     weakness: [Element.LIGHTNING, Element.QUANTUM, Element.IMAGINARY],
-    baseHp: 1190.4,
+    baseHp: 16,
     baseSpd: 120,
     toughness: 200,
     res: {
@@ -3394,7 +3394,7 @@ export const Enemies = [
     name: `Stormbringer`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.ICE, Element.IMAGINARY],
-    baseHp: 818.4,
+    baseHp: 11,
     baseSpd: 100,
     toughness: 100,
     res: {
@@ -3422,7 +3422,7 @@ export const Enemies = [
     name: `Stormbringer (Bug)`,
     type: 'Elite',
     weakness: [Element.FIRE, Element.ICE, Element.IMAGINARY],
-    baseHp: 1116,
+    baseHp: 15,
     baseSpd: 120,
     toughness: 120,
     res: {
@@ -3450,7 +3450,7 @@ export const Enemies = [
     name: `Svarog`,
     type: 'Boss',
     weakness: [Element.FIRE, Element.LIGHTNING, Element.WIND],
-    baseHp: 1190.4,
+    baseHp: 16,
     baseSpd: 120,
     toughness: 120,
     res: {
@@ -3478,7 +3478,7 @@ export const Enemies = [
     name: `Svarog (Complete)`,
     type: 'Boss',
     weakness: [Element.FIRE, Element.LIGHTNING, Element.WIND],
-    baseHp: 558,
+    baseHp: 7.5,
     baseSpd: 144,
     toughness: 120,
     res: {
@@ -3506,7 +3506,7 @@ export const Enemies = [
     name: `Swarm: True Sting`,
     type: 'Boss',
     weakness: [Element.ICE, Element.QUANTUM, Element.IMAGINARY],
-    baseHp: 1339.2,
+    baseHp: 18,
     baseSpd: 144,
     toughness: 160,
     res: {
@@ -3534,7 +3534,7 @@ export const Enemies = [
     name: `Swarm: True Sting (Complete)`,
     type: 'Boss',
     weakness: [Element.ICE, Element.QUANTUM, Element.IMAGINARY],
-    baseHp: 1256,
+    baseHp: 15,
     baseSpd: 144,
     toughness: 180,
     res: {
@@ -3562,7 +3562,7 @@ export const Enemies = [
     name: `Ten Stonehearts: Aventurine of Stratagems`,
     type: 'Boss',
     weakness: [Element.PHYSICAL, Element.ICE, Element.LIGHTNING],
-    baseHp: 1785.6,
+    baseHp: 24,
     baseSpd: 120,
     toughness: 150,
     res: {
@@ -3590,7 +3590,7 @@ export const Enemies = [
     name: `Ten Stonehearts: Aventurine of Stratagems (Complete)`,
     type: 'Boss',
     weakness: [Element.PHYSICAL, Element.ICE, Element.LIGHTNING],
-    baseHp: 1116,
+    baseHp: 15,
     baseSpd: 120,
     toughness: 150,
     res: {
@@ -3618,7 +3618,7 @@ export const Enemies = [
     name: `The Ascended`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.ICE, Element.LIGHTNING],
-    baseHp: 818.4,
+    baseHp: 11,
     baseSpd: 120,
     toughness: 140,
     res: {
@@ -3646,7 +3646,7 @@ export const Enemies = [
     name: `The Ascended (Bug)`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.ICE, Element.LIGHTNING],
-    baseHp: 1227.6,
+    baseHp: 16.5,
     baseSpd: 144,
     toughness: 140,
     res: {
@@ -3674,7 +3674,7 @@ export const Enemies = [
     name: `Thunderspawn`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.WIND],
-    baseHp: 44.64,
+    baseHp: 0.6,
     baseSpd: 83,
     toughness: 10,
     res: {
@@ -3702,7 +3702,7 @@ export const Enemies = [
     name: `Trot Deuce`,
     type: 'Normal',
     weakness: [Element.LIGHTNING, Element.WIND, Element.QUANTUM],
-    baseHp: 267.84,
+    baseHp: 3.6,
     baseSpd: 83,
     toughness: 30,
     res: {
@@ -3730,7 +3730,7 @@ export const Enemies = [
     name: `Trot Prime`,
     type: 'Normal',
     weakness: [Element.ICE, Element.QUANTUM, Element.IMAGINARY],
-    baseHp: 267.84,
+    baseHp: 3.6,
     baseSpd: 83,
     toughness: 30,
     res: {
@@ -3758,7 +3758,7 @@ export const Enemies = [
     name: `Trot Tri`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.FIRE, Element.ICE],
-    baseHp: 267.84,
+    baseHp: 3.6,
     baseSpd: 83,
     toughness: 30,
     res: {
@@ -3786,7 +3786,7 @@ export const Enemies = [
     name: `Trotter of Abundance`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.LIGHTNING, Element.ICE],
-    baseHp: 446.4,
+    baseHp: 6,
     baseSpd: 83,
     toughness: 30,
     res: {
@@ -3814,7 +3814,7 @@ export const Enemies = [
     name: `Trotter of Destruction`,
     type: 'Normal',
     weakness: [Element.ICE, Element.WIND, Element.QUANTUM],
-    baseHp: 267.84,
+    baseHp: 3.6,
     baseSpd: 83,
     toughness: 30,
     res: {
@@ -3842,7 +3842,7 @@ export const Enemies = [
     name: `Trotter of Preservation`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.ICE, Element.IMAGINARY],
-    baseHp: 133.92,
+    baseHp: 1.8,
     baseSpd: 83,
     toughness: 10,
     res: {
@@ -3870,7 +3870,7 @@ export const Enemies = [
     name: `Twig of Glorious Blooms`,
     type: 'Normal',
     weakness: [Element.ICE, Element.IMAGINARY],
-    baseHp: 148.8,
+    baseHp: 2,
     baseSpd: 100,
     toughness: 30,
     res: {
@@ -3898,7 +3898,7 @@ export const Enemies = [
     name: `Twig of Glorious Blooms (Complete)`,
     type: 'Normal',
     weakness: [Element.ICE, Element.IMAGINARY],
-    baseHp: 148.8,
+    baseHp: 2,
     baseSpd: 120,
     toughness: 30,
     res: {
@@ -3926,7 +3926,7 @@ export const Enemies = [
     name: `Twig of Lavish Fruits`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.QUANTUM, Element.IMAGINARY],
-    baseHp: 178.56,
+    baseHp: 2.4,
     baseSpd: 100,
     toughness: 40,
     res: {
@@ -3954,7 +3954,7 @@ export const Enemies = [
     name: `Twig of Lavish Fruits (Complete)`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.QUANTUM, Element.IMAGINARY],
-    baseHp: 223.2,
+    baseHp: 3,
     baseSpd: 120,
     toughness: 40,
     res: {
@@ -3982,7 +3982,7 @@ export const Enemies = [
     name: `Twig of Marple Leaf`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.QUANTUM],
-    baseHp: 148.8,
+    baseHp: 2,
     baseSpd: 120,
     toughness: 30,
     res: {
@@ -4010,7 +4010,7 @@ export const Enemies = [
     name: `Twig of Marple Leaf (Complete)`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.QUANTUM],
-    baseHp: 148.8,
+    baseHp: 2,
     baseSpd: 144,
     toughness: 30,
     res: {
@@ -4038,7 +4038,7 @@ export const Enemies = [
     name: `Twig of Wintry Wind`,
     type: 'Normal',
     weakness: [Element.ICE, Element.QUANTUM, Element.IMAGINARY],
-    baseHp: 119.04,
+    baseHp: 1.6,
     baseSpd: 100,
     toughness: 30,
     res: {
@@ -4066,7 +4066,7 @@ export const Enemies = [
     name: `Twig of Wintry Wind (Complete)`,
     type: 'Normal',
     weakness: [Element.ICE, Element.QUANTUM, Element.IMAGINARY],
-    baseHp: 96.72,
+    baseHp: 1.3,
     baseSpd: 120,
     toughness: 30,
     res: {
@@ -4094,7 +4094,7 @@ export const Enemies = [
     name: `Vagrant`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.ICE, Element.IMAGINARY],
-    baseHp: 111.6,
+    baseHp: 1.5,
     baseSpd: 100,
     toughness: 20,
     res: {
@@ -4122,7 +4122,7 @@ export const Enemies = [
     name: `Voidranger: Distorter`,
     type: 'Normal',
     weakness: [Element.WIND, Element.IMAGINARY],
-    baseHp: 133.92,
+    baseHp: 1.8,
     baseSpd: 120,
     toughness: 30,
     res: {
@@ -4150,7 +4150,7 @@ export const Enemies = [
     name: `Voidranger: Eliminator`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.ICE, Element.QUANTUM],
-    baseHp: 156.24,
+    baseHp: 2.1,
     baseSpd: 100,
     toughness: 20,
     res: {
@@ -4178,7 +4178,7 @@ export const Enemies = [
     name: `Voidranger: Reaver`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.LIGHTNING],
-    baseHp: 111.6,
+    baseHp: 1.5,
     baseSpd: 100,
     toughness: 20,
     res: {
@@ -4206,7 +4206,7 @@ export const Enemies = [
     name: `Voidranger: Trampler`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.WIND, Element.IMAGINARY],
-    baseHp: 818.4,
+    baseHp: 11,
     baseSpd: 100,
     toughness: 100,
     res: {
@@ -4234,7 +4234,7 @@ export const Enemies = [
     name: `Voidranger: Trampler (Bug)`,
     type: 'Elite',
     weakness: [Element.PHYSICAL, Element.WIND, Element.IMAGINARY],
-    baseHp: 1116,
+    baseHp: 15,
     baseSpd: 120,
     toughness: 140,
     res: {
@@ -4262,7 +4262,7 @@ export const Enemies = [
     name: `Warp Trotter`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.QUANTUM, Element.IMAGINARY],
-    baseHp: 267.84,
+    baseHp: 3.6,
     baseSpd: 83,
     toughness: 30,
     res: {
@@ -4290,7 +4290,7 @@ export const Enemies = [
     name: `Windspawn`,
     type: 'Normal',
     weakness: [Element.FIRE, Element.LIGHTNING],
-    baseHp: 44.64,
+    baseHp: 0.6,
     baseSpd: 83,
     toughness: 10,
     res: {
@@ -4318,7 +4318,7 @@ export const Enemies = [
     name: `Wraith Warden`,
     type: 'Normal',
     weakness: [Element.PHYSICAL, Element.ICE, Element.WIND],
-    baseHp: 111.6,
+    baseHp: 1.5,
     baseSpd: 120,
     toughness: 20,
     res: {
@@ -4346,7 +4346,7 @@ export const Enemies = [
     name: `Annihilator of Desolation Mistral: Mother of Deception`,
     type: 'Boss',
     weakness: [Element.FIRE, Element.LIGHTNING, Element.WIND, Element.QUANTUM],
-    baseHp: 4836,
+    baseHp: 62.5,
     baseSpd: 125,
     toughness: 270,
     res: {
@@ -4374,7 +4374,7 @@ export const Enemies = [
     name: `Soulhook Sovereign`,
     type: 'Boss',
     weakness: [Element.FIRE, Element.IMAGINARY, Element.WIND, Element.PHYSICAL],
-    baseHp: 5766,
+    baseHp: 77.5,
     baseSpd: 150,
     toughness: 300,
     res: {
@@ -4402,7 +4402,7 @@ export const Enemies = [
     name: `Silver Knight of Virtuous Gallantry`,
     type: 'Boss',
     weakness: [Element.FIRE, Element.IMAGINARY, Element.ICE, Element.PHYSICAL],
-    baseHp: 4650,
+    baseHp: 62.5,
     baseSpd: 105,
     toughness: 270,
     res: {
@@ -4430,7 +4430,7 @@ export const Enemies = [
     name: `Eclipse Wolftrooper`,
     type: 'Normal',
     weakness: [Element.WIND, Element.PHYSICAL],
-    baseHp: 148.8,
+    baseHp: 2,
     baseSpd: 120,
     toughness: 30,
     res: {
@@ -4458,7 +4458,7 @@ export const Enemies = [
     name: `Howling Casket`,
     type: 'Elite',
     weakness: [Element.WIND, Element.LIGHTNING, Element.IMAGINARY],
-    baseHp: 892.8,
+    baseHp: 12,
     baseSpd: 120,
     toughness: 30,
     res: {

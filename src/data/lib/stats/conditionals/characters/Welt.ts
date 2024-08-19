@@ -140,6 +140,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       debuff: true,
       chance: { base: 1, fixed: false },
       duration: 1,
+      debuffElement: Element.IMAGINARY,
     },
     {
       type: 'toggle',

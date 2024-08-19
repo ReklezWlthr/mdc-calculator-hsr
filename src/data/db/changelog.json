@@ -1,5 +1,13 @@
 [
   {
+    "version": "1.0.3",
+    "date": "August 20th, 2024",
+    "desc": [
+      "<b class=\"text-red\">New</b>: Enemy's Advanced Stats & Updated HP Scaling",
+      "Fixes <span class=\"text-desc\">Welt</span>'s Imprisonment Hit Chance"
+    ]
+  },
+  {
     "version": "1.0.2-1",
     "date": "August 15th, 2024",
     "desc": [

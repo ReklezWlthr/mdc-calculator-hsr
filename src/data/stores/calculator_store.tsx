@@ -21,6 +21,7 @@ export interface CalculatorStoreType {
   debuffs: { type: DebuffTypes; count: number }[]
   enemy: string
   hp: number
+  scaling: string
   toughness: number
   effRes: number
   level: number | string
@@ -49,6 +50,7 @@ export class CalculatorStore {
   broken: boolean
   weakness: Element[]
   hp: number
+  scaling: string
   effRes: number
   toughness: number
   debuffs: { type: DebuffTypes; count: number }[]
@@ -68,6 +70,7 @@ export class CalculatorStore {
     this.broken = false
     this.weakness = []
     this.enemy = ''
+    this.scaling = '1'
     this.res = {
       [Element.PHYSICAL]: 0,
       [Element.FIRE]: 0,
