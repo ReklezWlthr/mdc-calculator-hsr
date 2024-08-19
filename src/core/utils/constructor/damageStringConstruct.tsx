@@ -146,7 +146,7 @@ export const damageStringConstruct = (
   const breakElementMult = BreakElementMult[scaling.element]
   const breakLevel = BreakBaseLevel[level - 1]
   const toughnessMult = 0.5 + _.min([calculatorStore.toughness, scaling.toughCap || calculatorStore.toughness]) / 40
-  const breakRaw = breakElementMult * breakLevel * toughnessMult
+  const breakRaw = (split: number) => breakElementMult * breakLevel * toughnessMult * split
   const cap = scaling.cap
     ? scaling.cap?.scaling *
       (statForScale[scaling.cap?.multiplier] +
@@ -156,7 +156,7 @@ export const damageStringConstruct = (
   const dmgSplit = _.map(
     scaling.hitSplit || [1],
     (split, i) =>
-      (capped ? cap : breakScale ? breakRaw : raw(split)) *
+      (capped ? cap : breakScale ? breakRaw(split) : raw(split)) *
       (1 + (breakScale ? stats.getValue(Stats.BE) : isPure ? 0 : bonusDMG(scaling.bonusSplit?.[i]))) *
       (scaling.multiplier || 1) *
       elementMult *
