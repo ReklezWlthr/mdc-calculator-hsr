@@ -244,7 +244,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               ...c6Scale,
             ]
           : []
-      base.BASIC_SCALING = form.boothill_enhance
+      base.BASIC_SCALING = form.standoff
         ? [
             {
               name: 'Single Target',
