@@ -88,9 +88,7 @@ export const ArtifactInventory = observer(() => {
               values={params.main}
               options={_.map(MainStatOptions, (item) => ({
                 ...item,
-                img:
-                  (item.name === Stats.ERR ? '/icons/' : 'https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/') +
-                  item.img,
+                img: 'https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/' + item.img,
               }))}
               onChange={(main) => setParams({ main })}
               placeholder="Main Stat - Match Any"
