@@ -49,13 +49,12 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Ultimate',
       title: 'Pyrograph Arcanum',
       content: `Sets the number of <b>Ashen Roast</b> stacks on enemy targets to the highest number of <b>Ashen Roast</b> stacks present on the battlefield. Then, activates a Zone and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Jiaoqiu's ATK to all enemies.
-      <br />While inside the Zone, enemy targets take {{1}}% increased Ultimate DMG, with a {{2}}% <u>base chance</u> of being inflicted with <span class="text-desc">1</span> stack of <b>Ashen Roast</b> when taking action. This effect can only be triggered once for enemies in each turn.
-      <br />The Zone lasts for <span class="text-desc">3</span> turn(s), and its duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn. If Jiaoqiu is knocked down, the Zone will also be dispelled.
-      <br />The automatic <b>Ashen Roast</b> application can be triggered <span class="text-desc">6</span> times. Casting Ultimate resets the number of remaining triggers.`,
+      <br />While inside the Zone, enemy targets take {{1}}% increased Ultimate DMG, with a {{2}}% <u>base chance</u> of being inflicted with <span class="text-desc">1</span> stack of <b>Ashen Roast</b> when taking action. While the Zone exists, this effect can trigger up to <span class="text-desc">6</span> time(s). And for each enemy target, it can only trigger once per turn. This trigger count resets every time Jiaoqiu uses Ultimate.
+      <br />The Zone lasts for <span class="text-desc">3</span> turn(s), and its duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn. If Jiaoqiu gets knocked down, the Zone will also be dispelled.`,
       value: [
         { base: 60, growth: 4, style: 'curved' },
-        { base: 50, growth: 1, style: 'curved' },
         { base: 9, growth: 0.6, style: 'curved' },
+        { base: 50, growth: 1, style: 'curved' },
       ],
       level: ult,
       tag: AbilityTag.AOE,
@@ -77,7 +76,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: 'Fiery Queller',
-      content: `After using Technique, creates a special dimension that lasts for <span class="text-desc">15</span> second(s). After entering enemies in this special dimension, deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">100%</span> of Jiaoqiu's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> of applying 1 <b>Ashen Roast</b> stack. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
+      content: `After using Technique, creates a Special Dimension that lasts for <span class="text-desc">15</span> second(s). After entering enemies in this Special Dimension, deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">100%</span> of Jiaoqiu's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> of applying 1 <b>Ashen Roast</b> stack. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
       tag: AbilityTag.IMPAIR,
     },
     a6: {
@@ -215,7 +214,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          chance: { base: calcScaling(0.09, 0.006, ult, 'curved'), fixed: false },
+          chance: { base: calcScaling(0.5, 0.01, ult, 'curved'), fixed: false },
           break: 20,
           sum: true,
         },
@@ -225,7 +224,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base.ULT_VUL.push({
           name: `Ultimate`,
           source: 'Self',
-          value: calcScaling(0.5, 0.01, ult, 'curved'),
+          value: calcScaling(0.09, 0.006, ult, 'curved'),
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
         if (c >= 4) {
@@ -284,7 +283,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base.ULT_VUL.push({
           name: `Ultimate`,
           source: 'Jiaoqiu',
-          value: calcScaling(0.5, 0.01, ult, 'curved'),
+          value: calcScaling(0.09, 0.006, ult, 'curved'),
         })
         if (c >= 4) {
           base.ATK_REDUCTION.push({

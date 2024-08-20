@@ -148,7 +148,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       text: `Crimson Knot Stacks`,
       ...talents.talent,
       show: true,
-      unique: true,
+      debuff: true,
       default: 9,
       min: 0,
       max: 9,
@@ -357,10 +357,10 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       }
       if (a.a6) {
         base.ULT_SCALING.push({
-          name: 'Thunder Core Total DMG',
+          name: 'Total Thunder Core DMG',
           value: [{ scaling: 0.25 * 6, multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
-          property: TalentProperty.ADD,
+          property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           multiplier,
           sum: true,
