@@ -77,7 +77,7 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: 'Stormborn',
-      content: `After using the Technique, this character enters the Onrush state, lasting for <span class="text-desc">20</span> seconds. While in the Onrush state, this character pulls in enemies within a certain range, increases SPD by <span class="text-desc">35%</span>, and receives <span class="text-desc">1</span> point(s) of <b class="text-hsr-wind">Flying Aureus</b> after entering battle.
+      content: `After using the Technique, this character enters the Onrush state, lasting for <span class="text-desc">20</span> seconds. While in the Onrush state, this character pulls in enemies within a certain range, increases SPD by <span class="text-desc">50%</span>, and receives <span class="text-desc">1</span> point(s) of <b class="text-hsr-wind">Flying Aureus</b> after entering battle.
         <br />Active attacks in the Onrush state will strike all pulled enemies and enter combat. After entering battle, deal <b class="text-hsr-wind">Wind DMG</b> equal to <span class="text-desc">200%</span> of Feixiao's ATK to all enemies at the start of each wave. This DMG is guaranteed to CRIT. When more than <span class="text-desc">1</span> enemy is pulled in, increase the multiplier of this DMG by <span class="text-desc">100%</span> for each additional enemy pulled in, up to an increase of <span class="text-desc">1,000%</span>.`,
       tag: AbilityTag.ENHANCE,
     },
@@ -85,12 +85,12 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Ascension 2 Passive',
       title: `Heavenpath`,
       content: `Receive <span class="text-desc">3</span> point(s) of <b class="text-hsr-wind">Flying Aureus</b> at the start of the battle.
-      <br />At the start of the turn, if <u>follow-up attack</u> is not launched via Talent in the turn prior, it counts as gaining <span class="text-desc">1</span> point of <b class="text-hsr-wind">Flying Aureus</b> toward the required attack count.`,
+      <br />At the start of the turn, if <u>follow-up attack</u> is not launched in the turn prior, it counts as gaining <span class="text-desc">1</span> point of <b class="text-hsr-wind">Flying Aureus</b> toward the required attack count.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Formshift`,
-      content: `When using Ultimate to deal DMG to an enemy target, it is considered as <u>follow-up attack</u>. Increases CRIT DMG dealt by <u>follow-up attack</u> by <span class="text-desc">36%</span>.`,
+      content: `When using Ultimate to deal DMG to an enemy target, it is considered as <u>follow-up attack</u>. Increases DMG dealt by <u>follow-up attacks</u> by <span class="text-desc">36%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -216,7 +216,7 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.WIND,
           property: a.a4 ? TalentProperty.FUA : TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 35,
+          break: 30,
           sum: true,
         },
         {
@@ -243,7 +243,6 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.WIND,
           property: a.a4 ? TalentProperty.FUA : TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 5,
           multiplier: c >= 1 ? 1.5 : 1,
         },
       ]
@@ -265,7 +264,6 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 10,
           overrideCr: 1,
           sum: true,
         },
@@ -275,7 +273,6 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          break: 10,
           overrideCr: 1,
         },
       ]
@@ -288,7 +285,7 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         })
       }
       if (a.a4) {
-        base.FUA_CD.push({
+        base.FUA_DMG.push({
           name: 'Ascension 4 Passive',
           source: 'Self',
           value: 0.36,

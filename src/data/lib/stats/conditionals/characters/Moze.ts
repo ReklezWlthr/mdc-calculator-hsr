@@ -54,7 +54,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       energy: 5,
       trace: 'Ultimate',
       title: `Dash In, Gash Out`,
-      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Moze's ATK to an enemy target and launches his Talent's <u>follow-up attack against</u> this target. If the target is defeated before this <u>follow-up attack</u> is used, then activate the <u>follow-up attack</u> against a random single enemy.`,
+      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Moze's ATK to an enemy target, and launches his Talent's <u>follow-up attack against</u> this target. If the target is defeated before this <u>follow-up attack</u> is used, then activate the <u>follow-up attack</u> against a random single enemy.`,
       value: [{ base: 150, growth: 10, style: 'curved' }],
       level: ult,
       tag: AbilityTag.ST,
@@ -64,7 +64,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       trace: 'Talent',
       title: `Cascading Featherblade`,
       content: `Moze will enter the <b>Departed</b> state while a <b class="text-hsr-lightning">Prey</b> exists on the field.
-        <br />After allies attack the <b class="text-hsr-lightning">Prey</b>, Moze will additionally deal <span class="text-desc">1</span> instance of <b class="text-hsr-lightning">Additional Lightning DMG</b> equal to {{0}}% of his ATK and consumes <span class="text-desc">1</span> <b>Charge</b>. For each <span class="text-desc">3</span> point(s) of <b>Charge</b> consumed, Moze launches <span class="text-desc">1</span> <u>follow-up attack</u> to the <b class="text-hsr-lightning">Prey</b>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Moze's ATK. When <b>Charge</b> reaches <span class="text-desc">0</span>, dispels the target's <b class="text-hsr-lightning">Prey</b> state and reset the <b>Charge</b> consumption count. This attack does not consume Moze's <b>Charges</b>.`,
+        <br />After allies attack the <b class="text-hsr-lightning">Prey</b>, Moze will additionally deal <span class="text-desc">1</span> instance of <b class="text-hsr-lightning">Additional Lightning DMG</b> equal to {{0}}% of his ATK and consumes <span class="text-desc">1</span> <b>Charge</b>. For each <span class="text-desc">3</span> point(s) of <b>Charge</b> consumed, Moze launches <span class="text-desc">1</span> <u>follow-up attack</u> to the <b class="text-hsr-lightning">Prey</b>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Moze's ATK. When <b>Charge</b> reaches <span class="text-desc">0</span>, dispels the target's <b class="text-hsr-lightning">Prey</b> state and reset the <b>Charge</b> consumption count. This attack does not consume <b>Charge</b>.`,
       value: [
         { base: 15, growth: 1.5, style: 'curved' },
         { base: 80, growth: 8, style: 'curved' },
@@ -75,7 +75,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     technique: {
       trace: 'Technique',
       title: 'Bated Wings',
-      content: `After using his Technique, Moze gains Stealth for <span class="text-desc">20</span> second(s). While Stealth is active, Moze cannot be detected by enemies. Increases the DMG Moze deals by <span class="text-desc">30%</span> when he enters combat by attacking enemies while in Stealth mode, lasting for <span class="text-desc">1</span> turn(s).`,
+      content: `After using his Technique, Moze gains Stealth for <span class="text-desc">20</span> second(s). While Stealth is active, Moze cannot be detected by enemies. Increases the DMG Moze deals by <span class="text-desc">30%</span> when he enters combat by attacking enemies while in Stealth mode, lasting for <span class="text-desc">2</span> turn(s).`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {
@@ -112,7 +112,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c4: {
       trace: 'Eidolon 4',
       title: `Heathprowler`,
-      content: `When using Ultimate, the DMG dealt by Moze increases by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `After using the Ultimate, the DMG dealt by Moze increases by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -140,11 +140,11 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     {
       type: 'toggle',
       id: 'moze_talent',
-      text: `Talent DMG Bonus`,
-      ...talents.talent,
+      text: `Technique DMG Bonus`,
+      ...talents.technique,
       show: true,
       default: true,
-      duration: 1,
+      duration: 2,
     },
     {
       type: 'toggle',
