@@ -187,7 +187,7 @@ export const baseStatsObject = {
   getValue: function (key: string, exclude?: StatsArray[]) {
     return _.sumBy(
       _.size(exclude)
-        ? _.filter(this[key], (item) => _.every(exclude, (e) => e.source !== item.source && e.name !== item.name))
+        ? _.filter(this[key], (item) => _.every(exclude, (e) => !(e.source === item.source && e.name === item.name)))
         : this[key],
       'value'
     )

@@ -69,9 +69,9 @@ export const damageStringConstruct = (
     number: { finalDebuff },
   } = breakDamageStringConstruct(calculatorStore, stats, level, scaling.multiplier)
 
-  const talentDmg =
-    stats.getValue(`${TalentPropertyMap[scaling.property]}_DMG`, stats[`${TalentTypeMap[scaling.type]}_DMG`]) || 0
-  const typeDmg = stats.getValue(`${TalentTypeMap[scaling.type]}_DMG`) || 0
+  const talentDmg = stats.getValue(`${TalentPropertyMap[scaling.property]}_DMG`) || 0
+  const typeDmg =
+    stats.getValue(`${TalentTypeMap[scaling.type]}_DMG`, stats[`${TalentPropertyMap[scaling.property]}_DMG`]) || 0
   const talentFlat = stats.getValue(`${TalentPropertyMap[scaling.property]}_F_DMG`) || 0
   const talentCr = stats.getValue(`${TalentTypeMap[scaling.type]}_CR`) || 0
   const propertyCr = stats.getValue(`${TalentPropertyMap[scaling.property]}_CR`) || 0
