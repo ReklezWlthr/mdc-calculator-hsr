@@ -50,8 +50,8 @@ export const Calculator = observer(({}: {}) => {
             finalStats,
             (item) =>
               BaseAggro[item.PATH] *
-              (1 + item.getValue(StatsObjectKeys.BASE_AGGRO)) *
-              (1 + item.getValue(StatsObjectKeys.AGGRO))
+                (1 + (item.getValue(StatsObjectKeys.BASE_AGGRO) || 0)) *
+                (1 + (item.getValue(StatsObjectKeys.AGGRO) || 0)) || 0
           )}
         />
       ),
