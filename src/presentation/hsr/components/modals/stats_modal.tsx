@@ -147,7 +147,6 @@ export const StatsModal = observer(
             exist.value += curr.value
             exist.base = curr.base
             exist.multiplier = (exist.multiplier || 0) + curr.multiplier || 0
-            if (curr.base && curr.multiplier) exist.flat = exist.value
           } else {
             acc.push(curr)
           }

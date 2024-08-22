@@ -314,6 +314,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               name: 'Ultimate',
               source: index === i ? 'Self' : 'Robin',
               value: calcScaling(50, 15, ult, 'curved'),
+              flat: calcScaling(50, 15, ult, 'curved'),
             })
             if (index !== i)
               _.forEach(

@@ -283,6 +283,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
             name: 'Skill',
             source: index === i ? 'Self' : 'Lynx',
             value: calcScaling(50, 30, skill, 'flat'),
+            flat: calcScaling(50, 30, skill, 'flat'),
           })
           if (c >= 4)
             team[i].X_ATK.push({
