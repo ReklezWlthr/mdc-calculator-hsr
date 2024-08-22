@@ -21,6 +21,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const index = _.findIndex(team, (item) => item?.cId === '1306')
   const quantumCount = _.filter(team, (item) => findCharacter(item.cId)?.element === Element.QUANTUM).length - 1
+  const multiplier = calcScaling(0.12, 0.012, skill, 'curved') + (c >= 6 ? 0.3 : 0)
 
   const talents: ITalent = {
     normal: {
@@ -246,9 +247,10 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           x.X_CRIT_DMG.push({
             name: `Skill`,
             source: 'Sparkle',
-            value:
-              calcScaling(0.27, 0.018, skill, 'curved') +
-              (calcScaling(0.12, 0.012, skill, 'curved') + (c >= 6 ? 0.3 : 0)) * all[index].getValue(Stats.CRIT_DMG),
+            value: calcScaling(0.27, 0.018, skill, 'curved') + multiplier * all[index].getValue(Stats.CRIT_DMG),
+            multiplier,
+            base: toPercentage(all[index].getValue(Stats.CRIT_DMG)),
+            flat: toPercentage(calcScaling(0.27, 0.018, skill, 'curved')),
           })
           return x
         })
@@ -314,9 +316,10 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base.X_CRIT_DMG.push({
           name: `Skill`,
           source: 'Self',
-          value:
-            calcScaling(0.27, 0.018, skill, 'curved') +
-            (calcScaling(0.12, 0.012, skill, 'curved') + (c >= 6 ? 0.3 : 0)) * base.getValue(Stats.CRIT_DMG),
+          value: calcScaling(0.27, 0.018, skill, 'curved') + multiplier * base.getValue(Stats.CRIT_DMG),
+          multiplier,
+          base: toPercentage(base.getValue(Stats.CRIT_DMG)),
+          flat: toPercentage(calcScaling(0.27, 0.018, skill, 'curved')),
         })
       }
       if (c >= 6 && _.some(allForm, (item) => item.sparkle_skill) && form.cipher) {
@@ -324,9 +327,10 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           y.X_CRIT_DMG.push({
             name: `Skill`,
             source: 'Sparkle',
-            value:
-              calcScaling(0.27, 0.018, skill, 'curved') +
-              (calcScaling(0.12, 0.012, skill, 'curved') + (c >= 6 ? 0.3 : 0)) * base.getValue(Stats.CRIT_DMG),
+            value: calcScaling(0.27, 0.018, skill, 'curved') + multiplier * base.getValue(Stats.CRIT_DMG),
+            multiplier,
+            base: toPercentage(base.getValue(Stats.CRIT_DMG)),
+            flat: toPercentage(calcScaling(0.27, 0.018, skill, 'curved')),
           })
         }
       }

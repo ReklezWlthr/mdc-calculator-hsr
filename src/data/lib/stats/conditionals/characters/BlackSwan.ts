@@ -1,5 +1,5 @@
 import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
-import _, { chain } from 'lodash'
+import _, { chain, multiply } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
 import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 
@@ -357,7 +357,9 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           base[Stats.ALL_DMG].push({
             name: 'Ascension 6 Passive',
             source: 'Self',
-            value: _.min([base[Stats.EHR] * 0.6, 0.72]),
+            value: _.min([base.getValue(Stats.EHR) * 0.6, 0.72]),
+            base: toPercentage(_.min([base.getValue(Stats.EHR), 1.2])),
+            multiplier: 0.6,
           })
           return base
         })

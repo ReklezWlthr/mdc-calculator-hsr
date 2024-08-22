@@ -40,6 +40,22 @@ export const AttributeBlock = ({ stat, array, stats }: NormalBlockProps) => (
           !!item.value && (
             <BulletPoint key={item.source + item.name}>
               {item.source} / {item.name} <span className="text-desc">{toPercentage(item.value)}</span>
+              {!!item.base && !!item.multiplier && (
+                <>
+                  {' '}
+                  = {_.isNumber(item.base) ? _.floor(item.base).toLocaleString() : item.base} {`\u{00d7}`}{' '}
+                  <span className="text-blue">{toPercentage(item.multiplier)}</span>
+                  {item.flat && (
+                    <>
+                      {' '}
+                      +{' '}
+                      <span className="text-heal">
+                        {_.isNumber(item.flat) ? _.floor(item.flat).toLocaleString() : item.flat}
+                      </span>
+                    </>
+                  )}
+                </>
+              )}
             </BulletPoint>
           )
       )}
@@ -84,6 +100,22 @@ export const StatsModal = observer(
                 <BulletPoint key={item.source + item.name}>
                   {item.source} / {item.name}{' '}
                   <span className="text-desc">{_.round(item.value, round).toLocaleString()}</span>
+                  {!!item.base && !!item.multiplier && (
+                    <>
+                      {' '}
+                      = {_.isNumber(item.base) ? _.floor(item.base).toLocaleString() : item.base} {`\u{00d7}`}{' '}
+                      <span className="text-blue">{toPercentage(item.multiplier)}</span>
+                      {item.flat && (
+                        <>
+                          {' '}
+                          +{' '}
+                          <span className="text-heal">
+                            {_.isNumber(item.flat) ? _.floor(item.flat).toLocaleString() : item.flat}
+                          </span>
+                        </>
+                      )}
+                    </>
+                  )}
                 </BulletPoint>
               )
           )}
@@ -113,6 +145,9 @@ export const StatsModal = observer(
           const exist = _.find(acc, (item) => item.name === curr.name && item.source === curr.source)
           if (exist) {
             exist.value += curr.value
+            exist.base = curr.base
+            exist.multiplier = (exist.multiplier || 0) + curr.multiplier || 0
+            if (curr.base && curr.multiplier) exist.flat = exist.value
           } else {
             acc.push(curr)
           }

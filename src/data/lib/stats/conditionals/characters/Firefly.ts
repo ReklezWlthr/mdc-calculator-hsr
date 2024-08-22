@@ -28,6 +28,8 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
 
+  const index = _.findIndex(team, (item) => item?.cId === '1310')
+
   const talents: ITalent = {
     normal: {
       energy: 20,
@@ -342,13 +344,19 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       weakness: Element[],
       broken: boolean
     ) => {
-      base.CALLBACK.push((x) => {
-        if (a.a6)
+      _.last(team).CALLBACK.push(function P99(b, d, w, all) {
+        const x = all[index]
+        if (a.a6) {
+          const base = _.max([0, x.getAtk(true) - 1800]) / 10
+          const multiplier = 0.008
           x[Stats.BE].push({
             name: 'Ascension 6 Passive',
             source: 'Self',
-            value: (_.max([0, x.getAtk(true) - 1800]) / 10) * 0.008,
+            value: base * multiplier,
+            base,
+            multiplier,
           })
+        }
         const superBreak = x.getValue(Stats.BE) >= 3.6 ? 0.5 : x.getValue(Stats.BE) >= 2 ? 0.35 : 0
         if (superBreak && form.complete_combustion) {
           base.SUPER_BREAK = true
@@ -398,7 +406,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             },
           ]
 
-        return x
+        return b
       })
       return base
     },

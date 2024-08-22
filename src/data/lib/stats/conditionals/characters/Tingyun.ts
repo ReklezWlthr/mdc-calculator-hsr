@@ -286,14 +286,17 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                   })
               }
             )
-            const buff = _.min([
-              calcScaling(0.25, 0.025, skill, 'curved') * f.BASE_ATK,
-              calcScaling(0.15, 0.01, skill, 'curved') * all[index].getAtk(),
-            ])
+            const raw = calcScaling(0.25, 0.025, skill, 'curved') * f.BASE_ATK
+            const cap = calcScaling(0.15, 0.01, skill, 'curved') * all[index].getAtk()
+            const base = cap > raw ? f.BASE_ATK : all[index].getAtk()
+            const multiplier =
+              cap > raw ? calcScaling(0.25, 0.025, skill, 'curved') : calcScaling(0.15, 0.01, skill, 'curved')
             f[Stats.ATK].push({
               name: 'Skill',
               source: index === i ? 'Self' : 'Tingyun',
-              value: buff,
+              value: _.min([raw, cap]),
+              base,
+              multiplier,
             })
             if (i !== index)
               team[index].TALENT_SCALING.push({

@@ -287,6 +287,8 @@ const Hanya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             name: 'Ultimate',
             source: index === i ? 'Self' : 'Hanya',
             value: calcScaling(0.15, 0.005, ult, 'curved') * base.getSpd(),
+            base: base.getSpd(),
+            multiplier: calcScaling(0.15, 0.005, ult, 'curved'),
           })
       })
 

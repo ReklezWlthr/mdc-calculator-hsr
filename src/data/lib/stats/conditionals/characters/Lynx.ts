@@ -271,10 +271,13 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     ) => {
       _.forEach(allForm, (f, i) => {
         if (f.survival_response) {
+          const multiplier = calcScaling(0.05, 0.0025, skill, 'curved') + (c >= 6 ? 0.06 : 0)
           team[i].X_HP.push({
             name: 'Skill',
             source: index === i ? 'Self' : 'Lynx',
-            value: (calcScaling(0.05, 0.0025, skill, 'curved') + (c >= 6 ? 0.06 : 0)) * base.getHP(true),
+            value: multiplier * base.getHP(true),
+            base: base.getHP(true),
+            multiplier,
           })
           team[i][Stats.HP].push({
             name: 'Skill',
@@ -286,6 +289,8 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               name: 'Eidolon 4',
               source: index === i ? 'Self' : 'Lynx',
               value: 0.03 * base.getHP(),
+              base: base.getHP(),
+              multiplier: 0.03,
             })
           if (c >= 6)
             team[i][Stats.E_RES].push({

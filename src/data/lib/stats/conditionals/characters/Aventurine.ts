@@ -428,6 +428,8 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           name: 'Ascension 2 Passive',
           source: 'Self',
           value: _.min([(_.max([base.getDef() - 1600, 0]) / 100) * 0.02, 0.48]),
+          base: _.min([_.max([base.getDef() - 1600, 0]) / 10, 240]),
+          multiplier: 0.002,
         })
 
       return base

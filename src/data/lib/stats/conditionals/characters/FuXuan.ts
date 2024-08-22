@@ -235,6 +235,8 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
             name: `Skill`,
             source: 'Fu Xuan',
             value: calcScaling(0.03, 0.003, skill, 'curved') * all[index].getHP(true),
+            base: all[index].getHP(true),
+            multiplier: calcScaling(0.03, 0.003, skill, 'curved'),
           })
           return x
         })
@@ -261,6 +263,8 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           name: `Skill`,
           source: 'Self',
           value: calcScaling(0.03, 0.003, skill, 'curved') * base.getHP(true),
+          base: base.getHP(true),
+          multiplier: calcScaling(0.03, 0.003, skill, 'curved'),
         })
       base.ULT_SCALING = [
         {

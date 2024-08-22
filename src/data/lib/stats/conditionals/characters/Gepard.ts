@@ -76,12 +76,12 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Commander`,
-      content: `When "Unyielding Will" is triggered, Gepard's Energy will be restored to <span class="text-desc">100%</span>.`,
+      content: `When <b>Unyielding Will</b> is triggered, Gepard's Energy will be restored to <span class="text-desc">100%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Fighting Spirit`,
-      content: `Gepard's ATK increases by 35% of his current DEF. This effect will refresh at the start of each turn.`,
+      content: `Gepard's ATK increases by <span class="text-desc">35%</span> of his current DEF. This effect will refresh at the start of each turn.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -279,7 +279,9 @@ const Gepard = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         base[Stats.ATK].push({
           name: 'Ascension 6 Passive',
           source: 'Self',
-          value: base.getHP() * 0.35,
+          value: base.getDef() * 0.35,
+          base: base.getDef(),
+          multiplier: 0.35,
         })
 
       return base

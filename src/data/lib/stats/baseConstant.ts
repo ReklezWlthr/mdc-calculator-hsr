@@ -6,6 +6,9 @@ export interface StatsArray {
   name: string
   source: string
   value: number
+  base?: string | number
+  multiplier?: number
+  flat?: number | string
 }
 
 export const baseStatsObject = {

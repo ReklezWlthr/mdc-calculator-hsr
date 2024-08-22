@@ -352,6 +352,8 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             name: `Ascension 2 Passive`,
             source: 'Self',
             value: _.min([base.getValue(Stats.BE) * 0.5, 0.75]),
+            base: toPercentage(_.min([base.getValue(Stats.BE), 1.5])),
+            multiplier: 0.5,
           })
           return x
         })

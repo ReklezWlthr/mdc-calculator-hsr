@@ -296,6 +296,9 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
             value:
               calcScaling(0.12, 0.008, ult, 'curved') +
               calcScaling(0.12, 0.004, ult, 'curved') * all[index].getValue(Stats.CRIT_DMG),
+            flat: toPercentage(calcScaling(0.12, 0.008, ult, 'curved')),
+            base: toPercentage(all[index].getValue(Stats.CRIT_DMG)),
+            multiplier: calcScaling(0.12, 0.004, ult, 'curved'),
           })
           return x
         })
@@ -321,6 +324,9 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           value:
             calcScaling(0.12, 0.008, ult, 'curved') +
             calcScaling(0.12, 0.004, ult, 'curved') * base.getValue(Stats.CRIT_DMG),
+          flat: toPercentage(calcScaling(0.12, 0.008, ult, 'curved')),
+          base: toPercentage(base.getValue(Stats.CRIT_DMG)),
+          multiplier: calcScaling(0.12, 0.004, ult, 'curved'),
         })
       }
       if (_.includes(weakness, Element.WIND) && c >= 4)

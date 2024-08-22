@@ -323,6 +323,9 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               value:
                 calcScaling(0.16, 0.016, skill, 'curved') +
                 (a.a6 ? _.min([(_.max([base.getValue(Stats.BE) - 1.2, 0]) / 0.1) * 0.06, 0.36]) : 0),
+              flat: toPercentage(calcScaling(0.16, 0.016, skill, 'curved')),
+              base: toPercentage(_.min([_.max([base.getValue(Stats.BE) - 1.2, 0]) / 0.1, 0.6])),
+              multiplier: a.a6 ? 0.06 : 0,
             })
 
             return x

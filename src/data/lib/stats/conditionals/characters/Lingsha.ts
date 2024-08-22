@@ -393,6 +393,8 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             name: `Ascension 2 Passive`,
             source: 'Self',
             value: _.min([x.getValue(Stats.BE) * 0.1, 0.2]),
+            base: toPercentage(_.min([x.getValue(Stats.BE), 2])),
+            multiplier: 0.1,
           })
           x[Stats.P_ATK].push({
             name: `Ascension 2 Passive`,

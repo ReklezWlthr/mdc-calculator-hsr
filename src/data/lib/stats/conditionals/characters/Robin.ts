@@ -302,10 +302,13 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         const main = (b: StatsObject, _d: any, _w: any, a: StatsObject[]) => {
           const atk = a[index].getAtk(true)
           _.forEach(a, (x, i) => {
+            const multiplier = calcScaling(0.152, 0.0076, ult, 'curved')
             x.X_ATK.push({
               name: 'Ultimate',
               source: index === i ? 'Self' : 'Robin',
-              value: calcScaling(0.152, 0.0076, ult, 'curved') * atk,
+              value: multiplier * atk,
+              base: atk,
+              multiplier,
             })
             x[Stats.ATK].push({
               name: 'Ultimate',

@@ -305,6 +305,8 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
               name: 'Eidolon 4',
               source: 'Trailblazer',
               value: 0.15 * base.getValue(Stats.BE),
+              base: toPercentage(base.getValue(Stats.BE)),
+              multiplier: 0.15,
             })
         })
       return base
