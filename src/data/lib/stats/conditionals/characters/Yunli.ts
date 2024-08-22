@@ -258,7 +258,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.ULT,
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
-          break: 5,
+          break: 2.5,
         },
         {
           name: `Total Cull Extra DMG`,
@@ -269,7 +269,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           multiplier: c >= 1 ? 9 : 6,
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
-          break: (c >= 1 ? 9 : 6) * 5,
+          break: (c >= 1 ? 9 : 6) * 2.5,
           sum: true,
         },
       ]
@@ -327,7 +327,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           bonus: 0.8,
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
-          break: 5,
+          break: 2.5,
         },
         {
           name: `Total Cull Extra DMG`,
@@ -339,7 +339,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           multiplier: c >= 1 ? 9 : 6,
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
-          break: (c >= 1 ? 9 : 6) * 5,
+          break: (c >= 1 ? 9 : 6) * 2.5,
           sum: true,
         },
       ]

@@ -347,7 +347,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           x[Stats.BE].push({
             name: 'Ascension 6 Passive',
             source: 'Self',
-            value: (_.max([0, x.getAtk() - 1800]) / 10) * 0.008,
+            value: (_.max([0, x.getAtk(true) - 1800]) / 10) * 0.008,
           })
         const superBreak = x.getValue(Stats.BE) >= 3.6 ? 0.5 : x.getValue(Stats.BE) >= 2 ? 0.35 : 0
         if (superBreak && form.complete_combustion) {

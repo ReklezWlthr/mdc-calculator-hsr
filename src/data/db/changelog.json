@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.0.3-2",
+    "date": "August 22th, 2024",
+    "desc": [
+      "Lowers <span class=\"text-desc\">Yunli</span>'s Cull Bounce Toughness DMG (5 → <span class=\"text-red\">2.5</span>)",
+      "Fixes <span class=\"text-desc\">Firefly</span>'s Break Effect conversion to not include any primary conversions",
+      "Fixes <span class=\"text-desc\">Lynx</span>'s E4 ATK Buff to be a primary conversion"
+    ]
+  },
+  {
     "version": "1.0.3-1",
     "date": "August 20th, 2024",
     "desc": [

@@ -282,7 +282,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
             value: calcScaling(50, 30, skill, 'flat'),
           })
           if (c >= 4)
-            team[i][Stats.ATK].push({
+            team[i].X_ATK.push({
               name: 'Eidolon 4',
               source: index === i ? 'Self' : 'Lynx',
               value: 0.03 * base.getHP(),
