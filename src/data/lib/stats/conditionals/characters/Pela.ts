@@ -269,7 +269,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           value: 0.1,
         })
       if (form.pela_c4) {
-        base.ICE_RES_PEN.push({
+        base.ICE_RES_RED.push({
           name: 'Eidolon 4',
           source: 'Self',
           value: 0.12,
@@ -317,7 +317,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           value: 0.1,
         })
       if (form.pela_c4)
-        base.ICE_RES_PEN.push({
+        base.ICE_RES_RED.push({
           name: 'Eidolon 4',
           source: 'Pela',
           value: 0.12,

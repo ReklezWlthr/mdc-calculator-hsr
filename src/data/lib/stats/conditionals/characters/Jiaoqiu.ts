@@ -244,7 +244,6 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             calcScaling(0.075, 0.0075, talent, 'curved') +
             calcScaling(0.025, 0.0025, talent, 'curved') * (form.ashen_roast - 1),
         })
-        addDebuff(debuffs, DebuffTypes.OTHER)
         const burn = {
           name: 'Burn DMG',
           value: [{ scaling: calcScaling(0.9, 0.09, talent, 'curved') + (c >= 2 ? 3 : 0), multiplier: Stats.ATK }],
