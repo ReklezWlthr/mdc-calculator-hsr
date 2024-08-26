@@ -622,10 +622,10 @@ export const Characters = [
     id: '1223',
     name: 'Moze',
     stat: {
-      baseAtk: 74.4,
-      baseHp: 110,
+      baseAtk: 81.6,
+      baseHp: 110.4,
       baseDef: 48,
-      baseSpd: 114,
+      baseSpd: 111,
       energy: 120,
     },
     trace: [Stats.CRIT_DMG, Stats.P_HP, Stats.P_ATK],

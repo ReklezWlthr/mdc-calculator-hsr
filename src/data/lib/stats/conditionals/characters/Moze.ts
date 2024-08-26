@@ -55,7 +55,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       trace: 'Ultimate',
       title: `Dash In, Gash Out`,
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Moze's ATK to an enemy target, and launches his Talent's <u>follow-up attack against</u> this target. If the target is defeated before this <u>follow-up attack</u> is used, then activate the <u>follow-up attack</u> against a random single enemy.`,
-      value: [{ base: 150, growth: 10, style: 'curved' }],
+      value: [{ base: 162, growth: 10.8, style: 'curved' }],
       level: ult,
       tag: AbilityTag.ST,
     },
@@ -86,7 +86,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Daggerhold`,
-      content: `When Moze dispels his <b>Departed</b> state, his action is <u>Advanced Forward</u> by <span class="text-desc">30%</span>. At the start of each wave, Moze's action is <u>Advanced Forward</u> by <span class="text-desc">30%</span>.`,
+      content: `When Moze dispels his <b>Departed</b> state, his action is <u>Advanced Forward</u> by <span class="text-desc">20%</span>. At the start of each wave, Moze's action is <u>Advanced Forward</u> by <span class="text-desc">30%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -101,7 +101,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c2: {
       trace: 'Eidolon 2',
       title: `Wrathbearer`,
-      content: `When an ally attacks an enemy marked as <b class="text-hsr-lightning">Prey</b>, increases the CRIT DMG dealt by <span class="text-desc">20%</span>.`,
+      content: `Increases CRIT DMG inflicted by ally targets against enemy targets marked as <b class="text-hsr-lightning">Prey</b> by <span class="text-desc">20%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -205,7 +205,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       base.ULT_SCALING = [
         {
           name: 'Single Target',
-          value: [{ scaling: calcScaling(1.5, 0.1, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.62, 0.108, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: a.a6 ? TalentProperty.FUA : TalentProperty.NORMAL,
           type: TalentType.ULT,

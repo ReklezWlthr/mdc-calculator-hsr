@@ -40,7 +40,7 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill: {
       trace: 'Skill',
       title: 'Waraxe',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Feixiao's ATK to an enemy, and immediately launches Talent's <u>follow-up attack</u> against the target <span class="text-desc">1</span> time.`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Feixiao's ATK to a target enemy. Then, immediately launches <span class="text-desc">1</span> instance of Talent's <u>follow-up attack</u> against the target.`,
       value: [{ base: 100, growth: 10, style: 'curved' }],
       level: skill,
       tag: AbilityTag.ST,
@@ -48,11 +48,11 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ult: {
       trace: 'Ultimate',
       title: `Terrasplit`,
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Feixiao's ATK to a single enemy, reducing its Toughness regardless of Weakness Type. If the target is not Weakness Broken, Feixiao's Weakness Break Efficiency increases by <span class="text-desc">100%</span>.
-        <br />During the attack, Feixiao first launches <b>Boltsunder Blitz</b> or <b>Waraxe Skyward</b>, for a total of <span class="text-desc">6</span> times.
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> to a single target enemy, up to {{0}}% of Feixiao's ATK. During this time, can ignore Weakness Type to reduce the target's Toughness. When the target is not Weakness Broken, Feixiao's Weakness Break Efficiency increases by <span class="text-desc">100%</span>.
+        <br />During the attack, Feixiao first launches <b>Boltsunder Blitz</b> or <b>Waraxe Skyward</b> on the target, for a total of <span class="text-desc">6</span> time(s).
         <br />Finally, deals <b class="text-hsr-wind">Wind DMG</b> equal to {{1}}% of Feixiao's ATK to the target.
-        <br /><br /><b>Boltsunder Blitz</b>: Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{2}}% of Feixiao's ATK to a single enemy. If the target enemy is Weakness Broken, the DMG multiplier increases by {{3}}%.
-        <br /><b>Waraxe Skyward</b>: Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{2}}% of Feixiao's ATK to a single enemy. If the target enemy is not Weakness Broken, the DMG multiplier increases by {{3}}%.`,
+        <br /><br /><b>Boltsunder Blitz</b>: Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{2}}% of Feixiao's ATK to the chosen target. If the target is Weakness Broken, the DMG multiplier increases by {{3}}%.
+        <br /><b>Waraxe Skyward</b>: Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{2}}% of Feixiao's ATK to the chosen target. If the target is not Weakness Broken, the DMG multiplier increases by {{3}}%.`,
       value: [
         { base: 402, growth: 29.8, style: 'curved' },
         { base: 96, growth: 6.4, style: 'curved' },
@@ -65,8 +65,8 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: `Thunderhunt`,
-      content: `The Ultimate can be activated when <b class="text-hsr-wind">Flying Aureus</b> reaches <span class="text-desc">6</span> points, up to <span class="text-desc">12</span> points. Feixiao gains <span class="text-desc">1</span> point of <b class="text-hsr-wind">Flying Aureus</b> for every <span class="text-desc">2</span> attacks used by ally targets. Attacks from Feixiao's Ultimate are not counted.
-        <br />After other teammates use an attack against an enemy, Feixiao immediately launches <u>follow-up attacks</u> against the primary target, deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Feixiao's ATK. If no primary targets are available to attack, Feixiao attacks a single random enemy instead. This effect can only trigger <span class="text-desc">1</span> time per turn and the trigger count is reset at the start of Feixiao's turn. When using this attack, increases DMG dealt by Feixiao by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `Can activate Ultimate when <b class="text-hsr-wind">Flying Aureus</b> reaches <span class="text-desc">6</span> points, accumulating up to <span class="text-desc">12</span> points. Feixiao gains <span class="text-desc">1</span> point of <b class="text-hsr-wind">Flying Aureus</b> for every <span class="text-desc">2</span> attacks by ally targets. Feixiao's Ultimate attacks do not count towards this number.
+        <br />After Feixiao's teammates attack an enemy target, Feixiao immediately launches <u>follow-up attacks</u> against the primary target, deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Feixiao's ATK. If no primary targets are available to attack, Feixiao attacks a single random enemy instead. This effect can only trigger once per turn and the trigger count resets at the start of Feixiao's turn. When using this attack, increases DMG dealt by this unit by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 55, growth: 5.5, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },
@@ -77,35 +77,35 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: 'Stormborn',
-      content: `After using the Technique, this character enters the Onrush state, lasting for <span class="text-desc">20</span> seconds. While in the Onrush state, this character pulls in enemies within a certain range, increases SPD by <span class="text-desc">50%</span>, and receives <span class="text-desc">1</span> point(s) of <b class="text-hsr-wind">Flying Aureus</b> after entering battle.
-        <br />Active attacks in the Onrush state will strike all pulled enemies and enter combat. After entering battle, deal <b class="text-hsr-wind">Wind DMG</b> equal to <span class="text-desc">200%</span> of Feixiao's ATK to all enemies at the start of each wave. This DMG is guaranteed to CRIT. When more than <span class="text-desc">1</span> enemy is pulled in, increase the multiplier of this DMG by <span class="text-desc">100%</span> for each additional enemy pulled in, up to an increase of <span class="text-desc">1,000%</span>.`,
+      content: `After using the Technique, enters the Onrush state, lasting for <span class="text-desc">20</span> seconds. While in the Onrush, pulls in enemies within a certain range, and increases this unit's movement speed by <span class="text-desc">50%</span>. After entering battle, gains <span class="text-desc">1</span> point(s) of <b class="text-hsr-wind">Flying Aureus</b>.
+        <br />While in Onrush, actively attacking will start battle with all pulled enemies. After entering battle, deal <b class="text-hsr-wind">Wind DMG</b> equal to <span class="text-desc">200%</span> of Feixiao's ATK to all enemies at the start of each wave. This DMG is guaranteed to CRIT. When more than <span class="text-desc">1</span> enemy is pulled in, increase the multiplier of this DMG by <span class="text-desc">100%</span> for each additional enemy pulled in, up to a maximum of <span class="text-desc">1,000%</span>.`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Heavenpath`,
-      content: `Receive <span class="text-desc">3</span> point(s) of <b class="text-hsr-wind">Flying Aureus</b> at the start of the battle.
-      <br />At the start of the turn, if <u>follow-up attack</u> is not launched in the turn prior, it counts as gaining <span class="text-desc">1</span> point of <b class="text-hsr-wind">Flying Aureus</b> toward the required attack count.`,
+      content: `When the battle starts, gains <span class="text-desc">3</span> point(s) of <b class="text-hsr-wind">Flying Aureus</b>.
+      <br />At the start of the turn, if no <u>follow-up attack</u> was launched in the previous turn, then this counts <span class="text-desc">1</span> toward the number of attacks required to gain <b class="text-hsr-wind">Flying Aureus</b>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Formshift`,
-      content: `When using Ultimate to deal DMG to an enemy target, it is considered as <u>follow-up attack</u>. Increases DMG dealt by <u>follow-up attacks</u> by <span class="text-desc">36%</span>.`,
+      content: `When using Ultimate to deal DMG to an enemy target, it is considered as a <u>follow-up attack</u>. <u>Follow-up attacks</u>' CRIT DMG increases by <span class="text-desc">36%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Boltcatch`,
-      content: `When using Skill, ATK increases by <span class="text-desc">48%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `When using Skill, increases ATK by <span class="text-desc">48%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Skyward I Quell`,
-      content: `After using <b>Boltsunder Blitz</b> or <b>Waraxe Skyward</b>, Ultimate DMG dealt by Feixiao additionally increases. The value increase is equal to <span class="text-desc">10%</span> of the original DMG. This effect can stack up to <span class="text-desc">5</span> time(s) and lasts until the end of the Ultimate action.`,
+      content: `After launching <b>Boltsunder Blitz</b> or <b>Waraxe Skyward</b>, additionally increases the Ultimate DMG dealt by Feixiao by an amount equal to <span class="text-desc">10%</span> of the original DMG, stacking up to <span class="text-desc">5</span> time(s) and lasting until the end of the Ultimate action.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Moonward I Wish`,
-      content: `After using the follow-up attack from Talent, gains <span class="text-desc">1</span> <b class="text-hsr-wind">Flying Aureus</b>.`,
+      content: `In the Talent's effect, for every <span class="text-desc">1</span> instance of <u>follow-up attack</u> launched by ally targets, Feixiao gains <span class="text-desc">1</span> point of <b class="text-hsr-wind">Flying Aureus</b>. This effect can trigger up to <span class="text-desc">6</span> time(s) per turn.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -116,7 +116,7 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: `Stormward I Hear`,
-      content: `When Feixiao is active in battle, increases the <u>follow-up attack</u> DMG enemy targets take by <span class="text-desc">10%</span>.`,
+      content: `The follow-up attack from Talent has its Toughness Reduction increased by <span class="text-desc">100%</span>, and when it launches, increases this unit's SPD by <span class="text-desc">8%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -127,7 +127,7 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: `Homeward I Near`,
-      content: `Increases the All-Type RES PEN of Ultimate DMG dealt by Feixiao by <span class="text-desc">20%</span>. Talent's <u>follow-up attack</u> DMG is considered to be Ultimate DMG, and increases its DMG multiplier by <span class="text-desc">140%</span>.`,
+      content: `Increases the All-Type RES PEN of Ultimate DMG dealt by Feixiao by <span class="text-desc">20%</span>. Talent's <u>follow-up attack</u> DMG is considered as Ultimate DMG at the same time, and its DMG multiplier increases by <span class="text-desc">140%</span>.`,
     },
   }
 
@@ -149,6 +149,15 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       show: a.a6,
       default: true,
       duration: 3,
+    },
+    {
+      type: 'toggle',
+      id: 'feixiao_c4',
+      text: `E4 SPD Bonus`,
+      ...talents.c4,
+      show: c >= 4,
+      default: true,
+      duration: 2,
     },
   ]
 
@@ -253,7 +262,7 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.WIND,
           property: TalentProperty.FUA,
           type: c >= 6 ? TalentType.ULT : TalentType.TALENT,
-          break: 5,
+          break: c >= 4 ? 10 : 5,
           sum: true,
         },
       ]
@@ -285,7 +294,7 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         })
       }
       if (a.a4) {
-        base.FUA_DMG.push({
+        base.FUA_CD.push({
           name: 'Ascension 4 Passive',
           source: 'Self',
           value: 0.36,
@@ -298,11 +307,11 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           value: 0.48,
         })
       }
-      if (c >= 4) {
-        base.FUA_VUL.push({
+      if (form.feixiao_c4) {
+        base[Stats.P_SPD].push({
           name: 'Eidolon 4',
           source: 'Self',
-          value: 0.1,
+          value: 0.08,
         })
       }
       if (c >= 6) {
@@ -324,14 +333,6 @@ const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       weakness: Element[],
       broken: boolean
     ) => {
-      if (c >= 4) {
-        base.FUA_VUL.push({
-          name: 'Eidolon 4',
-          source: 'Feixiao',
-          value: 0.1,
-        })
-      }
-
       return base
     },
     postCompute: (

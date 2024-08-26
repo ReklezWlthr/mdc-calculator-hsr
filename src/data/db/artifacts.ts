@@ -808,7 +808,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [{ stat: Stats.ERR, value: 0.05 }],
     bonusAdd: [],
     desc: [
-      `Increases the wearer's Energy Regeneration Rate by <span class="text-desc">5%</span>. If the wearer is not the first character in the team lineup, then increase the ATK of the first character in the team lineup by <span class="text-desc">15%</span>.`,
+      `Increases the wearer's Energy Regeneration Rate by <span class="text-desc">5%</span>. If the wearer is not the first character in the team lineup, then increase the ATK of the first character in the team lineup by <span class="text-desc">12%</span>.`,
     ],
     half: (base, all) => {
       const index = _.findIndex(all, (item) => item.NAME === base.NAME)
@@ -816,7 +816,7 @@ export const PlanarSets: IArtifact[] = [
         all[0][Stats.P_ATK].push({
           name: `Lushaka, the Sunken Seas`,
           source: base.NAME,
-          value: 0.15,
+          value: 0.12,
         })
       }
       return base

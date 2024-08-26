@@ -42,7 +42,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 30,
       trace: 'Skill',
       title: 'Smoke and Splendor',
-      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Lingsha's ATK to all enemies, restores HP equal to {{1}}% of Lingsha's ATK plus {{2}} for all allies, and <u>Action Advances</u> Fuyuan by <span class="text-desc">20%</span>.`,
+      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Lingsha's ATK to all enemies and at the same time, restores HP equal to {{1}}% of Lingsha's ATK plus {{2}} for all allies. Fuyuan's <u>Action Advances</u> by <span class="text-desc">20%</span>.`,
       value: [
         { base: 40, growth: 4, style: 'curved' },
         { base: 10, growth: 0.5, style: 'heal' },
@@ -55,8 +55,8 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Ultimate',
       title: `Dripping Mistscape`,
-      content: `Inflicts <b>Befog</b> on all enemies. When in the <b>Befog</b> state, Break DMG taken by affected enemies increases by {{0}}%, lasting for <span class="text-desc">2</span> turn(s).
-        <br />Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Lingsha's ATK to all enemies, and at the same time restores HP equal to {{2}}% of Lingsha's ATK plus {{3}} for all allies. <u>Action Advances</u> Fuyuan by <span class="text-desc">100%</span>.`,
+      content: `Inflicts <b>Befog</b> on all enemies. While in <b>Befog</b>, targets receive {{0}}% increased Break DMG, lasting for <span class="text-desc">2</span> turn(s).
+        <br />Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Lingsha's ATK to all enemies, and at the same time restores HP equal to {{2}}% of Lingsha's ATK plus {{3}} for all allies. Fuyuan's <u>Action Advances</u> by <span class="text-desc">100%</span>.`,
       value: [
         { base: 15, growth: 1, style: 'curved' },
         { base: 75, growth: 7.5, style: 'curved' },
@@ -69,13 +69,14 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: `Mistdance Manifest`,
-      content: `Summons Fuyuan when using Skill. Fuyuan has an initial SPD of <span class="text-desc">90</span> and an initial action count of <span class="text-desc">3</span>. During Fuyuan's action, launch <u>follow-up attack</u> on all enemies, dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% Lingsha's ATK, dispels <span class="text-desc">1</span> debuff(s) from all allies, and restores HP equal to {{1}}% of Lingsha's ATK plus {{2}} to all allies.
-        <br />Fuyuan can accumulate a maximum of <span class="text-desc">5</span> action counts. When the action count reaches <span class="text-desc">0</span> or when Lingsha is downed, Fuyuan disappears.
-        <br />While Fuyuan is present on the battlefield, using Lingsha's Skill increases Fuyuan's action count by <span class="text-desc">3</span>.`,
+      content: `When using Skill, summons Fuyuan, with an initial SPD of <span class="text-desc">90</span> and an initial action count of <span class="text-desc">3</span>.
+        <br />When taking action, Fuyuan launch <u>follow-up attack</u>, dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% Lingsha's ATK to all enemies. Additionally deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% Lingsha's ATK to a single enemy, and this DMG prioritizes targets with Toughness greater than <span class="text-desc">0</span>. Dispels <span class="text-desc">1</span> debuff(s) from all allies and restores HP equal to {{1}}% of Lingsha's ATK plus {{2}} to all allies.
+        <br />Fuyuan's action count can accumulate up to <span class="text-desc">5</span>. When the action count reaches <span class="text-desc">0</span> or when Lingsha is knocked down, Fuyuan disappears.
+        <br />While Fuyuan is present on the field, using Skill increases Fuyuan's action count by <span class="text-desc">3</span>.`,
       value: [
         { base: 45, growth: 4.5, style: 'curved' },
         { base: 8, growth: 0.5, style: 'heal' },
-        { base: 90, growth: 54, style: 'flat' },
+        { base: 37.5, growth: 3.75, style: 'flat' },
       ],
       level: talent,
       tag: AbilityTag.AOE,
@@ -83,7 +84,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: 'Wisps of Aurora',
-      content: `After using the Technique, immediately summons Fuyuan at the start of the next battle and inflicts <b>Befog</b> on all enemies, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `After using Technique, immediately summons Fuyuan at the start of the next battle and inflicts <b>Befog</b> on all enemies, lasting for <span class="text-desc">2</span> turn(s).`,
       tag: AbilityTag.SUPPORT,
     },
     a2: {
@@ -120,7 +121,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: `Redolence from Canopied Banquet`,
-      content: `During Fuyuan's action, restores HP equal to <span class="text-desc">40%</span> of Lingsha's ATK for the ally with the currently lowest HP percentage.`,
+      content: `During Fuyuan's action, restores HP equal to <span class="text-desc">40%</span> of Lingsha's ATK for the ally with the currently lowest HP.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -131,7 +132,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: `Arcadia Under Deep Seclusion`,
-      content: `While Fuyuan is present on the battlefield, all enemies' All-Type RES reduces by <span class="text-desc">20%</span>. Fuyuan's attack additionally deals <span class="text-desc">4</span> hit(s) of DMG, with each hit dealing <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of Lingsha's ATK and <span class="text-desc">5</span> Toughness Reduction.`,
+      content: `While Fuyuan is on the field, reduces all enemies' All-Type RES by <span class="text-desc">20%</span>. When Fuyuan attacks, additionally deals <span class="text-desc">4</span> instance(s) of DMG, with each instance dealing <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of Lingsha's ATK and and a Toughness Reduction of <span class="text-desc">5</span> to a single enemy. This DMG prioritizes targets with Toughness greater than <span class="text-desc">0</span>.`,
     },
   }
 
@@ -178,14 +179,14 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ) => {
       const base = _.cloneDeep(x)
 
-      const talentBase = calcScaling(0.45, 0.045, talent, 'curved')
+      const talentBase = calcScaling(0.375, 0.0375, talent, 'curved')
       const percentage = (v: number) => v / (talentBase + 2)
       const c6Scaling =
         c >= 6
           ? [
               {
                 name: 'Max Single Target DMG',
-                value: [{ scaling: talentBase + 2, multiplier: Stats.ATK }],
+                value: [{ scaling: talentBase * 2 + 2, multiplier: Stats.ATK }],
                 element: Element.FIRE,
                 property: TalentProperty.FUA,
                 type: TalentType.TALENT,
@@ -211,13 +212,21 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             ]
           : [
               {
+                name: 'Max Single Target DMG',
+                value: [{ scaling: talentBase * 2, multiplier: Stats.ATK }],
+                element: Element.FIRE,
+                property: TalentProperty.FUA,
+                type: TalentType.TALENT,
+                break: 10,
+                sum: true,
+              },
+              {
                 name: 'AoE',
                 value: [{ scaling: talentBase, multiplier: Stats.ATK }],
                 element: Element.FIRE,
                 property: TalentProperty.FUA,
                 type: TalentType.TALENT,
                 break: 10,
-                sum: true,
               },
             ]
       base.BASIC_SCALING = [
