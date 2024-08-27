@@ -10,6 +10,7 @@ import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_i
 import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
 import { MainStatOptions, SubStatOptions } from '@src/domain/constant'
 import { isSubsetOf } from '@src/core/utils/finder'
+import { SelectInput } from '@src/presentation/components/inputs/select_input'
 
 export type RelicSetterT = (index: number, type: number, aId: string) => void
 
@@ -19,6 +20,7 @@ export const ArtifactListModal = observer(
       main: [],
       subs: [],
       set: null,
+      level: '15',
       type,
     })
 
@@ -28,12 +30,13 @@ export const ArtifactListModal = observer(
 
     const filteredArtifacts = useMemo(() => {
       let result = _.filter(artifactStore.artifacts, (artifact) => params.type === artifact.type)
+      result = _.filter(result, (item) => item.level === +params.level)
       if (params.set) result = _.filter(result, (artifact) => artifact.setId === params.set)
       if (params.main.length) result = _.filter(result, (artifact) => _.includes(params.main, artifact.main))
       if (params.subs.length)
         result = _.filter(result, (artifact) => isSubsetOf(params.subs, _.map(artifact.subList, 'stat')))
       return result
-    }, [params.set, params.subs, params.main])
+    }, [params.set, params.subs, params.main, params.level])
 
     return (
       <div className="w-[65vw] p-4 text-white rounded-xl bg-primary-darker space-y-4">
@@ -52,6 +55,12 @@ export const ArtifactListModal = observer(
               )}
               placeholder="Artifact Set"
               onChange={(value) => setParams({ set: value?.value })}
+            />
+            <SelectInput
+              value={params.level}
+              options={_.map(Array(16), (_v, i) => ({ name: `+${i}`, value: i.toString() })).reverse()}
+              onChange={(level) => setParams({ level })}
+              style="w-[75px] shrink-0"
             />
             <TagSelectInput
               values={params.main}

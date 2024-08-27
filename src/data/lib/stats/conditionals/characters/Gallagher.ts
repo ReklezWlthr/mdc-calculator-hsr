@@ -241,7 +241,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         {
           name: 'Besotted Healing On-Hit',
           value: [],
-          flat: calcScaling(80, 56, skill, 'pure'),
+          flat: calcScaling(80, 56, talent, 'pure'),
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,

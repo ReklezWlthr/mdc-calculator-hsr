@@ -134,10 +134,10 @@ export const fromScanner = (rawData: Record<string, any>) => {
         item.traces.stat_5 || false,
         item.traces.stat_7 || false,
         item.traces.stat_9 || false,
-        item.traces.stat_4 || false,
-        item.traces.stat_8 || false,
         item.traces.stat_2 || false,
         item.traces.stat_6 || false,
+        item.traces.stat_4 || false,
+        item.traces.stat_8 || false,
         item.traces.stat_10 || false,
       ],
     }
@@ -206,7 +206,7 @@ export const fromScanner = (rawData: Record<string, any>) => {
           },
         }
       : null
-  })
+  }).filter((value) => !!value)
 
   return { charData, artifactData, buildData }
 }

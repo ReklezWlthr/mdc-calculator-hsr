@@ -224,16 +224,11 @@ export const ImportExport = observer(() => {
                     created with currently equipped Light Cone and relics. Builds will not be created for characters
                     without Light Cone equipped.
                     <br />- Since this method allows for a full data import of your account, the imported data will
-                    overwrite <span className="text-red">EVERYTHING</span> you have saved in this calculator. Please
-                    proceed with caution.
+                    overwrite <span className="text-red">EVERYTHING</span> you have saved in this calculator, and the
+                    size of the data might affect the calculator's performance. Please proceed with caution.
                     <br />
                     - To download the scanner, use the Download button below.
                     <br />
-                    <span className="text-xs italic text-gray">
-                      ** Note that the scanner only export the <span className="text-desc">selected path</span> of
-                      Trailblazer and March 7th at the time, due to other paths not being present in the game when not
-                      selected. **
-                    </span>
                   </span>
                 }
                 style="w-[550px]"

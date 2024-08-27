@@ -343,7 +343,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       })
 
       base.ULT_RES_PEN.push({
-        name: `Talent Level ${talent}`,
+        name: `Talent`,
         source: 'Self',
         value: calcScaling(0.1, 0.01, talent, 'curved'),
       })

@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from 'react'
-import _ from 'lodash'
+import _, { max } from 'lodash'
 import { observer } from 'mobx-react-lite'
 import classNames from 'classnames'
 import { RelicBlock } from '../components/relic_block'
@@ -12,6 +12,7 @@ import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
 import { MainStatOptions, RelicPieceIcon, Stats, SubStatOptions } from '@src/domain/constant'
 import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
 import { isSubsetOf } from '@src/core/utils/finder'
+import { AsyncWrapper } from '@src/presentation/components/async_wrapper'
 
 export const ArtifactInventory = observer(() => {
   const { params, setParams } = useParams({
@@ -19,6 +20,8 @@ export const ArtifactInventory = observer(() => {
     set: null,
     main: [],
     subs: [],
+    page: 1,
+    per_page: 10,
   })
 
   const { artifactStore, modalStore, settingStore } = useStore()
@@ -45,8 +48,10 @@ export const ArtifactInventory = observer(() => {
     if (params.main.length) result = _.filter(result, (artifact) => _.includes(params.main, artifact.main))
     if (params.subs.length)
       result = _.filter(result, (artifact) => isSubsetOf(params.subs, _.map(artifact.subList, 'stat')))
-    return result
+    return _.orderBy(result, ['level', 'quality', 'setId', 'type'], ['desc', 'desc', 'desc', 'desc'])
   }, [params.set, params.types, params.subs, params.main, artifactStore.artifacts])
+
+  const maxPage = _.ceil(_.size(filteredArtifacts) / params.per_page)
 
   const onOpenModal = useCallback(() => {
     modalStore.openModal(<ArtifactModal type={4} />)
@@ -56,7 +61,10 @@ export const ArtifactInventory = observer(() => {
     <div className="w-full h-full customScrollbar">
       <div className="flex flex-col items-center w-full gap-5 p-5 max-w-[1200px] mx-auto h-full">
         <div className="flex items-center justify-between w-full">
-          <p className="text-2xl font-bold text-white w-fit">Relic Inventory</p>
+          <p className="flex items-center gap-2 text-2xl font-bold text-white w-fit">
+            Relic Inventory<span className="text-sm font-normal text-desc">✦</span>
+            <span className="text-sm font-normal text-gray">Total {_.size(artifactStore.artifacts)}</span>
+          </p>
           <PrimaryButton title="Add New Relic" onClick={onOpenModal} />
         </div>
         <div className="w-full space-y-1">
@@ -108,11 +116,31 @@ export const ArtifactInventory = observer(() => {
           </div>
         </div>
         {_.size(filteredArtifacts) ? (
-          <div className="grid w-full grid-cols-5 gap-4 overflow-y-auto rounded-lg hideScrollbar">
-            {_.map(filteredArtifacts, (artifact) => (
-              <RelicBlock key={artifact.id} piece={artifact?.type} aId={artifact?.id} showWearer />
-            ))}
-          </div>
+          <AsyncWrapper>
+            <div className="grid w-full grid-cols-5 gap-4 overflow-y-auto rounded-lg hideScrollbar">
+              {_.map(
+                _.slice(filteredArtifacts, params.per_page * (params.page - 1), params.per_page * params.page),
+                (artifact) => (
+                  <RelicBlock key={artifact.id} piece={artifact?.type} aId={artifact?.id} showWearer />
+                )
+              )}
+            </div>
+            <div className="flex items-center gap-4 text-gray">
+              <i className="cursor-pointer fa-solid fa-angles-left" onClick={() => setParams({ page: 1 })} />
+              <i
+                className="cursor-pointer fa-solid fa-angle-left"
+                onClick={() => setParams({ page: _.max([params.page - 1, 1]) })}
+              />
+              <p className="w-[120px] text-center">
+                {params.page} of {maxPage}
+              </p>
+              <i
+                className="cursor-pointer fa-solid fa-angle-right"
+                onClick={() => setParams({ page: _.min([params.page + 1, maxPage]) })}
+              />
+              <i className="cursor-pointer fa-solid fa-angles-right" onClick={() => setParams({ page: maxPage })} />
+            </div>
+          </AsyncWrapper>
         ) : (
           <div className="flex items-center justify-center w-full h-full text-3xl font-bold text-white rounded-lg bg-primary-darker">
             No Relic
