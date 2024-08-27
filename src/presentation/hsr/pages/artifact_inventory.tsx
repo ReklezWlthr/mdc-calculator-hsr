@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
 import _, { max } from 'lodash'
 import { observer } from 'mobx-react-lite'
 import classNames from 'classnames'
@@ -50,6 +50,10 @@ export const ArtifactInventory = observer(() => {
       result = _.filter(result, (artifact) => isSubsetOf(params.subs, _.map(artifact.subList, 'stat')))
     return _.orderBy(result, ['level', 'quality', 'setId', 'type'], ['desc', 'desc', 'desc', 'desc'])
   }, [params.set, params.types, params.subs, params.main, artifactStore.artifacts])
+
+  useEffect(() => {
+    setParams({ page: 1 })
+  }, [params.set, params.types, params.subs, params.main])
 
   const maxPage = _.ceil(_.size(filteredArtifacts) / params.per_page)
 

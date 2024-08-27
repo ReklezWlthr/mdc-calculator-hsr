@@ -27,7 +27,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
       setId: null,
       quality: 5,
       level: 15,
-      main: _.head(MainStat[type]),
+      main: _.head(MainStat[type]) as Stats,
       type,
       subList: Array(4).fill({ stat: null, value: null }),
     },
