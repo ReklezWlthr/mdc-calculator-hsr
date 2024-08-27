@@ -15,11 +15,11 @@ export const useLocalUpdater = (game: string) => {
 
   const updateData = (data: string) => {
     const json = JSON.parse(data)
-    teamStore.hydrateCharacters(json?.team)
-    artifactStore.hydrateArtifacts(json?.artifacts)
-    buildStore.hydrateBuilds(json?.builds)
-    charStore.hydrateCharacters(json?.characters)
-    setupStore.hydrateTeams(json?.setup)
+    json?.team && teamStore.hydrateCharacters(json?.team)
+    json?.artifacts && artifactStore.hydrateArtifacts(json?.artifacts)
+    json?.builds && buildStore.hydrateBuilds(json?.builds)
+    json?.characters && charStore.hydrateCharacters(json?.characters)
+    json?.setup && setupStore.hydrateTeams(json?.setup)
     setData(data)
   }
 

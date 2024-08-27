@@ -1,5 +1,12 @@
 [
   {
+    "version": "1.0.4",
+    "date": "August 27th, 2024",
+    "desc": [
+      "<b class=\"text-red\">New</b>: HSR Scanner JSON Support"
+    ]
+  },
+  {
     "version": "1.0.3-3",
     "date": "August 26th, 2024",
     "desc": [

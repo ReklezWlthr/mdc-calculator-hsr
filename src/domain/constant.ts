@@ -352,12 +352,41 @@ export const EnkaStatsMap = {
   ImaginaryAddedRatio: Stats.IMAGINARY_DMG,
 }
 
-export const EnkaArtifactTypeMap = {
-  EQUIP_BRACER: 4,
-  EQUIP_NECKLACE: 2,
-  EQUIP_SHOES: 5,
-  EQUIP_RING: 1,
-  EQUIP_DRESS: 3,
+export const ScannerStatsMap = {
+  HP: Stats.HP,
+  ATK: Stats.ATK,
+  DEF: Stats.DEF,
+  HP_: Stats.P_HP,
+  ATK_: Stats.P_ATK,
+  DEF_: Stats.P_DEF,
+  'CRIT Rate': Stats.CRIT_RATE,
+  'CRIT Rate_': Stats.CRIT_RATE,
+  'CRIT DMG': Stats.CRIT_DMG,
+  'CRIT DMG_': Stats.CRIT_DMG,
+  'Energy Regeneration Rate': Stats.ERR,
+  'Outgoing Healing Boost': Stats.HEAL,
+  'Effect Hit Rate': Stats.EHR,
+  'Effect Hit Rate_': Stats.EHR,
+  SPD: Stats.SPD,
+  'Effect RES_': Stats.E_RES,
+  'Break Effect': Stats.BE,
+  'Break Effect_': Stats.BE,
+  'Physical DMG Boost': Stats.PHYSICAL_DMG,
+  'Fire DMG Boost': Stats.FIRE_DMG,
+  'Lightning DMG Boost': Stats.LIGHTNING_DMG,
+  'Wind DMG Boost': Stats.WIND_DMG,
+  'Ice DMG Boost': Stats.ICE_DMG,
+  'Quantum DMG Boost': Stats.QUANTUM_DMG,
+  'Imaginary DMG Boost': Stats.IMAGINARY_DMG,
+}
+
+export const ScannerArtifactTypeMap = {
+  Hands: 2,
+  Head: 1,
+  Body: 3,
+  Feet: 4,
+  'Link Rope': 6,
+  'Planar Sphere': 5,
 }
 
 export const CustomConditionalMap = {

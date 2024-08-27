@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import _ from 'lodash'
 import { useLocalUpdater } from '@src/core/hooks/useLocalUpdater'
-import { toLocalStructure } from '@src/core/utils/converter'
+import { fromEnka, fromScanner } from '@src/core/utils/converter'
 import { useGetData } from '@src/data/api/hsr'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { CommonModal } from '@src/presentation/components/common_modal'
@@ -27,6 +27,7 @@ import { AbilityBlock } from '../components/ability_block'
 import { DefaultCharacter } from '@src/data/stores/team_store'
 import { BonusAbilityBlock } from '../components/bonus_ability_block'
 import { TraceBlock } from '../components/trace_block'
+import { Tooltip } from '@src/presentation/components/tooltip'
 
 export const ImportExport = observer(() => {
   const { modalStore, settingStore, importStore, toastStore } = useStore()
@@ -44,7 +45,8 @@ export const ImportExport = observer(() => {
         'enka_cache',
         JSON.stringify({ ...JSON.parse(localStorage.getItem('enka_cache')), [uid]: { data: accountData, date } })
       )
-      const { charData, artifactData } = toLocalStructure(accountData)
+      console.log(accountData)
+      const { charData, artifactData } = fromEnka(accountData)
       importStore.setValue('characters', charData)
       importStore.setValue('artifacts', artifactData)
       setSelected(0)
@@ -143,7 +145,7 @@ export const ImportExport = observer(() => {
         if (!json || now.diff(json?.date, 's') > 60) {
           refetch()
         } else {
-          const { charData, artifactData } = toLocalStructure(json?.data)
+          const { charData, artifactData } = fromEnka(json?.data)
           importStore.setValue('characters', charData)
           importStore.setValue('artifacts', artifactData)
         }
@@ -162,11 +164,11 @@ export const ImportExport = observer(() => {
         )}
       >
         <div className="flex gap-5">
-          <div className="w-1/4 space-y-2">
-            <div className="font-bold">Method 1: File</div>
+          <div className="w-3/12 space-y-2">
+            <div className="font-bold">Method 1: Calculator Data</div>
             <div className="flex gap-x-2">
               <PrimaryButton
-                title="Import from File"
+                title="Upload Data File"
                 onClick={() => {
                   document.getElementById('importer').click()
                 }}
@@ -175,7 +177,7 @@ export const ImportExport = observer(() => {
                 title="Export to File"
                 onClick={() => {
                   const blob = new Blob([data], { type: 'text/json;charset=utf-8' })
-                  saveFile(blob, 'export.json')
+                  saveFile(blob, `mdc_export.json`)
                 }}
               />
             </div>
@@ -209,8 +211,84 @@ export const ImportExport = observer(() => {
               }}
             />
           </div>
-          <div className="w-1/4 space-y-2">
-            <div className="font-bold">Method 2: UID</div>
+          <div className="w-4/12 space-y-2">
+            <div className="flex items-center gap-2 font-bold">
+              Method 2: Scanner Data
+              <Tooltip
+                title="Import Data from Scanner"
+                body={
+                  <span className="text-sm font-normal">
+                    This method supports any output files that has the same format as{' '}
+                    <span className="text-blue">Kel-Z's HSR Scanner</span>.
+                    <br />- The resulting data includes owned characters and relics. Builds are also automatically
+                    created with currently equipped Light Cone and relics. Builds will not be created for characters
+                    without Light Cone equipped.
+                    <br />- Since this method allows for a full data import of your account, the imported data will
+                    overwrite <span className="text-red">EVERYTHING</span> you have saved in this calculator. Please
+                    proceed with caution.
+                    <br />
+                    - To download the scanner, use the Download button below.
+                    <br />
+                    <span className="text-xs italic text-gray">
+                      ** Note that the scanner only export the <span className="text-desc">selected path</span> of
+                      Trailblazer and March 7th at the time, due to other paths not being present in the game when not
+                      selected. **
+                    </span>
+                  </span>
+                }
+                style="w-[550px]"
+              >
+                <i className="fa-regular fa-question-circle" />
+              </Tooltip>
+            </div>
+            <div className="flex gap-x-2">
+              <PrimaryButton
+                title="Upload Data File"
+                onClick={() => {
+                  document.getElementById('scanner').click()
+                }}
+              />
+              <PrimaryButton
+                title="Download Scanner"
+                onClick={() => {
+                  window.open('https://github.com/kel-z/HSR-Scanner/tree/main', '_blank')
+                }}
+              />
+            </div>
+            <input
+              id="scanner"
+              className="hidden"
+              type="file"
+              multiple={false}
+              accept=".json"
+              onChange={(event) => {
+                const file = event.target.files[0]
+                const reader = new FileReader()
+                reader.addEventListener('load', (event) => {
+                  const { charData, artifactData, buildData } = fromScanner(JSON.parse(event.target.result.toString()))
+                  onOpenConfirmModal(charData?.length || 0, buildData?.length || 0, artifactData?.length || 0, () => {
+                    const dataString = JSON.stringify({
+                      characters: charData,
+                      artifacts: artifactData,
+                      builds: buildData,
+                      team: Array(4).fill(DefaultCharacter),
+                      setup: [],
+                    })
+                    localStorage.setItem(`hsr_local_storage`, dataString)
+                    updateData(dataString)
+                    toastStore.openNotification({
+                      title: 'Data Imported Successfully',
+                      icon: 'fa-solid fa-circle-check',
+                      color: 'green',
+                    })
+                  })
+                })
+                reader.readAsText(file)
+              }}
+            />
+          </div>
+          <div className="w-4/12 space-y-2">
+            <div className="font-bold">Method 3: UID</div>
             <div className="flex gap-2">
               <TextInput value={uid} onChange={(v) => setUid(v)} placeholder="Enter Your UID" />
               <PrimaryButton title="Submit" onClick={onFetchUID} loading={isFetching} />
