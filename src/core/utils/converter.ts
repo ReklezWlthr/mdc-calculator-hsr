@@ -171,12 +171,13 @@ export const fromScanner = (rawData: Record<string, any>) => {
     }
   })
   const artifactData: IArtifactEquip[] = _.map<any, IArtifactEquip>(relics, (r) => {
+    const percentageMain = !_.includes(['Hands', 'Head'], r.slot) && _.includes(['ATK', 'HP', 'DEF'], r.mainstat)
     return {
       id: r.id,
       setId: r.set_id,
       level: r.level,
       type: ScannerArtifactTypeMap[r.slot],
-      main: ScannerStatsMap[r.mainstat],
+      main: ScannerStatsMap[r.mainstat + (percentageMain ? '_' : '')],
       quality: r.rarity,
       subList: _.map(r.substats, (sub) => ({
         stat: ScannerStatsMap[sub.key],
