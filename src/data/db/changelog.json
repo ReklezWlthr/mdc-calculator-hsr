@@ -1,11 +1,11 @@
 [
   {
-    "version": "1.0.4-1",
+    "version": "1.1.0-1",
     "date": "August 27th, 2024",
     "desc": ["<b class=\"text-red\">Optimized</b>: Relic List"]
   },
   {
-    "version": "1.0.4",
+    "version": "1.1.0",
     "date": "August 27th, 2024",
     "desc": ["<b class=\"text-red\">New</b>: HSR Scanner JSON Support"]
   },
