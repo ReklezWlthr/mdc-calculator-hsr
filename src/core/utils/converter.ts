@@ -197,7 +197,10 @@ export const fromScanner = (rawData: Record<string, any>) => {
           cId,
           name: findCharacter(cId)?.name + "'s Build",
           isDefault: true,
-          artifacts: _.map(equipped, 'id'),
+          artifacts: _.map(
+            Array(6),
+            (_v, i) => _.find(equipped, (item) => ScannerArtifactTypeMap[item.slot] === i + 1)?.id || null
+          ),
           weapon: {
             wId: lc.id,
             ascension: lc.ascension,
