@@ -70,13 +70,13 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Talent',
       title: `Mistdance Manifest`,
       content: `When using Skill, summons Fuyuan, with an initial SPD of <span class="text-desc">90</span> and an initial action count of <span class="text-desc">3</span>.
-        <br />When taking action, Fuyuan launch <u>follow-up attack</u>, dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% Lingsha's ATK to all enemies. Additionally deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% Lingsha's ATK to a single enemy, and this DMG prioritizes targets with Toughness greater than <span class="text-desc">0</span>. Dispels <span class="text-desc">1</span> debuff(s) from all allies and restores HP equal to {{1}}% of Lingsha's ATK plus {{2}} to all allies.
+        <br />When taking action, Fuyuan launch <u>follow-up attack</u>, dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% Lingsha's ATK to all enemies. Additionally deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% Lingsha's ATK to a single random enemy, and this DMG prioritizes targets that have both Toughness greater than <span class="text-desc">0</span> and <b class="text-hsr-fire">Fire</b> Weakness. Dispels <span class="text-desc">1</span> debuff(s) from all allies and restores HP equal to {{1}}% of Lingsha's ATK plus {{2}} to all allies.
         <br />Fuyuan's action count can accumulate up to <span class="text-desc">5</span>. When the action count reaches <span class="text-desc">0</span> or when Lingsha is knocked down, Fuyuan disappears.
         <br />While Fuyuan is present on the field, using Skill increases Fuyuan's action count by <span class="text-desc">3</span>.`,
       value: [
-        { base: 45, growth: 4.5, style: 'curved' },
+        { base: 37.5, growth: 3.75, style: 'curved' },
         { base: 8, growth: 0.5, style: 'heal' },
-        { base: 37.5, growth: 3.75, style: 'flat' },
+        { base: 90, growth: 54, style: 'flat' },
       ],
       level: talent,
       tag: AbilityTag.AOE,
@@ -90,7 +90,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Vermilion Waft`,
-      content: `Increases this unit's ATK/Outgoing Healing by an amount equal to <span class="text-desc">25%</span>/<span class="text-desc">10%</span> of their Break Effect, up to a maximum ATK/Outgoing Healing increase of <span class="text-desc">50%</span>/<span class="text-desc">20%</span>.`,
+      content: `Increases this unit's ATK or Outgoing Healing by an amount equal to <span class="text-desc">25%</span>/<span class="text-desc">10%</span> of Break Effect, up to a maximum increase of <span class="text-desc">50%</span>/<span class="text-desc">20%</span> respectively.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -100,17 +100,17 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Ember's Echo`,
-      content: `When any ally takes DMG or consumes HP, if their current HP percentage is less than or equal to <span class="text-desc">60%</span>, Fuyuan will immediately trigger the <u>follow-up attack</u> from the Talent. This attack will not consume Fuyuan's action. This effect can be triggered again after <span class="text-desc">2</span> turn(s).`,
+      content: `When Fuyuan is on the field and any ally character takes DMG or consumes HP, if a character in the team has their current HP percentage lower than or equal to <span class="text-desc">60%</span>, Fuyuan will immediately launch the Talent's <u>follow-up attack</u>. This does not consume Fuyuan's action count. This effect can trigger again after <span class="text-desc">2</span> turn(s).`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Bloom on Vileward Bouquet`,
-      content: `Lingsha's Weakness Break Efficiency increases by <span class="text-desc">50%</span>. When an enemy's Weakness is Broken, reduces their DEF by <span class="text-desc">20%</span>.`,
+      content: `Lingsha's Weakness Break Efficiency increases by <span class="text-desc">50%</span>. When an enemy unit's Weakness is Broken, reduces their DEF by <span class="text-desc">20%</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Leisure in Carmine Smokeveil`,
-      content: `When using Ultimate, all allies' Break Effect increases by <span class="text-desc">40%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `When using Ultimate, increases all allies' Break Effect by <span class="text-desc">40%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -121,7 +121,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: `Redolence from Canopied Banquet`,
-      content: `During Fuyuan's action, restores HP equal to <span class="text-desc">40%</span> of Lingsha's ATK for the ally with the currently lowest HP.`,
+      content: `When Fuyuan takes action, restores HP equal to <span class="text-desc">40%</span> of Lingsha's ATK for the ally whose current HP is the lowest.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -132,7 +132,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: `Arcadia Under Deep Seclusion`,
-      content: `While Fuyuan is on the field, reduces all enemies' All-Type RES by <span class="text-desc">20%</span>. When Fuyuan attacks, additionally deals <span class="text-desc">4</span> instance(s) of DMG, with each instance dealing <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of Lingsha's ATK and and a Toughness Reduction of <span class="text-desc">5</span> to a single enemy. This DMG prioritizes targets with Toughness greater than <span class="text-desc">0</span>.`,
+      content: `While Fuyuan is on the field, reduces all enemies' All-Type RES by <span class="text-desc">20%</span>. When Fuyuan attacks, additionally deals <span class="text-desc">4</span> instance(s) of DMG, with each instance dealing both <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">50%</span> of Lingsha's ATK and and a Toughness Reduction of <span class="text-desc">5</span> to a single random enemy. This prioritizes targets with both Toughness greater than <span class="text-desc">0</span> and <b class="text-hsr-fire">Fire</b> Weakness.`,
     },
   }
 
@@ -180,7 +180,6 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       const base = _.cloneDeep(x)
 
       const talentBase = calcScaling(0.375, 0.0375, talent, 'curved')
-      const percentage = (v: number) => v / (talentBase + 2)
       const c6Scaling =
         c >= 6
           ? [

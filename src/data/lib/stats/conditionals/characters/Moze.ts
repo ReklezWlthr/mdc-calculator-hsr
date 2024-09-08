@@ -44,7 +44,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       energy: 30,
       trace: 'Skill',
       title: 'Fleetwinged Raid',
-      content: `Marks a designated single enemy target as the <b class="text-hsr-lightning">Prey</b> and deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Moze's ATK to it, and gains <span class="text-desc">9</span> points of <b>Charge</b>.
+      content: `Marks a designated single enemy target as <b class="text-hsr-lightning">Prey</b> and deals to it <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Moze's ATK and gains <span class="text-desc">9</span> points of <b>Charge</b>.
         <br />When there are no other characters on the field that are capable of combat, Moze cannot use his Skill and dispels the enemy's <b class="text-hsr-lightning">Prey</b> state.`,
       value: [{ base: 75, growth: 7.5, style: 'curved' }],
       level: skill,
@@ -54,7 +54,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       energy: 5,
       trace: 'Ultimate',
       title: `Dash In, Gash Out`,
-      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Moze's ATK to an enemy target, and launches his Talent's <u>follow-up attack against</u> this target. If the target is defeated before this <u>follow-up attack</u> is used, then activate the <u>follow-up attack</u> against a random single enemy.`,
+      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Moze's ATK to a single target enemy, and launches his Talent's <u>follow-up attack against</u> this target. If the target is defeated before this <u>follow-up attack</u> is used, then launches the <u>follow-up attack</u> against a random single enemy instead.`,
       value: [{ base: 162, growth: 10.8, style: 'curved' }],
       level: ult,
       tag: AbilityTag.ST,
@@ -63,8 +63,8 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       energy: 10,
       trace: 'Talent',
       title: `Cascading Featherblade`,
-      content: `Moze will enter the <b>Departed</b> state while a <b class="text-hsr-lightning">Prey</b> exists on the field.
-        <br />After allies attack the <b class="text-hsr-lightning">Prey</b>, Moze will additionally deal <span class="text-desc">1</span> instance of <b class="text-hsr-lightning">Additional Lightning DMG</b> equal to {{0}}% of his ATK and consumes <span class="text-desc">1</span> <b>Charge</b>. For each <span class="text-desc">3</span> point(s) of <b>Charge</b> consumed, Moze launches <span class="text-desc">1</span> <u>follow-up attack</u> to the <b class="text-hsr-lightning">Prey</b>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Moze's ATK. When <b>Charge</b> reaches <span class="text-desc">0</span>, dispels the target's <b class="text-hsr-lightning">Prey</b> state and reset the <b>Charge</b> consumption count. This attack does not consume <b>Charge</b>.`,
+      content: `When <b class="text-hsr-lightning">Prey</b> exists on the field, Moze will enter the <b>Departed</b> state.
+        <br />After allies attack <b class="text-hsr-lightning">Prey</b>, Moze will additionally deal <span class="text-desc">1</span> instance of <b class="text-hsr-lightning">Additional Lightning DMG</b> equal to {{0}}% of his ATK and consumes <span class="text-desc">1</span> point of <b>Charge</b>. For every <span class="text-desc">3</span> point(s) of <b>Charge</b> consumed, Moze launches <span class="text-desc">1</span> <u>follow-up attack</u> to <b class="text-hsr-lightning">Prey</b>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Moze's ATK. When <b>Charge</b> reaches <span class="text-desc">0</span>, dispels the target's <b class="text-hsr-lightning">Prey</b> state and reset the tally of <b>Charge</b> points required to launch <u>follow-up attack</u>. Talent's <u>follow-up attack</u> does not consume <b>Charge</b>.`,
       value: [
         { base: 15, growth: 1.5, style: 'curved' },
         { base: 80, growth: 8, style: 'curved' },
@@ -75,33 +75,33 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     technique: {
       trace: 'Technique',
       title: 'Bated Wings',
-      content: `After using his Technique, Moze gains Stealth for <span class="text-desc">20</span> second(s). While Stealth is active, Moze cannot be detected by enemies. Increases the DMG Moze deals by <span class="text-desc">30%</span> when he enters combat by attacking enemies while in Stealth mode, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `After using his Technique, enters the Stealth state for <span class="text-desc">20</span> second(s). While in Stealth, Moze is undetectable by enemies. If Moze attacks enemies to enter combat while in Stealth, increases DMG by <span class="text-desc">30%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Nightfeather`,
-      content: `Recover <span class="text-desc">1</span> Skill Point(s) after using the Talent's <u>follow-up attack</u>. This effect can be triggered again after <span class="text-desc">1</span> turn(s).`,
+      content: `After using the Talent's <u>follow-up attack</u>, recover <span class="text-desc">1</span> Skill Point(s). This effect can trigger again after <span class="text-desc">1</span> turn(s).`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Daggerhold`,
-      content: `When Moze dispels his <b>Departed</b> state, his action is <u>Advanced Forward</u> by <span class="text-desc">20%</span>. At the start of each wave, Moze's action is <u>Advanced Forward</u> by <span class="text-desc">30%</span>.`,
+      content: `When Moze dispels his <b>Departed</b> state, his <u>Action Advances</u> by <span class="text-desc">20%</span>. At the start of each wave, Moze's <u>Action Advances</u> by <span class="text-desc">30%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Vengewise`,
-      content: `When this character deals DMG with his Ultimate, it is considered as having launched a <u>follow-up attack</u>. Increases <u>follow-up attack DMG</u> taken by the enemy marked as <b class="text-hsr-lightning">Prey</b> by <span class="text-desc">25%</span>.`,
+      content: `When dealing DMG by using Ultimate, it is considered as having launched a <u>follow-up attack</u>. The <u>follow-up attack</u> DMG taken by <b class="text-hsr-lightning">Prey</b> increases by <span class="text-desc">25%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Oathkeeper`,
-      content: `After entering battle, Moze regenerates <span class="text-desc">20</span> point(s) of Energy. For every time the Additional DMG from his Talent is triggered, Moze regenerates <span class="text-desc">2</span> point(s) of Energy.`,
+      content: `After entering battle, Moze regenerates <span class="text-desc">20</span> Energy. Each time the Additional DMG from his Talent is triggered, Moze regenerates <span class="text-desc">2</span> Energy.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Wrathbearer`,
-      content: `Increases CRIT DMG inflicted by ally targets against enemy targets marked as <b class="text-hsr-lightning">Prey</b> by <span class="text-desc">20%</span>.`,
+      content: `When all allies deal DMG to the enemy target marked as <b class="text-hsr-lightning">Prey</b>, increases CRIT DMG by <span class="text-desc">20%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -112,7 +112,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c4: {
       trace: 'Eidolon 4',
       title: `Heathprowler`,
-      content: `After using the Ultimate, the DMG dealt by Moze increases by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `When using Ultimate, increases the DMG dealt by Moze by <span class="text-desc">30%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c5: {
       trace: 'Eidolon 5',

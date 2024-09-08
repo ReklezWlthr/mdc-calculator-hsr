@@ -585,7 +585,6 @@ export const Characters = [
     rarity: 5,
     path: PathType.HUNT,
     element: Element.WIND,
-    beta: true,
   },
   {
     id: '1221',
@@ -632,7 +631,6 @@ export const Characters = [
     rarity: 4,
     path: PathType.HUNT,
     element: Element.LIGHTNING,
-    beta: true,
   },
   {
     id: '1224',

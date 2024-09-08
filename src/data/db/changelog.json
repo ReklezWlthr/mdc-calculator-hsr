@@ -1,5 +1,12 @@
 [
   {
+    "version": "1.1.0-2",
+    "date": "September 8th, 2024",
+    "desc": [
+      "Now <b class=\"text-red\">Live</b>: <span class=\"text-desc\">Feixiao</span>, <span class=\"text-desc\">Moze</span>, and Light Cone <span class=\"text-desc\">I Venture Forth to Hunt</span>"
+    ]
+  },
+  {
     "version": "1.1.0-1",
     "date": "August 27th, 2024",
     "desc": ["<b class=\"text-red\">Optimized</b>: Relic List"]

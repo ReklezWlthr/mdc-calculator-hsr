@@ -688,7 +688,7 @@ export const LightCones = [
     type: PathType.HUNT,
     desc: {
       name: 'Stave Off the Lingering Cold',
-      detail: `After entering battle, increases the wearer's SPD by {{0}}% and DMG by {{0}}%. When the wearer takes DMG, this effect will disappear. This effect will resume after the end of the wearer's next turn.`,
+      detail: `After entering battle, increases the wearer's SPD by {{0}}% and DMG by {{1}}%. When the wearer takes DMG, this effect will disappear. This effect will resume after the end of the wearer's next turn.`,
       properties: [
         { base: 8, growth: 1 },
         { base: 12, growth: 3 },
@@ -1063,7 +1063,7 @@ export const LightCones = [
     type: PathType.HUNT,
     desc: {
       name: 'Concealment',
-      detail: `Increases the wearer's Break Effect by {{0}}%. Upon entering battle or dealing Break DMG, increases SPD by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). This effect can only be triggered <span class="text-desc">1</span> time per turn.`,
+      detail: `Increases the wearer's Break Effect by {{0}}%. When entering battle or after dealing Break DMG, increases SPD by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). This effect can only trigger once per turn.`,
       properties: [
         { base: 28, growth: 7 },
         { base: 8, growth: 1 },
@@ -1680,7 +1680,7 @@ export const LightCones = [
     type: PathType.HUNT,
     desc: {
       name: 'Intimidation',
-      detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer launches a <u>follow-up attack</u>, they gain <span class="text-desc">1</span> stack of <b>Luminflux</b> to a max of <span class="text-desc">1</span> stack(s). Each stack of <b>Luminflux</b> enables the Ultimate DMG dealt by the wearer to ignore {{1}}% of the target's DEF. When the wearer's turn ends, removes <span class="text-desc">1</span> stack of <b>Luminflux</b>.`,
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer launches a <u>follow-up attack</u>, gains <span class="text-desc">1</span> stack of <b>Luminflux</b>, stacking up to <span class="text-desc">2</span> time(s). Each stack of <b>Luminflux</b> enables the Ultimate DMG dealt by the wearer to ignore {{1}}% of the target's DEF. When the wearer's turn ends, removes <span class="text-desc">1</span> stack of <b>Luminflux</b>.`,
       properties: [
         { base: 15, growth: 2.5 },
         { base: 27, growth: 3 },
@@ -1698,7 +1698,7 @@ export const LightCones = [
     type: PathType.ABUNDANCE,
     desc: {
       name: 'Contentment',
-      detail: `Increases wearer's Break Effect by {{0}}%. After the wearer uses their Ultimate to attack enemy targets, afflict the target(s) with the <b>Woefree</b> state, lasting for <span class="text-desc">2</span> turn(s). Enemy targets in the <b>Woefree</b> take {{1}}% more DMG. The effect of increasing DMG taken is additionally boosted by {{2}}% if the wearer's current Break Effect is <span class="text-desc">150%</span> or higher.`,
+      detail: `Increases wearer's Break Effect by {{0}}%. After the wearer uses Ultimate to attack enemy targets, inflicts the targets with the <b>Woefree</b> state, lasting for <span class="text-desc">2</span> turn(s). While in <b>Woefree</b>, enemy targets take {{1}}% increased DMG. The effect of increasing DMG taken is additionally boosted by {{2}}% if the wearer's current Break Effect is <span class="text-desc">150%</span> or higher.`,
       properties: [
         { base: 60, growth: 10 },
         { base: 10, growth: 2 },
