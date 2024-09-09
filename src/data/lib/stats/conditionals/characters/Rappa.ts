@@ -343,13 +343,13 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         const x = all[index]
         _.forEach(all, (item) => {
           if (form.rappa_a6) {
-            const base = _.min([_.max([0, x.getAtk() - 1800]) / 100, 9])
+            const base = _.min([_.max([0, x.getAtk() - 2000]) / 100, 12])
             const multiplier = 0.01
             item.BREAK_VUL.push({
               name: 'Ascension 6 Passive',
               source: 'Self',
               value: 0.03 + base * multiplier,
-              base: `(${_.floor(base * 100)} ÷ 100)`,
+              base: `(${_.floor(base * 100).toLocaleString()} ÷ 100)`,
               multiplier,
               flat: '3%',
             })

@@ -353,7 +353,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             name: 'Ascension 6 Passive',
             source: 'Self',
             value: base * multiplier,
-            base: `(${_.floor(base * 10)} ÷ 10)`,
+            base: `(${_.floor(base * 10).toLocaleString()} ÷ 10)`,
             multiplier,
           })
         }
