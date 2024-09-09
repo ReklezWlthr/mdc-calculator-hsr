@@ -42,7 +42,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: 'Difficulty Paying?',
-      content: `Inflicts a single target enemy with a <b>Proof of Debt</b> status, increasing the DMG it takes from <u>follow-up attacks</u> by {{0}}%. <b>Proof of Debt</b> only takes effect on the most recent target it is applied to. If there are no enemies inflicted with <b>Proof of Debt</b> on the field when an ally's turn starts or when an ally takes action, Topaz will inflict a random enemy with <b>Proof of Debt</b>.
+      content: `Inflicts a single target enemy with a <b>Proof of Debt</b> status, increasing the <u>follow-up attack</u> DMG it receives by {{0}}%. <b>Proof of Debt</b> only takes effect on the most recent target it is applied to. If there are no enemies inflicted with <b>Proof of Debt</b> on the field when an ally's turn starts or when an ally takes action, Topaz will inflict a random enemy with <b>Proof of Debt</b>.
       <br />Numby deals <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Topaz's ATK to this target. Using this Skill to deal DMG is considered as launching a <u>follow-up attack</u>.`,
       value: [
         { base: 25, growth: 2.5, style: 'curved' },
