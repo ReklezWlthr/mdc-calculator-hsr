@@ -53,6 +53,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ],
       level: basic,
       tag: AbilityTag.BLAST,
+      image: `https://homdgcat.wiki/images/skillicons/avatar/1317/SkillIcon_1317_Ultra.png`
     },
     skill: {
       energy: 30,

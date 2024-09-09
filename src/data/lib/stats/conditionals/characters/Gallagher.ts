@@ -40,6 +40,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ],
       level: basic,
       tag: AbilityTag.ST,
+      image: `https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_1301_Normal02.png`,
     },
     skill: {
       energy: 30,

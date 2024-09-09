@@ -81,7 +81,7 @@ export const TalentIcon = observer(
             { 'group-hover:ring-offset-4': !hideTip }
           )}
         >
-          <img src={`https://homdgcat.wiki/images/skillicons/avatar/${id}/${icon}`} />
+          <img src={talent?.image || `https://homdgcat.wiki/images/skillicons/avatar/${id}/${icon}`} />
           <div className="hidden">?</div>
         </div>
         {hideTip && showUpgrade && !!upgraded && (
