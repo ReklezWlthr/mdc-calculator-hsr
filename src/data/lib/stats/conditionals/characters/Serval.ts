@@ -57,7 +57,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     talent: {
       trace: 'Talent',
       title: `Galvanic Chords`,
-      content: `After Serval attacks, deals Supplemental <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to all <b class="text-hsr-lightning">Shocked</b> enemies.`,
+      content: `After Serval attacks, deals <b class="text-hsr-lightning">Supplemental Lightning DMG</b> equal to {{0}}% of Serval's ATK to all <b class="text-hsr-lightning">Shocked</b> enemies.`,
       value: [{ base: 36, growth: 3.6, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,

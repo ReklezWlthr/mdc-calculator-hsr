@@ -55,7 +55,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Ultimate',
       title: `G—Gonna Be Late!`,
       content: `Has <span class="text-desc">3</span> Hits Per Action by default. First, uses <span class="text-desc">1</span> hit to deal <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Misha's ATK to a single target enemy. Then, the rest of the hits each deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Misha's ATK to a single random enemy. Just before each hit lands, there is a {{1}}% <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> the target, lasting for <span class="text-desc">1</span> turn.
-      <br />While <b class="text-hsr-ice">Frozen</b>, enemy targets cannot take any actions, and at the start of their turn, they receive Supplemental <b class="text-hsr-ice">Ice DMG</b> equal to {{2}}% of Misha's ATK.
+      <br />While <b class="text-hsr-ice">Frozen</b>, enemy targets cannot take any actions, and at the start of their turn, they receive <b class="text-hsr-ice">Supplemental Ice DMG</b> equal to {{2}}% of Misha's ATK.
       <br />This Ultimate can possess up to <span class="text-desc">10</span> Hits Per Action. After the Ultimate is used, its Hits Per Action will be reset to the default level.`,
       value: [
         { base: 36, growth: 2.4, style: 'curved' },

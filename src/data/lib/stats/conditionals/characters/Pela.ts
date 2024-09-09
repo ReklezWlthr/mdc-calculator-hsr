@@ -109,7 +109,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c6: {
       trace: 'Eidolon 6',
       title: `Feeble Pursuit`,
-      content: `When Pela attacks a debuffed enemy, she deals Supplemental <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">40%</span> of Pela's ATK to the enemy.`,
+      content: `When Pela attacks a debuffed enemy, she deals <b class="text-hsr-ice">Supplemental Ice DMG</b> equal to <span class="text-desc">40%</span> of Pela's ATK to the enemy.`,
     },
   }
 

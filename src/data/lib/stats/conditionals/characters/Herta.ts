@@ -80,7 +80,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c1: {
       trace: 'Eidolon 1',
       title: `Kick You When You're Down`,
-      content: `If the enemy's HP percentage is at <span class="text-desc">50%</span> or less, Herta's Basic ATK deals Supplemental <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">40%</span> of Herta's ATK.`,
+      content: `If the enemy's HP percentage is at <span class="text-desc">50%</span> or less, Herta's Basic ATK deals <b class="text-hsr-ice">Supplemental Ice DMG</b> equal to <span class="text-desc">40%</span> of Herta's ATK.`,
     },
     c2: {
       trace: 'Eidolon 2',

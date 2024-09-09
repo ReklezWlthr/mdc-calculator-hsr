@@ -113,7 +113,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     c4: {
       trace: 'Eidolon 4',
       title: 'Bounce Attack',
-      content: `After using her Ultimate to attack enemies, deals Supplemental <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">20%</span> of Silver Wolf's ATK for every debuff currently on the enemy target. This effect can be triggered for a maximum of <span class="text-desc">5</span> time(s) during each use of her Ultimate.`,
+      content: `After using her Ultimate to attack enemies, deals <b class="text-hsr-quantum">Supplemental Quantum DMG</b> equal to <span class="text-desc">20%</span> of Silver Wolf's ATK for every debuff currently on the enemy target. This effect can be triggered for a maximum of <span class="text-desc">5</span> time(s) during each use of her Ultimate.`,
     },
     c5: {
       trace: 'Eidolon 5',

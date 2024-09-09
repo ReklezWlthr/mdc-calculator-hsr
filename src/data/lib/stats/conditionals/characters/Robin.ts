@@ -54,7 +54,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Ultimate',
       title: `Vox Harmonique, Opus Cosmique	`,
       content: `Robin enters the <b>Concerto</b> state and enables teammates (i.e., excluding this unit) to immediately take action.
-      <br />While in the <b>Concerto</b> state, increase all Party characters' ATK by {{0}}% of Robin's ATK plus {{1}}. Moreover, after every attack by Party targets, Robin deals Supplemental <b class="text-hsr-physical">Physical DMG</b> equal to {{2}}% of her ATK for <span class="text-desc">1</span> time, with a fixed CRIT Rate for this damage set at <span class="text-desc">100%</span> and fixed CRIT DMG set at <span class="text-desc">150%</span>.
+      <br />While in the <b>Concerto</b> state, increase all Party characters' ATK by {{0}}% of Robin's ATK plus {{1}}. Moreover, after every attack by Party targets, Robin deals <b class="text-hsr-physical">Supplemental Physical DMG</b> equal to {{2}}% of her ATK for <span class="text-desc">1</span> time, with a fixed CRIT Rate for this damage set at <span class="text-desc">100%</span> and fixed CRIT DMG set at <span class="text-desc">150%</span>.
       <br />While in the <b>Concerto</b> state, Robin is immune to Crowd Control debuffs and cannot enter her turn or take action until the <b>Concerto</b> state ends.
       <br />A <b>Concerto</b> countdown appears on the Action Order bar. When the countdown's turn begins, Robin exits the <b>Concerto</b> state and immediately takes action. The countdown has its own fixed SPD of <span class="text-desc">90</span>.`,
       value: [
@@ -124,7 +124,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: `Moonless Midnight`,
-      content: `While the <b>Concerto</b> state is active, the CRIT DMG of the Supplemental <b class="text-hsr-physical">Physical DMG</b> caused by the Ultimate increases by <span class="text-desc">450%</span>. The effect of Moonless Midnight can trigger up to <span class="text-desc">8</span> time(s). And the trigger count resets each time the Ultimate is used.`,
+      content: `While the <b>Concerto</b> state is active, the CRIT DMG of the <b class="text-hsr-physical">Supplemental Physical DMG</b> caused by the Ultimate increases by <span class="text-desc">450%</span>. The effect of Moonless Midnight can trigger up to <span class="text-desc">8</span> time(s). And the trigger count resets each time the Ultimate is used.`,
     },
   }
 
