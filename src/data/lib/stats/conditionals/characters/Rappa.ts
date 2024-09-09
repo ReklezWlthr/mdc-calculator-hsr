@@ -190,7 +190,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               multiplier: 3,
-              break: 30,
+              break: 25,
               sum: true,
             },
             {
