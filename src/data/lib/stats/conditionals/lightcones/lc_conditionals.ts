@@ -1084,7 +1084,7 @@ export const LCConditionals: IWeaponContent[] = [
         base[Stats.CRIT_DMG].push({
           name: 'Passive',
           source: 'Ninja Record: Sound Hunt',
-          value: calcRefinement(0.18, 0.04, r),
+          value: calcRefinement(0.18, 0.04, r) * form['22003'],
         })
       }
       return base
