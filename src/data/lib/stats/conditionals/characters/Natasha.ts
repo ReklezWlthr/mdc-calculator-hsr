@@ -33,7 +33,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 30,
       trace: 'Skill',
       title: 'Love, Heal, and Choose',
-      content: `Restores a single ally for {{0}}% of Natasha's Max HP plus {{1}}. Restores the ally for another {{2}}% of Natasha's Max HP plus {{3}} at the beginning of each turn for <span class="text-desc">2</span> turn(s).`,
+      content: `Immediately restores one designated Party character's HP by {{0}}% of Natasha's Max HP plus {{1}}. At the start of the character's turn, restores their HP by {{2}}% of Natasha's Max HP plus {{3}}, lasting for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 7, growth: 0.4375, style: 'heal' },
         { base: 70, growth: 52, style: 'flat' },
@@ -47,7 +47,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Ultimate',
       title: `Gift of Rebirth`,
-      content: `Heals all allies for {{0}}% of Natasha's Max HP plus {{1}}.`,
+      content: `Immediately restores HP for all Party targets by {{0}}% of Natasha's Max HP plus {{1}}.`,
       value: [
         { base: 9.2, growth: 0.575, style: 'heal' },
         { base: 92, growth: 55.2, style: 'heal' },
@@ -58,7 +58,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: `Innervation`,
-      content: `When healing allies with HP percentage at <span class="text-desc">30%</span> or lower, increases Natasha's Outgoing Healing by {{0}}%. This effect also works on continuous healing.`,
+      content: `When healing Party characters whose HP percentage is at <span class="text-desc">30%</span> or lower, increases Natasha's Outgoing Healing by {{0}}%. This effect also works on continuous healing.`,
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -67,12 +67,12 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Technique',
       title: 'Hypnosis Research',
       content: `Immediately attacks the enemy. After entering battle, deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">80%</span> of Natasha's ATK to a random enemy, with a <span class="text-desc">100%</span> <u>base chance</u> to <b>Weaken</b> all enemies.
-      <br />While <b>Weakened</b>, enemies deal <span class="text-desc">30%</span> less DMG to allies for <span class="text-desc">1</span> turn(s).`,
+      <br />While <b>Weakened</b>, Enemy targets deal <span class="text-desc">30%</span> less DMG to all Party targets, lasting for <span class="text-desc">1</span> turn(s).`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Soothe`,
-      content: `The Skill removes <span class="text-desc">1</span> debuff(s) from a target ally.`,
+      content: `When using Skill, remove <span class="text-desc">1</span> debuff(s) from the one designated Party character.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -92,7 +92,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c2: {
       trace: 'Eidolon 2',
       title: `Clinical Research`,
-      content: `When Natasha uses her Ultimate, grant continuous healing for <span class="text-desc">1</span> turn(s) to all allies whose HP is at <span class="text-desc">30%</span> or lower. And at the beginning of their turn, their HP is restored by an amount equal to <span class="text-desc">6%</span> of Natasha's Max HP plus <span class="text-desc">160</span>.`,
+      content: `When using Ultimate, provides continuous healing for <span class="text-desc">1</span> turn(s) to any Party characters whose current HP percentage is at <span class="text-desc">30%</span> or lower. At the start of their turn, restores their HP by an amount equal to <span class="text-desc">6%</span> of Natasha's Max HP plus <span class="text-desc">160</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -166,7 +166,7 @@ const Natasha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         c >= 6
           ? [
               {
-                name: 'E6 Additional DMG',
+                name: 'E6 Supplemental DMG',
                 value: [{ scaling: 0.4, multiplier: Stats.HP }],
                 element: Element.PHYSICAL,
                 property: TalentProperty.ADD,

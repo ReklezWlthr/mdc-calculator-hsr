@@ -71,7 +71,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     talent: {
       trace: 'Talent',
       title: `Ha! Oil to the Flames!`,
-      content: `When attacking a target afflicted with <b class="text-hsr-fire">Burn</b>, deals Additional <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Hook's ATK and regenerates <span class="text-desc">5</span> extra Energy.`,
+      content: `When attacking a target afflicted with <b class="text-hsr-fire">Burn</b>, deals Supplemental <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Hook's ATK and regenerates <span class="text-desc">5</span> extra Energy.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -252,7 +252,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       ]
       base.TALENT_SCALING = [
         {
-          name: 'Additional DMG',
+          name: 'Supplemental DMG',
           value: [{ scaling: calcScaling(0.5, 0.05, talent, 'curved'), multiplier: Stats.ATK }],
           element: Element.FIRE,
           property: TalentProperty.ADD,

@@ -44,7 +44,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 30,
       trace: 'Skill',
       title: `Talisman: Protection`,
-      content: `Dispels <span class="text-desc">1</span> debuff(s) from a single target ally and immediately restores this ally's HP by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}. At the same time, restores HP for allies that are adjacent to this target ally by an amount equal to {{2}}% of Huohuo's Max HP plus {{3}}.`,
+      content: `Dispels <span class="text-desc">1</span> debuff(s) from a single target Party character and immediately restores this ally's HP by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}. At the same time, restores HP for allies that are adjacent to this target ally by an amount equal to {{2}}% of Huohuo's Max HP plus {{3}}.`,
       value: [
         { base: 14, growth: 0.875, style: 'heal' },
         { base: 140, growth: 84, style: 'flat' },
@@ -102,12 +102,12 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c1: {
       trace: 'Eidolon 1',
       title: `Anchored to Vessel, Specters Nestled`,
-      content: `The duration of <b class="text-hsr-wind">Divine Provision</b> produced by the Talent is extended by <span class="text-desc">1</span> turn(s). When Huohuo possesses <b class="text-hsr-wind">Divine Provision</b>, all allies' SPD increases by <span class="text-desc">12%</span>.`,
+      content: `The duration of <b class="text-hsr-wind">Divine Provision</b> produced by the Talent is extended by <span class="text-desc">1</span> turn(s). When Huohuo possesses <b class="text-hsr-wind">Divine Provision</b>, all Party units' SPD increases by <span class="text-desc">12%</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Sealed in Tail, Wraith Subdued`,
-      content: `If Huohuo possesses <b class="text-hsr-wind">Divine Provision</b> when an ally is struck by a killing blow, the ally will not be knocked down, and their HP will immediately be restored by an amount equal to <span class="text-desc">50%</span> of their Max HP. This reduces the duration of <b class="text-hsr-wind">Divine Provision</b> by <span class="text-desc">1</span> turn. This effect can only be triggered <span class="text-desc">2</span> time(s) per battle.`,
+      content: `If a Party character is struck by a killing blow while Huohuo has <b class="text-hsr-wind">Divine Provision</b>, the character will not be knocked down, and their HP will immediately be restored by an amount equal to <span class="text-desc">50%</span> of their Max HP. This reduces the duration of <b class="text-hsr-wind">Divine Provision</b> by <span class="text-desc">1</span> turn. This effect can only be triggered <span class="text-desc">2</span> time(s) per battle.`,
     },
     c3: {
       trace: 'Eidolon 3',

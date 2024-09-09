@@ -33,7 +33,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: 'The Power of Cuteness',
-      content: `Provides a single ally with a <b class="text-indigo-300">Shield</b> that can absorb DMG equal to {{0}}% of March 7th's DEF plus {{1}} for <span class="text-desc">3</span> turn(s).
+      content: `Provides one designated Party character with a <b class="text-indigo-300">Shield</b> that can offset DMG equal to {{0}}% of March 7th's DEF plus {{1}} for <span class="text-desc">3</span> turn(s).
       <br />If the ally's current HP percentage is <span class="text-desc">30%</span> or higher, greatly increases the chance of enemies attacking that ally.`,
       value: [
         { base: 38, growth: 2.375, style: 'heal' },
@@ -47,7 +47,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Ultimate',
       title: 'Glacial Cascade',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of March 7th's ATK to all enemies. Hit enemies have a <span class="text-desc">50%</span> <u>base chance</u> to be <b class="text-hsr-ice">Frozen</b> for <span class="text-desc">1</span> turn(s).
-      <br />While <b class="text-hsr-ice">Frozen</b>, enemies cannot take action and will receive Additional <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of March 7th's ATK at the beginning of each turn.`,
+      <br />While <b class="text-hsr-ice">Frozen</b>, enemies cannot take action and will receive Supplemental <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of March 7th's ATK at the beginning of each turn.`,
       value: [
         { base: 90, growth: 6, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },
@@ -68,12 +68,12 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Technique',
       title: 'Freezing Beauty',
       content: `Immediately attacks the enemy. After entering battle, there is a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> a random enemy for <span class="text-desc">1</span> turn(s).
-      <br />While <b class="text-hsr-ice">Frozen</b>, the enemy cannot take action and will take Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">50%</span> of March 7th's ATK at the beginning of each turn.`,
+      <br />While <b class="text-hsr-ice">Frozen</b>, the enemy cannot take action and will take Supplemental <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">50%</span> of March 7th's ATK at the beginning of each turn.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Purify',
-      content: `Skill removes <span class="text-desc">1</span> debuff from an ally.`,
+      content: `When using the Skill, remove <span class="text-desc">1</span> debuff from one designated Party character.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -93,7 +93,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c2: {
       trace: 'Eidolon 2',
       title: `Memory of It`,
-      content: `Upon entering battle, grants a <b class="text-indigo-300">Shield</b> equal to <span class="text-desc">24%</span> of March 7th's DEF plus <span class="text-desc">320</span> to the ally with the lowest HP percentage, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `Upon entering battle, grants a <b class="text-indigo-300">Shield</b> equal to <span class="text-desc">24%</span> of March 7th's DEF plus <span class="text-desc">320</span> to the Party character with the lowest current HP percentage for <span class="text-desc">3</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -115,7 +115,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: 'Just Like This, Always...',
-      content: `Allies under the protection of the <b class="text-indigo-300">Shield</b> granted by the Skill restores HP equal to <span class="text-desc">4%</span> of their Max HP plus <span class="text-desc">106</span> at the beginning of each turn.`,
+      content: `Party characters under the protection of the <b class="text-indigo-300">Shield</b> granted by the Skill restores HP equal to <span class="text-desc">4%</span> of their Max HP plus <span class="text-desc">106</span> at the beginning of each turn.`,
     },
   }
 

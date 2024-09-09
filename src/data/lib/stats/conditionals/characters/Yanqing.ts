@@ -64,7 +64,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Talent',
       title: `One With the Sword`,
       content: `When <b>Soulsteel Sync</b> is active, Yanqing is less likely to be attacked by enemies. Yanqing's CRIT Rate increases by {{0}}% and his CRIT DMG increases by {{1}}%. After Yanqing attacks an enemy, there is {{2}}% <u>fixed chance</u> to perform a <u>follow-up attack</u>, dealing <b class="text-hsr-ice">Ice DMG</b> equal to {{3}}% of Yanqing's ATK to the enemy, which has a <span class="text-desc">65%</span> <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> the enemy for <span class="text-desc">1</span> turn.
-      <br />The <b class="text-hsr-ice">Frozen</b> target cannot take action and receives Additional <b class="text-hsr-ice">Ice DMG</b> equal to {{3}}% of Yanqing's ATK at the beginning of each turn.
+      <br />The <b class="text-hsr-ice">Frozen</b> target cannot take action and receives Supplemental <b class="text-hsr-ice">Ice DMG</b> equal to {{3}}% of Yanqing's ATK at the beginning of each turn.
       <br />When Yanqing receives DMG, the <b>Soulsteel Sync</b> effect will disappear.`,
       value: [
         { base: 15, growth: 0.5, style: 'curved' },
@@ -84,7 +84,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Icing on the Kick`,
-      content: `When Yanqing attacks, deals Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">30%</span> of Yanqing's ATK to enemies with <b class="text-hsr-ice">Ice</b> Weakness.`,
+      content: `When Yanqing attacks, deals Supplemental <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">30%</span> of Yanqing's ATK to enemies with <b class="text-hsr-ice">Ice</b> Weakness.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -99,7 +99,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c1: {
       trace: 'Eidolon 1',
       title: `Svelte Saber`,
-      content: `When Yanqing attacks a <b class="text-hsr-ice">Frozen</b> enemy, he deals Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">60%</span> of his ATK.`,
+      content: `When Yanqing attacks a <b class="text-hsr-ice">Frozen</b> enemy, he deals Supplemental <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">60%</span> of his ATK.`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -344,7 +344,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ) => {
       if (_.includes(weakness, Element.ICE) && a.a2)
         base.TALENT_SCALING.push({
-          name: 'A2 Additional DMG',
+          name: 'A2 Supplemental DMG',
           value: [{ scaling: 0.3, multiplier: Stats.ATK }],
           element: Element.ICE,
           property: TalentProperty.ADD,
@@ -353,7 +353,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         })
       if (countDebuff(debuffs, DebuffTypes.FROZEN) && c >= 1)
         base.TALENT_SCALING.push({
-          name: 'E1 Additional DMG',
+          name: 'E1 Supplemental DMG',
           value: [{ scaling: 0.6, multiplier: Stats.ATK }],
           element: Element.ICE,
           property: TalentProperty.ADD,

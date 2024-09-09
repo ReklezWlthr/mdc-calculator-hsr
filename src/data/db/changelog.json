@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.1.0-4",
+    "date": "September 9th, 2024",
+    "desc": [
+      "Updated Wording: Buffs now target <span class=\"text-desc\">Party targets</span> or <span class=\"text-desc\">Party characters</span>",
+      "Updated Wording: Additional DMG is now referred to as <span class=\"text-desc\">Supplemental DMG</span>",
+      "<span class=\"text-red italic\">There might be some descriptions or a portion of them that are not changed due to the sheer amount of changes. Feel free to let me know.</span>"
+    ]
+  },
+  {
     "version": "1.1.0-3",
     "date": "September 9th, 2024",
     "desc": [

@@ -75,7 +75,7 @@ const DMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     technique: {
       trace: 'Technique',
       title: `Immortal Third Strike`,
-      content: `Immediately heals all allies for <span class="text-desc">15%</span> of their respective Max HP after using this Technique.`,
+      content: `After using Technique, immediately restores all Party characters' HP by <span class="text-desc">15%</span> of their respective Max HP.`,
       tag: AbilityTag.RESTORE,
     },
     a2: {

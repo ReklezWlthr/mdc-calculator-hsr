@@ -36,7 +36,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: 'Skill',
       title: 'Known by Stars, Shown by Hearts',
       content: `Activates <b>Matrix of Prescience</b>, via which other team members will Distribute <span class="text-desc">65%</span> of the DMG they receive (before this DMG is mitigated by any Shields) to Fu Xuan for <span class="text-desc">3</span> turn(s).
-      <br />While affected by <b>Matrix of Prescience</b>, all team members gain the <b>Knowledge</b> effect, which increases their respective Max HP by {{0}}% of Fu Xuan's Max HP, and increases CRIT Rate by {{1}}%.
+      <br />All Party characters in <b>Matrix of Prescience</b> gain the <b>Knowledge</b> effect, which increases their respective Max HP by {{0}}% of Fu Xuan's Max HP, and increases CRIT Rate by {{1}}%.
       <br />When Fu Xuan is knocked down, the <b>Matrix of Prescience</b> will be dispelled.`,
       value: [
         { base: 3, growth: 0.3, style: 'curved' },
@@ -57,7 +57,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     talent: {
       trace: 'Talent',
       title: 'Bleak Breeds Bliss',
-      content: `While Fu Xuan is still active in battle, <b>Misfortune Avoidance</b> is applied to the entire team. With <b>Misfortune Avoidance</b>, allies take {{0}}% less DMG.
+      content: `While Fu Xuan is still active in battle, applies <b>Misfortune Avoidance</b> on all Party characters. Party characters with <b>Misfortune Avoidance</b> take {{0}}% less DMG.
       <br />When Fu Xuan's current HP falls to <span class="text-desc">50%</span> of her Max HP or less, HP Restore will be triggered for Fu Xuan, restoring her HP by {{1}}% of the amount of HP she is currently missing. This effect cannot be triggered if she receives a killing blow. This effect possesses <span class="text-desc">1</span> trigger count by default and can have a maximum of <span class="text-desc">2</span> trigger counts.`,
       value: [
         { base: 10, growth: 0.8, style: 'curved' },
@@ -69,7 +69,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     technique: {
       trace: 'Technique',
       title: 'Of Fortune Comes Fate',
-      content: `After the Technique is used, all team members receive a Barrier, lasting for <span class="text-desc">20</span> seconds. This Barrier can block all enemy attacks, and the team will not enter battle when attacked. Entering battle while the Barrier is active will have Fu Xuan automatically activate <b>Matrix of Prescience</b> at the start of the battle, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `After the Technique is used, all Party characters receive a Barrier, lasting for <span class="text-desc">20</span> seconds. This Barrier can block all enemy attacks, and the team will not enter battle when attacked. Entering battle while the Barrier is active will have Fu Xuan automatically activate <b>Matrix of Prescience</b> at the start of the battle, lasting for <span class="text-desc">2</span> turn(s).`,
       tag: AbilityTag.DEFENSE,
     },
     a2: {
@@ -85,7 +85,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Liuren, the Sexagenary',
-      content: `If a target enemy applies Crowd Control debuffs to allies while the <b>Matrix of Prescience</b> is active, all allies will resist all Crowd Control debuffs applied by the enemy target during the current action. This effect can only be triggered once. When <b>Matrix of Prescience</b> is activated again, the number of times this effect can be triggered will reset.`,
+      content: `If a target enemy applies Crowd Control debuffs to any character in the Party while <b>Matrix of Prescience</b> is active, all Party characters will resist all Crowd Control debuffs applied by the enemy target during the current action. This effect can only be triggered once. When <b>Matrix of Prescience</b> is activated again, the number of times this effect can be triggered will reset.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -95,7 +95,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c2: {
       trace: 'Eidolon 2',
       title: 'Optimus Felix',
-      content: `If any team member is struck by a killing blow while <b>Matrix of Prescience</b> is active, then all allies who were struck by a killing blow during this action will not be knocked down, and <span class="text-desc">70%</span> of their Max HP is immediately restored. This effect can trigger <span class="text-desc">1</span> time per battle.`,
+      content: `If a character in the Party is struck by a killing blow while <b>Matrix of Prescience</b> is active, then all Party targets who were struck by a killing blow during this action will not be knocked down, and <span class="text-desc">70%</span> of their Max HP is immediately restored. This effect can trigger <span class="text-desc">1</span> time per battle.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -117,7 +117,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c6: {
       trace: 'Eidolon 6',
       title: 'Omnia Vita',
-      content: `Once <b>Matrix of Prescience</b> is activated, it will keep a tally of the total HP lost by all team members in the current battle. Fu Xuan's Ultimate DMG will increase by <span class="text-desc">200%</span> of this tally of HP loss.
+      content: `While <b>Matrix of Prescience</b> is active, it tallies the total HP lost by all Party characters in the current battle. Fu Xuan's Ultimate DMG will increase by <span class="text-desc">200%</span> of this tally of HP loss.
       <br />This tally is also capped at <span class="text-desc">120%</span> of Fu Xuan's Max HP and the tally value will reset and re-accumulate after Fu Xuan's Ultimate is used.`,
     },
   }

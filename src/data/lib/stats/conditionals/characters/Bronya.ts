@@ -35,7 +35,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 30,
       trace: 'Skill',
       title: 'Combat Redeployment',
-      content: `Dispels a debuff from a single ally, allows them to immediately take action, and increases their DMG by {{0}}% for <span class="text-desc">1</span> turn(s).
+      content: `Dispels a debuff from one designated Party character, allows them to immediately take action, and increases their DMG by {{0}}% for <span class="text-desc">1</span> turn(s).
       <br />When this Skill is used on Bronya herself, she cannot immediately take action again.`,
       value: [{ base: 33, growth: 3.3, style: 'curved' }],
       level: skill,
@@ -45,7 +45,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 5,
       trace: 'Ultimate',
       title: `The Belobog March`,
-      content: `Increases the ATK of all allies by {{0}}%, and increases their CRIT DMG equal to {{1}}% of Bronya's CRIT DMG plus {{2}}% for <span class="text-desc">2</span> turn(s).`,
+      content: `Increases Party characters' ATK by {{0}}%, and increases their CRIT DMG equal to {{1}}% of Bronya's CRIT DMG plus {{2}}% for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 33, growth: 2.2, style: 'curved' },
         { base: 12, growth: 0.4, style: 'curved' },
@@ -65,7 +65,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     technique: {
       trace: 'Technique',
       title: 'Banner of Command',
-      content: `After using Bronya's Technique, at the start of the next battle, all allies' ATK increases by <span class="text-desc">15%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `After using Bronya's Technique, at the start of the next battle, increases all Party characters' ATK by <span class="text-desc">15%</span> for <span class="text-desc">2</span> turn(s).`,
       tag: AbilityTag.SUPPORT,
     },
     a2: {
@@ -76,12 +76,12 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Battlefield`,
-      content: `At the start of the battle, all allies' DEF increases by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `When the battle starts, all Party characters' DEF increase by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Military Might`,
-      content: `When Bronya is on the field, all allies deal <span class="text-desc">10%</span> more DMG.`,
+      content: `While Bronya is on the field, all Party targets deal <span class="text-desc">10%</span> more DMG.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -91,7 +91,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c2: {
       trace: 'Eidolon 2',
       title: `Quick March`,
-      content: `When using Skill, the target ally's SPD increases by <span class="text-desc">30%</span> after taking action, lasting for <span class="text-desc">1</span> turn.`,
+      content: `When using Skill, increases the designated Party character's SPD by <span class="text-desc">30%</span> after they takes action, lasting for <span class="text-desc">1</span> turn.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -114,7 +114,7 @@ const Bronya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c6: {
       trace: 'Eidolon 6',
       title: 'Piercing Rainbow',
-      content: `The duration of the DMG Boost effect placed by the Skill on the target ally increases by <span class="text-desc">1</span> turn(s).`,
+      content: `The duration of the DMG Boost effect placed by the Skill on the designated Party character increases by <span class="text-desc">1</span> turn(s).`,
     },
   }
 

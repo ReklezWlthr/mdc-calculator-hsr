@@ -34,15 +34,15 @@ export const HelpModal = observer(() => {
           <b>Normal</b> - A default damage type. Can be affected by every type of DMG Boost.
         </BulletPoint>
         <BulletPoint>
-          <b>Additional DMG</b> - A single instance of damage dealt at the end of the main attack. Not considered a hit
+          <b>Supplemental DMG</b> - A single instance of damage dealt at the end of the main attack. Not considered a hit
           nor an attack. Usually only benefits from All-Type and Elemental DMG Boost.
         </BulletPoint>
         <BulletPoint>
-          <b>Frozen</b> - A sub-type of Additional DMG dealt when a <b className="text-hsr-ice">Frozen</b> unit is
+          <b>Frozen</b> - A sub-type of Supplemental DMG dealt when a <b className="text-hsr-ice">Frozen</b> unit is
           unfrozen. Frozen DMG triggered by abilities can CRIT; those triggered by Weakness Break cannot.
         </BulletPoint>
         <BulletPoint>
-          <b>Pure DMG</b> - A sub-type of Additional DMG dealt that is not affected by any of the attacker's buffs. As
+          <b>Pure DMG</b> - A sub-type of Supplemental DMG dealt that is not affected by any of the attacker's buffs. As
           of now, the only source of Pure DMG is the Light Cone <b>Time Waits for No One</b>.
           <BulletPoint color="text-red">
             The calculation is still a bit janky because I can't really find how many things are taken into account when

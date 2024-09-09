@@ -152,7 +152,7 @@ export enum TalentProperty {
   NORMAL = 'Normal',
   HEAL = 'Heal',
   SHIELD = 'Shield',
-  ADD = 'Additional DMG',
+  ADD = 'Supplemental DMG',
   BREAK = 'Break DMG',
   SUPER_BREAK = 'Super Break DMG',
   DOT = 'DoT',

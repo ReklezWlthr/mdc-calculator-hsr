@@ -57,7 +57,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     talent: {
       trace: 'Talent',
       title: 'Time Distortion',
-      content: `When hitting an enemy that is already <b>Slowed</b>, Welt deals Additional <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of his ATK to the enemy.`,
+      content: `When hitting an enemy that is already <b>Slowed</b>, Welt deals Supplemental <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of his ATK to the enemy.`,
       value: [{ base: 30, growth: 3, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -66,7 +66,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       trace: 'Technique',
       title: 'Gravitational Imprisonment',
       content: `After using Welt's Technique, create a dimension that lasts for <span class="text-desc">15</span> second(s). Enemies in this dimension have their Movement SPD reduced by <span class="text-desc">50%</span>. After entering battle with enemies in the dimension, there is a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-imaginary">Imprison</b> the enemies for <span class="text-desc">1</span> turn.
-      <br /><b class="text-hsr-imaginary">Imprisoned</b> enemies have their actions delayed by <span class="text-desc">20%</span> and SPD reduced by <span class="text-desc">10%</span>. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
+      <br /><b class="text-hsr-imaginary">Imprisoned</b> enemies have their actions delayed by <span class="text-desc">20%</span> and SPD reduced by <span class="text-desc">10%</span>. Only <span class="text-desc">1</span> dimension created by Party characters can exist at the same time.`,
       tag: AbilityTag.IMPAIR,
     },
     a2: {
@@ -87,7 +87,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c1: {
       trace: 'Eidolon 1',
       title: 'Legacy of Honor',
-      content: `After Welt uses his Ultimate, his abilities are enhanced. The next <span class="text-desc">2</span> time(s) he uses his Basic ATK or Skill, deals Additional DMG to the target equal to <span class="text-desc">50%</span> of his Basic ATK's DMG multiplier or <span class="text-desc">80%</span> of his Skill's DMG multiplier respectively.`,
+      content: `After Welt uses his Ultimate, his abilities are enhanced. The next <span class="text-desc">2</span> time(s) he uses his Basic ATK or Skill, deals Supplemental DMG to the target equal to <span class="text-desc">50%</span> of his Basic ATK's DMG multiplier or <span class="text-desc">80%</span> of his Skill's DMG multiplier respectively.`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -223,7 +223,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       ]
       base.TALENT_SCALING = [
         {
-          name: 'Additional Damage',
+          name: 'Supplemental Damage',
           value: [{ scaling: calcScaling(0.3, 0.03, talent, 'curved'), multiplier: Stats.ATK }],
           element: Element.IMAGINARY,
           property: TalentProperty.ADD,
@@ -259,7 +259,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         })
       if (c >= 1) {
         base.BASIC_SCALING.push({
-          name: 'E1 Additional DMG',
+          name: 'E1 Supplemental DMG',
           value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear') * 0.5, multiplier: Stats.ATK }],
           element: Element.IMAGINARY,
           property: TalentProperty.ADD,
@@ -268,14 +268,14 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         })
         base.SKILL_SCALING.push(
           {
-            name: 'E1 Additional DMG',
+            name: 'E1 Supplemental DMG',
             value: [{ scaling: calcScaling(0.36, 0.036, skill, 'curved') * 0.8, multiplier: Stats.ATK }],
             element: Element.IMAGINARY,
             property: TalentProperty.ADD,
             type: TalentType.NONE,
           },
           {
-            name: `E1 Max Single Target Additional DMG`,
+            name: `E1 Max Single Target Supplemental DMG`,
             value: [{ scaling: calcScaling(0.36, 0.036, skill, 'curved') * 0.8, multiplier: Stats.ATK }],
             element: Element.IMAGINARY,
             property: TalentProperty.ADD,

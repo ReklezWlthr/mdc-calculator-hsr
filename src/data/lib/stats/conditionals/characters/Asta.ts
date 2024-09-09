@@ -44,7 +44,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       energy: 5,
       trace: 'Ultimate',
       title: `Astral Blessing`,
-      content: `Increases SPD of all allies by {{0}} for <span class="text-desc">2</span> turn(s).`,
+      content: `Increases all Party characters' SPD by {{0}} for <span class="text-desc">2</span> turn(s).`,
       value: [{ base: 36, growth: 1.4, style: 'curved' }],
       level: ult,
       tag: AbilityTag.SUPPORT,
@@ -53,7 +53,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       trace: 'Talent',
       title: `Astrometry`,
       content: `Gains <span class="text-desc">1</span> stack of <b>Charging</b> for every different enemy hit by Asta plus an extra stack if the enemy hit has <b class="text-hsr-fire">Fire</b> Weakness.
-      <br />For every stack of <b>Charging</b> Asta has, all allies' ATK increases by {{0}}%, up to <span class="text-desc">5</span> time(s).
+      <br />For every stack of <b>Charging</b> Asta has, increases all Party targets' ATK by {{0}}%, stacking up to <span class="text-desc">5</span> time(s).
       <br />Starting from her second turn, Asta's <b>Charging</b> stack count is reduced by <span class="text-desc">3</span> at the beginning of every turn.`,
       value: [{ base: 7, growth: 0.7, style: 'curved' }],
       level: talent,
@@ -73,7 +73,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Ignite`,
-      content: `When Asta is on the field, all allies' <b class="text-hsr-fire">Fire DMG</b> increases by <span class="text-desc">18%</span>.`,
+      content: `While Asta is on the field, all Party targets' <b class="text-hsr-fire">Fire DMG</b> increases by <span class="text-desc">18%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',

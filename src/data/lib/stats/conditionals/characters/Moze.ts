@@ -64,7 +64,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       trace: 'Talent',
       title: `Cascading Featherblade`,
       content: `When <b class="text-hsr-lightning">Prey</b> exists on the field, Moze will enter the <b>Departed</b> state.
-        <br />After allies attack <b class="text-hsr-lightning">Prey</b>, Moze will additionally deal <span class="text-desc">1</span> instance of <b class="text-hsr-lightning">Additional Lightning DMG</b> equal to {{0}}% of his ATK and consumes <span class="text-desc">1</span> point of <b>Charge</b>. For every <span class="text-desc">3</span> point(s) of <b>Charge</b> consumed, Moze launches <span class="text-desc">1</span> <u>follow-up attack</u> to <b class="text-hsr-lightning">Prey</b>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Moze's ATK. When <b>Charge</b> reaches <span class="text-desc">0</span>, dispels the target's <b class="text-hsr-lightning">Prey</b> state and reset the tally of <b>Charge</b> points required to launch <u>follow-up attack</u>. Talent's <u>follow-up attack</u> does not consume <b>Charge</b>.`,
+        <br />After allies attack <b class="text-hsr-lightning">Prey</b>, Moze will additionally deal <span class="text-desc">1</span> instance of <b class="text-hsr-lightning">Supplemental Lightning DMG</b> equal to {{0}}% of his ATK and consumes <span class="text-desc">1</span> point of <b>Charge</b>. For every <span class="text-desc">3</span> point(s) of <b>Charge</b> consumed, Moze launches <span class="text-desc">1</span> <u>follow-up attack</u> to <b class="text-hsr-lightning">Prey</b>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Moze's ATK. When <b>Charge</b> reaches <span class="text-desc">0</span>, dispels the target's <b class="text-hsr-lightning">Prey</b> state and reset the tally of <b>Charge</b> points required to launch <u>follow-up attack</u>. Talent's <u>follow-up attack</u> does not consume <b>Charge</b>.`,
       value: [
         { base: 15, growth: 1.5, style: 'curved' },
         { base: 80, growth: 8, style: 'curved' },
@@ -96,7 +96,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c1: {
       trace: 'Eidolon 1',
       title: `Oathkeeper`,
-      content: `After entering battle, Moze regenerates <span class="text-desc">20</span> Energy. Each time the Additional DMG from his Talent is triggered, Moze regenerates <span class="text-desc">2</span> Energy.`,
+      content: `After entering battle, Moze regenerates <span class="text-desc">20</span> Energy. Each time the Supplemental DMG from his Talent is triggered, Moze regenerates <span class="text-desc">2</span> Energy.`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -314,7 +314,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
             _.forEach([t.BASIC_SCALING, t.SKILL_SCALING, t.ULT_SCALING, t.TALENT_SCALING], (s) => {
               if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
                 s.push({
-                  name: `Prey Additional DMG`,
+                  name: `Prey Supplemental DMG`,
                   value: [{ scaling: calcScaling(0.15, 0.015, skill, 'curved'), multiplier: Stats.ATK }],
                   element: Element.LIGHTNING,
                   property: TalentProperty.ADD,

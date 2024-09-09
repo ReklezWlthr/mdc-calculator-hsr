@@ -44,8 +44,8 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       energy: 30,
       trace: 'Skill',
       title: 'Salted Camping Cans',
-      content: `Applies <b>Survival Response</b> to a single target ally and increases their Max HP by {{0}}% of Lynx's Max HP plus {{1}}. If the target ally is a character on the Path of Destruction or Preservation, the chance of them being attacked by enemies will greatly increase. <b>Survival Response</b> lasts for <span class="text-desc">2</span> turn(s).
-      <br />Restores the target's HP by {{2}}% of Lynx's Max HP plus {{3}}.`,
+      content: `Applies <b>Survival Response</b> to one designated Party character, increasing their Max HP by {{0}}% of Lynx's Max HP plus {{1}}. If this character is on the Path of Destruction or Preservation, the chance of them getting attacked by Enemy units greatly increases. <b>Survival Response</b> lasts for <span class="text-desc">2</span> turn(s).
+      <br />Restores this target's HP by {{2}}% of Lynx's Max HP plus {{3}}.`,
       value: [
         { base: 5, growth: 0.25, style: 'curved' },
         { base: 50, growth: 30, style: 'flat' },
@@ -59,7 +59,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       energy: 5,
       trace: 'Ultimate',
       title: `Snowfield First Aid`,
-      content: `Dispels <span class="text-desc">1</span> debuff(s) from all allies and immediately restores their respective HP by an amount equal to {{0}}% of Lynx's Max HP plus {{1}}.`,
+      content: `Dispels <span class="text-desc">1</span> debuff(s) from all Party characters and immediately restores all Party characters' HP by {{0}}% of Lynx's Max HP plus {{1}}.`,
       value: [
         { base: 9, growth: 0.5625, style: 'heal' },
         { base: 90, growth: 54, style: 'flat' },
@@ -70,7 +70,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     talent: {
       trace: 'Talent',
       title: `Outdoor Survival Experience`,
-      content: `When using Lynx's Skill or Ultimate, applies continuous healing to the target ally for <span class="text-desc">2</span> turn(s), restoring the target ally's HP by an amount equal to {{0}}% of Lynx's Max HP plus {{1}} at the start of each their turn. If the target has <b>Survival Response</b>, the continuous healing effect additionally restores HP by an amount equal to {{2}}% of Lynx's Max HP plus {{3}}.`,
+      content: `When using Skill or Ultimate, enables one designated Party character to gain continuous healing for <span class="text-desc">2</span> turn(s), At the start of the character's turn, restores their HP by {{0}}% of Lynx's Max HP plus {{1}}. If this character has <b>Survival Response</b>, the continuous healing effect additionally restores HP by {{2}}% of Lynx's Max HP plus {{3}}.`,
       value: [
         { base: 2.4, growth: 0.15, style: 'heal' },
         { base: 24, growth: 14.4, style: 'flat' },
@@ -83,7 +83,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     technique: {
       trace: 'Technique',
       title: 'Chocolate Energy Bar',
-      content: `After Lynx uses her Technique, at the start of the next battle, all allies are granted her Talent's continuous healing effect, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `After using Technique, at the start of the next battle, provides all Party characters with the continuous healing effect from Lynx's Talent, lasting for <span class="text-desc">2</span> turn(s).`,
       tag: AbilityTag.RESTORE,
     },
     a2: {
@@ -104,7 +104,7 @@ const Lynx = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c1: {
       trace: 'Eidolon 1',
       title: `Morning of Snow Hike`,
-      content: `When healing allies with HP equal to or lower than <span class="text-desc">50%</span>, Lynx's Outgoing Healing increases by <span class="text-desc">20%</span>. This effect also works on continuous healing.`,
+      content: `When healing Party characters whose HP percentage is <span class="text-desc">50%</span> or less, increases Lynx's Outgoing Healing by <span class="text-desc">20%</span>. This effect also works on continuous healing.`,
     },
     c2: {
       trace: 'Eidolon 2',

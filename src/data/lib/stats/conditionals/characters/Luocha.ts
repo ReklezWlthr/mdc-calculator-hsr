@@ -34,7 +34,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: 'Skill',
       title: 'Prayer of Abyss Flower',
       content: `After using his Skill, Luocha immediately restores the target ally's HP equal to {{0}}% of Luocha's ATK plus {{1}}. Meanwhile, Luocha gains <span class="text-desc">1</span> stack of <b>Abyss Flower</b>.
-      <br />When any ally's HP percentage drops to <span class="text-desc">50%</span> or lower, an effect equivalent to Luocha's Skill will immediately be triggered and applied to this ally for one time (without consuming Skill Points). This effect can be triggered again after <span class="text-desc">2</span> turn(s).`,
+      <br />When any Party character's current HP percentage reaches <span class="text-desc">50%</span> or lower, an effect equivalent to Luocha's Skill will immediately be triggered and applied to this ally for one time (without consuming Skill Points). This effect can be triggered again after <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 40, growth: 2.5, style: 'heal' },
         { base: 200, growth: 120, style: 'flat' },
@@ -54,9 +54,9 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     talent: {
       trace: 'Talent',
       title: 'Cycle of Life',
-      content: `When <b>Abyss Flower</b> reaches <span class="text-desc">2</span> stacks, Luocha consumes all stacks of <b>Abyss Flower</b> to deploy a <b>Field</b> against the enemy.
-      <br />When any enemy in the <b>Field</b> is attacked by an ally, the attacking ally's HP is immediately restored by an amount equal to {{0}}% of Luocha's ATK plus {{1}}.
-      <br />The <b>Field</b>'s effect lasts for <span class="text-desc">2</span> turns. When Luocha is knocked down, the <b>Field</b> will be dispelled.`,
+      content: `When <b>Abyss Flower</b> reaches <span class="text-desc">2</span> stacks, Luocha consumes all stacks of <b>Abyss Flower</b> to deploy a Zone against the enemy.
+      <br />When any enemy in the Zone is attacked by an ally, the attacking ally's HP is immediately restored by an amount equal to {{0}}% of Luocha's ATK plus {{1}}.
+      <br />The Zone's effect lasts for <span class="text-desc">2</span> turns. When Luocha is knocked down, the Zone will be dispelled.`,
       value: [
         { base: 12, growth: 0.75, style: 'heal' },
         { base: 60, growth: 36, style: 'flat' },
@@ -78,7 +78,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Sanctified',
-      content: `When any enemy in the <b>Field</b> is attacked by an ally, all allies (except the attacker) restore HP equal to <span class="text-desc">7%</span> of Luocha's ATK plus <span class="text-desc">93</span>.`,
+      content: `When any enemy in the Zone is attacked by an ally, all allies (except the attacker) restore HP equal to <span class="text-desc">7%</span> of Luocha's ATK plus <span class="text-desc">93</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -88,12 +88,12 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c1: {
       trace: 'Eidolon 1',
       title: 'Ablution of the Quick',
-      content: `While the <b>Field</b> is active, ATK of all allies increases by <span class="text-desc">20%</span>.`,
+      content: `While the Zone is active, increases all Party characters' ATK by <span class="text-desc">20%</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'Bestowal From the Pure',
-      content: `When his Skill is triggered, if the target ally's HP is lower than <span class="text-desc">50%</span>, Luocha's Outgoing Healing increases by <span class="text-desc">30%</span>. If the target ally's HP is at <span class="text-desc">50%</span> or higher, the ally receives a <b class="text-indigo-300">Shield</b> that can absorb DMG equal to <span class="text-desc">10%</span> of Luocha's ATK plus <span class="text-desc">240</span>, lasting for <span class="text-desc">2</span> turns.`,
+      content: `When Skill's effect is triggered, if the designated Party character's current HP percentage is lower than <span class="text-desc">50%</span>, increases Luocha's Outgoing Healing by <span class="text-desc">30%</span>. If the designated Party character's current HP percentage is <span class="text-desc">50%</span> or higher, provides them with a <b class="text-indigo-300">Shield</b> that can offset DMG equal to <span class="text-desc">10%</span> of Luocha's ATK plus <span class="text-desc">240</span>, lasting for <span class="text-desc">2</span> turns.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -104,7 +104,7 @@ const Luocha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c4: {
       trace: 'Eidolon 4',
       title: 'Heavy Lies the Crown',
-      content: `When Luocha's <b>Field</b> is active, enemies become Weakened and deal <span class="text-desc">12%</span> less DMG.`,
+      content: `When Luocha's Zone is active, enemies become Weakened and deal <span class="text-desc">12%</span> less DMG.`,
     },
     c5: {
       trace: 'Eidolon 5',

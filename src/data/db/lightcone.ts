@@ -268,7 +268,7 @@ export const LightCones = [
     type: PathType.NIHILITY,
     desc: {
       name: 'Mechanism',
-      detail: `After using Skill, the wearer's next Basic ATK deals Additional DMG equal to {{0}}% of ATK to the target enemy.`,
+      detail: `After using Skill, the wearer's next Basic ATK deals Supplemental DMG equal to {{0}}% of ATK to the target enemy.`,
       properties: [{ base: 60, growth: 15 }],
     },
   },
@@ -770,7 +770,7 @@ export const LightCones = [
     type: PathType.NIHILITY,
     desc: {
       name: 'A Discourse In Arms',
-      detail: `After the wearer uses Basic ATK or Skill, deals Additional DMG equal to {{0}}% of the wearer's ATK to a random enemy that has been attacked.`,
+      detail: `After the wearer uses Basic ATK or Skill, deals Supplemental DMG equal to {{0}}% of the wearer's ATK to a random enemy that has been attacked.`,
       properties: [{ base: 48, growth: 12 }],
     },
   },
@@ -1399,7 +1399,7 @@ export const LightCones = [
     type: PathType.ABUNDANCE,
     desc: {
       name: 'Morn, Noon, Dusk, and Night',
-      detail: `Increases the wearer's Max HP by {{0}}% and Outgoing Healing by {{1}}%. When the wearer heals allies, record the amount of Outgoing Healing. When any ally launches an attack, a random attacked enemy takes Additional DMG equal to {{2}}% of the recorded Outgoing Healing value. The type of this Additional DMG is of the same Type as the wearer's. This Additional DMG is not affected by other buffs, and can only occur <span class="text-desc">1</span> time per turn.`,
+      detail: `Increases the wearer's Max HP by {{0}}% and Outgoing Healing by {{1}}%. When the wearer heals allies, record the amount of Outgoing Healing. When any ally launches an attack, a random attacked enemy takes Supplemental DMG equal to {{2}}% of the recorded Outgoing Healing value. The type of this Supplemental DMG is of the same Type as the wearer's. This Supplemental DMG is not affected by other buffs, and can only occur <span class="text-desc">1</span> time per turn.`,
       properties: [
         { base: 18, growth: 3 },
         { base: 12, growth: 2 },

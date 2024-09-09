@@ -66,7 +66,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     technique: {
       trace: 'Technique',
       title: 'Incomplete Combustion',
-      content: `After using Technique, creates a dimension that lasts for <span class="text-desc">15</span> second(s). After entering battle with enemies in the dimension, there is a <span class="text-desc">100%</span> <u>base chance</u> to increase <b class="text-hsr-fire">Fire DMG</b> taken by enemies by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s). Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
+      content: `After using Technique, creates a dimension that lasts for <span class="text-desc">15</span> second(s). After entering battle with enemies in the dimension, there is a <span class="text-desc">100%</span> <u>base chance</u> to increase <b class="text-hsr-fire">Fire DMG</b> taken by enemies by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s). Only <span class="text-desc">1</span> dimension created by Party characters can exist at the same time.`,
       tag: AbilityTag.IMPAIR,
     },
     a2: {
@@ -305,7 +305,7 @@ const Himeko = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         })
       if (c >= 6)
         base.ULT_SCALING.push({
-          name: 'Additional DMG [x2]',
+          name: 'Supplemental DMG [x2]',
           value: [{ scaling: 0.4, multiplier: Stats.ATK }],
           element: Element.FIRE,
           property: TalentProperty.ADD,

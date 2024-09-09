@@ -42,7 +42,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: `Singing Among Clouds`,
-      content: `Heals a single ally for {{0}}% of Bailu's Max HP plus {{1}}. Bailu then heals random allies <span class="text-desc">2</span> time(s). After each healing, HP restored from the next healing is reduced by <span class="text-desc">15%</span>.`,
+      content: `Immediately restores HP for one designated Party character by {{0}}% of Bailu's Max HP plus {{1}}. Then, Bailu heals one random Party character for <span class="text-desc">2</span> instance(s). After each instance of healing, the HP restored in the next instance is reduced by <span class="text-desc">15%</span>.`,
       value: [
         { base: 7.8, growth: 0.4875, style: 'heal' },
         { base: 78, growth: 46.8, style: 'flat' },
@@ -54,7 +54,8 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: 'Felicitous Thunderleap',
-      content: `Heals all allies for {{0}}% of Bailu's Max HP plus {{1}}. Bailu applies <b class="text-hsr-lightning">Invigoration</b> to allies that are not already <b class="text-hsr-lightning">Invigorated</b>. For those already <b class="text-hsr-lightning">Invigorated</b>, Bailu extends the duration of their <b class="text-hsr-lightning">Invigoration</b> by <span class="text-desc">1</span> turn. The effect of <b>Invigoration</b> can last for <span class="text-desc">2</span> turn(s). This effect cannot stack.`,
+      content: `Immediately restores HP for all Party characters by {{0}}% of Bailu's Max HP plus {{1}}.
+      <br />Bailu applies <b class="text-hsr-lightning">Invigoration</b> to Party characters that are not already <b class="text-hsr-lightning">Invigorated</b>. For those already <b class="text-hsr-lightning">Invigorated</b>, Bailu extends the duration of their <b class="text-hsr-lightning">Invigoration</b> by <span class="text-desc">1</span> turn. The effect of <b>Invigoration</b> can last for <span class="text-desc">2</span> turn(s). This effect cannot stack.`,
       value: [
         { base: 9, growth: 0.5625, style: 'heal' },
         { base: 90, growth: 54, style: 'flat' },
@@ -65,7 +66,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     talent: {
       trace: 'Talent',
       title: `Gourdful of Elixir`,
-      content: `After an ally with <b class="text-hsr-lightning">Invigoration</b> is hit, restores the ally's HP for {{0}}% of Bailu's Max HP plus {{1}}. This effect can trigger <span class="text-desc">2</span> time(s). When an ally receives a killing blow, they will not be knocked down. Bailu immediately heals the ally for {{2}}% of Bailu's Max HP plus {{3}} HP. This effect can be triggered <span class="text-desc">1</span> time per battle.`,
+      content: `After a Party character with <b class="text-hsr-lightning">Invigoration</b> is hit, restores the ally's HP for {{0}}% of Bailu's Max HP plus {{1}}. This effect can trigger <span class="text-desc">2</span> time(s). When an ally receives a killing blow, they will not be knocked down. Bailu immediately heals the ally for {{2}}% of Bailu's Max HP plus {{3}} HP. This effect can be triggered <span class="text-desc">1</span> time per battle.`,
       value: [
         { base: 3.6, growth: 0.225, style: 'heal' },
         { base: 36, growth: 21.6, style: 'flat' },
@@ -84,7 +85,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Qihuang Analects`,
-      content: `When Bailu heals a target ally above their normal Max HP, the target's Max HP increases by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turns.`,
+      content: `When Bailu provides excessive healing to a Party character, increases their Max HP by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -99,7 +100,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c1: {
       trace: 'Eidolon 1',
       title: `Ambrosial Aqua`,
-      content: `If the target ally's current HP is equal to their Max HP when <b class="text-hsr-lightning">Invigoration</b> ends, regenerates <span class="text-desc">8</span> extra Energy for this target.`,
+      content: `If the Party character's current HP is equal to their Max HP when <b class="text-hsr-lightning">Invigoration</b> ends, additionally regenerates <span class="text-desc">8</span> Energy for this target.`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -126,7 +127,7 @@ const Bailu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: `Drooling Drop of Draconic Divinity`,
-      content: `Bailu can heal allies who received a killing blow <span class="text-desc">1</span> more time(s) in a single battle.`,
+      content: `Bailu can heal Party characters who received a killing blow <span class="text-desc">1</span> more time(s) in a single battle.`,
     },
   }
 
