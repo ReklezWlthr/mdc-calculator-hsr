@@ -7,12 +7,13 @@ import { checkBuffExist } from '@src/core/utils/finder'
 
 export const getRelicConditionals = (artifacts: IArtifactEquip[]) => {
   const setBonus = getSetCount(artifacts)
-  const { content, teamContent } = ArtifactForm()
+  const { content, teamContent, allyContent } = ArtifactForm()
   const set = _.keys(_.pickBy(setBonus, (item, key) => item >= (_.head(key) === '1' ? 4 : 2)))
 
   return {
     content: _.filter(content, (item) => _.some(set, (s) => _.includes(item.id, s))),
     teamContent: _.filter(teamContent, (item) => _.some(set, (s) => _.includes(item.id, s))),
+    allyContent: _.filter(allyContent, (item) => _.some(set, (s) => _.includes(item.id, s))),
   }
 }
 
@@ -121,6 +122,12 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
     const buff = _.find(base[Stats.CRIT_DMG], (item) => item.source === 'The Wondrous BananAmusement Park')
     if (buff) buff.value += 0.32
   }
+  if (form['122'])
+    base.SKILL_DMG.push({
+      name: `4-Piece`,
+      source: 'Scholar Lost in Erudition',
+      value: 0.3,
+    })
 
   return base
 }
@@ -138,6 +145,13 @@ export const calculateTeamRelic = (base: StatsObject, form: Record<string, any>,
       source: owner.NAME,
       value: 0.3,
     })
+  if (form['121']) {
+    base[Stats.CRIT_DMG].push({
+      name: `4-Piece`,
+      source: `Sacerdos' Relived Ordeal`,
+      value: 0.2 * form['121'],
+    })
+  }
 
   return base
 }

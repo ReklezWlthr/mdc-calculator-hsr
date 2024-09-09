@@ -89,14 +89,20 @@ export const useCalculator = ({
   )
   const main = conditionals[selected]
 
-  const artifactConditionals = useMemo(
-    () =>
-      _.map(team, (item) => {
-        const artifacts = _.map(item?.equipments?.artifacts, (a) => _.find(artifactStore.artifacts, (b) => b.id === a))
-        return getRelicConditionals(artifacts)
-      }),
-    [team, artifactStore.artifacts]
-  )
+  const artifactConditionals = useMemo(() => {
+    const c = _.map(team, (t) =>
+      getRelicConditionals(_.map(t?.equipments?.artifacts, (a) => _.find(artifactStore.artifacts, (b) => b.id === a)))
+    )
+    return _.map(c, (item) => {
+      return {
+        content: _.concat(
+          item.content,
+          _.flatMap(c, (i, owner) => _.map(i.allyContent, (ac) => ({ ...ac, owner })))
+        ),
+        teamContent: item.teamContent,
+      }
+    })
+  }, [team, artifactStore.artifacts])
   const checkValid = (item: ITeamChar) =>
     findLightCone(item?.equipments?.weapon?.wId)?.type === findCharacter(item.cId)?.path
   const weaponConditionals = _.map(team, (item, index) =>

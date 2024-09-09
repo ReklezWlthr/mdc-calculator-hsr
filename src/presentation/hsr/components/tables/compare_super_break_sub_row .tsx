@@ -142,33 +142,35 @@ export const CompareSuperBreakSubRows = observer(
     }
 
     return (
-      <div className="grid items-center grid-cols-9 gap-2 pr-2">
-        <p className="col-span-2 text-center">Super Break DMG</p>
-        <p className={classNames('col-span-1 text-center', ElementColor[element])}>{element}</p>
-        {main ? (
-          <Tooltip
-            title={
-              <div className="w-1/2">
-                <p className="w-full text-xs font-normal truncate text-gray">{setupNames[0]}</p>
-                <p>{name}</p>
-              </div>
-            }
-            body={<div dangerouslySetInnerHTML={{ __html: main.formulaString }} />}
-            style="w-[450px]"
-          >
-            <p className="col-span-1 text-xs text-center">{_.floor(getDmg(main)).toLocaleString()}</p>
-          </Tooltip>
-        ) : (
-          <p className="col-span-1 text-center text-gray">-</p>
-        )}
-        <SubDmgBlock obj={sub1} title={setupNames[1]} />
-        <SubDmgBlock obj={sub2} title={setupNames[2]} />
-        <SubDmgBlock obj={sub3} title={setupNames[3]} />
-        <div className="flex col-span-2 gap-1 text-xs" title={name}>
-          <p className="w-full truncate">{name}</p>
-          <CheckboxInput checked={sum} onClick={setSum} />
+      !!_.sum(_.map([main, sub1, sub2, sub3], (item) => getDmg(item))) && (
+        <div className="grid items-center grid-cols-9 gap-2 pr-2">
+          <p className="col-span-2 text-center">Super Break DMG</p>
+          <p className={classNames('col-span-1 text-center', ElementColor[element])}>{element}</p>
+          {main ? (
+            <Tooltip
+              title={
+                <div className="w-1/2">
+                  <p className="w-full text-xs font-normal truncate text-gray">{setupNames[0]}</p>
+                  <p>{name}</p>
+                </div>
+              }
+              body={<div dangerouslySetInnerHTML={{ __html: main.formulaString }} />}
+              style="w-[450px]"
+            >
+              <p className="col-span-1 text-xs text-center">{_.floor(getDmg(main)).toLocaleString()}</p>
+            </Tooltip>
+          ) : (
+            <p className="col-span-1 text-center text-gray">-</p>
+          )}
+          <SubDmgBlock obj={sub1} title={setupNames[1]} />
+          <SubDmgBlock obj={sub2} title={setupNames[2]} />
+          <SubDmgBlock obj={sub3} title={setupNames[3]} />
+          <div className="flex col-span-2 gap-1 text-xs" title={name}>
+            <p className="w-full truncate">{name}</p>
+            <CheckboxInput checked={sum} onClick={setSum} />
+          </div>
         </div>
-      </div>
+      )
     )
   }
 )

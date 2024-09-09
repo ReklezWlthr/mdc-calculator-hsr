@@ -1070,6 +1070,26 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'number',
+    text: `CRIT DMG Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 2,
+    duration: 2,
+    id: '22003',
+    scaling: (base, form, r) => {
+      if (form['22003']) {
+        base[Stats.CRIT_DMG].push({
+          name: 'Passive',
+          source: 'Ninja Record: Sound Hunt',
+          value: calcRefinement(0.18, 0.04, r),
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [

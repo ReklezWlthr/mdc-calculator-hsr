@@ -57,6 +57,7 @@ import PMC from './characters/PMC'
 import Feixiao from './characters/Feixiao'
 import Lingsha from './characters/Lingsha'
 import Moze from './characters/Moze'
+import Rappa from './characters/Rappa'
 
 export default [
   { id: '1001', conditionals: March },
@@ -115,6 +116,7 @@ export default [
   { id: '1312', conditionals: Misha },
   { id: '1314', conditionals: Jade },
   { id: '1315', conditionals: Boothill },
+  { id: '1317', conditionals: Rappa },
   { id: '8001', conditionals: DMC },
   { id: '8003', conditionals: PMC },
   { id: '8005', conditionals: HMC },

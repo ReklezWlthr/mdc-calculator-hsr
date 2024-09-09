@@ -1209,6 +1209,39 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23033',
+    scaling: (base, r) => {
+      base[Stats.BE].push({
+        name: 'Passive',
+        source: 'Ninjutsu Inscription: Dazzling Evilbreaker',
+        value: calcRefinement(0.6, 0.1, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '21048',
+    scaling: (base, r) => {
+      base[Stats.P_SPD].push({
+        name: 'Passive',
+        source: `Dream's Montage`,
+        value: calcRefinement(0.08, 0.01, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '22003',
+    scaling: (base, r) => {
+      base[Stats.P_HP].push({
+        name: 'Passive',
+        source: `Ninja Record: Sound Hunt`,
+        value: calcRefinement(0.12, 0.03, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

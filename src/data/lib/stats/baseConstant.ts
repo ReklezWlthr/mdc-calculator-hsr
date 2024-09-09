@@ -147,6 +147,7 @@ export const baseStatsObject = {
   SUPER_BREAK_DMG: [] as StatsArray[],
 
   SUPER_BREAK_MULT: [] as StatsArray[],
+  BASIC_SUPER_BREAK: [] as StatsArray[],
 
   // Mitigation
   DMG_REDUCTION: [] as StatsArray[],

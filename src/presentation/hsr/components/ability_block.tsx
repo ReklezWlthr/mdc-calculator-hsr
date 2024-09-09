@@ -39,7 +39,7 @@ export const AbilityBlock = observer(({ char, onChange, upgrade, talents, disabl
           upgraded={upgrade?.basic}
           level={char?.talents?.basic}
           showUpgrade
-          type={talents?.basic?.trace}
+          type={talents?.normal?.trace}
         />
         <div>
           <p className="text-xs text-primary-lighter">Basic ATK</p>

@@ -82,7 +82,7 @@ export const Calculator = observer(({}: {}) => {
             <>
               <div className="flex flex-col mb-5 text-sm rounded-lg bg-primary-darker h-fit">
                 <div className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
-                  <p>Damage Calculation</p>
+                  <p>Damage Calculation{mainComputed?.NAME ? ` - ${mainComputed?.NAME}` : ''}</p>
                   {/* <p className='text-xs font-normal text-gray'>Hover Numbers for More Details</p> */}
                 </div>
                 <div className="flex justify-end w-full mb-1.5 bg-primary-dark">

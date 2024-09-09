@@ -347,13 +347,13 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       _.last(team).CALLBACK.push(function P99(b, d, w, all) {
         const x = all[index]
         if (a.a6) {
-          const base = _.max([0, x.getAtk(true) - 1800]) / 10
+          const base = _.max([0, x.getAtk() - 1800]) / 10
           const multiplier = 0.008
           x[Stats.BE].push({
             name: 'Ascension 6 Passive',
             source: 'Self',
             value: base * multiplier,
-            base,
+            base: `(${_.floor(base * 10)} ÷ 10)`,
             multiplier,
           })
         }

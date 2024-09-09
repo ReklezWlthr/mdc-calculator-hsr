@@ -307,6 +307,7 @@ export class SetupStore {
     if (!team || !tId) return false
     const index = _.findIndex(this.team, ['id', tId])
     this.team[index] = { ...this.team[index], ...team }
+    this.team = [...this.team]
     return true
   }
 

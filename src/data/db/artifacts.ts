@@ -285,7 +285,7 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [],
     desc: [
       `Increases SPD by <span class="text-desc">6%</span>.`,
-      `When the wearer uses their Ultimate on an ally, SPD for all allies increases by <span class="text-desc">12%</span> for <span class="text-desc">1</span> turn(s). This effect cannot be stacked.`,
+      `When the wearer uses their Ultimate on an ally, increases all Party characters' SPD by <span class="text-desc">12%</span> for <span class="text-desc">1</span> turn(s). This effect cannot be stacked.`,
     ],
     set: [
       `Messenger's Holovisor`,
@@ -412,7 +412,7 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [],
     desc: [
       `Increases Break Effect by <span class="text-desc">16%</span>.`,
-      `When the wearer uses their Ultimate on an ally, all allies' Break Effect increases by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s). This effect cannot be stacked.`,
+      `When the wearer uses their Ultimate on any Party character, increases all Party characters' Break Effect by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s). This effect cannot be stacked.`,
     ],
     set: [
       `Watchmaker's Telescoping Lens`,
@@ -473,6 +473,53 @@ export const RelicSets: IArtifact[] = [
       `Valorous Greaves of Pursuing Hunt`,
     ],
   },
+  {
+    id: '121',
+    name: `Sacerdos' Relived Ordeal`,
+    icon: '71038',
+    bonus: [{ stat: Stats.P_SPD, value: 0.06 }],
+    bonusAdd: [],
+    desc: [
+      `Increases SPD by <span class="text-desc">6%</span>.`,
+      `When using Skill or Ultimate on one Party target, increases the target's CRIT DMG by <span class="text-desc">20%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">2</span> time(s).`,
+    ],
+    set: [
+      `Sacerdos' Melodic Earrings`,
+      `Sacerdos' Welcoming Gloves`,
+      `Sacerdos' Ceremonial Garb`,
+      `Sacerdos' Arduous Boots`,
+    ],
+  },
+  {
+    id: '122',
+    name: `Scholar Lost in Erudition`,
+    icon: '71039',
+    bonus: [{ stat: Stats.CRIT_RATE, value: 0.06 }],
+    bonusAdd: [],
+    add: (base) => {
+      base.ULT_DMG.push({
+        name: '4-Piece',
+        source: `Scholar Lost in Erudition`,
+        value: 0.2,
+      })
+      base.SKILL_DMG.push({
+        name: '4-Piece',
+        source: `Scholar Lost in Erudition`,
+        value: 0.2,
+      })
+      return base
+    },
+    desc: [
+      `Increases CRIT Rate by <span class="text-desc">6%</span>.`,
+      `Increases DMG dealt by Ultimate and Skill by <span class="text-desc">20%</span>. After using Ultimate, additionally increases the DMG dealt by the next Skill by <span class="text-desc">20%</span>.`,
+    ],
+    set: [
+      `Scholar's Silver-Rimmed Monocle`,
+      `Scholar's Auxiliary Knuckle`,
+      `Scholar's Tweed Jacket`,
+      `Scholar's Felt Snowboots`,
+    ],
+  },
 ]
 
 export const PlanarSets: IArtifact[] = [
@@ -519,7 +566,7 @@ export const PlanarSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases the wearer's Max HP by <span class="text-desc">12%</span>. When the wearer's SPD reaches <span class="text-desc">120</span> or higher, all allies' ATK increases by <span class="text-desc">8%</span>.`,
+      `Increases the wearer's Max HP by <span class="text-desc">12%</span>. When the wearer's SPD reaches <span class="text-desc">120</span> or higher, all Party targets' ATK increases by <span class="text-desc">8%</span>.`,
     ],
     set: [`The Xianzhou Luofu's Celestial Ark`, `The Xianzhou Luofu's Ambrosial Arbor Vines`],
   },
@@ -692,7 +739,7 @@ export const PlanarSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases the wearer's Effect RES by <span class="text-desc">10%</span>. When the wearer's Effect RES is at <span class="text-desc">30%</span> or higher, all allies' CRIT DMG increases by <span class="text-desc">10%</span>.`,
+      `Increases the wearer's Effect RES by <span class="text-desc">10%</span>. When the wearer's Effect RES is at <span class="text-desc">30%</span> or higher, all Party targets' CRIT DMG increases by <span class="text-desc">10%</span>.`,
     ],
     set: [`Insumousu's Whalefall Ship`, `Insumousu's Frayed Hawser`],
   },
@@ -740,7 +787,7 @@ export const PlanarSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases wearer's Energy Regeneration Rate by <span class="text-desc">5%</span>. Increases DMG by <span class="text-desc">10%</span> for all other allies that are of the same Type as the wearer.`,
+      `Increases wearer's Energy Regeneration Rate by <span class="text-desc">5%</span>. Increases DMG by <span class="text-desc">10%</span> for all other Party targets that are of the same Type as the wearer.`,
     ],
     set: [`Penacony's Grand Hotel`, `Penacony's Dream-Seeking Tracks`],
   },
@@ -786,7 +833,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [],
     bonusAdd: [],
     desc: [
-      `When an ally uses a <u>follow-up attack</u>, the wearer receives <span class="text-desc">1</span> stack of <b>Merit</b>, stacking up to <span class="text-desc">5</span> times. Every stack of <b>Merit</b> increases the DMG dealt by the wearer's <u>follow-up attacks</u> by <span class="text-desc">5%</span>. When there are <span class="text-desc">5</span> stacks, additionally increases the wearer's CRIT DMG by <span class="text-desc">25%</span>.`,
+      `When a Party target uses a <u>follow-up attack</u>, the wearer receives <span class="text-desc">1</span> stack of <b>Merit</b>, stacking up to <span class="text-desc">5</span> times. Every stack of <b>Merit</b> increases the DMG dealt by the wearer's <u>follow-up attacks</u> by <span class="text-desc">5%</span>. When there are <span class="text-desc">5</span> stacks, additionally increases the wearer's CRIT DMG by <span class="text-desc">25%</span>.`,
     ],
     set: [`Duran's Tent of Golden Sky`, `Duran's Mechabeast Bridle`],
   },

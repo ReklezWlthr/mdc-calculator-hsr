@@ -51,6 +51,8 @@ export const superBreakStringConstruct = (
 
   const breakLevel = BreakBaseLevel[level - 1]
   const toughnessMult = (scaling.break * (1 + stats.getValue(StatsObjectKeys.BREAK_EFF))) / 10
+  const breakMult =
+    stats.getValue(StatsObjectKeys.SUPER_BREAK_MULT) + stats.getValue(`${TalentTypeMap[scaling.type]}_SUPER_BREAK`)
 
   const raw = breakLevel * toughnessMult
   const dmg =
@@ -58,7 +60,7 @@ export const superBreakStringConstruct = (
     (1 + stats.getValue(Stats.BE)) *
     (1 + stats.getValue(StatsObjectKeys.BREAK_DMG)) *
     (1 + stats.getValue(StatsObjectKeys.SUPER_BREAK_DMG)) *
-    stats.getValue(StatsObjectKeys.SUPER_BREAK_MULT) *
+    breakMult *
     enemyMod
 
   // String Construct
@@ -82,9 +84,7 @@ export const superBreakStringConstruct = (
       ? ` \u{00d7} (1 + <b class="">${toPercentage(stats.getValue(StatsObjectKeys.SUPER_BREAK_DMG))}</b>)`
       : ''
   }${
-    stats.getValue(StatsObjectKeys.SUPER_BREAK_MULT) > 0
-      ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(stats.getValue(StatsObjectKeys.SUPER_BREAK_MULT))}</b>`
-      : ''
+    breakMult > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(breakMult)}</b>` : ''
   } \u{00d7} <b class="text-orange-300">${toPercentage(
     defMult,
     2

@@ -1071,6 +1071,24 @@ export const LightCones = [
     },
     beta: true,
   },
+  {
+    id: '21048',
+    name: `Dream's Montage`,
+    rarity: 4,
+    baseHp: 43.2,
+    baseAtk: 19.2,
+    baseDef: 18,
+    type: PathType.ABUNDANCE,
+    desc: {
+      name: 'Academy-Style Edit',
+      detail: `Increases the wearer's SPD by {{0}}%. After attacking Enemy targets that are Weakness Broken, regenerates {{1}} Energy. This effect can trigger up to <span class="text-desc">2</span> time(s) per turn.`,
+      properties: [
+        { base: 8, growth: 1 },
+        { base: 3, growth: 0.5 },
+      ],
+    },
+    beta: true,
+  },
   //---------------------
   //   Event 4 Star
   //---------------------
@@ -1124,6 +1142,24 @@ export const LightCones = [
         { base: 18, growth: 3 },
       ],
     },
+  },
+  {
+    id: '22003',
+    name: `Ninja Record: Sound Hunt`,
+    rarity: 4,
+    baseHp: 48,
+    baseAtk: 21.6,
+    baseDef: 12,
+    type: PathType.DESTRUCTION,
+    desc: {
+      name: 'Curtains Up!',
+      detail: `Increases the wearer's Max HP by {{0}}%. When losing HP or restoring HP, increases CRIT DMG by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). This effect can only trigger once per turn.`,
+      properties: [
+        { base: 12, growth: 3 },
+        { base: 18, growth: 4 },
+      ],
+    },
+    beta: true,
   },
   //---------------------
   //   5 Star
@@ -1703,6 +1739,25 @@ export const LightCones = [
         { base: 60, growth: 10 },
         { base: 10, growth: 2 },
         { base: 8, growth: 2 },
+      ],
+    },
+    beta: true,
+  },
+  {
+    id: '23033',
+    name: 'Ninjutsu Inscription: Dazzling Evilbreaker',
+    rarity: 5,
+    baseHp: 43,
+    baseAtk: 26.4,
+    baseDef: 24,
+    type: PathType.ERUDITION,
+    desc: {
+      name: 'Exorcism',
+      detail: `Increases the wearer's Break Effect by {{0}}%. When entering battle, immediately regenerates {{1}} Energy. After the wearer uses Ultimate, gains <b>Raiton</b>. After using <span class="text-desc">2</span> Basic ATKs, advances the wearer's action by {{2}}% and removes <b>Raiton</b>. After the wearer uses Ultimate, resets <b>Raiton</b>.`,
+      properties: [
+        { base: 60, growth: 10 },
+        { base: 30, growth: 2.5 },
+        { base: 50, growth: 5 },
       ],
     },
     beta: true,

@@ -5,9 +5,9 @@ import { useState } from 'react'
 export const BulletPoint = observer(
   ({ children, color = 'text-blue' }: { children: React.ReactNode; color?: string }) => {
     return (
-      <p className="pl-3">
-        <span className={classNames('mr-2', color)}>✦</span>
-        {children}
+      <p className="flex gap-2 pl-3">
+        <span className={color}>✦</span>
+        <p>{children}</p>
       </p>
     )
   }

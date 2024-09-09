@@ -842,6 +842,22 @@ export const Characters = [
     path: PathType.HUNT,
     element: Element.PHYSICAL,
   },
+  {
+    id: '1317',
+    name: 'Rappa',
+    stat: {
+      baseAtk: 87.12,
+      baseHp: 147.84,
+      baseDef: 62.7,
+      baseSpd: 102,
+      energy: 160,
+    },
+    trace: [Stats.P_ATK, Stats.BE, Stats.SPD],
+    rarity: 5,
+    path: PathType.ERUDITION,
+    element: Element.IMAGINARY,
+    beta: true,
+  },
   // Odd = Male, Even = Female
   {
     id: '8001',

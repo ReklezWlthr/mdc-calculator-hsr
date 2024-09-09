@@ -249,7 +249,7 @@ export const damageStringConstruct = (
 
   const critString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.floor(
     totalCrit
-  ).toLocaleString()}</b> = <b>${_.round(
+  ).toLocaleString()}</b> = <b>${_.floor(
     dmg
   ).toLocaleString()}</b> \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconCriticalDamage.png" />${toPercentage(
     globalCd

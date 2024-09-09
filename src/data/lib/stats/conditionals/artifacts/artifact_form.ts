@@ -63,7 +63,7 @@ export const ArtifactForm = () => {
       type: 'toggle',
       text: `Messenger Traversing Hackerspace`,
       title: `Messenger Traversing Hackerspace`,
-      content: `When the wearer uses their Ultimate on an ally, SPD for all allies increases by <span class="text-desc">12%</span> for <span class="text-desc">1</span> turn(s). This effect cannot be stacked.`,
+      content: `When the wearer uses their Ultimate on an ally, increases all Party characters' SPD by <span class="text-desc">12%</span> for <span class="text-desc">1</span> turn(s). This effect cannot be stacked.`,
       show: true,
       default: true,
       duration: 1,
@@ -95,7 +95,7 @@ export const ArtifactForm = () => {
       type: 'toggle',
       text: `Watchmaker, Master of Dream Machinations`,
       title: `Watchmaker, Master of Dream Machinations`,
-      content: `When the wearer uses their Ultimate on an ally, all allies' Break Effect increases by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s). This effect cannot be stacked.`,
+      content: `When the wearer uses their Ultimate on any Party character, increases all Party characters' Break Effect by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s). This effect cannot be stacked.`,
       show: true,
       default: true,
       duration: 2,
@@ -125,7 +125,7 @@ export const ArtifactForm = () => {
       type: 'number',
       text: `Merit Stacks`,
       title: `Merit Stacks`,
-      content: `When allies use <u>follow-up attacks</u>, the wearer receives <span class="text-desc">1</span> stack of <b>Merit</b>, stacking up to <span class="text-desc">5</span> times. Every stack of <b>Merit</b> increases the DMG dealt by the wearer's <u>follow-up attacks</u> by <span class="text-desc">5%</span>. When there are <span class="text-desc">5</span> stacks, additionally increases the wearer's CRIT DMG by <span class="text-desc">25%</span>.`,
+      content: `When a Party target use <u>follow-up attacks</u>, the wearer receives <span class="text-desc">1</span> stack of <b>Merit</b>, stacking up to <span class="text-desc">5</span> times. Every stack of <b>Merit</b> increases the DMG dealt by the wearer's <u>follow-up attacks</u> by <span class="text-desc">5%</span>. When there are <span class="text-desc">5</span> stacks, additionally increases the wearer's CRIT DMG by <span class="text-desc">25%</span>.`,
       show: true,
       default: 0,
       min: 0,
@@ -160,9 +160,34 @@ export const ArtifactForm = () => {
       default: true,
       id: '318',
     },
+    {
+      type: 'toggle',
+      text: `Scholar Lost in Erudition`,
+      title: `Scholar Lost in Erudition`,
+      content: `Increases DMG dealt by Ultimate and Skill by <span class="text-desc">20%</span>. After using Ultimate, additionally increases the DMG dealt by the next Skill by <span class="text-desc">20%</span>.`,
+      show: true,
+      default: true,
+      id: '122',
+    },
   ]
 
+  // Team-Wide
   const teamContent: IContent[] = [findContentById(content, '114'), findContentById(content, '118')]
 
-  return { content, teamContent }
+  // Single-Target
+  const allyContent: IContent[] = [
+    {
+      type: 'number',
+      text: `Sacerdos' Relived Ordeal`,
+      title: `Sacerdos' Relived Ordeal`,
+      content: `When using Skill or Ultimate on one Party target, increases the target's CRIT DMG by <span class="text-desc">20%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">2</span> time(s).`,
+      show: true,
+      default: 0,
+      min: 0,
+      max: 2,
+      id: '121',
+    },
+  ]
+
+  return { content, teamContent, allyContent }
 }

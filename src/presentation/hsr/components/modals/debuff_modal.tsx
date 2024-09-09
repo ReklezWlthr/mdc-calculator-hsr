@@ -199,7 +199,7 @@ export const DebuffModal = observer(({ statsOverride, selectedOverride, debuffOv
       <Collapsible
         label={
           <div className="flex items-center gap-2">
-            <p>Miscellaneous</p>
+            <p>Unique Debuffs</p>
             <div className="flex items-center justify-center w-6 h-6 text-sm rounded-md bg-primary-light">
               {_.size(stats.ADD_DEBUFF)}
             </div>
