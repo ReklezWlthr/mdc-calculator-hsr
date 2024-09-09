@@ -277,6 +277,11 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           source: 'Self',
           value: calcScaling(0.1, 0.02, ult, 'curved') + (c >= 2 ? 0.2 : 0),
         })
+        base.BREAK_EFF.push({
+          name: 'Ultimate',
+          source: 'Self',
+          value: 0.5,
+        })
         if (c >= 4) {
           base[Stats.P_SPD].push({
             name: 'Eidolon 4',
