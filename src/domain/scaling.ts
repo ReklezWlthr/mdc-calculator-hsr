@@ -101,3 +101,5 @@ export const EnemyHpScaling = {
     38685.29760616645, 40712.56247709459, 42841.19065210945, 45076.25016615051,
   ],
 }
+
+export const EnemyHpMultiplier = { '1': 1, '3': 1.5 }

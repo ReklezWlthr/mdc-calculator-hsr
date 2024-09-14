@@ -12,7 +12,7 @@ import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_i
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { Enemies } from '@src/data/db/enemies'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
-import { EnemyHpScaling } from '@src/domain/scaling'
+import { EnemyHpMultiplier, EnemyHpScaling } from '@src/domain/scaling'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { countDebuff } from '@src/core/utils/finder'
 
@@ -83,11 +83,15 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
           <SelectInput
             options={[
               { name: 'Base', value: '1' },
-              { name: 'MoC', value: '2' },
+              { name: 'MoC', value: '3' },
             ]}
             value={scaling}
             onChange={(value) => {
-              if (enemyData) setValue('hp', _.round(enemyData?.baseHp * EnemyHpScaling[value][(+level || 1) - 1]))
+              if (enemyData)
+                setValue(
+                  'hp',
+                  _.round(enemyData?.baseHp * EnemyHpScaling[value][(+level || 1) - 1] * EnemyHpMultiplier[value])
+                )
               setValue('scaling', value)
             }}
             style="w-[60px]"
@@ -238,7 +242,7 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
           <p>Advanced Stats</p>
           <div className="flex items-center gap-x-2 !mt-2">
             <img className="w-3.5" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconSpeed.png" />
-            <p className="pr-3 text-sm text-gray">{spd}</p>
+            <p className="pr-3 text-sm text-gray">{_.round(spd)}</p>
             {_.map(
               enemyData?.statusRes,
               (item, key) =>
