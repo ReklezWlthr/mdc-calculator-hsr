@@ -47,13 +47,13 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Launches <b>Ningu: Demonbane Petalblade</b>. The first <span class="text-desc">2</span> hits deal <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Rappa's ATK to one designated Enemy unit and <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Rappa's ATK to adjacent targets, and the <span class="text-desc">3rd</span> hit deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{2}}% of Rappa's ATK to all Enemy units.
       <br />When attacking enemies that don't have <b class="text-hsr-imaginary">Imaginary</b> Weakness, Enhanced Basic ATK can still deal Toughness Reduction equal to <span class="text-desc">50%</span> of the original Toughness Reduction value, but is unable to recover Skill Points. When Breaking Weakness, triggers the <b class="text-hsr-imaginary">Imaginary</b> Weakness Break effect.`,
       value: [
-        { base: 60, growth: 4, style: 'linear' },
-        { base: 30, growth: 2, style: 'linear' },
-        { base: 60, growth: 4, style: 'linear' },
+        { base: 60, growth: 8, style: 'linear' },
+        { base: 30, growth: 4, style: 'linear' },
+        { base: 60, growth: 8, style: 'linear' },
       ],
       level: basic,
       tag: AbilityTag.BLAST,
-      image: `https://homdgcat.wiki/images/skillicons/avatar/1317/SkillIcon_1317_Ultra.png`
+      image: `https://homdgcat.wiki/images/skillicons/avatar/1317/SkillIcon_1317_Ultra.png`,
     },
     skill: {
       energy: 30,
@@ -68,8 +68,8 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: `Nindō Supreme: Lovedeep`,
-      content: `Enters the <b>Sealform</b> state. Immediately gains <span class="text-desc">1</span> extra turn, and <span class="text-desc">3</span> points of <b class="text-hsr-imaginary">Chroma Ink</b>. At the same time, increases Weakness Break Efficiency by <span class="text-desc">50%</span> and Break Effect by {{0}}%.
-      <br />While in <b>Sealform</b>, enhances Basic ATK but cannot use Skill and Ultimate. After using Enhanced Basic ATK, consumes <span class="text-desc">1</span> point of <b class="text-hsr-imaginary">Chroma Ink</b>. When it's depleted, exits the <b>Sealform</b> state.`,
+      content: `Enters the <b>Sealform</b> state. Immediately gains <span class="text-desc">1</span> extra turn, obtains <span class="text-desc">3</span> points of <b class="text-hsr-imaginary">Chroma Ink</b>, and increases Weakness Break Efficiency by <span class="text-desc">50%</span> and Break Effect by {{0}}%.
+      <br />While in the <b>Sealform</b> state, Basic ATK is enhanced, and Skill and Ultimate cannot be used. After using Enhanced Basic ATK, consumes <span class="text-desc">1</span> point of <b class="text-hsr-imaginary">Chroma Ink</b>. When <b class="text-hsr-imaginary">Chroma Ink</b> is depleted, exits the <b>Sealform</b> state.`,
       value: [{ base: 10, growth: 2, style: 'curved' }],
       level: ult,
       tag: AbilityTag.ENHANCE,
@@ -77,7 +77,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     talent: {
       trace: 'Talent',
       title: `Ninja Tech: Endurance Gauge`,
-      content: `Whenever an Enemy target's Weakness is Broken, Rappa deals <span class="text-desc">10</span> Toughness Reduction that ignores Weakness Type to adjacent targets, and deals Break DMG equal to {{0}}% of Rappa's <b class="text-hsr-imaginary">Imaginary Break DMG</b>. The Toughness-Reducing effect works only on Enemy targets that are not yet Weakness Broken. When Breaking Weakness, triggers the <b class="text-hsr-imaginary">Imaginary</b> Weakness Break effect.`,
+      content: `Whenever an Enemy target's Weakness is Broken, Rappa deals <span class="text-desc">10</span> Toughness Reduction that ignores Weakness to adjacent targets, and deals Break DMG equal to {{0}}% of Rappa's <b class="text-hsr-imaginary">Imaginary Break DMG</b>. The Toughness-Reducing effect works only on Enemy targets that are not Weakness Broken. When a target's Weakness becomes Broken in this way, triggers the <b class="text-hsr-imaginary">Imaginary</b> Weakness Break effect.`,
       value: [{ base: 120, growth: 6, style: 'curved' }],
       level: talent,
       tag: AbilityTag.BLAST,
@@ -96,7 +96,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Ninjutsu Inscription: Sea Echo`,
-      content: `During <b>Sealform</b>, after Rappa uses Enhanced Basic ATK to deal DMG to a Weakness Broken Enemy target, converts the Toughness Reduction from this instance of DMG to <span class="text-desc">1</span> instance of <span class="text-desc">60%</span> Super Break DMG.`,
+      content: `While in the <b>Sealform</b> state, after Rappa uses Enhanced Basic ATK to deal DMG to a Weakness Broken Enemy target, converts the Toughness Reduction from this instance of DMG to <span class="text-desc">1</span> instance of <span class="text-desc">60%</span> Super Break DMG.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -111,7 +111,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c2: {
       trace: 'Eidolon 2',
       title: `Free Is the Mind Enlightened by Haikus`,
-      content: `During <b>Sealform</b>, Break Effect additionally increases by <span class="text-desc">20%</span> and the Toughness-Reducing effect of Enhanced Basic ATK against enemies without <b class="text-hsr-imaginary">Imaginary</b> Weakness additionally increases by <span class="text-desc">50%</span>.`,
+      content: `During <b>Sealform</b>, additionally increases Break Effect by <span class="text-desc">20%</span> and the Toughness-Reduction effect of Enhanced Basic ATKs against enemies without <b class="text-hsr-imaginary">Imaginary</b> Weakness by <span class="text-desc">50%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -122,7 +122,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c4: {
       trace: 'Eidolon 4',
       title: `Lost Is the Nindō Devoured by Time`,
-      content: `During <b>Sealform</b>, increases all Party units' SPD by <span class="text-desc">12%</span>.`,
+      content: `While in the <b>Sealform</b> state, increases all Party units' SPD by <span class="text-desc">12%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -133,7 +133,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: `Righteous Is the Wrath That Spares No Evil`,
-      content: `The Break DMG multiplier in Talent's effect on adjacent targets increases by <span class="text-desc">120%</span>. Moreover, the Break DMG dealt and the Toughness-Reducing effect inflicted will also apply to all Enemy targets besides the Weakness Broken target.`,
+      content: `Increases the Break DMG multiplier of Talent's effect on adjacent targets by <span class="text-desc">120%</span>, and the Break DMG and Toughness-Reducing effect also applies to all Enemy targets except the target that became Weakness Broken.`,
     },
   }
 
@@ -186,7 +186,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         ? [
             {
               name: 'Max Single Target DMG',
-              value: [{ scaling: calcScaling(0.6, 0.04, basic, 'linear'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.6, 0.08, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
@@ -196,7 +196,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             },
             {
               name: 'Blast Main Target',
-              value: [{ scaling: calcScaling(0.6, 0.04, basic, 'linear'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.6, 0.08, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
@@ -204,7 +204,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             },
             {
               name: 'Blast Adjacent',
-              value: [{ scaling: calcScaling(0.3, 0.02, basic, 'linear'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.3, 0.04, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
@@ -212,7 +212,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             },
             {
               name: 'Final AoE',
-              value: [{ scaling: calcScaling(0.6, 0.04, basic, 'linear'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.6, 0.08, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
