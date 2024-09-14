@@ -75,7 +75,7 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
               if (enemyData) setValue('hp', _.round(enemyData?.baseHp * EnemyHpScaling[scaling][(+value || 1) - 1]))
               setValue('level', value === '' ? '' : value)
             }}
-            style="w-[50px]"
+            style="!w-[60px]"
           />
         </div>
         <div className="flex flex-col gap-y-1">
@@ -94,7 +94,7 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
                 )
               setValue('scaling', value)
             }}
-            style="w-[60px]"
+            style="!w-[60px]"
           />
         </div>
       </div>
