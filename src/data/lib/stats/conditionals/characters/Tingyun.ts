@@ -68,7 +68,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: `Violet Sparknado`,
-      content: `When an enemy is attacked by Tingyun, the ally with <b>Benediction</b> immediately deals <b class="text-hsr-lightning">Supplemental Lightning DMG</b> equal to {{0}}% of that ally's ATK to the same enemy.`,
+      content: `When an enemy is attacked by Tingyun, the ally with <b>Benediction</b> immediately deals Supplemental <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of that ally's ATK to the same enemy.`,
       value: [{ base: 30, growth: 3, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,

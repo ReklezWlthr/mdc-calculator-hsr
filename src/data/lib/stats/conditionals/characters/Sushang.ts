@@ -42,7 +42,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 30,
       trace: 'Skill',
       title: `Cloudfencer Art: Mountainfall`,
-      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Sushang's ATK to a single enemy. In addition, there is a <span class="text-desc">33%</span> chance to trigger <b>Sword Stance</b> on the final hit, dealing <b class="text-hsr-physical">Supplemental Physical DMG</b> equal to {{1}}% of Sushang's ATK to the enemy.
+      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Sushang's ATK to a single enemy. In addition, there is a <span class="text-desc">33%</span> chance to trigger <b>Sword Stance</b> on the final hit, dealing Supplemental <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Sushang's ATK to the enemy.
       <br />If the enemy is inflicted with Weakness Break, <b>Sword Stance</b> is guaranteed to trigger.`,
       value: [
         { base: 105, growth: 10.5, style: 'curved' },

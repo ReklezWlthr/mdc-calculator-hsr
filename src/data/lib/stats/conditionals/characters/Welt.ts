@@ -57,7 +57,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     talent: {
       trace: 'Talent',
       title: 'Time Distortion',
-      content: `When hitting an enemy that is already <b>Slowed</b>, Welt deals <b class="text-hsr-imaginary">Supplemental Imaginary DMG</b> equal to {{0}}% of his ATK to the enemy.`,
+      content: `When hitting an enemy that is already <b>Slowed</b>, Welt deals Supplemental <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of his ATK to the enemy.`,
       value: [{ base: 30, growth: 3, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,

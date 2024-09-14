@@ -47,7 +47,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Ultimate',
       title: 'Glacial Cascade',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of March 7th's ATK to all enemies. Hit enemies have a <span class="text-desc">50%</span> <u>base chance</u> to be <b class="text-hsr-ice">Frozen</b> for <span class="text-desc">1</span> turn(s).
-      <br />While <b class="text-hsr-ice">Frozen</b>, enemies cannot take action and will receive <b class="text-hsr-ice">Supplemental Ice DMG</b> equal to {{1}}% of March 7th's ATK at the beginning of each turn.`,
+      <br />While <b class="text-hsr-ice">Frozen</b>, enemies cannot take action and will receive Supplemental <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of March 7th's ATK at the beginning of each turn.`,
       value: [
         { base: 90, growth: 6, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },
@@ -68,7 +68,7 @@ const March = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Technique',
       title: 'Freezing Beauty',
       content: `Immediately attacks the enemy. After entering battle, there is a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> a random enemy for <span class="text-desc">1</span> turn(s).
-      <br />While <b class="text-hsr-ice">Frozen</b>, the enemy cannot take action and will take <b class="text-hsr-ice">Supplemental Ice DMG</b> equal to <span class="text-desc">50%</span> of March 7th's ATK at the beginning of each turn.`,
+      <br />While <b class="text-hsr-ice">Frozen</b>, the enemy cannot take action and will take Supplemental <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">50%</span> of March 7th's ATK at the beginning of each turn.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
