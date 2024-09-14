@@ -97,7 +97,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c2: {
       trace: 'Eidolon 2',
       title: `Fortississimo`,
-      content: `While Kafka is on the field, increases all Party targets' DoT dealt by <span class="text-desc">25%</span>.`,
+      content: `While Kafka is on the field, DoT dealt by all allies increases by <span class="text-desc">25%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',

@@ -74,8 +74,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: `Crescent Transmigration`,
-      content: `When Jingliu has <span class="text-desc">2</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>, she enters the <b>Spectral Transmigration</b> state with her Action Advanced by 100% and her CRIT Rate increases by {{0}}%. Then, Jingliu's Skill <b>Transcendent Flash</b> becomes enhanced and turns into <b>Moon On Glacial River</b>, and becomes the only ability she can use in battle. When Jingliu uses an attack in the <b>Spectral Transmigration</b> state, she consumes HP from teammates by an amount equal to <span class="text-desc">4%</span> of their Max HP (this cannot reduce any teammate's HP below <span class="text-desc">1</span>).
-      Based on <span class="text-desc">540%</span> of the total HP consumed this time from all Party characters, increases Jingliu's ATK, up to  {{1}}% of her base ATK, lasting until the current attack ends. Jingliu cannot re-enter the <b>Spectral Transmigration</b> state again until the current one ends. <b class="text-hsr-ice">Syzygy</b> can stack up to <span class="text-desc">3</span> times. When <b class="text-hsr-ice">Syzygy</b> stacks become <span class="text-desc">0</span>, exits the <b>Spectral Transmigration</b> state.`,
+      content: `When Jingliu has <span class="text-desc">2</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>, she enters the <b>Spectral Transmigration</b> state with her Action Advanced by 100% and her CRIT Rate increases by {{0}}%. Then, Jingliu's Skill <b>Transcendent Flash</b> becomes enhanced and turns into <b>Moon On Glacial River</b>, and becomes the only ability she can use in battle. When Jingliu uses an attack in the <b>Spectral Transmigration</b> state, she consumes HP from all other allies equal to <span class="text-desc">4%</span> of their respective Max HP (this cannot reduce allies' HP to lower than <span class="text-desc">1</span>). Jingliu's ATK increases by <span class="text-desc">540%</span> of the total HP consumed from all allies in this attack, capped at {{1}}% of her base ATK, lasting until the current attack ends. Jingliu cannot enter the <b>Spectral Transmigration</b> state again until the current <b>Spectral Transmigration</b> state ends. <b class="text-hsr-ice">Syzygy</b> can stack up to <span class="text-desc">3</span> times. When <b class="text-hsr-ice">Syzygy</b> stacks become <span class="text-desc">0</span>, Jingliu will exit the <b>Spectral Transmigration</b> state.`,
       value: [
         { base: 40, growth: 1, style: 'curved' },
         { base: 90, growth: 9, style: 'curved' },
@@ -86,7 +85,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: `Shine of Truth`,
-      content: `After using Technique, creates a Special Dimension around this unit for <span class="text-desc">20</span> seconds. Enemies in this Special Dimension become <b class="text-hsr-ice">Frozen</b>. After entering battle with enemies in the Special Dimension, immediately regenerates <span class="text-desc">15</span> Energy for this unit and gains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>, with a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> Enemy targets for <span class="text-desc">1</span> turn(s). While <b class="text-hsr-ice">Frozen</b>, Enemy targets cannot take action, and receive Supplemental <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">80%</span> of Jingliu's ATK at the start of every turn. Only <span class="text-desc">1</span> dimension created by Party characters can exist at the same time.`,
+      content: `After using this Technique, creates a dimension around Jingliu that lasts for <span class="text-desc">20</span> seconds, and all enemies in this dimension will become <b class="text-hsr-ice">Frozen</b>. After entering combat with enemies in the dimension, Jingliu immediately regenerates <span class="text-desc">15</span> Energy and obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>, with a <span class="text-desc">100%</span> <u>base chance</u> of <b class="text-hsr-ice">Freezing</b> enemy targets for <span class="text-desc">1</span> turn(s). While <b class="text-hsr-ice">Frozen</b>, enemy targets cannot take action, and receive Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">80%</span> of Jingliu's ATK at the start of every turn. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
       tag: AbilityTag.IMPAIR,
     },
     a2: {
@@ -314,7 +313,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       }
       if (form.jingliu_c1) {
         base.ULT_SCALING.push({
-          name: 'E1 Supplemental DMG',
+          name: 'E1 Additional DMG',
           value: [{ scaling: 1, multiplier: Stats.ATK }],
           element: Element.ICE,
           property: TalentProperty.NORMAL,
@@ -323,7 +322,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         })
         if (form.spectral_transmigration)
           base.SKILL_SCALING.push({
-            name: 'E1 Supplemental DMG',
+            name: 'E1 Additional DMG',
             value: [{ scaling: 1, multiplier: Stats.ATK }],
             element: Element.ICE,
             property: TalentProperty.NORMAL,

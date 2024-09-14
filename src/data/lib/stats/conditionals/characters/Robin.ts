@@ -44,7 +44,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: `Pinion's Aria`,
-      content: `Increase DMG dealt by all Party targets by {{0}}%, lasting for <span class="text-desc">3</span> turn(s). This duration reduces by <span class="text-desc">1</span> at the start of Robin's every turn.`,
+      content: `Increase DMG dealt by all allies by {{0}}%, lasting for <span class="text-desc">3</span> turn(s). This duration reduces by <span class="text-desc">1</span> at the start of Robin's every turn.`,
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: skill,
       tag: AbilityTag.SUPPORT,
@@ -53,8 +53,8 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: `Vox Harmonique, Opus Cosmique	`,
-      content: `Robin enters the <b>Concerto</b> state and enables teammates (i.e., excluding this unit) to immediately take action.
-      <br />While in the <b>Concerto</b> state, increase all Party characters' ATK by {{0}}% of Robin's ATK plus {{1}}. Moreover, after every attack by Party targets, Robin deals Supplemental <b class="text-hsr-physical">Physical DMG</b> equal to {{2}}% of her ATK for <span class="text-desc">1</span> time, with a fixed CRIT Rate for this damage set at <span class="text-desc">100%</span> and fixed CRIT DMG set at <span class="text-desc">150%</span>.
+      content: `Robin enters the <b>Concerto</b> state and makes all other allies immediately take action.
+      <br />While in the <b>Concerto</b> state, increase all allies' ATK by {{0}}% of Robin's ATK plus {{1}}. Moreover, after every attack by allies, Robin deals Additional <b class="text-hsr-physical">Physical DMG</b> equal to {{2}}% of her ATK for <span class="text-desc">1</span> time, with a fixed CRIT Rate for this damage set at <span class="text-desc">100%</span> and fixed CRIT DMG set at <span class="text-desc">150%</span>.
       <br />While in the <b>Concerto</b> state, Robin is immune to Crowd Control debuffs and cannot enter her turn or take action until the <b>Concerto</b> state ends.
       <br />A <b>Concerto</b> countdown appears on the Action Order bar. When the countdown's turn begins, Robin exits the <b>Concerto</b> state and immediately takes action. The countdown has its own fixed SPD of <span class="text-desc">90</span>.`,
       value: [
@@ -68,7 +68,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     talent: {
       trace: 'Talent',
       title: `Tonal Resonance`,
-      content: `Increase all Party characters' CRIT DMG by {{0}}%. Moreover, after Party targets attack enemy targets, Robin additionally regenerates <span class="text-desc">2</span> Energy for herself.`,
+      content: `Increase all allies' CRIT DMG by {{0}}%. Moreover, after allies attack enemy targets, Robin additionally regenerates <span class="text-desc">2</span> Energy for herself.`,
       value: [{ base: 5, growth: 1.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.SUPPORT,
@@ -76,7 +76,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     technique: {
       trace: 'Technique',
       title: `Overture of Inebriation`,
-      content: `After using Technique, creates a special dimension around the character that lasts for <span class="text-desc">15</span> seconds. Enemies within this dimension will not attack Robin and will follow Robin while the dimension is active. After entering battle while the dimension is active, Robin regenerates <span class="text-desc">5</span> Energy at the start of each wave. Only <span class="text-desc">1</span> dimension created by Party characters can exist at the same time.`,
+      content: `After using Technique, creates a special dimension around the character that lasts for <span class="text-desc">15</span> seconds. Enemies within this dimension will not attack Robin and will follow Robin while the dimension is active. After entering battle while the dimension is active, Robin regenerates <span class="text-desc">5</span> Energy at the start of each wave. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
       tag: AbilityTag.SUPPORT,
     },
     a2: {
@@ -87,7 +87,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Impromptu Flourish`,
-      content: `While the Concerto state is active, increases all Party targets' CRIT DMG dealt by <span class="text-desc">25%</span> when launching <u>follow-up attacks</u>.`,
+      content: `While the Concerto state is active, the CRIT DMG dealt when all allies launch <u>follow-up attacks</u> increases by <span class="text-desc">25%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -97,12 +97,12 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c1: {
       trace: 'Eidolon 1',
       title: `Land of Smiles`,
-      content: `While the <b>Concerto</b> state is active, all Party targets' All-Type RES PEN increases by <span class="text-desc">24%</span>.`,
+      content: `While the <b>Concerto</b> state is active, all allies' All-Type RES PEN increases by <span class="text-desc">24%</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Afternoon Tea For Two`,
-      content: `While the <b>Concerto</b> state is active, all Party targets' SPD increases by <span class="text-desc">16%</span>. The Talent's Energy Regeneration effect additionally increases by <span class="text-desc">1</span>.`,
+      content: `While the <b>Concerto</b> state is active, all allies' SPD increases by <span class="text-desc">16%</span>. The Talent's Energy Regeneration effect additionally increases by <span class="text-desc">1</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -113,7 +113,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c4: {
       trace: 'Eidolon 4',
       title: `Raindrop Key`,
-      content: `When using the Ultimate, dispels Crowd Control debuffs from all Party targets. While Robin is in the <b>Concerto</b> state, increases the Effect RES of all Party units by <span class="text-desc">50%</span>.`,
+      content: `When using the Ultimate, dispels Crowd Control debuffs from all allies. While Robin is in the <b>Concerto</b> state, increases the Effect RES of all allies by <span class="text-desc">50%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -124,7 +124,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: `Moonless Midnight`,
-      content: `While the <b>Concerto</b> state is active, the CRIT DMG of the Supplemental <b class="text-hsr-physical">Physical DMG</b> caused by the Ultimate increases by <span class="text-desc">450%</span>. The effect of Moonless Midnight can trigger up to <span class="text-desc">8</span> time(s). And the trigger count resets each time the Ultimate is used.`,
+      content: `While the <b>Concerto</b> state is active, the CRIT DMG of the Additional <b class="text-hsr-physical">Physical DMG</b> caused by the Ultimate increases by <span class="text-desc">450%</span>. The effect of Moonless Midnight can trigger up to <span class="text-desc">8</span> time(s). And the trigger count resets each time the Ultimate is used.`,
     },
   }
 
@@ -322,7 +322,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
                 (s) => {
                   if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
                     s.push({
-                      name: "Concerto's Supplemental DMG",
+                      name: "Concerto's Additional DMG",
                       value: [{ scaling: calcScaling(0.72, 0.048, skill, 'curved'), multiplier: Stats.ATK }],
                       element: Element.PHYSICAL,
                       property: TalentProperty.ADD,

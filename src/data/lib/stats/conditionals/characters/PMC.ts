@@ -78,7 +78,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       title: `Treasure of the Architects`,
       content: `Each time the Trailblazer is hit, they gain <span class="text-desc">1</span> stack of <b class="text-hsr-fire">Magma Will</b> for a max of <span class="text-desc">8</span> stack(s).
       <br />When <b class="text-hsr-fire">Magma Will</b> has no fewer than <span class="text-desc">4</span> stacks, the Trailblazer's Basic ATK becomes enhanced, dealing DMG to a single enemy and enemies adjacent to it.
-      <br />When the Trailblazer uses Basic ATK, Skill, or Ultimate, provides all Party characters with a <b class="text-indigo-300">Shield</b> that can offset DMG equal to {{0}}% of the Trailblazer's DEF plus {{1}}, lasting for <span class="text-desc">2</span> turn(s).`,
+      <br />When the Trailblazer uses Basic ATK, Skill, or Ultimate, apply a <b class="text-indigo-300">Shield</b> to all allies that absorbs DMG equal to {{0}}% of the Trailblazer's DEF plus {{1}}. The <b class="text-indigo-300">Shield</b> lasts for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 4, growth: 0.25, style: 'heal' },
         { base: 20, growth: 12, style: 'flat' },
@@ -95,7 +95,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     a2: {
       trace: 'Ascension 2 Passive',
       title: `The Strong Defend the Weak`,
-      content: `After using Skill, all Party characters receive <span class="text-desc">15%</span> reduced DMG for <span class="text-desc">1</span> turn(s).`,
+      content: `After using the Skill, the DMG taken by all allies reduces by <span class="text-desc">15%</span> for <span class="text-desc">1</span> turn(s).`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -115,7 +115,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     c2: {
       trace: 'Eidolon 2',
       title: `Time-Defying Tenacity`,
-      content: `The <b class="text-indigo-300">Shield</b> provided to all Party characters by the Trailblazer's Talent will additionally offset DMG equal to <span class="text-desc">2%</span> of the Trailblazer's DEF plus <span class="text-desc">27</span>.`,
+      content: `The <b class="text-indigo-300">Shield</b> applied to all allies from the Trailblazer's Talent will block extra DMG equal to <span class="text-desc">2%</span> of the Trailblazer's DEF plus <span class="text-desc">27</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',

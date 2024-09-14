@@ -55,7 +55,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Ultimate',
       title: `G—Gonna Be Late!`,
       content: `Has <span class="text-desc">3</span> Hits Per Action by default. First, uses <span class="text-desc">1</span> hit to deal <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Misha's ATK to a single target enemy. Then, the rest of the hits each deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Misha's ATK to a single random enemy. Just before each hit lands, there is a {{1}}% <u>base chance</u> to <b class="text-hsr-ice">Freeze</b> the target, lasting for <span class="text-desc">1</span> turn.
-      <br />While <b class="text-hsr-ice">Frozen</b>, enemy targets cannot take any actions, and at the start of their turn, they receive Supplemental <b class="text-hsr-ice">Ice DMG</b> equal to {{2}}% of Misha's ATK.
+      <br />While <b class="text-hsr-ice">Frozen</b>, enemy targets cannot take any actions, and at the start of their turn, they receive Additional <b class="text-hsr-ice">Ice DMG</b> equal to {{2}}% of Misha's ATK.
       <br />This Ultimate can possess up to <span class="text-desc">10</span> Hits Per Action. After the Ultimate is used, its Hits Per Action will be reset to the default level.`,
       value: [
         { base: 36, growth: 2.4, style: 'curved' },
@@ -68,7 +68,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     talent: {
       trace: 'Talent',
       title: `Horological Escapement`,
-      content: `For every <span class="text-desc">1</span> Skill Point consumed by any character in the Party, Misha's next Ultimate delivers <span class="text-desc">1</span> more Hit(s) Per Action and Misha regenerates {{0}} Energy.`,
+      content: `Whenever any ally consumes <span class="text-desc">1</span> Skill Point, Misha's next Ultimate delivers <span class="text-desc">1</span> more Hit(s) Per Action and Misha regenerates {{0}} Energy.`,
       value: [{ base: 1, growth: 0.1, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -76,7 +76,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     technique: {
       trace: 'Technique',
       title: `Wait, You Are So Beautiful!`,
-      content: `After using the Technique, creates a dimension that lasts for <span class="text-desc">15</span> seconds. Enemies caught in the dimension are inflicted with Dream Prison and stop all their actions. Upon entering battle against enemies afflicted with Dream Prison, increases the Hits Per Action for Misha's next Ultimate by <span class="text-desc">2</span> hit(s). Only <span class="text-desc">1</span> dimension created by Party characters can exist at the same time.`,
+      content: `After using the Technique, creates a dimension that lasts for <span class="text-desc">15</span> seconds. Enemies caught in the dimension are inflicted with Dream Prison and stop all their actions. Upon entering battle against enemies afflicted with Dream Prison, increases the Hits Per Action for Misha's next Ultimate by <span class="text-desc">2</span> hit(s). Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
       tag: AbilityTag.IMPAIR,
     },
     a2: {

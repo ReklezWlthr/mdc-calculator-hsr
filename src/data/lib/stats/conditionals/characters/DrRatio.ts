@@ -60,7 +60,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: 'Mold of Idolatry',
-      content: `After using Technique, creates a special dimension that Taunts nearby enemies, lasting for <span class="text-desc">10</span> second(s). After entering battle with enemies in this special dimension, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce each single enemy target's SPD by <span class="text-desc">15%</span> for <span class="text-desc">2</span> turn(s). Only <span class="text-desc">1</span> dimension created by Party characters can exist at the same time.`,
+      content: `After using Technique, creates a special dimension that Taunts nearby enemies, lasting for <span class="text-desc">10</span> second(s). After entering battle with enemies in this special dimension, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce each single enemy target's SPD by <span class="text-desc">15%</span> for <span class="text-desc">2</span> turn(s). Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
       tag: AbilityTag.IMPAIR,
     },
     a2: {
@@ -86,7 +86,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c2: {
       trace: 'Eidolon 2',
       title: 'The Divine Is in the Details',
-      content: `When his Talent's <u>follow-up attack</u> hits a target, for every debuff the target has, additionally deals <b class="text-hsr-imaginary">Imaginary Supplemental DMG</b> equal to <span class="text-desc">20%</span> of Dr. Ratio's ATK. This effect can be triggered for a maximum of <span class="text-desc">4</span> time(s) during each <u>follow-up attack</u>.`,
+      content: `When his Talent's <u>follow-up attack</u> hits a target, for every debuff the target has, additionally deals <b class="text-hsr-imaginary">Imaginary Additional DMG</b> equal to <span class="text-desc">20%</span> of Dr. Ratio's ATK. This effect can be triggered for a maximum of <span class="text-desc">4</span> time(s) during each <u>follow-up attack</u>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -262,7 +262,7 @@ const DrRatio = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           })
         if (c >= 2 && count)
           base.TALENT_SCALING.push({
-            name: 'Supplemental DMG per Debuff',
+            name: 'Additional DMG per Debuff',
             value: [{ scaling: 0.2 * count, multiplier: Stats.ATK }],
             element: Element.IMAGINARY,
             property: TalentProperty.ADD,

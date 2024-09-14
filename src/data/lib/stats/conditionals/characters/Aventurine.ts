@@ -42,7 +42,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       energy: 30,
       trace: 'Skill',
       title: `Cornerstone Deluxe`,
-      content: `Provides all Party characters with a <b class="text-indigo-300">Fortified Wager</b> shield that can block DMG equal to {{0}}% of Aventurine's DEF plus {{1}}, lasting for <span class="text-desc">3</span> turn(s). When repeatedly gaining <b class="text-indigo-300">Fortified Wager</b>, the <b class="text-indigo-300">Shield</b> effect can stack, up to <span class="text-desc">200%</span> of the <b class="text-indigo-300">Shield</b> provided by the current Skill.`,
+      content: `Provides all allies with a <b class="text-indigo-300">Fortified Wager</b> shield that can block DMG equal to {{0}}% of Aventurine's DEF plus {{1}}, lasting for <span class="text-desc">3</span> turn(s). When repeatedly gaining <b class="text-indigo-300">Fortified Wager</b>, the <b class="text-indigo-300">Shield</b> effect can stack, up to <span class="text-desc">200%</span> of the <b class="text-indigo-300">Shield</b> provided by the current Skill.`,
       value: [
         { base: 16, growth: 1, style: 'heal' },
         { base: 80, growth: 48, style: 'flat' },
@@ -66,7 +66,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       energy: c >= 4 ? 10 : 7,
       trace: 'Talent',
       title: `Shot Loaded Right`,
-      content: `For a Party character with <b class="text-indigo-300">Fortified Wager</b>, their Effect RES increases by {{0}}%, and when they get attacked, Aventurine gains <span class="text-desc">1</span> point of <b>Blind Bet</b>. When Aventurine has <b class="text-indigo-300">Fortified Wager</b>, he can resist Crowd Control debuffs. This effect can trigger again after <span class="text-desc">2</span> turn(s). Aventurine additionally gains <span class="text-desc">1</span> point(s) of <b>Blind Bet</b> after getting attacked. Upon reaching <span class="text-desc">7</span> points of <b>Blind Bet</b>, Aventurine consumes the <span class="text-desc">7</span> points to launch a <span class="text-desc">7</span>-hit <u>follow-up attack</u>, with each hit dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Aventurine's DEF to a single random enemy. <b>Blind Bet</b> is capped at <span class="text-desc">10</span> points.`,
+      content: `For any single ally with <b class="text-indigo-300">Fortified Wager</b>, their Effect RES increases by {{0}}%, and when they get attacked, Aventurine gains <span class="text-desc">1</span> point of <b>Blind Bet</b>. When Aventurine has <b class="text-indigo-300">Fortified Wager</b>, he can resist Crowd Control debuffs. This effect can trigger again after <span class="text-desc">2</span> turn(s). Aventurine additionally gains <span class="text-desc">1</span> point(s) of <b>Blind Bet</b> after getting attacked. Upon reaching <span class="text-desc">7</span> points of <b>Blind Bet</b>, Aventurine consumes the <span class="text-desc">7</span> points to launch a <span class="text-desc">7</span>-hit <u>follow-up attack</u>, with each hit dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Aventurine's DEF to a single random enemy. <b>Blind Bet</b> is capped at <span class="text-desc">10</span> points.`,
       value: [
         { base: 25, growth: 2.5, style: 'curved' },
         { base: 12.5, growth: 1.25, style: 'curved' },
@@ -83,7 +83,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       <br />There is a small chance for DEF to increase by <span class="text-desc">60%</span>.
       <br />
       <br />When this Technique is used repeatedly, the acquired effect with the highest buff value is retained.
-      <br />When the next battle starts, increases all Party characters' DEF by the corresponding value, lasting for <span class="text-desc">3</span> turn(s).`,
+      <br />When the next battle starts, increases all allies' DEF by the corresponding value, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
@@ -93,17 +93,17 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Hot Hand`,
-      content: `When battle starts, grants all Party characters a <b class="text-indigo-300">Fortified Wager</b> shield, whose <b class="text-indigo-300">Shield</b> effect is equal to <span class="text-desc">100%</span> of the one provided by the Skill, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `When battle starts, grants all allies a <b class="text-indigo-300">Fortified Wager</b> shield, whose <b class="text-indigo-300">Shield</b> effect is equal to <span class="text-desc">100%</span> of the one provided by the Skill, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Bingo!`,
-      content: `After a teammate with <b class="text-indigo-300">Fortified Wager</b> launches a <u>follow-up attack</u>, Aventurine accumulates <span class="text-desc">1</span> Blind Bet point. This effect can trigger up to <span class="text-desc">3</span> time(s). And its trigger count resets at the start of Aventurine's turn. After Aventurine launches his Talent's <u>follow-up attack</u>, provides all Party characters with a <b class="text-indigo-300">Fortified Wager</b> that can block DMG equal to <span class="text-desc">7.2%</span> of Aventurine's DEF plus <span class="text-desc">96</span>, and additionally grants a <b class="text-indigo-300">Fortified Wager</b> that can block DMG equal to <span class="text-desc">7.2%</span> of Aventurine's DEF plus <span class="text-desc">96</span> to the Party character with the lowest <b class="text-indigo-300">Shield</b> effect, lasting for <span class="text-desc">3</span> turns.`,
+      content: `After an ally with <b class="text-indigo-300">Fortified Wager</b> launches a <u>follow-up attack</u>, Aventurine accumulates <span class="text-desc">1</span> Blind Bet point. This effect can trigger up to <span class="text-desc">3</span> time(s). And its trigger count resets at the start of Aventurine's turn. After Aventurine launches his Talent's <u>follow-up attack</u>, provides all allies with a <b class="text-indigo-300">Fortified Wager</b> that can block DMG equal to <span class="text-desc">7.2%</span> of Aventurine's DEF plus <span class="text-desc">96</span>, and additionally grants a <b class="text-indigo-300">Fortified Wager</b> that can block DMG equal to <span class="text-desc">7.2%</span> of Aventurine's DEF plus <span class="text-desc">96</span> to the ally with the lowest <b class="text-indigo-300">Shield</b> effect, lasting for <span class="text-desc">3</span> turns.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Prisoner's Dilemma`,
-      content: `Increases CRIT DMG by <span class="text-desc">20%</span> for Party characters with <b class="text-indigo-300">Fortified Wager</b>. After using the Ultimate, provides all Party characters with a <b class="text-indigo-300">Fortified Wager</b> shield, whose <b class="text-indigo-300">Shield</b> effect is equal to <span class="text-desc">100%</span> of the one provided by the Skill, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `Increases CRIT DMG by <span class="text-desc">20%</span> for allies with <b class="text-indigo-300">Fortified Wager</b>. After using the Ultimate, provides all allies with a <b class="text-indigo-300">Fortified Wager</b> shield, whose <b class="text-indigo-300">Shield</b> effect is equal to <span class="text-desc">100%</span> of the one provided by the Skill, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c2: {
       trace: 'Eidolon 2',

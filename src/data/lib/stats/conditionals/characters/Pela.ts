@@ -72,7 +72,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     a4: {
       trace: 'Ascension 4 Passive',
       title: `The Secret Strategy`,
-      content: `While Pela is on the field, all Party targets' Effect Hit Rate increases by <span class="text-desc">10%</span>.`,
+      content: `When Pela is on the battlefield, all allies' Effect Hit Rate increases by <span class="text-desc">10%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -109,7 +109,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c6: {
       trace: 'Eidolon 6',
       title: `Feeble Pursuit`,
-      content: `When Pela attacks a debuffed enemy, she deals Supplemental <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">40%</span> of Pela's ATK to the enemy.`,
+      content: `When Pela attacks a debuffed enemy, she deals Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">40%</span> of Pela's ATK to the enemy.`,
     },
   }
 
@@ -278,7 +278,7 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       }
       if (c >= 6)
         base.TALENT_SCALING.push({
-          name: 'E6 Supplemental DMG',
+          name: 'E6 Additional DMG',
           value: [{ scaling: 0.4, multiplier: Stats.ATK }],
           element: Element.ICE,
           property: TalentProperty.ADD,

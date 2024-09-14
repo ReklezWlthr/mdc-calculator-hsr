@@ -46,7 +46,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       energy: 30,
       trace: 'Skill',
       title: 'Special Brew',
-      content: `Immediately restores HP for one designated Party character by {{0}} HP.`,
+      content: `Immediately heals a target ally for {{0}} HP.`,
       value: [{ base: 200, growth: 140, style: 'pure' }],
       level: skill,
       tag: AbilityTag.RESTORE,
@@ -94,12 +94,12 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c1: {
       trace: 'Eidolon 1',
       title: 'Salty Dog',
-      content: `When entering the battle, Gallagher regenerates <span class="text-desc">20</span> Energy and increases Effect RES by <span class="text-desc">50%</span>.`,
+      content: `When Gallagher enters the battle, regenerates <span class="text-desc">20</span> Energy and increases Effect RES by <span class="text-desc">50%</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Lion's Tail`,
-      content: `When using Skill, dispels <span class="text-desc">1</span> debuff(s) from one designated Party character. At the same time, increases their Effect RES by <span class="text-desc">30%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `When using the Skill, removes <span class="text-desc">1</span> debuff(s) from a target ally. At the same time, increases their Effect RES by <span class="text-desc">30%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',

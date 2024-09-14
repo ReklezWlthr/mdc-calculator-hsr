@@ -107,7 +107,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: 'Shattering Shambles',
-      content: `After Seele uses her Ultimate, inflict the target enemy with <b class="text-hsr-quantum">Butterfly Flurry</b> for <span class="text-desc">1</span> turn(s). Enemies suffering from <b class="text-hsr-quantum">Butterfly Flurry</b> will take Supplemental <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">15%</span> of Seele's Ultimate DMG every time they are attacked. If the target enemy is defeated by the <b class="text-hsr-quantum">Butterfly Flurry</b> DMG triggered by other allies' attacks, Seele's Talent will not be triggered.
+      content: `After Seele uses her Ultimate, inflict the target enemy with <b class="text-hsr-quantum">Butterfly Flurry</b> for <span class="text-desc">1</span> turn(s). Enemies suffering from <b class="text-hsr-quantum">Butterfly Flurry</b> will take Additional <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">15%</span> of Seele's Ultimate DMG every time they are attacked. If the target enemy is defeated by the <b class="text-hsr-quantum">Butterfly Flurry</b> DMG triggered by other allies' attacks, Seele's Talent will not be triggered.
       <br />When Seele is knocked down, the <b class="text-hsr-quantum">Butterfly Flurry</b> inflicted on the enemies will be removed.`,
     },
   }

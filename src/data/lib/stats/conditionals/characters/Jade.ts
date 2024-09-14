@@ -47,8 +47,8 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       energy: 30,
       trace: 'Skill',
       title: `Acquisition Surety`,
-      content: `Makes one designated Party character become the <b>Debt Collector</b> and increases their SPD by <span class="text-desc">30</span>, lasting for <span class="text-desc">3</span> turn(s).
-      <br />After the <b>Debt Collector</b> attacks, deals <span class="text-desc">1</span> instance of Supplemental <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Jade's ATK to each enemy target hit, and consumes the Debt Collector's HP by an amount equal to <span class="text-desc">2%</span> of their Max HP. If the current HP is insufficient, reduces HP to <span class="text-desc">1</span>.
+      content: `Makes a single target ally become the <b>Debt Collector</b> and increases their SPD by <span class="text-desc">30</span>, lasting for <span class="text-desc">3</span> turn(s).
+      <br />After the <b>Debt Collector</b> attacks, deals <span class="text-desc">1</span> instance of Additional <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Jade's ATK to each enemy target hit, and consumes the Debt Collector's HP by an amount equal to <span class="text-desc">2%</span> of their Max HP. If the current HP is insufficient, reduces HP to <span class="text-desc">1</span>.
       <br />If Jade becomes the <b>Debt Collector</b>, she cannot gain the SPD boost effect, and her attacks do not consume HP.
       <br />When the <b>Debt Collector</b> exists on the field, Jade cannot use her Skill. At the start of Jade's every turn, the <b>Debt Collector</b>'s duration reduces by <span class="text-desc">1</span> turn.`,
       value: [{ base: 15, growth: 1, style: 'curved' }],
@@ -336,7 +336,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
             _.forEach([x.BASIC_SCALING, x.SKILL_SCALING, x.ULT_SCALING, x.TALENT_SCALING], (s) => {
               if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
                 s.push({
-                  name: `Debt Collector's Supplemental DMG`,
+                  name: `Debt Collector's Additional DMG`,
                   value: [{ scaling: calcScaling(0.15, 0.01, skill, 'curved'), multiplier: Stats.ATK }],
                   element: Element.QUANTUM,
                   property: TalentProperty.ADD,

@@ -45,7 +45,7 @@ const Hanya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Skill',
       title: `Samsara, Locked`,
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Hanya's ATK to a single enemy, then applies <b>Burden</b> to them.
-      <br />For every <span class="text-desc">2</span> Basic ATKs, Skills, or Ultimates used by Party targets on the Enemy target with <b>Burden</b>, immediately recovers <span class="text-desc">1</span> Skill Point for Party characters. <b>Burden</b> is only active on the most recent target it is applied to, and will be dispelled automatically after the Skill Point recovery effect has been triggered <span class="text-desc">2</span> times.`,
+      <br />For every <span class="text-desc">2</span> Basic ATKs, Skills, or Ultimates allies use on an enemy with <b>Burden</b>, allies will immediately recover <span class="text-desc">1</span> Skill Point. <b>Burden</b> is only active on the latest target it is applied to, and will be dispelled automatically after the Skill Point recovery effect has been triggered <span class="text-desc">2</span> times.`,
       value: [{ base: 120, growth: 12, style: 'curved' }],
       level: skill,
       tag: AbilityTag.ST,
@@ -54,7 +54,7 @@ const Hanya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: `Ten-Lords' Decree, All Shall Obey`,
-      content: `Increases one designated Party character's SPD by {{0}}% of Hanya's SPD and increases this target's ATK by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `Increases the SPD of a target ally by {{0}}% of Hanya's SPD and increases the same target ally's ATK by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 15, growth: 0.5, style: 'curved' },
         { base: 36, growth: 2.4, style: 'curved' },
@@ -78,7 +78,7 @@ const Hanya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Scrivener`,
-      content: `Party characters triggering the Skill Point recovery effect from <b>Burden</b> will have their ATK increased by <span class="text-desc">10%</span> for <span class="text-desc">1</span> turns.`,
+      content: `Allies triggering <b>Burden</b>'s Skill Point recovery effect have their ATK increased by <span class="text-desc">10%</span> for <span class="text-desc">1</span> turns.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -93,7 +93,7 @@ const Hanya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c1: {
       trace: 'Eidolon 1',
       title: `One Heart`,
-      content: `When a Party character with the Ultimate's effect defeats an Enemy target, Hanya's <u>Action Advances</u> by <span class="text-desc">15%</span>. This effect can only trigger <span class="text-desc">1</span> time(s) per turn.`,
+      content: `When an ally with Hanya's Ultimate's effect defeats an enemy, Hanya's action is <u>Advanced Forward</u> by <span class="text-desc">15%</span>. This effect can only be triggered <span class="text-desc">1</span> time(s) per turn.`,
     },
     c2: {
       trace: 'Eidolon 2',

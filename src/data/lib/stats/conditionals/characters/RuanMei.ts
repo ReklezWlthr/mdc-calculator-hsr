@@ -44,7 +44,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 30,
       trace: 'Skill',
       title: `String Sings Slow Swirls`,
-      content: `After using her Skill, Ruan Mei gains <b class="text-hsr-ice">Overtone</b>, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> at the start of Ruan Mei's turn. When Ruan Mei has <b class="text-hsr-ice">Overtone</b>, all Party targets' DMG increases by {{0}}% and Weakness Break Efficiency increases by <span class="text-desc">50%</span>.`,
+      content: `After using her Skill, Ruan Mei gains <b class="text-hsr-ice">Overtone</b>, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> at the start of Ruan Mei's turn. When Ruan Mei has <b class="text-hsr-ice">Overtone</b>, all allies' DMG increases by {{0}}% and Weakness Break Efficiency increases by <span class="text-desc">50%</span>.`,
       value: [{ base: 16, growth: 1.6, style: 'curved' }],
       level: skill,
       tag: AbilityTag.SUPPORT,
@@ -53,8 +53,8 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Ultimate',
       title: `Petals to Stream, Repose in Dream`,
-      content: `Ruan Mei deploys a Zone that lasts for <span class="text-desc">2</span> turns. The Zone's duration decreases by <span class="text-desc">1</span> at the start of her turn.
-      <br />While inside the Zone, all Party targets' All-Type RES PEN increases by {{0}}% and their attacks apply <b>Thanatoplum Rebloom</b> to the enemies hit.
+      content: `Ruan Mei deploys a field that lasts for <span class="text-desc">2</span> turns. The field's duration decreases by <span class="text-desc">1</span> at the start of her turn.
+      <br />While inside the field, all allies' All-Type RES PEN increases by {{0}}% and their attacks apply <b>Thanatoplum Rebloom</b> to the enemies hit.
       <br />When these enemies attempt to recover from Weakness Break, <b>Thanatoplum Rebloom</b> is triggered, extending the duration of their Weakness Break, delaying their action by an amount equal to <span class="text-desc">20%</span> of Ruan Mei's Break Effect plus <span class="text-desc">10%</span>, and dealing Break DMG equal to {{1}}% of Ruan Mei's <b class="text-hsr-ice">Ice Break DMG</b>.
       <br />Enemy targets cannot have <b>Thanatoplum Rebloom</b> re-applied to them until they recover from Weakness Break.`,
       value: [
@@ -67,7 +67,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: `Somatotypical Helix`,
-      content: `Increases SPD by {{0}}% for the team (excluding this character). When any Party target Break an enemy target's Weakness, Ruan Mei deals to this enemy target Break DMG equal to {{1}}% of her <b class="text-hsr-ice">Ice Break DMG</b>.`,
+      content: `Increases SPD by {{0}}% for the team (excluding this character). When allies Break an enemy target's Weakness, Ruan Mei deals to this enemy target Break DMG equal to {{1}}% of her <b class="text-hsr-ice">Ice Break DMG</b>.`,
       value: [
         { base: 8, growth: 0.2, style: 'curved' },
         { base: 60, growth: 6, style: 'curved' },
@@ -79,13 +79,13 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Technique',
       title: `Silken Serenade`,
       content: `After using the Technique, gains Silken Serenade. At the start of the next battle, automatically triggers the Skill for <span class="text-desc">1</span> time(s) without consuming Skill Points.
-      <br />In Simulated Universe, when Ruan Mei has <b>Silken Serenade</b>, Party characters actively attacking enemies will always be regarded as attacking their Weakness to enter battle, and this attack can reduce all enemies' Toughness regardless of Weakness types. When breaking Weakness, triggers Weakness Break Effect corresponding to the attacker's Type. For every Blessing in possession up to <span class="text-desc">20</span> Blessing(s), additionally increases the Toughness-Reducing DMG of this attack by <span class="text-desc">100%</span>. After breaking an enemy target's Weakness, additionally deals to the enemy target Break DMG equal to <span class="text-desc">100%</span> of Ruan Mei's <b class="text-hsr-ice">Ice Break DMG</b>.`,
+      <br />In Simulated Universe, when Ruan Mei has <b>Silken Serenade</b>, the team actively attacking enemies will always be regarded as attacking their Weakness to enter battle, and this attack can reduce all enemies' Toughness regardless of Weakness types. When breaking Weakness, triggers Weakness Break Effect corresponding to the attacker's Type. For every Blessing in possession up to <span class="text-desc">20</span> Blessing(s), additionally increases the Toughness-Reducing DMG of this attack by <span class="text-desc">100%</span>. After breaking an enemy target's Weakness, additionally deals to the enemy target Break DMG equal to <span class="text-desc">100%</span> of Ruan Mei's <b class="text-hsr-ice">Ice Break DMG</b>.`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Inert Respiration`,
-      content: `Increases Break Effect by <span class="text-desc">20%</span> for all Party characters.`,
+      content: `Increases Break Effect by <span class="text-desc">20%</span> for all allies.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -95,17 +95,17 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Candle Lights on Still Waters`,
-      content: `In battle, for every <span class="text-desc">10%</span> of Ruan Mei's Break Effect that exceeds <span class="text-desc">120%</span>, her Skill's DMG Boost effect for all Party targets additionally increases by <span class="text-desc">6%</span>, up to a maximum of <span class="text-desc">36%</span>.`,
+      content: `In battle, for every <span class="text-desc">10%</span> of Ruan Mei's Break Effect that exceeds <span class="text-desc">120%</span>, her Skill additionally increases allies' DMG by <span class="text-desc">6%</span>, up to a maximum of <span class="text-desc">36%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Neuronic Embroidery`,
-      content: `While Ultimate's Zone is deployed, DMG dealt by all Party targets ignores <span class="text-desc">20%</span> of the target's DEF.`,
+      content: `While the Ultimate's field is deployed, the DMG dealt by all allies ignores <span class="text-desc">20%</span> of the target's DEF.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Reedside Promenade`,
-      content: `While Ruan Mei is on the field, increases all Party targets' ATK by <span class="text-desc">40%</span> when they deal DMG to any Weakness Broken Enemy target.`,
+      content: `With Ruan Mei on the field, all allies increase their ATK by <span class="text-desc">40%</span> when dealing DMG to enemies with Weakness Break.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -127,7 +127,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: `Sash Cascade`,
-      content: `Extends the duration of the Ultimate's Zone by <span class="text-desc">1</span> turn(s). The Talent's Break DMG multiplier additionally increases by <span class="text-desc">200%</span>.`,
+      content: `Extends the duration of the Ultimate's field by <span class="text-desc">1</span> turn(s). The Talent's Break DMG multiplier additionally increases by <span class="text-desc">200%</span>.`,
     },
   }
 

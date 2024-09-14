@@ -42,7 +42,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 30,
       trace: 'Skill',
       title: `Emboldening Salvo`,
-      content: `Obtains <span class="text-desc">2</span> stack(s) of <b class="text-hsr-imaginary">Roaring Bowstrings</b>, up to a maximum of <span class="text-desc">2</span> stacks. While Yukong has <b class="text-hsr-imaginary">Roaring Bowstrings</b>, increases all Party targets' ATK by {{0}}%. Every time a Party target's turn ends, Yukong loses <span class="text-desc">1</span> stack of <b class="text-hsr-imaginary">Roaring Bowstrings</b>.
+      content: `Obtains <span class="text-desc">2</span> stack(s) of <b class="text-hsr-imaginary">Roaring Bowstrings</b> (to a maximum of <span class="text-desc">2</span> stacks). When <b class="text-hsr-imaginary">Roaring Bowstrings</b> is active, the ATK of all allies increases by {{0}}%, and every time an ally's turn ends, Yukong loses <span class="text-desc">1</span> stack of <b class="text-hsr-imaginary">Roaring Bowstrings</b>.
       <br />When it's the turn where Yukong gains <b class="text-hsr-imaginary">Roaring Bowstrings</b> by using Skill, <b class="text-hsr-imaginary">Roaring Bowstrings</b> will not be removed.`,
       value: [{ base: 40, growth: 4, style: 'curved' }],
       level: skill,
@@ -52,7 +52,7 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 5,
       trace: 'Ultimate',
       title: 'Diving Kestrel',
-      content: `If Yukong has <b class="text-hsr-imaginary">Roaring Bowstrings</b> when her Ultimate is used, additionally increases all Party targets' CRIT Rate by {{0}}% and CRIT DMG by {{1}}%. At the same time, deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{2}}% of Yukong's ATK to a single enemy.`,
+      content: `If <b class="text-hsr-imaginary">Roaring Bowstrings</b> is active on Yukong when her Ultimate is used, additionally increases all allies' CRIT Rate by {{0}}% and CRIT DMG by {{1}}%. At the same time, deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{2}}% of Yukong's ATK to a single enemy.`,
       value: [
         { base: 21, growth: 0.7, style: 'curved' },
         { base: 39, growth: 2.6, style: 'curved' },
@@ -93,12 +93,12 @@ const Yukong = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c1: {
       trace: 'Eidolon 1',
       title: `Aerial Marshal`,
-      content: `Upon entering battle, increases all Party characters' SPD by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `At the start of battle, increases the SPD of all allies by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Skyward Command`,
-      content: `While any Party character's current Energy is equal to their Max Energy, Yukong additionally regenerates <span class="text-desc">5</span> energy. This effect can only trigger once per Party unit.  trigger count for this effect resets after Yukong uses her Ultimate.`,
+      content: `When any ally's current energy is equal to its energy limit, Yukong regenerates an additional <span class="text-desc">5</span> energy. This effect can only be triggered once for each ally. The trigger count is reset after Yukong casts her Ultimate.`,
     },
     c3: {
       trace: 'Eidolon 3',

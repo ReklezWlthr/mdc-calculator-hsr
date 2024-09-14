@@ -35,10 +35,10 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       energy: 30,
       trace: 'Skill',
       title: 'Allow Changes?',
-      content: `There is a {{0}}% <u>base chance</u> to add 1 Weakness of an on-field Party character's Type to one designated Enemy unit. The Enemy unit's RES to that Weakness Type reduces by by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s). If the Enemy target already has that Weakness Type, then the RES Reduction effect for that Weakness Type will not trigger.
-      <br />Each enemy can only have 1 Weakness added by Silver Wolf. When Silver Wolf adds another Weakness to the same target, only the most recently added Weakness will be kept.
-      <br />There is a <span class="text-desc">100%</span> <u>base chance</u> to additionally reduce this target's All-Type RES by {{1}}% for <span class="text-desc">2</span> turn(s).
-      <br />Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{2}}% of Silver Wolf's ATK to this target.`,
+      content: `There is a {{0}}% <u>base chance</u> to add 1 Weakness of an on-field ally's Type to the target enemy. This also reduces the enemy's DMG RES to that Weakness Type by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s). If the enemy already has that Type Weakness, the effect of DMG RES reduction to that Weakness Type will not be triggered.
+      <br />Each enemy can only have 1 Weakness implanted by Silver Wolf. When Silver Wolf implants another Weakness to the target, only the most recent implanted Weakness will be kept.
+      <br />In addition, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce the All-Type RES of the enemy further by {{1}}% for <span class="text-desc">2</span> turn(s).
+      <br />Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{2}}% of Silver Wolf's ATK to this enemy.`,
       value: [
         { base: 75, growth: 1, style: 'curved' },
         { base: 7.5, growth: 0.25, style: 'curved' },
@@ -113,7 +113,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     c4: {
       trace: 'Eidolon 4',
       title: 'Bounce Attack',
-      content: `After using her Ultimate to attack enemies, deals Supplemental <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">20%</span> of Silver Wolf's ATK for every debuff currently on the enemy target. This effect can be triggered for a maximum of <span class="text-desc">5</span> time(s) during each use of her Ultimate.`,
+      content: `After using her Ultimate to attack enemies, deals Additional <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">20%</span> of Silver Wolf's ATK for every debuff currently on the enemy target. This effect can be triggered for a maximum of <span class="text-desc">5</span> time(s) during each use of her Ultimate.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -418,7 +418,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     ) => {
       if (c >= 4)
         base.ULT_SCALING.push({
-          name: 'Supplemental DMG Per Debuff',
+          name: 'Additional DMG Per Debuff',
           value: [{ scaling: 0.2 * _.min([_.sumBy(debuffs, (item) => item.count), 5]), multiplier: Stats.ATK }],
           element: Element.QUANTUM,
           property: TalentProperty.ADD,

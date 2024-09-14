@@ -57,7 +57,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     talent: {
       trace: 'Talent',
       title: `Galvanic Chords`,
-      content: `After Serval attacks, deals Supplemental <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to all <b class="text-hsr-lightning">Shocked</b> enemies.`,
+      content: `After Serval attacks, deals Additional <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Serval's ATK to all <b class="text-hsr-lightning">Shocked</b> enemies.`,
       value: [{ base: 36, growth: 3.6, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -91,7 +91,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c2: {
       trace: 'Eidolon 2',
       title: `Encore!`,
-      content: `Every time Serval's Talent is triggered to deal Supplemental DMG, she regenerates <span class="text-desc">4</span> Energy.`,
+      content: `Every time Serval's Talent is triggered to deal Additional DMG, she regenerates <span class="text-desc">4</span> Energy.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -220,7 +220,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       ]
       base.TALENT_SCALING = [
         {
-          name: 'Supplemental DMG',
+          name: 'Additional DMG',
           value: [{ scaling: calcScaling(0.36, 0.036, talent, 'curved'), multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: TalentProperty.ADD,
@@ -273,7 +273,7 @@ const Serval = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         })
       if (c >= 1)
         base.BASIC_SCALING.push({
-          name: 'E1 Supplemental DMG',
+          name: 'E1 Additional DMG',
           value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear') * 0.6, multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: TalentProperty.ADD,
