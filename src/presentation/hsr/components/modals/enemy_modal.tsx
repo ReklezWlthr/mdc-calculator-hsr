@@ -131,7 +131,23 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
               <TextInput value={store.hp?.toString()} onChange={(values) => setValue('hp', values as any)} min={0} />
             </div>
             <div className="flex flex-col w-full gap-y-1">
-              <p className="text-sm">Toughness</p>
+              <div className="flex items-center gap-2">
+                <p className="text-sm">Toughness</p>
+                <Tooltip
+                  title="Regarding Enemies with Multiple Toughness Bars"
+                  body={
+                    <p className="font-normal">
+                      This should only represent the Toughness value of a <b>SINGLE</b> Toughness Bar even when the
+                      target has multiple of them (e.g. Sunday Boss). The target will sustain Break DMG every time a Bar
+                      is depleted but will not go into Weakness Broken state until all of them are depleted. Every
+                      effects triggered will only consider a single-bar worth of Toughness value.
+                    </p>
+                  }
+                  style="w-[450px]"
+                >
+                  <i className="fa-regular fa-question-circle text-gray" />
+                </Tooltip>
+              </div>
               <TextInput
                 value={store.toughness?.toString()}
                 onChange={(values) => setValue('toughness', values as any)}
