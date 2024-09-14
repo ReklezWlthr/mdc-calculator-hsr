@@ -248,14 +248,14 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         addDebuff(debuffs, DebuffTypes.OTHER)
         if (c >= 2) {
           base[Stats.CRIT_DMG].push({
-            name: 'Ascension 6 Passive',
+            name: 'Eidolon 2',
             source: 'Self',
-            value: 0.4,
+            value: 0.2,
           })
         }
         if (a.a6) {
           base.FUA_VUL.push({
-            name: 'Eidolon 1',
+            name: 'Ascension 6 Passive',
             source: 'Self',
             value: 0.25,
           })
@@ -280,14 +280,14 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         })
         if (c >= 2) {
           base[Stats.CRIT_DMG].push({
-            name: 'Ascension 6 Passive',
+            name: 'Eidolon 2',
             source: 'Moze',
-            value: 0.4,
+            value: 0.2,
           })
         }
         if (a.a6) {
           base.FUA_VUL.push({
-            name: 'Eidolon 1',
+            name: 'Ascension 6 Passive',
             source: 'Moze',
             value: 0.25,
           })

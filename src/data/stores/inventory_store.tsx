@@ -46,6 +46,7 @@ export class Inventory {
     if (!artifact || !aId) return false
     const index = _.findIndex(this.artifacts, ['id', aId])
     this.artifacts[index] = artifact
+    this.artifacts = [...this.artifacts]
     return true
   }
 

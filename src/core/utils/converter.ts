@@ -181,7 +181,7 @@ export const fromScanner = (rawData: Record<string, any>) => {
       quality: r.rarity,
       subList: _.map(r.substats, (sub) => ({
         stat: ScannerStatsMap[sub.key],
-        value: sub.value,
+        value: _.round(sub.value, 1),
       })),
     }
   })
