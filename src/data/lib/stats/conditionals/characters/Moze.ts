@@ -101,7 +101,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c2: {
       trace: 'Eidolon 2',
       title: `Wrathbearer`,
-      content: `When all allies deal DMG to the enemy target marked as <b class="text-hsr-lightning">Prey</b>, increases CRIT DMG by <span class="text-desc">20%</span>.`,
+      content: `When all allies deal DMG to the enemy target marked as <b class="text-hsr-lightning">Prey</b>, increases CRIT DMG by <span class="text-desc">40%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -250,7 +250,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           base[Stats.CRIT_DMG].push({
             name: 'Eidolon 2',
             source: 'Self',
-            value: 0.2,
+            value: 0.4,
           })
         }
         if (a.a6) {
@@ -282,7 +282,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           base[Stats.CRIT_DMG].push({
             name: 'Eidolon 2',
             source: 'Moze',
-            value: 0.2,
+            value: 0.4,
           })
         }
         if (a.a6) {
