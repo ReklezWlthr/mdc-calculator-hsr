@@ -304,7 +304,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
       if (form.befog) {
         base.BREAK_VUL.push({
-          name: 'Ultimate',
+          name: 'Befog',
           source: 'Self',
           value: calcScaling(0.15, 0.01, ult, 'curved'),
         })
@@ -354,7 +354,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ) => {
       if (form.befog) {
         base.BREAK_VUL.push({
-          name: 'Ultimate',
+          name: 'Befog',
           source: 'Lingsha',
           value: calcScaling(0.15, 0.01, ult, 'curved'),
         })

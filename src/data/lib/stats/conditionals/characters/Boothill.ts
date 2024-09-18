@@ -289,7 +289,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       if (form.standoff) {
         base.BA_ALT = true
         base.VULNERABILITY.push({
-          name: 'Skill',
+          name: 'Standoff',
           source: 'Self',
           value: calcScaling(0.15, 0.015, skill, 'curved') + (c >= 4 ? 0.12 : 0),
         })

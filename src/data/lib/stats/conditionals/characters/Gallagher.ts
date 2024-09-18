@@ -264,7 +264,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       if (form.gall_ba) base.BA_ALT = true
       if (form.besotted) {
         base.BREAK_VUL.push({
-          name: `Ultimate`,
+          name: `Besotted`,
           source: 'Self',
           value: calcScaling(0.06, 0.006, talent, 'curved'),
         })
@@ -316,7 +316,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     ) => {
       if (form.besotted)
         base.BREAK_VUL.push({
-          name: `Ultimate`,
+          name: `Besotted`,
           source: 'Gallagher',
           value: calcScaling(0.06, 0.006, talent, 'curved'),
         })

@@ -222,7 +222,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
       if (form.jq_ult) {
         base.ULT_VUL.push({
-          name: `Ultimate`,
+          name: `Pyrograph Arcanum`,
           source: 'Self',
           value: calcScaling(0.09, 0.006, ult, 'curved'),
         })
@@ -280,7 +280,7 @@ const Jiaoqiu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ) => {
       if (form.jq_ult) {
         base.ULT_VUL.push({
-          name: `Ultimate`,
+          name: `Pyrograph Arcanum`,
           source: 'Jiaoqiu',
           value: calcScaling(0.09, 0.006, ult, 'curved'),
         })
