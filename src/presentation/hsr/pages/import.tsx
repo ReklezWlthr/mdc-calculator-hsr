@@ -223,12 +223,14 @@ export const ImportExport = observer(() => {
                     <br />- The resulting data includes owned characters and relics. Builds are also automatically
                     created with currently equipped Light Cone and relics. Builds will not be created for characters
                     without Light Cone equipped.
-                    <br />- Since this method allows for a full data import of your account, the imported data will
-                    overwrite <span className="text-red">EVERYTHING</span> you have saved in this calculator, and the
-                    size of the data might affect the calculator's performance. Please proceed with caution.
                     <br />
                     - To download the scanner, use the Download button below.
                     <br />
+                    <br />
+                    <b className="text-red">IMPORTANT</b>: Since this method allows for a full data import of your
+                    account, the imported data will overwrite <span className="text-red">EVERYTHING</span> you have
+                    saved in this calculator, and the size of the data might affect the calculator's performance. Please
+                    proceed with caution.
                   </span>
                 }
                 style="w-[550px]"

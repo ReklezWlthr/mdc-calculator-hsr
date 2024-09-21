@@ -43,9 +43,10 @@ export const LCTooltip = ({
       return _.replace(
         acc,
         curr[0],
-        `<span class="text-desc">${properties?.[index]?.base + properties?.[index]?.growth * (refinement - 1)}${
-          isPercentage ? '%' : ''
-        }</span>`
+        `<span class="text-desc">${_.round(
+          properties?.[index]?.base + properties?.[index]?.growth * (refinement - 1),
+          2
+        )}${isPercentage ? '%' : ''}</span>`
       )
     },
     data?.desc?.detail

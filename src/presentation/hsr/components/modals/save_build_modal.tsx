@@ -36,7 +36,7 @@ export const SaveBuildModal = observer(({ index }: { index: number }) => {
         note,
         cId: char?.cId,
         isDefault: false,
-        ...char?.equipments,
+        ..._.cloneDeep(char?.equipments),
       })
       if (pass) {
         isDefault && buildStore.setDefault(id)
@@ -48,7 +48,7 @@ export const SaveBuildModal = observer(({ index }: { index: number }) => {
         })
       }
     }
-  }, [index, name, note])
+  }, [index, name, note, isDefault])
 
   return (
     <div className="space-y-4">
