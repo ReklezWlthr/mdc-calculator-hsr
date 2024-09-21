@@ -128,11 +128,12 @@ const Hanya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     {
       type: 'toggle',
       id: 'hanya_talent',
-      text: `Burden DMG Bonus`,
+      text: `Burden`,
       ...talents.talent,
       show: true,
       default: false,
       duration: 2,
+      unique: true,
     },
     {
       type: 'toggle',
@@ -214,7 +215,7 @@ const Hanya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
       if (form.hanya_talent)
         base[Stats.ALL_DMG].push({
-          name: 'Talent',
+          name: 'Burden',
           source: 'Self',
           value: calcScaling(0.15, 0.015, talent, 'curved') + (c >= 6 ? 0.1 : 0),
         })
@@ -250,7 +251,7 @@ const Hanya = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     ) => {
       if (aForm.hanya_talent)
         base[Stats.ALL_DMG].push({
-          name: 'Talent',
+          name: 'Burden',
           source: 'Hanya',
           value: calcScaling(0.15, 0.015, talent, 'curved') + (c >= 6 ? 0.1 : 0),
         })

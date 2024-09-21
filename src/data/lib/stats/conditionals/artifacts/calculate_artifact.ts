@@ -126,7 +126,7 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
     base.SKILL_DMG.push({
       name: `4-Piece`,
       source: 'Scholar Lost in Erudition',
-      value: 0.3,
+      value: 0.25,
     })
 
   return base
@@ -149,7 +149,7 @@ export const calculateTeamRelic = (base: StatsObject, form: Record<string, any>,
     base[Stats.CRIT_DMG].push({
       name: `4-Piece`,
       source: `Sacerdos' Relived Ordeal`,
-      value: 0.2 * form['121'],
+      value: 0.18 * form['121'],
     })
   }
 
