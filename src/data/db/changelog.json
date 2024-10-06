@@ -1,6 +1,13 @@
 [
   {
     "version": "1.1.0-6",
+    "date": "October 6th, 2024",
+    "desc": [
+      "Now <b class=\"text-red\">Live</b>: <span class=\"text-desc\">Lingsha</span>, and Light Cone <span class=\"text-desc\">Shadowed by Night</span>"
+    ]
+  },
+  {
+    "version": "1.1.0-6",
     "date": "September 21th, 2024",
     "desc": [
       "Content Version: <span class=\"text-desc\">v2.6v3</span>",

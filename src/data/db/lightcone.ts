@@ -1069,7 +1069,6 @@ export const LightCones = [
         { base: 8, growth: 1 },
       ],
     },
-    beta: true,
   },
   {
     id: '21048',
