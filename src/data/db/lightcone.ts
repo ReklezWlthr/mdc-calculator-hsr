@@ -1152,7 +1152,7 @@ export const LightCones = [
     type: PathType.DESTRUCTION,
     desc: {
       name: 'Curtains Up!',
-      detail: `Increases the wearer's Max HP by {{0}}%. When losing HP or restoring HP, increases CRIT DMG by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). This effect can only trigger <span class="text-desc">1</span> time per turn.`,
+      detail: `Increases the wearer's Max HP by {{0}}%. When losing or restoring this unit's HP, increases CRIT DMG by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). This effect can only trigger once time per turn.`,
       properties: [
         { base: 12, growth: 3 },
         { base: 18, growth: 4 },
@@ -1755,7 +1755,7 @@ export const LightCones = [
       properties: [
         { base: 60, growth: 10 },
         { base: 30, growth: 2.5 },
-        { base: 60, growth: 10 },
+        { base: 50, growth: 5 },
       ],
     },
     beta: true,

@@ -481,7 +481,7 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [],
     desc: [
       `Increases SPD by <span class="text-desc">6%</span>.`,
-      `When using Skill or Ultimate on one ally target, increases the target's CRIT DMG by <span class="text-desc">18%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">2</span> time(s).`,
+      `When using Skill or Ultimate on one ally target, increases the ability target's CRIT DMG by <span class="text-desc">18%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">2</span> time(s).`,
     ],
     set: [
       `Sacerdos' Melodic Earrings`,
@@ -494,7 +494,7 @@ export const RelicSets: IArtifact[] = [
     id: '122',
     name: `Scholar Lost in Erudition`,
     icon: '71039',
-    bonus: [{ stat: Stats.CRIT_RATE, value: 0.06 }],
+    bonus: [{ stat: Stats.CRIT_RATE, value: 0.08 }],
     bonusAdd: [],
     add: (base) => {
       base.ULT_DMG.push({
@@ -510,8 +510,8 @@ export const RelicSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases CRIT Rate by <span class="text-desc">6%</span>.`,
-      `Increases DMG dealt by Ultimate and Skill by <span class="text-desc">20%</span>. After using Ultimate, additionally increases the DMG dealt by the next Skill by <span class="text-desc">25%</span>.`,
+      `Increases CRIT Rate by <span class="text-desc">8%</span>.`,
+      `Increases DMG dealt by Skill and Ultimate by <span class="text-desc">20%</span>. After using Ultimate, additionally increases the DMG dealt by the next Skill by <span class="text-desc">25%</span>.`,
     ],
     set: [
       `Scholar's Silver-Rimmed Monocle`,

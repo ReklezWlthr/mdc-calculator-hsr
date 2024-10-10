@@ -35,7 +35,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 20,
       trace: 'Basic ATK',
       title: `Ninjutsu: Rise Above Tumbles`,
-      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Rappa's ATK to one designated Enemy unit.`,
+      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Rappa's ATK to one designated enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
@@ -44,8 +44,8 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 20,
       trace: 'Enhanced Basic ATK',
       title: `Ningu: Demonbane Petalblade`,
-      content: `Launches <b>Ningu: Demonbane Petalblade</b>. The first <span class="text-desc">2</span> hits deal <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Rappa's ATK to one designated Enemy unit and <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Rappa's ATK to adjacent targets, and the <span class="text-desc">3rd</span> hit deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{2}}% of Rappa's ATK to all Enemy units.
-      <br />Enhanced Basic ATK will not recover Skill Points. When attacking enemies that don't have <b class="text-hsr-imaginary">Imaginary</b> Weakness, Enhanced Basic ATK can still deal Toughness Reduction equal to <span class="text-desc">50%</span> of the original Toughness Reduction value. When Breaking Weakness, triggers the <b class="text-hsr-imaginary">Imaginary</b> Weakness Break effect.`,
+      content: `Launches <b>Ningu: Demonbane Petalblade</b>. The first <span class="text-desc">2</span> hits deal <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Rappa's ATK to one designated enemy and <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Rappa's ATK to adjacent targets, and the <span class="text-desc">3rd</span> hit deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{2}}% of Rappa's ATK to all enemies.
+      <br />Enhanced Basic ATK will not recover Skill Points. Attacking enemies that don't have <b class="text-hsr-imaginary">Imaginary</b> Weakness can still reduce Toughness, whose effect is equal to <span class="text-desc">50%</span> of the original Toughness Reduction. When Breaking Weakness, triggers the <b class="text-hsr-imaginary">Imaginary</b> Weakness Break effect.`,
       value: [
         { base: 60, growth: 8, style: 'linear' },
         { base: 30, growth: 4, style: 'linear' },
@@ -59,7 +59,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: `Ninja Strike: Rooted Resolute`,
-      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Rappa's ATK to all Enemy units.`,
+      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Rappa's ATK to all enemies.`,
       value: [{ base: 60, growth: 6, style: 'curved' }],
       level: skill,
       tag: AbilityTag.AOE,
@@ -77,11 +77,11 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     talent: {
       trace: 'Talent',
       title: `Ninja Tech: Endurance Gauge`,
-      content: `When enemy targets' Weakness are Broken, Rappa deals Break DMG equal to {{0}}% of Rappa's <b class="text-hsr-imaginary">Imaginary Break DMG</b> to them that additionally Bounces <span class="text-desc">2</span> time(s). Each instance of DMG deals Break DMG equal to {{1}}% of Rappa's <b class="text-hsr-imaginary">Imaginary Break DMG</b> and <span class="text-desc">5</span> Toughness Reduction regardless of Weakness Type to random enemy units. The Toughness Reduction effect only takes effect against enemy targets with Toughness greater than <span class="text-desc">0</span>. The added instances of DMG will prioritize targets with Toughness greater than <span class="text-desc">0</span>.
-      <br />When inflicting Weakness Break, triggers the <b class="text-hsr-imaginary">Imaginary</b> Weakness Break effect.`,
+      content: `Each time the enemy target is Weakness Broken, Rappa gains <span class="text-desc">1</span> point of <b>Charge</b>, up to a max of <span class="text-desc">10</span> points of <b>Charge</b>. When Rappa next launches the third hit of <b>Ningu: Demonbane Petalblade</b>, additionally deals Break DMG equal to {{0}}% of Rappa's <b class="text-hsr-imaginary">Imaginary Break DMG</b> to all enemies. This DMG can ignore Weakness Type to reduce <span class="text-desc">2</span> Toughness, consuming all <b>Charge</b>. Each point of <b>Charge</b> increases the Break DMG multiplier by {{1}}% and increases the Toughness Reduction that can ignore Weakness Type by <span class="text-desc">1</span>.
+      <br />When Breaking Weakness, triggers the <b class="text-hsr-imaginary">Imaginary</b> Weakness Break effect.`,
       value: [
-        { base: 120, growth: 6, style: 'curved' },
-        { base: 50, growth: 2.5, style: 'curved' },
+        { base: 30, growth: 3, style: 'curved' },
+        { base: 25, growth: 2.5, style: 'curved' },
       ],
       level: talent,
       tag: AbilityTag.BLAST,
@@ -89,33 +89,33 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     technique: {
       trace: 'Technique',
       title: `Ninja Dash: By Leaps and Bounds`,
-      content: `After using Technique, enters the Graffiti state for <span class="text-desc">20</span> seconds. While in the Graffiti state, move forward rapidly for a set distance and attack any enemies touched. Block all enemies' incoming during the movement. Using an attack in the Graffiti state can pre-emptively end the state's duration. After entering combat via attacking enemies, ignores Weakness Type to deal <span class="text-desc">30</span> Toughness Reduction to each enemy target, deals Break DMG equal to <span class="text-desc">200%</span> of Rappa's <b class="text-hsr-imaginary">Imaginary Break DMG</b> to the targets, and deals Break DMG equal to <span class="text-desc">180%</span> of Rappa's <b class="text-hsr-imaginary">Imaginary Break DMG</b> to the adjacent targets. At the same time, this unit regenerates <span class="text-desc">15</span> Energy.`,
+      content: `After using Technique, enters the Graffiti state for <span class="text-desc">20</span> seconds. While in the Graffiti state, move forward rapidly for a set distance and attack any enemies touched. During the rapid movement, can block all enemies' attacks. Using an attack in the "Graffiti" state can end the state's duration early. After entering combat via attacking enemies, deals <span class="text-desc">30</span> Toughness Reduction regardless of Weakness Type and Break DMG equal to <span class="text-desc">200%</span> of Rappa's <b class="text-hsr-imaginary">Imaginary Break DMG</b> to each enemy target, and deals Break DMG equal to <span class="text-desc">180%</span> of Rappa's <b class="text-hsr-imaginary">Imaginary Break DMG</b> to adjacent targets. At the same time, this unit regenerates <span class="text-desc">10</span> Energy.`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Ninjutsu Inscription: Sky High`,
-      content: `When the Weakness of Elite enemy targets or greater is broken, Rappa regenerates <span class="text-desc">10</span> Energy.`,
+      content: `When the Weakness of an elite-level or higher enemy is broken, Rappa additionally gains <span class="text-desc">1</span> point(s) of <b>Charge</b> and regenerates <span class="text-desc">10</span> Energy.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Ninjutsu Inscription: Sea Echo`,
-      content: `While in the <b>Sealform</b> state, after Rappa uses Enhanced Basic ATK to deal DMG to a Weakness Broken Enemy target, converts the Toughness Reduction from this instance of DMG to <span class="text-desc">1</span> instance of <span class="text-desc">60%</span> Super Break DMG.`,
+      content: `While in the <b>Sealform</b> state, after Rappa uses Enhanced Basic ATK to deal DMG to a Weakness Broken enemy target, converts the Toughness Reduction from this instance of DMG to <span class="text-desc">1</span> instance of <span class="text-desc">60%</span> Super Break DMG.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Ninjutsu Inscription: Withered Leaf`,
-      content: `When Enemy target becomes Weakness Broken, increases the Break DMG taken by <span class="text-desc">3%</span>. If Rappa's current ATK is higher than <span class="text-desc">2,000</span>, for every <span class="text-desc">100</span> of Rappa's current ATK that excess ATK, additionally increase this boost by <span class="text-desc">1%</span>, up to a max additional increase of <span class="text-desc">12%</span>. This effect lasts for <span class="text-desc">2</span> turn(s).`,
+      content: `When an enemy target becomes Weakness Broken, increases the Break DMG taken by <span class="text-desc">2%</span>. If Rappa's current ATK is higher than <span class="text-desc">2,400</span>, for every <span class="text-desc">100</span> of Rappa's current ATK that excess ATK, additionally increases this value by <span class="text-desc">1%</span>, up to a max additional increase of <span class="text-desc">8%</span>. This effect lasts for <span class="text-desc">2</span> turn(s).`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Returned Is the Revenant With No Ferry Toll`,
-      content: `When using Ultimate to enter the <b>Sealform</b> state, DMG dealt by Rappa ignores <span class="text-desc">15%</span> of the targets' DEF, and Rappa regenerates <span class="text-desc">20</span> Energy when she leaves the <b>Sealform</b> state.`,
+      content: `During the <b>Sealform</b> state entered by using Ultimate, DMG dealt by Rappa ignores <span class="text-desc">15%</span> of the targets' DEF. After exiting the <b>Sealform</b> state, regenerates <span class="text-desc">20</span> Energy.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Free Is the Mind Enlightened by Haikus`,
-      content: `The Toughness Reduction of the first <span class="text-desc">2</span> hits of the Enhanced Basic ATK against the designated enemy unit increases by <span class="text-desc">50%</span>.`,
+      content: `The Enhanced Basic ATK's first <span class="text-desc">2</span> hits have their Toughness Reduction against the one designated enemy increased by <span class="text-desc">50%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -126,7 +126,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c4: {
       trace: 'Eidolon 4',
       title: `Lost Is the Nindō Devoured by Time`,
-      content: `While in the <b>Sealform</b> state, increases all Party units' SPD by <span class="text-desc">12%</span>.`,
+      content: `While in the <b>Sealform</b> state, increases all allies' SPD by <span class="text-desc">12%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -137,7 +137,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: `Righteous Is the Wrath That Spares No Evil`,
-      content: `The Break DMG multiplier of the Talent's effect increases by <span class="text-desc">400%</span>on the enemy target that triggered it, and the number of additional instances of DMG increases by <span class="text-desc">1</span>.`,
+      content: `When battle starts, Rappa gains <span class="text-desc">5</span> point(s) of her Talent's <b>Charge</b>, whose upper limit is <span class="text-desc">5</span> point(s). After launching the third hit of <b>Ningu: Demonbane Petalblade</b>, gains <span class="text-desc">5</span> point(s) of <b>Charge</b>.`,
     },
   }
 
@@ -150,6 +150,16 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       show: true,
       default: true,
       sync: true,
+    },
+    {
+      type: 'number',
+      id: 'rappa_charge',
+      text: `Charge`,
+      ...talents.talent,
+      show: true,
+      default: 10,
+      max: c >= 6 ? 15 : 10,
+      min: 0,
     },
     {
       type: 'toggle',
@@ -222,6 +232,18 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               type: TalentType.BA,
               break: 5,
             },
+            {
+              name: 'Talent Break DMG',
+              value: [],
+              multiplier:
+                calcScaling(0.3, 0.03, talent, 'curved') +
+                form.rappa_charge * calcScaling(0.25, 0.025, talent, 'curved'),
+              element: Element.IMAGINARY,
+              property: TalentProperty.BREAK,
+              type: TalentType.TALENT,
+              break: 2 + form.rappa_charge,
+              sum: true,
+            },
           ]
         : [
             {
@@ -243,34 +265,6 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.SKILL,
           break: 10,
           sum: true,
-        },
-      ]
-      base.TALENT_SCALING = [
-        {
-          name: 'Max Single Target DMG',
-          value: [],
-          multiplier:
-            calcScaling(2.2, 0.11, talent, 'curved') + (c >= 6 ? 4 + calcScaling(0.5, 0.025, talent, 'curved') : 0),
-          element: Element.IMAGINARY,
-          property: TalentProperty.BREAK,
-          type: TalentType.TALENT,
-          sum: true,
-        },
-        {
-          name: 'Main Target',
-          value: [],
-          multiplier: calcScaling(1.2, 0.06, talent, 'curved') + (c >= 6 ? 4 : 0),
-          element: Element.IMAGINARY,
-          property: TalentProperty.BREAK,
-          type: TalentType.TALENT,
-        },
-        {
-          name: 'Bounce',
-          value: [],
-          multiplier: calcScaling(0.5, 0.025, talent, 'curved'),
-          element: Element.IMAGINARY,
-          property: TalentProperty.BREAK,
-          type: TalentType.TALENT,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -373,12 +367,12 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         const x = all[index]
         _.forEach(all, (item) => {
           if (form.rappa_a6) {
-            const base = _.min([_.max([0, x.getAtk() - 2000]) / 100, 12])
+            const base = _.min([_.max([0, x.getAtk() - 2400]) / 100, 8])
             const multiplier = 0.01
             item.BREAK_VUL.push({
               name: 'Ascension 6 Passive',
               source: 'Self',
-              value: 0.03 + base * multiplier,
+              value: 0.02 + base * multiplier,
               base: `(${_.floor(base * 100).toLocaleString()} ÷ 100)`,
               multiplier,
               flat: '3%',
