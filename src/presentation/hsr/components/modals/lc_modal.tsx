@@ -11,6 +11,8 @@ import classNames from 'classnames'
 import { findCharacter } from '@src/core/utils/finder'
 import getConfig from 'next/config'
 import { getPathImage } from '@src/core/utils/fetcher'
+import { Tooltip } from '@src/presentation/components/tooltip'
+import { formatScaleString, getBaseStat } from '@src/core/utils/data_format'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -80,38 +82,103 @@ export const LCModal = observer(({ index, setWeapon, pathOverride }: LCModalProp
         </div>
       </div>
       <div className="grid w-full grid-cols-10 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
-        {_.map(filteredWeapon, (item) => (
-          <div
-            className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95"
-            onClick={() => {
-              set(index, { wId: item.id })
-              if (item.id === '2057') set(index, { refinement: 1 })
-              modalStore.closeModal()
-            }}
-            key={item.name}
-          >
-            <div className="relative">
-              <img
-                src={getPathImage(item.type)}
-                className="absolute p-1 rounded-full w-7 h-7 top-2 left-2 bg-primary"
-                title={item.type}
-              />
-              <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
-                <RarityGauge rarity={item.rarity} />
+        {_.map(filteredWeapon, (item) => {
+          const minAtk = getBaseStat(item?.baseAtk, 1, 1)
+          const maxAtk = getBaseStat(item?.baseAtk, 90, 6)
+          const minHp = getBaseStat(item?.baseHp, 1, 1)
+          const maxHp = getBaseStat(item?.baseHp, 90, 6)
+          const minDef = getBaseStat(item?.baseDef, 1, 1)
+          const maxDef = getBaseStat(item?.baseDef, 90, 6)
+
+          return (
+            <Tooltip
+              title={
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs font-normal text-primary-lighter">{item.type}</p>
+                    <p>{item.name}</p>
+                  </div>
+                  <div className="w-fit">
+                    <RarityGauge rarity={item.rarity} />
+                  </div>
+                </div>
+              }
+              body={
+                <div>
+                  <div className="grid grid-cols-3 gap-2">
+                    <p>
+                      <b>Base HP</b>: <span className="text-blue">{_.round(minHp)}</span>{' '}
+                      <span className="text-desc">({_.round(maxHp)})</span>
+                    </p>
+                    <p>
+                      <b>Base ATK</b>: <span className="text-blue">{_.round(minAtk)}</span>{' '}
+                      <span className="text-desc">({_.round(maxAtk)})</span>
+                    </p>
+                    <p>
+                      <b>Base DEF</b>: <span className="text-blue">{_.round(minDef)}</span>{' '}
+                      <span className="text-desc">({_.round(maxDef)})</span>
+                    </p>
+                  </div>
+                  <div className="my-1 border-t border-primary-light" />
+                  <b>{item.desc.name}</b>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: _.reduce(
+                        Array.from(item?.desc?.detail?.matchAll(/{{\d+}}\%?/g) || []),
+                        (acc, curr) => {
+                          const index = curr?.[0]?.match(/\d+/)?.[0]
+                          const isPercentage = !!curr?.[0]?.match(/\%$/)
+                          return _.replace(
+                            acc,
+                            curr[0],
+                            `<span class="text-desc">${_.round(item?.desc?.properties?.[index]?.base, 2)}~${_.round(
+                              item?.desc?.properties?.[index]?.base + item?.desc?.properties?.[index]?.growth * 4,
+                              2
+                            )}${isPercentage ? '%' : ''}</span>`
+                          )
+                        },
+                        item?.desc?.detail
+                      ),
+                    }}
+                    className="font-normal"
+                  />
+                </div>
+              }
+              style="w-[500px]"
+            >
+              <div
+                className="text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95"
+                onClick={() => {
+                  set(index, { wId: item.id })
+                  if (item.id === '2057') set(index, { refinement: 1 })
+                  modalStore.closeModal()
+                }}
+                key={item.name}
+              >
+                <div className="relative">
+                  <img
+                    src={getPathImage(item.type)}
+                    className="absolute p-1 rounded-full w-7 h-7 top-2 left-2 bg-primary"
+                    title={item.type}
+                  />
+                  <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
+                    <RarityGauge rarity={item.rarity} />
+                  </div>
+                  {item.beta && (
+                    <div className="absolute right-0 px-1.5 py-0.5 bottom-6 bg-rose-600 rounded-l-md">Beta</div>
+                  )}
+                  <img
+                    src={`https://api.hakush.in/hsr/UI/lightconemediumicon/${item.id}.webp`}
+                    className="object-contain w-full rounded-t-lg bg-primary-darker aspect-square"
+                  />
+                </div>
+                <div className="w-full h-10 px-2 py-1">
+                  <p className="text-center line-clamp-2">{item.name}</p>
+                </div>
               </div>
-              {item.beta && (
-                <div className="absolute right-0 px-1.5 py-0.5 bottom-6 bg-rose-600 rounded-l-md">Beta</div>
-              )}
-              <img
-                src={`https://api.hakush.in/hsr/UI/lightconemediumicon/${item.id}.webp`}
-                className="object-contain w-full rounded-t-lg bg-primary-darker aspect-square"
-              />
-            </div>
-            <div className="w-full h-10 px-2 py-1">
-              <p className="text-center line-clamp-2">{item.name}</p>
-            </div>
-          </div>
-        ))}
+            </Tooltip>
+          )
+        })}
       </div>
     </div>
   )

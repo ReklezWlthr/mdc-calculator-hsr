@@ -15,6 +15,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.PRESERVATION,
     element: Element.ICE,
+    beta: false,
   },
   {
     id: '1002',
@@ -30,6 +31,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.HUNT,
     element: Element.WIND,
+    beta: false,
   },
   {
     id: '1003',
@@ -45,6 +47,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.ERUDITION,
     element: Element.FIRE,
+    beta: false,
   },
   {
     id: '1004',
@@ -60,6 +63,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.NIHILITY,
     element: Element.IMAGINARY,
+    beta: false,
   },
   {
     id: '1005',
@@ -75,6 +79,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.NIHILITY,
     element: Element.LIGHTNING,
+    beta: false,
   },
   {
     id: '1006',
@@ -90,6 +95,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.NIHILITY,
     element: Element.QUANTUM,
+    beta: false,
   },
   {
     id: '1008',
@@ -105,6 +111,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.DESTRUCTION,
     element: Element.LIGHTNING,
+    beta: false,
   },
   {
     id: '1009',
@@ -120,6 +127,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.HARMONY,
     element: Element.FIRE,
+    beta: false,
   },
   {
     id: '1013',
@@ -135,6 +143,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.ERUDITION,
     element: Element.ICE,
+    beta: false,
   },
   {
     id: '1101',
@@ -150,6 +159,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.HARMONY,
     element: Element.WIND,
+    beta: false,
   },
   {
     id: '1102',
@@ -165,6 +175,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.HUNT,
     element: Element.QUANTUM,
+    beta: false,
   },
   {
     id: '1103',
@@ -180,6 +191,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.ERUDITION,
     element: Element.LIGHTNING,
+    beta: false,
   },
   {
     id: '1104',
@@ -195,6 +207,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.PRESERVATION,
     element: Element.ICE,
+    beta: false,
   },
   {
     id: '1105',
@@ -210,6 +223,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.ABUNDANCE,
     element: Element.PHYSICAL,
+    beta: false,
   },
   {
     id: '1106',
@@ -225,6 +239,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.NIHILITY,
     element: Element.ICE,
+    beta: false,
   },
   {
     id: '1107',
@@ -240,6 +255,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.DESTRUCTION,
     element: Element.PHYSICAL,
+    beta: false,
   },
   {
     id: '1108',
@@ -255,6 +271,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.NIHILITY,
     element: Element.WIND,
+    beta: false,
   },
   {
     id: '1109',
@@ -270,6 +287,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.DESTRUCTION,
     element: Element.FIRE,
+    beta: false,
   },
   {
     id: '1110',
@@ -285,6 +303,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.ABUNDANCE,
     element: Element.QUANTUM,
+    beta: false,
   },
   {
     id: '1111',
@@ -300,6 +319,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.NIHILITY,
     element: Element.PHYSICAL,
+    beta: false,
   },
   {
     id: '1112',
@@ -315,6 +335,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.HUNT,
     element: Element.FIRE,
+    beta: false,
   },
   {
     id: '1201',
@@ -330,6 +351,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.ERUDITION,
     element: Element.QUANTUM,
+    beta: false,
   },
   {
     id: '1202',
@@ -345,6 +367,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.HARMONY,
     element: Element.LIGHTNING,
+    beta: false,
   },
   {
     id: '1203',
@@ -360,6 +383,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.ABUNDANCE,
     element: Element.IMAGINARY,
+    beta: false,
   },
   {
     id: '1204',
@@ -375,6 +399,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.ERUDITION,
     element: Element.LIGHTNING,
+    beta: false,
   },
   {
     id: '1205',
@@ -390,6 +415,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.DESTRUCTION,
     element: Element.WIND,
+    beta: false,
   },
   {
     id: '1206',
@@ -405,6 +431,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.HUNT,
     element: Element.PHYSICAL,
+    beta: false,
   },
   {
     id: '1207',
@@ -420,6 +447,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.HARMONY,
     element: Element.IMAGINARY,
+    beta: false,
   },
   {
     id: '1208',
@@ -435,6 +463,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.PRESERVATION,
     element: Element.QUANTUM,
+    beta: false,
   },
   {
     id: '1209',
@@ -450,6 +479,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.HUNT,
     element: Element.ICE,
+    beta: false,
   },
   {
     id: '1210',
@@ -465,6 +495,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.NIHILITY,
     element: Element.FIRE,
+    beta: false,
   },
   {
     id: '1211',
@@ -480,6 +511,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.ABUNDANCE,
     element: Element.LIGHTNING,
+    beta: false,
   },
   {
     id: '1212',
@@ -495,6 +527,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.DESTRUCTION,
     element: Element.ICE,
+    beta: false,
   },
   {
     id: '1213',
@@ -510,6 +543,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.DESTRUCTION,
     element: Element.IMAGINARY,
+    beta: false,
   },
   {
     id: '1214',
@@ -525,6 +559,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.DESTRUCTION,
     element: Element.QUANTUM,
+    beta: false,
   },
   {
     id: '1215',
@@ -540,6 +575,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.HARMONY,
     element: Element.PHYSICAL,
+    beta: false,
   },
   {
     id: '1217',
@@ -555,6 +591,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.ABUNDANCE,
     element: Element.WIND,
+    beta: false,
   },
   {
     id: '1218',
@@ -570,6 +607,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.NIHILITY,
     element: Element.FIRE,
+    beta: false,
   },
   {
     id: '1220',
@@ -585,6 +623,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.HUNT,
     element: Element.WIND,
+    beta: false,
   },
   {
     id: '1221',
@@ -600,6 +639,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.DESTRUCTION,
     element: Element.PHYSICAL,
+    beta: false,
   },
   {
     id: '1222',
@@ -615,6 +655,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.ABUNDANCE,
     element: Element.FIRE,
+    beta: false,
   },
   {
     id: '1223',
@@ -630,6 +671,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.HUNT,
     element: Element.LIGHTNING,
+    beta: false,
   },
   {
     id: '1224',
@@ -645,6 +687,23 @@ export const Characters = [
     rarity: 4,
     path: PathType.HUNT,
     element: Element.IMAGINARY,
+    beta: false,
+  },
+  {
+    id: '1225',
+    name: 'Fugue',
+    stat: {
+      baseAtk: 76.8,
+      baseHp: 124.8,
+      baseDef: 57,
+      baseSpd: 107,
+      energy: 110,
+    },
+    trace: [Stats.P_ATK, Stats.P_DEF, Stats.CRIT_DMG],
+    rarity: 5,
+    path: PathType.NIHILITY,
+    element: Element.FIRE,
+    beta: false,
   },
   {
     id: '1301',
@@ -660,6 +719,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.ABUNDANCE,
     element: Element.FIRE,
+    beta: false,
   },
   {
     id: '1302',
@@ -675,6 +735,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.ERUDITION,
     element: Element.PHYSICAL,
+    beta: false,
   },
   {
     id: '1303',
@@ -690,6 +751,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.HARMONY,
     element: Element.ICE,
+    beta: false,
   },
   {
     id: '1304',
@@ -705,6 +767,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.PRESERVATION,
     element: Element.IMAGINARY,
+    beta: false,
   },
   {
     id: '1305',
@@ -720,6 +783,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.HUNT,
     element: Element.IMAGINARY,
+    beta: false,
   },
   {
     id: '1306',
@@ -735,6 +799,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.HARMONY,
     element: Element.QUANTUM,
+    beta: false,
   },
   {
     id: '1307',
@@ -750,6 +815,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.NIHILITY,
     element: Element.WIND,
+    beta: false,
   },
   {
     id: '1308',
@@ -765,6 +831,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.NIHILITY,
     element: Element.LIGHTNING,
+    beta: false,
   },
   {
     id: '1309',
@@ -780,6 +847,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.HARMONY,
     element: Element.PHYSICAL,
+    beta: false,
   },
   {
     id: '1310',
@@ -795,6 +863,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.DESTRUCTION,
     element: Element.FIRE,
+    beta: false,
   },
   {
     id: '1312',
@@ -810,6 +879,7 @@ export const Characters = [
     rarity: 4,
     path: PathType.DESTRUCTION,
     element: Element.ICE,
+    beta: false,
   },
   {
     id: '1314',
@@ -825,6 +895,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.ERUDITION,
     element: Element.QUANTUM,
+    beta: false,
   },
   {
     id: '1315',
@@ -840,6 +911,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.HUNT,
     element: Element.PHYSICAL,
+    beta: false,
   },
   {
     id: '1317',
@@ -855,7 +927,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.ERUDITION,
     element: Element.IMAGINARY,
-    beta: true,
+    beta: false,
   },
   // Odd = Male, Even = Female
   {
@@ -872,6 +944,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.DESTRUCTION,
     element: Element.PHYSICAL,
+    beta: false,
   },
   {
     id: '8003',
@@ -887,6 +960,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.PRESERVATION,
     element: Element.FIRE,
+    beta: false,
   },
   {
     id: '8005',
@@ -902,5 +976,6 @@ export const Characters = [
     rarity: 5,
     path: PathType.HARMONY,
     element: Element.IMAGINARY,
+    beta: false,
   },
 ]

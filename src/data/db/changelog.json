@@ -1,13 +1,20 @@
 [
   {
-    "version": "1.1.0-6",
-    "date": "October 6th, 2024",
+    "version": "1.1.0-9",
+    "date": "October 20th, 2024",
     "desc": [
-      "Now <b class=\"text-red\">Live</b>: <span class=\"text-desc\">Lingsha</span>, and Light Cone <span class=\"text-desc\">Shadowed by Night</span>"
+      "Now <b class=\"text-red\">Live</b>: <span class=\"text-desc\">Rappa</span>, and Light Cones <span class=\"text-desc\">Ninjutsu Inscription: Dazzling Evilbreaker</span>, <span class=\"text-desc\">Dream's Montage</span>, <span class=\"text-desc\">Ninja Record: Sound Hunt</span>"
     ]
   },
   {
-    "version": "1.1.0-6",
+    "version": "1.1.0-8",
+    "date": "October 6th, 2024",
+    "desc": [
+      "Now <b class=\"text-red\">Live</b>: <span class=\"text-desc\">Lingsha</span>, and Light Cone <span class=\"text-desc\">Scent Alone Stays True</span> and <span class=\"text-desc\">Shadowed by Night</span>"
+    ]
+  },
+  {
+    "version": "1.1.0-7",
     "date": "September 21th, 2024",
     "desc": [
       "Content Version: <span class=\"text-desc\">v2.6v5</span>",

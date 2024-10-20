@@ -13,6 +13,7 @@ export const LightCones = [
     baseAtk: 14.4,
     baseDef: 12,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'Crisis',
       detail: `At the start of the battle, the wearer's CRIT Rate increases by {{0}}% for <span class="text-desc">3</span> turn(s).`,
@@ -27,6 +28,7 @@ export const LightCones = [
     baseAtk: 12,
     baseDef: 12,
     type: PathType.ABUNDANCE,
+    beta: false,
     desc: {
       name: 'Prosperity',
       detail: `When the wearer uses their Skill or Ultimate, their Outgoing Healing increases by {{0}}%.`,
@@ -41,6 +43,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 9,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Havoc',
       detail: `Increases the wearer's Basic ATK and Skill DMG by {{0}}%.`,
@@ -55,6 +58,7 @@ export const LightCones = [
     baseAtk: 12,
     baseDef: 15,
     type: PathType.PRESERVATION,
+    beta: false,
     desc: {
       name: 'Stasis',
       detail: `Increases DEF of its wearer by {{0}}%. If current HP of its wearer is less than <span class="text-desc">50%</span> of Max HP, increases DEF by an extra {{0}}%.`,
@@ -69,6 +73,7 @@ export const LightCones = [
     baseAtk: 14.4,
     baseDef: 12,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Fallen',
       detail: `At the start of the battle, the wearer's Effect Hit Rate increases by {{0}}% for <span class="text-desc">3</span> turn(s).`,
@@ -83,6 +88,7 @@ export const LightCones = [
     baseAtk: 14.4,
     baseDef: 12,
     type: PathType.HARMONY,
+    beta: false,
     desc: {
       name: 'Concerted',
       detail: `After entering battle, increases the ATK of all allies by {{0}}%. Effects of the same type cannot stack.`,
@@ -97,6 +103,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 12,
     type: PathType.ERUDITION,
+    beta: false,
     desc: {
       name: 'Learned',
       detail: `Increases the wearer's Ultimate DMG by {{0}}%.`,
@@ -111,6 +118,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 12,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'War Cry',
       detail: `When the wearer defeats an enemy, increases ATK by {{0}}% for <span class="text-desc">3</span> turn(s).`,
@@ -126,6 +134,7 @@ export const LightCones = [
     baseAtk: 14.4,
     baseDef: 9,
     type: PathType.ABUNDANCE,
+    beta: false,
     desc: {
       name: 'Savor',
       detail: `At the start of the battle, immediately regenerate {{0}} Energy for all allies.`,
@@ -140,6 +149,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 9,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Eradication',
       detail: `The wearer deals {{0}}% more DMG to enemy targets whose HP percentage is greater than <span class="text-desc">50%</span>.`,
@@ -154,6 +164,7 @@ export const LightCones = [
     baseAtk: 12,
     baseDef: 12,
     type: PathType.PRESERVATION,
+    beta: false,
     desc: {
       name: 'Revitalization',
       detail: `When the wearer unleashes their Ultimate, they restore HP by {{0}}% of their Max HP.`,
@@ -168,6 +179,7 @@ export const LightCones = [
     baseAtk: 14.4,
     baseDef: 12,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Pursuit',
       detail: `Increases DMG dealt from its wearer to Slowed enemies by {{0}}%.`,
@@ -182,6 +194,7 @@ export const LightCones = [
     baseAtk: 14.4,
     baseDef: 12,
     type: PathType.HARMONY,
+    beta: false,
     desc: {
       name: 'Fleet Triumph',
       detail: `After the wearer uses attacks or gets hit, additionally regenerates {{0}} Energy. This effect can only be triggered <span class="text-desc">1</span> time per turn.`,
@@ -196,6 +209,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 12,
     type: PathType.ERUDITION,
+    beta: false,
     desc: {
       name: 'Epiphany',
       detail: `After the wearer uses their Skill, additionally regenerates {{0}} Energy. This effect cannot be repeatedly triggered in a single turn.`,
@@ -210,6 +224,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 12,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'Alliance',
       detail: `When the wearer defeats an enemy, increases SPD by {{0}}% for <span class="text-desc">2</span> turn(s).`,
@@ -224,6 +239,7 @@ export const LightCones = [
     baseAtk: 14.4,
     baseDef: 9,
     type: PathType.ABUNDANCE,
+    beta: false,
     desc: {
       name: 'Denizens of Abundance',
       detail: `After the wearer uses their Basic ATK, their next action will be <u>Advanced Forward</u> by {{0}}%.`,
@@ -238,6 +254,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 192,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Legion',
       detail: `If the wearer's current HP is lower than <span class="text-desc">80%</span>, CRIT Rate increases by {{0}}%.`,
@@ -252,6 +269,7 @@ export const LightCones = [
     baseAtk: 12,
     baseDef: 12,
     type: PathType.PRESERVATION,
+    beta: false,
     desc: {
       name: 'IPC',
       detail: `When the wearer Breaks an enemy's Weakness, the wearer restores HP by {{0}}% of their Max HP.`,
@@ -266,6 +284,7 @@ export const LightCones = [
     baseAtk: 14.4,
     baseDef: 12,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Mechanism',
       detail: `After using Skill, the wearer's next Basic ATK deals Additional DMG equal to {{0}}% of ATK to the target enemy.`,
@@ -280,6 +299,7 @@ export const LightCones = [
     baseAtk: 14.4,
     baseDef: 12,
     type: PathType.HARMONY,
+    beta: false,
     desc: {
       name: 'Family',
       detail: `Upon entering battle, increases SPD of all allies by {{0}} for <span class="text-desc">1</span> turn(s).`,
@@ -294,6 +314,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 12,
     type: PathType.ERUDITION,
+    beta: false,
     desc: {
       name: 'Genius',
       detail: `When the wearer uses their Ultimate, increases ATK by {{0}}% for <span class="text-desc">2</span> turn(s).`,
@@ -309,6 +330,7 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 15,
     type: PathType.ABUNDANCE,
+    beta: false,
     desc: {
       name: 'Mutual Healing',
       detail: `Increases the wearer's Energy Regeneration Rate by {{0}}% and increases Outgoing Healing when they use their Ultimate by {{0}}%.`,
@@ -326,6 +348,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Toiler',
       detail: `For every debuff the target enemy has, the DMG dealt by the wearer increases by {{0}}%, stacking up to <span class="text-desc">3</span> time(s). This effect also applies to DoT.`,
@@ -340,6 +363,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 21,
     type: PathType.PRESERVATION,
+    beta: false,
     desc: {
       name: 'At This Very Moment',
       detail: `Increases wearer's DEF by {{0}}%. After entering battle, increases All-Type RES of all allies by {{0}}%. Effects of the same type cannot stack.`,
@@ -357,6 +381,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'Record',
       detail: `Increases the wearer's ATK by {{0}}%. If there are <span class="text-desc">2</span> or fewer enemies on the field, increases wearer's CRIT Rate by {{1}}%.`,
@@ -374,6 +399,7 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 18,
     type: PathType.HARMONY,
+    beta: false,
     desc: {
       name: 'Old Photo',
       detail: `Increases the wearer's Break Effect by {{0}}%. When the wearer attacks, additionally regenerates {{1}} Energy. This effect cannot be repeatedly triggered in a single turn.`,
@@ -391,6 +417,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 12,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Fantastic Adventure',
       detail: `When the wearer uses Basic ATK, Skill, or Ultimate to attack enemies, the wearer gains one stack of Mischievous. Each stack increases the wearer's ATK by {{0}}%.`,
@@ -405,6 +432,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.ERUDITION,
+    beta: false,
     desc: {
       name: 'The Maiden in the Painting',
       detail: `Increases DMG dealt by the wearer's <u>follow-up attacks</u> by {{0}}%. If the current HP of the target enemy is below <span class="text-desc">50%</span> of Max HP, increases DMG dealt by <u>follow-up attacks</u> by an extra {{0}}%.`,
@@ -419,6 +447,7 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 18,
     type: PathType.ABUNDANCE,
+    beta: false,
     desc: {
       name: 'Cure and Repair',
       detail: `Increases the wearer's Outgoing Healing by {{0}}%. When using Skill, regenerates {{1}} Energy for all allies.`,
@@ -436,6 +465,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Self-Confidence',
       detail: `Increases the wearer's Effect Hit Rate by {{0}}% and increases DoT by {{1}}%.`,
@@ -453,6 +483,7 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 18,
     type: PathType.PRESERVATION,
+    beta: false,
     desc: {
       name: 'Time Fleets Away',
       detail: `The wearer is more likely to be attacked, and DMG taken is reduced by {{0}}%.`,
@@ -467,6 +498,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'Answers of Their Own',
       detail: `For each time the wearer hits the same target, DMG dealt increases by {{0}}%, stacking up to <span class="text-desc">5</span> time(s). This effect will be dispelled when the wearer changes targets.`,
@@ -481,6 +513,7 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 15,
     type: PathType.HARMONY,
+    beta: false,
     desc: {
       name: 'Departure',
       detail: `Upon battle entry, if an ally deals the same DMG Type as the wearer, DMG dealt increases by {{0}}%.`,
@@ -495,6 +528,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 12,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Spare No Effort',
       detail: `Increases DMG dealt by the wearer by {{0}}%. The wearer also deals an extra {{0}}% of DMG to enemies whose current HP percentage is equal to or higher than the wearer's current HP percentage.`,
@@ -509,6 +543,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 18,
     type: PathType.ERUDITION,
+    beta: false,
     desc: {
       name: 'The Power of Sound',
       detail: `The wearer regenerates {{0}} Energy immediately upon entering battle, and increases Ultimate DMG by {{1}}%.`,
@@ -526,6 +561,7 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 18,
     type: PathType.ABUNDANCE,
+    beta: false,
     desc: {
       name: 'Refraction of Sightline',
       detail: `Increases the wearer's Effect RES by {{0}}% and increases Outgoing Healing by an amount that is equal to {{1}}% of Effect RES. Outgoing Healing can be increased this way by up to {{2}}%.`,
@@ -544,9 +580,10 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Glance Back',
-      detail: `When the wearer hits an enemy and if the hit enemy is not already Ensnared, then there is a {{0}}% <u>base chance</u> to Ensnare the hit enemy. Ensnared enemies' DEF decreases by {{1}}% for <span class="text-desc">1</span> turn(s).`,
+      detail: `When the wearer hits an enemy and if the hit enemy is not already <b>Ensnared</b>, then there is a {{0}}% <u>base chance</u> to <b>Ensnare</b> the hit enemy. <b>Ensnared</b> enemies' DEF decreases by {{1}}% for <span class="text-desc">1</span> turn(s).`,
       properties: [
         { base: 60, growth: 10 },
         { base: 12, growth: 1 },
@@ -561,6 +598,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 18,
     type: PathType.PRESERVATION,
+    beta: false,
     desc: {
       name: 'A New Round of Shuffling',
       detail: `Increases the wearer's DEF by {{0}}%. When the wearer is attacked, there is a {{1}}% <u>base chance</u> to <b class="text-hsr-fire">Burn</b> the enemy. For each turn, the wearer deals DoT that is equal to {{2}}% of the wearer's DEF for <span class="text-desc">2</span> turn(s).`,
@@ -579,6 +617,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'Like Before You Leave!',
       detail: `Increases the DMG of the wearer's Basic ATK and Skill by {{0}}%. This effect increases by an extra {{0}}% when the wearer's current Energy reaches its max level.`,
@@ -593,6 +632,7 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 18,
     type: PathType.HARMONY,
+    beta: false,
     desc: {
       name: 'Cannot Stop It!',
       detail: `When the wearer uses their Ultimate, all allies' actions are <u>Advanced Forward</u> by {{0}}%.`,
@@ -607,6 +647,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Rye Under the Sun',
       detail: `Increases the wearer's ATK by {{0}}%. When the wearer defeats an enemy, the wearer's CRIT Rate increases by {{1}}% for <span class="text-desc">3</span> turn(s).`,
@@ -624,6 +665,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 18,
     type: PathType.ERUDITION,
+    beta: false,
     desc: {
       name: 'Each Now Has a Role to Play',
       detail: `Increases the wearer's ATK by {{0}}%. When the wearer defeats an enemy, the wearer's CRIT DMG increases by {{1}}% for <span class="text-desc">3</span> turn(s).`,
@@ -641,6 +683,7 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 18,
     type: PathType.ABUNDANCE,
+    beta: false,
     desc: {
       name: 'Enjoy With Rapture',
       detail: `At the start of the wearer's turn, regenerates {{0}} Energy for a randomly chosen ally (excluding the wearer) whose current Energy is lower than <span class="text-desc">50%</span>.`,
@@ -655,9 +698,10 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Semibreve Rest',
-      detail: `Increases Break Effect dealt by the wearer by {{0}}%, and increases their DMG to enemies afflicted with Shock or Wind Shear by {{0}}%. This also applies to DoT.`,
+      detail: `Increases Break Effect dealt by the wearer by {{0}}%, and increases their DMG to enemies afflicted with <b class="text-hsr-lightning">Shock</b> or <b class="text-hsr-wind">Wind Shear</b> by {{0}}%. This also applies to DoT.`,
       properties: [{ base: 16, growth: 4 }],
     },
   },
@@ -669,6 +713,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 21,
     type: PathType.PRESERVATION,
+    beta: false,
     desc: {
       name: 'Teary-Eyed',
       detail: `At the start of the battle, the DMG dealt to all allies decreases by {{0}}% for <span class="text-desc">5</span> turn(s). At the same time, immediately restores HP to all allies equal to {{1}}% of the respective HP difference between the characters' Max HP and current HP.`,
@@ -686,6 +731,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 18,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'Stave Off the Lingering Cold',
       detail: `After entering battle, increases the wearer's SPD by {{0}}% and DMG by {{1}}%. When the wearer takes DMG, this effect will disappear. This effect will resume after the end of the wearer's next turn.`,
@@ -703,6 +749,7 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 18,
     type: PathType.HARMONY,
+    beta: false,
     desc: {
       name: 'Kites From the Past',
       detail: `When the wearer uses their Skill, then the next ally taking action (except the wearer) deals {{0}}% increased DMG for <span class="text-desc">1</span> turn(s).`,
@@ -717,6 +764,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Run!',
       detail: `Increases the wearer's ATK by {{0}}%, and increases their DMG to enemies afflicted with Burn or Bleed by {{1}}%. This also applies to DoT.`,
@@ -734,6 +782,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 18,
     type: PathType.ERUDITION,
+    beta: false,
     desc: {
       name: 'Get Ready',
       detail: `Increases the wearer's DMG by {{0}}%. For every defeated enemy, the wearer's ATK increases by {{1}}%, stacking up to <span class="text-desc">3</span> time(s).`,
@@ -751,6 +800,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 18,
     type: PathType.ABUNDANCE,
+    beta: false,
     desc: {
       name: 'Tiny Light',
       detail: `Increases the wearer's Max HP by {{0}}%. When using Basic ATK or Skill, restores all allies' HP by an amount equal to {{1}}% of their respective Max HP.`,
@@ -768,6 +818,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 15,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'A Discourse In Arms',
       detail: `After the wearer uses Basic ATK or Skill, deals Additional DMG equal to {{0}}% of the wearer's ATK to a random enemy that has been attacked.`,
@@ -782,6 +833,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 24,
     type: PathType.PRESERVATION,
+    beta: false,
     desc: {
       name: 'New Chapter',
       detail: `Increases the wearer's DEF by {{0}}%. Increases the DMG of the wearer when they use their Ultimate by {{1}}% of the wearer's DEF. This effect only apply <span class="text-desc">1</span> time per enemy target.`,
@@ -799,6 +851,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 15,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'Raging Waves',
       detail: `Increases the wearer's CRIT Rate by {{0}}%. After a CRIT Hit, there is a {{1}}% <u>fixed chance</u> to dispel <span class="text-desc">1</span> buff on the target enemy. This effect can only trigger <span class="text-desc">1</span> time per attack.`,
@@ -816,6 +869,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.HARMONY,
+    beta: false,
     desc: {
       name: 'Secret',
       detail: `At the start of the battle and whenever the wearer's turn begins, one of the following effects is applied randomly: All allies' ATK increases by {{0}}%, all allies' CRIT DMG increases by {{1}}%, or all allies' Energy Regeneration Rate increases by {{2}}%. The applied effect cannot be identical to the last effect applied, and will replace the previous effect. The applied effect will be removed when the wearer has been knocked down. Effects of the similar type cannot be stacked.`,
@@ -834,6 +888,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 12,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Desperate Times',
       detail: `Increases the wearer's ATK by {{0}}%. Whenever the wearer defeats an enemy, they restore HP equal to {{1}}% of their ATK.`,
@@ -851,6 +906,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 15,
     type: PathType.ERUDITION,
+    beta: false,
     desc: {
       name: 'A Storm Is Coming',
       detail: `After entering battle, increases the wearer's DMG based on their Max Energy. DMG increases by {{0}}% per point of Energy, up to <span class="text-desc">160</span> Energy.`,
@@ -865,6 +921,7 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 15,
     type: PathType.ABUNDANCE,
+    beta: false,
     desc: {
       name: 'Hypothesis',
       detail: `Increases the wearer's Break Effect by {{0}}%. After using their Basic ATK, restore HP for the wearer by an amount equal to {{1}}% of their max HP plus <span class="text-desc">800</span>.`,
@@ -882,6 +939,7 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 18,
     type: PathType.HARMONY,
+    beta: false,
     desc: {
       name: 'Solidarity',
       detail: `After the wearer uses a certain type of ability such as Basic ATK, Skill, or Ultimate, all allies gain <b>Childishness</b>, which increases allies' DMG for the same type of ability as used by the wearer by {{0}}%. <b>Childishness</b> only takes effect for the most recent type of ability the wearer used and cannot be stacked.`,
@@ -896,6 +954,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'All In',
       detail: `Increases the wearer's ATK by {{0}}%. When the wearer lands a CRIT hit on enemies, gains a stack of <b>Good Fortune</b>, stacking up to <span class="text-desc">4</span> times. Every stack of <b>Good Fortune</b> the wearer has will increase their CRIT DMG by {{1}}%. <b>Good Fortune</b> will be removed at the end of the wearer's turn.`,
@@ -913,6 +972,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 12,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Deflagration',
       detail: `When the cumulative HP loss of the wearer during a single attack exceeds <span class="text-desc">25%</span> of their Max HP, or if the amount of their own HP they consume at one time is greater than <span class="text-desc">25%</span> of their Max HP, immediately heals the wearer for <span class="text-desc">15%</span> of their Max HP. At the same time, increases the DMG they deal by {{0}}% for <span class="text-desc">2</span> turn(s). This effect can only be triggered once every <span class="text-desc">3</span> turn(s).`,
@@ -927,6 +987,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 21,
     type: PathType.PRESERVATION,
+    beta: false,
     desc: {
       name: 'Insight',
       detail: `Increases the wearer's Effect RES by {{0}}%. For every <span class="text-desc">100</span> DEF the wearer has, increases the wearer's DMG dealt by {{1}}%, up to a maximum increase of {{2}}%.`,
@@ -945,6 +1006,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.ERUDITION,
+    beta: false,
     desc: {
       name: 'Stratagem',
       detail: `Increases the wearer's ATK by {{0}}%. When the wearer uses an attack and at least <span class="text-desc">2</span> attacked enemies have the corresponding Weakness, the wearer's CRIT DMG increases by {{1}}% for <span class="text-desc">2</span> turns.`,
@@ -962,6 +1024,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 12,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Self-Amusement',
       detail: `When the wearer inflicts a debuff on an enemy, gains a stack of <b>Trick</b>. Every stack of <b>Trick</b> increases the wearer's DMG dealt by {{0}}%, stacking up to <span class="text-desc">3</span> times. This effect lasts for <span class="text-desc">1</span> turn. When the wearer's Effect Hit Rate is <span class="text-desc">80%</span> or higher, increases ATK by {{1}}%.`,
@@ -979,6 +1042,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Inheritance',
       detail: `Increases the wearer's Break Effect by {{0}}%. When the wearer uses their Ultimate, increases their CRIT Rate by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).`,
@@ -996,6 +1060,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 21,
     type: PathType.PRESERVATION,
+    beta: false,
     desc: {
       name: 'Inspire',
       detail: `Increases the wearer's DEF by {{0}}%. For every on-field character that has a <b class="text-indigo-300">Shield</b>, the DMG dealt by the wearer increases by {{1}}%.`,
@@ -1013,6 +1078,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Scrutinize',
       detail: `Increase the wearer's CRIT Rate by {{0}}%. The wearer deals {{1}}% more CRIT DMG to enemies that are currently DEF reduced or Slowed.`,
@@ -1030,6 +1096,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 18,
     type: PathType.ERUDITION,
+    beta: false,
     desc: {
       name: 'Quiescence',
       detail: `Increases the wearer's Break Effect by {{0}}%. After the wearer uses their Ultimate, increases their SPD by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).`,
@@ -1047,6 +1114,7 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 18,
     type: PathType.HARMONY,
+    beta: false,
     desc: {
       name: 'Lose Not, Forget Not',
       detail: `Increases the wearer's ATK by {{0}}%. Upon entering battle, if two or more characters follow the same Path, then these characters' CRIT DMG increases by {{0}}%. Abilities of the same type cannot stack.`,
@@ -1061,6 +1129,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 18,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'Concealment',
       detail: `Increases the wearer's Break Effect by {{0}}%. When entering battle or after dealing Break DMG, increases SPD by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). This effect can only trigger once per turn.`,
@@ -1078,6 +1147,7 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 18,
     type: PathType.ABUNDANCE,
+    beta: false,
     desc: {
       name: 'Academy-Style Edit',
       detail: `Increases the wearer's SPD by {{0}}%. After attacking Enemy targets that are Weakness Broken, regenerates {{1}} Energy. This effect can trigger up to <span class="text-desc">2</span> time(s) per turn.`,
@@ -1086,7 +1156,6 @@ export const LightCones = [
         { base: 3, growth: 0.5 },
       ],
     },
-    beta: true,
   },
   //---------------------
   //   Event 4 Star
@@ -1099,6 +1168,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Quick on the Draw',
       detail: `Increases the wearer's Effect Hit Rate by {{0}}%. When the wearer attacks DEF-reduced enemies, regenerates {{1}} Energy.`,
@@ -1116,6 +1186,7 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 18,
     type: PathType.ABUNDANCE,
+    beta: false,
     desc: {
       name: `I'm Not Afraid!`,
       detail: `Increases the wearer's Max HP by {{0}}%. When the wearer uses Skill, increases Outgoing Healing by {{1}}%, lasting for <span class="text-desc">2</span> turns.`,
@@ -1133,6 +1204,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.HARMONY,
+    beta: false,
     desc: {
       name: 'Bonds',
       detail: `Increases the wearer's ATK by {{0}}%. When the wearer uses their Ultimate, increases the DMG dealt by {{1}}%, lasting for <span class="text-desc">1</span> turn(s).`,
@@ -1150,6 +1222,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 12,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Curtains Up!',
       detail: `Increases the wearer's Max HP by {{0}}%. When losing or restoring this unit's HP, increases CRIT DMG by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). This effect can only trigger once time per turn.`,
@@ -1158,7 +1231,6 @@ export const LightCones = [
         { base: 18, growth: 4 },
       ],
     },
-    beta: true,
   },
   //---------------------
   //   5 Star
@@ -1171,6 +1243,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 18,
     type: PathType.ERUDITION,
+    beta: false,
     desc: {
       name: 'Meteor Swarm',
       detail: `For every enemy on the field, increases the wearer's ATK by {{0}}%, up to <span class="text-desc">5</span> stacks. When an enemy is inflicted with Weakness Break, the DMG dealt by the wearer increases by {{1}}% for <span class="text-desc">1</span> turn.`,
@@ -1188,6 +1261,7 @@ export const LightCones = [
     baseAtk: 26.5,
     baseDef: 21,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'Flowers and Butterflies',
       detail: `Increases the wearer's CRIT Rate by {{0}}%. While the wearer is in battle, for every <span class="text-desc">10</span> SPD that exceeds <span class="text-desc">100</span>, the DMG of the wearer's Basic ATK and Skill is increased by {{1}}% and the CRIT DMG of their Ultimate is increased by {{2}}%. This effect can stack up to <span class="text-desc">6</span> time(s).`,
@@ -1206,6 +1280,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 18,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Kinship',
       detail: `Increases the wearer's ATK by {{0}}%. When the wearer defeats an enemy or is hit, immediately restores HP equal to {{1}}% of the wearer's ATK. At the same time, the wearer's DMG is increased by {{0}}% until the end of their next turn. This effect cannot stack and can only trigger <span class="text-desc">1</span> time per turn.`,
@@ -1223,6 +1298,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 21,
     type: PathType.HARMONY,
+    beta: false,
     desc: {
       name: 'Heir',
       detail: `Increases the wearer's Energy Regeneration Rate by {{0}}% and regenerates <span class="text-desc">1</span> Skill Point when the wearer uses their Ultimate on an ally. This effect can be triggered after every <span class="text-desc">2</span> uses of the wearer's Ultimate. When the wearer uses their Skill, the next ally taking action (except the wearer) deals {{1}}% more DMG for <span class="text-desc">1</span> turn(s).`,
@@ -1240,6 +1316,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 21,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Inheritor',
       detail: `Increases the wearer's DMG to debuffed enemies by {{0}}%. When the wearer uses their Skill, the Effect Hit Rate for this attack increases by {{1}}%, and ATK increases by {{0}}%.`,
@@ -1257,6 +1334,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 27,
     type: PathType.PRESERVATION,
+    beta: false,
     desc: {
       name: 'Verdict',
       detail: `Increases the wearer's DEF by {{0}}% and Effect Hit Rate by {{0}}%. Increases the chance for the wearer to be attacked by enemies. When the wearer is attacked, increase their DEF by an extra {{0}}% until the end of the wearer's turn.`,
@@ -1271,6 +1349,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 21,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Spider Web',
       detail: `Increases DMG dealt by the wearer by {{0}}%. After every attack launched by the wearer, their SPD increases by {{1}}%, stacking up to <span class="text-desc">3</span> times. If the wearer hits an enemy target that is not affected by <b class="text-hsr-lightning">Erode</b>, there is a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Erode</b> to the target. Enemies afflicted with <b class="text-hsr-lightning">Erode</b> are also considered to be <b class="text-hsr-lightning">Shocked</b> and will receive <b class="text-hsr-lightning">Lightning DoT</b> at the start of each turn equal to {{2}}% of the wearer's ATK, lasting for <span class="text-desc">1</span> turn.`,
@@ -1289,6 +1368,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 21,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Mirage of Reality',
       detail: `Increases the wearer's Effect Hit Rate by {{0}}%. When the wearer deals DMG to an enemy that currently has <span class="text-desc">3</span> or more debuffs, increases the wearer's CRIT Rate by {{1}}%. After the wearer uses their Basic ATK, Skill, or Ultimate, there is a <span class="text-desc">100%</span> <u>base chance</u> to implant <b>Aether Code</b> on a random hit target that does not yet have it. Targets with <b>Aether Code</b> receive {{1}}% increased DMG for <span class="text-desc">1</span> turn.`,
@@ -1306,6 +1386,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 18,
     type: PathType.ABUNDANCE,
+    beta: false,
     desc: {
       name: 'Thorns',
       detail: `Increases the wearer's ATK by {{0}}%. After the wearer uses an attack, for each different enemy target the wearer hits, regenerates {{1}} Energy. Each attack can regenerate Energy up to <span class="text-desc">3</span> time(s) this way. After the wearer uses their Ultimate, all allies gain {{2}} SPD for <span class="text-desc">1</span> turn.`,
@@ -1324,6 +1405,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 15,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Unfulfilled Yearning',
       detail: `Increase the wearer's CRIT Rate and Max HP by {{0}}%. After the wearer is attacked or consumes their own HP, increases the wearer's DMG by {{1}}%. This effect is dispelled after the user uses an attack.`,
@@ -1341,6 +1423,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 21,
     type: PathType.ERUDITION,
+    beta: false,
     desc: {
       name: 'Long Night',
       detail: `Increases the wearer's CRIT DMG by {{0}}%. Increases the wearer's Skill and Ultimate DMG by {{1}}%. After the wearer uses their Skill or Ultimate, they gain <b>Somnus Corpus</b>. Upon triggering a <u>follow-up attack</u>, <b>Somnus Corpus</b> will be consumed and the <u>follow-up attack</u> DMG increases by {{2}}%.`,
@@ -1359,10 +1442,11 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 24,
     type: PathType.PRESERVATION,
+    beta: false,
     desc: {
       name: 'Visioscape',
       detail: `"Increases the wearer's Max HP by {{0}}% and Energy Regeneration Rate by {{1}}%. When the wearer's HP is reduced, all allies' DMG dealt increases by {{2}}%, lasting for <span class="text-desc">2</span> turn(s).
-      <br />At the start of every wave, restores HP to all allies by an amount equal to {{3}}% of their respective lost HP."`,
+      <br />At the start of every wave, restores HP to all allies by an amount equal to {{3}}% of their respective lost HP.`,
       properties: [
         { base: 24, growth: 4 },
         { base: 12, growth: 3 },
@@ -1379,6 +1463,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 21,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'Sweet Dreams',
       detail: `Increases the wearer's CRIT DMG by {{0}}%. When the wearer's Basic ATK or Skill does not result in a CRIT Hit, increases their CRIT Rate by {{1}}% for <span class="text-desc">1</span> turn. This effect can only trigger once every <span class="text-desc">3</span> turn(s).`,
@@ -1396,6 +1481,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 21,
     type: PathType.ABUNDANCE,
+    beta: false,
     desc: {
       name: 'Morn, Noon, Dusk, and Night',
       detail: `Increases the wearer's Max HP by {{0}}% and Outgoing Healing by {{1}}%. When the wearer heals allies, record the amount of Outgoing Healing. When any ally launches an attack, a random attacked enemy takes Additional DMG equal to {{2}}% of the recorded Outgoing Healing value. The type of this Additional DMG is of the same Type as the wearer's. This Additional DMG is not affected by other buffs, and can only occur <span class="text-desc">1</span> time per turn.`,
@@ -1414,6 +1500,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 18,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'With This Evening Jade',
       detail: `Increases the wearer's CRIT DMG by {{0}}%. When an ally (excluding the wearer) gets attacked or loses HP, the wearer gains <span class="text-desc">1</span> stack of <b>Eclipse</b>, up to a max of <span class="text-desc">3</span> stack(s). Each stack of <b>Eclipse</b> increases the DMG of the wearer's next attack by {{1}}%. When <span class="text-desc">3</span> stacks are reached, additionally enables the attack to ignore {{2}}% of the enemy's DEF. This effect will be removed after the wearer uses an attack.`,
@@ -1432,6 +1519,7 @@ export const LightCones = [
     baseAtk: 28.8,
     baseDef: 18,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Defiant Till Death',
       detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer uses their Basic ATK, they will gain <span class="text-desc">1</span> stack of <b>Dragon's Call</b>, lasting for <span class="text-desc">2</span> turns. Each Stack of <b>Dragon's Call</b> increases the wearer's ATK by {{0}}% and Energy Regeneration Rate by {{1}}%. <b>Dragon's Call</b> may be stacked up to <span class="text-desc">2</span> times.`,
@@ -1449,6 +1537,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 21,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'One At A Time',
       detail: `Increase the wearer's CRIT Rate by {{0}}% and their <u>follow-up attacks</u>' DMG by {{1}}%. After the wearer uses a <u>follow-up attack</u>, apply the <b>Tame</b> state to the target, stacking up to <span class="text-desc">2</span> stacks. When allies hit enemy targets under the <b>Tame</b> state, every <b>Tame</b> stack increases the CRIT DMG dealt by {{2}}%.`,
@@ -1467,6 +1556,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 24,
     type: PathType.ABUNDANCE,
+    beta: false,
     desc: {
       name: 'Deep, Deep Breaths',
       detail: `Increases the wearer's Energy Regeneration Rate by {{0}}%. When any ally uses their Ultimate, the wearer restores HP for the ally currently with the lowest HP percentage by an amount equal to {{1}}% of the healed ally's Max HP. When the wearer provides healing for an ally, increases the healed ally's ATK by {{2}}%. This effect can stack up to <span class="text-desc">5</span> times and lasts for <span class="text-desc">2</span> turn(s).`,
@@ -1485,6 +1575,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 21,
     type: PathType.ERUDITION,
+    beta: false,
     desc: {
       name: `A Knight's Pilgrimage`,
       detail: `Increases the wearer's CRIT DMG by {{0}}%. When the wearer uses Ultimate, increases the wearer's Ultimate DMG based on their max energy. Each point of Energy increases the Ultimate DMG by {{1}}%, up to <span class="text-desc">180</span> points of Energy.`,
@@ -1502,6 +1593,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 24,
     type: PathType.HARMONY,
+    beta: false,
     desc: {
       name: 'The Plum Fragrance In My Bones',
       detail: `Increases the wearer's Break Effect by {{0}}%. When the wearer uses their Ultimate, increases all allies' DMG by {{1}}%, lasting for <span class="text-desc">3</span> turn(s). Should the wearer's Break Effect exceed or equal <span class="text-desc">150%</span>, <span class="text-desc">1</span> Skill Point will be recovered. At the start of each wave, all allies regenerate {{2}} Energy immediately. Effects of the same type cannot stack.`,
@@ -1520,6 +1612,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 24,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'Mental Training',
       detail: `Increases the wearer's CRIT DMG by {{0}}%. For every debuff on the enemy target, the wearer's CRIT DMG dealt against this target increases by {{1}}%, stacking up to <span class="text-desc">3</span> times. When using their Ultimate to attack the enemy target, the wearer receives the <b>Disputation</b> effect, which increases DMG dealt by {{2}}% and enables their <u>follow-up attacks</u> to ignore {{3}}% of the target's DEF. This effect lasts for <span class="text-desc">2</span> turns.`,
@@ -1539,6 +1632,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 21,
     type: PathType.HARMONY,
+    beta: false,
     desc: {
       name: 'Capriciousness',
       detail: `Increases the wearer's CRIT DMG by {{0}}%. At the start of the battle, the wearer gains <b>Mask</b>, lasting for <span class="text-desc">3</span> turns. While the wearer has <b>Mask</b>, the wearer's allies have their CRIT Rate increased by {{1}}% and their CRIT DMG increased by {{2}}%. For every <span class="text-desc">1</span> Skill Point the wearer recovers (including Skill Points that exceed the limit), they gain <span class="text-desc">1</span> stack of <b>Radiant Flame</b>. And when the wearer has <span class="text-desc">4</span> stacks of <b>Radiant Flame</b>, all the stacks are removed, and they gain <b>Mask</b>, lasting for <span class="text-desc">4</span> turns.`,
@@ -1557,6 +1651,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 21,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Crystallize',
       detail: `Increases the wearer's Effect Hit Rate by {{0}}%. When the wearer deals DMG to an enemy inflicted with <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-fire">Burn</b>, <b class="text-hsr-lightning">Shock</b>, or <b class="text-hsr-physical">Bleed</b>, each respectively grants <span class="text-desc">1</span> stack of Prophet, stacking up to <span class="text-desc">4</span> time(s). In a single battle, only <span class="text-desc">1</span> stack of <b>Prophet</b> can be granted for each type of DoT. Every stack of <b>Prophet</b> increases wearer's ATK by {{1}}% and enables the DoT dealt to ignore {{2}}% of the target's DEF.`,
@@ -1575,6 +1670,7 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 30,
     type: PathType.PRESERVATION,
+    beta: false,
     desc: {
       name: 'All-In',
       detail: `Increases the wearer's DEF by {{0}}%. When the wearer provides a <b class="text-indigo-300">Shield</b> to an ally, the wearer's CRIT DMG increases by {{0}}%, lasting for <span class="text-desc">2</span> turn(s). When the wearer's <u>follow-up attack</u> hits an enemy target, there is a {{1}}% <u>base chance</u> to increase the DMG taken by the attacked enemy target by {{2}}%, lasting for <span class="text-desc">2</span> turn(s).`,
@@ -1593,6 +1689,7 @@ export const LightCones = [
     baseAtk: 28.8,
     baseDef: 18,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Steerer',
       detail: `Increases the wearer's CRIT DMG by {{0}}%. When the wearer hits the enemy target, inflicts <b>Mirage Fizzle</b> on the enemy, lasting for <span class="text-desc">1</span> turn. This effect can be triggered <span class="text-desc">1</span> time against each target for every attack the wearer launches. The wearer deals {{1}}% more DMG to targets afflicted with <b>Mirage Fizzle</b>, and DMG from the wearer's Ultimate additionally increases by {{1}}%.`,
@@ -1610,6 +1707,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 24,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Metamorphosis',
       detail: `Increases the wearer's Break Effect by {{0}}%. When the wearer deals Break DMG to an enemy target, inflicts <b>Routed</b> on the enemy, lasting for <span class="text-desc">2</span> turn(s). Targets afflicted with <b>Routed</b> receive {{1}}% increased Break DMG from the wearer, and their SPD is lowered by <span class="text-desc">20%</span>.`,
@@ -1627,6 +1725,7 @@ export const LightCones = [
     baseAtk: 28.8,
     baseDef: 21,
     type: PathType.HARMONY,
+    beta: false,
     desc: {
       name: 'Pacify',
       detail: `Every time an ally attacks, the wearer gains <span class="text-desc">1</span> stack of <b>Cantillation</b>. Each stack of <b>Cantillation</b> increases the wearer's Energy Regeneration Rate by {{0}}%, stacking up to <span class="text-desc">5</span> time(s). When the wearer uses their Ultimate, removes <b>Cantillation</b> and gains <b>Cadenza</b>. <b>Cadenza</b> increases the Wearer's ATK by {{1}}% and increases all allies' DMG dealt by {{2}}%, lasting for <span class="text-desc">1</span> turn(s).`,
@@ -1645,6 +1744,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 21,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'Rough Water',
       detail: `Increases the wearer's Break Effect by {{0}}%. The Break DMG dealt by the wearer ignores {{1}}% of the target's DEF. When the wearer's Break Effect in battle is at <span class="text-desc">150%</span> or greater, increases their SPD by {{2}}%.`,
@@ -1663,6 +1763,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 24,
     type: PathType.ERUDITION,
+    beta: false,
     desc: {
       name: 'Promise',
       detail: `Increases the wearer's CRIT Rate by {{0}}%. While the wearer is in battle, for every <span class="text-desc">20%</span> CRIT DMG that exceeds <span class="text-desc">120%</span>, the DMG of the wearer's <u>follow-up attack</u> is increased by {{1}}%. This effect can stack up to <span class="text-desc">4</span> time(s). When the battle starts or after the wearer uses their Basic ATK, enables the Ultimate and the <u>follow-up attack</u> to ignore {{2}}% of the target's DEF, lasting for <span class="text-desc">2</span> turn(s).`,
@@ -1681,6 +1782,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 24,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Worldly Affairs Leave No Mark',
       detail: `Increases the wearer's Effect Hit Rate by {{0}}%. After the wearer uses Basic ATK, Skill, or Ultimate to attack an enemy target, there is a <span class="text-desc">60%</span> <u>base chance</u> to inflict <b>Unarmored</b> on the target. While in the <b>Unarmored</b> state, the enemy target receives {{1}}% increased DMG, lasting for <span class="text-desc">2</span> turn(s). If the target is under a DoT state inflicted by the wearer, there is a <span class="text-desc">60%</span> <u>base chance</u> to upgrade the <b>Unarmored</b> state inflicted by the wearer to the <b>Cornered</b> state, which additionally increases the DMG the target enemy receives by {{2}}%, lasting for <span class="text-desc">2</span> turn(s). During this period, the wearer cannot inflict <b>Unarmored</b> on the target.`,
@@ -1699,6 +1801,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 21,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Deeply Engrossed',
       detail: `Greatly increases the odds that the wearer will be attacked and increases the wearer's CRIT DMG by {{0}}%. After the wearer uses their Ultimate, they receive <span class="text-desc">1</span> stack of <b>Firedance</b>, lasting for <span class="text-desc">2</span> turns and up to <span class="text-desc">2</span> stacks. Each stack of <b>Firedance</b> increases the DMG dealt by the wearer's <u>follow-up attack</u> by {{0}}%.`,
@@ -1713,6 +1816,7 @@ export const LightCones = [
     baseAtk: 28.8,
     baseDef: 21,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'Intimidation',
       detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer launches a <u>follow-up attack</u>, gains <span class="text-desc">1</span> stack of <b>Luminflux</b>, stacking up to <span class="text-desc">2</span> time(s). Each stack of <b>Luminflux</b> enables the Ultimate DMG dealt by the wearer to ignore {{1}}% of the target's DEF. When the wearer's turn ends, removes <span class="text-desc">1</span> stack of <b>Luminflux</b>.`,
@@ -1730,6 +1834,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 24,
     type: PathType.ABUNDANCE,
+    beta: false,
     desc: {
       name: 'Contentment',
       detail: `Increases wearer's Break Effect by {{0}}%. After the wearer uses Ultimate to attack enemy targets, inflicts the targets with the <b>Woefree</b> state, lasting for <span class="text-desc">2</span> turn(s). While in <b>Woefree</b>, enemy targets take {{1}}% increased DMG. The effect of increasing DMG taken is additionally boosted by {{2}}% if the wearer's current Break Effect is <span class="text-desc">150%</span> or higher.`,
@@ -1739,7 +1844,6 @@ export const LightCones = [
         { base: 8, growth: 2 },
       ],
     },
-    beta: true,
   },
   {
     id: '23033',
@@ -1749,6 +1853,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 24,
     type: PathType.ERUDITION,
+    beta: false,
     desc: {
       name: 'Exorcism',
       detail: `Increases the wearer's Break Effect by {{0}}%. When entering battle, immediately regenerates {{1}} Energy. After the wearer uses Ultimate, obtains <b>Raiton</b>. After using <span class="text-desc">2</span> Basic ATKs, advances the wearer's action by {{2}}% and removes <b>Raiton</b>. After the wearer uses Ultimate, resets <b>Raiton</b>.`,
@@ -1758,7 +1863,6 @@ export const LightCones = [
         { base: 50, growth: 5 },
       ],
     },
-    beta: true,
   },
   //---------------------
   //   Herta 5 Star
@@ -1771,6 +1875,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 18,
     type: PathType.DESTRUCTION,
+    beta: false,
     desc: {
       name: 'Moth to Flames',
       detail: `Whenever the wearer attacks, their ATK is increased by {{0}}% in this battle. This effect can stack up to <span class="text-desc">4</span> time(s). After a character inflicts Weakness Break on an enemy, the wearer's DMG increases by {{1}}% for <span class="text-desc">2</span> turn(s).`,
@@ -1788,6 +1893,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 21,
     type: PathType.HUNT,
+    beta: false,
     desc: {
       name: 'Chase',
       detail: `Increases the wearer's CRIT rate by {{0}}%, and increases their CRIT rate against enemies with HP less than or equal to <span class="text-desc">50%</span> by an extra {{0}}%. When the wearer defeats an enemy, their ATK is increased by {{1}}% for <span class="text-desc">2</span> turn(s).`,
@@ -1805,6 +1911,7 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 24,
     type: PathType.PRESERVATION,
+    beta: false,
     desc: {
       name: 'Treasure',
       detail: `Increases the wearer's Effect RES by {{0}}%. If the wearer is attacked and has no <b class="text-indigo-300">Shield</b>, they gain a <b class="text-indigo-300">Shield</b> equal to {{1}}% of their Max HP for <span class="text-desc">2</span> turn(s). This effect can only be triggered once every <span class="text-desc">3</span> turn(s). If the wearer has a <b class="text-indigo-300">Shield</b> when attacked, the DMG they receive decreases by {{2}}%.`,
@@ -1823,6 +1930,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 18,
     type: PathType.NIHILITY,
+    beta: false,
     desc: {
       name: 'Chaos Elixir',
       detail: `Increases the wearer's Break Effect by {{0}}%. When the wearer uses their Ultimate, increases DoT dealt by the wearer by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). When a target enemy suffering from DoT imposed by the wearer is defeated, regenerates {{2}} Energy for the wearer.`,
@@ -1841,6 +1949,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 18,
     type: PathType.ERUDITION,
+    beta: false,
     desc: {
       name: 'Boundless Thought',
       detail: `Increases the wearer's ATK by {{0}}%. After using an attack, for each enemy target hit, additionally increases ATK by {{1}}%. This effect can stack <span class="text-desc">5</span> times and lasts until the next attack. If there are <span class="text-desc">3</span> or more enemy targets hit, this unit's SPD increases by {{2}}%, lasting for <span class="text-desc">1</span> turn(s).`,
