@@ -690,22 +690,6 @@ export const Characters = [
     beta: false,
   },
   {
-    id: '1225',
-    name: 'Fugue',
-    stat: {
-      baseAtk: 76.8,
-      baseHp: 124.8,
-      baseDef: 57,
-      baseSpd: 107,
-      energy: 110,
-    },
-    trace: [Stats.P_ATK, Stats.P_DEF, Stats.CRIT_DMG],
-    rarity: 5,
-    path: PathType.NIHILITY,
-    element: Element.FIRE,
-    beta: false,
-  },
-  {
     id: '1301',
     name: 'Gallagher',
     stat: {
