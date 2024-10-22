@@ -155,6 +155,7 @@ export const baseStatsObject = {
   BASE_AGGRO: [] as StatsArray[],
 
   MAX_ENERGY: 0,
+  SUMMON: false,
 
   // Multipliers
   BASIC_SCALING: [] as IScaling[],

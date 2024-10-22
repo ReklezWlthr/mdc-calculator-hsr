@@ -58,6 +58,8 @@ import Feixiao from './characters/Feixiao'
 import Lingsha from './characters/Lingsha'
 import Moze from './characters/Moze'
 import Rappa from './characters/Rappa'
+import Sunday from './characters/Sunday'
+import Fugue from './characters/Fugue'
 
 export default [
   { id: '1001', conditionals: March },
@@ -103,6 +105,7 @@ export default [
   { id: '1222', conditionals: Lingsha },
   { id: '1223', conditionals: Moze },
   { id: '1224', conditionals: MarchHunt },
+  { id: '1225', conditionals: Fugue },
   { id: '1301', conditionals: Gallagher },
   { id: '1302', conditionals: Argenti },
   { id: '1303', conditionals: RuanMei },
@@ -114,6 +117,7 @@ export default [
   { id: '1309', conditionals: Robin },
   { id: '1310', conditionals: Firefly },
   { id: '1312', conditionals: Misha },
+  { id: '1313', conditionals: Sunday },
   { id: '1314', conditionals: Jade },
   { id: '1315', conditionals: Boothill },
   { id: '1317', conditionals: Rappa },

@@ -1169,6 +1169,26 @@ export const LCAllyConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'number',
+    text: `Hymn Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 3,
+    duration: 2,
+    id: '23034',
+    scaling: (base, form, r, { own, owner }) => {
+      if (form[`23034_${owner}`]) {
+        base[Stats.ALL_DMG].push({
+          name: `Hymn`,
+          source: own.NAME,
+          value: calcRefinement(0.15, 0.0225, r) * form[`23034_${owner}`],
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const LCTeamConditionals: IWeaponContent[] = [
@@ -1582,6 +1602,27 @@ export const LCTeamConditionals: IWeaponContent[] = [
             value: calcRefinement(0.1, 0.02, r) + (x.getValue(Stats.BE) >= 1.5 ? calcRefinement(0.08, 0.02, r) : 0),
           })
           return x
+        })
+        if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Charring`,
+    show: true,
+    default: false,
+    debuff: true,
+    duration: 2,
+    id: '23035',
+    chance: { base: 1, fixed: false },
+    scaling: (base, form, r, { debuffs, own }) => {
+      if (form['23035']) {
+        base.VULNERABILITY.push({
+          name: 'Charring',
+          source: 'Long Road Leads Home',
+          value: calcRefinement(0.2, 0.025, r),
         })
         if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }

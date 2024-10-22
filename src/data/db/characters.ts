@@ -1,5 +1,7 @@
 import { Element, PathType, Stats } from '@src/domain/constant'
 
+export const summonList = ['1112', '1204', '1222']
+
 export const Characters = [
   {
     id: '1001',
@@ -690,6 +692,22 @@ export const Characters = [
     beta: false,
   },
   {
+    id: '1225',
+    name: 'Fugue',
+    stat: {
+      baseAtk: 79.20000000018626,
+      baseHp: 153.12000000011176,
+      baseDef: 75.90000000083819,
+      baseSpd: 102,
+      energy: 140,
+    },
+    trace: [Stats.EHR, Stats.P_HP, Stats.BE],
+    rarity: 5,
+    path: PathType.NIHILITY,
+    element: Element.FIRE,
+    beta: true,
+  },
+  {
     id: '1301',
     name: 'Gallagher',
     stat: {
@@ -864,6 +882,22 @@ export const Characters = [
     path: PathType.DESTRUCTION,
     element: Element.ICE,
     beta: false,
+  },
+  {
+    id: '1313',
+    name: 'Sunday',
+    stat: {
+      baseAtk: 100.32000000029802,
+      baseHp: 168.96000000089407,
+      baseDef: 72.6000000005588,
+      baseSpd: 96,
+      energy: 130,
+    },
+    trace: [Stats.CRIT_DMG, Stats.P_DEF, Stats.E_RES],
+    rarity: 5,
+    path: PathType.HARMONY,
+    element: Element.IMAGINARY,
+    beta: true,
   },
   {
     id: '1314',
