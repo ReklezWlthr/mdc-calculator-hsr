@@ -1387,7 +1387,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     id: '23016',
     scaling: (base, form, r, { debuffs, own }) => {
       if (form['23016']) {
-        base[Stats.CRIT_DMG].push({
+        base.X_CRIT_DMG.push({
           name: `Tame`,
           source: 'Worrisome, Blissful',
           value: calcRefinement(0.12, 0.02, r) * form['23016'],

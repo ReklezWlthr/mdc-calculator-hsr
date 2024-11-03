@@ -5,7 +5,8 @@
     "desc": [
       "Content Version: <span class=\"text-desc\">v2.7v2</span>",
       "Updated Wording: <span class=\"text-desc\">Fugue</span>",
-      "<b class=\"text-heal\">Fixed</b>: <span class=\"text-desc\">Aventurine</span>'s Ultimate CRIT DMG incorrectly affecting other CRIT DMG buffs"
+      "<b class=\"text-heal\">Fixed</b>: <span class=\"text-desc\">Aventurine</span>'s Ultimate CRIT DMG incorrectly affecting other CRIT DMG buffs",
+      "<b class=\"text-heal\">Fixed</b>: <span class=\"text-desc\">Worrisome, Blissful</span>'s <b>Tame</b>'s CRIT DMG incorrectly affecting other CRIT DMG buffs"
     ]
   },
   {
