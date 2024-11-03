@@ -145,16 +145,18 @@ export enum TalentType {
   ULT = 'Ultimate',
   TECH = 'Technique',
   TALENT = 'Talent',
+  SERVANT = 'Servant',
   NONE = 'None',
 }
 
 export enum TalentProperty {
-  NORMAL = 'Normal',
+  NORMAL = 'Normal DMG',
   HEAL = 'Heal',
   SHIELD = 'Shield',
   ADD = 'Additional DMG',
   BREAK = 'Break DMG',
   SUPER_BREAK = 'Super Break DMG',
+  SERVANT = 'Servant DMG',
   DOT = 'DoT',
   BREAK_DOT = 'Break DoT',
   FUA = 'Follow-Up DMG',

@@ -56,8 +56,8 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: `Virtue Beckons Bliss`,
-      content: `Grants <b class="text-red">Foxian Prayer</b> to one designated ally and causes this unit to enter the <b class="text-hsr-fire">Torrid Scorch</b> state, lasting for <span class="text-desc">3</span> turn(s). The duration of this state reduces by <span class="text-desc">1</span> turn at the start of Fugue's each turn.
-      <br />Ally target with <b class="text-red">Foxian Prayer</b> has their Break Effect increased by {{0}}%. And every time after they attack, Fugue has a <span class="text-desc">100%</span> <u>base chance</u> to reduce the attacked enemy target's DEF by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).
+      content: `Grants <b class="text-red">Foxian Prayer</b> to one designated ally and causes this unit to enter the <b class="text-hsr-fire">Torrid Scorch</b> state, lasting for <span class="text-desc">3</span> turn(s). This state's duration reduces by <span class="text-desc">1</span> at the start of Fugue's turn.
+      <br />The ally target with <b class="text-red">Foxian Prayer</b> increases their Break Effect by {{0}}%. Every time after they attack, Fugue has a <span class="text-desc">100%</span> <u>base chance</u> to reduce the attacked enemy target's DEF by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).
       <br />While in the <b class="text-hsr-fire">Torrid Scorch</b> state, Fugue cannot use Skill and her Basic ATK <b>Radiant Streak</b> is enhanced to <b>Fiery Caress</b>.`,
       value: [
         { base: 20, growth: 2, style: 'curved' },
@@ -261,6 +261,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 20,
+          sum: true,
         },
       ]
 

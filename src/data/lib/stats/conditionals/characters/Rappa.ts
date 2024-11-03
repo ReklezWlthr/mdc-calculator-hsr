@@ -53,7 +53,6 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ],
       level: basic,
       tag: AbilityTag.BLAST,
-      image: `https://homdgcat.wiki/images/skillicons/avatar/1317/SkillIcon_1317_Ultra.png`,
     },
     skill: {
       energy: 30,
@@ -253,6 +252,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 10,
+              hitSplit: [0.5, 0.5],
               sum: true,
             },
           ]
@@ -264,6 +264,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 10,
+          hitSplit: [0.5, 0.5],
           sum: true,
         },
       ]

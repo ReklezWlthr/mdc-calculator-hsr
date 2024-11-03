@@ -56,7 +56,8 @@ export const breakDamageStringConstruct = (
   const breakLevel = BreakBaseLevel[level - 1]
   const toughnessMult = 0.5 + calculatorStore.toughness / 40
   const base = breakElementMult * breakLevel * toughnessMult
-  const final = base * (1 + breakEffect) * defMult * vulMult * resMult * 0.9 * (multiplier || 1)
+  const final =
+    base * (1 + breakEffect) * defMult * vulMult * resMult * (calculatorStore.broken ? 1 : 0.9) * (multiplier || 1)
 
   const enemy = _.find(Enemies, (item) => item.name === calculatorStore.enemy)
   const enemyType = enemy?.type
@@ -145,7 +146,7 @@ export const breakDamageStringConstruct = (
       broken ? 1 : 0.9
     )}</b> <i class="text-[10px]">BROKEN</i>`
 
-  const breakString = formulaString(final, baseBreakScaling, false, defMult, vulMult)
+  const breakString = formulaString(final, baseBreakScaling, calculatorStore.broken, defMult, vulMult)
   const debuffString = formulaString(finalDebuff, debuff, calculatorStore.broken, debuffDefMult, debuffVulMult)
 
   return {

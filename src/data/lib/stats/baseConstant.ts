@@ -117,6 +117,7 @@ export const baseStatsObject = {
   DOT_DMG: [] as StatsArray[],
   FUA_DMG: [] as StatsArray[],
   ADD_DMG: [] as StatsArray[],
+  SERVANT_DMG: [] as StatsArray[],
 
   BASIC_F_DMG: [] as StatsArray[],
   SKILL_F_DMG: [] as StatsArray[],

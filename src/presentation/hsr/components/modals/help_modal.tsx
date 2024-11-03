@@ -27,6 +27,12 @@ export const HelpModal = observer(() => {
           action has been delayed beyond the <b>Maximum</b> value. The latter, however, forces the unit's Action Value
           to become 0, regardless of its current value.
         </BulletPoint>
+        <BulletPoint>
+          <b className="text-violet-300">Exo-Toughness</b> - An additional Toughness bar displayed after the target's
+          real Toughness bar gets broken, and can be reduced by attacks of any Element. Weakness Break will be triggered
+          again after the <b className="text-violet-300">Exo-Toughness</b> is depleted. Damage from this additional
+          Weakness Break will consider the target's real Toughness strength.
+        </BulletPoint>
         <p>
           <b className="text-desc">Damage Properties</b>:
         </p>

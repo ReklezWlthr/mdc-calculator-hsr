@@ -1,6 +1,6 @@
 import { useStore } from '@src/data/providers/app_store_provider'
 import { IContent } from '@src/domain/conditional'
-import { Element, Stats, TalentProperty } from '@src/domain/constant'
+import { Element, ITeamChar, Stats, TalentProperty } from '@src/domain/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { Tooltip } from '@src/presentation/components/tooltip'
@@ -25,16 +25,18 @@ interface ConditionalBlockProps {
   contents: IContentIndexOwner[]
   tooltipStyle?: string
   formOverride?: Record<string, any>[]
+  teamOverride?: ITeamChar[]
   setForm?: FormSetterT
   compare?: boolean
 }
 
 export const WeaponConditionalBlock = observer(
-  ({ contents, formOverride, setForm, compare }: ConditionalBlockProps) => {
+  ({ contents, formOverride, teamOverride, setForm, compare }: ConditionalBlockProps) => {
     const [open, setOpen] = useState(true)
 
     const { calculatorStore, teamStore, setupStore } = useStore()
     const form = formOverride || calculatorStore.form
+    const team = teamOverride || teamStore.characters
     const set = setForm || calculatorStore.setFormValue
 
     return (
@@ -81,12 +83,12 @@ export const WeaponConditionalBlock = observer(
                       <LCTooltip
                         wId={_.split(content.id, '_')[0]}
                         refinement={
-                          teamStore.characters[content.owner || content.index]?.equipments?.weapon?.refinement
+                          team[content.owner || content.index]?.equipments?.weapon?.refinement
                         }
                         position="left"
                       >
                         <p className="w-full text-xs text-center text-white truncate">
-                          {content.owner && `${findCharacter(teamStore.characters[content.owner]?.cId)?.name}: `}
+                          {content.owner && `${findCharacter(team[content.owner]?.cId)?.name}'s `}
                           {content.text}
                         </p>
                       </LCTooltip>

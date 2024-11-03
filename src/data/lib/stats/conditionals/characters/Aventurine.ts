@@ -304,7 +304,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           })
       }
       if (form.aven_ult) {
-        base[Stats.CRIT_DMG].push({
+        base.X_CRIT_DMG.push({
           name: 'Ultimate',
           source: 'Self',
           value: calcScaling(0.09, 0.006, ult, 'curved'),
@@ -386,7 +386,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           })
       }
       if (form.aven_ult) {
-        base[Stats.CRIT_DMG].push({
+        base.X_CRIT_DMG.push({
           name: 'Ultimate',
           source: 'Aventurine',
           value: calcScaling(0.09, 0.006, ult, 'curved'),
