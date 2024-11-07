@@ -240,6 +240,7 @@ const Topaz = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           hitSplit: form.windfall
             ? [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.3]
             : [1 / 7, 1 / 7, 1 / 7, 1 / 7, 1 / 7, 1 / 7, 1 / 7],
+          summon: true,
         },
       ]
 

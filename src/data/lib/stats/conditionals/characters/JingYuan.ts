@@ -227,6 +227,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           break: 5,
           cd: form.jingyuan_talent >= 6 && a.a2 ? 0.25 : 0,
           vul,
+          summon: true,
         },
         {
           name: 'Bounce Adjacent Per Hit',
@@ -238,6 +239,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           type: TalentType.TALENT,
           cd: form.jingyuan_talent >= 6 && a.a2 ? 0.25 : 0,
           vul,
+          summon: true,
         },
         {
           name: 'Total Single Target',
@@ -250,6 +252,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           cd: form.jingyuan_talent >= 6 && a.a2 ? 0.25 : 0,
           vul,
           sum: true,
+          summon: true,
         },
         {
           name: 'Total Adjacent',
@@ -262,6 +265,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           multiplier: form.jingyuan_talent,
           cd: form.jingyuan_talent >= 6 && a.a2 ? 0.25 : 0,
           vul,
+          summon: true,
         },
       ]
 

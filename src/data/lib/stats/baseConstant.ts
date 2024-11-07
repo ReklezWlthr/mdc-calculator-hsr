@@ -69,7 +69,9 @@ export const baseStatsObject = {
   SHIELD: [] as StatsArray[],
   BREAK_EFF: [] as StatsArray[],
   I_HEAL: [] as StatsArray[],
-
+  
+  SUMMON_DEF_PEN: [] as StatsArray[],
+  
   //DEBUFFS
   ATK_REDUCTION: [] as StatsArray[],
   DEF_REDUCTION: [] as StatsArray[],

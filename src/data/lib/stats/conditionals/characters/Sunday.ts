@@ -44,7 +44,8 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 30,
       trace: 'Skill',
       title: `Benison of Paper and Rites`,
-      content: `Causes one designated ally character and their summon to immediately take action, and increases their DMG dealt by {{0}}%. If the target has a summon, then DMG additionally increases by {{0}}%, lasting for <span class="text-desc">2</span> turn(s).
+      content: `Causes one designated ally character and their summon to immediately take action, and increases their DMG dealt by {{0}}%. If the target has a summon, then DMG additionally increases by {{0}}% for <span class="text-desc">2</span> turn(s).
+      <br />After using Skill on <b class="text-hsr-imaginary">The Beatified</b>, recovers <span class="text-desc">1</span> Skill Point.
       <br />When Sunday uses this ability on characters following the Path of Harmony, the "immediate action" effect cannot be triggered.`,
       value: [{ base: 20, growth: 2, style: 'curved' }],
       level: skill,
@@ -55,10 +56,10 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: 'Ultimate',
       title: `Ode to Caress and Cicatrix`,
       content: `Regenerates Energy by <span class="text-desc">20%</span> of Max Energy for one designated ally character and turns the target and their summon into <b class="text-hsr-imaginary">The Beatified</b>. <b class="text-hsr-imaginary">The Beatified</b> have their CRIT DMG increased by an amount equal to {{0}}% of Sunday's CRIT DMG plus {{1}}%.
-      <br />At the start of Sunday's each turn, reduces the duration of <b class="text-hsr-imaginary">The Beatified</b> by <span class="text-desc">1</span> turn, lasting for a total of <span class="text-desc">3</span> turn(s). And it only takes effect on the most recent target of the Ultimate (excluding Sunday himself). When Sunday becomes downed, <b class="text-hsr-imaginary">The Beatified</b> will also be dispelled.`,
+      <br />At the start of Sunday's each turn, reduces the duration of <b class="text-hsr-imaginary">The Beatified</b> state by <span class="text-desc">1</span> turn, lasting for a total of <span class="text-desc">3</span> turn(s). And it only takes effect on the most recent target of the Ultimate (excluding Sunday himself). When Sunday becomes downed, <b class="text-hsr-imaginary">The Beatified</b> will also be dispelled.`,
       value: [
-        { base: 10, growth: 1.5, style: 'curved' },
-        { base: 6.4, growth: 0.16, style: 'curved' },
+        { base: 12, growth: 1.8, style: 'curved' },
+        { base: 8, growth: 0.4, style: 'curved' },
       ],
       level: ult,
       tag: AbilityTag.SUPPORT,
@@ -67,7 +68,7 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 10,
       trace: 'Talent',
       title: `The Sorrowing Body`,
-      content: `When using Skill, increases the target's CRIT Rate by {{0}}%. This effect lasts for <span class="text-desc">2</span> turn(s).`,
+      content: `When using Skill, increases the target's CRIT Rate by {{0}}%, lasting for <span class="text-desc">3</span> turn(s).`,
       value: [{ base: 10, growth: 1, style: 'curved' }],
       level: talent,
       tag: AbilityTag.SUPPORT,
@@ -75,7 +76,7 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     technique: {
       trace: 'Technique',
       title: `The Glorious Mysteries`,
-      content: `After using Technique, at the start of the next battle, increases all ally targets' DMG by <span class="text-desc">50%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `The first time Sunday uses an ability on an ally target in the next battle, the target's DMG dealt increases by <span class="text-desc">50%</span> for <span class="text-desc">2</span> turn(s).`,
       tag: AbilityTag.SUPPORT,
     },
     a6: {
@@ -91,17 +92,17 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Rest Day's Longing`,
-      content: `Using Skill will not consume Skill Points. This effect can be triggered again after <span class="text-desc">2</span> turn(s).`,
+      content: `If the Ultimate regenerates less than <span class="text-desc">40</span> Energy for the target, increases the Energy regenerated to <span class="text-desc">40</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Millennium's Quietus`,
-      content: `When Sunday uses Skill, increases the target's All-Type RES PEN by <span class="text-desc">20%</span>, lasting for <span class="text-desc">1</span> turn(s). And this effect will last until the start of the target's next turn.`,
+      content: `When Sunday uses his Skill, allows target character to ignore <span class="text-desc">20%</span> of enemy target's DEF and summons to ignore <span class="text-desc">40%</span> of enemy target's DEF when dealing DMG, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Faith Outstrips Frailty`,
-      content: `While <b class="text-hsr-imaginary">The Beatified</b> exists on the field, increases the SPD of Sunday and <b class="text-hsr-imaginary">The Beatified</b> by <span class="text-desc">20</span>.`,
+      content: `Recovers <span class="text-desc">2</span> Skill Point(s) after Ultimate is first used. The DMG dealt by <b class="text-hsr-imaginary">The Beatified</b> increases by <span class="text-desc">30%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -123,7 +124,7 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c6: {
       trace: 'Eidolon 6',
       title: `Dawn of Sidereal Cacophony`,
-      content: `The Talent's CRIT Rate boost effect becomes stackable up to <span class="text-desc">3</span> time(s). When Sunday uses Ultimate, he also applies the Talent's CRIT Rate boost effect to the target. When the Talent's CRIT Rate boost takes effect and the target's CRIT Rate exceeds <span class="text-desc">100%</span>, every <span class="text-desc">1%</span> of excess CRIT Rate is converted to <span class="text-desc">2%</span> CRIT DMG.`,
+      content: `The Talent's CRIT Rate boost effect becomes stackable up to <span class="text-desc">3</span> time(s), and the Talent's duration increases by <span class="text-desc">1</span> turn(s). When Sunday uses Ultimate, he also applies the Talent's CRIT Rate boost effect to the target. When the Talent's CRIT Rate boost takes effect and the target's CRIT Rate exceeds <span class="text-desc">100%</span>, every <span class="text-desc">1%</span> of excess CRIT Rate increases by <span class="text-desc">2%</span> CRIT DMG.`,
     },
   }
 
@@ -220,7 +221,7 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           })
         }
         if (c >= 1) {
-          base.ALL_TYPE_RES_PEN.push({
+          base.DEF_PEN.push({
             name: 'Eidolon 1',
             source: 'Self',
             value: 0.2,
@@ -260,31 +261,36 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           })
         }
         if (c >= 1) {
-          base.ALL_TYPE_RES_PEN.push({
+          base.DEF_PEN.push({
             name: 'Eidolon 1',
             source: 'Sunday',
             value: 0.2,
           })
+          base.SUMMON_DEF_PEN.push({
+            name: 'Eidolon 1',
+            source: 'Sunday',
+            value: 0.4,
+          })
         }
       }
       if (aForm.sunday_ult) {
-        const multiplier = calcScaling(0.1, 0.015, skill, 'curved')
+        const multiplier = calcScaling(0.12, 0.018, skill, 'curved')
         base.CALLBACK.push((x, d, w, all) => {
           x.X_CRIT_DMG.push({
             name: `The Beatified`,
             source: 'Sunday',
-            value: calcScaling(0.064, 0.0016, skill, 'curved') + multiplier * all[index].getValue(Stats.CRIT_DMG),
+            value: calcScaling(0.08, 0.004, skill, 'curved') + multiplier * x.getValue(Stats.CRIT_DMG),
             multiplier,
-            base: toPercentage(all[index].getValue(Stats.CRIT_DMG)),
-            flat: toPercentage(calcScaling(0.064, 0.0016, skill, 'curved')),
+            base: toPercentage(x.getValue(Stats.CRIT_DMG)),
+            flat: toPercentage(calcScaling(0.08, 0.004, skill, 'curved')),
           })
           return x
         })
         if (c >= 2) {
-          base[Stats.SPD].push({
-            name: 'Skill',
+          base[Stats.ALL_DMG].push({
+            name: 'Eidolon 2',
             source: 'Sunday',
-            value: 20,
+            value: 0.3,
           })
         }
       }
@@ -330,24 +336,17 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       broken: boolean
     ) => {
       if (form.sunday_ult) {
-        const multiplier = calcScaling(0.1, 0.015, skill, 'curved')
+        const multiplier = calcScaling(0.12, 0.018, skill, 'curved')
         base.CALLBACK.push((x, d, w, all) => {
           x.X_CRIT_DMG.push({
             name: `The Beatified`,
             source: 'Self',
-            value: calcScaling(0.064, 0.0016, skill, 'curved') + multiplier * x.getValue(Stats.CRIT_DMG),
+            value: calcScaling(0.08, 0.004, skill, 'curved') + multiplier * x.getValue(Stats.CRIT_DMG),
             multiplier,
             base: toPercentage(x.getValue(Stats.CRIT_DMG)),
-            flat: toPercentage(calcScaling(0.064, 0.0016, skill, 'curved')),
+            flat: toPercentage(calcScaling(0.08, 0.004, skill, 'curved')),
           })
           return x
-        })
-      }
-      if (_.some(allForm, (item) => item.sunday_ult) && c >= 2) {
-        base[Stats.SPD].push({
-          name: 'Skill',
-          source: 'Self',
-          value: 20,
         })
       }
       if (form.sunday_e6) {

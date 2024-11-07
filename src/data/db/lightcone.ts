@@ -1875,7 +1875,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Departing Anew',
-      detail: `After the wearer uses Skill or Ultimate on one ally character, the wearer regenerates {{0}} Energy and the ability's target receives <span class="text-desc">1</span> stack of <b>Hymn</b> for <span class="text-desc">2</span> turn(s), stacking up to <span class="text-desc">3</span> time(s). Each stack of <b>Hymn</b> increases its holder's DMG dealt by {{1}}%. After every <span class="text-desc">2</span> instance(s) of Skill or Ultimate the wearer uses on one ally character, recovers <span class="text-desc">1</span> Skill Point.`,
+      detail: `After the wearer uses Skill or Ultimate on one ally character, the wearer regenerates {{0}} Energy and the ability's target receives <span class="text-desc">1</span> stack of <b>Hymn</b> for <span class="text-desc">3</span> turn(s), stacking up to <span class="text-desc">3</span> time(s). Each stack of <b>Hymn</b> increases its holder's DMG dealt by {{1}}%. After every <span class="text-desc">2</span> instance(s) of Skill or Ultimate the wearer uses on one ally character, recovers <span class="text-desc">1</span> Skill Point.`,
       properties: [
         { base: 6, growth: 1 },
         { base: 15, growth: 2.25 },

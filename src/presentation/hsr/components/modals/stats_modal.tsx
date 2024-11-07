@@ -251,6 +251,7 @@ export const StatsModal = observer(
               <AttributeBlock stats={stats} stat="Follow-Up DEF PEN" array={stats.FUA_DEF_PEN} />
               <AttributeBlock stats={stats} stat="Break DMG DEF PEN" array={stats.BREAK_DEF_PEN} />
               <AttributeBlock stats={stats} stat="Super Break DMG DEF PEN" array={stats.SUPER_BREAK_DEF_PEN} />
+              <AttributeBlock stats={stats} stat="Summon DEF PEN" array={stats.SUMMON_DEF_PEN} />
             </div>
           </div>
         </Collapsible>

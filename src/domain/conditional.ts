@@ -47,6 +47,7 @@ export interface IScaling {
   hitSplit?: number[]
   bonusSplit?: number[] // Used by DHIL
   cdSplit?: number[] // Used by DHIL
+  summon?: boolean
 }
 
 export interface IContent {

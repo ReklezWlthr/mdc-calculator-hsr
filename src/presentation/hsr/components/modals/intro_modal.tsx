@@ -18,8 +18,8 @@ export const IntroModal = observer(() => {
         <div className="space-y-2">
           {_.map(_.slice(changelog, 0, 7), (item) => (
             <div className="space-y-1" key={item.version}>
-              <p className="ml-3 text-amber-200">
-                <b className="text-desc">v{item.version}</b> - {item.date}
+              <p className="ml-3 text-hsr-physical">
+                <b className="text-indigo-300">v{item.version}</b> - {item.date}
               </p>
               {_.map(item.desc, (desc) => (
                 <BulletPoint key={desc}>

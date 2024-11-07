@@ -191,6 +191,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 type: TalentType.TALENT,
                 break: 30,
                 sum: true,
+                summon: true,
               },
               {
                 name: 'AoE',
@@ -199,6 +200,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 property: TalentProperty.FUA,
                 type: TalentType.TALENT,
                 break: 10,
+                summon: true,
               },
               {
                 name: 'E6 Extra Hit',
@@ -207,6 +209,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 property: TalentProperty.FUA,
                 type: TalentType.TALENT,
                 break: 5,
+                summon: true,
               },
             ]
           : [
@@ -218,6 +221,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 type: TalentType.TALENT,
                 break: 10,
                 sum: true,
+                summon: true,
               },
               {
                 name: 'AoE',
@@ -226,6 +230,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 property: TalentProperty.FUA,
                 type: TalentType.TALENT,
                 break: 10,
+                summon: true,
               },
             ]
       base.BASIC_SCALING = [

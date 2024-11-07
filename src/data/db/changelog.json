@@ -1,5 +1,15 @@
 [
   {
+    "version": "1.1.0-12",
+    "date": "November 7rd, 2024",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v2.7v3</span>",
+      "Updated Characters: <span class=\"text-desc\">Sunday</span>, <span class=\"text-desc\">Fugue</span>",
+      "Updated Light Cone: <span class=\"text-desc\">A Grounded Ascent</span>",
+      "Added Hidden Stat: <span class=\"text-desc\">Summon DEF PEN</span> (Sunday's E1)"
+    ]
+  },
+  {
     "version": "1.1.0-11",
     "date": "November 3rd, 2024",
     "desc": [
@@ -29,7 +39,7 @@
     "version": "1.1.0-8",
     "date": "October 6th, 2024",
     "desc": [
-      "Now <b class=\"text-red\">Live</b>: <span class=\"text-desc\">Lingsha</span>, and Light Cone <span class=\"text-desc\">Scent Alone Stays True</span> and <span class=\"text-desc\">Shadowed by Night</span>"
+      "Now <b class=\"text-red\">Live</b>: <span class=\"text-desc\">Lingsha</span>, and Light Cones <span class=\"text-desc\">Scent Alone Stays True</span> and <span class=\"text-desc\">Shadowed by Night</span>"
     ]
   },
   {
