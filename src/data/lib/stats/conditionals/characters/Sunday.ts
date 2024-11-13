@@ -97,7 +97,7 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c1: {
       trace: 'Eidolon 1',
       title: `Millennium's Quietus`,
-      content: `When Sunday uses his Skill, allows target character to ignore <span class="text-desc">20%</span> of enemy target's DEF and summons to ignore <span class="text-desc">40%</span> of enemy target's DEF when dealing DMG, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `When Sunday uses his Skill, allows target character to ignore <span class="text-desc">20%</span> of enemy target's DEF and their summons to ignore <span class="text-desc">40%</span> of enemy target's DEF when dealing DMG, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
       trace: 'Eidolon 2',

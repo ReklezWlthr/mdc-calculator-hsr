@@ -1,7 +1,15 @@
 [
   {
+    "version": "1.1.0-13",
+    "date": "November 13rd, 2024",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v2.7v4</span>",
+      "Updated Wording: <span class=\"text-desc\">Sunday</span>, <span class=\"text-desc\">Fugue</span>"
+    ]
+  },
+  {
     "version": "1.1.0-12",
-    "date": "November 7rd, 2024",
+    "date": "November 7th, 2024",
     "desc": [
       "Content Version: <span class=\"text-desc\">v2.7v3</span>",
       "Updated Characters: <span class=\"text-desc\">Sunday</span>, <span class=\"text-desc\">Fugue</span>",

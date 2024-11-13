@@ -56,9 +56,9 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: `Virtue Beckons Bliss`,
-      content: `Grants <b class="text-red">Foxian Prayer</b> to one designated ally and causes this unit to enter the <b class="text-hsr-fire">Torrid Scorch</b> state, lasting for <span class="text-desc">3</span> turn(s). This state's duration reduces by <span class="text-desc">1</span> at the start of Fugue's turn.
+      content: `Grants <b class="text-red">Foxian Prayer</b> to one designated ally and causes this unit to enter the <b class="text-hsr-fire">Torrid Scorch</b> state, lasting for <span class="text-desc">3</span> turn(s). This state's duration reduces by <span class="text-desc">1</span> at the start of Fugue's turn. <b class="text-red">Foxian Prayer</b> only takes effect on the most recent target of Fugue's Skill.
       <br />The ally target with <b class="text-red">Foxian Prayer</b> increases their Break Effect by {{0}}% and can deal Toughness Reduction by attacking enemies without corresponding Weakness Type, with the effect being equal to <span class="text-desc">50%</span> of the original Toughness Reduction and cannot be stacked with other Weakness-ignoring Toughness Reduction effects.
-      <br />While in the <b class="text-hsr-fire">Torrid Scorch</b> state, Fugue's Basic ATK will be enhanced and she cannot use her Skill. Every time an ally target with <b class="text-red">Foxian Prayer</b> attacks, Fugue has a <span class="text-desc">100%</span> <u>base chance</u> to reduce the attacked enemy target's DEF by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).`,
+      <br />While in the <b class="text-hsr-fire">Torrid Scorch</b> state, Fugue's Basic ATK will be enhanced. Every time an ally target with <b class="text-red">Foxian Prayer</b> attacks, Fugue has a <span class="text-desc">100%</span> <u>base chance</u> to reduce the attacked enemy target's DEF by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 20, growth: 2, style: 'curved' },
         { base: 8, growth: 1, style: 'curved' },
@@ -136,7 +136,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: `Clairvoyance of Boom and Doom`,
-      content: `Fugue's Weakness Break Efficiency increases by <span class="text-desc">50%</span>. While there is an ally target that has <b class="text-red">Foxian Prayer</b> on the field, all allies are considered as having <b class="text-red">Foxian Prayer</b>.`,
+      content: `Fugue's Weakness Break Efficiency increases by <span class="text-desc">50%</span>. While Fugue is under the <b class="text-hsr-fire">Torrid Scorch</b> state, <b class="text-red">Foxian Prayer</b> takes effect for all allies.`,
     },
   }
 
@@ -187,7 +187,10 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
   ]
 
-  const allyContent: IContent[] = [findContentById(content, 'foxian_prayer')]
+  const allyContent: IContent[] = []
+
+  if (c >= 6) teammateContent.push(findContentById(content, 'foxian_prayer'))
+  else allyContent.push(findContentById(content, 'foxian_prayer'))
 
   return {
     upgrade,
@@ -258,7 +261,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         source: 'Self',
         value: calcScaling(0.5, 0.05, talent, 'curved'),
       })
-      if (form.foxian_prayer && c < 6) {
+      if (form.foxian_prayer) {
         base[Stats.BE].push({
           name: 'Foxian Prayer',
           source: 'Self',
@@ -319,7 +322,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         source: 'Fugue',
         value: calcScaling(0.5, 0.05, talent, 'curved'),
       })
-      if (aForm.foxian_prayer && c < 6) {
+      if ((c < 6 && aForm.foxian_prayer) || (c >= 6 && form.foxian_prayer)) {
         base[Stats.BE].push({
           name: 'Foxian Prayer',
           source: 'Fugue',
@@ -369,30 +372,6 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       weakness: Element[],
       broken: boolean
     ) => {
-      if (_.some(allForm, (item) => item.foxian_prayer) && c >= 6) {
-        _.forEach(team, (t, i) => {
-          t[Stats.BE].push({
-            name: 'Foxian Prayer',
-            source: index === i ? 'Self' : 'Fugue',
-            value: calcScaling(0.2, 0.02, skill, 'curved'),
-          })
-          if (c >= 1) {
-            t.BREAK_EFF.push({
-              name: 'Foxian Prayer',
-              source: index === i ? 'Self' : 'Fugue',
-              value: 0.5,
-            })
-          }
-          if (c >= 4) {
-            base.BREAK_DMG.push({
-              name: 'Eidolon 4',
-              source: index === i ? 'Self' : 'Fugue',
-              value: 0.2,
-            })
-          }
-        })
-      }
-
       if (form.fugue_a6) {
         _.forEach(team, (t, i) => {
           if (index !== i)
