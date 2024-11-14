@@ -82,13 +82,11 @@ export const WeaponConditionalBlock = observer(
                     <div className="col-span-5">
                       <LCTooltip
                         wId={_.split(content.id, '_')[0]}
-                        refinement={
-                          team[content.owner || content.index]?.equipments?.weapon?.refinement
-                        }
+                        refinement={team[content.owner || content.index]?.equipments?.weapon?.refinement}
                         position="left"
                       >
                         <p className="w-full text-xs text-center text-white truncate">
-                          {content.owner && `${findCharacter(team[content.owner]?.cId)?.name}'s `}
+                          {content.owner && `${findCharacter(team[content.owner]?.cId)?.name}: `}
                           {content.text}
                         </p>
                       </LCTooltip>

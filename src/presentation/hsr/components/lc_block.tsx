@@ -133,7 +133,6 @@ export const LCBlock = observer(
     const onOpenModal = useCallback(() => {
       char &&
         canEdit &&
-        team[index]?.cId &&
         modalStore.openModal(<LCModal index={index} setWeapon={setWeapon} pathOverride={findCharacter(char)?.path} />)
     }, [modalStore, index, char, setWeapon])
 
