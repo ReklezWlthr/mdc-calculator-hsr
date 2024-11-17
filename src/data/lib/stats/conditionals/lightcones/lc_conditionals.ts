@@ -1622,7 +1622,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
         base.VULNERABILITY.push({
           name: 'Charring',
           source: 'Long Road Leads Home',
-          value: calcRefinement(0.2, 0.025, r),
+          value: calcRefinement(0.18, 0.03, r),
         })
         if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }

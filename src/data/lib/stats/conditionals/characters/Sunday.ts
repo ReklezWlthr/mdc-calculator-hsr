@@ -44,10 +44,13 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 30,
       trace: 'Skill',
       title: `Benison of Paper and Rites`,
-      content: `Causes one designated ally character and their summon to immediately take action, and increases their DMG dealt by {{0}}%. If the target has a summon, then DMG additionally increases by {{0}}% for <span class="text-desc">2</span> turn(s).
+      content: `Enables one designated ally character and their summon to immediately take action, and increases their DMG dealt by {{0}}%. If the target has a summon, then additionally increases the DMG boost effect by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).
       <br />After using Skill on <b class="text-hsr-imaginary">The Beatified</b>, recovers <span class="text-desc">1</span> Skill Point.
       <br />When Sunday uses this ability on characters following the Path of Harmony, the "immediate action" effect cannot be triggered.`,
-      value: [{ base: 20, growth: 2, style: 'curved' }],
+      value: [
+        { base: 15, growth: 1.5, style: 'curved' },
+        { base: 25, growth: 2.5, style: 'curved' },
+      ],
       level: skill,
       tag: AbilityTag.SUPPORT,
     },
@@ -97,7 +100,7 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c1: {
       trace: 'Eidolon 1',
       title: `Millennium's Quietus`,
-      content: `When Sunday uses his Skill, allows target character to ignore <span class="text-desc">20%</span> of enemy target's DEF and their summons to ignore <span class="text-desc">40%</span> of enemy target's DEF when dealing DMG, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `When Sunday uses his Skill, allows target character to ignore <span class="text-desc">16%</span> of enemy target's DEF and their summons to ignore <span class="text-desc">40%</span> of enemy target's DEF when dealing DMG, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -224,7 +227,7 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           base.DEF_PEN.push({
             name: 'Eidolon 1',
             source: 'Self',
-            value: 0.2,
+            value: 0.16,
           })
         }
       }
@@ -251,7 +254,8 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         base[Stats.ALL_DMG].push({
           name: 'Skill',
           source: 'Sunday',
-          value: calcScaling(0.2, 0.02, skill, 'curved') * (base.SUMMON ? 2 : 1),
+          value:
+            calcScaling(0.15, 0.015, skill, 'curved') + (base.SUMMON ? calcScaling(0.25, 0.025, skill, 'curved') : 0),
         })
         if (c < 6) {
           base[Stats.CRIT_RATE].push({
@@ -264,7 +268,7 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           base.DEF_PEN.push({
             name: 'Eidolon 1',
             source: 'Sunday',
-            value: 0.2,
+            value: 0.16,
           })
           base.SUMMON_DEF_PEN.push({
             name: 'Eidolon 1',

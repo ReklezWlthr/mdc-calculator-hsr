@@ -1896,7 +1896,7 @@ export const LightCones = [
       detail: `Increases the wearer's Break Effect by {{0}}%. When an enemy target's Weakness gets broken, there is a <span class="text-desc">100%</span> base chance to inflict the <b>Charring</b> state on it, which increases its Break DMG taken by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). This effect can stack <span class="text-desc">2</span> time(s).`,
       properties: [
         { base: 60, growth: 10 },
-        { base: 20, growth: 2.5 },
+        { base: 18, growth: 3 },
       ],
     },
   },

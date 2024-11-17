@@ -60,7 +60,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       <br />The ally target with <b class="text-red">Foxian Prayer</b> increases their Break Effect by {{0}}% and can deal Toughness Reduction by attacking enemies without corresponding Weakness Type, with the effect being equal to <span class="text-desc">50%</span> of the original Toughness Reduction and cannot be stacked with other Weakness-ignoring Toughness Reduction effects.
       <br />While in the <b class="text-hsr-fire">Torrid Scorch</b> state, Fugue's Basic ATK will be enhanced. Every time an ally target with <b class="text-red">Foxian Prayer</b> attacks, Fugue has a <span class="text-desc">100%</span> <u>base chance</u> to reduce the attacked enemy target's DEF by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).`,
       value: [
-        { base: 20, growth: 2, style: 'curved' },
+        { base: 15, growth: 1.5, style: 'curved' },
         { base: 8, growth: 1, style: 'curved' },
       ],
       level: skill,
@@ -104,7 +104,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Phecda Primordia`,
-      content: `When an enemy target's Weakness gets broken, Break Effect of teammates (i.e., excluding this unit) increases by <span class="text-desc">8%</span>. If Fugue's Break Effect is <span class="text-desc">250%</span> or more, the Break Effect Boost effect additionally increases by <span class="text-desc">16%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">2</span> time(s).`,
+      content: `When an enemy target's Weakness gets broken, Break Effect of teammates (i.e., excluding this unit) increases by <span class="text-desc">6%</span>. If Fugue's Break Effect is <span class="text-desc">220%</span> or more, the Break Effect Boost effect additionally increases by <span class="text-desc">12%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">2</span> time(s).`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -136,7 +136,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: `Clairvoyance of Boom and Doom`,
-      content: `Fugue's Weakness Break Efficiency increases by <span class="text-desc">50%</span>. While Fugue is under the <b class="text-hsr-fire">Torrid Scorch</b> state, <b class="text-red">Foxian Prayer</b> takes effect for all allies.`,
+      content: `Fugue's Weakness Break Efficiency increases by <span class="text-desc">50%</span>. While Fugue is in the <b class="text-hsr-fire">Torrid Scorch</b> state, <b class="text-red">Foxian Prayer</b> takes effect for all allies.`,
     },
   }
 
@@ -379,7 +379,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             t[Stats.BE].push({
               name: 'Ascension 6 Passive',
               source: 'Fugue',
-              value: (base.getValue(Stats.BE) >= 2.5 ? 0.24 : 0.08) * form.fugue_a6,
+              value: (base.getValue(Stats.BE) >= 2.1 ? 0.18 : 0.06) * form.fugue_a6,
             })
         })
       }
