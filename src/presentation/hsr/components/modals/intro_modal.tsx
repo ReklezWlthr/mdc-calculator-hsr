@@ -128,6 +128,21 @@ export const IntroModal = observer(() => {
           </BulletPoint>
         </div>
       </div>
+      <div className="p-3 space-y-1 text-sm transition-all duration-200 rounded-lg bg-primary-darker text-gray">
+        <p className="text-sm font-bold text-white">You may also like:</p>
+        <BulletPoint color="text-desc">
+          <a className="cursor-pointer focus:outline-none text-blue" href="https://gi-mdc.vercel.app" target="_blank">
+            MDC Calculator for Genshin Impact
+          </a>
+          : Damage Calculator for <b>Genshin Impact</b>
+        </BulletPoint>
+        <BulletPoint color="text-desc">
+          <a className="cursor-pointer focus:outline-none text-blue" href="https://wuwa-mdc.vercel.app" target="_blank">
+            MDC Calculator for Wuthering Waves
+          </a>
+          : Damage Calculator for <b>Wuthering Waves</b>
+        </BulletPoint>
+      </div>
     </div>
   )
 })
