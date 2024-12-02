@@ -148,6 +148,22 @@ export const Characters = [
     beta: false,
   },
   {
+    id: '1014',
+    name: 'The Herta',
+    stat: {
+      baseAtk: 79.3,
+      baseHp: 129.6,
+      baseDef: 54,
+      baseSpd: 100,
+      energy: 110,
+    },
+    trace: [Stats.ICE_DMG, Stats.CRIT_RATE, Stats.P_DEF],
+    rarity: 5,
+    path: PathType.ERUDITION,
+    element: Element.ICE,
+    beta: true,
+  },
+  {
     id: '1101',
     name: 'Bronya',
     stat: {
@@ -887,7 +903,7 @@ export const Characters = [
     id: '1313',
     name: 'Sunday',
     stat: {
-      baseAtk: 100.32000000029802,
+      baseAtk: 87.12000000011176,
       baseHp: 168.96000000089407,
       baseDef: 72.6000000005588,
       baseSpd: 96,
@@ -947,6 +963,22 @@ export const Characters = [
     element: Element.IMAGINARY,
     beta: false,
   },
+  {
+    id: '1401',
+    name: 'Aglea',
+    stat: {
+      baseAtk: 97.68,
+      baseHp: 147.84,
+      baseDef: 62.7,
+      baseSpd: 96,
+      energy: 140,
+    },
+    trace: [Stats.P_ATK, Stats.BE, Stats.SPD],
+    rarity: 5,
+    path: PathType.REMEMBRANCE,
+    element: Element.LIGHTNING,
+    beta: true,
+  },
   // Odd = Male, Even = Female
   {
     id: '8001',
@@ -995,5 +1027,21 @@ export const Characters = [
     path: PathType.HARMONY,
     element: Element.IMAGINARY,
     beta: false,
+  },
+  {
+    id: '8007',
+    name: 'Trailblazer (Remembrance)',
+    stat: {
+      baseAtk: 60.72,
+      baseHp: 147.84,
+      baseDef: 92.4,
+      baseSpd: 105,
+      energy: 140,
+    },
+    trace: [Stats.BE, Stats.E_RES, Stats.IMAGINARY_DMG],
+    rarity: 5,
+    path: PathType.REMEMBRANCE,
+    element: Element.ICE,
+    beta: true,
   },
 ]

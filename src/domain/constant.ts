@@ -117,6 +117,7 @@ export enum PathType {
   DESTRUCTION = 'Destruction',
   HARMONY = 'Harmony',
   NIHILITY = 'Nihility',
+  REMEMBRANCE = 'Remembrance',
 }
 
 export const PathMap = {

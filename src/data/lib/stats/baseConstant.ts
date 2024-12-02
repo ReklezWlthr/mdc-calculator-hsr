@@ -69,9 +69,9 @@ export const baseStatsObject = {
   SHIELD: [] as StatsArray[],
   BREAK_EFF: [] as StatsArray[],
   I_HEAL: [] as StatsArray[],
-  
+
   SUMMON_DEF_PEN: [] as StatsArray[],
-  
+
   //DEBUFFS
   ATK_REDUCTION: [] as StatsArray[],
   DEF_REDUCTION: [] as StatsArray[],
@@ -150,6 +150,7 @@ export const baseStatsObject = {
   SUPER_BREAK_DMG: [] as StatsArray[],
 
   SUPER_BREAK_MULT: [] as StatsArray[],
+  BREAK_MULT: [] as StatsArray[],
   BASIC_SUPER_BREAK: [] as StatsArray[],
 
   // Mitigation

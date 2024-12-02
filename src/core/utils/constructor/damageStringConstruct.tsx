@@ -79,7 +79,6 @@ export const damageStringConstruct = (
   const propertyCd = stats.getValue(`${TalentPropertyMap[scaling.property]}_CD`) || 0
   const elementCd = stats.getValue(`${element.toUpperCase()}_CD`) || 0
   const elementFlat = stats.getValue(`${element.toUpperCase()}_F_DMG`) || 0
-  const elementMult = stats.getValue(`${element.toUpperCase()}_MULT`) || 1
   const normalDefPen = stats.getValue(StatsObjectKeys.DEF_PEN) || 0
   const summonDefPen = stats.getValue(StatsObjectKeys.SUMMON_DEF_PEN) || 0
   const defPen =
@@ -161,7 +160,7 @@ export const damageStringConstruct = (
       (capped ? cap : breakScale ? breakRaw(split) : raw(split)) *
       (1 + (breakScale ? stats.getValue(Stats.BE) : isPure ? 0 : bonusDMG(scaling.bonusSplit?.[i]))) *
       (scaling.multiplier || 1) *
-      elementMult *
+      (breakScale ? 1 + (stats.getValue(StatsObjectKeys.BREAK_MULT) || 0) : 1) *
       enemyMod
   )
   const dmg = _.sum(dmgSplit)
@@ -231,7 +230,9 @@ export const damageStringConstruct = (
         )}</b> <i class="text-[10px]">BONUS</i>)`
       : ''
   }${scaling.multiplier > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(scaling.multiplier, 2)}</b>` : ''}${
-    elementMult > 1 ? ` \u{00d7} <b class="text-amber-400">${toPercentage(elementMult, 2)}</b>` : ''
+    breakScale && stats.getValue(StatsObjectKeys.BREAK_MULT) > 0
+      ? ` \u{00d7} <b class="text-amber-400">${toPercentage(1 + stats.getValue(StatsObjectKeys.BREAK_MULT), 2)}</b>`
+      : ''
   }${
     isDamage
       ? ` \u{00d7} <b class="text-orange-300">${toPercentage(

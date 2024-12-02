@@ -93,6 +93,7 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
           <FilterIcon type="path" value={PathType.NIHILITY} />
           <FilterIcon type="path" value={PathType.PRESERVATION} />
           <FilterIcon type="path" value={PathType.ABUNDANCE} />
+          <FilterIcon type="path" value={PathType.REMEMBRANCE} />
         </div>
       </div>
       <div className="grid w-full grid-cols-10 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">

@@ -61,6 +61,7 @@ export const superBreakStringConstruct = (
     (1 + stats.getValue(StatsObjectKeys.BREAK_DMG)) *
     (1 + stats.getValue(StatsObjectKeys.SUPER_BREAK_DMG)) *
     breakMult *
+    (1 + (stats.getValue(StatsObjectKeys.BREAK_MULT) || 0)) *
     enemyMod
 
   // String Construct
@@ -83,8 +84,10 @@ export const superBreakStringConstruct = (
     stats.getValue(StatsObjectKeys.SUPER_BREAK_DMG) > 0
       ? ` \u{00d7} (1 + <b class="">${toPercentage(stats.getValue(StatsObjectKeys.SUPER_BREAK_DMG))}</b>)`
       : ''
-  }${
-    breakMult > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(breakMult)}</b>` : ''
+  }${breakMult > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(breakMult)}</b>` : ''}${
+    stats.getValue(StatsObjectKeys.BREAK_MULT) > 0
+      ? ` \u{00d7} <b class="text-amber-400">${toPercentage(1 + stats.getValue(StatsObjectKeys.BREAK_MULT), 2)}</b>`
+      : ''
   } \u{00d7} <b class="text-orange-300">${toPercentage(
     defMult,
     2

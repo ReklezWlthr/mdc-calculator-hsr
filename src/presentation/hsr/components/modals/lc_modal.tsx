@@ -79,6 +79,7 @@ export const LCModal = observer(({ index, setWeapon, pathOverride }: LCModalProp
           <FilterIcon path={PathType.NIHILITY} />
           <FilterIcon path={PathType.PRESERVATION} />
           <FilterIcon path={PathType.ABUNDANCE} />
+          <FilterIcon path={PathType.REMEMBRANCE} />
         </div>
       </div>
       <div className="grid w-full grid-cols-10 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">

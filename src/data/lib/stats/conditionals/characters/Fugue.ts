@@ -56,9 +56,9 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: `Virtue Beckons Bliss`,
-      content: `Grants <b class="text-red">Foxian Prayer</b> to one designated ally and causes this unit to enter the <b class="text-hsr-fire">Torrid Scorch</b> state, lasting for <span class="text-desc">3</span> turn(s). This state's duration reduces by <span class="text-desc">1</span> at the start of Fugue's turn. <b class="text-red">Foxian Prayer</b> only takes effect on the most recent target of Fugue's Skill.
-      <br />The ally target with <b class="text-red">Foxian Prayer</b> increases their Break Effect by {{0}}% and can deal Toughness Reduction by attacking enemies without corresponding Weakness Type, with the effect being equal to <span class="text-desc">50%</span> of the original Toughness Reduction and cannot be stacked with other Weakness-ignoring Toughness Reduction effects.
-      <br />While in the <b class="text-hsr-fire">Torrid Scorch</b> state, Fugue's Basic ATK will be enhanced. Every time an ally target with <b class="text-red">Foxian Prayer</b> attacks, Fugue has a <span class="text-desc">100%</span> <u>base chance</u> to reduce the attacked enemy target's DEF by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `Grants one designated ally <b class="text-red">Foxian Prayer</b>. Enters the <b class="text-hsr-fire">Torrid Scorch</b> state, lasting for <span class="text-desc">3</span> turn(s). The duration reduces by <span class="text-desc">1</span> at the start of Fugue's every turn. <b class="text-red">Foxian Prayer</b> only takes effect on the most recent target of Fugue's Skill.
+      <br />The ally target with <b class="text-red">Foxian Prayer</b> increases their Break Effect by {{0}}% and can also reduce Toughness even when attacking enemies that don't have the corresponding Weakness Type, with the effect equivalent to <span class="text-desc">50%</span> of the original Toughness Reduction value. This cannot stack with other Toughness Reduction effects that also ignore Weakness Type.
+      <br />While in the <b class="text-hsr-fire">Torrid Scorch</b> state, Fugue enhances her Basic ATK. Every time an ally target with <b class="text-red">Foxian Prayer</b> attacks, Fugue has a <span class="text-desc">100%</span> <u>base chance</u> to reduce the attacked enemy target's DEF by {{1}}%, lasting for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 15, growth: 1.5, style: 'curved' },
         { base: 8, growth: 1, style: 'curved' },
@@ -70,7 +70,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: `Solar Splendor Shines Upon All`,
-      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Fugue's ATK to all enemies. This instance of attack ignores Weakness Type to Reduce the Toughness of all enemies. Trigger the <b class="text-hsr-fire">Fire</b> Weakness Break effect when enemies become Weakness Broken in this way.`,
+      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Fugue's ATK to all enemies. This attack ignores Weakness Type to reduce all enemies' Toughness. And when breaking Weakness, triggers the <b class="text-hsr-fire">Fire</b> Weakness Break effect.`,
       value: [{ base: 100, growth: 10, style: 'curved' }],
       level: ult,
       tag: AbilityTag.AOE,
@@ -78,7 +78,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     talent: {
       trace: 'Talent',
       title: `Fortune Follows Where Virtue Spreads`,
-      content: `While Fugue is on the field, enemy targets will get additionally afflicted with <b class="text-violet-300">Cloudflame Luster</b> equal to <span class="text-desc">40%</span> of the enemy's Max Toughness. When the initial Toughness is reduced to <span class="text-desc">0</span>, <b class="text-violet-300">Cloudflame Luster</b> can be further reduced until <span class="text-desc">0</span>, at which point the enemy target will take an additional Weakness Break DMG.
+      content: `While Fugue is on the field, enemy targets will get additionally afflicted with <b class="text-violet-300">Cloudflame Luster</b>, equal to <span class="text-desc">40%</span> of their Max Toughness. When the initial Toughness is reduced to <span class="text-desc">0</span>, <b class="text-violet-300">Cloudflame Luster</b> can be further reduced. When <b class="text-violet-300">Cloudflame Luster</b> is reduced to <span class="text-desc">0</span>, the enemy will receive Weakness Break DMG again.
       <br />While Fugue is on the field and after allies attack Weakness Broken enemy targets, converts the Toughness Reduction of this attack into <span class="text-desc">1</span> instance of {{0}}% Super Break DMG.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: talent,
@@ -94,7 +94,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Verdantia Renaissance`,
-      content: `After ally targets break enemy weakness, additionally delays the action of the enemy target by <span class="text-desc">15%</span>.`,
+      content: `After ally targets break weakness, additionally delays the action of the enemy target by <span class="text-desc">15%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -104,7 +104,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Phecda Primordia`,
-      content: `When an enemy target's Weakness gets broken, Break Effect of teammates (i.e., excluding this unit) increases by <span class="text-desc">6%</span>. If Fugue's Break Effect is <span class="text-desc">220%</span> or more, the Break Effect Boost effect additionally increases by <span class="text-desc">12%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">2</span> time(s).`,
+      content: `When an enemy target's Weakness gets broken, increases teammates' (i.e., excluding this unit) Break Effect by <span class="text-desc">6%</span>. If Fugue's Break Effect is <span class="text-desc">220%</span> or higher, the Break Effect increase is boosted by an additional <span class="text-desc">12%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">2</span> time(s).`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -125,7 +125,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c4: {
       trace: 'Eidolon 4',
       title: `Bereft of Form, Which Name to Bear`,
-      content: `Ally target with <b class="text-red">Foxian Prayer</b> increases their Break DMG by <span class="text-desc">20%</span>.`,
+      content: `Ally target with <b class="text-red">Foxian Prayer</b> increases their Break DMG dealt by <span class="text-desc">20%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -171,10 +171,6 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       chance: { base: 1, fixed: false },
       duration: 2,
     },
-  ]
-
-  const teammateContent: IContent[] = [
-    findContentById(content, 'fugue_skill'),
     {
       type: 'number',
       id: 'fugue_a6',
@@ -187,6 +183,8 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       duration: 2,
     },
   ]
+
+  const teammateContent: IContent[] = [findContentById(content, 'fugue_a6'), findContentById(content, 'fugue_skill')]
 
   const allyContent: IContent[] = []
 
@@ -276,7 +274,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           })
         }
         if (c >= 4) {
-          base.BREAK_DMG.push({
+          base.BREAK_MULT.push({
             name: 'Eidolon 4',
             source: 'Self',
             value: 0.2,
@@ -337,7 +335,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           })
         }
         if (c >= 4) {
-          base.BREAK_DMG.push({
+          base.BREAK_MULT.push({
             name: 'Eidolon 4',
             source: 'Fugue',
             value: 0.2,
@@ -349,13 +347,6 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           name: 'Skill',
           source: 'Fugue',
           value: calcScaling(0.08, 0.01, skill, 'curved'),
-        })
-      }
-      if (form.fugue_e4) {
-        base.VULNERABILITY.push({
-          name: 'Eidolon 4',
-          source: 'Self',
-          value: 0.15,
         })
       }
 
