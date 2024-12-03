@@ -172,10 +172,10 @@ export interface RawBaseStatType {
   getDmgRed: () => number
 
   CALLBACK: ((
-    base: any,
+    base: BaseStatsType,
     debuffs: { type: DebuffTypes; count: number }[],
     weakness: Element[],
-    all: any[],
+    all: BaseStatsType[],
     battle: boolean
   ) => any)[]
 
@@ -188,6 +188,8 @@ export interface RawBaseStatType {
 
   COUNTDOWN: number
   EXTRA_C_TURN: number
+
+  SUMMON_ID: string
 }
 
 export interface BaseStatsType extends RawBaseStatType {

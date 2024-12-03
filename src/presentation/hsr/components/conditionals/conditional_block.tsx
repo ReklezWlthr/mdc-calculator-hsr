@@ -20,10 +20,11 @@ export interface IContentIndex extends IContent {
   owner?: number
 }
 
-export type FormSetterT = (index: number, key: string, value: any, sync?: boolean) => void
+export type FormSetterT = (index: number, key: string, value: any, memo: boolean, sync?: boolean) => void
 
 interface ConditionalBlockProps {
   title: string
+  selected: number
   contents: IContentIndex[]
   tooltipStyle?: string
   formOverride?: Record<string, any>[]
@@ -31,6 +32,7 @@ interface ConditionalBlockProps {
   teamOverride?: ITeamChar[]
   setForm?: FormSetterT
   compare?: boolean
+  memo?: boolean
 }
 
 export const ConditionalBlock = observer(
@@ -43,11 +45,13 @@ export const ConditionalBlock = observer(
     statsOverride,
     teamOverride,
     compare,
+    memo,
+    selected,
   }: ConditionalBlockProps) => {
     const [open, setOpen] = useState(true)
 
     const { calculatorStore, teamStore, setupStore } = useStore()
-    const form = formOverride || calculatorStore.form
+    const baseForm = formOverride || calculatorStore.form
     const set = setForm || calculatorStore.setFormValue
     const teamStats = statsOverride || calculatorStore.computedStats
     const team = teamOverride || teamStore.characters
@@ -96,6 +100,8 @@ export const ConditionalBlock = observer(
                 content.content
               )
 
+              const form =
+                selected === content.index && memo ? baseForm?.[content.index]?.memo : baseForm?.[content.index]
               const stats = teamStats[content.index]
               const { prob, ProbComponent } = chanceStringConstruct(
                 compare ? setupStore : calculatorStore,
@@ -173,8 +179,16 @@ export const ConditionalBlock = observer(
                       <>
                         <TextInput
                           type="number"
-                          value={form[content.index]?.[content.id]}
-                          onChange={(value) => set(content.index, content.id, parseFloat(value) ?? '', content.sync)}
+                          value={form?.[content.id]}
+                          onChange={(value) =>
+                            set(
+                              content.index,
+                              content.id,
+                              parseFloat(value) ?? '',
+                              selected === content.index && memo,
+                              content.sync
+                            )
+                          }
                           max={content.max as number}
                           min={content.min as number}
                           style="col-span-2"
@@ -188,22 +202,26 @@ export const ConditionalBlock = observer(
                     {content.type === 'toggle' && (
                       <div className="flex items-center justify-center col-span-2">
                         <CheckboxInput
-                          checked={form[content.index]?.[content.id]}
-                          onClick={(v) => set(content.index, content.id, v, content.sync)}
+                          checked={form?.[content.id]}
+                          onClick={(v) =>
+                            set(content.index, content.id, v, selected === content.index && memo, content.sync)
+                          }
                         />
                       </div>
                     )}
                     {content.type === 'element' && (
                       <div className="flex items-center justify-center col-span-3">
                         <SelectInput
-                          value={form[content.index]?.[content.id]}
+                          value={form?.[content.id]}
                           options={
                             content.options || [
                               { name: 'None', value: '' },
                               ..._.map(Element, (item) => ({ name: item, value: item })),
                             ]
                           }
-                          onChange={(value) => set(content.index, content.id, value, content.sync)}
+                          onChange={(value) =>
+                            set(content.index, content.id, value, selected === content.index && memo, content.sync)
+                          }
                           placeholder="None"
                           small
                         />

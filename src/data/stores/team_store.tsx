@@ -28,6 +28,8 @@ export const DefaultCharacter = {
     skill: 1,
     ult: 1,
     talent: 1,
+    memo_talent: 1,
+    memo_skill: 1,
   },
   minor_traces: Array(10),
   major_traces: {

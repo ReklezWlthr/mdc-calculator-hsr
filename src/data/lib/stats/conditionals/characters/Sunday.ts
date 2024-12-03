@@ -257,6 +257,14 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           value:
             calcScaling(0.15, 0.015, skill, 'curved') + (base.SUMMON ? calcScaling(0.25, 0.025, skill, 'curved') : 0),
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS[Stats.ALL_DMG].push({
+            name: 'Skill',
+            source: 'Sunday',
+            value:
+              calcScaling(0.15, 0.015, skill, 'curved') + (base.SUMMON ? calcScaling(0.25, 0.025, skill, 'curved') : 0),
+          })
+        }
         if (c < 6) {
           base[Stats.CRIT_RATE].push({
             name: 'Talent',
@@ -280,22 +288,26 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       if (aForm.sunday_ult) {
         const multiplier = calcScaling(0.12, 0.018, skill, 'curved')
         base.CALLBACK.push((x, d, w, all) => {
-          x.X_CRIT_DMG.push({
+          const value = {
             name: `The Beatified`,
             source: 'Sunday',
             value: calcScaling(0.08, 0.004, skill, 'curved') + multiplier * all[index].getValue(Stats.CRIT_DMG),
             multiplier,
             base: toPercentage(all[index].getValue(Stats.CRIT_DMG)),
             flat: toPercentage(calcScaling(0.08, 0.004, skill, 'curved')),
-          })
+          }
+          x.X_CRIT_DMG.push(value)
+          if (x.SUMMON_STATS) x.SUMMON_STATS.X_CRIT_DMG.push(value)
           return x
         })
         if (c >= 2) {
-          base[Stats.ALL_DMG].push({
+          const value = {
             name: 'Eidolon 2',
             source: 'Sunday',
             value: 0.3,
-          })
+          }
+          base[Stats.ALL_DMG].push(value)
+          if (base.SUMMON_STATS) base.SUMMON_STATS[Stats.ALL_DMG].push(value)
         }
       }
       if (form.sunday_tech) {
@@ -306,11 +318,13 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         })
       }
       if (aForm.sunday_e6) {
-        base[Stats.CRIT_RATE].push({
+        const value = {
           name: 'Talent',
           source: 'Sunday',
           value: calcScaling(0.1, 0.01, skill, 'curved') * aForm.sunday_e6,
-        })
+        }
+        base[Stats.CRIT_RATE].push(value)
+        if (base.SUMMON_STATS) base.SUMMON_STATS[Stats.CRIT_RATE].push(value)
         base.CALLBACK.push((x) => {
           const cr = x.getValue(Stats.CRIT_RATE)
           if (cr > 1)
@@ -321,6 +335,17 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
               multiplier: 2,
               base: toPercentage(cr - 1),
             })
+          if (x.SUMMON_STATS) {
+            const summonCr = x.SUMMON_STATS.getValue(Stats.CRIT_RATE)
+            if (summonCr > 1)
+              x[Stats.CRIT_DMG].push({
+                name: `Eidolon 6`,
+                source: 'Sunday',
+                value: (summonCr - 1) * 2,
+                multiplier: 2,
+                base: toPercentage(summonCr - 1),
+              })
+          }
           return x
         })
       }

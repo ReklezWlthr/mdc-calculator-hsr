@@ -28,7 +28,6 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
 
-  const names = _.map(team, (item) => findCharacter(item?.cId)?.name)
   const index = _.findIndex(team, (item) => item?.cId === '1202')
 
   const talents: ITalent = {
@@ -246,7 +245,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Tingyun',
           value: calcScaling(0.2, 0.03, ult, 'curved'),
         })
-      if (form.tingyun_c1)
+      if (aForm.tingyun_c1)
         base[Stats.P_SPD].push({
           name: 'Eidolon 1',
           source: 'Tingyun',
@@ -268,48 +267,55 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       broken: boolean
     ) => {
       _.last(team).CALLBACK.push(function P2(x, _d, _w, all) {
-        _.forEach(all, (f, i) => {
-          if (allForm[i].tingyun_skill) {
-            _.forEach(
-              [team[i].BASIC_SCALING, team[i].SKILL_SCALING, team[i].ULT_SCALING, team[i].TALENT_SCALING],
-              (s) => {
-                if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
-                  s.push({
-                    name: `Benediction's Additional DMG`,
-                    value: [
-                      { scaling: calcScaling(0.2, 0.02, skill, 'curved') + (c >= 4 ? 0.2 : 0), multiplier: Stats.ATK },
-                    ],
-                    element: Element.LIGHTNING,
-                    property: TalentProperty.ADD,
-                    type: TalentType.NONE,
-                    sum: true,
-                  })
-              }
-            )
-            const raw = calcScaling(0.25, 0.025, skill, 'curved') * f.BASE_ATK
-            const cap = calcScaling(0.15, 0.01, skill, 'curved') * all[index].getAtk()
-            const base = cap > raw ? f.BASE_ATK : all[index].getAtk()
-            const multiplier =
-              cap > raw ? calcScaling(0.25, 0.025, skill, 'curved') : calcScaling(0.15, 0.01, skill, 'curved')
-            f[Stats.ATK].push({
-              name: 'Skill',
-              source: index === i ? 'Self' : 'Tingyun',
-              value: _.min([raw, cap]),
-              base,
-              multiplier,
-            })
-            if (i !== index)
-              team[index].TALENT_SCALING.push({
-                name: `${names[i]}'s Additional DMG`,
-                value: [{ scaling: calcScaling(0.3, 0.03, talent, 'curved'), multiplier: Stats.ATK }],
-                element: Element.LIGHTNING,
-                property: TalentProperty.ADD,
-                type: TalentType.NONE,
-                overrideIndex: i,
-                sum: true,
+        _.forEach(
+          _.flatMap(all, (a) => [a, a.SUMMON_STATS]),
+          (f, j) => {
+            const i = _.floor(j / 2)
+            if (f?.SUMMON_ID ? allForm[i].memo.tingyun_skill : allForm[i].tingyun_skill) {
+              _.forEach(
+                [team[i].BASIC_SCALING, team[i].SKILL_SCALING, team[i].ULT_SCALING, team[i].TALENT_SCALING],
+                (s) => {
+                  if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
+                    s.push({
+                      name: `Benediction's Additional DMG`,
+                      value: [
+                        {
+                          scaling: calcScaling(0.2, 0.02, skill, 'curved') + (c >= 4 ? 0.2 : 0),
+                          multiplier: Stats.ATK,
+                        },
+                      ],
+                      element: Element.LIGHTNING,
+                      property: TalentProperty.ADD,
+                      type: TalentType.NONE,
+                      sum: true,
+                    })
+                }
+              )
+              const raw = calcScaling(0.25, 0.025, skill, 'curved') * f.BASE_ATK
+              const cap = calcScaling(0.15, 0.01, skill, 'curved') * all[index].getAtk()
+              const base = cap > raw ? f.BASE_ATK : all[index].getAtk()
+              const multiplier =
+                cap > raw ? calcScaling(0.25, 0.025, skill, 'curved') : calcScaling(0.15, 0.01, skill, 'curved')
+              f[Stats.ATK].push({
+                name: 'Skill',
+                source: index === i ? 'Self' : 'Tingyun',
+                value: _.min([raw, cap]),
+                base,
+                multiplier,
               })
+              if (i !== index)
+                team[index].TALENT_SCALING.push({
+                  name: `${f.NAME}'s Additional DMG`,
+                  value: [{ scaling: calcScaling(0.3, 0.03, talent, 'curved'), multiplier: Stats.ATK }],
+                  element: Element.LIGHTNING,
+                  property: TalentProperty.ADD,
+                  type: TalentType.NONE,
+                  overrideIndex: i,
+                  sum: true,
+                })
+            }
           }
-        })
+        )
         return x
       })
 

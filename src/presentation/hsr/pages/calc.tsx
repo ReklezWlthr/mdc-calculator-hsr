@@ -1,6 +1,6 @@
 import { findCharacter } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { BaseAggro, PathType, Stats, TalentType } from '@src/domain/constant'
+import { BaseAggro, BaseSummonAggro, PathType, Stats, TalentType } from '@src/domain/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useCallback, useEffect, useMemo, useState } from 'react'
@@ -42,18 +42,22 @@ export const Calculator = observer(({}: {}) => {
   const onOpenEnemyModal = useCallback(() => modalStore.openModal(<EnemyModal stats={mainComputed} />), [mainComputed])
   const onOpenDebuffModal = useCallback(() => modalStore.openModal(<DebuffModal />), [])
   const onOpenStatsModal = useCallback(
-    () =>
+    (memo: boolean) =>
       modalStore.openModal(
         <StatsModal
-          stats={mainComputed}
+          stats={memo ? mainComputed.SUMMON_STATS : mainComputed}
           path={charData.path}
           sumAggro={_.sumBy(
             finalStats,
             (item) =>
-              BaseAggro[item.PATH] *
+              (BaseAggro[item.PATH] *
                 (1 + (item.getValue(StatsObjectKeys.BASE_AGGRO) || 0)) *
-                (1 + (item.getValue(StatsObjectKeys.AGGRO) || 0)) || 0
+                (1 + (item.getValue(StatsObjectKeys.AGGRO) || 0)) || 0) +
+              (BaseSummonAggro[char.cId] *
+                (1 + (item.SUMMON_STATS?.getValue(StatsObjectKeys.BASE_AGGRO) || 0)) *
+                (1 + (item.SUMMON_STATS?.getValue(StatsObjectKeys.AGGRO) || 0)) || 0)
           )}
+          memo={memo}
         />
       ),
     [mainComputed, charData, finalStats]
@@ -317,10 +321,14 @@ export const Calculator = observer(({}: {}) => {
           </div>
           {tab === 'mod' && (
             <>
-              <ConditionalBlock title="Self Modifiers" contents={_.filter(contents.main, 'show')} />
-              <ConditionalBlock title="Team Modifiers" contents={_.filter(contents.team, 'show')} />
+              <div className="p-2 text-xs font-normal text-center rounded-lg bg-primary-dark text-gray">
+                <b>Self Modifiers</b> also include those of this unit's memosprite. Modifiers that specifically target
+                only memosprites (e.g. Tingyun's or Bronya's) are in the <b>Memosprite</b> tab.
+              </div>
+              <ConditionalBlock title="Self Modifiers" contents={_.filter(contents.main, 'show')} selected={selected} />
+              <ConditionalBlock title="Team Modifiers" contents={_.filter(contents.team, 'show')} selected={selected} />
               <WeaponConditionalBlock contents={contents.weapon(selected)} />
-              <ConditionalBlock title="Relic Modifiers" contents={contents.artifact(selected)} />
+              <ConditionalBlock title="Relic Modifiers" contents={contents.artifact(selected)} selected={selected} />
               <CustomConditionalBlock index={selected} />
             </>
           )}
@@ -330,7 +338,7 @@ export const Calculator = observer(({}: {}) => {
                 <p className="px-4 text-lg font-bold">
                   <span className="text-desc">✦</span> Final Stats <span className="text-desc">✦</span>
                 </p>
-                <PrimaryButton title="Stats Breakdown" onClick={onOpenStatsModal} />
+                <PrimaryButton title="Stats Breakdown" onClick={() => onOpenStatsModal(false)} />
               </div>
               <StatBlock expands stat={computedStats[selected]} />
               <div className="flex items-center justify-center w-full gap-4">
@@ -360,9 +368,26 @@ export const Calculator = observer(({}: {}) => {
                 <p className="px-4 text-lg font-bold">
                   <span className="text-desc">✦</span> Memosprite Stats <span className="text-desc">✦</span>
                 </p>
-                <PrimaryButton title="Stats Breakdown" onClick={onOpenStatsModal} />
+                <PrimaryButton title="Stats Breakdown" onClick={() => onOpenStatsModal(true)} />
               </div>
-              <SummonStatBlock expands stat={computedStats[selected]} />
+              <SummonStatBlock
+                summonerHP={computedStats[selected].getHP()}
+                stat={computedStats[selected].SUMMON_STATS}
+              />
+              <ConditionalBlock
+                title="Team Modifiers"
+                contents={_.filter(contents.team, 'show')}
+                memo
+                selected={selected}
+              />
+              <WeaponConditionalBlock contents={contents.weapon(selected)} memo />
+              <ConditionalBlock
+                title="Relic Modifiers"
+                contents={contents.artifact(selected)}
+                memo
+                selected={selected}
+              />
+              <CustomConditionalBlock index={selected} />
             </>
           )}
           {charData && tab === 'load' && (

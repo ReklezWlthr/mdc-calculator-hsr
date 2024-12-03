@@ -10,7 +10,6 @@ export interface StatsArray {
   base?: string | number
   multiplier?: number
   flat?: number | string
-  excludeSummon?: boolean
 }
 
 export const baseStatsObject: BaseStatsType = {
@@ -221,6 +220,8 @@ export const baseStatsObject: BaseStatsType = {
 
   COUNTDOWN: 0,
   EXTRA_C_TURN: 0,
+
+  SUMMON_ID: '',
 }
 
 export const TalentTypeMap = {

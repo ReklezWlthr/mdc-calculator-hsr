@@ -48,7 +48,6 @@ export interface IScaling {
   bonusSplit?: number[] // Used by DHIL
   cdSplit?: number[] // Used by DHIL
   summon?: boolean
-  servant?: boolean
 }
 
 export interface IContent {
@@ -72,6 +71,7 @@ export interface IContent {
   level?: number
   sync?: boolean // Determine if this modifier should be synced when comparing builds
   debuffElement?: Element // Only used for chance
+  showServant?: boolean
 }
 
 export interface IWeaponContent {

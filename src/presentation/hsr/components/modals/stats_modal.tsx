@@ -1,9 +1,10 @@
 import { toPercentage } from '@src/core/utils/converter'
 import { getTurnWithinCycle } from '@src/core/utils/data_format'
 import { checkBuffExist } from '@src/core/utils/finder'
-import { StatsArray, StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
+import { StatsArray, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { BaseAggro, BreakPoints, PathType, Stats } from '@src/domain/constant'
+import { BaseAggro, BaseSummonAggro, BreakPoints, PathType, Stats } from '@src/domain/constant'
+import { BaseStatsType } from '@src/domain/stats'
 import { BulletPoint, Collapsible } from '@src/presentation/components/collapsible'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import _ from 'lodash'
@@ -12,7 +13,7 @@ import { observer } from 'mobx-react-lite'
 interface NormalBlockProps {
   stat: string
   array: StatsArray[]
-  stats: StatsObject
+  stats: BaseStatsType
 }
 
 interface ExtraBlockProps {
@@ -64,7 +65,19 @@ export const AttributeBlock = ({ stat, array, stats }: NormalBlockProps) => (
 )
 
 export const StatsModal = observer(
-  ({ stats, path, sumAggro, compare }: { stats: StatsObject; path: PathType; sumAggro: number; compare?: boolean }) => {
+  ({
+    stats,
+    path,
+    sumAggro,
+    compare,
+    memo,
+  }: {
+    stats: BaseStatsType
+    path: PathType
+    sumAggro: number
+    compare?: boolean
+    memo?: boolean
+  }) => {
     const { calculatorStore, setupStore } = useStore()
 
     const ExtraBlock = ({ stats, totalValue, cBase, lBase = 0, pArray, fArray, round = 0 }: ExtraBlockProps) => (
@@ -130,7 +143,8 @@ export const StatsModal = observer(
       </div>
     )
 
-    const baseAggro = BaseAggro[path] * (1 + stats.getValue(StatsObjectKeys.BASE_AGGRO))
+    const baseAggro =
+      (memo ? BaseSummonAggro[stats.SUMMON_ID] : BaseAggro[path]) * (1 + stats.getValue(StatsObjectKeys.BASE_AGGRO))
     const defMult =
       1 - stats.getDef() / (stats.getDef() + 200 + 10 * +(compare ? setupStore.level : calculatorStore.level))
 
@@ -162,24 +176,24 @@ export const StatsModal = observer(
             <div className="space-y-2">
               <ExtraBlock
                 stats="HP"
-                cBase={stats.BASE_HP_C}
-                lBase={stats.BASE_HP_L}
-                totalValue={_.floor(stats.getHP()).toLocaleString()}
+                cBase={memo ? stats?.BASE_HP : stats.BASE_HP_C}
+                lBase={memo ? 0 : stats.BASE_HP_L}
+                totalValue={_.floor(memo ? stats?.BASE_HP : stats.getHP()).toLocaleString()}
                 pArray={stats[Stats.P_HP]}
                 fArray={mergeBuffs(_.concat(stats[Stats.HP], stats.X_HP))}
               />
               <ExtraBlock
                 stats="ATK"
-                cBase={stats.BASE_ATK_C}
-                lBase={stats.BASE_ATK_L}
+                cBase={memo ? stats?.BASE_ATK : stats.BASE_ATK_C}
+                lBase={memo ? 0 : stats.BASE_ATK_L}
                 totalValue={_.floor(stats.getAtk()).toLocaleString()}
                 pArray={stats[Stats.P_ATK]}
                 fArray={mergeBuffs(_.concat(stats[Stats.ATK], stats.X_ATK))}
               />
               <ExtraBlock
                 stats="DEF"
-                cBase={stats.BASE_DEF_C}
-                lBase={stats.BASE_DEF_L}
+                cBase={memo ? stats?.BASE_DEF : stats.BASE_DEF_C}
+                lBase={memo ? 0 : stats.BASE_DEF_L}
                 totalValue={_.floor(stats.getDef()).toLocaleString()}
                 pArray={stats[Stats.P_DEF]}
                 fArray={stats[Stats.DEF]}

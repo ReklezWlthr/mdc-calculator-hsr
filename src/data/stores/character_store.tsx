@@ -18,6 +18,8 @@ export const DefaultCharacterStore: ICharStore = {
     skill: 1,
     ult: 1,
     talent: 1,
+    memo_skill: 1,
+    memo_talent: 1,
   },
   minor_traces: Array(10),
   major_traces: {
@@ -37,6 +39,8 @@ export const MaxedCharacterStore: ICharStore = {
     skill: 10,
     ult: 10,
     talent: 10,
+    memo_skill: 6,
+    memo_talent: 6,
   },
   minor_traces: Array(10),
   major_traces: {

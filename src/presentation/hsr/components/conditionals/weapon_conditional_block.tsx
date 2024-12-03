@@ -28,10 +28,11 @@ interface ConditionalBlockProps {
   teamOverride?: ITeamChar[]
   setForm?: FormSetterT
   compare?: boolean
+  memo?: boolean
 }
 
 export const WeaponConditionalBlock = observer(
-  ({ contents, formOverride, teamOverride, setForm, compare }: ConditionalBlockProps) => {
+  ({ contents, formOverride, teamOverride, setForm, memo, compare }: ConditionalBlockProps) => {
     const [open, setOpen] = useState(true)
 
     const { calculatorStore, teamStore, setupStore } = useStore()
@@ -124,7 +125,7 @@ export const WeaponConditionalBlock = observer(
                         <TextInput
                           type="number"
                           value={form[content.index]?.[content.id]}
-                          onChange={(value) => set(content.index, content.id, parseFloat(value) ?? '')}
+                          onChange={(value) => set(content.index, content.id, parseFloat(value) ?? '', memo)}
                           max={content.max as number}
                           min={content.min as number}
                           style="col-span-2"
@@ -139,7 +140,7 @@ export const WeaponConditionalBlock = observer(
                       <div className="flex items-center justify-center col-span-2">
                         <CheckboxInput
                           checked={form[content.index]?.[content.id]}
-                          onClick={(v) => set(content.index, content.id, v)}
+                          onClick={(v) => set(content.index, content.id, v, memo)}
                         />
                       </div>
                     )}
@@ -153,7 +154,7 @@ export const WeaponConditionalBlock = observer(
                               ..._.map(Element, (item) => ({ name: item, value: item })),
                             ]
                           }
-                          onChange={(value) => set(content.index, content.id, value)}
+                          onChange={(value) => set(content.index, content.id, value, memo)}
                           placeholder="None"
                           small
                         />

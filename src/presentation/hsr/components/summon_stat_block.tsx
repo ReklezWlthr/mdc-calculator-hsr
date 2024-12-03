@@ -2,15 +2,16 @@ import { observer } from 'mobx-react-lite'
 import _ from 'lodash'
 import { toPercentage } from '@src/core/utils/converter'
 
-import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
+import { StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { Stats } from '@src/domain/constant'
+import { RawBaseStatType } from '@src/domain/stats'
 
 interface SummonStatBlockProps {
-  expands?: boolean
-  stat: StatsObject
+  stat: RawBaseStatType
+  summonerHP: number
 }
 
-export const SummonStatBlock = observer(({ stat, expands }: SummonStatBlockProps) => {
+export const SummonStatBlock = observer(({ stat, summonerHP }: SummonStatBlockProps) => {
   const DataRow = ({ title, value }: { title: string; value: number | string }) => {
     return (
       <div className="flex items-center gap-2 text-xs">
@@ -39,27 +40,25 @@ export const SummonStatBlock = observer(({ stat, expands }: SummonStatBlockProps
 
   return (
     <div className="grid w-full grid-flow-col grid-cols-2 p-4 font-bold text-white rounded-lg grid-rows-10 gap-y-1 gap-x-5 bg-primary-dark">
-      <ExtraDataRow title="HP" base={0} bonus={0} />
+      <ExtraDataRow title="HP" base={stat?.BASE_HP} bonus={0} />
       <ExtraDataRow
         title="ATK"
         base={stat?.BASE_ATK}
         bonus={
-          stat?.SUMMON_STATS?.BASE_ATK * stat?.SUMMON_STATS?.getValue(Stats.P_ATK) +
-          stat?.SUMMON_STATS?.getValue(Stats.ATK)
+          stat?.BASE_ATK * stat?.getValue(Stats.P_ATK) +
+          stat?.getValue(Stats.ATK) +
+          stat?.getValue(StatsObjectKeys.X_ATK)
         }
       />
       <ExtraDataRow
         title="DEF"
-        base={stat?.SUMMON_STATS?.BASE_DEF}
-        bonus={
-          stat?.SUMMON_STATS?.BASE_DEF * stat?.SUMMON_STATS?.getValue(Stats.P_DEF) +
-          stat?.SUMMON_STATS?.getValue(Stats.DEF)
-        }
+        base={stat?.BASE_DEF}
+        bonus={stat?.BASE_DEF * stat?.getValue(Stats.P_DEF) + stat?.getValue(Stats.DEF)}
       />
       <ExtraDataRow
         title="SPD"
-        base={stat?.SUMMON_STATS?.BASE_SPD}
-        bonus={stat?.SUMMON_STATS?.BASE_SPD * stat?.SUMMON_STATS?.getValue(Stats.P_SPD) + stat?.getValue(Stats.SPD)}
+        base={stat?.BASE_SPD}
+        bonus={stat?.BASE_SPD * stat?.getValue(Stats.P_SPD) + stat?.getValue(Stats.SPD)}
       />
       <DataRow title="CRIT Rate" value={toPercentage(stat?.getValue(Stats.CRIT_RATE))} />
       <DataRow

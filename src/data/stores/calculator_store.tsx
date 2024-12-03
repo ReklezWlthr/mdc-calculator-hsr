@@ -28,7 +28,7 @@ export interface CalculatorStoreType {
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean }[][]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (initData: Record<string, any>[]) => void
-  setFormValue: (index: number, key: string, value: any) => void
+  setFormValue: (index: number, key: string, value: any, memo: boolean) => void
   setCustomValue: (innerIndex: number, key: StatsObjectKeysT, value: any, toggled: boolean, debuff?: boolean) => void
   removeCustomValue: (index: number, innerIndex: number) => void
   setTotal: (key: TalentType, index: number, name: string, value: number) => void
@@ -79,6 +79,7 @@ export class CalculatorStore {
       [Element.WIND]: 0,
       [Element.QUANTUM]: 0,
       [Element.IMAGINARY]: 0,
+      [Element.NONE]: 0,
     }
     this.custom = Array(4)
     this.debuffs = []
@@ -100,11 +101,15 @@ export class CalculatorStore {
         return _.isUndefined(old) ? value : old
       })
     )
-    this.form = _.cloneDeep(mergedData)
+    this.form = _.map(mergedData, (item) => ({ ...item, memo: _.cloneDeep(item) }))
   }
 
-  setFormValue = (index: number, key: string, value: any) => {
-    this.form[index][key] = value
+  setFormValue = (index: number, key: string, value: any, memo: boolean) => {
+    if (memo) {
+      this.form[index].memo[key] = value
+    } else {
+      this.form[index][key] = value
+    }
     this.form = _.cloneDeep(this.form)
   }
 

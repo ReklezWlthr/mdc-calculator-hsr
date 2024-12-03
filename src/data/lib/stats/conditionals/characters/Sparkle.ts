@@ -283,28 +283,24 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               name: `Ascension 6 Passive`,
               source: 'Sparkle',
               value: 0.2,
-              excludeSummon: true,
             })
           if (quantumCount === 2)
             base[Stats.P_ATK].push({
               name: `Ascension 6 Passive`,
               source: 'Sparkle',
               value: 0.3,
-              excludeSummon: true,
             })
           if (quantumCount === 3)
             base[Stats.P_ATK].push({
               name: `Ascension 6 Passive`,
               source: 'Sparkle',
               value: 0.45,
-              excludeSummon: true,
             })
         } else {
           base[Stats.P_ATK].push({
             name: `Ascension 6 Passive`,
             source: 'Sparkle',
             value: 0.15,
-            excludeSummon: true,
           })
         }
       }

@@ -45,7 +45,7 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
   conditionals.NAME = character?.name?.replaceAll(/\(\w+\)/g, '')?.trim()
   conditionals.ELEMENT = character?.element
   conditionals.PATH = character?.path
-  conditionals.SUMMON = _.includes(summonList, character?.id)
+  // conditionals.SUMMON = _.includes(summonList, character?.id)
 
   conditionals.BASE_ATK_C = getBaseStat(character?.stat?.baseAtk, char?.level, char?.ascension) || 0
   conditionals.BASE_HP_C = getBaseStat(character?.stat?.baseHp, char?.level, char?.ascension) || 0

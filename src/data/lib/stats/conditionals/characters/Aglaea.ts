@@ -22,6 +22,8 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     skill: c >= 3 ? 2 : 0,
     ult: c >= 5 ? 2 : 0,
     talent: c >= 5 ? 2 : 0,
+    memo_skill: c >= 5 ? 1 : 0,
+    memo_talent: c >= 3 ? 1 : 0,
   }
   const basic = t.basic + upgrade.basic
   const skill = t.skill + upgrade.skill
@@ -42,7 +44,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 20,
       trace: 'Enhanced Basic ATK',
       title: 'Slash by a Thousandfold Kiss',
-      content: `Aglaea and Garmentmaker launches a <u>joint attack</u> on the target. Deals <b class="text-hsr-lightning">Lightning DMG</b> to the target by an amount equal to {{0}}% of Aglaea's ATK and {{0}}% of <b>Garmentmaker</b>'s ATK. And respectively deals <b class="text-hsr-lightning">Lightning DMG</b> to the adjacent targets by an amount equal to {{1}}% of Aglaea's ATK and {{1}}% of <b>Garmentmaker</b>'s ATK.`,
+      content: `Aglaea and <b>Garmentmaker</b> launches a <u>joint attack</u> on the target. Deals <b class="text-hsr-lightning">Lightning DMG</b> to the target by an amount equal to {{0}}% of Aglaea's ATK and {{0}}% of <b>Garmentmaker</b>'s ATK. And respectively deals <b class="text-hsr-lightning">Lightning DMG</b> to the adjacent targets by an amount equal to {{1}}% of Aglaea's ATK and {{1}}% of <b>Garmentmaker</b>'s ATK.`,
       value: [
         { base: 110, growth: 22, style: 'linear' },
         { base: 44, growth: 8.8, style: 'linear' },
@@ -221,13 +223,16 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       broken: boolean
     ) => {
       const base = _.cloneDeep(x)
-      base.SUMMON_STATS = _.cloneDeep(x)
-
-      base.SUMMON_STATS.BASE_SPD = 40
-      // base.SUMMON_STATS.BASE_HP = {
-      //   multiplier: calcScaling(0.44, 0.0275, talent, 'heal'),
-      //   flat: calcScaling(180, 67.5, talent, 'heal'),
-      // }
+      base.SUMMON_STATS = _.cloneDeep({
+        ...x,
+        BASE_ATK: x.BASE_ATK,
+        BASE_DEF: x.BASE_DEF,
+        BASE_SPD: 40,
+        ELEMENT: Element.NONE,
+        BASE_HP: x.getHP() * calcScaling(0.44, 0.0275, talent, 'heal') + calcScaling(180, 67.5, talent, 'heal'),
+        SUMMON_ID: '1402',
+        NAME: 'Garmentmaker',
+      })
 
       if (form.supreme_stance) base.BA_ALT = true
       base.COUNTDOWN = 100
@@ -316,14 +321,14 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ]
 
       if (form.aglea_a6) {
-        base.SUMMON_DMG.push({
+        base.SUMMON_STATS[Stats.ALL_DMG].push({
           name: `Ascension 6 Passive`,
           source: 'Self',
           value: 0.3,
         })
       }
       if (form.aglea_summon_spd) {
-        base.SUMMON[Stats.SPD].push({
+        base.SUMMON_STATS[Stats.SPD].push({
           name: `Memosprite Talent`,
           source: 'Self',
           value: calcScaling(48, 2.4, basic, 'linear') * form.aglea_summon_spd,
@@ -355,14 +360,6 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       weakness: Element[],
       broken: boolean
     ) => {
-      if (c >= 4 && base.PATH === PathType.ERUDITION) {
-        base[Stats.P_SPD].push({
-          name: `Eidolon 4`,
-          source: 'The Herta',
-          value: 0.1,
-        })
-      }
-
       return base
     },
     postCompute: (
@@ -383,6 +380,14 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           x.X_ATK.push({
             name: `Ascension 2 Passive`,
             source: 'Self',
+            value: 7.2 * x.getSpd() + summonSpd * 3.6,
+            base: x.getSpd(),
+            multiplier: 7.2,
+            flat: `(${summonSpd} \u{00d7} ${toPercentage(3.6)})`,
+          })
+          x.SUMMON_STATS.X_ATK.push({
+            name: `Ascension 2 Passive`,
+            source: 'Aglaea',
             value: 7.2 * x.getSpd() + summonSpd * 3.6,
             base: x.getSpd(),
             multiplier: 7.2,

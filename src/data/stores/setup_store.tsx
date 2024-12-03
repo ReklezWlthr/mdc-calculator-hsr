@@ -69,7 +69,7 @@ export interface SetupStoreType {
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (i: number, initData: Record<string, any>[]) => void
   setForm: (index: number, value: Record<string, any>[]) => void
-  setFormValue: (setupIndex: number, charIndex: number, key: string, value: any, sync: boolean) => void
+  setFormValue: (setupIndex: number, charIndex: number, key: string, value: any, memo: boolean, sync: boolean) => void
   setComparing: (value: Partial<ITeamChar>) => void
   setTotal: (key: TalentType, index: number, name: string, value: number) => void
   getTotal: (key: TalentType, index: number) => number
@@ -135,6 +135,7 @@ export class SetupStore {
       [Element.WIND]: 0,
       [Element.QUANTUM]: 0,
       [Element.IMAGINARY]: 0,
+      [Element.NONE]: 0,
     }
     this.level = 1
     this.enemy = ''
@@ -166,10 +167,13 @@ export class SetupStore {
     this.forms = _.cloneDeep(this.forms)
   }
 
-  setFormValue = (setupIndex: number, index: number, key: string, value: any, sync: boolean) => {
-    this.forms[setupIndex][index][key] = value
+  setFormValue = (setupIndex: number, index: number, key: string, value: any, memo: boolean, sync: boolean) => {
+    if (memo) {
+      this.forms[setupIndex][index].memo[key] = value
+    } else {
+      this.forms[setupIndex][index][key] = value
+    }
     if (sync) {
-      console.log(sync, _.cloneDeep(this.forms))
       for (const form of this.forms) {
         if (!form) continue
         for (const char of form) {

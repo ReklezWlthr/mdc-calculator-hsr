@@ -22,11 +22,15 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     skill: c >= 3 ? 2 : 0,
     ult: c >= 5 ? 2 : 0,
     talent: c >= 3 ? 2 : 0,
+    memo_skill: c >= 5 ? 1 : 0,
+    memo_talent: c >= 3 ? 1 : 0,
   }
   const basic = t.basic + upgrade.basic
   const skill = t.skill + upgrade.skill
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
+  const memo_skill = t.memo_skill + upgrade.memo_skill
+  const memo_talent = t.memo_talent + upgrade.memo_talent
 
   const talents: ITalent = {
     normal: {
@@ -56,7 +60,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         { base: 18, growth: 3.6, style: 'linear' },
         { base: 45, growth: 9, style: 'linear' },
       ],
-      level: skill,
+      level: memo_skill,
       tag: AbilityTag.AOE,
     },
     summon_skill_2: {
@@ -67,7 +71,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       <br />For every <span class="text-desc">1</span> instance of DMG dealt by the target that has <b class="text-hsr-ice">Mem's Support</b>, additionally deals <span class="text-desc">1</span> instance of <b class="text-red">True DMG</b> equal to {{0}}% of the original DMG.
       <br />When using this ability on this unit, cannot trigger the <u>action advance</u> effect.`,
       value: [{ base: 28, growth: 2, style: 'linear' }],
-      level: skill,
+      level: memo_skill,
       tag: AbilityTag.AOE,
     },
     ult: {
@@ -97,7 +101,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       content: `Increases all allies' CRIT DMG by an amount equal to {{0}}% of <b>Mem</b>'s CRIT DMG plus {{1}}%.
       <br />If the <b>Charge</b> is not at <span class="text-desc">100%</span>, <b>Mem</b> automatically uses <b>Baddies! Trouble!</b> when taking action. When the <b>Charge</b> reaches <span class="text-desc">100%</span>, <b>Mem</b> immediately takes action and can actively use <b>Lemme! Help You!</b> in their next action.`,
       value: [{ base: 48, growth: 2.4, style: 'linear' }],
-      level: talent,
+      level: memo_talent,
       tag: AbilityTag.AOE,
     },
     technique: {
@@ -212,13 +216,16 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       broken: boolean
     ) => {
       const base = _.cloneDeep(x)
-      base.SUMMON_STATS = _.cloneDeep(x)
-
-      base.SUMMON_STATS.BASE_SPD = 40
-      // base.SUMMON_BASE_HP = {
-      //   multiplier: calcScaling(0.5, 0.03, talent, 'heal'),
-      //   flat: calcScaling(400, 24, talent, 'heal'),
-      // }
+      base.SUMMON_STATS = _.cloneDeep({
+        ...x,
+        BASE_ATK: x.BASE_ATK,
+        BASE_DEF: x.BASE_DEF,
+        BASE_SPD: 130,
+        ELEMENT: Element.NONE,
+        BASE_HP: x.getHP() * calcScaling(0.5, 0.03, talent, 'heal') + calcScaling(400, 24, talent, 'heal'),
+        SUMMON_ID: '8007',
+        NAME: 'Mimi',
+      })
 
       if (form.supreme_stance) base.BA_ALT = true
 

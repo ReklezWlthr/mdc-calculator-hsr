@@ -1,7 +1,7 @@
 import { useStore } from '@src/data/providers/app_store_provider'
 import { addDebuff, checkIsDoT, compareWeight, findCharacter, findEnemy, findLightCone } from '../utils/finder'
 import { useEffect, useMemo, useState } from 'react'
-import { getTeamOutOfCombat } from '../utils/calculator'
+import { calculateOutOfCombat, getTeamOutOfCombat } from '../utils/calculator'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import _ from 'lodash'
 import {
@@ -202,6 +202,10 @@ export const useCalculator = ({
     }
   }, [team, conditionals, settingStore.settings.formMode, enabled])
 
+  useEffect(() => {
+    console.log(_.cloneDeep(forms))
+  }, [forms])
+
   // =================
   //
   // Main Calculator
@@ -220,6 +224,7 @@ export const useCalculator = ({
     const preCompute = _.map(conditionals, (base, index) => {
       let x =
         base?.preCompute(baseStats[index], forms[index], debuffs, weakness, calculatorStore.broken) || baseStats[index]
+
       if (forms[index][`break_${x.NAME}`]) {
         x.DOT_SCALING.push({
           name: `Break ${BreakDebuffType[x.ELEMENT]} DMG`,
@@ -240,7 +245,7 @@ export const useCalculator = ({
       let x = base
       _.forEach(conditionals, (item, i) => {
         // Loop characters, exclude index of the current parent iteration
-        if (i !== index)
+        if (i !== index) {
           x =
             item?.preComputeShared(
               preCompute[i],
@@ -255,6 +260,23 @@ export const useCalculator = ({
               weakness,
               calculatorStore.broken
             ) || x
+          if (x.SUMMON_STATS) {
+            x.SUMMON_STATS =
+              item?.preComputeShared(
+                { ...preCompute[i].SUMMON_STATS, BASE_HP: x.BASE_HP },
+                x.SUMMON_STATS as any,
+                {
+                  ...forms[i],
+                  path: findCharacter(team[index]?.cId)?.path,
+                  element: findCharacter(team[index]?.cId)?.element,
+                },
+                forms[index].memo,
+                debuffs,
+                weakness,
+                calculatorStore.broken
+              ) || x.SUMMON_STATS
+          }
+        }
       })
       return x
     })
@@ -317,9 +339,8 @@ export const useCalculator = ({
       )
       return x
     })
-    const postCompute = _.map(
-      conditionals,
-      (base, index) =>
+    const postCompute = _.map(conditionals, (base, index) => {
+      const x =
         base?.postCompute(
           postWeapon[index],
           forms[index],
@@ -329,7 +350,20 @@ export const useCalculator = ({
           weakness,
           calculatorStore.broken
         ) || postWeapon[index]
-    )
+      if (x.SUMMON_STATS) {
+        x.SUMMON_STATS =
+          base.postCompute(
+            postWeapon[index].SUMMON_STATS,
+            forms[index].memo,
+            _.map(postWeapon, (b) => b.SUMMON_STATS),
+            _.map(forms, (f) => f.memo),
+            debuffs,
+            weakness,
+            calculatorStore.broken
+          ) || postWeapon[index].SUMMON_STATS
+      }
+      return x
+    })
     const postArtifactCallback = _.map(postCompute, (base, index) => {
       let x = base
       const set = getSetCount(

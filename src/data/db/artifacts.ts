@@ -780,7 +780,6 @@ export const PlanarSets: IArtifact[] = [
               name: `Penacony, Land of the Dreams [${x.ELEMENT}]`,
               source: x.NAME,
               value: 0.1,
-              excludeSummon: true,
             })
         })
         return x

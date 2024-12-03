@@ -35,6 +35,8 @@ export interface ITalentLevel {
   skill: number
   ult: number
   talent: number
+  memo_skill: number
+  memo_talent: number
 }
 
 export interface ICharStoreBase {
@@ -132,13 +134,19 @@ export const PathMap = {
 }
 
 export const BaseAggro = {
-  [PathType.PRESERVATION]: 6,
-  [PathType.HUNT]: 3,
-  [PathType.ERUDITION]: 3,
-  [PathType.ABUNDANCE]: 4,
-  [PathType.DESTRUCTION]: 5,
-  [PathType.HARMONY]: 4,
-  [PathType.NIHILITY]: 4,
+  [PathType.PRESERVATION]: 150,
+  [PathType.HUNT]: 75,
+  [PathType.ERUDITION]: 75,
+  [PathType.ABUNDANCE]: 100,
+  [PathType.DESTRUCTION]: 125,
+  [PathType.HARMONY]: 100,
+  [PathType.NIHILITY]: 100,
+  [PathType.REMEMBRANCE]: 100,
+}
+
+export const BaseSummonAggro = {
+  '1402': 125,
+  '8007': 200,
 }
 
 export enum TalentType {

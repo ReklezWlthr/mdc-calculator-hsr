@@ -299,7 +299,7 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               element: Element.ICE,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
-              break: 5,
+              break: 10,
               sum: false,
             },
           ]
@@ -327,6 +327,15 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
               break: 10,
+              sum: false,
+            },
+            {
+              name: 'Others',
+              value: [{ scaling: calcScaling(0.35, 0.035, skill, 'curved'), multiplier: Stats.ATK }],
+              element: Element.ICE,
+              property: TalentProperty.NORMAL,
+              type: TalentType.SKILL,
+              break: 5,
               sum: false,
             },
           ]
