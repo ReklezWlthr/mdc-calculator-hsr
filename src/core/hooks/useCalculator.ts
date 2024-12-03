@@ -319,6 +319,17 @@ export const useCalculator = ({
               index: i,
               debuffs,
             })
+            if (x.SUMMON_STATS) {
+              x.SUMMON_STATS = c.scaling(x.SUMMON_STATS, form.memo, team[i]?.equipments?.weapon?.refinement, {
+                team: team,
+                element: Element.NONE,
+                own: postArtifact[i].SUMMON_STATS,
+                owner: i,
+                totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
+                index: i,
+                debuffs,
+              })
+            }
           }
         )
       })
@@ -335,6 +346,22 @@ export const useCalculator = ({
             owner: c.owner,
             debuffs,
           })
+          if (x.SUMMON_STATS) {
+            x.SUMMON_STATS = c.scaling(
+              x.SUMMON_STATS,
+              forms[index].memo,
+              team[c.owner]?.equipments?.weapon?.refinement,
+              {
+                team: team,
+                element: Element.NONE,
+                own: postArtifact[c.owner],
+                owner: c.owner,
+                totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
+                index,
+                debuffs,
+              }
+            )
+          }
         }
       )
       return x

@@ -109,7 +109,7 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
                   cId: item.id,
                   ascension: char?.ascension || 0,
                   level: char?.level || 1,
-                  talents: char?.talents || { basic: 1, skill: 1, ult: 1, talent: 1 },
+                  talents: char?.talents || { basic: 1, skill: 1, ult: 1, talent: 1, memo_skill: 1, memo_talent: 1 },
                   equipments: build ? { weapon: build.weapon, artifacts: build.artifacts } : DefaultBuild,
                   cons: char?.cons || 0,
                   major_traces: char?.major_traces || { a2: false, a4: false, a6: false },

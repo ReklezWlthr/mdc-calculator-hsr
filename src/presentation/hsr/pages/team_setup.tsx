@@ -156,7 +156,7 @@ export const TeamSetup = observer(() => {
             <AbilityBlock
               char={char}
               talents={talent?.talents}
-              upgrade={talent?.upgrade}
+              upgrade={{ memo_skill: 1, memo_talent: 1, ...talent?.upgrade }}
               onChange={(key, value) => teamStore.setTalentLevel(selected, key as any, value)}
             />
             <p className="-mb-2 font-bold text-center text-white col-span-full">Ascension Passives</p>

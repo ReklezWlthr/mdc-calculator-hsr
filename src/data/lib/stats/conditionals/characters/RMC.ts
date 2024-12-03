@@ -224,7 +224,8 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         ELEMENT: Element.NONE,
         BASE_HP: x.getHP() * calcScaling(0.5, 0.03, talent, 'heal') + calcScaling(400, 24, talent, 'heal'),
         SUMMON_ID: '8007',
-        NAME: 'Mimi',
+        NAME: 'Mem',
+        MAX_ENERGY: 0,
       })
 
       if (form.supreme_stance) base.BA_ALT = true

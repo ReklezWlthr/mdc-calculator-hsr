@@ -29,14 +29,15 @@ interface ConditionalBlockProps {
   setForm?: FormSetterT
   compare?: boolean
   memo?: boolean
+  selected: number
 }
 
 export const WeaponConditionalBlock = observer(
-  ({ contents, formOverride, teamOverride, setForm, memo, compare }: ConditionalBlockProps) => {
+  ({ contents, formOverride, teamOverride, setForm, memo, compare, selected }: ConditionalBlockProps) => {
     const [open, setOpen] = useState(true)
 
     const { calculatorStore, teamStore, setupStore } = useStore()
-    const form = formOverride || calculatorStore.form
+    const baseForm = formOverride || calculatorStore.form
     const team = teamOverride || teamStore.characters
     const set = setForm || calculatorStore.setFormValue
 
@@ -73,6 +74,9 @@ export const WeaponConditionalBlock = observer(
                 content.chance?.fixed,
                 content.debuffElement
               )
+
+              const form =
+                selected === content.index && memo ? baseForm?.[content.index]?.memo : baseForm?.[content.index]
 
               return (
                 content.show && (
@@ -124,8 +128,10 @@ export const WeaponConditionalBlock = observer(
                       <>
                         <TextInput
                           type="number"
-                          value={form[content.index]?.[content.id]}
-                          onChange={(value) => set(content.index, content.id, parseFloat(value) ?? '', memo)}
+                          value={form?.[content.id]}
+                          onChange={(value) =>
+                            set(content.index, content.id, parseFloat(value) ?? '', selected === content.index && memo)
+                          }
                           max={content.max as number}
                           min={content.min as number}
                           style="col-span-2"
@@ -139,22 +145,24 @@ export const WeaponConditionalBlock = observer(
                     {content.type === 'toggle' && (
                       <div className="flex items-center justify-center col-span-2">
                         <CheckboxInput
-                          checked={form[content.index]?.[content.id]}
-                          onClick={(v) => set(content.index, content.id, v, memo)}
+                          checked={form?.[content.id]}
+                          onClick={(v) => set(content.index, content.id, v, selected === content.index && memo)}
                         />
                       </div>
                     )}
                     {content.type === 'element' && (
                       <div className="flex items-center justify-center col-span-3">
                         <SelectInput
-                          value={form[content.index]?.[content.id]}
+                          value={form?.[content.id]}
                           options={
                             content.options || [
                               { name: 'None', value: '' },
                               ..._.map(Element, (item) => ({ name: item, value: item })),
                             ]
                           }
-                          onChange={(value) => set(content.index, content.id, value, memo)}
+                          onChange={(value) =>
+                            set(content.index, content.id, value, selected === content.index && memo)
+                          }
                           placeholder="None"
                           small
                         />

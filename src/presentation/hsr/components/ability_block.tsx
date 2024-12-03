@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import { TalentIcon } from './tables/scaling_wrapper'
 import { findMaxTalentLevel } from '@src/core/utils/data_format'
-import { ITeamChar } from '@src/domain/constant'
+import { ITeamChar, PathType } from '@src/domain/constant'
 import _ from 'lodash'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { ITalent } from '@src/domain/conditional'
@@ -10,7 +10,7 @@ import { findCharacter } from '@src/core/utils/finder'
 export interface AbilityBlockProps {
   char: ITeamChar
   talents: ITalent
-  upgrade: { basic: number; skill: number; ult: number; talent: number }
+  upgrade: { basic: number; skill: number; ult: number; talent: number; memo_skill: number; memo_talent: number }
   onChange: (key: string, value: number) => void
   disabled?: boolean
 }
@@ -118,6 +118,54 @@ export const AbilityBlock = observer(({ char, onChange, upgrade, talents, disabl
           />
         </div>
       </div>
+      {charData?.path === PathType.REMEMBRANCE && (
+        <>
+          <div className="flex items-center gap-3">
+            <TalentIcon
+              talent={talents?.summon_skill}
+              element={charData?.element}
+              icon={`SkillIcon_${charData?.id}_Servant01.png`}
+              size="w-9 h-9"
+              upgraded={upgrade?.memo_skill}
+              level={char?.talents?.memo_skill}
+              showUpgrade
+              type={talents?.talent?.trace}
+            />
+            <div>
+              <p className="text-xs text-primary-lighter">M.Skill</p>
+              <SelectInput
+                value={char?.talents?.memo_skill?.toString()}
+                onChange={(value) => onChange('memo_skill', parseInt(value))}
+                options={basicLevels}
+                style="w-14"
+                disabled={!charData || disabled}
+              />
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <TalentIcon
+              talent={talents?.summon_talent}
+              element={charData?.element}
+              icon={`SkillIcon_${charData?.id}_ServantPassive.png`}
+              size="w-9 h-9"
+              upgraded={upgrade?.memo_talent}
+              level={char?.talents?.memo_talent}
+              showUpgrade
+              type={talents?.talent?.trace}
+            />
+            <div>
+              <p className="text-xs text-primary-lighter">M.Talent</p>
+              <SelectInput
+                value={char?.talents?.memo_talent?.toString()}
+                onChange={(value) => onChange('memo_talent', parseInt(value))}
+                options={basicLevels}
+                style="w-14"
+                disabled={!charData || disabled}
+              />
+            </div>
+          </div>
+        </>
+      )}
     </>
   )
 })

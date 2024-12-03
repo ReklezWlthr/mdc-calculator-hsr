@@ -121,6 +121,13 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
   if (form['318']) {
     const buff = _.find(base[Stats.CRIT_DMG], (item) => item.source === 'The Wondrous BananAmusement Park')
     if (buff) buff.value += 0.32
+    if (base.SUMMON_STATS) {
+      const summonBuff = _.find(
+        base.SUMMON_STATS[Stats.CRIT_DMG],
+        (item) => item.source === 'The Wondrous BananAmusement Park'
+      )
+      if (summonBuff) summonBuff.value += 0.32
+    }
   }
   if (form['122'])
     base.SKILL_DMG.push({

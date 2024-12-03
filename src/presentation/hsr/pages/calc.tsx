@@ -178,8 +178,8 @@ export const Calculator = observer(({}: {}) => {
                       talent={main?.talents?.summon_skill}
                       icon={`SkillIcon_${charData.id}_Servant01.png`}
                       element={charData.element}
-                      level={char.talents?.skill}
-                      upgraded={main?.upgrade?.skill}
+                      level={char.talents?.memo_skill}
+                      upgraded={(main?.upgrade as any)?.memo_skill}
                     >
                       <div className="flex flex-col justify-between h-full gap-4">
                         <div className="space-y-0.5">
@@ -327,7 +327,7 @@ export const Calculator = observer(({}: {}) => {
               </div>
               <ConditionalBlock title="Self Modifiers" contents={_.filter(contents.main, 'show')} selected={selected} />
               <ConditionalBlock title="Team Modifiers" contents={_.filter(contents.team, 'show')} selected={selected} />
-              <WeaponConditionalBlock contents={contents.weapon(selected)} />
+              <WeaponConditionalBlock contents={contents.weapon(selected)} selected={selected} />
               <ConditionalBlock title="Relic Modifiers" contents={contents.artifact(selected)} selected={selected} />
               <CustomConditionalBlock index={selected} />
             </>
@@ -380,14 +380,13 @@ export const Calculator = observer(({}: {}) => {
                 memo
                 selected={selected}
               />
-              <WeaponConditionalBlock contents={contents.weapon(selected)} memo />
+              <WeaponConditionalBlock contents={contents.weapon(selected)} memo selected={selected} />
               <ConditionalBlock
                 title="Relic Modifiers"
                 contents={contents.artifact(selected)}
                 memo
                 selected={selected}
               />
-              <CustomConditionalBlock index={selected} />
             </>
           )}
           {charData && tab === 'load' && (

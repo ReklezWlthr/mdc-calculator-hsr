@@ -29,6 +29,8 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
   const skill = t.skill + upgrade.skill
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
+  const memo_skill = t.memo_skill + upgrade.memo_skill
+  const memo_talent = t.memo_talent + upgrade.memo_talent
 
   const talents: ITalent = {
     normal: {
@@ -232,6 +234,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         BASE_HP: x.getHP() * calcScaling(0.44, 0.0275, talent, 'heal') + calcScaling(180, 67.5, talent, 'heal'),
         SUMMON_ID: '1402',
         NAME: 'Garmentmaker',
+        MAX_ENERGY: 0,
       })
 
       if (form.supreme_stance) base.BA_ALT = true
@@ -291,7 +294,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       base.MEMO_SKILL_SCALING = [
         {
           name: 'Main Target',
-          value: [{ scaling: calcScaling(0.55, 0.11, basic, 'linear'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.55, 0.11, memo_skill, 'linear'), multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: TalentProperty.SERVANT,
           type: TalentType.SERVANT,
@@ -300,7 +303,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         },
         {
           name: 'Adjacent',
-          value: [{ scaling: calcScaling(0.33, 0.066, basic, 'linear'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.33, 0.066, memo_skill, 'linear'), multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: TalentProperty.SERVANT,
           type: TalentType.SERVANT,
@@ -331,7 +334,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         base.SUMMON_STATS[Stats.SPD].push({
           name: `Memosprite Talent`,
           source: 'Self',
-          value: calcScaling(48, 2.4, basic, 'linear') * form.aglea_summon_spd,
+          value: calcScaling(48, 2.4, memo_talent, 'linear') * form.aglea_summon_spd,
         })
         if (form.supreme_stance) {
           base[Stats.P_SPD].push({

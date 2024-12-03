@@ -30,7 +30,7 @@ export const CharDetail = observer(() => {
   const cond = _.find(ConditionalsObject, ['id', charStore.selected])?.conditionals(
     charUpgrade?.cons || 0,
     charUpgrade?.major_traces || { a2: false, a4: false, a6: false },
-    charUpgrade?.talents || { basic: 1, skill: 1, ult: 1, talent: 1 },
+    charUpgrade?.talents || { basic: 1, skill: 1, ult: 1, talent: 1, memo_skill: 1, memo_talent: 1 },
     teamStore.characters
   )
   const talent = cond.talents
@@ -43,6 +43,8 @@ export const CharDetail = observer(() => {
     [TalentType.SKILL]: 10,
     [TalentType.ULT]: 10,
     [TalentType.TALENT]: 10,
+    'Memosprite Skill': 6,
+    'Memosprite Talent': 6,
   })
 
   useEffect(() => {
@@ -305,7 +307,7 @@ export const CharDetail = observer(() => {
                           className="slider h-[8px] bg-gradient-to-r from-primary-lighter to-gray shrink-0"
                           step={1}
                           min="1"
-                          max={_.includes(item.trace, TalentType.BA) ? 7 : 12}
+                          max={_.includes(item.trace, TalentType.BA) || _.includes(item.trace, 'Memosprite') ? 7 : 12}
                           value={params[baseType]}
                           onChange={(e) => {
                             const value = Number(e.target.value)

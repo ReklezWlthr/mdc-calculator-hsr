@@ -520,6 +520,40 @@ export const RelicSets: IArtifact[] = [
       `Scholar's Felt Snowboots`,
     ],
   },
+  {
+    id: '123',
+    name: `Hero of Triumphant Song`,
+    icon: '71040',
+    bonus: [{ stat: Stats.P_ATK, value: 0.12 }],
+    bonusAdd: [],
+    desc: [
+      `Increases ATK by <span class="text-desc">12%</span>.`,
+      `While the wearer's memosprite is on the field, increases the wearer's SPD by <span class="text-desc">6%</span>. When the wearer's memosprite attacks, increases the wearer and memosprite's CRIT DMG by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
+    ],
+    set: [
+      `Hero's Wreath of Championship`,
+      `Hero's Gilded Bracers`,
+      `Hero's Gallant Golden Armor`,
+      `Hero's Firechasing Shinguard`,
+    ],
+  },
+  {
+    id: '124',
+    name: `Poet of Mourning Collapse`,
+    icon: '71041',
+    bonus: [{ stat: Stats.QUANTUM_DMG, value: 0.1 }],
+    bonusAdd: [{ stat: Stats.P_SPD, value: -0.12 }],
+    desc: [
+      `Increases <b class="text-hsr-quantum">Quantum DMG</b> dealt by <span class="text-desc">10%</span>.`,
+      `Decreases the wearer's SPD by <span class="text-desc">12%</span>. When entering battle, if the wearer's SPD is less than <span class="text-desc">110</span>/<span class="text-desc">95</span>, increases the wearer's CRIT Rate by <span class="text-desc">20%</span>/<span class="text-desc">40%</span>. This effect also applies to the wearer's memosprite.`,
+    ],
+    set: [
+      `Poet's Dill Wreath`,
+      `Poet's Gilded Bracelet`,
+      `Poet's Star-Studded Skirt`,
+      `Poet's Silver-Studded Shoes`,
+    ],
+  },
 ]
 
 export const PlanarSets: IArtifact[] = [

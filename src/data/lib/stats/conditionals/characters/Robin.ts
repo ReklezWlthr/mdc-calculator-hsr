@@ -303,19 +303,25 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           const atk = a[index].getAtk(true)
           _.forEach(a, (x, i) => {
             const multiplier = calcScaling(0.152, 0.0076, ult, 'curved')
-            x.X_ATK.push({
+            const xATK = {
               name: 'Ultimate',
               source: index === i ? 'Self' : 'Robin',
               value: multiplier * atk,
               base: atk,
               multiplier,
-            })
-            x[Stats.ATK].push({
+            }
+            const bATK = {
               name: 'Ultimate',
               source: index === i ? 'Self' : 'Robin',
               value: calcScaling(50, 15, ult, 'curved'),
               flat: calcScaling(50, 15, ult, 'curved'),
-            })
+            }
+            x.X_ATK.push(xATK)
+            x[Stats.ATK].push(bATK)
+            if (x.SUMMON_STATS) {
+              x.SUMMON_STATS.X_ATK.push(xATK)
+              x.SUMMON_STATS[Stats.ATK].push(bATK)
+            }
             if (index !== i)
               _.forEach(
                 [team[i].BASIC_SCALING, team[i].SKILL_SCALING, team[i].ULT_SCALING, team[i].TALENT_SCALING],
