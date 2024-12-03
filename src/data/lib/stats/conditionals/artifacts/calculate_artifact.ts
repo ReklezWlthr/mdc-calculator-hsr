@@ -120,14 +120,7 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
     })
   if (form['318']) {
     const buff = _.find(base[Stats.CRIT_DMG], (item) => item.source === 'The Wondrous BananAmusement Park')
-    if (buff) buff.value += 0.32
-    if (base.SUMMON_STATS) {
-      const summonBuff = _.find(
-        base.SUMMON_STATS[Stats.CRIT_DMG],
-        (item) => item.source === 'The Wondrous BananAmusement Park'
-      )
-      if (summonBuff) summonBuff.value += 0.32
-    }
+    if (buff) buff.value += 0.28
   }
   if (form['122'])
     base.SKILL_DMG.push({
@@ -135,6 +128,13 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       source: 'Scholar Lost in Erudition',
       value: 0.25,
     })
+  if (form['121']) {
+    base[Stats.CRIT_DMG].push({
+      name: `4-Piece`,
+      source: `Sacerdos' Relived Ordeal`,
+      value: 0.18 * form['121'],
+    })
+  }
 
   return base
 }
@@ -152,13 +152,6 @@ export const calculateTeamRelic = (base: StatsObject, form: Record<string, any>,
       source: owner.NAME,
       value: 0.3,
     })
-  if (form['121']) {
-    base[Stats.CRIT_DMG].push({
-      name: `4-Piece`,
-      source: `Sacerdos' Relived Ordeal`,
-      value: 0.18 * form['121'],
-    })
-  }
 
   return base
 }

@@ -87,6 +87,7 @@ export interface IWeaponContent {
   show: boolean
   options?: { name: string; value: string }[]
   debuffElement?: Element // Only used for chance
+  excludeSummon?: boolean
   scaling: (
     base: StatsObject, // Stats of the character
     form: Record<string, any>,

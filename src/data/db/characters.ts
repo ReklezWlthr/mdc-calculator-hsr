@@ -897,7 +897,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.HARMONY,
     element: Element.IMAGINARY,
-    beta: true,
+    beta: false,
   },
   {
     id: '1314',

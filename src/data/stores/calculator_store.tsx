@@ -94,14 +94,21 @@ export class CalculatorStore {
     this[key] = value
   }
 
-  initForm = (initData: Record<string, any>[]) => {
+  initForm = (initData: Record<string, any>[], exclude: string[]) => {
     const mergedData = _.map(initData, (item, index) =>
       _.mapValues(item, (value, key) => {
         const old = this.form[index]?.[key]
         return _.isUndefined(old) ? value : old
       })
     )
-    this.form = _.map(mergedData, (item) => ({ ...item, memo: _.cloneDeep(item) }))
+    const mergedMemo = _.map(initData, (item, index) =>
+      _.mapValues(item, (value, key) => {
+        if (_.includes(exclude, key)) return null
+        const old = this.form[index]?.memo?.[key]
+        return _.isUndefined(old) ? value : old
+      })
+    )
+    this.form = _.map(mergedData, (item, i) => ({ ...item, memo: _.omitBy(mergedMemo[i], (m) => _.isNull(m)) }))
   }
 
   setFormValue = (index: number, key: string, value: any, memo: boolean) => {

@@ -166,6 +166,7 @@ export const useCalculator = ({
 
   useEffect(() => {
     if (enabled) {
+      const excluded = []
       const f = _.map(conditionals, (item, index) =>
         _.reduce(
           _.concat(
@@ -178,6 +179,7 @@ export const useCalculator = ({
             breakContents[index]
           ),
           (acc, curr: IContent & { owner?: number }) => {
+            if ((curr as any)?.excludeSummon) excluded.push(curr.id)
             if (curr?.show) {
               let value = curr.default
               if (settingStore.settings.formMode === 'max') {
@@ -198,14 +200,13 @@ export const useCalculator = ({
         )
       )
       if (initFormFunction) initFormFunction(f)
-      else calculatorStore.initForm(f)
+      else calculatorStore.initForm(f, excluded)
     }
   }, [team, conditionals, settingStore.settings.formMode, enabled])
 
   useEffect(() => {
     console.log(_.cloneDeep(forms))
   }, [forms])
-
   // =================
   //
   // Main Calculator
@@ -297,6 +298,12 @@ export const useCalculator = ({
       let x = base
       _.forEach(forms, (form, i) => {
         x = i === index ? calculateRelic(x, form) : calculateTeamRelic(x, form, postCustom[i])
+        if (x.SUMMON_STATS) {
+          x.SUMMON_STATS =
+            i === index
+              ? calculateRelic(x.SUMMON_STATS, form.memo)
+              : calculateTeamRelic(x.SUMMON_STATS, form.memo, postCustom[i])
+        }
       })
       return x
     })

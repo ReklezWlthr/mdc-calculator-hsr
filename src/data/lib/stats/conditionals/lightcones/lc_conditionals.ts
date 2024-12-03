@@ -1139,6 +1139,52 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `Ultimate ATK Bonus`,
+    show: true,
+    default: true,
+    duration: 3,
+    id: '21051',
+    excludeSummon: true,
+    scaling: (base, form, r) => {
+      if (form['21051']) {
+        const buff = _.find(base[Stats.P_ATK], (item) => item.source === `Geniuses' Greetings`)
+        if (buff) buff.value += calcRefinement(0.2, 0.05, r)
+        if (base.SUMMON_STATS) {
+          const summonBuff = _.find(base.SUMMON_STATS[Stats.P_ATK], (item) => item.source === `Geniuses' Greetings`)
+          if (summonBuff) summonBuff.value += calcRefinement(0.2, 0.05, r)
+        }
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Memosprite On-Field Bonus`,
+    show: true,
+    default: true,
+    duration: 3,
+    id: '21052',
+    excludeSummon: true,
+    scaling: (base, form, r) => {
+      if (form['21052']) {
+        base[Stats.ALL_DMG].push({
+          name: 'Passive',
+          source: 'Victory In a Blink',
+          value: calcRefinement(0.24, 0.04, r),
+        })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS[Stats.ALL_DMG].push({
+            name: 'Passive',
+            source: 'Victory In a Blink',
+            value: calcRefinement(0.24, 0.04, r),
+          })
+        }
+      }
+      return base
+    },
+  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [
@@ -1674,6 +1720,32 @@ export const LCTeamConditionals: IWeaponContent[] = [
           value: calcRefinement(0.18, 0.03, r),
         })
         if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Team DMG Bonus`,
+    show: true,
+    default: true,
+    duration: 3,
+    id: '21050',
+    excludeSummon: true,
+    scaling: (base, form, r) => {
+      if (form['21050']) {
+        base[Stats.ALL_DMG].push({
+          name: 'Passive',
+          source: 'Sweat Now, Cry Less',
+          value: calcRefinement(0.08, 0.02, r),
+        })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS[Stats.ALL_DMG].push({
+            name: 'Passive',
+            source: 'Sweat Now, Cry Less',
+            value: calcRefinement(0.08, 0.02, r),
+          })
+        }
       }
       return base
     },

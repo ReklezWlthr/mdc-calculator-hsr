@@ -1260,6 +1260,39 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '21050',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: `Sweat Now, Cry Less`,
+        value: calcRefinement(0.12, 0.03, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '21051',
+    scaling: (base, r) => {
+      base[Stats.P_ATK].push({
+        name: 'Passive',
+        source: `Geniuses' Greetings`,
+        value: calcRefinement(0.16, 0.04, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '21052',
+    scaling: (base, r) => {
+      base[Stats.CRIT_RATE].push({
+        name: 'Passive',
+        source: `Victory In a Blink`,
+        value: calcRefinement(0.12, 0.02, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus
