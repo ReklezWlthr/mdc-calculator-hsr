@@ -128,6 +128,7 @@ export const PathMap = {
   [PathType.DESTRUCTION]: '/warrior.webp',
   [PathType.HARMONY]: '/shaman.webp',
   [PathType.NIHILITY]: '/warlock.webp',
+  [PathType.REMEMBRANCE]: '/memory.webp',
 }
 
 export const BaseAggro = {
@@ -146,7 +147,7 @@ export enum TalentType {
   ULT = 'Ultimate',
   TECH = 'Technique',
   TALENT = 'Talent',
-  SERVANT = 'Servant',
+  SERVANT = 'Memosprite',
   NONE = 'None',
 }
 
@@ -157,13 +158,14 @@ export enum TalentProperty {
   ADD = 'Additional DMG',
   BREAK = 'Break DMG',
   SUPER_BREAK = 'Super Break DMG',
-  SERVANT = 'Servant DMG',
+  SERVANT = 'Memosprite DMG',
   DOT = 'DoT',
   BREAK_DOT = 'Break DoT',
   FUA = 'Follow-Up DMG',
   FROZEN = 'Frozen',
   ENTANGLE = 'Entanglement',
   PURE = 'Pure DMG',
+  TRUE = 'True DMG',
 }
 
 export enum Element {
@@ -174,6 +176,7 @@ export enum Element {
   WIND = 'Wind',
   QUANTUM = 'Quantum',
   IMAGINARY = 'Imaginary',
+  NONE = 'None',
 }
 
 export enum Stats {

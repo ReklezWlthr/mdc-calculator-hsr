@@ -62,7 +62,11 @@ export const damageStringConstruct = (
   const breakScale = scaling.property === TalentProperty.BREAK
   const breakDoT = scaling.property === TalentProperty.BREAK_DOT
   const isPure = scaling.property === TalentProperty.PURE
+  const isTrue = scaling.property === TalentProperty.TRUE
+  const isServant = scaling.property === TalentProperty.SERVANT
   const isSplit = !!_.size(scaling.hitSplit)
+
+  if (isServant) stats = _.cloneDeep(stats.SUMMON_STATS)
 
   const {
     string: { debuffString },
@@ -113,7 +117,7 @@ export const damageStringConstruct = (
     0.1,
   ])
   const brokenMult = calculatorStore.broken ? 1 : 0.9
-  const isDamage = !_.includes([TalentProperty.SHIELD, TalentProperty.HEAL], scaling.property)
+  const isDamage = !_.includes([TalentProperty.SHIELD, TalentProperty.HEAL, TalentProperty.TRUE], scaling.property)
   const enemyMod = isDamage ? defMult * resMult * vulMult * brokenMult : 1
 
   const statForScale = {
@@ -158,10 +162,12 @@ export const damageStringConstruct = (
     scaling.hitSplit || [1],
     (split, i) =>
       (capped ? cap : breakScale ? breakRaw(split) : raw(split)) *
-      (1 + (breakScale ? stats.getValue(Stats.BE) : isPure ? 0 : bonusDMG(scaling.bonusSplit?.[i]))) *
-      (scaling.multiplier || 1) *
-      (breakScale ? 1 + (stats.getValue(StatsObjectKeys.BREAK_MULT) || 0) : 1) *
-      enemyMod
+      (isTrue
+        ? 1
+        : (1 + (breakScale ? stats.getValue(Stats.BE) : isPure ? 0 : bonusDMG(scaling.bonusSplit?.[i]))) *
+          (scaling.multiplier || 1) *
+          (breakScale ? 1 + (stats.getValue(StatsObjectKeys.BREAK_MULT) || 0) : 1) *
+          enemyMod)
   )
   const dmg = _.sum(dmgSplit)
 
@@ -197,7 +203,7 @@ export const damageStringConstruct = (
     (item) =>
       `<span class="inline-flex items-center h-4">(<b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${
         StatIcons[item.multiplier]
-      }" />${_.round(
+      }" />${_.floor(
         (item.override || statForScale[item.multiplier]) +
           (item.multiplier === Stats.HP ? stats.getValue(StatsObjectKeys.X_HP) : 0)
       ).toLocaleString()}</b>${

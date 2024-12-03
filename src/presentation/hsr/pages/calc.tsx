@@ -1,9 +1,9 @@
 import { findCharacter } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { BaseAggro, Stats, TalentType } from '@src/domain/constant'
+import { BaseAggro, PathType, Stats, TalentType } from '@src/domain/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { ScalingSubRows } from '../components/tables/scaling_sub_rows'
 import { ScalingWrapper } from '../components/tables/scaling_wrapper'
 import { StatBlock } from '../components/stat_block'
@@ -28,6 +28,7 @@ import { MiniRelicBlock } from '../components/mini_relic_block'
 import { BulletPoint } from '@src/presentation/components/collapsible'
 import { SubTotalRow } from '../components/tables/sub_total_row'
 import { StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
+import { SummonStatBlock } from '../components/summon_stat_block'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
@@ -57,6 +58,12 @@ export const Calculator = observer(({}: {}) => {
       ),
     [mainComputed, charData, finalStats]
   )
+
+  useEffect(() => {
+    if (tab === 'summon' && charData.path !== PathType.REMEMBRANCE) {
+      calculatorStore.setValue('tab', 'mod')
+    }
+  }, [selected])
 
   return (
     <div className="w-full customScrollbar">
@@ -160,6 +167,37 @@ export const Calculator = observer(({}: {}) => {
                     <SubTotalRow type={TalentType.SKILL} />
                   </div>
                 </ScalingWrapper>
+                {charData.path === PathType.REMEMBRANCE && (
+                  <>
+                    <div className="w-full my-2 border-t-2 border-primary-border" />
+                    <ScalingWrapper
+                      talent={main?.talents?.summon_skill}
+                      icon={`SkillIcon_${charData.id}_Servant01.png`}
+                      element={charData.element}
+                      level={char.talents?.skill}
+                      upgraded={main?.upgrade?.skill}
+                    >
+                      <div className="flex flex-col justify-between h-full gap-4">
+                        <div className="space-y-0.5">
+                          {_.map(mainComputed?.MEMO_SKILL_SCALING, (item) => (
+                            <ScalingSubRows key={item.name} scaling={item} type={TalentType.SERVANT} />
+                          ))}
+                          {mainComputed?.SUPER_BREAK && (
+                            <div className="pt-2 space-y-0.5">
+                              {_.map(
+                                _.filter(mainComputed?.SKILL_SCALING, (item) => !!item.break),
+                                (item) => (
+                                  <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.SKILL} />
+                                )
+                              )}
+                            </div>
+                          )}
+                        </div>
+                        <SubTotalRow type={TalentType.SKILL} />
+                      </div>
+                    </ScalingWrapper>
+                  </>
+                )}
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
                   talent={mainComputed?.ULT_ALT ? main?.talents?.ult_alt : main?.talents?.ult}
@@ -241,7 +279,7 @@ export const Calculator = observer(({}: {}) => {
           )}
         </div>
         <div className="flex flex-col items-center w-full gap-3">
-          <div className="flex gap-5">
+          <div className="flex gap-4">
             <div
               className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
                 'bg-primary': tab === 'mod',
@@ -258,6 +296,16 @@ export const Calculator = observer(({}: {}) => {
             >
               Stats
             </div>
+            {main?.talents?.summon_skill && (
+              <div
+                className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
+                  'bg-primary': tab === 'summon',
+                })}
+                onClick={() => calculatorStore.setValue('tab', 'summon')}
+              >
+                Memosprite
+              </div>
+            )}
             <div
               className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
                 'bg-primary': tab === 'load',
@@ -304,6 +352,17 @@ export const Calculator = observer(({}: {}) => {
                   stats={computedStats[selected]}
                 />
               </div>
+            </>
+          )}
+          {tab === 'summon' && (
+            <>
+              <div className="flex items-center justify-between w-full">
+                <p className="px-4 text-lg font-bold">
+                  <span className="text-desc">✦</span> Memosprite Stats <span className="text-desc">✦</span>
+                </p>
+                <PrimaryButton title="Stats Breakdown" onClick={onOpenStatsModal} />
+              </div>
+              <SummonStatBlock expands stat={computedStats[selected]} />
             </>
           )}
           {charData && tab === 'load' && (

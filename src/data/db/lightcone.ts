@@ -321,6 +321,36 @@ export const LightCones = [
       properties: [{ base: 24, growth: 6 }],
     },
   },
+  {
+    id: '20021',
+    name: 'Shadowburn',
+    rarity: 3,
+    baseHp: 38.4,
+    baseAtk: 14.4,
+    baseDef: 12,
+    type: PathType.REMEMBRANCE,
+    beta: false,
+    desc: {
+      name: 'Beautify',
+      detail: `When the wearer summons memosprite for the first time in battle, recovers <span class="text-desc">1</span> Skill Point(s) and regenerates {{0}} Energy for this unit.`,
+      properties: [{ base: 12, growth: 2 }],
+    },
+  },
+  {
+    id: '20022',
+    name: 'Reminiscence',
+    rarity: 3,
+    baseHp: 33.6,
+    baseAtk: 16.8,
+    baseDef: 12,
+    type: PathType.REMEMBRANCE,
+    beta: false,
+    desc: {
+      name: 'Going to Sleep',
+      detail: `When memosprite's turn starts, the wearer and the memosprite each gain <span class="text-desc">1</span> stack of <b>Commemoration</b> respectively. Each stack increases DMG dealt by {{0}}%, stacking up to <span class="text-desc">4</span> time(s). <b>Commemoration</b> is removed from the wearer and the memosprite when the memosprite disappears.`,
+      properties: [{ base: 8, growth: 1 }],
+    },
+  },
   // 4 Star
   {
     id: '21000',
@@ -1157,6 +1187,60 @@ export const LightCones = [
       ],
     },
   },
+  {
+    id: '21050',
+    name: `Sweat Now, Cry Less`,
+    rarity: 4,
+    baseHp: 38.4,
+    baseAtk: 21.6,
+    baseDef: 18,
+    type: PathType.REMEMBRANCE,
+    beta: true,
+    desc: {
+      name: 'Come Train!',
+      detail: `Increases the wearer's CRIT DMG by {{0}}%. When the wearer's memosprite uses an ability on ally targets, increases all ally targets' DMG dealt by {{1}}%, lasting for <span class="text-desc">3</span> turn(s).`,
+      properties: [
+        { base: 12, growth: 3 },
+        { base: 8, growth: 2 },
+      ],
+    },
+  },
+  {
+    id: '21051',
+    name: `Geniuses' Greetings`,
+    rarity: 4,
+    baseHp: 43.2,
+    baseAtk: 21.6,
+    baseDef: 15,
+    type: PathType.REMEMBRANCE,
+    beta: true,
+    desc: {
+      name: 'Congratulations',
+      detail: `Increases the wearer's ATK by {{0}}%. After the wearer uses their Ultimate, additionally increases the wearer and their memosprite's ATK by {{1}}% for <span class="text-desc">3</span> turn(s).`,
+      properties: [
+        { base: 16, growth: 4 },
+        { base: 20, growth: 5 },
+      ],
+    },
+  },
+  {
+    id: '21052',
+    name: `Victory In a Blink`,
+    rarity: 4,
+    baseHp: 48,
+    baseAtk: 24,
+    baseDef: 9,
+    type: PathType.REMEMBRANCE,
+    beta: true,
+    desc: {
+      name: 'Final Hit',
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer's memosprite is on the field, increases the wearer and their memosprite's DMG dealt by {{1}}%.`,
+      properties: [
+        { base: 12, growth: 2 },
+        { base: 24, growth: 4 },
+      ],
+    },
+  },
   //---------------------
   //   Event 4 Star
   //---------------------
@@ -1897,6 +1981,42 @@ export const LightCones = [
       properties: [
         { base: 60, growth: 10 },
         { base: 18, growth: 3 },
+      ],
+    },
+  },
+  {
+    id: '23036',
+    name: 'Time Woven Into Gold',
+    rarity: 5,
+    baseHp: 48,
+    baseAtk: 28.8,
+    baseDef: 18,
+    type: PathType.REMEMBRANCE,
+    beta: true,
+    desc: {
+      name: 'Establishment',
+      detail: `Increases the wearer's base SPD by {{0}}. After the wearer and the wearer's memosprite attacks, they receive 1 stack of <b>Brocade</b>. Each stack of <b>Brocade</b> increases CRIT DMG by {{1}}%, stacking up to <span class="text-desc">3</span> time(s). When reaching the maximum stacks, each <b>Brocade</b> stack will additionally increase DMG dealt by Basic ATK by {{1}}%.`,
+      properties: [
+        { base: 12, growth: 2 },
+        { base: 15, growth: 2.5 },
+      ],
+    },
+  },
+  {
+    id: '23037',
+    name: 'Into the Unreachable Veil',
+    rarity: 5,
+    baseHp: 43.2,
+    baseAtk: 28.8,
+    baseDef: 21,
+    type: PathType.ERUDITION,
+    beta: true,
+    desc: {
+      name: 'Mind Game',
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer uses their Ultimate, increases DMG dealt by the wearer's Skill and Ultimate by {{1}}%, lasting for <span class="text-desc">3</span> turn(s). After the wearer uses their Ultimate, if this Ultimate consumes <span class="text-desc">140</span> or more Energy, recovers <span class="text-desc">1</span> Skill Point. This effect can trigger a maximum of <span class="text-desc">1</span> time every <span class="text-desc">2</span> turn(s).`,
+      properties: [
+        { base: 12, growth: 2 },
+        { base: 48, growth: 12 },
       ],
     },
   },

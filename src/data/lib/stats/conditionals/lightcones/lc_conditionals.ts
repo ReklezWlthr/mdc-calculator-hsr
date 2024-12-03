@@ -1090,6 +1090,55 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'number',
+    text: `Brocade Stacks`,
+    show: true,
+    default: 0,
+    min: 0,
+    max: 3,
+    id: '23036',
+    scaling: (base, form, r) => {
+      if (form['23036']) {
+        base[Stats.CRIT_DMG].push({
+          name: 'Brocade',
+          source: 'Time Woven Into Gold',
+          value: calcRefinement(0.15, 0.025, r) * form['23036'],
+        })
+      }
+      if (form['23036'] >= 3) {
+        base.BASIC_DMG.push({
+          name: 'Passive',
+          source: 'Time Woven Into Gold',
+          value: calcRefinement(0.15, 0.025, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Skill & Ult DMG Bonus`,
+    show: true,
+    default: true,
+    duration: 3,
+    id: '23037',
+    scaling: (base, form, r) => {
+      if (form['23037']) {
+        base.SKILL_DMG.push({
+          name: 'Passive',
+          source: 'Into the Unreachable Veil',
+          value: calcRefinement(0.48, 0.12, r),
+        })
+        base.ULT_DMG.push({
+          name: 'Passive',
+          source: 'Into the Unreachable Veil',
+          value: calcRefinement(0.48, 0.12, r),
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [

@@ -1242,6 +1242,24 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23036',
+    scaling: (base, r) => {
+      base.BASE_SPD += calcRefinement(12, 2, r)
+      return base
+    },
+  },
+  {
+    id: '23037',
+    scaling: (base, r) => {
+      base[Stats.CRIT_RATE].push({
+        name: 'Passive',
+        source: `Into the Unreachable Veil`,
+        value: calcRefinement(0.12, 0.02, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

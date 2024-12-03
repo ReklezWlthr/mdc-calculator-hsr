@@ -1,5 +1,6 @@
 import { DebuffTypes, IScaling } from '@src/domain/conditional'
 import { Element, Stats, TalentProperty, PathType, TalentType } from '@src/domain/constant'
+import { BaseStatsType } from '@src/domain/stats'
 import _ from 'lodash'
 
 export interface StatsArray {
@@ -9,9 +10,10 @@ export interface StatsArray {
   base?: string | number
   multiplier?: number
   flat?: number | string
+  excludeSummon?: boolean
 }
 
-export const baseStatsObject = {
+export const baseStatsObject: BaseStatsType = {
   // Base Stats
   BASE_ATK_C: 0,
   BASE_HP_C: 0,
@@ -27,150 +29,153 @@ export const baseStatsObject = {
   BASE_SPD: 0,
 
   NAME: '',
-  PATH: null as PathType,
-  ELEMENT: null as Element,
+  PATH: null,
+  ELEMENT: null,
+
+  SUMMON_STATS: null,
 
   // Basic Stats
-  [Stats.ATK]: [] as StatsArray[],
-  [Stats.HP]: [] as StatsArray[],
-  [Stats.DEF]: [] as StatsArray[],
-  [Stats.P_ATK]: [] as StatsArray[],
-  [Stats.P_HP]: [] as StatsArray[],
-  [Stats.P_DEF]: [] as StatsArray[],
-  [Stats.CRIT_RATE]: [{ name: 'Base Value', source: 'Self', value: 0.05 }] as StatsArray[],
-  [Stats.CRIT_DMG]: [{ name: 'Base Value', source: 'Self', value: 0.5 }] as StatsArray[],
-  [Stats.BE]: [] as StatsArray[],
-  [Stats.ERR]: [{ name: 'Base Value', source: 'Self', value: 1 }] as StatsArray[],
-  [Stats.HEAL]: [] as StatsArray[],
-  [Stats.SPD]: [] as StatsArray[],
-  [Stats.P_SPD]: [] as StatsArray[],
-  [Stats.EHR]: [] as StatsArray[],
-  [Stats.E_RES]: [] as StatsArray[],
+  [Stats.ATK]: [],
+  [Stats.HP]: [],
+  [Stats.DEF]: [],
+  [Stats.P_ATK]: [],
+  [Stats.P_HP]: [],
+  [Stats.P_DEF]: [],
+  [Stats.CRIT_RATE]: [{ name: 'Base Value', source: 'Self', value: 0.05 }],
+  [Stats.CRIT_DMG]: [{ name: 'Base Value', source: 'Self', value: 0.5 }],
+  [Stats.BE]: [],
+  [Stats.ERR]: [{ name: 'Base Value', source: 'Self', value: 1 }],
+  [Stats.HEAL]: [],
+  [Stats.SPD]: [],
+  [Stats.P_SPD]: [],
+  [Stats.EHR]: [],
+  [Stats.E_RES]: [],
 
-  X_HP: [] as StatsArray[], // For Fu Xuan and Lynx
-  X_CRIT_DMG: [] as StatsArray[], // For Sparkle and Bronya, will not be used recursively
-  X_ATK: [] as StatsArray[], // For Robin
+  X_HP: [], // Fu Xuan and Lynx
+  X_CRIT_DMG: [], // Sparkle, Bronya, Sunday and Aventurine
+  X_ATK: [], // Robin, Aglaea
 
   // DMG Bonuses
-  [Stats.PHYSICAL_DMG]: [] as StatsArray[],
-  [Stats.FIRE_DMG]: [] as StatsArray[],
-  [Stats.ICE_DMG]: [] as StatsArray[],
-  [Stats.LIGHTNING_DMG]: [] as StatsArray[],
-  [Stats.QUANTUM_DMG]: [] as StatsArray[],
-  [Stats.IMAGINARY_DMG]: [] as StatsArray[],
-  [Stats.WIND_DMG]: [] as StatsArray[],
-  [Stats.ALL_DMG]: [] as StatsArray[],
+  [Stats.PHYSICAL_DMG]: [],
+  [Stats.FIRE_DMG]: [],
+  [Stats.ICE_DMG]: [],
+  [Stats.LIGHTNING_DMG]: [],
+  [Stats.QUANTUM_DMG]: [],
+  [Stats.IMAGINARY_DMG]: [],
+  [Stats.WIND_DMG]: [],
+  [Stats.ALL_DMG]: [],
 
-  SKILL_HEAL: [] as StatsArray[],
-  ULT_HEAL: [] as StatsArray[],
+  SKILL_HEAL: [],
+  ULT_HEAL: [],
 
   // Hidden Stats
-  DEF_PEN: [] as StatsArray[],
-  SHIELD: [] as StatsArray[],
-  BREAK_EFF: [] as StatsArray[],
-  I_HEAL: [] as StatsArray[],
+  DEF_PEN: [],
+  SHIELD: [],
+  BREAK_EFF: [],
+  I_HEAL: [],
 
-  SUMMON_DEF_PEN: [] as StatsArray[],
+  SUMMON_DEF_PEN: [],
 
   //DEBUFFS
-  ATK_REDUCTION: [] as StatsArray[],
-  DEF_REDUCTION: [] as StatsArray[],
-  SPD_REDUCTION: [] as StatsArray[],
-  E_RES_RED: [] as StatsArray[],
-  EHR_RED: [] as StatsArray[],
-  VULNERABILITY: [] as StatsArray[],
-  WEAKEN: [] as StatsArray[],
+  ATK_REDUCTION: [],
+  DEF_REDUCTION: [],
+  SPD_REDUCTION: [],
+  E_RES_RED: [],
+  EHR_RED: [],
+  VULNERABILITY: [],
+  WEAKEN: [],
 
-  FIRE_VUL: [] as StatsArray[],
-  BREAK_VUL: [] as StatsArray[],
-  DOT_VUL: [] as StatsArray[],
-  FUA_VUL: [] as StatsArray[],
-  ULT_VUL: [] as StatsArray[],
-  ULT_RES_PEN: [] as StatsArray[],
+  FIRE_VUL: [],
+  BREAK_VUL: [],
+  DOT_VUL: [],
+  FUA_VUL: [],
+  ULT_VUL: [],
+  ULT_RES_PEN: [],
 
   // RES PEN
-  ALL_TYPE_RES_PEN: [] as StatsArray[],
-  PHYSICAL_RES_PEN: [] as StatsArray[],
-  FIRE_RES_PEN: [] as StatsArray[],
-  ICE_RES_PEN: [] as StatsArray[],
-  LIGHTNING_RES_PEN: [] as StatsArray[],
-  WIND_RES_PEN: [] as StatsArray[],
-  QUANTUM_RES_PEN: [] as StatsArray[],
-  IMAGINARY_RES_PEN: [] as StatsArray[],
+  ALL_TYPE_RES_PEN: [],
+  PHYSICAL_RES_PEN: [],
+  FIRE_RES_PEN: [],
+  ICE_RES_PEN: [],
+  LIGHTNING_RES_PEN: [],
+  WIND_RES_PEN: [],
+  QUANTUM_RES_PEN: [],
+  IMAGINARY_RES_PEN: [],
 
-  ALL_TYPE_RES_RED: [] as StatsArray[],
-  PHYSICAL_RES_RED: [] as StatsArray[],
-  FIRE_RES_RED: [] as StatsArray[],
-  ICE_RES_RED: [] as StatsArray[],
-  LIGHTNING_RES_RED: [] as StatsArray[],
-  WIND_RES_RED: [] as StatsArray[],
-  QUANTUM_RES_RED: [] as StatsArray[],
-  IMAGINARY_RES_RED: [] as StatsArray[],
+  ALL_TYPE_RES_RED: [],
+  PHYSICAL_RES_RED: [],
+  FIRE_RES_RED: [],
+  ICE_RES_RED: [],
+  LIGHTNING_RES_RED: [],
+  WIND_RES_RED: [],
+  QUANTUM_RES_RED: [],
+  IMAGINARY_RES_RED: [],
 
   // RES
-  ALL_TYPE_RES: [] as StatsArray[],
+  ALL_TYPE_RES: [],
 
   // Talent Boosts
-  BASIC_DMG: [] as StatsArray[],
-  SKILL_DMG: [] as StatsArray[],
-  ULT_DMG: [] as StatsArray[],
-  TALENT_DMG: [] as StatsArray[],
-  TECHNIQUE_DMG: [] as StatsArray[],
-  DOT_DMG: [] as StatsArray[],
-  FUA_DMG: [] as StatsArray[],
-  ADD_DMG: [] as StatsArray[],
-  SERVANT_DMG: [] as StatsArray[],
+  BASIC_DMG: [],
+  SKILL_DMG: [],
+  ULT_DMG: [],
+  TALENT_DMG: [],
+  TECHNIQUE_DMG: [],
+  DOT_DMG: [],
+  FUA_DMG: [],
+  ADD_DMG: [],
+  SUMMON_DMG: [],
 
-  BASIC_F_DMG: [] as StatsArray[],
-  SKILL_F_DMG: [] as StatsArray[],
-  ULT_F_DMG: [] as StatsArray[],
+  BASIC_F_DMG: [],
+  SKILL_F_DMG: [],
+  ULT_F_DMG: [],
 
-  BASIC_CR: [] as StatsArray[],
-  SKILL_CR: [] as StatsArray[],
-  ULT_CR: [] as StatsArray[],
-  DOT_CR: [] as StatsArray[],
-  FUA_CR: [] as StatsArray[],
+  BASIC_CR: [],
+  SKILL_CR: [],
+  ULT_CR: [],
+  DOT_CR: [],
+  FUA_CR: [],
 
-  BASIC_CD: [] as StatsArray[],
-  SKILL_CD: [] as StatsArray[],
-  ULT_CD: [] as StatsArray[],
-  DOT_CD: [] as StatsArray[],
-  FUA_CD: [] as StatsArray[],
-  ADD_CD: [] as StatsArray[],
+  BASIC_CD: [],
+  SKILL_CD: [],
+  ULT_CD: [],
+  DOT_CD: [],
+  FUA_CD: [],
+  ADD_CD: [],
 
-  BASIC_DEF_PEN: [] as StatsArray[],
-  SKILL_DEF_PEN: [] as StatsArray[],
-  ULT_DEF_PEN: [] as StatsArray[],
-  DOT_DEF_PEN: [] as StatsArray[],
-  FUA_DEF_PEN: [] as StatsArray[],
-  BREAK_DEF_PEN: [] as StatsArray[],
-  SUPER_BREAK_DEF_PEN: [] as StatsArray[],
+  BASIC_DEF_PEN: [],
+  SKILL_DEF_PEN: [],
+  ULT_DEF_PEN: [],
+  DOT_DEF_PEN: [],
+  FUA_DEF_PEN: [],
+  BREAK_DEF_PEN: [],
+  SUPER_BREAK_DEF_PEN: [],
 
-  BREAK_DMG: [] as StatsArray[],
-  SUPER_BREAK_DMG: [] as StatsArray[],
+  BREAK_DMG: [],
+  SUPER_BREAK_DMG: [],
 
-  SUPER_BREAK_MULT: [] as StatsArray[],
-  BREAK_MULT: [] as StatsArray[],
-  BASIC_SUPER_BREAK: [] as StatsArray[],
+  SUPER_BREAK_MULT: [],
+  BREAK_MULT: [],
+  BASIC_SUPER_BREAK: [],
 
   // Mitigation
-  DMG_REDUCTION: [] as StatsArray[],
-  AGGRO: [] as StatsArray[],
-  BASE_AGGRO: [] as StatsArray[],
+  DMG_REDUCTION: [],
+  AGGRO: [],
+  BASE_AGGRO: [],
 
   MAX_ENERGY: 0,
   SUMMON: false,
 
   // Multipliers
-  BASIC_SCALING: [] as IScaling[],
-  SKILL_SCALING: [] as IScaling[],
-  ULT_SCALING: [] as IScaling[],
-  TALENT_SCALING: [] as IScaling[],
-  TECHNIQUE_SCALING: [] as IScaling[],
+  BASIC_SCALING: [],
+  SKILL_SCALING: [],
+  MEMO_SKILL_SCALING: [],
+  ULT_SCALING: [],
+  TALENT_SCALING: [],
+  TECHNIQUE_SCALING: [],
 
-  ADD_DEBUFF: [] as Omit<StatsArray, 'value'>[],
+  ADD_DEBUFF: [],
 
-  DOT_SCALING: [] as IScaling[],
+  DOT_SCALING: [],
   WIND_SHEAR_STACK: 0,
 
   getAtk: function (exclude?: boolean) {
@@ -205,13 +210,7 @@ export const baseStatsObject = {
     return _.min([1 - _.reduce(this.DMG_REDUCTION, (acc, curr) => acc * (1 - curr.value), 1), 0.99])
   },
 
-  CALLBACK: [] as ((
-    base: any,
-    debuffs: { type: DebuffTypes; count: number }[],
-    weakness: Element[],
-    all: any[],
-    battle: boolean
-  ) => any)[],
+  CALLBACK: [],
 
   BA_ALT: false,
   SKILL_ALT: false,
@@ -230,6 +229,7 @@ export const TalentTypeMap = {
   [TalentType.ULT]: 'ULT',
   [TalentType.TALENT]: 'TALENT',
   [TalentType.TECH]: 'TECHNIQUE',
+  [TalentType.SERVANT]: 'SUMMON',
 }
 
 export const TalentPropertyMap = {

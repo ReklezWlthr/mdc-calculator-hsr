@@ -12,7 +12,7 @@ import { findCharacter } from '@src/core/utils/finder'
 import getConfig from 'next/config'
 import { getPathImage } from '@src/core/utils/fetcher'
 import { Tooltip } from '@src/presentation/components/tooltip'
-import { formatScaleString, getBaseStat } from '@src/core/utils/data_format'
+import { formatScaleString, getBaseStat, getWeaponBase } from '@src/core/utils/data_format'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -84,12 +84,12 @@ export const LCModal = observer(({ index, setWeapon, pathOverride }: LCModalProp
       </div>
       <div className="grid w-full grid-cols-10 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
         {_.map(filteredWeapon, (item) => {
-          const minAtk = getBaseStat(item?.baseAtk, 1, 1)
-          const maxAtk = getBaseStat(item?.baseAtk, 90, 6)
-          const minHp = getBaseStat(item?.baseHp, 1, 1)
-          const maxHp = getBaseStat(item?.baseHp, 90, 6)
-          const minDef = getBaseStat(item?.baseDef, 1, 1)
-          const maxDef = getBaseStat(item?.baseDef, 90, 6)
+          const minAtk = getWeaponBase(item?.baseAtk, 1, 0)
+          const maxAtk = getWeaponBase(item?.baseAtk, 80, 6)
+          const minHp = getWeaponBase(item?.baseHp, 1, 0)
+          const maxHp = getWeaponBase(item?.baseHp, 80, 6)
+          const minDef = getWeaponBase(item?.baseDef, 1, 0)
+          const maxDef = getWeaponBase(item?.baseDef, 80, 6)
 
           return (
             <Tooltip
@@ -109,7 +109,7 @@ export const LCModal = observer(({ index, setWeapon, pathOverride }: LCModalProp
                   <div className="grid grid-cols-3 gap-2">
                     <p>
                       <b>Base HP</b>: <span className="text-blue">{_.round(minHp)}</span>{' '}
-                      <span className="text-desc">({_.round(maxHp)})</span>
+                      <span className="text-desc">({_.round(maxHp).toLocaleString()})</span>
                     </p>
                     <p>
                       <b>Base ATK</b>: <span className="text-blue">{_.round(minAtk)}</span>{' '}
