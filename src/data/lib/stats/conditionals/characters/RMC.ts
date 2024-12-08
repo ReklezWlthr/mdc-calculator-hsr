@@ -165,14 +165,12 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
 
   const content: IContent[] = [
     {
-      type: 'number',
-      id: 'aglaea_summon_spd',
-      text: `Seam Stitch SPD Stacks`,
-      ...talents.summon_talent,
+      type: 'toggle',
+      id: 'mem_support',
+      text: `Mem's Support`,
+      ...talents.summon_skill_2,
       show: true,
-      default: 0,
-      min: 0,
-      max: 6,
+      default: false,
     },
     {
       type: 'toggle',
@@ -197,7 +195,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
 
   const teammateContent: IContent[] = []
 
-  const allyContent: IContent[] = []
+  const allyContent: IContent[] = [findContentById(content, 'mem_support')]
 
   return {
     upgrade,
@@ -278,7 +276,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           value: [{ scaling: calcScaling(1.2, 0.12, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.ICE,
           property: TalentProperty.SERVANT,
-          type: TalentType.SERVANT,
+          type: TalentType.ULT,
           break: 20,
           sum: true,
         },
@@ -295,7 +293,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       ]
 
       if (c >= 6) {
-        base.ULT_CR.push({
+        base.SUMMON_STATS.ULT_CR.push({
           name: `Eidolon 6`,
           source: 'Self',
           value: 1,
@@ -318,7 +316,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     postCompute: (
       base: StatsObject,
       form: Record<string, any>,
-      team: StatsObject[],
+      all: StatsObject[],
       allForm: Record<string, any>[],
       debuffs: {
         type: DebuffTypes
@@ -327,6 +325,68 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       weakness: Element[],
       broken: boolean
     ) => {
+      _.forEach(allForm, (f, i) => {
+        const multiplier = calcScaling(0.28, 0.02, memo_skill, 'linear')
+        const index = _.findIndex(team, (item) => item.cId === '8007')
+
+        if (f.mem_support) {
+          const m =
+            multiplier +
+            (a.a6 && all[i]?.MAX_ENERGY > 80 ? _.min([_.max([all[i]?.MAX_ENERGY - 80, 0]) * 0.0015, 0.24]) : 0) +
+            (c >= 4 && all[i]?.MAX_ENERGY === 0 ? 0.06 : 0)
+          _.forEach([all[i].BASIC_SCALING, all[i].SKILL_SCALING, all[i].ULT_SCALING, all[i].TALENT_SCALING], (s) => {
+            _.forEach(s, (ss) => {
+              if (_.includes([TalentProperty.NORMAL, TalentProperty.FUA], ss.property)) {
+                s.push({
+                  name: `${ss.name} - Mem's Support`,
+                  value: ss.value,
+                  multiplier: (ss.multiplier || 1) * m,
+                  element: Element.NONE,
+                  property: TalentProperty.TRUE,
+                  type: TalentType.NONE,
+                  sum: true,
+                })
+              }
+            })
+          })
+          if (c >= 1) {
+            all[i][Stats.CRIT_RATE].push({
+              name: `Eidolon 1`,
+              source: i === index && all[i].SUMMON_ID ? 'Self' : 'Mem',
+              value: 0.1,
+            })
+          }
+        }
+        if (all[i]?.SUMMON_STATS && f.memo?.mem_support) {
+          const m = multiplier + (c >= 4 && all[i]?.SUMMON_STATS.MAX_ENERGY === 0 ? 0.06 : 0)
+
+          _.forEach(
+            [
+              all[i].BASIC_SCALING,
+              all[i].SKILL_SCALING,
+              all[i].ULT_SCALING,
+              all[i].TALENT_SCALING,
+              all[i].MEMO_SKILL_SCALING,
+            ],
+            (s) => {
+              _.forEach(s, (ss) => {
+                if (_.includes([TalentProperty.SERVANT], ss.property)) {
+                  s.push({
+                    name: `${ss.name} - Mem's Support`,
+                    value: ss.value,
+                    multiplier: (ss.multiplier || 1) * m,
+                    element: Element.NONE,
+                    property: TalentProperty.TRUE,
+                    type: TalentType.NONE,
+                    sum: true,
+                  })
+                }
+              })
+            }
+          )
+        }
+      })
+
       return base
     },
   }

@@ -1185,6 +1185,33 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'number',
+    text: `Commemoration`,
+    show: true,
+    default: 1,
+    min: 0,
+    max: 4,
+    id: '20022',
+    excludeSummon: true,
+    scaling: (base, form, r) => {
+      if (form['20022']) {
+        base[Stats.ALL_DMG].push({
+          name: 'Commemoration',
+          source: 'Reminiscence',
+          value: calcRefinement(0.08, 0.01, r),
+        })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS[Stats.ALL_DMG].push({
+            name: 'Commemoration',
+            source: 'Reminiscence',
+            value: calcRefinement(0.08, 0.01, r),
+          })
+        }
+      }
+      return base
+    },
+  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [

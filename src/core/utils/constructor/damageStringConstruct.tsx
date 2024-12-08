@@ -163,7 +163,7 @@ export const damageStringConstruct = (
     (split, i) =>
       (capped ? cap : breakScale ? breakRaw(split) : raw(split)) *
       (isTrue
-        ? 1
+        ? scaling.multiplier || 1
         : (1 + (breakScale ? stats.getValue(Stats.BE) : isPure ? 0 : bonusDMG(scaling.bonusSplit?.[i]))) *
           (scaling.multiplier || 1) *
           (breakScale ? 1 + (stats.getValue(StatsObjectKeys.BREAK_MULT) || 0) : 1) *

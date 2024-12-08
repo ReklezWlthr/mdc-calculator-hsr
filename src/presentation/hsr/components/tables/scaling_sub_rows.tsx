@@ -33,6 +33,7 @@ export const BaseElementColor = {
   [Element.WIND]: 'text-hsr-wind',
   [Element.QUANTUM]: 'text-hsr-quantum',
   [Element.IMAGINARY]: 'text-hsr-imaginary',
+  [Element.NONE]: 'text-primary-lighter',
 }
 
 export const ElementColor = {

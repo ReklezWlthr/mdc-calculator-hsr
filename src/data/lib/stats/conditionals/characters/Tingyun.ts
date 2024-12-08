@@ -273,7 +273,13 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             const i = _.floor(j / 2)
             if (f?.SUMMON_ID ? allForm[i].memo.tingyun_skill : allForm[i].tingyun_skill) {
               _.forEach(
-                [team[i].BASIC_SCALING, team[i].SKILL_SCALING, team[i].ULT_SCALING, team[i].TALENT_SCALING],
+                [
+                  team[i].BASIC_SCALING,
+                  team[i].SKILL_SCALING,
+                  team[i].ULT_SCALING,
+                  team[i].TALENT_SCALING,
+                  team[i].MEMO_SKILL_SCALING,
+                ],
                 (s) => {
                   if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
                     s.push({

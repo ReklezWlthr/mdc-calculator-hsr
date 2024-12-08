@@ -87,6 +87,10 @@ export const CharDetail = observer(() => {
     'Ascension 2 Passive': 'SkillTree1',
     'Ascension 4 Passive': 'SkillTree2',
     'Ascension 6 Passive': 'SkillTree3',
+    'Memosprite Skill': 'Servant01',
+    'Memosprite Skill [1]': 'Servant01',
+    'Memosprite Skill [2]': 'Servant02',
+    'Memosprite Talent': 'ServantPassive',
   }
 
   const consImage = {
@@ -283,7 +287,9 @@ export const CharDetail = observer(() => {
                 <TalentIcon
                   element={data.element}
                   talent={item}
-                  icon={`SkillIcon_${selected}_${skillIcon[item.trace]}.png`}
+                  icon={`SkillIcon_${_.includes(item.trace, 'Memo') ? '1' : ''}${selected}_${
+                    skillIcon[item.trace]
+                  }.png`}
                   size="w-10 h-10 mt-1"
                   hideTip
                 />

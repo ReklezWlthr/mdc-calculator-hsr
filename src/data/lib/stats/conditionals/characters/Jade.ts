@@ -333,18 +333,21 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               value: 30,
             })
           team[i].CALLBACK.push((x) => {
-            _.forEach([x.BASIC_SCALING, x.SKILL_SCALING, x.ULT_SCALING, x.TALENT_SCALING], (s) => {
-              if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
-                s.push({
-                  name: `Debt Collector's Additional DMG`,
-                  value: [{ scaling: calcScaling(0.15, 0.01, skill, 'curved'), multiplier: Stats.ATK }],
-                  element: Element.QUANTUM,
-                  property: TalentProperty.ADD,
-                  type: TalentType.NONE,
-                  overrideIndex: index,
-                  sum: true,
-                })
-            })
+            _.forEach(
+              [x.BASIC_SCALING, x.SKILL_SCALING, x.ULT_SCALING, x.TALENT_SCALING, x.MEMO_SKILL_SCALING],
+              (s) => {
+                if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
+                  s.push({
+                    name: `Debt Collector's Additional DMG`,
+                    value: [{ scaling: calcScaling(0.15, 0.01, skill, 'curved'), multiplier: Stats.ATK }],
+                    element: Element.QUANTUM,
+                    property: TalentProperty.ADD,
+                    type: TalentType.NONE,
+                    overrideIndex: index,
+                    sum: true,
+                  })
+              }
+            )
             return x
           })
         }

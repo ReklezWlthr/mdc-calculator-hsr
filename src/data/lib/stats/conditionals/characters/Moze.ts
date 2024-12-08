@@ -311,18 +311,21 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       if (form.prey) {
         _.forEach(team, (t, i) => {
           if (i !== index) {
-            _.forEach([t.BASIC_SCALING, t.SKILL_SCALING, t.ULT_SCALING, t.TALENT_SCALING], (s) => {
-              if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
-                s.push({
-                  name: `Prey Additional DMG`,
-                  value: [{ scaling: calcScaling(0.15, 0.015, skill, 'curved'), multiplier: Stats.ATK }],
-                  element: Element.LIGHTNING,
-                  property: TalentProperty.ADD,
-                  type: TalentType.NONE,
-                  overrideIndex: index,
-                  sum: true,
-                })
-            })
+            _.forEach(
+              [t.BASIC_SCALING, t.SKILL_SCALING, t.ULT_SCALING, t.TALENT_SCALING, t.MEMO_SKILL_SCALING],
+              (s) => {
+                if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
+                  s.push({
+                    name: `Prey Additional DMG`,
+                    value: [{ scaling: calcScaling(0.15, 0.015, skill, 'curved'), multiplier: Stats.ATK }],
+                    element: Element.LIGHTNING,
+                    property: TalentProperty.ADD,
+                    type: TalentType.NONE,
+                    overrideIndex: index,
+                    sum: true,
+                  })
+              }
+            )
           }
         })
       }

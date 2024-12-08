@@ -176,7 +176,7 @@ export const Calculator = observer(({}: {}) => {
                     <div className="w-full my-2 border-t-2 border-primary-border" />
                     <ScalingWrapper
                       talent={main?.talents?.summon_skill}
-                      icon={`SkillIcon_${charData.id}_Servant01.png`}
+                      icon={`SkillIcon_1${charData.id}_Servant01.png`}
                       element={charData.element}
                       level={char.talents?.memo_skill}
                       upgraded={(main?.upgrade as any)?.memo_skill}

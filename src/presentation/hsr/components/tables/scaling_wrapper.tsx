@@ -70,7 +70,7 @@ export const TalentIcon = observer(
         />
       )
 
-    const id = icon.split('_')[1]
+    const id = icon.split('_')[1].slice(-4)
     const IconComp = () => (
       <div className="relative">
         <div
