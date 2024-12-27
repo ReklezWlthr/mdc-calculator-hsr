@@ -67,7 +67,7 @@ export interface SetupStoreType {
   broken: boolean
   weakness: Element[]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
-  initForm: (i: number, initData: Record<string, any>[]) => void
+  initForm: (i: number, initData: Record<string, any>[], exclude: string[]) => void
   setForm: (index: number, value: Record<string, any>[]) => void
   setFormValue: (setupIndex: number, charIndex: number, key: string, value: any, memo: boolean, sync: boolean) => void
   setComparing: (value: Partial<ITeamChar>) => void
@@ -152,14 +152,21 @@ export class SetupStore {
     this[key] = value
   }
 
-  initForm = (i: number, initData: Record<string, any>[]) => {
+  initForm = (i: number, initData: Record<string, any>[], exclude: string[]) => {
     const mergedData = _.map(initData, (item, index) =>
       _.mapValues(item, (value, key) => {
         const old = this.forms[i]?.[index]?.[key]
         return _.isUndefined(old) ? value : old
       })
     )
-    this.forms[i] = _.cloneDeep(mergedData)
+    const mergedMemo = _.map(initData, (item, index) =>
+      _.mapValues(item, (value, key) => {
+        if (_.includes(exclude, key)) return null
+        const old = this.forms[i]?.[index]?.memo?.[key]
+        return _.isUndefined(old) ? value : old
+      })
+    )
+    this.forms[i] = _.map(mergedData, (item, i) => ({ ...item, memo: _.omitBy(mergedMemo[i], (m) => _.isNull(m)) }))
   }
 
   setForm = (index: number, value: Record<string, any>[]) => {

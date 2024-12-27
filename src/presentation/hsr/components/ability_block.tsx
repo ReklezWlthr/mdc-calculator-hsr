@@ -10,7 +10,7 @@ import { findCharacter } from '@src/core/utils/finder'
 export interface AbilityBlockProps {
   char: ITeamChar
   talents: ITalent
-  upgrade: { basic: number; skill: number; ult: number; talent: number; memo_skill: number; memo_talent: number }
+  upgrade: { basic: number; skill: number; ult: number; talent: number; memo_skill?: number; memo_talent?: number }
   onChange: (key: string, value: number) => void
   disabled?: boolean
 }
@@ -124,7 +124,7 @@ export const AbilityBlock = observer(({ char, onChange, upgrade, talents, disabl
             <TalentIcon
               talent={talents?.summon_skill}
               element={charData?.element}
-              icon={`SkillIcon_${charData?.id}_Servant01.png`}
+              icon={`SkillIcon_1${charData?.id}_Servant01.png`}
               size="w-9 h-9"
               upgraded={upgrade?.memo_skill}
               level={char?.talents?.memo_skill}
@@ -146,7 +146,7 @@ export const AbilityBlock = observer(({ char, onChange, upgrade, talents, disabl
             <TalentIcon
               talent={talents?.summon_talent}
               element={charData?.element}
-              icon={`SkillIcon_${charData?.id}_ServantPassive.png`}
+              icon={`SkillIcon_1${charData?.id}_ServantPassive.png`}
               size="w-9 h-9"
               upgraded={upgrade?.memo_talent}
               level={char?.talents?.memo_talent}

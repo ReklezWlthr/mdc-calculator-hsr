@@ -46,10 +46,10 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 20,
       trace: 'Enhanced Basic ATK',
       title: 'Slash by a Thousandfold Kiss',
-      content: `Aglaea and <b>Garmentmaker</b> launches a <u>joint attack</u> on the target. Deals <b class="text-hsr-lightning">Lightning DMG</b> to the target by an amount equal to {{0}}% of Aglaea's ATK and {{0}}% of <b>Garmentmaker</b>'s ATK. And respectively deals <b class="text-hsr-lightning">Lightning DMG</b> to the adjacent targets by an amount equal to {{1}}% of Aglaea's ATK and {{1}}% of <b>Garmentmaker</b>'s ATK.`,
+      content: `Aglaea and <b>Garmentmaker</b> launch a <u>Joint ATK</u> on the target, respectively dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Aglaea's ATK and {{0}}% of <b>Garmentmaker</b>'s ATK to the target. Also, deal <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Aglaea's ATK and {{1}}% of <b>Garmentmaker</b>'s ATK to the adjacent targets. <b>Slash by a Thousandfold Kiss</b> cannot recover Skill Points.`,
       value: [
-        { base: 110, growth: 22, style: 'linear' },
-        { base: 44, growth: 8.8, style: 'linear' },
+        { base: 100, growth: 2, style: 'linear' },
+        { base: 45, growth: 9, style: 'linear' },
       ],
       level: basic,
       tag: AbilityTag.ST,
@@ -67,7 +67,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Memosprite Skill',
       title: 'Thorned Snare',
-      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% ATK to one enemy, and <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% ATK to adjacent enemies.`,
+      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% ATK to one enemy and <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% ATK to adjacent targets.`,
       value: [
         { base: 55, growth: 11, style: 'linear' },
         { base: 33, growth: 6.6, style: 'linear' },
@@ -80,8 +80,8 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Ultimate',
       title: `Dance, Destined Weaveress`,
       content: `Summons the memosprite <b>Garmentmaker</b>. If <b>Garmentmaker</b> is already on the field, then restores its HP to max. Aglaea enters the <b class="text-desc">Supreme Stance</b> state and immediately takes action.
-      <br />In the <b class="text-desc">Supreme Stance</b> state, Aglaea gains the SPD Boost stacks from <b>Garmentmaker</b>'s Memosprite Talent, with each stack increasing her SPD by {{0}}%. Enhances Basic ATK to <b>Slash by a Thousandfold Kiss</b>, and cannot use Skill. <b>Garmentmaker</b> is immune to Crowd Control debuffs.
-      <br />A countdown appears on the Action Order, with its own SPD set at <span class="text-desc">100</span>. When the countdown's turn starts, <b>Garmentmaker</b> self-destructs. When <b>Garmentmaker</b> disappears, Aglaea's <b class="text-desc">Supreme Stance</b> state is dispelled.`,
+      <br />While in the <b class="text-desc">Supreme Stance</b> state, Aglaea gains the SPD Boost stacks from <b>Garmentmaker</b>'s Memosprite Talent, with each stack increasing her SPD by {{0}}%. Enhances Basic ATK to <b>Slash by a Thousandfold Kiss</b>, and cannot use Skill. <b>Garmentmaker</b> is immune to Crowd Control debuffs.
+      <br />A countdown appears on the Action Order, with its own SPD set at <span class="text-desc">100</span>. Using Ultimate again when the countdown is on the Action Order will reset the countdown. When the countdown's turn starts, <b>Garmentmaker</b> self-destructs. When <b>Garmentmaker</b> disappears, Aglaea's <b class="text-desc">Supreme Stance</b> state is dispelled.`,
       value: [{ base: 10, growth: 0.5, style: 'curved' }],
       level: ult,
       tag: AbilityTag.AOE,
@@ -90,10 +90,11 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 10,
       trace: 'Talent',
       title: `Rosy-Fingered`,
-      content: `The memosprite <b>Garmentmaker</b> has an initial SPD of <span class="text-desc">40</span> and a Max HP equal to {{0}}% of Aglaea's Max HP plus {{1}}. While <b>Garmentmaker</b> is on the field, Aglaea's attacks inflict the target with the <b class="text-violet-300">Seam Stitch</b> state. <b class="text-violet-300">Seam Stitch</b> only takes effect on the most recently inflicted target.`,
+      content: `The memosprite <b>Garmentmaker</b> has an initial SPD equal to <span class="text-desc">35%</span> of Aglaea's SPD and a Max HP equal to {{0}}% of Aglaea's Max HP plus {{1}}. While <b>Garmentmaker</b> is on the field, Aglaea's attacks inflict the target with the <b class="text-violet-300">Seam Stitch</b> state. After attacking enemies in the <b class="text-violet-300">Seam Stitch</b> state, further deals <b>Additional DMG</b> equal to {{2}}% of Aglaea's ATK. <b class="text-violet-300">Seam Stitch</b> only takes effect on the most recently inflicted target.`,
       value: [
         { base: 44, growth: 2.75, style: 'heal' },
         { base: 180, growth: 67.5, style: 'heal' },
+        { base: 12, growth: 1.8, style: 'curved' },
       ],
       level: talent,
       tag: AbilityTag.AOE,
@@ -101,21 +102,21 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     summon_talent: {
       trace: 'Memosprite Talent',
       title: `A Body Brewed by Tears`,
-      content: `After attacking an enemy afflicted with <b class="text-violet-300">Seam Stitch</b>, increases this unit's SPD by {{0}}, stacking up to <span class="text-desc">6</span> time(s).`,
-      value: [{ base: 48, growth: 2.4, style: 'linear' }],
+      content: `After attacking an enemy afflicted with <b class="text-violet-300">Seam Stitch</b>, increases this unit's SPD by {{0}}, stacking up to <span class="text-desc">6</span> time(s). During Garmentmaker's turn, automatically uses <b>Thorned Snare</b>, prioritizing enemies under the <b class="text-violet-300">Seam Stitch</b> state.`,
+      value: [{ base: 44, growth: 2.2, style: 'linear' }],
       level: talent,
       tag: AbilityTag.AOE,
     },
     technique: {
       trace: 'Technique',
       title: 'Stellar Ripper',
-      content: `Summons the memosprite <b>Garmentmaker</b> and launches a forward joint attack. After entering battle, deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">100%</span> Aglaea's ATK to all enemy targets and randomly inflicts the <b class="text-violet-300">Seam Stitch</b> state.`,
+      content: `Summons the memosprite <b>Garmentmaker</b> and launches a forward joint attack. After entering battle, regenerates <span class="text-desc">30</span> Energy and deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">100%</span> of Aglaea's ATK to all enemy targets. Then, randomly inflicts the <b class="text-violet-300">Seam Stitch</b> state to a random enemy target.`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `The Myopic's Doom`,
-      content: `While in <b class="text-desc">Supreme Stance</b>, increases ATK of Aglaea and <b>Garmentmaker</b> by an amount equal to <span class="text-desc">720%</span> of Aglaea's SPD plus <span class="text-desc">360%</span> of <b>Garmentmaker</b>'s SPD.`,
+      content: `While in <b class="text-desc">Supreme Stance</b>, increases Aglaea and <b>Garmentmaker</b>'s ATK by an amount equal to <span class="text-desc">720%</span> of Aglaea's SPD plus <span class="text-desc">360%</span> of <b>Garmentmaker</b>'s SPD.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -125,17 +126,17 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a6: {
       trace: 'Ascension 6 Passive',
       title: `The Speeding Sol`,
-      content: `When using Skill or when entering combat, increases DMG dealt by <b>Garmentmaker</b> by <span class="text-desc">30%</span>, lasting for <span class="text-desc">5</span> turn(s). While Aglaea is in <b class="text-desc">Supreme Stance</b>, <b>Garmentmaker</b> will keep this DMG Boost effect.`,
+      content: `At the start of battle, if this unit's Energy is lower than <span class="text-desc">50%</span>, regenerates this unit's Energy until <span class="text-desc">50%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Drift at the Whim of Venus`,
-      content: `When Aglaea or <b>Garmentmaker</b> takes consecutive actions, the DMG dealt ignores <span class="text-desc">25%</span> of the target's DEF. This effect stacks up to <span class="text-desc">2</span> time(s) and lasts until any unit, other than Aglaea or <b>Garmentmaker</b>, actively uses an ability.`,
+      content: `When Aglaea or <b>Garmentmaker</b> takes action, the DMG dealt by Aglaea and <b>Garmentmaker</b> ignores <span class="text-desc">15%</span> of the target's DEF. This effect stacks up to <span class="text-desc">20</span> time(s) and lasts until any unit, other than Aglaea or <b>Garmentmaker</b>, actively uses an ability.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Sail on the Raft of Eyelids`,
-      content: `The SPD Boost effect from the Memosprite Talent has its max stack limit increased by <span class="text-desc">1</span>. After Aglaea uses an attack, <b>Garmentmaker</b> can also gain the SPD Boost effect from the Memosprite Talent.`,
+      content: `Enemies afflicted with <b class="text-violet-300">Seam Stitch</b> take <span class="text-desc">14%</span> increased DMG. After Aglaea's or <b>Garmentmaker</b>'s attack hits this target, Aglaea additionally regenerates <span class="text-desc">3</span> Energy.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -147,7 +148,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c4: {
       trace: 'Eidolon 4',
       title: 'Flicker Below the Surface of Marble',
-      content: `An enemy afflicted with <b class="text-violet-300">Seam Stitch</b> takes <span class="text-desc">8%</span> increased DMG. After Aglaea's or <b>Garmentmaker</b>'s attack hits this target, additionally regenerates <span class="text-desc">20</span> Energy.`,
+      content: `The SPD Boost effect from the Memosprite Talent has its max stack limit increased by <span class="text-desc">1</span>. After Aglaea uses an attack, Garmentmaker can also gain the SPD Boost effect from the Memosprite Talent.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -159,7 +160,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: 'Fluctuate in the Tapestry of Fates',
-      content: `While Aglaea is in <b class="text-desc">Supreme Stance</b>, she and <b>Garmentmaker</b> have their <b class="text-hsr-lightning">Lightning DMG PEN</b> increased by <span class="text-desc">20%</span>. When Aglaea or <b>Garmentmaker</b> gains an <u>Action Advance</u> effect, the multiplier of the DMG dealt by the next use of <b>Slash by a Thousandfold Kiss</b> additionally increases by an amount equal to <span class="text-desc">0.4%</span> of their respective SPD.`,
+      content: `While Aglaea is in <b class="text-desc">Supreme Stance</b>, increases her and <b>Garmentmaker</b>'s <b class="text-hsr-lightning">Lightning DMG PEN</b> by <span class="text-desc">20%</span>. When Aglaea or Garmentmaker's SPD is greater than <span class="text-desc">160</span>/<span class="text-desc">240</span>/<span class="text-desc">320</span>, the DMG dealt by Joint ATK increases by <span class="text-desc">10%</span>/<span class="text-desc">30%</span>/<span class="text-desc">60%</span>.`,
     },
   }
 
@@ -181,16 +182,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       show: true,
       default: 0,
       min: 0,
-      max: 6,
-    },
-    {
-      type: 'toggle',
-      id: 'aglea_a6',
-      text: `A6 Garmentmaker DMG Bonus`,
-      ...talents.a6,
-      show: a.a6,
-      default: true,
-      duration: 5,
+      max: c >= 4 ? 7 : 6,
     },
     {
       type: 'number',
@@ -198,13 +190,22 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       text: `E1 DEF PEN`,
       ...talents.c1,
       show: c >= 1,
-      default: 2,
+      default: 1,
       min: 0,
-      max: 2,
+      max: 20,
+    },
+    {
+      type: 'toggle',
+      id: 'aglea_c2',
+      text: `E2 Seam Stitch Vulnerability`,
+      ...talents.c2,
+      show: c >= 2,
+      default: true,
+      debuff: true,
     },
   ]
 
-  const teammateContent: IContent[] = []
+  const teammateContent: IContent[] = [findContentById(content, 'aglea_c2')]
 
   const allyContent: IContent[] = []
 
@@ -229,7 +230,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         ...x,
         BASE_ATK: x.BASE_ATK,
         BASE_DEF: x.BASE_DEF,
-        BASE_SPD: 40,
+        BASE_SPD: 0.35 * x.getSpd(),
         ELEMENT: Element.NONE,
         BASE_HP: x.getHP() * calcScaling(0.44, 0.0275, talent, 'heal') + calcScaling(180, 67.5, talent, 'heal'),
         SUMMON_ID: '1402',
@@ -244,7 +245,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         ? [
             {
               name: 'Main Target - Aglea',
-              value: [{ scaling: calcScaling(1.1, 0.22, basic, 'linear'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(1, 0.2, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.LIGHTNING,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
@@ -253,7 +254,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             },
             {
               name: 'Adjacent - Aglea',
-              value: [{ scaling: calcScaling(0.44, 0.088, basic, 'linear'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.45, 0.09, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.LIGHTNING,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
@@ -261,7 +262,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             },
             {
               name: 'Main Target - Garmentmaker',
-              value: [{ scaling: calcScaling(1.1, 0.22, basic, 'linear'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(1, 0.2, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.LIGHTNING,
               property: TalentProperty.SERVANT,
               type: TalentType.SERVANT,
@@ -271,7 +272,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             },
             {
               name: 'Adjacent - Garmentmaker',
-              value: [{ scaling: calcScaling(0.44, 0.088, basic, 'linear'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.45, 0.09, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.LIGHTNING,
               property: TalentProperty.SERVANT,
               type: TalentType.SERVANT,
@@ -311,6 +312,17 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         },
       ]
       base.ULT_SCALING = []
+      base.TALENT_SCALING = [
+        {
+          name: 'Seam Stitch Additional DMG',
+          value: [{ scaling: calcScaling(0.12, 0.018, talent, 'curved'), multiplier: Stats.ATK }],
+          element: Element.LIGHTNING,
+          property: TalentProperty.ADD,
+          type: TalentType.NONE,
+          break: 20,
+          sum: true,
+        },
+      ]
       base.TECHNIQUE_SCALING = [
         {
           name: 'Single Target',
@@ -323,18 +335,11 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         },
       ]
 
-      if (form.aglea_a6) {
-        base.SUMMON_STATS[Stats.ALL_DMG].push({
-          name: `Ascension 6 Passive`,
-          source: 'Self',
-          value: 0.3,
-        })
-      }
       if (form.aglea_summon_spd) {
         base.SUMMON_STATS[Stats.SPD].push({
           name: `Memosprite Talent`,
           source: 'Self',
-          value: calcScaling(48, 2.4, memo_talent, 'linear') * form.aglea_summon_spd,
+          value: calcScaling(44, 2.2, memo_talent, 'linear') * form.aglea_summon_spd,
         })
         if (form.supreme_stance) {
           base[Stats.P_SPD].push({
@@ -348,7 +353,22 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         base.DEF_PEN.push({
           name: `Eidolon 1`,
           source: 'Self',
-          value: 0.25 * form.aglea_c1,
+          value: 0.15 * form.aglea_c1,
+        })
+      }
+      if (form.aglea_c2) {
+        base.VULNERABILITY.push({
+          name: `Eidolon 2`,
+          source: 'Self',
+          value: 0.14,
+        })
+        addDebuff(debuffs, DebuffTypes.OTHER)
+      }
+      if (form.supreme_stance && c >= 6) {
+        base.LIGHTNING_RES_PEN.push({
+          name: `Eidolon 6`,
+          source: 'Self',
+          value: 0.2,
         })
       }
 
@@ -363,6 +383,14 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       weakness: Element[],
       broken: boolean
     ) => {
+      if (form.aglea_c2) {
+        base.VULNERABILITY.push({
+          name: `Eidolon 2`,
+          source: 'Aglaea',
+          value: 0.08,
+        })
+      }
+
       return base
     },
     postCompute: (
@@ -386,7 +414,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             value: 7.2 * x.getSpd() + summonSpd * 3.6,
             base: x.getSpd(),
             multiplier: 7.2,
-            flat: `(${summonSpd} \u{00d7} ${toPercentage(3.6)})`,
+            flat: `(${_.floor(summonSpd, 1).toLocaleString()} \u{00d7} ${toPercentage(3.6)})`,
           })
           x.SUMMON_STATS.X_ATK.push({
             name: `Ascension 2 Passive`,
@@ -394,8 +422,15 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             value: 7.2 * x.getSpd() + summonSpd * 3.6,
             base: x.getSpd(),
             multiplier: 7.2,
-            flat: `(${summonSpd} \u{00d7} ${toPercentage(3.6)})`,
+            flat: `(${_.floor(summonSpd, 1).toLocaleString()} \u{00d7} ${toPercentage(3.6)})`,
           })
+          return x
+        })
+      if (form.supreme_stance && c >= 6)
+        base.CALLBACK.push(function (x) {
+          const spd = _.max([x.getSpd(), x.SUMMON_STATS.getSpd()])
+          const bonus = spd > 320 ? 0.6 : spd > 240 ? 0.3 : spd > 160 ? 0.1 : 0
+          x.BASIC_SCALING = _.map(x.BASIC_SCALING, (item) => ({ ...item, bonus }))
           return x
         })
 

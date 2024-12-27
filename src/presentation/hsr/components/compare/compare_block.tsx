@@ -18,11 +18,12 @@ import { CompareTraceBlock } from '@src/presentation/hsr/components/compare/comp
 import { CompareSuperBreakSubRows } from '../tables/compare_super_break_sub_row '
 import { CharacterSelect } from '../character_select'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
-import { BaseAggro, TalentType } from '@src/domain/constant'
+import { BaseAggro, PathType, TalentType } from '@src/domain/constant'
 import { CompareTotalRows } from '../tables/compare_total_row'
 import { EnemyModal } from '../modals/enemy_modal'
 import { DebuffModal } from '../modals/debuff_modal'
 import { AdditionalCompareBlock } from './additional_compare_block'
+import { CompareSummonConditionalBlock } from './compare_summon_conditional_block'
 
 export const CompareBlock = observer(() => {
   const { setupStore, modalStore } = useStore()
@@ -45,7 +46,7 @@ export const CompareBlock = observer(() => {
     indexOverride: selected,
     customOverride: setupStore.custom[0],
     weaknessOverride: setupStore.weakness,
-    initFormFunction: (f) => setupStore.initForm(0, f),
+    initFormFunction: (f, e) => setupStore.initForm(0, f, e),
   })
   const sub1 = useCalculator({
     teamOverride: setupStore.comparing[0]?.char,
@@ -54,7 +55,7 @@ export const CompareBlock = observer(() => {
     indexOverride: selectedS1,
     customOverride: setupStore.custom[1],
     weaknessOverride: setupStore.weakness,
-    initFormFunction: (f) => setupStore.initForm(1, f),
+    initFormFunction: (f, e) => setupStore.initForm(1, f, e),
     enabled: !!setupStore.comparing[0]?.char,
   })
   const sub2 = useCalculator({
@@ -64,7 +65,7 @@ export const CompareBlock = observer(() => {
     indexOverride: selectedS2,
     customOverride: setupStore.custom[2],
     weaknessOverride: setupStore.weakness,
-    initFormFunction: (f) => setupStore.initForm(2, f),
+    initFormFunction: (f, e) => setupStore.initForm(2, f, e),
     enabled: !!setupStore.comparing[1]?.char,
   })
   const sub3 = useCalculator({
@@ -74,7 +75,7 @@ export const CompareBlock = observer(() => {
     indexOverride: selectedS3,
     customOverride: setupStore.custom[3],
     weaknessOverride: setupStore.weakness,
-    initFormFunction: (f) => setupStore.initForm(3, f),
+    initFormFunction: (f, e) => setupStore.initForm(3, f, e),
     enabled: !!setupStore.comparing[2]?.char,
   })
 
@@ -258,6 +259,23 @@ export const CompareBlock = observer(() => {
                 <CompareTotalRows type={TalentType.SKILL} />
               </div>
             </ScalingWrapper>
+            {charData.path === PathType.REMEMBRANCE && (
+              <>
+                <div className="w-full my-2 border-t-2 border-primary-border" />
+                <ScalingWrapper
+                  talent={main?.talents?.summon_skill}
+                  icon={`SkillIcon_1${charData.id}_Servant01.png`}
+                  element={charData.element}
+                  level={char.talents?.memo_skill}
+                  upgraded={(main?.upgrade as any)?.memo_skill}
+                >
+                  <div className="flex flex-col justify-between h-full gap-4">
+                    {renderRow(StatsObjectKeys.MEMO_SKILL_SCALING, TalentType.SERVANT)}
+                    <CompareTotalRows type={TalentType.SERVANT} />
+                  </div>
+                </ScalingWrapper>
+              </>
+            )}
             <div className="w-full my-2 border-t-2 border-primary-border" />
             <ScalingWrapper
               talent={mainComputed?.ULT_ALT ? main?.talents?.ult_alt : main?.talents?.ult}
@@ -358,7 +376,7 @@ export const CompareBlock = observer(() => {
               ))}
             </div>
           </div>
-          <div className="flex gap-5">
+          <div className="flex gap-1">
             <div
               className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
                 'bg-primary': tab === 'trace',
@@ -385,6 +403,16 @@ export const CompareBlock = observer(() => {
                 >
                   Stats
                 </div>
+                {focusedChar?.talents?.memo_skill && (
+                  <div
+                    className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
+                      'bg-primary': tab === 'summon',
+                    })}
+                    onClick={() => setupStore.setValue('tab', 'summon')}
+                  >
+                    Memosprite
+                  </div>
+                )}
                 <div
                   className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
                     'bg-primary': tab === 'load',
@@ -413,6 +441,13 @@ export const CompareBlock = observer(() => {
               </div>
               <StatBlock expands stat={allStats[setupIndex][charIndex]} />
             </>
+          )}
+          {tab === 'summon' && (
+            <CompareSummonConditionalBlock
+              stats={allStats[setupIndex]}
+              content={contents[setupIndex]}
+              team={team[setupIndex]}
+            />
           )}
           {tab === 'load' && focusedChar && (
             <>

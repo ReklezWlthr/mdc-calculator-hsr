@@ -1096,21 +1096,21 @@ export const LCConditionals: IWeaponContent[] = [
     show: true,
     default: 0,
     min: 0,
-    max: 3,
+    max: 6,
     id: '23036',
     scaling: (base, form, r) => {
       if (form['23036']) {
         base[Stats.CRIT_DMG].push({
           name: 'Brocade',
           source: 'Time Woven Into Gold',
-          value: calcRefinement(0.15, 0.025, r) * form['23036'],
+          value: calcRefinement(0.09, 0.015, r) * form['23036'],
         })
       }
-      if (form['23036'] >= 3) {
+      if (form['23036'] >= 6) {
         base.BASIC_DMG.push({
           name: 'Passive',
           source: 'Time Woven Into Gold',
-          value: calcRefinement(0.15, 0.025, r),
+          value: calcRefinement(0.09, 0.015, r),
         })
       }
       return base
@@ -1141,7 +1141,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Ultimate ATK Bonus`,
+    text: `On-Ult Basic ATK DMG Bonus`,
     show: true,
     default: true,
     duration: 3,
@@ -1149,11 +1149,17 @@ export const LCConditionals: IWeaponContent[] = [
     excludeSummon: true,
     scaling: (base, form, r) => {
       if (form['21051']) {
-        const buff = _.find(base[Stats.P_ATK], (item) => item.source === `Geniuses' Greetings`)
-        if (buff) buff.value += calcRefinement(0.2, 0.05, r)
+        base.BASIC_DMG.push({
+          name: 'Passive',
+          source: `Geniuses' Greetings`,
+          value: calcRefinement(0.2, 0.05, r),
+        })
         if (base.SUMMON_STATS) {
-          const summonBuff = _.find(base.SUMMON_STATS[Stats.P_ATK], (item) => item.source === `Geniuses' Greetings`)
-          if (summonBuff) summonBuff.value += calcRefinement(0.2, 0.05, r)
+          base.SUMMON_STATS.BASIC_DMG.push({
+            name: 'Passive',
+            source: `Geniuses' Greetings`,
+            value: calcRefinement(0.2, 0.05, r),
+          })
         }
       }
       return base
@@ -1171,14 +1177,14 @@ export const LCConditionals: IWeaponContent[] = [
       if (form['21052']) {
         base[Stats.ALL_DMG].push({
           name: 'Passive',
-          source: 'Victory In a Blink',
-          value: calcRefinement(0.24, 0.04, r),
+          source: 'Sweat Now, Cry Less',
+          value: calcRefinement(0.24, 0.03, r),
         })
         if (base.SUMMON_STATS) {
           base.SUMMON_STATS[Stats.ALL_DMG].push({
             name: 'Passive',
-            source: 'Victory In a Blink',
-            value: calcRefinement(0.24, 0.04, r),
+            source: 'Sweat Now, Cry Less',
+            value: calcRefinement(0.24, 0.03, r),
           })
         }
       }
@@ -1763,13 +1769,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
       if (form['21050']) {
         base[Stats.ALL_DMG].push({
           name: 'Passive',
-          source: 'Sweat Now, Cry Less',
+          source: 'Victory In a Blink',
           value: calcRefinement(0.08, 0.02, r),
         })
         if (base.SUMMON_STATS) {
           base.SUMMON_STATS[Stats.ALL_DMG].push({
             name: 'Passive',
-            source: 'Sweat Now, Cry Less',
+            source: 'Victory In a Blink',
             value: calcRefinement(0.08, 0.02, r),
           })
         }

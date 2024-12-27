@@ -1,10 +1,22 @@
 [
   {
+    "version": "1.1.1",
+    "date": "November 17th, 2024",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v3.0v5</span>",
+      "New Path: Remembrance",
+      "New System: Memosprite and Memomaster",
+      "New Characters: <span class=\"text-hsr-ice\">Herta</span>, <span class=\"text-hsr-lightning\">Aglaea</span>, and <span class=\"text-hsr-ice\">Remembrance TB</span>",
+      "New Light Cones: <span class=\"text-desc\">Into the Unreachable Veil</span>, <span class=\"text-desc\">Time Woven Into Gold</span>, and 5 more Remembrance LCs",
+      "New Artifact Sets: <span class=\"text-desc\">Hero of Triumphant Song</span>, and <span class=\"text-desc\">Poet of Mourning Collapse</span>"
+    ]
+  },
+  {
     "version": "1.1.0-14",
     "date": "November 17th, 2024",
     "desc": [
       "Content Version: <span class=\"text-desc\">v2.7v5</span>",
-      "Updated Characters: <span class=\"text-desc\">Sunday</span>, <span class=\"text-desc\">Fugue</span>",
+      "Updated Characters: <span class=\"text-hsr-imaginary\">Sunday</span>, <span class=\"text-hsr-fire\">Fugue</span>",
       "Updated Light Cone: <span class=\"text-desc\">Long Road Leads Home</span>"
     ]
   },
@@ -13,7 +25,7 @@
     "date": "November 13rd, 2024",
     "desc": [
       "Content Version: <span class=\"text-desc\">v2.7v4</span>",
-      "Updated Wording: <span class=\"text-desc\">Sunday</span>, <span class=\"text-desc\">Fugue</span>"
+      "Updated Wording: <span class=\"text-hsr-imaginary\">Sunday</span>, <span class=\"text-hsr-fire\">Fugue</span>"
     ]
   },
   {
@@ -21,7 +33,7 @@
     "date": "November 7th, 2024",
     "desc": [
       "Content Version: <span class=\"text-desc\">v2.7v3</span>",
-      "Updated Characters: <span class=\"text-desc\">Sunday</span>, <span class=\"text-desc\">Fugue</span>",
+      "Updated Characters: <span class=\"text-hsr-imaginary\">Sunday</span>, <span class=\"text-hsr-fire\">Fugue</span>",
       "Updated Light Cone: <span class=\"text-desc\">A Grounded Ascent</span>",
       "Added Hidden Stat: <span class=\"text-desc\">Summon DEF PEN</span> (Sunday's E1)"
     ]
@@ -31,8 +43,8 @@
     "date": "November 3rd, 2024",
     "desc": [
       "Content Version: <span class=\"text-desc\">v2.7v2</span>",
-      "Updated Wording: <span class=\"text-desc\">Fugue</span>",
-      "<b class=\"text-heal\">Fixed</b>: <span class=\"text-desc\">Aventurine</span>'s Ultimate CRIT DMG incorrectly affecting other CRIT DMG buffs",
+      "Updated Wording: <span class=\"text-hsr-fire\">Fugue</span>",
+      "<b class=\"text-heal\">Fixed</b>: <span class=\"text-hsr-imaginary\">Aventurine</span>'s Ultimate CRIT DMG incorrectly affecting other CRIT DMG buffs",
       "<b class=\"text-heal\">Fixed</b>: <span class=\"text-desc\">Worrisome, Blissful</span>'s <b>Tame</b>'s CRIT DMG incorrectly affecting other CRIT DMG buffs"
     ]
   },
@@ -41,7 +53,7 @@
     "date": "October 22th, 2024",
     "desc": [
       "Content Version: <span class=\"text-desc\">v2.7v1</span>",
-      "New Characters: <span class=\"text-desc\">Sunday</span>, <span class=\"text-desc\">Fugue</span>",
+      "New Characters: <span class=\"text-hsr-imaginary\">Sunday</span>, <span class=\"text-hsr-fire\">Fugue</span>",
       "New Light Cones: <span class=\"text-desc\">A Grounded Ascent</span>, <span class=\"text-desc\">Long Road Leads Home</span>"
     ]
   },
@@ -49,7 +61,7 @@
     "version": "1.1.0-9",
     "date": "October 20th, 2024",
     "desc": [
-      "Now <b class=\"text-red\">Live</b>: <span class=\"text-desc\">Rappa</span>, and Light Cones <span class=\"text-desc\">Ninjutsu Inscription: Dazzling Evilbreaker</span>, <span class=\"text-desc\">Dream's Montage</span>, <span class=\"text-desc\">Ninja Record: Sound Hunt</span>"
+      "Now <b class=\"text-red\">Live</b>: <span class=\"text-hsr-imaginary\">Rappa</span>, and Light Cones <span class=\"text-desc\">Ninjutsu Inscription: Dazzling Evilbreaker</span>, <span class=\"text-desc\">Dream's Montage</span>, <span class=\"text-desc\">Ninja Record: Sound Hunt</span>"
     ]
   },
   {

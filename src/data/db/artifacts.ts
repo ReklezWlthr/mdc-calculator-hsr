@@ -542,17 +542,32 @@ export const RelicSets: IArtifact[] = [
     name: `Poet of Mourning Collapse`,
     icon: '71041',
     bonus: [{ stat: Stats.QUANTUM_DMG, value: 0.1 }],
-    bonusAdd: [{ stat: Stats.P_SPD, value: -0.12 }],
+    bonusAdd: [{ stat: Stats.P_SPD, value: -0.08 }],
+    add: (base) => {
+      base.CALLBACK.push(function P999(x) {
+        if (x.getSpd() < 110) {
+          base[Stats.CRIT_RATE].push({
+            name: '4-Piece',
+            source: `Poet of Mourning Collapse`,
+            value: x.getSpd() < 95 ? 0.32 : 0.2,
+          })
+          if (base.SUMMON_STATS) {
+            base.SUMMON_STATS[Stats.CRIT_RATE].push({
+              name: '4-Piece',
+              source: `Poet of Mourning Collapse`,
+              value: x.getSpd() < 95 ? 0.32 : 0.2,
+            })
+          }
+        }
+        return x
+      })
+      return base
+    },
     desc: [
       `Increases <b class="text-hsr-quantum">Quantum DMG</b> dealt by <span class="text-desc">10%</span>.`,
-      `Decreases the wearer's SPD by <span class="text-desc">12%</span>. When entering battle, if the wearer's SPD is less than <span class="text-desc">110</span>/<span class="text-desc">95</span>, increases the wearer's CRIT Rate by <span class="text-desc">20%</span>/<span class="text-desc">40%</span>. This effect also applies to the wearer's memosprite.`,
+      `Decreases the wearer's SPD by <span class="text-desc">8%</span>. Before entering battle, if the wearer's SPD is less than <span class="text-desc">110</span>/<span class="text-desc">95</span>, increases the wearer's CRIT Rate by <span class="text-desc">20%</span>/<span class="text-desc">32%</span>. This effect also applies to the wearer's memosprite.`,
     ],
-    set: [
-      `Poet's Dill Wreath`,
-      `Poet's Gilded Bracelet`,
-      `Poet's Star-Studded Skirt`,
-      `Poet's Silver-Studded Shoes`,
-    ],
+    set: [`Poet's Dill Wreath`, `Poet's Gilded Bracelet`, `Poet's Star-Studded Skirt`, `Poet's Silver-Studded Shoes`],
   },
 ]
 

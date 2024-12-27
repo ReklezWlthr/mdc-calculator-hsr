@@ -169,6 +169,24 @@ export const ArtifactForm = () => {
       default: true,
       id: '122',
     },
+    {
+      type: 'toggle',
+      text: `Memosprite On-Field`,
+      title: `Memosprite On-Field`,
+      content: `While the wearer's memosprite is on the field, increases the wearer's SPD by <span class="text-desc">6%</span>.`,
+      show: true,
+      default: true,
+      id: '123_1',
+    },
+    {
+      type: 'toggle',
+      text: `Memosprite Attack CRIT DMG Bonus`,
+      title: `Memosprite Attack CRIT DMG Bonus`,
+      content: `When the wearer's memosprite attacks, increases the wearer and memosprite's CRIT DMG by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
+      show: true,
+      default: true,
+      id: '123_2',
+    },
   ]
 
   // Team-Wide

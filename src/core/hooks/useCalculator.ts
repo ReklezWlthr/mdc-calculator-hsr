@@ -44,7 +44,7 @@ interface CalculatorOptions {
   indexOverride?: number
   talentOverride?: ITeamChar
   weaknessOverride?: Element[]
-  initFormFunction?: (f: Record<string, any>[]) => void
+  initFormFunction?: (f: Record<string, any>[], exclude: string[]) => void
 }
 
 export const useCalculator = ({
@@ -199,7 +199,7 @@ export const useCalculator = ({
           {}
         )
       )
-      if (initFormFunction) initFormFunction(f)
+      if (initFormFunction) initFormFunction(f, excluded)
       else calculatorStore.initForm(f, excluded)
     }
   }, [team, conditionals, settingStore.settings.formMode, enabled])
@@ -327,6 +327,8 @@ export const useCalculator = ({
               debuffs,
             })
             if (x.SUMMON_STATS) {
+              console.log(_.cloneDeep(x?.SUMMON_STATS?.['DMG%']))
+              console.log(_.cloneDeep(form), _.cloneDeep(form.memo))
               x.SUMMON_STATS = c.scaling(x.SUMMON_STATS, form.memo, team[i]?.equipments?.weapon?.refinement, {
                 team: team,
                 element: Element.NONE,
@@ -336,6 +338,7 @@ export const useCalculator = ({
                 index: i,
                 debuffs,
               })
+              console.log(_.cloneDeep(x.SUMMON_STATS['DMG%']))
             }
           }
         )

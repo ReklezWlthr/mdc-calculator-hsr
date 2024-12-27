@@ -170,7 +170,7 @@ export const StatsModal = observer(
 
     return (
       <div className="w-[65vw] bg-primary-dark rounded-lg p-3 space-y-2">
-        <p className="text-lg font-bold text-white">Stats Breakdown</p>
+        <p className="text-lg font-bold text-white">Stats Breakdown: {stats?.NAME}</p>
         <Collapsible label="Common Attributes">
           <div className="grid grid-cols-2 gap-10">
             <div className="space-y-2">

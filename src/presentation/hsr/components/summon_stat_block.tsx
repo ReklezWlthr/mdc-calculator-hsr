@@ -31,7 +31,10 @@ export const SummonStatBlock = observer(({ stat, summonerHP }: SummonStatBlockPr
           <p className="font-normal text-gray">{_.floor(base + bonus, title === 'SPD' ? 1 : 0).toLocaleString()}</p>
           <p className="font-normal text-neutral-400 text-[9px]">
             {_.floor(base).toLocaleString()}
-            <span className="text-blue">{` +${_.floor(bonus, title === 'SPD' ? 1 : 0).toLocaleString()}`}</span>
+            <span className={bonus >= 0 ? 'text-blue' : 'text-red'}>{` ${bonus >= 0 ? '+' : ''}${_.floor(
+              bonus,
+              title === 'SPD' ? 1 : 0
+            ).toLocaleString()}`}</span>
           </p>
         </div>
       </div>
