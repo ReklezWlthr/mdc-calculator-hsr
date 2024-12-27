@@ -1974,7 +1974,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 30,
     type: PathType.NIHILITY,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Rebirth',
       detail: `Increases the wearer's Break Effect by {{0}}%. When an enemy target's Weakness gets broken, there is a <span class="text-desc">100%</span> base chance to inflict the <b>Charring</b> state on it, which increases its Break DMG taken by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). This effect can stack <span class="text-desc">2</span> time(s).`,
