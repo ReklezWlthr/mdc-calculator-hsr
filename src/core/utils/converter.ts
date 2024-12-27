@@ -70,6 +70,8 @@ export const fromEnka = (rawData: Record<string, any>) => {
         skill: findTalent('002') || 1,
         ult: findTalent('003') || 1,
         talent: findTalent('004') || 1,
+        memo_skill: 1,
+        memo_talent: 1,
       },
       major_traces: {
         a2: findTalent('101') || false,
