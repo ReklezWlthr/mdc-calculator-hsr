@@ -90,7 +90,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 10,
       trace: 'Talent',
       title: `Rosy-Fingered`,
-      content: `The memosprite <b>Garmentmaker</b> has an initial SPD equal to <span class="text-desc">35%</span> of Aglaea's SPD and a Max HP equal to {{0}}% of Aglaea's Max HP plus {{1}}. While <b>Garmentmaker</b> is on the field, Aglaea's attacks inflict the target with the <b class="text-violet-300">Seam Stitch</b> state. After attacking enemies in the <b class="text-violet-300">Seam Stitch</b> state, further deals <b>Additional DMG</b> equal to {{2}}% of Aglaea's ATK. <b class="text-violet-300">Seam Stitch</b> only takes effect on the most recently inflicted target.`,
+      content: `The memosprite <b>Garmentmaker</b> has an initial SPD equal to <span class="text-desc">35%</span> of Aglaea's SPD and a Max HP equal to {{0}}% of Aglaea's Max HP plus {{1}}. While <b>Garmentmaker</b> is on the field, Aglaea's attacks inflict the target with the <b class="text-violet-300">Seam Stitch</b> state. After attacking enemies in the <b class="text-violet-300">Seam Stitch</b> state, further deals <b class="text-hsr-lightning">Lightning Additional DMG</b> equal to {{2}}% of Aglaea's ATK. <b class="text-violet-300">Seam Stitch</b> only takes effect on the most recently inflicted target.`,
       value: [
         { base: 44, growth: 2.75, style: 'heal' },
         { base: 180, growth: 67.5, style: 'heal' },
@@ -131,12 +131,12 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c1: {
       trace: 'Eidolon 1',
       title: `Drift at the Whim of Venus`,
-      content: `When Aglaea or <b>Garmentmaker</b> takes action, the DMG dealt by Aglaea and <b>Garmentmaker</b> ignores <span class="text-desc">15%</span> of the target's DEF. This effect stacks up to <span class="text-desc">20</span> time(s) and lasts until any unit, other than Aglaea or <b>Garmentmaker</b>, actively uses an ability.`,
+      content: `Enemies afflicted with <b class="text-violet-300">Seam Stitch</b> take <span class="text-desc">15%</span> increased DMG. After Aglaea's or <b>Garmentmaker</b>'s attack hits this target, Aglaea additionally regenerates <span class="text-desc">20</span> Energy.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Sail on the Raft of Eyelids`,
-      content: `Enemies afflicted with <b class="text-violet-300">Seam Stitch</b> take <span class="text-desc">14%</span> increased DMG. After Aglaea's or <b>Garmentmaker</b>'s attack hits this target, Aglaea additionally regenerates <span class="text-desc">3</span> Energy.`,
+      content: `When Aglaea or <b>Garmentmaker</b> takes action, the DMG dealt by Aglaea and <b>Garmentmaker</b> ignores <span class="text-desc">14%</span> of the target's DEF. This effect stacks up to <span class="text-desc">3</span> time(s) and lasts until any unit, other than Aglaea or <b>Garmentmaker</b>, actively uses an ability.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -185,23 +185,23 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       max: c >= 4 ? 7 : 6,
     },
     {
-      type: 'number',
+      type: 'toggle',
       id: 'aglea_c1',
-      text: `E1 DEF PEN`,
+      text: `E1 Seam Stitch Vulnerability`,
       ...talents.c1,
       show: c >= 1,
-      default: 1,
-      min: 0,
-      max: 20,
-    },
-    {
-      type: 'toggle',
-      id: 'aglea_c2',
-      text: `E2 Seam Stitch Vulnerability`,
-      ...talents.c2,
-      show: c >= 2,
       default: true,
       debuff: true,
+    },
+    {
+      type: 'number',
+      id: 'aglea_c2',
+      text: `E2 DEF PEN`,
+      ...talents.c2,
+      show: c >= 2,
+      default: 1,
+      min: 0,
+      max: 3,
     },
   ]
 
@@ -319,7 +319,6 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.LIGHTNING,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
-          break: 20,
           sum: true,
         },
       ]
@@ -349,16 +348,16 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           })
         }
       }
-      if (form.aglea_c1) {
+      if (form.aglea_c2) {
         base.DEF_PEN.push({
-          name: `Eidolon 1`,
+          name: `Eidolon 2`,
           source: 'Self',
           value: 0.15 * form.aglea_c1,
         })
       }
-      if (form.aglea_c2) {
+      if (form.aglea_c1) {
         base.VULNERABILITY.push({
-          name: `Eidolon 2`,
+          name: `Eidolon 1`,
           source: 'Self',
           value: 0.14,
         })
@@ -383,9 +382,9 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       weakness: Element[],
       broken: boolean
     ) => {
-      if (form.aglea_c2) {
+      if (form.aglea_c1) {
         base.VULNERABILITY.push({
-          name: `Eidolon 2`,
+          name: `Eidolon 1`,
           source: 'Aglaea',
           value: 0.08,
         })

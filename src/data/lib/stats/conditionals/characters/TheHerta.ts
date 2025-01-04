@@ -96,7 +96,7 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Aloofly Honest`,
-      content: `When ally targets attack, inflicts <span class="text-desc">1</span> stack of <b class="text-hsr-ice">Interpretation</b> on the hit enemy target. After attacking, for every <span class="text-desc">1</span> target hit by this attack, regenerates <span class="text-desc">3</span> fixed Energy for The Herta, counting up to a maximum of <span class="text-desc">5</span> targets. When using Enhanced Skill and if the primary target's <b class="text-hsr-ice">Interpretation</b> stack is <span class="text-desc">42</span>, increases <b class="text-hsr-ice">Ice DMG</b> dealt by The Herta by <span class="text-desc">50%</span> until the end of this attack`,
+      content: `When ally targets attack, inflicts <span class="text-desc">1</span> stack of <b class="text-hsr-ice">Interpretation</b> on the hit enemy target. After attacking, for every <span class="text-desc">1</span> target hit by this attack, regenerates <span class="text-desc">3</span> fixed Energy for The Herta, counting up to a maximum of <span class="text-desc">5</span> targets. When using Enhanced Skill and if the primary target's <b class="text-hsr-ice">Interpretation</b> stack reaches <span class="text-desc">42</span>, increases <b class="text-hsr-ice">Ice DMG</b> dealt by The Herta by <span class="text-desc">50%</span> until the end of this attack`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -116,7 +116,7 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c2: {
       trace: 'Eidolon 2',
       title: `Wind Through Keyhole`,
-      content: `If enemy <b class="text-hsr-ice">Interpretation</b> reaches <span class="text-desc">42</span> when stacks are applied or transferred to them, then The Herta gains <span class="text-desc">1</span> stack of <b class="text-desc">Inspiration</b>. This effect can only trigger once per enemy target. When using Enhanced Skill, The Herta's action advances by <span class="text-desc">35%</span>. If the target's <b class="text-hsr-ice">Interpretation</b> stack is <span class="text-desc">42</span>, additionally advance The Herta's action by <span class="text-desc">25%</span>.`,
+      content: `After The Herta enters battle and uses her Ultimate, she additionally gains <span class="text-desc">1</span> stack of <b class="text-desc">Inspiration</b>. After using Enhanced Skill, The Herta's subsequent action is advanced by <span class="text-desc">35%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
