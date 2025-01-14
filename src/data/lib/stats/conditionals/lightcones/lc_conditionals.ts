@@ -1837,6 +1837,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     show: true,
     default: true,
     id: '24005',
+    excludeSummon: true,
     scaling: (base, form, r) => {
       if (form['24005']) {
         base[Stats.ALL_DMG].push({
@@ -1844,6 +1845,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: `Memory's Curtain Never Falls`,
           value: calcRefinement(0.08, 0.02, r),
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS[Stats.ALL_DMG].push({
+            name: 'Passive',
+            source: `Memory's Curtain Never Falls`,
+            value: calcRefinement(0.08, 0.02, r),
+          })
+        }
       }
       return base
     },
