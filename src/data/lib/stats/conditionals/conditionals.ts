@@ -63,6 +63,8 @@ import Fugue from './characters/Fugue'
 import TheHerta from './characters/TheHerta'
 import Aglaea from './characters/Aglaea'
 import RMC from './characters/RMC'
+import Tribbie from './characters/Tribbie'
+import Mydei from './characters/Mydei'
 
 export default [
   { id: '1001', conditionals: March },
@@ -126,6 +128,8 @@ export default [
   { id: '1317', conditionals: Rappa },
   { id: '1401', conditionals: TheHerta },
   { id: '1402', conditionals: Aglaea },
+  { id: '1403', conditionals: Tribbie },
+  { id: '1404', conditionals: Mydei },
   { id: '8001', conditionals: DMC },
   { id: '8003', conditionals: PMC },
   { id: '8005', conditionals: HMC },

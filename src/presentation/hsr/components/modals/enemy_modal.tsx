@@ -256,7 +256,7 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
           </div>
         </div>
         <div className="flex flex-col items-end gap-y-3">
-          {_.map(BaseElementColor, (item, key: Element) => (
+          {_.map(_.omit(BaseElementColor, 'None'), (item, key: Element) => (
             <div className="flex items-center gap-3" key={key}>
               <p className={classNames('whitespace-nowrap text-sm', item)}>{key} RES</p>
               <TextInput

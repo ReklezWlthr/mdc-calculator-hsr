@@ -1293,6 +1293,44 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23038',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: `If Time Were a Flower`,
+        value: calcRefinement(0.36, 0.06, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23039',
+    scaling: (base, r) => {
+      base[Stats.P_HP].push({
+        name: 'Passive',
+        source: `Flame of Blood, Blaze My Path`,
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      base.I_HEAL.push({
+        name: 'Passive',
+        source: `Flame of Blood, Blaze My Path`,
+        value: calcRefinement(0.2, 0.05, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '24005',
+    scaling: (base, r) => {
+      base[Stats.P_SPD].push({
+        name: 'Passive',
+        source: `Memory's Curtain Never Falls`,
+        value: calcRefinement(0.06, 0.015, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

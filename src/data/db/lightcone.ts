@@ -1195,7 +1195,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 18,
     type: PathType.REMEMBRANCE,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Final Hit',
       detail: `Increases the wearer's CRIT DMG by {{0}}%. When the wearer's memosprite uses an ability on any ally target, increases all ally targets' DMG dealt by {{1}}%, lasting for <span class="text-desc">3</span> turn(s).`,
@@ -1213,7 +1213,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.REMEMBRANCE,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Congratulations',
       detail: `Increases the wearer's ATK by {{0}}%. After the wearer uses their Ultimate, additionally increases the wearer and their memosprite's Basic ATK DMG Dealt by {{1}}% for <span class="text-desc">3</span> turn(s).`,
@@ -1231,7 +1231,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 9,
     type: PathType.REMEMBRANCE,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Come Train!',
       detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer's memosprite is on the field, increases the wearer and their memosprite's DMG dealt by {{1}}%.`,
@@ -1992,7 +1992,7 @@ export const LightCones = [
     baseAtk: 28.8,
     baseDef: 18,
     type: PathType.REMEMBRANCE,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Establishment',
       detail: `Increases the wearer's base SPD by {{0}}. After the wearer and the wearer's memosprite attacks, the wearer gains <span class="text-desc">1</span> stack of <b>Brocade</b>. Each stack of <b>Brocade</b> increases the wearer and their memosprite's CRIT DMG by {{1}}%, stacking up to <span class="text-desc">6</span> time(s). When reaching maximum stacks, each <b>Brocade</b> stack will additionally increase Basic ATK DMG dealt by {{1}}%.`,
@@ -2017,6 +2017,46 @@ export const LightCones = [
       properties: [
         { base: 12, growth: 2 },
         { base: 48, growth: 12 },
+      ],
+    },
+  },
+  {
+    id: '23038',
+    name: 'If Time Were a Flower',
+    rarity: 5,
+    baseHp: 57.6,
+    baseAtk: 24,
+    baseDef: 18,
+    type: PathType.HARMONY,
+    beta: true,
+    desc: {
+      name: 'Aspiration',
+      detail: `Increases the wearer's CRIT DMG by {{0}}%. For every <span class="text-desc">1</span> enemy target hit by all ally targets, the wearer gains <span class="text-desc">1</span> stack of <b>Presage</b>, stacking up to <span class="text-desc">60</span> time(s). After the wearer uses Ultimate, consumes all <b>Presage</b>. For every <span class="text-desc">1</span> stack consumed, regenerates {{1}} Energy and increases all allies' CRIT DMG by {{2}}%, lasting for <span class="text-desc">3</span> turn(s). When entering battle, the wearer gains <span class="text-desc">60</span> <b>Presage</b> stack(s) and regenerates <span class="text-desc">30</span> Energy.`,
+      properties: [
+        { base: 36, growth: 6 },
+        { base: 0.3, growth: 0.075 },
+        { base: 1, growth: 0.25 },
+      ],
+    },
+  },
+  {
+    id: '23039',
+    name: 'Flame of Blood, Blaze My Path',
+    rarity: 5,
+    baseHp: 62.4,
+    baseAtk: 21.6,
+    baseDef: 18,
+    type: PathType.DESTRUCTION,
+    beta: true,
+    desc: {
+      name: 'Vista',
+      detail: `Increases the wearer's Max HP by {{0}}% and Incoming Healing by {{1}}%. When using Skill or Ultimate, consume HP equal to {{2}}% of the wearer's Max HP and increases the DMG dealt by this attack by {{3}}%. If this effect's consumed HP is greater than <span class="text-desc">500</span>, additionally increases the DMG by {{3}}%.
+      <br />If the current HP is not sufficient, this effect can reduce the wearer's HP down to a minimum of <span class="text-desc">1</span>.`,
+      properties: [
+        { base: 18, growth: 3 },
+        { base: 20, growth: 5 },
+        { base: 6, growth: 0.5 },
+        { base: 30, growth: 5 },
       ],
     },
   },
@@ -2112,6 +2152,24 @@ export const LightCones = [
       properties: [
         { base: 8, growth: 1 },
         { base: 4, growth: 1 },
+        { base: 8, growth: 2 },
+      ],
+    },
+  },
+  {
+    id: '24005',
+    name: `Memory's Curtain Never Falls`,
+    rarity: 5,
+    baseHp: 48,
+    baseAtk: 24,
+    baseDef: 18,
+    type: PathType.REMEMBRANCE,
+    beta: true,
+    desc: {
+      name: 'Reception',
+      detail: `Increases the wearer's SPD by {{0}}%. After the wearer uses Skill, increases the DMG dealt by all allies by {{1}}%, lasting for <span class="text-desc">3</span> turn(s).`,
+      properties: [
+        { base: 6, growth: 1.5 },
         { base: 8, growth: 2 },
       ],
     },

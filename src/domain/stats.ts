@@ -184,6 +184,8 @@ export interface RawBaseStatType {
   ULT_ALT: boolean
   TALENT_ALT: boolean
 
+  GODSLAYER: boolean // Only used by Mydei
+
   SUPER_BREAK: boolean
 
   COUNTDOWN: number

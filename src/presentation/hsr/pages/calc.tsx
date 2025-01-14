@@ -47,15 +47,15 @@ export const Calculator = observer(({}: {}) => {
         <StatsModal
           stats={memo ? mainComputed.SUMMON_STATS : mainComputed}
           path={charData.path}
-          sumAggro={_.sumBy(
-            finalStats,
-            (item) =>
-              (BaseAggro[item.PATH] *
-                (1 + (item.getValue(StatsObjectKeys.BASE_AGGRO) || 0)) *
-                (1 + (item.getValue(StatsObjectKeys.AGGRO) || 0)) || 0) +
-              (BaseSummonAggro[char.cId] *
-                (1 + (item.SUMMON_STATS?.getValue(StatsObjectKeys.BASE_AGGRO) || 0)) *
-                (1 + (item.SUMMON_STATS?.getValue(StatsObjectKeys.AGGRO) || 0)) || 0)
+          sumAggro={_.sumBy(finalStats, (item) =>
+            item
+              ? (BaseAggro[item.PATH] *
+                  (1 + (item.getValue(StatsObjectKeys.BASE_AGGRO) || 0)) *
+                  (1 + (item.getValue(StatsObjectKeys.AGGRO) || 0)) || 0) +
+                (BaseSummonAggro[char.cId] *
+                  (1 + (item.SUMMON_STATS?.getValue(StatsObjectKeys.BASE_AGGRO) || 0)) *
+                  (1 + (item.SUMMON_STATS?.getValue(StatsObjectKeys.AGGRO) || 0)) || 0)
+              : 0
           )}
           memo={memo}
         />
@@ -146,7 +146,13 @@ export const Calculator = observer(({}: {}) => {
                 </ScalingWrapper>
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
-                  talent={mainComputed?.SKILL_ALT ? main?.talents?.skill_alt : main?.talents?.skill}
+                  talent={
+                    mainComputed?.SKILL_ALT
+                      ? mainComputed?.GODSLAYER
+                        ? main?.talents?.skill_alt2
+                        : main?.talents?.skill_alt
+                      : main?.talents?.skill
+                  }
                   icon={`SkillIcon_${charData.id}_BP${mainComputed?.SKILL_ALT ? '02' : ''}.png`}
                   element={charData.element}
                   level={char.talents?.skill}

@@ -1218,6 +1218,33 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `HP-Consumed DMG Bonus`,
+    show: true,
+    default: true,
+    id: '23039',
+    scaling: (base, form, r) => {
+      if (form['23039']) {
+        base.CALLBACK.push(function P99(x) {
+          const value = calcRefinement(0.3, 0.05, r) * (x.getHP() / calcRefinement(0.06, 0.005, r) > 500 ? 2 : 1)
+          x.SKILL_DMG.push({
+            name: 'Passive',
+            source: 'Flame of Blood, Blaze My Path',
+            value,
+          })
+          x.ULT_DMG.push({
+            name: 'Passive',
+            source: 'Flame of Blood, Blaze My Path',
+            value,
+          })
+
+          return x
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [
@@ -1779,6 +1806,44 @@ export const LCTeamConditionals: IWeaponContent[] = [
             value: calcRefinement(0.08, 0.02, r),
           })
         }
+      }
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Presage`,
+    show: true,
+    default: 60,
+    min: 0,
+    max: 60,
+    duration: 3,
+    id: '23038',
+    excludeSummon: true,
+    scaling: (base, form, r) => {
+      if (form['23038']) {
+        base[Stats.CRIT_DMG].push({
+          name: 'Presage',
+          source: 'If Time Were a Flower',
+          value: calcRefinement(0.01, 0.0025, r) * form['23038'],
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `On-Skill Team DMG Bonus`,
+    show: true,
+    default: true,
+    id: '24005',
+    scaling: (base, form, r) => {
+      if (form['24005']) {
+        base[Stats.ALL_DMG].push({
+          name: 'Passive',
+          source: `Memory's Curtain Never Falls`,
+          value: calcRefinement(0.08, 0.02, r),
+        })
       }
       return base
     },
