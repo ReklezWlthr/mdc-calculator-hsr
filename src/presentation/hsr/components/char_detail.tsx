@@ -80,6 +80,8 @@ export const CharDetail = observer(() => {
     'Enhanced Basic ATK [3]': 'Normal04',
     [TalentType.SKILL]: 'BP',
     'Enhanced Skill': 'BP02',
+    'Enhanced Skill [1]': 'BP02',
+    'Enhanced Skill [2]': 'BP02',
     [TalentType.ULT]: 'Ultra',
     'Enhanced Ultimate': 'Ultra02',
     [TalentType.TALENT]: 'Passive',

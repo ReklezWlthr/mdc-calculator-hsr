@@ -55,7 +55,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     skill_alt: {
       energy: 30,
-      trace: 'Enhacned Skill [1]',
+      trace: 'Enhanced Skill [1]',
       title: `Kingslayer Be King`,
       content: `Consumes HP by an amount equal to <span class="text-desc">35%</span> of Mydei's current HP. Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Mydei's Max HP to one enemy and <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Mydei's Max HP to adjacent targets.
       <br />If the current HP is not sufficient, using Skill reduces Mydei's current HP to <span class="text-desc">1</span>.
@@ -91,22 +91,23 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 60, growth: 4, style: 'curved' },
       ],
       level: ult,
-      tag: AbilityTag.ST,
+      tag: AbilityTag.BLAST,
     },
     talent: {
       trace: 'Talent',
       title: `Blood for Blood`,
-      content: `When losing HP, gains <b>Charge</b> at a <span class="text-desc">100%</span> rate. When <b>Charge</b> is full, enters the <b class="text-red">Vendetta</b> state, restores HP by {{0}}% of Mydei's Max HP, and advances action by <span class="text-desc">100%</span>. While in <b class="text-red">Vendetta</b>, becomes immune to Crowd Control debuffs, increases Max HP by an amount equal to <span class="text-desc">50%</span> of the current Max HP, maintains 0 DEF, and massively increases the chance of getting attacked. Enhances Skill and cannot use Basic ATK. When this unit's turn starts, automatically uses Enhanced Skill.
+      content: `When losing HP, gains <b>Charge</b> at a <span class="text-desc">100%</span> rate. When <b>Charge</b> is full, enters the <b class="text-red">Vendetta</b> state, restores HP by {{0}}% of Mydei's Max HP, and advances action by <span class="text-desc">100%</span>. While in <b class="text-red">Vendetta</b>, becomes immune to Crowd Control debuffs, increases Max HP by an amount equal to <span class="text-desc">50%</span> of the current Max HP, maintains <span class="text-desc">0</span> DEF, and massively increases the chance of getting attacked. Enhances Skill and cannot use Basic ATK. When this unit's turn starts, automatically uses Enhanced Skill.
       <br />During <b class="text-red">Vendetta</b>, keeps a tally of HP loss. When the tally reaches <span class="text-desc">180%</span> of Mydei's Max HP, Mydei advances action by <span class="text-desc">50%</span> and uses <b>Godslayer Be God</b> instead. Then, clears an amount equal to <span class="text-desc">180%</span> of Mydei's Max HP from the tally of HP loss.`,
       value: [{ base: 25, growth: 1, style: 'curved' }],
       level: talent,
-      tag: AbilityTag.BOUNCE,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',
       title: `Cage of Broken Lance`,
       content: `After using Technique, pulls in enemies within a certain area and inflicts Daze on them for <span class="text-desc">10</span> second(s). Dazed enemies will not actively attack ally targets.
       <br />If actively attacking Dazed enemies, when entering battle, deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to <span class="text-desc">80%</span> of Mydei's Max HP to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> to Taunt the targets, lasting for <span class="text-desc">1</span> turn(s). This unit gains <span class="text-desc">50%</span> Talent Charge.`,
+      tag: AbilityTag.IMPAIR,
     },
     a2: {
       trace: 'Ascension 2 Passive',

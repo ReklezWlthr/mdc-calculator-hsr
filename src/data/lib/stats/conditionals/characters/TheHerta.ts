@@ -47,7 +47,7 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of The Herta's ATK to one designated enemy, and inflicts <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Interpretation</b>. Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of The Herta's ATK to the target that has been hit by this instance of Skill and their respective adjacent targets. This effect can repeat <span class="text-desc">2</span> times.`,
       value: [{ base: 35, growth: 3.5, style: 'curved' }],
       level: skill,
-      tag: AbilityTag.AOE,
+      tag: AbilityTag.BLAST,
     },
     skill_alt: {
       energy: 30,
@@ -74,7 +74,6 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       tag: AbilityTag.AOE,
     },
     talent: {
-      energy: 5,
       trace: 'Talent',
       title: `Hand Them Over`,
       content: `When enemy targets enter battle, The Herta inflicts <span class="text-desc">1</span> stack of <b class="text-hsr-ice">Interpretation</b> on them. At the start of each wave, applies <span class="text-desc">25</span> <b class="text-hsr-ice">Interpretation</b> stack(s) to a random enemy target, prioritizing Elite enemy targets or higher. When the Enhanced Skill's primary target has <b class="text-hsr-ice">Interpretation</b>, the multiplier for the DMG dealt increases, with each stack granting an increase of {{0}}%/{{1}}% on the primary target/other targets respectively. If <span class="text-desc">2</span> or more characters follow the Path of Erudition in the team, each stack grants an additional increase of {{0}}%/{{1}}% on the primary target/other targets respectively. <b class="text-hsr-ice">Interpretation</b> can stack up to <span class="text-desc">42</span> time(s). When using the Enhanced Skill, resets the number of <b class="text-hsr-ice">Interpretation</b> stacks on the ability's target to <span class="text-desc">1</span>. After the enemy target leaves the battle or gets defeated by any unit, <b class="text-hsr-ice">Interpretation</b> will be transferred, prioritizing the transfer to Elite-level targets and above.`,
@@ -83,7 +82,7 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         { base: 2, growth: 0.2, style: 'curved' },
       ],
       level: talent,
-      tag: AbilityTag.AOE,
+      tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',

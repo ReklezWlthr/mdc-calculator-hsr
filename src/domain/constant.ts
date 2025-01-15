@@ -482,4 +482,5 @@ export enum AbilityTag {
   DEFENSE = 'Defense',
   IMPAIR = 'Impair',
   RESTORE = 'Restore',
+  SUMMON = 'Summon',
 }

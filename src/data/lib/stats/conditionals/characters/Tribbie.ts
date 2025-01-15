@@ -41,7 +41,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 7.5, growth: 1.5, style: 'linear' },
       ],
       level: basic,
-      tag: AbilityTag.ST,
+      tag: AbilityTag.BLAST,
     },
     skill: {
       energy: 30,
@@ -50,7 +50,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Gains <b class="text-violet-300">Numinosity</b>, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn. When Tribbie has <b class="text-violet-300">Numinosity</b>, increases all ally targets' All-Type RES PEN by {{0}}%.`,
       value: [{ base: 12, growth: 1.2, style: 'curved' }],
       level: skill,
-      tag: AbilityTag.BLAST,
+      tag: AbilityTag.SUPPORT,
     },
     ult: {
       energy: 5,
@@ -64,7 +64,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 6, growth: 0.6, style: 'curved' },
       ],
       level: ult,
-      tag: AbilityTag.ST,
+      tag: AbilityTag.AOE,
     },
     talent: {
       energy: 5,
@@ -73,12 +73,13 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `After other ally characters use Ultimate, Tribbie launches <u>Follow-up ATK</u>, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Tribbie's Max HP.`,
       value: [{ base: 9, growth: 0.9, style: 'curved' }],
       level: talent,
-      tag: AbilityTag.BOUNCE,
+      tag: AbilityTag.AOE,
     },
     technique: {
       trace: 'Technique',
       title: `If You're Happy and You Know It`,
       content: `After using Technique, gains <b class="text-violet-300">Numinosity</b> upon entering battle, lasting for <span class="text-desc">3</span> turn(s).`,
+      tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',
