@@ -34,7 +34,7 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     normal: {
       energy: 20,
       trace: 'Basic ATK',
-      title: 'Wake Me up When Slumber Ends',
+      title: 'Did You Get It',
       content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of The Herta's ATK to one designated enemy target.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
@@ -65,7 +65,7 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       energy: 5,
       trace: 'Ultimate',
       title: `Told Ya! Magic Happens`,
-      content: `Rearranges the number of <b class="text-hsr-ice">Interpretation</b> stacks on all enemies, prioritizing the transfer of a higher number of <b class="text-hsr-ice">Interpretation</b> stacks to Elite level targets and above. Then, deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% The Herta's ATK to all enemies. When using Ultimate, increases The Herta's ATK by {{1}}%, lasting for <span class="text-desc">3</span> turn(s). using the Ultimate, The Herta immediately takes action and gains <span class="text-desc">1</span> stack of <b class="text-desc">Inspiration</b>. <b class="text-desc">Inspiration</b> can stack up to <span class="text-desc">4</span> time(s). While having <b class="text-desc">Inspiration</b>, enhances Skill to <b>Hear Me Out</b>.`,
+      content: `Rearranges the number of <b class="text-hsr-ice">Interpretation</b> stacks on all enemies, prioritizing the transfer of a higher numbers of <b class="text-hsr-ice">Interpretation</b> stacks to Elite level targets and above. Then, deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% The Herta's ATK to all enemies. When using Ultimate, increases The Herta's ATK by {{1}}%, lasting for <span class="text-desc">3</span> turn(s). After the use, The Herta immediately takes action and gains <span class="text-desc">1</span> stack of <b class="text-desc">Inspiration</b>. <b class="text-desc">Inspiration</b> can stack up to <span class="text-desc">4</span> time(s). While having <b class="text-desc">Inspiration</b>, enhances Skill to <b>Hear Me Out</b>.`,
       value: [
         { base: 100, growth: 10, style: 'curved' },
         { base: 40, growth: 4, style: 'curved' },
@@ -87,7 +87,7 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     },
     technique: {
       trace: 'Technique',
-      title: 'Vibe Check',
+      title: 'Vibe Checker',
       content: `After using Technique, The Herta's ATK increases by <span class="text-desc">60%</span> at the start of the next battle, lasting for <span class="text-desc">2</span> turn(s).
       <br />If there are Basic Treasures in this current map, using Technique will mark up to <span class="text-desc">3</span> Basic Treasures' locations.
       <br />After entering battle by using Technique in Simulated Universe or Divergent Universe, deals <b class="text-red">True DMG</b> equal to <span class="text-desc">99%</span> of the target's Max HP to enemy targets lower than Elite-level, and <b class="text-red">True DMG</b> equal to <span class="text-desc">30%</span> of the target's Max HP to enemy targets at Elite-level and above.`,
@@ -96,7 +96,7 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Aloofly Honest`,
-      content: `When ally targets attack, inflicts <span class="text-desc">1</span> stack of <b class="text-hsr-ice">Interpretation</b> on the hit enemy target. After attacking, for every <span class="text-desc">1</span> target hit by this attack, regenerates <span class="text-desc">3</span> fixed Energy for The Herta, counting up to a maximum of <span class="text-desc">5</span> targets. When using Enhanced Skill and if the primary target's <b class="text-hsr-ice">Interpretation</b> stack reaches <span class="text-desc">42</span>, increases <b class="text-hsr-ice">Ice DMG</b> dealt by The Herta by <span class="text-desc">50%</span> until the end of this attack`,
+      content: `When ally targets attack, inflicts <span class="text-desc">1</span> stack of <b class="text-hsr-ice">Interpretation</b> on the hit enemy target. After attacking, for every <span class="text-desc">1</span> target hit by this attack, regenerates <span class="text-desc">3</span> fixed Energy for The Herta, counting up to a maximum of <span class="text-desc">5</span> targets. When using Enhanced Skill and if the primary target's <b class="text-hsr-ice">Interpretation</b> stack reaches <span class="text-desc">42</span>, increases the DMG dealt by The Herta by <span class="text-desc">50%</span>, lasting until the end of this attack`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
