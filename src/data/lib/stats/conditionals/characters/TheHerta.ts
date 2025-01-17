@@ -53,7 +53,7 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       energy: 30,
       trace: 'Enhanced Skill',
       title: 'Hear Me Out',
-      content: `Consumes <span class="text-desc">1</span> stack of <b class="text-desc">Inspiration</b>. Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of The Herta's ATK to one designated enemy and inflicts <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Interpretation</b>. Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of The Herta's ATK to the target hit by this instance of Skill and adjacent targets, repeating <span class="text-desc">2</span> times. Finally, deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of The Herta's ATK to all enemies.`,
+      content: `Consumes <span class="text-desc">1</span> stack of <b class="text-desc">Inspiration</b>. Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of The Herta's ATK to one designated enemy and inflicts <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Interpretation</b>. Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of The Herta's ATK to the target hit by this instance of Skill and their respective adjacent targets, repeating <span class="text-desc">2</span> times. At the end, deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of The Herta's ATK to all enemies.`,
       value: [
         { base: 40, growth: 4, style: 'curved' },
         { base: 20, growth: 2, style: 'curved' },
@@ -262,14 +262,9 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       const stackCount =
         (c >= 1 ? form.interpretation + _.floor(additionalStackCount * 0.5) : form.interpretation) *
         (eruditionCount >= 2 ? 2 : 1)
-      const enhancedSkill =
-        calcScaling(0.4, 0.04, skill, 'curved') + stackCount * calcScaling(0.04, 0.004, talent, 'curved')
+      const enhancedSkill = calcScaling(0.4, 0.04, skill, 'curved')
       const enhancedLastHit =
         calcScaling(0.2, 0.02, skill, 'curved') + stackCount * calcScaling(0.04, 0.004, talent, 'curved')
-      const enhancedSkillOther =
-        calcScaling(0.4, 0.04, skill, 'curved') + stackCount * calcScaling(0.02, 0.002, talent, 'curved')
-      const enhancedLastHitOther =
-        calcScaling(0.2, 0.02, skill, 'curved') + stackCount * calcScaling(0.02, 0.002, talent, 'curved')
       base.SKILL_SCALING = form.the_herta_skill
         ? [
             {
@@ -290,9 +285,9 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
             {
               name: 'Adjacent',
               value: [
-                { scaling: enhancedSkillOther, multiplier: Stats.ATK },
-                { scaling: enhancedSkillOther, multiplier: Stats.ATK },
-                { scaling: enhancedLastHitOther, multiplier: Stats.ATK },
+                { scaling: enhancedSkill, multiplier: Stats.ATK },
+                { scaling: enhancedSkill, multiplier: Stats.ATK },
+                { scaling: enhancedLastHit, multiplier: Stats.ATK },
               ],
               element: Element.ICE,
               property: TalentProperty.NORMAL,
@@ -303,7 +298,10 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
             },
             {
               name: 'Others',
-              value: [{ scaling: enhancedLastHitOther, multiplier: Stats.ATK }],
+              value: [
+                { scaling: enhancedSkill, multiplier: Stats.ATK },
+                { scaling: enhancedLastHit, multiplier: Stats.ATK },
+              ],
               element: Element.ICE,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
@@ -352,12 +350,16 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       base.ULT_SCALING = [
         {
           name: 'AoE',
-          value: [{ scaling: calcScaling(1, 0.1, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [
+            {
+              scaling: calcScaling(1, 0.1, ult, 'curved') + form.interpretation_a6 / 100 + (c >= 6 ? c6Scaling : 0),
+              multiplier: Stats.ATK,
+            },
+          ],
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 20,
-          multiplier: 1 + (form.interpretation_a6 / 100 + (c >= 6 ? c6Scaling : 0)),
           sum: true,
         },
       ]

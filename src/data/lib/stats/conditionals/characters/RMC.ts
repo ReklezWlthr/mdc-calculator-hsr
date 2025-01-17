@@ -333,12 +333,12 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       _.forEach(all, (y, i) => {
         const multiplier = calcScaling(0.6, 0.012, skill, 'curved')
         y?.X_CRIT_DMG.push({
-          name: `Skill`,
+          name: `Memosprite Talent`,
           source: i === index && all[i].SUMMON_ID ? 'Self' : 'Mem',
-          value: calcScaling(0.12, 0.024, skill, 'curved') + multiplier * base.getValue(Stats.CRIT_DMG),
+          value: calcScaling(0.12, 0.024, memo_talent, 'curved') + multiplier * base.getValue(Stats.CRIT_DMG),
           multiplier,
           base: toPercentage(base.getValue(Stats.CRIT_DMG)),
-          flat: toPercentage(calcScaling(0.12, 0.024, skill, 'curved')),
+          flat: toPercentage(calcScaling(0.12, 0.024, memo_talent, 'curved')),
         })
       })
 

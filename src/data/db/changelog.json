@@ -1,5 +1,10 @@
 [
   {
+    "version": "1.1.1-2",
+    "date": "January 17th, 2025",
+    "desc": ["Fixed: <span class=\"text-hsr-ice\">The Herta</span>'s Enhanced Skill and Ultimate multipliers"]
+  },
+  {
     "version": "1.1.1-1",
     "date": "January 14th, 2025",
     "desc": [
