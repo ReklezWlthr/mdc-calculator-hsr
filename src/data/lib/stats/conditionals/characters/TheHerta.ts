@@ -309,6 +309,26 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               sum: false,
               bonus: a.a2 && form.interpretation === 42 ? 0.5 : 0,
             },
+            {
+              name: 'Damage Per Hit',
+              value: [{ scaling: enhancedSkill, multiplier: Stats.ATK }],
+              element: Element.ICE,
+              property: TalentProperty.NORMAL,
+              type: TalentType.SKILL,
+              break: 5,
+              sum: false,
+              bonus: a.a2 && form.interpretation === 42 ? 0.5 : 0,
+            },
+            {
+              name: 'Final Hit',
+              value: [{ scaling: enhancedLastHit, multiplier: Stats.ATK }],
+              element: Element.ICE,
+              property: TalentProperty.NORMAL,
+              type: TalentType.SKILL,
+              break: 5,
+              sum: false,
+              bonus: a.a2 && form.interpretation === 42 ? 0.5 : 0,
+            },
           ]
         : [
             {
@@ -338,6 +358,15 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
             },
             {
               name: 'Others',
+              value: [{ scaling: calcScaling(0.35, 0.035, skill, 'curved'), multiplier: Stats.ATK }],
+              element: Element.ICE,
+              property: TalentProperty.NORMAL,
+              type: TalentType.SKILL,
+              break: 5,
+              sum: false,
+            },
+            {
+              name: 'Damage Per Hit',
               value: [{ scaling: calcScaling(0.35, 0.035, skill, 'curved'), multiplier: Stats.ATK }],
               element: Element.ICE,
               property: TalentProperty.NORMAL,

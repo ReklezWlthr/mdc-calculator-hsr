@@ -939,7 +939,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [{ stat: Stats.P_HP, value: 0.12 }],
     bonusAdd: [],
     desc: [
-      `Increases the wearer's Max HP by <span class="text-desc">12%</span>. When the wearer's Max HP is <span class="text-desc">5,000</span> or higher, increases the wearer's and their memosprite's CRIT DMG by <span class="text-desc">25%</span>.`,
+      `Increases the wearer's Max HP by <span class="text-desc">12%</span>. When the wearer's Max HP is <span class="text-desc">5,000</span> or higher, increases the wearer's and their memosprite's CRIT DMG by <span class="text-desc">28%</span>.`,
     ],
     half: (base, all) => {
       base.CALLBACK.push(function P999(x) {
@@ -947,13 +947,13 @@ export const PlanarSets: IArtifact[] = [
           base[Stats.CRIT_DMG].push({
             name: '2-Piece',
             source: `Bone Collection's Serene Demesne`,
-            value: 0.25,
+            value: 0.28,
           })
           if (base.SUMMON_STATS) {
             base.SUMMON_STATS[Stats.CRIT_DMG].push({
               name: '2-Piece',
               source: `Bone Collection's Serene Demesne`,
-              value: 0.25,
+              value: 0.28,
             })
           }
         }
@@ -968,18 +968,18 @@ export const PlanarSets: IArtifact[] = [
     id: '320',
     name: 'Giant Tree of Rapt Brooding',
     icon: '71043',
-    bonus: [{ stat: Stats.CRIT_RATE, value: 0.08 }],
+    bonus: [{ stat: Stats.P_SPD, value: 0.06 }],
     bonusAdd: [],
     desc: [
-      `Increases the wearer's CRIT Rate by <span class="text-desc">8%</span>. When the wearer's current CRIT Rate is <span class="text-desc">70%</span> or higher, increases the Additional DMG dealt by <span class="text-desc">30%</span>.`,
+      `The wearer's SPD increases by <span class="text-desc">6%</span>. When the wearer's SPD is <span class="text-desc">130/180</span>, the wearer and their memosprite's Outgoing Healing increases by <span class="text-desc">12%/20%</span>.`,
     ],
     half: (base) => {
       base.CALLBACK.push((x) => {
-        if (x.getValue(Stats.CRIT_RATE) >= 0.7) {
-          x.ADD_DMG.push({
+        if (x.getValue(Stats.SPD) >= 130) {
+          x[Stats.HEAL].push({
             name: '2-Piece',
             source: 'Giant Tree of Rapt Brooding',
-            value: 0.3,
+            value: x.getValue(Stats.SPD) >= 180 ? 0.2 : 0.12,
           })
         }
         return x

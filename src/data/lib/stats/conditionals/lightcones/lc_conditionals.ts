@@ -1811,13 +1811,11 @@ export const LCTeamConditionals: IWeaponContent[] = [
     },
   },
   {
-    type: 'number',
+    type: 'toggle',
     text: `Presage`,
     show: true,
-    default: 60,
-    min: 0,
-    max: 60,
-    duration: 3,
+    default: true,
+    duration: 2,
     id: '23038',
     excludeSummon: true,
     scaling: (base, form, r) => {
@@ -1825,8 +1823,15 @@ export const LCTeamConditionals: IWeaponContent[] = [
         base[Stats.CRIT_DMG].push({
           name: 'Presage',
           source: 'If Time Were a Flower',
-          value: calcRefinement(0.01, 0.0025, r) * form['23038'],
+          value: calcRefinement(0.48, 0.12, r),
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS[Stats.CRIT_DMG].push({
+            name: 'Presage',
+            source: 'If Time Were a Flower',
+            value: calcRefinement(0.48, 0.12, r),
+          })
+        }
       }
       return base
     },

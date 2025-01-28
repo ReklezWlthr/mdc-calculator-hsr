@@ -1,6 +1,16 @@
 [
   {
     "version": "1.1.1-2",
+    "date": "January 28th, 2025",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v3.1v3</span>",
+      "Updated Characters: <span class=\"text-hsr-quantum\">Tribbie</span>, and <span class=\"text-hsr-imaginary\">Mydei</span>",
+      "Updated Light Cones: <span class=\"text-desc\">If Time Were a Flower</span>, and <span class=\"text-desc\">Flame of Blood, Blaze My Path</span>",
+      "Updated Planar Ornaments: <span class=\"text-desc\">Giant Tree of Rapt Brooding</span>"
+    ]
+  },
+  {
+    "version": "1.1.1-2",
     "date": "January 17th, 2025",
     "desc": ["Fixed: <span class=\"text-hsr-ice\">The Herta</span>'s Enhanced Skill and Ultimate multipliers"]
   },

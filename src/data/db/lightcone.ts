@@ -2031,11 +2031,10 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Aspiration',
-      detail: `Increases the wearer's CRIT DMG by {{0}}%. For every <span class="text-desc">1</span> enemy target hit by all ally targets, the wearer gains <span class="text-desc">1</span> stack of <b>Presage</b>, stacking up to <span class="text-desc">60</span> time(s). After the wearer uses Ultimate, consumes all <b>Presage</b>. For every <span class="text-desc">1</span> stack consumed, regenerates {{1}} Energy and increases all allies' CRIT DMG by {{2}}%, lasting for <span class="text-desc">3</span> turn(s). When entering battle, the wearer gains <span class="text-desc">60</span> <b>Presage</b> stack(s) and regenerates <span class="text-desc">30</span> Energy.`,
+      detail: `Increases the wearer's CRIT DMG by {{0}}%. After the wearer launches a Follow-up ATK, additionally regenerates <span class="text-desc">9</span> Energy and gains <b>Presage</b>, lasting for <span class="text-desc">2</span> turn(s). While the wearer has <b>Presage</b>, all ally targets' CRIT DMG increases by {{1}}%. When entering battle, the wearer regenerates <span class="text-desc">21</span> Energy and gains <b>Presage</b>, lasting for <span class="text-desc">2</span> turn(s).`,
       properties: [
         { base: 36, growth: 6 },
-        { base: 0.3, growth: 0.075 },
-        { base: 1, growth: 0.25 },
+        { base: 48, growth: 12 },
       ],
     },
   },
@@ -2050,8 +2049,8 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Vista',
-      detail: `Increases the wearer's Max HP by {{0}}% and Incoming Healing by {{1}}%. When using Skill or Ultimate, consume HP equal to {{2}}% of the wearer's Max HP and increases the DMG dealt by this attack by {{3}}%. If this effect's consumed HP is greater than <span class="text-desc">500</span>, additionally increases the DMG by {{3}}%.
-      <br />If the current HP is not sufficient, this effect can reduce the wearer's HP down to a minimum of <span class="text-desc">1</span>.`,
+      detail: `Increases the wearer's Max HP by {{0}}% and Incoming Healing by {{1}}%. When using Skill or Ultimate, consume HP equal to {{2}}% of the wearer's Max HP and increases the DMG dealt by this attack by {{3}}%. If this effect's consumed HP is greater than <span class="text-desc">500</span>, this attack's DMG additionally increases by {{3}}%.
+      <br />If the current HP is not sufficient, this effect reduces the wearer's HP down to <span class="text-desc">1</span>.`,
       properties: [
         { base: 18, growth: 3 },
         { base: 20, growth: 5 },

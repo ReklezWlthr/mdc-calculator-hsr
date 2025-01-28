@@ -32,10 +32,10 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
 
   const talents: ITalent = {
     normal: {
-      energy: 10,
+      energy: 20,
       trace: 'Basic ATK',
       title: `Hundred Rockets`,
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Tribbie's Max HP to one designated enemy. Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Tribbie's Max HP to adjacent targets.`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Tribbie's Max HP to one designated enemy unit. Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Tribbie's Max HP to adjacent targets.`,
       value: [
         { base: 15, growth: 3, style: 'linear' },
         { base: 7.5, growth: 1.5, style: 'linear' },
@@ -47,7 +47,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 30,
       trace: 'Skill',
       title: `Where'd the Gifts Go`,
-      content: `Gains <b class="text-violet-300">Numinosity</b>, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn. When Tribbie has <b class="text-violet-300">Numinosity</b>, increases all ally targets' All-Type RES PEN by {{0}}%.`,
+      content: `Gains <b class="text-violet-300">Numinosity</b>, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn. While Tribbie has <b class="text-violet-300">Numinosity</b>, increases all ally targets' All-Type RES PEN by {{0}}%.`,
       value: [{ base: 12, growth: 1.2, style: 'curved' }],
       level: skill,
       tag: AbilityTag.SUPPORT,
@@ -57,8 +57,8 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Ultimate',
       title: `Guess Who Lives Here`,
       content: `Activates a Zone and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Tribbie's Max HP to all enemies.
-      <br />While the Zone lasts, enemy targets receive {{0}}% increased DMG. After an ally target attacks, for every <span class="text-desc">1</span> target hit, deals <span class="text-desc">1</span> instance of <b class="text-hsr-quantum">Quantum Additional DMG</b> equal to {{1}}% of Tribbie's Max HP to the target that has the highest HP among the hit targets.
-      <br />The Zone lasts for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn.`,
+      <br />While the Zone lasts, increases enemy targets' DMG taken by {{0}}%. After an ally target attacks, for every <span class="text-desc">1</span> target hit, deals <span class="text-desc">1</span> instance of <b class="text-hsr-quantum">Quantum Additional DMG</b> equal to {{1}}% of Tribbie's Max HP to the target that has the highest HP among the hit targets.
+      <br />The Zone lasts for <span class="text-desc">2</span> turn(s). This duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn.`,
       value: [
         { base: 15, growth: 1.5, style: 'curved' },
         { base: 6, growth: 0.6, style: 'curved' },
@@ -70,7 +70,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Talent',
       title: `Busy as Tribbie`,
-      content: `After other ally characters use Ultimate, Tribbie launches <u>Follow-up ATK</u>, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Tribbie's Max HP.`,
+      content: `After other ally characters use Ultimate, Tribbie launches a <u>Follow-up ATK</u>, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Tribbie's Max HP to all enemies. If the target was defeated before the <u>Follow-up ATK</u> is launched, launch a <u>Follow-up ATK</u> against enemy targets newly entering the battlefield instead.`,
       value: [{ base: 9, growth: 0.9, style: 'curved' }],
       level: talent,
       tag: AbilityTag.AOE,
@@ -78,7 +78,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: `If You're Happy and You Know It`,
-      content: `After using Technique, gains <b class="text-violet-300">Numinosity</b> upon entering battle, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `After using Technique and upon entering battle, obtains <b class="text-violet-300">Numinosity</b> for <span class="text-desc">3</span> turn(s).`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {
@@ -94,17 +94,17 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Pebble at Crossroads?`,
-      content: `When battle starts, Tribbie regenerates <span class="text-desc">48</span> Energy.`,
+      content: `At the start of the battle, regenerates <span class="text-desc">30</span> Energy for Tribbie.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Rite of Sugar Scoop`,
-      content: `The Additional DMG dealt by the Zone increases to <span class="text-desc">120%</span> of original DMG. When the Zone deals Additional DMG, it will additionally deal <span class="text-desc">1</span> instance(s) of Additional DMG.`,
+      content: `While the Zone lasts, after ally targets attack enemies, additionally deals <b class="text-red">True DMG</b> equal to <span class="text-desc">24%</span> of the total DMG of this attack to the targets that have been dealt Additional DMG by the Zone.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Guide of Dream Tour`,
-      content: `While the Zone lasts, after ally targets attack enemies, additionally deals <b class="text-red">True DMG</b> equal to <span class="text-desc">24%</span> of the total DMG of this attack to the targets that have been dealt Additional DMG by the Zone.`,
+      content: `While <b class="text-violet-300">Numinosity</b> is active, allies ignore <span class="text-desc">18%</span> of the target's DEF when dealing DMG.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -115,7 +115,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: `Peace of Empathy Bond`,
-      content: `While <b class="text-violet-300">Numinosity</b> lasts, the DMG dealt by all allies ignores <span class="text-desc">18%</span> of the target's DEF.`,
+      content: `The Additional DMG dealt by the Zone increases to <span class="text-desc">120%</span> of the original DMG. When the Zone deals Additional DMG, additionally deal <span class="text-desc">1</span> instance(s) of Additional DMG.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -219,7 +219,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.QUANTUM,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
-          multiplier: c >= 1 ? 1.2 : 1,
+          multiplier: c >= 4 ? 1.2 : 1,
         },
       ]
       base.TALENT_SCALING = [
@@ -240,9 +240,9 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Self',
           value: calcScaling(0.12, 0.012, skill, 'curved'),
         })
-        if (c >= 4) {
+        if (c >= 2) {
           base.DEF_PEN.push({
-            name: 'Eidolon 4',
+            name: 'Eidolon 2',
             source: 'Self',
             value: 0.18,
           })
@@ -281,9 +281,9 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Tribbie',
           value: calcScaling(0.12, 0.012, skill, 'curved'),
         })
-        if (c >= 4) {
+        if (c >= 2) {
           base.DEF_PEN.push({
-            name: 'Eidolon 4',
+            name: 'Eidolon 2',
             source: 'Tribbie',
             value: 0.18,
           })
@@ -321,7 +321,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             multiplier: 0.09,
           })
         }
-        if (form.tribbie_ult && c >= 2) {
+        if (form.tribbie_ult && c >= 1) {
           _.forEach(all, (t) =>
             _.forEach([t.BASIC_SCALING, t.SKILL_SCALING, t.ULT_SCALING, t.TALENT_SCALING], (s) => {
               _.forEach(s, (ss) => {
