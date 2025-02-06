@@ -43,7 +43,13 @@ export const SummonStatBlock = observer(({ stat, summonerHP }: SummonStatBlockPr
 
   return (
     <div className="grid w-full grid-flow-col grid-cols-2 p-4 font-bold text-white rounded-lg grid-rows-10 gap-y-1 gap-x-5 bg-primary-dark">
-      <ExtraDataRow title="HP" base={stat?.BASE_HP} bonus={0} />
+      <ExtraDataRow
+        title="HP"
+        base={stat?.BASE_HP}
+        bonus={
+          stat?.BASE_HP * stat?.getValue(Stats.P_HP) + stat?.getValue(Stats.HP) + stat?.getValue(StatsObjectKeys.X_HP)
+        }
+      />
       <ExtraDataRow
         title="ATK"
         base={stat?.BASE_ATK}

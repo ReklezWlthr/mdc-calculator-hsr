@@ -2010,7 +2010,7 @@ export const LightCones = [
     baseAtk: 28.8,
     baseDef: 21,
     type: PathType.ERUDITION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Mind Game',
       detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer uses their Ultimate, increases DMG dealt by the wearer's Skill and Ultimate by {{1}}%, lasting for <span class="text-desc">3</span> turn(s). After the wearer uses their Ultimate, if this Ultimate consumed <span class="text-desc">140</span> or more Energy, recovers <span class="text-desc">1</span> Skill Point.`,

@@ -977,7 +977,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.REMEMBRANCE,
     element: Element.LIGHTNING,
-    beta: true,
+    beta: false,
   },
   {
     id: '1403',
@@ -1065,8 +1065,8 @@ export const Characters = [
     name: 'Trailblazer (Remembrance)',
     stat: {
       baseAtk: 73.92,
-      baseHp: 143,
-      baseDef: 92.4,
+      baseHp: 142.56,
+      baseDef: 85.8,
       baseSpd: 103,
       energy: 160,
     },

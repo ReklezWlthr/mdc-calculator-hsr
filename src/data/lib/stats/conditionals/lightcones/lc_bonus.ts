@@ -1265,7 +1265,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
     scaling: (base, r) => {
       base[Stats.CRIT_DMG].push({
         name: 'Passive',
-        source: `Sweat Now, Cry Less`,
+        source: `Victory In a Blink`,
         value: calcRefinement(0.12, 0.03, r),
       })
       return base
@@ -1287,7 +1287,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
     scaling: (base, r) => {
       base[Stats.CRIT_RATE].push({
         name: 'Passive',
-        source: `Victory In a Blink`,
+        source: `Sweat Now, Cry Less`,
         value: calcRefinement(0.12, 0.02, r),
       })
       return base

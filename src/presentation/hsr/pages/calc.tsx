@@ -197,13 +197,13 @@ export const Calculator = observer(({}: {}) => {
                               {_.map(
                                 _.filter(mainComputed?.SKILL_SCALING, (item) => !!item.break),
                                 (item) => (
-                                  <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.SKILL} />
+                                  <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.SERVANT} />
                                 )
                               )}
                             </div>
                           )}
                         </div>
-                        <SubTotalRow type={TalentType.SKILL} />
+                        <SubTotalRow type={TalentType.SERVANT} />
                       </div>
                     </ScalingWrapper>
                   </>

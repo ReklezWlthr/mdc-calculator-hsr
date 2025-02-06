@@ -135,7 +135,7 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       value: 0.18 * form['121'],
     })
   }
-  if (form['123_1']) {
+  if (form['123_1'] && !base.SUMMON_ID) {
     base[Stats.P_SPD].push({
       name: `4-Piece`,
       source: `Hero of Triumphant Song`,

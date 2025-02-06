@@ -22,6 +22,7 @@ export const defaultTotal = {
   [TalentType.ULT]: {},
   [TalentType.TALENT]: {},
   [TalentType.TECH]: {},
+  [TalentType.SERVANT]: {},
 }
 
 export type CustomSetterT = (
@@ -39,6 +40,7 @@ export type TotalT = {
   [TalentType.ULT]: Record<string, number>
   [TalentType.TALENT]: Record<string, number>
   [TalentType.TECH]: Record<string, number>
+  [TalentType.SERVANT]: Record<string, number>
 }
 
 export interface SetupStoreType {

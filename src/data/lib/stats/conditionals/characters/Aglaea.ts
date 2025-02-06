@@ -231,7 +231,15 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         BASE_DEF: x.BASE_DEF,
         BASE_SPD: 0.35 * x.getSpd(),
         ELEMENT: Element.NONE,
-        BASE_HP: x.getHP() * calcScaling(0.44, 0.0275, talent, 'heal') + calcScaling(180, 67.5, talent, 'heal'),
+        BASE_HP: x.BASE_HP * calcScaling(0.44, 0.0275, talent, 'curved'),
+        [Stats.HP]: [
+          { value: calcScaling(180, 67.5, talent, 'curved'), name: 'Talent', source: 'Self' },
+          ..._.map(x[Stats.HP], (item) => ({
+            ...item,
+            value: item.value * calcScaling(0.44, 0.0275, talent, 'curved'),
+          })),
+        ],
+        [Stats.P_HP]: x[Stats.P_HP],
         SUMMON_ID: '1402',
         NAME: 'Garmentmaker',
         MAX_ENERGY: 0,
