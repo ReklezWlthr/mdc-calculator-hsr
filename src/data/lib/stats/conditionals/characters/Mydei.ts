@@ -35,7 +35,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 20,
       trace: 'Basic ATK',
       title: `Vow of Voyage`,
-      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Mydei's Max HP to a target enemy.`,
+      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Mydei's Max HP to one designated enemy.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
@@ -44,7 +44,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: `Deaths are Legion, Regrets are None`,
-      content: `Consumes HP by an amount equal to <span class="text-desc">50%</span> of Mydei's current HP. Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Mydei's Max HP to one designated enemy unit and <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Mydei's Max HP to adjacent targets.
+      content: `Consumes HP by an amount equal to <span class="text-desc">50%</span> of Mydei's current HP. Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Mydei's Max HP to one designated enemy and <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Mydei's Max HP to adjacent targets.
       <br />If the current HP is not sufficient, using Skill reduces Mydei's current HP to <span class="text-desc">1</span>.`,
       value: [
         { base: 45, growth: 4.5, style: 'curved' },
@@ -71,7 +71,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Enhanced Skill [2]',
       title: `Godslayer Be God`,
-      content: `Consumes <span class="text-desc">150</span> <b>Charges</b> and deals <b class="text-hsr-imaginary">Imaginary DMG</b> to one enemy equal to {{0}}% of Mydei's Max HP. At the same time, deals <b class="text-hsr-imaginary">Imaginary DMG</b> to adjacent targets equal to {{1}}% of Mydei's Max HP.
+      content: `Consumes <span class="text-desc">150</span> point(s) of <b>Charge</b>. Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Mydei's Max HP to one enemy and <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Mydei's Max HP to adjacent targets.
       <br />This ability will be automatically used. While this ability is in use, <b>Charge</b> cannot be accumulated.`,
       value: [
         { base: 140, growth: 14, style: 'curved' },
@@ -84,11 +84,11 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: `Throne of Bones`,
-      content: `Mydei gains <b class="text-heal">Death Proof</b> for <span class="text-desc">2</span> turn(s). While in the <b class="text-heal">Death Proof</b> state, Mydei can restore HP by {{2}}% of his Max HP after being attacked. Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Mydei's Max HP to one designated enemy, and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Mydei's Max HP to adjacent targets. Additionally, Taunts the target and targets adjacent to it, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `Restores HP by {{2}}% of Mydei's Max HP and accumulates <span class="text-desc">20</span> Talent's <b>Charge</b> point(s). Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Mydei's Max HP to one designated enemy, and deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Mydei's Max HP to adjacent targets. Additionally, Taunts the target and targets adjacent to it, lasting for <span class="text-desc">2</span> turn(s). The next use of <b>Godslayer Be God</b> prioritizes attacking one designated enemy, and this effect only works on the latest target.`,
       value: [
         { base: 96, growth: 8.4, style: 'curved' },
         { base: 60, growth: 4, style: 'curved' },
-        { base: 8, growth: 0.2, style: 'curved' },
+        { base: 15, growth: 0.5, style: 'curved' },
       ],
       level: ult,
       tag: AbilityTag.BLAST,
@@ -96,11 +96,10 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     talent: {
       trace: 'Talent',
       title: `Blood for Blood`,
-      content: `For each <span class="text-desc">1%</span> of HP lose, gains <span class="text-desc">1</span> point of <b>Charge</b> (up to <span class="text-desc">200</span> points). When losing HP, gains <b>Charge</b> at a <span class="text-desc">100%</span> rate. When <b>Charge</b> reaches <span class="text-desc">100</span>, consume <span class="text-desc">100</span> points of <b>Charge</b> to enter the <b class="text-red">Vendetta</b> state, restores HP by {{0}}% of Mydei's Max HP, and advances action by <span class="text-desc">100%</span>. While in <b class="text-red">Vendetta</b>, Max HP increases by <span class="text-desc">50%</span> of the current Max HP and DEF remains at <span class="text-desc">0</span>. Enhances Skill and cannot use Basic ATK. At the start of this unit's turn, automatically uses <b>Kingslayer Be King</b>.
+      content: `For each <span class="text-desc">1%</span> of HP lose, accumulates <span class="text-desc">1</span> point of <b>Charge</b> (up to <span class="text-desc">200</span> points). When losing HP, gains <b>Charge</b> at a <span class="text-desc">100%</span> rate. When <b>Charge</b> reaches <span class="text-desc">100</span>, consume <span class="text-desc">100</span> points of <b>Charge</b> to enter the <b class="text-red">Vendetta</b> state, restores HP by {{0}}% of Mydei's Max HP, and advances action by <span class="text-desc">100%</span>. While in <b class="text-red">Vendetta</b>, Max HP increases by <span class="text-desc">50%</span> of the current Max HP and DEF remains at <span class="text-desc">0</span>. Enhances Skill and cannot use Basic ATK. At the start of this unit's turn, automatically uses <b>Kingslayer Be King</b>.
       <br />When <b>Charge</b> reaches <span class="text-desc">150</span> points while in the <b class="text-red">Vendetta</b> state, Mydei immediately gains <span class="text-desc">1</span> extra turn and automatically uses <b>Godslayer Be God</b>.
-      <br />When receiving fatal damage while in the <b class="text-red">Vendetta</b> state, Mydei clears his <b>Charge</b> and exits the <b class="text-red">Vendetta</b> state, restoring HP by <span class="text-desc">50%</span> of his Max HP.
-      <br />For each <span class="text-desc">100</span> points of Mydei's Max HP beyond <span class="text-desc">6,000</span> points, the <b>Charge</b> Mydei receives from enemy targets' DMG increases by <span class="text-desc">1.66%</span>, and his Incoming Healing increases by <span class="text-desc">0.5%</span>, tallying up to <span class="text-desc">6,000</span> HP in excess`,
-      value: [{ base: 25, growth: 1, style: 'curved' }],
+      <br />When receiving a killing blow during the <b class="text-red">Vendetta</b> state, Mydei will not be knocked down, but will clear his <b>Charge</b>, exits the the <b class="text-red">Vendetta</b> state, and restores HP by <span class="text-desc">50%</span> of his Max HP.`,
+      value: [{ base: 15, growth: 1, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
     },
@@ -108,13 +107,13 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Technique',
       title: `Cage of Broken Lance`,
       content: `After using Technique, pulls in enemies within a certain area and inflicts Daze on them for <span class="text-desc">10</span> second(s). Dazed enemies will not actively attack ally targets.
-      <br />If actively attacking Dazed enemies, when entering battle, deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to <span class="text-desc">80%</span> of Mydei's Max HP to all enemies, and Taunts the targets, lasting for <span class="text-desc">1</span> turn(s). This unit accumulates <span class="text-desc">50</span> Talent's <b>Charge</b> points.`,
+      <br />If actively attacking Dazed enemies, when entering battle, deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to <span class="text-desc">80%</span> of Mydei's Max HP to all enemies, and Taunts the targets, lasting for <span class="text-desc">1</span> turn(s). This unit accumulates <span class="text-desc">50</span> Talent's <b>Charge</b>.`,
       tag: AbilityTag.IMPAIR,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Earth and Water`,
-      content: `If Mydei has <b class="text-heal">Death Proof</b> while in the <b class="text-red">Vendetta</b>, he will not exit the <b class="text-red">Vendetta</b> state when receiving fatal damage. His current HP can be reduced to a minimum of <span class="text-desc">1</span>.`,
+      content: `During the <b class="text-red">Vendetta</b> state, Mydei will not exit the <b class="text-red">Vendetta</b> state when receiving a killing blow. This effect can trigger <span class="text-desc">3</span> time(s) per battle.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -124,17 +123,17 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Bloodied Chiton`,
-      content: `When battle starts, if Mydei's Max HP exceeds <span class="text-desc">5,000</span>, for every <span class="text-desc">100</span> excess HP, increases this unit's CRIT Rate by <span class="text-desc">1.6%</span>, up to a max increase of <span class="text-desc">48%</span>.`,
+      content: `When battle starts, if Mydei's Max HP exceeds <span class="text-desc">4,000</span>, for every <span class="text-desc">100</span> excess HP, Mydei's CRIT Rate increases by <span class="text-desc">1.2%</span>, his <b>Charge</b> ratio from enemy targets' DMG increases by <span class="text-desc">2.5%</span>, and his Incoming Healing increases by <span class="text-desc">0.75%</span>. Up to <span class="text-desc">4,000</span> excess HP can be taken into account for this effect.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Frost Hones Spine of Steel`,
-      content: `While in the <b class="text-red">Vendetta</b> state, the DMG dealt by Mydei ignores <span class="text-desc">15%</span> of enemy targets' DEF. And each time healing is received, adds <span class="text-desc">40%</span> of the healed amount will be converted into <b>Charge</b> based on Mydei's Max HP.`,
+      content: `The DMG multiplier applied by <b>Godslayer Be God</b> to the primary target increases by <span class="text-desc">15%</span>. And <b>Godslayer Be God</b> becomes <b class="text-hsr-imaginary">Imaginary DMG</b> dealt to all enemies equal to the DMG multiplier applied to the primary target.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Strife Beholds Cry of Dead`,
-      content: `<b>Godslayer Be God</b> becomes <b class="text-hsr-imaginary">Imaginary DMG</b> dealt to all enemies equal to the DMG multiplier applied to the primary target.`,
+      content: `During <b class="text-red">Vendetta</b>, the DMG dealt by Mydei ignores <span class="text-desc">15%</span> of enemy targets' DEF. And when receiving healing, converts <span class="text-desc">40%</span> of the healed amount to <b>Charge</b>. The tally of the converted <b>Charge</b> cannot exceed <span class="text-desc">40</span> point(s). Resets this tally of <b>Charge</b> after any unit takes action.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -145,7 +144,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c4: {
       trace: 'Eidolon 4',
       title: `Siren Jolts the Laconic Lion`,
-      content: `When <b class="text-heal">Death Proof</b> takes effect, additionally restores HP equal to <span class="text-desc">10%</span> of this unit's Max HP.`,
+      content: `While in <b class="text-red">Vendetta</b>, increases CRIT DMG by <span class="text-desc">30%</span> and restores HP by <span class="text-desc">10%</span> of this unit's Max HP after receiving attacks from enemy targets.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -156,7 +155,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: `Legacy Scales Mound of Blood`,
-      content: `When entering battle, immediately enter the <b class="text-red">Vendetta</b> state, and the <b>Charge</b> required for <b>Godslayer Be God</b> is lowered to <span class="text-desc">100</span> points.`,
+      content: `When entering battle, immediately enters the <b class="text-red">Vendetta</b> state, and lowers the <b>Charge</b> required for <b>Godslayer Be God</b> to <span class="text-desc">100</span> point(s).`,
     },
   }
 
@@ -214,11 +213,11 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ]
       base.SKILL_SCALING = form.vendetta
         ? form.godslayer
-          ? c >= 2
+          ? c >= 1
             ? [
                 {
                   name: 'AoE',
-                  value: [{ scaling: calcScaling(1.4, 0.14, skill, 'curved'), multiplier: Stats.HP }],
+                  value: [{ scaling: calcScaling(1.4, 0.14, skill, 'curved') + 0.3, multiplier: Stats.HP }],
                   element: Element.IMAGINARY,
                   property: TalentProperty.NORMAL,
                   type: TalentType.SKILL,
@@ -285,8 +284,8 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           ]
       base.ULT_SCALING = [
         {
-          name: 'Death Proof Healing',
-          value: [{ scaling: calcScaling(0.08, 0.002, ult, 'curved') + (c >= 4 ? 0.1 : 0), multiplier: Stats.HP }],
+          name: 'Activation Healing',
+          value: [{ scaling: calcScaling(0.15, 0.005, ult, 'curved'), multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
@@ -312,7 +311,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       base.TALENT_SCALING = [
         {
           name: 'Activation Healing',
-          value: [{ scaling: calcScaling(0.25, 0.01, talent, 'curved'), multiplier: Stats.HP }],
+          value: [{ scaling: calcScaling(0.15, 0.01, talent, 'curved'), multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
@@ -338,11 +337,25 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
       if (form.vendetta) {
         base.SKILL_ALT = true
-        if (c >= 1) {
+        if (c >= 2) {
           base.DEF_PEN.push({
-            name: 'Eidolon 1',
+            name: 'Eidolon 2',
             source: 'Self',
             value: 0.15,
+          })
+        }
+        if (c >= 4) {
+          base[Stats.CRIT_DMG].push({
+            name: 'Eidolon 4',
+            source: 'Self',
+            value: 0.3,
+          })
+          base.TALENT_SCALING.push({
+            name: 'On-Attacked Healing',
+            value: [{ scaling: 0.1, multiplier: Stats.HP }],
+            element: TalentProperty.HEAL,
+            property: TalentProperty.HEAL,
+            type: TalentType.NONE,
           })
         }
       }
@@ -383,26 +396,21 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             multiplier: 0.5,
           })
           x.BASE_DEF = 0
-          x.AGGRO.push({
-            name: 'Vendetta',
-            source: 'Self',
-            value: 5,
-          })
         }
-        x.I_HEAL.push({
-          name: 'Talent',
-          source: 'Self',
-          value: _.min([(_.max([x.getHP() - 6000, 0]) / 100) * 0.005, 0.3]),
-          base: _.min([_.max([x.getHP() - 6000, 0]) / 100, 60]),
-          multiplier: 0.005,
-        })
         if (a.a6) {
           x[Stats.CRIT_RATE].push({
             name: 'Ascension 6 Passive',
             source: 'Self',
-            value: _.min([(_.max([x.getHP() - 5000, 0]) / 100) * 0.016, 0.48]),
-            base: _.min([_.max([x.getHP() - 5000, 0]) / 100, 30]),
+            value: _.min([(_.max([x.getHP() - 4000, 0]) / 100) * 0.012, 0.48]),
+            base: _.min([_.max([x.getHP() - 4000, 0]) / 100, 40]),
             multiplier: 0.016,
+          })
+          x.I_HEAL.push({
+            name: 'Talent',
+            source: 'Self',
+            value: _.min([(_.max([x.getHP() - 4000, 0]) / 100) * 0.0075, 0.3]),
+            base: _.min([_.max([x.getHP() - 4000, 0]) / 100, 40]),
+            multiplier: 0.005,
           })
         }
 

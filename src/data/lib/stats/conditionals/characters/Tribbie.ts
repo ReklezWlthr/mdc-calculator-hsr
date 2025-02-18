@@ -35,7 +35,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 20,
       trace: 'Basic ATK',
       title: `Hundred Rockets`,
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Tribbie's Max HP to one designated enemy unit. Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Tribbie's Max HP to adjacent targets.`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Tribbie's Max HP to one designated enemy. Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Tribbie's Max HP to adjacent targets.`,
       value: [
         { base: 15, growth: 3, style: 'linear' },
         { base: 7.5, growth: 1.5, style: 'linear' },
@@ -70,7 +70,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Talent',
       title: `Busy as Tribbie`,
-      content: `After other ally characters use Ultimate, Tribbie launches a <u>Follow-up ATK</u>, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Tribbie's Max HP to all enemies. If the target was defeated before the <u>Follow-up ATK</u> is launched, launch a <u>Follow-up ATK</u> against enemy targets newly entering the battlefield instead.`,
+      content: `After other ally characters use Ultimate, Tribbie launches <u>Follow-up ATK</u>, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Tribbie's Max HP to all enemies. This effect can only be triggered <span class="text-desc">1</span> time per character. When Tribbie uses Ultimate, resets the trigger count for other ally characters. If the target was defeated before the <u>Follow-up ATK</u> is launched, then launches the <u>Follow-up ATK</u> against new enemy targets entering the battlefield.`,
       value: [{ base: 9, growth: 0.9, style: 'curved' }],
       level: talent,
       tag: AbilityTag.AOE,
@@ -78,7 +78,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: `If You're Happy and You Know It`,
-      content: `After using Technique and upon entering battle, obtains <b class="text-violet-300">Numinosity</b> for <span class="text-desc">3</span> turn(s).`,
+      content: `After using Technique and upon entering battle, obtains <b class="text-violet-300">Numinosity</b>, lasting for <span class="text-desc">3</span> turn(s).`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {
@@ -104,7 +104,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c2: {
       trace: 'Eidolon 2',
       title: `Guide of Dream Tour`,
-      content: `While <b class="text-violet-300">Numinosity</b> is active, allies ignore <span class="text-desc">18%</span> of the target's DEF when dealing DMG.`,
+      content: `The Additional DMG dealt by the Zone increases to <span class="text-desc">120%</span> of the original DMG. When the Zone deals Additional DMG, further deals <span class="text-desc">1</span> instance(s) of Additional DMG.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -115,7 +115,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: `Peace of Empathy Bond`,
-      content: `The Additional DMG dealt by the Zone increases to <span class="text-desc">120%</span> of the original DMG. When the Zone deals Additional DMG, additionally deal <span class="text-desc">1</span> instance(s) of Additional DMG.`,
+      content: `While <b class="text-violet-300">Numinosity</b> lasts, allies ignore <span class="text-desc">18%</span> of the target's DEF when dealing DMG.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -126,7 +126,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: `Morrow of Star Shine`,
-      content: `Increases the DMG dealt by the Talent's <u>Follow-up ATK</u> by <span class="text-desc">729%</span>.`,
+      content: `After Tribbie uses Ultimate, launches her Talent's <u>Follow-up ATK</u> against all enemies. The DMG dealt by Talent's <u>Follow-up ATK</u> increases by <span class="text-desc">729%</span>.`,
     },
   }
 
@@ -219,7 +219,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.QUANTUM,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
-          multiplier: c >= 4 ? 1.2 : 1,
+          multiplier: c >= 2 ? 1.2 : 1,
         },
       ]
       base.TALENT_SCALING = [
@@ -240,7 +240,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Self',
           value: calcScaling(0.12, 0.012, skill, 'curved'),
         })
-        if (c >= 2) {
+        if (c >= 4) {
           base.DEF_PEN.push({
             name: 'Eidolon 2',
             source: 'Self',
@@ -281,7 +281,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Tribbie',
           value: calcScaling(0.12, 0.012, skill, 'curved'),
         })
-        if (c >= 2) {
+        if (c >= 4) {
           base.DEF_PEN.push({
             name: 'Eidolon 2',
             source: 'Tribbie',

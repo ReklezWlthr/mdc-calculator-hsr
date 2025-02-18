@@ -251,6 +251,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.ULT,
           break: 20,
           sum: true,
+          hitSplit: [0.6, 0.1, 0.1, 0.1, 0.1],
         },
       ]
 

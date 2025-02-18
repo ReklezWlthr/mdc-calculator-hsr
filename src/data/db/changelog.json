@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.1.1-5",
+    "date": "February 18th, 2025",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v3.1v5</span>",
+      "Updated Characters: <span class=\"text-hsr-quantum\">Tribbie</span>, and <span class=\"text-hsr-imaginary\">Mydei</span>",
+      "Added Hit Split: <span class=\"text-hsr-lightning\">Aglaea</span>, and <span class=\"text-hsr-fire\">Fugue</span>"
+    ]
+  },
+  {
     "version": "1.1.1-4",
     "date": "February 6th, 2025",
     "desc": ["Fixed: Memosprite's HP calculation", "Fixed: Missing total DMG calculation for memosprite skills"]

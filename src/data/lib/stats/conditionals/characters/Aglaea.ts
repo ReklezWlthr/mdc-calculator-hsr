@@ -258,6 +258,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               type: TalentType.BA,
               break: 10,
               sum: true,
+              hitSplit: [0.25, 0.25, 0.25, 0.25],
             },
             {
               name: 'Adjacent - Aglea',
@@ -266,6 +267,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 5,
+              hitSplit: [0.25, 0.25, 0.25, 0.25],
             },
             {
               name: 'Main Target - Garmentmaker',
@@ -296,6 +298,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               type: TalentType.BA,
               break: 10,
               sum: true,
+              hitSplit: [0.2, 0.2, 0.6],
             },
           ]
       base.SKILL_SCALING = []
@@ -308,6 +311,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.SERVANT,
           break: 20,
           sum: true,
+          hitSplit: [0.3, 0.3, 0.1, 0.1, 0.2],
         },
         {
           name: 'Adjacent',
@@ -316,6 +320,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.SERVANT,
           type: TalentType.SERVANT,
           break: 10,
+          hitSplit: [0.25, 0.25, 0.5],
         },
       ]
       base.ULT_SCALING = []

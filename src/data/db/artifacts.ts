@@ -971,7 +971,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [{ stat: Stats.P_SPD, value: 0.06 }],
     bonusAdd: [],
     desc: [
-      `The wearer's SPD increases by <span class="text-desc">6%</span>. When the wearer's SPD is <span class="text-desc">130/180</span>, the wearer and their memosprite's Outgoing Healing increases by <span class="text-desc">12%/20%</span>.`,
+      `Increases the wearer's SPD by <span class="text-desc">6%</span>. When the wearer's SPD is <span class="text-desc">130/180</span> or higher, the wearer and their memosprite's Outgoing Healing increases by <span class="text-desc">12%/20%</span>.`,
     ],
     half: (base) => {
       base.CALLBACK.push((x) => {
