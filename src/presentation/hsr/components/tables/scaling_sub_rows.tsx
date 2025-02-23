@@ -78,7 +78,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
       title={
         <div className="flex items-center justify-between">
           <p>{scaling.name}</p>
-          {!!toughness && (
+          {!!toughness && element !== Element.NONE && (
             <p className="text-xs font-normal">
               Toughness Damage: <span className="text-desc">{_.round(toughness, 1).toLocaleString()}</span>
             </p>

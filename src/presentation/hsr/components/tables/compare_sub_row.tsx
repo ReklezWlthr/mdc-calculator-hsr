@@ -137,7 +137,7 @@ export const CompareSubRows = observer(
                 <p>{name}</p>
               </div>
               <div className="flex flex-col items-end gap-y-1 shrink-0">
-                {!!toughness && (
+                {!!toughness && element !== Element.NONE && (
                   <p className="text-xs font-normal">
                     Toughness Damage: <span className="text-desc">{_.round(toughness, 1).toLocaleString()}</span>
                   </p>
