@@ -60,6 +60,10 @@ export const IntroModal = observer(() => {
           It is not recommended to use this app on mobiles or vertical screens. This is partly due to most information
           being presented in tooltips.
         </BulletPoint>
+        <BulletPoint>
+          Tribbie's E1 <b className="text-true">True DMG</b> is not portrayed to its maximum potential since it
+          calculates the <b>TOTAL</b> damage dealt across all enemies which this calculator currently cannot do.
+        </BulletPoint>
       </Collapsible>
       <div className="p-3 space-y-1 text-sm transition-all duration-200 rounded-lg bg-primary-darker text-gray">
         <p className="text-sm font-bold text-white">

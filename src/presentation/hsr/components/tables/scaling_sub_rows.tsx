@@ -33,7 +33,7 @@ export const BaseElementColor = {
   [Element.WIND]: 'text-hsr-wind',
   [Element.QUANTUM]: 'text-hsr-quantum',
   [Element.IMAGINARY]: 'text-hsr-imaginary',
-  [Element.NONE]: 'text-primary-lighter',
+  [Element.NONE]: 'text-true',
 }
 
 export const ElementColor = {
@@ -45,7 +45,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
   const { calculatorStore, teamStore } = useStore()
   const index = scaling.overrideIndex ?? calculatorStore.selected
   const stats = statsOverride || calculatorStore.computedStats[index]
-  const element = scaling.element
+  const element = scaling.property === TalentProperty.TRUE ? Element.NONE : scaling.element
   const [sum, setSum] = useState(scaling.sum)
 
   const {

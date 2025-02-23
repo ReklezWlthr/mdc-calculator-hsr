@@ -18,7 +18,7 @@ import { CompareTraceBlock } from '@src/presentation/hsr/components/compare/comp
 import { CompareSuperBreakSubRows } from '../tables/compare_super_break_sub_row '
 import { CharacterSelect } from '../character_select'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
-import { BaseAggro, PathType, TalentType } from '@src/domain/constant'
+import { BaseAggro, Element, PathType, TalentProperty, TalentType } from '@src/domain/constant'
 import { CompareTotalRows } from '../tables/compare_total_row'
 import { EnemyModal } from '../modals/enemy_modal'
 import { DebuffModal } from '../modals/debuff_modal'
@@ -152,7 +152,7 @@ export const CompareBlock = observer(() => {
           level={levels}
           name={item.name}
           property={item.property}
-          element={item.element}
+          element={item.property === TalentProperty.TRUE ? Element.NONE : item.element}
           type={talent}
           setupNames={_.map([setupStore.main, ...setupStore.comparing], 'name')}
         />
@@ -172,7 +172,7 @@ export const CompareBlock = observer(() => {
                 allStats={allStats}
                 level={levels}
                 name={item.name}
-                element={item.element}
+                element={item.property === TalentProperty.TRUE ? Element.NONE : item.element}
                 type={talent}
                 setupNames={_.map([setupStore.main, ...setupStore.comparing], 'name')}
               />
@@ -324,7 +324,7 @@ export const CompareBlock = observer(() => {
                       level={levels}
                       name={item.name}
                       property={item.property}
-                      element={item.element}
+                      element={item.property === TalentProperty.TRUE ? Element.NONE : item.element}
                       type={TalentType.TECH}
                       setupNames={_.map([setupStore.main, ...setupStore.comparing], 'name')}
                     />

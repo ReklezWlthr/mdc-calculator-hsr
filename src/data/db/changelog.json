@@ -1,5 +1,10 @@
 [
   {
+    "version": "1.1.1-6",
+    "date": "February 23rd, 2025",
+    "desc": ["Fixed: <span class=\"text-true\">True DMG</span> Calculation"]
+  },
+  {
     "version": "1.1.1-5",
     "date": "February 18th, 2025",
     "desc": [

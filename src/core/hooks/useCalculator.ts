@@ -327,8 +327,6 @@ export const useCalculator = ({
               debuffs,
             })
             if (x.SUMMON_STATS) {
-              console.log(_.cloneDeep(x?.SUMMON_STATS?.['DMG%']))
-              console.log(_.cloneDeep(form), _.cloneDeep(form.memo))
               x.SUMMON_STATS = c.scaling(x.SUMMON_STATS, form.memo, team[i]?.equipments?.weapon?.refinement, {
                 team: team,
                 element: Element.NONE,
@@ -338,7 +336,6 @@ export const useCalculator = ({
                 index: i,
                 debuffs,
               })
-              console.log(_.cloneDeep(x.SUMMON_STATS['DMG%']))
             }
           }
         )

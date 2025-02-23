@@ -33,6 +33,7 @@ export const BaseElementColor = {
   [Element.WIND]: 'text-hsr-wind',
   [Element.QUANTUM]: 'text-hsr-quantum',
   [Element.IMAGINARY]: 'text-hsr-imaginary',
+  [Element.NONE]: 'text-true',
 }
 
 export const ElementColor = {
@@ -46,7 +47,7 @@ export const SuperBreakSubRows = observer(({ scaling, statsOverride, type }: Sca
   const stats = statsOverride || calculatorStore.computedStats[index]
   const [sum, setSum] = useState(scaling.sum)
 
-  const element = scaling.element
+  const element = scaling.property === TalentProperty.TRUE ? Element.NONE : scaling.element
 
   const { dmg, formulaString } = superBreakStringConstruct(
     calculatorStore,
@@ -74,7 +75,7 @@ export const SuperBreakSubRows = observer(({ scaling, statsOverride, type }: Sca
   return (
     !!dmg && (
       <div className="grid items-center grid-cols-9 gap-2 pr-2">
-        <p className="col-span-2 text-center">Super Break DMG</p>
+        <p className="col-span-2 text-center">{element === Element.NONE ? 'True DMG' : 'Super Break DMG'}</p>
         <p className={classNames('col-span-1 text-center', ElementColor[element])}>{element}</p>
         <Tooltip
           title={scaling.name}

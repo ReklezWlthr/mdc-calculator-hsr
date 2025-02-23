@@ -94,7 +94,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Pebble at Crossroads?`,
-      content: `At the start of the battle, regenerates <span class="text-desc">30</span> Energy for Tribbie.`,
+      content: `At the start of the battle, Tribbie regenerates <span class="text-desc">30</span> Energy. After other ally targets attack, Tribbie regenerates <span class="text-desc">1.5</span> Energy for each target hit.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -115,7 +115,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: `Peace of Empathy Bond`,
-      content: `While <b class="text-violet-300">Numinosity</b> lasts, allies ignore <span class="text-desc">18%</span> of the target's DEF when dealing DMG.`,
+      content: `While <b class="text-violet-300">Numinosity</b> lasts, the DMG dealt by all allies ignores <span class="text-desc">18%</span> of the target's DEF.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -325,15 +325,16 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           _.forEach(all, (t) =>
             _.forEach([t.BASIC_SCALING, t.SKILL_SCALING, t.ULT_SCALING, t.TALENT_SCALING], (s) => {
               _.forEach(s, (ss) => {
-                if (_.includes([TalentProperty.NORMAL, TalentProperty.FUA], ss.property)) {
+                if (!_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property)) {
                   s.push({
-                    name: `${ss.name} - Mem's Support`,
+                    name: `${ss.name} - Tribbie`,
                     value: ss.value,
                     multiplier: (ss.multiplier || 1) * 0.24,
-                    element: Element.NONE,
+                    element: ss.element,
                     property: TalentProperty.TRUE,
-                    type: TalentType.NONE,
-                    sum: true,
+                    type: ss.type,
+                    sum: ss.sum,
+                    break: ss.break * 0.24,
                   })
                 }
               })

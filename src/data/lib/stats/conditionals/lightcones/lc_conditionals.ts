@@ -1259,7 +1259,7 @@ export const LCAllyConditionals: IWeaponContent[] = [
       if (form[`23003_${owner}`]) {
         base[Stats.ALL_DMG].push({
           name: `But the Battle Isn't Over`,
-          source: own.NAME,
+          source: own?.NAME,
           value: calcRefinement(0.3, 0.05, r),
         })
       }
@@ -1279,7 +1279,7 @@ export const LCAllyConditionals: IWeaponContent[] = [
       if (form[`23017_${owner}`]) {
         base[Stats.P_ATK].push({
           name: `Night of Fright`,
-          source: own.NAME,
+          source: own?.NAME,
           value: calcRefinement(0.024, 0.004, r) * form[`23017_${owner}`],
         })
       }
@@ -1317,7 +1317,7 @@ export const LCAllyConditionals: IWeaponContent[] = [
       if (form[`21025_${owner}`]) {
         base[Stats.ALL_DMG].push({
           name: `Past and Future`,
-          source: own.NAME,
+          source: own?.NAME,
           value: calcRefinement(0.16, 0.04, r),
         })
       }
@@ -1337,7 +1337,7 @@ export const LCAllyConditionals: IWeaponContent[] = [
       if (form[`23034_${owner}`]) {
         base[Stats.ALL_DMG].push({
           name: `Hymn`,
-          source: own.NAME,
+          source: own?.NAME,
           value: calcRefinement(0.15, 0.0225, r) * form[`23034_${owner}`],
         })
       }
@@ -1404,7 +1404,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Incessant Rain',
           value: calcRefinement(0.12, 0.02, r),
         })
-        if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
+        if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }
       return base
     },
@@ -1425,7 +1425,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Inherently Unjust Destiny',
           value: calcRefinement(0.1, 0.015, r),
         })
-        if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
+        if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }
       return base
     },
@@ -1460,7 +1460,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     debuffElement: Element.LIGHTNING,
     scaling: (base, form, r, { debuffs, own, owner }) => {
       if (form['23006_1']) {
-        if (base.NAME === own.NAME) {
+        if (base.NAME === own?.NAME) {
           const shock = {
             name: 'Erode DMG',
             value: [{ scaling: calcRefinement(0.6, 0.1, r), multiplier: Stats.ATK }],
@@ -1526,7 +1526,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Whereabouts Should Dreams Rest',
           value: 0.2,
         })
-        if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.SPD_RED)
+        if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.SPD_RED)
       }
       return base
     },
@@ -1549,9 +1549,9 @@ export const LCTeamConditionals: IWeaponContent[] = [
         })
         base.ADD_DEBUFF.push({
           name: 'Tame',
-          source: base.NAME === own.NAME ? 'Self' : own.NAME,
+          source: base.NAME === own?.NAME ? 'Self' : own?.NAME,
         })
-        if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
+        if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }
       return base
     },
@@ -1636,7 +1636,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Resolution Shines As Pearls of Sweat',
           value: calcRefinement(0.12, 0.01, r),
         })
-        if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.DEF_RED)
+        if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.DEF_RED)
       }
       return base
     },
@@ -1653,7 +1653,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     debuffElement: Element.FIRE,
     scaling: (base, form, r, { debuffs, own, owner }) => {
       if (form['21016']) {
-        if (base.NAME === own.NAME) {
+        if (base.NAME === own?.NAME) {
           const burn = {
             name: 'Trend Burn DMG',
             value: [{ scaling: calcRefinement(0.4, 0.05, r), multiplier: Stats.DEF }],
@@ -1735,7 +1735,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Those Many Springs',
           value: tier === 1 ? calcRefinement(0.1, 0.02, r) : calcRefinement(0.14, 0.02, r),
         })
-        if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
+        if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }
       return base
     },
@@ -1758,7 +1758,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
           })
           return x
         })
-        if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
+        if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }
       return base
     },
@@ -1779,7 +1779,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Long Road Leads Home',
           value: calcRefinement(0.18, 0.03, r),
         })
-        if (base.NAME === own.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
+        if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }
       return base
     },

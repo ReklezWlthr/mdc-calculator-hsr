@@ -22,6 +22,7 @@ module.exports = {
         purple: '#b19fe6',
         blue: '#6fa8dd',
         heal: '#84cf7c',
+        true: '#ded1f7',
         hsr: {
           physical: '#9c9c9c',
           wind: '#59cf97',

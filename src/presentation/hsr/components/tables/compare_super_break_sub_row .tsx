@@ -38,6 +38,7 @@ export const BaseElementColor = {
   [Element.WIND]: 'text-hsr-wind',
   [Element.QUANTUM]: 'text-hsr-quantum',
   [Element.IMAGINARY]: 'text-hsr-imaginary',
+  [Element.NONE]: 'text-true',
 }
 
 export const ElementColor = {
@@ -144,7 +145,7 @@ export const CompareSuperBreakSubRows = observer(
     return (
       !!_.sum(_.map([main, sub1, sub2, sub3], (item) => getDmg(item))) && (
         <div className="grid items-center grid-cols-9 gap-2 pr-2">
-          <p className="col-span-2 text-center">Super Break DMG</p>
+          <p className="col-span-2 text-center">{element === Element.NONE ? 'True DMG' : 'Super Break DMG'}</p>
           <p className={classNames('col-span-1 text-center', ElementColor[element])}>{element}</p>
           {main ? (
             <Tooltip
