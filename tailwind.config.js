@@ -32,6 +32,8 @@ module.exports = {
           ice: '#4dc9ff',
           quantum: '#6563ff',
         },
+        'unique-start': '#576bcc',
+        'unique-end': '#a888cf',
       },
     },
   },

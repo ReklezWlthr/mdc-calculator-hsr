@@ -102,6 +102,14 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: talent,
       tag: AbilityTag.ENHANCE,
     },
+    unique_talent: {
+      trace: 'Unique Talent',
+      title: `Sanctuary of the Lunar Cocoon`,
+      content: `After obtaining Castorice or when Castorice is in the current team, receive the following effect: In battle, when an ally character receives a killing blow, all allies that received a killing blow in this action enter the <b class="text-violet-400">Lunar Cocoon</b> state. Characters in <b class="text-violet-400">Lunar Cocoon</b> delay becoming downed and can take <span class="text-desc">1</span> action normally. After the action, if they receive healing or have a Shield before their next turn, <b class="text-violet-400">Lunar Cocoon</b> is removed. Otherwise, they will be downed immediately. This effect can be triggered <span class="text-desc">1</span> time per battle.`,
+      value: [],
+      level: talent,
+      tag: AbilityTag.SUPPORT,
+    },
     summon_talent: {
       trace: 'Memosprite Talent [1]',
       title: `Ebon Wings Over Scorched Ruins`,
