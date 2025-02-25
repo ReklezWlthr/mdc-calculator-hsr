@@ -65,6 +65,8 @@ import Aglaea from './characters/Aglaea'
 import RMC from './characters/RMC'
 import Tribbie from './characters/Tribbie'
 import Mydei from './characters/Mydei'
+import Castorice from './characters/Castorice'
+import Anaxa from './characters/Anaxa'
 
 export default [
   { id: '1001', conditionals: March },
@@ -130,6 +132,8 @@ export default [
   { id: '1402', conditionals: Aglaea },
   { id: '1403', conditionals: Tribbie },
   { id: '1404', conditionals: Mydei },
+  { id: '1405', conditionals: Anaxa },
+  { id: '1407', conditionals: Castorice },
   { id: '8001', conditionals: DMC },
   { id: '8003', conditionals: PMC },
   { id: '8005', conditionals: HMC },

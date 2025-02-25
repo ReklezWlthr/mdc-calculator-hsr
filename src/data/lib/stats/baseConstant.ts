@@ -168,6 +168,7 @@ export const baseStatsObject: BaseStatsType = {
   BASIC_SCALING: [],
   SKILL_SCALING: [],
   MEMO_SKILL_SCALING: [],
+  MEMO_TALENT_SCALING: [],
   ULT_SCALING: [],
   TALENT_SCALING: [],
   TECHNIQUE_SCALING: [],

@@ -155,6 +155,7 @@ export interface RawBaseStatType {
   BASIC_SCALING: IScaling[]
   SKILL_SCALING: IScaling[]
   MEMO_SKILL_SCALING: IScaling[]
+  MEMO_TALENT_SCALING: IScaling[]
   ULT_SCALING: IScaling[]
   TALENT_SCALING: IScaling[]
   TECHNIQUE_SCALING: IScaling[]

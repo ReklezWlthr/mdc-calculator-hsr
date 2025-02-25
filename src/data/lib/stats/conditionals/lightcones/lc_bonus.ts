@@ -1331,6 +1331,47 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23040',
+    scaling: (base, r) => {
+      base[Stats.P_HP].push({
+        name: 'Passive',
+        source: `Make Farewells More Beautiful`,
+        value: calcRefinement(0.3, 0.075, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23041',
+    scaling: (base, r) => {
+      base[Stats.CRIT_RATE].push({
+        name: 'Passive',
+        source: `Life Should Be Cast to Flames`,
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '22004',
+    scaling: (base, r) => {
+      base[Stats.P_ATK].push({
+        name: 'Passive',
+        source: `The Great Cosmic Enterprise`,
+        value: calcRefinement(0.08, 0.02, r),
+      })
+      base.CALLBACK.push(function (x, d, w) {
+        x[Stats.ALL_DMG].push({
+          name: 'Passive',
+          source: `The Great Cosmic Enterprise`,
+          value: calcRefinement(0.04, 0.01, r) * _.size(w),
+        })
+        return x
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

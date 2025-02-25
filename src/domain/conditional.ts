@@ -48,10 +48,11 @@ export interface IScaling {
   bonusSplit?: number[] // Used by DHIL
   cdSplit?: number[] // Used by DHIL
   summon?: boolean
+  useOwnerStats?: boolean //Used Owner's Stats (Dead Dragon)
 }
 
 export interface IContent {
-  type?: 'toggle' | 'number' | 'element'
+  type?: 'toggle' | 'number' | 'element' | 'multiple'
   trace?: string
   id: string
   text: string

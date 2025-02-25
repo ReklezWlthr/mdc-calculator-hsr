@@ -291,6 +291,7 @@ export const StatsModal = observer(
               <AttributeBlock stats={stats} stat="Weakness Break Efficiency" array={stats.BREAK_EFF} />
               <AttributeBlock stats={stats} stat="Shield Bonus" array={stats.SHIELD} />
               <AttributeBlock stats={stats} stat="DMG Reduction" array={stats.DMG_REDUCTION} />
+              <AttributeBlock stats={stats} stat="Incoming Healing" array={stats.I_HEAL} />
               <div className="space-y-1">
                 <p className="font-bold text-white">
                   eHP{' '}

@@ -195,7 +195,7 @@ export const Calculator = observer(({}: {}) => {
                           {mainComputed?.SUPER_BREAK && (
                             <div className="pt-2 space-y-0.5">
                               {_.map(
-                                _.filter(mainComputed?.SKILL_SCALING, (item) => !!item.break),
+                                _.filter(mainComputed?.MEMO_SKILL_SCALING, (item) => !!item.break),
                                 (item) => (
                                   <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.SERVANT} />
                                 )

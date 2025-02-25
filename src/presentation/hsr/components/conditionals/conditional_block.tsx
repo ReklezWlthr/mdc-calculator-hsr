@@ -8,6 +8,7 @@ import { IContent } from '@src/domain/conditional'
 import { Element, ITeamChar, Stats, TalentProperty } from '@src/domain/constant'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
+import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import classNames from 'classnames'
@@ -224,6 +225,21 @@ export const ConditionalBlock = observer(
                           }
                           placeholder="None"
                           small
+                        />
+                      </div>
+                    )}
+                    {content.type === 'multiple' && (
+                      <div className="flex items-center justify-center col-span-3">
+                        <TagSelectInput
+                          values={form?.[content.id]}
+                          options={content.options || []}
+                          onChange={(value) =>
+                            set(content.index, content.id, value, selected === content.index && memo, content.sync)
+                          }
+                          placeholder="None"
+                          small
+                          onlyShowCount
+                          panelStyle="w-[120px] right-0"
                         />
                       </div>
                     )}

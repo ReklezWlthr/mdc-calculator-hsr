@@ -66,6 +66,7 @@ export const damageStringConstruct = (
   const isServant = scaling.property === TalentProperty.SERVANT
   const isSplit = !!_.size(scaling.hitSplit)
 
+  const ownerStats = _.cloneDeep(stats)
   if (isServant) stats = _.cloneDeep(stats.SUMMON_STATS)
 
   const {
@@ -123,7 +124,7 @@ export const damageStringConstruct = (
   const statForScale = {
     [Stats.ATK]: stats.getAtk(),
     [Stats.DEF]: stats.getDef(),
-    [Stats.HP]: stats.getHP(),
+    [Stats.HP]: isServant && scaling.useOwnerStats ? ownerStats.getHP() : stats.getHP(),
     [Stats.EHP]: calculatorStore.hp,
   }
 

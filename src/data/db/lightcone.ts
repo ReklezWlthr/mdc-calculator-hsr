@@ -1316,6 +1316,24 @@ export const LightCones = [
       ],
     },
   },
+  {
+    id: '22004',
+    name: `The Great Cosmic Enterprise`,
+    rarity: 4,
+    baseHp: 43.2,
+    baseAtk: 21.6,
+    baseDef: 15,
+    type: PathType.ERUDITION,
+    beta: true,
+    desc: {
+      name: 'N/A',
+      detail: `Increases the wearer's ATK by {{0}}%. For every different Weakness Type an enemy target has, increases the DMG wearers deal by {{1}}%, up to a max of <span class="text-desc">7</span> Weakness Types.`,
+      properties: [
+        { base: 8, growth: 2 },
+        { base: 4, growth: 1 },
+      ],
+    },
+  },
   //---------------------
   //   5 Star
   //---------------------
@@ -2056,6 +2074,45 @@ export const LightCones = [
         { base: 20, growth: 5 },
         { base: 6, growth: 0.5 },
         { base: 30, growth: 5 },
+      ],
+    },
+  },
+  {
+    id: '23040',
+    name: 'Make Farewells More Beautiful',
+    rarity: 5,
+    baseHp: 57.6,
+    baseAtk: 24,
+    baseDef: 18,
+    type: PathType.REMEMBRANCE,
+    beta: true,
+    desc: {
+      name: 'Engrave',
+      detail: `Increases the wearer's Max HP by {{0}}%. When the wearer or their memosprite loses HP during their own turn, the wearer gains <b>Death Flower</b>, which allows the wearer and their memosprite to ignore {{2}}% of the target's DEF when dealing DMG, lasting for <span class="text-desc">2</span> turn(s).
+      <br />When the wearer's memosprite disappears, <u>advances</u> the wearer's <u>action</u> by {{2}}%. This effect can only trigger up to <span class="text-desc">1</span> time, and the trigger count resets every time the wearer uses Ultimate.`,
+      properties: [
+        { base: 30, growth: 7.5 },
+        { base: 24, growth: 1.5 },
+        { base: 12, growth: 3 },
+      ],
+    },
+  },
+  {
+    id: '23041',
+    name: 'Life Should Be Cast to Flames',
+    rarity: 5,
+    baseHp: 43.2,
+    baseAtk: 26.4,
+    baseDef: 24,
+    type: PathType.ERUDITION,
+    beta: true,
+    desc: {
+      name: 'Smelt',
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. Wearer regenerates <span class="text-desc">10</span> Energy at the start of the turn.
+      <br />When the wearer actively uses an ability, reduces the DEF of enemy targets who get debuffed during the ability period by {{1}}% for <span class="text-desc">2</span> turn(s), up to a max of <span class="text-desc">2</span> stack(s).`,
+      properties: [
+        { base: 18, growth: 3 },
+        { base: 6, growth: 1 },
       ],
     },
   },

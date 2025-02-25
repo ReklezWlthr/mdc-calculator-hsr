@@ -93,6 +93,9 @@ export const CharDetail = observer(() => {
     'Memosprite Skill [1]': 'Servant01',
     'Memosprite Skill [2]': 'Servant02',
     'Memosprite Talent': 'ServantPassive',
+    'Memosprite Talent [1]': 'ServantPassive',
+    'Memosprite Talent [2]': 'ServantPassive',
+    'Memosprite Talent [3]': 'ServantPassive',
   }
 
   const consImage = {

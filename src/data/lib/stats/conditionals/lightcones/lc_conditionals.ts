@@ -1245,6 +1245,31 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `Death Flower`,
+    show: true,
+    default: true,
+    id: '23040',
+    excludeSummon: true,
+    scaling: (base, form, r) => {
+      if (form['23040']) {
+        base.DEF_PEN.push({
+          name: 'Death Flower',
+          source: 'Make Farewells More Beautiful',
+          value: calcRefinement(0.24, 0.015, r),
+        })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS.DEF_PEN.push({
+            name: 'Death Flower',
+            source: 'Make Farewells More Beautiful',
+            value: calcRefinement(0.24, 0.015, r),
+          })
+        }
+      }
+      return base
+    },
+  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [
@@ -1857,6 +1882,28 @@ export const LCTeamConditionals: IWeaponContent[] = [
             value: calcRefinement(0.08, 0.02, r),
           })
         }
+      }
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `DEF Shred Stacks`,
+    show: true,
+    default: 1,
+    min: 0,
+    max: 2,
+    duration: 2,
+    debuff: true,
+    id: '23041',
+    scaling: (base, form, r, { debuffs, own }) => {
+      if (form['23041']) {
+        base.DEF_REDUCTION.push({
+          name: `Passive`,
+          source: 'Life Should Be Cast to Flames',
+          value: calcRefinement(0.06, 0.01, r) * form['23041'],
+        })
+        if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.DEF_RED)
       }
       return base
     },
