@@ -198,6 +198,15 @@ export const baseStatsObject: BaseStatsType = {
   getSpd: function () {
     return this.BASE_SPD * (1 + _.sumBy(this[Stats.P_SPD], 'value')) + _.sumBy(this[Stats.SPD], 'value')
   },
+  getOFCSpd: function () {
+    const flat = _.filter(this[Stats.SPD], (item) =>
+      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat'], item.name)
+    )
+    const percentage = _.filter(this[Stats.P_SPD], (item) =>
+      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat'], item.name)
+    )
+    return this.BASE_SPD * (1 + _.sumBy(percentage, 'value')) + _.sumBy(flat, 'value')
+  },
   getValue: function (key: string, exclude?: StatsArray[]) {
     return _.sumBy(
       _.size(exclude)

@@ -545,17 +545,17 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [{ stat: Stats.P_SPD, value: -0.08 }],
     add: (base) => {
       base.CALLBACK.push(function P999(x) {
-        if (x.getSpd() < 110) {
+        if (x.getOFCSpd() < 110) {
           base[Stats.CRIT_RATE].push({
             name: '4-Piece',
             source: `Poet of Mourning Collapse`,
-            value: x.getSpd() < 95 ? 0.32 : 0.2,
+            value: x.getOFCSpd() < 95 ? 0.32 : 0.2,
           })
           if (base.SUMMON_STATS) {
             base.SUMMON_STATS[Stats.CRIT_RATE].push({
               name: '4-Piece',
               source: `Poet of Mourning Collapse`,
-              value: x.getSpd() < 95 ? 0.32 : 0.2,
+              value: x.getOFCSpd() < 95 ? 0.32 : 0.2,
             })
           }
         }

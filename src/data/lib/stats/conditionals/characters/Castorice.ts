@@ -248,7 +248,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       default: true,
     },
     {
-      type: 'number',
+      type: 'toggle',
       id: 'castorice_c2',
       text: `E2 Enhanced Skill DMG Bonus`,
       ...talents.c2,
@@ -288,6 +288,8 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         SUMMON_ID: '1407',
         NAME: 'Dead Dragon: Pollux',
         MAX_ENERGY: 0,
+        [Stats.HP]: [],
+        [Stats.P_HP]: [],
       })
 
       if (form.dead_dragon) base.SKILL_ALT = true
