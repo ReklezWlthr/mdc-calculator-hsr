@@ -2046,7 +2046,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 18,
     type: PathType.HARMONY,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Aspiration',
       detail: `Increases the wearer's CRIT DMG by {{0}}%. After the wearer launches a Follow-up ATK, additionally regenerates <span class="text-desc">9</span> Energy and gains <b>Presage</b>, lasting for <span class="text-desc">2</span> turn(s). While the wearer has <b>Presage</b>, all ally targets' CRIT DMG increases by {{1}}%. When entering battle, the wearer regenerates <span class="text-desc">21</span> Energy and gains <b>Presage</b>, lasting for <span class="text-desc">2</span> turn(s).`,
@@ -2220,7 +2220,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 18,
     type: PathType.REMEMBRANCE,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Reception',
       detail: `Increases the wearer's SPD by {{0}}%. After the wearer uses Skill, increases the DMG dealt by all allies by {{1}}%, lasting for <span class="text-desc">3</span> turn(s).`,

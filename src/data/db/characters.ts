@@ -1012,22 +1012,6 @@ export const Characters = [
     beta: true,
   },
   {
-    id: '1407',
-    name: 'Castorice',
-    stat: {
-      baseAtk: 71.28,
-      baseHp: 221.76,
-      baseDef: 66,
-      baseSpd: 95,
-      energy: 0,
-    },
-    trace: [Stats.CRIT_RATE, Stats.CRIT_DMG, Stats.QUANTUM_DMG],
-    rarity: 5,
-    path: PathType.REMEMBRANCE,
-    element: Element.QUANTUM,
-    beta: true,
-  },
-  {
     id: '1405',
     name: 'Anaxa',
     stat: {
@@ -1041,6 +1025,22 @@ export const Characters = [
     rarity: 5,
     path: PathType.ERUDITION,
     element: Element.WIND,
+    beta: true,
+  },
+  {
+    id: '1407',
+    name: 'Castorice',
+    stat: {
+      baseAtk: 71.28,
+      baseHp: 221.76,
+      baseDef: 66,
+      baseSpd: 95,
+      energy: 0,
+    },
+    trace: [Stats.CRIT_RATE, Stats.CRIT_DMG, Stats.QUANTUM_DMG],
+    rarity: 5,
+    path: PathType.REMEMBRANCE,
+    element: Element.QUANTUM,
     beta: true,
   },
   // Odd = Male, Even = Female
