@@ -143,11 +143,12 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     {
       type: 'toggle',
       id: 'tribbie_ult',
-      text: `Ultimate Zone`,
+      text: `Guess Who Lives Here`,
       ...talents.ult,
       show: true,
       default: true,
       duration: 3,
+      unique: true,
     },
     {
       type: 'number',
@@ -213,14 +214,6 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           break: 20,
           sum: true,
         },
-        {
-          name: 'Additional DMG per Enemy',
-          value: [{ scaling: calcScaling(0.06, 0.006, ult, 'curved'), multiplier: Stats.HP }],
-          element: Element.QUANTUM,
-          property: TalentProperty.ADD,
-          type: TalentType.NONE,
-          multiplier: c >= 2 ? 1.2 : 1,
-        },
       ]
       base.TALENT_SCALING = [
         {
@@ -231,6 +224,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.TALENT,
           break: 5,
           bonus: c >= 6 ? 7.29 : 0,
+          sum: true,
         },
       ]
 
@@ -321,23 +315,42 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             multiplier: 0.09,
           })
         }
-        if (form.tribbie_ult && c >= 1) {
+        if (form.tribbie_ult) {
           _.forEach(all, (t) =>
             _.forEach([t.BASIC_SCALING, t.SKILL_SCALING, t.ULT_SCALING, t.TALENT_SCALING], (s) => {
-              _.forEach(s, (ss) => {
-                if (!_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property)) {
-                  s.push({
-                    name: `${ss.name} - Tribbie`,
-                    value: ss.value,
-                    multiplier: (ss.multiplier || 1) * 0.24,
-                    element: ss.element,
-                    property: TalentProperty.TRUE,
-                    type: ss.type,
-                    sum: ss.sum,
-                    break: ss.break * 0.24,
-                  })
-                }
-              })
+              if (
+                _.some(
+                  s,
+                  (ss) => !_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property)
+                )
+              ) {
+                s.push({
+                  name: 'Additional DMG per Enemy',
+                  value: [{ scaling: calcScaling(0.06, 0.006, ult, 'curved'), multiplier: Stats.HP }],
+                  element: Element.QUANTUM,
+                  property: TalentProperty.ADD,
+                  type: TalentType.NONE,
+                  multiplier: c >= 2 ? 1.2 : 1,
+                  overrideIndex: index,
+                  sum: true,
+                })
+              }
+              if (c >= 1) {
+                _.forEach(s, (ss) => {
+                  if (!_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property)) {
+                    s.push({
+                      name: `${ss.name} - Tribbie`,
+                      value: ss.value,
+                      multiplier: (ss.multiplier || 1) * 0.24,
+                      element: ss.element,
+                      property: TalentProperty.TRUE,
+                      type: ss.type,
+                      sum: ss.sum,
+                      break: ss.break * 0.24,
+                    })
+                  }
+                })
+              }
             })
           )
         }

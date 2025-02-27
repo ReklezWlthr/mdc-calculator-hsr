@@ -1,5 +1,12 @@
 [
   {
+    "version": "1.1.1-8",
+    "date": "February 27th, 2025",
+    "desc": [
+      "Updated: Appends <span class=\"text-hsr-quantum\">Tribbie</span>'s Additional DMG to affected allies instead"
+    ]
+  },
+  {
     "version": "1.1.1-7",
     "date": "February 25th, 2025",
     "desc": [

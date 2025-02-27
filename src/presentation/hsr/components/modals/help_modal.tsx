@@ -33,6 +33,10 @@ export const HelpModal = observer(() => {
           again after the <b className="text-violet-300">Exo-Toughness</b> is depleted. Damage from this additional
           Weakness Break will consider the target's real Toughness strength.
         </BulletPoint>
+        <BulletPoint>
+          <b>Joint Attacks</b> - A type of attack where multiple units act consecutively in a specific order during a
+          single action. Each attacker can trigger their own on-hit or on-attack effects (e.g. Robin's Additional DMG).
+        </BulletPoint>
         <p>
           <b className="text-desc">Damage Properties</b>:
         </p>
@@ -70,6 +74,10 @@ export const HelpModal = observer(() => {
         <BulletPoint>
           <b>Super Break DMG</b> - A sub-type of Break DMG dealt by certain abilities while the target is Weakness
           Broken. Scales with the attacker's Break Effect and the attack's Toughness DMG instead. Affected by Hit Split.
+        </BulletPoint>
+        <BulletPoint>
+          <b className="text-true">True DMG</b> - A Non-Type DMG which is not affected by any effects. Not considered a
+          hit nor an attack.
         </BulletPoint>
       </Collapsible>
       <Collapsible label="Team Setup">
