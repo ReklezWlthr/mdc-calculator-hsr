@@ -904,7 +904,7 @@ export const Characters = [
     name: 'Jade',
     stat: {
       baseAtk: 89.76,
-      baseHp: 148,
+      baseHp: 147.84,
       baseDef: 69.3,
       baseSpd: 103,
       energy: 140,
