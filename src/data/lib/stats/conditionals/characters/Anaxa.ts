@@ -64,7 +64,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Talent',
       title: 'Tetrad Wisdom, Trinity Supreme',
       content: `Each time Anaxa attacks enemy targets <span class="text-desc">1</span> time, inflicts <span class="text-desc">1</span> random Type Weakness to the targets, lasting for <span class="text-desc">3</span> turn(s) with priority to the Weakness Type that the target has yet to have.
-      <br />When Anaxa is on the battlefield, he inflicts the <b class="text-red">Exposed Nature</b> state to enemy targets with at least <span class="text-desc">5</span> different Type Weaknesses. Anaxa deals {{0}}% more DMG to targets in <b class="text-red">Exposed Nature</b> state. In addition, using a Basic ATK or Skill on targets in <b class="text-red">Exposed Nature</b> state allows him to use another <span class="text-desc">1</span> instance of his Skill. This additional Skill does not consume any Skill Point and cannot trigger this effect again. If the target has been defeated before this additional Skill is used, it will be dealt to a random enemy unit.`,
+      <br />When Anaxa is on the battlefield, he inflicts the <b class="text-red">Qualitative Disclosure</b> state to enemy targets with at least <span class="text-desc">5</span> different Type Weaknesses. Anaxa deals {{0}}% more DMG to targets in <b class="text-red">Qualitative Disclosure</b> state. In addition, using a Basic ATK or Skill on targets in <b class="text-red">Qualitative Disclosure</b> state allows him to use another <span class="text-desc">1</span> instance of his Skill. This additional Skill does not consume any Skill Point and cannot trigger this effect again. If the target has been defeated before this additional Skill is used, it will be dealt to a random enemy unit.`,
       value: [{ base: 36, growth: 2.4, style: 'curved' }],
       level: talent,
       tag: AbilityTag.IMPAIR,
@@ -79,14 +79,14 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Ascension 2 Passive',
       title: 'The Wandering Signifier',
       content: `When using Basic ATK, additionally regenerates <span class="text-desc">10</span> Energy.
-      <br />At the start of the turn, if there are no enemy targets in <b class="text-red">Exposed Nature</b> state, immediately regenerates <span class="text-desc">30</span> Energy.`,
+      <br />At the start of the turn, if there are no enemy targets in <b class="text-red">Qualitative Disclosure</b> state, immediately regenerates <span class="text-desc">30</span> Energy.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'The Necessary Blankness',
-      content: `Based on the number of characters on the path of Erudition in the team, triggers the corresponding effects in the current battle:
+      content: `Based on the number of characters on the Path of Erudition in the team, triggers the corresponding effects in the current battle:
       <br /><span class="text-desc">1</span>: Increases Anaxa's CRIT DMG by <span class="text-desc">140%</span>.
-      <br /><span class="text-desc">2</span> and more: Increases DMG dealt by all allies by <span class="text-desc">30%</span>.`,
+      <br /><span class="text-desc">2</span> or more: Increases DMG dealt by all allies by <span class="text-desc">30%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -297,12 +297,12 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       addDebuff(debuffs, DebuffTypes.OTHER)
       if (_.size(weakness) >= 5) {
         base[Stats.ALL_DMG].push({
-          name: `Exposed Nature`,
+          name: `Qualitative Disclosure`,
           source: 'Self',
           value: calcScaling(0.36, 0.024, talent, 'curved'),
         })
         base.ADD_DEBUFF.push({
-          name: 'Exposed Nature',
+          name: 'Qualitative Disclosure',
           source: 'Self',
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
@@ -400,7 +400,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       }
       if (_.size(weakness) >= 5) {
         base.ADD_DEBUFF.push({
-          name: 'Exposed Nature',
+          name: 'Qualitative Disclosure',
           source: 'Anaxa',
         })
       }
