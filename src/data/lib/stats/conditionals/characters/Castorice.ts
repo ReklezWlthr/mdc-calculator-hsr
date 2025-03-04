@@ -35,7 +35,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
   const talents: ITalent = {
     normal: {
       trace: 'Basic ATK',
-      title: `Lament Is the Dead Sea's Ripple`,
+      title: `Lament, Deadsea's Ripple`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Castorice's Max HP to one designated enemy.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
@@ -68,8 +68,8 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     summon_skill: {
       trace: 'Memosprite Skill',
-      title: 'Rend The Realm Beneath / Breath Scorches the Shadow',
-      content: `<b>Rend The Realm Beneath</b>
+      title: 'Claw Splits the Veil / Breath Scorches the Shadow',
+      content: `<b>Claw Splits the Veil</b>
       <br />Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Castorice's Max HP to all enemies.
       <br />
       <br /><b>Breath Scorches the Shadow</b>
@@ -95,7 +95,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     talent: {
       trace: 'Talent',
-      title: `Desolation That Traverses Her Palms`,
+      title: `Desolation Across Palms`,
       content: `<b class="text-indigo-400">Newbud</b>'s maximum is equal to <span class="text-desc">100</span> times the sum of all characters' levels on the battlefield. For each point of HP lost by all allies, Castorice gains <span class="text-desc">1</span> point of <b class="text-indigo-400">Newbud</b>. Increases Castorice's and <b>Deathwing</b>'s DMG dealt by {{0}}%. This effect can stack up to <span class="text-desc">3</span> times, lasting for <span class="text-desc">3</span> turn(s). When <b class="text-indigo-400">Newbud</b> reaches its maximum, Castorice's Ultimate can be used.
       <br />When <b>Deathwing</b> is on the field, <b class="text-indigo-400">Newbud</b> cannot be gained, and for each point of HP lost by all allies (except <b>Deathwing</b>), <b>Deathwing</b> recovers equal amount of HP.`,
       value: [{ base: 10, growth: 1, style: 'curved' }],
@@ -136,14 +136,14 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     technique: {
       trace: 'Technique',
-      title: 'Wail, the Prelude to Demise',
+      title: `Wail, Death's Herald`,
       content: `After using Technique, enters the <b>Netherveil</b> state that lasts for <span class="text-desc">20</span> seconds. While <b>Netherveil</b> is active, enemies are unable to approach Castorice on their own.
       <br />While in the <b>Netherveil</b> state, attacking will cause all enemies within range to enter combat. At the same time, summons the memosprite <b>Deathwing</b>. <b>Deathwing</b> starts with current HP equal to <span class="text-desc">50%</span> of max <b class="text-indigo-400">Newbud</b>. After entering battle, consumes <span class="text-desc">40%</span> of all allies' current HP and <u>advances</u> <b>Deathwing</b>'s <u>action</u> by <span class="text-desc">100%</span>.
       <br />After entering battle and before summoning <b>Deathwing</b>, Castorice gains <b class="text-indigo-400">Newbud</b> equal to <span class="text-desc">30%</span> of maximum <b class="text-indigo-400">Newbud</b>.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
-      title: `Dark Tide Contained`,
+      title: `Contained Dark Tide`,
       content: `While Castorice or <b>Deathwing</b>'s respective HP is at <span class="text-desc">50%</span> or higher, increases their respective SPD by <span class="text-desc">40%</span>.`,
     },
     a4: {
@@ -158,34 +158,34 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     c1: {
       trace: 'Eidolon 1',
-      title: `Snowland's Holy Maiden Entombs With Memories`,
+      title: `Snowbound Maiden, Memory to Tomb`,
       content: `Each time the <b>Deathwing</b> uses <b>Breath Scorches the Shadow</b>, increases its DMG dealt by <span class="text-desc">30%</span>. This effect stacks up to <span class="text-desc">6</span> and lasts until the end of this turn.`,
     },
     c2: {
       trace: 'Eidolon 2',
-      title: `And Crowns with Flowers Aflutter`,
+      title: `Crown on Wings of Bloom`,
       content: `After summoning memosprite <b>Deathwing</b>, Castorice gains <span class="text-desc">2</span> stack(s) of <b class="text-desc">Ardent Will</b>. A maximum of <span class="text-desc">2</span> stacks of <b class="text-desc">Ardent Will</b> can be possessed at any given time, and can be used to offset Deathwing's HP consumption while <u>advancing</u> Castorice's <u>action</u> by <span class="text-desc">100%</span>. The next Enhanced Skill deals <span class="text-desc">100%</span> more DMG.`,
     },
     c3: {
       trace: 'Eidolon 3',
-      title: `Devote Pilgrim Dances in the Deathrealm`,
+      title: `Pious Pilgrim, Dance in Doom`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
       trace: 'Eidolon 4',
-      title: 'And Sleeps in Elegies Embetter',
+      title: 'Rest in Songs of Gloom',
       content: `While Castorice is on the battlefield, all allies' Incoming Healing increases by <span class="text-desc">20%</span> when having their HP restored.`,
     },
     c5: {
       trace: 'Eidolon 5',
-      title: `Pristine Chapter Prettifies with Prophecies`,
+      title: `Pristine Pages, Prophecy as Plume`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
       trace: 'Eidolon 6',
-      title: 'And Waits for Time to Un-Coccon, Unfetters',
+      title: 'Await for Years to Loom',
       content: `When Castorice and <b>Deathwing</b> deals DMG, increases <b class="text-hsr-quantum">Quantum RES PEN</b> by <span class="text-desc">20%</span>, and <b>Deathwing</b> will not disappear on its own after taking an action.`,
     },
   }
