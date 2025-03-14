@@ -202,10 +202,7 @@ export const damageStringConstruct = (
     (item) =>
       `<span class="inline-flex items-center h-4">(<b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${
         StatIcons[item.multiplier]
-      }" />${_.floor(
-        (item.override || statForScale[item.multiplier]) +
-          (item.multiplier === Stats.HP ? stats.getValue(StatsObjectKeys.X_HP) : 0)
-      ).toLocaleString()}</b>${
+      }" />${_.floor(item.override || statForScale[item.multiplier]).toLocaleString()}</b>${
         item.multiplier === Stats.EHP ? `<i class="text-[10px] ml-1">Enemy HP</i>` : ''
       }<span class="mx-1"> \u{00d7} </span><b>${toPercentage(item.scaling, 2, true)}</b>)</span>`
   )

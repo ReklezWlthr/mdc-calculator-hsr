@@ -322,9 +322,9 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       return base
     },
     postCompute: (
-      base: StatsObject,
+      x: StatsObject,
       form: Record<string, any>,
-      all: StatsObject[],
+      _all: StatsObject[],
       allForm: Record<string, any>[],
       debuffs: {
         type: DebuffTypes
@@ -333,101 +333,106 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       weakness: Element[],
       broken: boolean
     ) => {
-      const index = _.findIndex(team, (item) => item.cId === '8007')
+      x.CALLBACK.push(function P99(base, b, w, all) {
+        const index = _.findIndex(team, (item) => item.cId === '8007')
 
-      _.forEach(all, (y, i) => {
-        const multiplier = calcScaling(0.06, 0.012, memo_talent, 'linear')
-        y?.X_CRIT_DMG.push({
-          name: `Memosprite Talent`,
-          source: i === index && all[i].SUMMON_ID ? 'Self' : 'Mem',
-          value: calcScaling(0.12, 0.024, memo_talent, 'linear') + multiplier * base.getValue(Stats.CRIT_DMG),
-          multiplier,
-          base: toPercentage(base.getValue(Stats.CRIT_DMG)),
-          flat: toPercentage(calcScaling(0.12, 0.024, memo_talent, 'linear')),
-        })
-      })
-
-      _.forEach(allForm, (f, i) => {
-        const multiplier = calcScaling(0.18, 0.02, memo_skill, 'linear')
-
-        const memomaster = f.mem_support || (c >= 1 && all[i]?.SUMMON_STATS && f.memo?.mem_support)
-        const memosprite = (all[i]?.SUMMON_STATS && f.memo?.mem_support) || (f.mem_support && c >= 1)
-
-        if ((memomaster || memosprite) && c >= 1) {
-          const exist = checkBuffExist(all[i]?.[Stats.CRIT_RATE], {
-            name: `Eidolon 1`,
+        _.forEach(all, (y, i) => {
+          const multiplier = calcScaling(0.06, 0.012, memo_talent, 'linear')
+          y?.X_CRIT_DMG.push({
+            name: `Memosprite Talent`,
             source: i === index && all[i].SUMMON_ID ? 'Self' : 'Mem',
+            value: calcScaling(0.12, 0.024, memo_talent, 'linear') + multiplier * base.getValue(Stats.CRIT_DMG),
+            multiplier,
+            base: toPercentage(base.getValue(Stats.CRIT_DMG)),
+            flat: toPercentage(calcScaling(0.12, 0.024, memo_talent, 'linear')),
           })
-          if (!exist) {
-            all[i]?.[Stats.CRIT_RATE].push({
+        })
+
+        _.forEach(allForm, (f, i) => {
+          const multiplier = calcScaling(0.18, 0.02, memo_skill, 'linear')
+
+          const memomaster = f.mem_support || (c >= 1 && all[i]?.SUMMON_STATS && f.memo?.mem_support)
+          const memosprite = (all[i]?.SUMMON_STATS && f.memo?.mem_support) || (f.mem_support && c >= 1)
+
+          if ((memomaster || memosprite) && c >= 1) {
+            const exist = checkBuffExist(all[i]?.[Stats.CRIT_RATE], {
               name: `Eidolon 1`,
               source: i === index && all[i].SUMMON_ID ? 'Self' : 'Mem',
-              value: 0.1,
             })
-            if (all[i]?.SUMMON_STATS) {
-              all[i]?.SUMMON_STATS?.[Stats.CRIT_RATE].push({
+            if (!exist) {
+              all[i]?.[Stats.CRIT_RATE].push({
                 name: `Eidolon 1`,
                 source: i === index && all[i].SUMMON_ID ? 'Self' : 'Mem',
                 value: 0.1,
               })
-            }
-          }
-        }
-
-        if (memomaster) {
-          const m =
-            multiplier +
-            (a.a6 && all[i]?.MAX_ENERGY > 100 ? _.min([_.max([all[i]?.MAX_ENERGY - 100, 0]) * 0.002, 0.2]) : 0) +
-            (c >= 4 && all[i]?.MAX_ENERGY === 0 ? 0.06 : 0)
-          _.forEach([all[i].BASIC_SCALING, all[i].SKILL_SCALING, all[i].ULT_SCALING, all[i].TALENT_SCALING], (s) => {
-            _.forEach(s, (ss) => {
-              if (!_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property)) {
-                s.push({
-                  name: `${ss.name} - Mem's Support`,
-                  value: ss.value,
-                  multiplier: (ss.multiplier || 1) * m,
-                  element: ss.element,
-                  property: TalentProperty.TRUE,
-                  type: ss.type,
-                  sum: ss.sum,
-                  break: ss.break * m,
+              if (all[i]?.SUMMON_STATS) {
+                all[i]?.SUMMON_STATS?.[Stats.CRIT_RATE].push({
+                  name: `Eidolon 1`,
+                  source: i === index && all[i].SUMMON_ID ? 'Self' : 'Mem',
+                  value: 0.1,
                 })
               }
-            })
-          })
-        }
-        if (memosprite) {
-          const m = multiplier + (c >= 4 && all[i]?.SUMMON_STATS?.MAX_ENERGY === 0 ? 0.06 : 0)
+            }
+          }
 
-          _.forEach(
-            [
-              all[i].BASIC_SCALING,
-              all[i].SKILL_SCALING,
-              all[i].ULT_SCALING,
-              all[i].TALENT_SCALING,
-              all[i].MEMO_SKILL_SCALING,
-            ],
-            (s) => {
-              _.forEach(s, (ss) => {
-                if (_.includes([TalentProperty.SERVANT], ss.property)) {
-                  s.push({
-                    name: `${ss.name} - Mem's Support`,
-                    value: ss.value,
-                    multiplier: (ss.multiplier || 1) * m,
-                    element: ss.element,
-                    property: TalentProperty.TRUE,
-                    type: ss.type,
-                    sum: ss.sum,
-                    break: ss.break * m,
+          if (memomaster) {
+            const m =
+              multiplier +
+              (a.a6 && all[i]?.MAX_ENERGY > 100 ? _.min([_.max([all[i]?.MAX_ENERGY - 100, 0]) * 0.002, 0.2]) : 0) +
+              (c >= 4 && all[i]?.MAX_ENERGY === 0 ? 0.06 : 0)
+            _.forEach(all, (a, j) => {
+              _.forEach([a.BASIC_SCALING, a.SKILL_SCALING, a.ULT_SCALING, a.TALENT_SCALING], (s) => {
+                _.forEach(s, (ss) => {
+                  if (
+                    !_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property) &&
+                    (ss.overrideIndex === i || i === j)
+                  ) {
+                    s.push({
+                      name: `${ss.name} - Mem's Support`,
+                      value: ss.value,
+                      multiplier: (ss.multiplier || 1) * m,
+                      element: ss.element,
+                      property: TalentProperty.TRUE,
+                      type: ss.type,
+                      sum: ss.sum,
+                      break: ss.break * m,
+                    })
+                  }
+                })
+              })
+            })
+          }
+          if (memosprite) {
+            const m = multiplier + (c >= 4 && all[i]?.SUMMON_STATS?.MAX_ENERGY === 0 ? 0.06 : 0)
+
+            _.forEach(all, (a, j) => {
+              _.forEach(
+                [a.BASIC_SCALING, a.SKILL_SCALING, a.ULT_SCALING, a.TALENT_SCALING, a.MEMO_SKILL_SCALING],
+                (s) => {
+                  _.forEach(s, (ss) => {
+                    if (_.includes([TalentProperty.SERVANT], ss.property) && (ss.overrideIndex === i || i === j)) {
+                      s.push({
+                        name: `${ss.name} - Mem's Support`,
+                        value: ss.value,
+                        multiplier: (ss.multiplier || 1) * m,
+                        element: ss.element,
+                        property: TalentProperty.TRUE,
+                        type: ss.type,
+                        sum: ss.sum,
+                        break: ss.break * m,
+                      })
+                    }
                   })
                 }
-              })
-            }
-          )
-        }
+              )
+            })
+          }
+        })
+
+        return base
       })
 
-      return base
+      return x
     },
   }
 }

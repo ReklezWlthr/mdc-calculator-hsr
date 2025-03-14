@@ -187,9 +187,7 @@ export const baseStatsObject: BaseStatsType = {
   },
   getHP: function (exclude?: boolean) {
     return (
-      this.BASE_HP * (1 + _.sumBy(this[Stats.P_HP], 'value')) +
-      _.sumBy(this[Stats.HP], 'value') +
-      (exclude ? 0 : this.getValue('X_HP'))
+      this.BASE_HP * (1 + this.getValue(Stats.P_HP)) + this.getValue(Stats.HP) + (exclude ? 0 : this.getValue('X_HP'))
     )
   },
   getDef: function () {
