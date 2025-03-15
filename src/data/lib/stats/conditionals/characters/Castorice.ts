@@ -60,8 +60,8 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       content: `Consumes <span class="text-desc">50%</span> of all allies' (except <b>Deathwing</b>) current HP. Castorice and <b>Deathwing</b> launch a <u>Joint ATK</u> on the target and deal <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% and {{1}}% of Castorice's Max HP.
       <br />If current HP is insufficient, this ability will reduce HP to <span class="text-desc">1</span>.`,
       value: [
-        { base: 12, growth: 1.2, style: 'linear' },
-        { base: 21, growth: 2.1, style: 'linear' },
+        { base: 12, growth: 1.2, style: 'curved' },
+        { base: 21, growth: 2.1, style: 'curved' },
       ],
       level: basic,
       tag: AbilityTag.AOE,

@@ -175,25 +175,6 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       show: true,
       default: false,
     },
-    {
-      type: 'toggle',
-      id: 'aglaea_a6',
-      text: `A6 Garmentmaker DMG Bonus`,
-      ...talents.a6,
-      show: a.a6,
-      default: true,
-      duration: 5,
-    },
-    {
-      type: 'number',
-      id: 'aglaea_c1',
-      text: `E1 DEF PEN`,
-      ...talents.c1,
-      show: c >= 1,
-      default: 2,
-      min: 0,
-      max: 2,
-    },
   ]
 
   const teammateContent: IContent[] = []

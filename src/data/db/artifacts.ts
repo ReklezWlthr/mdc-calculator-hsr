@@ -975,11 +975,11 @@ export const PlanarSets: IArtifact[] = [
     ],
     half: (base) => {
       base.CALLBACK.push((x) => {
-        if (x.getValue(Stats.SPD) >= 130) {
+        if (x.getSpd() >= 130) {
           x[Stats.HEAL].push({
             name: '2-Piece',
             source: 'Giant Tree of Rapt Brooding',
-            value: x.getValue(Stats.SPD) >= 180 ? 0.2 : 0.12,
+            value: x.getSpd() >= 180 ? 0.2 : 0.12,
           })
         }
         return x
