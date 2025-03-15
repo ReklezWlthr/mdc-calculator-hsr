@@ -319,14 +319,19 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
 
         _.forEach(all, (y, i) => {
           const multiplier = calcScaling(0.06, 0.012, memo_talent, 'linear')
-          y?.X_CRIT_DMG.push({
+          const buff = {
             name: `Memosprite Talent`,
             source: i === index && all[i].SUMMON_ID ? 'Self' : 'Mem',
-            value: calcScaling(0.12, 0.024, memo_talent, 'linear') + multiplier * base.getValue(Stats.CRIT_DMG),
+            value:
+              calcScaling(0.12, 0.024, memo_talent, 'linear') + multiplier * base.SUMMON_STATS.getValue(Stats.CRIT_DMG),
             multiplier,
-            base: toPercentage(base.getValue(Stats.CRIT_DMG)),
+            base: toPercentage(base.SUMMON_STATS.getValue(Stats.CRIT_DMG)),
             flat: toPercentage(calcScaling(0.12, 0.024, memo_talent, 'linear')),
-          })
+          }
+          y?.X_CRIT_DMG.push(buff)
+          if (y?.SUMMON_STATS?.SUMMON_ID) {
+            y?.SUMMON_STATS?.X_CRIT_DMG.push(buff)
+          }
         })
 
         _.forEach(allForm, (f, i) => {

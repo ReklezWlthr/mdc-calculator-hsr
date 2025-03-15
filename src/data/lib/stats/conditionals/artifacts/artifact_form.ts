@@ -159,6 +159,7 @@ export const ArtifactForm = () => {
       show: true,
       default: true,
       id: '318',
+      excludeSummon: true,
     },
     {
       type: 'toggle',
@@ -177,6 +178,7 @@ export const ArtifactForm = () => {
       show: true,
       default: true,
       id: '123_1',
+      excludeSummon: true,
     },
     {
       type: 'toggle',
@@ -186,6 +188,7 @@ export const ArtifactForm = () => {
       show: true,
       default: true,
       id: '123_2',
+      excludeSummon: true,
     },
   ]
 

@@ -73,6 +73,7 @@ export interface IContent {
   sync?: boolean // Determine if this modifier should be synced when comparing builds
   debuffElement?: Element // Only used for chance
   showServant?: boolean
+  excludeSummon?: boolean
 }
 
 export interface IWeaponContent {

@@ -120,7 +120,7 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
     })
   if (form['318']) {
     const buff = _.find(base[Stats.CRIT_DMG], (item) => item.source === 'The Wondrous BananAmusement Park')
-    if (buff) buff.value += 0.28
+    if (buff && !base.SUMMON_ID) buff.value += 0.32
   }
   if (form['122'])
     base.SKILL_DMG.push({
@@ -148,6 +148,13 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       source: `Hero of Triumphant Song`,
       value: 0.3,
     })
+    if (base.SUMMON_STATS) {
+      base.SUMMON_STATS[Stats.CRIT_DMG].push({
+        name: `4-Piece`,
+        source: `Hero of Triumphant Song`,
+        value: 0.3,
+      })
+    }
   }
 
   return base

@@ -393,7 +393,7 @@ export const Calculator = observer(({}: {}) => {
               />
               <ConditionalBlock
                 title="Relic Modifiers"
-                contents={contents.artifact(selected)}
+                contents={_.filter(contents.artifact(selected), (item) => !item.excludeSummon)}
                 memo
                 selected={selected}
               />
