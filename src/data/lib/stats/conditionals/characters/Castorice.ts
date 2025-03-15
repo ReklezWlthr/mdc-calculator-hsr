@@ -232,12 +232,11 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     {
       type: 'toggle',
       id: 'castorice_memo_talent',
-      text: `Team DMG Decrease`,
+      text: `On-Summon DMG Bonus`,
       ...talents.summon_talent_3,
       show: true,
       default: false,
-      debuff: true,
-      duration: 2,
+      duration: 3,
     },
     {
       type: 'toggle',
@@ -443,7 +442,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         base[Stats.ALL_DMG].push({
           name: `Memosprite Talent`,
           source: 'Pollux',
-          value: -0.1,
+          value: 0.1,
         })
         base.SUMMON_STATS[Stats.ALL_DMG].push({
           name: `Memosprite Talent`,
@@ -532,7 +531,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         base[Stats.ALL_DMG].push({
           name: `Memosprite Talent`,
           source: 'Pollux',
-          value: -0.1,
+          value: 0.1,
         })
       }
       if (c >= 4) {
