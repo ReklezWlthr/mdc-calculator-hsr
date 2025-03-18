@@ -74,7 +74,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       <br />
       <br /><b>Breath Scorches the Shadow</b>
       <br />Activating <b>Breath Scorches the Shadow</b> will consume <span class="text-desc">25%</span> of <b>Netherwing</b>'s max HP to deal <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Castorice's Max HP to all enemies.
-      <br />In one attack, <b>Breath Scorches the Shadow</b> can be activated repeatedly, with the DMG multiplier increasing respectively to {{2}}%/{{3}%, until {{3}}%. The DMG Multiplier Boost effect will not be reduced before <b>Netherwing</b> disappears.
+      <br />In one attack, <b>Breath Scorches the Shadow</b> can be activated repeatedly, with the DMG multiplier increasing respectively to {{2}}%/{{3}}%, until {{3}}%. The DMG Multiplier Boost effect will not be reduced before <b>Netherwing</b> disappears.
       <br />Using this ability repeatedly will enhance it, lasting until the <b>Netherwing</b> disappears.
       <br />When HP is at <span class="text-desc">25%</span> or lower, activating the ability will reduce HP to <span class="text-desc">1</span>, and then trigger the ability effect equal to that of the Talent <b>Wings Sweep the Ruins</b>.`,
       value: [
