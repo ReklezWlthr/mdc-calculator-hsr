@@ -374,13 +374,10 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
                     (ss.overrideIndex === i || i === j)
                   ) {
                     s.push({
+                      ...ss,
                       name: `${ss.name} - Mem's Support`,
-                      value: ss.value,
                       multiplier: (ss.multiplier || 1) * m,
-                      element: ss.element,
                       property: TalentProperty.TRUE,
-                      type: ss.type,
-                      sum: ss.sum,
                       break: ss.break * m,
                     })
                   }
@@ -398,13 +395,10 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
                   _.forEach(s, (ss) => {
                     if (_.includes([TalentProperty.SERVANT], ss.property) && (ss.overrideIndex === i || i === j)) {
                       s.push({
+                        ...ss,
                         name: `${ss.name} - Mem's Support`,
-                        value: ss.value,
                         multiplier: (ss.multiplier || 1) * m,
-                        element: ss.element,
                         property: TalentProperty.TRUE,
-                        type: ss.type,
-                        sum: ss.sum,
                         break: ss.break * m,
                       })
                     }

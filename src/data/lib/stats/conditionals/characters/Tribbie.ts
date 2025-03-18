@@ -339,13 +339,10 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 _.forEach(s, (ss) => {
                   if (!_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property)) {
                     s.push({
+                      ...ss,
                       name: `${ss.name} - Tribbie E1`,
-                      value: ss.value,
                       multiplier: (ss.multiplier || 1) * 0.24,
-                      element: ss.element,
                       property: TalentProperty.TRUE,
-                      type: ss.type,
-                      sum: ss.sum,
                       break: ss.break * 0.24,
                     })
                   }

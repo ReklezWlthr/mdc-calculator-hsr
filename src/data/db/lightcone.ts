@@ -1327,7 +1327,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'N/A',
-      detail: `Increases the wearer's ATK by {{0}}%. For every different Weakness Type an enemy target has, increases the DMG wearers deal by {{1}}%, up to a max of <span class="text-desc">7</span> Weakness Types.`,
+      detail: `Increases the wearer's ATK by {{0}}%. For every different Weakness Type an enemy target has, increases the DMG dealt by the wearer by {{1}}%, up to a max of <span class="text-desc">7</span> Weakness Types.`,
       properties: [
         { base: 8, growth: 2 },
         { base: 4, growth: 1 },
@@ -2092,7 +2092,7 @@ export const LightCones = [
       <br />When the wearer's memosprite disappears, <u>advances</u> the wearer's <u>action</u> by {{2}}%. This effect can only trigger up to <span class="text-desc">1</span> time, and the trigger count resets every time the wearer uses Ultimate.`,
       properties: [
         { base: 30, growth: 7.5 },
-        { base: 24, growth: 1.5 },
+        { base: 30, growth: 5 },
         { base: 12, growth: 3 },
       ],
     },

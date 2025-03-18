@@ -1257,13 +1257,13 @@ export const LCConditionals: IWeaponContent[] = [
         base.DEF_PEN.push({
           name: 'Death Flower',
           source: 'Make Farewells More Beautiful',
-          value: calcRefinement(0.24, 0.015, r),
+          value: calcRefinement(0.3, 0.05, r),
         })
         if (base.SUMMON_STATS) {
           base.SUMMON_STATS.DEF_PEN.push({
             name: 'Death Flower',
             source: 'Make Farewells More Beautiful',
-            value: calcRefinement(0.24, 0.015, r),
+            value: calcRefinement(0.3, 0.05, r),
           })
         }
       }

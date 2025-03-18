@@ -45,8 +45,9 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: 'Fractal, Exiles Fallacy',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Anaxa's ATK to one designated enemy and additionally deals <span class="text-desc">4</span> instance(s) of DMG. Each instance of DMG deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Anaxa's ATK to one random enemy, prioritizing Bouncing to enemy targets that have not been hit in this usage of Skill.`,
-      value: [{ base: 30, growth: 3, style: 'curved' }],
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Anaxa's ATK to one designated enemy and additionally deals <span class="text-desc">4</span> instance(s) of DMG. Each instance of DMG deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Anaxa's ATK to one random enemy, prioritizing Bouncing to enemy targets that have not been hit in this usage of Skill.
+      <br />For each enemy target available to be attacked on the battlefield when the Skill is used, increases DMG dealt by this Skill's usage by <span class="text-desc">20%</span>.`,
+      value: [{ base: 40, growth: 4, style: 'curved' }],
       level: skill,
       tag: AbilityTag.BOUNCE,
     },
@@ -55,24 +56,24 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Ultimate',
       title: 'Sprouting Life Sculpts Earth',
       content: `Inflicts the <b class="text-lime-400">Sublimation</b> state to all enemy units and immediately deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Anaxa's ATK to all enemy units.
-      <br />In the <b class="text-lime-400">Sublimation</b> state, targets will be simultaneously inflicted with <b class="text-hsr-physical">Physical</b>, <b class="text-hsr-fire">Fire</b>, <b class="text-hsr-ice">Ice</b>, <b class="text-hsr-lightning">Lightning</b>, <b class="text-hsr-wind">Wind</b>, <b class="text-hsr-quantum">Quantum</b>, and <b class="text-hsr-imaginary">Imaginary</b> Weaknesses for <span class="text-desc">1</span> turn. If the targets do not have Control RES, they are unable to take action in <b class="text-lime-400">Sublimation</b> state.`,
-      value: [{ base: 90, growth: 6, style: 'curved' }],
+      <br />In the <b class="text-lime-400">Sublimation</b> state, targets will be simultaneously inflicted with <b class="text-hsr-physical">Physical</b>, <b class="text-hsr-fire">Fire</b>, <b class="text-hsr-ice">Ice</b>, <b class="text-hsr-lightning">Lightning</b>, <b class="text-hsr-wind">Wind</b>, <b class="text-hsr-quantum">Quantum</b>, and <b class="text-hsr-imaginary">Imaginary</b> Weaknesses, lasting until the start of each target's turn. If the targets do not have Control RES, they are unable to take action in <b class="text-lime-400">Sublimation</b> state.`,
+      value: [{ base: 150, growth: 5, style: 'curved' }],
       level: ult,
       tag: AbilityTag.AOE,
     },
     talent: {
       trace: 'Talent',
       title: 'Tetrad Wisdom Reigns Thrice',
-      content: `Each time Anaxa attacks enemy targets <span class="text-desc">1</span> time, inflicts <span class="text-desc">1</span> random Type Weakness to the targets, lasting for <span class="text-desc">3</span> turn(s) with priority to the Weakness Type that the target has yet to have.
+      content: `Each time Anaxa attacks enemy targets <span class="text-desc">1</span> time, inflicts <span class="text-desc">1</span> random Weakness Type to the targets, lasting for <span class="text-desc">3</span> turn(s) with priority to the Weakness Type that the target has yet to have.
       <br />When Anaxa is on the battlefield, he inflicts the <b class="text-red">Qualitative Disclosure</b> state to enemy targets with at least <span class="text-desc">5</span> different Type Weaknesses. Anaxa deals {{0}}% more DMG to targets in <b class="text-red">Qualitative Disclosure</b> state. In addition, using a Basic ATK or Skill on targets in <b class="text-red">Qualitative Disclosure</b> state allows him to use another <span class="text-desc">1</span> instance of his Skill. This additional Skill does not consume any Skill Point and cannot trigger this effect again. If the target has been defeated before this additional Skill is used, it will be dealt to a random enemy unit.`,
-      value: [{ base: 36, growth: 2.4, style: 'curved' }],
+      value: [{ base: 24, growth: 1.6, style: 'curved' }],
       level: talent,
       tag: AbilityTag.IMPAIR,
     },
     technique: {
       trace: 'Technique',
       title: 'Pupil of Prism',
-      content: `Using the Technique will cause enemies in a set area to enter the Terrified state. Terrified enemies will flee in a direction away from Anaxa for <span class="text-desc">10</span> second(s). If entering battle via actively attacking a Terrified enemy, Anaxa will apply <span class="text-desc">1</span> Weakness of the attacker's Type to every enemy target after entering battle, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `Using the Technique will cause enemies in a set area to enter the Terrified state. Terrified enemies will flee in a direction away from Anaxa for <span class="text-desc">10</span> second(s). When ally enters battle via actively attacking a Terrified enemy, it will always be considered as entering battle via attacking a Weakness. After entering battle, Anaxa will apply <span class="text-desc">1</span> Weakness of the attacker's Type to every enemy target after entering battle, lasting for <span class="text-desc">3</span> turn(s).`,
       tag: AbilityTag.IMPAIR,
     },
     a2: {
@@ -83,15 +84,15 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     a4: {
       trace: 'Ascension 4 Passive',
-      title: 'Imperative Gap',
-      content: `Based on the number of characters on the Path of Erudition in the team, triggers the corresponding effects in the current battle:
+      title: 'Imperative Hiatus',
+      content: `Trigger any <span class="text-desc">1</span> effect in the current battle based on the number of characters on the Path of Erudition in the team:
       <br /><span class="text-desc">1</span>: Increases Anaxa's CRIT DMG by <span class="text-desc">140%</span>.
-      <br /><span class="text-desc">2</span> or more: Increases DMG dealt by all allies by <span class="text-desc">30%</span>.`,
+      <br />At least <span class="text-desc">2</span>: Increases DMG dealt by all allies by <span class="text-desc">40%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Qualitative Shift',
-      content: `For every different Weakness Type an enemy target has, the DMG that Anaxa deals to that target ignores <span class="text-desc">3%</span> of DEF, up to a max of <span class="text-desc">7</span> Weakness Types.`,
+      content: `For every different Weakness Type an enemy target has, the DMG that Anaxa deals to that target ignores <span class="text-desc">4%</span> of DEF, up to a max of <span class="text-desc">7</span> Weakness Types.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -101,7 +102,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c2: {
       trace: 'Eidolon 2',
       title: `Soul, True to History`,
-      content: `Ultimate additionally deals <span class="text-desc">3</span> instance(s) of DMG, with each instance dealing <b class="text-hsr-wind">Wind DMG</b> equal to <span class="text-desc">50%</span> of Anaxa's ATK to one random enemy. Increases this unit's SPD by <span class="text-desc">12%</span> for <span class="text-desc">2</span> turn(s) after using their Ultimate.`,
+      content: `When enemy targets enter the battle, triggers the Talent's Weakness Implant effect <span class="text-desc">1</span> time, and reduces their All-Type RES by <span class="text-desc">20%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -112,7 +113,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c4: {
       trace: 'Eidolon 4',
       title: 'Blaze, Plunged to Canyon',
-      content: `When using Skill, increases ATK by <span class="text-desc">40%</span> for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">3</span> time(s).`,
+      content: `When using Skill, increases ATK by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">3</span> time(s).`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -123,11 +124,21 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: 'Everything Is in Everything',
-      content: `Each instance of inflicting the <b class="text-lime-400">Sublimation</b> state in a single battle permanently increases Anaxa's DMG dealt in that battle, with the increase value equal to <span class="text-desc">3%</span> of the original DMG, up to <span class="text-desc">5</span> stacks.`,
+      content: `Each instance of inflicting the <b class="text-lime-400">Sublimation</b> state in a single battle permanently increases Anaxa's DMG dealt in that battle by <span class="text-desc">10%</span> of the original DMG, up to <span class="text-desc">3</span> stacks.`,
     },
   }
 
   const content: IContent[] = [
+    {
+      type: 'number',
+      id: 'anaxa_enemy',
+      text: `Enemies on Field`,
+      ...talents.skill,
+      show: true,
+      default: 5,
+      min: 0,
+      max: 5,
+    },
     {
       type: 'multiple',
       id: 'anaxa_implant',
@@ -163,15 +174,6 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       debuff: true,
     },
     {
-      type: 'toggle',
-      id: 'anaxa_c2',
-      text: `E2 SPD Bonus`,
-      ...talents.c2,
-      show: c >= 2,
-      default: true,
-      duration: 2,
-    },
-    {
       type: 'number',
       id: 'anaxa_c4',
       text: `E4 ATK Bonus Stacks`,
@@ -179,7 +181,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       show: c >= 4,
       default: 1,
       min: 0,
-      max: 3,
+      max: 2,
       duration: 2,
     },
     {
@@ -190,7 +192,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       show: c >= 6,
       default: 1,
       min: 0,
-      max: 5,
+      max: 3,
     },
   ]
 
@@ -220,7 +222,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     ) => {
       const base = _.cloneDeep(x)
 
-      const multiplier = form.anaxa_c6 ? 1 + form.anaxa_c6 * 0.03 : 1
+      const multiplier = form.anaxa_c6 ? 1 + form.anaxa_c6 * 0.1 : 1
 
       base.BASIC_SCALING = [
         {
@@ -237,29 +239,31 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       base.SKILL_SCALING = [
         {
           name: 'Total Single Target DMG',
-          value: [{ scaling: calcScaling(0.3, 0.03, skill, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.4, 0.04, skill, 'curved'), multiplier: Stats.ATK }],
           multiplier: 5 * multiplier,
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 50,
           sum: true,
+          bonus: form.anaxa_enemy * 0.2,
         },
         {
           name: 'Bounce DMG',
-          value: [{ scaling: calcScaling(0.3, 0.03, skill, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.4, 0.04, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 10,
           sum: false,
           multiplier,
+          bonus: form.anaxa_enemy * 0.2,
         },
       ]
       base.ULT_SCALING = [
         {
           name: 'Single Target',
-          value: [{ scaling: calcScaling(0.9, 0.06, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.5, 0.05, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
@@ -299,7 +303,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         base[Stats.ALL_DMG].push({
           name: `Qualitative Disclosure`,
           source: 'Self',
-          value: calcScaling(0.36, 0.024, talent, 'curved'),
+          value: calcScaling(0.24, 0.016, talent, 'curved'),
         })
         base.ADD_DEBUFF.push({
           name: 'Qualitative Disclosure',
@@ -308,7 +312,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
       if (a.a4) {
-        if (eruditionCount)
+        if (eruditionCount === 1)
           base[Stats.CRIT_DMG].push({
             name: `Ascension 4 Passive`,
             source: 'Self',
@@ -318,14 +322,14 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           base[Stats.ALL_DMG].push({
             name: `Ascension 4 Passive`,
             source: 'Self',
-            value: 0.3,
+            value: 0.4,
           })
       }
       if (a.a6) {
         base.DEF_PEN.push({
           name: `Ascension 6 Passive`,
           source: 'Self',
-          value: 0.03 * _.size(weakness),
+          value: 0.04 * _.size(weakness),
         })
       }
       if (form.anaxa_c1) {
@@ -337,39 +341,17 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         addDebuff(debuffs, DebuffTypes.DEF_RED)
       }
       if (c >= 2) {
-        base.ULT_SCALING.push(
-          {
-            name: 'Total E2 Single Target DMG',
-            value: [{ scaling: 0.5, multiplier: Stats.ATK }],
-            multiplier: 3 * multiplier,
-            element: Element.WIND,
-            property: TalentProperty.NORMAL,
-            type: TalentType.ULT,
-            sum: true,
-          },
-          {
-            name: 'E2 Bounce DMG',
-            value: [{ scaling: 0.5, multiplier: Stats.ATK }],
-            element: Element.WIND,
-            property: TalentProperty.NORMAL,
-            type: TalentType.ULT,
-            sum: false,
-            multiplier,
-          }
-        )
-      }
-      if (form.anaxa_c2) {
-        base[Stats.P_SPD].push({
+        base.ALL_TYPE_RES_PEN.push({
           name: `Eidolon 2`,
           source: 'Self',
-          value: 0.12,
+          value: 0.2,
         })
       }
       if (form.anaxa_c4) {
         base[Stats.P_ATK].push({
           name: `Eidolon 4`,
           source: 'Self',
-          value: 0.4 * form.anaxa_c4,
+          value: 0.3 * form.anaxa_c4,
         })
       }
 
@@ -408,7 +390,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         base[Stats.ALL_DMG].push({
           name: `Ascension 4 Passive`,
           source: 'Anaxa',
-          value: 0.3,
+          value: 0.4,
         })
       }
       if (form.anaxa_c1) {
@@ -416,6 +398,13 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           name: `Eidolon 1`,
           source: 'Anaxa',
           value: 0.16,
+        })
+      }
+      if (c >= 2) {
+        base.ALL_TYPE_RES_PEN.push({
+          name: `Eidolon 2`,
+          source: 'Anaxa',
+          value: 0.2,
         })
       }
 
