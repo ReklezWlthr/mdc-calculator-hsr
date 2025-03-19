@@ -207,10 +207,10 @@ export const baseStatsObject: BaseStatsType = {
   },
   getOFCHP: function () {
     const flat = _.filter(this[Stats.HP], (item) =>
-      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat'], item.name)
+      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat', 'Passive'], item.name)
     )
     const percentage = _.filter(this[Stats.P_HP], (item) =>
-      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat'], item.name)
+      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat', 'Passive'], item.name)
     )
     return this.BASE_HP * (1 + _.sumBy(percentage, 'value')) + _.sumBy(flat, 'value')
   },
