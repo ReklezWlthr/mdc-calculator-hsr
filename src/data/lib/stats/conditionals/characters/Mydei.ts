@@ -303,8 +303,8 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           name: 'Adjacent',
           value: [{ scaling: calcScaling(0.6, 0.04, ult, 'curved'), multiplier: Stats.HP }],
           element: Element.IMAGINARY,
-          property: TalentProperty.ADD,
-          type: TalentType.NONE,
+          property: TalentProperty.NORMAL,
+          type: TalentType.ULT,
           break: 20,
         },
       ]
