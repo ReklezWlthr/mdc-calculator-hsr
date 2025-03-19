@@ -382,7 +382,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       base.MEMO_SKILL_SCALING = [
         {
           name: 'Claws DMG',
-          value: [{ scaling: calcScaling(0.1, 0.04, memo_skill, 'linear'), multiplier: Stats.HP }],
+          value: [{ scaling: calcScaling(0.2, 0.04, memo_skill, 'linear'), multiplier: Stats.HP }],
           element: Element.QUANTUM,
           property: TalentProperty.SERVANT,
           type: TalentType.SERVANT,
