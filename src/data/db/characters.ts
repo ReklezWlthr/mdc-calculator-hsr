@@ -1009,7 +1009,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.DESTRUCTION,
     element: Element.IMAGINARY,
-    beta: true,
+    beta: false,
   },
   {
     id: '1405',

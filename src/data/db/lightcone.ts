@@ -2064,10 +2064,10 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 18,
     type: PathType.DESTRUCTION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Vista',
-      detail: `Increases the wearer's Max HP by {{0}}% and Incoming Healing by {{1}}%. When using Skill or Ultimate, consume HP equal to {{2}}% of the wearer's Max HP and increases the DMG dealt by this attack by {{3}}%. If this effect's consumed HP is greater than <span class="text-desc">500</span>, this attack's DMG additionally increases by {{3}}%.
+      detail: `Increases the wearer's Max HP by {{0}}% and Incoming Healing by {{1}}%. When using Skill or Ultimate, consume HP equal to {{2}}% of the wearer's Max HP and increases the DMG dealt by this attack by {{3}}%. If this effect's consumed HP is greater than <span class="text-desc">500</span>, the DMG additionally increases by {{3}}%.
       <br />If the current HP is not sufficient, this effect reduces the wearer's HP down to <span class="text-desc">1</span>.`,
       properties: [
         { base: 18, growth: 3 },
