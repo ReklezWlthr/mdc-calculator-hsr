@@ -170,6 +170,7 @@ export interface RawBaseStatType {
   getDef: () => number
   getSpd: () => number
   getOFCSpd: () => number
+  getOFCHP: () => number
   getValue: (key: string, exclude?: StatsArray[]) => number
   getDmgRed: () => number
 

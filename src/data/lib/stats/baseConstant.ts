@@ -205,6 +205,15 @@ export const baseStatsObject: BaseStatsType = {
     )
     return this.BASE_SPD * (1 + _.sumBy(percentage, 'value')) + _.sumBy(flat, 'value')
   },
+  getOFCHP: function () {
+    const flat = _.filter(this[Stats.HP], (item) =>
+      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat'], item.name)
+    )
+    const percentage = _.filter(this[Stats.P_HP], (item) =>
+      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat'], item.name)
+    )
+    return this.BASE_HP * (1 + _.sumBy(percentage, 'value')) + _.sumBy(flat, 'value')
+  },
   getValue: function (key: string, exclude?: StatsArray[]) {
     return _.sumBy(
       _.size(exclude)
