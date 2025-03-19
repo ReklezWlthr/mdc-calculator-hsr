@@ -177,7 +177,7 @@ export const Calculator = observer(({}: {}) => {
                     <SubTotalRow type={TalentType.SKILL} />
                   </div>
                 </ScalingWrapper>
-                {charData.path === PathType.REMEMBRANCE && (
+                {!!_.size(mainComputed?.MEMO_SKILL_SCALING) && (
                   <>
                     <div className="w-full my-2 border-t-2 border-primary-border" />
                     <ScalingWrapper
@@ -262,6 +262,37 @@ export const Calculator = observer(({}: {}) => {
                     <SubTotalRow type={TalentType.TALENT} />
                   </div>
                 </ScalingWrapper>
+                {!!_.size(mainComputed?.MEMO_TALENT_SCALING) && (
+                  <>
+                    <div className="w-full my-2 border-t-2 border-primary-border" />
+                    <ScalingWrapper
+                      talent={main?.talents?.summon_talent}
+                      icon={`SkillIcon_1${charData.id}_ServantPassive.png`}
+                      element={charData.element}
+                      level={char.talents?.memo_talent}
+                      upgraded={(main?.upgrade as any)?.memo_talent}
+                    >
+                      <div className="flex flex-col justify-between h-full gap-4">
+                        <div className="space-y-0.5">
+                          {_.map(mainComputed?.MEMO_TALENT_SCALING, (item) => (
+                            <ScalingSubRows key={item.name} scaling={item} type={TalentType.SERVANT} />
+                          ))}
+                          {mainComputed?.SUPER_BREAK && (
+                            <div className="pt-2 space-y-0.5">
+                              {_.map(
+                                _.filter(mainComputed?.MEMO_TALENT_SCALING, (item) => !!item.break),
+                                (item) => (
+                                  <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.SERVANT} />
+                                )
+                              )}
+                            </div>
+                          )}
+                        </div>
+                        <SubTotalRow type={TalentType.SERVANT} />
+                      </div>
+                    </ScalingWrapper>
+                  </>
+                )}
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
                   talent={main?.talents?.technique}
