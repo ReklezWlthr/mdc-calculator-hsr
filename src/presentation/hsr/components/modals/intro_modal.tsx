@@ -11,16 +11,14 @@ export const IntroModal = observer(() => {
         label="Changelogs"
         childRight={
           <div className="px-2 py-1 font-bold rounded-md bg-primary whitespace-nowrap">
-            v{_.head(changelog).version}
+            Updated {_.head(changelog).date}
           </div>
         }
       >
-        <div className="space-y-2">
+        <div className="space-y-3">
           {_.map(_.slice(changelog, 0, 7), (item) => (
             <div className="space-y-1" key={item.version}>
-              <p className="ml-3 text-hsr-physical">
-                <b className="text-indigo-300">v{item.version}</b> - {item.date}
-              </p>
+              <p className="ml-3 font-bold text-indigo-300">{item.date}</p>
               {_.map(item.desc, (desc) => (
                 <BulletPoint key={desc}>
                   <span dangerouslySetInnerHTML={{ __html: desc }} />

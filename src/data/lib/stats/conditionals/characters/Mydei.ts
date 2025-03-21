@@ -405,14 +405,14 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             source: 'Self',
             value: _.min([(_.max([x.getOFCHP() - 4000, 0]) / 100) * 0.012, 0.48]),
             base: `${_.min([_.max([x.getOFCHP() - 4000, 0]), 4000]).toFixed(2)} ÷ 100`,
-            multiplier: 0.016,
+            multiplier: 0.012,
           })
           x.I_HEAL.push({
             name: 'Talent',
             source: 'Self',
             value: _.min([(_.max([x.getOFCHP() - 4000, 0]) / 100) * 0.0075, 0.3]),
             base: `${_.min([_.max([x.getOFCHP() - 4000, 0]), 4000]).toFixed(2)} ÷ 100`,
-            multiplier: 0.005,
+            multiplier: 0.0075,
           })
         }
 

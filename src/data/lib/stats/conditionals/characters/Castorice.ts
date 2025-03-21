@@ -60,8 +60,8 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       content: `Consumes <span class="text-desc">40%</span> of all allies' (except <b>Netherwing</b>) current HP. Castorice and <b>Netherwing</b> launch a <u>Joint ATK</u> on the target and deal <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% and {{1}}% of Castorice's Max HP to all enemies.
       <br />If current HP is insufficient, this ability will reduce HP to <span class="text-desc">1</span>.`,
       value: [
-        { base: 12, growth: 1.2, style: 'curved' },
-        { base: 21, growth: 2.1, style: 'curved' },
+        { base: 15, growth: 1.5, style: 'curved' },
+        { base: 25, growth: 2.5, style: 'curved' },
       ],
       level: basic,
       tag: AbilityTag.AOE,
@@ -99,7 +99,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       trace: 'Talent',
       title: `Desolation Across Palms`,
       content: `Max <b class="text-indigo-400">Newbud</b> is based on all characters' levels on the battlefield For each point of HP lost by all allies, Castorice gains <span class="text-desc">1</span> point of <b class="text-indigo-400">Newbud</b>. When <b class="text-indigo-400">Newbud</b> reaches its maximum, Castorice's Ultimate can be used. When allies lose HP, Castorice's and <b>Netherwing</b>'s DMG dealt increase by {{0}}%. This effect can stack up to <span class="text-desc">3</span> times, lasting for <span class="text-desc">3</span> turn(s).
-      <br />When <b>Netherwing</b> is on the field, <b class="text-indigo-400">Newbud</b> cannot be gained, and HP lost by all allies (except <b>Netherwing</b>) will be converted to an equal amount of HP for <b>Netherwing</b>.`,
+      <br />When <b>Netherwing</b> is on the field, <b class="text-indigo-400">Newbud</b> cannot be gained through Talent, and HP lost by all allies (except <b>Netherwing</b>) will be converted to an equal amount of HP for <b>Netherwing</b>.`,
       value: [{ base: 10, growth: 1, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -115,7 +115,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     summon_talent: {
       trace: 'Memosprite Talent [1]',
       title: `Wings Sweep the Ruins`,
-      content: `When the <b>Netherwing</b> disappears, deals <span class="text-desc">6</span> instance(s) of DMG, with every instance dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Castorice's Max HP to one random enemy unit. At the same time, restores HP equal to <span class="text-desc">6%</span> of Castorice's Max HP plus <span class="text-desc">800</span> to all allies.`,
+      content: `When the <b>Netherwing</b> disappears, deals <span class="text-desc">6</span> instance(s) of DMG, with every instance dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Castorice's Max HP to one random enemy units. At the same time, restores HP equal to <span class="text-desc">6%</span> of Castorice's Max HP plus <span class="text-desc">800</span> to all allies.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: talent,
       tag: AbilityTag.BOUNCE,
@@ -123,7 +123,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     summon_talent_2: {
       trace: 'Memosprite Talent [2]',
       title: `Mooncocoon Shrouds the Form`,
-      content: `When <b>Netherwing</b> is on the field, it acts as <u>backup</u> for allies. When allies take DMG, their current HP can be reduced to a minimum of <span class="text-desc">1</span>, after which <b>Netherwing</b> will bear the DMG received at <span class="text-desc">500%</span> of the original DMG until <b>Netherwing</b> disappears.`,
+      content: `When <b>Netherwing</b> is on the field, it acts as <u>backup</u> for allies. When allies take DMG or consumes HP, their current HP can be reduced to a minimum of <span class="text-desc">1</span>, after which <b>Netherwing</b> will consume HP at <span class="text-desc">500%</span> of the original value until <b>Netherwing</b> disappears.`,
       value: [],
       level: talent,
       tag: AbilityTag.SUPPORT,
@@ -156,17 +156,17 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Where The West Wind Dwells`,
-      content: `The lower the enemy's current HP, the higher the DMG dealt to it by <b>Netherwing</b>. When the enemy's HP is <span class="text-desc">30%</span> or lower, the DMG Boost effect reaches its maximum, up to <span class="text-desc">40%</span>.`,
+      content: `Each time <b>Netherwing</b> uses <b>Breath Scorches the Shadow</b>, increases its DMG dealt by <span class="text-desc">30%</span>. This effect stacks up to <span class="text-desc">6</span> and lasts until the end of this turn.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Snowbound Maiden, Memory to Tomb`,
-      content: `Each time the <b>Netherwing</b> uses <b>Breath Scorches the Shadow</b>, increases its DMG dealt by <span class="text-desc">20%</span>. This effect stacks up to <span class="text-desc">6</span> and lasts until the end of this turn.`,
+      content: `When the target enemies' HP is <span class="text-desc">80%</span>/<span class="text-desc">50%</span> or lower, the DMG dealt with <b>Boneclaw, Doomdrake's Embrace</b>, <b>Claw Splits the Veil</b>, <b>Breath Scorches the Shadow</b>, and <b>Wings Sweep the Ruins</b> is <span class="text-desc">120%</span>/<span class="text-desc">140%</span> of the original DMG.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Crown on Wings of Bloom`,
-      content: `After summoning memosprite <b>Netherwing</b>, Castorice gains <span class="text-desc">2</span> stack(s) of <b class="text-desc">Ardent Will</b>. A maximum of <span class="text-desc">2</span> stacks of <b class="text-desc">Ardent Will</b> can be possessed at any given time, and can be used to offset Netherwing's HP consumption when using Memosprite Skill <b>Breath Scorches the Shadow</b> while <u>advancing</u> Castorice's <u>action</u> by <span class="text-desc">100%</span>. In the next usage of Enhanced Skill, Castorice recovers <span class="text-desc">20%</span> of maximum <b class="text-indigo-400">Newbud</b> points.`,
+      content: `After summoning memosprite <b>Netherwing</b>, Castorice gains <span class="text-desc">2</span> stack(s) of <b class="text-desc">Ardent Will</b>. A maximum of <span class="text-desc">2</span> stacks of <b class="text-desc">Ardent Will</b> can be possessed at any given time, and can be used to offset Netherwing's HP consumption when using Memosprite Skill <b>Breath Scorches the Shadow</b> while <u>advancing</u> Castorice's <u>action</u> by <span class="text-desc">100%</span>. In the next usage of Enhanced Skill, Castorice gains <span class="text-desc">30%</span> of maximum <b class="text-indigo-400">Newbud</b> points.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -214,22 +214,12 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       default: true,
     },
     {
-      type: 'toggle',
-      id: 'dim_breath',
-      text: `Breath Scorches the Shadow`,
-      ...talents.summon_skill_2,
-      show: true,
-      default: true,
-      sync: true,
-      unique: true,
-    },
-    {
       type: 'number',
       id: 'castorice_talent',
       text: `Talent DMG Bonus Stacks`,
       ...talents.talent,
       show: true,
-      default: 0,
+      default: 1,
       min: 0,
       max: 3,
     },
@@ -239,7 +229,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       text: `On-Summon DMG Bonus`,
       ...talents.summon_talent_3,
       show: true,
-      default: false,
+      default: true,
       duration: 3,
     },
     {
@@ -252,13 +242,26 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     {
       type: 'number',
-      id: 'castorice_c1',
-      text: `C1 DMG Bonus Stacks`,
-      ...talents.c1,
-      show: c >= 1,
+      id: 'castorice_a6',
+      text: `A6 DMG Bonus Stacks`,
+      ...talents.a6,
+      show: a.a6,
       default: 1,
       min: 0,
       max: 6,
+    },
+    {
+      type: 'element',
+      id: 'castorice_c1',
+      text: `C1 Enemy HP DMG Bonus`,
+      options: [
+        { name: '×1 (>80%)', value: '0' },
+        { name: '×1.2 (<=80%)', value: '1' },
+        { name: '×1.4 (<=50%)', value: '2' },
+      ],
+      ...talents.c1,
+      show: c >= 1,
+      default: '0',
     },
   ]
 
@@ -300,6 +303,16 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       if (form.dead_dragon) base.SKILL_ALT = true
       base.COUNTDOWN = 100
 
+      let c1Mult = 0
+      switch (form.castorice_c1) {
+        case '1':
+          c1Mult = 1.2
+          break
+        case '2':
+          c1Mult = 1.4
+          break
+      }
+
       base.BASIC_SCALING = [
         {
           name: 'Single Target',
@@ -315,16 +328,17 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         ? [
             {
               name: 'AoE - Castorice',
-              value: [{ scaling: calcScaling(0.12, 0.012, skill, 'curved'), multiplier: Stats.HP }],
+              value: [{ scaling: calcScaling(0.15, 0.015, skill, 'curved'), multiplier: Stats.HP }],
               element: Element.QUANTUM,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
               break: 20,
               sum: true,
+              multiplier: c1Mult,
             },
             {
               name: 'AoE - Netherwing',
-              value: [{ scaling: calcScaling(0.21, 0.021, skill, 'curved'), multiplier: Stats.HP }],
+              value: [{ scaling: calcScaling(0.25, 0.025, skill, 'curved'), multiplier: Stats.HP }],
               element: Element.QUANTUM,
               property: TalentProperty.SERVANT,
               type: TalentType.SERVANT,
@@ -332,6 +346,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               summon: true,
               useOwnerStats: true,
               bonus: form.castorice_c2 ? 1 : 0,
+              multiplier: c1Mult,
             },
           ]
         : [
@@ -353,32 +368,33 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               break: 10,
             },
           ]
-      const lastDragonHit =
-        c >= 1
-          ? _.map([3, 4, 5, 6], (i) => ({
-              name: `Breath Stage 3 DMG (${i} Stacks)`,
+      const lastDragonHit = a.a6
+        ? _.map([3, 4, 5, 6], (i) => ({
+            name: `Breath Stage 3 DMG (${i} Stacks)`,
+            value: [{ scaling: calcScaling(0.17, 0.034, memo_skill, 'linear'), multiplier: Stats.HP }],
+            element: Element.QUANTUM,
+            property: TalentProperty.SERVANT,
+            type: TalentType.SERVANT,
+            break: 10,
+            sum: i === 6,
+            useOwnerStats: true,
+            bonus: a.a6 ? 0.3 * i : 0,
+            multiplier: c1Mult,
+          }))
+        : [
+            {
+              name: 'Breath Stage 3 DMG',
               value: [{ scaling: calcScaling(0.17, 0.034, memo_skill, 'linear'), multiplier: Stats.HP }],
               element: Element.QUANTUM,
               property: TalentProperty.SERVANT,
               type: TalentType.SERVANT,
               break: 10,
-              sum: i === 6,
+              sum: true,
               useOwnerStats: true,
-              bonus: c >= 1 ? 0.2 * i : 0,
-            }))
-          : [
-              {
-                name: 'Breath Stage 3 DMG',
-                value: [{ scaling: calcScaling(0.17, 0.034, memo_skill, 'linear'), multiplier: Stats.HP }],
-                element: Element.QUANTUM,
-                property: TalentProperty.SERVANT,
-                type: TalentType.SERVANT,
-                break: 10,
-                sum: true,
-                useOwnerStats: true,
-                bonus: c >= 1 ? 0.9 : 0,
-              },
-            ]
+              bonus: a.a6 ? 0.9 : 0,
+              multiplier: c1Mult,
+            },
+          ]
       base.MEMO_SKILL_SCALING = [
         {
           name: 'Claws DMG',
@@ -389,7 +405,8 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           break: 10,
           sum: false,
           useOwnerStats: true,
-          bonus: form.castorice_c1 ? 0.2 * form.castorice_c1 : 0,
+          bonus: form.castorice_a6 ? 0.3 * form.castorice_a6 : 0,
+          multiplier: c1Mult,
         },
         {
           name: 'Breath Stage 1 DMG',
@@ -400,7 +417,8 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           break: 10,
           sum: false,
           useOwnerStats: true,
-          bonus: c >= 1 ? 0.3 : 0,
+          bonus: a.a6 ? 0.3 : 0,
+          multiplier: c1Mult,
         },
         {
           name: 'Breath Stage 2 DMG',
@@ -411,7 +429,8 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           break: 10,
           sum: false,
           useOwnerStats: true,
-          bonus: c >= 1 ? 0.6 : 0,
+          bonus: a.a6 ? 0.6 : 0,
+          multiplier: c1Mult,
         },
         ...lastDragonHit,
       ]
@@ -419,14 +438,14 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         {
           name: 'Total Single Target DMG',
           value: [{ scaling: calcScaling(0.25, 0.05, memo_talent, 'linear'), multiplier: Stats.HP }],
-          multiplier: c >= 6 ? 9 : 6,
+          multiplier: (c >= 6 ? 9 : 6) * c1Mult,
           element: Element.QUANTUM,
           property: TalentProperty.SERVANT,
           type: TalentType.SERVANT,
           break: 24,
           sum: true,
           useOwnerStats: true,
-          bonus: form.castorice_c1 ? 0.2 * form.castorice_c1 : 0,
+          bonus: form.castorice_a6 ? 0.3 * form.castorice_a6 : 0,
         },
         {
           name: 'Bounce DMG',
@@ -437,7 +456,8 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           break: 4,
           sum: true,
           useOwnerStats: true,
-          bonus: form.castorice_c1 ? 0.2 * form.castorice_c1 : 0,
+          bonus: form.castorice_a6 ? 0.3 * form.castorice_a6 : 0,
+          multiplier: c1Mult,
         },
         {
           name: 'Healing',

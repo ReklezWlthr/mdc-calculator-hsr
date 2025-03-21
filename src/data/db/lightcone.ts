@@ -2108,11 +2108,11 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Smelt',
-      detail: `Increases the wearer's CRIT Rate by {{0}}%. Wearer regenerates <span class="text-desc">10</span> Energy at the start of the turn.
-      <br />When the wearer actively uses an ability, reduces the DEF of enemy targets who get debuffed during the ability period by {{1}}% for <span class="text-desc">2</span> turn(s), up to a max of <span class="text-desc">2</span> stack(s).`,
+      detail: `Wearer regenerates <span class="text-desc">10</span> Energy at the start of the turn. If the enemy target has a Weakness implanted by the wearer, increases the wearer's DMG dealt to it by {{0}}%.
+      <br />When enemy targets are attacked by the wearer, the wearer decreases its DEF by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). The same types of effects cannot stack.`,
       properties: [
-        { base: 18, growth: 3 },
-        { base: 6, growth: 1 },
+        { base: 60, growth: 10 },
+        { base: 12, growth: 3 },
       ],
     },
   },

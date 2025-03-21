@@ -275,20 +275,20 @@ export const Calculator = observer(({}: {}) => {
                       <div className="flex flex-col justify-between h-full gap-4">
                         <div className="space-y-0.5">
                           {_.map(mainComputed?.MEMO_TALENT_SCALING, (item) => (
-                            <ScalingSubRows key={item.name} scaling={item} type={TalentType.SERVANT} />
+                            <ScalingSubRows key={item.name} scaling={item} type={TalentType.SERVANT_T} />
                           ))}
                           {mainComputed?.SUPER_BREAK && (
                             <div className="pt-2 space-y-0.5">
                               {_.map(
                                 _.filter(mainComputed?.MEMO_TALENT_SCALING, (item) => !!item.break),
                                 (item) => (
-                                  <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.SERVANT} />
+                                  <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.SERVANT_T} />
                                 )
                               )}
                             </div>
                           )}
                         </div>
-                        <SubTotalRow type={TalentType.SERVANT} />
+                        <SubTotalRow type={TalentType.SERVANT_T} />
                       </div>
                     </ScalingWrapper>
                   </>

@@ -259,7 +259,7 @@ export const CompareBlock = observer(() => {
                 <CompareTotalRows type={TalentType.SKILL} />
               </div>
             </ScalingWrapper>
-            {charData.path === PathType.REMEMBRANCE && (
+            {!!_.size(mainComputed?.MEMO_SKILL_SCALING) && (
               <>
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
@@ -302,6 +302,23 @@ export const CompareBlock = observer(() => {
                 <CompareTotalRows type={TalentType.TALENT} />
               </div>
             </ScalingWrapper>
+            {!!_.size(mainComputed?.MEMO_TALENT_SCALING) && (
+              <>
+                <div className="w-full my-2 border-t-2 border-primary-border" />
+                <ScalingWrapper
+                  talent={main?.talents?.summon_talent}
+                  icon={`SkillIcon_1${charData.id}_ServantPassive.png`}
+                  element={charData.element}
+                  level={char.talents?.memo_talent}
+                  upgraded={(main?.upgrade as any)?.memo_talent}
+                >
+                  <div className="flex flex-col justify-between h-full gap-4">
+                    {renderRow(StatsObjectKeys.MEMO_TALENT_SCALING, TalentType.SERVANT_T)}
+                    <CompareTotalRows type={TalentType.SERVANT_T} />
+                  </div>
+                </ScalingWrapper>
+              </>
+            )}
             <div className="w-full my-2 border-t-2 border-primary-border" />
             <ScalingWrapper
               talent={main?.talents?.technique}

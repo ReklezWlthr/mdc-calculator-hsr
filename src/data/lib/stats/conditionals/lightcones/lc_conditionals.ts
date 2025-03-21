@@ -1268,6 +1268,24 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `Weakness Implant DMG Bonus`,
+    show: true,
+    default: false,
+    id: '23041_1',
+    excludeSummon: true,
+    scaling: (base, form, r) => {
+      if (form['23041_1']) {
+        base[Stats.ALL_DMG].push({
+          name: `Passive`,
+          source: 'Life Should Be Cast to Flames',
+          value: calcRefinement(0.6, 0.1, r),
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [
@@ -1377,6 +1395,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     default: true,
     duration: 3,
     id: '23021',
+    excludeSummon: true,
     scaling: (base, form, r) => {
       if (form['23021']) {
         base[Stats.CRIT_RATE].push({
@@ -1389,6 +1408,18 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Earthly Escapade',
           value: calcRefinement(0.28, 0.07, r),
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS[Stats.CRIT_RATE].push({
+            name: `Mask`,
+            source: 'Earthly Escapade',
+            value: calcRefinement(0.1, 0.01, r),
+          })
+          base.SUMMON_STATS[Stats.CRIT_DMG].push({
+            name: `Mask`,
+            source: 'Earthly Escapade',
+            value: calcRefinement(0.28, 0.07, r),
+          })
+        }
       }
       return base
     },
@@ -1400,6 +1431,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     default: true,
     duration: 1,
     id: '23008',
+    excludeSummon: true,
     scaling: (base, form, r) => {
       if (form['23008']) {
         base[Stats.SPD].push({
@@ -1407,6 +1439,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Echoes of the Coffin',
           value: calcRefinement(12, 2, r),
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS[Stats.SPD].push({
+            name: `Passive`,
+            source: 'Echoes of the Coffin',
+            value: calcRefinement(12, 2, r),
+          })
+        }
       }
       return base
     },
@@ -1420,6 +1459,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     chance: { base: 1, fixed: false },
     duration: 1,
     id: '23007',
+    excludeSummon: true,
     scaling: (base, form, r, { debuffs, own }) => {
       if (form['23007']) {
         base.VULNERABILITY.push({
@@ -1427,6 +1467,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Incessant Rain',
           value: calcRefinement(0.12, 0.02, r),
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS.VULNERABILITY.push({
+            name: `Aether Code`,
+            source: 'Incessant Rain',
+            value: calcRefinement(0.12, 0.02, r),
+          })
+        }
         if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }
       return base
@@ -1441,6 +1488,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     chance: { base: calcRefinement(1, 0.15, 1), fixed: false },
     duration: 2,
     id: '23023_1',
+    excludeSummon: true,
     scaling: (base, form, r, { debuffs, own }) => {
       if (form['23023_1']) {
         base.VULNERABILITY.push({
@@ -1448,6 +1496,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Inherently Unjust Destiny',
           value: calcRefinement(0.1, 0.015, r),
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS.VULNERABILITY.push({
+            name: `Passive`,
+            source: 'Inherently Unjust Destiny',
+            value: calcRefinement(0.1, 0.015, r),
+          })
+        }
         if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }
       return base
@@ -1460,6 +1515,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     default: true,
     duration: 3,
     id: '23019',
+    excludeSummon: true,
     scaling: (base, form, r, { debuffs, own }) => {
       if (form['23019'] && !checkBuffExist(base[Stats.ALL_DMG], { source: 'Past Self in Mirror' })) {
         base[Stats.ALL_DMG].push({
@@ -1467,6 +1523,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Past Self in Mirror',
           value: calcRefinement(0.24, 0.04, r),
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS[Stats.ALL_DMG].push({
+            name: `Passive`,
+            source: 'Past Self in Mirror',
+            value: calcRefinement(0.24, 0.04, r),
+          })
+        }
       }
       return base
     },
@@ -1481,6 +1544,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     duration: 1,
     id: '23006_1',
     debuffElement: Element.LIGHTNING,
+    excludeSummon: true,
     scaling: (base, form, r, { debuffs, own, owner }) => {
       if (form['23006_1']) {
         if (base.NAME === own?.NAME) {
@@ -1518,6 +1582,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     default: true,
     duration: 2,
     id: '23011',
+    excludeSummon: true,
     scaling: (base, form, r) => {
       if (form['23011']) {
         base[Stats.ALL_DMG].push({
@@ -1525,6 +1590,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'She Already Shut Her Eyes',
           value: calcRefinement(0.09, 0.015, r),
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS[Stats.ALL_DMG].push({
+            name: `Passive`,
+            source: 'She Already Shut Her Eyes',
+            value: calcRefinement(0.09, 0.015, r),
+          })
+        }
       }
       return base
     },
@@ -1537,6 +1609,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     debuff: true,
     duration: 2,
     id: '23025',
+    excludeSummon: true,
     scaling: (base, form, r, { debuffs, own }) => {
       if (form['23025']) {
         base.BREAK_VUL.push({
@@ -1549,6 +1622,18 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Whereabouts Should Dreams Rest',
           value: 0.2,
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS.BREAK_VUL.push({
+            name: `Routed`,
+            source: 'Whereabouts Should Dreams Rest',
+            value: calcRefinement(0.24, 0.04, r),
+          })
+          base.SUMMON_STATS.SPD_REDUCTION.push({
+            name: `Routed`,
+            source: 'Whereabouts Should Dreams Rest',
+            value: 0.2,
+          })
+        }
         if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.SPD_RED)
       }
       return base
@@ -1563,6 +1648,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     max: 2,
     debuff: true,
     id: '23016',
+    excludeSummon: true,
     scaling: (base, form, r, { debuffs, own }) => {
       if (form['23016']) {
         base.X_CRIT_DMG.push({
@@ -1570,6 +1656,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Worrisome, Blissful',
           value: calcRefinement(0.12, 0.02, r) * form['23016'],
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS.X_CRIT_DMG.push({
+            name: `Tame`,
+            source: 'Worrisome, Blissful',
+            value: calcRefinement(0.12, 0.02, r) * form['23016'],
+          })
+        }
         base.ADD_DEBUFF.push({
           name: 'Tame',
           source: base.NAME === own?.NAME ? 'Self' : own?.NAME,
@@ -1590,6 +1683,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
       { name: Stats.ERR, value: Stats.ERR },
     ],
     id: '21032',
+    excludeSummon: true,
     scaling: (base, form, r) => {
       if (form['21032'] === Stats.P_ATK) {
         base[Stats.P_ATK].push({
@@ -1597,6 +1691,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Carve the Moon, Weave the Clouds',
           value: calcRefinement(0.1, 0.025, r),
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS[Stats.P_ATK].push({
+            name: `Passive`,
+            source: 'Carve the Moon, Weave the Clouds',
+            value: calcRefinement(0.1, 0.025, r),
+          })
+        }
       }
       if (form['21032'] === Stats.CRIT_DMG) {
         base[Stats.CRIT_DMG].push({
@@ -1604,6 +1705,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Carve the Moon, Weave the Clouds',
           value: calcRefinement(0.12, 0.03, r),
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS[Stats.CRIT_DMG].push({
+            name: `Passive`,
+            source: 'Carve the Moon, Weave the Clouds',
+            value: calcRefinement(0.12, 0.03, r),
+          })
+        }
       }
       if (form['21032'] === Stats.ERR) {
         base[Stats.ERR].push({
@@ -1626,6 +1734,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
       { name: 'Ultimate', value: TalentType.ULT },
     ],
     id: '21036',
+    excludeSummon: true,
     scaling: (base, form, r) => {
       if (form['21036']) {
         const exist = _.find(
@@ -1652,6 +1761,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     debuff: true,
     chance: { base: calcRefinement(0.6, 0.1, 1), fixed: false },
     id: '21015',
+    excludeSummon: true,
     scaling: (base, form, r, { debuffs, own }) => {
       if (form['21015']) {
         base.DEF_REDUCTION.push({
@@ -1659,6 +1769,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Resolution Shines As Pearls of Sweat',
           value: calcRefinement(0.12, 0.01, r),
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS.DEF_REDUCTION.push({
+            name: `Ensnare`,
+            source: 'Resolution Shines As Pearls of Sweat',
+            value: calcRefinement(0.12, 0.01, r),
+          })
+        }
         if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.DEF_RED)
       }
       return base
@@ -1674,6 +1791,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     duration: 2,
     id: '21016',
     debuffElement: Element.FIRE,
+    excludeSummon: true,
     scaling: (base, form, r, { debuffs, own, owner }) => {
       if (form['21016']) {
         if (base.NAME === own?.NAME) {
@@ -1705,9 +1823,17 @@ export const LCTeamConditionals: IWeaponContent[] = [
     default: true,
     duration: 2,
     id: '20005',
+    excludeSummon: true,
     scaling: (base, form, r) => {
       if (form['20005'] && !checkBuffExist(base[Stats.P_ATK], { source: 'Chorus' })) {
         base[Stats.P_ATK].push({
+          name: `Passive`,
+          source: 'Chorus',
+          value: calcRefinement(0.08, 0.02, r),
+        })
+      }
+      if (base.SUMMON_STATS) {
+        base.SUMMON_STATS[Stats.P_ATK].push({
           name: `Passive`,
           source: 'Chorus',
           value: calcRefinement(0.08, 0.02, r),
@@ -1723,9 +1849,17 @@ export const LCTeamConditionals: IWeaponContent[] = [
     default: true,
     duration: 1,
     id: '20019',
+    excludeSummon: true,
     scaling: (base, form, r) => {
       if (form['20019']) {
         base[Stats.SPD].push({
+          name: 'Passive',
+          source: 'Mediation',
+          value: calcRefinement(12, 2, r),
+        })
+      }
+      if (base.SUMMON_STATS) {
+        base.SUMMON_STATS[Stats.SPD].push({
           name: 'Passive',
           source: 'Mediation',
           value: calcRefinement(12, 2, r),
@@ -1750,6 +1884,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     chance: { base: 0.6, fixed: false },
     duration: 2,
     id: '23029',
+    excludeSummon: true,
     scaling: (base, form, r, { debuffs, own }) => {
       const tier = Number(form['23029'])
       if (tier) {
@@ -1758,6 +1893,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Those Many Springs',
           value: tier === 1 ? calcRefinement(0.1, 0.02, r) : calcRefinement(0.14, 0.02, r),
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS.VULNERABILITY.push({
+            name: tier === 1 ? `Unarmored` : `Cornered`,
+            source: 'Those Many Springs',
+            value: tier === 1 ? calcRefinement(0.1, 0.02, r) : calcRefinement(0.14, 0.02, r),
+          })
+        }
         if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }
       return base
@@ -1771,6 +1913,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     debuff: true,
     duration: 2,
     id: '23032',
+    excludeSummon: true,
     scaling: (base, form, r, { debuffs, own }) => {
       if (form['23032']) {
         base.CALLBACK.push((x, d, _w) => {
@@ -1779,6 +1922,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
             source: 'Scene Alone Stays True',
             value: calcRefinement(0.1, 0.02, r) + (x.getValue(Stats.BE) >= 1.5 ? calcRefinement(0.08, 0.02, r) : 0),
           })
+          if (base.SUMMON_STATS) {
+            base.SUMMON_STATS.VULNERABILITY.push({
+              name: 'Woefree',
+              source: 'Scene Alone Stays True',
+              value: calcRefinement(0.1, 0.02, r) + (x.getValue(Stats.BE) >= 1.5 ? calcRefinement(0.08, 0.02, r) : 0),
+            })
+          }
           return x
         })
         if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
@@ -1795,6 +1945,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     duration: 2,
     id: '23035',
     chance: { base: 1, fixed: false },
+    excludeSummon: true,
     scaling: (base, form, r, { debuffs, own }) => {
       if (form['23035']) {
         base.VULNERABILITY.push({
@@ -1802,6 +1953,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
           source: 'Long Road Leads Home',
           value: calcRefinement(0.18, 0.03, r),
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS.VULNERABILITY.push({
+            name: 'Charring',
+            source: 'Long Road Leads Home',
+            value: calcRefinement(0.18, 0.03, r),
+          })
+        }
         if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }
       return base
@@ -1885,22 +2043,28 @@ export const LCTeamConditionals: IWeaponContent[] = [
     },
   },
   {
-    type: 'number',
-    text: `DEF Shred Stacks`,
+    type: 'toggle',
+    text: `Ability DEF Shred`,
     show: true,
-    default: 1,
-    min: 0,
-    max: 2,
+    default: true,
     duration: 2,
     debuff: true,
     id: '23041',
+    excludeSummon: true,
     scaling: (base, form, r, { debuffs, own }) => {
-      if (form['23041']) {
+      if (form['23041'] && !checkBuffExist(base.DEF_REDUCTION, { source: 'Life Should Be Cast to Flames' })) {
         base.DEF_REDUCTION.push({
           name: `Passive`,
           source: 'Life Should Be Cast to Flames',
-          value: calcRefinement(0.06, 0.01, r) * form['23041'],
+          value: calcRefinement(0.12, 0.03, r),
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS.DEF_REDUCTION.push({
+            name: `Passive`,
+            source: 'Life Should Be Cast to Flames',
+            value: calcRefinement(0.12, 0.03, r),
+          })
+        }
         if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.DEF_RED)
       }
       return base

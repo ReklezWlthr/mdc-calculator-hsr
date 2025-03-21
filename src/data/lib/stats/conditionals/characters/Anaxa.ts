@@ -66,7 +66,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       title: 'Tetrad Wisdom Reigns Thrice',
       content: `Each time Anaxa attacks enemy targets <span class="text-desc">1</span> time, inflicts <span class="text-desc">1</span> random Weakness Type to the targets, lasting for <span class="text-desc">3</span> turn(s) with priority to the Weakness Type that the target has yet to have.
       <br />When Anaxa is on the battlefield, he inflicts the <b class="text-red">Qualitative Disclosure</b> state to enemy targets with at least <span class="text-desc">5</span> different Type Weaknesses. Anaxa deals {{0}}% more DMG to targets in <b class="text-red">Qualitative Disclosure</b> state. In addition, using a Basic ATK or Skill on targets in <b class="text-red">Qualitative Disclosure</b> state allows him to use another <span class="text-desc">1</span> instance of his Skill. This additional Skill does not consume any Skill Point and cannot trigger this effect again. If the target has been defeated before this additional Skill is used, it will be dealt to a random enemy unit.`,
-      value: [{ base: 24, growth: 1.6, style: 'curved' }],
+      value: [{ base: 18, growth: 1.2, style: 'curved' }],
       level: talent,
       tag: AbilityTag.IMPAIR,
     },
@@ -124,7 +124,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: 'Everything Is in Everything',
-      content: `Each instance of inflicting the <b class="text-lime-400">Sublimation</b> state in a single battle permanently increases Anaxa's DMG dealt in that battle by <span class="text-desc">10%</span> of the original DMG, up to <span class="text-desc">3</span> stacks.`,
+      content: `The DMG dealt by Anaxa is <span class="text-desc">130%</span> of the original DMG. The <span class="text-desc">2</span> effects of the Trace <b>Imperative Hiatus</b> will be triggered directly and will no longer depend on the number of Erudition characters on the team.`,
     },
   }
 
@@ -184,16 +184,6 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       max: 2,
       duration: 2,
     },
-    {
-      type: 'number',
-      id: 'anaxa_c6',
-      text: `E6 DMG Multiplier Bonus`,
-      ...talents.c6,
-      show: c >= 6,
-      default: 1,
-      min: 0,
-      max: 3,
-    },
   ]
 
   const teammateContent: IContent[] = [
@@ -222,7 +212,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     ) => {
       const base = _.cloneDeep(x)
 
-      const multiplier = form.anaxa_c6 ? 1 + form.anaxa_c6 * 0.1 : 1
+      const multiplier = c >= 6 ? 1.3 : 1
 
       base.BASIC_SCALING = [
         {
@@ -303,7 +293,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         base[Stats.ALL_DMG].push({
           name: `Qualitative Disclosure`,
           source: 'Self',
-          value: calcScaling(0.24, 0.016, talent, 'curved'),
+          value: calcScaling(0.18, 0.012, talent, 'curved'),
         })
         base.ADD_DEBUFF.push({
           name: 'Qualitative Disclosure',
@@ -311,14 +301,14 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
-      if (a.a4) {
-        if (eruditionCount === 1)
+      if (a.a4 || c >= 6) {
+        if (eruditionCount === 1 || c >= 6)
           base[Stats.CRIT_DMG].push({
             name: `Ascension 4 Passive`,
             source: 'Self',
             value: 1.4,
           })
-        if (eruditionCount >= 2)
+        if (eruditionCount >= 2 || c >= 6)
           base[Stats.ALL_DMG].push({
             name: `Ascension 4 Passive`,
             source: 'Self',
@@ -386,7 +376,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           source: 'Anaxa',
         })
       }
-      if (a.a4 && eruditionCount >= 2) {
+      if ((a.a4 && eruditionCount >= 2) || c >= 6) {
         base[Stats.ALL_DMG].push({
           name: `Ascension 4 Passive`,
           source: 'Anaxa',

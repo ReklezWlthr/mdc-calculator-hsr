@@ -1343,17 +1343,6 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
     },
   },
   {
-    id: '23041',
-    scaling: (base, r) => {
-      base[Stats.CRIT_RATE].push({
-        name: 'Passive',
-        source: `Life Should Be Cast to Flames`,
-        value: calcRefinement(0.18, 0.03, r),
-      })
-      return base
-    },
-  },
-  {
     id: '22004',
     scaling: (base, r) => {
       base[Stats.P_ATK].push({
