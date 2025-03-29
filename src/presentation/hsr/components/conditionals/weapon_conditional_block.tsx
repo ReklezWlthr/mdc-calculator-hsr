@@ -91,7 +91,7 @@ export const WeaponConditionalBlock = observer(
                         position="left"
                       >
                         <p className="w-full text-xs text-center text-white truncate">
-                          {content.owner && `${findCharacter(team[content.owner]?.cId)?.name}: `}
+                          {_.isNumber(content.owner) && `${findCharacter(team[content.owner]?.cId)?.name}: `}
                           {content.text}
                         </p>
                       </LCTooltip>

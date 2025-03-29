@@ -222,6 +222,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
                   property: TalentProperty.NORMAL,
                   type: TalentType.SKILL,
                   break: 20,
+                  hitSplit: [0.5, 0.5],
                   sum: true,
                 },
               ]
@@ -233,6 +234,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
                   property: TalentProperty.NORMAL,
                   type: TalentType.SKILL,
                   break: 20,
+                  hitSplit: [0.5, 0.5],
                   sum: true,
                 },
                 {
@@ -241,6 +243,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
                   element: Element.IMAGINARY,
                   property: TalentProperty.NORMAL,
                   type: TalentType.SKILL,
+                  hitSplit: [0.5, 0.5],
                   break: 10,
                 },
               ]
@@ -396,6 +399,8 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             multiplier: 0.5,
           })
           x.BASE_DEF = 0
+          x.BASE_DEF_L = 0
+          x.BASE_DEF_C = 0
           x[Stats.DEF] = []
           x[Stats.P_DEF] = []
         }

@@ -292,7 +292,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         BASE_DEF: x.BASE_DEF,
         BASE_SPD: 140,
         ELEMENT: Element.NONE,
-        BASE_HP: 32000,
+        BASE_HP: 34000,
         SUMMON_ID: '1407',
         NAME: 'Netherwing: Pollux',
         MAX_ENERGY: 0,
@@ -376,7 +376,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             property: TalentProperty.SERVANT,
             type: TalentType.SERVANT,
             break: 10,
-            sum: i === 6,
+            sum: true,
             useOwnerStats: true,
             bonus: a.a6 ? 0.3 * i : 0,
             multiplier: c1Mult,
@@ -397,7 +397,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           ]
       base.MEMO_SKILL_SCALING = [
         {
-          name: 'Claws DMG',
+          name: 'Claw DMG',
           value: [{ scaling: calcScaling(0.2, 0.04, memo_skill, 'linear'), multiplier: Stats.HP }],
           element: Element.QUANTUM,
           property: TalentProperty.SERVANT,
@@ -415,7 +415,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           property: TalentProperty.SERVANT,
           type: TalentType.SERVANT,
           break: 10,
-          sum: false,
+          sum: true,
           useOwnerStats: true,
           bonus: a.a6 ? 0.3 : 0,
           multiplier: c1Mult,
@@ -427,7 +427,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           property: TalentProperty.SERVANT,
           type: TalentType.SERVANT,
           break: 10,
-          sum: false,
+          sum: true,
           useOwnerStats: true,
           bonus: a.a6 ? 0.6 : 0,
           multiplier: c1Mult,
@@ -438,7 +438,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         {
           name: 'Total Single Target DMG',
           value: [{ scaling: calcScaling(0.25, 0.05, memo_talent, 'linear'), multiplier: Stats.HP }],
-          multiplier: (c >= 6 ? 9 : 6) * c1Mult,
+          multiplier: (c >= 6 ? 9 : 6) * (c1Mult || 1),
           element: Element.QUANTUM,
           property: TalentProperty.SERVANT,
           type: TalentType.SERVANT,
