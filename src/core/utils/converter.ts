@@ -53,7 +53,7 @@ export const fromEnka = (rawData: Record<string, any>) => {
 
     return {
       level: item.level,
-      ascension: item.promotion,
+      ascension: +item.promotion || 0,
       cons: item.rank,
       cId,
       equipments: {

@@ -18,7 +18,7 @@ export interface AbilityBlockProps {
 export const AbilityBlock = observer(({ char, onChange, upgrade, talents, disabled }: AbilityBlockProps) => {
   const charData = findCharacter(char.cId)
 
-  const maxTalentLevel = findMaxTalentLevel(char?.ascension)
+  const maxTalentLevel = findMaxTalentLevel(char?.ascension) || 1
   const talentLevels = _.map(Array(maxTalentLevel), (_, index) => ({
     name: (index + 1).toString(),
     value: (index + 1).toString(),

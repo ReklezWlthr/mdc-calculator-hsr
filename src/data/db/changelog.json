@@ -2,7 +2,7 @@
   {
     "version": "1.1.1-14",
     "date": "April 2nd, 2025",
-    "desc": ["Fixed: Importing Trailblazer's Loadout from UID"]
+    "desc": ["Fixed: A bug when importing loadout from UID for Trailblazer"]
   },
   {
     "version": "1.1.1-13",
