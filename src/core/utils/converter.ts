@@ -79,7 +79,7 @@ export const fromEnka = (rawData: Record<string, any>) => {
         a6: findTalent('103') || false,
       },
       minor_traces: formatMinorTrace(
-        findCharacter(item.avatarId.toString())?.trace,
+        findCharacter(cId)?.trace,
         traceException[item.avatarId.toString()] || [
           // Main 5
           findTalent('201') || false,
