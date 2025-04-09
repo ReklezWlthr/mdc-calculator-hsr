@@ -82,13 +82,13 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         { base: 14, growth: 2.8, style: 'linear' },
         { base: 17, growth: 3.4, style: 'linear' },
       ],
-      level: skill,
+      level: memo_skill,
       tag: AbilityTag.AOE,
     },
     ult: {
       trace: 'Ultimate',
       title: `Doomshriek, Dawn's Chime`,
-      content: `Summons the memosprite <b>Netherwing</b> and <u>advances its action</u> by <span class="text-desc">100%</span>. At the same time, creates the Territory <b>Lost Netherland</b>, which decreases all enemies' <b>All-Type RES</b> by {{0}}%. If the DMG Boost effect from Castorice's Talent is active, the effect is extended to <b>Netherwing</b>. <b>Netherwing</b> has an initial SPD of <span class="text-desc">140</span> and a set Max HP equal to <span class="text-desc">100%</span> of max <b class="text-indigo-400">Newbud</b>.
+      content: `Summons the memosprite <b>Netherwing</b> and <u>advances its action</u> by <span class="text-desc">100%</span>. At the same time, creates the Territory <b>Lost Netherland</b>, which decreases all enemies' <b>All-Type RES</b> by {{0}}%. If the DMG Boost effect from Castorice's Talent is active, the effect is extended to <b>Netherwing</b>. <b>Netherwing</b> has an initial SPD of <span class="text-desc">165</span> and a set Max HP equal to <span class="text-desc">100%</span> of max <b class="text-indigo-400">Newbud</b>.
       <br />After <b>Netherwing</b> acts <span class="text-desc">3</span> times or when its HP is <span class="text-desc">0</span>, it disappears and dispels the Territory <b>Lost Netherland</b>.`,
       value: [{ base: 10, growth: 1, style: 'curved' }],
       level: ult,
@@ -104,7 +104,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       tag: AbilityTag.ENHANCE,
     },
     unique_talent: {
-      trace: 'Unique Talent',
+      trace: 'Exclusive Talent',
       title: `Sanctuary of the Mooncocoon`,
       content: `After obtaining Castorice or when Castorice is in the current team, receive the following effect: In battle, when an ally character receives a killing blow, all ally characters that received a killing blow in this action enter the <b class="text-violet-400">Mooncocoon</b> state. Characters in <b class="text-violet-400">Mooncocoon</b> temporarily delay becoming downed and can take actions normally. After the action, if they receive healing or gain the Shield effect before their next turn, <b class="text-violet-400">Mooncocoon</b> is removed. Otherwise, they will be downed immediately. This effect can be triggered <span class="text-desc">1</span> time per battle.`,
       value: [],
@@ -116,7 +116,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       title: `Wings Sweep the Ruins`,
       content: `When the <b>Netherwing</b> disappears, deals <span class="text-desc">6</span> instance(s) of DMG, with every instance dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Castorice's Max HP to one random enemy units. At the same time, restores HP equal to <span class="text-desc">6%</span> of Castorice's Max HP plus <span class="text-desc">800</span> to all allies.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
-      level: talent,
+      level: memo_talent,
       tag: AbilityTag.BOUNCE,
     },
     summon_talent_2: {
@@ -124,7 +124,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       title: `Mooncocoon Shrouds the Form`,
       content: `When <b>Netherwing</b> is on the field, it acts as <u>backup</u> for allies. When allies take DMG or consumes HP, their current HP can be reduced to a minimum of <span class="text-desc">1</span>, after which <b>Netherwing</b> will consume HP at <span class="text-desc">500%</span> of the original value until <b>Netherwing</b> disappears.`,
       value: [],
-      level: talent,
+      level: memo_talent,
       tag: AbilityTag.SUPPORT,
     },
     summon_talent_3: {
@@ -132,7 +132,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       title: `Roar Rumbles the Realm`,
       content: `When <b>Netherwing</b> is summoned, increases DMG dealt by all allies by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
       value: [],
-      level: talent,
+      level: memo_talent,
       tag: AbilityTag.SUPPORT,
     },
     technique: {
@@ -289,14 +289,14 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         ...x,
         BASE_ATK: x.BASE_ATK,
         BASE_DEF: x.BASE_DEF,
-        BASE_SPD: 140,
+        BASE_SPD: 165,
         ELEMENT: Element.NONE,
         BASE_HP: 34000,
         SUMMON_ID: '1407',
         NAME: 'Netherwing: Pollux',
         MAX_ENERGY: 0,
-        [Stats.HP]: [],
-        [Stats.P_HP]: [],
+        [Stats.P_SPD]: [],
+        [Stats.SPD]: [],
       })
 
       if (form.dead_dragon) base.SKILL_ALT = true
@@ -586,35 +586,13 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       weakness: Element[],
       broken: boolean
     ) => {
-      if (form.supreme_stance && a.a2)
-        base.CALLBACK.push(function (x) {
-          const summonSpd = x.SUMMON_STATS.getSpd()
-          x.X_ATK.push({
-            name: `Ascension 2 Passive`,
-            source: 'Self',
-            value: 7.2 * x.getSpd() + summonSpd * 3.6,
-            base: x.getSpd(),
-            multiplier: 7.2,
-            flat: `(${_.floor(summonSpd, 1).toLocaleString()} \u{00d7} ${toPercentage(3.6)})`,
-          })
-          x.SUMMON_STATS.X_ATK.push({
-            name: `Ascension 2 Passive`,
-            source: 'Aglaea',
-            value: 7.2 * x.getSpd() + summonSpd * 3.6,
-            base: x.getSpd(),
-            multiplier: 7.2,
-            flat: `(${_.floor(summonSpd, 1).toLocaleString()} \u{00d7} ${toPercentage(3.6)})`,
-          })
-          return x
-        })
-      if (form.supreme_stance && c >= 6)
-        base.CALLBACK.push(function (x) {
-          const spd = _.max([x.getSpd(), x.SUMMON_STATS.getSpd()])
-          const bonus = spd > 320 ? 0.6 : spd > 240 ? 0.3 : spd > 160 ? 0.1 : 0
-          x.BASIC_SCALING = _.map(x.BASIC_SCALING, (item) => ({ ...item, bonus }))
-          return x
-        })
+      // Clear Bonus HP for Netherwing
+      base.CALLBACK.push(function P100(x) {
+        x.SUMMON_STATS[Stats.HP] = []
+        x.SUMMON_STATS[Stats.P_HP] = []
 
+        return x
+      })
       return base
     },
   }

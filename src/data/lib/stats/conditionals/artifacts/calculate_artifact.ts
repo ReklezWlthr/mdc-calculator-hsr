@@ -156,6 +156,33 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       })
     }
   }
+  if (
+    form['125'] &&
+    !checkBuffExist(base[Stats.P_SPD], { source: 'Warrior Goddess of Daythunder', name: 'Gentle Rain' })
+  ) {
+    base[Stats.P_SPD].push({
+      name: `Gentle Rain`,
+      source: `Warrior Goddess of Daythunder`,
+      value: 0.06,
+    })
+  }
+  if (
+    form['125'] &&
+    !checkBuffExist(base[Stats.CRIT_DMG], { source: 'Warrior Goddess of Daythunder', name: 'Gentle Rain' })
+  ) {
+    base[Stats.CRIT_DMG].push({
+      name: `Gentle Rain`,
+      source: `Warrior Goddess of Daythunder`,
+      value: 0.15,
+    })
+  }
+  if (form['126']) {
+    base[Stats.P_ATK].push({
+      name: `Help`,
+      source: `Captain Over Cursed Waves`,
+      value: 0.16 * form['126'],
+    })
+  }
 
   return base
 }
@@ -173,6 +200,13 @@ export const calculateTeamRelic = (base: StatsObject, form: Record<string, any>,
       source: owner.NAME,
       value: 0.3,
     })
+  if (form['125'] && !checkBuffExist(base[Stats.CRIT_DMG], { name: 'Gentle Rain' })) {
+    base[Stats.CRIT_DMG].push({
+      name: `Gentle Rain`,
+      source: owner.NAME,
+      value: 0.15,
+    })
+  }
 
   return base
 }

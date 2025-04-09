@@ -1,6 +1,6 @@
 import { StatsObject, StatsObjectKeys, TalentPropertyMap, TalentTypeMap } from '@src/data/lib/stats/baseConstant'
 import { IScaling } from '@src/domain/conditional'
-import { Element, StatIcons, Stats, TalentProperty } from '@src/domain/constant'
+import { Element, StatIcons, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 import { toPercentage } from '@src/core/utils/converter'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
 import _ from 'lodash'
@@ -63,7 +63,7 @@ export const damageStringConstruct = (
   const breakDoT = scaling.property === TalentProperty.BREAK_DOT
   const isPure = scaling.property === TalentProperty.PURE
 
-  const isServant = scaling.property === TalentProperty.SERVANT
+  const isServant = scaling.type === TalentType.SERVANT
   const isSplit = !!_.size(scaling.hitSplit)
 
   const ownerStats = _.cloneDeep(stats)
@@ -118,7 +118,7 @@ export const damageStringConstruct = (
     0.1,
   ])
   const brokenMult = calculatorStore.broken ? 1 : 0.9
-  const isDamage = !_.includes([TalentProperty.SHIELD, TalentProperty.HEAL], scaling.property)
+  const isDamage = !_.includes([TalentProperty.SHIELD, TalentProperty.HEAL], scaling.property) && !scaling.trueRaw
   const enemyMod = isDamage ? defMult * resMult * vulMult * brokenMult : 1
 
   const statForScale = {
@@ -131,7 +131,7 @@ export const damageStringConstruct = (
   const bonusDMG = (splitBonus?: number) =>
     (splitBonus || 0) +
     (scaling.bonus || 0) +
-    (TalentProperty.SHIELD === scaling.property
+    (TalentProperty.SHIELD === scaling.property || scaling.trueRaw
       ? 0
       : TalentProperty.HEAL === scaling.property
       ? stats.getValue(Stats.HEAL) + stats.getValue(`${TalentTypeMap[scaling.type]}_HEAL`)
@@ -168,7 +168,7 @@ export const damageStringConstruct = (
         (breakScale ? 1 + (stats.getValue(StatsObjectKeys.BREAK_MULT) || 0) : 1) *
         enemyMod)
   )
-  const dmg = _.sum(dmgSplit)
+  const dmg = _.max([_.sum(dmgSplit), 1])
 
   const totalCr =
     scaling.overrideCr ||

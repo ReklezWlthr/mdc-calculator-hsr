@@ -252,7 +252,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ]
       base.ULT_SCALING = [
         {
-          name: 'Single Target',
+          name: 'AoE',
           value: [{ scaling: calcScaling(1.5, 0.05, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.WIND,
           property: TalentProperty.NORMAL,

@@ -60,17 +60,18 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
     scaling.chance?.fixed,
     scaling.debuffElement
   )
-  const noCrit = _.includes(
-    [
-      TalentProperty.HEAL,
-      TalentProperty.SHIELD,
-      TalentProperty.DOT,
-      TalentProperty.BREAK,
-      TalentProperty.BREAK_DOT,
-      TalentProperty.SUPER_BREAK,
-    ],
-    scaling.property
-  )
+  const noCrit =
+    _.includes(
+      [
+        TalentProperty.HEAL,
+        TalentProperty.SHIELD,
+        TalentProperty.DOT,
+        TalentProperty.BREAK,
+        TalentProperty.BREAK_DOT,
+        TalentProperty.SUPER_BREAK,
+      ],
+      scaling.property
+    ) || scaling.trueRaw
   const toughness = scaling.break * (1 + stats.getValue(StatsObjectKeys.BREAK_EFF))
 
   const DmgBlock = ({ highlight }: { highlight?: boolean }) => (

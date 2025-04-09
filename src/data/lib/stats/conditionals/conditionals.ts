@@ -67,6 +67,8 @@ import Tribbie from './characters/Tribbie'
 import Mydei from './characters/Mydei'
 import Castorice from './characters/Castorice'
 import Anaxa from './characters/Anaxa'
+import Cipher from './characters/Cipher'
+import Hyacine from './characters/Hyacine'
 
 export default [
   { id: '1001', conditionals: March },
@@ -133,7 +135,9 @@ export default [
   { id: '1403', conditionals: Tribbie },
   { id: '1404', conditionals: Mydei },
   { id: '1405', conditionals: Anaxa },
+  { id: '1406', conditionals: Cipher },
   { id: '1407', conditionals: Castorice },
+  { id: '1409', conditionals: Hyacine },
   { id: '8001', conditionals: DMC },
   { id: '8003', conditionals: PMC },
   { id: '8005', conditionals: HMC },

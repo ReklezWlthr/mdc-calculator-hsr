@@ -1361,6 +1361,28 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23042',
+    scaling: (base, r) => {
+      base[Stats.P_SPD].push({
+        name: 'Passive',
+        source: `May Rainbows Remain in the Sky`,
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23043',
+    scaling: (base, r) => {
+      base[Stats.P_SPD].push({
+        name: 'Passive',
+        source: `Lies, Aflutter in the Wind`,
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

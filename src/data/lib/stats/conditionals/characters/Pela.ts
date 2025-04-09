@@ -214,7 +214,6 @@ const Pela = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         {
           name: 'AoE',
           value: [{ scaling: calcScaling(0.6, 0.04, ult, 'curved'), multiplier: Stats.ATK }],
-          flat: calcScaling(92, 55.2, skill, 'flat'),
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,

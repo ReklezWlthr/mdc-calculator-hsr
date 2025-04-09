@@ -72,7 +72,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         { base: 55, growth: 11, style: 'linear' },
         { base: 33, growth: 6.6, style: 'linear' },
       ],
-      level: skill,
+      level: memo_skill,
       tag: AbilityTag.BLAST,
     },
     ult: {
@@ -104,7 +104,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       title: `A Body Brewed by Tears`,
       content: `After attacking an enemy afflicted with <b class="text-violet-300">Seam Stitch</b>, increases this unit's SPD by {{0}}, stacking up to <span class="text-desc">6</span> time(s). During Garmentmaker's turn, automatically uses <b>Thorned Snare</b>, prioritizing enemies under the <b class="text-violet-300">Seam Stitch</b> state.`,
       value: [{ base: 44, growth: 2.2, style: 'linear' }],
-      level: talent,
+      level: memo_talent,
       tag: AbilityTag.ENHANCE,
     },
     technique: {
@@ -240,6 +240,8 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           })),
         ],
         [Stats.P_HP]: x[Stats.P_HP],
+        [Stats.P_SPD]: [],
+        [Stats.SPD]: [],
         SUMMON_ID: '1402',
         NAME: 'Garmentmaker',
         MAX_ENERGY: 0,

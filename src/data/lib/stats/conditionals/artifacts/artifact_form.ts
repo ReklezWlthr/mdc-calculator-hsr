@@ -190,10 +190,36 @@ export const ArtifactForm = () => {
       id: '123_2',
       excludeSummon: true,
     },
+    {
+      type: 'toggle',
+      text: `Gentle Rain`,
+      title: `Gentle Rain`,
+      content: `When the wearer and their memosprite provide healing to ally targets aside from themselves, the wearer gains <b>Gentle Rain</b>, which can be triggered up to <span class="text-desc">1</span> time per turn, lasting for <span class="text-desc">2</span> turn(s). When the wearer has <b>Gentle Rain</b>, increases SPD by <span class="text-desc">6%</span>, and increases all allies' CRIT DMG by <span class="text-desc">15%</span>. This effect cannot be stacked.`,
+      show: true,
+      default: true,
+      id: '125',
+      excludeSummon: true,
+    },
+    {
+      type: 'number',
+      text: `Help Stacks`,
+      title: `Help Stacks`,
+      content: `When the wearer's memosprite attacks, increases the wearer and memosprite's CRIT DMG by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
+      show: true,
+      default: 1,
+      min: 0,
+      max: 3,
+      id: '126',
+      excludeSummon: true,
+    },
   ]
 
   // Team-Wide
-  const teamContent: IContent[] = [findContentById(content, '114'), findContentById(content, '118')]
+  const teamContent: IContent[] = [
+    findContentById(content, '114'),
+    findContentById(content, '118'),
+    findContentById(content, '125'),
+  ]
 
   // Single-Target
   const allyContent: IContent[] = [

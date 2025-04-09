@@ -1286,6 +1286,30 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'number',
+    text: `Total HP Consumed`,
+    show: true,
+    default: 200,
+    min: 0,
+    id: '23042_1',
+    excludeSummon: true,
+    scaling: (base, form, r) => {
+      if (form['23042_1']) {
+        base.MEMO_SKILL_SCALING.push({
+          name: 'May Rainbows Remain in the Sky - DMG',
+          value: [],
+          flat: form['23042_1'],
+          multiplier: 2.5,
+          element: base.ELEMENT,
+          property: TalentProperty.ADD,
+          type: TalentType.NONE,
+          sum: true,
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [
@@ -2063,6 +2087,92 @@ export const LCTeamConditionals: IWeaponContent[] = [
             name: `Passive`,
             source: 'Life Should Be Cast to Flames',
             value: calcRefinement(0.12, 0.03, r),
+          })
+        }
+        if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.DEF_RED)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Memosprite Skill Vulnerability`,
+    show: true,
+    default: false,
+    debuff: true,
+    duration: 2,
+    id: '23042_2',
+    excludeSummon: true,
+    scaling: (base, form, r, { debuffs, own }) => {
+      if (form['23042_2']) {
+        base.VULNERABILITY.push({
+          name: `Passive`,
+          source: 'May Rainbows Remain in the Sky',
+          value: calcRefinement(0.18, 0.045, r),
+        })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS.VULNERABILITY.push({
+            name: `Passive`,
+            source: 'May Rainbows Remain in the Sky',
+            value: calcRefinement(0.18, 0.045, r),
+          })
+        }
+        if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Bamboozle`,
+    show: true,
+    default: true,
+    debuff: true,
+    duration: 2,
+    chance: { base: 1.2, fixed: false },
+    id: '23043_1',
+    excludeSummon: true,
+    scaling: (base, form, r, { debuffs, own }) => {
+      if (form['23043_1']) {
+        base.DEF_REDUCTION.push({
+          name: `Bamboozle`,
+          source: 'Lies, Aflutter in the Wind',
+          value: calcRefinement(0.16, 0.02, r),
+        })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS.DEF_REDUCTION.push({
+            name: `Bamboozle`,
+            source: 'Lies, Aflutter in the Wind',
+            value: calcRefinement(0.16, 0.02, r),
+          })
+        }
+        if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.DEF_RED)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Theft`,
+    show: true,
+    default: true,
+    debuff: true,
+    duration: 2,
+    chance: { base: 1.2, fixed: false },
+    id: '23043_2',
+    excludeSummon: true,
+    scaling: (base, form, r, { debuffs, own }) => {
+      if (form['23043_2']) {
+        base.DEF_REDUCTION.push({
+          name: `Theft`,
+          source: 'Lies, Aflutter in the Wind',
+          value: calcRefinement(0.08, 0.01, r),
+        })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS.DEF_REDUCTION.push({
+            name: `Theft`,
+            source: 'Lies, Aflutter in the Wind',
+            value: calcRefinement(0.08, 0.01, r),
           })
         }
         if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.DEF_RED)

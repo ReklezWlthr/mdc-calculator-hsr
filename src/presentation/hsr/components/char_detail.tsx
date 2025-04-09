@@ -96,7 +96,7 @@ export const CharDetail = observer(() => {
     'Memosprite Talent [1]': 'ServantPassive',
     'Memosprite Talent [2]': 'ServantPassive',
     'Memosprite Talent [3]': 'ServantPassive',
-    'Unique Talent': 'Passive',
+    'Exclusive Talent': 'Passive',
   }
 
   const consImage = {
@@ -285,7 +285,7 @@ export const CharDetail = observer(() => {
         {_.map(_.omit(talent, 'a2', 'a4', 'a6', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6'), (item) => {
           const baseType = item?.trace
             ?.replaceAll('Enhanced', '')
-            ?.replaceAll('Unique', '')
+            ?.replaceAll('Exclusive', '')
             .replaceAll(/\[\d\]$/g, '')
             .trim()
           return (
@@ -303,7 +303,7 @@ export const CharDetail = observer(() => {
                 <div className="w-full">
                   <div className="flex items-center justify-between">
                     <div>
-                      {item.trace === 'Unique Talent' ? (
+                      {item.trace === 'Exclusive Talent' ? (
                         <p className="px-2 text-sm font-normal text-white rounded-md bg-gradient-to-r from-unique-start to-unique-end w-fit">
                           {item.trace}
                         </p>

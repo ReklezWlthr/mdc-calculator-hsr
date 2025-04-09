@@ -210,6 +210,8 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           ..._.map(x[Stats.HP], (item) => ({ ...item, value: item.value * calcScaling(0.5, 0.03, talent, 'curved') })),
         ],
         [Stats.P_HP]: x[Stats.P_HP],
+        [Stats.P_SPD]: [],
+        [Stats.SPD]: [],
         SUMMON_ID: '8007',
         NAME: 'Mem',
         MAX_ENERGY: 0,
@@ -379,6 +381,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
                       multiplier: (ss.multiplier || 1) * m,
                       property: TalentProperty.TRUE,
                       break: ss.break * m,
+                      chance: null,
                     })
                   }
                 })
@@ -398,6 +401,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
                       multiplier: (ss.multiplier || 1) * m,
                       property: TalentProperty.TRUE,
                       break: ss.break * m,
+                      chance: null,
                     })
                   }
                 })

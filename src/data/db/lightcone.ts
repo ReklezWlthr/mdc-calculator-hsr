@@ -2085,7 +2085,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 18,
     type: PathType.REMEMBRANCE,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Engrave',
       detail: `Increases the wearer's Max HP by {{0}}%. When the wearer or their memosprite loses HP during their own turn, the wearer gains <b>Death Flower</b>, which allows the wearer and their memosprite to ignore {{2}}% of the target's DEF when dealing DMG, lasting for <span class="text-desc">2</span> turn(s).
@@ -2113,6 +2113,45 @@ export const LightCones = [
       properties: [
         { base: 60, growth: 10 },
         { base: 12, growth: 3 },
+      ],
+    },
+  },
+  {
+    id: '23042',
+    name: 'May Rainbows Remain in the Sky',
+    rarity: 5,
+    baseHp: 52.8,
+    baseAtk: 21.6,
+    baseDef: 24,
+    type: PathType.REMEMBRANCE,
+    beta: true,
+    desc: {
+      name: 'Tolerant',
+      detail: `Increases the wearer's SPD by {{0}}%. When the wearer uses Basic ATK, Skill, or Ultimate, consumes all allies' HP equal to {{1}}% of the current HP. And after the next attack of the wearer's memosprite, enables it to additionally deal <span class="text-desc">1</span> instance of <b>Additional DMG</b> equal to {{2}}% of the total consumed HP to the attacked target. The total HP consumed is then reset. When the wearer's memosprite uses Memosprite Skill, increases the DMG received by all enemies by {{3}}% , lasting for <span class="text-desc">2</span> turn(s).`,
+      properties: [
+        { base: 18, growth: 3 },
+        { base: 1, growth: 0.25 },
+        { base: 250, growth: 62.5 },
+        { base: 18, growth: 4.5 },
+      ],
+    },
+  },
+  {
+    id: '23043',
+    name: 'Lies, Aflutter in the Wind',
+    rarity: 5,
+    baseHp: 43.2,
+    baseAtk: 26.4,
+    baseDef: 24,
+    type: PathType.NIHILITY,
+    beta: true,
+    desc: {
+      name: 'Deceit',
+      detail: `Increases the wearer's SPD by {{0}}%. After the wearer uses an attack, there is a <span class="text-desc">120%</span> <u>base chance</u> to inflict the <b>Bamboozle</b> state on every enemy target. Decreases <b>Bamboozled</b> enemy target's DEF by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). If Wearer's SPD is higher than or equal to <span class="text-desc">170</span>, there is a <span class="text-desc">120%</span> <u>base chance</u> to inflict <b>Theft</b> state on it. Under the <b>Theft</b> state, enemy targets have their DEF decreased by {{2}}%, lasting for <span class="text-desc">2</span> turn(s). When <b>Bamboozle</b> or <b>Theft</b> is applied repeatedly, only the most recent application takes effect.`,
+      properties: [
+        { base: 18, growth: 3 },
+        { base: 16, growth: 2 },
+        { base: 8, growth: 1 },
       ],
     },
   },

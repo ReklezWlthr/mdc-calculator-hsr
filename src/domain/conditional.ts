@@ -48,7 +48,8 @@ export interface IScaling {
   bonusSplit?: number[] // Used by DHIL
   cdSplit?: number[] // Used by DHIL
   summon?: boolean
-  useOwnerStats?: boolean //Used Owner's Stats (Dead Dragon)
+  useOwnerStats?: boolean // Used Owner's Stats (Netherwing)
+  trueRaw?: boolean // Ignore enemy's multipliers
 }
 
 export interface IContent {

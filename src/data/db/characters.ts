@@ -1028,6 +1028,22 @@ export const Characters = [
     beta: true,
   },
   {
+    id: '1406',
+    name: 'Cipher',
+    stat: {
+      baseAtk: 87.12,
+      baseHp: 126.72,
+      baseDef: 69.3,
+      baseSpd: 106,
+      energy: 100,
+    },
+    trace: [Stats.SPD, Stats.P_HP, Stats.QUANTUM_DMG],
+    rarity: 5,
+    path: PathType.NIHILITY,
+    element: Element.QUANTUM,
+    beta: true,
+  },
+  {
     id: '1407',
     name: 'Castorice',
     stat: {
@@ -1041,8 +1057,25 @@ export const Characters = [
     rarity: 5,
     path: PathType.REMEMBRANCE,
     element: Element.QUANTUM,
+    beta: false,
+  },
+  {
+    id: '1409',
+    name: 'Hyacine',
+    stat: {
+      baseAtk: 52.8,
+      baseHp: 147.84,
+      baseDef: 85.8,
+      baseSpd: 111,
+      energy: 150,
+    },
+    trace: [Stats.SPD, Stats.P_HP, Stats.E_RES],
+    rarity: 5,
+    path: PathType.REMEMBRANCE,
+    element: Element.WIND,
     beta: true,
   },
+
   // Odd = Male, Even = Female
   {
     id: '8001',
