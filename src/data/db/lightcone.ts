@@ -1324,7 +1324,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.ERUDITION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'N/A',
       detail: `Increases the wearer's ATK by {{0}}%. For every different Weakness Type an enemy target has, increases the DMG dealt by the wearer by {{1}}%, up to a max of <span class="text-desc">7</span> Weakness Types.`,
