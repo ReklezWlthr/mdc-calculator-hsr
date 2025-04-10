@@ -214,6 +214,17 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     {
       type: 'number',
+      id: 'castorice_breath',
+      text: `Netherwing Breath Count`,
+      ...talents.summon_skill,
+      show: true,
+      default: 4,
+      min: 0,
+      max: 6,
+      unique: true,
+    },
+    {
+      type: 'number',
       id: 'castorice_talent',
       text: `Talent DMG Bonus Stacks`,
       ...talents.talent,
@@ -394,6 +405,22 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               multiplier: c1Mult,
             },
           ]
+
+      const breath1 = calcScaling(0.12, 0.022, memo_skill, 'linear')
+      const breath2 = calcScaling(0.14, 0.028, memo_skill, 'linear')
+      const breath3 = calcScaling(0.17, 0.034, memo_skill, 'linear')
+      const totalScaling = _.map(Array(form.castorice_breath), (_v, i) => {
+        switch (i) {
+          case 0:
+            return { scaling: breath1, multiplier: Stats.HP }
+          case 1:
+            return { scaling: breath2, multiplier: Stats.HP }
+          default:
+            return { scaling: breath3, multiplier: Stats.HP }
+        }
+      })
+      const sumScaling = _.sumBy(totalScaling, (item) => item.scaling)
+
       base.MEMO_SKILL_SCALING = [
         {
           name: 'Claw DMG',
@@ -408,30 +435,27 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           multiplier: c1Mult,
         },
         {
-          name: 'Breath Stage 1 DMG',
-          value: [{ scaling: calcScaling(0.12, 0.022, memo_skill, 'linear'), multiplier: Stats.HP }],
+          name: 'Total Breath DMG',
+          value: totalScaling,
           element: Element.QUANTUM,
           property: TalentProperty.SERVANT,
           type: TalentType.SERVANT,
           break: 10,
           sum: true,
           useOwnerStats: true,
-          bonus: a.a6 ? 0.3 : 0,
+          bonusSplit: a.a6 ? _.map(Array(form.castorice_breath), (_v, i) => 0.3 * (i + 1)) : [],
           multiplier: c1Mult,
+          hitSplit: _.map(Array(form.castorice_breath), (_v, i) => {
+            switch (i) {
+              case 0:
+                return breath1 / sumScaling
+              case 1:
+                return breath2 / sumScaling
+              default:
+                return breath3 / sumScaling
+            }
+          }),
         },
-        {
-          name: 'Breath Stage 2 DMG',
-          value: [{ scaling: calcScaling(0.14, 0.028, memo_skill, 'linear'), multiplier: Stats.HP }],
-          element: Element.QUANTUM,
-          property: TalentProperty.SERVANT,
-          type: TalentType.SERVANT,
-          break: 10,
-          sum: true,
-          useOwnerStats: true,
-          bonus: a.a6 ? 0.6 : 0,
-          multiplier: c1Mult,
-        },
-        ...lastDragonHit,
       ]
       base.MEMO_TALENT_SCALING = [
         {

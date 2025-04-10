@@ -1,5 +1,10 @@
 [
   {
+    "version": "1.1.1-16",
+    "date": "April 10th, 2025",
+    "desc": ["Updated: <b>Netherwing</b>'s Breath DMG is now summed into one row for better clarity."]
+  },
+  {
     "version": "1.1.1-15",
     "date": "April 9th, 2025",
     "desc": [
