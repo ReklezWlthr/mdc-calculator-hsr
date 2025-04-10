@@ -2088,7 +2088,7 @@ export const LightCones = [
     beta: false,
     desc: {
       name: 'Engrave',
-      detail: `Increases the wearer's Max HP by {{0}}%. When the wearer or their memosprite loses HP during their own turn, the wearer gains <b>Death Flower</b>, which allows the wearer and their memosprite to ignore {{2}}% of the target's DEF when dealing DMG, lasting for <span class="text-desc">2</span> turn(s).
+      detail: `Increases the wearer's Max HP by {{0}}%. When the wearer or their memosprite loses HP during their own turn, the wearer gains <b>Death Flower</b>, which allows the wearer and their memosprite to ignore {{1}}% of the target's DEF when dealing DMG, lasting for <span class="text-desc">2</span> turn(s).
       <br />When the wearer's memosprite disappears, <u>advances</u> the wearer's <u>action</u> by {{2}}%. This effect can only trigger up to <span class="text-desc">1</span> time, and the trigger count resets every time the wearer uses Ultimate.`,
       properties: [
         { base: 30, growth: 7.5 },

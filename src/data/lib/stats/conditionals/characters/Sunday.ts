@@ -258,14 +258,6 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
             calcScaling(0.15, 0.015, skill, 'curved') +
             (base.SUMMON || base.SUMMON_STATS?.SUMMON_ID ? calcScaling(0.25, 0.025, skill, 'curved') : 0),
         })
-        if (base.SUMMON_STATS) {
-          base.SUMMON_STATS[Stats.ALL_DMG].push({
-            name: 'Skill',
-            source: 'Sunday',
-            value:
-              calcScaling(0.15, 0.015, skill, 'curved') + (base.SUMMON ? calcScaling(0.25, 0.025, skill, 'curved') : 0),
-          })
-        }
         if (c < 6) {
           base[Stats.CRIT_RATE].push({
             name: 'Talent',
