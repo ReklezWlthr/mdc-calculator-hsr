@@ -187,13 +187,10 @@ export const damageStringConstruct = (
     : totalCd()
   const totalFlat = (scaling.flat || 0) + elementFlat + talentFlat
 
-  const splitCrit = _.map(scaling.hitSplit || [1], (split, i) => dmg * (1 + totalCd(scaling.cdSplit?.[i])) * split)
+  const splitCrit = _.map(dmgSplit, (split, i) => (1 + totalCd(scaling.cdSplit?.[i])) * split)
   const totalCrit = _.sum(splitCrit)
 
-  const splitAvg = _.map(
-    scaling.hitSplit || [1],
-    (split, i) => dmg * (1 + totalCd(scaling.cdSplit?.[i]) * totalCr) * split
-  )
+  const splitAvg = _.map(dmgSplit, (split, i) => (1 + totalCd(scaling.cdSplit?.[i]) * totalCr) * split)
   const totalAvg = _.sum(splitAvg)
 
   // String Construct
@@ -322,7 +319,14 @@ export const damageStringConstruct = (
           {scaling.property} CRIT DMG: <span className="text-desc">{toPercentage(propertyCd)}</span>
         </p>
       )}
-      {isSplit && showSplit && <HitSplit split={scaling.hitSplit} dmgSplit={splitCrit} cdSplit={scaling.cdSplit} />}
+      {isSplit && showSplit && (
+        <HitSplit
+          split={scaling.hitSplit}
+          dmgSplit={splitCrit}
+          cdSplit={scaling.cdSplit}
+          bonusSplit={scaling.bonusSplit}
+        />
+      )}
     </div>
   )
 
@@ -344,7 +348,9 @@ export const damageStringConstruct = (
           {scaling.property} CRIT Rate: <span className="text-desc">{toPercentage(propertyCr)}</span>
         </p>
       )}
-      {isSplit && showSplit && <HitSplit split={scaling.hitSplit} dmgSplit={splitAvg} />}
+      {isSplit && showSplit && (
+        <HitSplit split={scaling.hitSplit} dmgSplit={splitAvg} bonusSplit={scaling.bonusSplit} />
+      )}
     </div>
   )
 
