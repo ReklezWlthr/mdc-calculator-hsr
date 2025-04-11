@@ -253,7 +253,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     {
       type: 'number',
       id: 'castorice_a6',
-      text: `A6 DMG Bonus Stacks`,
+      text: `A6 Claw DMG Bonus`,
       ...talents.a6,
       show: a.a6,
       default: 1,
@@ -355,7 +355,6 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               sum: true,
               summon: true,
               useOwnerStats: true,
-              bonus: form.castorice_c2 ? 1 : 0,
               multiplier: c1Mult,
             },
           ]
@@ -611,9 +610,10 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       broken: boolean
     ) => {
       // Clear Bonus HP for Netherwing
-      base.CALLBACK.push(function P100(x) {
+      base.CALLBACK.push(function P999(x) {
         x.SUMMON_STATS[Stats.HP] = []
         x.SUMMON_STATS[Stats.P_HP] = []
+        x.SUMMON_STATS.X_HP = []
 
         return x
       })

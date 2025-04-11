@@ -221,7 +221,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'hyacine_c6')]
+  const teammateContent: IContent[] = [findContentById(content, 'clear_skies'), findContentById(content, 'hyacine_c6')]
 
   const allyContent: IContent[] = [findContentById(content, 'hyacine_c2')]
 
@@ -450,21 +450,6 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           })
         }
       }
-      if (form.clear_skies) {
-        base.CALLBACK.push((x, d, w, all) => {
-          x.X_HP.push({
-            name: `Ultimate`,
-            source: 'Hyacine',
-            value:
-              (calcScaling(0.15, 0.015, ult, 'curved') * all[index].getHP(true) + calcScaling(150, 90, ult, 'flat')) *
-              (c >= 1 ? 1.5 : 1),
-            base: all[index].getHP(true),
-            multiplier: calcScaling(0.15, 0.015, ult, 'curved') * (c >= 1 ? 1.5 : 1),
-            flat: calcScaling(150, 90, ult, 'flat') * (c >= 1 ? 1.5 : 1),
-          })
-          return x
-        })
-      }
       if (aForm.hyacine_c2) {
         base[Stats.P_SPD].push({
           name: `Eidolon 2`,
@@ -532,25 +517,32 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       }
 
       if (form.clear_skies) {
-        base.X_HP.push({
-          name: `Ultimate`,
-          source: 'Self',
-          value:
-            (calcScaling(0.15, 0.015, ult, 'curved') * base.getHP(true) + calcScaling(150, 90, ult, 'flat')) *
-            (c >= 1 ? 1.5 : 1),
-          base: base.getHP(true),
-          multiplier: calcScaling(0.15, 0.015, ult, 'curved') * (c >= 1 ? 1.5 : 1),
-          flat: calcScaling(150, 90, ult, 'flat') * (c >= 1 ? 1.5 : 1),
-        })
-        base.SUMMON_STATS?.X_HP.push({
-          name: `Ultimate`,
-          source: 'Hyacine',
-          value:
-            (calcScaling(0.15, 0.015, ult, 'curved') * base.getHP(true) + calcScaling(150, 90, ult, 'flat')) *
-            (c >= 1 ? 1.5 : 1),
-          base: base.getHP(true),
-          multiplier: calcScaling(0.15, 0.015, ult, 'curved') * (c >= 1 ? 1.5 : 1),
-          flat: calcScaling(150, 90, ult, 'flat') * (c >= 1 ? 1.5 : 1),
+        base.CALLBACK.push((x, d, w, all) => {
+          _.forEach(all, (t) => {
+            t.X_HP.push({
+              name: `Ultimate`,
+              source: 'Hyacine',
+              value:
+                (calcScaling(0.15, 0.015, ult, 'curved') * all[index].getHP(true) + calcScaling(150, 90, ult, 'flat')) *
+                (c >= 1 ? 1.5 : 1),
+              base: all[index].getHP(true),
+              multiplier: calcScaling(0.15, 0.015, ult, 'curved') * (c >= 1 ? 1.5 : 1),
+              flat: calcScaling(150, 90, ult, 'flat') * (c >= 1 ? 1.5 : 1),
+            })
+            if (t.SUMMON_STATS)
+              t.SUMMON_STATS?.X_HP.push({
+                name: `Ultimate`,
+                source: 'Hyacine',
+                value:
+                  (calcScaling(0.15, 0.015, ult, 'curved') * all[index].getHP(true) +
+                    calcScaling(150, 90, ult, 'flat')) *
+                  (c >= 1 ? 1.5 : 1),
+                base: all[index].getHP(true),
+                multiplier: calcScaling(0.15, 0.015, ult, 'curved') * (c >= 1 ? 1.5 : 1),
+                flat: calcScaling(150, 90, ult, 'flat') * (c >= 1 ? 1.5 : 1),
+              })
+          })
+          return x
         })
       }
 

@@ -175,6 +175,13 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       source: `Warrior Goddess of Daythunder`,
       value: 0.15,
     })
+    if (base.SUMMON_STATS) {
+      base.SUMMON_STATS[Stats.CRIT_DMG].push({
+        name: `Gentle Rain`,
+        source: `Warrior Goddess of Daythunder`,
+        value: 0.15,
+      })
+    }
   }
   if (form['126']) {
     base[Stats.P_ATK].push({
@@ -206,6 +213,13 @@ export const calculateTeamRelic = (base: StatsObject, form: Record<string, any>,
       source: owner.NAME,
       value: 0.15,
     })
+    if (base.SUMMON_STATS) {
+      base.SUMMON_STATS[Stats.CRIT_DMG].push({
+        name: `Gentle Rain`,
+        source: owner.NAME,
+        value: 0.15,
+      })
+    }
   }
 
   return base

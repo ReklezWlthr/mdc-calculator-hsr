@@ -138,14 +138,7 @@ export const damageStringConstruct = (
       : stats.getValue(Stats.ALL_DMG) + stats.getValue(`${element} DMG%`) + talentDmg + typeDmg)
   const globalBonus = _.sum(_.map(scaling.bonusSplit, (item, i) => item * scaling.hitSplit?.[i])) + bonusDMG()
   const raw = (split: number) =>
-    _.sumBy(
-      scaling.value,
-      (item) =>
-        split *
-        item.scaling *
-        ((item.override || statForScale[item.multiplier]) +
-          (item.multiplier === Stats.HP ? stats.getValue(StatsObjectKeys.X_HP) : 0))
-    ) +
+    _.sumBy(scaling.value, (item) => split * item.scaling * (item.override || statForScale[item.multiplier])) +
     (scaling.flat || 0) +
     elementFlat +
     talentFlat
@@ -153,11 +146,7 @@ export const damageStringConstruct = (
   const breakLevel = BreakBaseLevel[level - 1]
   const toughnessMult = 0.5 + _.min([calculatorStore.toughness, scaling.toughCap || calculatorStore.toughness]) / 40
   const breakRaw = (split: number) => breakElementMult * breakLevel * toughnessMult * split
-  const cap = scaling.cap
-    ? scaling.cap?.scaling *
-      (statForScale[scaling.cap?.multiplier] +
-        (scaling.cap?.multiplier === Stats.HP ? stats.getValue(StatsObjectKeys.X_HP) : 0))
-    : 0
+  const cap = scaling.cap ? scaling.cap?.scaling * statForScale[scaling.cap?.multiplier] : 0
   const capped = scaling.cap ? cap < raw(1) : false
   const dmgSplit = _.map(
     scaling.hitSplit || [1],
