@@ -1035,7 +1035,7 @@ export const Characters = [
       baseHp: 126.72,
       baseDef: 69.3,
       baseSpd: 106,
-      energy: 100,
+      energy: 130,
     },
     trace: [Stats.SPD, Stats.P_HP, Stats.QUANTUM_DMG],
     rarity: 5,

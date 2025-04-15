@@ -1297,7 +1297,7 @@ export const LCConditionals: IWeaponContent[] = [
     scaling: (base, form, r) => {
       if (form['23042_1']) {
         base.MEMO_SKILL_SCALING.push({
-          name: 'May Rainbows Remain in the Sky - DMG',
+          name: 'Long May Rainbows Adorn the Sky - DMG',
           value: [],
           flat: form['23042_1'],
           multiplier: 2.5,
@@ -2107,13 +2107,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
       if (form['23042_2']) {
         base.VULNERABILITY.push({
           name: `Passive`,
-          source: 'May Rainbows Remain in the Sky',
+          source: 'Long May Rainbows Adorn the Sky',
           value: calcRefinement(0.18, 0.045, r),
         })
         if (base.SUMMON_STATS) {
           base.SUMMON_STATS.VULNERABILITY.push({
             name: `Passive`,
-            source: 'May Rainbows Remain in the Sky',
+            source: 'Long May Rainbows Adorn the Sky',
             value: calcRefinement(0.18, 0.045, r),
           })
         }
@@ -2136,13 +2136,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
       if (form['23043_1']) {
         base.DEF_REDUCTION.push({
           name: `Bamboozle`,
-          source: 'Lies, Aflutter in the Wind',
+          source: 'Lies Dance on the Breeze',
           value: calcRefinement(0.16, 0.02, r),
         })
         if (base.SUMMON_STATS) {
           base.SUMMON_STATS.DEF_REDUCTION.push({
             name: `Bamboozle`,
-            source: 'Lies, Aflutter in the Wind',
+            source: 'Lies Dance on the Breeze',
             value: calcRefinement(0.16, 0.02, r),
           })
         }
@@ -2165,13 +2165,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
       if (form['23043_2']) {
         base.DEF_REDUCTION.push({
           name: `Theft`,
-          source: 'Lies, Aflutter in the Wind',
+          source: 'Lies Dance on the Breeze',
           value: calcRefinement(0.08, 0.01, r),
         })
         if (base.SUMMON_STATS) {
           base.SUMMON_STATS.DEF_REDUCTION.push({
             name: `Theft`,
-            source: 'Lies, Aflutter in the Wind',
+            source: 'Lies Dance on the Breeze',
             value: calcRefinement(0.08, 0.01, r),
           })
         }

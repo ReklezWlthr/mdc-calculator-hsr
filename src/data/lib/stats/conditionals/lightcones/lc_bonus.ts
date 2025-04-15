@@ -1366,7 +1366,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
     scaling: (base, r) => {
       base[Stats.P_SPD].push({
         name: 'Passive',
-        source: `May Rainbows Remain in the Sky`,
+        source: `Long May Rainbows Adorn the Sky`,
         value: calcRefinement(0.18, 0.03, r),
       })
       return base
@@ -1377,7 +1377,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
     scaling: (base, r) => {
       base[Stats.P_SPD].push({
         name: 'Passive',
-        source: `Lies, Aflutter in the Wind`,
+        source: `Lies Dance on the Breeze`,
         value: calcRefinement(0.18, 0.03, r),
       })
       return base

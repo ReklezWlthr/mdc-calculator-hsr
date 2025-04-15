@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.1.1-18",
+    "date": "April 15th, 2025",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v3.3v2</span>",
+      "Updated Characters: <span class=\"text-hsr-wind\">Hyacine</span>, and <span class=\"text-hsr-quantum\">Cipher</span>",
+      "Updated Light Cones: <span class=\"text-desc\">Long May Rainbows Adorn the Sky</span>, and <span class=\"text-desc\">Lies Dance on the Breeze</span>"
+    ]
+  },
+  {
     "version": "1.1.1-17",
     "date": "April 11th, 2025",
     "desc": ["Fixed: Max HP Increase effects now applied correctly."]
@@ -15,7 +24,7 @@
     "desc": [
       "Content Version: <span class=\"text-desc\">v3.3v1</span>",
       "New Characters: <span class=\"text-hsr-wind\">Hyacine</span>, and <span class=\"text-hsr-quantum\">Cipher</span>",
-      "New Light Cones: <span class=\"text-desc\">May Rainbows Remain in the Sky</span>, and <span class=\"text-desc\">Lies, Aflutter in the Wind</span>",
+      "New Light Cones: <span class=\"text-desc\">Long May Rainbows Adorn the Sky</span>, and <span class=\"text-desc\">Lies Dance on the Breeze</span>",
       "New Relics: <span class=\"text-desc\">Warrior Goddess of Daythunder</span>, and <span class=\"text-desc\">Captain Over Cursed Waves</span>",
       "Fixed: Stats inheritance for memosprites"
     ]

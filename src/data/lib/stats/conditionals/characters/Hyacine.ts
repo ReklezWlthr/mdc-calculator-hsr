@@ -37,16 +37,16 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
   const talents: ITalent = {
     normal: {
       trace: 'Basic ATK',
-      title: `When Breeze Kisses Foam`,
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Hyacine's Max HP to one designated enemy.`,
+      title: `When Breeze Kisses Cirrus`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Hyacine's Max HP to a designated target.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
     },
     skill: {
       trace: 'Skill',
-      title: `Love at Scattering of Rainbow`,
-      content: `Summons memosprite Ica and restores HP for all allies (except <b>Ica</b>) by an amount equal to {{0}}% of Hyacine's Max HP plus {{1}}, and restores HP for <b>Ica</b> by an amount equal to {{2}}% of Hyacine's Max HP plus {{3}}.`,
+      title: `Love Over the Rainbow`,
+      content: `Summons memosprite Ica, restores HP equal to {{0}}% of Hyacine's Max HP + {{1}} for all allies aside from <b>Ica</b>, and restores HP equal to {{2}}% of Hyacine's Max HP + {{3}} for <b>Ica</b>.`,
       value: [
         { base: 4, growth: 0.5, style: 'heal' },
         { base: 40, growth: 24, style: 'flat' },
@@ -58,7 +58,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     summon_skill: {
       trace: 'Memosprite Skill',
-      title: 'Rainclouds Begone!',
+      title: 'Rainclouds, Time to Go!',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> to all enemies equal to {{0}}% of the tally of healing done by Hyacine and <b>Ica</b> in the current battle. After using Memosprite Skill, clears <span class="text-desc">50%</span> of the tally of healing.`,
       value: [{ base: 10, growth: 2, style: 'linear' }],
       level: memo_skill,
@@ -68,7 +68,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ult: {
       trace: 'Ultimate',
       title: `We Who Fly Into Twilight`,
-      content: `Summons memosprite <b>Ica</b> and restores HP for all allies (except <b>Ica</b>) by an amount equal to {{0}}% of Hyacine's Max HP plus {{1}}, and restores HP for <b>Ica</b> by an amount equal to {{2}}% of Hyacine's Max HP plus {{3}}. Then, Hyacine enters the <b class="text-heal">Petrichoric Clear Skies</b> state, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> turn at the start of Hyacine's every turn. When in <b class="text-heal">Petrichoric Clear Skies</b> state, increases Max HP for all allies by an amount equal to {{4}}% plus {{5}}.`,
+      content: `Summons memosprite <b>Ica</b>, restores HP equal to {{0}}% of Hyacine's Max HP + {{1}} for all allies aside from <b>Ica</b>, and restores HP equal to {{2}}% of Hyacine's Max HP + {{3}} for <b>Ica</b>. Hyacine enters the <b class="text-heal">After Rain</b> state for <span class="text-desc">3</span> turn(s) afterwards. Reduces the state's duration by <span class="text-desc">1</span> turn each time Hyacine's turn begins. When in <b class="text-heal">After Rain</b> state, increases Max HP for all allies by {{4}}% + {{5}}.`,
       value: [
         { base: 5, growth: 0.625, style: 'heal' },
         { base: 50, growth: 30, style: 'flat' },
@@ -82,10 +82,10 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     summon_talent: {
       trace: 'Memosprite Talent',
-      title: `Holding Clear Sky's Hand`,
+      title: `Take Sky in Hand`,
       content: `<b>Ica</b>'s SPD remains at <span class="text-desc">0</span>, and they will not appear on the Action Order.
-      <br />If ally targets (except <b>Ica</b>) have their HP reduced, then at the start of any target's turn or after an action, <b>Ica</b> will consume <span class="text-desc">4%</span> of their own HP and restore HP equal to {{0}}% of Hyacine's Max HP plus {{1}} for the ally target with reduced HP.
-      <br />While Hyacine is in the <b class="text-heal">Petrichoric Clear Skies</b> state, <b>Ica</b> will be guaranteed to immediately take action after Hyacine uses an ability. And when <b>Ica</b> triggers the Talent's healing effect, additionally restores HP for ally targets by an amount equal to {{0}}% of Hyacine's Max HP plus {{1}}.`,
+      <br />If ally targets (except <b>Ica</b>) have their HP reduced, then <b>Ica</b> will consume <span class="text-desc">4%</span> of their own HP and restore HP equal to {{0}}% of Hyacine's Max HP plus {{1}} for the ally target with reduced HP at the start of any target's turn or after any target takes action.
+      <br />While Hyacine is in the <b class="text-heal">After Rain</b> state, <b>Ica</b> is guaranteed to immediately take action after Hyacine uses an ability. Moreover, when <b>Ica</b> triggers their Talent's healing effect, additionally restores HP for all ally targets by an amount equal to {{0}}% of Hyacine's Max HP plus {{1}}.`,
       value: [
         { base: 1, growth: 0.2, style: 'linear' },
         { base: 10, growth: 2, style: 'linear' },
@@ -95,25 +95,25 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     talent: {
       trace: 'Talent',
-      title: `Dawnray to Heal the World`,
-      content: `The memosprite <b>Ica</b> starts with HP equal to <span class="text-desc">50%</span> of Hyacine's Max HP. When Hyacine or <b>Ica</b> provides healing, increases <b>Ica</b>'s DMG dealt by {{0}}%, lasting for <span class="text-desc">2</span> turn(s). This stacks up to <span class="text-desc">3</span> time(s).`,
+      title: `First Light Heals the World`,
+      content: `The memosprite <b>Ica</b> initially has HP equal to <span class="text-desc">50%</span> of Hyacine's Max HP. When Hyacine or <b>Ica</b> provides healing, increases <b>Ica</b>'s DMG dealt by {{0}}% for <span class="text-desc">2</span> turn(s). Stacks up to <span class="text-desc">3</span> time(s).`,
       value: [{ base: 40, growth: 4, style: 'curved' }],
       level: talent,
       tag: AbilityTag.SUPPORT,
     },
     technique: {
       trace: 'Technique',
-      title: `Weather Perfect, All Is Adorable!`,
-      content: `When the next battle starts, restores all allies' HP by an amount equal to <span class="text-desc">30%</span> of Hyacine's Max HP plus <span class="text-desc">600</span> and increases Max HP by <span class="text-desc">20%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
+      title: `Day So Right, Life So Fine!`,
+      content: `At the start of the next battle, restores HP equal to <span class="text-desc">30%</span> of Hyacine's Max HP + <span class="text-desc">600</span> for all allies and increases their Max HP by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
-      title: `Cloudy Grin`,
-      content: `Increases Hyacine's and <b>Ica</b>'s CRIT Rate by <span class="text-desc">100%</span>. When providing healing to ally targets whose HP is equal to or lower than <span class="text-desc">50%</span> of their Max HP, increases Hyacine's and <b>Ica</b>'s Outgoing Healing by <span class="text-desc">25%</span>.`,
+      title: `Gloomy Grin`,
+      content: `Increases Hyacine and <b>Ica</b>'s CRIT Rate by <span class="text-desc">100%</span>. When providing healing to an ally target with less than or equal to <span class="text-desc">50%</span> this unit's Max HP, increases Hyacine and <b>Ica</b>'s Outgoing Healing by <span class="text-desc">25%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
-      title: `Gentle Thunderstorm`,
+      title: `Stormy Caress`,
       content: `Increases Hyacine's Effect RES by <span class="text-desc">50%</span>. When using Skill and Ultimate, dispels <span class="text-desc">1</span> debuff(s) from all ally targets.`,
     },
     a6: {
@@ -123,36 +123,36 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     c1: {
       trace: 'Eidolon 1',
-      title: `Safeguard the Candle in the Night`,
-      content: `Additionally increases the Max HP boost effect of <b class="text-heal">Petrichoric Clear Skies</b> by <span class="text-desc">50%</span>. While Hyacine is in <b class="text-heal">Petrichoric Clear Skies</b>, ally targets immediately restore HP by <span class="text-desc">8%</span> of Hyacine's Max HP after their attacks.`,
+      title: `Cradle the Candle of Night`,
+      content: `Additionally increases the Max HP boost effect of <b class="text-heal">After Rain</b> by <span class="text-desc">50%</span>. While Hyacine is in <b class="text-heal">After Rain</b>, ally targets immediately restore HP by <span class="text-desc">8%</span> of Hyacine's Max HP after their attacks.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Come Sit in My Courtyard`,
-      content: `When ally targets' HP decreases, SPD increases by <span class="text-desc">30%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `When ally target's HP decreases, SPD increases by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
-      title: `Set Off! Adventure to the Sun!`,
+      title: `Depart, Unto the Sun!`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.
       <br />Memosprite Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
       trace: 'Eidolon 4',
-      title: 'Gleaming Amber For You',
-      content: `The buff effect of the Trace <b>Tempestuous Halt</b> is enhanced. For every <span class="text-desc">1</span> excess SPD, additionally increases Hyacine's and <b>Ica</b>'s CRIT DMG by <span class="text-desc">2%</span>.`,
+      title: 'Sunlit Amber, Yours to Keep',
+      content: `The <b>Tempestuous Halt</b> Trace's buff effect is enhanced. For every <span class="text-desc">1</span> of SPD exceeded, additionally increases Hyacine and <b>Ica</b>'s CRIT DMG by <span class="text-desc">2%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
-      title: `Crimson Glow Hidden by the Sea`,
+      title: `Twilight Drapes the Tide`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Memosprite Talent Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c6: {
       trace: 'Eidolon 6',
-      title: 'O Sky, Heed My Wishes',
+      title: 'O Sky, Heed My Plea',
       content: `After <b>Ica</b> uses Memosprite Skill, clears <span class="text-desc">10%</span> of the Healing tally instead. When <b>Ica</b> is on the field, increases all ally targets' <b>All-Type RES PEN</b> by <span class="text-desc">24%</span>.`,
     },
   }
@@ -170,7 +170,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     {
       type: 'toggle',
       id: 'clear_skies',
-      text: `Petrichoric Clear Skies`,
+      text: `After Rain`,
       ...talents.ult,
       show: true,
       default: true,
@@ -302,7 +302,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.SERVANT,
           type: TalentType.SERVANT,
           break: 10,
-          sum: false,
+          sum: true,
         },
       ]
       base.MEMO_TALENT_SCALING = [
@@ -318,6 +318,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.SERVANT,
+          sum: true,
         },
       ]
       base.ULT_SCALING = [
@@ -348,6 +349,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.TECH,
+          sum: true,
         },
       ]
 
@@ -520,27 +522,31 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base.CALLBACK.push((x, d, w, all) => {
           _.forEach(all, (t) => {
             t.X_HP.push({
-              name: `Ultimate`,
+              name: `After Rain`,
               source: 'Hyacine',
-              value:
-                (calcScaling(0.15, 0.015, ult, 'curved') * all[index].getHP(true) + calcScaling(150, 90, ult, 'flat')) *
-                (c >= 1 ? 1.5 : 1),
+              value: calcScaling(0.15, 0.015, ult, 'curved') * all[index].getHP(true) * (c >= 1 ? 1.5 : 1),
               base: all[index].getHP(true),
               multiplier: calcScaling(0.15, 0.015, ult, 'curved') * (c >= 1 ? 1.5 : 1),
-              flat: calcScaling(150, 90, ult, 'flat') * (c >= 1 ? 1.5 : 1),
             })
-            if (t.SUMMON_STATS)
+            t[Stats.HP].push({
+              name: `After Rain`,
+              source: 'Hyacine',
+              value: calcScaling(150, 90, ult, 'flat') * (c >= 1 ? 1.5 : 1),
+            })
+            if (t.SUMMON_STATS) {
               t.SUMMON_STATS?.X_HP.push({
-                name: `Ultimate`,
+                name: `After Rain`,
                 source: 'Hyacine',
-                value:
-                  (calcScaling(0.15, 0.015, ult, 'curved') * all[index].getHP(true) +
-                    calcScaling(150, 90, ult, 'flat')) *
-                  (c >= 1 ? 1.5 : 1),
+                value: calcScaling(0.15, 0.015, ult, 'curved') * all[index].getHP(true) * (c >= 1 ? 1.5 : 1),
                 base: all[index].getHP(true),
                 multiplier: calcScaling(0.15, 0.015, ult, 'curved') * (c >= 1 ? 1.5 : 1),
-                flat: calcScaling(150, 90, ult, 'flat') * (c >= 1 ? 1.5 : 1),
               })
+              t.SUMMON_STATS?.[Stats.HP].push({
+                name: `After Rain`,
+                source: 'Hyacine',
+                value: calcScaling(150, 90, ult, 'flat') * (c >= 1 ? 1.5 : 1),
+              })
+            }
           })
           return x
         })

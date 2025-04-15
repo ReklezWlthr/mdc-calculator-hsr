@@ -2118,7 +2118,7 @@ export const LightCones = [
   },
   {
     id: '23042',
-    name: 'May Rainbows Remain in the Sky',
+    name: 'Long May Rainbows Adorn the Sky',
     rarity: 5,
     baseHp: 52.8,
     baseAtk: 21.6,
@@ -2127,7 +2127,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Tolerant',
-      detail: `Increases the wearer's SPD by {{0}}%. When the wearer uses Basic ATK, Skill, or Ultimate, consumes all allies' HP equal to {{1}}% of the current HP. And after the next attack of the wearer's memosprite, enables it to additionally deal <span class="text-desc">1</span> instance of <b>Additional DMG</b> equal to {{2}}% of the total consumed HP to the attacked target. The total HP consumed is then reset. When the wearer's memosprite uses Memosprite Skill, increases the DMG received by all enemies by {{3}}% , lasting for <span class="text-desc">2</span> turn(s).`,
+      detail: `Increases the wearer's SPD by {{0}}%. When the wearer uses Basic ATK, Skill, or Ultimate, consumes all allies' HP equal to {{1}}% of the current HP and additionally deals <span class="text-desc">1</span> instance of <b>Additional DMG</b> equal to {{2}}% of the total consumed HP to the attacked target after the next attack launched by the wearer's memosprite. The total HP consumed is then reset. When the wearer's memosprite uses Memosprite Skill, increases the DMG received by all enemies by {{3}}% , lasting for <span class="text-desc">2</span> turn(s).`,
       properties: [
         { base: 18, growth: 3 },
         { base: 1, growth: 0.25 },
@@ -2138,7 +2138,7 @@ export const LightCones = [
   },
   {
     id: '23043',
-    name: 'Lies, Aflutter in the Wind',
+    name: 'Lies Dance on the Breeze',
     rarity: 5,
     baseHp: 43.2,
     baseAtk: 26.4,
@@ -2147,7 +2147,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Deceit',
-      detail: `Increases the wearer's SPD by {{0}}%. After the wearer uses an attack, there is a <span class="text-desc">120%</span> <u>base chance</u> to inflict the <b>Bamboozle</b> state on every enemy target. Decreases <b>Bamboozled</b> enemy target's DEF by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). If Wearer's SPD is higher than or equal to <span class="text-desc">170</span>, there is a <span class="text-desc">120%</span> <u>base chance</u> to inflict <b>Theft</b> state on it. Under the <b>Theft</b> state, enemy targets have their DEF decreased by {{2}}%, lasting for <span class="text-desc">2</span> turn(s). When <b>Bamboozle</b> or <b>Theft</b> is applied repeatedly, only the most recent application takes effect.`,
+      detail: `Increases the wearer's SPD by {{0}}%. After the wearer uses an attack, there is a <span class="text-desc">120%</span> <u>base chance</u> to inflict the <b>Bamboozle</b> state on every enemy target. While under the <b>Bamboozle</b> state, enemy target's DEF decreases by {{1}}% for <span class="text-desc">2</span> turn(s). If Wearer's SPD is higher than or equal to <span class="text-desc">170</span>, there is a <span class="text-desc">120%</span> <u>base chance</u> to inflict <b>Theft</b> state on every enemy target. While under the <b>Theft</b> state, enemy target's DEF decreases by {{2}}% for <span class="text-desc">2</span> turn(s). When <b>Bamboozle</b> or <b>Theft</b> is inflicted repeatedly, only the latest effect inflicted can be active.`,
       properties: [
         { base: 18, growth: 3 },
         { base: 16, growth: 2 },
