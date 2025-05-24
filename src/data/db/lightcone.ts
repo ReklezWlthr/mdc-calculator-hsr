@@ -2127,7 +2127,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Tolerant',
-      detail: `Increases the wearer's SPD by {{0}}%. When the wearer uses Basic ATK, Skill, or Ultimate, consumes all allies' HP equal to {{1}}% of the current HP and additionally deals <span class="text-desc">1</span> instance of <b>Additional DMG</b> equal to {{2}}% of the total consumed HP to the attacked target after the next attack launched by the wearer's memosprite. The total HP consumed is then reset. When the wearer's memosprite uses Memosprite Skill, increases the DMG received by all enemies by {{3}}% , lasting for <span class="text-desc">2</span> turn(s).`,
+      detail: `Increases the wearer's SPD by {{0}}%. When the wearer uses Basic ATK, Skill, or Ultimate, consumes all allies' HP equal to {{1}}% of the current HP and additionally deals <span class="text-desc">1</span> instance of <b>Additional DMG</b> of the wearer's memosprite Type equal to {{2}}% of the total consumed HP to the attacked target after the next attack launched by the wearer's memosprite. The total HP consumed is then reset. When the wearer's memosprite uses Memosprite Skill, increases the DMG received by all enemies by {{3}}% , lasting for <span class="text-desc">2</span> turn(s). The same types of effects cannot stack.`,
       properties: [
         { base: 18, growth: 3 },
         { base: 1, growth: 0.25 },

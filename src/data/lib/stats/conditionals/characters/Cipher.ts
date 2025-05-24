@@ -62,9 +62,9 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: 'Talent',
       title: `The Hospitable Dolosian`,
       content: `When there are no enemy targets with <b class="text-hsr-quantum">Patron</b> on the battlefield, Cipher immediately causes one enemy target with the highest Max HP on the battlefield to become the <b class="text-hsr-quantum">Patron</b>. When using Skill and Ultimate, the primary target becomes the <b class="text-hsr-quantum">Patron</b>. The <b class="text-hsr-quantum">Patron</b> state only takes effect on the latest target.
-      <br />After the <b class="text-hsr-quantum">Patron</b> is attacked by other ally targets, Cipher immediately launches <u>Follow-up ATK</u> against the <b class="text-hsr-quantum">Patron</b>, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Cipher's ATK. This <u>Follow-up ATK</u> can only trigger <span class="text-desc">1</span> time, and the trigger count is reset after Cipher uses her Ultimate.
+      <br />After the <b class="text-hsr-quantum">Patron</b> is attacked by other ally targets, Cipher immediately launches <u>Follow-up ATK</u> against the <b class="text-hsr-quantum">Patron</b>, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Cipher's ATK. This effect can only be triggered up to <span class="text-desc">1</span> time(s) each turn, and it resets at the start of Cipher's turn.
       <br />Cipher will record <span class="text-desc">12%</span> of the non-<b class="text-true">True DMG</b> ally targets dealt to the <b class="text-hsr-quantum">Patron</b>, but the Overflow DMG will not be recorded. The recorded value is cleared after using Ultimate.`,
-      value: [{ base: 125, growth: 12.5, style: 'curved' }],
+      value: [{ base: 75, growth: 7.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ST,
     },
@@ -88,17 +88,17 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Sleight of Sky`,
-      content: `When Cipher is on the battlefield, all enemy targets' DEF decreases by <span class="text-desc">30%</span>. At the start of each wave, Cipher <u>advances her action</u> by <span class="text-desc">100%</span>.`,
+      content: `Increases the CRIT DMG dealt by the Talent's <u>Follow-up ATK</u> by <span class="text-desc">100%</span>. When Cipher is on the battlefield, DMG received by all enemy targets increases by <span class="text-desc">40%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Read the Room, Seek the Glee`,
-      content: `Increases the trigger count for her <u>Follow-up ATK</u> activated with her Talent to <span class="text-desc">2</span> time(s). When Cipher hits an enemy target, there is a <span class="text-desc">120%</span> base chance of causing them to receive <span class="text-desc">25%</span> more DMG, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `Cipher's recorded DMG is <span class="text-desc">150%</span> of the original recorded value. When using <u>Follow-up ATK</u> from Talent, increases Cipher's ATK by <span class="text-desc">80%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `In the Fray, Nab On a Spree`,
-      content: `Cipher's recorded DMG is <span class="text-desc">150%</span> of the original recorded value. When using <u>Follow-up ATK</u> from Talent, increases Cipher's CRIT DMG by <span class="text-desc">80%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `When Cipher hits an enemy target, there is a <span class="text-desc">120%</span> base chance of causing them to receive <span class="text-desc">30%</span> more DMG, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -120,7 +120,7 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c6: {
       trace: 'Eidolon 6',
       title: `The Thief's Game, Unsung and Free`,
-      content: `Increases DMG dealt by <u>Follow-up ATKs</u> caused by Cipher's Talent by <span class="text-desc">350%</span>. After resetting the record upon using her Ultimate, returns <span class="text-desc">20%</span> of the reset record.`,
+      content: `Increases DMG dealt by <u>Follow-up ATKs</u> caused by Cipher's Talent by <span class="text-desc">350%</span>. Records an additional <span class="text-desc">16%</span> of non-Overflow DMG dealt by this ATK. After resetting the record upon using her Ultimate, returns <span class="text-desc">20%</span> of the reset record.`,
     },
   }
 
@@ -168,20 +168,21 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     {
       type: 'toggle',
-      id: 'cipher_c1',
-      text: `E1 Vulnerability`,
-      ...talents.c1,
-      show: c >= 1,
+      id: 'cipher_c2',
+      text: `E2 Vulnerability`,
+      ...talents.c2,
+      show: c >= 2,
       default: true,
       debuff: true,
       duration: 2,
+      chance: { base: 1.2, fixed: false },
     },
     {
       type: 'toggle',
-      id: 'cipher_c2',
-      text: `E2 CRIT DMG Bonus`,
-      ...talents.c2,
-      show: c >= 2,
+      id: 'cipher_c1',
+      text: `E1 ATK Bonus`,
+      ...talents.c1,
+      show: c >= 1,
       default: true,
       duration: 2,
     },
@@ -268,13 +269,14 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       base.TALENT_SCALING = [
         {
           name: 'Single Target',
-          value: [{ scaling: calcScaling(1.25, 0.125, talent, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.75, 0.075, talent, 'curved'), multiplier: Stats.ATK }],
           element: Element.QUANTUM,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
           break: 20,
           sum: true,
           bonus: c >= 6 ? 3.5 : 0,
+          cd: a.a6 ? 1 : 0,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -330,23 +332,23 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         })
       }
       if (a.a6) {
-        base.DEF_REDUCTION.push({
+        base.VULNERABILITY.push({
           name: 'Ascension 6 Passive',
           source: 'Self',
-          value: 0.3,
-        })
-        addDebuff(debuffs, DebuffTypes.DEF_RED)
-      }
-      if (form.cipher_c1) {
-        base.VULNERABILITY.push({
-          name: 'Eidolon 1',
-          source: 'Self',
-          value: 0.25,
+          value: 0.4,
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
       if (form.cipher_c2) {
-        base[Stats.CRIT_DMG].push({
+        base.VULNERABILITY.push({
+          name: 'Eidolon 2',
+          source: 'Self',
+          value: 0.3,
+        })
+        addDebuff(debuffs, DebuffTypes.OTHER)
+      }
+      if (form.cipher_c1) {
+        base[Stats.P_ATK].push({
           name: 'Eidolon 2',
           source: 'Self',
           value: 0.8,
@@ -372,17 +374,17 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         })
       }
       if (a.a6) {
-        base.DEF_REDUCTION.push({
+        base.VULNERABILITY.push({
           name: 'Ascension 6 Passive',
           source: 'Cipher',
-          value: 0.3,
+          value: 0.4,
         })
       }
-      if (form.cipher_c1) {
+      if (form.cipher_c2) {
         base.VULNERABILITY.push({
-          name: 'Eidolon 1',
+          name: 'Eidolon 2',
           source: 'Cipher',
-          value: 0.25,
+          value: 0.3,
         })
       }
 

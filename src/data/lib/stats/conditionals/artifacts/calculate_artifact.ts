@@ -158,27 +158,27 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
   }
   if (
     form['125'] &&
-    !checkBuffExist(base[Stats.P_SPD], { source: 'Warrior Goddess of Daythunder', name: 'Gentle Rain' })
+    !checkBuffExist(base[Stats.P_SPD], { source: 'Warrior Goddess of Sun and Thunder', name: 'Gentle Rain' })
   ) {
     base[Stats.P_SPD].push({
       name: `Gentle Rain`,
-      source: `Warrior Goddess of Daythunder`,
+      source: `Warrior Goddess of Sun and Thunder`,
       value: 0.06,
     })
   }
   if (
     form['125'] &&
-    !checkBuffExist(base[Stats.CRIT_DMG], { source: 'Warrior Goddess of Daythunder', name: 'Gentle Rain' })
+    !checkBuffExist(base[Stats.CRIT_DMG], { source: 'Warrior Goddess of Sun and Thunder', name: 'Gentle Rain' })
   ) {
     base[Stats.CRIT_DMG].push({
       name: `Gentle Rain`,
-      source: `Warrior Goddess of Daythunder`,
+      source: `Warrior Goddess of Sun and Thunder`,
       value: 0.15,
     })
     if (base.SUMMON_STATS) {
       base.SUMMON_STATS[Stats.CRIT_DMG].push({
         name: `Gentle Rain`,
-        source: `Warrior Goddess of Daythunder`,
+        source: `Warrior Goddess of Sun and Thunder`,
         value: 0.15,
       })
     }
@@ -186,8 +186,8 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
   if (form['126']) {
     base[Stats.P_ATK].push({
       name: `Help`,
-      source: `Captain Over Cursed Waves`,
-      value: 0.16 * form['126'],
+      source: `Wavestrider Captain`,
+      value: 0.48,
     })
   }
 

@@ -46,7 +46,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill: {
       trace: 'Skill',
       title: `Love Over the Rainbow`,
-      content: `Summons memosprite Ica, restores HP equal to {{0}}% of Hyacine's Max HP + {{1}} for all allies aside from <b>Ica</b>, and restores HP equal to {{2}}% of Hyacine's Max HP + {{3}} for <b>Ica</b>.`,
+      content: `Summons memosprite Little Ica, restores HP equal to {{0}}% of Hyacine's Max HP plus {{1}} for all allies aside from <b>Little Ica</b>, and restores HP equal to {{2}}% of Hyacine's Max HP plus {{3}} for <b>Little Ica</b>.`,
       value: [
         { base: 4, growth: 0.5, style: 'heal' },
         { base: 40, growth: 24, style: 'flat' },
@@ -59,7 +59,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     summon_skill: {
       trace: 'Memosprite Skill',
       title: 'Rainclouds, Time to Go!',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> to all enemies equal to {{0}}% of the tally of healing done by Hyacine and <b>Ica</b> in the current battle. After using Memosprite Skill, clears <span class="text-desc">50%</span> of the tally of healing.`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> to all enemies equal to {{0}}% of the tally of healing done by Hyacine and <b>Little Ica</b> in the current battle, and clears <span class="text-desc">50%</span> of the tally of healing.`,
       value: [{ base: 10, growth: 2, style: 'linear' }],
       level: memo_skill,
       tag: AbilityTag.AOE,
@@ -68,7 +68,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ult: {
       trace: 'Ultimate',
       title: `We Who Fly Into Twilight`,
-      content: `Summons memosprite <b>Ica</b>, restores HP equal to {{0}}% of Hyacine's Max HP + {{1}} for all allies aside from <b>Ica</b>, and restores HP equal to {{2}}% of Hyacine's Max HP + {{3}} for <b>Ica</b>. Hyacine enters the <b class="text-heal">After Rain</b> state for <span class="text-desc">3</span> turn(s) afterwards. Reduces the state's duration by <span class="text-desc">1</span> turn each time Hyacine's turn begins. When in <b class="text-heal">After Rain</b> state, increases Max HP for all allies by {{4}}% + {{5}}.`,
+      content: `Summons memosprite <b>Little Ica</b>, restores HP equal to {{0}}% of Hyacine's Max HP plus {{1}} for all allies aside from <b>Little Ica</b>, and restores HP equal to {{2}}% of Hyacine's Max HP plus {{3}} for <b>Little Ica</b>. Hyacine enters the <b class="text-heal">After Rain</b> state for <span class="text-desc">3</span> turn(s) afterwards. Reduces the state's duration by <span class="text-desc">1</span> turn each time Hyacine's turn begins. When in <b class="text-heal">After Rain</b> state, increases Max HP for all allies by {{4}}% plus {{5}}.`,
       value: [
         { base: 5, growth: 0.625, style: 'heal' },
         { base: 50, growth: 30, style: 'flat' },
@@ -83,9 +83,9 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     summon_talent: {
       trace: 'Memosprite Talent',
       title: `Take Sky in Hand`,
-      content: `<b>Ica</b>'s SPD remains at <span class="text-desc">0</span>, and they will not appear on the Action Order.
-      <br />If ally targets (except <b>Ica</b>) have their HP reduced, then <b>Ica</b> will consume <span class="text-desc">4%</span> of their own HP and restore HP equal to {{0}}% of Hyacine's Max HP plus {{1}} for the ally target with reduced HP at the start of any target's turn or after any target takes action.
-      <br />While Hyacine is in the <b class="text-heal">After Rain</b> state, <b>Ica</b> is guaranteed to immediately take action after Hyacine uses an ability. Moreover, when <b>Ica</b> triggers their Talent's healing effect, additionally restores HP for all ally targets by an amount equal to {{0}}% of Hyacine's Max HP plus {{1}}.`,
+      content: `<b>Little Ica</b>'s SPD remains at <span class="text-desc">0</span>, is immune to debuffs, and they will not appear on the Action Order.
+      <br />If ally targets (except <b>Little Ica</b>) have their HP reduced, then <b>Little Ica</b> will consume HP equal to <span class="text-desc">4%</span> of their own Max HP and restore HP equal to {{0}}% of Hyacine's Max HP plus {{1}} for the ally target with reduced HP at the start of any target's turn or after any target takes action.
+      <br />While Hyacine is in the <b class="text-heal">After Rain</b> state, <b>Little Ica</b> immediately obtains <span class="text-desc">1</span> extra turn and automatically uses <b>Rainclouds, Time to Go!</b> after Hyacine uses an ability. Moreover, when <b>Little Ica</b> triggers their Talent's healing effect, additionally restores HP for all ally targets by an amount equal to {{0}}% of Hyacine's Max HP plus {{1}}. After <b>Little Ica</b> uses an ability, all Continuous Effects' duration decreases by <span class="text-desc">1</span> turn.`,
       value: [
         { base: 1, growth: 0.2, style: 'linear' },
         { base: 10, growth: 2, style: 'linear' },
@@ -96,7 +96,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: `First Light Heals the World`,
-      content: `The memosprite <b>Ica</b> initially has HP equal to <span class="text-desc">50%</span> of Hyacine's Max HP. When Hyacine or <b>Ica</b> provides healing, increases <b>Ica</b>'s DMG dealt by {{0}}% for <span class="text-desc">2</span> turn(s). Stacks up to <span class="text-desc">3</span> time(s).`,
+      content: `The memosprite <b>Little Ica</b> initially has Max HP equal to <span class="text-desc">50%</span> of Hyacine's Max HP. When Hyacine or <b>Little Ica</b> provides healing, increases <b>Little Ica</b>'s DMG dealt by {{0}}% for <span class="text-desc">2</span> turn(s). Stacks up to <span class="text-desc">3</span> time(s).`,
       value: [{ base: 40, growth: 4, style: 'curved' }],
       level: talent,
       tag: AbilityTag.SUPPORT,
@@ -104,12 +104,12 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: `Day So Right, Life So Fine!`,
-      content: `At the start of the next battle, restores HP equal to <span class="text-desc">30%</span> of Hyacine's Max HP + <span class="text-desc">600</span> for all allies and increases their Max HP by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `At the start of the next battle, restores HP equal to <span class="text-desc">30%</span> of Hyacine's Max HP plus <span class="text-desc">600</span> for all allies and increases their Max HP by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Gloomy Grin`,
-      content: `Increases Hyacine and <b>Ica</b>'s CRIT Rate by <span class="text-desc">100%</span>. When providing healing to an ally target with less than or equal to <span class="text-desc">50%</span> this unit's Max HP, increases Hyacine and <b>Ica</b>'s Outgoing Healing by <span class="text-desc">25%</span>.`,
+      content: `Increases Hyacine and <b>Little Ica</b>'s CRIT Rate by <span class="text-desc">100%</span>. When providing healing to an ally target with less than or equal to <span class="text-desc">50%</span> this unit's Max HP, increases Hyacine and <b>Little Ica</b>'s Outgoing Healing by <span class="text-desc">25%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -119,17 +119,17 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Tempestuous Halt`,
-      content: `When Hyacine's SPD exceeds <span class="text-desc">200</span>, increases her and <b>Ica</b>'s Max HP by <span class="text-desc">20%</span>. Then, for every <span class="text-desc">1</span> excess SPD, increases Hyacine's and <b>Ica</b>'s Outgoing Healing by <span class="text-desc">1%</span>. Up to a max of <span class="text-desc">200</span> excess SPD can be taken into account for this effect.`,
+      content: `When Hyacine's SPD exceeds <span class="text-desc">200</span>, increases her and <b>Little Ica</b>'s Max HP by <span class="text-desc">20%</span>. Then, for every <span class="text-desc">1</span> excess SPD, increases Hyacine's and <b>Little Ica</b>'s Outgoing Healing by <span class="text-desc">1%</span>. Up to a max of <span class="text-desc">200</span> excess SPD can be taken into account for this effect.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Cradle the Candle of Night`,
-      content: `Additionally increases the Max HP boost effect of <b class="text-heal">After Rain</b> by <span class="text-desc">50%</span>. While Hyacine is in <b class="text-heal">After Rain</b>, ally targets immediately restore HP by <span class="text-desc">8%</span> of Hyacine's Max HP after their attacks.`,
+      content: `When Hyacine is in the <b class="text-heal">After Rain</b> state, additionally increases the Max HP of all ally targets by <span class="text-desc">50%</span>, and immediately restores HP equal to <span class="text-desc">8%</span> of Hyacine's Max HP after using an attack.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Come Sit in My Courtyard`,
-      content: `When ally target's HP decreases, SPD increases by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `When any ally target's HP decreases, this unit's SPD increases by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -141,7 +141,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: 'Sunlit Amber, Yours to Keep',
-      content: `The <b>Tempestuous Halt</b> Trace's buff effect is enhanced. For every <span class="text-desc">1</span> of SPD exceeded, additionally increases Hyacine and <b>Ica</b>'s CRIT DMG by <span class="text-desc">2%</span>.`,
+      content: `The <b>Tempestuous Halt</b> Trace is enhanced. For every <span class="text-desc">1</span> of SPD exceeded, additionally increases Hyacine and <b>Little Ica</b>'s CRIT DMG by <span class="text-desc">2%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -153,7 +153,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: 'O Sky, Heed My Plea',
-      content: `After <b>Ica</b> uses Memosprite Skill, clears <span class="text-desc">10%</span> of the Healing tally instead. When <b>Ica</b> is on the field, increases all ally targets' <b>All-Type RES PEN</b> by <span class="text-desc">24%</span>.`,
+      content: `<b>Little Ica</b> uses Memosprite Skill and changes the amount of Healing tally cleared to <span class="text-desc">12%</span>. When <b>Little Ica</b> is on the field, increases all ally targets' <b>All-Type RES PEN</b> by <span class="text-desc">20%</span>.`,
     },
   }
 
@@ -187,7 +187,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     {
       type: 'number',
       id: 'ica_talent',
-      text: `Ica's Talent DMG Bonus`,
+      text: `Little Ica's Talent DMG Bonus`,
       ...talents.talent,
       show: true,
       default: 3,
@@ -250,7 +250,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         ELEMENT: Element.NONE,
         BASE_HP: x.BASE_HP * 0.5,
         SUMMON_ID: '1409',
-        NAME: 'Ica',
+        NAME: 'Little Ica',
         MAX_ENERGY: 0,
         [Stats.HP]: _.map(x[Stats.HP], (item) => ({
           ...item,
@@ -283,7 +283,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           sum: true,
         },
         {
-          name: 'Ica Healing',
+          name: 'Little Ica Healing',
           value: [{ scaling: calcScaling(0.05, 0.00625, skill, 'heal'), multiplier: Stats.HP }],
           flat: calcScaling(50, 30, skill, 'flat'),
           element: TalentProperty.HEAL,
@@ -332,7 +332,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           sum: true,
         },
         {
-          name: 'Ica Healing',
+          name: 'Little Ica Healing',
           value: [{ scaling: calcScaling(0.06, 0.0075, skill, 'heal'), multiplier: Stats.HP }],
           flat: calcScaling(60, 36, skill, 'flat'),
           element: TalentProperty.HEAL,
@@ -423,7 +423,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base.ALL_TYPE_RES_PEN.push({
           name: `Eidolon 6`,
           source: 'Self',
-          value: 0.24,
+          value: 0.2,
         })
       }
 
@@ -463,7 +463,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base.ALL_TYPE_RES_PEN.push({
           name: `Eidolon 6`,
           source: 'Hyacine',
-          value: 0.24,
+          value: 0.2,
         })
       }
 
@@ -524,27 +524,27 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             t.X_HP.push({
               name: `After Rain`,
               source: 'Hyacine',
-              value: calcScaling(0.15, 0.015, ult, 'curved') * all[index].getHP(true) * (c >= 1 ? 1.5 : 1),
+              value: calcScaling(0.15, 0.015, ult, 'curved') * all[index].getHP(true) + (c >= 1 ? 0.5 : 0),
               base: all[index].getHP(true),
-              multiplier: calcScaling(0.15, 0.015, ult, 'curved') * (c >= 1 ? 1.5 : 1),
+              multiplier: calcScaling(0.15, 0.015, ult, 'curved') + (c >= 1 ? 0.5 : 0),
             })
             t[Stats.HP].push({
               name: `After Rain`,
               source: 'Hyacine',
-              value: calcScaling(150, 90, ult, 'flat') * (c >= 1 ? 1.5 : 1),
+              value: calcScaling(150, 90, ult, 'flat'),
             })
             if (t.SUMMON_STATS) {
               t.SUMMON_STATS?.X_HP.push({
                 name: `After Rain`,
                 source: 'Hyacine',
-                value: calcScaling(0.15, 0.015, ult, 'curved') * all[index].getHP(true) * (c >= 1 ? 1.5 : 1),
+                value: calcScaling(0.15, 0.015, ult, 'curved') * all[index].getHP(true) + (c >= 1 ? 0.5 : 0),
                 base: all[index].getHP(true),
-                multiplier: calcScaling(0.15, 0.015, ult, 'curved') * (c >= 1 ? 1.5 : 1),
+                multiplier: calcScaling(0.15, 0.015, ult, 'curved') + (c >= 1 ? 0.5 : 0),
               })
               t.SUMMON_STATS?.[Stats.HP].push({
                 name: `After Rain`,
                 source: 'Hyacine',
-                value: calcScaling(150, 90, ult, 'flat') * (c >= 1 ? 1.5 : 1),
+                value: calcScaling(150, 90, ult, 'flat'),
               })
             }
           })

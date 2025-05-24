@@ -1,11 +1,18 @@
 [
   {
+    "version": "1.1.1-19",
+    "date": "May 24th, 2025",
+    "desc": [
+      "Now Live: <span class=\"text-hsr-wind\">Hyacine</span> and Light Cone <span class=\"text-desc\">Long May Rainbows Adorn the Sky</span>"
+    ]
+  },
+  {
     "version": "1.1.1-18",
     "date": "April 15th, 2025",
     "desc": [
       "Content Version: <span class=\"text-desc\">v3.3v2</span>",
       "Updated Characters: <span class=\"text-hsr-wind\">Hyacine</span>, and <span class=\"text-hsr-quantum\">Cipher</span>",
-      "Updated Light Cones: <span class=\"text-desc\">Long May Rainbows Adorn the Sky</span>, and <span class=\"text-desc\">Lies Dance on the Breeze</span>"
+      "Updated Light Cones: , and <span class=\"text-desc\">Lies Dance on the Breeze</span>"
     ]
   },
   {
@@ -25,7 +32,7 @@
       "Content Version: <span class=\"text-desc\">v3.3v1</span>",
       "New Characters: <span class=\"text-hsr-wind\">Hyacine</span>, and <span class=\"text-hsr-quantum\">Cipher</span>",
       "New Light Cones: <span class=\"text-desc\">Long May Rainbows Adorn the Sky</span>, and <span class=\"text-desc\">Lies Dance on the Breeze</span>",
-      "New Relics: <span class=\"text-desc\">Warrior Goddess of Daythunder</span>, and <span class=\"text-desc\">Captain Over Cursed Waves</span>",
+      "New Relics: <span class=\"text-desc\">Warrior Goddess of Sun and Thunder</span>, and <span class=\"text-desc\">Wavestrider Captain</span>",
       "Fixed: Stats inheritance for memosprites"
     ]
   },

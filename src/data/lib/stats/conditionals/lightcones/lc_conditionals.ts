@@ -1303,7 +1303,7 @@ export const LCConditionals: IWeaponContent[] = [
           multiplier: 2.5,
           element: base.ELEMENT,
           property: TalentProperty.ADD,
-          type: TalentType.NONE,
+          type: TalentType.SERVANT,
           sum: true,
         })
       }

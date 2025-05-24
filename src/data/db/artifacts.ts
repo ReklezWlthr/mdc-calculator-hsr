@@ -571,13 +571,13 @@ export const RelicSets: IArtifact[] = [
   },
   {
     id: '125',
-    name: `Warrior Goddess of Daythunder`,
+    name: `Warrior Goddess of Sun and Thunder`,
     icon: '71044',
     bonus: [{ stat: Stats.P_SPD, value: 0.06 }],
     bonusAdd: [],
     desc: [
       `Increases SPD by <span class="text-desc">6%</span>.`,
-      `When the wearer and their memosprite provide healing to ally targets aside from themselves, the wearer gains <b>Gentle Rain</b>, which can be triggered up to <span class="text-desc">1</span> time per turn, lasting for <span class="text-desc">2</span> turn(s). When the wearer has <b>Gentle Rain</b>, increases SPD by <span class="text-desc">6%</span>, and increases all allies' CRIT DMG by <span class="text-desc">15%</span>. This effect cannot be stacked.`,
+      `When the wearer and their memosprite provide healing to ally targets aside from themselves, the wearer gains <b>Gentle Rain</b>, which can be triggered up to <span class="text-desc">1</span> time per turn, lasting for <span class="text-desc">2</span> turn(s). While the wearer has <b>Gentle Rain</b>, increases their SPD by <span class="text-desc">6%</span> and all allies' CRIT DMG by <span class="text-desc">15%</span>. This effect cannot be stacked.`,
     ],
     set: [
       `Valkyrie's Soaring Winged Helm`,
@@ -588,13 +588,13 @@ export const RelicSets: IArtifact[] = [
   },
   {
     id: '126',
-    name: `Captain Over Cursed Waves`,
+    name: `Wavestrider Captain`,
     icon: '71045',
     bonus: [{ stat: Stats.CRIT_DMG, value: 0.16 }],
     bonusAdd: [],
     desc: [
       `Increases CRIT DMG by <span class="text-desc">16%</span>.`,
-      `When the wearer is the target of another ally target's ability, gains <span class="text-desc">1</span> stack of <b>Help</b>. Stacks up to <span class="text-desc">3</span> times. When using Ultimate, consumes all <b>Help</b>, each stack increasing the wearer's ATK by <span class="text-desc">16%</span>, lasting until the end of the turn.`,
+      `When the wearer becomes the target of another ally target's ability, gains <span class="text-desc">1</span> stack of <b>Help</b>, stacking up to <span class="text-desc">2</span> time(s). If there are <span class="text-desc">2</span> stack(s) of <b>Help</b> when the wearer uses their Ultimate, consumes all <b>Help</b> to increase the wearer's ATK by <span class="text-desc">48%</span>, for <span class="text-desc">1</span> turn(s).`,
     ],
     set: [
       `Captain's Navigator Hat`,
