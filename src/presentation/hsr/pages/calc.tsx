@@ -345,7 +345,7 @@ export const Calculator = observer(({}: {}) => {
             >
               Stats
             </div>
-            {main?.talents?.summon_skill && (
+            {mainComputed?.PATH === PathType.REMEMBRANCE && (
               <div
                 className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
                   'bg-primary': tab === 'summon',

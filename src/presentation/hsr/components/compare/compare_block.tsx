@@ -424,7 +424,7 @@ export const CompareBlock = observer(() => {
                 >
                   Stats
                 </div>
-                {focusedChar?.talents?.memo_skill && (
+                {mainComputed?.PATH === PathType.REMEMBRANCE && (
                   <div
                     className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
                       'bg-primary': tab === 'summon',
