@@ -1274,7 +1274,6 @@ export const LCConditionals: IWeaponContent[] = [
     show: true,
     default: false,
     id: '23041_1',
-    excludeSummon: true,
     scaling: (base, form, r) => {
       if (form['23041_1']) {
         base[Stats.ALL_DMG].push({
@@ -1318,7 +1317,6 @@ export const LCConditionals: IWeaponContent[] = [
     min: 0,
     max: 4,
     id: '23046',
-    excludeSummon: true,
     scaling: (base, form, r, { team }) => {
       if (base.MAX_SP >= 6) {
         base[Stats.P_ATK].push({
@@ -1331,8 +1329,86 @@ export const LCConditionals: IWeaponContent[] = [
         base[Stats.P_ATK].push({
           name: `Passive`,
           source: 'The Hell Where Ideals Burn',
-          value: calcRefinement(0.1, 0.02, r),
+          value: calcRefinement(0.1, 0.02, r) * form['23046'],
         })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Blazing Sun`,
+    show: true,
+    default: true,
+    id: '23044',
+    excludeSummon: true,
+    scaling: (base, form, r) => {
+      if (form['23044']) {
+        base[Stats.ALL_DMG].push({
+          name: `Passive`,
+          source: 'Thus Burns the Dawn',
+          value: calcRefinement(0.6, 0.15, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `On-Ult ATK Bonus`,
+    show: true,
+    default: true,
+    id: '23045',
+    scaling: (base, form, r) => {
+      base.ULT_SCALING = _.map(base.ULT_SCALING, (item) => ({ ...item, atkBonus: calcRefinement(0.4, 0.1, r) }))
+      if (form['23045']) {
+        base[Stats.ALL_DMG].push({
+          name: `Passive`,
+          source: 'A Thankless Coronation',
+          value: calcRefinement(0.4, 0.1, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Shielded Ally Bonus`,
+    show: true,
+    default: true,
+    id: '21053',
+    scaling: (base, form, r) => {
+      if (form['21053']) {
+        base[Stats.ALL_DMG].push({
+          name: `Passive`,
+          source: 'Journey, Forever Peaceful',
+          value: calcRefinement(0.12, 0.02, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Outgoing Healing Bonus`,
+    show: true,
+    default: true,
+    id: '21054',
+    excludeSummon: true,
+    scaling: (base, form, r) => {
+      if (form['21054']) {
+        base[Stats.HEAL].push({
+          name: `Passive`,
+          source: `The Story's Next Page`,
+          value: calcRefinement(0.12, 0.03, r),
+        })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS?.[Stats.HEAL].push({
+            name: `Passive`,
+            source: `The Story's Next Page`,
+            value: calcRefinement(0.12, 0.03, r),
+          })
+        }
       }
       return base
     },
@@ -1431,6 +1507,23 @@ export const LCAllyConditionals: IWeaponContent[] = [
           name: `Hymn`,
           source: own?.NAME,
           value: calcRefinement(0.15, 0.0225, r) * form[`23034_${owner}`],
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `HP >= 50%`,
+    show: true,
+    default: true,
+    id: '21055',
+    scaling: (base, form, r, { own, owner }) => {
+      if (form[`21055_${owner}`]) {
+        base[Stats.ALL_DMG].push({
+          name: `Passive`,
+          source: `Unto Tomorrow's Morrow`,
+          value: calcRefinement(0.12, 0.02, r),
         })
       }
       return base
@@ -2203,6 +2296,38 @@ export const LCTeamConditionals: IWeaponContent[] = [
           })
         }
         if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.DEF_RED)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Vulnerability`,
+    show: true,
+    default: true,
+    debuff: true,
+    duration: 2,
+    chance: { base: 1, fixed: false },
+    id: '21061',
+    excludeSummon: true,
+    scaling: (base, form, r, { debuffs, own }) => {
+      if (form['21061'] && !checkBuffExist(base.VULNERABILITY, { source: 'Holiday Thermae Escapade' })) {
+        base.VULNERABILITY.push({
+          name: `Passive`,
+          source: 'Holiday Thermae Escapade',
+          value: calcRefinement(0.1, 0.01, r),
+        })
+        if (
+          base.SUMMON_STATS &&
+          !checkBuffExist(base.SUMMON_STATS.VULNERABILITY, { source: 'Holiday Thermae Escapade' })
+        ) {
+          base.SUMMON_STATS.VULNERABILITY.push({
+            name: `Passive`,
+            source: 'Holiday Thermae Escapade',
+            value: calcRefinement(0.1, 0.01, r),
+          })
+        }
+        if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }
       return base
     },

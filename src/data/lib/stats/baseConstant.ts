@@ -178,20 +178,24 @@ export const baseStatsObject: BaseStatsType = {
   DOT_SCALING: [],
   WIND_SHEAR_STACK: 0,
 
-  getAtk: function (exclude?: boolean) {
+  getAtk: function (exclude?: boolean, statBonus?: number) {
     return (
-      this.BASE_ATK * (1 + _.sumBy(this[Stats.P_ATK], 'value')) +
+      this.BASE_ATK * (1 + _.sumBy(this[Stats.P_ATK], 'value') + (statBonus || 0)) +
       _.sumBy(this[Stats.ATK], 'value') +
       (exclude ? 0 : this.getValue('X_ATK'))
     )
   },
-  getHP: function (exclude?: boolean) {
+  getHP: function (exclude?: boolean, statBonus?: number) {
     return (
-      this.BASE_HP * (1 + this.getValue(Stats.P_HP)) + this.getValue(Stats.HP) + (exclude ? 0 : this.getValue('X_HP'))
+      this.BASE_HP * (1 + this.getValue(Stats.P_HP) + (statBonus || 0)) +
+      this.getValue(Stats.HP) +
+      (exclude ? 0 : this.getValue('X_HP'))
     )
   },
-  getDef: function () {
-    return this.BASE_DEF * (1 + _.sumBy(this[Stats.P_DEF], 'value')) + _.sumBy(this[Stats.DEF], 'value')
+  getDef: function (statBonus?: number) {
+    return (
+      this.BASE_DEF * (1 + _.sumBy(this[Stats.P_DEF], 'value') + (statBonus || 0)) + _.sumBy(this[Stats.DEF], 'value')
+    )
   },
   getSpd: function () {
     return this.BASE_SPD * (1 + _.sumBy(this[Stats.P_SPD], 'value')) + _.sumBy(this[Stats.SPD], 'value')

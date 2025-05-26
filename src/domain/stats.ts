@@ -165,9 +165,9 @@ export interface RawBaseStatType {
   DOT_SCALING: IScaling[]
   WIND_SHEAR_STACK: number
 
-  getAtk: (exclude?: boolean) => number
-  getHP: (exclude?: boolean) => number
-  getDef: () => number
+  getAtk: (exclude?: boolean, statBonus?: number) => number
+  getHP: (exclude?: boolean, statBonus?: number) => number
+  getDef: (statBonus?: number) => number
   getSpd: () => number
   getOFCSpd: () => number
   getOFCHP: () => number

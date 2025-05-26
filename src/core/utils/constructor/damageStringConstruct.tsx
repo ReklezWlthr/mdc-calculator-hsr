@@ -122,7 +122,7 @@ export const damageStringConstruct = (
   const enemyMod = isDamage ? defMult * resMult * vulMult * brokenMult : 1
 
   const statForScale = {
-    [Stats.ATK]: stats.getAtk(),
+    [Stats.ATK]: stats.getAtk(false, scaling.atkBonus),
     [Stats.DEF]: stats.getDef(),
     [Stats.HP]: isServant && scaling.useOwnerStats ? ownerStats.getHP() : stats.getHP(),
     [Stats.EHP]: calculatorStore.hp,

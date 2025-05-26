@@ -1394,6 +1394,178 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23045',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: `A Thankless Coronation`,
+        value: calcRefinement(0.36, 0.09, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23044',
+    scaling: (base, r) => {
+      base.BASE_SPD += calcRefinement(12, 2, r)
+      base.DEF_PEN.push({
+        name: 'Passive',
+        source: `Thus Burns the Dawn`,
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '21053',
+    scaling: (base, r) => {
+      base.SHIELD.push({
+        name: 'Passive',
+        source: `Journey, Forever Peaceful`,
+        value: calcRefinement(0.12, 0.03, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '21054',
+    scaling: (base, r) => {
+      base[Stats.P_HP].push({
+        name: 'Passive',
+        source: `The Story's Next Page`,
+        value: calcRefinement(0.16, 0.04, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '21055',
+    scaling: (base, r) => {
+      base[Stats.HEAL].push({
+        name: 'Passive',
+        source: `Unto Tomorrow's Morrow`,
+        value: calcRefinement(0.12, 0.03, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '21056',
+    scaling: (base, r) => {
+      base.CALLBACK.push((x, _d, _w, all) => {
+        _.forEach(all, (item) => {
+          if (!checkBuffExist(item.BREAK_DMG, { source: 'Pursuit of the Wind' })) {
+            item.BREAK_DMG.push({
+              name: 'Passive',
+              source: 'Pursuit of the Wind',
+              value: calcRefinement(0.16, 0.02, r),
+            })
+          }
+        })
+        return x
+      })
+
+      return base
+    },
+  },
+  {
+    id: '21057',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: `The Flower Remembers`,
+        value: calcRefinement(0.24, 0.04, r),
+      })
+      base.CALLBACK.push((x) => {
+        if (x.SUMMON_STATS) {
+          x.SUMMON_STATS?.[Stats.CRIT_DMG].push({
+            name: 'Passive',
+            source: `The Flower Remembers`,
+            value: calcRefinement(0.24, 0.06, r),
+          })
+        }
+
+        return x
+      })
+
+      return base
+    },
+  },
+  {
+    id: '21058',
+    scaling: (base, r) => {
+      base[Stats.CRIT_RATE].push({
+        name: 'Passive',
+        source: `A Trail of Bygone Blood`,
+        value: calcRefinement(0.12, 0.02, r),
+      })
+      base.SKILL_DMG.push({
+        name: 'Passive',
+        source: `A Trail of Bygone Blood`,
+        value: calcRefinement(0.24, 0.04, r),
+      })
+      base.ULT_DMG.push({
+        name: 'Passive',
+        source: `A Trail of Bygone Blood`,
+        value: calcRefinement(0.24, 0.04, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '21060',
+    scaling: (base, r) => {
+      base[Stats.CRIT_RATE].push({
+        name: 'Passive',
+        source: `A Dream Scented in Wheat`,
+        value: calcRefinement(0.12, 0.02, r),
+      })
+      base.FUA_DMG.push({
+        name: 'Passive',
+        source: `A Dream Scented in Wheat`,
+        value: calcRefinement(0.24, 0.04, r),
+      })
+      base.ULT_DMG.push({
+        name: 'Passive',
+        source: `A Dream Scented in Wheat`,
+        value: calcRefinement(0.24, 0.04, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '21061',
+    scaling: (base, r) => {
+      base[Stats.ALL_DMG].push({
+        name: 'Passive',
+        source: `Holiday Thermae Escapade`,
+        value: calcRefinement(0.16, 0.04, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '21062',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: `See You at the End`,
+        value: calcRefinement(0.24, 0.04, r),
+      })
+      base.FUA_DMG.push({
+        name: 'Passive',
+        source: `See You at the End`,
+        value: calcRefinement(0.24, 0.04, r),
+      })
+      base.SKILL_DMG.push({
+        name: 'Passive',
+        source: `See You at the End`,
+        value: calcRefinement(0.24, 0.04, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus
