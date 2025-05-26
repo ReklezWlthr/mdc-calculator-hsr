@@ -94,7 +94,8 @@ export const fromEnka = (rawData: Record<string, any>) => {
           findTalent('202') || false,
           findTalent('206') || false,
           findTalent('209') || false,
-        ]
+        ],
+        findCharacter(cId)?.overwrite
       ),
     }
   })
@@ -168,7 +169,8 @@ export const fromScanner = (rawData: Record<string, any>) => {
           item.traces.stat_2 || false,
           item.traces.stat_6 || false,
           item.traces.stat_9 || false,
-        ]
+        ],
+        findCharacter(cId)?.overwrite
       ),
     }
   })

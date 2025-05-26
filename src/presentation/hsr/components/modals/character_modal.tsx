@@ -113,7 +113,8 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
                   equipments: build ? { weapon: build.weapon, artifacts: build.artifacts } : DefaultBuild,
                   cons: char?.cons || 0,
                   major_traces: char?.major_traces || { a2: false, a4: false, a6: false },
-                  minor_traces: char?.minor_traces || formatMinorTrace(item.trace, Array(10).fill(false)),
+                  minor_traces:
+                    char?.minor_traces || formatMinorTrace(item.trace, Array(10).fill(false), item.overwrite),
                 })
                 modalStore.closeModal()
               }}

@@ -150,19 +150,26 @@ export const formatIdIcon = (id: string, gender: 'PlayerBoy' | 'PlayerGirl') => 
   return id
 }
 
-export const formatMinorTrace = (stats: Stats[], defaultValue: boolean[]) => {
-  return [
-    { stat: stats?.[0], value: TraceScaling[stats?.[0]]?.[0], toggled: defaultValue[0] },
-    { stat: stats?.[0], value: TraceScaling[stats?.[0]]?.[0], toggled: defaultValue[1] },
-    { stat: stats?.[0], value: TraceScaling[stats?.[0]]?.[1], toggled: defaultValue[2] },
-    { stat: stats?.[0], value: TraceScaling[stats?.[0]]?.[1], toggled: defaultValue[3] },
-    { stat: stats?.[0], value: TraceScaling[stats?.[0]]?.[2], toggled: defaultValue[4] },
-    { stat: stats?.[1], value: TraceScaling[stats?.[1]]?.[0], toggled: defaultValue[5] },
-    { stat: stats?.[1], value: TraceScaling[stats?.[1]]?.[1], toggled: defaultValue[6] },
-    { stat: stats?.[2], value: TraceScaling[stats?.[2]]?.[0], toggled: defaultValue[7] },
-    { stat: stats?.[2], value: TraceScaling[stats?.[2]]?.[1], toggled: defaultValue[8] },
-    { stat: stats?.[2], value: TraceScaling[stats?.[2]]?.[2], toggled: defaultValue[9] },
-  ]
+export const formatMinorTrace = (
+  stats: Stats[],
+  defaultValue: boolean[],
+  overwrite?: { index: number; stat: Stats }[]
+) => {
+  const statOrder = [0, 0, 0, 0, 0, 1, 1, 2, 2, 2]
+  const magnitudeOrder = [0, 0, 1, 1, 2, 0, 1, 0, 1, 2]
+
+  return _.map(defaultValue, (toggled, i) => {
+    const stat = _.find(overwrite, (o) => o.index === i)?.stat || stats?.[statOrder[i]]
+    return {
+      stat,
+      value: TraceScaling[stat]?.[magnitudeOrder[i]],
+      toggled,
+    }
+  }).sort((a, b) => {
+    const ia = _.indexOf(stats, a.stat)
+    const ib = _.indexOf(stats, b.stat)
+    return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib)
+  })
 }
 
 export const formatScaleString = (talent: ITalentDisplay, level: number) =>

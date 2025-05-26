@@ -22,10 +22,10 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
     char || {
       ...DefaultCharacterStore,
       cId,
-      minor_traces: formatMinorTrace(findCharacter(cId)?.trace, Array(10).fill(false)),
+      minor_traces: formatMinorTrace(findCharacter(cId)?.trace, Array(10).fill(false), findCharacter(cId)?.overwrite),
     }
   )
-  const maxedTrace = formatMinorTrace(findCharacter(cId)?.trace, Array(10).fill(true))
+  const maxedTrace = formatMinorTrace(findCharacter(cId)?.trace, Array(10).fill(true), findCharacter(cId)?.overwrite)
 
   const charData = findCharacter(cId)
   const levels = useMemo(
