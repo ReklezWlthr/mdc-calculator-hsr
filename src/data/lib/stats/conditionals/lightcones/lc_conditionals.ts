@@ -1310,6 +1310,33 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'number',
+    text: `On-Skill ATK Bonus`,
+    show: true,
+    default: 1,
+    min: 0,
+    max: 4,
+    id: '23046',
+    excludeSummon: true,
+    scaling: (base, form, r, { team }) => {
+      if (base.MAX_SP >= 6) {
+        base[Stats.P_ATK].push({
+          name: `Passive`,
+          source: 'The Hell Where Ideals Burn',
+          value: calcRefinement(0.4, 0.1, r),
+        })
+      }
+      if (form['23046']) {
+        base[Stats.P_ATK].push({
+          name: `Passive`,
+          source: 'The Hell Where Ideals Burn',
+          value: calcRefinement(0.1, 0.02, r),
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [

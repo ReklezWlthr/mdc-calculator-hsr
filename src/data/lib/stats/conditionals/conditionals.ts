@@ -69,6 +69,9 @@ import Castorice from './characters/Castorice'
 import Anaxa from './characters/Anaxa'
 import Cipher from './characters/Cipher'
 import Hyacine from './characters/Hyacine'
+import Archer from './characters/Archer'
+import Saber from './characters/Saber'
+import Phainon from './characters/Phainon'
 
 export default [
   { id: '1001', conditionals: March },
@@ -80,6 +83,8 @@ export default [
   { id: '1008', conditionals: Arlan },
   { id: '1009', conditionals: Asta },
   { id: '1013', conditionals: Herta },
+  { id: '1014', conditionals: Saber },
+  { id: '1015', conditionals: Archer },
   { id: '1101', conditionals: Bronya },
   { id: '1102', conditionals: Seele },
   { id: '1103', conditionals: Serval },
@@ -137,6 +142,7 @@ export default [
   { id: '1405', conditionals: Anaxa },
   { id: '1406', conditionals: Cipher },
   { id: '1407', conditionals: Castorice },
+  { id: '1408', conditionals: Phainon },
   { id: '1409', conditionals: Hyacine },
   { id: '8001', conditionals: DMC },
   { id: '8003', conditionals: PMC },

@@ -18,10 +18,10 @@ import { calcScaling } from '@src/core/utils/calculator'
 
 const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
-    basic: c >= 3 ? 1 : 0,
+    basic: c >= 5 ? 1 : 0,
     skill: c >= 5 ? 2 : 0,
     ult: c >= 3 ? 2 : 0,
-    talent: c >= 5 ? 2 : 0,
+    talent: c >= 3 ? 2 : 0,
   }
   const basic = t.basic + upgrade.basic
   const skill = t.skill + upgrade.skill
@@ -33,8 +33,8 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 20,
       trace: 'Basic ATK',
       title: `Lucent Moonglow`,
-      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's ATK to a single enemy.`,
-      value: [{ base: 50, growth: 10, style: 'linear' }],
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's Max HP to one designated enemy.`,
+      value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
     },
@@ -42,8 +42,8 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 20,
       trace: 'Skill',
       title: `Transcendent Flash`,
-      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's ATK to a single enemy and obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>.`,
-      value: [{ base: 100, growth: 10, style: 'curved' }],
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's Max HP to one designated enemy and obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>.`,
+      value: [{ base: 75, growth: 7.5, style: 'curved' }],
       level: skill,
       tag: AbilityTag.ST,
     },
@@ -51,10 +51,10 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 30,
       trace: 'Enhanced Skill',
       title: `Moon On Glacial River`,
-      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's ATK to a single enemy, and deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Jingliu's ATK to adjacent enemies. Consumes <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>. Using this ability does not consume Skill Points.`,
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's Max HP to one designated enemy, and deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Jingliu's Max HP to adjacent enemies. Consumes <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>. Using this ability does not consume Skill Points.`,
       value: [
-        { base: 125, growth: 12.5, style: 'curved' },
-        { base: 62.5, growth: 6.25, style: 'curved' },
+        { base: 75, growth: 7.5, style: 'curved' },
+        { base: 37.5, growth: 3.75, style: 'curved' },
       ],
       level: skill,
       tag: AbilityTag.BLAST,
@@ -63,10 +63,10 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Ultimate',
       title: 'Florephemeral Dreamflux',
-      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's ATK to a single enemy, and deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Jingliu's ATK to any adjacent enemies. Gains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b> after attack ends.`,
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's Max HP to one designated enemy, and deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Jingliu's Max HP to their adjacent enemies. Gains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b> after attack ends.`,
       value: [
-        { base: 180, growth: 12, style: 'curved' },
-        { base: 90, growth: 6, style: 'curved' },
+        { base: 90, growth: 9, style: 'curved' },
+        { base: 45, growth: 4.5, style: 'curved' },
       ],
       level: ult,
       tag: AbilityTag.BLAST,
@@ -74,10 +74,11 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: `Crescent Transmigration`,
-      content: `When Jingliu has <span class="text-desc">2</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>, she enters the <b>Spectral Transmigration</b> state with her Action Advanced by 100% and her CRIT Rate increases by {{0}}%. Then, Jingliu's Skill <b>Transcendent Flash</b> becomes enhanced and turns into <b>Moon On Glacial River</b>, and becomes the only ability she can use in battle. When Jingliu uses an attack in the <b>Spectral Transmigration</b> state, she consumes HP from all other allies equal to <span class="text-desc">4%</span> of their respective Max HP (this cannot reduce allies' HP to lower than <span class="text-desc">1</span>). Jingliu's ATK increases by <span class="text-desc">540%</span> of the total HP consumed from all allies in this attack, capped at {{1}}% of her base ATK, lasting until the current attack ends. Jingliu cannot enter the <b>Spectral Transmigration</b> state again until the current <b>Spectral Transmigration</b> state ends. <b class="text-hsr-ice">Syzygy</b> can stack up to <span class="text-desc">3</span> times. When <b class="text-hsr-ice">Syzygy</b> stacks become <span class="text-desc">0</span>, Jingliu will exit the <b>Spectral Transmigration</b> state.`,
+      content: `When Jingliu has <span class="text-desc">2</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>, she enters the <b>Spectral Transmigration</b> state, gains <span class="text-desc">1</span> additional stack of <b class="text-hsr-ice">Syzygy</b>, <u>action advances</u> by <span class="text-desc">100%</span>, and her CRIT Rate increases by {{0}}%.
+      Then, Jingliu's Skill <b>Transcendent Flash</b> is enhanced to <b>Moon On Glacial River</b>, and only this enhanced Skill is available for use in battle. When Jingliu uses an attack in the <b>Spectral Transmigration</b> state, she consumes HP from all other allies equal to <span class="text-desc">5%</span> of their respective Max HP (this cannot reduce teammates' HP to lower than <span class="text-desc">1</span>). When in the <b>Spectral Transmigration</b> state, Jingliu gains <span class="text-desc">1</span> stack of <b class="text-desc">Moonlight</b> when consuming ally targets HP. Each stack of <b class="text-desc">Moonlight</b> increases Jingliu's CRIT DMG by {{1}}%, up to <span class="text-desc">5</span> stacks. Jingliu cannot enter the <b>Spectral Transmigration</b> state again until the current <b>Spectral Transmigration</b> state ends. <b class="text-hsr-ice">Syzygy</b> can stack up to <span class="text-desc">3</span> times. When <b class="text-hsr-ice">Syzygy</b> stacks become <span class="text-desc">0</span>, Jingliu will exit the <b>Spectral Transmigration</b> state and remove all <b class="text-desc">Moonlight</b>.`,
       value: [
         { base: 40, growth: 1, style: 'curved' },
-        { base: 90, growth: 9, style: 'curved' },
+        { base: 22, growth: 2.2, style: 'curved' },
       ],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -85,7 +86,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: `Shine of Truth`,
-      content: `After using this Technique, creates a dimension around Jingliu that lasts for <span class="text-desc">20</span> seconds, and all enemies in this dimension will become <b class="text-hsr-ice">Frozen</b>. After entering combat with enemies in the dimension, Jingliu immediately regenerates <span class="text-desc">15</span> Energy and obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>, with a <span class="text-desc">100%</span> <u>base chance</u> of <b class="text-hsr-ice">Freezing</b> enemy targets for <span class="text-desc">1</span> turn(s). While <b class="text-hsr-ice">Frozen</b>, enemy targets cannot take action, and receive Additional <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">80%</span> of Jingliu's ATK at the start of every turn. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
+      content: `After using this Technique, creates a Special Dimension around Jingliu that lasts for <span class="text-desc">20</span> seconds, and all enemies in this Special Dimension will become <b class="text-hsr-ice">Frozen</b>. After entering combat with enemies in the Special Dimension, Jingliu immediately regenerates <span class="text-desc">15</span> Energy and obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>, with a <span class="text-desc">100%</span> <u>base chance</u> of <b class="text-hsr-ice">Freezing</b> enemy targets for <span class="text-desc">1</span> turn(s). While <b class="text-hsr-ice">Frozen</b>, enemy targets cannot take action, and receive <b class="text-hsr-ice">Ice Additional DMG</b> equal to <span class="text-desc">80%</span> of Jingliu's Max HP at the start of every turn. Only <span class="text-desc">1</span> Dimension Effect created by allies can exist at the same time.`,
       tag: AbilityTag.IMPAIR,
     },
     a2: {
@@ -96,17 +97,17 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Sword Champion`,
-      content: `After using Transcendent Flash, the next action will be <u>Advanced Forward</u> by <span class="text-desc">10%</span>.`,
+      content: `After using <b>Transcendent Flash</b>, additionally regenerates <span class="text-desc">15</span> Energy.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Frost Wraith`,
-      content: `While in the <b>Spectral Transmigration</b> state, increases Ultimate DMG by <span class="text-desc">20%</span>.`,
+      content: `While in the <b>Spectral Transmigration</b> state, increases DMG dealt by Ultimate by <span class="text-desc">20%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Moon Crashes Tianguan Gate`,
-      content: `When using her Ultimate or Enhanced Skill, Jingliu's CRIT DMG increases by <span class="text-desc">24%</span> for <span class="text-desc">1</span> turn(s). If only one enemy target is attacked, the target will additionally be dealt <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">100%</span> of Jingliu's ATK.`,
+      content: `When using her Ultimate or Enhanced Skill, Jingliu's CRIT DMG increases by <span class="text-desc">36%</span> for <span class="text-desc">1</span> turn(s). Moreover, additionally deals <span class="text-desc">1</span> instance of <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">80%</span> of Jingliu's Max HP to the primary target.`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -117,12 +118,12 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Eidolon 3',
       title: `Halfmoon Gapes Mercurial Haze`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
-      <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
+      <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c4: {
       trace: 'Eidolon 4',
       title: `Lunarlance Shines Skyward Dome`,
-      content: `During the <b>Spectral Transmigration</b> state, the ATK gained from consuming allies' HP is additionally increased by <span class="text-desc">90%</span> of the total HP consumed from the entire team. The cap for ATK gained this way also increases by <span class="text-desc">30%</span>.`,
+      content: `While in the <b>Spectral Transmigration</b> state, each stack of <b class="text-desc">Moonlight</b> additionally increases CRIT DMG by <span class="text-desc">20%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -133,7 +134,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: `Eclipse Hollows Corporeal Husk`,
-      content: `When Jingliu enters the <b>Spectral Transmigration</b> state, the <b class="text-hsr-ice">Syzygy</b> stack limit increases by <span class="text-desc">1</span>, and Jingliu obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>. While she is in the <b>Spectral Transmigration</b> state, her CRIT DMG increases by <span class="text-desc">50%</span>.`,
+      content: `When Jingliu enters the <b>Spectral Transmigration</b> state, the <b class="text-hsr-ice">Syzygy</b> stack limit increases by <span class="text-desc">1</span>, and Jingliu obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>. While she is in the <b>Spectral Transmigration</b> state, her <b class="text-hsr-ice">Ice RES PEN</b> increases by <span class="text-desc">20%</span>.`,
     },
   }
 
@@ -148,18 +149,19 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       sync: true,
     },
     {
-      type: 'toggle',
-      id: 'jingliu_c1',
-      text: `E1 Enhanced Skill Single Target Hit`,
-      ...talents.c1,
-      show: c >= 1,
-      default: true,
-      unique: true,
+      type: 'number',
+      id: 'moonlight',
+      text: `Moonlight`,
+      ...talents.talent,
+      show: true,
+      default: 5,
+      min: 0,
+      max: 5,
     },
     {
       type: 'toggle',
       id: 'jingliu_c1_crit',
-      text: `E1 CRIT Bonus`,
+      text: `E1 CRIT DMG Bonus`,
       ...talents.c1,
       show: c >= 1,
       default: true,
@@ -168,7 +170,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     {
       type: 'toggle',
       id: 'jingliu_c2',
-      text: `E2 Post-Ult Enhanced Skill DMG`,
+      text: `E2 Enhanced Skill DMG`,
       ...talents.c2,
       show: c >= 2,
       default: true,
@@ -200,7 +202,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base.BASIC_SCALING = [
         {
           name: 'Single Target',
-          value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.25, 0.05, basic, 'linear'), multiplier: Stats.HP }],
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
@@ -213,7 +215,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         ? [
             {
               name: 'Main Target',
-              value: [{ scaling: calcScaling(1.25, 0.125, skill, 'curved'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.75, 0.075, skill, 'curved'), multiplier: Stats.HP }],
               element: Element.ICE,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
@@ -223,7 +225,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             },
             {
               name: 'Adjacent',
-              value: [{ scaling: calcScaling(0.625, 0.0625, skill, 'curved'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.375, 0.0375, skill, 'curved'), multiplier: Stats.ATK }],
               element: Element.ICE,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
@@ -234,7 +236,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         : [
             {
               name: 'Single Target',
-              value: [{ scaling: calcScaling(1, 0.1, skill, 'curved'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.75, 0.075, skill, 'curved'), multiplier: Stats.HP }],
               element: Element.ICE,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
@@ -245,7 +247,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base.ULT_SCALING = [
         {
           name: 'Main Target',
-          value: [{ scaling: calcScaling(1.8, 0.12, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.9, 0.09, ult, 'curved'), multiplier: Stats.HP }],
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
@@ -254,7 +256,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         },
         {
           name: 'Adjacent',
-          value: [{ scaling: calcScaling(0.9, 0.06, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.45, 0.045, ult, 'curved'), multiplier: Stats.HP }],
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
@@ -264,7 +266,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base.TECHNIQUE_SCALING = [
         {
           name: 'Frozen DMG',
-          value: [{ scaling: 0.8, multiplier: Stats.ATK }],
+          value: [{ scaling: 0.8, multiplier: Stats.HP }],
           element: Element.ICE,
           property: TalentProperty.FROZEN,
           type: TalentType.NONE,
@@ -279,6 +281,13 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Self',
           value: calcScaling(0.4, 0.01, talent, 'curved'),
         })
+        if (form.moonlight) {
+          base[Stats.CRIT_DMG].push({
+            name: 'Moonlight',
+            source: 'Self',
+            value: (calcScaling(0.22, 0.022, talent, 'curved') + (c >= 4 ? 0.2 : 0)) * form.moonlight,
+          })
+        }
         if (a.a2)
           base[Stats.E_RES].push({
             name: 'Ascension 2 Passive',
@@ -292,29 +301,23 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             value: 0.2,
           })
         if (c >= 6)
-          base[Stats.CRIT_DMG].push({
+          base.ICE_RES_PEN.push({
             name: 'Eidolon 6',
             source: 'Self',
-            value: 0.5,
+            value: 0.2,
           })
       }
       if (form.jingliu_c1_crit) {
-        base.ULT_CD.push({
+        base[Stats.CRIT_DMG].push({
           name: 'Eidolon 1',
           source: 'Self',
-          value: 0.24,
+          value: 0.36,
         })
-        if (form.spectral_transmigration)
-          base.SKILL_CD.push({
-            name: 'Eidolon 1',
-            source: 'Self',
-            value: 0.24,
-          })
       }
-      if (form.jingliu_c1) {
+      if (c >= 1) {
         base.ULT_SCALING.push({
           name: 'E1 Additional DMG',
-          value: [{ scaling: 1, multiplier: Stats.ATK }],
+          value: [{ scaling: 0.8, multiplier: Stats.HP }],
           element: Element.ICE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
@@ -323,12 +326,11 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         if (form.spectral_transmigration)
           base.SKILL_SCALING.push({
             name: 'E1 Additional DMG',
-            value: [{ scaling: 1, multiplier: Stats.ATK }],
+            value: [{ scaling: 0.8, multiplier: Stats.HP }],
             element: Element.ICE,
             property: TalentProperty.NORMAL,
             type: TalentType.SKILL,
             sum: true,
-            hitSplit: [0.1, 0.1, 0.1, 0.2, 0.5],
           })
       }
       if (form.jingliu_c2 && form.spectral_transmigration)
@@ -363,22 +365,6 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       weakness: Element[],
       broken: boolean
     ) => {
-      if (form.spectral_transmigration) {
-        base.CALLBACK.push((x, d, w, all) => {
-          const totalHp = _.sumBy(all, (item) => item.getHP()) * 0.04
-          const atk = _.min([
-            (5.4 + (c >= 4 ? 0.9 : 0)) * totalHp,
-            (calcScaling(0.9, 0.09, talent, 'curved') + (c >= 4 ? 0.3 : 0)) * x.BASE_ATK,
-          ])
-          x[Stats.ATK].push({
-            name: 'Talent',
-            source: 'Self',
-            value: atk,
-          })
-
-          return x
-        })
-      }
       return base
     },
   }

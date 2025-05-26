@@ -27,7 +27,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 20,
       trace: 'Basic ATK',
       title: 'Midnight Tumult',
-      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to a single enemy.`,
+      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to one designated enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
@@ -36,12 +36,13 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: 'Caressing Moonlight',
-      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to a target enemy and <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Kafka's ATK to enemies adjacent to it.
-      <br />If the target enemy is currently receiving DoT, all DoTs currently placed on that enemy immediately produce DMG equal to {{2}}% of their original DMG.`,
+      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to one designated enemy and <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Kafka's ATK to their adjacent units.
+      <br />If the designated enemy or their adjacent target(s) is currently receiving DoT, all DoTs currently placed on that enemy immediately produce DMG equal to {{2}}% or {{3}}% of their original DMG.`,
       value: [
         { base: 80, growth: 8, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },
         { base: 60, growth: 1.5, style: 'curved' },
+        { base: 40, growth: 1, style: 'curved' },
       ],
       level: skill,
       tag: AbilityTag.BLAST,
@@ -50,11 +51,11 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: 'Twilight Trill',
-      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> for enemies hit to become <b class="text-hsr-lightning">Shocked</b> and immediately take DMG from their current <b class="text-hsr-lightning">Shock</b> state, equal to {{1}}% of its original DMG. <b class="text-hsr-lightning">Shock</b> lasts for <span class="text-desc">2</span> turn(s).
-      <br />While <b class="text-hsr-lightning">Shocked</b>, enemies receive <b class="text-hsr-lightning">Lightning DoT</b> equal to {{2}}% of Kafka's ATK at the beginning of each turn.`,
+      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> for attacked enemy targets to become <b class="text-hsr-lightning">Shocked</b> and immediately take DMG from their current DoT debuff(s), equal to {{1}}% of its original DMG. <b class="text-hsr-lightning">Shock</b> lasts for <span class="text-desc">2</span> turn(s).
+      <br />While <b class="text-hsr-lightning">Shocked</b>, enemy targets receive <b class="text-hsr-lightning">Lightning DoT</b> equal to {{2}}% of Kafka's ATK at the beginning of each turn.`,
       value: [
         { base: 48, growth: 3.2, style: 'curved' },
-        { base: 80, growth: 2, style: 'curved' },
+        { base: 100, growth: 2, style: 'curved' },
         { base: 116, growth: 10.875, style: 'dot' },
       ],
       level: ult,
@@ -64,7 +65,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 10,
       trace: 'Talent',
       title: 'Gentle but Cruel',
-      content: `After an ally of Kafka's uses Basic ATK on an enemy target, Kafka immediately launches <span class="text-desc">1</span> <u>follow-up attack</u> and deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of her ATK to that target, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> equivalent to that applied by her Ultimate to the attacked enemy target for <span class="text-desc">2</span> turns. This effect can only be triggered <span class="text-desc">1</span> time per turn.`,
+      content: `After Kafka's teammate uses attacks on an enemy target, Kafka immediately launches <u>Follow-up ATK</u> and deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to that target, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> equivalent to that applied by her Ultimate to the attacked enemy target, lasting for <span class="text-desc">2</span> turns. This effect can be triggered up to <span class="text-desc">2</span> time(s), with <span class="text-desc">1</span> use(s) recovered at the end of Kafka's turn.`,
       value: [{ base: 42, growth: 9.8, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ST,
@@ -77,7 +78,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Torture',
-      content: `When the Ultimate is used, enemy targets will now receive DMG immediately from all currently applied DoT sources instead of just receiving DMG immediately from the currently applied <b class="text-hsr-lightning">Shock</b> state.`,
+      content: `When ally targets' Effect Hit Rate is over <span class="text-desc">75%</span>, Kafka increases their DoT dealt by <span class="text-desc">75%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -87,17 +88,17 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Thorns',
-      content: `The <u>base chance</u> for Ultimate, Technique, or the <u>follow-up attack</u> triggered by the Talent to inflict <b class="text-hsr-lightning">Shock</b> increases by <span class="text-desc">30%</span>.`,
+      content: `After using Ultimate, Talent's <u>Follow-up ATK</u> regains <span class="text-desc">1</span> trigger count and can cause all DoT debuffs the target is currently under to immediately produce DMG equal to <span class="text-desc">80%</span> of the original DMG.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Da Capo',
-      content: `When the Talent triggers a <u>follow-up attack</u>, there is a <span class="text-desc">100%</span> <u>base chance</u> to increase the DoT received by the target by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `When using an attack, there is a <span class="text-desc">100%</span> <u>base chance</u> to cause the target to take <span class="text-desc">30%</span> more DoT for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Fortississimo`,
-      content: `While Kafka is on the field, DoT dealt by all allies increases by <span class="text-desc">25%</span>.`,
+      content: `When Talent triggers <u>Follow-up ATK</u>, Kafka's ATK increases by <span class="text-desc">25%</span>. This effect can stack up to <span class="text-desc">2</span> times, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -119,7 +120,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: 'Leggiero',
-      content: `The <b class="text-hsr-lightning">Shock</b> inflicted on the enemy target by the Ultimate, the Technique, or the Talent-triggered <u>follow-up attack</u> has a DMG multiplier increase of <span class="text-desc">156%</span> and lasts <span class="text-desc">1</span> turn(s) longer.`,
+      content: `The <b class="text-hsr-lightning">Shock</b> inflicted on the enemy target by the Ultimate, Technique, or the Talent-triggered <u>follow-up attack</u> has a DMG multiplier increase of <span class="text-desc">156%</span> and lasts <span class="text-desc">1</span> turn(s) longer.`,
     },
   }
 
@@ -136,6 +137,17 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       duration: 2,
     },
     {
+      type: 'number',
+      id: 'kafka_c2',
+      text: `E2 ATK Bonus`,
+      ...talents.c2,
+      show: c >= 2,
+      default: 2,
+      min: 0,
+      max: 2,
+      duration: 2,
+    },
+    {
       type: 'toggle',
       id: 'kafka_ult',
       text: `Ult Shock`,
@@ -143,7 +155,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       show: true,
       default: true,
       debuff: true,
-      chance: { base: 1 + (a.a6 ? 0.3 : 0), fixed: false },
+      chance: { base: 1, fixed: false },
       duration: c >= 6 ? 3 : 2,
       debuffElement: Element.LIGHTNING,
     },
@@ -247,7 +259,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           element: Element.LIGHTNING,
           property: TalentProperty.DOT,
           type: TalentType.NONE,
-          chance: { base: 1 + (a.a6 ? 0.3 : 0), fixed: false },
+          chance: { base: 1, fixed: false },
           debuffElement: Element.LIGHTNING,
         }
 
@@ -269,12 +281,20 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
-      if (c >= 2)
-        base.DOT_DMG.push({
+      if (form.kafka_c2) {
+        base[Stats.P_ATK].push({
           name: `Eidolon 2`,
           source: 'Self',
-          value: 0.25,
+          value: 0.25 * form.kafka_c2,
         })
+      }
+      if (a.a2 && base.getValue(Stats.EHR) > 0.75) {
+        base.DOT_DMG.push({
+          name: `Ascension 2 Passive`,
+          source: 'Self',
+          value: 0.75,
+        })
+      }
 
       return base
     },
@@ -299,6 +319,13 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           source: 'Kafka',
           value: 0.25,
         })
+      if (a.a2 && base.getValue(Stats.EHR) > 0.75) {
+        base.DOT_DMG.push({
+          name: `Ascension 2 Passive`,
+          source: 'Kafka',
+          value: 0.75,
+        })
+      }
 
       return base
     },
@@ -316,7 +343,6 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     ) => {
       base.CALLBACK.push((x, d, w, all) => {
         const dots = _.flatMap(all, (item) => item.DOT_SCALING)
-        const shock = _.filter(dots, (item) => _.includes([DebuffTypes.SHOCKED, DebuffTypes.DOT], item.dotType))
         x.SKILL_SCALING.push(
           ..._.map(dots, (item) => ({
             ...item,
@@ -324,17 +350,35 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
             multiplier: (item.multiplier || 1) * calcScaling(0.6, 0.015, skill, 'curved'),
             sum: true,
+          })),
+          ..._.map(dots, (item) => ({
+            ...item,
+            chance: undefined,
+            name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation - Adjacent'),
+            multiplier: (item.multiplier || 1) * calcScaling(0.4, 0.01, skill, 'curved'),
+            sum: false,
           }))
         )
         x.ULT_SCALING.push(
-          ..._.map(a.a2 ? dots : shock, (item, i) => ({
+          ..._.map(dots, (item, i) => ({
             ...item,
             chance: undefined,
             name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
-            multiplier: (item.multiplier || 1) * calcScaling(0.8, 0.02, ult, 'curved'),
+            multiplier: (item.multiplier || 1) * calcScaling(1, 0.02, ult, 'curved'),
             sum: true,
           }))
         )
+        if (a.a6) {
+          x.TALENT_SCALING.push(
+            ..._.map(dots, (item, i) => ({
+              ...item,
+              chance: undefined,
+              name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
+              multiplier: (item.multiplier || 1) * 0.8,
+              sum: true,
+            }))
+          )
+        }
 
         return x
       })

@@ -210,6 +210,18 @@ export const ArtifactForm = () => {
       id: '126',
       excludeSummon: true,
     },
+    {
+      type: 'number',
+      text: `On-Field Ally Count`,
+      title: `On-Field Ally Count`,
+      content: `When the number of ally targets on the field is not <span class="text-desc">4</span>, for every <span class="text-desc">1</span> extra/missing ally target, increases the wearer's and their memosprite's DMG by <span class="text-desc">9%</span>/<span class="text-desc">12%</span>, stacking up to <span class="text-desc">4</span>/<span class="text-desc">3</span> time(s).`,
+      show: true,
+      default: 4,
+      min: 1,
+      max: 8,
+      id: '321',
+      excludeSummon: true,
+    },
   ]
 
   // Team-Wide

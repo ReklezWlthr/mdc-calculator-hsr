@@ -1383,6 +1383,17 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23046',
+    scaling: (base, r) => {
+      base[Stats.CRIT_RATE].push({
+        name: 'Passive',
+        source: `The Hell Where Ideals Burn`,
+        value: calcRefinement(0.16, 0.04, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

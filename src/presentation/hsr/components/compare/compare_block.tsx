@@ -266,8 +266,10 @@ export const CompareBlock = observer(() => {
                   talent={main?.talents?.summon_skill}
                   icon={`SkillIcon_1${charData.id}_Servant01.png`}
                   element={charData.element}
-                  level={char.talents?.memo_skill}
-                  upgraded={(main?.upgrade as any)?.memo_skill}
+                  level={mainComputed.PATH === PathType.REMEMBRANCE ? char.talents?.memo_skill : char.talents?.skill}
+                  upgraded={
+                    (main?.upgrade as any)?.[mainComputed.PATH === PathType.REMEMBRANCE ? 'memo_skill' : 'skill']
+                  }
                 >
                   <div className="flex flex-col justify-between h-full gap-4">
                     {renderRow(StatsObjectKeys.MEMO_SKILL_SCALING, TalentType.SERVANT)}
@@ -309,8 +311,10 @@ export const CompareBlock = observer(() => {
                   talent={main?.talents?.summon_talent}
                   icon={`SkillIcon_1${charData.id}_ServantPassive.png`}
                   element={charData.element}
-                  level={char.talents?.memo_talent}
-                  upgraded={(main?.upgrade as any)?.memo_talent}
+                  level={mainComputed.PATH === PathType.REMEMBRANCE ? char.talents?.memo_talent : char.talents?.talent}
+                  upgraded={
+                    (main?.upgrade as any)?.[mainComputed.PATH === PathType.REMEMBRANCE ? 'memo_talent' : 'talent']
+                  }
                 >
                   <div className="flex flex-col justify-between h-full gap-4">
                     {renderRow(StatsObjectKeys.MEMO_TALENT_SCALING, TalentType.SERVANT_T)}

@@ -171,6 +171,8 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ) => {
       const base = _.cloneDeep(x)
 
+      base.MAX_SP += c >= 4 ? 3 : 2
+
       base.BASIC_SCALING = [
         {
           name: 'Single Target',
@@ -242,6 +244,8 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[]
     ) => {
+      base.MAX_SP += c >= 4 ? 3 : 2
+      
       if (aForm.sparkle_skill && (c < 6 || !form.cipher)) {
         base.CALLBACK.push((x, d, w, all) => {
           x.X_CRIT_DMG.push({

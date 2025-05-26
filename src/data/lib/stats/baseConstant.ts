@@ -240,6 +240,8 @@ export const baseStatsObject: BaseStatsType = {
 
   SUMMON_ID: '',
   GODSLAYER: false,
+
+  MAX_SP: 5,
 }
 
 export const TalentTypeMap = {

@@ -190,6 +190,27 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       value: 0.48,
     })
   }
+  if (form['126']) {
+    let bonus = 0
+    if (form['126'] < 4) {
+      bonus = 0.12 * (4 - form['126'])
+    }
+    if (form['126'] > 4) {
+      bonus = 0.09 * (form['126'] - 4)
+    }
+    base[Stats.ALL_DMG].push({
+      name: `Passive`,
+      source: `Arcadia of Woven Dreams`,
+      value: bonus,
+    })
+    if (base.SUMMON_STATS) {
+      base.SUMMON_STATS[Stats.ALL_DMG].push({
+        name: `Passive`,
+        source: `Arcadia of Woven Dreams`,
+        value: bonus,
+      })
+    }
+  }
 
   return base
 }

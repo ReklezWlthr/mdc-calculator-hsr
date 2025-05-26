@@ -951,7 +951,7 @@ export const PlanarSets: IArtifact[] = [
       }
       return base
     },
-    beta: true,
+    beta: false,
     set: [`Lushaka's Waterscape`, `Lushaka's Twinlanes`],
   },
   {
@@ -963,7 +963,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's CRIT DMG by <span class="text-desc">16%</span>. When a target summoned by the wearer is on the field, CRIT DMG additionally increases by <span class="text-desc">32%</span>.`,
     ],
-    beta: true,
+    beta: false,
     set: [`BananAmusement Park's BananAxis Plaza`, `BananAmusement Park's Memetic Cables`],
   },
   {
@@ -995,7 +995,7 @@ export const PlanarSets: IArtifact[] = [
       })
       return base
     },
-    beta: true,
+    beta: false,
     set: [`Aidonia's Deceased Gravestones`, `Aidonia's Deathward Bone Chains`],
   },
   {
@@ -1027,8 +1027,43 @@ export const PlanarSets: IArtifact[] = [
       })
       return base
     },
-    beta: true,
+    beta: false,
     set: [`Grove of Epiphany's Pondering Colossus`, `Grove of Epiphany's Interwoven Veins`],
+  },
+  {
+    id: '321',
+    name: 'Arcadia of Woven Dreams',
+    icon: '71046',
+    bonus: [],
+    bonusAdd: [],
+    desc: [
+      `When the number of ally targets on the field is not <span class="text-desc">4</span>, for every <span class="text-desc">1</span> extra/missing ally target, increases the wearer's and their memosprite's DMG by <span class="text-desc">9%</span>/<span class="text-desc">12%</span>, stacking up to <span class="text-desc">4</span>/<span class="text-desc">3</span> time(s).`,
+    ],
+    beta: true,
+    set: [`Membrance Maze's Serene Treehouse`, `Membrance Maze's Wishing Whistle`],
+  },
+  {
+    id: '322',
+    name: 'Revelry by the Sea',
+    icon: '71047',
+    bonus: [],
+    bonusAdd: [],
+    half: (base) => {
+      base.CALLBACK.push((x) => {
+        x.DOT_DMG.push({
+          name: '2-Piece',
+          source: 'Revelry by the Sea',
+          value: x.getAtk() >= 3600 ? 0.36 : x.getAtk() >= 2400 ? 0.24 : 0.12,
+        })
+        return x
+      })
+      return base
+    },
+    desc: [
+      `Increases the wearer's DoT DMG by <span class="text-desc">12%</span>. When the wearer's ATK is higher than or equal to <span class="text-desc">2,400</span>/<span class="text-desc">3,600</span>, additionally increases the DoT DMG dealt by <span class="text-desc">12%</span>/<span class="text-desc">24%</span>`,
+    ],
+    beta: true,
+    set: [`Warbling Shores' Blazing Beacon`, `Warbling Shores' Cantillation Trail`],
   },
 ]
 

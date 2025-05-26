@@ -26,7 +26,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       energy: 20,
       trace: 'Basic ATK',
       title: 'System Warning',
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Silver Wolf's ATK to a single enemy.`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Silver Wolf's ATK to one designated enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
@@ -35,13 +35,13 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       energy: 30,
       trace: 'Skill',
       title: 'Allow Changes?',
-      content: `There is a {{0}}% <u>base chance</u> to add 1 Weakness of an on-field ally's Type to the target enemy. This also reduces the enemy's DMG RES to that Weakness Type by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s). If the enemy already has that Type Weakness, the effect of DMG RES reduction to that Weakness Type will not be triggered.
-      <br />Each enemy can only have 1 Weakness implanted by Silver Wolf. When Silver Wolf implants another Weakness to the target, only the most recent implanted Weakness will be kept.
-      <br />In addition, there is a <span class="text-desc">100%</span> <u>base chance</u> to reduce the All-Type RES of the enemy further by {{1}}% for <span class="text-desc">2</span> turn(s).
-      <br />Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{2}}% of Silver Wolf's ATK to this enemy.`,
+      content: `There is a {{0}}% <u>base chance</u> to add <span class="text-desc">1</span> Weakness of an on-field ally target's Type to one designated enemy target (prioritizes implanting the Weakness corresponding to the first ally target in the lineup), also reducing the enemy target's RES to that Weakness Type by <span class="text-desc">20%</span> for <span class="text-desc">3</span> turn(s). If the enemy target already has that Type Weakness, the RES reduction effect to that Type will not be triggered.
+      <br />Each enemy can only have <span class="text-desc">1</span> Weakness implanted by Silver Wolf. When Silver Wolf implants another Weakness to the target, only the most recent implanted Weakness will be kept.
+      <br />In addition, there is a <span class="text-desc">100%</span> <u>base chance</u> to further reduce the target's All-Type RES by {{1}}% for <span class="text-desc">2</span> turn(s).
+      <br />Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{2}}% of Silver Wolf's ATK to this target.`,
       value: [
-        { base: 75, growth: 1, style: 'curved' },
-        { base: 7.5, growth: 0.25, style: 'curved' },
+        { base: 80, growth: 4, style: 'curved' },
+        { base: 10.5, growth: 0.25, style: 'curved' },
         { base: 98, growth: 9.8, style: 'curved' },
       ],
       level: skill,
@@ -51,25 +51,25 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       energy: 5,
       trace: 'Ultimate',
       title: 'User Banned',
-      content: `There's a {{0}}% <u>base chance</u> to decrease the target enemy's DEF by {{1}}% for <span class="text-desc">3</span> turn(s). And at the same time, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{2}}% of Silver Wolf's ATK to the target enemy.`,
+      content: `There's a {{0}}% <u>base chance</u> to decrease all enemies' DEF by {{1}}% for <span class="text-desc">3</span> turn(s). At the same time, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{2}}% of Silver Wolf's ATK to all enemies.`,
       value: [
-        { base: 85, growth: 1.5, style: 'curved' },
+        { base: 80, growth: 4, style: 'curved' },
         { base: 36, growth: 0.9, style: 'curved' },
         { base: 228, growth: 15.2, style: 'curved' },
       ],
       level: ult,
-      tag: AbilityTag.ST,
+      tag: AbilityTag.AOE,
     },
     talent: {
       trace: 'Talent',
       title: 'Awaiting System Response...',
       content: `Silver Wolf can create three types of Bugs: reduce ATK by {{0}}%, reduce DEF by {{1}}%, and reduce SPD by {{2}}%.
-      <br />Every time Silver Wolf attacks, she has a {{3}}% <u>base chance</u> to implant a random Bug that lasts for <span class="text-desc">3</span> turn(s) in the enemy target.`,
+      <br />After every attack launched by Silver Wolf, she has a {{3}}% <u>base chance</u> to implant <span class="text-desc">1</span> random Bug to the attacked enemy target, lasting for <span class="text-desc">3</span> turn(s). When the enemy target is defeated, the Weakness Silver Wolf implanted on it will be transferred to another surviving enemy on the field.`,
       value: [
         { base: 5, growth: 0.5, style: 'curved' },
-        { base: 4, growth: 0.4, style: 'curved' },
+        { base: 6, growth: 0.6, style: 'curved' },
         { base: 3, growth: 0.3, style: 'curved' },
-        { base: 60, growth: 1.2, style: 'curved' },
+        { base: 60, growth: 4, style: 'curved' },
       ],
       level: talent,
       tag: AbilityTag.IMPAIR,
@@ -77,32 +77,32 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     technique: {
       trace: 'Technique',
       title: 'Force Quit Program',
-      content: `Immediately attacks the enemy. After entering battle, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">80%</span> of Silver Wolf's ATK to all enemies, and ignores Weakness Types and reduces Toughness from all enemies. Enemies with their Weakness Broken in this way will trigger the <b class="text-hsr-quantum">Quantum</b> Weakness Break effect.`,
+      content: `Immediately attacks the enemy. After entering battle, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">80%</span> of Silver Wolf's ATK to all enemies, and reduces Toughness from all enemies regardless of Weakness Types. Enemies with their Weakness Broken in this way will trigger the <b class="text-hsr-quantum">Quantum</b> Weakness Break effect.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Generate',
-      content: `Bug's duration is extended for <span class="text-desc">1</span> turn(s). Every time an enemy is inflicted with Weakness Break, Silver Wolf has a <span class="text-desc">65%</span> <u>base chance</u> of implanting a random Bug in the enemy.`,
+      content: `The duration of Bug is extended for <span class="text-desc">1</span> turn(s). Every time an enemy target's Weakness is Broken, Silver Wolf has a <span class="text-desc">100%</span> <u>base chance</u> of implanting <span class="text-desc">1</span> random Bug in that target.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Inject',
-      content: `The duration of the Weakness implanted by Silver Wolf's Skill increases by <span class="text-desc">1</span> turn(s).`,
+      content: `At the start of the battle, immediately regenerates <span class="text-desc">20</span> Energy. Silver Wolf regenerates <span class="text-desc">5</span> Energy at the start of her own turn.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Side Note',
-      content: `If there are <span class="text-desc">3</span> or more debuff(s) affecting the enemy when the Skill is used, then the Skill decreases the enemy's All-Type RES by an additional <span class="text-desc">3%</span>.`,
+      content: `For every <span class="text-desc">10%</span> Effect Hit Rate that Silver Wolf has, additionally increases her ATK by <span class="text-desc">10%</span> to a max of <span class="text-desc">50%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Social Engineering',
-      content: `After using her Ultimate to attack enemies, Silver Wolf regenerates <span class="text-desc">7</span> Energy for every debuff that the target enemy currently has. This effect can be triggered up to <span class="text-desc">5</span> time(s) in each use of her Ultimate.`,
+      content: `After using her Ultimate to attack any enemy target, Silver Wolf regenerates <span class="text-desc">7</span> Energy for every debuff that the target currently has. This effect can be triggered up to <span class="text-desc">5</span> time(s) in each use of her Ultimate.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'Zombie Network',
-      content: `When an enemy enters battle, reduces their Effect RES by <span class="text-desc">20%</span>.`,
+      content: `When enemy target enters battle, increases DMG received by <span class="text-desc">20%</span>. When the enemy target receives an attack from ally targets, Silver Wolf has a <span class="text-desc">100%</span> <u>base chance</u> of implanting the attacked enemy target with <span class="text-desc">1</span> random Bug.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -113,7 +113,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     c4: {
       trace: 'Eidolon 4',
       title: 'Bounce Attack',
-      content: `After using her Ultimate to attack enemies, deals Additional <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">20%</span> of Silver Wolf's ATK for every debuff currently on the enemy target. This effect can be triggered for a maximum of <span class="text-desc">5</span> time(s) during each use of her Ultimate.`,
+      content: `After using her Ultimate to attack any enemy target, deals <b class="text-hsr-quantum">Quantum Additional DMG</b> equal to <span class="text-desc">20%</span> of Silver Wolf's ATK for every debuff currently on the enemy target. This effect can be triggered for a maximum of <span class="text-desc">5</span> time(s) during each use of her Ultimate.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -124,7 +124,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     c6: {
       trace: 'Eidolon 6',
       title: 'Overlay Network',
-      content: `For every debuff the target enemy has, the DMG dealt by Silver Wolf increases by <span class="text-desc">20%</span>, up to a limit of <span class="text-desc">100%</span>.`,
+      content: `For every debuff the enemy target has, the DMG dealt by Silver Wolf to it increases by <span class="text-desc">20%</span>, up to an increase of <span class="text-desc">100%</span>.`,
     },
   }
 
@@ -137,9 +137,9 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       show: true,
       default: Element.QUANTUM,
       options: _.map(elements, (item) => ({ name: item, value: item })),
-      duration: a.a4 ? 3 : 2,
+      duration: 3,
       debuff: true,
-      chance: { base: calcScaling(0.75, 0.01, skill, 'curved'), fixed: false },
+      chance: { base: calcScaling(0.8, 0.04, skill, 'curved'), fixed: false },
     },
     {
       type: 'toggle',
@@ -159,9 +159,9 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       ...talents.ult,
       show: true,
       default: true,
-      duration: a.a2 ? 4 : 3,
+      duration: 3,
       debuff: true,
-      chance: { base: calcScaling(0.85, 0.015, ult, 'curved'), fixed: false },
+      chance: { base: calcScaling(0.8, 0.04, ult, 'curved'), fixed: false },
     },
     {
       type: 'toggle',
@@ -172,7 +172,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       default: true,
       duration: a.a2 ? 4 : 3,
       debuff: true,
-      chance: { base: calcScaling(0.6, 0.012, talent, 'curved'), fixed: false },
+      chance: { base: calcScaling(0.6, 0.04, talent, 'curved'), fixed: false },
     },
     {
       type: 'toggle',
@@ -183,7 +183,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       default: true,
       duration: a.a2 ? 4 : 3,
       debuff: true,
-      chance: { base: calcScaling(0.6, 0.012, talent, 'curved'), fixed: false },
+      chance: { base: calcScaling(0.6, 0.04, talent, 'curved'), fixed: false },
     },
     {
       type: 'toggle',
@@ -193,12 +193,12 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       show: true,
       default: true,
       debuff: true,
-      chance: { base: calcScaling(0.6, 0.012, talent, 'curved'), fixed: false },
+      chance: { base: calcScaling(0.6, 0.04, talent, 'curved'), fixed: false },
     },
     {
       type: 'toggle',
       id: 'sw_c2',
-      text: `E2 Effect RES Reduction`,
+      text: `E2 Vulnerability`,
       ...talents.c2,
       show: c >= 2,
       default: true,
@@ -213,6 +213,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     findContentById(content, 'atk_bug'),
     findContentById(content, 'def_bug'),
     findContentById(content, 'spd_bug'),
+    findContentById(content, 'sw_c2'),
   ]
 
   const allyContent: IContent[] = []
@@ -262,7 +263,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       ]
       base.ULT_SCALING = [
         {
-          name: 'Single Target',
+          name: 'AoE',
           value: [{ scaling: calcScaling(2.28, 0.152, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
@@ -303,7 +304,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         base.ALL_TYPE_RES_RED.push({
           name: `Skill`,
           source: 'Self',
-          value: calcScaling(0.075, 0.0025, skill, 'curved'),
+          value: calcScaling(0.105, 0.0025, skill, 'curved'),
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
@@ -327,7 +328,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         base.DEF_REDUCTION.push({
           name: `Bug [DEF]`,
           source: 'Self',
-          value: calcScaling(0.04, 0.004, ult, 'curved'),
+          value: calcScaling(0.06, 0.006, ult, 'curved'),
         })
         addDebuff(debuffs, DebuffTypes.DEF_RED)
       }
@@ -340,7 +341,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         addDebuff(debuffs, DebuffTypes.SPD_RED)
       }
       if (form.sw_c2) {
-        base.E_RES_RED.push({
+        base.VULNERABILITY.push({
           name: `Eidolon 2`,
           source: 'Self',
           value: 0.2,
@@ -369,7 +370,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         base.ALL_TYPE_RES_RED.push({
           name: `Skill`,
           source: 'Silver Wolf',
-          value: calcScaling(0.075, 0.0025, skill, 'curved'),
+          value: calcScaling(0.105, 0.0025, skill, 'curved'),
         })
       if (form.sw_ult)
         base.DEF_REDUCTION.push({
@@ -387,7 +388,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         base.DEF_REDUCTION.push({
           name: `Bug [DEF]`,
           source: 'Silver Wolf',
-          value: calcScaling(0.04, 0.004, ult, 'curved'),
+          value: calcScaling(0.06, 0.006, ult, 'curved'),
         })
       if (form.spd_bug)
         base.SPD_REDUCTION.push({
@@ -396,7 +397,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           value: calcScaling(0.03, 0.003, ult, 'curved'),
         })
       if (form.sw_c2)
-        base.E_RES_RED.push({
+        base.VULNERABILITY.push({
           name: `Eidolon 2`,
           source: 'Silver Wolf',
           value: 0.2,
@@ -416,6 +417,13 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       weakness: Element[],
       broken: boolean
     ) => {
+      if (a.a6) {
+        base[Stats.P_ATK].push({
+          name: `Ascension 6 Passive`,
+          source: 'Self',
+          value: _.min([0.5, base.getValue(Stats.EHR)]),
+        })
+      }
       if (c >= 4)
         base.ULT_SCALING.push({
           name: 'Additional DMG Per Debuff',

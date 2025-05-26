@@ -195,6 +195,8 @@ export interface RawBaseStatType {
   EXTRA_C_TURN: number
 
   SUMMON_ID: string
+
+  MAX_SP: number
 }
 
 export interface BaseStatsType extends RawBaseStatType {

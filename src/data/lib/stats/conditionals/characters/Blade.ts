@@ -33,8 +33,8 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 20,
       trace: 'Basic ATK',
       title: `Shard Sword`,
-      content: `Deals {{0}}% of Blade's ATK as <b class="text-hsr-wind">Wind DMG</b> to a target enemy.`,
-      value: [{ base: 50, growth: 10, style: 'linear' }],
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Blade's Max HP to one designated enemy.`,
+      value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
     },
@@ -42,13 +42,12 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Enhanced Basic ATK',
       title: `Forest of Swords`,
-      content: `Consumes HP equal to <span class="text-desc">10%</span> of Blade's Max HP and deals <b class="text-hsr-wind">Wind DMG</b> equal to the sum of {{0}}% of his ATK and {{1}}% of his Max HP to a single enemy. In addition deals <b class="text-hsr-wind">Wind DMG</b> equal to the sum of {{2}}% of Blade's ATK and {{0}}% of his Max HP to adjacent targets.
+      content: `Consumes HP equal to <span class="text-desc">10%</span> of Blade's Max HP and deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of his Max HP to one designated enemy. In addition, deals <b class="text-hsr-wind">Wind DMG</b> equal to {{1}}% of Blade's Max HP to adjacent targets.
       <br />If Blade's current HP is insufficient, his HP will be reduced to <span class="text-desc">1</span> when using <b>Forest of Swords</b>.
       <br /><b>Forest of Swords</b> cannot regenerate Skill Points.`,
       value: [
-        { base: 20, growth: 4, style: 'linear' },
-        { base: 50, growth: 10, style: 'linear' },
-        { base: 8, growth: 1.6, style: 'linear' },
+        { base: 65, growth: 13, style: 'linear' },
+        { base: 26, growth: 5.2, style: 'linear' },
       ],
       level: basic,
       tag: AbilityTag.BLAST,
@@ -57,7 +56,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Skill',
       title: `Hellscape`,
       content: `Consumes HP equal to <span class="text-desc">30%</span> of Blade's Max HP to enter the <b>Hellscape</b> state.
-      <br />When <b>Hellscape</b> is active, his Skill cannot be used, his DMG dealt increases by {{0}}%, and his Basic ATK <b>Shard Sword</b> is enhanced to <b>Forest of Swords</b> for <span class="text-desc">3</span> turn(s).
+      <br />While under the <b>Hellscape</b> state, his Skill cannot be used, his DMG dealt increases by {{0}}%, the chance of receiving attacks from enemy targets greatly increases, and his Basic ATK <b>Shard Sword</b> is enhanced to <b>Forest of Swords</b> for <span class="text-desc">3</span> turn(s).
       <br />If Blade's current HP is insufficient, his HP will be reduced to <span class="text-desc">1</span> when he uses his Skill.
       <br />This Skill does not regenerate Energy. Using this Skill does not end the current turn.`,
       value: [{ base: 12, growth: 2.8, style: 'curved' }],
@@ -68,12 +67,12 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: 'Death Sentence',
-      content: `Sets Blade's current HP to <span class="text-desc">50%</span> of his Max HP and deals to single enemy <b class="text-hsr-wind">Wind DMG</b> equal to the sum of {{0}}% of his ATK, {{1}}% of his Max HP, and {{1}}% of the total HP he has lost in the current battle. At the same time, deals <b class="text-hsr-wind">Wind DMG</b> to adjacent targets equal to the sum of {{2}}% of his ATK, {{3}}% of his Max HP, and {{3}}% of the total HP he has lost in the current battle. The total HP Blade has lost in the current battle is capped at <span class="text-desc">90%</span> of his Max HP. This value will be reset and re-accumulated after his Ultimate is used.`,
+      content: `Sets Blade's current HP to <span class="text-desc">50%</span> of his Max HP and deals <b class="text-hsr-wind">Wind DMG</b> to one designated enemy equal to the sum of {{0}}% of his Max HP, and {{1}}% of the tally of Blade's HP loss in the current battle. At the same time, deals <b class="text-hsr-wind">Wind DMG</b> to adjacent targets equal to the sum of {{2}}% of his Max HP, and {{3}}% of the tally of his HP loss in the current battle. The tally of Blade's HP loss in the current battle is capped at <span class="text-desc">90%</span> of his Max HP. This value will be reset and re-accumulated after his Ultimate has been used.`,
       value: [
-        { base: 24, growth: 1.6, style: 'curved' },
+        { base: 90, growth: 6, style: 'curved' },
         { base: 60, growth: 4, style: 'curved' },
-        { base: 9.6, growth: 0.64, style: 'curved' },
-        { base: 24, growth: 1.6, style: 'curved' },
+        { base: 36, growth: 2.4, style: 'curved' },
+        { base: 30, growth: 2, style: 'curved' },
       ],
       level: ult,
       tag: AbilityTag.BLAST,
@@ -83,11 +82,8 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Talent',
       title: `Shuhu's Gift`,
       content: `When Blade sustains DMG or consumes his HP, he gains <span class="text-desc">1</span> stack of <b>Charge</b>, stacking up to <span class="text-desc">5</span> times. A max of <span class="text-desc">1</span> <b>Charge</b> stack can be gained every time he is attacked.
-      <br />When <b>Charge</b> stack reaches maximum, immediately launches a <u>follow-up attack</u> on all enemies, dealing <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Blade's ATK plus {{1}}% of his Max HP. At the same time, restores Blade's HP by <span class="text-desc">25%</span> of his Max HP. After the <u>follow-up attack</u>, all <b>Charges</b> are consumed.`,
-      value: [
-        { base: 22, growth: 2.2, style: 'curved' },
-        { base: 55, growth: 5.5, style: 'curved' },
-      ],
+      <br />When <b>Charge</b> stack reaches maximum, immediately launches <span class="text-desc">1</span> <u>Follow-up ATK</u> on all enemies, dealing <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Blade's Max HP. At the same time, restores Blade's HP by <span class="text-desc">25%</span> of his Max HP. After the <u>Follow-up ATK</u>, all <b>Charges</b> are consumed.`,
+      value: [{ base: 65, growth: 6.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.AOE,
     },
@@ -106,23 +102,23 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Neverending Deaths`,
-      content: `If Blade hits a Weakness Broken enemy after using Forest of Swords, he will restore HP equal to <span class="text-desc">5%</span> of his Max HP plus <span class="text-desc">100</span>.`,
+      content: `If Blade hits a Weakness Broken enemy after using <b>Forest of Swords</b>, he will restore HP equal to <span class="text-desc">5%</span> of his Max HP plus <span class="text-desc">100</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Cyclone of Destruction`,
-      content: `DMG dealt by Talent's <u>follow-up attack</u> increases by <span class="text-desc">20%</span>.`,
+      content: `DMG dealt by Talent's <u>Follow-up ATK</u> increases by <span class="text-desc">20%</span>. Additionally regenerates <span class="text-desc">15</span> Energy.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Blade Cuts the Deepest in Hell`,
-      content: `Blade's Ultimate deals additionally increased DMG to a single enemy target, with the increased amount equal to <span class="text-desc">150%</span> of Blade's total HP loss in the current battle.
-      <br />The total HP Blade has lost in the current battle is capped at <span class="text-desc">90%</span> of his Max HP. This value will be reset and re-accumulated after his Ultimate has been used.`,
+      content: `Blade's Enhanced Basic ATK and Ultimate deals additionally increased DMG to one designated enemy, with the increased amount equal to <span class="text-desc">150%</span> of the tally of Blade's HP loss in the current battle.
+      <br />The tally of Blade's HP loss in the current battle is capped at <span class="text-desc">90%</span> of his Max HP. The tally value will be reset and re-accumulated after his Ultimate has been used.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Ten Thousand Sorrows From One Broken Dream`,
-      content: `When Blade is in the Hellscape state, his CRIT Rate increases by <span class="text-desc">15%</span>.`,
+      content: `When Blade is in the <b>Hellscape</b> state, his CRIT Rate increases by <span class="text-desc">15%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -133,7 +129,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c4: {
       trace: 'Eidolon 4',
       title: `Rejected by Death, Infected With Life`,
-      content: `When Blade's current HP drops to <span class="text-desc">50%</span> or lower of his Max HP, increases his Max HP by <span class="text-desc">20%</span>. Stacks up to <span class="text-desc">/2</span> time(s).`,
+      content: `When Blade's current HP percentage drops from above <span class="text-desc">50%</span> to <span class="text-desc">50%</span> of his Max HP or lower, increases his Max HP by <span class="text-desc">20%</span>. Stacks up to <span class="text-desc">/2</span> time(s).`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -144,7 +140,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: `Reborn Into an Empty Husk`,
-      content: `The maximum number of <b>Charge</b> stacks is reduced to <span class="text-desc">4</span>. The DMG of the <u>follow-up attack</u> triggered by Blade's Talent additionally increases by <span class="text-desc">50%</span> of his Max HP.`,
+      content: `The maximum number of <b>Charge</b> stacks is reduced to <span class="text-desc">4</span>. The <u>Follow-up ATK</u> triggered by Talent deals additionally increased DMG equal to <span class="text-desc">50%</span> of his Max HP.`,
     },
   }
 
@@ -215,10 +211,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         ? [
             {
               name: 'Main Target',
-              value: [
-                { scaling: calcScaling(0.2, 0.04, basic, 'linear'), multiplier: Stats.ATK },
-                { scaling: calcScaling(0.5, 0.1, basic, 'linear'), multiplier: Stats.HP },
-              ],
+              value: [{ scaling: calcScaling(0.65, 0.13, basic, 'linear'), multiplier: Stats.HP }],
               element: Element.WIND,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
@@ -228,10 +221,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             },
             {
               name: 'Adjacent',
-              value: [
-                { scaling: calcScaling(0.08, 0.016, basic, 'linear'), multiplier: Stats.ATK },
-                { scaling: calcScaling(0.2, 0.04, basic, 'linear'), multiplier: Stats.HP },
-              ],
+              value: [{ scaling: calcScaling(0.26, 0.052, basic, 'linear'), multiplier: Stats.HP }],
               element: Element.WIND,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
@@ -241,7 +231,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         : [
             {
               name: 'Single Target',
-              value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.25, 0.05, basic, 'linear'), multiplier: Stats.HP }],
               element: Element.WIND,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
@@ -253,10 +243,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       base.TALENT_SCALING = [
         {
           name: 'AoE',
-          value: [
-            { scaling: calcScaling(0.22, 0.022, talent, 'curved'), multiplier: Stats.ATK },
-            { scaling: calcScaling(0.55, 0.055, talent, 'curved') + (c >= 6 ? 0.5 : 0), multiplier: Stats.HP },
-          ],
+          value: [{ scaling: calcScaling(0.65, 0.065, talent, 'curved') + (c >= 6 ? 0.5 : 0), multiplier: Stats.HP }],
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
@@ -354,13 +341,10 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     ) => {
       base.CALLBACK.push((x) => {
         const loss = _.min([form.blade_hp_loss, x.getHP() * 0.9])
-        base.ULT_SCALING = [
+        x.ULT_SCALING = [
           {
             name: 'Main Target',
-            value: [
-              { scaling: calcScaling(0.24, 0.016, ult, 'curved'), multiplier: Stats.ATK },
-              { scaling: calcScaling(0.6, 0.04, ult, 'curved'), multiplier: Stats.HP },
-            ],
+            value: [{ scaling: calcScaling(0.9, 0.06, ult, 'curved'), multiplier: Stats.HP }],
             flat: (calcScaling(0.6, 0.04, ult, 'curved') + (c >= 1 ? 1.5 : 0)) * loss,
             element: Element.WIND,
             property: TalentProperty.NORMAL,
@@ -370,17 +354,17 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           },
           {
             name: 'Adjacent',
-            value: [
-              { scaling: calcScaling(0.096, 0.0064, ult, 'curved'), multiplier: Stats.ATK },
-              { scaling: calcScaling(0.24, 0.016, ult, 'curved'), multiplier: Stats.HP },
-            ],
-            flat: calcScaling(0.24, 0.016, ult, 'curved') * loss,
+            value: [{ scaling: calcScaling(0.36, 0.024, ult, 'curved'), multiplier: Stats.HP }],
+            flat: calcScaling(0.3, 0.02, ult, 'curved') * loss,
             element: Element.WIND,
             property: TalentProperty.NORMAL,
             type: TalentType.ULT,
             break: 20,
           },
         ]
+        if (c >= 1 && form.hellscape) {
+          _.head(x.BASIC_SCALING).flat = 1.5 * loss
+        }
 
         return x
       })

@@ -50,7 +50,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     talent: {
       trace: 'Talent',
       title: 'Resurgence',
-      content: `Enters the buffed state upon defeating an enemy with Basic ATK, Skill, or Ultimate, and receives an extra turn. While in the buffed state, the DMG of Seele's attacks increases by {{0}}% for 1 turn(s).
+      content: `Enters the buffed state upon defeating an enemy with Basic ATK, Skill, or Ultimate, and receives an extra turn. While in the buffed state, the DMG of Seele's attacks increases by {{0}}% for <span class="text-desc">1</span> turn(s).
       <br />Enemies defeated in the extra turn provided by <b>Resurgence</b> will not trigger another <b>Resurgence</b>.`,
       value: [{ base: 40, growth: 4, style: 'curved' }],
       level: talent,
