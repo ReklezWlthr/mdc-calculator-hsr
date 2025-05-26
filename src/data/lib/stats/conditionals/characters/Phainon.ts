@@ -385,7 +385,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 element: Element.PHYSICAL,
                 property: TalentProperty.NORMAL,
                 type: TalentType.SKILL,
-                break: (10 / 3) * form.scourge + 20,
+                break: (10 / 3) * 4 * form.scourge + 20,
                 sum: true,
                 multiplier: c >= 2 ? 1.2 : 1,
               },
