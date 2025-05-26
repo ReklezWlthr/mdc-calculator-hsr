@@ -418,6 +418,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.ULT,
           break: 20,
           multiplier: (c >= 2 ? 1.2 : 1) * (1 / form.phainon_enemy),
+          sum: true,
         },
       ]
       base.MEMO_TALENT_SCALING = [
@@ -443,6 +444,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
+          sum: true,
         },
       ]
 
