@@ -87,18 +87,18 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       tag: AbilityTag.AOE,
     },
     talent: {
-      trace: `Phainon's Talent`,
+      trace: `Talent`,
       title: `Pyric Corpus`,
-      content: `When <b class="text-desc">Coreflame</b> reaches <span class="text-desc">12</span> point(s), Ultimate can be activated. After reaching the max limit, up to <span class="text-desc">3</span> excess point(s) can be accumulated.
+      content: `Phainon's Talent. When <b class="text-desc">Coreflame</b> reaches <span class="text-desc">12</span> point(s), Ultimate can be activated. After reaching the max limit, up to <span class="text-desc">3</span> excess point(s) can be accumulated.
       <br />When Phainon is the target of an ally or an enemy's ability, he gains <span class="text-desc">1</span> point of <b class="text-desc">Coreflame</b>. When he is the target of an ally's ability, increases CRIT DMG by {{0}}%, lasting for <span class="text-desc">3</span> turn(s).`,
       value: [{ base: 15, growth: 1.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
     },
     summon_talent: {
-      trace: `█████'s Talent`,
+      trace: `Enhanced Talent`,
       title: `Fate: Divine Vessel`,
-      content: `When Transforming, gains <span class="text-desc">4</span> point(s) of <b class="text-red">Scourge</b>. If it is during an ally target's turn, all buffs on that ally target will be extended by <span class="text-desc">1</span> turn and the current turn ends.
+      content: `█████'s Talent. When Transforming, gains <span class="text-desc">4</span> point(s) of <b class="text-red">Scourge</b>. If it is during an ally target's turn, all buffs on that ally target will be extended by <span class="text-desc">1</span> turn and the current turn ends.
       <br />█████ is immune to Crowd Control debuffs and has <span class="text-desc">1</span> Enhanced Basic ATK and <span class="text-desc">2</span> Enhanced Skills, but cannot use Ultimate. During his Transformation, increases ATK by {{0}}% and Max HP by {{1}}%. After attacking, restores HP equal to <span class="text-desc">20%</span> of his Max HP. Upon taking a killing blow, █████ will not get knocked down, and will instead restore HP equal to <span class="text-desc">25%</span> of Max HP and immediately launch Final Hit. For every <span class="text-desc">1</span> remaining extra turn █████ has, the Final Hit's DMG multiplier reduces by <span class="text-desc">12.5%</span> of its original multiplier.
       <br />When the Transformation ends, increases all allies' SPD by <span class="text-desc">15%</span>, lasting for <span class="text-desc">1</span> turn.`,
       value: [
