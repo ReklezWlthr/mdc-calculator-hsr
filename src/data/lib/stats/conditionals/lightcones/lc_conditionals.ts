@@ -1413,6 +1413,23 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `On-Skill/Ult DMG Bonus`,
+    show: true,
+    default: true,
+    id: '21058',
+    scaling: (base, form, r) => {
+      if (form['21058']) {
+        base[Stats.ALL_DMG].push({
+          name: `Passive`,
+          source: `A Trail of Bygone Blood`,
+          value: calcRefinement(0.24, 0.04, r),
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [
@@ -2218,7 +2235,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     type: 'toggle',
     text: `Memosprite Skill Vulnerability`,
     show: true,
-    default: false,
+    default: true,
     debuff: true,
     duration: 2,
     id: '23042_2',

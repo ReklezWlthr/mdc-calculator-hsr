@@ -78,7 +78,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Guardian',
-      content: `After allies gain a Skill Point, if there are <span class="text-desc">4</span> Skill Points or more, increases Archer's CRIT DMG by <span class="text-desc">60%</span> for <span class="text-desc">1</span> turns.`,
+      content: `After allies gain a Skill Point, if there are <span class="text-desc">4</span> Skill Points or more, increases Archer's CRIT DMG by <span class="text-desc">60%</span> for <span class="text-desc">1</span> turn(s).`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -99,7 +99,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c4: {
       trace: 'Eidolon 4',
       title: 'The Unsung Life',
-      content: `If the target of the Ultimate does not possess <b class="text-hsr-quantum">Quantum</b> Weakness, <b class="text-hsr-quantum">Quantum</b> Weakness will be applied during the Ultimate and reduces the target's <b class="text-hsr-quantum">Quantum RES</b> by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `If the target of the Ultimate does not possess <b class="text-hsr-quantum">Quantum</b> Weakness, <b class="text-hsr-quantum">Quantum</b> Weakness will be applied during the Ultimate and reduces the target's <b class="text-hsr-quantum">Quantum RES</b> by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turns.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -110,7 +110,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c6: {
       trace: 'Eidolon 6',
       title: 'The Endless Pilgrimage',
-      content: `When the turn begins, immediately recovers <span class="text-desc">1</span> Skill Point for allies. Increases the maximum stacks for the DMG boost provided by his own Skill by <span class="text-desc">1</span> stacks. DMG dealt by his Skill ignores <span class="text-desc">20%</span> of DEF.`,
+      content: `When the turn begins, immediately recovers <span class="text-desc">1</span> Skill Point for allies. The number of maximum stacks for the DMG boost provided by his own Skill increases by <span class="text-desc">1</span>. DMG dealt by his Skill ignores <span class="text-desc">20%</span> of DEF.`,
     },
   }
 

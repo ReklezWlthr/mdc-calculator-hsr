@@ -389,6 +389,12 @@ export const CompareBlock = observer(() => {
                   key={`char_select_${index}`}
                   onClick={() => {
                     if (!team[setupIndex][index]) setupStore.setValue('tab', 'trace')
+                    if (
+                      findCharacter(team[setupIndex][index]?.cId).path !== PathType.REMEMBRANCE &&
+                      setupStore.tab === 'summon'
+                    ) {
+                      setupStore.setValue('tab', 'trace')
+                    }
                     setupStore.setValue('selected', [setupIndex, index])
                   }}
                   isSelected={index === charIndex}
@@ -424,7 +430,7 @@ export const CompareBlock = observer(() => {
                 >
                   Stats
                 </div>
-                {mainComputed?.PATH === PathType.REMEMBRANCE && (
+                {findCharacter(focusedChar?.cId).path === PathType.REMEMBRANCE && (
                   <div
                     className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
                       'bg-primary': tab === 'summon',

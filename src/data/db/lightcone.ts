@@ -1339,7 +1339,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Massacre',
-      detail: `Increases the wearer's CRIT Rate by {{0}}%. The DMG dealt by the wearer's Skill and Ultimate increases by {{1}}%.`,
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. After the wearer uses their Skill and Ultimate, increases their DMG dealt by {{1}}%, lasting for <span class="text-desc">?</span> turn(s).`,
       properties: [
         { base: 12, growth: 2 },
         { base: 24, growth: 4 },
@@ -1357,7 +1357,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Longing',
-      detail: `Increases the wearer's CRIT Rate by {{0}}%. The DMG dealt by the wearer's Ultimate and Follow-up ATK increases by {{1}}%.`,
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. Increases the wearer's Ultimate and Follow-up ATK DMG dealt by {{1}}%.`,
       properties: [
         { base: 12, growth: 2 },
         { base: 24, growth: 4 },
@@ -1393,7 +1393,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Persistence',
-      detail: `Increases the wearer's CRIT DMG by {{0}}% and increases DMG dealt by the wearer's Skill and Follow-up ATK by {{0}}%.`,
+      detail: `Increases wearer's CRIT DMG by {{0}}% and increases DMG dealt by their Skill and Follow-up ATK by {{0}}%.`,
       properties: [{ base: 24, growth: 4 }],
     },
   },

@@ -98,7 +98,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c2: {
       trace: 'Eidolon 2',
       title: `Fortississimo`,
-      content: `When Talent triggers <u>Follow-up ATK</u>, Kafka's ATK increases by <span class="text-desc">25%</span>. This effect can stack up to <span class="text-desc">2</span> times, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `When Talent triggers <u>Follow-up ATK</u>, increases Kafka's ATK by <span class="text-desc">25%</span>. This effect can stack up to <span class="text-desc">2</span> time(s), lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',

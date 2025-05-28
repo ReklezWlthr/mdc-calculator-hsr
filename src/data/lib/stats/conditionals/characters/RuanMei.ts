@@ -317,7 +317,7 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       if (form.overtone) {
         _.forEach(team, (t, i) => {
           t.CALLBACK.push((x) => {
-            x[Stats.ALL_DMG].push({
+            const buff = {
               name: 'Skill',
               source: i === index ? 'Self' : 'Ruan Mei',
               value:
@@ -326,7 +326,11 @@ const RuanMei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               flat: toPercentage(calcScaling(0.16, 0.016, skill, 'curved')),
               base: toPercentage(_.min([_.max([base.getValue(Stats.BE) - 1.2, 0]) / 0.1, 0.6])),
               multiplier: a.a6 ? 0.06 : 0,
-            })
+            }
+            x[Stats.ALL_DMG].push(buff)
+            if (x.SUMMON_STATS) {
+              x.SUMMON_STATS[Stats.ALL_DMG].push(buff)
+            }
 
             return x
           })

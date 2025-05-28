@@ -1500,16 +1500,6 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
         source: `A Trail of Bygone Blood`,
         value: calcRefinement(0.12, 0.02, r),
       })
-      base.SKILL_DMG.push({
-        name: 'Passive',
-        source: `A Trail of Bygone Blood`,
-        value: calcRefinement(0.24, 0.04, r),
-      })
-      base.ULT_DMG.push({
-        name: 'Passive',
-        source: `A Trail of Bygone Blood`,
-        value: calcRefinement(0.24, 0.04, r),
-      })
       return base
     },
   },

@@ -32,11 +32,11 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     normal_alt: {
       energy: 20,
       trace: 'Enhanced Basic ATK',
-      title: 'Release, the Golden Scepter',
+      title: 'Unfettered King Rules',
       content: `Gains <span class="text-desc">2</span> <b class="text-green-400">Core Resonance</b> and deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Saber's ATK to all enemies. If there are <span class="text-desc">2</span>/<span class="text-desc">1</span> enemy(ies) on the field, additionally deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}%/{{1}}% of Saber's ATK to all enemies.`,
       value: [
         { base: 75, growth: 15, style: 'linear' },
-        { base: 35, growth: 7, style: 'linear' },
+        { base: 110, growth: 22, style: 'linear' },
       ],
       level: basic,
       tag: AbilityTag.AOE,
@@ -58,7 +58,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: 'Excalibur',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Saber's ATK to all enemies. Then, deals <b class="text-hsr-wind">Wind DMG</b> equal to {{1}}% of Saber's ATK to one random enemy, occurring <span class="text-desc">10</span> time(s). After using Ultimate, the next Basic ATK switches to <b>Release, the Golden Scepter</b> and only <b>Release, the Golden Scepter</b> can be used.`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Saber's ATK to all enemies. Then, deals <b class="text-hsr-wind">Wind DMG</b> equal to {{1}}% of Saber's ATK to one random enemy, occurring <span class="text-desc">10</span> time(s). After using Ultimate, the next Basic ATK switches to <b>Unfettered King Rules</b> and only <b>Unfettered King Rules</b> can be used.`,
       value: [
         { base: 140, growth: 14, style: 'curved' },
         { base: 55, growth: 5.5, style: 'curved' },
@@ -102,7 +102,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c2: {
       trace: 'Eidolon 2',
       title: 'The Sealed Round Table',
-      content: `Increases CRIT DMG dealt with <b>Release, the Golden Scepter</b> and <b>Strike Air: Hammer of the Wind King</b> by <span class="text-desc">50%</span>. For every <span class="text-desc">1</span> <b class="text-green-400">Core Resonance</b> gained, additionally increases CRIT DMG dealt by <span class="text-desc">5%</span>. This effect can be stacked up to <span class="text-desc">10</span> time(s).`,
+      content: `Increases CRIT DMG dealt with <b>Unfettered King Rules</b> and <b>Strike Air: Hammer of the Wind King</b> by <span class="text-desc">50%</span>. For each <b class="text-green-400">Core Resonance</b> gained, additionally increases CRIT DMG dealt by <span class="text-desc">5%</span>. This effect can be stacked up to <span class="text-desc">10</span> time(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -113,7 +113,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c4: {
       trace: 'Eidolon 4',
       title: 'The Wondrous Fourteen Nights',
-      content: `Increases Saber's <b class="text-hsr-wind">Wind RES PEN</b> by <span class="text-desc">4%</span>. After using Ultimate, increases Saber's <b class="text-hsr-wind">Wind RES PEN</b> by <span class="text-desc">4%</span>, stacking up to <span class="text-desc">4</span> time(s).`,
+      content: `Increases Saber's <b class="text-hsr-wind">Wind RES PEN</b> by <span class="text-desc">4%</span>. After using Ultimate, increases Saber's <b class="text-hsr-wind">Wind RES PEN</b> by <span class="text-desc">4%</span>, stackable up to <span class="text-desc">4</span> time(s).`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -247,7 +247,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               name: '1-Target DMG',
               value: [
                 { scaling: calcScaling(0.75, 0.15, basic, 'linear'), multiplier: Stats.ATK },
-                { scaling: calcScaling(0.35, 0.07, basic, 'linear'), multiplier: Stats.ATK },
+                { scaling: calcScaling(1.1, 0.22, basic, 'linear'), multiplier: Stats.ATK },
               ],
               element: Element.WIND,
               property: TalentProperty.NORMAL,
