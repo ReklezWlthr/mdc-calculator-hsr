@@ -78,7 +78,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Torture',
-      content: `When ally targets' Effect Hit Rate is over <span class="text-desc">75%</span>, Kafka increases their DoT dealt by <span class="text-desc">75%</span>.`,
+      content: `When all ally targets' Effect Hit Rate is <span class="text-desc">75%</span> or more, Kafka increases the target's ATK by <span class="text-desc">100%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -88,7 +88,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Thorns',
-      content: `After using Ultimate, Talent's <u>Follow-up ATK</u> regains <span class="text-desc">1</span> trigger count and can cause all DoT debuffs the target is currently under to immediately produce DMG equal to <span class="text-desc">80%</span> of the original DMG.`,
+      content: `After using Ultimate, Talent's <u>Follow-up ATK</u> regains <span class="text-desc">1</span> trigger count. The Talent's <u>Follow-up ATK</u> can cause all DoT debuffs the target is currently under to immediately deal DMG equal to <span class="text-desc">80%</span> of the original DMG.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -98,7 +98,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c2: {
       trace: 'Eidolon 2',
       title: `Fortississimo`,
-      content: `When Talent triggers <u>Follow-up ATK</u>, increases Kafka's ATK by <span class="text-desc">25%</span>. This effect can stack up to <span class="text-desc">2</span> time(s), lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `While Kafka is on the field, DoT dealt by all allies increases by <span class="text-desc">33%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -134,17 +134,6 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       default: true,
       debuff: true,
       chance: { base: 1, fixed: false },
-      duration: 2,
-    },
-    {
-      type: 'number',
-      id: 'kafka_c2',
-      text: `E2 ATK Bonus`,
-      ...talents.c2,
-      show: c >= 2,
-      default: 2,
-      min: 0,
-      max: 2,
       duration: 2,
     },
     {
@@ -281,18 +270,18 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
-      if (form.kafka_c2) {
-        base[Stats.P_ATK].push({
+      if (c >= 2) {
+        base.DOT_DMG.push({
           name: `Eidolon 2`,
           source: 'Self',
-          value: 0.25 * form.kafka_c2,
+          value: 0.33,
         })
       }
       if (a.a2 && base.getValue(Stats.EHR) > 0.75) {
-        base.DOT_DMG.push({
+        base[Stats.P_ATK].push({
           name: `Ascension 2 Passive`,
           source: 'Self',
-          value: 0.75,
+          value: 1,
         })
       }
 
@@ -313,17 +302,18 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           source: 'Kafka',
           value: 0.3,
         })
-      if (c >= 2)
+      if (a.a2 && base.getValue(Stats.EHR) > 0.75) {
+        base[Stats.P_ATK].push({
+          name: `Ascension 2 Passive`,
+          source: 'Kafka',
+          value: 1,
+        })
+      }
+      if (c >= 2) {
         base.DOT_DMG.push({
           name: `Eidolon 2`,
           source: 'Kafka',
-          value: 0.25,
-        })
-      if (a.a2 && base.getValue(Stats.EHR) > 0.75) {
-        base.DOT_DMG.push({
-          name: `Ascension 2 Passive`,
-          source: 'Kafka',
-          value: 0.75,
+          value: 0.33,
         })
       }
 

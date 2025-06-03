@@ -151,9 +151,9 @@ export const Characters = [
     id: '1014',
     name: 'Saber',
     stat: {
-      baseAtk: 76.56,
-      baseHp: 184.8,
-      baseDef: 85.8,
+      baseAtk: 81.84,
+      baseHp: 168.96,
+      baseDef: 89.1,
       baseSpd: 101,
       energy: 360,
     },
@@ -169,12 +169,12 @@ export const Characters = [
     name: 'Archer',
     stat: {
       baseAtk: 84.48,
-      baseHp: 147.84,
+      baseHp: 158.4,
       baseDef: 66,
       baseSpd: 105,
-      energy: 240,
+      energy: 220,
     },
-    trace: [Stats.QUANTUM_DMG, Stats.CRIT_RATE, Stats.P_HP],
+    trace: [Stats.QUANTUM_DMG, Stats.CRIT_RATE, Stats.P_ATK],
     rarity: 5,
     path: PathType.HUNT,
     element: Element.QUANTUM,
@@ -1096,8 +1096,8 @@ export const Characters = [
     id: '1408',
     name: 'Phainon',
     stat: {
-      baseAtk: 76.56,
-      baseHp: 195.36,
+      baseAtk: 73.92,
+      baseHp: 200.64,
       baseDef: 99,
       baseSpd: 94,
       energy: 0,
@@ -1124,6 +1124,22 @@ export const Characters = [
     element: Element.WIND,
     beta: false,
   },
+  // {
+  //   id: '1410',
+  //   name: 'Hysilens',
+  //   stat: {
+  //     baseAtk: 52.8,
+  //     baseHp: 147.84,
+  //     baseDef: 85.8,
+  //     baseSpd: 111,
+  //     energy: 140,
+  //   },
+  //   trace: [Stats.SPD, Stats.P_HP, Stats.E_RES],
+  //   rarity: 5,
+  //   path: PathType.NIHILITY,
+  //   element: Element.PHYSICAL,
+  //   beta: false,
+  // },
 
   // Odd = Male, Even = Female
   {

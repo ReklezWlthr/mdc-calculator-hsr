@@ -1347,7 +1347,7 @@ export const LCConditionals: IWeaponContent[] = [
         base[Stats.ALL_DMG].push({
           name: `Passive`,
           source: 'Thus Burns the Dawn',
-          value: calcRefinement(0.6, 0.15, r),
+          value: calcRefinement(0.6, 0.18, r),
         })
       }
       return base
@@ -1409,23 +1409,6 @@ export const LCConditionals: IWeaponContent[] = [
             value: calcRefinement(0.12, 0.03, r),
           })
         }
-      }
-      return base
-    },
-  },
-  {
-    type: 'toggle',
-    text: `On-Skill/Ult DMG Bonus`,
-    show: true,
-    default: true,
-    id: '21058',
-    scaling: (base, form, r) => {
-      if (form['21058']) {
-        base[Stats.ALL_DMG].push({
-          name: `Passive`,
-          source: `A Trail of Bygone Blood`,
-          value: calcRefinement(0.24, 0.04, r),
-        })
       }
       return base
     },

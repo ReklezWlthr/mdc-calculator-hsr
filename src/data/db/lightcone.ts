@@ -1339,7 +1339,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Massacre',
-      detail: `Increases the wearer's CRIT Rate by {{0}}%. After the wearer uses their Skill and Ultimate, increases their DMG dealt by {{1}}%, lasting for <span class="text-desc">?</span> turn(s).`,
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. The Skill DMG and Ultimate DMG dealt by the wearer increase by {{1}}%.`,
       properties: [
         { base: 12, growth: 2 },
         { base: 24, growth: 4 },
@@ -1357,7 +1357,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Longing',
-      detail: `Increases the wearer's CRIT Rate by {{0}}%. Increases the wearer's Ultimate and Follow-up ATK DMG dealt by {{1}}%.`,
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. The Ultimate DMG and <u>Follow-up ATK</u> DMG dealt by the wearer increase by {{1}}%.`,
       properties: [
         { base: 12, growth: 2 },
         { base: 24, growth: 4 },
@@ -1393,7 +1393,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Persistence',
-      detail: `Increases wearer's CRIT DMG by {{0}}% and increases DMG dealt by their Skill and Follow-up ATK by {{0}}%.`,
+      detail: `Increases wearer's CRIT DMG by {{0}}%. The Skill DMG and <u>Follow-up ATK</u> DMG dealt by the wearer increase by {{0}}%.`,
       properties: [{ base: 24, growth: 4 }],
     },
   },
@@ -2325,8 +2325,8 @@ export const LightCones = [
       detail: `The wearer's base SPD increases by {{0}}. When the wearer deals DMG, ignores {{1}}% of target's DEF. After the wearer uses Ultimate, obtains <b>Blazing Sun</b>, which is removed at the start of the turn. When <b>Blazing Sun</b> is active, increases the wearer's DMG dealt by {{2}}%.`,
       properties: [
         { base: 12, growth: 2 },
-        { base: 18, growth: 3 },
-        { base: 60, growth: 15 },
+        { base: 18, growth: 4.5 },
+        { base: 60, growth: 18 },
       ],
     },
   },
@@ -2341,7 +2341,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'King of Knights',
-      detail: `Increases the wearer's CRIT DMG by {{0}}%. Increases the wearer's ATK by {{1}}% when using Ultimate. If the wearer's Max Energy is greater than or equal to <span class="text-desc">300</span>, regenerates a fixed amount of Energy equal to <span class="text-desc">10%</span> of the wearer's Max Energy and increases their ATK by {{1}}%, lasting for <span class="text-desc">2</span> turns.`,
+      detail: `Increases the wearer's CRIT DMG by {{0}}%. When using their Ultimate, increases the wearer's ATK by {{1}}%, and if the wearer's Max Energy is greater than or equal to <span class="text-desc">300</span>, regenerates a fixed amount of Energy equal to <span class="text-desc">10%</span> of the wearer's Max Energy and increases their ATK by {{1}}%, lasting for <span class="text-desc">2</span> turns.`,
       properties: [
         { base: 36, growth: 9 },
         { base: 40, growth: 10 },
@@ -2359,7 +2359,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Hrunting',
-      detail: `Increases the wearer's CRIT Rate by {{0}}%. When entering battle, when the max limit of allies' Skill Points is greater than or equal to <span class="text-desc">6</span>, increases wearer's ATK by {{1}}%. After the wearer uses a Skill, increases their ATK by {{2}}%, stacking up to <span class="text-desc">4</span> time(s).`,
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. When entering battle and if the allies' Skill Points max limit is <span class="text-desc">6</span> or higher, increases wearer's ATK by {{1}}%. After the wearer uses a Skill, increases their ATK by {{2}}%, stacking up to <span class="text-desc">4</span> time(s).`,
       properties: [
         { base: 16, growth: 4 },
         { base: 40, growth: 10 },

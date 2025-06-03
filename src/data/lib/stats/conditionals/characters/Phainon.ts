@@ -31,7 +31,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     normal_alt: {
       trace: 'Enhanced Basic ATK',
       title: 'Creation: Bloodthorn Ferry',
-      content: `Obtains <span class="text-desc">2</span> <b class="text-red">Bruise</b>, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Khaslana's ATK to one designated enemy and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Khaslana's ATK to enemies adjacent to it.`,
+      content: `Obtains <span class="text-desc">2</span> <b class="text-red">Scourge</b>, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Khaslana's ATK to one designated enemy and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Khaslana's ATK to enemies adjacent to it.`,
       value: [
         { base: 125, growth: 25, style: 'linear' },
         { base: 37.5, growth: 7.5, style: 'linear' },
@@ -53,9 +53,9 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill_alt: {
       trace: 'Enhanced Skill [1]',
       title: 'Calamity: Soulscorch Edict',
-      content: `Gains <b class="text-red">Bruise</b> by an amount equal to the number of enemy targets present and then causes all enemy targets to immediately take action and gains <span class="text-desc">1</span> stack of <b class="text-amber-500">Soulscorch</b>.
-      <br />When in the <b class="text-rose-500">Soulrending Blaze</b> state, reduces Khaslana's DMG received by <span class="text-desc">75%</span> and gains <span class="text-desc">1</span> additional stack of <b class="text-amber-500">Soulscorch</b> after enemy targets attack or take action. Triggers a <u>Counter</u> after all enemies take their immediate actions, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Khaslana's ATK, as well as additionally deals <span class="text-desc">4</span> instance(s) of DMG, each instance being <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Khaslana's ATK. Then, <b class="text-rose-500">Soulrending Blaze</b> is dispelled. Each stack of <b class="text-amber-500">Soulscorch</b> increases this <u>Counter</u>'s DMG multiplier by <span class="text-desc">20%</span> of the original multiplier.
-      <br /DMG dealt through this ability is considered as Skill DMG. If <b class="text-rose-500">Soulrending Blaze</b> is still active at the start of Khaslana's extra turn, immediately launches <u>Counter</u>.`,
+      content: `Gains <b class="text-red">Scourge</b> by an amount equal to the number of enemy targets present and <span class="text-desc">1</span> stack of <b class="text-amber-500">Soulscorch</b>, then causes all enemy targets to immediately take action.
+      <br />When in the <b class="text-amber-500">Soulscorch</b> state, reduces DMG received by Khaslana by <span class="text-desc">75%</span> and gains <span class="text-desc">1</span> additional stack of <b class="text-amber-500">Soulscorch</b> after enemy targets attack or take action. Immediately launches a <u>Counter</u> after the aforementioned enemy targets take their actions, dealing <b class="text-hsr-physical">Physical DMG</b> to all enemies equal to {{0}}% of Khaslana's ATK, as well as additionally deals <span class="text-desc">4</span> instance(s) of DMG, each instance being <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Khaslana's ATK. Then, <b class="text-amber-500">Soulscorch</b> is dispelled. Each stack of <b class="text-amber-500">Soulscorch</b> increases this <u>Counter</u>'s DMG multiplier by <span class="text-desc">20%</span> of the original multiplier.
+      <br /DMG dealt through this ability is considered as Skill DMG. If <b class="text-amber-500">Soulscorch</b> is still active at the start of Khaslana's extra turn, immediately launches <u>Counter</u>.`,
       value: [
         { base: 150, growth: 15, style: 'curved' },
         { base: 60, growth: 6, style: 'curved' },
@@ -65,9 +65,9 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     summon_skill: {
       trace: 'Enhanced Skill [2]',
-      title: 'Foundation: Death Star Judgment',
+      title: 'Foundation: Stardeath Verdict',
       content: `Dispels all debuffs from this unit, then deals <b class="text-hsr-physical">Physical DMG</b> up to {{0}}% of Khaslana's ATK.
-      <br />In that, for every <span class="text-desc">1</span> <b class="text-red">Bruise</b> consumed, deals <span class="text-desc">4</span> instance(s) of DMG, each instance being <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Khaslana's ATK dealt to one random enemy. When consuming <span class="text-desc">4</span> <b class="text-red">Bruise</b>, additionally deals <b class="text-hsr-physical">Physical DMG</b> equal to {{2}}% of Khaslana's ATK, and this DMG is evenly distributed to all enemies.`,
+      <br />In that, for every <span class="text-desc">1</span> <b class="text-red">Scourge</b> consumed, deals <span class="text-desc">4</span> instance(s) of DMG, each instance being <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Khaslana's ATK dealt to one random enemy. When consuming <span class="text-desc">4</span> <b class="text-red">Scourge</b>, additionally deals <b class="text-hsr-physical">Physical DMG</b> equal to {{2}}% of Khaslana's ATK, and this DMG is evenly distributed to all enemies.`,
       value: [
         { base: 585, growth: 58.5, style: 'curved' },
         { base: 22.5, growth: 2.25, style: 'curved' },
@@ -90,7 +90,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: `Talent`,
       title: `Pyric Corpus`,
       content: `Phainon's Talent. When <b class="text-desc">Coreflame</b> reaches <span class="text-desc">12</span> point(s), Ultimate can be activated. After reaching the max limit, up to <span class="text-desc">3</span> excess point(s) can be accumulated.
-      <br />When Phainon is the target of an ally or an enemy's ability, he gains <span class="text-desc">1</span> point of <b class="text-desc">Coreflame</b>. When he is the target of an ally's ability, increases CRIT DMG by {{0}}%, lasting for <span class="text-desc">3</span> turn(s).`,
+      <br />When Phainon is the target of an ally or any single enemy's ability, he gains <span class="text-desc">1</span> point of <b class="text-desc">Coreflame</b>. When he is the target of an ally's ability, increases his CRIT DMG by {{0}}% for <span class="text-desc">3</span> turn(s).`,
       value: [{ base: 15, growth: 1.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -98,12 +98,12 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     summon_talent: {
       trace: `Enhanced Talent`,
       title: `Fate: Divine Vessel`,
-      content: `Khaslana's Talent. When Transforming, gains <span class="text-desc">4</span> <b class="text-red">Bruise</b>. If it is during an ally target's turn, all buffs on that ally target will be extended by <span class="text-desc">1</span> turn and the current turn ends.
+      content: `Khaslana's Talent. When Transforming, gains <span class="text-desc">4</span> <b class="text-red">Scourge</b>. If it is during an ally target's turn, all buffs on that ally target will be extended by <span class="text-desc">1</span> turn and the current turn ends.
       <br />Khaslana is immune to Crowd Control debuffs and has <span class="text-desc">1</span> Enhanced Basic ATK and <span class="text-desc">2</span> Enhanced Skills, but cannot use Ultimate. During his Transformation, increases ATK by {{0}}% and Max HP by {{1}}%. He will not be knocked down upon taking a killing blow, but will restore HP equal to <span class="text-desc">25%</span> of Max HP and immediately trigger Final Hit. For every <span class="text-desc">1</span> remaining extra turn Khaslana has, the Final Hit's DMG multiplier reduces by <span class="text-desc">12.5%</span> of its original multiplier.
       <br />When the Transformation ends, increases all allies' SPD by <span class="text-desc">15%</span>, lasting for <span class="text-desc">1</span> turn.`,
       value: [
         { base: 40, growth: 4, style: 'curved' },
-        { base: 120, growth: 12, style: 'curved' },
+        { base: 135, growth: 13.5, style: 'curved' },
       ],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -113,18 +113,18 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Technique',
       title: 'Beginning of the End',
       content: `When Phainon is in the team, increases Max Technique Points by <span class="text-desc">3</span>.
-      <br />Actively uses Technique by consuming <span class="text-desc">2</span> Technique Points to immediately attack all enemies within a certain range. After entering battle, regenerates <span class="text-desc">25</span> Energy for allies, gains <span class="text-desc">2</span> <b class="text-red">Bruise</b> and <span class="text-desc">1</span> Skill Point(s). Deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">200%</span> of Phainon's ATK to all enemies at the start of each wave.
+      <br />When actively using this Technique, by consuming <span class="text-desc">2</span> Technique Points to immediately attack all enemies within a certain range. After entering battle, regenerates <span class="text-desc">25</span> Energy for allies, gains <span class="text-desc">2</span> <b class="text-red">Scourge</b> and <span class="text-desc">1</span> Skill Point(s). Deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">200%</span> of Phainon's ATK to all enemies at the start of each wave.
       <br />If attacking a normal enemy, immediately defeats them without entering combat. When not hitting enemies, no Technique Points are consumed.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'March to Oblivion',
-      content: `When the transformation ends, gains 3 point(s) of <b class="text-desc">Coreflame</b>.`,
+      content: `At the start of the battle, gains <span class="text-desc">1</span> point(s) of <b class="text-desc">Coreflame</b>. When the transformation ends, gains <span class="text-desc">3</span> point(s) of <b class="text-desc">Coreflame</b>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Bide in Flames',
-      content: `When receiving healing effects or Shields from a teammate, increases DMG dealt by <span class="text-desc">40%</span> for <span class="text-desc">4</span> turn(s). This effect cannot be triggered repeatedly within one turn.
+      content: `When receiving healing effects or Shields from a teammate, increases DMG dealt by <span class="text-desc">45%</span> for <span class="text-desc">4</span> turn(s). This effect cannot be triggered repeatedly within one turn.
       <br />When receiving Energy regeneration ability effects provided by teammates, gains <span class="text-desc">1</span> point(s) of <b class="text-desc">Coreflame</b>.`,
     },
     a6: {
@@ -135,12 +135,13 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c1: {
       trace: 'Eidolon 1',
       title: 'Eidolon 1',
-      content: `The SPD of Khaslana's extra turn increases to <span class="text-desc">72%</span> of Khaslana's base SPD. When <b class="text-desc">Coreflame</b> reaches the max limit, this unit's <b class="text-hsr-physical">Physical RES PEN</b> increases by <span class="text-desc">15%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `For every enemy target defeated within <span class="text-desc">1</span> Transformation, the inheritance ratio of Khaslana's extra turn's SPD further increases by <span class="text-desc">2%</span>, up to <span class="text-desc">30%</span>.
+      <br />When using Ultimate, CRIT DMG increases by <span class="text-desc">40%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'Eidolon 2',
-      content: `Khaslana attacks and deals DMG equal to <span class="text-desc">120%</span> of the original DMG. When consuming <span class="text-desc">4</span> <b class="text-red">Bruise</b> to use <b>Foundation: Death Star Judgment</b>, gains <span class="text-desc">1</span> extra turn.`,
+      content: `Khaslana's <b class="text-hsr-physical">Physical RES PEN</b> increases by <span class="text-desc">20%</span>. When consuming <span class="text-desc">4</span> <b class="text-red">Scourge</b> to use <b>Foundation: Stardeath Verdict</b>, gains <span class="text-desc">1</span> extra turn.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -151,7 +152,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: 'Eidolon 4',
-      content: `When using <b>Calamity: Soulscorch Edict</b>, additionally gains <span class="text-desc">4</span> stacks of <b class="text-amber-500">Soulscorch</b>.`,
+      content: `When using <b>Calamity: Soulscorch Edict</b>, additionally gains <span class="text-desc">4</span> stack(s) of <b class="text-amber-500">Soulscorch</b>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -162,7 +163,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: 'Ascent of Eternity Moribundly Fades',
-      content: `Max <b class="text-red">Bruise</b> increases by <span class="text-desc">2</span>. When using <b>Creation: Bloodthorn Ferry</b> or <b>Calamity: Soulscorch Edict</b>, additionally gains <span class="text-desc">2</span> <b class="text-red">Bruise</b>. After using the attack from <b>Foundation: Death Star Judgment</b>, additionally deals <b class="text-true">True DMG</b> equal to <span class="text-desc">20%</span> of the total DMG dealt in this attack to the enemy with the highest HP.`,
+      content: `The number of Overflow point for <b class="text-desc">Coreflame</b> no longer has an upper limit. When battle starts, gains <span class="text-desc">6</span> <b class="text-desc">Coreflame(s)</b>. After using <b>Foundation: Stardeath Verdict</b>'s attack, additionally deals <b class="text-true">True DMG</b> equal to <span class="text-desc">36%</span> of the total DMG dealt in this attack to the enemy with the highest HP.`,
     },
   }
 
@@ -188,7 +189,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     {
       type: 'number',
       id: 'scourge',
-      text: `Bruise`,
+      text: `Scourge`,
       ...talents.summon_skill,
       show: true,
       default: 4,
@@ -200,7 +201,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       id: 'phainon_enemy',
       text: `Enemies on Field`,
       content:
-        'Used in calculating the DMG distribution from <b>Foundation: Death Star Judgment</b> and <b>He Who Bears the World Must Burn</b>.',
+        'Used in calculating the DMG distribution from <b>Foundation: Stardeath Verdict</b> and <b>He Who Bears the World Must Burn</b>.',
       title: 'Enemies on Field',
       trace: 'Utility',
       show: true,
@@ -247,10 +248,11 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     {
       type: 'toggle',
       id: 'phainon_e1',
-      text: `E1 Physical RES PEN`,
+      text: `E1 CRIT DMG`,
       ...talents.c1,
       show: c >= 1,
       default: true,
+      duration: 2,
     },
   ]
 
@@ -290,7 +292,6 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               type: TalentType.BA,
               break: 30,
               sum: true,
-              multiplier: c >= 2 ? 1.2 : 1,
             },
             {
               name: 'Adjacent',
@@ -299,7 +300,6 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 20,
-              multiplier: c >= 2 ? 1.2 : 1,
             },
           ]
         : [
@@ -327,7 +327,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               element: Element.PHYSICAL,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
-              multiplier: (1 + (form.soulrending_blaze || 0) * 0.2) * (c >= 2 ? 1.2 : 1),
+              multiplier: 1 + (form.soulrending_blaze || 0) * 0.2,
               break: 45,
               sum: true,
             },
@@ -337,7 +337,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               element: Element.PHYSICAL,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
-              multiplier: (1 + (form.soulrending_blaze || 0) * 0.2) * (c >= 2 ? 1.2 : 1),
+              multiplier: 1 + (form.soulrending_blaze || 0) * 0.2,
               break: 5,
             },
             {
@@ -346,7 +346,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               element: Element.PHYSICAL,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
-              multiplier: (1 + (form.soulrending_blaze || 0) * 0.2) * (c >= 2 ? 1.2 : 1),
+              multiplier: 1 + (form.soulrending_blaze || 0) * 0.2,
               break: 10,
             },
           ]
@@ -387,7 +387,6 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 type: TalentType.SKILL,
                 break: (10 / 3) * 4 * form.scourge + 20,
                 sum: true,
-                multiplier: c >= 2 ? 1.2 : 1,
               },
               {
                 name: 'AoE (Distributed)',
@@ -396,7 +395,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 property: TalentProperty.NORMAL,
                 type: TalentType.SKILL,
                 break: 20,
-                multiplier: (c >= 2 ? 1.2 : 1) * (1 / form.phainon_enemy),
+                multiplier: 1 / form.phainon_enemy,
               },
               {
                 name: 'DMG per Bounce',
@@ -405,7 +404,6 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 property: TalentProperty.NORMAL,
                 type: TalentType.SKILL,
                 break: 10 / 3,
-                multiplier: c >= 2 ? 1.2 : 1,
               },
             ]
           : []
@@ -417,7 +415,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 20,
-          multiplier: (c >= 2 ? 1.2 : 1) * (1 / form.phainon_enemy),
+          multiplier: 1 / form.phainon_enemy,
           sum: true,
         },
       ]
@@ -450,8 +448,15 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base[Stats.P_HP].push({
           name: `Talent`,
           source: 'Self',
-          value: calcScaling(1.2, 0.12, talent, 'curved'),
+          value: calcScaling(1.35, 0.135, talent, 'curved'),
         })
+        if (c >= 2) {
+          base.PHYSICAL_RES_PEN.push({
+            name: `Talent`,
+            source: 'Self',
+            value: 0.2,
+          })
+        }
       }
 
       if (form.phainon_talent) {
@@ -472,7 +477,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base[Stats.ALL_DMG].push({
           name: `Ascension 4 Passive`,
           source: 'Self',
-          value: 0.2,
+          value: 0.45,
         })
       }
       if (form.phainon_a6) {
@@ -483,10 +488,10 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         })
       }
       if (form.phainon_e1) {
-        base.PHYSICAL_RES_PEN.push({
+        base[Stats.CRIT_DMG].push({
           name: `Eidolon 1`,
           source: 'Self',
-          value: 0.15,
+          value: 0.4,
         })
       }
 
@@ -522,9 +527,9 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               s.push({
                 ...ss,
                 name: `${ss.name} - Phainon E6`,
-                multiplier: (ss.multiplier || 1) * 0.2,
+                multiplier: (ss.multiplier || 1) * 0.36,
                 property: TalentProperty.TRUE,
-                break: ss.break * 0.2,
+                break: ss.break * 0.36,
               })
             }
           })

@@ -64,7 +64,8 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       trace: 'Talent',
       title: 'Awaiting System Response...',
       content: `Silver Wolf can create three types of Bugs: reduce ATK by {{0}}%, reduce DEF by {{1}}%, and reduce SPD by {{2}}%.
-      <br />After every attack launched by Silver Wolf, she has a {{3}}% <u>base chance</u> to implant <span class="text-desc">1</span> random Bug to the attacked enemy target, lasting for <span class="text-desc">3</span> turn(s). When the enemy target is defeated, the Weakness Silver Wolf implanted on it will be transferred to another surviving enemy on the field.`,
+      <br />After every attack launched by Silver Wolf, she has a {{3}}% <u>base chance</u> to implant <span class="text-desc">1</span> random Bug that lasts for <span class="text-desc">3</span> turn(s) in the attacked enemy target.
+      <br />When the enemy target is defeated, the Weakness Silver Wolf implanted on it will be transferred, prioritizing Elite targets and above, and will not be transferred to another enemy with Weakness already implanted by Silver Wolf.`,
       value: [
         { base: 5, growth: 0.5, style: 'curved' },
         { base: 6, growth: 0.6, style: 'curved' },
@@ -113,7 +114,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     c4: {
       trace: 'Eidolon 4',
       title: 'Bounce Attack',
-      content: `After using her Ultimate to attack any enemy target, deals <b class="text-hsr-quantum">Quantum Additional DMG</b> equal to <span class="text-desc">20%</span> of Silver Wolf's ATK for every debuff currently on the enemy target. This effect can be triggered for a maximum of <span class="text-desc">5</span> time(s) during each use of her Ultimate.`,
+      content: `After using Silver Wolf's Ultimate to attack any enemy target, deals <b class="text-hsr-quantum">Quantum Additional DMG</b> equal to <span class="text-desc">20%</span> of Silver Wolf's ATK for every debuff currently on the enemy target. This effect can be triggered for a maximum of <span class="text-desc">5</span> time(s) against each target during each use of her Ultimate.`,
     },
     c5: {
       trace: 'Eidolon 5',

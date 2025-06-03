@@ -33,9 +33,9 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 30,
       trace: 'Skill',
       title: 'Caladbolg: Fake Spiral Sword',
-      content: `Enters the <b>Circuit Connection</b> state. Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Archer's ATK to one designated enemy target.
-      In the <b>Circuit Connection</b> state, the turn does not end after using Skill, and increases the DMG dealt by Archer's Skill by {{1}}%. This effect can be stacked up to <span class="text-desc">2</span> times, lasting until he exits the <b>Circuit Connection</b> state.
-      After actively using Skill <span class="text-desc">5</span> times or when there are insufficient Skill Points, using Skill again causes him to exit the <b>Circuit Connection</b> state and ends the turn. Exits the <b>Circuit Connection</b> state after all enemies have been defeated in each wave.`,
+      content: `Enters the <b>Circuit Connection</b> state. Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Archer's ATK to one designated enemy.
+      When using his Skill in the <b>Circuit Connection</b> state, the current turn does not end, and the DMG dealt by Archer's Skill increases by {{1}}%. This effect can be stacked up to <span class="text-desc">2</span> times, lasting until he exits the <b>Circuit Connection</b> state.
+      After actively using Skill <span class="text-desc">5</span> times or when there are insufficient Skill Points, using Skill again causes him to exit the <b>Circuit Connection</b> state. Exits the <b>Circuit Connection</b> state after all enemies have been defeated in each wave.`,
       value: [
         { base: 200, growth: 20, style: 'curved' },
         { base: 60, growth: 4, style: 'curved' },
@@ -47,8 +47,8 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 5,
       trace: 'Ultimate',
       title: 'Unlimited Blade Works',
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Archer's ATK to one designated enemy and gains <span class="text-desc">2</span> <b>Charge</b>, up to a maximum of <span class="text-desc">4</span> <b>Charge</b>.`,
-      value: [{ base: 720, growth: 48, style: 'curved' }],
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Archer's ATK to one designated enemy and gains <span class="text-desc">2</span> <b>Charge(s)</b>, up to a maximum of <span class="text-desc">4</span> <b>Charge(s)</b>.`,
+      value: [{ base: 600, growth: 40, style: 'curved' }],
       level: ult,
       tag: AbilityTag.ST,
     },
@@ -56,19 +56,19 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: 'Talent',
       title: `Mind's Eye (True)`,
       content: `When Archer's teammate attacks an enemy target, Archer consumes <span class="text-desc">1</span> <b>Charge</b> and immediately launches Follow-up ATK on the primary target, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Archer's ATK and recovering <span class="text-desc">1</span> Skill Point.`,
-      value: [{ base: 120, growth: 12, style: 'curved' }],
+      value: [{ base: 100, growth: 10, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ST,
     },
     technique: {
       trace: 'Technique',
       title: 'Clairvoyance',
-      content: `Immediately attacks the enemy. After entering combat, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">200%</span> of Archer's ATK to all enemies and gains <span class="text-desc">1</span> <b>Charge</b>.`,
+      content: `Immediately attacks the enemy. After entering combat, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">200%</span> of Archer's ATK to all enemies and gains <span class="text-desc">1</span> <b>Charge(s)</b>.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Projection Magecraft',
-      content: `When Archer is on the field, increases the maximum Skill Point limit by <span class="text-desc">1</span>.`,
+      content: `When Archer is on the field, increases the maximum Skill Point limit by <span class="text-desc">2</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -83,12 +83,12 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c1: {
       trace: 'Eidolon 1',
       title: 'The Unreached Dream',
-      content: `After using Skill <span class="text-desc">3</span> time(s) in a single turn, the next Skill use in the current turn will not consume Skill Points.`,
+      content: `After using Skill <span class="text-desc">3</span> time(s) within one turn, recovers <span class="text-desc">2</span> Skill Point(s) for allies.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'The Unfulfilled Happiness',
-      content: `Increases DMG dealt by Ultimate by <span class="text-desc">120%</span>.`,
+      content: `When using Ultimate, reduces the enemy target's Quantum RES by <span class="text-desc">20%</span>, and induces <b class="text-hsr-quantum">Quantum</b> Weakness for it, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -99,7 +99,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c4: {
       trace: 'Eidolon 4',
       title: 'The Unsung Life',
-      content: `If the target of the Ultimate does not possess <b class="text-hsr-quantum">Quantum</b> Weakness, <b class="text-hsr-quantum">Quantum</b> Weakness will be applied during the Ultimate and reduces the target's <b class="text-hsr-quantum">Quantum RES</b> by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turns.`,
+      content: `Increases Ultimate DMG dealt by <span class="text-desc">150%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -110,7 +110,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c6: {
       trace: 'Eidolon 6',
       title: 'The Endless Pilgrimage',
-      content: `When the turn begins, immediately recovers <span class="text-desc">1</span> Skill Point for allies. The number of maximum stacks for the DMG boost provided by his own Skill increases by <span class="text-desc">1</span>. DMG dealt by his Skill ignores <span class="text-desc">20%</span> of DEF.`,
+      content: `When the turn begins, recovers <span class="text-desc">1</span> Skill Point for allies. The number of maximum stacks for the DMG boost effect provided by his Skill increases by <span class="text-desc">1</span>. His Skill DMG dealt ignores <span class="text-desc">20%</span> of DEF.`,
     },
   }
 
@@ -136,10 +136,10 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     {
       type: 'toggle',
-      id: 'archer_c4',
-      text: `C4 Quantum Weakness Implant`,
-      ...talents.c4,
-      show: c >= 4,
+      id: 'archer_c2',
+      text: `C2 Quantum Weakness Implant`,
+      ...talents.c2,
+      show: c >= 2,
       default: true,
       duration: 2,
     },
@@ -166,7 +166,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     ) => {
       const base = _.cloneDeep(x)
 
-      base.MAX_SP += 1
+      base.MAX_SP += 2
 
       base.BASIC_SCALING = [
         {
@@ -193,7 +193,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       base.ULT_SCALING = [
         {
           name: 'Single Target',
-          value: [{ scaling: calcScaling(7.2, 0.48, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(6.0, 0.4, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
@@ -204,7 +204,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       base.TALENT_SCALING = [
         {
           name: 'Single Target',
-          value: [{ scaling: calcScaling(1.2, 0.12, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1, 0.1, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.QUANTUM,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
@@ -227,18 +227,18 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           value: 0.6,
         })
       }
-      if (c >= 2) {
+      if (c >= 4) {
         base.ULT_DMG.push({
-          name: `Eidolon 2`,
-          source: 'Self',
-          value: 1.2,
-        })
-      }
-      if (form.archer_c4) {
-        base.QUANTUM_RES_RED.push({
           name: `Eidolon 4`,
           source: 'Self',
-          value: 0.1,
+          value: 1.5,
+        })
+      }
+      if (form.archer_c2) {
+        base.QUANTUM_RES_RED.push({
+          name: `Eidolon 2`,
+          source: 'Self',
+          value: 0.2,
         })
         weakness.push(Element.QUANTUM)
         addDebuff(debuffs, DebuffTypes.OTHER)
@@ -260,13 +260,13 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[]
     ) => {
-      base.MAX_SP += 1
+      base.MAX_SP += 2
 
-      if (form.archer_c4) {
+      if (form.archer_c2) {
         base.QUANTUM_RES_RED.push({
-          name: `Eidolon 4`,
+          name: `Eidolon 2`,
           source: 'Archer',
-          value: 0.1,
+          value: 0.2,
         })
       }
 

@@ -32,7 +32,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     normal_alt: {
       energy: 20,
       trace: 'Enhanced Basic ATK',
-      title: 'Unfettered King Rules',
+      title: 'Release, the Golden Scepter',
       content: `Gains <span class="text-desc">2</span> <b class="text-green-400">Core Resonance</b> and deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Saber's ATK to all enemies. If there are <span class="text-desc">2</span>/<span class="text-desc">1</span> enemy(ies) on the field, additionally deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}%/{{1}}% of Saber's ATK to all enemies.`,
       value: [
         { base: 75, growth: 15, style: 'linear' },
@@ -45,7 +45,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: 'Strike Air: Hammer of the Wind King',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Saber's ATK to one designated enemy, and deals <b class="text-hsr-wind">Wind DMG</b> equal to {{1}}% of Saber's ATK to enemies adjacent to it. If currently holding <b class="text-green-400">Core Resonance</b>, and consuming it after this Skill usage would fully regenerate Saber's Energy, then increases the DMG multiplier for this usage of Skill. Each <b class="text-green-400">Core Resonance</b> increases the DMG multiplier for this usage of Skill by {{2}}%, then immediately consumes all <b class="text-green-400">Core Resonance</b> to fully regenerate Energy for Saber. Otherwise, immediately gains <span class="text-desc">2</span> <b class="text-green-400">Core Resonance</b>.`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Saber's ATK to one designated enemy, and deals <b class="text-hsr-wind">Wind DMG</b> equal to {{1}}% of Saber's ATK to adjacent targets. If Saber currently possesses <b class="text-green-400">Core Resonance</b> and her Energy can be regenerated to full by consuming <b class="text-green-400">Core Resonance</b> after this instance of Skill attack, then increase the DMG multiplier for this instance of Skill use by {{2}}% for each stack of <b class="text-green-400">Core Resonance</b>, and consume all <b class="text-green-400">Core Resonance</b> to regenerate Energy for Saber after attacking. Otherwise, immediately gains <span class="text-desc">2</span> point(s) of <b class="text-green-400">Core Resonance</b>.`,
       value: [
         { base: 75, growth: 7.5, style: 'curved' },
         { base: 37.5, growth: 3.75, style: 'curved' },
@@ -58,7 +58,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: 'Excalibur',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Saber's ATK to all enemies. Then, deals <b class="text-hsr-wind">Wind DMG</b> equal to {{1}}% of Saber's ATK to one random enemy, occurring <span class="text-desc">10</span> time(s). After using Ultimate, the next Basic ATK switches to <b>Unfettered King Rules</b> and only <b>Unfettered King Rules</b> can be used.`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Saber's ATK to all enemies, and additionally deals <span class="text-desc">10</span> instance(s) of DMG. Each instance of DMG deals <b class="text-hsr-wind">Wind DMG</b> equal to {{1}}% of Saber's ATK to one random enemy. After using Ultimate, the next Basic ATK switches to <b>Release, the Golden Scepter</b> and only <b>Release, the Golden Scepter</b> can be used.`,
       value: [
         { base: 140, growth: 14, style: 'curved' },
         { base: 55, growth: 5.5, style: 'curved' },
@@ -69,20 +69,20 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     talent: {
       trace: 'Talent',
       title: `Dragon Reactor Core`,
-      content: `Obtains <span class="text-desc">1</span> <b class="text-green-400">Core Resonance</b> point(s) when entering battle. When any ally target uses an Ultimate, increases DMG dealt by Saber by {{0}}% for <span class="text-desc">2</span> turn(s) and obtains <span class="text-desc">3</span> <b class="text-green-400">Core Resonance</b> point(s). Consuming <span class="text-desc">1</span> <b class="text-green-400">Core Resonance</b> point will regenerate a fixed <span class="text-desc">10</span> Energy for Saber.`,
-      value: [{ base: 20, growth: 2, style: 'curved' }],
+      content: `Obtains <span class="text-desc">1</span> <b class="text-green-400">Core Resonance</b> point(s) when entering battle. When any ally target uses an Ultimate, increases DMG dealt by Saber by {{0}}% for <span class="text-desc">2</span> turn(s) and obtains <span class="text-desc">3</span> <b class="text-green-400">Core Resonance</b> point(s). Consuming <span class="text-desc">1</span> <b class="text-green-400">Core Resonance</b> point will regenerate a fixed <span class="text-desc">8</span> Energy for Saber.`,
+      value: [{ base: 30, growth: 3, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',
       title: 'Behold, the King of Knights',
-      content: `After using Technique, increases Saber's ATK by <span class="text-desc">35%</span> for <span class="text-desc">2</span> turn(s) and grants <span class="text-desc">2</span> <b class="text-green-400">Core Resonance</b> at the start of the next battle.`,
+      content: `After using Technique, increases Saber's ATK by <span class="text-desc">35%</span> for <span class="text-desc">2</span> turn(s) at the start of the next battle and gains <span class="text-desc">2</span> <b class="text-green-400">Core Resonance</b>.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Knight of the Dragon',
-      content: `Increases Saber's CRIT Rate by <span class="text-desc">20%</span>. When entering battle and using an Enhanced Basic ATK, obtains <b class="text-sky-300">Mana Burst</b>. If Saber has <b class="text-sky-300">Mana Burst</b> and <b class="text-green-400">Core Resonance</b> at the same time, then she can fully regenerate her Energy after using a Skill and consumes <b class="text-sky-300">Mana Burst</b> to allow allies to recover <span class="text-desc">1</span> Skill Point while letting her immediately take action.`,
+      content: `Increases Saber's CRIT Rate by <span class="text-desc">20%</span>. When entering battle and using an Enhanced Basic ATK, obtains the <b class="text-sky-300">Mana Burst</b> effect. Under the effect, if Saber has <b class="text-green-400">Core Resonance</b> and her Energy can be fully regenerated by using her Skill and consuming <b class="text-green-400">Core Resonance</b>, consumes <b class="text-sky-300">Mana Burst</b> to recover <span class="text-desc">1</span> Skill Point for allies, and Saber immediately takes action.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -92,17 +92,17 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Crown of the Star',
-      content: `When using Skill, increases Saber's CRIT DMG by  <span class="text-desc">50%</span> for  <span class="text-desc">2</span> turns.`,
+      content: `When using Skill, increases Saber's CRIT DMG by <span class="text-desc">50%</span> for <span class="text-desc">2</span> turns. For each point of <b class="text-green-400">Core Resonance</b> gained, Saber's CRIT DMG increases by <span class="text-desc">4%</span>, stacking up to <span class="text-desc">8</span> time(s)`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'The Lost White Walls',
-      content: `Increases DMG dealt by Saber by <span class="text-desc">50%</span>. After Saber uses a Basic ATK or Skill, additionally gains <span class="text-desc">1</span> <b class="text-green-400">Core Resonance</b>.`,
+      content: `Increases DMG dealt by Saber by <span class="text-desc">60%</span>. When Saber's turn ends, she gains <span class="text-desc">1</span> point(s) of <b class="text-green-400">Core Resonance</b>.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'The Sealed Round Table',
-      content: `Increases CRIT DMG dealt with <b>Unfettered King Rules</b> and <b>Strike Air: Hammer of the Wind King</b> by <span class="text-desc">50%</span>. For each <b class="text-green-400">Core Resonance</b> gained, additionally increases CRIT DMG dealt by <span class="text-desc">5%</span>. This effect can be stacked up to <span class="text-desc">10</span> time(s).`,
+      content: `For each point of <b class="text-green-400">Core Resonance</b> gained, Saber's DMG dealt ignores <span class="text-desc">1%</span> of the target's DEF. This effect can stack up to <span class="text-desc">15</span> time(s). When triggering the <b class="text-green-400">Core Resonance</b>'s Skill multiplier effect, each point of <b class="text-green-400">Core Resonance</b> additionally increases the DMG multiplier for this instance of Skill by <span class="text-desc">7%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -113,7 +113,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c4: {
       trace: 'Eidolon 4',
       title: 'The Wondrous Fourteen Nights',
-      content: `Increases Saber's <b class="text-hsr-wind">Wind RES PEN</b> by <span class="text-desc">4%</span>. After using Ultimate, increases Saber's <b class="text-hsr-wind">Wind RES PEN</b> by <span class="text-desc">4%</span>, stackable up to <span class="text-desc">4</span> time(s).`,
+      content: `Increases Saber's <b class="text-hsr-wind">Wind RES PEN</b> by <span class="text-desc">8%</span>. After using Ultimate, increases Saber's <b class="text-hsr-wind">Wind RES PEN</b> by <span class="text-desc">4%</span>, stackable up to <span class="text-desc">3</span> time(s).`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -124,7 +124,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: 'The Long Fated Night',
-      content: `Increases the <b>RES PEN</b> caused by Saber's Ultimate DMG by <span class="text-desc">20%</span>. Upon entering battle and using the Ultimate for the first time, regenerates a fixed <span class="text-desc">300</span> Energy for Saber. After an Ultimate is used <span class="text-desc">4</span> time(s), this effect can be triggered once more.`,
+      content: `<b class="text-hsr-wind">Wind RES PEN</b> of Ultimate DMG dealt by Saber increases by <span class="text-desc">20%</span>. When using Ultimate for the first time after entering battle, regenerates a fixed <span class="text-desc">300</span> Energy for Saber. This effect can be triggered <span class="text-desc">1</span> time after every <span class="text-desc">3</span> Ultimate use(s).`,
     },
   }
 
@@ -176,13 +176,23 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
     {
       type: 'number',
+      id: 'saber_a6_2',
+      text: `A6 CRIT DMG Stacks`,
+      ...talents.a6,
+      show: a.a6,
+      default: 2,
+      min: 0,
+      max: 8,
+    },
+    {
+      type: 'number',
       id: 'saber_c2',
-      text: `E2 CRIT DMG Bonus`,
+      text: `E2 DEF Ignore`,
       ...talents.c2,
       show: c >= 2,
       default: 2,
       min: 0,
-      max: 10,
+      max: 15,
     },
     {
       type: 'toggle',
@@ -192,7 +202,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       show: c >= 4,
       default: 0,
       min: 0,
-      max: 4,
+      max: 3,
     },
   ]
 
@@ -229,7 +239,6 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               type: TalentType.BA,
               break: 20,
               sum: true,
-              cd: c >= 2 ? 0.5 + form.saber_c2 * 0.05 : 0,
             },
             {
               name: '2-Target DMG',
@@ -241,7 +250,6 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 20,
-              cd: c >= 2 ? 0.5 + form.saber_c2 * 0.05 : 0,
             },
             {
               name: '1-Target DMG',
@@ -253,7 +261,6 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 20,
-              cd: c >= 2 ? 0.5 + form.saber_c2 * 0.05 : 0,
             },
           ]
         : [
@@ -274,7 +281,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             {
               scaling:
                 calcScaling(0.75, 0.075, skill, 'curved') +
-                calcScaling(0.07, 0.007, skill, 'curved') * (form.core_resonance || 0),
+                (calcScaling(0.07, 0.007, skill, 'curved') + (c >= 2 ? 0.07 : 0)) * (form.core_resonance || 0),
               multiplier: Stats.ATK,
             },
           ],
@@ -283,7 +290,6 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.SKILL,
           break: 20,
           sum: true,
-          cd: c >= 2 ? 0.5 + form.saber_c2 * 0.05 : 0,
         },
         {
           name: 'Adjacent',
@@ -291,7 +297,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             {
               scaling:
                 calcScaling(0.375, 0.0375, skill, 'curved') +
-                calcScaling(0.07, 0.007, skill, 'curved') * (form.core_resonance || 0),
+                (calcScaling(0.07, 0.007, skill, 'curved') + (c >= 2 ? 0.07 : 0)) * (form.core_resonance || 0),
               multiplier: Stats.ATK,
             },
           ],
@@ -299,7 +305,6 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 20,
-          cd: c >= 2 ? 0.5 + form.saber_c2 * 0.05 : 0,
         },
       ]
       base.ULT_SCALING = [
@@ -336,7 +341,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         base[Stats.ALL_DMG].push({
           name: `Talent`,
           source: 'Self',
-          value: calcScaling(0.2, 0.02, talent, 'curved'),
+          value: calcScaling(0.3, 0.03, talent, 'curved'),
         })
       }
       if (form.saber_tech) {
@@ -360,18 +365,32 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           value: 0.5,
         })
       }
+      if (form.saber_a6_2) {
+        base[Stats.CRIT_DMG].push({
+          name: `Ascension 6 Passive`,
+          source: 'Self',
+          value: 0.04 * form.saber_a6_2,
+        })
+      }
+      if (form.saber_c2) {
+        base.DEF_PEN.push({
+          name: `Eidolon 2`,
+          source: 'Self',
+          value: 0.01 * form.saber_c2,
+        })
+      }
       if (c >= 1) {
-        base[Stats.ALL_DMG].push({
+        base.ULT_DMG.push({
           name: `Eidolon 1`,
           source: 'Self',
-          value: 0.5,
+          value: 0.6,
         })
       }
       if (c >= 4) {
         base.WIND_RES_PEN.push({
           name: `Eidolon 4`,
           source: 'Self',
-          value: 0.04 + (form.saber_c4 || 0) * 0.04,
+          value: 0.08 + (form.saber_c4 || 0) * 0.04,
         })
       }
       if (c >= 6) {

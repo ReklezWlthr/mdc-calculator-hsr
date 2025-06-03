@@ -102,7 +102,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Neverending Deaths`,
-      content: `If Blade hits a Weakness Broken enemy after using <b>Forest of Swords</b>, he will restore HP equal to <span class="text-desc">5%</span> of his Max HP plus <span class="text-desc">100</span>.`,
+      content: `After Blade receives healing <span class="text-desc">25%</span> of the healed amount will be converted to Ultimate's tally of HP lost.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -291,16 +291,6 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           source: 'Self',
           value: 0.2,
         })
-      if (a.a4 && broken && form.hellscape) {
-        base.BASIC_SCALING.push({
-          name: 'Healing',
-          value: [{ scaling: 0.05, multiplier: Stats.HP }],
-          flat: 100,
-          element: TalentProperty.HEAL,
-          property: TalentProperty.HEAL,
-          type: TalentType.NONE,
-        })
-      }
       if (a.a6)
         base.TALENT_DMG.push({
           name: 'Ascension 6 Passive',

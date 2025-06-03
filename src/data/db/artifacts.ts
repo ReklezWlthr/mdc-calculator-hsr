@@ -1046,21 +1046,21 @@ export const PlanarSets: IArtifact[] = [
     id: '322',
     name: 'Revelry by the Sea',
     icon: '71047',
-    bonus: [],
+    bonus: [{ stat: Stats.P_ATK, value: 0.12 }],
     bonusAdd: [],
     half: (base) => {
       base.CALLBACK.push((x) => {
         x.DOT_DMG.push({
           name: '2-Piece',
           source: 'Revelry by the Sea',
-          value: x.getAtk() >= 3600 ? 0.36 : x.getAtk() >= 2400 ? 0.24 : 0.12,
+          value: x.getAtk() >= 3600 ? 0.24 : x.getAtk() >= 2400 ? 0.12 : 0,
         })
         return x
       })
       return base
     },
     desc: [
-      `Increases the wearer's DoT DMG by <span class="text-desc">12%</span>. When the wearer's ATK is higher than or equal to <span class="text-desc">2,400</span>/<span class="text-desc">3,600</span>, increases the DoT DMG dealt by <span class="text-desc">12%</span>/<span class="text-desc">24%</span>`,
+      `Increases the wearer's ATK by <span class="text-desc">12%</span>. When the wearer's ATK is higher than or equal to <span class="text-desc">2,400</span>/<span class="text-desc">3,600</span>, increases the DoT DMG dealt by <span class="text-desc">12%</span>/<span class="text-desc">24%</span>`,
     ],
     beta: true,
     set: [`Warbling Shores' Blazing Beacon`, `Warbling Shores' Cantillation Trail`],

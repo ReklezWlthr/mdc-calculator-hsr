@@ -1,5 +1,15 @@
 [
   {
+    "version": "1.1.3-2",
+    "date": "June 3rd, 2025",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v3.4v3</span>",
+      "Updated Characters: <span class=\"text-hsr-physical\">Phainon</span>, and <span class=\"text-hsr-wind\">Saber</span>, <span class=\"text-hsr-quantum\">Archer</span>, <span class=\"text-hsr-lightning\">Kafka</span>, <span class=\"text-hsr-quantum\">Silver Wolf</span>, <span class=\"text-hsr-wind\">Blade</span>, and <span class=\"text-hsr-ice\">Jingliu</span>",
+      "Updated Light Cone: <span class=\"text-desc\">Thus Burns the Dawn</span>, <span class=\"text-desc\">A Thankless Coronation</span>, <span class=\"text-desc\">The Hell Where Ideals Burn</span>, <span class=\"text-desc\">A Trail of Bygone Blood</span>, <span class=\"text-desc\">A Dream Scented in Wheat</span>, and <span class=\"text-desc\">See You at the End</span>",
+      "Updated Planar Ornaments: <span class=\"text-desc\">Revelry by the Sea</span>"
+    ]
+  },
+  {
     "version": "1.1.3-1",
     "date": "May 28th, 2025",
     "desc": [
@@ -23,7 +33,7 @@
     "desc": [
       "Content Version: <span class=\"text-desc\">v3.4v1</span>",
       "New Characters: <span class=\"text-hsr-physical\">Phainon</span>, <span class=\"text-hsr-wind\">Saber</span>, and <span class=\"text-hsr-quantum\">Archer</span>",
-      "Enhanced Characters: <span class=\"text-hsr-lightning\">Kafka</span>, <span class=\"text-hsr-quantum\">Silverwolf</span>, <span class=\"text-hsr-wind\">Blade</span>, and <span class=\"text-hsr-ice\">Jingliu</span>",
+      "Enhanced Characters: <span class=\"text-hsr-lightning\">Kafka</span>, <span class=\"text-hsr-quantum\">Silver Wolf</span>, <span class=\"text-hsr-wind\">Blade</span>, and <span class=\"text-hsr-ice\">Jingliu</span>",
       "New Light Cones: <span class=\"text-desc\">Thus Burns the Dawn</span>, <span class=\"text-desc\">A Thankless Coronation</span>, <span class=\"text-desc\">The Hell Where Ideals Burn</span>, and <span class=\"text-desc\">9</span> new Battle Pass LCs",
       "New Planar Ornaments: <span class=\"text-desc\">Arcadia of Woven Dreams</span>, and <span class=\"text-desc\">Revelry by the Sea</span>"
     ]

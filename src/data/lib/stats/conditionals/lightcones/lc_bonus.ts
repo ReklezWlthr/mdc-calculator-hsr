@@ -1412,7 +1412,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       base.DEF_PEN.push({
         name: 'Passive',
         source: `Thus Burns the Dawn`,
-        value: calcRefinement(0.18, 0.03, r),
+        value: calcRefinement(0.18, 0.045, r),
       })
       return base
     },
@@ -1499,6 +1499,16 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
         name: 'Passive',
         source: `A Trail of Bygone Blood`,
         value: calcRefinement(0.12, 0.02, r),
+      })
+      base.SKILL_DMG.push({
+        name: 'Passive',
+        source: `A Trail of Bygone Blood`,
+        value: calcRefinement(0.24, 0.04, r),
+      })
+      base.ULT_DMG.push({
+        name: 'Passive',
+        source: `A Trail of Bygone Blood`,
+        value: calcRefinement(0.24, 0.04, r),
       })
       return base
     },
