@@ -1927,7 +1927,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Trends Burn`,
+    text: `Trend's Burn`,
     show: true,
     default: true,
     debuff: true,
@@ -1941,7 +1941,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
         if (base.NAME === own?.NAME) {
           const burn = {
             name: 'Trend Burn DMG',
-            value: [{ scaling: calcRefinement(0.4, 0.05, r), multiplier: Stats.DEF }],
+            value: [{ scaling: calcRefinement(0.4, 0.1, r), multiplier: Stats.DEF }],
             element: Element.FIRE,
             property: TalentProperty.DOT,
             type: TalentType.NONE,

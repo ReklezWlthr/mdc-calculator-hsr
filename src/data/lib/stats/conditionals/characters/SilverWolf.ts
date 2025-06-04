@@ -133,7 +133,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     {
       type: 'element',
       id: 'sw_implant',
-      text: `Weakness Implant`,
+      text: `Skill Weakness Implant`,
       ...talents.skill,
       show: true,
       default: Element.QUANTUM,
@@ -145,7 +145,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     {
       type: 'toggle',
       id: 'sw_skill',
-      text: `Skill All-Type RES Reduction`,
+      text: `Skill RES Shred`,
       ...talents.skill,
       show: true,
       default: true,

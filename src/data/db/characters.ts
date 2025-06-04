@@ -1058,7 +1058,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.ERUDITION,
     element: Element.WIND,
-    beta: true,
+    beta: false,
   },
   {
     id: '1406',

@@ -2261,7 +2261,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 24,
     type: PathType.ERUDITION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Smelt',
       detail: `Wearer regenerates <span class="text-desc">10</span> Energy at the start of the turn. If the enemy target has a Weakness implanted by the wearer, increases the wearer's DMG dealt to it by {{0}}%.
