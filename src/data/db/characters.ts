@@ -159,6 +159,7 @@ export const Characters = [
     },
     trace: [Stats.WIND_DMG, Stats.P_HP, Stats.CRIT_RATE],
     // overwrite: [{ index: 3, stat: Stats.P_ATK }],
+    overwrite: [],
     rarity: 5,
     path: PathType.DESTRUCTION,
     element: Element.WIND,
