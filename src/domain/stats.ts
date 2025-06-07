@@ -132,6 +132,7 @@ export interface RawBaseStatType {
   SKILL_DEF_PEN: StatsArray[]
   ULT_DEF_PEN: StatsArray[]
   DOT_DEF_PEN: StatsArray[]
+  ON_TURN_DOT_DEF_PEN: StatsArray[]
   FUA_DEF_PEN: StatsArray[]
   BREAK_DEF_PEN: StatsArray[]
   SUPER_BREAK_DEF_PEN: StatsArray[]

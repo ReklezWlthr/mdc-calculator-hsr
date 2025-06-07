@@ -381,6 +381,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
               multiplier: (item.multiplier || 1) * (calcScaling(0.68, 0.017, talent, 'curved') + form.luka_c6 * 0.08),
               sum: true,
+              detonate: true,
             }))
           )
           return x

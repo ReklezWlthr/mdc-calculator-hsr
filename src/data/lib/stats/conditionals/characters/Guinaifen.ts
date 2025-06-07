@@ -360,6 +360,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
             multiplier: (item.multiplier || 1) * calcScaling(0.72, 0.02, talent, 'curved'),
             sum: true,
+            detonate: true,
           }))
         )
         return x

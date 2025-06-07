@@ -51,6 +51,7 @@ export interface IScaling {
   useOwnerStats?: boolean // Used Owner's Stats (Netherwing)
   trueRaw?: boolean // Ignore enemy's multipliers
   atkBonus?: number
+  detonate?: boolean
 }
 
 export interface IContent {

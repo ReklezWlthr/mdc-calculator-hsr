@@ -277,7 +277,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           chance: { base: calcScaling(0.5, 0.015, talent, 'curved'), fixed: false },
         })
       if (form.arcana >= 7)
-        base.DOT_DEF_PEN.push({
+        base.ON_TURN_DOT_DEF_PEN.push({
           name: `Talent (7+ Arcana)`,
           source: 'Self',
           value: 0.2,
@@ -293,7 +293,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       }
       if (form.epiphany) {
         base.VULNERABILITY.push({
-          name: `Ultimate (Epiphany)`,
+          name: `Epiphany`,
           source: 'Self',
           value: calcScaling(0.15, 0.01, ult, 'curved'),
         })
@@ -337,6 +337,12 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             value: 0.1,
           })
       }
+      if (form.arcana >= 7)
+        base.ON_TURN_DOT_DEF_PEN.push({
+          name: `Talent (7+ Arcana)`,
+          source: 'Self',
+          value: 0.2,
+        })
 
       return base
     },

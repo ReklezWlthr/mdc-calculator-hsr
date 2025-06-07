@@ -145,6 +145,7 @@ export const baseStatsObject: BaseStatsType = {
   SKILL_DEF_PEN: [],
   ULT_DEF_PEN: [],
   DOT_DEF_PEN: [],
+  ON_TURN_DOT_DEF_PEN: [],
   FUA_DEF_PEN: [],
   BREAK_DEF_PEN: [],
   SUPER_BREAK_DEF_PEN: [],

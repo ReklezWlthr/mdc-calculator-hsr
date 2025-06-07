@@ -340,6 +340,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
             multiplier: (item.multiplier || 1) * calcScaling(0.6, 0.015, skill, 'curved'),
             sum: true,
+            detonate: true,
           })),
           ..._.map(dots, (item) => ({
             ...item,
@@ -347,6 +348,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation - Adjacent'),
             multiplier: (item.multiplier || 1) * calcScaling(0.4, 0.01, skill, 'curved'),
             sum: false,
+            detonate: true,
           }))
         )
         x.ULT_SCALING.push(
@@ -356,6 +358,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
             multiplier: (item.multiplier || 1) * calcScaling(1, 0.02, ult, 'curved'),
             sum: true,
+            detonate: true,
           }))
         )
         if (a.a6) {
@@ -366,6 +369,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
               multiplier: (item.multiplier || 1) * 0.8,
               sum: true,
+              detonate: true,
             }))
           )
         }

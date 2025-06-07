@@ -308,6 +308,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
               multiplier: (item.multiplier || 1) * 0.08,
               sum: true,
+              detonate: true,
             }))
           )
           return x
