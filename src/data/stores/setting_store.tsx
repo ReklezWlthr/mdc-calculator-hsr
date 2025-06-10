@@ -21,7 +21,7 @@ const defaultSetting: ISetting = {
   storeData: false,
   variant: false,
   formMode: 'default',
-  liveOnly: true,
+  liveOnly: false,
 }
 
 export interface SettingStoreType {
