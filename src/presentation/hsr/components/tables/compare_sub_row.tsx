@@ -62,17 +62,18 @@ export const CompareSubRows = observer(
       )
     )
 
-    const noCrit = _.includes(
-      [
-        TalentProperty.HEAL,
-        TalentProperty.SHIELD,
-        TalentProperty.DOT,
-        TalentProperty.BREAK,
-        TalentProperty.BREAK_DOT,
-        TalentProperty.SUPER_BREAK,
-      ],
-      property
-    )
+    const noCrit =
+      _.includes(
+        [
+          TalentProperty.HEAL,
+          TalentProperty.SHIELD,
+          TalentProperty.DOT,
+          TalentProperty.BREAK,
+          TalentProperty.BREAK_DOT,
+          TalentProperty.SUPER_BREAK,
+        ],
+        property
+      ) || _.some(scaling, (item) => item?.trueRaw)
     const toughness = _.map(scaling, (item, i) => item?.break * (1 + stats[i]?.getValue(StatsObjectKeys.BREAK_EFF)))
 
     const getDmg = (obj: StringConstructor) => {
