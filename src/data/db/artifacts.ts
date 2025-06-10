@@ -1037,7 +1037,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [],
     bonusAdd: [],
     desc: [
-      `When there are more or less than <span class="text-desc">4</span> ally target in battle, each extra/missing ally target increases the wearer and their memosprite's DMG by <span class="text-desc">9%</span>/<span class="text-desc">12%</span>, up to a maximum of <span class="text-desc">4</span>/<span class="text-desc">3</span> stacks.`,
+      `When there are currently more or less than <span class="text-desc">4</span> ally target in battle, each extra/missing ally target increases the wearer and their memosprite's DMG by <span class="text-desc">9%</span>/<span class="text-desc">12%</span>, up to a maximum of <span class="text-desc">4</span>/<span class="text-desc">3</span> stacks.`,
     ],
     beta: true,
     set: [`Membrance Maze's Serene Treehouse`, `Membrance Maze's Wishing Whistle`],

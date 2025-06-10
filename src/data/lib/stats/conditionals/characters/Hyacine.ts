@@ -427,6 +427,19 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         })
       }
 
+      if (form.clear_skies) {
+        base[Stats.P_HP].push({
+          name: `After Rain`,
+          source: 'Self',
+          value: calcScaling(0.15, 0.015, ult, 'curved') + (c >= 1 ? 0.5 : 0),
+        })
+        base[Stats.HP].push({
+          name: `After Rain`,
+          source: 'Self',
+          value: calcScaling(150, 90, ult, 'flat'),
+        })
+      }
+
       return base
     },
     preComputeShared: (
@@ -464,6 +477,18 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           name: `Eidolon 6`,
           source: 'Hyacine',
           value: 0.2,
+        })
+      }
+      if (form.clear_skies) {
+        base[Stats.P_HP].push({
+          name: `After Rain`,
+          source: 'Hyacine',
+          value: calcScaling(0.15, 0.015, ult, 'curved') + (c >= 1 ? 0.5 : 0),
+        })
+        base[Stats.HP].push({
+          name: `After Rain`,
+          source: 'Hyacine',
+          value: calcScaling(150, 90, ult, 'flat'),
         })
       }
 
@@ -516,40 +541,6 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             value: _.min([spd - 200, 200]) / 50,
           })
         }
-      }
-
-      if (form.clear_skies) {
-        base.CALLBACK.push((x, d, w, all) => {
-          _.forEach(all, (t) => {
-            t.X_HP.push({
-              name: `After Rain`,
-              source: 'Hyacine',
-              value: calcScaling(0.15, 0.015, ult, 'curved') * all[index].getHP(true) + (c >= 1 ? 0.5 : 0),
-              base: all[index].getHP(true),
-              multiplier: calcScaling(0.15, 0.015, ult, 'curved') + (c >= 1 ? 0.5 : 0),
-            })
-            t[Stats.HP].push({
-              name: `After Rain`,
-              source: 'Hyacine',
-              value: calcScaling(150, 90, ult, 'flat'),
-            })
-            if (t.SUMMON_STATS) {
-              t.SUMMON_STATS?.X_HP.push({
-                name: `After Rain`,
-                source: 'Hyacine',
-                value: calcScaling(0.15, 0.015, ult, 'curved') * all[index].getHP(true) + (c >= 1 ? 0.5 : 0),
-                base: all[index].getHP(true),
-                multiplier: calcScaling(0.15, 0.015, ult, 'curved') + (c >= 1 ? 0.5 : 0),
-              })
-              t.SUMMON_STATS?.[Stats.HP].push({
-                name: `After Rain`,
-                source: 'Hyacine',
-                value: calcScaling(150, 90, ult, 'flat'),
-              })
-            }
-          })
-          return x
-        })
       }
 
       return base

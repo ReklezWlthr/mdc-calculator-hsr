@@ -78,7 +78,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Torture',
-      content: `When all ally targets' Effect Hit Rate is <span class="text-desc">75%</span> or more, Kafka increases the target's ATK by <span class="text-desc">100%</span>.`,
+      content: `When an ally target's Effect Hit Rate is <span class="text-desc">75%</span> or more, Kafka increases the target's ATK by <span class="text-desc">100%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',

@@ -2322,7 +2322,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Misplacement',
-      detail: `The wearer's base SPD increases by {{0}}. When the wearer deals DMG, ignores {{1}}% of target's DEF. After the wearer uses Ultimate, obtains <b>Blazing Sun</b>, which is removed at the start of the turn. When <b>Blazing Sun</b> is active, increases the wearer's DMG dealt by {{2}}%.`,
+      detail: `The wearer's base SPD increases by {{0}}. When the wearer deals DMG, ignores {{1}}% of target's DEF. After the wearer uses Ultimate, obtains <b>Blazing Sun</b>, which is removed at the start of their turn. When <b>Blazing Sun</b> is active, increases the wearer's DMG dealt by {{2}}%.`,
       properties: [
         { base: 12, growth: 2 },
         { base: 18, growth: 4.5 },

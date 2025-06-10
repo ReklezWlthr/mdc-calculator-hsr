@@ -226,7 +226,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             },
             {
               name: 'Adjacent',
-              value: [{ scaling: calcScaling(0.375, 0.0375, skill, 'curved'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.375, 0.0375, skill, 'curved'), multiplier: Stats.HP }],
               element: Element.ICE,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,

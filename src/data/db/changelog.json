@@ -1,5 +1,16 @@
 [
   {
+    "version": "1.1.3-3",
+    "date": "June 6th, 2025",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v3.4v4</span>",
+      "Updated Wording: <span class=\"text-hsr-physical\">Phainon</span>, <span class=\"text-hsr-lightning\">Kafka</span>, Light Cone <span class=\"text-desc\">Thus Burns the Dawn</span>, and Planar Ornament <span class=\"text-desc\">Arcadia of Woven Dreams</span>",
+      "Updated: Max Skill Points are now shown in Stats Modal.",
+      "Fixed: <span class=\"text-hsr-wind\">Hyacine</span>'s <b class=\"text-heal\">After Rain</b>'s bonus HP and E1's effect are now applied correctly.",
+      "Fixed: <span class=\"text-hsr-ice\">Jingliu</span>'s Adjacent Enhanced Skill DMG now correctly scales with her Max HP."
+    ]
+  },
+  {
     "version": "1.1.3-2",
     "date": "June 3rd, 2025",
     "desc": [

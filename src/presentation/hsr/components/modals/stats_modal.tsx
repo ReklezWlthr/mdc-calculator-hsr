@@ -364,6 +364,9 @@ export const StatsModal = observer(
                   </BulletPoint>
                 )}
               </div>
+              <p className="font-bold text-white">
+                Max Skill Point(s) <span className="text-red">{stats.MAX_SP}</span>
+              </p>
             </div>
           </div>
         </Collapsible>
