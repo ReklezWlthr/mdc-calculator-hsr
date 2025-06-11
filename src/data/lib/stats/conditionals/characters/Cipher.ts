@@ -51,8 +51,8 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       title: `Yours Truly, Kitty Phantom Thief!!`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Cipher's ATK to one designated enemy. Then, deals <b class="text-true">True DMG</b> equal to <span class="text-desc">25%</span> of the currently recorded Talent value to one designated enemy, <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Cipher's ATK to one designated enemy and its adjacent targets, and <b class="text-true">True DMG</b> equal to <span class="text-desc">75%</span> of the current Talent's recorded value. This <b class="text-true">True DMG</b> is distributed to all Skill targets.`,
       value: [
-        { base: 72, growth: 4.8, style: 'curved' },
-        { base: 24, growth: 1.6, style: 'curved' },
+        { base: 60, growth: 6, style: 'curved' },
+        { base: 20, growth: 2, style: 'curved' },
       ],
       level: ult,
       tag: AbilityTag.BLAST,
@@ -219,7 +219,6 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.BA,
           break: 10,
           sum: true,
-          hitSplit: [0.5, 0.5],
         },
       ]
       base.SKILL_SCALING = [
@@ -232,6 +231,7 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           break: 20,
           sum: true,
           chance: { base: 1.2, fixed: false },
+          hitSplit: [0.1, 0.1, 0.1, 0.1, 0.1, 0.5],
         },
         {
           name: 'Adjacent',
@@ -241,24 +241,26 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.SKILL,
           break: 10,
           chance: { base: 1.2, fixed: false },
+          hitSplit: [0.1, 0.1, 0.1, 0.1, 0.1, 0.5],
         },
       ]
       base.ULT_SCALING = [
         {
           name: 'Main Target',
           value: [
-            { scaling: calcScaling(0.72, 0.028, ult, 'curved'), multiplier: Stats.ATK },
-            { scaling: calcScaling(0.24, 0.016, ult, 'curved'), multiplier: Stats.ATK },
+            { scaling: calcScaling(0.6, 0.06, ult, 'curved'), multiplier: Stats.ATK },
+            { scaling: calcScaling(0.2, 0.02, ult, 'curved'), multiplier: Stats.ATK },
           ],
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 30,
           sum: true,
+          hitSplit: [0.75, 0.25],
         },
         {
           name: 'Adjacent',
-          value: [{ scaling: calcScaling(0.24, 0.016, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.2, 0.02, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
@@ -277,6 +279,7 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           sum: true,
           bonus: c >= 6 ? 3.5 : 0,
           cd: a.a6 ? 1 : 0,
+          hitSplit: [0.1, 0.1, 0.1, 0.6],
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -290,12 +293,13 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         },
       ]
 
+      const mainMulti = 0.75 / form.ult_hit
       if (form.recorded_dmg) {
         base.ULT_SCALING.push({
           name: 'Main Targe - True DMG',
           value: [],
           flat: form.recorded_dmg,
-          multiplier: 0.25 + 0.75 / form.ult_hit,
+          multiplier: 0.25 + mainMulti,
           element: Element.NONE,
           property: TalentProperty.TRUE,
           type: TalentType.NONE,
