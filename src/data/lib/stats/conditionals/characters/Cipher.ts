@@ -279,7 +279,7 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           sum: true,
           bonus: c >= 6 ? 3.5 : 0,
           cd: a.a6 ? 1 : 0,
-          hitSplit: [0.1, 0.1, 0.1, 0.6],
+          hitSplit: [0.2, 0.1, 0.1, 0.6],
         },
       ]
       base.TECHNIQUE_SCALING = [
