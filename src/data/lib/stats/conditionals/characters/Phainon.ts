@@ -55,7 +55,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       title: 'Calamity: Soulscorch Edict',
       content: `Gains <b class="text-red">Scourge</b> by an amount equal to the number of enemy targets present and <span class="text-desc">1</span> stack of <b class="text-amber-500">Soulscorch</b>, then causes all enemy targets to immediately take action.
       <br />When in the <b class="text-amber-500">Soulscorch</b> state, reduces DMG received by Khaslana by <span class="text-desc">75%</span> and gains <span class="text-desc">1</span> additional stack of <b class="text-amber-500">Soulscorch</b> after enemy targets attack or take action. Immediately launches a <u>Counter</u> after the aforementioned enemy targets take their actions, dealing <b class="text-hsr-physical">Physical DMG</b> to all enemies equal to {{0}}% of Khaslana's ATK, as well as additionally deals <span class="text-desc">4</span> instance(s) of DMG, each instance being <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Khaslana's ATK. Then, <b class="text-amber-500">Soulscorch</b> is dispelled. Each stack of <b class="text-amber-500">Soulscorch</b> increases this <u>Counter</u>'s DMG multiplier by <span class="text-desc">20%</span> of the original multiplier.
-      <br /DMG dealt through this ability is considered as Skill DMG. If <b class="text-amber-500">Soulscorch</b> is still active at the start of Khaslana's extra turn, immediately launches <u>Counter</u>.`,
+      <br />DMG dealt through this ability is considered as Skill DMG. If <b class="text-amber-500">Soulscorch</b> is still active at the start of Khaslana's extra turn, immediately launches <u>Counter</u>.`,
       value: [
         { base: 150, growth: 15, style: 'curved' },
         { base: 60, growth: 6, style: 'curved' },
@@ -89,8 +89,8 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: `Talent`,
       title: `Pyric Corpus`,
-      content: `Phainon's Talent. When <b class="text-desc">Coreflame</b> reaches <span class="text-desc">12</span> point(s), Ultimate can be activated. After reaching the max limit, up to <span class="text-desc">3</span> excess point(s) can be accumulated.
-      <br />When Phainon is the target of an ally or any single enemy's ability, he gains <span class="text-desc">1</span> point of <b class="text-desc">Coreflame</b>. When he is the target of an ally's ability, increases his CRIT DMG by {{0}}% for <span class="text-desc">3</span> turn(s).`,
+      content: `Phainon's Talent. When <b class="text-desc">Coreflame</b> reaches <span class="text-desc">12</span> point(s), Ultimate can be activated. After reaching the max limit, up to <span class="text-desc">3</span> excess point(s) can be accumulated. At the end of the Transformation, gains <b class="text-desc">Coreflames</b> based on the excess points.
+      <br />When Phainon is the target of any target's ability, he gains <span class="text-desc">1</span> point of <b class="text-desc">Coreflame</b>. If the ability's user is Phainon's teammate, additionally increases Phainon's CRIT DMG by {{0}}% for <span class="text-desc">3</span> turn(s).`,
       value: [{ base: 15, growth: 1.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -134,29 +134,29 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     c1: {
       trace: 'Eidolon 1',
-      title: 'Eidolon 1',
-      content: `For every enemy target defeated within <span class="text-desc">1</span> Transformation, the inheritance ratio of Khaslana's extra turn's SPD further increases by <span class="text-desc">2%</span>, up to <span class="text-desc">30%</span>.
-      <br />When using Ultimate, CRIT DMG increases by <span class="text-desc">40%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
+      title: 'Flame and Light, Shadow of Good and Evil',
+      content: `For every enemy target defeated within <span class="text-desc">1</span> Transformation, the inheritance ratio of Khaslana's extra turn's SPD further increases by <span class="text-desc">1.5%</span>, up to <span class="text-desc">84%</span>.
+      <br />When using Ultimate, CRIT DMG increases by <span class="text-desc">50%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c2: {
       trace: 'Eidolon 2',
-      title: 'Eidolon 2',
+      title: 'Heaven and Earth, Illusions of the Realm',
       content: `Khaslana's <b class="text-hsr-physical">Physical RES PEN</b> increases by <span class="text-desc">20%</span>. When consuming <span class="text-desc">4</span> <b class="text-red">Scourge</b> to use <b>Foundation: Stardeath Verdict</b>, gains <span class="text-desc">1</span> extra turn.`,
     },
     c3: {
       trace: 'Eidolon 3',
-      title: 'Eidolon 3',
+      title: 'Fathomless Stillness, Buried into Irontomb',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Attack Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
       trace: 'Eidolon 4',
-      title: 'Eidolon 4',
+      title: 'Countless Titans, Their Faces Lost to Time',
       content: `When using <b>Calamity: Soulscorch Edict</b>, additionally gains <span class="text-desc">4</span> stack(s) of <b class="text-amber-500">Soulscorch</b>.`,
     },
     c5: {
       trace: 'Eidolon 5',
-      title: 'Eidolon 5',
+      title: 'Thirty Million Cycles, Descending into Doom',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
@@ -252,7 +252,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ...talents.c1,
       show: c >= 1,
       default: true,
-      duration: 2,
+      duration: 3,
     },
   ]
 
@@ -491,7 +491,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base[Stats.CRIT_DMG].push({
           name: `Eidolon 1`,
           source: 'Self',
-          value: 0.4,
+          value: 0.5,
         })
       }
 

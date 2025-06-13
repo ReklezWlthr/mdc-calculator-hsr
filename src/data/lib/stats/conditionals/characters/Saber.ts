@@ -45,7 +45,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: 'Strike Air: Hammer of the Wind King',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Saber's ATK to one designated enemy, and deals <b class="text-hsr-wind">Wind DMG</b> equal to {{1}}% of Saber's ATK to adjacent targets. If Saber currently possesses <b class="text-green-400">Core Resonance</b> and her Energy can be regenerated to full by consuming <b class="text-green-400">Core Resonance</b> after this instance of Skill attack, then increase the DMG multiplier for this instance of Skill use by {{2}}% for each stack of <b class="text-green-400">Core Resonance</b>, and consume all <b class="text-green-400">Core Resonance</b> to regenerate Energy for Saber after attacking. Otherwise, immediately gains <span class="text-desc">2</span> point(s) of <b class="text-green-400">Core Resonance</b>.`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Saber's ATK to one designated enemy, and deals <b class="text-hsr-wind">Wind DMG</b> equal to {{1}}% of Saber's ATK to adjacent targets. If Saber currently possesses <b class="text-green-400">Core Resonance</b> and her Energy can be regenerated to full by consuming <b class="text-green-400">Core Resonance</b> after this instance of Skill attack, then increase the DMG multiplier for this instance of Skill use by {{2}}% for each stack of <b class="text-green-400">Core Resonance</b>, and consume all <b class="text-green-400">Core Resonance</b> to regenerate Energy for Saber after attacking. Otherwise, immediately gains <span class="text-desc">3</span> point(s) of <b class="text-green-400">Core Resonance</b>.`,
       value: [
         { base: 75, growth: 7.5, style: 'curved' },
         { base: 37.5, growth: 3.75, style: 'curved' },
@@ -87,22 +87,22 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Blessing of the Lake',
-      content: `Saber can accumulate up to <span class="text-desc">120</span> excess Energy. After using Ultimate, the excess Energy is cleared and a corresponding amount is regenerated. When the battle starts, if Energy is below <span class="text-desc">40%</span>, it is regenerated to <span class="text-desc">40%</span>.`,
+      content: `Saber can accumulate up to <span class="text-desc">120</span> excess Energy. After using Ultimate, the excess Energy is cleared and a corresponding amount is regenerated. When the battle starts, if Energy is below <span class="text-desc">60%</span>, it is regenerated to <span class="text-desc">60%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Crown of the Star',
-      content: `When using Skill, increases Saber's CRIT DMG by <span class="text-desc">50%</span> for <span class="text-desc">2</span> turns. For each point of <b class="text-green-400">Core Resonance</b> gained, Saber's CRIT DMG increases by <span class="text-desc">4%</span>, stacking up to <span class="text-desc">8</span> time(s)`,
+      content: `When using Skill, increases Saber's CRIT DMG by <span class="text-desc">50%</span> for <span class="text-desc">2</span> turns. During this battle, for each point of <b class="text-green-400">Core Resonance</b> gained, increases Saber's CRIT DMG by <span class="text-desc">4%</span>, stacking up to <span class="text-desc">8</span> time(s)`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'The Lost White Walls',
-      content: `Increases DMG dealt by Saber by <span class="text-desc">60%</span>. When Saber's turn ends, she gains <span class="text-desc">1</span> point(s) of <b class="text-green-400">Core Resonance</b>.`,
+      content: `Increases DMG dealt by Saber by <span class="text-desc">60%</span>. After Saber uses a Basic ATK or Skill, gains <span class="text-desc">1</span> <b class="text-green-400">Core Resonance</b>.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'The Sealed Round Table',
-      content: `For each point of <b class="text-green-400">Core Resonance</b> gained, Saber's DMG dealt ignores <span class="text-desc">1%</span> of the target's DEF. This effect can stack up to <span class="text-desc">15</span> time(s). When triggering the <b class="text-green-400">Core Resonance</b>'s Skill multiplier effect, each point of <b class="text-green-400">Core Resonance</b> additionally increases the DMG multiplier for this instance of Skill by <span class="text-desc">7%</span>.`,
+      content: `For each point of <b class="text-green-400">Core Resonance</b> gained in this battle, Saber's DMG dealt ignores <span class="text-desc">1%</span> of the target's DEF. This effect can stack up to <span class="text-desc">15</span> time(s). When triggering the <b class="text-green-400">Core Resonance</b>'s Skill multiplier effect, each point of <b class="text-green-400">Core Resonance</b> additionally increases the DMG multiplier for this instance of Skill by <span class="text-desc">7%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -113,7 +113,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c4: {
       trace: 'Eidolon 4',
       title: 'The Wondrous Fourteen Nights',
-      content: `Increases Saber's <b class="text-hsr-wind">Wind RES PEN</b> by <span class="text-desc">8%</span>. After using Ultimate, increases Saber's <b class="text-hsr-wind">Wind RES PEN</b> by <span class="text-desc">4%</span>, stackable up to <span class="text-desc">3</span> time(s).`,
+      content: `Increases Saber's <b class="text-hsr-wind">Wind RES PEN</b> by <span class="text-desc">8%</span>. After using Ultimate, increases Saber's <b class="text-hsr-wind">Wind RES PEN</b> by <span class="text-desc">4%</span>. This effect can stack up to <span class="text-desc">3</span> time(s).`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -124,7 +124,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: 'The Long Fated Night',
-      content: `<b class="text-hsr-wind">Wind RES PEN</b> of Ultimate DMG dealt by Saber increases by <span class="text-desc">20%</span>. When using Ultimate for the first time after entering battle, regenerates a fixed <span class="text-desc">300</span> Energy for Saber. This effect can be triggered <span class="text-desc">1</span> time after every <span class="text-desc">3</span> Ultimate use(s).`,
+      content: `<b class="text-hsr-wind">Wind RES PEN</b> of Ultimate DMG dealt by Saber increases by <span class="text-desc">20%</span>, and the Overflow Energy that can be accumulated by the Trace <b>Blessing of the Lake</b> increases to <span class="text-desc">200</span>. When using Ultimate for the first time after entering battle, regenerates a fixed <span class="text-desc">300</span> Energy for Saber. This effect can be triggered <span class="text-desc">1</span> time after every <span class="text-desc">3</span> Ultimate use(s).`,
     },
   }
 

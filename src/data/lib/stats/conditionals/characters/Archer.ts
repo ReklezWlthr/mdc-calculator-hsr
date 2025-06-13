@@ -37,7 +37,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       When using his Skill in the <b>Circuit Connection</b> state, the current turn does not end, and the DMG dealt by Archer's Skill increases by {{1}}%. This effect can be stacked up to <span class="text-desc">2</span> times, lasting until he exits the <b>Circuit Connection</b> state.
       After actively using Skill <span class="text-desc">5</span> times or when there are insufficient Skill Points, using Skill again causes him to exit the <b>Circuit Connection</b> state. Exits the <b>Circuit Connection</b> state after all enemies have been defeated in each wave.`,
       value: [
-        { base: 200, growth: 20, style: 'curved' },
+        { base: 180, growth: 18, style: 'curved' },
         { base: 60, growth: 4, style: 'curved' },
       ],
       level: skill,
@@ -55,7 +55,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     talent: {
       trace: 'Talent',
       title: `Mind's Eye (True)`,
-      content: `When Archer's teammate attacks an enemy target, Archer consumes <span class="text-desc">1</span> <b>Charge</b> and immediately launches Follow-up ATK on the primary target, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Archer's ATK and recovering <span class="text-desc">1</span> Skill Point.`,
+      content: `When Archer's teammate attacks an enemy target, Archer consumes <span class="text-desc">1</span> <b>Charge</b> and immediately launches Follow-up ATK on the primary target, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Archer's ATK and recovering <span class="text-desc">1</span> Skill Point. If the target is defeated before this <u>Follow-up ATK</u> is launched, the <u>Follow-up ATK</u> will be directed at one random enemy instead.`,
       value: [{ base: 100, growth: 10, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ST,
@@ -182,7 +182,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       base.SKILL_SCALING = [
         {
           name: 'Single Target',
-          value: [{ scaling: calcScaling(2, 0.2, skill, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.8, 0.18, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,

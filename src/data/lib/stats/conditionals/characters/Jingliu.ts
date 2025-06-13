@@ -98,12 +98,12 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Sword Champion`,
-      content: `After using <b>Transcendent Flash</b>, additionally regenerates <span class="text-desc">15</span> Energy.`,
+      content: `After using <b>Transcendent Flash</b>, additionally regenerates <span class="text-desc">15</span> Energy, and after using <b>Moon On Glacial River</b>, regenerate an additional <span class="text-desc">8</span> Energy.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Frost Wraith`,
-      content: `While in the <b>Spectral Transmigration</b> state, increases DMG dealt by Ultimate by <span class="text-desc">20%</span>.`,
+      content: `When obtaining <b class="text-hsr-ice">Syzygy</b> at max stacks, Jingliu's next attack ignores <span class="text-desc">25%</span> of the target's DEF.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -135,7 +135,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: `Eclipse Hollows Corporeal Husk`,
-      content: `When Jingliu enters the <b>Spectral Transmigration</b> state, the <b class="text-hsr-ice">Syzygy</b> stack limit increases by <span class="text-desc">1</span>, and Jingliu obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>. While she is in the <b>Spectral Transmigration</b> state, her <b class="text-hsr-ice">Ice RES PEN</b> increases by <span class="text-desc">20%</span>.`,
+      content: `When Jingliu enters the <b>Spectral Transmigration</b> state, the <b class="text-hsr-ice">Syzygy</b> stack limit increases by <span class="text-desc">1</span>, and Jingliu obtains <span class="text-desc">2</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>. While she is in the <b>Spectral Transmigration</b> state, her <b class="text-hsr-ice">Ice RES PEN</b> increases by <span class="text-desc">30%</span>.`,
     },
   }
 
@@ -158,6 +158,14 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       default: 5,
       min: 0,
       max: 5,
+    },
+    {
+      type: 'toggle',
+      id: 'jingliu_a6',
+      text: `A6 DEF PEN`,
+      ...talents.a6,
+      show: a.a6,
+      default: true,
     },
     {
       type: 'toggle',
@@ -295,17 +303,18 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             source: 'Self',
             value: 0.35,
           })
-        if (a.a6)
-          base.ULT_DMG.push({
+        if (form.jingliu_a6) {
+          base.DEF_PEN.push({
             name: 'Ascension 6 Passive',
             source: 'Self',
-            value: 0.2,
+            value: 0.25,
           })
+        }
         if (c >= 6)
           base.ICE_RES_PEN.push({
             name: 'Eidolon 6',
             source: 'Self',
-            value: 0.2,
+            value: 0.3,
           })
       }
       if (form.jingliu_c1_crit) {

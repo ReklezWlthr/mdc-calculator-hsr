@@ -67,12 +67,11 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: 'Death Sentence',
-      content: `Sets Blade's current HP to <span class="text-desc">50%</span> of his Max HP and deals <b class="text-hsr-wind">Wind DMG</b> to one designated enemy equal to the sum of {{0}}% of his Max HP, and {{1}}% of the tally of Blade's HP loss in the current battle. At the same time, deals <b class="text-hsr-wind">Wind DMG</b> to adjacent targets equal to the sum of {{2}}% of his Max HP, and {{3}}% of the tally of his HP loss in the current battle. The tally of Blade's HP loss in the current battle is capped at <span class="text-desc">90%</span> of his Max HP. This value will be reset and re-accumulated after his Ultimate has been used.`,
+      content: `Sets Blade's current HP to <span class="text-desc">50%</span> of his Max HP and deals <b class="text-hsr-wind">Wind DMG</b> to one designated enemy equal to the sum of {{0}}% of his Max HP, and {{1}}% of the tally of Blade's HP loss in the current battle. At the same time, deals <b class="text-hsr-wind">Wind DMG</b> to adjacent targets equal to the sum of {{2}}% of his Max HP, and {{1}}% of the tally of his HP loss in the current battle. The tally of Blade's HP loss in the current battle is capped at <span class="text-desc">90%</span> of his Max HP. This value will be reset and re-accumulated after his Ultimate has been used.`,
       value: [
         { base: 90, growth: 6, style: 'curved' },
-        { base: 60, growth: 4, style: 'curved' },
+        { base: 72, growth: 4.8, style: 'curved' },
         { base: 36, growth: 2.4, style: 'curved' },
-        { base: 30, growth: 2, style: 'curved' },
       ],
       level: ult,
       tag: AbilityTag.BLAST,
@@ -97,12 +96,12 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Vita Infinita`,
-      content: `When Blade's current HP is at <span class="text-desc">50%</span> of Max HP or lower, Incoming Healing increases by <span class="text-desc">20%</span>.`,
+      content: `When Blade uses Ultimate, the total accumulated HP loss will be set to <span class="text-desc">50%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Neverending Deaths`,
-      content: `After Blade receives healing <span class="text-desc">25%</span> of the healed amount will be converted to Ultimate's tally of HP lost.`,
+      content: `HP restored from healing increases by <span class="text-desc">20%</span>. After receiving healing <span class="text-desc">25%</span> of the healed amount will be converted to Ultimate's tally of HP lost.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -174,14 +173,6 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       default: 0,
       min: 0,
       unique: true,
-    },
-    {
-      type: 'toggle',
-      id: 'blade_a2',
-      text: `Current HP <= 50%`,
-      ...talents.a2,
-      show: a.a2,
-      default: true,
     },
   ]
 
@@ -285,9 +276,9 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             value: 0.15,
           })
       }
-      if (form.blade_a2)
+      if (a.a4)
         base.I_HEAL.push({
-          name: 'Ascension 2 Passive',
+          name: 'Ascension 4 Passive',
           source: 'Self',
           value: 0.2,
         })
@@ -335,7 +326,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           {
             name: 'Main Target',
             value: [{ scaling: calcScaling(0.9, 0.06, ult, 'curved'), multiplier: Stats.HP }],
-            flat: (calcScaling(0.6, 0.04, ult, 'curved') + (c >= 1 ? 1.5 : 0)) * loss,
+            flat: (calcScaling(0.72, 0.048, ult, 'curved') + (c >= 1 ? 1.5 : 0)) * loss,
             element: Element.WIND,
             property: TalentProperty.NORMAL,
             type: TalentType.ULT,
@@ -345,7 +336,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           {
             name: 'Adjacent',
             value: [{ scaling: calcScaling(0.36, 0.024, ult, 'curved'), multiplier: Stats.HP }],
-            flat: calcScaling(0.3, 0.02, ult, 'curved') * loss,
+            flat: calcScaling(0.36, 0.024, ult, 'curved') * loss,
             element: Element.WIND,
             property: TalentProperty.NORMAL,
             type: TalentType.ULT,

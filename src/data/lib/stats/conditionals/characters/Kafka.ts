@@ -65,7 +65,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 10,
       trace: 'Talent',
       title: 'Gentle but Cruel',
-      content: `After Kafka's teammate uses attacks on an enemy target, Kafka immediately launches <u>Follow-up ATK</u> and deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to that target, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> equivalent to that applied by her Ultimate to the attacked enemy target, lasting for <span class="text-desc">2</span> turns. This effect can be triggered up to <span class="text-desc">2</span> time(s), with <span class="text-desc">1</span> use(s) recovered at the end of Kafka's turn.`,
+      content: `After Kafka's teammate uses attacks on an enemy target, Kafka immediately launches <u>Follow-up ATK</u> and deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to the primary target, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> equivalent to that applied by her Ultimate to the attacked enemy target, lasting for <span class="text-desc">2</span> turns. This effect can be triggered up to <span class="text-desc">2</span> time(s), with <span class="text-desc">1</span> use(s) recovered at the end of Kafka's turn.`,
       value: [{ base: 42, growth: 9.8, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ST,

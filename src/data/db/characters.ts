@@ -1097,9 +1097,9 @@ export const Characters = [
     id: '1408',
     name: 'Phainon',
     stat: {
-      baseAtk: 73.92,
-      baseHp: 200.64,
-      baseDef: 99,
+      baseAtk: 79.2,
+      baseHp: 195.36,
+      baseDef: 95.7,
       baseSpd: 94,
       energy: 0,
     },

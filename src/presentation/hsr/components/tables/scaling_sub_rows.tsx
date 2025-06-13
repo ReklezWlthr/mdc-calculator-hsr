@@ -79,11 +79,16 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
       title={
         <div className="flex items-center justify-between">
           <p>{scaling.name}</p>
-          {!!toughness && element !== Element.NONE && (
-            <p className="text-xs font-normal">
-              Toughness Damage: <span className="text-desc">{_.round(toughness, 1).toLocaleString()}</span>
+          <div className="flex flex-col items-end">
+            <p className="text-xs font-normal text-gray">
+              {scaling.property} • <span className="text-desc">{scaling.type}</span>
             </p>
-          )}
+            {!!toughness && element !== Element.NONE && (
+              <p className="text-xs font-normal">
+                Toughness Damage: <span className="text-desc">{_.round(toughness, 1).toLocaleString()}</span>
+              </p>
+            )}
+          </div>
         </div>
       }
       body={DmgBody}

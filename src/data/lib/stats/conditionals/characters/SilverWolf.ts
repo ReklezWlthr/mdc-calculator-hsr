@@ -65,7 +65,7 @@ const SilverWolf = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       title: 'Awaiting System Response...',
       content: `Silver Wolf can create three types of Bugs: reduce ATK by {{0}}%, reduce DEF by {{1}}%, and reduce SPD by {{2}}%.
       <br />After every attack launched by Silver Wolf, she has a {{3}}% <u>base chance</u> to implant <span class="text-desc">1</span> random Bug that lasts for <span class="text-desc">3</span> turn(s) in the attacked enemy target.
-      <br />When the enemy target is defeated, the Weakness Silver Wolf implanted on it will be transferred, prioritizing Elite targets and above, and will not be transferred to another enemy with Weakness already implanted by Silver Wolf.`,
+      <br />When the enemy target is defeated, the Weakness Silver Wolf implanted on it will be transferred to another surviving enemy on the field that hasn't been implanted with Weakness, prioritizing Elite targets and greater.`,
       value: [
         { base: 5, growth: 0.5, style: 'curved' },
         { base: 6, growth: 0.6, style: 'curved' },
