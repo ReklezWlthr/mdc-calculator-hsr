@@ -132,12 +132,17 @@ export const StatsModal = observer(
               )
           )}
           {stats === 'Aggro' && (
-            <BulletPoint color="text-red">
-              Target Probability{' '}
-              <span className="text-desc">
-                {toPercentage(+totalValue.replaceAll(',', '') / sumAggro).toLocaleString()}
-              </span>
-            </BulletPoint>
+            <>
+              <BulletPoint color="text-desc">
+                Total Aggro <span className="text-desc">{sumAggro.toLocaleString()}</span>
+              </BulletPoint>
+              <BulletPoint color="text-red">
+                Target Probability (Memosprites included){' '}
+                <span className="text-desc">
+                  {toPercentage(+totalValue.replaceAll(',', '') / sumAggro).toLocaleString()}
+                </span>
+              </BulletPoint>
+            </>
           )}
         </div>
       </div>

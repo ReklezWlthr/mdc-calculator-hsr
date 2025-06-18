@@ -93,7 +93,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Deathrealm`,
-      content: `While in the <b>Spectral Transmigration</b> state, increases Effect RES by <span class="text-desc">35%</span>.`,
+      content: `While in the <b>Spectral Transmigration</b> state, Effect RES increases by <span class="text-desc">35%</span>, and Ultimate DMG dealt increases by <span class="text-desc">20%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -165,7 +165,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       text: `A6 DEF PEN`,
       ...talents.a6,
       show: a.a6,
-      default: true,
+      default: false,
     },
     {
       type: 'toggle',
@@ -297,12 +297,18 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             value: (calcScaling(0.22, 0.022, talent, 'curved') + (c >= 4 ? 0.2 : 0)) * form.moonlight,
           })
         }
-        if (a.a2)
+        if (a.a2) {
           base[Stats.E_RES].push({
             name: 'Ascension 2 Passive',
             source: 'Self',
             value: 0.35,
           })
+          base.ULT_DMG.push({
+            name: 'Ascension 2 Passive',
+            source: 'Self',
+            value: 0.2,
+          })
+        }
         if (form.jingliu_a6) {
           base.DEF_PEN.push({
             name: 'Ascension 6 Passive',

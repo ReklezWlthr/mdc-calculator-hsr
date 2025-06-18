@@ -111,8 +111,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c1: {
       trace: 'Eidolon 1',
       title: `Blade Cuts the Deepest in Hell`,
-      content: `Blade's Enhanced Basic ATK and Ultimate deals additionally increased DMG to one designated enemy, with the increased amount equal to <span class="text-desc">150%</span> of the tally of Blade's HP loss in the current battle.
-      <br />The tally of Blade's HP loss in the current battle is capped at <span class="text-desc">90%</span> of his Max HP. The tally value will be reset and re-accumulated after his Ultimate has been used.`,
+      content: `Blade's Enhanced Basic ATK and Ultimate deals additionally increased DMG to one designated enemy, with the increased amount equal to <span class="text-desc">150%</span> of the tally of Blade's HP loss from his Ultimate.`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -268,6 +267,11 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           name: 'Skill',
           source: 'Self',
           value: calcScaling(0.12, 0.028, skill, 'curved'),
+        })
+        base.AGGRO.push({
+          name: 'Skill',
+          source: 'Self',
+          value: 10,
         })
         if (c >= 2)
           base[Stats.CRIT_RATE].push({

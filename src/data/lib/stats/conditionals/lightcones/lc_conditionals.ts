@@ -226,7 +226,7 @@ export const LCConditionals: IWeaponContent[] = [
     type: 'number',
     text: `Eclipse Stacks`,
     show: true,
-    default: 0,
+    default: 3,
     min: 0,
     max: 3,
     id: '23014',

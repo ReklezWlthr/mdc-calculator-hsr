@@ -18,7 +18,7 @@ import { CompareTraceBlock } from '@src/presentation/hsr/components/compare/comp
 import { CompareSuperBreakSubRows } from '../tables/compare_super_break_sub_row '
 import { CharacterSelect } from '../character_select'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
-import { BaseAggro, Element, PathType, TalentProperty, TalentType } from '@src/domain/constant'
+import { BaseAggro, BaseSummonAggro, Element, PathType, TalentProperty, TalentType } from '@src/domain/constant'
 import { CompareTotalRows } from '../tables/compare_total_row'
 import { EnemyModal } from '../modals/enemy_modal'
 import { DebuffModal } from '../modals/debuff_modal'
@@ -113,9 +113,12 @@ export const CompareBlock = observer(() => {
           sumAggro={_.sumBy(
             allStats[setupIndex],
             (item) =>
-              BaseAggro[item.PATH] *
+              (BaseAggro[item.PATH] *
                 (1 + (item.getValue(StatsObjectKeys.BASE_AGGRO) || 0)) *
-                (1 + (item.getValue(StatsObjectKeys.AGGRO) || 0)) || 0
+                (1 + (item.getValue(StatsObjectKeys.AGGRO) || 0)) || 0) +
+              (BaseSummonAggro[item.SUMMON_STATS?.SUMMON_ID] *
+                (1 + (item.SUMMON_STATS?.getValue(StatsObjectKeys.BASE_AGGRO) || 0)) *
+                (1 + (item.SUMMON_STATS?.getValue(StatsObjectKeys.AGGRO) || 0)) || 0)
           )}
         />
       ),

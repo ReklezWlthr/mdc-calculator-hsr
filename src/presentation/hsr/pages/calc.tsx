@@ -52,7 +52,7 @@ export const Calculator = observer(({}: {}) => {
               ? (BaseAggro[item.PATH] *
                   (1 + (item.getValue(StatsObjectKeys.BASE_AGGRO) || 0)) *
                   (1 + (item.getValue(StatsObjectKeys.AGGRO) || 0)) || 0) +
-                (BaseSummonAggro[char.cId] *
+                (BaseSummonAggro[item.SUMMON_STATS?.SUMMON_ID] *
                   (1 + (item.SUMMON_STATS?.getValue(StatsObjectKeys.BASE_AGGRO) || 0)) *
                   (1 + (item.SUMMON_STATS?.getValue(StatsObjectKeys.AGGRO) || 0)) || 0)
               : 0

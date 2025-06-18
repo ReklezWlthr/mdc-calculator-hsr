@@ -146,8 +146,9 @@ export const BaseAggro = {
 
 export const BaseSummonAggro = {
   '1402': 125,
-  '8007': 200,
+  '8007': 100,
   '1407': 100,
+  '1409': 100,
 }
 
 export enum TalentType {
