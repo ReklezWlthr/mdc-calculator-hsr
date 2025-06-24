@@ -1089,7 +1089,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
   {
     id: '23028',
     scaling: (base, r) => {
-      base[Stats.P_HP].push({
+      base[Stats.CRIT_RATE].push({
         name: 'Passive',
         source: 'Yet Hope Is Priceless',
         value: calcRefinement(0.16, 0.03, r),
