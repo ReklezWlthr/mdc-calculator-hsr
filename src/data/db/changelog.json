@@ -4,7 +4,9 @@
     "date": "June 26th, 2025",
     "desc": [
       "Added: Quick Max-Out buttons for quicker setups.",
-      "Fixed: <span class=\"text-hsr-physical\">Robin</span>'s Ultimate's Additional DMG now applies to memosprites."
+      "Fixed: <span class=\"text-hsr-physical\">Robin</span>'s Ultimate's Additional DMG now applies to memosprites.",
+      "Fixed: <span class=\"text-hsr-imaginary\">Sunday</span>'s <b class=\"text-hsr-imaginary\">The Beatified</b> now correctly applies to memosprites.",
+      "Fixed: <span class=\"text-hsr-lightning\">Tingyun</span>'s <b>Benediction</b>'s Additional DMG now correctly applies to memosprites."
     ]
   },
   {

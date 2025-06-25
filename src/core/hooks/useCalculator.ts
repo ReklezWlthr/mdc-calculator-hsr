@@ -422,6 +422,12 @@ export const useCalculator = ({
       _.forEach(cbs, (cb) => {
         if (cb) x = cb(x, debuffs, weakness, postArtifactCallback, true)
       })
+      if (base.SUMMON_STATS) {
+        const mcbs = base.SUMMON_STATS.CALLBACK.sort((a, b) => compareWeight(a.name, b.name))
+        _.forEach(mcbs, (cb) => {
+          if (cb) x.SUMMON_STATS = cb(x.SUMMON_STATS, debuffs, weakness, postArtifactCallback, true)
+        })
+      }
 
       return x
     })
