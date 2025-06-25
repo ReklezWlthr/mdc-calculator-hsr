@@ -332,7 +332,11 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
                   team[i].MEMO_SKILL_SCALING,
                 ],
                 (s) => {
-                  if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
+                  if (
+                    _.some(s, (item) =>
+                      _.includes([TalentProperty.NORMAL, TalentProperty.FUA, TalentProperty.SERVANT], item.property)
+                    )
+                  )
                     s.push({
                       name: "Concerto's Additional DMG",
                       value: [{ scaling: calcScaling(0.72, 0.048, skill, 'curved'), multiplier: Stats.ATK }],

@@ -157,7 +157,7 @@ export enum TalentType {
   ULT = 'Ultimate',
   TECH = 'Technique',
   TALENT = 'Talent',
-  SERVANT = 'Memosprite',
+  SERVANT = 'Memosprite Skill',
   SERVANT_T = 'Memosprite Talent',
   NONE = 'None',
 }

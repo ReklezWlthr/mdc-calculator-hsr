@@ -151,7 +151,7 @@ export const TeamSetup = observer(() => {
           <StatBlock stat={stats} />
         </div>
         <div className="w-1/5 space-y-5">
-          <div className="grid items-center justify-center grid-cols-2 gap-5 py-3">
+          <div className="grid items-center justify-center grid-cols-2 gap-5 pt-3">
             <p className="-mb-2 text-lg font-bold text-center text-white col-span-full">Traces</p>
             <AbilityBlock
               char={char}
@@ -170,6 +170,83 @@ export const TeamSetup = observer(() => {
                 id={char?.cId}
                 data={char?.minor_traces}
                 onClick={(i) => teamStore.toggleMinorTrace(selected, i)}
+              />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <p className="font-bold text-center text-white">Quick Max-Out</p>
+            <div className="grid grid-cols-2 gap-2">
+              <PrimaryButton
+                title="Everything"
+                onClick={() => {
+                  teamStore.setMemberInfo(selected, { level: 80, ascension: 6 })
+                  teamStore.setWeapon(selected, { level: 80, ascension: 6 })
+                  teamStore.setMemberInfo(selected, {
+                    talents: {
+                      basic: 6,
+                      skill: 10,
+                      memo_skill: 10,
+                      memo_talent: 10,
+                      talent: 10,
+                      ult: 10,
+                    },
+                    major_traces: {
+                      a2: true,
+                      a4: true,
+                      a6: true,
+                    },
+                    minor_traces: _.map(char?.minor_traces, (item) => ({ ...item, toggled: true })),
+                  })
+                }}
+                small
+              />
+              <PrimaryButton
+                title="Level"
+                onClick={() => teamStore.setMemberInfo(selected, { level: 80, ascension: 6 })}
+                small
+              />
+              <PrimaryButton
+                title="Light Cone"
+                onClick={() => teamStore.setWeapon(selected, { level: 80, ascension: 6 })}
+                small
+              />
+              <PrimaryButton
+                title="Traces"
+                onClick={() =>
+                  teamStore.setMemberInfo(selected, {
+                    talents: {
+                      basic: char?.ascension || 1,
+                      skill: findMaxTalentLevel(char?.ascension) || 1,
+                      memo_skill: char?.ascension || 1,
+                      memo_talent: char?.ascension || 1,
+                      talent: findMaxTalentLevel(char?.ascension) || 1,
+                      ult: findMaxTalentLevel(char?.ascension) || 1,
+                    },
+                  })
+                }
+                small
+              />
+              <PrimaryButton
+                title="Passives"
+                onClick={() =>
+                  teamStore.setMemberInfo(selected, {
+                    major_traces: {
+                      a2: true,
+                      a4: true,
+                      a6: true,
+                    },
+                  })
+                }
+                small
+              />
+              <PrimaryButton
+                title="Minor Traces"
+                onClick={() =>
+                  teamStore.setMemberInfo(selected, {
+                    minor_traces: _.map(char?.minor_traces, (item) => ({ ...item, toggled: true })),
+                  })
+                }
+                small
               />
             </div>
           </div>

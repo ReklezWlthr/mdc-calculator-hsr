@@ -79,7 +79,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
       title={
         <div className="flex items-center justify-between">
           <p>{scaling.name}</p>
-          <div className="flex flex-col items-end">
+          <div className="flex flex-col items-end shrink-0">
             <p className="text-xs font-normal text-gray">
               {scaling.property} • <span className="text-desc">{scaling.type}</span>
             </p>
