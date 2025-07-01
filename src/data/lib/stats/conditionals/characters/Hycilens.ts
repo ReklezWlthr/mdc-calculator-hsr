@@ -1,0 +1,570 @@
+import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
+import _, { chain } from 'lodash'
+import { baseStatsObject, StatsObject } from '../../baseConstant'
+import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+
+import { toPercentage } from '@src/core/utils/converter'
+import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
+import { calcScaling } from '@src/core/utils/calculator'
+
+const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
+  const upgrade = {
+    basic: c >= 3 ? 1 : 0,
+    skill: c >= 5 ? 2 : 0,
+    ult: c >= 3 ? 2 : 0,
+    talent: c >= 5 ? 2 : 0,
+  }
+  const basic = t.basic + upgrade.basic
+  const skill = t.skill + upgrade.skill
+  const ult = t.ult + upgrade.ult
+  const talent = t.talent + upgrade.talent
+
+  const names = _.map(team, (item) => findCharacter(item?.cId)?.name)
+  const index = _.findIndex(team, (item) => item?.cId === '1410')
+
+  const talents: ITalent = {
+    normal: {
+      energy: 20,
+      trace: 'Basic ATK',
+      title: 'Ballad in Still Waters',
+      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Hysilens's ATK to one designated enemy.`,
+      value: [{ base: 50, growth: 10, style: 'linear' }],
+      level: basic,
+      tag: AbilityTag.ST,
+    },
+    skill: {
+      energy: 30,
+      trace: 'Skill',
+      title: 'Overtone Beyond Undercurrents',
+      content: `Has a <span class="text-desc">100%</span> <u>base chance</u> to increase DMG taken by all enemies by {{0}}%, lasting for <span class="text-desc">3</span> turn(s), while dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Hysilens's ATK to all enemies.`,
+      value: [
+        { base: 10, growth: 1, style: 'curved' },
+        { base: 70, growth: 7, style: 'curved' },
+      ],
+      level: skill,
+      tag: AbilityTag.BLAST,
+    },
+    ult: {
+      energy: 5,
+      trace: 'Ultimate',
+      title: 'Dance of Raging-Tides and Devoured Souls',
+      content: `Deploys a Zone that reduces enemy target's ATK by <span class="text-desc">15%</span> and DEF by {{0}}%, and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Hysilens's ATK to all enemies.
+      <br />Whenever an enemy target within the Zone takes DMG from DoT, deals <b class="text-hsr-physical">Physical DoT</b> equal to {{2}}% of Hysilens's ATK to them. This DMG cannot repeatedly trigger this effect, and it can be triggered up to <span class="text-desc">8</span> time(s) at the start of each turn or within one action of an ally target.
+      <br />The Zone lasts for <span class="text-desc">3</span> turn(s), decreasing by <span class="text-desc">1</span> turn at the start of each turn. The Zone will be dispelled if Hysilens becomes knocked down.`,
+      value: [
+        { base: 15, growth: 1, style: 'curved' },
+        { base: 180, growth: 12, style: 'curved' },
+        { base: 32, growth: 5.28, style: 'hycilens' },
+      ],
+      level: ult,
+      tag: AbilityTag.AOE,
+    },
+    talent: {
+      energy: 10,
+      trace: 'Talent',
+      title: 'The Sea Siren Sings',
+      content: `When using Basic ATK, Skill, or Ultimate, there is a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b> on the enemy target, prioritizing to inflict different states.
+      <br />Under the <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b> state, at the start of each turn, the enemy target takes <b class="text-hsr-wind">Wind</b>/<b class="text-hsr-fire">Fire</b>/<b class="text-hsr-lightning">Lightning DoT</b> equal to {{0}}% of Hysilens' ATK for <span class="text-desc">2</span> turn(s).
+      <br />Under the <b class="text-hsr-physical">Bleed</b> state, at the start of each turn, the enemy target takes <b class="text-hsr-physical">Physical DoT</b> equal to <span class="text-desc">20%</span> of their Max HP, up to {{0}}% of Hysilens' ATK, lasting for <span class="text-desc">2</span> turn(s).`,
+      value: [{ base: 10, growth: 1.65, style: 'hycilens' }],
+      level: talent,
+      tag: AbilityTag.ST,
+    },
+    technique: {
+      trace: 'Technique',
+      title: 'Oceanic Abode',
+      content: `After using Technique, creates a Special Dimension that lasts for <span class="text-desc">20</span> seconds and automatically moves forward. Enemies within the Special Dimension enter the <b>Enraptured</b> state. Enemies in the <b>Enraptured</b> state will not attack Hysilens and will follow the dimension while it persists.
+      <br />After entering battle with enemies in the <b>Enraptured</b> state, there is a <span class="text-desc">100%</span> <u>base chance</u> for each enemy to be inflicted with <span class="text-desc">2</span> of the following states that is the same as Hysilens's Talent's effects: <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b>. Only <span class="text-desc">1</span> Dimension Effect created by allies can exist at a time.`,
+    },
+    a2: {
+      trace: 'Ascension 2 Passive',
+      title: 'Banner of Conquest',
+      content: `At the start of combat, Hysilens creates a Zone with the same effect as her Ultimate, lasting for <span class="text-desc">3</span> turns.`,
+    },
+    a4: {
+      trace: 'Ascension 4 Passive',
+      title: 'Bubble of Grandeur',
+      content: `When other allies perform attacks, Hysilens has a <span class="text-desc">100%</span> <u>base chance</u> to inflict the enemy target with one of the same states as Hysilens's Talent (<b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b>) for <span class="text-desc">2</span> turns.`,
+    },
+    a6: {
+      trace: 'Ascension 6 Passive',
+      title: 'Strings of Pearl',
+      content: `For every <span class="text-desc">10%</span> of Hysilens's Effect Hit Rate that exceeds <span class="text-desc">60%</span>, increases DMG by <span class="text-desc">15%</span>, up to <span class="text-desc">90%</span>.`,
+    },
+    c1: {
+      trace: 'Eidolon 1',
+      title: 'Why My Heart Grieves, You Inquire',
+      content: `When using Ultimate, if the enemy target is currently inflicted with DoT(s), immediately deals <span class="text-desc">150%</span> of the original DoT damage. When Hysilens deploys a Zone, recovers <span class="text-desc">1</span> Skill Point(s).`,
+    },
+    c2: {
+      trace: 'Eidolon 2',
+      title: `Why the Waves Roar, You Entreat`,
+      content: `While the Zone is active, reduces <b>All-Type RES</b> of all enemies by <span class="text-desc">20%</span>.`,
+    },
+    c3: {
+      trace: 'Eidolon 3',
+      title: 'Why the Lamplights Forget, You Postulate',
+      content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
+      <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
+    },
+    c4: {
+      trace: 'Eidolon 4',
+      title: 'Behold, For What Does Time Flow',
+      content: `While the Zone is active, the DMG Boost effect from Trace <b>Strings of Pearl</b> applies to all allies.`,
+    },
+    c5: {
+      trace: 'Eidolon 5',
+      title: `In Ablution, I Hum`,
+      content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
+      <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
+    },
+    c6: {
+      trace: 'Eidolon 6',
+      title: 'When Will You Return, Sunken One',
+      content: `Zone is enhanced. Hysilens's <b class="text-hsr-physical">Physical DoT</b> effect trigger count increases by <span class="text-desc">4</span>. When Hysilens inflicts <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b> state on enemies through Talent or Trace <b>Bubble of Grandeur</b>, there is a <span class="text-desc">100%</span> <u>base chance</u> to additionally inflict a <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b> state that is individually calculated.`,
+    },
+  }
+
+  const content: IContent[] = [
+    {
+      type: 'toggle',
+      id: 'hycilens_skill',
+      text: `Skill Vulnerability`,
+      ...talents.skill,
+      show: true,
+      default: true,
+      duration: 3,
+      debuff: true,
+      chance: { base: 1, fixed: false },
+    },
+    {
+      type: 'toggle',
+      id: 'hycilens_ult',
+      text: `Hycilens Zone`,
+      ...talents.ult,
+      show: true,
+      default: true,
+      unique: true,
+      duration: 3,
+    },
+    {
+      type: 'toggle',
+      id: 'hycilens_wind',
+      text: `Hycilens's Wind Shear`,
+      ...talents.talent,
+      show: true,
+      default: true,
+      duration: 2,
+      debuff: true,
+      chance: { base: 1, fixed: false },
+    },
+    {
+      type: 'toggle',
+      id: 'hycilens_shock',
+      text: `Hycilens's Shock`,
+      ...talents.talent,
+      show: true,
+      default: true,
+      duration: 2,
+      debuff: true,
+      chance: { base: 1, fixed: false },
+    },
+    {
+      type: 'toggle',
+      id: 'hycilens_burn',
+      text: `Hycilens's Burn`,
+      ...talents.talent,
+      show: true,
+      default: true,
+      duration: 2,
+      debuff: true,
+      chance: { base: 1, fixed: false },
+    },
+    {
+      type: 'toggle',
+      id: 'hycilens_bleed',
+      text: `Hycilens's Bleed`,
+      ...talents.talent,
+      show: true,
+      default: true,
+      duration: 2,
+      debuff: true,
+      chance: { base: 1, fixed: false },
+    },
+    {
+      type: 'toggle',
+      id: 'hycilens_e6_wind',
+      text: `Hycilens's E6 Wind Shear`,
+      ...talents.c6,
+      show: c >= 6,
+      default: true,
+      duration: 2,
+      debuff: true,
+      chance: { base: 1, fixed: false },
+    },
+    {
+      type: 'toggle',
+      id: 'hycilens_e6_shock',
+      text: `Hycilens's E6 Shock`,
+      ...talents.c6,
+      show: c >= 6,
+      default: true,
+      duration: 2,
+      debuff: true,
+      chance: { base: 1, fixed: false },
+    },
+    {
+      type: 'toggle',
+      id: 'hycilens_e6_burn',
+      text: `Hycilens's E6 Burn`,
+      ...talents.c6,
+      show: c >= 6,
+      default: true,
+      duration: 2,
+      debuff: true,
+      chance: { base: 1, fixed: false },
+    },
+    {
+      type: 'toggle',
+      id: 'hycilens_e6_bleed',
+      text: `Hycilens's E6 Bleed`,
+      ...talents.c6,
+      show: c >= 6,
+      default: true,
+      duration: 2,
+      debuff: true,
+      chance: { base: 1, fixed: false },
+    },
+  ]
+
+  const teammateContent: IContent[] = [
+    findContentById(content, 'hycilens_skill'),
+    findContentById(content, 'hycilens_ult'),
+    findContentById(content, 'hycilens_wind'),
+    findContentById(content, 'hycilens_shock'),
+    findContentById(content, 'hycilens_burn'),
+    findContentById(content, 'hycilens_bleed'),
+    findContentById(content, 'hycilens_e6_wind'),
+    findContentById(content, 'hycilens_e6_shock'),
+    findContentById(content, 'hycilens_e6_burn'),
+    findContentById(content, 'hycilens_e6_bleed'),
+  ]
+
+  const allyContent: IContent[] = []
+
+  return {
+    upgrade,
+    talents,
+    content,
+    teammateContent,
+    allyContent,
+    preCompute: (
+      x: StatsObject,
+      form: Record<string, any>,
+      debuffs: {
+        type: DebuffTypes
+        count: number
+      }[],
+      weakness: Element[],
+      broken: boolean
+    ) => {
+      const base = _.cloneDeep(x)
+
+      base.BASIC_SCALING = [
+        {
+          name: 'Single Target',
+          value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NORMAL,
+          type: TalentType.BA,
+          break: 10,
+          sum: true,
+        },
+      ]
+      base.SKILL_SCALING = [
+        {
+          name: 'AoE',
+          value: [{ scaling: calcScaling(0.7, 0.07, skill, 'curved'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NORMAL,
+          type: TalentType.SKILL,
+          break: 20,
+          sum: true,
+        },
+      ]
+      base.ULT_SCALING = [
+        {
+          name: 'AoE',
+          value: [{ scaling: calcScaling(1.8, 0.12, ult, 'curved'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NORMAL,
+          type: TalentType.ULT,
+          break: 20,
+          sum: true,
+        },
+        {
+          name: `Zone DoT`,
+          value: [{ scaling: calcScaling(0.32, 0.0528, ult, 'hycilens'), multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.DOT,
+          type: TalentType.NONE,
+          sum: false,
+        },
+      ]
+      base.TALENT_SCALING = []
+      base.TECHNIQUE_SCALING = []
+
+      const dot = {
+        value: [{ scaling: calcScaling(0.1, 0.0165, talent, 'hycilens'), multiplier: Stats.ATK }],
+        property: TalentProperty.DOT,
+        type: TalentType.NONE,
+        sum: false,
+        chance: { base: 1, fixed: false },
+      }
+
+      if (form.hycilens_shock) {
+        const shock = {
+          ...dot,
+          name: 'Shocked DMG',
+          element: Element.LIGHTNING,
+          debuffElement: Element.LIGHTNING,
+        }
+        base.TALENT_SCALING.push(shock)
+        base.DOT_SCALING.push({ ...shock, overrideIndex: index, dotType: DebuffTypes.SHOCKED })
+        addDebuff(debuffs, DebuffTypes.SHOCKED)
+      }
+      if (form.hycilens_burn) {
+        const burn = {
+          ...dot,
+          name: 'Burn DMG',
+          element: Element.FIRE,
+          debuffElement: Element.FIRE,
+        }
+        base.TALENT_SCALING.push(burn)
+        base.DOT_SCALING.push({ ...burn, overrideIndex: index, dotType: DebuffTypes.BURN })
+        addDebuff(debuffs, DebuffTypes.BURN)
+      }
+      if (form.hycilens_wind) {
+        const wind = {
+          ...dot,
+          name: 'Wind Shear DMG',
+          element: Element.WIND,
+          debuffElement: Element.WIND,
+        }
+        base.TALENT_SCALING.push(wind)
+        base.DOT_SCALING.push({ ...wind, overrideIndex: index, dotType: DebuffTypes.WIND_SHEAR })
+        addDebuff(debuffs, DebuffTypes.WIND_SHEAR)
+      }
+      if (form.hycilens_bleed) {
+        const bleed = {
+          ...dot,
+          name: 'Bleed DMG',
+          element: Element.PHYSICAL,
+          debuffElement: Element.PHYSICAL,
+          value: [{ scaling: 0.2, multiplier: Stats.EHP }],
+          cap: { scaling: calcScaling(0.1, 0.0165, talent, 'hycilens'), multiplier: Stats.ATK },
+        }
+        base.TALENT_SCALING.push(bleed)
+        base.DOT_SCALING.push({ ...bleed, overrideIndex: index, dotType: DebuffTypes.BLEED })
+        addDebuff(debuffs, DebuffTypes.BLEED)
+      }
+
+      if (form.hycilens_e6_shock) {
+        const shock = {
+          ...dot,
+          name: 'E6 Shocked DMG',
+          element: Element.LIGHTNING,
+          debuffElement: Element.LIGHTNING,
+        }
+        base.TALENT_SCALING.push(shock)
+        base.DOT_SCALING.push({ ...shock, overrideIndex: index, dotType: DebuffTypes.SHOCKED })
+        addDebuff(debuffs, DebuffTypes.SHOCKED)
+      }
+      if (form.hycilens_e6_burn) {
+        const burn = {
+          ...dot,
+          name: 'E6 Burn DMG',
+          element: Element.FIRE,
+          debuffElement: Element.FIRE,
+        }
+        base.TALENT_SCALING.push(burn)
+        base.DOT_SCALING.push({ ...burn, overrideIndex: index, dotType: DebuffTypes.BURN })
+        addDebuff(debuffs, DebuffTypes.BURN)
+      }
+      if (form.hycilens_e6_wind) {
+        const wind = {
+          ...dot,
+          name: 'E6 Wind Shear DMG',
+          element: Element.WIND,
+          debuffElement: Element.WIND,
+        }
+        base.TALENT_SCALING.push(wind)
+        base.DOT_SCALING.push({ ...wind, overrideIndex: index, dotType: DebuffTypes.WIND_SHEAR })
+        addDebuff(debuffs, DebuffTypes.WIND_SHEAR)
+      }
+      if (form.hycilens_e6_bleed) {
+        const bleed = {
+          ...dot,
+          name: 'E6 Bleed DMG',
+          element: Element.PHYSICAL,
+          debuffElement: Element.PHYSICAL,
+          value: [{ scaling: 0.2, multiplier: Stats.EHP }],
+          cap: { scaling: calcScaling(0.1, 0.0165, talent, 'hycilens'), multiplier: Stats.ATK },
+        }
+        base.TALENT_SCALING.push(bleed)
+        base.DOT_SCALING.push({ ...bleed, overrideIndex: index, dotType: DebuffTypes.BLEED })
+        addDebuff(debuffs, DebuffTypes.BLEED)
+      }
+
+      if (form.hycilens_skill) {
+        base.VULNERABILITY.push({
+          name: `Skill`,
+          source: 'Self',
+          value: calcScaling(0.1, 0.01, skill, 'curved'),
+        })
+        addDebuff(debuffs, DebuffTypes.OTHER)
+      }
+      if (form.hycilens_ult) {
+        base.ATK_REDUCTION.push({
+          name: `Ultimate`,
+          source: 'Self',
+          value: 0.15,
+        })
+        addDebuff(debuffs, DebuffTypes.OTHER)
+
+        base.DEF_REDUCTION.push({
+          name: `Ultimate`,
+          source: 'Self',
+          value: calcScaling(0.15, 0.01, ult, 'curved'),
+        })
+        addDebuff(debuffs, DebuffTypes.DEF_RED)
+
+        if (c >= 2) {
+          base.ALL_TYPE_RES_RED.push({
+            name: `Eidolon 2`,
+            source: 'Self',
+            value: 0.2,
+          })
+          addDebuff(debuffs, DebuffTypes.OTHER)
+        }
+      }
+
+      return base
+    },
+    preComputeShared: (
+      own: StatsObject,
+      base: StatsObject,
+      form: Record<string, any>,
+      aForm: Record<string, any>,
+      debuffs: { type: DebuffTypes; count: number }[],
+      weakness: Element[],
+      broken: boolean
+    ) => {
+      if (form.hycilens_skill) {
+        base.VULNERABILITY.push({
+          name: `Skill`,
+          source: 'Hycilens',
+          value: calcScaling(0.1, 0.01, skill, 'curved'),
+        })
+      }
+      if (form.hycilens_ult) {
+        base.ATK_REDUCTION.push({
+          name: `Ultimate`,
+          source: 'Hycilens',
+          value: 0.15,
+        })
+
+        base.DEF_REDUCTION.push({
+          name: `Ultimate`,
+          source: 'Hycilens',
+          value: calcScaling(0.15, 0.01, ult, 'curved'),
+        })
+
+        if (c >= 2) {
+          base.ALL_TYPE_RES_RED.push({
+            name: `Eidolon 2`,
+            source: 'Self',
+            value: 0.2,
+          })
+        }
+      }
+
+      return base
+    },
+    postCompute: (
+      base: StatsObject,
+      form: Record<string, any>,
+      team: StatsObject[],
+      allForm: Record<string, any>[],
+      debuffs: {
+        type: DebuffTypes
+        count: number
+      }[],
+      weakness: Element[],
+      broken: boolean
+    ) => {
+      if (a.a6) {
+        base.CALLBACK.push((x, d, w, all) => {
+          const ehr = _.max([0, x.getValue(Stats.EHR) - 0.6])
+          const buff = {
+            name: 'Ascension 6 Passive',
+            source: 'Self',
+            value: _.min([ehr * 1.5, 0.9]),
+            base: toPercentage(_.min([ehr, 0.6])),
+            multiplier: 1.5,
+          }
+          if (c >= 4) {
+            _.forEach(all, (char) => char[Stats.ALL_DMG].push(buff))
+          } else {
+            x[Stats.ALL_DMG].push(buff)
+          }
+          return x
+        })
+      }
+
+      base.CALLBACK.push(function P99(x, d, w, all) {
+        _.map(all, (char) => {
+          _.map([char.BASIC_SCALING, char.SKILL_SCALING, char.ULT_SCALING, char.TALENT_SCALING], (item) => {
+            const dot = _.filter(item, (v) => v.property === TalentProperty.DOT && _.endsWith(v.name, 'Detonation'))
+            if (_.size(dot)) {
+              item.push({
+                name: `Hycilens's Zone DoT`,
+                value: [{ scaling: calcScaling(0.32, 0.0528, ult, 'hycilens'), multiplier: Stats.ATK }],
+                multiplier: _.min([_.size(dot), c >= 6 ? 12 : 8]),
+                element: Element.PHYSICAL,
+                property: TalentProperty.DOT,
+                type: TalentType.NONE,
+                sum: true,
+                detonate: true,
+              })
+            }
+          })
+        })
+
+        return x
+      })
+
+      if (c >= 1) {
+        base.CALLBACK.push((x, d, w, all) => {
+          const dots = _.flatMap(all, (item) => item.DOT_SCALING)
+          x.ULT_SCALING.push(
+            ..._.map(dots, (item, i) => ({
+              ...item,
+              chance: undefined,
+              name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
+              multiplier: (item.multiplier || 1) * 1.5,
+              sum: true,
+              detonate: true,
+            }))
+          )
+
+          return x
+        })
+      }
+
+      return base
+    },
+  }
+}
+
+export default Hycilens

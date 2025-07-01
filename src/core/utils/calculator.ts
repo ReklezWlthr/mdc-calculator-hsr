@@ -222,4 +222,11 @@ export const calcScaling = (base: number, growth: number, level: number, type: T
         acc + (index <= 4 ? growth * 1.32 : index <= 6 ? growth * 1.2 : index <= 8 ? growth * 1.5 : growth),
       base
     )
+  if (type === 'hycilens')
+    return _.reduce(
+      Array(level - 1 || 0),
+      (acc, _, index) =>
+        acc + (index <= 4 ? growth : index <= 6 ? base * 0.15 : index <= 8 ? base * 0.1875 : base * 0.125),
+      base
+    )
 }

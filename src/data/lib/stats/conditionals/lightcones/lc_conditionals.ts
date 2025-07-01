@@ -1,5 +1,12 @@
 import { calcRefinement } from '@src/core/utils/data_format'
-import { addDebuff, checkBuffExist, checkInclusiveKey, findCharacter, findContentById } from '@src/core/utils/finder'
+import {
+  addDebuff,
+  checkBuffExist,
+  checkInclusiveKey,
+  countOwnDebuffs,
+  findCharacter,
+  findContentById,
+} from '@src/core/utils/finder'
 import { DebuffTypes, IWeaponContent } from '@src/domain/conditional'
 import { Element, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 import _ from 'lodash'
@@ -2325,6 +2332,36 @@ export const LCTeamConditionals: IWeaponContent[] = [
             name: `Passive`,
             source: 'Holiday Thermae Escapade',
             value: calcRefinement(0.1, 0.01, r),
+          })
+        }
+        if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Enthrallment`,
+    show: true,
+    default: true,
+    debuff: true,
+    duration: 3,
+    chance: { base: 0.8, fixed: false },
+    id: '23047',
+    excludeSummon: true,
+    scaling: (base, form, r, { debuffs, own, index }) => {
+      const count = _.min([countOwnDebuffs(own, index) + 1, 6])
+      if (form['23047'] && !checkBuffExist(base.VULNERABILITY, { name: 'Enthrallment' })) {
+        base.DOT_VUL.push({
+          name: `Enthrallment`,
+          source: 'Why Does the Ocean Sing',
+          value: calcRefinement(0.05, 0.0125, r) * count,
+        })
+        if (base.SUMMON_STATS && !checkBuffExist(base.SUMMON_STATS.VULNERABILITY, { name: 'Enthrallment' })) {
+          base.SUMMON_STATS.DOT_VUL.push({
+            name: `Passive`,
+            source: 'Why Does the Ocean Sing',
+            value: calcRefinement(0.05, 0.0125, r) * count,
           })
         }
         if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)

@@ -1566,6 +1566,17 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23047',
+    scaling: (base, r) => {
+      base[Stats.EHR].push({
+        name: 'Passive',
+        source: `Why Does the Ocean Sing`,
+        value: calcRefinement(0.4, 0.05, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

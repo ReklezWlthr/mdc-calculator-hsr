@@ -139,7 +139,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     {
       type: 'toggle',
       id: 'kafka_ult',
-      text: `Ult Shock`,
+      text: `Kafka's Ult Shock`,
       ...talents.ult,
       show: true,
       default: true,

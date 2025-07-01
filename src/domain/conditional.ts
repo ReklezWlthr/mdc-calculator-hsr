@@ -1,7 +1,7 @@
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from './constant'
 
-export type TalentScalingStyle = 'linear' | 'curved' | 'flat' | 'heal' | 'pure' | 'arcana' | 'dot'
+export type TalentScalingStyle = 'linear' | 'curved' | 'flat' | 'heal' | 'pure' | 'arcana' | 'dot' | 'hycilens'
 
 export enum DebuffTypes {
   WIND_SHEAR = 'Wind Shear',

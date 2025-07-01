@@ -2,7 +2,7 @@ import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
 import { Characters } from '@src/data/db/characters'
 import { Enemies } from '@src/data/db/enemies'
 import { LightCones } from '@src/data/db/lightcone'
-import { StatsArray } from '@src/data/lib/stats/baseConstant'
+import { baseStatsObject, StatsArray } from '@src/data/lib/stats/baseConstant'
 import { DebuffTypes } from '@src/domain/conditional'
 import { Element } from '@src/domain/constant'
 import _ from 'lodash'
@@ -61,3 +61,36 @@ export const compareWeight = (a: string, b: string) => {
 
 export const checkInclusiveKey = (form: Record<string, any>, id: string) =>
   _.some(form, (value, key) => !!value && _.startsWith(key, id))
+
+export const countOwnDebuffs = (own: typeof baseStatsObject, index: number) => {
+  const base = _.size(
+    _.filter(
+      _.concat(
+        own.EHR_RED,
+        own.EHR_RED,
+        own.ATK_REDUCTION,
+        own.DEF_REDUCTION,
+        own.DEF_REDUCTION,
+        own.SPD_REDUCTION,
+        own.ICE_RES_RED,
+        own.FIRE_RES_RED,
+        own.WIND_RES_RED,
+        own.PHYSICAL_RES_RED,
+        own.QUANTUM_RES_RED,
+        own.IMAGINARY_RES_RED,
+        own.WEAKEN,
+        own.VULNERABILITY,
+        own.DOT_VUL,
+        own.FIRE_VUL,
+        own.BREAK_VUL,
+        own.FUA_VUL,
+        own.ULT_VUL,
+        own.ADD_DEBUFF
+      ),
+      (item) => item.source === 'Self'
+    )
+  )
+  const dot = _.size(_.filter(own.DOT_SCALING, (item) => item.overrideIndex === index))
+
+  return base + dot
+}

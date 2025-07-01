@@ -1249,7 +1249,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 24,
     type: PathType.PRESERVATION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Sweet Dream',
       detail: `Increases the wearer's provided Shield Effect by {{0}}%. When an ally target has a Shield, the DMG dealt increases by {{1}}%.`,
@@ -1267,7 +1267,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 18,
     type: PathType.REMEMBRANCE,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Written Down',
       detail: `Increases the wearer's Max HP by {{0}}%. After the wearer's memosprite attacks, the Outgoing Healing of the wearer and their memosprite increases by {{1}}%, lasting for <span class="text-desc">1</span> turn(s).`,
@@ -1285,7 +1285,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 18,
     type: PathType.ABUNDANCE,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Farewell',
       detail: `Increases the wearer's Outgoing Healing by {{0}}%. When an ally target's current HP percentage is greater than or equal to <span class="text-desc">50%</span>, increases the DMG dealt by {{1}}%.`,
@@ -1303,7 +1303,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 18,
     type: PathType.HARMONY,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Flustered',
       detail: `After entering battle, increases all allies' Break DMG dealt by {{0}}%. Abilities of the same type cannot stack.`,
@@ -1318,7 +1318,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 15,
     type: PathType.REMEMBRANCE,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Interdependence',
       detail: `Increases the wearer's CRIT DMG by {{0}}%. The CRIT DMG dealt by the wearer's memosprite increases by {{1}}%.`,
@@ -1336,7 +1336,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 15,
     type: PathType.DESTRUCTION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Massacre',
       detail: `Increases the wearer's CRIT Rate by {{0}}%. The Skill DMG and Ultimate DMG dealt by the wearer increase by {{1}}%.`,
@@ -1354,7 +1354,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 18,
     type: PathType.ERUDITION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Longing',
       detail: `Increases the wearer's CRIT Rate by {{0}}%. The Ultimate DMG and <u>Follow-up ATK</u> DMG dealt by the wearer increase by {{1}}%.`,
@@ -1372,7 +1372,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 15,
     type: PathType.NIHILITY,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Chill Out',
       detail: `Increases the wearer's DMG dealt by {{0}}%. After the wearer attacks, there is a <span class="text-desc">100%</span> <u>base chance</u> that the attacked target is inflicted with Vulnerability, increasing the DMG they receive by {{1}}% for <span class="text-desc">2</span> turn(s). The same effect type cannot be stacked.`,
@@ -1390,7 +1390,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 18,
     type: PathType.HUNT,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Persistence',
       detail: `Increases wearer's CRIT DMG by {{0}}%. The Skill DMG and <u>Follow-up ATK</u> DMG dealt by the wearer increase by {{0}}%.`,
@@ -1912,7 +1912,7 @@ export const LightCones = [
     beta: false,
     desc: {
       name: 'Crystallize',
-      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. When the wearer deals DMG to an enemy inflicted with <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-fire">Burn</b>, <b class="text-hsr-lightning">Shock</b>, or <b class="text-hsr-physical">Bleed</b>, each respectively grants <span class="text-desc">1</span> stack of Prophet, stacking up to <span class="text-desc">4</span> time(s). In a single battle, only <span class="text-desc">1</span> stack of <b>Prophet</b> can be granted for each type of DoT. Every stack of <b>Prophet</b> increases wearer's ATK by {{1}}% and enables the DoT dealt to ignore {{2}}% of the target's DEF.`,
+      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. When the wearer deals DMG to an enemy inflicted with <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-fire">Burn</b>, <b class="text-hsr-lightning">Shock</b>, or <b class="text-hsr-physical">Bleed</b>, each respectively grants <span class="text-desc">1</span> stack of <b>Prophet</b>, stacking up to <span class="text-desc">4</span> time(s). In a single battle, only <span class="text-desc">1</span> stack of <b>Prophet</b> can be granted for each type of DoT. Every stack of <b>Prophet</b> increases wearer's ATK by {{1}}% and enables the DoT dealt to ignore {{2}}% of the target's DEF.`,
       properties: [
         { base: 40, growth: 5 },
         { base: 5, growth: 1 },
@@ -2300,7 +2300,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 24,
     type: PathType.NIHILITY,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Deceit',
       detail: `Increases the wearer's SPD by {{0}}%. After the wearer uses an attack, there is a <span class="text-desc">120%</span> <u>base chance</u> to inflict the <b>Bamboozle</b> state on every enemy target. While under the <b>Bamboozle</b> state, enemy target's DEF decreases by {{1}}% for <span class="text-desc">2</span> turn(s). If Wearer's SPD is higher than or equal to <span class="text-desc">170</span>, there is a <span class="text-desc">120%</span> <u>base chance</u> to inflict <b>Theft</b> state on every enemy target. While under the <b>Theft</b> state, enemy target's DEF decreases by {{2}}% for <span class="text-desc">2</span> turn(s). When <b>Bamboozle</b> or <b>Theft</b> is inflicted repeatedly, only the latest effect inflicted can be active.`,
@@ -2319,7 +2319,7 @@ export const LightCones = [
     baseAtk: 31.2,
     baseDef: 18,
     type: PathType.DESTRUCTION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Misplacement',
       detail: `The wearer's base SPD increases by {{0}}. When the wearer deals DMG, ignores {{1}}% of target's DEF. After the wearer uses Ultimate, obtains <b>Blazing Sun</b>, which is removed at the start of their turn. When <b>Blazing Sun</b> is active, increases the wearer's DMG dealt by {{2}}%.`,
@@ -2338,7 +2338,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 24,
     type: PathType.DESTRUCTION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'King of Knights',
       detail: `Increases the wearer's CRIT DMG by {{0}}%. When using their Ultimate, increases the wearer's ATK by {{1}}%, and if the wearer's Max Energy is greater than or equal to <span class="text-desc">300</span>, regenerates a fixed amount of Energy equal to <span class="text-desc">10%</span> of the wearer's Max Energy and increases their ATK by {{1}}%, lasting for <span class="text-desc">2</span> turns.`,
@@ -2356,7 +2356,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 24,
     type: PathType.HUNT,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Hrunting',
       detail: `Increases the wearer's CRIT Rate by {{0}}%. When entering battle and if the allies' Skill Points max limit is <span class="text-desc">6</span> or higher, increases wearer's ATK by {{1}}%. After the wearer uses a Skill, increases their ATK by {{2}}%, stacking up to <span class="text-desc">4</span> time(s).`,
@@ -2364,6 +2364,25 @@ export const LightCones = [
         { base: 16, growth: 4 },
         { base: 40, growth: 10 },
         { base: 10, growth: 2 },
+      ],
+    },
+  },
+  {
+    id: '23047',
+    name: 'Why Does the Ocean Sing',
+    rarity: 5,
+    baseHp: 43.2,
+    baseAtk: 28.8,
+    baseDef: 21,
+    type: PathType.NIHILITY,
+    beta: true,
+    desc: {
+      name: 'Solo',
+      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. When the wearer hits an enemy target with Basic ATK, Skill, or Ultimate, has a <span class="text-desc">80%</span> <u>base chance</u> to inflict <b>Enthrallment</b> state for <span class="text-desc">3</span> turn(s). Effects of the same type cannot stack. While in <b>Enthrallment</b> state, each debuff applied by the wearer increases DoT taken by {{1}}%, stacking up to <span class="text-desc">6</span> time(s). When attacked by an ally target, increases the attacker's SPD by {{2}}% for <span class="text-desc">3</span> turn(s).`,
+      properties: [
+        { base: 40, growth: 5 },
+        { base: 5, growth: 1.25 },
+        { base: 10, growth: 2.5 },
       ],
     },
   },

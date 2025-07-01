@@ -163,7 +163,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.DESTRUCTION,
     element: Element.WIND,
-    beta: true,
+    beta: false,
   },
   {
     id: '1015',
@@ -179,7 +179,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.HUNT,
     element: Element.QUANTUM,
-    beta: true,
+    beta: false,
   },
   {
     id: '1101',
@@ -1075,7 +1075,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.NIHILITY,
     element: Element.QUANTUM,
-    beta: true,
+    beta: false,
   },
   {
     id: '1407',
@@ -1107,7 +1107,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.DESTRUCTION,
     element: Element.PHYSICAL,
-    beta: true,
+    beta: false,
   },
   {
     id: '1409',
@@ -1125,22 +1125,22 @@ export const Characters = [
     element: Element.WIND,
     beta: false,
   },
-  // {
-  //   id: '1410',
-  //   name: 'Hysilens',
-  //   stat: {
-  //     baseAtk: 52.8,
-  //     baseHp: 147.84,
-  //     baseDef: 85.8,
-  //     baseSpd: 111,
-  //     energy: 140,
-  //   },
-  //   trace: [Stats.SPD, Stats.P_HP, Stats.E_RES],
-  //   rarity: 5,
-  //   path: PathType.NIHILITY,
-  //   element: Element.PHYSICAL,
-  //   beta: false,
-  // },
+  {
+    id: '1410',
+    name: 'Hysilens',
+    stat: {
+      baseAtk: 52.8,
+      baseHp: 147.84,
+      baseDef: 85.8,
+      baseSpd: 111,
+      energy: 140,
+    },
+    trace: [Stats.P_ATK, Stats.EHR, Stats.SPD],
+    rarity: 5,
+    path: PathType.NIHILITY,
+    element: Element.PHYSICAL,
+    beta: true,
+  },
 
   // Odd = Male, Even = Female
   {
