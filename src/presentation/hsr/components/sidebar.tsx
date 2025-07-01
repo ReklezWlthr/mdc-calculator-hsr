@@ -8,7 +8,7 @@ import { IntroModal } from '@src/presentation/hsr/components/modals/intro_modal'
 import Link from 'next/link'
 
 export const Sidebar = ({ currentPage, onChange }: { currentPage: HsrPage; onChange: (page: HsrPage) => void }) => {
-  const { modalStore } = useStore()
+  const { modalStore, settingStore } = useStore()
 
   const Pill = ({ name, page, icon }: { name: string; page: HsrPage; icon: string }) => {
     return (
@@ -51,7 +51,16 @@ export const Sidebar = ({ currentPage, onChange }: { currentPage: HsrPage; onCha
         <Pill name="Relic Inventory" page={HsrPage.INVENTORY} icon="fa-solid fa-briefcase" />
       </div>
       <div className="flex items-end justify-between px-3">
-        <div className="space-y-3 text-sm">
+        <div className="w-full space-y-3 text-sm">
+          {!settingStore.settings.liveOnly && (
+            <div className="w-full px-2 py-1 text-xs text-white bg-green-700 rounded-md ring-1 ring-offset-2 ring-offset-primary-dark ring-green-400">
+              <p className="flex items-center gap-1 font-bold">
+                <i className="fa-info-circle fa-solid" />
+                v3.5v1 Update
+              </p>
+              <p>Hycilens and Cerydra Now Available!</p>
+            </div>
+          )}
           <div className="flex items-center gap-3 cursor-pointer text-gray" onClick={onOpenIntroModal}>
             <i className="text-xl fa-solid fa-circle-info" />
             <p>About</p>
