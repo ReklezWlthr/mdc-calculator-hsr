@@ -60,7 +60,6 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       tag: AbilityTag.AOE,
     },
     talent: {
-      energy: 10,
       trace: 'Talent',
       title: 'The Sea Siren Sings',
       content: `When using Basic ATK, Skill, or Ultimate, there is a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b> on the enemy target, prioritizing to inflict different states.
