@@ -15,6 +15,7 @@ import {
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/calculator'
+import { CallbackType } from '@src/domain/stats'
 
 const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
@@ -296,10 +297,11 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
+      globalCallback: CallbackType[]
     ) => {
       if (form.concerto) {
-        const main = (b: StatsObject, _d: any, _w: any, a: StatsObject[]) => {
+        globalCallback.push(function P99(_b, _d, _w, a) {
           const atk = a[index].getAtk(true)
           _.forEach(a, (x, i) => {
             const multiplier = calcScaling(0.152, 0.0076, ult, 'curved')
@@ -351,13 +353,8 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
                 }
               )
           })
-          return b
-        }
-        const concerto = new Function(
-          'main',
-          `return function P${form.tingyun_skill ? 3 : 1}(b, d, w, a){ return main(b, d, w, a) }`
-        )(main)
-        _.last(team).CALLBACK.push(concerto)
+          return a
+        })
       }
 
       return base

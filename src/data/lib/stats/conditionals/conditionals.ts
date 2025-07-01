@@ -73,6 +73,7 @@ import Archer from './characters/Archer'
 import Saber from './characters/Saber'
 import Phainon from './characters/Phainon'
 import Hycilens from './characters/Hycilens'
+import Cerydra from './characters/Cerydra'
 
 export default [
   { id: '1001', conditionals: March },
@@ -146,6 +147,7 @@ export default [
   { id: '1408', conditionals: Phainon },
   { id: '1409', conditionals: Hyacine },
   { id: '1410', conditionals: Hycilens },
+  { id: '1412', conditionals: Cerydra },
   { id: '8001', conditionals: DMC },
   { id: '8003', conditionals: PMC },
   { id: '8005', conditionals: HMC },

@@ -1420,6 +1420,26 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'number',
+    text: `On-Skill ATK Bonus`,
+    show: true,
+    default: 1,
+    min: 0,
+    max: 3,
+    id: '22005',
+    excludeSummon: true,
+    scaling: (base, form, r) => {
+      if (form['22005']) {
+        base[Stats.P_ATK].push({
+          name: `Passive`,
+          source: `Maze Restaurant Forever`,
+          value: form['22005'] * calcRefinement(0.08, 0.02, r),
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [
@@ -1427,7 +1447,7 @@ export const LCAllyConditionals: IWeaponContent[] = [
     type: 'toggle',
     text: `But the Battle Isn't Over`,
     show: true,
-    default: true,
+    default: false,
     duration: 1,
     id: '23003',
     scaling: (base, form, r, { own, owner }) => {
@@ -1485,7 +1505,7 @@ export const LCAllyConditionals: IWeaponContent[] = [
     type: 'toggle',
     text: `Past and Future`,
     show: true,
-    default: true,
+    default: false,
     duration: 1,
     id: '21025',
     scaling: (base, form, r, { own, owner }) => {
@@ -1523,7 +1543,7 @@ export const LCAllyConditionals: IWeaponContent[] = [
     type: 'toggle',
     text: `HP >= 50%`,
     show: true,
-    default: true,
+    default: false,
     id: '21055',
     scaling: (base, form, r, { own, owner }) => {
       if (form[`21055_${owner}`]) {
@@ -1531,6 +1551,42 @@ export const LCAllyConditionals: IWeaponContent[] = [
           name: `Passive`,
           source: `Unto Tomorrow's Morrow`,
           value: calcRefinement(0.12, 0.02, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `SPD Bonus`,
+    show: true,
+    default: false,
+    duration: 3,
+    id: '23047_1',
+    scaling: (base, form, r, { own, owner }) => {
+      if (form[`23047_1_${owner}`]) {
+        base[Stats.P_SPD].push({
+          name: `Passive`,
+          source: `Why Does the Ocean Sing`,
+          value: calcRefinement(0.1, 0.025, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Skill DMG Bonus`,
+    show: true,
+    default: false,
+    duration: 3,
+    id: '23048',
+    scaling: (base, form, r, { own, owner }) => {
+      if (form[`23048_${owner}`]) {
+        base.SKILL_DMG.push({
+          name: `Passive`,
+          source: `Era Engraved By Golden Blood`,
+          value: calcRefinement(0.54, 0.135, r),
         })
       }
       return base

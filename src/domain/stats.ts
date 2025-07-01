@@ -175,13 +175,7 @@ export interface RawBaseStatType {
   getValue: (key: string, exclude?: StatsArray[]) => number
   getDmgRed: () => number
 
-  CALLBACK: ((
-    base: BaseStatsType,
-    debuffs: { type: DebuffTypes; count: number }[],
-    weakness: Element[],
-    all: BaseStatsType[],
-    battle: boolean
-  ) => any)[]
+  CALLBACK: CallbackType[]
 
   BA_ALT: boolean
   SKILL_ALT: boolean
@@ -203,3 +197,11 @@ export interface RawBaseStatType {
 export interface BaseStatsType extends RawBaseStatType {
   SUMMON_STATS?: RawBaseStatType
 }
+
+export type CallbackType = ((
+  base: BaseStatsType,
+  debuffs: { type: DebuffTypes; count: number }[],
+  weakness: Element[],
+  all: BaseStatsType[],
+  battle: boolean
+) => any)

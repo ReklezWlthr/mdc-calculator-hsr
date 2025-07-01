@@ -1577,6 +1577,28 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23048',
+    scaling: (base, r) => {
+      base[Stats.P_ATK].push({
+        name: 'Passive',
+        source: `Era Engraved By Golden Blood`,
+        value: calcRefinement(0.64, 0.16, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '22005',
+    scaling: (base, r) => {
+      base[Stats.P_ATK].push({
+        name: 'Passive',
+        source: `Maze Restaurant Forever`,
+        value: calcRefinement(0.16, 0.04, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

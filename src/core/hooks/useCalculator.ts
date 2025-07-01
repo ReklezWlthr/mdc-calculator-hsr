@@ -29,6 +29,7 @@ import { DebuffTypes, IContent } from '@src/domain/conditional'
 import { getSetCount } from '../utils/data_format'
 import { AllRelicSets } from '@src/data/db/artifacts'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
+import { BaseStatsType, CallbackType } from '@src/domain/stats'
 
 interface CalculatorOptions {
   enabled?: boolean
@@ -220,6 +221,7 @@ export const useCalculator = ({
   useEffect(() => {
     if (!_.some(forms)) return
     if (!enabled) return
+    const globalCallback: CallbackType[] = []
     const weakness = _.cloneDeep(weaknessOverride || calculatorStore.weakness)
     const debuffs = _.map(DebuffTypes, (v) => ({ type: v, count: 0 }))
     const preCompute = _.map(conditionals, (base, index) => {
@@ -382,7 +384,8 @@ export const useCalculator = ({
           forms,
           debuffs,
           weakness,
-          calculatorStore.broken
+          calculatorStore.broken,
+          globalCallback
         ) || postWeapon[index]
       if (x.SUMMON_STATS) {
         x.SUMMON_STATS =
@@ -393,7 +396,8 @@ export const useCalculator = ({
             _.map(forms, (f) => f.memo),
             debuffs,
             weakness,
-            calculatorStore.broken
+            calculatorStore.broken,
+            globalCallback
           ) || postWeapon[index].SUMMON_STATS
       }
       return x
@@ -431,11 +435,16 @@ export const useCalculator = ({
 
       return x
     })
+    let cleaned = final
+    const cbs = globalCallback.sort((a, b) => compareWeight(a.name, b.name))
+    _.forEach(cbs, (cb) => {
+      if (cb) cleaned = cb(null, debuffs, weakness, cleaned, true)
+    })
     if (!doNotSaveStats) {
-      calculatorStore.setValue('computedStats', final)
+      calculatorStore.setValue('computedStats', cleaned)
       calculatorStore.setValue('debuffs', debuffs)
     }
-    setFinalStats(final)
+    setFinalStats(cleaned)
     setFinalDebuff(debuffs)
   }, [baseStats, forms, custom, team, calculatorStore.weakness, calculatorStore.broken, calculatorStore.toughness])
 

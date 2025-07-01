@@ -1141,6 +1141,22 @@ export const Characters = [
     element: Element.PHYSICAL,
     beta: true,
   },
+  {
+    id: '1412',
+    name: 'Cerydra',
+    stat: {
+      baseAtk: 84.48,
+      baseHp: 184.8,
+      baseDef: 66,
+      baseSpd: 99,
+      energy: 130,
+    },
+    trace: [Stats.WIND_DMG, Stats.P_HP, Stats.P_ATK],
+    rarity: 5,
+    path: PathType.HARMONY,
+    element: Element.WIND,
+    beta: true,
+  },
 
   // Odd = Male, Even = Female
   {

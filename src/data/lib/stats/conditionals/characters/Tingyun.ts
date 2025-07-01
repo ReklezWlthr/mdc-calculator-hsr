@@ -15,6 +15,7 @@ import {
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/calculator'
+import { CallbackType } from '@src/domain/stats'
 
 const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
@@ -264,9 +265,10 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
+      globalCallback: CallbackType[]
     ) => {
-      _.last(team).CALLBACK.push(function P2(x, _d, _w, all) {
+      globalCallback.push(function P2(_x, _d, _w, all) {
         _.forEach(
           _.flatMap(all, (a) => [a, a.SUMMON_STATS]),
           (f, j) => {
@@ -326,7 +328,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             }
           }
         )
-        return x
+        return all
       })
 
       return base
