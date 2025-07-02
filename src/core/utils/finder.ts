@@ -63,6 +63,8 @@ export const checkInclusiveKey = (form: Record<string, any>, id: string) =>
   _.some(form, (value, key) => !!value && _.startsWith(key, id))
 
 export const countOwnDebuffs = (own: typeof baseStatsObject, index: number) => {
+  if (!own) return 0
+
   const base = _.size(
     _.filter(
       _.concat(

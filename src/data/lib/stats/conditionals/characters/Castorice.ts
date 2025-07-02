@@ -611,9 +611,11 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     ) => {
       // Clear Bonus HP for Netherwing
       base.CALLBACK.push(function P999(x) {
-        x.SUMMON_STATS[Stats.HP] = []
-        x.SUMMON_STATS[Stats.P_HP] = []
-        x.SUMMON_STATS.X_HP = []
+        if (x.SUMMON_STATS) {
+          x.SUMMON_STATS[Stats.HP] = []
+          x.SUMMON_STATS[Stats.P_HP] = []
+          x.SUMMON_STATS.X_HP = []
+        }
 
         return x
       })
