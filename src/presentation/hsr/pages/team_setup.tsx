@@ -185,8 +185,8 @@ export const TeamSetup = observer(() => {
                     talents: {
                       basic: 6,
                       skill: 10,
-                      memo_skill: 10,
-                      memo_talent: 10,
+                      memo_skill: 6,
+                      memo_talent: 6,
                       talent: 10,
                       ult: 10,
                     },
