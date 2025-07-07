@@ -284,7 +284,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       ]
 
       if (c >= 6) {
-        base.SUMMON_STATS.ULT_CR.push({
+        base.ULT_CR.push({
           name: `Eidolon 6`,
           source: 'Self',
           value: 1,
@@ -319,22 +319,24 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       x.CALLBACK.push(function P99(base, b, w, all) {
         const index = _.findIndex(team, (item) => item.cId === '8007')
 
-        _.forEach(all, (y, i) => {
-          const multiplier = calcScaling(0.06, 0.012, memo_talent, 'linear')
-          const buff = {
-            name: `Memosprite Talent`,
-            source: i === index && all[i].SUMMON_ID ? 'Self' : 'Mem',
-            value:
-              calcScaling(0.12, 0.024, memo_talent, 'linear') + multiplier * base.SUMMON_STATS.getValue(Stats.CRIT_DMG),
-            multiplier,
-            base: toPercentage(base.SUMMON_STATS.getValue(Stats.CRIT_DMG)),
-            flat: toPercentage(calcScaling(0.12, 0.024, memo_talent, 'linear')),
-          }
-          y?.X_CRIT_DMG.push(buff)
-          if (y?.SUMMON_STATS?.SUMMON_ID) {
-            y?.SUMMON_STATS?.X_CRIT_DMG.push(buff)
-          }
-        })
+        if (base.SUMMON_STATS) {
+          const memCrit = base.SUMMON_STATS?.getValue(Stats.CRIT_DMG) || 0
+          _.forEach(all, (y, i) => {
+            const multiplier = calcScaling(0.06, 0.012, memo_talent, 'linear')
+            const buff = {
+              name: `Memosprite Talent`,
+              source: i === index && all[i].SUMMON_ID ? 'Self' : 'Mem',
+              value: calcScaling(0.12, 0.024, memo_talent, 'linear') + multiplier * memCrit,
+              multiplier,
+              base: toPercentage(memCrit),
+              flat: toPercentage(calcScaling(0.12, 0.024, memo_talent, 'linear')),
+            }
+            y?.X_CRIT_DMG.push(buff)
+            if (y?.SUMMON_STATS?.SUMMON_ID) {
+              y?.SUMMON_STATS?.X_CRIT_DMG.push(buff)
+            }
+          })
+        }
 
         _.forEach(allForm, (f, i) => {
           const multiplier = calcScaling(0.18, 0.02, memo_skill, 'linear')

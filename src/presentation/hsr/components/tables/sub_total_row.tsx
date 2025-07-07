@@ -29,7 +29,6 @@ export const ElementColor = {
 
 export const SubTotalRow = observer(({ type }: CompareTotalRowsProps) => {
   const { calculatorStore } = useStore()
-  console.log(_.cloneDeep(calculatorStore.total))
 
   return (
     <div className="grid items-center grid-cols-9 gap-2 pr-2">
