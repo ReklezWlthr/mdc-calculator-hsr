@@ -371,23 +371,26 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
               (a.a6 && all[i]?.MAX_ENERGY > 100 ? _.min([_.max([all[i]?.MAX_ENERGY - 100, 0]) * 0.002, 0.2]) : 0) +
               (c >= 4 && all[i]?.MAX_ENERGY === 0 ? 0.06 : 0)
             _.forEach(all, (a, j) => {
-              _.forEach([a.BASIC_SCALING, a.SKILL_SCALING, a.ULT_SCALING, a.TALENT_SCALING], (s) => {
-                _.forEach(s, (ss) => {
-                  if (
-                    !_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property) &&
-                    (ss.overrideIndex === i || i === j)
-                  ) {
-                    s.push({
-                      ...ss,
-                      name: `${ss.name} - Mem's Support`,
-                      multiplier: (ss.multiplier || 1) * m,
-                      property: TalentProperty.TRUE,
-                      break: ss.break * m,
-                      chance: null,
-                    })
-                  }
-                })
-              })
+              _.forEach(
+                [a.BASIC_SCALING, a.SKILL_SCALING, a.ULT_SCALING, a.TALENT_SCALING, a.MEMO_SKILL_SCALING],
+                (s) => {
+                  _.forEach(s, (ss) => {
+                    if (
+                      !_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property) &&
+                      (ss.overrideIndex === i || i === j)
+                    ) {
+                      s.push({
+                        ...ss,
+                        name: `${ss.name} - Mem's Support`,
+                        multiplier: (ss.multiplier || 1) * m,
+                        property: TalentProperty.TRUE,
+                        break: ss.break * m,
+                        chance: null,
+                      })
+                    }
+                  })
+                }
+              )
             })
           }
           if (memosprite) {
