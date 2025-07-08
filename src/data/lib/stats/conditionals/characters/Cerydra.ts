@@ -42,7 +42,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     normal: {
       energy: 20,
       trace: 'Basic ATK',
-      title: `Maneuver: Expeditious Relocation`,
+      title: `King's Castling`,
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Cerydra's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
@@ -51,8 +51,8 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill: {
       energy: 30,
       trace: 'Skill',
-      title: `Ascend: From Pawn to Queen`,
-      content: `Grants <b class="text-blue">Military Merit</b> to one designated ally character and give Cerydra <span class="text-desc">1</span> points of <b>Charge</b>. Maximum <b>Charge</b> is <span class="text-desc">8</span> points. When <b>Charge</b> reaches <span class="text-desc">6</span> points, <b class="text-blue">Military Merit</b> upgrades to <b class="text-sky-500">Nobility</b> and dispels their Crowd Control debuff. Characters with <b class="text-sky-500">Nobility</b> gain {{0}}% CRIT DMG boost for Skill DMG, and trigger a <b class="text-desc">Coup de Main</b> when using their Skill on enemies. After <b class="text-desc">Coup de Main</b> ends, consumes <span class="text-desc">6</span> points of <b>Charge</b> to revert <b class="text-sky-500">Nobility</b> back to <b class="text-blue">Military Merit</b>.
+      title: `Pawn's Promotion`,
+      content: `Grants <b class="text-blue">Military Merit</b> to one designated ally character and give Cerydra <span class="text-desc">1</span> points of <b>Charge</b>. Maximum <b>Charge</b> is <span class="text-desc">8</span> points. When <b>Charge</b> reaches <span class="text-desc">6</span> points, <b class="text-blue">Military Merit</b> upgrades to <b class="text-sky-500">Peerage</b> and dispels their Crowd Control debuff. Characters with <b class="text-sky-500">Peerage</b> gain {{0}}% CRIT DMG boost for Skill DMG, and trigger a <b class="text-desc">Coup de Main</b> when using their Skill on enemies. After <b class="text-desc">Coup de Main</b> ends, consumes <span class="text-desc">6</span> points of <b>Charge</b> to revert <b class="text-sky-500">Peerage</b> back to <b class="text-blue">Military Merit</b>.
       <br />
       <br /><b class="text-desc">Coup de Main</b>
       <br />Copy and immediately use the ability about to be used, then use the original ability.
@@ -64,7 +64,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ult: {
       energy: 5,
       trace: 'Ultimate',
-      title: `All is Chess, Checkmate in Four`,
+      title: `Scholar's Mate`,
       content: `Gains <span class="text-desc">2</span> <b>Charge</b>. Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Cerydra's ATK to all enemies. If there are no characters with <b class="text-blue">Military Merit</b> on the field, prioritizes granting <b class="text-blue">Military Merit</b> to the character in position <span class="text-desc">1</span> in the team lineup.`,
       value: [{ base: 144, growth: 9.6, style: 'curved' }],
       level: ult,
@@ -72,7 +72,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     talent: {
       trace: 'Talent',
-      title: `Glory to the Imperator`,
+      title: `Ave Imperator`,
       content: `Characters with <b class="text-blue">Military Merit</b> gain increased ATK equal to {{0}}% of Cerydra's ATK. When the character uses Basic ATK or Skill, Cerydra gains <span class="text-desc">1</span> <b>Charge</b>. <b>Charge</b> cannot be gained while <b class="text-desc">Coup de Main</b> is in effect. <b class="text-blue">Military Merit</b> only takes effect the most recently affected target. When the target changes, Cerydra's <b>Charge</b> is reset to <span class="text-desc">0</span>.`,
       value: [{ base: 18, growth: 0.6, style: 'curved' }],
       level: talent,
@@ -81,54 +81,54 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: `First-Move Advantage`,
-      content: `After using Technique, gains <b class="text-blue">Military Merit</b>. When switching active characters, <b class="text-blue">Military Merit</b> transfers to the current active character. At the start of the next battle, the Skill will automatically be used on the character holding <b class="text-blue">Military Merit</b> once without consuming any Skill Points.`,
+      content: `After using Technique, gains <b class="text-blue">Military Merit</b>. When switching active characters, <b class="text-blue">Military Merit</b> transfers to the current active character. At the start of the next battle, a Skill will automatically be used on the character holding <b class="text-blue">Military Merit</b> once without consuming any Skill Points.`,
       tag: AbilityTag.SUPPORT,
     },
     a2: {
       trace: 'Ascension 2 Passive',
-      title: `Seeker`,
+      title: `Veni`,
       content: `When Cerydra's ATK is greater than <span class="text-desc">2000</span>, for every <span class="text-desc">100</span> ATK exceeded, increases this unit's CRIT DMG by <span class="text-desc">18%</span>, up to a maximum of <span class="text-desc">360%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
-      title: `Observer`,
+      title: `Vidi`,
       content: `Increases Cerydra's CRIT Rate by <span class="text-desc">100%</span>. When Cerydra's Charge is less than maximum, when a character with <b class="text-blue">Military Merit</b> uses their Ultimate for the first time, Cerydra gains <span class="text-desc">1</span> point(s) of <b>Charge</b>. This effect can only be triggered once per battle.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
-      title: `Conqueror`,
+      title: `Vici`,
       content: `When using a Skill, increases the SPD of this unit and teammates with <b class="text-blue">Military Merit</b> by <span class="text-desc">20</span> for <span class="text-desc">3</span> turn(s). When a character with <b class="text-blue">Military Merit</b> uses Basic ATK or Skill, Cerydra regenerates <span class="text-desc">5</span> Energy.`,
     },
     c1: {
       trace: 'Eidolon 1',
-      title: `Crown of Absolute Claim`,
-      content: `Characters with <b class="text-blue">Military Merit</b> ignore <span class="text-desc">15%</span> of target's DEF when dealing DMG. While in <b class="text-sky-500">Nobility</b> state, additionally ignores <span class="text-desc">18%</span> of target's DEF when dealing Skill DMG.`,
+      title: `Seize the Crowns of All`,
+      content: `Characters with <b class="text-blue">Military Merit</b> ignore <span class="text-desc">15%</span> of their target's DEF when dealing DMG. While in <b class="text-sky-500">Peerage</b> state, additionally ignores <span class="text-desc">18%</span> of the target's DEF when dealing Skill DMG.`,
     },
     c2: {
       trace: 'Eidolon 2',
-      title: `Aspiration of the Collective`,
+      title: `Forge the Dreams of Many`,
       content: `Characters with <b class="text-blue">Military Merit</b> deal <span class="text-desc">40%</span> more DMG. When there are teammates with <b class="text-blue">Military Merit</b> on the field, increases Cerydra's DMG by <span class="text-desc">160%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
-      title: `Burning of the Ancient Laws`,
+      title: `Torch the Laws of Old`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
       trace: 'Eidolon 4',
-      title: `The Realms Reforged`,
+      title: `Remake the Realms of Men`,
       content: `Increases Ultimate DMG multiplier by <span class="text-desc">240%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
-      title: `A Reckoning of Deeds`,
+      title: `Help and Hurt Repaid in Full`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
       trace: 'Eidolon 6',
-      title: `Fate in the Sea of Stars`,
+      title: `A Journey Set Starward`,
       content: `Characters with <b class="text-blue">Military Merit</b> gain <span class="text-desc">20%</span> <b>All-Type RES PEN</b>, Cerydra deals an additional instance of <b class="text-hsr-wind">Wind Additional DMG</b> equal to <span class="text-desc">360%</span> of her ATK after they use an attack. This effect can be triggered up to <span class="text-desc">20</span> time(s). The trigger count resets whenever Cerydra uses her Ultimate. When an ally with <b class="text-blue">Military Merit</b> is present, Cerydra gains <span class="text-desc">20%</span> <b>All-Type RES PEN</b>.`,
     },
   }
@@ -153,7 +153,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       options: [
         { name: 'None', value: '0' },
         { name: 'Military Merit', value: '1' },
-        { name: 'Nobility', value: '2' },
+        { name: 'Peerage', value: '2' },
       ],
       excludeSummon: true,
     },
@@ -247,7 +247,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           multiplier: calcScaling(0.18, 0.006, ult, 'curved'),
         }
         const cd = {
-          name: 'Nobility',
+          name: 'Peerage',
           value: calcScaling(0.36, 0.036, skill, 'curved'),
         }
 

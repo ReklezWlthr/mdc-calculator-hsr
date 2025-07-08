@@ -26,7 +26,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     normal: {
       energy: 20,
       trace: 'Basic ATK',
-      title: 'Ballad in Still Waters',
+      title: 'Aeolian Mode: Echoes in Still Waters',
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Hysilens's ATK to one designated enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
@@ -35,7 +35,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     skill: {
       energy: 30,
       trace: 'Skill',
-      title: 'Overtone Beyond Undercurrents',
+      title: 'Overtone Hum: Chorus After Dark Tides',
       content: `Has a <span class="text-desc">100%</span> <u>base chance</u> to increase DMG taken by all enemies by {{0}}%, lasting for <span class="text-desc">3</span> turn(s), while dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Hysilens's ATK to all enemies.`,
       value: [
         { base: 10, growth: 1, style: 'curved' },
@@ -47,9 +47,9 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     ult: {
       energy: 5,
       trace: 'Ultimate',
-      title: 'Dance of Raging-Tides and Devoured Souls',
+      title: 'Maelstrom Rhapsody',
       content: `Deploys a Zone that reduces enemy target's ATK by <span class="text-desc">15%</span> and DEF by {{0}}%, and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Hysilens's ATK to all enemies.
-      <br />Whenever an enemy target within the Zone takes DMG from DoT, deals <b class="text-hsr-physical">Physical DoT</b> equal to {{2}}% of Hysilens's ATK to them. This DMG cannot repeatedly trigger this effect, and it can be triggered up to <span class="text-desc">8</span> time(s) at the start of each turn or within one action of an ally target.
+      <br />Whenever an enemy target within the Zone takes DMG from DoT, deals <b class="text-hsr-physical">Physical DoT</b> equal to {{2}}% of Hysilens's ATK to them. The DoT cannot repeatedly trigger this effect, and this effect can be triggered up to <span class="text-desc">8</span> time(s) per turn or per ally target's action.
       <br />The Zone lasts for <span class="text-desc">3</span> turn(s), decreasing by <span class="text-desc">1</span> turn at the start of each turn. The Zone will be dispelled if Hysilens becomes knocked down.`,
       value: [
         { base: 15, growth: 1, style: 'curved' },
@@ -61,7 +61,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     },
     talent: {
       trace: 'Talent',
-      title: 'The Sea Siren Sings',
+      title: 'Sirenic Serenade',
       content: `When using Basic ATK, Skill, or Ultimate, there is a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b> on the enemy target, prioritizing to inflict different states.
       <br />Under the <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b> state, at the start of each turn, the enemy target takes <b class="text-hsr-wind">Wind</b>/<b class="text-hsr-fire">Fire</b>/<b class="text-hsr-lightning">Lightning DoT</b> equal to {{0}}% of Hysilens' ATK for <span class="text-desc">2</span> turn(s).
       <br />Under the <b class="text-hsr-physical">Bleed</b> state, at the start of each turn, the enemy target takes <b class="text-hsr-physical">Physical DoT</b> equal to <span class="text-desc">20%</span> of their Max HP, up to {{0}}% of Hysilens' ATK, lasting for <span class="text-desc">2</span> turn(s).`,
@@ -71,56 +71,56 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     },
     technique: {
       trace: 'Technique',
-      title: 'Oceanic Abode',
-      content: `After using Technique, creates a Special Dimension that lasts for <span class="text-desc">20</span> seconds and automatically moves forward. Enemies within the Special Dimension enter the <b>Enraptured</b> state. Enemies in the <b>Enraptured</b> state will not attack Hysilens and will follow the dimension while it persists.
-      <br />After entering battle with enemies in the <b>Enraptured</b> state, there is a <span class="text-desc">100%</span> <u>base chance</u> for each enemy to be inflicted with <span class="text-desc">2</span> of the following states that is the same as Hysilens's Talent's effects: <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b>. Only <span class="text-desc">1</span> Dimension Effect created by allies can exist at a time.`,
+      title: `At Ocean's Abode`,
+      content: `After using Technique, creates a Special Dimension that lasts for <span class="text-desc">20</span> seconds and automatically moves forward. Enemies within the Special Dimension enter the <b>Soulstruck</b> state. Enemies in the <b>Soulstruck</b> state will not attack Hysilens and will follow the dimension while it persists.
+      <br />After entering battle with enemies in the <b>Soulstruck</b> state, there is a <span class="text-desc">100%</span> <u>base chance</u> for each enemy to be inflicted with <span class="text-desc">2</span> of the following states that is the same as Hysilens's Talent's effects: <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b>. Only <span class="text-desc">1</span> Dimension Effect created by allies can exist at a time.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
-      title: 'Banner of Conquest',
+      title: 'The Gladiorum of Conquest',
       content: `At the start of combat, Hysilens creates a Zone with the same effect as her Ultimate, lasting for <span class="text-desc">3</span> turns.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
-      title: 'Bubble of Grandeur',
+      title: 'The Bubble of Banquets',
       content: `When other allies perform attacks, Hysilens has a <span class="text-desc">100%</span> <u>base chance</u> to inflict the enemy target with one of the same states as Hysilens's Talent (<b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b>) for <span class="text-desc">2</span> turns.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
-      title: 'Strings of Pearl',
+      title: 'The Fiddle of Pearls',
       content: `For every <span class="text-desc">10%</span> of Hysilens's Effect Hit Rate that exceeds <span class="text-desc">60%</span>, increases DMG by <span class="text-desc">15%</span>, up to <span class="text-desc">90%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
-      title: 'Why My Heart Grieves, You Inquire',
+      title: 'You Ask Why Hearts Cry',
       content: `When using Ultimate, if the enemy target is currently inflicted with DoT(s), immediately deals <span class="text-desc">150%</span> of the original DoT damage. When Hysilens deploys a Zone, recovers <span class="text-desc">1</span> Skill Point(s).`,
     },
     c2: {
       trace: 'Eidolon 2',
-      title: `Why the Waves Roar, You Entreat`,
+      title: `Tell Me Why Waves Roar High`,
       content: `While the Zone is active, reduces <b>All-Type RES</b> of all enemies by <span class="text-desc">20%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
-      title: 'Why the Lamplights Forget, You Postulate',
+      title: 'Why Do Lights Bid Goodbye',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
       trace: 'Eidolon 4',
-      title: 'Behold, For What Does Time Flow',
-      content: `While the Zone is active, the DMG Boost effect from Trace <b>Strings of Pearl</b> applies to all allies.`,
+      title: 'Lo, How Time Flows By',
+      content: `While the Zone is active, the DMG Boost effect from Trace <b>The Fiddle of Pearls</b> applies to all allies.`,
     },
     c5: {
       trace: 'Eidolon 5',
-      title: `In Ablution, I Hum`,
+      title: `In Ablution, I Hum and Sigh`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
       trace: 'Eidolon 6',
-      title: 'When Will You Return, Sunken One',
-      content: `Zone is enhanced. Hysilens's <b class="text-hsr-physical">Physical DoT</b> effect trigger count increases by <span class="text-desc">4</span>. When Hysilens inflicts <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b> state on enemies through Talent or Trace <b>Bubble of Grandeur</b>, there is a <span class="text-desc">100%</span> <u>base chance</u> to additionally inflict a <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b> state that is individually calculated.`,
+      title: 'When to Return From Where You Lie',
+      content: `Zone is enhanced. Hysilens's <b class="text-hsr-physical">Physical DoT</b> effect trigger count increases by <span class="text-desc">4</span>. When Hysilens inflicts <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b> state on enemies through Talent or Trace <b>The Bubble of Banquets</b>, there is a <span class="text-desc">100%</span> <u>base chance</u> to additionally inflict a <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b> state that is individually calculated.`,
     },
   }
 
