@@ -177,6 +177,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.BA,
           break: 10,
           sum: true,
+          hitSplit: [0.3, 0.35, 0.35],
         },
       ]
       base.SKILL_SCALING = [
@@ -199,6 +200,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.ULT,
           break: 30,
           sum: true,
+          hitSplit: [...Array(14).fill(0.04), 0.44],
         },
       ]
       base.TALENT_SCALING = [
