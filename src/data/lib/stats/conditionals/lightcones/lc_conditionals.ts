@@ -1367,7 +1367,10 @@ export const LCConditionals: IWeaponContent[] = [
     default: true,
     id: '23045',
     scaling: (base, form, r) => {
-      base.ULT_SCALING = _.map(base.ULT_SCALING, (item) => ({ ...item, atkBonus: calcRefinement(0.4, 0.1, r) }))
+      base.ULT_SCALING = _.map(base.ULT_SCALING, (item) => ({
+        ...item,
+        atkBonus: (item.atkBonus || 0) + calcRefinement(0.4, 0.1, r),
+      }))
       if (form['23045']) {
         base[Stats.ALL_DMG].push({
           name: `Passive`,
