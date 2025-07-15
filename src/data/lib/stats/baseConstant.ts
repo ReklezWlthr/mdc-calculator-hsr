@@ -89,7 +89,9 @@ export const baseStatsObject: BaseStatsType = {
   DOT_VUL: [],
   FUA_VUL: [],
   ULT_VUL: [],
+  
   ULT_RES_PEN: [],
+  SKILL_RES_PEN: [],
 
   // RES PEN
   ALL_TYPE_RES_PEN: [],
@@ -178,6 +180,8 @@ export const baseStatsObject: BaseStatsType = {
 
   DOT_SCALING: [],
   WIND_SHEAR_STACK: 0,
+
+  DOT_MULT: [],
 
   getAtk: function (exclude?: boolean, statBonus?: number) {
     return (

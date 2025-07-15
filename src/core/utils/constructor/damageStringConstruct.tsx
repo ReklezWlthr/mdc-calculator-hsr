@@ -63,6 +63,8 @@ export const damageStringConstruct = (
   const breakDoT = scaling.property === TalentProperty.BREAK_DOT
   const isPure = scaling.property === TalentProperty.PURE
 
+  const globalMultiplier = (scaling.multiplier || 1) + stats.getValue(`${TalentPropertyMap[scaling.property]}_MULT`)
+
   const isServant = scaling.type === TalentType.SERVANT
   const isSplit = !!_.size(scaling.hitSplit)
 
@@ -72,7 +74,7 @@ export const damageStringConstruct = (
   const {
     string: { debuffString },
     number: { finalDebuff },
-  } = breakDamageStringConstruct(calculatorStore, stats, level, scaling.multiplier)
+  } = breakDamageStringConstruct(calculatorStore, stats, level, globalMultiplier)
 
   const talentDmg = stats.getValue(`${TalentPropertyMap[scaling.property]}_DMG`) || 0
   const typeDmg =
@@ -156,7 +158,7 @@ export const damageStringConstruct = (
     (split, i) =>
       (capped ? cap : breakScale ? breakRaw(split) : raw(split)) *
       ((1 + (breakScale ? stats.getValue(Stats.BE) : isPure ? 0 : bonusDMG(scaling.bonusSplit?.[i]))) *
-        (scaling.multiplier || 1) *
+        (globalMultiplier || 1) *
         (breakScale ? 1 + (stats.getValue(StatsObjectKeys.BREAK_MULT) || 0) : 1) *
         enemyMod)
   )
@@ -220,7 +222,7 @@ export const damageStringConstruct = (
           breakScale ? stats.getValue(Stats.BE) : globalBonus
         )}</b> <i class="text-[10px]">BONUS</i>)`
       : ''
-  }${scaling.multiplier > 0 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(scaling.multiplier, 2)}</b>` : ''}${
+  }${globalMultiplier !== 1 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(globalMultiplier, 2)}</b>` : ''}${
     breakScale && stats.getValue(StatsObjectKeys.BREAK_MULT) > 0
       ? ` \u{00d7} <b class="text-amber-400">${toPercentage(1 + stats.getValue(StatsObjectKeys.BREAK_MULT), 2)}</b>`
       : ''

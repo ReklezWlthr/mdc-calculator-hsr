@@ -76,7 +76,9 @@ export interface RawBaseStatType {
   DOT_VUL: StatsArray[]
   FUA_VUL: StatsArray[]
   ULT_VUL: StatsArray[]
+  
   ULT_RES_PEN: StatsArray[]
+  SKILL_RES_PEN: StatsArray[]
 
   // RES PEN
   ALL_TYPE_RES_PEN: StatsArray[]
@@ -166,6 +168,8 @@ export interface RawBaseStatType {
   DOT_SCALING: IScaling[]
   WIND_SHEAR_STACK: number
 
+  DOT_MULT: StatsArray[]
+
   getAtk: (exclude?: boolean, statBonus?: number) => number
   getHP: (exclude?: boolean, statBonus?: number) => number
   getDef: (statBonus?: number) => number
@@ -198,10 +202,10 @@ export interface BaseStatsType extends RawBaseStatType {
   SUMMON_STATS?: RawBaseStatType
 }
 
-export type CallbackType = ((
+export type CallbackType = (
   base: BaseStatsType,
   debuffs: { type: DebuffTypes; count: number }[],
   weakness: Element[],
   all: BaseStatsType[],
   battle: boolean
-) => any)
+) => any
