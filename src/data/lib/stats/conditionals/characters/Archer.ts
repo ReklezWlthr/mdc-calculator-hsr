@@ -78,7 +78,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Guardian',
-      content: `After allies gain a Skill Point, if there are <span class="text-desc">4</span> Skill Points or more, increases Archer's CRIT DMG by <span class="text-desc">60%</span> for <span class="text-desc">1</span> turn(s).`,
+      content: `After allies gain a Skill Point, if there are <span class="text-desc">4</span> Skill Points or more, increases Archer's CRIT DMG by <span class="text-desc">120%</span> for <span class="text-desc">1</span> turn(s).`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -226,7 +226,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         base[Stats.CRIT_DMG].push({
           name: `Ascension 6 Passive`,
           source: 'Self',
-          value: 0.6,
+          value: 1.2,
         })
       }
       if (c >= 4) {
