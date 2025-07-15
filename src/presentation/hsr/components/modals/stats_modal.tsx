@@ -290,6 +290,13 @@ export const StatsModal = observer(
             </div>
           </div>
         </Collapsible>
+        <Collapsible label="Original DMG Multiplier">
+          <div className="grid grid-cols-2 gap-10">
+            <div className="space-y-2">
+              <AttributeBlock stats={stats} stat="DoT Multiplier" array={stats.DOT_MULT} />
+            </div>
+          </div>
+        </Collapsible>
         <Collapsible label="Advanced Attributes">
           <div className="grid grid-cols-2 gap-10">
             <div className="space-y-2">

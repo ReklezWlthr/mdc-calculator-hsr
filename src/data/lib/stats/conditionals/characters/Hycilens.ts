@@ -448,6 +448,14 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         }
       }
 
+      if (c >= 1) {
+        base.DOT_MULT.push({
+          name: `Eidolon 1`,
+          source: 'Self',
+          value: 0.24,
+        })
+      }
+
       return base
     },
     preComputeShared: (
