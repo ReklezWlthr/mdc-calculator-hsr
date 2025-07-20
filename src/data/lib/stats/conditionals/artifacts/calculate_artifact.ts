@@ -128,13 +128,6 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       source: 'Scholar Lost in Erudition',
       value: 0.25,
     })
-  if (form['121']) {
-    base[Stats.CRIT_DMG].push({
-      name: `4-Piece`,
-      source: `Sacerdos' Relived Ordeal`,
-      value: 0.18 * form['121'],
-    })
-  }
   if (form['123_1'] && !base.SUMMON_ID) {
     base[Stats.P_SPD].push({
       name: `4-Piece`,
@@ -241,6 +234,23 @@ export const calculateTeamRelic = (base: StatsObject, form: Record<string, any>,
         value: 0.15,
       })
     }
+  }
+
+  return base
+}
+
+export const calculateAllyRelic = (
+  base: StatsObject,
+  form: Record<string, any>,
+  owner: StatsObject,
+  ownerIndex: number
+) => {
+  if (form[`121_${ownerIndex}`]) {
+    base[Stats.CRIT_DMG].push({
+      name: `Sacerdos' Relived Ordeal`,
+      source: owner.NAME,
+      value: 0.18 * form[`121_${ownerIndex}`],
+    })
   }
 
   return base

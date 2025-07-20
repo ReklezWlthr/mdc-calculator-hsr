@@ -5,6 +5,7 @@ import { calculateOutOfCombat, getTeamOutOfCombat } from '../utils/calculator'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import _ from 'lodash'
 import {
+  calculateAllyRelic,
   calculateRelic,
   calculateTeamRelic,
   getRelicConditionals,
@@ -98,7 +99,14 @@ export const useCalculator = ({
       return {
         content: _.concat(
           item.content,
-          _.flatMap(c, (i, owner) => _.map(i.allyContent, (ac) => ({ ...ac, owner })))
+          _.flatMap(c, (i, owner) =>
+            _.map(i.allyContent, (ac) => ({
+              ...ac,
+              owner,
+              id: `${ac.id}_${owner}`,
+              text: `${findCharacter(team[owner]?.cId)?.name}: ${ac.text}`,
+            }))
+          )
         ),
         teamContent: item.teamContent,
       }
@@ -299,12 +307,13 @@ export const useCalculator = ({
     const postArtifact = _.map(postCustom, (base, index) => {
       let x = base
       _.forEach(forms, (form, i) => {
-        x = i === index ? calculateRelic(x, form) : calculateTeamRelic(x, form, postCustom[i])
+        if (i === index) x = calculateRelic(x, form)
+        x = calculateTeamRelic(x, form, postCustom[i])
+        x = calculateAllyRelic(x, forms[index], postCustom[i], i)
         if (x.SUMMON_STATS) {
-          x.SUMMON_STATS =
-            i === index
-              ? calculateRelic(x.SUMMON_STATS, form.memo)
-              : calculateTeamRelic(x.SUMMON_STATS, form.memo, postCustom[i])
+          if (i === index) x = calculateRelic(x.SUMMON_STATS, form.memo)
+          x.SUMMON_STATS = calculateTeamRelic(x.SUMMON_STATS, form.memo, postCustom[i])
+          x.SUMMON_STATS = calculateAllyRelic(x.SUMMON_STATS, forms[index].memo, postCustom[i], i)
         }
       })
       return x
