@@ -183,13 +183,13 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       value: 0.48,
     })
   }
-  if (form['126']) {
+  if (form['321']) {
     let bonus = 0
-    if (form['126'] < 4) {
-      bonus = 0.12 * (4 - form['126'])
+    if (form['321'] < 4) {
+      bonus = 0.12 * (4 - form['321'])
     }
-    if (form['126'] > 4) {
-      bonus = 0.09 * (form['126'] - 4)
+    if (form['321'] > 4) {
+      bonus = 0.09 * (form['321'] - 4)
     }
     base[Stats.ALL_DMG].push({
       name: `Passive`,
