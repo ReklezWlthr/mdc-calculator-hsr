@@ -209,6 +209,8 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
 }
 
 export const calculateTeamRelic = (base: StatsObject, form: Record<string, any>, owner: StatsObject) => {
+  if (!base) return null
+
   if (form['114'] && !checkBuffExist(base[Stats.P_SPD], { name: 'Messenger Traversing Hackerspace' }))
     base[Stats.P_SPD].push({
       name: `Messenger Traversing Hackerspace`,
