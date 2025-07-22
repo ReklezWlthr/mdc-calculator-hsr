@@ -78,7 +78,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'The Gladiorum of Conquest',
-      content: `At the start of combat, Hysilens creates a Zone with the same effect as her Ultimate, lasting for <span class="text-desc">3</span> turns. Whenever Hysilens creates a Zone, she recovers <span class="text-desc">1</span> Skill Points.`,
+      content: `At the start of combat, Hysilens creates a Zone with the same effect as her Ultimate, lasting for <span class="text-desc">3</span> turn(s). Whenever Hysilens creates a Zone, she recovers <span class="text-desc">1</span> Skill Point(s).`,
     },
     a4: {
       trace: 'Ascension 4 Passive',

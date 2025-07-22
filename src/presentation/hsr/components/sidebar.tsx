@@ -56,7 +56,7 @@ export const Sidebar = ({ currentPage, onChange }: { currentPage: HsrPage; onCha
             <div className="w-full px-2 py-1 text-xs text-white bg-green-700 rounded-md ring-1 ring-offset-2 ring-offset-primary-dark ring-green-400">
               <p className="flex items-center gap-1 font-bold">
                 <i className="fa-info-circle fa-solid" />
-                v3.5v3 Update
+                v3.5v4 Update
               </p>
               <p>Hycilens and Cerydra Updated!</p>
             </div>

@@ -2396,7 +2396,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Solo',
-      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. When an enemy target is afflicted with a debuff applied by the wearer, there is a <span class="text-desc">80%</span> <u>base chance</u> for them to also be afflicted with the <b>Enthrallment</b> state for <span class="text-desc">3</span> turn(s). Effects of the same type cannot stack. While in <b>Enthrallment</b> state, each debuff applied by the wearer increases DoT taken by {{1}}%, stacking up to <span class="text-desc">6</span> time(s). When attacked by an ally target, increases the attacker's SPD by {{2}}% for <span class="text-desc">3</span> turn(s).`,
+      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. When an enemy target is afflicted with a debuff effect applied by the wearer, there is a <span class="text-desc">80%</span> <u>base chance</u> for them to also be afflicted with the <b>Enthrallment</b> effect for <span class="text-desc">3</span> turn(s). Effects of the same type cannot stack. While affected by <b>Enthrallment</b>, each debuff effect applied by the wearer increases DoT taken by {{1}}%, stacking up to <span class="text-desc">6</span> time(s). When attacked by an ally target, increases the attacker's SPD by {{2}}% for <span class="text-desc">3</span> turn(s).`,
       properties: [
         { base: 40, growth: 5 },
         { base: 5, growth: 1.25 },
