@@ -245,7 +245,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       debuffs: { type: DebuffTypes; count: number }[]
     ) => {
       base.MAX_SP += c >= 4 ? 3 : 2
-      
+
       if (aForm.sparkle_skill && (c < 6 || !form.cipher)) {
         base.CALLBACK.push((x, d, w, all) => {
           x.X_CRIT_DMG.push({
@@ -263,10 +263,11 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base[Stats.ALL_DMG].push({
           name: `Talent`,
           source: 'Sparkle',
-          value: 0.2,
+          value:
+            form.red_herring *
+            (calcScaling(0.03, 0.003, talent, 'curved') +
+              (form.cipher ? calcScaling(0.06, 0.004, talent, 'curved') : 0)),
         })
-        form.red_herring *
-          (calcScaling(0.03, 0.003, talent, 'curved') + (form.cipher ? calcScaling(0.06, 0.004, talent, 'curved') : 0))
         if (c >= 2)
           base.DEF_PEN.push({
             name: `Eidolon 2`,

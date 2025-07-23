@@ -4,7 +4,8 @@
     "date": "July 23rd, 2025",
     "desc": [
       "Fixed: <span class=\"text-hsr-lightning\">Aglaea</span>'s A2 SPD to ATK conversion should now be working properly.",
-      "Fixed: Remembrance characters now display their DMG correctly."
+      "Fixed: Remembrance characters now display their DMG correctly.",
+      "Fixed: <span class=\"text-hsr-quantum\">Sparkle</span>'s Ultimate <span class=\"text-hsr-quantum\">Cipher</span> effect now applies correctly."
     ]
   },
   {
