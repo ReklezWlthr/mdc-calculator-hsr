@@ -311,7 +311,7 @@ export const useCalculator = ({
         x = calculateTeamRelic(x, form, postCustom[i])
         x = calculateAllyRelic(x, forms[index], postCustom[i], i)
         if (x.SUMMON_STATS) {
-          if (i === index) x = calculateRelic(x.SUMMON_STATS, form.memo)
+          if (i === index) x.SUMMON_STATS = calculateRelic(x.SUMMON_STATS, form.memo)
           x.SUMMON_STATS = calculateTeamRelic(x.SUMMON_STATS, form.memo, postCustom[i])
           x.SUMMON_STATS = calculateAllyRelic(x.SUMMON_STATS, forms[index].memo, postCustom[i], i)
         }

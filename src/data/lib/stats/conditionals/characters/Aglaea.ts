@@ -420,23 +420,26 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     ) => {
       if (form.supreme_stance && a.a2)
         base.CALLBACK.push(function (x) {
-          const summonSpd = x.SUMMON_STATS.getSpd()
-          x.X_ATK.push({
-            name: `Ascension 2 Passive`,
-            source: 'Self',
-            value: 7.2 * x.getSpd() + summonSpd * 3.6,
-            base: x.getSpd(),
-            multiplier: 7.2,
-            flat: `(${_.floor(summonSpd, 1).toLocaleString()} \u{00d7} ${toPercentage(3.6)})`,
-          })
-          x.SUMMON_STATS.X_ATK.push({
-            name: `Ascension 2 Passive`,
-            source: 'Aglaea',
-            value: 7.2 * x.getSpd() + summonSpd * 3.6,
-            base: x.getSpd(),
-            multiplier: 7.2,
-            flat: `(${_.floor(summonSpd, 1).toLocaleString()} \u{00d7} ${toPercentage(3.6)})`,
-          })
+          if (x.SUMMON_STATS) {
+            const summonSpd = x.SUMMON_STATS.getSpd()
+            x.X_ATK.push({
+              name: `Ascension 2 Passive`,
+              source: 'Self',
+              value: 7.2 * x.getSpd() + summonSpd * 3.6,
+              base: x.getSpd(),
+              multiplier: 7.2,
+              flat: `(${_.floor(summonSpd, 1).toLocaleString()} \u{00d7} ${toPercentage(3.6)})`,
+            })
+            x.SUMMON_STATS.X_ATK.push({
+              name: `Ascension 2 Passive`,
+              source: 'Aglaea',
+              value: 7.2 * x.getSpd() + summonSpd * 3.6,
+              base: x.getSpd(),
+              multiplier: 7.2,
+              flat: `(${_.floor(summonSpd, 1).toLocaleString()} \u{00d7} ${toPercentage(3.6)})`,
+            })
+          }
+
           return x
         })
       if (form.supreme_stance && c >= 6)
