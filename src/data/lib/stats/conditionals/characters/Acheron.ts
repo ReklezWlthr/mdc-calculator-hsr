@@ -109,7 +109,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     c1: {
       trace: 'Eidolon 1',
-      title: 'E!: Silenced Sky Spake Sooth',
+      title: 'Silenced Sky Spake Sooth',
       content: `CRIT Rate increases by <span class="text-desc">18%</span> when dealing DMG to debuffed enemies.`,
     },
     c2: {

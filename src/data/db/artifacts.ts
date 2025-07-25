@@ -1037,7 +1037,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [],
     bonusAdd: [],
     desc: [
-      `When there are currently more or less than <span class="text-desc">4</span> ally target in battle, each extra/missing ally target increases the wearer and their memosprite's DMG by <span class="text-desc">9%</span>/<span class="text-desc">12%</span>, up to a maximum of <span class="text-desc">4</span>/<span class="text-desc">3</span> stacks.`,
+      `When the number of allied targets on the field is not equal to <span class="text-desc">4</span>, for every <span class="text-desc">1</span> additional/missing ally target, increases the DMG dealt by the wearer and their memosprite by <span class="text-desc">9%</span>/<span class="text-desc">12%</span>, stacking up to <span class="text-desc">4</span>/<span class="text-desc">3</span> time(s).`,
     ],
     beta: true,
     set: [`Membrance Maze's Serene Treehouse`, `Membrance Maze's Wishing Whistle`],
@@ -1060,7 +1060,7 @@ export const PlanarSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases the wearer's ATK by <span class="text-desc">12%</span>. When the wearer's ATK is higher than or equal to <span class="text-desc">2,400</span>/<span class="text-desc">3,600</span>, increases the DoT DMG dealt by <span class="text-desc">12%</span>/<span class="text-desc">24%</span>`,
+      `Increases the wearer's ATK by <span class="text-desc">12%</span>. When the wearer's ATK is higher than or equal to <span class="text-desc">2,400</span>/<span class="text-desc">3,600</span>, increases the DoT DMG dealt by <span class="text-desc">12%</span>/<span class="text-desc">24%</span> respectively.`,
     ],
     beta: true,
     set: [`Warbling Shores' Blazing Beacon`, `Warbling Shores' Cantillation Trail`],

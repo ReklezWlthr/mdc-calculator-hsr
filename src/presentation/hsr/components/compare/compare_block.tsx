@@ -284,7 +284,7 @@ export const CompareBlock = observer(() => {
             <div className="w-full my-2 border-t-2 border-primary-border" />
             <ScalingWrapper
               talent={mainComputed?.ULT_ALT ? main?.talents?.ult_alt : main?.talents?.ult}
-              icon={`SkillIcon_${charData.id}_Ultra${mainComputed?.ULT_ALT ? '02' : ''}.png`}
+              icon={`SkillIcon_${charData.id}_Ultra${mainComputed?.ULT_ALT ? '02' : ''}_on.png`}
               element={charData.element}
               level={char.talents?.ult}
               upgraded={main?.upgrade?.ult}

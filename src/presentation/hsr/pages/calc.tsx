@@ -146,13 +146,7 @@ export const Calculator = observer(({}: {}) => {
                 </ScalingWrapper>
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
-                  talent={
-                    mainComputed?.SKILL_ALT
-                      ? mainComputed?.GODSLAYER
-                        ? main?.talents?.skill_alt2
-                        : main?.talents?.skill_alt
-                      : main?.talents?.skill
-                  }
+                  talent={mainComputed?.SKILL_ALT ? main?.talents?.skill_alt : main?.talents?.skill}
                   icon={`SkillIcon_${charData.id}_BP${mainComputed?.SKILL_ALT ? '02' : ''}.png`}
                   element={charData.element}
                   level={char.talents?.skill}
@@ -215,7 +209,7 @@ export const Calculator = observer(({}: {}) => {
                 <div className="w-full my-2 border-t-2 border-primary-border" />
                 <ScalingWrapper
                   talent={mainComputed?.ULT_ALT ? main?.talents?.ult_alt : main?.talents?.ult}
-                  icon={`SkillIcon_${charData.id}_Ultra${mainComputed?.ULT_ALT ? '02' : ''}.png`}
+                  icon={`SkillIcon_${charData.id}_Ultra${mainComputed?.ULT_ALT ? '02' : ''}_on.png`}
                   element={charData.element}
                   level={char.talents?.ult}
                   upgraded={main?.upgrade?.ult}

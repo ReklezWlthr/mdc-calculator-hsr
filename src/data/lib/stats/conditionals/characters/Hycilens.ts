@@ -73,7 +73,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       trace: 'Technique',
       title: `At Ocean's Abode`,
       content: `After using Technique, creates a Special Dimension that lasts for <span class="text-desc">20</span> seconds and automatically moves forward. Enemies within the Special Dimension enter the <b>Soulstruck</b> state. Enemies in the <b>Soulstruck</b> state will not attack ally targets and will follow the dimension while it persists.
-      <br />After entering battle with enemies in the <b>Soulstruck</b> state, there is a <span class="text-desc">100%</span> <u>base chance</u> for each enemy to be inflicted with <span class="text-desc">2</span> of the following states that is the same as Hysilens's Talent's effects: <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b>. Only <span class="text-desc">1</span> Dimension Effect created by allies can exist at a time.`,
+      <br />After entering battle with enemies in the <b>Soulstruck</b> state, there is a <span class="text-desc">100%</span> <u>base chance</u> for each enemy target to be inflicted with <span class="text-desc">2</span> of the following states that is the same as Hysilens's Talent's effects: <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b>. Only <span class="text-desc">1</span> Dimension Effect created by allies can exist at a time.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
@@ -93,7 +93,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c1: {
       trace: 'Eidolon 1',
       title: 'You Ask Why Hearts Cry',
-      content: `While Hysilens is on the field, the DoT dealt by ally targets becomes <span class="text-desc">124%</span> of the original value.`,
+      content: `While Hysilens is on the field, the DoT dealt by ally targets becomes <span class="text-desc">116%</span> of the original value. When Hysilens inflicts <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b> state on enemies through Talent, there is a <span class="text-desc">100%</span> <u>base chance</u> to additionally inflict a <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b> state that is identical to and coexists with the original Talent effect.`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -120,7 +120,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c6: {
       trace: 'Eidolon 6',
       title: 'When to Return From Where You Lie',
-      content: `When Hysilens inflicts <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b> state on enemies through Talent, there is a <span class="text-desc">100%</span> <u>base chance</u> to additionally inflict a <b class="text-hsr-wind">Wind Shear</b>/<b class="text-hsr-physical">Bleed</b>/<b class="text-hsr-fire">Burn</b>/<b class="text-hsr-lightning">Shock</b> state that is identical to and coexists with the original Talent effect. While the Zone is active, at the start of each turn or in each attack by an ally target, the maximum trigger count for Hysilens's <b class="text-hsr-physical">Physical DoT</b> effect increases to <span class="text-desc">12</span> times.`,
+      content: `While the Zone is active, at the start of each turn or in each attack by an ally target, the maximum trigger count for Hysilens's <b class="text-hsr-physical">Physical DoT</b> effect increases to <span class="text-desc">12</span> times, and increases the DMG multiplier of the DMG dealt by <span class="text-desc">20%</span>.`,
     },
   }
 
@@ -193,9 +193,9 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     {
       type: 'toggle',
       id: 'hycilens_e6_wind',
-      text: `Hycilens's E6 Wind Shear`,
+      text: `Hycilens's E1 Wind Shear`,
       ...talents.c6,
-      show: c >= 6,
+      show: c >= 1,
       default: true,
       duration: 2,
       debuff: true,
@@ -204,9 +204,9 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     {
       type: 'toggle',
       id: 'hycilens_e6_shock',
-      text: `Hycilens's E6 Shock`,
+      text: `Hycilens's E1 Shock`,
       ...talents.c6,
-      show: c >= 6,
+      show: c >= 1,
       default: true,
       duration: 2,
       debuff: true,
@@ -215,9 +215,9 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     {
       type: 'toggle',
       id: 'hycilens_e6_burn',
-      text: `Hycilens's E6 Burn`,
+      text: `Hycilens's E1 Burn`,
       ...talents.c6,
-      show: c >= 6,
+      show: c >= 1,
       default: true,
       duration: 2,
       debuff: true,
@@ -226,9 +226,9 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     {
       type: 'toggle',
       id: 'hycilens_e6_bleed',
-      text: `Hycilens's E6 Bleed`,
+      text: `Hycilens's E1 Bleed`,
       ...talents.c6,
-      show: c >= 6,
+      show: c >= 1,
       default: true,
       duration: 2,
       debuff: true,
@@ -303,7 +303,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         },
         {
           name: `Zone DoT`,
-          value: [{ scaling: calcScaling(0.32, 0.0528, ult, 'hycilens'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.32, 0.0528, ult, 'hycilens') + (c >= 6 ? 0.2 : 0), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.DOT,
           type: TalentType.NONE,
@@ -371,7 +371,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       if (form.hycilens_e6_shock) {
         const shock = {
           ...dot,
-          name: 'E6 Shocked DMG',
+          name: 'E1 Shocked DMG',
           element: Element.LIGHTNING,
           debuffElement: Element.LIGHTNING,
         }
@@ -382,7 +382,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       if (form.hycilens_e6_burn) {
         const burn = {
           ...dot,
-          name: 'E6 Burn DMG',
+          name: 'E1 Burn DMG',
           element: Element.FIRE,
           debuffElement: Element.FIRE,
         }
@@ -393,7 +393,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       if (form.hycilens_e6_wind) {
         const wind = {
           ...dot,
-          name: 'E6 Wind Shear DMG',
+          name: 'E1 Wind Shear DMG',
           element: Element.WIND,
           debuffElement: Element.WIND,
         }
@@ -404,7 +404,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       if (form.hycilens_e6_bleed) {
         const bleed = {
           ...dot,
-          name: 'E6 Bleed DMG',
+          name: 'E1 Bleed DMG',
           element: Element.PHYSICAL,
           debuffElement: Element.PHYSICAL,
           value: [{ scaling: 0.2, multiplier: Stats.EHP }],
@@ -452,7 +452,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         base.DOT_MULT.push({
           name: `Eidolon 1`,
           source: 'Self',
-          value: 0.24,
+          value: 0.16,
         })
       }
 
@@ -499,7 +499,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         base.DOT_MULT.push({
           name: `Eidolon 1`,
           source: 'Self',
-          value: 0.24,
+          value: 0.16,
         })
       }
 
@@ -543,7 +543,9 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
             if (_.size(dot)) {
               item.push({
                 name: `Hycilens's Zone DoT`,
-                value: [{ scaling: calcScaling(0.32, 0.0528, ult, 'hycilens'), multiplier: Stats.ATK }],
+                value: [
+                  { scaling: calcScaling(0.32, 0.0528, ult, 'hycilens') + (c >= 6 ? 0.2 : 0), multiplier: Stats.ATK },
+                ],
                 multiplier: _.min([_.size(dot), c >= 6 ? 12 : 8]),
                 element: Element.PHYSICAL,
                 property: TalentProperty.DOT,

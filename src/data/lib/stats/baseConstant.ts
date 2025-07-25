@@ -248,7 +248,6 @@ export const baseStatsObject: BaseStatsType = {
   EXTRA_C_TURN: 0,
 
   SUMMON_ID: '',
-  GODSLAYER: false,
 
   MAX_SP: 5,
 }

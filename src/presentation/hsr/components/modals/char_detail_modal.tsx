@@ -226,7 +226,7 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
             <TalentIcon
               talent={talent?.talents?.ult}
               element={charData?.element}
-              icon={`SkillIcon_${charData?.id}_Ultra.png`}
+              icon={`SkillIcon_${charData?.id}_Ultra_on.png`}
               size="w-9 h-9"
               upgraded={talent?.upgrade?.ult}
               level={char?.talents?.ult}

@@ -52,7 +52,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 30,
       trace: 'Skill',
       title: `Pawn's Promotion`,
-      content: `Grants <b class="text-blue">Military Merit</b> to one designated ally character and give Cerydra <span class="text-desc">1</span> points of <b>Charge</b>. Maximum <b>Charge</b> is <span class="text-desc">8</span> points. When <b>Charge</b> reaches <span class="text-desc">6</span> points, <b class="text-blue">Military Merit</b> automatically upgrades to <b class="text-sky-500">Peerage</b> and dispels their Crowd Control debuff. Characters with <b class="text-sky-500">Peerage</b> are considered as also having <b class="text-blue">Military Merit</b>. Characters with <b class="text-sky-500">Peerage</b> gain {{0}}% CRIT DMG for Skill DMG, and trigger a <b class="text-desc">Coup de Main</b> when using their Skill on enemies. When Cerydra is in the <b>Departed</b> state, the <b>All-Type RES PEN</b> of the Skill DMG dealt by the character with <b class="text-sky-500">Peerage</b> increases by {{1}}%. After <b class="text-desc">Coup de Main</b> ends, consumes <span class="text-desc">6</span> points of <b>Charge</b> to revert <b class="text-sky-500">Peerage</b> back to <b class="text-blue">Military Merit</b>.
+      content: `Grants <b class="text-blue">Military Merit</b> to one designated ally character and give Cerydra <span class="text-desc">1</span> points of <b>Charge</b>. Maximum <b>Charge</b> is <span class="text-desc">8</span> points. When <b>Charge</b> reaches <span class="text-desc">6</span> points, the ally character's <b class="text-blue">Military Merit</b> automatically upgrades to <b class="text-sky-500">Peerage</b> and dispels their Crowd Control debuff. Characters with <b class="text-sky-500">Peerage</b> are considered to have <b class="text-blue">Military Merit</b> simultaneously. Increases the CRIT DMG boost for Skill DMG by {{0}}% <b class="text-sky-500">Peerage</b>, increases <b>All-Type RES PEN</b> by {{1}}%, and said characters can also trigger a <b class="text-desc">Coup de Main</b> when using their Skill on enemy targets. After <b class="text-desc">Coup de Main</b> ends, consumes <span class="text-desc">6</span> points of <b>Charge</b> to revert <b class="text-sky-500">Peerage</b> back to <b class="text-blue">Military Merit</b>.
       <br />
       <br /><b class="text-desc">Coup de Main</b>
       <br />Copy and immediately use the ability about to be used, then use the original ability.
@@ -76,8 +76,11 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: `Ave Imperator`,
-      content: `Characters with <b class="text-blue">Military Merit</b> increase their ATK by an amount equal to {{0}}% of Cerydra's ATK. When the character uses Basic ATK or Skill, Cerydra gains <span class="text-desc">1</span> <b>Charge</b>. Cerydra cannot gain <b>Charges</b> while <b class="text-desc">Coup de Main</b> is in effect. <b class="text-blue">Military Merit</b> only takes effect the most recently affected target. When the target changes, Cerydra's <b>Charge</b> is reset to <span class="text-desc">0</span>.`,
-      value: [{ base: 18, growth: 0.6, style: 'curved' }],
+      content: `Characters with <b class="text-blue">Military Merit</b> increase their ATK by an amount equal to {{0}}% of Cerydra's ATK. When the character uses Basic ATK or Skill, Cerydra gains <span class="text-desc">1</span> <b>Charge</b>. Cerydra cannot gain <b>Charges</b> while <b class="text-desc">Coup de Main</b> is in effect. After characters with <b class="text-blue">Military Merit</b> use an attack, Cerydra deals <span class="text-desc">1</span> additional instance of <b class="text-hsr-wind">Wind Additional DMG</b> equal to {{1}}% of her ATK. This effect can be triggered up to <span class="text-desc">20</span> time(s). The trigger count resets whenever Cerydra uses her Ultimate. <b class="text-blue">Military Merit</b> only takes effect the most recently affected target. When the target changes, Cerydra's <b>Charge</b> is reset to <span class="text-desc">0</span>.`,
+      value: [
+        { base: 18, growth: 0.6, style: 'curved' },
+        { base: 30, growth: 3, style: 'curved' },
+      ],
       level: talent,
       tag: AbilityTag.SUPPORT,
     },
@@ -132,19 +135,11 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: `A Journey Set Starward`,
-      content: `Characters with <b class="text-blue">Military Merit</b> increase their <b>All-Type RES PEN</b> by <span class="text-desc">20%</span>. After they use an attack, Cerydra deals an additional instance of <b class="text-hsr-wind">Wind Additional DMG</b> equal to <span class="text-desc">360%</span> of her ATK. This effect can be triggered up to <span class="text-desc">20</span> time(s). The trigger count resets whenever Cerydra uses her Ultimate. While a teammate with <b class="text-blue">Military Merit</b> is present on the field, Cerydra's <b>All-Type RES PEN</b> is increased by <span class="text-desc">20%</span>.`,
+      content: `Characters with <b class="text-blue">Military Merit</b> increase their <b>All-Type RES PEN</b> by <span class="text-desc">20%</span>, and the multiplier for <b>Additional DMG</b> triggered via <b class="text-blue">Military Merit</b> increases by <span class="text-desc">300%</span>. While a teammate with <b class="text-blue">Military Merit</b> is present on the field, Cerydra's <b>All-Type RES PEN</b> is increased by <span class="text-desc">20%</span>.`,
     },
   }
 
   const content: IContent[] = [
-    {
-      type: 'toggle',
-      id: 'cerydra_depart',
-      text: `Cerydra's Departed Bonus`,
-      ...talents.skill,
-      show: true,
-      default: false,
-    },
     {
       type: 'toggle',
       id: 'cerydra_a6',
@@ -295,33 +290,31 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 source: index === i ? 'Self' : 'Cerydra',
               })
             }
-            if (c >= 6) {
-              _.forEach([f.BASIC_SCALING, f.SKILL_SCALING, f.ULT_SCALING, f.TALENT_SCALING], (item) => {
-                if (_.some(item, (v) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], v.property))) {
-                  item.push({
-                    name: `Cerydra's E6 Additional DMG`,
-                    value: [{ scaling: 3.6, multiplier: Stats.ATK }],
-                    element: Element.WIND,
-                    property: TalentProperty.ADD,
-                    type: TalentType.NONE,
-                    sum: true,
-                  })
-                }
-              })
-            }
+            _.forEach([f.BASIC_SCALING, f.SKILL_SCALING, f.ULT_SCALING, f.TALENT_SCALING], (item) => {
+              if (_.some(item, (v) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], v.property))) {
+                item.push({
+                  name: `Military Merit Additional DMG`,
+                  value: [
+                    { scaling: calcScaling(0.3, 0.03, talent, 'curved') + (c >= 6 ? 3 : 0), multiplier: Stats.ATK },
+                  ],
+                  element: Element.WIND,
+                  property: TalentProperty.ADD,
+                  type: TalentType.NONE,
+                  sum: true,
+                })
+              }
+            })
             if (allForm[i].military_merit >= 2) {
               f.SKILL_CD.push({ ...cd, source: index === i ? 'Self' : 'Cerydra' })
+              f.SKILL_RES_PEN.push({
+                name: 'Peerage',
+                value: 0.1,
+                source: index === i ? 'Self' : 'Cerydra',
+              })
               if (c >= 1) {
                 f.SKILL_DEF_PEN.push({
                   name: 'Eidolon 1',
                   value: 0.2,
-                  source: index === i ? 'Self' : 'Cerydra',
-                })
-              }
-              if (form.cerydra_depart) {
-                f.SKILL_RES_PEN.push({
-                  name: 'Peerage',
-                  value: 0.1,
                   source: index === i ? 'Self' : 'Cerydra',
                 })
               }

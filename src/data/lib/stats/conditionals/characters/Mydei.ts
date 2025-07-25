@@ -67,7 +67,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
       tag: AbilityTag.BLAST,
     },
-    skill_alt2: {
+    summon_skill: {
       energy: 30,
       trace: 'Enhanced Skill [2]',
       title: `Godslayer Be God`,
@@ -79,6 +79,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ],
       level: skill,
       tag: AbilityTag.BLAST,
+      image: 'asset/traces/SkillIcon_1404_BP02.png',
     },
     ult: {
       energy: 5,
@@ -168,14 +169,6 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       show: true,
       default: true,
     },
-    {
-      type: 'toggle',
-      id: 'godslayer',
-      text: `Godslayer Be God`,
-      ...talents.talent,
-      show: true,
-      default: true,
-    },
   ]
 
   const teammateContent: IContent[] = []
@@ -212,60 +205,25 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         },
       ]
       base.SKILL_SCALING = form.vendetta
-        ? form.godslayer
-          ? c >= 1
-            ? [
-                {
-                  name: 'AoE',
-                  value: [{ scaling: calcScaling(1.4, 0.14, skill, 'curved') + 0.3, multiplier: Stats.HP }],
-                  element: Element.IMAGINARY,
-                  property: TalentProperty.NORMAL,
-                  type: TalentType.SKILL,
-                  break: 20,
-                  hitSplit: [0.5, 0.5],
-                  sum: true,
-                },
-              ]
-            : [
-                {
-                  name: 'Single Target',
-                  value: [{ scaling: calcScaling(1.4, 0.14, skill, 'curved'), multiplier: Stats.HP }],
-                  element: Element.IMAGINARY,
-                  property: TalentProperty.NORMAL,
-                  type: TalentType.SKILL,
-                  break: 20,
-                  hitSplit: [0.5, 0.5],
-                  sum: true,
-                },
-                {
-                  name: 'Adjacent',
-                  value: [{ scaling: calcScaling(0.84, 0.084, skill, 'curved'), multiplier: Stats.HP }],
-                  element: Element.IMAGINARY,
-                  property: TalentProperty.NORMAL,
-                  type: TalentType.SKILL,
-                  hitSplit: [0.5, 0.5],
-                  break: 10,
-                },
-              ]
-          : [
-              {
-                name: 'Single Target',
-                value: [{ scaling: calcScaling(0.55, 0.055, skill, 'curved'), multiplier: Stats.HP }],
-                element: Element.IMAGINARY,
-                property: TalentProperty.NORMAL,
-                type: TalentType.SKILL,
-                break: 20,
-                sum: true,
-              },
-              {
-                name: 'Adjacent',
-                value: [{ scaling: calcScaling(0.33, 0.033, skill, 'curved'), multiplier: Stats.HP }],
-                element: Element.IMAGINARY,
-                property: TalentProperty.NORMAL,
-                type: TalentType.SKILL,
-                break: 10,
-              },
-            ]
+        ? [
+            {
+              name: 'Single Target',
+              value: [{ scaling: calcScaling(0.55, 0.055, skill, 'curved'), multiplier: Stats.HP }],
+              element: Element.IMAGINARY,
+              property: TalentProperty.NORMAL,
+              type: TalentType.SKILL,
+              break: 20,
+              sum: true,
+            },
+            {
+              name: 'Adjacent',
+              value: [{ scaling: calcScaling(0.33, 0.033, skill, 'curved'), multiplier: Stats.HP }],
+              element: Element.IMAGINARY,
+              property: TalentProperty.NORMAL,
+              type: TalentType.SKILL,
+              break: 10,
+            },
+          ]
         : [
             {
               name: 'Single Target',
@@ -285,6 +243,42 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               break: 10,
             },
           ]
+      base.MEMO_SKILL_SCALING = form.vendetta
+        ? c >= 1
+          ? [
+              {
+                name: 'AoE',
+                value: [{ scaling: calcScaling(1.4, 0.14, skill, 'curved') + 0.3, multiplier: Stats.HP }],
+                element: Element.IMAGINARY,
+                property: TalentProperty.NORMAL,
+                type: TalentType.SKILL,
+                break: 20,
+                hitSplit: [0.5, 0.5],
+                sum: true,
+              },
+            ]
+          : [
+              {
+                name: 'Single Target',
+                value: [{ scaling: calcScaling(1.4, 0.14, skill, 'curved'), multiplier: Stats.HP }],
+                element: Element.IMAGINARY,
+                property: TalentProperty.NORMAL,
+                type: TalentType.SKILL,
+                break: 20,
+                hitSplit: [0.5, 0.5],
+                sum: true,
+              },
+              {
+                name: 'Adjacent',
+                value: [{ scaling: calcScaling(0.84, 0.084, skill, 'curved'), multiplier: Stats.HP }],
+                element: Element.IMAGINARY,
+                property: TalentProperty.NORMAL,
+                type: TalentType.SKILL,
+                hitSplit: [0.5, 0.5],
+                break: 10,
+              },
+            ]
+        : []
       base.ULT_SCALING = [
         {
           name: 'Activation Healing',
@@ -362,7 +356,6 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           })
         }
       }
-      if (form.godslayer) base.GODSLAYER = true
 
       return base
     },

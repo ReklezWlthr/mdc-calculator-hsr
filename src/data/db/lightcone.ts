@@ -2396,7 +2396,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Solo',
-      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. When an enemy target is afflicted with a debuff effect applied by the wearer, there is a <span class="text-desc">80%</span> <u>base chance</u> for them to also be afflicted with the <b>Enthrallment</b> effect for <span class="text-desc">3</span> turn(s). Effects of the same type cannot stack. While affected by <b>Enthrallment</b>, each debuff effect applied by the wearer increases DoT taken by {{1}}%, stacking up to <span class="text-desc">6</span> time(s). When attacked by an ally target, increases the attacker's SPD by {{2}}% for <span class="text-desc">3</span> turn(s).`,
+      detail: `Increases the wearer's Effect Hit Rate by {{0}}%. When an enemy target becomes afflicted with a debuff applied by the wearer, there is a <span class="text-desc">80%</span> <u>base chance</u> for them to also be afflicted with the <b>Enthrallment</b> effect, lasting for <span class="text-desc">3</span> turn(s). Effects of the same type cannot stack. While affected by <b>Enthrallment</b>, each debuff applied by the wearer on the target increases the target's DoT taken by {{1}}%, stacking up to <span class="text-desc">6</span> time(s). When attacked by an ally target, increases the attacker's SPD by {{2}}% for <span class="text-desc">3</span> turn(s).`,
       properties: [
         { base: 40, growth: 5 },
         { base: 5, growth: 1.25 },
@@ -2415,7 +2415,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Conquer',
-      detail: `Increases the wearer's ATK by {{0}}%. After using Ultimate, recovers <span class="text-desc">1</span> Skill Point(s). When the wearer uses their Skill on an ally character, increases the Skill DMG dealt by the target by {{1}}% for <span class="text-desc">3</span> turn(s).`,
+      detail: `Increases the wearer's ATK by {{0}}%. After using Ultimate to attack, recovers <span class="text-desc">1</span> Skill Point(s). When the wearer uses their Skill on one ally character, increases the Skill DMG dealt by the target by {{1}}% for <span class="text-desc">3</span> turn(s).`,
       properties: [
         { base: 64, growth: 16 },
         { base: 54, growth: 13.5 },
