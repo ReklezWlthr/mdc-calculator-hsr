@@ -444,9 +444,11 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         })
       if (form.supreme_stance && c >= 6)
         base.CALLBACK.push(function (x) {
-          const spd = _.max([x.getSpd(), x.SUMMON_STATS.getSpd()])
-          const bonus = spd > 320 ? 0.6 : spd > 240 ? 0.3 : spd > 160 ? 0.1 : 0
-          x.BASIC_SCALING = _.map(x.BASIC_SCALING, (item) => ({ ...item, bonus }))
+          if (x.SUMMON_STATS) {
+            const spd = _.max([x.getSpd(), x.SUMMON_STATS?.getSpd()])
+            const bonus = spd > 320 ? 0.6 : spd > 240 ? 0.3 : spd > 160 ? 0.1 : 0
+            x.BASIC_SCALING = _.map(x.BASIC_SCALING, (item) => ({ ...item, bonus }))
+          }
           return x
         })
 
