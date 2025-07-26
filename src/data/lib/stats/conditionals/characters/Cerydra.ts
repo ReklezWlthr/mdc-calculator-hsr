@@ -306,7 +306,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             })
             if (allForm[i].military_merit >= 2) {
               f.SKILL_CD.push({ ...cd, source: index === i ? 'Self' : 'Cerydra' })
-              f.SKILL_RES_PEN.push({
+              f.ALL_TYPE_RES_PEN.push({
                 name: 'Peerage',
                 value: 0.1,
                 source: index === i ? 'Self' : 'Cerydra',
