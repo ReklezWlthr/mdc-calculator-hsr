@@ -290,20 +290,23 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 source: index === i ? 'Self' : 'Cerydra',
               })
             }
-            _.forEach([f.BASIC_SCALING, f.SKILL_SCALING, f.ULT_SCALING, f.TALENT_SCALING], (item) => {
-              if (_.some(item, (v) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], v.property))) {
-                item.push({
-                  name: `Military Merit Additional DMG`,
-                  value: [
-                    { scaling: calcScaling(0.3, 0.03, talent, 'curved') + (c >= 6 ? 3 : 0), multiplier: Stats.ATK },
-                  ],
-                  element: Element.WIND,
-                  property: TalentProperty.ADD,
-                  type: TalentType.NONE,
-                  sum: true,
-                })
+            _.forEach(
+              [f.BASIC_SCALING, f.SKILL_SCALING, f.ULT_SCALING, f.TALENT_SCALING, f.MEMO_SKILL_SCALING ],
+              (item) => {
+                if (_.some(item, (v) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], v.property))) {
+                  item.push({
+                    name: `Military Merit Additional DMG`,
+                    value: [
+                      { scaling: calcScaling(0.3, 0.03, talent, 'curved') + (c >= 6 ? 3 : 0), multiplier: Stats.ATK },
+                    ],
+                    element: Element.WIND,
+                    property: TalentProperty.ADD,
+                    type: TalentType.NONE,
+                    sum: true,
+                  })
+                }
               }
-            })
+            )
             if (allForm[i].military_merit >= 2) {
               f.SKILL_CD.push({ ...cd, source: index === i ? 'Self' : 'Cerydra' })
               f.ALL_TYPE_RES_PEN.push({
