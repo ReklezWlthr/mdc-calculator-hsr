@@ -1,5 +1,12 @@
 [
   {
+    "version": "1.1.3-12",
+    "date": "July 29th, 2025",
+    "desc": [
+      "Fixed: <span class=\"text-hsr-wind\">Cerydra</span>'s Talent now properly interacts with <span class=\"text-hsr-physical\">Robin</span>'s Ultimate."
+    ]
+  },
+  {
     "version": "1.1.3-11",
     "date": "July 22nd, 2025",
     "desc": [

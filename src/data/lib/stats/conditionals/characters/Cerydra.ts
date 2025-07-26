@@ -349,16 +349,16 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       }
 
       if (a.a2) {
-        base.CALLBACK.push(function P99(f) {
-          const base = _.max([f.getAtk() - 2000, 0])
-          f[Stats.CRIT_DMG].push({
+        globalCallback.push(function P999(_1, _2, _3, a) {
+          const base = _.max([a[index].getAtk() - 2000, 0])
+          a[index][Stats.CRIT_DMG].push({
             name: 'Ascension 2 Passive',
             source: 'Self',
             value: _.min([(base / 100) * 0.18, 3.6]),
             base: `(${_.min([2000, base]).toLocaleString()} ÷ 100)`,
             multiplier: 0.18,
           })
-          return f
+          return a
         })
       }
 
