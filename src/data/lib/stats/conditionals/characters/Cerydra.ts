@@ -291,7 +291,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               })
             }
             _.forEach(
-              [f.BASIC_SCALING, f.SKILL_SCALING, f.ULT_SCALING, f.TALENT_SCALING, f.MEMO_SKILL_SCALING ],
+              [f.BASIC_SCALING, f.SKILL_SCALING, f.ULT_SCALING, f.TALENT_SCALING, f.MEMO_SKILL_SCALING],
               (item) => {
                 if (_.some(item, (v) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], v.property))) {
                   item.push({
@@ -303,6 +303,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                     property: TalentProperty.ADD,
                     type: TalentType.NONE,
                     sum: true,
+                    overrideIndex: index,
                   })
                 }
               }
