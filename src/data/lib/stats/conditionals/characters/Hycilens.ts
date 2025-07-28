@@ -554,6 +554,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
                 type: TalentType.NONE,
                 sum: true,
                 detonate: true,
+                overrideIndex: index,
               })
             }
           })
