@@ -39,6 +39,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     normal_alt: {
       trace: 'Enhanced Basic ATK',
@@ -47,6 +48,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       value: [{ base: 100, growth: 20, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     skill: {
       trace: 'Skill',
@@ -58,6 +60,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ],
       level: skill,
       tag: AbilityTag.ST,
+      sp: -1,
     },
     skill_alt: {
       trace: 'Enhanced Skill',
@@ -69,6 +72,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ],
       level: skill,
       tag: AbilityTag.BLAST,
+      sp: -1,
     },
     ult: {
       energy: 5,

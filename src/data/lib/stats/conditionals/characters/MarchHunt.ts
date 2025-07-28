@@ -29,6 +29,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     normal_alt: {
       energy: 20,
@@ -54,6 +55,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ],
       level: skill,
       tag: AbilityTag.SUPPORT,
+      sp: -1,
     },
     ult: {
       energy: 5,

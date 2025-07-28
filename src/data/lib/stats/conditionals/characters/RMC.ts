@@ -42,6 +42,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     skill: {
       energy: 30,
@@ -51,6 +52,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       value: [{ base: 30, growth: 3, style: 'curved' }],
       level: skill,
       tag: AbilityTag.SUMMON,
+      sp: -1,
     },
     summon_skill: {
       energy: 10,

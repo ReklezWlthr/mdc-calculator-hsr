@@ -37,6 +37,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     skill: {
       energy: 30,
@@ -49,6 +50,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ],
       level: skill,
       tag: AbilityTag.BLAST,
+      sp: -1,
     },
     ult: {
       energy: 5,

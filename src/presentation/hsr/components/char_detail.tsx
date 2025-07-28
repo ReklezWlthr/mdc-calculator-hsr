@@ -311,9 +311,19 @@ export const CharDetail = observer(() => {
                         <p className="text-sm font-normal text-primary-lighter">{item.trace}</p>
                       )}
                       <p className="font-semibold">{item.title}</p>
-                      <div className="flex gap-1 text-xs opacity-80">
-                        {!!item.tag && <p className="text-desc">[{item.tag}]</p>}
-                        {!!item.energy && <p className="font-normal text-rose-300">[{item.energy} Energy]</p>}
+                      <div className="flex items-center gap-1 text-xs">
+                        {!!item.tag && <p className="text-desc opacity-80">[{item.tag}]</p>}
+                        {!!item.energy && (
+                          <p className="font-normal text-rose-300 opacity-80">[{item.energy} Energy]</p>
+                        )}
+                        {!!item.sp && (
+                          <div className="flex items-center font-normal opacity-100 text-gray">
+                            <img className="size-5" src="asset/PointBPFull.png" />
+                            {Intl.NumberFormat('en-US', {
+                              signDisplay: 'exceptZero',
+                            }).format(item.sp)}
+                          </div>
+                        )}
                       </div>
                     </div>
                     {item.trace !== TalentType.TECH && (

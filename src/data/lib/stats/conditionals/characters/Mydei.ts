@@ -39,6 +39,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     skill: {
       energy: 30,

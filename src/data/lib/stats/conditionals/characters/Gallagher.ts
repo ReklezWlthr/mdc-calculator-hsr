@@ -28,6 +28,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     normal_alt: {
       energy: 20,
@@ -41,6 +42,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: basic,
       tag: AbilityTag.ST,
       image: `https://enka.network/ui/hsr/SpriteOutput/SkillIcons/SkillIcon_1301_Normal02.png`,
+      sp: 1,
     },
     skill: {
       energy: 30,
@@ -50,6 +52,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       value: [{ base: 200, growth: 140, style: 'pure' }],
       level: skill,
       tag: AbilityTag.RESTORE,
+      sp: -1,
     },
     ult: {
       energy: 5,

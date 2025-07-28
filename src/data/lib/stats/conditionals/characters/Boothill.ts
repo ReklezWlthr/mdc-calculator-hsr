@@ -37,6 +37,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     normal_alt: {
       energy: 30,
@@ -58,6 +59,7 @@ const Boothill = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       value: [{ base: 15, growth: 1.5, style: 'curved' }],
       level: skill,
       tag: AbilityTag.IMPAIR,
+      sp: -1,
     },
     ult: {
       energy: 5,

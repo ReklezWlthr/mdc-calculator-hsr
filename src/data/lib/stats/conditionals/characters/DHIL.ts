@@ -37,6 +37,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     normal_alt1: {
       energy: 30,
@@ -46,6 +47,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       value: [{ base: 130, growth: 26, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: -1,
     },
     normal_alt2: {
       energy: 35,
@@ -58,6 +60,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       ],
       level: basic,
       tag: AbilityTag.BLAST,
+      sp: -2,
     },
     normal_alt3: {
       energy: 40,
@@ -70,6 +73,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       ],
       level: basic,
       tag: AbilityTag.BLAST,
+      sp: -3,
     },
     skill: {
       trace: 'Skill',

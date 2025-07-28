@@ -31,6 +31,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     skill: {
       energy: 30,
@@ -43,6 +44,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       ],
       level: skill,
       tag: AbilityTag.BLAST,
+      sp: -1,
     },
     ult: {
       energy: 5,

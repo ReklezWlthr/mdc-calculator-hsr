@@ -42,6 +42,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     skill: {
       trace: 'Skill',
@@ -55,6 +56,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ],
       level: skill,
       tag: AbilityTag.RESTORE,
+      sp: -1,
     },
     summon_skill: {
       trace: 'Memosprite Skill',

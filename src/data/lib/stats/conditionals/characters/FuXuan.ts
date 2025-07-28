@@ -30,6 +30,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     skill: {
       energy: 30,
@@ -44,6 +45,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       ],
       level: skill,
       tag: AbilityTag.DEFENSE,
+      sp: -1,
     },
     ult: {
       energy: 5,

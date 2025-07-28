@@ -40,6 +40,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     skill: {
       energy: 30,
@@ -53,6 +54,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ],
       level: skill,
       tag: AbilityTag.BLAST,
+      sp: -1,
     },
     ult: {
       energy: 5,

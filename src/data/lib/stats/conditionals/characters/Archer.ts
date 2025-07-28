@@ -28,6 +28,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     skill: {
       energy: 30,
@@ -42,6 +43,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       ],
       level: skill,
       tag: AbilityTag.ST,
+      sp: -2,
     },
     ult: {
       energy: 5,

@@ -121,6 +121,7 @@ export interface ITalentDisplay {
   level?: number
   image?: string
   tag?: string
+  sp?: number
 }
 
 export interface ITalent {

@@ -37,6 +37,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     normal_alt: {
       energy: 30,
@@ -62,6 +63,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       value: [{ base: 12, growth: 2.8, style: 'curved' }],
       level: skill,
       tag: AbilityTag.ENHANCE,
+      sp: -1,
     },
     ult: {
       energy: 5,

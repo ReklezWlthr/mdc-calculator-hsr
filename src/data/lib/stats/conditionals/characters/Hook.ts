@@ -31,6 +31,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     skill: {
       energy: 30,
@@ -44,6 +45,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       ],
       level: skill,
       tag: AbilityTag.ST,
+      sp: -1,
     },
     skill_alt: {
       energy: 30,
@@ -58,6 +60,7 @@ const Hook = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       ],
       level: skill,
       tag: AbilityTag.BLAST,
+      sp: -1,
     },
     ult: {
       energy: 5,

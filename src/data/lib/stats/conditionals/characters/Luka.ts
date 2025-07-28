@@ -40,6 +40,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     normal_alt: {
       energy: 20,
@@ -53,6 +54,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       ],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     skill: {
       energy: 30,
@@ -66,6 +68,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       ],
       level: skill,
       tag: AbilityTag.ST,
+      sp: -1,
     },
     ult: {
       energy: 5,

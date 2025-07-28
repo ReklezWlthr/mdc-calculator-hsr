@@ -33,6 +33,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     skill: {
       energy: 30,
@@ -45,6 +46,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ],
       level: skill,
       tag: AbilityTag.BLAST,
+      sp: -1,
     },
     ult: {
       energy: 5,

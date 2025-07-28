@@ -39,6 +39,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     normal_alt: {
       energy: 20,
@@ -62,6 +63,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       value: [{ base: 60, growth: 6, style: 'curved' }],
       level: skill,
       tag: AbilityTag.AOE,
+      sp: -1,
     },
     ult: {
       energy: 5,

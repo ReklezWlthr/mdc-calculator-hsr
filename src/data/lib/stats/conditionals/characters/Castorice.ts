@@ -40,6 +40,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     skill: {
       trace: 'Skill',

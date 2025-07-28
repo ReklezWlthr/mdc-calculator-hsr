@@ -47,6 +47,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     skill: {
       energy: 30,
@@ -63,6 +64,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ],
       level: skill,
       tag: AbilityTag.ENHANCE,
+      sp: -1,
     },
     ult: {
       energy: 5,

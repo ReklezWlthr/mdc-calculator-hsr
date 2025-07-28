@@ -37,6 +37,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     skill: {
       energy: 30,
@@ -49,6 +50,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       ],
       level: skill,
       tag: AbilityTag.DEFENSE,
+      sp: -1,
     },
     ult: {
       energy: 5,

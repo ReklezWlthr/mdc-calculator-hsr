@@ -30,6 +30,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     skill: {
       energy: c >= 1 ? 36 : 30,
@@ -39,6 +40,7 @@ const Asta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: skill,
       tag: AbilityTag.BOUNCE,
+      sp: -1,
     },
     ult: {
       energy: 5,

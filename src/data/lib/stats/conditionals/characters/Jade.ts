@@ -42,6 +42,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       ],
       level: basic,
       tag: AbilityTag.BLAST,
+      sp: 1,
     },
     skill: {
       energy: 30,
@@ -54,6 +55,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       value: [{ base: 15, growth: 1, style: 'curved' }],
       level: skill,
       tag: AbilityTag.SUPPORT,
+      sp: -1,
     },
     ult: {
       energy: 5,

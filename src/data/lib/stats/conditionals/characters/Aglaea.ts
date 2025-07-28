@@ -41,6 +41,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     normal_alt: {
       energy: 20,
@@ -62,6 +63,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: skill,
       tag: AbilityTag.SUMMON,
+      sp: -1,
     },
     summon_skill: {
       energy: 10,

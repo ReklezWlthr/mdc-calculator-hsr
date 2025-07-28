@@ -39,6 +39,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
+      sp: 1,
     },
     normal_alt: {
       energy: 30,
@@ -51,6 +52,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       ],
       level: basic,
       tag: AbilityTag.BLAST,
+      sp: 1,
     },
     skill: {
       energy: 30,
@@ -60,6 +62,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       value: [{ base: 40, growth: 1, style: 'curved' }],
       level: skill,
       tag: AbilityTag.DEFENSE,
+      sp: -1,
     },
     ult: {
       energy: 5,
