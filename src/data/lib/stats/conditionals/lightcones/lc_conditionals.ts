@@ -8,9 +8,10 @@ import {
   findContentById,
 } from '@src/core/utils/finder'
 import { DebuffTypes, IWeaponContent } from '@src/domain/conditional'
-import { Element, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { Element, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 import _ from 'lodash'
 import { StatsObject, StatsObjectKeys, TalentTypeMap } from '../../baseConstant'
+import { ActionBarSummon } from '@src/data/db/characters'
 
 export const LCConditionals: IWeaponContent[] = [
   {
@@ -2425,6 +2426,77 @@ export const LCTeamConditionals: IWeaponContent[] = [
         }
         if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Noctis`,
+    show: true,
+    default: 1,
+    min: 0,
+    max: 4,
+    id: '23049',
+    excludeSummon: true,
+    scaling: (base, form, r, { own }) => {
+      if (form['23049'] && base.SUMMON_STATS && !checkBuffExist(base.SUMMON_STATS.DEF_PEN, { name: 'Noctis' })) {
+        base.SUMMON_STATS.DEF_PEN.push({
+          name: `Noctis`,
+          source: `To Evernight's Stars`,
+          value: calcRefinement(0.2, 0.025, r),
+        })
+      }
+      if (form['23049'] && base.NAME === own?.NAME) {
+        base[Stats.ALL_DMG].push({
+          name: `Noctis`,
+          source: `To Evernight's Stars`,
+          value: calcRefinement(0.12, 0.02, r) * form['23049'],
+        })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS[Stats.ALL_DMG].push({
+            name: `Noctis`,
+            source: `To Evernight's Stars`,
+            value: calcRefinement(0.12, 0.02, r) * form['23049'],
+          })
+        }
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Redoubt`,
+    show: true,
+    default: true,
+    id: '23051',
+    excludeSummon: true,
+    scaling: (base, form, r, { own }) => {
+      const hasSummon = base.PATH === PathType.REMEMBRANCE || _.includes(ActionBarSummon, base.ID)
+      if (form['23051'] && !checkBuffExist(base[Stats.ALL_DMG], { name: 'Redoubt' })) {
+        base[Stats.ALL_DMG].push({
+          name: `Redoubt`,
+          source: `Though Worlds Apart`,
+          value: calcRefinement(0.24, 0.06, r) * (hasSummon ? 1.5 : 1),
+        })
+        if (base.SUMMON_STATS && !checkBuffExist(base.SUMMON_STATS[Stats.ALL_DMG], { name: 'Redoubt' })) {
+          base.SUMMON_STATS[Stats.ALL_DMG].push({
+            name: `Redoubt`,
+            source: `Though Worlds Apart`,
+            value: calcRefinement(0.24, 0.06, r) * (hasSummon ? 1.5 : 1),
+          })
+        }
+      }
+      if (form['23049'] && base.NAME === own?.NAME) {
+        base.ULT_SCALING.push({
+          name: `Though Worlds Apart Healing`,
+          value: [{ scaling: calcRefinement(0.1, 0.02, r), multiplier: Stats.ATK }],
+          element: TalentProperty.HEAL,
+          property: TalentProperty.HEAL,
+          type: TalentType.NONE,
+          sum: false,
+        })
+      }
+
       return base
     },
   },

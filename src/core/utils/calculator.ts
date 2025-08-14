@@ -14,7 +14,7 @@ import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
 import { baseStatsObject, StatsObject } from '@src/data/lib/stats/baseConstant'
 import LightConeBonus from '@src/data/lib/stats/conditionals/lightcones/lc_bonus'
 import { TalentScalingStyle } from '@src/domain/conditional'
-import { summonList } from '@src/data/db/characters'
+import { ActionBarSummon } from '@src/data/db/characters'
 
 export const calculateOutOfCombat = (
   conditionals: StatsObject,
@@ -45,6 +45,7 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
   conditionals.NAME = character?.name?.replaceAll(/\(\w+\)/g, '')?.trim()
   conditionals.ELEMENT = character?.element
   conditionals.PATH = character?.path
+  conditionals.ID = character?.id
   // conditionals.SUMMON = _.includes(summonList, character?.id)
 
   conditionals.BASE_ATK_C = getBaseStat(character?.stat?.baseAtk, char?.level, char?.ascension) || 0

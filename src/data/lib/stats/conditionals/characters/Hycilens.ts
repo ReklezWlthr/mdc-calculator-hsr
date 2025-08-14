@@ -492,7 +492,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         if (c >= 4) {
           base.ALL_TYPE_RES_RED.push({
             name: `Eidolon 4`,
-            source: 'Self',
+            source: 'Hysilens',
             value: 0.2,
           })
         }
@@ -500,7 +500,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       if (c >= 1) {
         base.DOT_MULT.push({
           name: `Eidolon 1`,
-          source: 'Self',
+          source: 'Hysilens',
           value: 0.16,
         })
       }

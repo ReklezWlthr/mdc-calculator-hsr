@@ -74,6 +74,8 @@ import Saber from './characters/Saber'
 import Phainon from './characters/Phainon'
 import Hycilens from './characters/Hycilens'
 import Cerydra from './characters/Cerydra'
+import Terravox from './characters/Terravox'
+import Evernight from './characters/Evernight'
 
 export default [
   { id: '1001', conditionals: March },
@@ -148,6 +150,8 @@ export default [
   { id: '1409', conditionals: Hyacine },
   { id: '1410', conditionals: Hycilens },
   { id: '1412', conditionals: Cerydra },
+  { id: '1413', conditionals: Evernight },
+  { id: '1414', conditionals: Terravox },
   { id: '8001', conditionals: DMC },
   { id: '8003', conditionals: PMC },
   { id: '8005', conditionals: HMC },

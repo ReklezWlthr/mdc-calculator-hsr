@@ -1,6 +1,6 @@
 import { Element, PathType, Stats } from '@src/domain/constant'
 
-export const summonList = ['1112', '1204', '1222']
+export const ActionBarSummon = ['1112', '1204', '1222', '1414']
 
 export const Characters = [
   {
@@ -1139,7 +1139,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.NIHILITY,
     element: Element.PHYSICAL,
-    beta: true,
+    beta: false,
   },
   {
     id: '1412',
@@ -1155,6 +1155,38 @@ export const Characters = [
     rarity: 5,
     path: PathType.HARMONY,
     element: Element.WIND,
+    beta: true,
+  },
+  {
+    id: '1413',
+    name: 'Evernight',
+    stat: {
+      baseAtk: 73.92,
+      baseHp: 179.52,
+      baseDef: 79.2,
+      baseSpd: 99,
+      energy: 240,
+    },
+    trace: [Stats.CRIT_RATE, Stats.CRIT_DMG, Stats.P_HP],
+    rarity: 5,
+    path: PathType.REMEMBRANCE,
+    element: Element.ICE,
+    beta: true,
+  },
+  {
+    id: '1414',
+    name: 'Dan Heng • Permansor Terrae',
+    stat: {
+      baseAtk: 66,
+      baseHp: 142.56,
+      baseDef: 115.5,
+      baseSpd: 97,
+      energy: 140,
+    },
+    trace: [Stats.P_ATK, Stats.P_HP, Stats.P_DEF],
+    rarity: 5,
+    path: PathType.PRESERVATION,
+    element: Element.PHYSICAL,
     beta: true,
   },
 

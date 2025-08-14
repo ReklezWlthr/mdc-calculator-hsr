@@ -603,6 +603,40 @@ export const RelicSets: IArtifact[] = [
       `Captain's Wave-Riding Boots`,
     ],
   },
+  {
+    id: '127',
+    name: `World-Remaking Deliverer`,
+    icon: '71048',
+    bonus: [{ stat: Stats.CRIT_RATE, value: 0.08 }],
+    bonusAdd: [],
+    desc: [
+      `Increases CRIT Rate by <span class="text-desc">8%</span>.`,
+      `After the wearer uses Basic ATK or Skill, if the wearer's memosprite is on the field, increases Max HP of the wearer and their memosprite by <span class="text-desc">24%</span>, and increases all allies' DMG by <span class="text-desc">8%</span> until the wearer's next Basic ATK or Skill.`,
+    ],
+    set: [
+      `Deliverer's Hood`,
+      `Deliverer's Sword Gauntlet`,
+      `Deliverer's Robe of Legacy`,
+      `Deliverer's Boots of Pioneering`,
+    ],
+  },
+  {
+    id: '128',
+    name: `Self-Enshrouded Recluse`,
+    icon: '71049',
+    bonus: [{ stat: Stats.CRIT_DMG, value: 0.16 }],
+    bonusAdd: [{ stat: Stats.CRIT_DMG, value: 0.16 }],
+    desc: [
+      `Increases CRIT DMG by <span class="text-desc">16%</span>.`,
+      `Increases CRIT DMG by <span class="text-desc">16%</span>. When any ally target consumes Skill Points for the first time in a turn, recovers <span class="text-desc">1</span> Skill Point. This effect triggers up to <span class="text-desc">1</span> time(s) per battle, and <span class="text-desc">1</span> trigger count(s) will be restored at the start of each subsequent wave. Only <span class="text-desc">1</span> Skill Point Recovery effect can be active in the same team.`,
+    ],
+    set: [
+      `Recluse's Wide-Brimmed Fedora`,
+      `Recluse's Refined Timepiece`,
+      `Recluse's Camel-Colored Coat`,
+      `Recluse's Soft Suede Boots`,
+    ],
+  },
 ]
 
 export const PlanarSets: IArtifact[] = [

@@ -1599,6 +1599,33 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23049',
+    scaling: (base, r) => {
+      base[Stats.P_HP].push({
+        name: 'Passive',
+        source: `To Evernight's Stars`,
+        value: calcRefinement(0.3, 0.075, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23051',
+    scaling: (base, r) => {
+      base[Stats.P_ATK].push({
+        name: 'Passive',
+        source: `Though Worlds Apart`,
+        value: calcRefinement(0.24, 0.06, r),
+      })
+      base.SHIELD.push({
+        name: 'Passive',
+        source: `Though Worlds Apart`,
+        value: calcRefinement(0.3, 0.05, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

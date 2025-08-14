@@ -19,6 +19,7 @@ export interface RawBaseStatType {
   NAME: string
   PATH: PathType
   ELEMENT: Element | null
+  ID: string
 
   // Basic Stats
   [Stats.ATK]: StatsArray[]
@@ -76,7 +77,7 @@ export interface RawBaseStatType {
   DOT_VUL: StatsArray[]
   FUA_VUL: StatsArray[]
   ULT_VUL: StatsArray[]
-  
+
   ULT_RES_PEN: StatsArray[]
   SKILL_RES_PEN: StatsArray[]
 
@@ -144,6 +145,7 @@ export interface RawBaseStatType {
 
   SUPER_BREAK_MULT: StatsArray[]
   BREAK_MULT: StatsArray[]
+  SUMMON_MULT: StatsArray[]
   BASIC_SUPER_BREAK: StatsArray[]
 
   // Mitigation
@@ -185,6 +187,7 @@ export interface RawBaseStatType {
   SKILL_ALT: boolean
   ULT_ALT: boolean
   TALENT_ALT: boolean
+  MEMO_SKILL_ALT: boolean
 
   SUPER_BREAK: boolean
 

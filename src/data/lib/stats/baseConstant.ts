@@ -30,6 +30,7 @@ export const baseStatsObject: BaseStatsType = {
   NAME: '',
   PATH: null,
   ELEMENT: null,
+  ID: '',
 
   SUMMON_STATS: null,
 
@@ -89,7 +90,7 @@ export const baseStatsObject: BaseStatsType = {
   DOT_VUL: [],
   FUA_VUL: [],
   ULT_VUL: [],
-  
+
   ULT_RES_PEN: [],
   SKILL_RES_PEN: [],
 
@@ -157,6 +158,7 @@ export const baseStatsObject: BaseStatsType = {
 
   SUPER_BREAK_MULT: [],
   BREAK_MULT: [],
+  SUMMON_MULT: [],
   BASIC_SUPER_BREAK: [],
 
   // Mitigation
@@ -241,6 +243,7 @@ export const baseStatsObject: BaseStatsType = {
   SKILL_ALT: false,
   ULT_ALT: false,
   TALENT_ALT: false,
+  MEMO_SKILL_ALT: false,
 
   SUPER_BREAK: false,
 
@@ -267,6 +270,7 @@ export const TalentPropertyMap = {
   [TalentProperty.BREAK_DOT]: 'DOT',
   [TalentProperty.SUPER_BREAK]: 'SUPER_BREAK',
   [TalentProperty.FUA]: 'FUA',
+  [TalentProperty.SERVANT]: 'SUMMON',
 }
 
 export type StatsObject = typeof baseStatsObject

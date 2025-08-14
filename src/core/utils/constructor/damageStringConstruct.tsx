@@ -137,8 +137,10 @@ export const damageStringConstruct = (
   const bonusDMG = (splitBonus?: number) =>
     (splitBonus || 0) +
     (scaling.bonus || 0) +
-    (TalentProperty.SHIELD === scaling.property || scaling.trueRaw
+    (scaling.trueRaw
       ? 0
+      : TalentProperty.SHIELD === scaling.property
+      ? stats.getValue(StatsObjectKeys.SHIELD)
       : TalentProperty.HEAL === scaling.property
       ? stats.getValue(Stats.HEAL) + stats.getValue(`${TalentTypeMap[scaling.type]}_HEAL`)
       : stats.getValue(Stats.ALL_DMG) + stats.getValue(`${element} DMG%`) + talentDmg + typeDmg)

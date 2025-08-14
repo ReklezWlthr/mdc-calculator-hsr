@@ -222,6 +222,16 @@ export const ArtifactForm = () => {
       id: '321',
       excludeSummon: true,
     },
+    {
+      type: 'toggle',
+      text: `World-Remaking Deliverer`,
+      title: `World-Remaking Deliverer`,
+      content: `After the wearer uses Basic ATK or Skill, if the wearer's memosprite is on the field, increases Max HP of the wearer and their memosprite by <span class="text-desc">24%</span>, and increases all allies' DMG by <span class="text-desc">8%</span> until the wearer's next Basic ATK or Skill.`,
+      show: true,
+      default: true,
+      id: '127',
+      excludeSummon: true,
+    },
   ]
 
   // Team-Wide
@@ -229,6 +239,7 @@ export const ArtifactForm = () => {
     findContentById(content, '114'),
     findContentById(content, '118'),
     findContentById(content, '125'),
+    findContentById(content, '127'),
   ]
 
   // Single-Target

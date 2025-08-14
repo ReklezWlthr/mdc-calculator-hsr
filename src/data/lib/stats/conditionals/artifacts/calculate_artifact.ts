@@ -48,15 +48,6 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       source: 'Longevous Disciple',
       value: 0.08 * form['113'],
     })
-  if (
-    form['114'] &&
-    !checkBuffExist(base[Stats.P_SPD], { source: 'Messenger Traversing Hackerspace', name: '4-Piece' })
-  )
-    base[Stats.P_SPD].push({
-      name: `4-Piece`,
-      source: 'Messenger Traversing Hackerspace',
-      value: 0.12,
-    })
   if (form['115'])
     base[Stats.P_ATK].push({
       name: `4-Piece`,
@@ -72,15 +63,6 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
         item.source === 'Pioneer Diver of Dead Waters' ? { ...item, value: item.value * 2 } : item
       )
       return x
-    })
-  if (
-    form['118'] &&
-    !checkBuffExist(base[Stats.BE], { source: 'Watchmaker, Master of Dream Machinations', name: '4-Piece' })
-  )
-    base[Stats.BE].push({
-      name: `4-Piece`,
-      source: 'Watchmaker, Master of Dream Machinations',
-      value: 0.3,
     })
   if (form['305'])
     base[Stats.P_ATK].push({
@@ -159,23 +141,6 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       value: 0.06,
     })
   }
-  if (
-    form['125'] &&
-    !checkBuffExist(base[Stats.CRIT_DMG], { source: 'Warrior Goddess of Sun and Thunder', name: 'Gentle Rain' })
-  ) {
-    base[Stats.CRIT_DMG].push({
-      name: `Gentle Rain`,
-      source: `Warrior Goddess of Sun and Thunder`,
-      value: 0.15,
-    })
-    if (base.SUMMON_STATS) {
-      base.SUMMON_STATS[Stats.CRIT_DMG].push({
-        name: `Gentle Rain`,
-        source: `Warrior Goddess of Sun and Thunder`,
-        value: 0.15,
-      })
-    }
-  }
   if (form['126']) {
     base[Stats.P_ATK].push({
       name: `Help`,
@@ -192,15 +157,29 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       bonus = 0.09 * (form['321'] - 4)
     }
     base[Stats.ALL_DMG].push({
-      name: `Passive`,
+      name: `2-Piece`,
       source: `Arcadia of Woven Dreams`,
       value: bonus,
     })
     if (base.SUMMON_STATS) {
       base.SUMMON_STATS[Stats.ALL_DMG].push({
-        name: `Passive`,
+        name: `2-Piece`,
         source: `Arcadia of Woven Dreams`,
         value: bonus,
+      })
+    }
+  }
+  if (form['127']) {
+    base[Stats.P_HP].push({
+      name: `4-Piece`,
+      source: `World-Remaking Deliverer`,
+      value: 0.24,
+    })
+    if (base.SUMMON_STATS) {
+      base.SUMMON_STATS[Stats.P_HP].push({
+        name: `4-Piece`,
+        source: `World-Remaking Deliverer`,
+        value: 0.24,
       })
     }
   }
@@ -232,6 +211,20 @@ export const calculateTeamRelic = (base: StatsObject, form: Record<string, any>,
         name: `Gentle Rain`,
         source: owner.NAME,
         value: 0.15,
+      })
+    }
+  }
+  if (form['127']) {
+    base[Stats.ALL_DMG].push({
+      name: `4-Piece`,
+      source: `World-Remaking Deliverer`,
+      value: 0.08,
+    })
+    if (base.SUMMON_STATS) {
+      base.SUMMON_STATS[Stats.ALL_DMG].push({
+        name: `4-Piece`,
+        source: `World-Remaking Deliverer`,
+        value: 0.08,
       })
     }
   }

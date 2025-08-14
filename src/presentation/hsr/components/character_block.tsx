@@ -51,9 +51,9 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
   return (
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark">
       <div className="flex justify-center px-5 py-2 text-xl rounded-t-lg bg-primary-lighter">Character</div>
-      <div className="flex">
+      <div className="grid grid-cols-5 gap-2 p-3">
         <div
-          className="relative h-[136px] m-3 duration-200 border rounded-lg cursor-pointer bg-primary-darker border-primary-border aspect-square hover:border-primary-light"
+          className="relative h-[136px] duration-200 border rounded-lg cursor-pointer bg-primary-darker border-primary-border aspect-square hover:border-primary-light col-span-2"
           onClick={onOpenModal}
         >
           {characterData && (
@@ -87,7 +87,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
             </>
           )}
         </div>
-        <div className="w-full py-3 pl-2 pr-3 space-y-2">
+        <div className="col-span-3 space-y-2">
           <div className="space-y-1">
             <p className="text-sm font-semibold">Name</p>
             <PillInput
