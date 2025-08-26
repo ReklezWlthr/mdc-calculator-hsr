@@ -2433,7 +2433,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Sleepless',
-      detail: `Increases the wearer's Max HP by {{0}}%. When the wearer's memosprite uses an ability, the wearer gains <b>Noctis</b>. While the wearer has <b>Noctis</b>, all allies' memosprites ignore {{1}}% of the target's DEF when dealing DMG. Increases the DMG dealt by the wearer and their memosprite by {{2}}%. When the wearer's memosprite disappears, the wearer recovers {{2}} Energy. Similar effects cannot stack.`,
+      detail: `Increases the wearer's Max HP by {{0}}%. When the wearer's memosprite uses an ability, the wearer gains <b>Noctis</b>. While the wearer has <b>Noctis</b>, all allies' memosprites ignore {{1}}% of the target's DEF when dealing DMG. Increases the DMG dealt by the wearer and their memosprite by {{2}}%. When the wearer's memosprite disappears, the wearer recovers {{3}} Energy. Similar effects cannot stack.`,
       properties: [
         { base: 30, growth: 7.5 },
         { base: 20, growth: 2.5 },
