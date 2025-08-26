@@ -2433,11 +2433,12 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Sleepless',
-      detail: `Increases the wearer's Max HP by {{0}}%. When the wearer's memosprite uses an ability, the wearer gains <span class="text-desc">1</span> stack of <b>Noctis</b>. While the wearer has <b>Noctis</b>, all allies' memosprites ignore {{1}}% of the target's DEF when dealing DMG. Similar effects cannot stack. For each stack of <b>Noctis</b> the wearer has, increases the DMG dealt by the wearer and their memosprite by {{2}}%. <b>Noctis</b> can stack up to <span class="text-desc">4</span> times.`,
+      detail: `Increases the wearer's Max HP by {{0}}%. When the wearer's memosprite uses an ability, the wearer gains <b>Noctis</b>. While the wearer has <b>Noctis</b>, all allies' memosprites ignore {{1}}% of the target's DEF when dealing DMG. Increases the DMG dealt by the wearer and their memosprite by {{2}}%. When the wearer's memosprite disappears, the wearer recovers {{2}} Energy. Similar effects cannot stack.`,
       properties: [
         { base: 30, growth: 7.5 },
         { base: 20, growth: 2.5 },
-        { base: 12, growth: 2 },
+        { base: 30, growth: 7.5 },
+        { base: 8, growth: 2 },
       ],
     },
   },
@@ -2452,7 +2453,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'New Scale',
-      detail: `Increases the wearer's ATK by {{0}}% and Shield Effect provided by {{1}}%. When the wearer uses Ultimate, restores HP equal to {{2}}% of the wearer's ATK to all allies, and grants <b>Redoubt</b> to all allies for <span class="text-desc">3</span> turn(s). Targets with <b>Redoubt</b> deal {{0}}% more DMG, which further increases by {{2}}% if they have summons.`,
+      detail: `Increases the wearer's ATK by {{0}}% and Shield Effect provided by {{1}}%. When the wearer uses Ultimate, restores HP equal to {{2}}% of the wearer's ATK to all allies, and additionally restores HP equal to {{2}}% of the wearer's ATK to the ally character with the lowest HP, and grants <b>Redoubt</b> to all allies for <span class="text-desc">3</span> turn(s). Targets with <b>Redoubt</b> deal {{0}}% more DMG, which further increases by {{2}}% if they have summons.`,
       properties: [
         { base: 24, growth: 6 },
         { base: 30, growth: 5 },

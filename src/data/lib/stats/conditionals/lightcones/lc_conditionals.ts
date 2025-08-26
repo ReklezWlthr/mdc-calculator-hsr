@@ -2430,12 +2430,10 @@ export const LCTeamConditionals: IWeaponContent[] = [
     },
   },
   {
-    type: 'number',
+    type: 'toggle',
     text: `Noctis`,
     show: true,
-    default: 1,
-    min: 0,
-    max: 4,
+    default: true,
     id: '23049',
     excludeSummon: true,
     scaling: (base, form, r, { own }) => {
@@ -2446,17 +2444,17 @@ export const LCTeamConditionals: IWeaponContent[] = [
           value: calcRefinement(0.2, 0.025, r),
         })
       }
-      if (form['23049'] && base.NAME === own?.NAME) {
+      if (form['23049'] && base.NAME === own?.NAME && !checkBuffExist(base[Stats.ALL_DMG], { name: 'Noctis' })) {
         base[Stats.ALL_DMG].push({
           name: `Noctis`,
           source: `To Evernight's Stars`,
-          value: calcRefinement(0.12, 0.02, r) * form['23049'],
+          value: calcRefinement(0.3, 0.075, r),
         })
         if (base.SUMMON_STATS) {
           base.SUMMON_STATS[Stats.ALL_DMG].push({
             name: `Noctis`,
             source: `To Evernight's Stars`,
-            value: calcRefinement(0.12, 0.02, r) * form['23049'],
+            value: calcRefinement(0.3, 0.075, r),
           })
         }
       }
@@ -2487,14 +2485,25 @@ export const LCTeamConditionals: IWeaponContent[] = [
         }
       }
       if (form['23049'] && base.NAME === own?.NAME) {
-        base.ULT_SCALING.push({
-          name: `Though Worlds Apart Healing`,
-          value: [{ scaling: calcRefinement(0.1, 0.02, r), multiplier: Stats.ATK }],
-          element: TalentProperty.HEAL,
-          property: TalentProperty.HEAL,
-          type: TalentType.NONE,
-          sum: false,
-        })
+        base.ULT_SCALING.push(
+          {
+            name: `Though Worlds Apart Healing`,
+            value: [{ scaling: calcRefinement(0.1, 0.02, r), multiplier: Stats.ATK }],
+            element: TalentProperty.HEAL,
+            property: TalentProperty.HEAL,
+            type: TalentType.NONE,
+            sum: false,
+          },
+          {
+            name: `Though Worlds Apart Healing (Wounded)`,
+            value: [{ scaling: calcRefinement(0.1, 0.02, r), multiplier: Stats.ATK }],
+            element: TalentProperty.HEAL,
+            property: TalentProperty.HEAL,
+            type: TalentType.NONE,
+            sum: false,
+            multiplier: 2,
+          }
+        )
       }
 
       return base

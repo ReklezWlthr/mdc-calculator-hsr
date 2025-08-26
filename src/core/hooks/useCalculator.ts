@@ -104,7 +104,7 @@ export const useCalculator = ({
               ...ac,
               owner,
               id: `${ac.id}_${owner}`,
-              text: `${findCharacter(team[owner]?.cId)?.name}: ${ac.text}`,
+              text: `${ac.text} (${findCharacter(team[owner]?.cId)?.name})`,
             }))
           )
         ),

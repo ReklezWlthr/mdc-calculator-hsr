@@ -43,10 +43,10 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       skillCritDmg = 0.15
       break
     case 3:
-      skillCritDmg = 0.4
+      skillCritDmg = 0.5
       break
     case 4:
-      skillCritDmg = 0.5
+      skillCritDmg = 0.65
       break
   }
 
@@ -65,9 +65,9 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       energy: 30,
       trace: 'Skill',
       title: 'Day Gently Slips',
-      content: `Consumes HP equal to <span class="text-desc">12%</span> of Evernight's Max HP to summon memosprite <b>Evey</b> and increase CRIT DMG of all ally memosprites by {{0}}% for <span class="text-desc">2</span> turn(s). Duration decreases by <span class="text-desc">1</span> at the start of each of Evernight's turns. If <b>Evey</b> is already on the field, restores <span class="text-desc">50%</span> of its Max HP. When used, gains <span class="text-desc">2</span> <b class="text-indigo-300">Memoria</b>. If in the <b class="text-violet-500">Darkest Riddle</b> state, additionally gains <span class="text-desc">12</span> <b class="text-indigo-300">Memoria</b>.
+      content: `Consumes HP equal to <span class="text-desc">10%</span> of Evernight's Max HP to summon memosprite <b>Evey</b> and increase CRIT DMG of all ally memosprites by {{0}}% for <span class="text-desc">2</span> turn(s). Duration decreases by <span class="text-desc">1</span> at the start of each of Evernight's turns. If <b>Evey</b> is already on the field, restores <span class="text-desc">50%</span> of its Max HP. When used, gains <span class="text-desc">2</span> <b class="text-indigo-300">Memoria</b>. If in the <b class="text-violet-500">Darkest Riddle</b> state, additionally gains <span class="text-desc">12</span> <b class="text-indigo-300">Memoria</b>.
       <br />If the current HP is insufficient, Evernight's current HP will be reduced to <span class="text-desc">1</span> when using her Skill.`,
-      value: [{ base: 20, growth: 2, style: 'curved' }],
+      value: [{ base: 30, growth: 3, style: 'curved' }],
       level: skill,
       tag: AbilityTag.SUMMON,
     },
@@ -75,10 +75,10 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       energy: 10,
       trace: 'Memosprite Skill',
       title: 'Remembrance, Whirling, Like Rain',
-      content: `This ability automatically selects a target, prioritizing the enemy target that Evernight last attacked. Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of <b>Evey</b>'s Max HP to one enemy. For every <span class="text-desc">4</span> point(s) of <b class="text-indigo-300">Memoria</b> Evernight currently has, further deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of <b>Evey</b>'s Max HP. Gains <span class="text-desc">1</span> point(s) of <b class="text-indigo-300">Memoria</b> after use.`,
+      content: `This ability automatically selects a target, prioritizing the enemy target that Evernight last attacked. Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of <b>Evey</b>'s Max HP to one enemy. For every <span class="text-desc">4</span> point(s) of <b class="text-indigo-300">Memoria</b> Evernight currently has, further deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of <b>Evey</b>'s Max HP. After use, Evernight gains <span class="text-desc">1</span> point(s) of <b class="text-indigo-300">Memoria</b>.`,
       value: [
-        { base: 10, growth: 2, style: 'linear' },
-        { base: 2, growth: 0.4, style: 'linear' },
+        { base: 25, growth: 5, style: 'linear' },
+        { base: 5, growth: 1, style: 'linear' },
       ],
       level: memo_skill,
       tag: AbilityTag.ST,
@@ -87,10 +87,10 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       energy: 10,
       trace: 'Enhanced Memo. Skill',
       title: 'Dream, Dissolving, as Dew',
-      content: `When Evernight's <b class="text-indigo-300">Memoria</b> is greater than or equal to <span class="text-desc">16</span> points, and Evernight is not under a Crowd Control state, consumes all HP and <b class="text-indigo-300">Memoria</b> to launch an attack. For each point of <b class="text-indigo-300">Memoria</b> consumed, deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of <b>Evey</b>'s Max HP to the primary target, and <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of <b>Evey</b>'s Max HP to other enemy targets. After use, <b>Evey</b> disappears.`,
+      content: `When Evernight's <b class="text-indigo-300">Memoria</b> is greater than or equal to <span class="text-desc">16</span> points, and Evernight is not under a Crowd Control state, this ability can be used. For each point of <b class="text-indigo-300">Memoria</b> currently in possession, deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of <b>Evey</b>'s Max HP to the primary target, and <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of <b>Evey</b>'s Max HP to other enemy targets. After use, consumes all HP and <b class="text-indigo-300">Memoria</b>, and <b>Evey</b> disappears.`,
       value: [
-        { base: 2.5, growth: 0.5, style: 'linear' },
-        { base: 1.25, growth: 0.25, style: 'linear' },
+        { base: 6, growth: 1.2, style: 'linear' },
+        { base: 3, growth: 0.6, style: 'linear' },
       ],
       level: memo_skill,
       tag: AbilityTag.AOE,
@@ -101,8 +101,8 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       title: `O Wakeful World, Goodnight`,
       content: `Summons memosprite <b>Evey</b>, then memosprite <b>Evey</b> deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of <b>Evey</b>'s Max HP to all enemies, and causes Evernight to enter the <b class="text-violet-500">Darkest Riddle</b> state. During this state, the DMG received by all enemies increases by {{1}}%, the DMG dealt by Evernight and memosprite <b>Evey</b> increases by {{2}}%, and both Evernight and memosprite <b>Evey</b> are immune to Crowd Control debuffs. Gains <span class="text-desc">2</span> <b class="text-violet-500">Darkest Riddle</b> Charge(s). Memosprite <b>Evey</b> consumes <span class="text-desc">1</span> Charge after using <b>Dream, Dissolving, as Dew</b>. At the start of Evernight's turn, if no Charges remain, exits the <b class="text-violet-500">Darkest Riddle</b> state.`,
       value: [
-        { base: 60, growth: 6, style: 'curved' },
-        { base: 10, growth: 1, style: 'curved' },
+        { base: 100, growth: 10, style: 'curved' },
+        { base: 12, growth: 1.2, style: 'curved' },
         { base: 50, growth: 5, style: 'curved' },
       ],
       level: ult,
@@ -111,7 +111,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     talent: {
       trace: 'Talent',
       title: `With Me, This Night`,
-      content: `When entering combat, summons memosprite <b>Evey</b>. Memosprite <b>Evey</b> has <span class="text-desc">160</span> SPD by default, and its Max HP is <span class="text-desc">100%</span> of Evernight's Max HP. Each time Evernight or memosprite <b>Evey</b> loses HP, increases CRIT DMG for both this unit and memosprite <b>Evey</b> by {{0}}% for <span class="text-desc">2</span> turn(s), and gains <span class="text-desc">2</span> <b class="text-indigo-300">Memoria</b>. This effect can trigger only once per target per attack.
+      content: `When entering combat, summons memosprite <b>Evey</b>. Memosprite <b>Evey</b> has <span class="text-desc">160</span> SPD by default, and its Max HP is <span class="text-desc">50%</span> of Evernight's Max HP. Each time Evernight or memosprite <b>Evey</b> loses HP, increases CRIT DMG for both this unit and memosprite <b>Evey</b> by {{0}}% for <span class="text-desc">2</span> turn(s), and gains <span class="text-desc">2</span> <b class="text-indigo-300">Memoria</b>. This effect can trigger only once per target per attack.
       <br />When Evernight has <span class="text-desc">16</span> or more <b class="text-indigo-300">Memoria</b>, dispels and becomes immune to Crowd Control debuffs. If memosprite <b>Evey</b> is on the field, it immediately takes action. The immediate action effect can only trigger again after memosprite Evey uses <b>Dream, Dissolving, as Dew</b>.`,
       value: [{ base: 30, growth: 3, style: 'curved' }],
       level: talent,
@@ -120,7 +120,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     summon_talent: {
       trace: 'Memosprite Talent [1]',
       title: `Solitude, Drifting, In Murk`,
-      content: `<b>Evey</b> is immune to Crowd Control debuffs but has an increased chance of being targeted. While <b>Evey</b> is on the field, increases DMG dealt by Evernight and <b>Evey</b> by {{0}}%. Using abilities consumes <span class="text-desc">1%</span> of this unit's Max HP, or reduces HP to <span class="text-desc">1</span> if current HP is insufficient.`,
+      content: `<b>Evey</b> is immune to Crowd Control debuffs but has increased chance of being targeted. While Evernight is on the field, increases DMG dealt by Evernight and <b>Evey</b> by {{0}}%.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: memo_talent,
       tag: AbilityTag.SUPPORT,
@@ -128,7 +128,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     summon_talent_2: {
       trace: 'Memosprite Talent [2]',
       title: `Night, Trailing, In Step`,
-      content: `When summoned, restores HP equal to <span class="text-desc">20%</span> of Evernight's Max HP to Evernight, and this unit immediately takes action.`,
+      content: `When summoned, this unit immediately takes action.`,
       value: [],
       level: memo_talent,
       tag: AbilityTag.ENHANCE,
@@ -136,34 +136,31 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     summon_talent_3: {
       trace: 'Memosprite Talent [3]',
       title: `You, Parting, Beyond Reach`,
-      content: `Upon disappearing, regenerates {{0}} Energy for Evernight and advances her action by {{1}}%.`,
-      value: [
-        { base: 15, growth: 3, style: 'linear' },
-        { base: 10, growth: 2, style: 'linear' },
-      ],
+      content: `Upon disappearing, increases Evernight's SPD by <span class="text-desc">10%</span>. If the disappearance is due to using <b>Dream, Dissolving, as Dew</b>, for each point of <b class="text-indigo-300">Memoria</b> used in this attack, additionally increases Evernight's SPD by <span class="text-desc">1%</span>. The SPD Boost effect cannot stack, and is removed at the start of Evernight's next turn.`,
+      value: [],
       level: memo_talent,
       tag: AbilityTag.ENHANCE,
     },
     technique: {
       trace: 'Technique',
       title: 'Let it Rain Cold On Thee',
-      content: `After using Technique, at the start of the next battle, gains an effect identical to the Skill which increases all allies' memosprite CRIT DMG, and gains <span class="text-desc">2</span> point(s) of <b class="text-indigo-300">Memoria</b>.`,
+      content: `After using Technique, at the start of the next battle, gains an effect identical to the Skill which increases all allies' memosprite CRIT DMG, and gains <span class="text-desc">1</span> point(s) of <b class="text-indigo-300">Memoria</b>.`,
       tag: AbilityTag.SUPPORT,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Dark the Night, Still the Moon`,
-      content: `Increases Evernight and the memosprite <b>Evey</b>'s CRIT Rate by <span class="text-desc">30%</span>. After using <b>Dream, Dissolving, as Dew</b>, recover <span class="text-desc">1</span> Skill Point for allies.`,
+      content: `Increases Evernight and the memosprite <b>Evey</b>'s CRIT Rate by <span class="text-desc">35%</span>. After using <b>Dream, Dissolving, as Dew</b>, recover <span class="text-desc">1</span> Skill Point for allies.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Rouse the Flame, Lull the Light`,
-      content: `At the start of combat, Evernight regenerates <span class="text-desc">60</span> Energy and gains <span class="text-desc">2</span> <b class="text-indigo-300">Memoria</b>. When Evernight or an ally memosprite uses an ability, Evernight gains <span class="text-desc">1</span> <b class="text-indigo-300">Memoria</b>.`,
+      content: `At the start of combat, Evernight regenerates <span class="text-desc">70</span> Energy and gains <span class="text-desc">1</span> <b class="text-indigo-300">Memoria</b>. When Evernight or an ally memosprite uses an ability, Evernight regenerates <span class="text-desc">5</span> Energy and gains <span class="text-desc">1</span> <b class="text-indigo-300">Memoria</b>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Kindle the Morn, Drop the Rain`,
-      content: `When there are <span class="text-desc">1/2/3/4</span> or more Remembrance characters in the team, Evernight's Skill additionally increases all memosprites' CRIT DMG by <span class="text-desc">5%/15%/40%/50%</span>.`,
+      content: `When there are <span class="text-desc">1/2/3/4</span> or more Remembrance characters in the team, Evernight's Skill additionally increases the CRIT DMG Boost effect for all ally memosprites by <span class="text-desc">5%/15%/50%/65%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -197,7 +194,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c6: {
       trace: 'Eidolon 6',
       title: 'Like This, Always',
-      content: `While Evernight is on the field, all allies' <b>All-Type RES PEN</b> increases by <span class="text-desc">20%</span>. After memosprite Evey uses <b>Dream, Dissolving, as Dew</b>, Evernight gains <span class="text-desc">30%</span> of the consumed <b class="text-indigo-300">Memoria</b> in this attack.`,
+      content: `While Evernight is on the field, all allies' <b>All-Type RES PEN</b> increases by <span class="text-desc">20%</span>. After memosprite Evey uses <b>Dream, Dissolving, as Dew</b>, Evernight gains <span class="text-desc">40%</span> of the consumed <b class="text-indigo-300">Memoria</b> in this attack.`,
     },
   }
 
@@ -244,6 +241,14 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       default: true,
     },
     {
+      type: 'toggle',
+      id: 'evernight_s3_talent',
+      text: `Memosprite Talent SPD Bonus`,
+      ...talents.summon_talent_3,
+      show: true,
+      default: true,
+    },
+    {
       type: 'number',
       id: 'evernight_c1',
       text: `Enemies on Field`,
@@ -285,8 +290,8 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         BASE_DEF: x.BASE_DEF,
         BASE_SPD: 160,
         ELEMENT: Element.NONE,
-        BASE_HP: x.BASE_HP,
-        [Stats.HP]: x[Stats.HP],
+        BASE_HP: x.BASE_HP * 0.5,
+        [Stats.HP]: _.map(x[Stats.HP], (item) => ({ ...item, value: item.value * 0.5 })),
         [Stats.P_HP]: x[Stats.P_HP],
         [Stats.P_SPD]: [],
         [Stats.SPD]: [],
@@ -340,7 +345,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               {
                 name: 'Main Target',
                 value: [
-                  { scaling: calcScaling(0.025, 0.005, memo_skill, 'linear') * form.memoria, multiplier: Stats.HP },
+                  { scaling: calcScaling(0.06, 0.012, memo_skill, 'linear') * form.memoria, multiplier: Stats.HP },
                 ],
                 element: Element.ICE,
                 property: TalentProperty.SERVANT,
@@ -351,7 +356,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               {
                 name: 'Others',
                 value: [
-                  { scaling: calcScaling(0.0125, 0.0025, memo_skill, 'linear') * form.memoria, multiplier: Stats.HP },
+                  { scaling: calcScaling(0.03, 0.006, memo_skill, 'linear') * form.memoria, multiplier: Stats.HP },
                 ],
                 element: Element.ICE,
                 property: TalentProperty.SERVANT,
@@ -365,8 +370,8 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
                 value: [
                   {
                     scaling:
-                      calcScaling(0.1, 0.02, memo_skill, 'linear') +
-                      _.floor((form.memoria || 0) / 4) * calcScaling(0.02, 0.004, memo_skill, 'linear'),
+                      calcScaling(0.25, 0.05, memo_skill, 'linear') +
+                      _.floor((form.memoria || 0) / 4) * calcScaling(0.05, 0.01, memo_skill, 'linear'),
                     multiplier: Stats.HP,
                   },
                 ],
@@ -380,7 +385,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       base.ULT_SCALING = [
         {
           name: 'AoE',
-          value: [{ scaling: calcScaling(0.6, 0.06, ult, 'curved'), multiplier: Stats.HP }],
+          value: [{ scaling: calcScaling(1, 0.1, ult, 'curved'), multiplier: Stats.HP }],
           element: Element.ICE,
           property: TalentProperty.SERVANT,
           type: TalentType.ULT,
@@ -394,7 +399,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         base.SUMMON_STATS[Stats.CRIT_DMG].push({
           name: `Skill`,
           source: 'Evernight',
-          value: calcScaling(0.2, 0.02, skill, 'curved') + (a.a6 ? skillCritDmg : 0),
+          value: calcScaling(0.3, 0.03, skill, 'curved') + (a.a6 ? skillCritDmg : 0),
         })
       }
       if (form.darkest_riddle) {
@@ -406,7 +411,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         base.VULNERABILITY.push({
           name: `Darkest Riddle`,
           source: 'Self',
-          value: calcScaling(0.1, 0.01, ult, 'curved'),
+          value: calcScaling(0.12, 0.012, ult, 'curved'),
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
         if (base.SUMMON_STATS) {
@@ -450,11 +455,18 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           })
         }
       }
+      if (form.evernight_s3_talent) {
+        base[Stats.P_SPD].push({
+          name: `Memosprite Talent`,
+          source: 'Evey',
+          value: 0.1 * (form.memoria * 0.01),
+        })
+      }
       if (a.a2) {
         base[Stats.CRIT_RATE].push({
           name: `Ascension 2 Passive`,
           source: 'Self',
-          value: 0.3,
+          value: 0.35,
         })
         if (base.SUMMON_STATS) {
           base.SUMMON_STATS[Stats.CRIT_RATE].push({
@@ -540,7 +552,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         base.SUMMON_STATS[Stats.CRIT_DMG].push({
           name: `Skill`,
           source: 'Evernight',
-          value: calcScaling(0.2, 0.02, skill, 'curved') + (a.a6 ? skillCritDmg : 0),
+          value: calcScaling(0.3, 0.03, skill, 'curved') + (a.a6 ? skillCritDmg : 0),
         })
       }
       if (c >= 4 && base.SUMMON_STATS) {
@@ -559,7 +571,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         base.VULNERABILITY.push({
           name: `Darkest Riddle`,
           source: 'Evernight',
-          value: calcScaling(0.1, 0.01, ult, 'curved'),
+          value: calcScaling(0.12, 0.012, ult, 'curved'),
         })
         if (base.SUMMON_STATS) {
           base.SUMMON_STATS[Stats.ALL_DMG].push({

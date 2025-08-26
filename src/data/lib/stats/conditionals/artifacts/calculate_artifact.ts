@@ -218,13 +218,13 @@ export const calculateTeamRelic = (base: StatsObject, form: Record<string, any>,
     base[Stats.ALL_DMG].push({
       name: `4-Piece`,
       source: `World-Remaking Deliverer`,
-      value: 0.08,
+      value: 0.15,
     })
     if (base.SUMMON_STATS) {
       base.SUMMON_STATS[Stats.ALL_DMG].push({
         name: `4-Piece`,
         source: `World-Remaking Deliverer`,
-        value: 0.08,
+        value: 0.15,
       })
     }
   }
@@ -243,6 +243,13 @@ export const calculateAllyRelic = (
       name: `Sacerdos' Relived Ordeal`,
       source: owner.NAME,
       value: 0.18 * form[`121_${ownerIndex}`],
+    })
+  }
+  if (form[`128_${ownerIndex}`]) {
+    base[Stats.CRIT_DMG].push({
+      name: `Self-Enshrouded Recluse`,
+      source: owner.NAME,
+      value: 0.15,
     })
   }
 

@@ -255,6 +255,15 @@ export const ArtifactForm = () => {
       max: 2,
       id: '121',
     },
+    {
+      type: 'toggle',
+      text: `Self-Enshrouded Recluse`,
+      title: `Self-Enshrouded Recluse`,
+      content: `Increases Shield Effect provided by the wearer by <span class="text-desc">12%</span>. When an ally target has a Shield provided by the wearer, the ally target's CRIT DMG increases by <span class="text-desc">15%</span>.`,
+      show: true,
+      default: false,
+      id: '128',
+    },
   ]
 
   return { content, teamContent, allyContent }
