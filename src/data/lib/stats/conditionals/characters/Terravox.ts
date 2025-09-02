@@ -64,8 +64,8 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       <br /><b class="text-hsr-physical">Souldragon</b> becomes enhanced, and when <b class="text-hsr-physical">Souldragon</b> takes action, triggers a <u>Follow-up ATK</u> that deals <b class="text-hsr-physical">Physical DMG</b> equal to {{3}}% of Dan Heng • Permansor Terrae's ATK and 1 instance of <b>Additional DMG</b> of the <b class="text-desc">Bondmate</b>'s Type equal to {{3}}% of the <b class="text-desc">Bondmate</b>'s ATK to all enemies. Enhancement lasts for <span class="text-desc">2</span> <b class="text-hsr-physical">Souldragon</b> action(s).`,
       value: [
         { base: 150, growth: 15, style: 'curved' },
-        { base: 7, growth: 0.375, style: 'heal' },
-        { base: 40, growth: 24, style: 'flat' },
+        { base: 14, growth: 0.75, style: 'heal' },
+        { base: 80, growth: 48, style: 'flat' },
         { base: 40, growth: 4, style: 'curved' },
       ],
       level: ult,
@@ -99,7 +99,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Sylvanity`,
-      content: `When the battle begins, advances Dan Heng • Permansor Terrae's action by <span class="text-desc">40%</span>. When the <b class="text-desc">Bondmate</b> uses an attack, Dan Heng • Permansor Terrae regenerates <span class="text-desc">5</span> Energy and advances <b class="text-hsr-physical">Souldragon</b>'s action by <span class="text-desc">15%</span>.`,
+      content: `When the battle begins, advances Dan Heng • Permansor Terrae's action by <span class="text-desc">40%</span>. When the <b class="text-desc">Bondmate</b> uses an attack, Dan Heng • Permansor Terrae regenerates <span class="text-desc">6</span> Energy and advances <b class="text-hsr-physical">Souldragon</b>'s action by <span class="text-desc">15%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -216,8 +216,8 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         },
         {
           name: 'Cast Shield',
-          value: [{ scaling: calcScaling(0.07, 0.00375, ult, 'heal'), multiplier: Stats.ATK }],
-          flat: calcScaling(40, 24, ult, 'flat'),
+          value: [{ scaling: calcScaling(0.14, 0.0075, ult, 'heal'), multiplier: Stats.ATK }],
+          flat: calcScaling(80, 48, ult, 'flat'),
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
           type: TalentType.NONE,

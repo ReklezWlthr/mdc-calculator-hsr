@@ -1,6 +1,15 @@
 [
   {
     "version": "1.1.3-13",
+    "date": "Sep 2nd, 2025",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v3.6v4</span>",
+      "Updated Characters: <span class=\"text-hsr-physical\">Dan Heng • Permansor Terrae</span>, and <span class=\"text-hsr-ice\">Evernight</span>",
+      "Updated Light Cones: <span class=\"text-desc\">Though Worlds Apart</span>"
+    ]
+  },
+  {
+    "version": "1.1.3-13",
     "date": "Aug 14th, 2025",
     "desc": [
       "Content Version: <span class=\"text-desc\">v3.6v3</span>",

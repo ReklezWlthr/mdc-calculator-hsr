@@ -1621,7 +1621,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       base.SHIELD.push({
         name: 'Passive',
         source: `Though Worlds Apart`,
-        value: calcRefinement(0.3, 0.05, r),
+        value: calcRefinement(0.24, 0.04, r),
       })
       return base
     },
