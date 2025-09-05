@@ -67,7 +67,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       trace: 'Skill',
       title: 'Day Gently Slips',
       content: `Consumes <span class="text-desc">10%</span> of Evernight's current HP to summon memosprite <b>Evey</b> and increase CRIT DMG of all ally memosprites by an amount equal to {{0}}% of Evernight's CRIT DMG for <span class="text-desc">2</span> turn(s). Duration decreases by <span class="text-desc">1</span> at the start of each of Evernight's turns. If <b>Evey</b> is already on the field, restores <span class="text-desc">50%</span> of its Max HP. When used, gains <span class="text-desc">2</span> <b class="text-indigo-300">Memoria</b>. If in the <b class="text-violet-500">Darkest Riddle</b> state, additionally gains <span class="text-desc">12</span> <b class="text-indigo-300">Memoria</b>.`,
-      value: [{ base: 15, growth: 1.5, style: 'curved' }],
+      value: [{ base: 12, growth: 1.2, style: 'curved' }],
       level: skill,
       tag: AbilityTag.SUMMON,
     },
@@ -136,7 +136,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     summon_talent_3: {
       trace: 'Memosprite Talent [3]',
       title: `You, Parting, Beyond Reach`,
-      content: `Upon disappearing, increases Evernight's SPD by <span class="text-desc">10%</span>. If the disappearance is due to using <b>Dream, Dissolving, as Dew</b>, for each point of <b class="text-indigo-300">Memoria</b> used in this attack, additionally increases Evernight's SPD by <span class="text-desc">1%</span>. The SPD Boost effect cannot stack, and is removed at the start of Evernight's next turn.`,
+      content: `Upon disappearing, increases Evernight's SPD by <span class="text-desc">10%</span>. If the disappearance is due to using <b>Dream, Dissolving, as Dew</b>, for each point of <b class="text-indigo-300">Memoria</b> used in this attack, additionally increases Evernight's SPD by <span class="text-desc">1%</span>, counting up to <span class="text-desc">40</span> point(s) of <b class="text-indigo-300">Memoria</b>. The SPD Boost effect cannot stack, and is removed at the start of Evernight's next turn.`,
       value: [],
       level: memo_talent,
       tag: AbilityTag.ENHANCE,
@@ -488,7 +488,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         base[Stats.P_SPD].push({
           name: `Memosprite Talent`,
           source: 'Evey',
-          value: 0.1 * (form.memoria * 0.01),
+          value: 0.1 * (_.min([form.memoria || 0, 40]) * 0.01),
         })
       }
       if (a.a2) {
@@ -630,7 +630,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
 
           if (form.evernight_skill) {
             const b = all[index].getValue(Stats.CRIT_DMG) || 0
-            const multiplier = calcScaling(0.15, 0.015, skill, 'curved')
+            const multiplier = calcScaling(0.12, 0.012, skill, 'curved')
             _.forEach(all, (t) => {
               if (t.SUMMON_STATS) {
                 t.SUMMON_STATS[Stats.CRIT_DMG].push({

@@ -50,7 +50,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       <br /><b class="text-desc">Bondmate</b> only applies to the most recent target of Dan Heng • Permansor Terrae's Skill.`,
       value: [
         { base: 14, growth: 0.75, style: 'heal' },
-        { base: 80, growth: 48, style: 'flat' },
+        { base: 100, growth: 60, style: 'flat' },
       ],
       level: skill,
       tag: AbilityTag.DEFENSE,
@@ -61,11 +61,11 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       trace: 'Ultimate',
       title: `A Dragon's Zenith Knows No Rue`,
       content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Dan Heng • Permansor Terrae's ATK to all enemies, and provides a Shield to all allies that can offset DMG equal to {{1}}% of Dan Heng • Permansor Terrae's ATK plus {{2}}, lasting for <span class="text-desc">3</span> turn(s). When repeatedly receiving Dan Heng • Permansor Terrae's Shield, the Shield Effect can be stacked, up to <span class="text-desc">300%</span> of the Shield provided by the current Skill.
-      <br /><b class="text-hsr-physical">Souldragon</b> becomes enhanced, and when <b class="text-hsr-physical">Souldragon</b> takes action, triggers a <u>Follow-up ATK</u> that deals <b class="text-hsr-physical">Physical DMG</b> equal to {{3}}% of Dan Heng • Permansor Terrae's ATK and 1 instance of <b>Additional DMG</b> of the <b class="text-desc">Bondmate</b>'s Type equal to {{3}}% of the <b class="text-desc">Bondmate</b>'s ATK to all enemies. Enhancement lasts for <span class="text-desc">2</span> <b class="text-hsr-physical">Souldragon</b> action(s).`,
+      <br /><b class="text-hsr-physical">Souldragon</b> becomes enhanced, and when <b class="text-hsr-physical">Souldragon</b> takes action, triggers a <u>Follow-up ATK</u> that deals <b class="text-hsr-physical">Physical DMG</b> equal to {{3}}% of Dan Heng • Permansor Terrae's ATK and <b>Additional DMG</b> of the <b class="text-desc">Bondmate</b>'s Type equal to {{3}}% of the <b class="text-desc">Bondmate</b>'s ATK to all enemies. Enhancement lasts for <span class="text-desc">2</span> <b class="text-hsr-physical">Souldragon</b> action(s).`,
       value: [
         { base: 150, growth: 15, style: 'curved' },
         { base: 14, growth: 0.75, style: 'heal' },
-        { base: 80, growth: 48, style: 'flat' },
+        { base: 100, growth: 60, style: 'flat' },
         { base: 40, growth: 4, style: 'curved' },
       ],
       level: ult,
@@ -74,12 +74,12 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     talent: {
       trace: 'Talent',
       title: `Of Virtue, Forms Unfold`,
-      content: `When an ally target becomes a <b class="text-desc">Bondmate</b>, Dan Heng • Permansor Terrae summons <b class="text-hsr-physical">Souldragon</b> with an initial SPD of <span class="text-desc">165</span>.
-      <br />When <b class="text-hsr-physical">Souldragon</b> takes action, dispels <span class="text-desc">1</span> debuff(s) from all allies and provides a Shield that can offset DMG equal to {{0}}% of Dan Heng • Permansor Terrae's ATK plus {{1}} for <span class="text-desc">3</span> turn(s). The Shield Effect from Dan Heng • Permansor Terrae and "Souldragon" can be stacked, up to <span class="text-desc">300%</span> of the Shield provided by Dan Heng • Permansor Terrae's Skill.
+      content: `When an ally character becomes a <b class="text-desc">Bondmate</b>, Dan Heng • Permansor Terrae summons <b class="text-hsr-physical">Souldragon</b> with an initial SPD of <span class="text-desc">165</span>.
+      <br />When <b class="text-hsr-physical">Souldragon</b> takes action, dispels <span class="text-desc">1</span> debuff(s) from all allies and provides a Shield that can offset DMG equal to {{0}}% of Dan Heng • Permansor Terrae's ATK plus {{1}} for <span class="text-desc">3</span> turn(s). The Shield Effect provided by Dan Heng • Permansor Terrae and "Souldragon" can be stacked, up to <span class="text-desc">300%</span> of the Shield provided by Dan Heng • Permansor Terrae's Skill.
       <br /><b class="text-hsr-physical">Souldragon</b> disappears when Dan Heng • Permansor Terrae or the <b class="text-desc">Bondmate</b> is knocked down.`,
       value: [
         { base: 7, growth: 0.375, style: 'heal' },
-        { base: 40, growth: 24, style: 'flat' },
+        { base: 50, growth: 30, style: 'flat' },
       ],
       level: talent,
       tag: AbilityTag.DEFENSE,
@@ -104,7 +104,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Sublimity`,
-      content: `When enhancing <b class="text-hsr-physical">Souldragon</b>'s action, additionally deals <span class="text-desc">1</span> instance of <b>Additional DMG</b> of the corresponding Type equal to <span class="text-desc">40%</span> of <b class="text-desc">Bondmate</b>'s ATK to the enemy with the highest current HP.`,
+      content: `When "Souldragon" takes action, additionally provides a Shield that can offset DMG equal to <span class="text-desc">5%</span> of Dan Heng • Permansor Terrae's ATK plus <span class="text-desc">100</span> to the ally target with the lowest current Shield Effect. When repeatedly receiving Dan Heng • Permansor Terrae's Shield, the Shield Effect can be stacked, up to <span class="text-desc">300%</span> of the Shield provided by the current Skill. When enhanced <b class="text-hsr-physical">Souldragon</b> takes action, further deals <span class="text-desc">1</span> instance of <b>Additional DMG</b> of the <b class="text-desc">Bondmate</b>'s Type equal to <span class="text-desc">40%</span> of <b class="text-desc">Bondmate</b>'s ATK to the enemy with the highest current HP.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -136,7 +136,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c6: {
       trace: 'Eidolon 6',
       title: `One Dream to Enfold All Wilds`,
-      content: `When there is a <b class="text-desc">Bondmate</b> on the field, increases the DMG received by all enemies by <span class="text-desc">20%</span>. When the <b class="text-desc">Bondmate</b> deals DMG, ignores <span class="text-desc">12%</span> of the enemy target's DEF. When Dan Heng • Permansor Terrae uses his Ultimate, the <b class="text-desc">Bondmate</b> will deal <span class="text-desc">1</span> instance of <b>Additional DMG</b> of their corresponding Type to all enemies equal to <span class="text-desc">330%</span> of <b class="text-desc">Bondmate</b>'s ATK.`,
+      content: `When there is a <b class="text-desc">Bondmate</b> on the field, increases the DMG received by all enemies by <span class="text-desc">20%</span>. When the <b class="text-desc">Bondmate</b> deals DMG, ignores <span class="text-desc">12%</span> of the enemy target's DEF. When Dan Heng • Permansor Terrae uses his Ultimate, the <b class="text-desc">Bondmate</b> will deal <b>Additional DMG</b> of their corresponding Type to all enemies equal to <span class="text-desc">330%</span> of <b class="text-desc">Bondmate</b>'s ATK.`,
     },
   }
 
@@ -188,7 +188,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         {
           name: 'Maximum Shield',
           value: [{ scaling: calcScaling(0.14, 0.0075, skill, 'heal'), multiplier: Stats.ATK }],
-          flat: calcScaling(80, 48, skill, 'flat'),
+          flat: calcScaling(100, 60, skill, 'flat'),
           multiplier: 3,
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
@@ -198,7 +198,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         {
           name: 'Cast Shield',
           value: [{ scaling: calcScaling(0.14, 0.0075, skill, 'heal'), multiplier: Stats.ATK }],
-          flat: calcScaling(80, 48, skill, 'flat'),
+          flat: calcScaling(100, 60, skill, 'flat'),
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
           type: TalentType.NONE,
@@ -217,7 +217,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         {
           name: 'Cast Shield',
           value: [{ scaling: calcScaling(0.14, 0.0075, ult, 'heal'), multiplier: Stats.ATK }],
-          flat: calcScaling(80, 48, ult, 'flat'),
+          flat: calcScaling(100, 60, ult, 'flat'),
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
           type: TalentType.NONE,
@@ -234,8 +234,8 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       base.TALENT_SCALING = [
         {
           name: 'Souldragon Shield',
-          value: [{ scaling: calcScaling(0.07, 0.00375, talent, 'heal'), multiplier: Stats.ATK }],
-          flat: calcScaling(40, 24, talent, 'flat'),
+          value: [{ scaling: calcScaling(0.07, 0.00375, talent, 'heal') + (a.a6 ? 0.05 : 0), multiplier: Stats.ATK }],
+          flat: calcScaling(50, 30, talent, 'flat') + (a.a6 ? 100 : 0),
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
           type: TalentType.NONE,

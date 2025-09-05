@@ -2453,10 +2453,10 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'New Scale',
-      detail: `Increases the wearer's ATK by {{0}}% and Shield Effect provided by {{1}}%. When the wearer uses Ultimate, restores HP equal to {{2}}% of the wearer's ATK to all allies, and additionally restores HP equal to {{2}}% of the wearer's ATK to the ally character with the lowest HP, and grants <b>Redoubt</b> to all allies for <span class="text-desc">3</span> turn(s). Targets with <b>Redoubt</b> deal {{0}}% more DMG, which further increases by {{2}}% if they have summons.`,
+      detail: `Increases the wearer's ATK by {{1}}%. When the wearer uses Ultimate, restores HP equal to {{2}}% of the wearer's ATK to all allies, and additionally restores HP equal to {{2}}% of the wearer's ATK to the ally character with the lowest HP, and grants <b>Redoubt</b> to all allies for <span class="text-desc">3</span> turn(s). Targets with <b>Redoubt</b> deal {{0}}% more DMG, which further increases by {{2}}% if they have summons.`,
       properties: [
         { base: 24, growth: 6 },
-        { base: 24, growth: 4 },
+        { base: 64, growth: 16 },
         { base: 10, growth: 2.5 },
         { base: 12, growth: 3 },
       ],
