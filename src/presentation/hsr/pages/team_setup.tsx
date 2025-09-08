@@ -16,6 +16,7 @@ import { CommonModal } from '@src/presentation/components/common_modal'
 import { CharacterSelect } from '../components/character_select'
 import { TalentIcon } from '../components/tables/scaling_wrapper'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
+import OldConditionalsObject, { buffedList } from '@src/data/lib/stats/conditionals/conditionals_base'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { calculateFinal, calculateOutOfCombat } from '@src/core/utils/calculator'
 import { baseStatsObject } from '@src/data/lib/stats/baseConstant'
@@ -26,6 +27,7 @@ import { SaveTeamModal } from '@src/presentation/hsr/components/modals/save_team
 import { AbilityBlock } from '../components/ability_block'
 import { BonusAbilityBlock } from '../components/bonus_ability_block'
 import { TeamModal } from '../components/modals/team_modal'
+import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
 
 export const SetToolTip = observer(({ item, set, type }: { item: number; set: string; type: 'relic' | 'planar' }) => {
   const setDetail = _.find(type === 'relic' ? RelicSets : PlanarSets, ['id', set])
@@ -116,12 +118,11 @@ export const TeamSetup = observer(() => {
 
   const set = getSetCount(artifactData)
 
-  const talent = _.find(ConditionalsObject, ['id', char.cId])?.conditionals(
-    char?.cons,
-    char?.major_traces,
-    char?.talents,
-    teamStore.characters
-  )
+  const buffed = _.includes(buffedList, char.cId)
+  const talent = _.find(
+    settingStore.settings.buffed[char.cId] || !buffed ? ConditionalsObject : OldConditionalsObject,
+    ['id', char.cId]
+  )?.conditionals(char?.cons, char?.major_traces, char?.talents, teamStore.characters)
 
   return (
     <div className="w-full customScrollbar">
@@ -165,6 +166,31 @@ export const TeamSetup = observer(() => {
               talents={talent?.talents}
               onChange={(key) => teamStore.toggleMajorTrace(selected, key)}
             />
+            {buffed && (
+              <div className="flex items-center justify-between px-3 py-2 text-white border-2 rounded-lg col-span-full bg-primary-dark border-primary-light">
+                <div className="flex items-center gap-1">
+                  <p className="text-sm font-bold">Enhanced State</p>
+                  <Tooltip
+                    title="Enhanced State"
+                    body={
+                      <p>
+                        Some characters are enhanced: their abilities, Traces, and Eidolon effects may change. You can
+                        switch between states here.
+                      </p>
+                    }
+                    style="max-w-[450px]"
+                  >
+                    <i className="fa-regular fa-question-circle" />
+                  </Tooltip>
+                </div>
+                <ToggleSwitch
+                  enabled={settingStore.settings.buffed[char.cId]}
+                  onClick={(v) =>
+                    settingStore.setSettingValue({ buffed: { ...settingStore.settings.buffed, [char.cId]: v } })
+                  }
+                />
+              </div>
+            )}
             <div className="col-span-full">
               <TraceBlock
                 id={char?.cId}

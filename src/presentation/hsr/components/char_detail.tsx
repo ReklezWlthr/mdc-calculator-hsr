@@ -21,13 +21,20 @@ import { useParams } from '@src/core/hooks/useParams'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { toPercentage } from '@src/core/utils/converter'
 import { CharDetailModal } from '@src/presentation/hsr/components/modals/char_detail_modal'
+import OldConditionalsObject, { buffedList } from '@src/data/lib/stats/conditionals/conditionals_base'
+import { Tooltip } from '@src/presentation/components/tooltip'
+import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
 
 export const CharDetail = observer(() => {
   const { charStore, settingStore, teamStore, modalStore } = useStore()
+  const [buffed, setBuffed] = useState(false)
   const selected = charStore.selected
   const data = findCharacter(selected)
   const charUpgrade = _.find(charStore.characters, ['cId', selected])
-  const cond = _.find(ConditionalsObject, ['id', charStore.selected])?.conditionals(
+  const cond = _.find(buffed || !_.includes(buffedList, data?.id) ? ConditionalsObject : OldConditionalsObject, [
+    'id',
+    charStore.selected,
+  ])?.conditionals(
     charUpgrade?.cons || 0,
     charUpgrade?.major_traces || { a2: false, a4: false, a6: false },
     charUpgrade?.talents || { basic: 1, skill: 1, ult: 1, talent: 1, memo_skill: 1, memo_talent: 1 },
@@ -49,6 +56,7 @@ export const CharDetail = observer(() => {
 
   useEffect(() => {
     setLoading(true)
+    setBuffed(true)
     const elms = document.getElementsByClassName('cons')
     _.forEach(elms, (elm: HTMLImageElement) => (elm.style.display = 'none'))
     document.getElementById('detail_container').scrollTo(0, 0)
@@ -206,7 +214,7 @@ export const CharDetail = observer(() => {
                     </span>
                   </p>
                   <p>
-                    Eidolon <span className="text-desc">{charUpgrade.cons}</span>
+                    Eidolon <span className="text-desc">{charUpgrade.cons || 0}</span>
                   </p>
                 </div>
                 <p className="py-1.5 font-bold text-center">Abilities</p>
@@ -277,6 +285,26 @@ export const CharDetail = observer(() => {
               <p className="text-center text-gray">Not Owned</p>
             )}
           </div>
+          {_.includes(buffedList, data?.id) && (
+            <div className="flex items-center justify-between px-3 py-2 text-white border-2 rounded-lg col-span-full bg-primary-dark border-primary-light">
+              <div className="flex items-center gap-1">
+                <p className="text-sm font-bold">Enhanced State</p>
+                <Tooltip
+                  title="Enhanced State"
+                  body={
+                    <p>
+                      Some characters are enhanced: their abilities, Traces, and Eidolon effects may change. You can
+                      switch between states here. Changes are NOT reflected anywhere else in the calculator.
+                    </p>
+                  }
+                  style="max-w-[450px]"
+                >
+                  <i className="fa-regular fa-question-circle" />
+                </Tooltip>
+              </div>
+              <ToggleSwitch enabled={buffed} onClick={(v) => setBuffed(v)} />
+            </div>
+          )}
         </div>
       </div>
       <p className="flex justify-center gap-2 mb-1 text-2xl font-bold">

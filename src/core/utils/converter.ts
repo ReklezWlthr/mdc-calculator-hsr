@@ -27,11 +27,13 @@ export const fromEnka = (rawData: Record<string, any>) => {
   if (!rawData) return null
   const displayChars = rawData.detailInfo?.avatarDetailList
   const charData: ITeamChar[] = _.map<any, ITeamChar>(displayChars, (item) => {
+    const isBuffed = !!item.enhancedId
     const weapon = item.equipment
     const weaponId = weapon?.tid?.toString()
     const talents = item.skillTreeList
     const artifacts = _.map(item.relicList, (a) => (a ? crypto.randomUUID() : null))
-    const findTalent = (ext: string) => _.find(talents, (t) => t.pointId === +`${item.avatarId}${ext}`)?.level
+    const findTalent = (ext: string) =>
+      _.find(talents, (t) => t.pointId === +`${isBuffed ? '1' : ''}${item.avatarId}${ext}`)?.level
 
     const traceException = {
       '1301': [
@@ -169,7 +171,7 @@ export const fromScanner = (rawData: Record<string, any>) => {
           item.traces.stat_2 || false,
           item.traces.stat_6 || false,
           item.traces.stat_9 || false,
-        ],
+        ]
         // findCharacter(cId)?.overwrite
       ),
     }

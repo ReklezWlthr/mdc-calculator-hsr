@@ -152,6 +152,7 @@ export default [
   { id: '1412', conditionals: Cerydra },
   { id: '1413', conditionals: Evernight },
   { id: '1414', conditionals: Terravox },
+  // MCs
   { id: '8001', conditionals: DMC },
   { id: '8003', conditionals: PMC },
   { id: '8005', conditionals: HMC },

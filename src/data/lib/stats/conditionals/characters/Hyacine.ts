@@ -47,7 +47,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill: {
       trace: 'Skill',
       title: `Love Over the Rainbow`,
-      content: `Summons memosprite Little Ica. Restores HP equal to {{0}}% of Hyacine's Max HP plus {{1}} for all allies (except <b>Little Ica</b>), and restores HP equal to {{2}}% of Hyacine's Max HP plus {{3}} for <b>Little Ica</b>.`,
+      content: `Summons memosprite <b>Little Ica</b>. Restores HP equal to {{0}}% of Hyacine's Max HP plus {{1}} for all allies (except <b>Little Ica</b>), and restores HP equal to {{2}}% of Hyacine's Max HP plus {{3}} for <b>Little Ica</b>.`,
       value: [
         { base: 4, growth: 0.5, style: 'heal' },
         { base: 40, growth: 24, style: 'flat' },

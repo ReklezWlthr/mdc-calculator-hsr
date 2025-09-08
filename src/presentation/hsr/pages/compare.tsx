@@ -16,7 +16,7 @@ import { defaultTotal } from '@src/data/stores/setup_store'
 import { RenameModal } from '../components/modals/rename_modal'
 
 export const ComparePage = observer(() => {
-  const { modalStore, setupStore } = useStore()
+  const { modalStore, setupStore, settingStore } = useStore()
 
   const charData = findCharacter(setupStore.mainChar)
 
@@ -178,7 +178,18 @@ export const ComparePage = observer(() => {
                 onOpenSaveModal({
                   onSelect: (team) => {
                     const handler = () => {
-                      setupStore.setValue('main', { ...team, total: defaultTotal })
+                      setupStore.setValue('main', {
+                        ...team,
+                        total: defaultTotal,
+                        buffed: _.reduce(
+                          team.char,
+                          (acc, t) => {
+                            acc[t.cId] = settingStore.settings.buffed[t.cId] || false
+                            return acc
+                          },
+                          {}
+                        ),
+                      })
                       setupStore.setValue('mainChar', team.char[0].cId)
                       setupStore.setValue('selected', [0, 0])
                     }
@@ -288,7 +299,18 @@ export const ComparePage = observer(() => {
                         onOpenSaveModal({
                           onSelect: (team) => {
                             const newCompare = _.cloneDeep(setupStore.comparing)
-                            newCompare.splice(tI, 1, { ...team, total: defaultTotal })
+                            newCompare.splice(tI, 1, {
+                              ...team,
+                              total: defaultTotal,
+                              buffed: _.reduce(
+                                team.char,
+                                (acc, t) => {
+                                  acc[t.cId] = settingStore.settings.buffed[t.cId] || false
+                                  return acc
+                                },
+                                {}
+                              ),
+                            })
                             const name = findValidName(
                               _.map([setupStore.main, ...setupStore.comparing], 'name'),
                               team.name

@@ -31,6 +31,8 @@ import { getSetCount } from '../utils/data_format'
 import { AllRelicSets } from '@src/data/db/artifacts'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
 import { BaseStatsType, CallbackType } from '@src/domain/stats'
+import { buffedList } from '@src/data/lib/stats/conditionals/conditionals_base'
+import OldConditionalsObject from '@src/data/lib/stats/conditionals/conditionals_base'
 
 interface CalculatorOptions {
   enabled?: boolean
@@ -46,6 +48,7 @@ interface CalculatorOptions {
   indexOverride?: number
   talentOverride?: ITeamChar
   weaknessOverride?: Element[]
+  buffedOverride?: Record<string, boolean>
   initFormFunction?: (f: Record<string, any>[], exclude: string[]) => void
 }
 
@@ -59,6 +62,7 @@ export const useCalculator = ({
   weaknessOverride,
   doNotSaveStats,
   initFormFunction,
+  buffedOverride,
 }: CalculatorOptions) => {
   const { teamStore, artifactStore, calculatorStore, settingStore } = useStore()
 
@@ -69,6 +73,7 @@ export const useCalculator = ({
   const forms = formOverride || calculatorStore.form
   const team = teamOverride || teamStore.characters
   const custom = customOverride || calculatorStore.custom
+  const buffer = buffedOverride || settingStore.settings.buffed
 
   const mainComputed = finalStats?.[selected]
 
@@ -80,14 +85,14 @@ export const useCalculator = ({
       _.map(team, (item) => {
         if (!item) return null
         const data = talentOverride?.cId === item?.cId ? talentOverride : item
-        return _.find(ConditionalsObject, ['id', item.cId])?.conditionals(
-          data.cons,
-          data.major_traces,
-          data.talents,
-          team
-        )
+        const buffed = _.includes(buffedList, item?.cId)
+
+        return _.find(buffer[item?.cId] || !buffed ? ConditionalsObject : OldConditionalsObject, [
+          'id',
+          item.cId,
+        ])?.conditionals(data.cons, data.major_traces, data.talents, team)
       }),
-    [team]
+    [team, buffer]
   )
   const main = conditionals[selected]
 

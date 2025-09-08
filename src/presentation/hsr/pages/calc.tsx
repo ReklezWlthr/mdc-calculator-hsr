@@ -29,6 +29,8 @@ import { BulletPoint } from '@src/presentation/components/collapsible'
 import { SubTotalRow } from '../components/tables/sub_total_row'
 import { StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { SummonStatBlock } from '../components/summon_stat_block'
+import { buffedList } from '@src/data/lib/stats/conditionals/conditionals_base'
+import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
@@ -36,6 +38,7 @@ export const Calculator = observer(({}: {}) => {
 
   const char = team[selected]
   const charData = findCharacter(char.cId)
+  const buffed = _.includes(buffedList, char.cId)
 
   const { main, mainComputed, contents, finalStats } = useCalculator({ teamOverride: team })
 
@@ -366,6 +369,31 @@ export const Calculator = observer(({}: {}) => {
                 <b>Self Modifiers</b> also include those of this unit's memosprite. Modifiers that specifically target
                 only memosprites (e.g. Tingyun's or Bronya's) are in the <b>Memosprite</b> tab.
               </div>
+              {buffed && (
+                <div className="flex items-center justify-between w-2/3 px-3 py-2 text-white border-2 rounded-lg bg-primary-dark border-primary-light">
+                  <div className="flex items-center gap-1">
+                    <p className="text-sm font-bold">Enhanced State</p>
+                    <Tooltip
+                      title="Enhanced State"
+                      body={
+                        <p>
+                          Some characters are enhanced: their abilities, Traces, and Eidolon effects may change. You can
+                          switch between states here.
+                        </p>
+                      }
+                      style="max-w-[450px]"
+                    >
+                      <i className="fa-regular fa-question-circle" />
+                    </Tooltip>
+                  </div>
+                  <ToggleSwitch
+                    enabled={settingStore.settings.buffed[char.cId]}
+                    onClick={(v) =>
+                      settingStore.setSettingValue({ buffed: { ...settingStore.settings.buffed, [char.cId]: v } })
+                    }
+                  />
+                </div>
+              )}
               <ConditionalBlock title="Self Modifiers" contents={_.filter(contents.main, 'show')} selected={selected} />
               <ConditionalBlock title="Team Modifiers" contents={_.filter(contents.team, 'show')} selected={selected} />
               <WeaponConditionalBlock contents={contents.weapon(selected)} selected={selected} />

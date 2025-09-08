@@ -15,12 +15,17 @@ import { AbilityBlock } from '@src/presentation/hsr/components/ability_block'
 import { BonusAbilityBlock } from '@src/presentation/hsr/components/bonus_ability_block'
 import { CharacterModal } from '../modals/character_modal'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
+import { buffedList } from '@src/data/lib/stats/conditionals/conditionals_base'
+import { Tooltip } from '@src/presentation/components/tooltip'
+import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
 
 export const CompareTraceBlock = observer(({ char, team }: { char: ITeamChar; team: ITeamChar[][] }) => {
   const { setupStore, settingStore, modalStore } = useStore()
 
   const charData = findCharacter(char?.cId)
   const [setupIndex, charIndex] = setupStore.selected
+  const buffed =
+    setupIndex === 0 ? setupStore.main.buffed?.[char?.cId] : setupStore.comparing[setupIndex - 1]?.buffed?.[char?.cId]
 
   const talent = _.find(ConditionalsObject, ['id', char?.cId])?.conditionals(
     char?.cons,
@@ -123,6 +128,27 @@ export const CompareTraceBlock = observer(({ char, team }: { char: ITeamChar; te
                 })
               }
             />
+            {_.includes(buffedList, char?.cId) && (
+              <div className="flex items-center justify-between px-3 py-2 text-white border-2 rounded-lg col-span-full bg-primary-dark border-primary-light">
+                <div className="flex items-center gap-1">
+                  <p className="text-sm font-bold">Enhanced State</p>
+                  <Tooltip
+                    title="Enhanced State"
+                    body={
+                      <p>
+                        Some characters are enhanced: their abilities, Traces, and Eidolon effects may change. You can
+                        switch between states here. Changes are NOT reflected anywhere else in the calculator.
+                      </p>
+                    }
+                    style="w-[450px]"
+                    position="bottom"
+                  >
+                    <i className="fa-regular fa-question-circle" />
+                  </Tooltip>
+                </div>
+                <ToggleSwitch enabled={buffed} onClick={(v) => setupStore.setBuffed(setupIndex, char.cId, v)} />
+              </div>
+            )}
             <div className="col-span-full">
               <TraceBlock
                 id={char?.cId}

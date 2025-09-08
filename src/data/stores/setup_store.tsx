@@ -14,6 +14,7 @@ export interface TSetup {
 
 export interface TSetupPlus extends TSetup {
   total: TotalT
+  buffed: Record<string, boolean>
 }
 
 export const defaultTotal = {
@@ -75,6 +76,7 @@ export interface SetupStoreType {
   setForm: (index: number, value: Record<string, any>[]) => void
   setFormValue: (setupIndex: number, charIndex: number, key: string, value: any, memo: boolean, sync: boolean) => void
   setComparing: (value: Partial<ITeamChar>) => void
+  setBuffed: (index: number, cId: string, value: boolean) => void
   setTotal: (key: TalentType, index: number, name: string, value: number) => void
   getTotal: (key: TalentType, index: number) => number
   setRes: (element: Element, value: number) => void
@@ -200,6 +202,18 @@ export class SetupStore {
       _.assign(this.main.total[key], { [name]: value })
     } else {
       this.comparing[index - 1] && _.assign(this.comparing[index - 1].total[key], { [name]: value })
+    }
+  }
+
+  setBuffed = (index: number, cId: string, value: boolean) => {
+    if (index === 0) {
+      this.main.buffed[cId] = value
+      this.main.buffed = _.cloneDeep(this.main.buffed)
+    } else {
+      if (this.comparing[index - 1]) {
+        this.comparing[index - 1].buffed[cId] = value
+        this.comparing[index - 1].buffed = _.cloneDeep(this.comparing[index - 1].buffed)
+      }
     }
   }
 
