@@ -46,7 +46,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       trace: 'Skill',
       title: `Silence, Wraithfly's Caress`,
       content: `Consumes <span class="text-desc">30%</span> of all allies' current HP. Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Castorice's Max HP to one designated enemy and <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Castorice's Max HP to adjacent targets.
-      <br />If current HP is insufficient, this ability will reduce HP to <span class="text-desc">1</span>.
+      <br />If the current HP is insufficient, reduce the current HP down to <span class="text-desc">1</span>.
       <br />If <b>Netherwing</b> is on the battlefield, this Skill becomes <b>Boneclaw, Doomdrake's Embrace</b> instead.`,
       value: [
         { base: 25, growth: 2.5, style: 'curved' },
@@ -58,8 +58,8 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     skill_alt: {
       trace: 'Enhanced Skill',
       title: `Boneclaw, Doomdrake's Embrace`,
-      content: `Consumes <span class="text-desc">40%</span> of all allies' (except <b>Netherwing</b>) current HP. Castorice and <b>Netherwing</b> launch a <u>Joint ATK</u> on the target and deal <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% and {{1}}% of Castorice's Max HP to all enemies.
-      <br />If current HP is insufficient, this ability will reduce HP to <span class="text-desc">1</span>.`,
+      content: `Consumes <span class="text-desc">40%</span> of the current HP of all allies (except <b>Netherwing</b>). Castorice and <b>Netherwing</b> launch a <u>Joint ATK</u> on the targets, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% and {{1}}% of Castorice's Max HP to all enemies.
+      <br />If the current HP is insufficient, reduce the current HP down to <span class="text-desc">1</span>.`,
       value: [
         { base: 15, growth: 1.5, style: 'curved' },
         { base: 25, growth: 2.5, style: 'curved' },
@@ -75,8 +75,8 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       <br />
       <br /><b>Breath Scorches the Shadow</b>
       <br />Activating <b>Breath Scorches the Shadow</b> will consume <span class="text-desc">25%</span> of <b>Netherwing</b>'s max HP to deal <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Castorice's Max HP to all enemies.
-      <br />In one attack, <b>Breath Scorches the Shadow</b> can be activated repeatedly, with the DMG multiplier increasing respectively to {{2}}%/{{3}}%, until {{3}}%. The DMG Multiplier Boost effect will not be reduced before <b>Netherwing</b> disappears.
-      <br />When <b>Netherwing</b>'s current HP is equal to or lower than <span class="text-desc">25%</span> of its Max HP, activating the ability will reduce HP to <span class="text-desc">1</span>, and then trigger the ability effect equal to that of the Talent <b>Wings Sweep the Ruins</b>.`,
+      <br />In one attack, <b>Breath Scorches the Shadow</b> can be activated repeatedly, with the DMG multiplier increasing respectively to {{2}}%/{{3}}%. After reaching {{3}}%, it will not increase further. The DMG Multiplier Boost effect will not decrease before <b>Netherwing</b> disappears.
+      <br />When <b>Netherwing</b>'s current HP is equal to or less than <span class="text-desc">25%</span> of its Max HP, launching this ability will actively reduce HP down to <span class="text-desc">1</span>, and then trigger the ability effect equal to that of the Talent <b>Wings Sweep the Ruins</b>.`,
       value: [
         { base: 20, growth: 4, style: 'linear' },
         { base: 12, growth: 2.2, style: 'linear' },
@@ -89,7 +89,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     ult: {
       trace: 'Ultimate',
       title: `Doomshriek, Dawn's Chime`,
-      content: `Summons the memosprite <b>Netherwing</b> and <u>advances its action</u> by <span class="text-desc">100%</span>. At the same time, creates the Territory <b>Lost Netherland</b>, which decreases all enemies' <b>All-Type RES</b> by {{0}}%. If the DMG Boost effect from Castorice's Talent is active, the effect is extended to <b>Netherwing</b>. <b>Netherwing</b> has an initial SPD of <span class="text-desc">165</span> and a set Max HP equal to <span class="text-desc">100%</span> of max <b class="text-indigo-400">Newbud</b>.
+      content: `Summons the memosprite <b>Netherwing</b> and <u>advances its action</u> by <span class="text-desc">100%</span>. At the same time, deploys the Territory <b>Lost Netherland</b>, which decreases all enemies' <b>All-Type RES</b> by {{0}}%. If Castorice has the DMG Boost effect from her Talent, then this effect spreads to <b>Netherwing</b>. <b>Netherwing</b> has an initial SPD of <span class="text-desc">165</span> and a set Max HP equal to <span class="text-desc">100%</span> of max <b class="text-indigo-400">Newbud</b>.
       <br />After <b>Netherwing</b> acts <span class="text-desc">3</span> times or when its HP is <span class="text-desc">0</span>, it disappears and dispels the Territory <b>Lost Netherland</b>.`,
       value: [{ base: 10, growth: 1, style: 'curved' }],
       level: ult,
@@ -98,8 +98,8 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     talent: {
       trace: 'Talent',
       title: `Desolation Across Palms`,
-      content: `Max <b class="text-indigo-400">Newbud</b> is based on all characters' levels on the battlefield For each point of HP lost by all allies, Castorice gains <span class="text-desc">1</span> point of <b class="text-indigo-400">Newbud</b>. When <b class="text-indigo-400">Newbud</b> reaches its maximum, Castorice's Ultimate can be used. When allies lose HP, Castorice's and <b>Netherwing</b>'s DMG dealt increase by {{0}}%. This effect can stack up to <span class="text-desc">3</span> times, lasting for <span class="text-desc">3</span> turn(s).
-      <br />When <b>Netherwing</b> is on the field, <b class="text-indigo-400">Newbud</b> cannot be gained through Talent, and HP lost by all allies (except <b>Netherwing</b>) will be converted to an equal amount of HP for <b>Netherwing</b>.`,
+      content: `The maximum limit of <b class="text-indigo-400">Newbud</b> is related to the levels of all characters on the battlefield. For every <span class="text-desc">1</span> point of HP lost by all allies, Castorice gains <span class="text-desc">1</span> point of <b class="text-indigo-400">Newbud</b>. When <b class="text-indigo-400">Newbud</b> reaches its maximum limit, can activate the Ultimate. When allies lose HP, Castorice's and <b>Netherwing</b>'s DMG dealt increases by {{0}}%. This effect can stack up to <span class="text-desc">3</span> times, lasting for <span class="text-desc">3</span> turn(s).
+      <br />When <b>Netherwing</b> is on the field, <b class="text-indigo-400">Newbud</b> cannot be gained through Talent, and every <span class="text-desc">1</span> point of HP lost by all allies (except <b>Netherwing</b>) will be converted to an equal amount of HP for <b>Netherwing</b>.`,
       value: [{ base: 10, growth: 1, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -107,7 +107,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     unique_talent: {
       trace: 'Exclusive Talent',
       title: `Sanctuary of the Mooncocoon`,
-      content: `After obtaining Castorice or when Castorice is in the current team, receive the following effect: In battle, when an ally character receives a killing blow, all ally characters that received a killing blow in this action enter the <b class="text-violet-400">Mooncocoon</b> state. Characters in <b class="text-violet-400">Mooncocoon</b> temporarily delay becoming downed and can take actions normally. After the action, if they receive healing or gain the Shield effect before their next turn, <b class="text-violet-400">Mooncocoon</b> is removed. Otherwise, they will be downed immediately. This effect can be triggered <span class="text-desc">1</span> time per battle.`,
+      content: `After obtaining Castorice or when Castorice is in the current team, receive the following effect: In battle, when an ally character receives a killing blow, all ally characters that received a killing blow in this action enter the <b class="text-violet-400">Mooncocoon</b> state. Characters in <b class="text-violet-400">Mooncocoon</b> temporarily delay becoming downed and can take actions normally. After the action and before the start of the next turn, if their current HP increases or they gain a Shield, <b class="text-violet-400">Mooncocoon</b> is removed. Otherwise, they will be downed immediately. This effect can only trigger once per battle.`,
       value: [],
       level: talent,
       tag: AbilityTag.SUPPORT,
@@ -115,7 +115,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     summon_talent: {
       trace: 'Memosprite Talent [1]',
       title: `Wings Sweep the Ruins`,
-      content: `When the <b>Netherwing</b> disappears, deals <span class="text-desc">6</span> instance(s) of DMG, with every instance dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Castorice's Max HP to one random enemy units. At the same time, restores HP equal to <span class="text-desc">6%</span> of Castorice's Max HP plus <span class="text-desc">800</span> to all allies.`,
+      content: `When the <b>Netherwing</b> disappears, deals <span class="text-desc">6</span> instance(s) of DMG, with each instance dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Castorice's Max HP to one random enemy. At the same time, restores HP by an amount equal to <span class="text-desc">6%</span> of Castorice's Max HP plus <span class="text-desc">800</span> for all allies.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: memo_talent,
       tag: AbilityTag.BOUNCE,
@@ -123,7 +123,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     summon_talent_2: {
       trace: 'Memosprite Talent [2]',
       title: `Mooncocoon Shrouds the Form`,
-      content: `When <b>Netherwing</b> is on the field, it acts as <u>backup</u> for allies. When allies take DMG or consumes HP, their current HP can be reduced to a minimum of <span class="text-desc">1</span>, after which <b>Netherwing</b> will consume HP at <span class="text-desc">500%</span> of the original value until <b>Netherwing</b> disappears.`,
+      content: `When <b>Netherwing</b> is on the field, it acts as <u>backup</u> for allies. When allies take DMG or consume HP, their current HP can be reduced to a minimum of <span class="text-desc">1</span>, after which <b>Netherwing</b> will bear the HP loss. But <b>Netherwing</b> consumes HP equal to <span class="text-desc">500%</span> of the original value. This lasts until <b>Netherwing</b> disappears.`,
       value: [],
       level: memo_talent,
       tag: AbilityTag.SUPPORT,
@@ -131,7 +131,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     summon_talent_3: {
       trace: 'Memosprite Talent [3]',
       title: `Roar Rumbles the Realm`,
-      content: `When <b>Netherwing</b> is summoned, increases DMG dealt by all allies by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `When <b>Netherwing</b> is summoned, increases DMG dealt by all allies by <span class="text-desc">10%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
       value: [],
       level: memo_talent,
       tag: AbilityTag.SUPPORT,
@@ -139,34 +139,34 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     technique: {
       trace: 'Technique',
       title: `Wail, Death's Herald`,
-      content: `After using Technique, enters the <b>Netherveil</b> state that lasts for <span class="text-desc">20</span> seconds. While <b>Netherveil</b> is active, enemies are unable to approach Castorice on their own.
-      <br />While in the <b>Netherveil</b> state, attacking will cause all enemies within range to enter combat. At the same time, summons the memosprite <b>Netherwing</b>. <b>Netherwing</b> starts with current HP equal to <span class="text-desc">50%</span> of max <b class="text-indigo-400">Newbud</b>. After entering battle, consumes <span class="text-desc">40%</span> of all allies' current HP and <u>advances</u> <b>Netherwing</b>'s <u>action</u> by <span class="text-desc">100%</span>.
-      <br />After entering battle and before summoning <b>Netherwing</b>, Castorice gains <b class="text-indigo-400">Newbud</b> equal to <span class="text-desc">30%</span> of maximum <b class="text-indigo-400">Newbud</b>.`,
+      content: `After using Technique, enters the <b>Netherveil</b> state that lasts for <span class="text-desc">20</span> seconds. While <b>Netherveil</b> is active, enemies are unable to actively approach Castorice.
+      <br />During <b>Netherveil</b>, active attacks will cause all enemies within range to enter combat. At the same time, summons the memosprite <b>Netherwing</b>, advances its action by <span class="text-desc">100%</span>, and deploys the Territory <b>Lost Netherland</b>. <b>Netherwing</b> has its current HP equal to <span class="text-desc">50%</span> of max <b class="text-indigo-400">Newbud</b>. After entering battle, consumes <span class="text-desc">40%</span> of the current HP of all allies (except <b>Netherwing</b>).
+      <br />If <b>Netherwing</b> is not summoned after entering battle, Castorice gains <b class="text-indigo-400">Newbud</b> by an amount equal to <span class="text-desc">30%</span> of max <b class="text-indigo-400">Newbud</b>.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Contained Dark Tide`,
-      content: `After ally targets (excluding <b>Netherwing</b>) receive healing, converts <span class="text-desc">100%</span> of healed value into <b class="text-indigo-400">Newbud</b>. If <b>Netherwing</b> is on the battlefield, the healing is instead converted into <b>Netherwing</b>'s HP. The converted value for each ally target cannot exceed <span class="text-desc">12%</span> of <b class="text-indigo-400">Newbud</b>'s maximum limit. The accumulated conversion value from all units resets after any unit takes action.`,
+      content: `After ally targets (excluding <b>Netherwing</b>) receive healing, converts <span class="text-desc">100%</span> of the healed amount into <b class="text-indigo-400">Newbud</b>. If <b>Netherwing</b> is on the field, this is converted to <b>Netherwing</b>'s HP instead. Each ally target can accumulate a conversion amount up to <span class="text-desc">12%</span> of the max <b class="text-indigo-400">Newbud</b>. After any unit takes action, all units reset their accumulated conversion amount.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Inverted Torch`,
-      content: `While Castorice's current HP is equal to <span class="text-desc">50%</span> of her Max HP or higher, increases her SPD by <span class="text-desc">40%</span>.`,
+      content: `While Castorice's current HP is higher than or equal to <span class="text-desc">50%</span> of her Max HP, her SPD increases by <span class="text-desc">40%</span>. When <b>Netherwing</b> uses <b>Breath Scorches the Shadow</b> and deals fatal damage to all enemies on the field or brings them to a point where their HP cannot be reduced further, <b>Netherwing</b>'s SPD increases by <span class="text-desc">100%</span>, lasting for <span class="text-desc">1</span> turn.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Where The West Wind Dwells`,
-      content: `Each time <b>Netherwing</b> uses <b>Breath Scorches the Shadow</b>, increases its DMG dealt by <span class="text-desc">30%</span>. This effect stacks up to <span class="text-desc">6</span> and lasts until the end of this turn.`,
+      content: `Each time <b>Netherwing</b> uses <b>Breath Scorches the Shadow</b>, the DMG dealt increases by <span class="text-desc">30%</span>. This effect stacks up to <span class="text-desc">6</span> time(s) and lasts until the end of this turn.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Snowbound Maiden, Memory to Tomb`,
-      content: `When the target enemies' HP is <span class="text-desc">80%</span>/<span class="text-desc">50%</span> or lower, the DMG dealt with <b>Boneclaw, Doomdrake's Embrace</b>, <b>Claw Splits the Veil</b>, <b>Breath Scorches the Shadow</b>, and <b>Wings Sweep the Ruins</b> is <span class="text-desc">120%</span>/<span class="text-desc">140%</span> of the original DMG.`,
+      content: `When the target enemies' HP is <span class="text-desc">80%</span>/<span class="text-desc">50%</span> of Max HP or lower, the DMG dealt to it by <b>Boneclaw, Doomdrake's Embrace</b>, <b>Claw Splits the Veil</b>, <b>Breath Scorches the Shadow</b>, and <b>Wings Sweep the Ruins</b> is <span class="text-desc">120%</span>/<span class="text-desc">140%</span> of the original DMG respectively.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Crown on Wings of Bloom`,
-      content: `After summoning memosprite <b>Netherwing</b>, Castorice gains <span class="text-desc">2</span> stack(s) of <b class="text-desc">Ardent Will</b>. A maximum of <span class="text-desc">2</span> stacks of <b class="text-desc">Ardent Will</b> can be possessed at any given time, and can be used to offset Netherwing's HP consumption when using Memosprite Skill <b>Breath Scorches the Shadow</b> while <u>advancing</u> Castorice's <u>action</u> by <span class="text-desc">100%</span>. In the next usage of Enhanced Skill, Castorice gains <span class="text-desc">30%</span> of maximum <b class="text-indigo-400">Newbud</b> points.`,
+      content: `After summoning the memosprite <b>Netherwing</b>, Castorice gains <span class="text-desc">2</span> stack(s) of <b class="text-desc">Ardent Will</b>. <b class="text-desc">Ardent Will</b> can stack up to <span class="text-desc">2</span> time(s) and can be used to offset the HP cost of <b>Netherwing</b>'s Memosprite Skill <b>Breath Scorches the Shadow</b> and advance Castorice's action by <span class="text-desc">100%</span>. When using the next Enhanced Skill, Castorice gains <b class="text-indigo-400">Newbud</b> by an amount equal to <span class="text-desc">30%</span> of max <b class="text-indigo-400">Newbud</b>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -178,7 +178,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c4: {
       trace: 'Eidolon 4',
       title: 'Rest in Songs of Gloom',
-      content: `While Castorice is on the battlefield, all allies' Incoming Healing increases by <span class="text-desc">20%</span> when having their HP restored.`,
+      content: `While Castorice is on the field, all allies' HP restored when receiving healing increases by <span class="text-desc">20%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -190,7 +190,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c6: {
       trace: 'Eidolon 6',
       title: 'Await for Years to Loom',
-      content: `When Castorice or <b>Netherwing</b> deals DMG, increases <b class="text-hsr-quantum">Quantum RES PEN</b> by <span class="text-desc">20%</span>, and additionally increases the Bounce count for <b>Netherwing</b>'s Talent <b>Wings Sweep the Ruins</b> by <span class="text-desc">3</span> time(s).`,
+      content: `When Castorice or <b>Netherwing</b> deals DMG, increases <b class="text-hsr-quantum">Quantum RES PEN</b> by <span class="text-desc">20%</span>. During <b>Netherwing</b>'s attacks, can reduce enemy Toughness regardless of Weakness Types. When breaking Weaknesses, triggers the <b class="text-hsr-quantum">Quantum</b> Weakness Break effect. And the number of Bounces for <b>Netherwing</b>'s Talent <b>Netherwing</b>'s Talent <b>Wings Sweep the Ruins</b> additionally increases by <span class="text-desc">3</span>.`,
     },
   }
 

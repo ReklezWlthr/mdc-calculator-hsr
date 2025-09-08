@@ -35,8 +35,8 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: 'Skill',
       title: 'Caladbolg: Fake Spiral Sword',
       content: `Enters the <b>Circuit Connection</b> state. Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Archer's ATK to one designated enemy.
-      When using his Skill in the <b>Circuit Connection</b> state, the current turn does not end, and the DMG dealt by Archer's Skill increases by {{1}}%. This effect can be stacked up to <span class="text-desc">2</span> times, lasting until he exits the <b>Circuit Connection</b> state.
-      After actively using Skill <span class="text-desc">5</span> times or when there are insufficient Skill Points, using Skill again causes him to exit the <b>Circuit Connection</b> state. Exits the <b>Circuit Connection</b> state after all enemies have been defeated in each wave.`,
+      After using Skill in the <b>Circuit Connection</b> state, the current turn does not end, and the DMG dealt by Archer's Skill increases by {{1}}%. This effect can stack up to <span class="text-desc">2</span> times, lasting until he exits the <b>Circuit Connection</b> state.
+      After actively using Skill <span class="text-desc">5</span> times or when Skill Points are insufficient to use Skill again, exits the <b>Circuit Connection</b> state. After all enemy targets have been defeated in each wave, exits the <b>Circuit Connection</b> state.`,
       value: [
         { base: 180, growth: 18, style: 'curved' },
         { base: 60, growth: 4, style: 'curved' },
@@ -49,7 +49,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 5,
       trace: 'Ultimate',
       title: 'Unlimited Blade Works',
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Archer's ATK to one designated enemy and gains <span class="text-desc">2</span> <b>Charge(s)</b>, up to a maximum of <span class="text-desc">4</span> <b>Charge(s)</b>.`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Archer's ATK to one designated enemy and gains <span class="text-desc">2</span> point(s) of <b>Charge</b>, up to a maximum of <span class="text-desc">4</span>.`,
       value: [{ base: 600, growth: 40, style: 'curved' }],
       level: ult,
       tag: AbilityTag.ST,
@@ -57,7 +57,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     talent: {
       trace: 'Talent',
       title: `Mind's Eye (True)`,
-      content: `When Archer's teammate attacks an enemy target, Archer consumes <span class="text-desc">1</span> <b>Charge</b> and immediately launches Follow-up ATK on the primary target, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Archer's ATK and recovering <span class="text-desc">1</span> Skill Point. If the target is defeated before this <u>Follow-up ATK</u> is launched, the <u>Follow-up ATK</u> will be directed at one random enemy instead.`,
+      content: `After Archer's teammates attack enemy targets, Archer consumes <span class="text-desc">1</span> <b>Charge</b> and immediately launches Follow-up ATK on the primary target, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Archer's ATK and recovering <span class="text-desc">1</span> Skill Point. If the target is defeated before this <u>Follow-up ATK</u> is launched, the <u>Follow-up ATK</u> will be directed at one random enemy instead.`,
       value: [{ base: 100, growth: 10, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ST,
@@ -65,7 +65,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     technique: {
       trace: 'Technique',
       title: 'Clairvoyance',
-      content: `Immediately attacks the enemy. After entering combat, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">200%</span> of Archer's ATK to all enemies and gains <span class="text-desc">1</span> <b>Charge(s)</b>.`,
+      content: `Immediately attacks enemies. After entering combat, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">200%</span> of Archer's ATK to all enemies and gains <span class="text-desc">1</span> point(s) of <b>Charge</b>.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
@@ -75,7 +75,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Hero of Justice',
-      content: `When Archer enters battle, gains <span class="text-desc">1</span> <b>Charge</b>.`,
+      content: `When Archer enters combat, gains <span class="text-desc">1</span> point(s) of <b>Charge</b>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -90,7 +90,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c2: {
       trace: 'Eidolon 2',
       title: 'The Unfulfilled Happiness',
-      content: `When using Ultimate, reduces the enemy target's Quantum RES by <span class="text-desc">20%</span>, and induces <b class="text-hsr-quantum">Quantum</b> Weakness for it, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `When using Ultimate, reduces the enemy target's Quantum RES by <span class="text-desc">20%</span>, and applies <b class="text-hsr-quantum">Quantum</b> Weakness to it, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -101,7 +101,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c4: {
       trace: 'Eidolon 4',
       title: 'The Unsung Life',
-      content: `Increases Ultimate DMG dealt by <span class="text-desc">150%</span>.`,
+      content: `Increases the Ultimate DMG dealt by <span class="text-desc">150%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -112,7 +112,7 @@ const Archer = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c6: {
       trace: 'Eidolon 6',
       title: 'The Endless Pilgrimage',
-      content: `When the turn begins, recovers <span class="text-desc">1</span> Skill Point for allies. The number of maximum stacks for the DMG boost effect provided by his Skill increases by <span class="text-desc">1</span>. His Skill DMG dealt ignores <span class="text-desc">20%</span> of DEF.`,
+      content: `When the turn starts, recovers <span class="text-desc">1</span> Skill Point for allies. The maximum number of stacks allowed for the DMG boost effect provided by this unit's Skill increases by <span class="text-desc">1</span>. The Skill DMG dealt ignores <span class="text-desc">20%</span> of DEF.`,
     },
   }
 

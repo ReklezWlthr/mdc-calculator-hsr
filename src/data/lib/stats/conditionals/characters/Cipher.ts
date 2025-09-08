@@ -36,7 +36,7 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 30,
       trace: 'Skill',
       title: 'Hey, Jackpot for the Taking',
-      content: `There is a <span class="text-desc">120%</span> <u>base chance</u> to inflict Weaken on one designated enemy and adjacent targets, decreasing their DMG dealt by {{0}}%, as well as increases Cipher's ATK by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). At the same time, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{2}}% of Cipher's ATK to one designated enemy and <b class="text-hsr-quantum">Quantum DMG</b> equal to {{3}}% of Cipher's ATK to its adjacent targets.`,
+      content: `Has a <span class="text-desc">120%</span> <u>base chance</u> to inflict Weaken on one designated enemy and its adjacent targets (decreasing their DMG dealt by {{0}}%) as well as increases Cipher's ATK by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). Moreover, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{2}}% of Cipher's ATK to one designated enemy and <b class="text-hsr-quantum">Quantum DMG</b> equal to {{3}}% of Cipher's ATK to the adjacent targets.`,
       value: [
         { base: 5, growth: 0.5, style: 'curved' },
         { base: 15, growth: 1.5, style: 'curved' },
@@ -51,7 +51,7 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 5,
       trace: 'Ultimate',
       title: `Yours Truly, Kitty Phantom Thief!!`,
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Cipher's ATK to one designated enemy. Then, deals <b class="text-true">True DMG</b> equal to <span class="text-desc">25%</span> of the currently recorded Talent value to one designated enemy, <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Cipher's ATK to one designated enemy and its adjacent targets, and <b class="text-true">True DMG</b> equal to <span class="text-desc">75%</span> of the current Talent's recorded value. This <b class="text-true">True DMG</b> is distributed to all Skill targets.`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Cipher's ATK to one designated enemy. Then, deals <b class="text-true">True DMG</b> equal to <span class="text-desc">25%</span> of the current tally kept by Talent to the one designated enemy. Moreover, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Cipher's ATK alongside <b class="text-true">True DMG</b> equal to <span class="text-desc">75%</span> of the current tally kept by Talent to the one designated enemy and its adjacent targets. And this <b class="text-true">True DMG</b> is distributed evenly among all targets of this ability.`,
       value: [
         { base: 60, growth: 6, style: 'curved' },
         { base: 20, growth: 2, style: 'curved' },
@@ -63,9 +63,9 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 5,
       trace: 'Talent',
       title: `The Hospitable Dolosian`,
-      content: `When there are no enemy targets with <b class="text-hsr-quantum">Patron</b> on the battlefield, Cipher immediately causes one enemy target with the highest Max HP on the battlefield to become the <b class="text-hsr-quantum">Patron</b>. When using Skill and Ultimate, the primary target becomes the <b class="text-hsr-quantum">Patron</b>. The <b class="text-hsr-quantum">Patron</b> state only takes effect on the latest target.
-      <br />After the <b class="text-hsr-quantum">Patron</b> is attacked by other ally targets, Cipher immediately launches <u>Follow-up ATK</u> against the <b class="text-hsr-quantum">Patron</b>, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Cipher's ATK. This effect can only be triggered up to <span class="text-desc">1</span> time(s) each turn, and it resets at the start of Cipher's turn.
-      <br />Cipher will record <span class="text-desc">12%</span> of the non-<b class="text-true">True DMG</b> ally targets dealt to the <b class="text-hsr-quantum">Patron</b>, but the Overflow DMG will not be recorded. The recorded value is cleared after using Ultimate.`,
+      content: `When there are no enemy targets in the <b class="text-hsr-quantum">Patron</b> state on the battlefield, Cipher immediately causes one enemy target with the highest Max HP on the battlefield to become the <b class="text-hsr-quantum">Patron</b>. When using Skill and Ultimate, the primary target becomes the <b class="text-hsr-quantum">Patron</b>. The <b class="text-hsr-quantum">Patron</b> state only takes effect on the most recent target.
+      <br />After the <b class="text-hsr-quantum">Patron</b> gets attacked by other ally targets, Cipher immediately launches <u>Follow-up ATK</u> against the <b class="text-hsr-quantum">Patron</b>, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Cipher's ATK. This effect can only be triggered up to <span class="text-desc">1</span> time(s) per turn, and this trigger count resets at the start of Cipher's turn.
+      <br />Cipher will tally <span class="text-desc">12%</span> of the non-<b class="text-true">True DMG</b> dealt by ally targets to the <b class="text-hsr-quantum">Patron</b>. Overflow DMG will not be tallied. After using Ultimate, clears this tally.`,
       value: [{ base: 75, growth: 7.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ST,
@@ -73,19 +73,19 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     technique: {
       trace: 'Technique',
       title: 'Puss in Boots',
-      content: `Obtains <b>Zagreus's Blessing</b>, lasting for <span class="text-desc">15</span> second(s). While <b>Zagreus's Blessing</b> is active, Cipher will not be detected by enemies, and her movement speed increases by <span class="text-desc">50%</span>. When enemy targets approach Cipher, she can obtain a small amount of materials.
-      <br />After actively using Technique, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">150%</span> of Cipher's ATK to all enemies. The Talent's recorded value from this DMG increases by <span class="text-desc">200%</span>.`,
+      content: `Gains <b>Zagreus's Blessing</b> that lasts for <span class="text-desc">15</span> second(s). During this time, Cipher will be undetectable by enemies and her movement speed increases by <span class="text-desc">50%</span>. When approaching an enemy in the overworld/Simulated Universe/Divergent Universe, can immediately gain a random Consumable. Consumables can be gained this way for up to <span class="text-desc">50</span> time(s) in each Earth day.
+      <br />When entering battle with <b>Zagreus's Blessing</b> active, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">100%</span> of Cipher's ATK to all enemies. And the tallied amount Cipher gains from this instance of DMG increases by <span class="text-desc">200%</span>.`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Empyrean Strides`,
-      content: `When Cipher's SPD is greater or equal to <span class="text-desc">140</span>/<span class="text-desc">170</span>, increases CRIT Rate by <span class="text-desc">25%</span>/<span class="text-desc">50%</span>, and recorded value by <span class="text-desc">50%</span>/<span class="text-desc">100%</span>.`,
+      content: `When Cipher's SPD is higher than or equal to <span class="text-desc">140</span>/<span class="text-desc">170</span>, CRIT Rate increases by <span class="text-desc">25%</span>/<span class="text-desc">50%</span>, and the gained tally increases by <span class="text-desc">50%</span>/<span class="text-desc">100%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `300 Rogues`,
-      content: `Cipher will record <span class="text-desc">8%</span> of the non-<b class="text-true">True DMG</b> ally targets dealt to the enemy targets aside from the <b class="text-hsr-quantum">Patron</b>. Overflow DMG is not recorded.`,
+      content: `Cipher tally <span class="text-desc">8%</span> of the non-<b class="text-true">True DMG</b> dealt by ally targets to the enemy targets other than the <b class="text-hsr-quantum">Patron</b>. Overflow DMG is not tallied.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -95,12 +95,12 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c1: {
       trace: 'Eidolon 1',
       title: `Read the Room, Seek the Glee`,
-      content: `Cipher's recorded DMG is <span class="text-desc">150%</span> of the original recorded value. When using <u>Follow-up ATK</u> from Talent, increases Cipher's ATK by <span class="text-desc">80%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `Cipher's tally of DMG is <span class="text-desc">150%</span> of its original value. When using the Talent's <u>Follow-up ATK</u>, increases Cipher's ATK by <span class="text-desc">80%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `In the Fray, Nab On a Spree`,
-      content: `When Cipher hits an enemy target, there is a <span class="text-desc">120%</span> base chance of causing them to receive <span class="text-desc">30%</span> more DMG, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `When Cipher hits an enemy target, there is a <span class="text-desc">120%</span> <u>base chance</u> to increase the DMG it receives by <span class="text-desc">30%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -111,7 +111,7 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c4: {
       trace: 'Eidolon 4',
       title: 'The Jig Is Up, Quick to Flee',
-      content: `After <b class="text-hsr-quantum">Patron</b> is attacked by an ally target, Cipher deals <b class="text-hsr-quantum">Quantum Additional DMG</b> equal to <span class="text-desc">50%</span> of Cipher's ATK to it.`,
+      content: `After <b class="text-hsr-quantum">Patron</b> is attacked by an ally target, Cipher deals <b class="text-hsr-quantum">Quantum Additional DMG</b> to it equal to <span class="text-desc">50%</span> of Cipher's ATK.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -122,7 +122,7 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c6: {
       trace: 'Eidolon 6',
       title: `The Thief's Game, Unsung and Free`,
-      content: `Increases DMG dealt by <u>Follow-up ATKs</u> caused by Cipher's Talent by <span class="text-desc">350%</span>. Records an additional <span class="text-desc">16%</span> of non-Overflow DMG dealt by this ATK. After resetting the record upon using her Ultimate, returns <span class="text-desc">20%</span> of the reset record.`,
+      content: `The DMG dealt by <u>Follow-up ATKs</u> from Cipher's Talent increases by <span class="text-desc">350%</span>. During the tally, an additional <span class="text-desc">16%</span> of non-Overflow DMG dealt by this attack is tallied. After the tally is cleared by using Ultimate, <span class="text-desc">20%</span> of the cleared tally is returned.`,
     },
   }
 
@@ -287,7 +287,7 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       base.TECHNIQUE_SCALING = [
         {
           name: 'AoE',
-          value: [{ scaling: 1.5, multiplier: Stats.ATK }],
+          value: [{ scaling: 1, multiplier: Stats.ATK }],
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,

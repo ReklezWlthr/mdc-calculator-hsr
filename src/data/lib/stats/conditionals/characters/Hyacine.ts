@@ -38,7 +38,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     normal: {
       trace: 'Basic ATK',
       title: `When Breeze Kisses Cirrus`,
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Hyacine's Max HP to a designated target.`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Hyacine's Max HP to one designated enemy.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
@@ -47,7 +47,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill: {
       trace: 'Skill',
       title: `Love Over the Rainbow`,
-      content: `Summons memosprite Little Ica, restores HP equal to {{0}}% of Hyacine's Max HP plus {{1}} for all allies aside from <b>Little Ica</b>, and restores HP equal to {{2}}% of Hyacine's Max HP plus {{3}} for <b>Little Ica</b>.`,
+      content: `Summons memosprite Little Ica. Restores HP equal to {{0}}% of Hyacine's Max HP plus {{1}} for all allies (except <b>Little Ica</b>), and restores HP equal to {{2}}% of Hyacine's Max HP plus {{3}} for <b>Little Ica</b>.`,
       value: [
         { base: 4, growth: 0.5, style: 'heal' },
         { base: 40, growth: 24, style: 'flat' },
@@ -61,7 +61,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     summon_skill: {
       trace: 'Memosprite Skill',
       title: 'Rainclouds, Time to Go!',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> to all enemies equal to {{0}}% of the tally of healing done by Hyacine and <b>Little Ica</b> in the current battle, and clears <span class="text-desc">50%</span> of the tally of healing.`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> to all enemies by an amount equal to {{0}}% of the tally of healing done by Hyacine and <b>Little Ica</b> in the current battle, and clears <span class="text-desc">50%</span> of this tally of healing.`,
       value: [{ base: 10, growth: 2, style: 'linear' }],
       level: memo_skill,
       tag: AbilityTag.AOE,
@@ -70,7 +70,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ult: {
       trace: 'Ultimate',
       title: `We Who Fly Into Twilight`,
-      content: `Summons memosprite <b>Little Ica</b>, restores HP equal to {{0}}% of Hyacine's Max HP plus {{1}} for all allies aside from <b>Little Ica</b>, and restores HP equal to {{2}}% of Hyacine's Max HP plus {{3}} for <b>Little Ica</b>. Hyacine enters the <b class="text-heal">After Rain</b> state for <span class="text-desc">3</span> turn(s) afterwards. Reduces the state's duration by <span class="text-desc">1</span> turn each time Hyacine's turn begins. When in <b class="text-heal">After Rain</b> state, increases Max HP for all allies by {{4}}% plus {{5}}.`,
+      content: `Summons memosprite <b>Little Ica</b>. Restores HP equal to {{0}}% of Hyacine's Max HP plus {{1}} for all allies (except <b>Little Ica</b>), and restores HP equal to {{2}}% of Hyacine's Max HP plus {{3}} for <b>Little Ica</b>. Hyacine enters the <b class="text-heal">After Rain</b> state, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> at the start of Hyacine's every turn. While <b class="text-heal">After Rain</b> is active, all ally targets increase their Max HP by {{4}}% plus {{5}}.`,
       value: [
         { base: 5, growth: 0.625, style: 'heal' },
         { base: 50, growth: 30, style: 'flat' },
@@ -85,9 +85,9 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     summon_talent: {
       trace: 'Memosprite Talent',
       title: `Take Sky in Hand`,
-      content: `<b>Little Ica</b>'s SPD remains at <span class="text-desc">0</span>, is immune to debuffs, and they will not appear on the Action Order.
-      <br />If ally targets (except <b>Little Ica</b>) have their HP reduced, then <b>Little Ica</b> will consume HP equal to <span class="text-desc">4%</span> of their own Max HP and restore HP equal to {{0}}% of Hyacine's Max HP plus {{1}} for the ally target with reduced HP at the start of any target's turn or after any target takes action.
-      <br />While Hyacine is in the <b class="text-heal">After Rain</b> state, <b>Little Ica</b> immediately obtains <span class="text-desc">1</span> extra turn and automatically uses <b>Rainclouds, Time to Go!</b> after Hyacine uses an ability. Moreover, when <b>Little Ica</b> triggers their Talent's healing effect, additionally restores HP for all ally targets by an amount equal to {{0}}% of Hyacine's Max HP plus {{1}}. After <b>Little Ica</b> uses an ability, all Continuous Effects' duration decreases by <span class="text-desc">1</span> turn.`,
+      content: `<b>Little Ica</b>'s maintains <span class="text-desc">0</span> SPD, is immune to debuffs, and will not appear in the Action Order.
+      <br />If the HP of an ally target (except <b>Little Ica</b>) is reduced, then at the start of any target's turn or after any target takes action, <b>Little Ica</b> will consume <span class="text-desc">4%</span> of their own Max HP and heal the ally target with reduced HP for an amount equal to {{0}}% of Hyacine's Max HP plus {{1}}.
+      <br />While Hyacine is in the <b class="text-heal">After Rain</b> state, <b>Little Ica</b> gains <span class="text-desc">1</span> extra turn and automatically casts <b>Rainclouds, Time to Go!</b> immediately after Hyacine uses an ability. Moreover, when <b>Little Ica</b> triggers the Talent's healing effect, additionally restores HP for all ally targets by an amount equal to {{0}}% of Hyacine's Max HP plus {{1}}. After <b>Little Ica</b> uses an ability, the duration of all their Continuous Effects decreases by <span class="text-desc">1</span> turn.`,
       value: [
         { base: 1, growth: 0.2, style: 'linear' },
         { base: 10, growth: 2, style: 'linear' },
@@ -106,12 +106,12 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: `Day So Right, Life So Fine!`,
-      content: `At the start of the next battle, restores HP equal to <span class="text-desc">30%</span> of Hyacine's Max HP plus <span class="text-desc">600</span> for all allies and increases their Max HP by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `When the next battle starts, restores HP by an amount equal to <span class="text-desc">30%</span> of Hyacine's Max HP plus <span class="text-desc">600</span> for all allies and increases Max HP by <span class="text-desc">20%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Gloomy Grin`,
-      content: `Increases Hyacine and <b>Little Ica</b>'s CRIT Rate by <span class="text-desc">100%</span>. When providing healing to an ally target with less than or equal to <span class="text-desc">50%</span> this unit's Max HP, increases Hyacine and <b>Little Ica</b>'s Outgoing Healing by <span class="text-desc">25%</span>.`,
+      content: `Increases Hyacine's and <b>Little Ica</b>'s CRIT Rate by <span class="text-desc">100%</span>. When providing healing to an ally target whose current HP is equal to or less than <span class="text-desc">50%</span> of their Max HP, increases Hyacine's and <b>Little Ica</b>'s Outgoing Healing by <span class="text-desc">25%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -126,12 +126,12 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c1: {
       trace: 'Eidolon 1',
       title: `Cradle the Candle of Night`,
-      content: `When Hyacine is in the <b class="text-heal">After Rain</b> state, additionally increases the Max HP of all ally targets by <span class="text-desc">50%</span>, and immediately restores HP equal to <span class="text-desc">8%</span> of Hyacine's Max HP after using an attack.`,
+      content: `When Hyacine is in the <b class="text-heal">After Rain</b> state, all ally targets additionally increase their Max HP by <span class="text-desc">50%</span>, and after using an attack, immediately restore their HP by an amount equal to <span class="text-desc">8%</span> of Hyacine's Max HP.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Come Sit in My Courtyard`,
-      content: `When any ally target's HP decreases, this unit's SPD increases by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `When an ally target's HP decreases, SPD increases by <span class="text-desc">30%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -143,7 +143,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: 'Sunlit Amber, Yours to Keep',
-      content: `The <b>Tempestuous Halt</b> Trace is enhanced. For every <span class="text-desc">1</span> of SPD exceeded, additionally increases Hyacine and <b>Little Ica</b>'s CRIT DMG by <span class="text-desc">2%</span>.`,
+      content: `The <b>Tempestuous Halt</b> Trace gets enhanced. For every <span class="text-desc">1</span> excess SPD, additionally increases Hyacine's and <b>Little Ica</b>'s CRIT DMG by <span class="text-desc">2%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -155,7 +155,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: 'O Sky, Heed My Plea',
-      content: `<b>Little Ica</b> uses Memosprite Skill and changes the amount of Healing tally cleared to <span class="text-desc">12%</span>. When <b>Little Ica</b> is on the field, increases all ally targets' <b>All-Type RES PEN</b> by <span class="text-desc">20%</span>.`,
+      content: `When <b>Little Ica</b> uses Memosprite Skill, the amount cleared from the tally of healing is changed to <span class="text-desc">12%</span>. When <b>Little Ica</b> is on the field, all ally targets' <b>All-Type RES PEN</b> increases by <span class="text-desc">20%</span>.`,
     },
   }
 

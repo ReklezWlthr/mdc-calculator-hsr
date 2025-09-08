@@ -43,7 +43,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 20,
       trace: 'Basic ATK',
       title: `King's Castling`,
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Cerydra's ATK to a single target enemy.`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Cerydra's ATK to one designated enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
@@ -53,7 +53,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 30,
       trace: 'Skill',
       title: `Pawn's Promotion`,
-      content: `Grants <b class="text-blue">Military Merit</b> to one designated ally character and give Cerydra <span class="text-desc">1</span> points of <b>Charge</b>. Maximum <b>Charge</b> is <span class="text-desc">8</span> points. When <b>Charge</b> reaches <span class="text-desc">6</span> points, the ally character's <b class="text-blue">Military Merit</b> automatically upgrades to <b class="text-sky-500">Peerage</b> and dispels their Crowd Control debuff. Characters with <b class="text-sky-500">Peerage</b> are considered to have <b class="text-blue">Military Merit</b> simultaneously. Increases the CRIT DMG boost for Skill DMG by {{0}}% <b class="text-sky-500">Peerage</b>, increases <b>All-Type RES PEN</b> by {{1}}%, and said characters can also trigger a <b class="text-desc">Coup de Main</b> when using their Skill on enemy targets. After <b class="text-desc">Coup de Main</b> ends, consumes <span class="text-desc">6</span> points of <b>Charge</b> to revert <b class="text-sky-500">Peerage</b> back to <b class="text-blue">Military Merit</b>.
+      content: `Grants <b class="text-blue">Military Merit</b> to one designated ally character and give Cerydra <span class="text-desc">1</span> points of <b>Charge</b>. Maximum <b>Charge</b> is <span class="text-desc">8</span> points. When <b>Charge</b> reaches <span class="text-desc">6</span> points, automatically upgrades the character's <b class="text-blue">Military Merit</b> to <b class="text-sky-500">Peerage</b> and dispels their Crowd Control debuffs. The character with <b class="text-sky-500">Peerage</b> are considered to have <b class="text-blue">Military Merit</b> simultaneously. The character with <b class="text-sky-500">Peerage</b> the CRIT DMG for their dealt Skill DMG by {{0}}%, increases their <b>All-Type RES PEN</b> by {{1}}%, and triggers <b class="text-desc">Coup de Main</b> when using their Skill on enemy targets. After <b class="text-desc">Coup de Main</b> ends, consumes <span class="text-desc">6</span> points of <b>Charge</b> to revert <b class="text-sky-500">Peerage</b> back to <b class="text-blue">Military Merit</b>.
       <br />
       <br /><b class="text-desc">Coup de Main</b>
       <br />Copy and immediately use the ability about to be used, then use the original ability.
@@ -70,7 +70,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Ultimate',
       title: `Scholar's Mate`,
-      content: `Gains <span class="text-desc">2</span> <b>Charge</b>. Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Cerydra's ATK to all enemies. If there are no characters with <b class="text-blue">Military Merit</b> on the field, prioritizes granting <b class="text-blue">Military Merit</b> to the character in position <span class="text-desc">1</span> in the team lineup.`,
+      content: `Gains <span class="text-desc">2</span> <b>Charge</b>. Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Cerydra's ATK to all enemies. If no character on the field has <b class="text-blue">Military Merit</b> on the field, prioritizes granting <b class="text-blue">Military Merit</b> to the first character in the current team.`,
       value: [{ base: 144, growth: 9.6, style: 'curved' }],
       level: ult,
       tag: AbilityTag.AOE,
@@ -78,7 +78,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: `Ave Imperator`,
-      content: `Characters with <b class="text-blue">Military Merit</b> increase their ATK by an amount equal to {{0}}% of Cerydra's ATK. When the character uses Basic ATK or Skill, Cerydra gains <span class="text-desc">1</span> <b>Charge</b>. Cerydra cannot gain <b>Charges</b> while <b class="text-desc">Coup de Main</b> is in effect. After characters with <b class="text-blue">Military Merit</b> use an attack, Cerydra deals <span class="text-desc">1</span> additional instance of <b class="text-hsr-wind">Wind Additional DMG</b> equal to {{1}}% of her ATK. This effect can be triggered up to <span class="text-desc">20</span> time(s). The trigger count resets whenever Cerydra uses her Ultimate. <b class="text-blue">Military Merit</b> only takes effect the most recently affected target. When the target changes, Cerydra's <b>Charge</b> is reset to <span class="text-desc">0</span>.`,
+      content: `The character with <b class="text-blue">Military Merit</b> increases ATK by an amount equal to {{0}}% of Cerydra's ATK. When the character uses Basic ATK or Skill, Cerydra gains <span class="text-desc">1</span> <b>Charge</b>. During <b class="text-desc">Coup de Main</b>, Cerydra cannot gain <b>Charge</b>. After the character with <b class="text-blue">Military Merit</b> uses an attack, Cerydra additionally deals <span class="text-desc">1</span> instance of <b class="text-hsr-wind">Wind Additional DMG</b> equal to {{1}}% of her ATK. This effect can be triggered up to <span class="text-desc">20</span> time(s). The trigger count resets whenever Cerydra uses her Ultimate. <b class="text-blue">Military Merit</b> only takes effect on the most recent target. When the target changes, Cerydra's <b>Charge</b> is reset to <span class="text-desc">0</span>.`,
       value: [
         { base: 18, growth: 0.6, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },
@@ -89,33 +89,33 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: `First-Move Advantage`,
-      content: `After using Technique, gains <b class="text-blue">Military Merit</b>. When switching active characters, <b class="text-blue">Military Merit</b> transfers to the current active character. At the start of the next battle, automatically use Skill <span class="text-desc">1</span> time on the character with <b class="text-blue">Military Merit</b> without consuming any Skill Points.`,
+      content: `After using Technique, gains <b class="text-blue">Military Merit</b>. When switching the active character, <b class="text-blue">Military Merit</b> transfers to the current active character. At the start of the next battle, automatically uses Skill <span class="text-desc">1</span> time on the character with <b class="text-blue">Military Merit</b> without consuming any Skill Points.`,
       tag: AbilityTag.SUPPORT,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Veni`,
-      content: `When Cerydra's ATK is greater than <span class="text-desc">2000</span>, for every <span class="text-desc">100</span> ATK exceeded, increases this unit's CRIT DMG by <span class="text-desc">18%</span>, up to a maximum of <span class="text-desc">360%</span>.`,
+      content: `For every <span class="text-desc">100</span> of Cerydra's ATK that exceeds <span class="text-desc">2,000</span>, increases her CRIT DMG by <span class="text-desc">18%</span>, up to a max increase of <span class="text-desc">360%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Vidi`,
-      content: `Increases Cerydra's CRIT Rate by <span class="text-desc">100%</span>. While Cerydra's <b>Charge</b> is less than maximum, Cerydra gains <span class="text-desc">1</span> point(s) of <b>Charge</b> when a character with <b class="text-blue">Military Merit</b> uses their Ultimate. This effect can only be triggered once per battle.`,
+      content: `Increases Cerydra's CRIT Rate by <span class="text-desc">100%</span>. While Cerydra's <b>Charge</b> is below its maximum, the character with <b class="text-blue">Military Merit</b> using their Ultimate grants Cerydra <span class="text-desc">1</span> <b>Charge</b>. This effect can trigger once per battle.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Vici`,
-      content: `When using a Skill, increases the SPD of this unit and teammates with <b class="text-blue">Military Merit</b> by <span class="text-desc">20</span> for <span class="text-desc">3</span> turn(s). When a character with <b class="text-blue">Military Merit</b> uses Basic ATK or Skill, Cerydra regenerates <span class="text-desc">5</span> Energy.`,
+      content: `When using a Skill, increases SPD by <span class="text-desc">20</span> for this unit and the teammate with <b class="text-blue">Military Merit</b>, lasting for <span class="text-desc">3</span> turn(s). When the character with <b class="text-blue">Military Merit</b> uses Basic ATK or Skill, regenerates <span class="text-desc">5</span> Energy for Cerydra.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Seize the Crowns of All`,
-      content: `Characters with <b class="text-blue">Military Merit</b> ignore <span class="text-desc">16%</span> of their target's DEF when dealing DMG. If the <b class="text-blue">Military Merit</b> state is upgraded to the <b class="text-sky-500">Peerage</b> state, the character additionally ignores <span class="text-desc">20%</span> of the target's DEF when dealing Skill DMG. When Cerydra uses her Skill, regenerates <span class="text-desc">2</span> Energy for the designated ally target.`,
+      content: `The character with <b class="text-blue">Military Merit</b> ignores <span class="text-desc">16%</span> of their target's DEF when dealing DMG. If <b class="text-blue">Military Merit</b> is upgraded to <b class="text-sky-500">Peerage</b>, then the character additionally ignores <span class="text-desc">20%</span> of the target's DEF when dealing Skill DMG. When Cerydra uses her Skill, regenerates <span class="text-desc">2</span> Energy for the designated ally target.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Forge the Dreams of Many`,
-      content: `Characters with <b class="text-blue">Military Merit</b> deal <span class="text-desc">40%</span> more DMG. While a teammate with <b class="text-blue">Military Merit</b> on the field, increases Cerydra's DMG by <span class="text-desc">160%</span>.`,
+      content: `The character with <b class="text-blue">Military Merit</b> deals <span class="text-desc">40%</span> increased DMG. While a teammate on the field has <b class="text-blue">Military Merit</b>, Cerydra's DMG dealt increases by <span class="text-desc">160%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -126,7 +126,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: `Remake the Realms of Men`,
-      content: `Increases Ultimate DMG multiplier by <span class="text-desc">240%</span>.`,
+      content: `Increases Ultimate's DMG multiplier by <span class="text-desc">240%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -137,7 +137,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: `A Journey Set Starward`,
-      content: `Characters with <b class="text-blue">Military Merit</b> increase their <b>All-Type RES PEN</b> by <span class="text-desc">20%</span>, and the multiplier for <b>Additional DMG</b> triggered via <b class="text-blue">Military Merit</b> increases by <span class="text-desc">300%</span>. While a teammate with <b class="text-blue">Military Merit</b> is present on the field, Cerydra's <b>All-Type RES PEN</b> is increased by <span class="text-desc">20%</span>.`,
+      content: `The character with <b class="text-blue">Military Merit</b> increases their <b>All-Type RES PEN</b> by <span class="text-desc">20%</span>, and the multiplier for the <b>Additional DMG</b> triggered via <b class="text-blue">Military Merit</b> increases by <span class="text-desc">300%</span>. While a teammate on the field has <b class="text-blue">Military Merit</b>, Cerydra's <b>All-Type RES PEN</b> increases by <span class="text-desc">20%</span>.`,
     },
   }
 

@@ -37,8 +37,8 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: 'Caressing Moonlight',
-      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to one designated enemy and <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Kafka's ATK to their adjacent units.
-      <br />If the designated enemy or their adjacent target(s) is currently receiving DoT, all DoTs currently placed on that enemy immediately produce DMG equal to {{2}}% or {{3}}% of their original DMG.`,
+      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to one designated enemy and <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Kafka's ATK to adjacent targets.
+      <br />If the designated enemy or the adjacent targets are currently afflicted with DoT, all DoTs currently placed on those enemies immediately produces DMG equal to {{2}}% or {{3}}% of their original DMG.`,
       value: [
         { base: 80, growth: 8, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },
@@ -53,7 +53,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: 'Twilight Trill',
-      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> for attacked enemy targets to become <b class="text-hsr-lightning">Shocked</b> and immediately take DMG from their current DoT debuff(s), equal to {{1}}% of its original DMG. <b class="text-hsr-lightning">Shock</b> lasts for <span class="text-desc">2</span> turn(s).
+      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> for enemy targets hit to become <b class="text-hsr-lightning">Shocked</b> and immediately take DMG from their current DoT debuff(s), equal to {{1}}% of the original DMG. <b class="text-hsr-lightning">Shock</b> lasts for <span class="text-desc">2</span> turn(s).
       <br />While <b class="text-hsr-lightning">Shocked</b>, enemy targets receive <b class="text-hsr-lightning">Lightning DoT</b> equal to {{2}}% of Kafka's ATK at the beginning of each turn.`,
       value: [
         { base: 48, growth: 3.2, style: 'curved' },
@@ -67,7 +67,7 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 10,
       trace: 'Talent',
       title: 'Gentle but Cruel',
-      content: `After Kafka's teammate uses attacks on an enemy target, Kafka immediately launches <u>Follow-up ATK</u> and deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to the primary target, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> equivalent to that applied by her Ultimate to the attacked enemy target, lasting for <span class="text-desc">2</span> turns. This effect can be triggered up to <span class="text-desc">2</span> time(s), with <span class="text-desc">1</span> use(s) recovered at the end of Kafka's turn.`,
+      content: `After Kafka's teammate uses an attack on an enemy target, Kafka immediately launches <u>Follow-up ATK</u> and deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Kafka's ATK to the primary target, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> (equivalent to that applied by her Ultimate) on the attacked enemy target for <span class="text-desc">2</span> turns. This effect can trigger up to <span class="text-desc">2</span> time(s), <span class="text-desc">1</span> of which can be regained at the end of Kafka's turn.`,
       value: [{ base: 42, growth: 9.8, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ST,
@@ -75,12 +75,12 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     technique: {
       trace: 'Technique',
       title: 'Mercy Is Not Forgiveness',
-      content: `Immediately attacks all enemies within a set range. After entering battle, deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">50%</span> of Kafka's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> equivalent to that applied by her Ultimate on every enemy target for <span class="text-desc">2</span> turn(s).`,
+      content: `Immediately attacks all enemies within a set range. After entering combat, deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">50%</span> of Kafka's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> to inflict <b class="text-hsr-lightning">Shock</b> (equivalent to that applied by her Ultimate) on every enemy target for <span class="text-desc">2</span> turn(s).`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Torture',
-      content: `When an ally target's Effect Hit Rate is <span class="text-desc">75%</span> or more, Kafka increases the target's ATK by <span class="text-desc">100%</span>.`,
+      content: `When an ally target's Effect Hit Rate is <span class="text-desc">75%</span> or higher, Kafka increases that target's ATK by <span class="text-desc">100%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -90,12 +90,12 @@ const Kafka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Thorns',
-      content: `After using Ultimate, Talent's <u>Follow-up ATK</u> regains <span class="text-desc">1</span> trigger count. The Talent's <u>Follow-up ATK</u> can cause all DoT debuffs the target is currently under to immediately deal DMG equal to <span class="text-desc">80%</span> of the original DMG.`,
+      content: `After using Ultimate, restores the triggerable count of Talent's <u>Follow-up ATK</u> by <span class="text-desc">1</span>. And the Talent's <u>Follow-up ATK</u> can cause all DoTs debuffs currently on the target to immediately produce DMG equal to <span class="text-desc">80%</span> of the original DMG.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Da Capo',
-      content: `When using an attack, there is a <span class="text-desc">100%</span> <u>base chance</u> to cause the target to take <span class="text-desc">30%</span> more DoT for <span class="text-desc">2</span> turn(s).`,
+      content: `When using an attack, has a <span class="text-desc">100%</span> <u>base chance</u> to increase the DoT taken by the target by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
       trace: 'Eidolon 2',

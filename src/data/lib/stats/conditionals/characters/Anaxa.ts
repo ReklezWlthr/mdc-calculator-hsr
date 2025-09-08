@@ -47,7 +47,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Skill',
       title: 'Fractal, Exiles Fallacy',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Anaxa's ATK to one designated enemy and additionally deals <span class="text-desc">4</span> instance(s) of DMG. Each instance of DMG deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Anaxa's ATK to one random enemy, prioritizing Bouncing to enemy targets that have not been hit in this usage of Skill.
-      <br />For each enemy target available to be attacked on the battlefield when the Skill is used, increases DMG dealt by this Skill's usage by <span class="text-desc">20%</span>.`,
+      <br />When used, for each attackable enemy on the field, this Skill has its DMG dealt increased by <span class="text-desc">20%</span>.`,
       value: [{ base: 40, growth: 4, style: 'curved' }],
       level: skill,
       tag: AbilityTag.BOUNCE,
@@ -57,8 +57,8 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: 'Sprouting Life Sculpts Earth',
-      content: `Inflicts the <b class="text-lime-400">Sublimation</b> state to all enemy units and immediately deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Anaxa's ATK to all enemy units.
-      <br />In the <b class="text-lime-400">Sublimation</b> state, targets will be simultaneously inflicted with <b class="text-hsr-physical">Physical</b>, <b class="text-hsr-fire">Fire</b>, <b class="text-hsr-ice">Ice</b>, <b class="text-hsr-lightning">Lightning</b>, <b class="text-hsr-wind">Wind</b>, <b class="text-hsr-quantum">Quantum</b>, and <b class="text-hsr-imaginary">Imaginary</b> Weaknesses, lasting until the start of each target's turn. If the targets do not have Control RES, they are unable to take action in <b class="text-lime-400">Sublimation</b> state.`,
+      content: `Inflicts the <b class="text-lime-400">Sublimation</b> state on all enemies, then deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Anaxa's ATK to all enemies.
+      <br />In the <b class="text-lime-400">Sublimation</b> state, the targets will be simultaneously inflicted with <b class="text-hsr-physical">Physical</b>, <b class="text-hsr-fire">Fire</b>, <b class="text-hsr-ice">Ice</b>, <b class="text-hsr-lightning">Lightning</b>, <b class="text-hsr-wind">Wind</b>, <b class="text-hsr-quantum">Quantum</b>, and <b class="text-hsr-imaginary">Imaginary</b> Weaknesses, lasting until the start of each target's turn. If the targets do not have Control RES, they are unable to take action in <b class="text-lime-400">Sublimation</b> state.`,
       value: [{ base: 150, growth: 5, style: 'curved' }],
       level: ult,
       tag: AbilityTag.AOE,
@@ -66,8 +66,8 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     talent: {
       trace: 'Talent',
       title: 'Tetrad Wisdom Reigns Thrice',
-      content: `Each time Anaxa attacks enemy targets <span class="text-desc">1</span> time, inflicts <span class="text-desc">1</span> random Weakness Type to the targets, lasting for <span class="text-desc">3</span> turn(s) with priority to the Weakness Type that the target has yet to have.
-      <br />When Anaxa is on the battlefield, he inflicts the <b class="text-red">Qualitative Disclosure</b> state to enemy targets with at least <span class="text-desc">5</span> different Type Weaknesses. Anaxa deals {{0}}% more DMG to targets in <b class="text-red">Qualitative Disclosure</b> state. In addition, using a Basic ATK or Skill on targets in <b class="text-red">Qualitative Disclosure</b> state allows him to use another <span class="text-desc">1</span> instance of his Skill. This additional Skill does not consume any Skill Point and cannot trigger this effect again. If the target has been defeated before this additional Skill is used, it will be dealt to a random enemy unit.`,
+      content: `Each time Anaxa lands <span class="text-desc">1</span> hit on enemy targets, inflicts <span class="text-desc">1</span> Weakness of a random Type to the targets, lasting for <span class="text-desc">3</span> turn(s), with priority to the Weakness Type that the target doesn't already possess.
+      <br />While Anaxa is on the field, inflicts the <b class="text-red">Qualitative Disclosure</b> state on enemy targets that have at least <span class="text-desc">5</span> different Types of Weaknesses. Anaxa deals {{0}}% increased DMG to targets afflicted with the <b class="text-red">Qualitative Disclosure</b> state. In addition, after using Basic ATK or Skill on them, unleashes <span class="text-desc">1</span> additional instance of Skill on the targets. This additional Skill does not consume any Skill Points and cannot trigger this effect again. If the target has been defeated before the additional Skill is used, it will be cast on one random enemy instead.`,
       value: [{ base: 18, growth: 1.2, style: 'curved' }],
       level: talent,
       tag: AbilityTag.IMPAIR,
@@ -75,36 +75,36 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     technique: {
       trace: 'Technique',
       title: 'Pupil of Prism',
-      content: `Using the Technique will cause enemies in a set area to enter the Terrified state. Terrified enemies will flee in a direction away from Anaxa for <span class="text-desc">10</span> second(s). When ally enters battle via actively attacking a Terrified enemy, it will always be considered as entering battle via attacking a Weakness. After entering battle, Anaxa will apply <span class="text-desc">1</span> Weakness of the attacker's Type to every enemy target after entering battle, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `After using Technique, inflicts the Terrified state on enemies in a set area. Terrified enemies will flee in a direction away from Anaxa for <span class="text-desc">10</span> second(s). When allies enter battle via actively attacking a Terrified enemy, it will always be considered as entering battle via attacking a Weakness. After entering battle, Anaxa applies <span class="text-desc">1</span> Weakness of the attacker's Type to every enemy target, lasting for <span class="text-desc">3</span> turn(s).`,
       tag: AbilityTag.IMPAIR,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Roaming Signifier',
       content: `When using Basic ATK, additionally regenerates <span class="text-desc">10</span> Energy.
-      <br />At the start of the turn, if there are no enemy targets in <b class="text-red">Qualitative Disclosure</b> state, immediately regenerates <span class="text-desc">30</span> Energy.`,
+      <br />At the start of the turn, if there are no enemy targets in the <b class="text-red">Qualitative Disclosure</b> state, immediately regenerates <span class="text-desc">30</span> Energy.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Imperative Hiatus',
-      content: `Trigger any <span class="text-desc">1</span> effect in the current battle based on the number of characters on the Path of Erudition in the team:
-      <br /><span class="text-desc">1</span>: Increases Anaxa's CRIT DMG by <span class="text-desc">140%</span>.
-      <br />At least <span class="text-desc">2</span>: Increases DMG dealt by all allies by <span class="text-desc">40%</span>.`,
+      content: `Based on the number of Erudition characters in the team, one of the following effects will be triggered in the current battle:
+      <br /><span class="text-desc">1</span> character: Increases Anaxa's CRIT DMG by <span class="text-desc">140%</span>.
+      <br />At least <span class="text-desc">2</span> characters: Increases DMG dealt by all allies by <span class="text-desc">40%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Qualitative Shift',
-      content: `For every different Weakness Type an enemy target has, the DMG that Anaxa deals to that target ignores <span class="text-desc">4%</span> of DEF, up to a max of <span class="text-desc">7</span> Weakness Types.`,
+      content: `For every <span class="text-desc">1</span> different Weakness Type an enemy target has, the DMG that Anaxa deals to that target ignores <span class="text-desc">4%</span> of their DEF. Up to a max of <span class="text-desc">7</span> Weakness Types can be taken into account for this effect.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Stars, Hidden by Magician`,
-      content: `After using Skill for the first time, recovers <span class="text-desc">1</span> Skill Point(s). When any enemy targets are hit by this unit's Skill, decreases the targets' DEF by <span class="text-desc">16%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `After using Skill for the first time, recovers <span class="text-desc">1</span> Skill Point(s). When using Skill to hit enemy targets, decreases the targets' DEF by <span class="text-desc">16%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Soul, True to History`,
-      content: `When enemy targets enter the battle, triggers the Talent's Weakness Implant effect <span class="text-desc">1</span> time, and reduces their All-Type RES by <span class="text-desc">20%</span>.`,
+      content: `When enemy targets enter the battlefield, triggers <span class="text-desc">1</span> instance of the Talent's Weakness Implant effect, and reduces their All-Type RES by <span class="text-desc">20%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -115,7 +115,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c4: {
       trace: 'Eidolon 4',
       title: 'Blaze, Plunged to Canyon',
-      content: `When using Skill, increases ATK by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">3</span> time(s).`,
+      content: `When using Skill, increases ATK by <span class="text-desc">30%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">3</span> time(s).`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -126,7 +126,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: 'Everything Is in Everything',
-      content: `The DMG dealt by Anaxa is <span class="text-desc">130%</span> of the original DMG. The <span class="text-desc">2</span> effects of the Trace <b>Imperative Hiatus</b> will be triggered directly and will no longer depend on the number of Erudition characters on the team.`,
+      content: `The DMG dealt by Anaxa is <span class="text-desc">130%</span> of the original DMG. The <span class="text-desc">2</span> effects in the Trace <b>Imperative Hiatus</b> will be triggered directly and will no longer depend on the number of Erudition characters in the team.`,
     },
   }
 

@@ -32,7 +32,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     normal_alt: {
       trace: 'Enhanced Basic ATK',
       title: 'Creation: Bloodthorn Ferry',
-      content: `Obtains <span class="text-desc">2</span> <b class="text-red">Scourge</b>, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Khaslana's ATK to one designated enemy and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Khaslana's ATK to enemies adjacent to it.`,
+      content: `Gains <span class="text-desc">2</span> point(s) of <b class="text-red">Scourge</b>, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Khaslana's ATK to one designated enemy and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Khaslana's ATK to adjacent targets.`,
       value: [
         { base: 125, growth: 25, style: 'linear' },
         { base: 37.5, growth: 7.5, style: 'linear' },
@@ -55,8 +55,8 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill_alt: {
       trace: 'Enhanced Skill [1]',
       title: 'Calamity: Soulscorch Edict',
-      content: `Gains <b class="text-red">Scourge</b> by an amount equal to the number of enemy targets present and <span class="text-desc">1</span> stack of <b class="text-amber-500">Soulscorch</b>, then causes all enemy targets to immediately take action.
-      <br />When in the <b class="text-amber-500">Soulscorch</b> state, reduces DMG received by Khaslana by <span class="text-desc">75%</span> and gains <span class="text-desc">1</span> additional stack of <b class="text-amber-500">Soulscorch</b> after enemy targets attack or take action. Immediately launches a <u>Counter</u> after the aforementioned enemy targets take their actions, dealing <b class="text-hsr-physical">Physical DMG</b> to all enemies equal to {{0}}% of Khaslana's ATK, as well as additionally deals <span class="text-desc">4</span> instance(s) of DMG, each instance being <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Khaslana's ATK. Then, <b class="text-amber-500">Soulscorch</b> is dispelled. Each stack of <b class="text-amber-500">Soulscorch</b> increases this <u>Counter</u>'s DMG multiplier by <span class="text-desc">20%</span> of the original multiplier.
+      content: `Gains <b class="text-red">Scourge</b> by an amount equal to the number of enemies and <span class="text-desc">1</span> stack of <b class="text-amber-500">Soulscorch</b>, then causes all enemies to immediately take action.
+      <br />While in the <b class="text-amber-500">Soulscorch</b> state, Khaslana takes <span class="text-desc">75%</span> reduced DMG. After an enemy target attacks or takes action, gains <span class="text-desc">1</span> more stack of <b class="text-amber-500">Soulscorch</b>. After said enemy targets finish their actions, immediately launches <u>Counter</u>, deals <b class="text-hsr-physical">Physical DMG</b> to all enemies equal to {{0}}% of Khaslana's ATK, and additionally deals <span class="text-desc">4</span> instance(s) of DMG, with each instance being <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Khaslana's ATK dealt to one random enemy. Afterward, <b class="text-amber-500">Soulscorch</b> is dispelled. Each <b class="text-amber-500">Soulscorch</b> stack increases the DMG multiplier of said <u>Counter</u> by <span class="text-desc">20%</span> of its original multiplier value.
       <br />DMG dealt through this ability is considered as Skill DMG. If <b class="text-amber-500">Soulscorch</b> is still active at the start of Khaslana's extra turn, immediately launches <u>Counter</u>.`,
       value: [
         { base: 150, growth: 15, style: 'curved' },
@@ -68,8 +68,8 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     summon_skill: {
       trace: 'Enhanced Skill [2]',
       title: 'Foundation: Stardeath Verdict',
-      content: `Dispels all debuffs from this unit, then deals <b class="text-hsr-physical">Physical DMG</b> up to {{0}}% of Khaslana's ATK.
-      <br />In that, for every <span class="text-desc">1</span> <b class="text-red">Scourge</b> consumed, deals <span class="text-desc">4</span> instance(s) of DMG, each instance being <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Khaslana's ATK dealt to one random enemy. When consuming <span class="text-desc">4</span> <b class="text-red">Scourge</b>, additionally deals <b class="text-hsr-physical">Physical DMG</b> equal to {{2}}% of Khaslana's ATK, and this DMG is evenly distributed to all enemies.`,
+      content: `Dispels all debuffs from this unit, then deals <b class="text-hsr-physical">Physical DMG</b> equal to a max of {{0}}% of Khaslana's ATK.
+      <br />For every <span class="text-desc">1</span> <b class="text-red">Scourge</b> consumed, deals <span class="text-desc">4</span> instance(s) of DMG, with each instance being <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Khaslana's ATK dealt to one random enemy. When consuming <span class="text-desc">4</span> <b class="text-red">Scourge</b>, additionally deals <b class="text-hsr-physical">Physical DMG</b> equal to {{2}}% of Khaslana's ATK, which is evenly distributed across all enemies.`,
       value: [
         { base: 585, growth: 58.5, style: 'curved' },
         { base: 22.5, growth: 2.25, style: 'curved' },
@@ -82,8 +82,8 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ult: {
       trace: 'Ultimate',
       title: 'He Who Bears the World Must Burn',
-      content: `Transforms into Khaslana and deploys Territory while Transformed. Other teammates in the Territory becomes <b>Departed</b> and cannot take action, and all enemies gain <b class="text-hsr-physical">Physical</b> Weakness for the duration.
-      <br />Khaslana does not have his own turn, but has <span class="text-desc">8</span> Khaslana's extra turn(s) with a fixed SPD equal to <span class="text-desc">60%</span> of Khaslana's base SPD. At the start of the final Khaslana's extra turn, immediately uses Final Hit and deals <b class="text-hsr-physical">Physical Ultimate DMG</b> equal to {{0}}% of Khaslana's ATK that is distributed evenly across all enemies.`,
+      content: `Transforms into Khaslana. During the transformation, deploys the Territory <b>Ruinous Irontomb</b>. Within the Territory, other teammates depart and cannot take action, and all enemies have <b class="text-hsr-physical">Physical</b> Weaknesses.
+      <br />Khaslana does not have his own turn, but has <span class="text-desc">8</span> Khaslana's extra turn(s), with a SPD set at <span class="text-desc">60%</span> of Khaslana's base SPD. When the last of Khaslana's extra turns starts, immediately launches a final hit and deals <b class="text-hsr-physical">Physical Ultimate DMG</b> equal to {{0}}% of Khaslana's ATK that is distributed evenly across all enemies.`,
       value: [{ base: 480, growth: 48, style: 'curved' }],
       level: ult,
       tag: AbilityTag.AOE,
@@ -91,8 +91,8 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: `Talent`,
       title: `Pyric Corpus`,
-      content: `Phainon's Talent. When <b class="text-desc">Coreflame</b> reaches <span class="text-desc">12</span> point(s), Ultimate can be activated. After reaching the max limit, up to <span class="text-desc">3</span> excess point(s) can be accumulated. At the end of the Transformation, gains <b class="text-desc">Coreflames</b> based on the excess points.
-      <br />When Phainon is the target of any target's ability, he gains <span class="text-desc">1</span> point of <b class="text-desc">Coreflame</b>. If the ability's user is Phainon's teammate, additionally increases Phainon's CRIT DMG by {{0}}% for <span class="text-desc">3</span> turn(s).`,
+      content: `Phainon's Talent. When <b class="text-desc">Coreflame</b> reaches <span class="text-desc">12</span> point(s), can activate Ultimate. Even after reaching the limit, can still hold up to <span class="text-desc">3</span> overflow point(s). When the transformation ends, gains <b class="text-desc">Coreflames</b> based on the number of overflow points.
+      <br />When Phainon is targeted by an ability from any other target, gains <span class="text-desc">1</span> <b class="text-desc">Coreflame</b> point. And if the ability is cast by one of Phainon's teammates, can also increase Phainon's CRIT DMG by {{0}}% for <span class="text-desc">3</span> turn(s).`,
       value: [{ base: 15, growth: 1.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -100,9 +100,9 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     summon_talent: {
       trace: `Enhanced Talent`,
       title: `Fate: Divine Vessel`,
-      content: `Khaslana's Talent. When Transforming, gains <span class="text-desc">4</span> <b class="text-red">Scourge</b>. If it is during an ally target's turn, all buffs on that ally target will be extended by <span class="text-desc">1</span> turn and the current turn ends.
-      <br />Khaslana is immune to Crowd Control debuffs and has <span class="text-desc">1</span> Enhanced Basic ATK and <span class="text-desc">2</span> Enhanced Skills, but cannot use Ultimate. During his Transformation, increases ATK by {{0}}% and Max HP by {{1}}%. He will not be knocked down upon taking a killing blow, but will restore HP equal to <span class="text-desc">25%</span> of Max HP and immediately trigger Final Hit. For every <span class="text-desc">1</span> remaining extra turn Khaslana has, the Final Hit's DMG multiplier reduces by <span class="text-desc">12.5%</span> of its original multiplier.
-      <br />When the Transformation ends, increases all allies' SPD by <span class="text-desc">15%</span>, lasting for <span class="text-desc">1</span> turn.`,
+      content: `Khaslana's Talent. Upon transformation, gains <span class="text-desc">4</span> <b class="text-red">Scourge</b>. If this happens during an ally target's turn, then the duration of all buffs on that target is extended by <span class="text-desc">1</span> turn and the current turn ends.
+      <br />Khaslana is immune to Crowd Control debuffs, has <span class="text-desc">1</span> Enhanced Basic ATK and <span class="text-desc">2</span> Enhanced Skills, but cannot use Ultimate. During the transformation, increases ATK by {{0}}% and Max HP by {{1}}%. After using an attack, restores HP equal to <span class="text-desc">20%</span> of his Max HP. When Khaslana takes a killing blow, he will not get knocked down. Instead, he will restore HP equal to <span class="text-desc">25%</span> of Max HP and immediately launch a final hit. For every <span class="text-desc">1</span> remaining Khaslana's extra turn, the final hit's DMG multiplier decreases by <span class="text-desc">12.5%</span> of its original multiplier value.
+      <br />When the transformation ends, increases all allies' SPD by <span class="text-desc">15%</span> for <span class="text-desc">1</span> turn.`,
       value: [
         { base: 40, growth: 4, style: 'curved' },
         { base: 135, growth: 13.5, style: 'curved' },
@@ -115,35 +115,35 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Technique',
       title: 'Beginning of the End',
       content: `When Phainon is in the team, increases Max Technique Points by <span class="text-desc">3</span>.
-      <br />When actively using this Technique, by consuming <span class="text-desc">2</span> Technique Points to immediately attack all enemies within a certain range. After entering battle, regenerates <span class="text-desc">25</span> Energy for allies, gains <span class="text-desc">2</span> <b class="text-red">Scourge</b> and <span class="text-desc">1</span> Skill Point(s). Deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">200%</span> of Phainon's ATK to all enemies at the start of each wave.
+      <br />When actively using this Technique, by consuming <span class="text-desc">2</span> Technique Points to immediately attack all enemies within a certain range. After entering combat, regenerates <span class="text-desc">25</span> Energy for allies, gains <span class="text-desc">2</span> <b class="text-red">Scourge</b> and <span class="text-desc">1</span> Skill Point(s). Deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">200%</span> of Phainon's ATK to all enemies at the start of each wave.
       <br />If attacking a normal enemy, immediately defeats them without entering combat. When not hitting enemies, no Technique Points are consumed.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'March to Oblivion',
-      content: `At the start of the battle, gains <span class="text-desc">1</span> point(s) of <b class="text-desc">Coreflame</b>. When the transformation ends, gains <span class="text-desc">3</span> point(s) of <b class="text-desc">Coreflame</b>.`,
+      content: `When the battle starts, gains <span class="text-desc">1</span> point(s) of <b class="text-desc">Coreflame</b>. When the transformation ends, gains <span class="text-desc">3</span> point(s) of <b class="text-desc">Coreflame</b>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Bide in Flames',
-      content: `When receiving healing effects or Shields from a teammate, increases DMG dealt by <span class="text-desc">45%</span> for <span class="text-desc">4</span> turn(s). This effect cannot be triggered repeatedly within one turn.
-      <br />When receiving Energy regeneration ability effects provided by teammates, gains <span class="text-desc">1</span> point(s) of <b class="text-desc">Coreflame</b>.`,
+      content: `When receiving healing or a Shield from a teammate, deals <span class="text-desc">45%</span> increased DMG for <span class="text-desc">4</span> turn(s). This effect cannot trigger repeatedly within one turn.
+      <br />When receiving an Energy Regeneration effect from a teammate's ability, gains <span class="text-desc">1</span> point(s) of <b class="text-desc">Coreflame</b>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Shine with Valor',
-      content: `When entering battle or when transformation ends, increases ATK by <span class="text-desc">50%</span>. This effect can stack up to <span class="text-desc">2</span> time(s).`,
+      content: `When entering combat or ending transformation, increases ATK by <span class="text-desc">50%</span>. This effect can stack up to <span class="text-desc">2</span> time(s).`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Flame and Light, Shadow of Good and Evil',
-      content: `For every enemy target defeated within <span class="text-desc">1</span> Transformation, the inheritance ratio of Khaslana's extra turn's SPD further increases by <span class="text-desc">1.5%</span>, up to <span class="text-desc">84%</span>.
-      <br />When using Ultimate, CRIT DMG increases by <span class="text-desc">50%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `The base SPD inheritance ratio for Khaslana's extra turn increases to <span class="text-desc">66%</span>. For every enemy target defeated in one battle, additionally increases this ratio by <span class="text-desc">1.5%</span>, up to a max of <span class="text-desc">84%</span>.
+      <br />When using Ultimate, increases CRIT DMG by <span class="text-desc">50%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'Heaven and Earth, Illusions of the Realm',
-      content: `Khaslana's <b class="text-hsr-physical">Physical RES PEN</b> increases by <span class="text-desc">20%</span>. When consuming <span class="text-desc">4</span> <b class="text-red">Scourge</b> to use <b>Foundation: Stardeath Verdict</b>, gains <span class="text-desc">1</span> extra turn.`,
+      content: `Khaslana's <b class="text-hsr-physical">Physical RES PEN</b> increases by <span class="text-desc">20%</span>. When one use of <b>Foundation: Stardeath Verdict</b> consumes <span class="text-desc">4</span> <b class="text-red">Scourge</b> point(s), gains <span class="text-desc">1</span> extra turn.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -165,7 +165,10 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: 'Ascent of Eternity Moribundly Fades',
-      content: `The number of Overflow point for <b class="text-desc">Coreflame</b> no longer has an upper limit. When battle starts, gains <span class="text-desc">6</span> <b class="text-desc">Coreflame(s)</b>. After using <b>Foundation: Stardeath Verdict</b>'s attack, additionally deals <b class="text-true">True DMG</b> equal to <span class="text-desc">36%</span> of the total DMG dealt in this attack to the enemy with the highest HP.`,
+      content: `The number of overflow points allowed for <b class="text-desc">Coreflame</b> no longer has an upper limit. When the battle starts, gains <span class="text-desc">6</span> <b class="text-desc">Coreflame(s)</b>.
+      <br />After using the attack from <b>Foundation: Stardeath Verdict</b>, additionally deals <b class="text-true">True DMG</b> equal to <span class="text-desc">36%</span> of the total DMG dealt in this attack to the enemy target with the highest HP
+      <br />
+      <br /><i>**The max number of overflow <b class="text-desc">Coreflame</b> is actually <span class="text-desc">402,604,020</span>, which is equal to <span class="text-desc">33,550,336</span> Ultimates.**</i>`,
     },
   }
 
@@ -255,6 +258,16 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       show: c >= 1,
       default: true,
       duration: 3,
+    },
+    {
+      type: 'number',
+      id: 'phainon_e1_spd',
+      text: `E1 SPD Ratio Bonus`,
+      ...talents.c1,
+      show: c >= 1,
+      default: 0,
+      min: 0,
+      max: 12,
     },
   ]
 
@@ -423,6 +436,13 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ]
       base.MEMO_TALENT_SCALING = [
         {
+          name: 'On-Attack Healing',
+          value: [{ scaling: 0.2, multiplier: Stats.HP }],
+          element: TalentProperty.HEAL,
+          property: TalentProperty.HEAL,
+          type: TalentType.NONE,
+        },
+        {
           name: 'Revive Healing',
           value: [{ scaling: 0.25, multiplier: Stats.HP }],
           element: TalentProperty.HEAL,
@@ -536,6 +556,11 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             }
           })
         })
+      }
+      if (form.phainon_transform) {
+        base.BASE_SPD = base.BASE_SPD * ((c >= 1 ? 0.66 : 0.6) + (form.phainon_e1_spd || 0) * 0.015)
+        base[Stats.SPD] = []
+        base[Stats.P_SPD] = []
       }
       return base
     },

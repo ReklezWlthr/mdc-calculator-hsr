@@ -43,7 +43,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 20,
       trace: 'Skill',
       title: `Transcendent Flash`,
-      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's Max HP to one designated enemy and obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>.`,
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's Max HP to one designated enemy and gains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>.`,
       value: [{ base: 75, growth: 7.5, style: 'curved' }],
       level: skill,
       tag: AbilityTag.ST,
@@ -53,7 +53,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 30,
       trace: 'Enhanced Skill',
       title: `Moon On Glacial River`,
-      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's Max HP to one designated enemy, and deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Jingliu's Max HP to adjacent enemies. Consumes <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>. Using this ability does not consume Skill Points.`,
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's Max HP to one designated enemy, and deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Jingliu's Max HP to adjacent targets. Consumes <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>. Using this ability does not consume Skill Points.`,
       value: [
         { base: 75, growth: 7.5, style: 'curved' },
         { base: 37.5, growth: 3.75, style: 'curved' },
@@ -65,7 +65,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Ultimate',
       title: 'Florephemeral Dreamflux',
-      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's Max HP to one designated enemy, and deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Jingliu's Max HP to their adjacent enemies. Gains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b> after attack ends.`,
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Jingliu's Max HP to one designated enemy, and deals <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of Jingliu's Max HP to adjacent targets. Gains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b> after the attack ends.`,
       value: [
         { base: 90, growth: 9, style: 'curved' },
         { base: 45, growth: 4.5, style: 'curved' },
@@ -76,9 +76,9 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: `Crescent Transmigration`,
-      content: `When Jingliu has <span class="text-desc">2</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>, she enters the <b>Spectral Transmigration</b> state, gains <span class="text-desc">1</span> additional stack of <b class="text-hsr-ice">Syzygy</b>, <u>action advances</u> by <span class="text-desc">100%</span>, and her CRIT Rate increases by {{0}}%.
-      Then, Jingliu's Skill <b>Transcendent Flash</b> is enhanced to <b>Moon On Glacial River</b>, and only this enhanced Skill is available for use in battle. When Jingliu uses an attack in the <b>Spectral Transmigration</b> state, she consumes HP from all other allies equal to <span class="text-desc">5%</span> of their respective Max HP (this cannot reduce teammates' HP to lower than <span class="text-desc">1</span>). When in the <b>Spectral Transmigration</b> state, Jingliu gains <span class="text-desc">1</span> stack of <b class="text-desc">Moonlight</b> whenever ally targets receive DMG or consume HP. Each stack of <b class="text-desc">Moonlight</b> increases Jingliu's CRIT DMG by {{1}}%, up to <span class="text-desc">5</span> stacks. Jingliu cannot enter the <b>Spectral Transmigration</b> state again until the current <b>Spectral Transmigration</b> state ends. <b class="text-hsr-ice">Syzygy</b> can stack up to <span class="text-desc">4</span> times. When <b class="text-hsr-ice">Syzygy</b> stacks become <span class="text-desc">0</span>, Jingliu will exit the <b>Spectral Transmigration</b> state and remove all <b class="text-desc">Moonlight</b>.
-      After ally targets receive DMG or consume HP a total of <span class="text-desc">20</span> times, Jingliu gains <span class="text-desc">1</span> stack of <b class="text-hsr-ice">Syzygy</b>. This takes effect a maximum of <span class="text-desc">1</span> time per attack received by each target.`,
+      content: `When Jingliu has <span class="text-desc">2</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>, she enters the <b>Spectral Transmigration</b> state with <span class="text-desc">1</span> extra stack of <b class="text-hsr-ice">Syzygy</b> gained, her action advanced by <span class="text-desc">100%</span>, and her CRIT Rate increases by {{0}}%.
+      Then, Jingliu's Skill <b>Transcendent Flash</b> is enhanced to <b>Moon On Glacial River</b>, and only this enhanced Skill is available for use in battle. When Jingliu uses an attack in the <b>Spectral Transmigration</b> state, she consumes HP from all other allies equal to <span class="text-desc">5%</span> of their respective Max HP (this cannot reduce teammates' HP to lower than <span class="text-desc">1</span>). During the <b>Spectral Transmigration</b> state, when ally targets receive DMG or consume HP, Jingliu gains <span class="text-desc">1</span> stack of <b class="text-desc">Moonlight</b>. Each <b class="text-desc">Moonlight</b> stack increases Jingliu's CRIT DMG by {{1}}%, stacking up to <span class="text-desc">5</span> time(s). Jingliu cannot enter the <b>Spectral Transmigration</b> state again until the current <b>Spectral Transmigration</b> state ends. <b class="text-hsr-ice">Syzygy</b> can stack up to <span class="text-desc">4</span> times. When <b class="text-hsr-ice">Syzygy</b> stacks become <span class="text-desc">0</span>, Jingliu will exit the <b>Spectral Transmigration</b> state and remove all <b class="text-desc">Moonlight</b>.
+      After ally targets receive DMG or consume HP for a total of <span class="text-desc">20</span> times, Jingliu gains <span class="text-desc">1</span> stack of <b class="text-hsr-ice">Syzygy</b>. Each attack received by each target is only counted once.`,
       value: [
         { base: 40, growth: 1, style: 'curved' },
         { base: 22, growth: 2.2, style: 'curved' },
@@ -89,28 +89,28 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: `Shine of Truth`,
-      content: `After using this Technique, creates a Special Dimension around Jingliu that lasts for <span class="text-desc">20</span> seconds, and all enemies in this Special Dimension will become <b class="text-hsr-ice">Frozen</b>. After entering combat with enemies in the Special Dimension, Jingliu immediately regenerates <span class="text-desc">15</span> Energy and obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>, with a <span class="text-desc">100%</span> <u>base chance</u> of <b class="text-hsr-ice">Freezing</b> enemy targets for <span class="text-desc">1</span> turn(s). While <b class="text-hsr-ice">Frozen</b>, enemy targets cannot take action, and receive <b class="text-hsr-ice">Ice Additional DMG</b> equal to <span class="text-desc">80%</span> of Jingliu's Max HP at the start of every turn. Only <span class="text-desc">1</span> Dimension Effect created by allies can exist at the same time.`,
+      content: `After using Technique, creates a Special Dimension around this unit that lasts for <span class="text-desc">20</span> seconds. All enemies in this Special Dimension will become <b class="text-hsr-ice">Frozen</b>. After entering combat with enemies in the Special Dimension, Jingliu immediately regenerates <span class="text-desc">15</span> Energy and obtains <span class="text-desc">1</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>, with a <span class="text-desc">100%</span> <u>base chance</u> of <b class="text-hsr-ice">Freezing</b> enemy targets for <span class="text-desc">1</span> turn(s). While <b class="text-hsr-ice">Frozen</b>, enemy targets cannot take action, and take <b class="text-hsr-ice">Ice Additional DMG</b> equal to <span class="text-desc">80%</span> of Jingliu's Max HP at the start of every turn. Only <span class="text-desc">1</span> Dimension Effect created by allies can exist at the same time.`,
       tag: AbilityTag.IMPAIR,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Deathrealm`,
-      content: `While in the <b>Spectral Transmigration</b> state, Effect RES increases by <span class="text-desc">35%</span>, and Ultimate DMG dealt increases by <span class="text-desc">20%</span>.`,
+      content: `While in the <b>Spectral Transmigration</b> state, increases Effect RES by <span class="text-desc">35%</span>, and increases the Ultimate DMG dealt by <span class="text-desc">20%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Sword Champion`,
-      content: `After using <b>Transcendent Flash</b>, additionally regenerates <span class="text-desc">15</span> Energy, and after using <b>Moon On Glacial River</b>, regenerate an additional <span class="text-desc">8</span> Energy.`,
+      content: `After using <b>Transcendent Flash</b>, additionally regenerates <span class="text-desc">15</span> Energy. And after using <b>Moon On Glacial River</b>, additionally regenerates <span class="text-desc">8</span> Energy.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Frost Wraith`,
-      content: `When obtaining <b class="text-hsr-ice">Syzygy</b> at max stacks, Jingliu's next attack ignores <span class="text-desc">25%</span> of the target's DEF.`,
+      content: `When obtaining <b class="text-hsr-ice">Syzygy</b>, if its stack limit has been reached, Jingliu's next attack ignores <span class="text-desc">25%</span> of the target's DEF.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Moon Crashes Tianguan Gate`,
-      content: `When using her Ultimate or Enhanced Skill, Jingliu's CRIT DMG increases by <span class="text-desc">36%</span> for <span class="text-desc">1</span> turn(s). Moreover, additionally deals <span class="text-desc">1</span> instance of <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">80%</span> of Jingliu's Max HP to the primary target.`,
+      content: `When using Ultimate or Enhanced Skill, Jingliu's CRIT DMG increases by <span class="text-desc">36%</span> for <span class="text-desc">1</span> turn(s). Moreover, additionally deals <span class="text-desc">1</span> instance of <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">80%</span> of Jingliu's Max HP to the primary target.`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -126,7 +126,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: `Lunarlance Shines Skyward Dome`,
-      content: `While in the <b>Spectral Transmigration</b> state, each stack of <b class="text-desc">Moonlight</b> additionally increases CRIT DMG by <span class="text-desc">20%</span>.`,
+      content: `During the <b>Spectral Transmigration</b> state, each <b class="text-desc">Moonlight</b> stack additionally increases CRIT DMG by <span class="text-desc">20%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -137,7 +137,7 @@ const Jingliu = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: `Eclipse Hollows Corporeal Husk`,
-      content: `When Jingliu enters the <b>Spectral Transmigration</b> state, the <b class="text-hsr-ice">Syzygy</b> stack limit increases by <span class="text-desc">1</span>, and Jingliu obtains <span class="text-desc">2</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>. While she is in the <b>Spectral Transmigration</b> state, her <b class="text-hsr-ice">Ice RES PEN</b> increases by <span class="text-desc">30%</span>.`,
+      content: `When Jingliu enters the <b>Spectral Transmigration</b> state, the <b class="text-hsr-ice">Syzygy</b> stack limit increases by <span class="text-desc">1</span>, and Jingliu additionally gains <span class="text-desc">2</span> stack(s) of <b class="text-hsr-ice">Syzygy</b>. During the <b>Spectral Transmigration</b> state, her <b class="text-hsr-ice">Ice RES PEN</b> increases by <span class="text-desc">30%</span>.`,
     },
   }
 

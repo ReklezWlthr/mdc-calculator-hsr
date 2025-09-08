@@ -57,7 +57,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Skill',
       title: `Hellscape`,
       content: `Consumes HP equal to <span class="text-desc">30%</span> of Blade's Max HP to enter the <b>Hellscape</b> state.
-      <br />While under the <b>Hellscape</b> state, his Skill cannot be used, his DMG dealt increases by {{0}}%, the chance of receiving attacks from enemy targets greatly increases, and his Basic ATK <b>Shard Sword</b> is enhanced to <b>Forest of Swords</b> for <span class="text-desc">3</span> turn(s).
+      <br />While <b>Hellscape</b> is active, his Skill cannot be used, his DMG dealt increases by {{0}}%, his chance of getting attacked by enemy targets greatly increases, and his Basic ATK <b>Shard Sword</b> is enhanced to <b>Forest of Swords</b> for <span class="text-desc">3</span> turn(s).
       <br />If Blade's current HP is insufficient, his HP will be reduced to <span class="text-desc">1</span> when he uses his Skill.
       <br />This Skill does not regenerate Energy. Using this Skill does not end the current turn.`,
       value: [{ base: 12, growth: 2.8, style: 'curved' }],
@@ -69,7 +69,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 5,
       trace: 'Ultimate',
       title: 'Death Sentence',
-      content: `Sets Blade's current HP to <span class="text-desc">50%</span> of his Max HP and deals <b class="text-hsr-wind">Wind DMG</b> to one designated enemy equal to the sum of {{0}}% of his Max HP, and {{1}}% of the tally of Blade's HP loss in the current battle. At the same time, deals <b class="text-hsr-wind">Wind DMG</b> to adjacent targets equal to the sum of {{2}}% of his Max HP, and {{1}}% of the tally of his HP loss in the current battle. The tally of Blade's HP loss in the current battle is capped at <span class="text-desc">90%</span> of his Max HP. This value will be reset and re-accumulated after his Ultimate has been used.`,
+      content: `Sets Blade's current HP to <span class="text-desc">50%</span> of his Max HP and deals <b class="text-hsr-wind">Wind DMG</b> to one enemy equal to {{0}}% of his Max HP plus {{1}}% of the tally of Blade's HP loss in the current battle. At the same time, deals <b class="text-hsr-wind">Wind DMG</b> to adjacent targets equal to {{2}}% of his Max HP plus {{1}}% of the tally of his HP loss in the current battle. The tally of Blade's HP loss in the current battle is capped at <span class="text-desc">90%</span> of his Max HP. This value will be reset and re-accumulated after his Ultimate has been used.`,
       value: [
         { base: 90, growth: 6, style: 'curved' },
         { base: 72, growth: 4.8, style: 'curved' },
@@ -83,7 +83,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Talent',
       title: `Shuhu's Gift`,
       content: `When Blade sustains DMG or consumes his HP, he gains <span class="text-desc">1</span> stack of <b>Charge</b>, stacking up to <span class="text-desc">5</span> times. A max of <span class="text-desc">1</span> <b>Charge</b> stack can be gained every time he is attacked.
-      <br />When <b>Charge</b> stack reaches maximum, immediately launches <span class="text-desc">1</span> <u>Follow-up ATK</u> on all enemies, dealing <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Blade's Max HP. At the same time, restores Blade's HP by <span class="text-desc">25%</span> of his Max HP. After the <u>Follow-up ATK</u>, all <b>Charges</b> are consumed.`,
+      <br />When <b>Charge</b> stack reaches maximum, immediately launches <span class="text-desc">1</span> instance of <u>Follow-up ATK</u> on all enemies, dealing <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Blade's Max HP. At the same time, restores Blade's HP by <span class="text-desc">25%</span> of his Max HP. After the <u>Follow-up ATK</u>, all <b>Charges</b> are consumed.`,
       value: [{ base: 65, growth: 6.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.AOE,
@@ -98,22 +98,22 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Vita Infinita`,
-      content: `When Blade uses Ultimate, the total accumulated HP loss will be set to <span class="text-desc">50%</span>.`,
+      content: `When Blade uses Ultimate, the amount cleared from the tally of HP loss is changed to <span class="text-desc">50%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Neverending Deaths`,
-      content: `HP restored from healing increases by <span class="text-desc">20%</span>. After receiving healing <span class="text-desc">25%</span> of the healed amount will be converted to Ultimate's tally of HP lost.`,
+      content: `HP restored from healing increases by <span class="text-desc">20%</span>. After receiving healing, converts <span class="text-desc">25%</span> of the healed amount to Ultimate's tally of HP loss.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Cyclone of Destruction`,
-      content: `DMG dealt by Talent's <u>Follow-up ATK</u> increases by <span class="text-desc">20%</span>. Additionally regenerates <span class="text-desc">15</span> Energy.`,
+      content: `Increases <u>Follow-up ATK</u> DMG from Talent by <span class="text-desc">20%</span> and additionally regenerates <span class="text-desc">15</span> Energy.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Blade Cuts the Deepest in Hell`,
-      content: `Blade's Enhanced Basic ATK and Ultimate deals additionally increased DMG to one designated enemy, with the increased amount equal to <span class="text-desc">150%</span> of the tally of Blade's HP loss from his Ultimate.`,
+      content: `Enhanced Basic ATK and Ultimate deal additionally increased DMG to one designated enemy, with the increased amount equal to <span class="text-desc">150%</span> of the tally of HP loss from Ultimate.`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -140,7 +140,7 @@ const Blade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: `Reborn Into an Empty Husk`,
-      content: `The maximum number of <b>Charge</b> stacks is reduced to <span class="text-desc">4</span>. The <u>Follow-up ATK</u> triggered by Talent deals additionally increased DMG equal to <span class="text-desc">50%</span> of his Max HP.`,
+      content: `The maximum number of <b>Charge</b> stacks is reduced to <span class="text-desc">4</span>. The <u>Follow-up ATK</u> triggered by Talent deals additionally increased DMG, with the increased amount equal to <span class="text-desc">50%</span> of his Max HP.`,
     },
   }
 
