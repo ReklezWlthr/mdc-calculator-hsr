@@ -341,7 +341,10 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 }
                 if (c >= 1) {
                   _.forEach(s, (ss) => {
-                    if (!_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property)) {
+                    if (
+                      !_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property) &&
+                      (ss.property !== TalentProperty.DOT || ss.detonate)
+                    ) {
                       s.push({
                         ...ss,
                         name: `${ss.name} - Tribbie E1`,

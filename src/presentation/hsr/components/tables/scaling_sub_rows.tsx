@@ -13,6 +13,7 @@ import { breakDamageStringConstruct } from '@src/core/utils/constructor/breakDam
 import { chanceStringConstruct } from '@src/core/utils/constructor/chanceStringConstruct'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { useEffect, useState } from 'react'
+import { findCharacter } from '@src/core/utils/finder'
 
 interface ScalingSubRowsProps {
   scaling: IScaling
@@ -77,15 +78,23 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
   const DmgBlock = ({ highlight }: { highlight?: boolean }) => (
     <Tooltip
       title={
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-3">
           <p>{scaling.name}</p>
           <div className="flex flex-col items-end shrink-0">
             <p className="text-xs font-normal text-gray">
               {scaling.property} • <span className="text-desc">{scaling.type}</span>
             </p>
             {!!toughness && element !== Element.NONE && (
-              <p className="text-xs font-normal">
+              <p className="text-xs font-normal text-gray">
                 Toughness Damage: <span className="text-desc">{_.round(toughness, 1).toLocaleString()}</span>
+              </p>
+            )}
+            {_.isNumber(scaling.overrideIndex) && (
+              <p className="text-xs font-normal text-gray">
+                Source:{' '}
+                <span className="text-desc">
+                  {findCharacter(teamStore.characters[scaling.overrideIndex]?.cId)?.name}
+                </span>
               </p>
             )}
           </div>

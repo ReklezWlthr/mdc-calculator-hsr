@@ -77,7 +77,9 @@ export const HelpModal = observer(() => {
         </BulletPoint>
         <BulletPoint>
           <b className="text-true">True DMG</b> - A Non-Type DMG which is not affected by any effects. Not considered a
-          hit nor an attack.
+          hit nor an attack. DoT triggered at the start of enemy's turns <i>cannot</i> trigger{' '}
+          <b className="text-true">True DMG</b>. <b className="text-true">True DMG</b> from DoT Detonation always depend
+          on if the source holds the buff and not the detonator.
         </BulletPoint>
       </Collapsible>
       <Collapsible label="Team Setup">

@@ -749,6 +749,35 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           if (form.cyrene_skill) {
             const cyrene = all[index]
             _.forEach(all, (t, i) => {
+              // Hysilens (Has to be here for DOT to get True DMG)
+              if (t.ID === '1410' && form.cyrene_hysilens) {
+                t[Stats.ALL_DMG].push({
+                  name: `A Poem about "Ocean"`,
+                  source: 'Cyrene',
+                  value: calcScaling(0.5, 0.1, memo_skill, 'linear'),
+                })
+                const dots = _.flatMap(all, (item) => item.DOT_SCALING)
+                t.BASIC_SCALING.push(
+                  ..._.map(dots, (item, i) => ({
+                    ...item,
+                    chance: undefined,
+                    name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
+                    multiplier: (item.multiplier || 1) * calcScaling(0.3, 0.06, ult, 'curved'),
+                    sum: true,
+                    detonate: true,
+                  }))
+                )
+                t.SKILL_SCALING.push(
+                  ..._.map(dots, (item, i) => ({
+                    ...item,
+                    chance: undefined,
+                    name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
+                    multiplier: (item.multiplier || 1) * calcScaling(0.4, 0.08, ult, 'curved'),
+                    sum: true,
+                    detonate: true,
+                  }))
+                )
+              }
               _.forEach(
                 [t.BASIC_SCALING, t.SKILL_SCALING, t.ULT_SCALING, t.TALENT_SCALING, t.MEMO_SKILL_SCALING],
                 (s) => {
@@ -764,7 +793,10 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                     })
                   }
                   _.forEach(s, (ss) => {
-                    if (!_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property)) {
+                    if (
+                      !_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property) &&
+                      (ss.property !== TalentProperty.DOT || ss.detonate)
+                    ) {
                       s.push({
                         ...ss,
                         name: `${ss.name} - Cyrene`,
@@ -907,35 +939,6 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                   source: 'Cyrene',
                   value: calcScaling(0.06, 0.012, memo_skill, 'linear'),
                 })
-              }
-              // Hysilens
-              if (t.ID === '1410' && form.cyrene_hysilens) {
-                t[Stats.ALL_DMG].push({
-                  name: `A Poem about "Ocean"`,
-                  source: 'Cyrene',
-                  value: calcScaling(0.5, 0.1, memo_skill, 'linear'),
-                })
-                const dots = _.flatMap(all, (item) => item.DOT_SCALING)
-                t.BASIC_SCALING.push(
-                  ..._.map(dots, (item, i) => ({
-                    ...item,
-                    chance: undefined,
-                    name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
-                    multiplier: (item.multiplier || 1) * calcScaling(0.3, 0.06, ult, 'curved'),
-                    sum: true,
-                    detonate: true,
-                  }))
-                )
-                t.SKILL_SCALING.push(
-                  ..._.map(dots, (item, i) => ({
-                    ...item,
-                    chance: undefined,
-                    name: `${names?.[item.overrideIndex]}'s ${item.name}`.replace('DMG', 'Detonation'),
-                    multiplier: (item.multiplier || 1) * calcScaling(0.4, 0.08, ult, 'curved'),
-                    sum: true,
-                    detonate: true,
-                  }))
-                )
               }
               // Cerydra
               if (
