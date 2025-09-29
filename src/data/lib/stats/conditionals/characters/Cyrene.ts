@@ -17,6 +17,7 @@ import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/calculator'
 import { checkBuffExist } from '../../../../../core/utils/finder'
 import { CallbackType } from '@src/domain/stats'
+import { ElementColor } from '@src/presentation/hsr/components/tables/scaling_sub_rows'
 
 const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
@@ -45,7 +46,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: `Memosprite Skill`,
       text: `A Poem about "Trailblaze"`,
       title: `A Poem about "Trailblaze"`,
-      content: `<i class="text-gray">Effective for the entire battle.</i> When used on Trailblazer (Remembrance), increases Trailblazer (Remembrance)'s ATK by a value equal to <span class="text-desc">${calcScaling(
+      content: `<i class="text-amber-600">Effective for the entire battle.</i> When used on Trailblazer (Remembrance), increases Trailblazer (Remembrance)'s ATK by a value equal to <span class="text-desc">${calcScaling(
         8,
         1.6,
         memo_skill,
@@ -58,6 +59,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       )}%</span> of <b>███</b>'s CRIT Rate. This effect also applies to <b>Mem</b>. After Trailblazer (Remembrance) uses Enhanced Basic ATK in this battle, <b>███</b> immediately gains <span class="text-desc">1</span> extra turn and automatically uses <b>Waltz of Flowers and Arrows</b>. If the target was defeated before this ability is used, it will be used on newly appeared enemy targets instead.`,
       show: _.includes(teamId, '8007'),
       default: false,
+      debuffElement: Element.ICE,
     },
     {
       type: 'toggle',
@@ -65,7 +67,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: `Memosprite Skill`,
       text: `A Poem about "Romance"`,
       title: `A Poem about "Romance"`,
-      content: `<i>One-time effect.</i> When used on Aglaea, causes Aglaea to gain <b class="text-pink-300">Romantic</b> and immediately stacks <b>Garmentmaker</b>'s Memosprite Talent's SPD Boost effect to its max. After Aglaea or Garmentmaker uses an attack, consumes <b class="text-pink-300">Romantic</b> and regenerates <span class="text-desc">70</span> Energy for this unit. Increases DMG dealt by Aglaea and Garmentmaker by <span class="text-desc">${calcScaling(
+      content: `<i class="text-amber-600">One-time effect.</i> When used on Aglaea, causes Aglaea to gain <b class="text-pink-300">Romantic</b> and immediately stacks <b>Garmentmaker</b>'s Memosprite Talent's SPD Boost effect to its max. After Aglaea or Garmentmaker uses an attack, consumes <b class="text-pink-300">Romantic</b> and regenerates <span class="text-desc">70</span> Energy for this unit. Increases DMG dealt by Aglaea and Garmentmaker by <span class="text-desc">${calcScaling(
         36,
         7.2,
         memo_skill,
@@ -78,6 +80,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       )}%</span> of the target's DEF, lasting until Aglaea exits the <b class="text-desc">Supreme Stance</b> state.`,
       show: _.includes(teamId, '1402'),
       default: false,
+      debuffElement: Element.LIGHTNING,
     },
     {
       type: 'toggle',
@@ -85,7 +88,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: `Memosprite Skill`,
       text: `A Poem about "Passage"`,
       title: `A Poem about "Passage"`,
-      content: `<i>Effective for the entire battle.</i> When used on Tribbie, causes DMG dealt by Tribbie to ignore <span class="text-desc">${calcScaling(
+      content: `<i class="text-amber-600">Effective for the entire battle.</i> When used on Tribbie, causes DMG dealt by Tribbie to ignore <span class="text-desc">${calcScaling(
         6,
         1.2,
         memo_skill,
@@ -93,6 +96,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       )}%</span> of the enemy's DEF. When Tribbie launches <u>Follow-up ATK</u> and triggers the <b>Additional DMG</b> from Tribbie's Zone, it further deals <span class="text-desc">1</span> instance(s) of <b>Additional DMG</b>.`,
       show: _.includes(teamId, '1403'),
       default: false,
+      debuffElement: Element.QUANTUM,
     },
     {
       type: 'toggle',
@@ -100,7 +104,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: `Memosprite Skill`,
       text: `A Poem about "Strife"`,
       title: `A Poem about "Strife"`,
-      content: `<i>One-time effect.</i> When used on Mydei while Mydei is in the <b class="text-red">Vendetta</b> state, he automatically uses <b>Godslayer Be God</b>. In this attack, increases Mydei's CRIT DMG by <span class="text-desc">${calcScaling(
+      content: `<i class="text-amber-600">One-time effect.</i> When used on Mydei while Mydei is in the <b class="text-red">Vendetta</b> state, he automatically uses <b>Godslayer Be God</b>. In this attack, increases Mydei's CRIT DMG by <span class="text-desc">${calcScaling(
         30,
         6,
         memo_skill,
@@ -108,6 +112,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       )}%</span>, and this usage does not consume <b>Charge</b>. If he is not in the <b class="text-red">Vendetta</b> state, advances Mydei's action by <span class="text-desc">100%</span>.`,
       show: _.includes(teamId, '1404'),
       default: false,
+      debuffElement: Element.IMAGINARY,
     },
     {
       type: 'number',
@@ -115,7 +120,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: `Memosprite Skill`,
       text: `A Poem about "Life and Death"`,
       title: `A Poem about "Life and Death"`,
-      content: `<i>Effective for the entire battle.</i> When used on Castorice, <b class="text-indigo-400">Newbud</b> can overflow up to <span class="text-desc">200%</span>. When summoning <b>Netherwing</b>, consumes all overflowed <b class="text-indigo-400">Newbud</b>, increases the DMG multiplier of the DMG dealt by <span class="text-desc">${calcScaling(
+      content: `<i class="text-amber-600">Effective for the entire battle.</i> When used on Castorice, <b class="text-indigo-400">Newbud</b> can overflow up to <span class="text-desc">200%</span>. When summoning <b>Netherwing</b>, consumes all overflowed <b class="text-indigo-400">Newbud</b>, increases the DMG multiplier of the DMG dealt by <span class="text-desc">${calcScaling(
         0.12,
         0.024,
         memo_skill,
@@ -134,6 +139,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       default: 0,
       min: 0,
       max: 100,
+      debuffElement: Element.QUANTUM,
     },
     {
       type: 'toggle',
@@ -141,7 +147,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: `Memosprite Skill`,
       text: `A Poem about "Reason"`,
       title: `A Poem about "Reason"`,
-      content: `<i>One-time effect.</i> When used on Anaxa, recovers <span class="text-desc">1</span> Skill Point(s) for the team and causes Anaxa's next action to advance by <span class="text-desc">100%</span>. Increases Anaxa's Skill DMG by <span class="text-desc">${calcScaling(
+      content: `<i class="text-amber-600">One-time effect.</i> When used on Anaxa, recovers <span class="text-desc">1</span> Skill Point(s) for the team and causes Anaxa's next action to advance by <span class="text-desc">100%</span>. Increases Anaxa's Skill DMG by <span class="text-desc">${calcScaling(
         20,
         4,
         memo_skill,
@@ -154,6 +160,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       )}%</span>, and increases the number of instances of Skill DMG by <span class="text-desc">3</span>, lasting for <span class="text-desc">1</span> turn.`,
       show: _.includes(teamId, '1405'),
       default: false,
+      debuffElement: Element.WIND,
     },
     {
       type: 'toggle',
@@ -171,9 +178,10 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         7.2,
         memo_skill,
         'linear'
-      )}%</span> of the healing value this time. After Hyacine uses Skill/Ultimate, consumes 1 stack of <b class="text-hsr-wind">A Poem about "Sky"</b>.`,
+      )}%</span> of the healing value this time. After Hyacine uses Skill/Ultimate, consumes <span class="text-desc">1</span> stack of <b class="text-hsr-wind">A Poem about "Sky"</b>.`,
       show: _.includes(teamId, '1409'),
       default: false,
+      debuffElement: Element.WIND,
     },
     {
       type: 'element',
@@ -181,7 +189,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: `Memosprite Skill`,
       text: `A Poem about "Trickery"`,
       title: `A Poem about "Trickery"`,
-      content: `<i>Effective for the entire battle.</i> When used on Cipher, increases the DMG dealt by Cipher by <span class="text-desc">${calcScaling(
+      content: `<i class="text-amber-600">Effective for the entire battle.</i> When used on Cipher, increases the DMG dealt by Cipher by <span class="text-desc">${calcScaling(
         18,
         3.6,
         memo_skill,
@@ -204,6 +212,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         { name: 'Patron', value: 'patron' },
         { name: 'Non-Patron', value: 'nonPatron' },
       ],
+      debuffElement: Element.QUANTUM,
     },
     {
       type: 'toggle',
@@ -211,7 +220,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: `Memosprite Skill`,
       text: `A Poem about "Worldbearing"`,
       title: `A Poem about "Worldbearing"`,
-      content: `<i>Effective for the entire battle.</i> After using on Phainon, Phainon gains <b class="text-rose-500">Eternal Ignition</b> when Transforming. While <b class="text-rose-500">Eternal Ignition</b> persists, increases Khaslana's CRIT Rate by <span class="text-desc">${calcScaling(
+      content: `<i class="text-amber-600">Effective for the entire battle.</i> After using on Phainon, Phainon gains <b class="text-rose-500">Eternal Ignition</b> when Transforming. While <b class="text-rose-500">Eternal Ignition</b> persists, increases Khaslana's CRIT Rate by <span class="text-desc">${calcScaling(
         6,
         1.2,
         memo_skill,
@@ -224,6 +233,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       )}%</span> of Khaslana's ATK to one random enemy.`,
       show: _.includes(teamId, '1408'),
       default: false,
+      debuffElement: Element.PHYSICAL,
     },
     {
       type: 'toggle',
@@ -231,7 +241,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: `Memosprite Skill`,
       text: `A Poem about "Ocean"`,
       title: `A Poem about "Ocean"`,
-      content: `<i>One-time effect.</i> When used on Hysilens, Hysilens gains <b class="text-sky-400">Flowing Warmth</b>. After Hysilens uses an attack, consumes <b class="text-sky-400">Flowing Warmth</b> and regenerates <span class="text-desc">60</span> Energy for this unit. In this battle, increases DMG dealt by Hysilens by <span class="text-desc">${calcScaling(
+      content: `<i class="text-amber-600">One-time effect.</i> When used on Hysilens, Hysilens gains <b class="text-sky-400">Flowing Warmth</b>. After Hysilens uses an attack, consumes <b class="text-sky-400">Flowing Warmth</b> and regenerates <span class="text-desc">60</span> Energy for this unit. In this battle, increases DMG dealt by Hysilens by <span class="text-desc">${calcScaling(
         50,
         10,
         memo_skill,
@@ -244,6 +254,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       )}%</span>/<span class="text-desc">${calcScaling(40, 8, memo_skill, 'linear')}%</span> of the original DMG.`,
       show: _.includes(teamId, '1410'),
       default: false,
+      debuffElement: Element.PHYSICAL,
     },
     {
       type: 'toggle',
@@ -251,7 +262,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: `Memosprite Skill`,
       text: `A Poem about "Law"`,
       title: `A Poem about "Law"`,
-      content: `<i>Effective for the entire battle.</i> After using on Cerydra, increases the CRIT DMG of the character with <b class="text-blue">Military Merit</b> by <span class="text-desc">${calcScaling(
+      content: `<i class="text-amber-600">Effective for the entire battle.</i> After using on Cerydra, increases the CRIT DMG of the character with <b class="text-blue">Military Merit</b> by <span class="text-desc">${calcScaling(
         15,
         3,
         memo_skill,
@@ -259,6 +270,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       )}%</span>. After <b class="text-desc">Coup de Main</b> ends, Cerydra immediately gains <span class="text-desc">1</span> point(s) of <b>Charge</b>.`,
       show: _.includes(teamId, '1412'),
       default: false,
+      debuffElement: Element.WIND,
     },
     {
       type: 'toggle',
@@ -266,7 +278,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: `Memosprite Skill`,
       text: `A Poem about "Time"`,
       title: `A Poem about "Time"`,
-      content: `<i>Effective for the entire battle.</i> After it is used on Evernight, increases DMG dealt when <b>Evey</b> uses the Memosprite Skill <b>Dream, Dissolving, as Dew</b> by <span class="text-desc">${calcScaling(
+      content: `<i class="text-amber-600">Effective for the entire battle.</i> After it is used on Evernight, increases DMG dealt when <b>Evey</b> uses the Memosprite Skill <b>Dream, Dissolving, as Dew</b> by <span class="text-desc">${calcScaling(
         24,
         4.8,
         memo_skill,
@@ -274,6 +286,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       )}%</span>. After Evernight uses a Skill/Ultimate, additionally gains <span class="text-desc">1</span> points of <b class="text-indigo-300">Memoria</b>.`,
       show: _.includes(teamId, '1413'),
       default: false,
+      debuffElement: Element.ICE,
     },
     {
       type: 'toggle',
@@ -294,6 +307,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       )}%</span> of <b class="text-desc">Bondmate</b>'s Shield Effect. When used on Dan Heng • Permansor Terrae, additionally advances <b class="text-hsr-physical">Souldragon</b>'s action by <span class="text-desc">100%</span>. The <b class="text-hsr-physical">Souldragon</b>'s next action gains the enhance effects of Dan Heng • Permansor Terrae's Ultimate and increases the multiplier of Shield provided by <b class="text-hsr-physical">Souldragon</b> by <span class="text-desc">150%</span>. Does not consume the enhancement <b>Charge</b> of Dan Heng • Permansor Terrae's Ultimate.`,
       show: _.includes(teamId, '1414'),
       default: false,
+      debuffElement: Element.PHYSICAL,
     },
   ]
 
@@ -342,13 +356,17 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       ${_.join(
         _.map(
           chrysosBuffs,
-          (item) => `<br /><b class="text-unique-start">✦</b> <b class="text-unique-end">${item.text}</b>
+          (item) => `<br /><b class="text-unique-start">✦</b> <b class="text-white">A Poem about</b> <b class="${
+            ElementColor[item.debuffElement]
+          }">${item.text.replace('A Poem about ', '')}</b>
         <br />${item.content}
         <br />`
         ),
         ''
       )}
-      <br /><b class="text-unique-start">✦</b> <b class="text-unique-end">A Poem about "██"</b>
+      <br /><b class="text-unique-start">✦</b> <b class="text-white">A Poem about</b> <b class="${
+        ElementColor[Element.ICE]
+      }">"██"</b>
       <br />After Cyrene has gained <b class="text-pink-300">Recollection</b> from each different teammate (other than <b>███</b>), when <b>███</b> uses <b>Waltz of Flowers and Arrows</b>, it additionally deals one instance of <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of its Max HP to one random enemy.`,
       value: [
         { base: 20, growth: 4, style: 'linear' },
