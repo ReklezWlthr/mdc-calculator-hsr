@@ -480,6 +480,18 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       max: 5,
     },
     {
+      type: 'number',
+      id: 'cyrene_dhpt_shield',
+      trace: `Memosprite Skill`,
+      text: `Bondmate's Shield Effect`,
+      title: `Bondmate's Shield Effect`,
+      content: `The next <span class="text-desc">3</span> attack(s) of <b class="text-hsr-physical">Souldragon</b> deals <b>Additional DMG</b> of corresponding Type equal to {{0}}% of <b class="text-desc">Bondmate</b>'s Shield Effect.`,
+      value: [{ base: 40, growth: 8, style: 'linear' }],
+      show: _.includes(teamId, '1414'),
+      default: 2000,
+      min: 0,
+    },
+    {
       type: 'toggle',
       id: 'cyrene_skill',
       text: `Cyrene Skill Zone`,
@@ -536,6 +548,8 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     ...chrysosBuffs,
     findContentById(content, 'cyrene_skill'),
     findContentById(content, 'cyrene_e6'),
+    findContentById(content, 'cyrene_cas_count'),
+    findContentById(content, 'cyrene_dhpt_shield'),
   ]
 
   const allyContent: IContent[] = [
@@ -966,11 +980,26 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                   source: 'Cyrene',
                   value: calcScaling(0.08, 0.016, memo_skill, 'linear'),
                 })
+                all[_.findIndex(teamId, (item) => item === '1414')]?.ULT_SCALING.push({
+                  name: `Poem - Bondmate Additional DMG`,
+                  property: TalentProperty.ADD,
+                  element: t.ELEMENT,
+                  type: TalentType.NONE,
+                  value: [
+                    {
+                      scaling: calcScaling(0.4, 0.08, memo_skill, 'linear'),
+                      multiplier: Stats.DEF,
+                      override: form.cyrene_dhpt_shield,
+                    },
+                  ],
+                  sum: true,
+                })
               }
               if (t.ID === '1414' && form.cyrene_dhpt) {
                 t.TALENT_SCALING.push(
                   ..._.map(t.TALENT_SCALING, (item) => ({
                     ...item,
+                    name: `Poem - ${item.name}`,
                     multiplier: 2.5,
                   }))
                 )

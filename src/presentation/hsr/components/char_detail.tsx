@@ -26,6 +26,16 @@ import { Tooltip } from '@src/presentation/components/tooltip'
 import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
 
 export const CharDetail = observer(() => {
+  const { params, setParams } = useParams({
+    asc: 7,
+    [TalentType.BA]: 6,
+    [TalentType.SKILL]: 10,
+    [TalentType.ULT]: 10,
+    [TalentType.TALENT]: 10,
+    'Memosprite Skill': 6,
+    'Memosprite Talent': 6,
+  })
+
   const { charStore, settingStore, teamStore, modalStore } = useStore()
   const [buffed, setBuffed] = useState(false)
   const selected = charStore.selected
@@ -37,22 +47,19 @@ export const CharDetail = observer(() => {
   ])?.conditionals(
     charUpgrade?.cons || 0,
     charUpgrade?.major_traces || { a2: false, a4: false, a6: false },
-    charUpgrade?.talents || { basic: 1, skill: 1, ult: 1, talent: 1, memo_skill: 1, memo_talent: 1 },
+    charUpgrade?.talents || {
+      basic: params[TalentType.BA] || 1,
+      skill: params[TalentType.SKILL] || 1,
+      ult: params[TalentType.ULT] || 1,
+      talent: params[TalentType.TALENT] || 1,
+      memo_skill: params['Memosprite Skill'] || 1,
+      memo_talent: params['Memosprite Talent'] || 1,
+    },
     teamStore.characters
   )
   const talent = cond.talents
 
   const [loading, setLoading] = useState(true)
-
-  const { params, setParams } = useParams({
-    asc: 7,
-    [TalentType.BA]: 6,
-    [TalentType.SKILL]: 10,
-    [TalentType.ULT]: 10,
-    [TalentType.TALENT]: 10,
-    'Memosprite Skill': 6,
-    'Memosprite Talent': 6,
-  })
 
   useEffect(() => {
     setLoading(true)

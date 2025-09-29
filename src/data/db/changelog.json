@@ -1,5 +1,12 @@
 [
   {
+    "version": "1.2-2",
+    "date": "Sep 30th, 2025",
+    "desc": [
+      "Fixed: <span class=\"text-hsr-ice\">Cyrene</span>'s buff for <span class=\"text-hsr-physical\">Dan Heng • Permansor Terrae</span> now shows DMG from Shield Effect."
+    ]
+  },
+  {
     "version": "1.2-1",
     "date": "Sep 29th, 2025",
     "desc": [
