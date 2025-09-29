@@ -1,5 +1,17 @@
 [
   {
+    "version": "1.2-1",
+    "date": "Sep 29th, 2025",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v3.7v1</span>",
+      "New Characters: <span class=\"text-hsr-ice\">Cyrene</span>",
+      "Updated Characters: <span class=\"text-hsr-ice\">Trailblazer (Remembrance)</span>",
+      "New Light Cones: <span class=\"text-desc\">This Love, Forever</span>, and <span class=\"text-desc\">Take Flight Toward A Pink Tomorrow</span>",
+      "New Planar Sets: <span class=\"text-desc\">Amphoreus, The Eternal Land</span>, and <span class=\"text-desc\">Tengoku @Live Stream</span>",
+      "Fixed: <span class=\"text-hsr-wind\">Hyacine</span>'s Technique buff"
+    ]
+  },
+  {
     "version": "1.2",
     "date": "Sep 8th, 2025",
     "desc": [

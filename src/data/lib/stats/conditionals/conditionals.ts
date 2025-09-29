@@ -76,6 +76,7 @@ import Hycilens from './characters/Hycilens'
 import Cerydra from './characters/Cerydra'
 import Terravox from './characters/Terravox'
 import Evernight from './characters/Evernight'
+import Cyrene from './characters/Cyrene'
 
 export default [
   { id: '1001', conditionals: March },
@@ -152,6 +153,7 @@ export default [
   { id: '1412', conditionals: Cerydra },
   { id: '1413', conditionals: Evernight },
   { id: '1414', conditionals: Terravox },
+  { id: '1415', conditionals: Cyrene },
   // MCs
   { id: '8001', conditionals: DMC },
   { id: '8003', conditionals: PMC },

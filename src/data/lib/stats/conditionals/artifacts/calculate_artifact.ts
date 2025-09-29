@@ -183,6 +183,13 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       })
     }
   }
+  if (form['324']) {
+    base[Stats.CRIT_DMG].push({
+      name: `2-Piece`,
+      source: `Tengoku @Live Stream`,
+      value: 0.32,
+    })
+  }
 
   return base
 }
@@ -228,6 +235,12 @@ export const calculateTeamRelic = (base: StatsObject, form: Record<string, any>,
       })
     }
   }
+  if (form['323'] && !checkBuffExist(base[Stats.P_SPD], { name: 'Amphoreus, The Eternal Land' }))
+    base[Stats.P_SPD].push({
+      name: `Amphoreus, The Eternal Land`,
+      source: owner.NAME,
+      value: 0.08,
+    })
 
   return base
 }

@@ -1155,7 +1155,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.HARMONY,
     element: Element.WIND,
-    beta: true,
+    beta: false,
   },
   {
     id: '1413',
@@ -1171,7 +1171,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.REMEMBRANCE,
     element: Element.ICE,
-    beta: true,
+    beta: false,
   },
   {
     id: '1414',
@@ -1187,6 +1187,22 @@ export const Characters = [
     rarity: 5,
     path: PathType.PRESERVATION,
     element: Element.PHYSICAL,
+    beta: true,
+  },
+  {
+    id: '1415',
+    name: 'Cyrene',
+    stat: {
+      baseAtk: 60.72,
+      baseHp: 190.08,
+      baseDef: 79.2,
+      baseSpd: 101,
+      energy: 0,
+    },
+    trace: [Stats.CRIT_DMG, Stats.P_HP, Stats.SPD],
+    rarity: 5,
+    path: PathType.REMEMBRANCE,
+    element: Element.ICE,
     beta: true,
   },
 

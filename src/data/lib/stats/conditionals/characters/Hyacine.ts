@@ -459,13 +459,6 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Hyacine',
           value: 0.2,
         })
-        if (base.SUMMON_STATS) {
-          base.SUMMON_STATS[Stats.P_HP].push({
-            name: `Technique`,
-            source: 'Hyacine',
-            value: 0.2,
-          })
-        }
       }
       if (aForm.hyacine_c2) {
         base[Stats.P_SPD].push({

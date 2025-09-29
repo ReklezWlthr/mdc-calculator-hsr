@@ -234,13 +234,24 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       base.TALENT_SCALING = [
         {
           name: 'Souldragon Shield',
-          value: [{ scaling: calcScaling(0.07, 0.00375, talent, 'heal') + (a.a6 ? 0.05 : 0), multiplier: Stats.ATK }],
-          flat: calcScaling(50, 30, talent, 'flat') + (a.a6 ? 100 : 0),
+          value: [{ scaling: calcScaling(0.07, 0.00375, talent, 'heal'), multiplier: Stats.ATK }],
+          flat: calcScaling(50, 30, talent, 'flat'),
           element: TalentProperty.SHIELD,
           property: TalentProperty.SHIELD,
           type: TalentType.NONE,
         },
       ]
+
+      if (a.a6) {
+        base.TALENT_SCALING.push({
+          name: 'Souldragon Shield (Least Heath)',
+          value: [{ scaling: calcScaling(0.07, 0.00375, talent, 'heal') + 0.05, multiplier: Stats.ATK }],
+          flat: calcScaling(50, 30, talent, 'flat') + 100,
+          element: TalentProperty.SHIELD,
+          property: TalentProperty.SHIELD,
+          type: TalentType.NONE,
+        })
+      }
 
       return base
     },

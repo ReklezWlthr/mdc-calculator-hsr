@@ -1089,7 +1089,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `When the number of allied targets on the field is not equal to <span class="text-desc">4</span>, for every <span class="text-desc">1</span> additional/missing ally target, increases the DMG dealt by the wearer and their memosprite by <span class="text-desc">9%</span>/<span class="text-desc">12%</span>, stacking up to <span class="text-desc">4</span>/<span class="text-desc">3</span> time(s).`,
     ],
-    beta: true,
+    beta: false,
     set: [`Membrance Maze's Serene Treehouse`, `Membrance Maze's Wishing Whistle`],
   },
   {
@@ -1112,8 +1112,32 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's ATK by <span class="text-desc">12%</span>. When the wearer's ATK is higher than or equal to <span class="text-desc">2,400</span>/<span class="text-desc">3,600</span>, increases the DoT DMG dealt by <span class="text-desc">12%</span>/<span class="text-desc">24%</span> respectively.`,
     ],
-    beta: true,
+    beta: false,
     set: [`Warbling Shores' Blazing Beacon`, `Warbling Shores' Cantillation Trail`],
+  },
+  {
+    id: '323',
+    name: 'Amphoreus, The Eternal Land',
+    icon: '71050',
+    bonus: [{ stat: Stats.CRIT_RATE, value: 0.08 }],
+    bonusAdd: [],
+    desc: [
+      `Increases the wearer's CRIT Rate by <span class="text-desc">8%</span>. While the wearer's memosprite is on the field, increases all allies' SPD by <span class="text-desc">8%</span>. This effect cannot be stacked.`,
+    ],
+    beta: true,
+    set: [`West Wind's End of Amphoreus`, `Eternal Verses of Amphoreus`],
+  },
+  {
+    id: '324',
+    name: 'Tengoku @Live Stream',
+    icon: '71051',
+    bonus: [{ stat: Stats.CRIT_DMG, value: 0.16 }],
+    bonusAdd: [],
+    desc: [
+      `Increases the wearer's CRIT DMG by <span class="text-desc">16%</span>. If <span class="text-desc">3</span> or more Skill Points are consumed in the same turn, additionally increases the wearer's CRIT DMG by <span class="text-desc">32%</span> for <span class="text-desc">3</span> turns.`,
+    ],
+    beta: true,
+    set: [`Livestream's Myriad Facades`, `Livestream's Continuous Chatter`],
   },
 ]
 

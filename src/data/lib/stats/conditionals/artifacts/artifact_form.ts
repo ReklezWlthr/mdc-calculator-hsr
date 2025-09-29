@@ -232,6 +232,25 @@ export const ArtifactForm = () => {
       id: '127',
       excludeSummon: true,
     },
+    {
+      type: 'toggle',
+      text: `Tengoku @Live Stream`,
+      title: `Tengoku @Live Stream`,
+      content: `Increases the wearer's CRIT DMG by <span class="text-desc">16%</span>. If <span class="text-desc">3</span> or more Skill Points are consumed in the same turn, additionally increases the wearer's CRIT DMG by <span class="text-desc">32%</span> for <span class="text-desc">3</span> turns.`,
+      show: true,
+      default: true,
+      id: '324',
+    },
+    {
+      type: 'toggle',
+      text: `Amphoreus, The Eternal Land`,
+      title: `Amphoreus, The Eternal Land`,
+      content: `Increases the wearer's CRIT Rate by <span class="text-desc">8%</span>. While the wearer's memosprite is on the field, increases all allies' SPD by <span class="text-desc">8%</span>. This effect cannot be stacked.`,
+      show: true,
+      default: true,
+      id: '323',
+      excludeSummon: true,
+    },
   ]
 
   // Team-Wide
@@ -240,6 +259,7 @@ export const ArtifactForm = () => {
     findContentById(content, '118'),
     findContentById(content, '125'),
     findContentById(content, '127'),
+    findContentById(content, '323'),
   ]
 
   // Single-Target

@@ -314,6 +314,7 @@ export const CharDetail = observer(() => {
         {_.map(_.omit(talent, 'a2', 'a4', 'a6', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6'), (item) => {
           const baseType = item?.trace
             ?.replaceAll('Enhanced', '')
+            ?.replaceAll('Alternate', '')
             ?.replaceAll('Exclusive', '')
             .replaceAll(/\[\d\]$/g, '')
             .trim()
@@ -332,7 +333,7 @@ export const CharDetail = observer(() => {
                 <div className="w-full">
                   <div className="flex items-center justify-between">
                     <div>
-                      {item.trace === 'Exclusive Talent' ? (
+                      {_.startsWith(item.trace, 'Exclusive') ? (
                         <p className="px-2 text-sm font-normal text-white rounded-md bg-gradient-to-r from-unique-start to-unique-end w-fit">
                           {item.trace}
                         </p>

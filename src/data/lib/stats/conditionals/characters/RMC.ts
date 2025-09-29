@@ -44,6 +44,16 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       tag: AbilityTag.ST,
       sp: 1,
     },
+    normal_alt: {
+      energy: 30,
+      trace: 'Enhanced Basic ATK',
+      title: 'Together, Write the Shape of Tomorrow!',
+      content: `Consumes <span class="text-desc">1</span> stack of <b class="text-desc">Epic</b> to dispel all Crowd Control debuffs on <b>Mem</b>. Trailblazer and <b>Mem</b> launch a <u>Joint ATK</u> and individually deal <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Trailblazer's ATK and {{0}}% of <b>Mem</b>'s ATK to all enemies. Then, <b>Mem</b> gains <span class="text-desc">10%</span> <b>Charge</b>.`,
+      value: [{ base: 100, growth: 20, style: 'linear' }],
+      level: basic,
+      tag: AbilityTag.AOE,
+      sp: 1,
+    },
     skill: {
       energy: 30,
       trace: 'Skill',
@@ -132,6 +142,11 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       title: `Magnets and Long Chains`,
       content: `When the Max Energy of the ally target that has <b class="text-hsr-ice">Mem's Support</b> exceeds <span class="text-desc">100</span>, for every <span class="text-desc">10</span> excess Energy, additionally increases the multiplier of the <b class="text-true">True DMG</b> dealt via <b class="text-hsr-ice">Mem's Support</b> by <span class="text-desc">2%</span>, up to a max increase of <span class="text-desc">20%</span>.`,
     },
+    bonus: {
+      trace: 'Bonus Ability',
+      title: `Unfinished Epilogue`,
+      content: `After using Ultimate, gains <span class="text-desc">1</span> stack of <b class="text-desc">Epic</b>, up to <span class="text-desc">2</span> stacks. When <b>Mem</b> is on the field and this unit has <b class="text-desc">Epic</b>, Basic ATK is enhanced to <b>Together, Write the Shape of Tomorrow!</b>`,
+    },
     c1: {
       trace: 'Eidolon 1',
       title: `Narrator of the Present`,
@@ -177,6 +192,14 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       show: true,
       default: false,
     },
+    {
+      type: 'toggle',
+      id: 'mem_eba',
+      text: `Joint Basic Attack`,
+      ...talents.bonus,
+      show: true,
+      default: true,
+    },
   ]
 
   const teammateContent: IContent[] = []
@@ -219,19 +242,40 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         MAX_ENERGY: 0,
       })
 
-      if (form.supreme_stance) base.BA_ALT = true
+      if (form.mem_eba) base.BA_ALT = true
 
-      base.BASIC_SCALING = [
-        {
-          name: 'Single Target',
-          value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear'), multiplier: Stats.ATK }],
-          element: Element.ICE,
-          property: TalentProperty.NORMAL,
-          type: TalentType.BA,
-          break: 10,
-          sum: true,
-        },
-      ]
+      base.BASIC_SCALING = form.mem_eba
+        ? [
+            {
+              name: 'AoE - Trailblazer',
+              value: [{ scaling: calcScaling(1, 0.2, basic, 'linear'), multiplier: Stats.ATK }],
+              element: Element.ICE,
+              property: TalentProperty.NORMAL,
+              type: TalentType.SKILL,
+              break: 10,
+              sum: true,
+            },
+            {
+              name: 'AoE - Mem',
+              value: [{ scaling: calcScaling(1, 0.2, basic, 'linear'), multiplier: Stats.ATK }],
+              element: Element.ICE,
+              property: TalentProperty.SERVANT,
+              type: TalentType.SERVANT,
+              sum: true,
+              summon: true,
+            },
+          ]
+        : [
+            {
+              name: 'Single Target',
+              value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear'), multiplier: Stats.ATK }],
+              element: Element.ICE,
+              property: TalentProperty.NORMAL,
+              type: TalentType.BA,
+              break: 10,
+              sum: true,
+            },
+          ]
       base.SKILL_SCALING = []
       base.MEMO_SKILL_SCALING = [
         {

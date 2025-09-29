@@ -1621,6 +1621,56 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23052',
+    scaling: (base, r) => {
+      base[Stats.P_SPD].push({
+        name: 'Passive',
+        source: `This Love, Forever`,
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '22006',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: `Take Flight Toward A Pink Tomorrow`,
+        value: calcRefinement(0.12, 0.03, r),
+      })
+      if (base.ID === '8007') {
+        base.CALLBACK.push((x, _d, _w, all) => {
+          _.forEach(all, (t) => {
+            if (!checkBuffExist(t[Stats.ALL_DMG], { source: 'Take Flight Toward A Pink Tomorrow' })) {
+              t[Stats.ALL_DMG].push({
+                name: 'Passive',
+                source: 'Take Flight Toward A Pink Tomorrow',
+                value: calcRefinement(0.08, 0.02, r),
+              })
+            }
+            if (
+              t.SUMMON_STATS &&
+              !checkBuffExist(t.SUMMON_STATS[Stats.ALL_DMG], { source: 'Take Flight Toward A Pink Tomorrow' })
+            ) {
+              t.SUMMON_STATS[Stats.ALL_DMG].push({
+                name: 'Passive',
+                source: 'Take Flight Toward A Pink Tomorrow',
+                value: calcRefinement(0.08, 0.02, r),
+              })
+            }
+            x.BASIC_SCALING = _.map(x.BASIC_SCALING, (item) => {
+              if (!_.startsWith(item.name, 'AoE')) return item
+              return { ...item, bonus: calcRefinement(0.6, 0.1, r) }
+            })
+          })
+          return x
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus
