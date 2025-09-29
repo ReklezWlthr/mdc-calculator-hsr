@@ -58,9 +58,15 @@ export const MyCharacters = observer(() => {
     <div className="flex flex-col items-center w-full gap-5 py-5 pl-5 max-w-[1200px] mx-auto">
       <div className="flex w-full h-full gap-x-10">
         <div className="flex flex-col w-1/3 min-w-[400px] h-full gap-y-4 shrink-0">
-          <div className="flex items-end gap-5">
+          <div className="space-y-3">
             <div className="space-y-1.5">
-              <p className="text-2xl font-bold text-white">My Characters</p>
+              <div className="flex items-end justify-between">
+                <p className="text-2xl font-bold text-white">My Characters</p>
+                <p className="text-gray">
+                  {_.size(_.filter(Characters, (item) => _.includes(_.map(charStore.characters, 'cId'), item.id)))}/
+                  {_.size(Characters)}
+                </p>
+              </div>
               <TextInput
                 onChange={(value) => setParams({ searchWord: value })}
                 value={params.searchWord}
@@ -68,7 +74,8 @@ export const MyCharacters = observer(() => {
               />
             </div>
             <div className="my-1 space-y-2">
-              <div className="flex gap-2">
+              <div className="flex items-center gap-2">
+                <p className="w-1/6 text-sm text-center text-gray">Attribute</p>
                 <FilterIcon type="element" value={Element.PHYSICAL} />
                 <FilterIcon type="element" value={Element.FIRE} />
                 <FilterIcon type="element" value={Element.ICE} />
@@ -77,7 +84,8 @@ export const MyCharacters = observer(() => {
                 <FilterIcon type="element" value={Element.QUANTUM} />
                 <FilterIcon type="element" value={Element.IMAGINARY} />
               </div>
-              <div className="flex gap-2">
+              <div className="flex items-center gap-2">
+                <p className="w-1/6 text-sm text-center text-gray">Path</p>
                 <FilterIcon type="path" value={PathType.DESTRUCTION} />
                 <FilterIcon type="path" value={PathType.HUNT} />
                 <FilterIcon type="path" value={PathType.ERUDITION} />
@@ -85,6 +93,7 @@ export const MyCharacters = observer(() => {
                 <FilterIcon type="path" value={PathType.NIHILITY} />
                 <FilterIcon type="path" value={PathType.PRESERVATION} />
                 <FilterIcon type="path" value={PathType.ABUNDANCE} />
+                <FilterIcon type="path" value={PathType.REMEMBRANCE} />
               </div>
             </div>
           </div>
