@@ -304,7 +304,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           sum: true,
         },
         {
-          name: `Zone DoT`,
+          name: `Zone DoT per Instance`,
           value: [{ scaling: calcScaling(0.32, 0.0528, ult, 'hycilens') + (c >= 6 ? 0.2 : 0), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.DOT,
