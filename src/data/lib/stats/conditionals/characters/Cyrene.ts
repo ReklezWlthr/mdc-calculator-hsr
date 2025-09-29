@@ -120,12 +120,16 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         0.024,
         memo_skill,
         'linear'
-      )}%</span> for every <span class="text-desc">1%</span> of overflow value consumed when the summoned <b>Netherwing</b> triggers the ability effect of its Talent, <b>Wings Sweep the Ruins</b>. If there are <span class="text-desc">2</span> enemy target(s) on the field or fewer, the DMG multiplier additionally increases by <span class="text-desc">${calcScaling(
+      ).toLocaleString('en', {
+        maximumFractionDigits: 3,
+      })}%</span> for every <span class="text-desc">1%</span> of overflow value consumed when the summoned <b>Netherwing</b> triggers the ability effect of its Talent, <b>Wings Sweep the Ruins</b>. If there are <span class="text-desc">2</span> enemy target(s) on the field or fewer, the DMG multiplier additionally increases by <span class="text-desc">${calcScaling(
         0.24,
         0.048,
         memo_skill,
         'linear'
-      )}%</span>.`,
+      ).toLocaleString('en', {
+        maximumFractionDigits: 3,
+      })}%</span>.`,
       show: _.includes(teamId, '1407'),
       default: 0,
       min: 0,
