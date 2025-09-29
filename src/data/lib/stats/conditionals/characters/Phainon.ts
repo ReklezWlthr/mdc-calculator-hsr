@@ -136,35 +136,35 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     c1: {
       trace: 'Eidolon 1',
-      title: 'Flame and Light, Shadow of Good and Evil',
+      title: 'Fire and Light Bind Virtue and Vice',
       content: `The base SPD inheritance ratio for Khaslana's extra turn increases to <span class="text-desc">66%</span>. For every enemy target defeated in one battle, additionally increases this ratio by <span class="text-desc">1.5%</span>, up to a max of <span class="text-desc">84%</span>.
       <br />When using Ultimate, increases CRIT DMG by <span class="text-desc">50%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c2: {
       trace: 'Eidolon 2',
-      title: 'Heaven and Earth, Illusions of the Realm',
+      title: 'Sky and Earth Churn Mortal Froth',
       content: `Khaslana's <b class="text-hsr-physical">Physical RES PEN</b> increases by <span class="text-desc">20%</span>. When one use of <b>Foundation: Stardeath Verdict</b> consumes <span class="text-desc">4</span> <b class="text-red">Scourge</b> point(s), gains <span class="text-desc">1</span> extra turn.`,
     },
     c3: {
       trace: 'Eidolon 3',
-      title: 'Fathomless Stillness, Buried into Irontomb',
+      title: 'Depths of Quiet, Entombed in Ruin',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Attack Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
     },
     c4: {
       trace: 'Eidolon 4',
-      title: 'Countless Titans, Their Faces Lost to Time',
+      title: 'Faces of Titans, Blurred by Time',
       content: `When using <b>Calamity: Soulscorch Edict</b>, additionally gains <span class="text-desc">4</span> stack(s) of <b class="text-amber-500">Soulscorch</b>.`,
     },
     c5: {
       trace: 'Eidolon 5',
-      title: 'Thirty Million Cycles, Descending into Doom',
+      title: 'The Wheel Spins Forevermore',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
     },
     c6: {
       trace: 'Eidolon 6',
-      title: 'Ascent of Eternity Moribundly Fades',
+      title: 'Embers of Old Rise Still',
       content: `The number of overflow points allowed for <b class="text-desc">Coreflame</b> no longer has an upper limit. When the battle starts, gains <span class="text-desc">6</span> <b class="text-desc">Coreflame(s)</b>.
       <br />After using the attack from <b>Foundation: Stardeath Verdict</b>, additionally deals <b class="text-true">True DMG</b> equal to <span class="text-desc">36%</span> of the total DMG dealt in this attack to the enemy target with the highest HP
       <br />
