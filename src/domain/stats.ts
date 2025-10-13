@@ -197,6 +197,7 @@ export interface RawBaseStatType {
   SUMMON_ID: string
 
   MAX_SP: number
+  CYRENE_SKILL_LEVEL: number
 }
 
 export interface BaseStatsType extends RawBaseStatType {

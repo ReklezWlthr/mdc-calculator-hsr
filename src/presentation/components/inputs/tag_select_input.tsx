@@ -55,10 +55,10 @@ export const TagSelectInput = ({
         <Badge
           key={item}
           text={_.find(options, { value: item })?.name || ''}
-          bgColor="bg-light-2"
-          textColor="text-dark-0"
+          bgColor={disabled ? 'bg-primary-light opacity-50' : 'bg-primary-light'}
+          textColor="text-white"
           width="w-fit"
-          iconRight="fa-regular fa-times text-dark-3"
+          iconRight="fa-solid fa-times"
           actionIconRight={() => onToggleSelection(_.find(options, { value: item })?.value || '')}
         />
       ))

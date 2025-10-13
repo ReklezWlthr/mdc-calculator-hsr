@@ -49,7 +49,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       trace: 'Enhanced Basic ATK',
       title: 'Together, Write the Shape of Tomorrow!',
       content: `Consumes <span class="text-desc">1</span> stack of <b class="text-desc">Epic</b> to dispel all Crowd Control debuffs on <b>Mem</b>. Trailblazer and <b>Mem</b> launch a <u>Joint ATK</u> and individually deal <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Trailblazer's ATK and {{0}}% of <b>Mem</b>'s ATK to all enemies. Then, <b>Mem</b> gains <span class="text-desc">10%</span> <b>Charge</b>.`,
-      value: [{ base: 100, growth: 20, style: 'linear' }],
+      value: [{ base: 60, growth: 12, style: 'linear' }],
       level: basic,
       tag: AbilityTag.AOE,
       sp: 1,
@@ -248,7 +248,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         ? [
             {
               name: 'AoE - Trailblazer',
-              value: [{ scaling: calcScaling(1, 0.2, basic, 'linear'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.6, 0.12, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.ICE,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
@@ -257,7 +257,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
             },
             {
               name: 'AoE - Mem',
-              value: [{ scaling: calcScaling(1, 0.2, basic, 'linear'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.6, 0.12, basic, 'linear'), multiplier: Stats.ATK }],
               element: Element.ICE,
               property: TalentProperty.SERVANT,
               type: TalentType.SERVANT,

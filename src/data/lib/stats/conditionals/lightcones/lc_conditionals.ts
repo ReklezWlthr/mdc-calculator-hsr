@@ -2521,13 +2521,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
         base.VULNERABILITY.push({
           name: `Blank`,
           source: `This Love, Forever`,
-          value: calcRefinement(0.1, 0.02, r) * (form['23052_b'] ? 2.2 : 1),
+          value: calcRefinement(0.1, 0.02, r) * (form['23052_b'] ? 1 + calcRefinement(0.6, 0.05, r) : 1),
         })
         if (base.SUMMON_STATS) {
           base.SUMMON_STATS.VULNERABILITY.push({
             name: `Blank`,
             source: `This Love, Forever`,
-            value: calcRefinement(0.1, 0.02, r) * (form['23052_b'] ? 2.2 : 1),
+            value: calcRefinement(0.1, 0.02, r) * (form['23052_b'] ? 1 + calcRefinement(0.6, 0.05, r) : 1),
           })
         }
         if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
@@ -2548,13 +2548,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
         base[Stats.CRIT_DMG].push({
           name: `Verse`,
           source: `This Love, Forever`,
-          value: calcRefinement(0.16, 0.03, r) * (form['23052_a'] ? 2.2 : 1),
+          value: calcRefinement(0.16, 0.03, r) * (form['23052_a'] ? 1 + calcRefinement(0.6, 0.05, r) : 1),
         })
         if (base.SUMMON_STATS) {
           base.SUMMON_STATS[Stats.CRIT_DMG].push({
             name: `Verse`,
             source: `This Love, Forever`,
-            value: calcRefinement(0.16, 0.03, r) * (form['23052_a'] ? 2.2 : 1),
+            value: calcRefinement(0.16, 0.03, r) * (form['23052_a'] ? 1 + calcRefinement(0.6, 0.05, r) : 1),
           })
         }
       }

@@ -46,7 +46,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       energy: 30,
       trace: 'Skill',
       title: `Terra Omnibus`,
-      content: `Designates one ally character as a <b class="text-desc">Bondmate</b> and provides all allies with a Shield that can offset DMG equal to {{0}}% of Dan Heng • Permansor Terrae's ATK plus {{1}} for <span class="text-desc">3</span> turn(s). When receiving Dan Heng • Permansor Terrae's Shield repeatedly, the Shield Effect can stack but will not exceed <span class="text-desc">300%</span> of the Shield provided by the current Skill.
+      content: `Designates one ally character as a <b class="text-desc">Bondmate</b> and provides all allies with a <b class="text-indigo-300">Shield</b> that can offset DMG equal to {{0}}% of Dan Heng • Permansor Terrae's ATK plus {{1}} for <span class="text-desc">3</span> turn(s). When receiving Dan Heng • Permansor Terrae's <b class="text-indigo-300">Shield</b> repeatedly, the <b class="text-indigo-300">Shield</b> Effect can stack but will not exceed <span class="text-desc">300%</span> of the <b class="text-indigo-300">Shield</b> provided by the current Skill.
       <br /><b class="text-desc">Bondmate</b> only applies to the most recent target of Dan Heng • Permansor Terrae's Skill.`,
       value: [
         { base: 14, growth: 0.75, style: 'heal' },
@@ -60,7 +60,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       energy: 5,
       trace: 'Ultimate',
       title: `A Dragon's Zenith Knows No Rue`,
-      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Dan Heng • Permansor Terrae's ATK to all enemies, and provides a Shield to all allies that can offset DMG equal to {{1}}% of Dan Heng • Permansor Terrae's ATK plus {{2}}, lasting for <span class="text-desc">3</span> turn(s). When repeatedly receiving Dan Heng • Permansor Terrae's Shield, the Shield Effect can be stacked, up to <span class="text-desc">300%</span> of the Shield provided by the current Skill.
+      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Dan Heng • Permansor Terrae's ATK to all enemies, and provides a <b class="text-indigo-300">Shield</b> to all allies that can offset DMG equal to {{1}}% of Dan Heng • Permansor Terrae's ATK plus {{2}}, lasting for <span class="text-desc">3</span> turn(s). When repeatedly receiving Dan Heng • Permansor Terrae's <b class="text-indigo-300">Shield</b>, the <b class="text-indigo-300">Shield</b> Effect can be stacked, up to <span class="text-desc">300%</span> of the <b class="text-indigo-300">Shield</b> provided by the current Skill.
       <br /><b class="text-hsr-physical">Souldragon</b> becomes enhanced, and when <b class="text-hsr-physical">Souldragon</b> takes action, triggers a <u>Follow-up ATK</u> that deals <b class="text-hsr-physical">Physical DMG</b> equal to {{3}}% of Dan Heng • Permansor Terrae's ATK and <b>Additional DMG</b> of the <b class="text-desc">Bondmate</b>'s Type equal to {{3}}% of the <b class="text-desc">Bondmate</b>'s ATK to all enemies. Enhancement lasts for <span class="text-desc">2</span> <b class="text-hsr-physical">Souldragon</b> action(s).`,
       value: [
         { base: 150, growth: 15, style: 'curved' },
@@ -75,7 +75,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       trace: 'Talent',
       title: `Of Virtue, Forms Unfold`,
       content: `When an ally character becomes a <b class="text-desc">Bondmate</b>, Dan Heng • Permansor Terrae summons <b class="text-hsr-physical">Souldragon</b> with an initial SPD of <span class="text-desc">165</span>.
-      <br />When <b class="text-hsr-physical">Souldragon</b> takes action, dispels <span class="text-desc">1</span> debuff(s) from all allies and provides a Shield that can offset DMG equal to {{0}}% of Dan Heng • Permansor Terrae's ATK plus {{1}} for <span class="text-desc">3</span> turn(s). The Shield Effect provided by Dan Heng • Permansor Terrae and "Souldragon" can be stacked, up to <span class="text-desc">300%</span> of the Shield provided by Dan Heng • Permansor Terrae's Skill.
+      <br />When <b class="text-hsr-physical">Souldragon</b> takes action, dispels <span class="text-desc">1</span> debuff(s) from all allies and provides a <b class="text-indigo-300">Shield</b> that can offset DMG equal to {{0}}% of Dan Heng • Permansor Terrae's ATK plus {{1}} for <span class="text-desc">3</span> turn(s). The <b class="text-indigo-300">Shield</b> Effect provided by Dan Heng • Permansor Terrae and <b class="text-hsr-physical">Souldragon</b> can be stacked, up to <span class="text-desc">300%</span> of the <b class="text-indigo-300">Shield</b> provided by Dan Heng • Permansor Terrae's Skill.
       <br /><b class="text-hsr-physical">Souldragon</b> disappears when Dan Heng • Permansor Terrae or the <b class="text-desc">Bondmate</b> is knocked down.`,
       value: [
         { base: 7, growth: 0.375, style: 'heal' },
@@ -104,7 +104,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Sublimity`,
-      content: `When <b class="text-hsr-physical">Souldragon</b> takes action, additionally provides a Shield that can offset DMG equal to <span class="text-desc">5%</span> of Dan Heng • Permansor Terrae's ATK plus <span class="text-desc">100</span> to the ally target with the lowest current Shield Effect. When repeatedly receiving Dan Heng • Permansor Terrae's Shield, the Shield Effect can be stacked, up to <span class="text-desc">300%</span> of the Shield provided by the current Skill. When enhanced <b class="text-hsr-physical">Souldragon</b> takes action, further deals <span class="text-desc">1</span> instance of <b>Additional DMG</b> of the <b class="text-desc">Bondmate</b>'s Type equal to <span class="text-desc">40%</span> of <b class="text-desc">Bondmate</b>'s ATK to the enemy with the highest current HP.`,
+      content: `When <b class="text-hsr-physical">Souldragon</b> takes action, additionally provides a <b class="text-indigo-300">Shield</b> that can offset DMG equal to <span class="text-desc">5%</span> of Dan Heng • Permansor Terrae's ATK plus <span class="text-desc">100</span> to the ally target with the lowest current <b class="text-indigo-300">Shield</b> Effect. When repeatedly receiving Dan Heng • Permansor Terrae's <b class="text-indigo-300">Shield</b>, the <b class="text-indigo-300">Shield</b> Effect can be stacked, up to <span class="text-desc">300%</span> of the <b class="text-indigo-300">Shield</b> provided by the current Skill. When enhanced <b class="text-hsr-physical">Souldragon</b> takes action, further deals <span class="text-desc">1</span> instance of <b>Additional DMG</b> of the <b class="text-desc">Bondmate</b>'s Type equal to <span class="text-desc">40%</span> of <b class="text-desc">Bondmate</b>'s ATK to the enemy with the highest current HP.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -114,7 +114,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c2: {
       trace: 'Eidolon 2',
       title: `Watch Trails to Blaze`,
-      content: `Additionally increases the number of Ultimate enhancements by <span class="text-desc">2</span> time(s). After Dan Heng • Permansor Terrae uses Ultimate, <b class="text-hsr-physical">Souldragon</b>'s action advances by <span class="text-desc">100%</span>. When the enhanced <b class="text-hsr-physical">Souldragon</b> takes action, the <b>Additional DMG</b> dealt by the <b class="text-desc">Bondmate</b> is <span class="text-desc">200%</span> of the original DMG, and the Shield Effect it provides in this instance is <span class="text-desc">200%</span> of the original Shield Effect.`,
+      content: `Additionally increases the number of Ultimate enhancements by <span class="text-desc">2</span> time(s). After Dan Heng • Permansor Terrae uses Ultimate, <b class="text-hsr-physical">Souldragon</b>'s action advances by <span class="text-desc">100%</span>. When the enhanced <b class="text-hsr-physical">Souldragon</b> takes action, the <b>Additional DMG</b> dealt by the <b class="text-desc">Bondmate</b> is <span class="text-desc">200%</span> of the original DMG, and the <b class="text-indigo-300">Shield</b> Effect it provides in this instance is <span class="text-desc">200%</span> of the original <b class="text-indigo-300">Shield</b> Effect.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -288,7 +288,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           multiplier: 0.15,
         }
         _.forEach(all, (x, i) => {
-          if (allForm[i].bondmate) {
+          if (allForm[i].bondmate && x?.ID) {
             x.X_ATK.push({ ...xATK, source: index === i ? 'Self' : 'Dan Heng • Permansor Terrae' })
             if (x.SUMMON_STATS) {
               x.SUMMON_STATS.X_ATK.push({ ...xATK, source: index === i ? 'Self' : 'Dan Heng • Permansor Terrae' })

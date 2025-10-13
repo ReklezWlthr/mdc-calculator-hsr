@@ -1252,7 +1252,7 @@ export const LightCones = [
     beta: false,
     desc: {
       name: 'Sweet Dream',
-      detail: `Increases the wearer's provided Shield Effect by {{0}}%. When an ally target has a Shield, the DMG dealt increases by {{1}}%.`,
+      detail: `Increases the wearer's provided <b class="text-indigo-300">Shield</b> Effect by {{0}}%. When an ally target has a <b class="text-indigo-300">Shield</b>, the DMG dealt increases by {{1}}%.`,
       properties: [
         { base: 12, growth: 3 },
         { base: 12, growth: 2 },
@@ -2492,11 +2492,12 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'A Promise',
-      detail: `Increases the wearer's SPD by {{0}}%. When the wearer's memosprite uses a Memosprite Skill on an ally, gains <b>Blank</b>, which increases DMG taken by all enemies by {{1}}%. When the wearer's memosprite uses a Memosprite Skill on an enemy, gains <b>Verse</b>, which increases CRIT DMG of all allies by {{2}}%. When the wearer's memosprite has both <b>Blank</b> and <b>Verse</b> increases the effects of <b>Blank</b> and <b>Verse</b> by <span class="text-desc">120%</span>.`,
+      detail: `Increases the wearer's SPD by {{0}}%. When the wearer's memosprite uses a Memosprite Skill on an ally, gains <b>Blank</b>, which increases DMG taken by all enemies by {{1}}%. When the wearer's memosprite uses a Memosprite Skill on an enemy, gains <b>Verse</b>, which increases CRIT DMG of all allies by {{2}}%. When the wearer's memosprite has both <b>Blank</b> and <b>Verse</b> increases the effects of <b>Blank</b> and <b>Verse</b> by {{3}}%.`,
       properties: [
         { base: 18, growth: 3 },
         { base: 10, growth: 2 },
         { base: 16, growth: 3 },
+        { base: 60, growth: 5 },
       ],
     },
   },

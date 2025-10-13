@@ -205,7 +205,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       text: `Memoria`,
       ...talents.talent,
       show: true,
-      default: 0,
+      default: 16,
       min: 0,
     },
     {
@@ -501,7 +501,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           base.SUMMON_STATS[Stats.CRIT_RATE].push({
             name: `Ascension 2 Passive`,
             source: 'Evernight',
-            value: 0.3,
+            value: 0.35,
           })
         }
       }
@@ -629,8 +629,12 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           const index = _.findIndex(team, (item) => item?.cId === '1413')
 
           if (form.evernight_skill) {
+            const cyreneIndex = _.findIndex(team, (item) => item?.cId === '1415')
+            const cyreneBoost = allForm[cyreneIndex]?.cyrene_evernight
             const b = all[index].getValue(Stats.CRIT_DMG) || 0
-            const multiplier = calcScaling(0.12, 0.012, skill, 'curved')
+            const multiplier =
+              calcScaling(0.12, 0.012, skill, 'curved') +
+              (cyreneBoost ? calcScaling(0.06, 0.012, all[cyreneIndex].CYRENE_SKILL_LEVEL || 1, 'linear') : 0)
             _.forEach(all, (t) => {
               if (t.SUMMON_STATS) {
                 t.SUMMON_STATS[Stats.CRIT_DMG].push({
