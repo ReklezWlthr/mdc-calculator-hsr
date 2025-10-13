@@ -889,7 +889,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                         name: `${ss.name} - Cyrene`,
                         multiplier:
                           (ss.multiplier || 1) *
-                          (calcScaling(0.1, 0.01, skill, 'curved') + (0.05 * form.cyrene_e2 || 0)),
+                          (calcScaling(0.12, 0.012, skill, 'curved') + (0.05 * form.cyrene_e2 || 0)),
                         property: TalentProperty.TRUE,
                         break: ss.break * (calcScaling(0.12, 0.012, skill, 'curved') + (0.06 * form.cyrene_e2 || 0)),
                         chance: null,
