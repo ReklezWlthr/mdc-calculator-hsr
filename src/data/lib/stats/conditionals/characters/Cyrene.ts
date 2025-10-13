@@ -289,7 +289,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       text: `Ode to Time`,
       title: `Ode to Time`,
       content: `<i class="text-amber-600">Effective for the entire battle.</i> After it is used on Evernight, increases DMG dealt when <b>Evey</b> uses the Memosprite Skill <b>Dream, Dissolving, as Dew</b> by <span class="text-desc">${calcScaling(
-        8,
+        9,
         1.8,
         memo_skill,
         'linear'
@@ -1053,7 +1053,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
               if (_.includes(teamId, '1413') && form.cyrene_evernight && allForm[i].memoria >= 16) {
                 t.MEMO_SKILL_SCALING = _.map(t.MEMO_SKILL_SCALING, (item) => ({
                   ...item,
-                  bonus: calcScaling(0.08, 0.016, memo_skill, 'linear'),
+                  bonus: calcScaling(0.09, 0.018, memo_skill, 'linear'),
                 }))
               }
               // Terravox
