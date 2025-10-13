@@ -396,7 +396,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           value: [{ scaling: calcScaling(1, 0.1, ult, 'curved'), multiplier: Stats.HP }],
           element: Element.ICE,
           property: TalentProperty.SERVANT,
-          type: TalentType.ULT,
+          type: TalentType.SERVANT,
           break: 20,
           sum: true,
         },
