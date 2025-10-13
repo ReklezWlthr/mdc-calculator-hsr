@@ -16,7 +16,7 @@ import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import _ from 'lodash'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import { TalentIcon } from './tables/scaling_wrapper'
-import { StatIcons, Stats, TalentType } from '@src/domain/constant'
+import { PathType, StatIcons, Stats, TalentType } from '@src/domain/constant'
 import { useParams } from '@src/core/hooks/useParams'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { toPercentage } from '@src/core/utils/converter'
@@ -251,6 +251,22 @@ export const CharDetail = observer(() => {
                         {charUpgrade.talents?.talent + cond.upgrade?.talent}
                       </p>
                     </div>
+                    {data?.path === PathType.REMEMBRANCE && (
+                      <>
+                        <div className="flex justify-between">
+                          <p>Memo. Skill</p>
+                          <p className={(cond.upgrade as any)?.memo_skill ? 'text-blue' : 'text-desc'}>
+                            {charUpgrade.talents?.memo_skill + (cond.upgrade as any)?.memo_skill}
+                          </p>
+                        </div>
+                        <div className="flex justify-between">
+                          <p>Memo. Talent</p>
+                          <p className={(cond.upgrade as any)?.memo_talent ? 'text-blue' : 'text-desc'}>
+                            {charUpgrade.talents?.memo_talent + (cond.upgrade as any)?.memo_talent}
+                          </p>
+                        </div>
+                      </>
+                    )}
                   </div>
                   <div className="col-span-2 space-y-1">
                     {_.map(charUpgrade.major_traces, (item, index) => (

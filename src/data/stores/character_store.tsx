@@ -97,6 +97,7 @@ export class CharacterStore {
     if (!char || !id) return false
     const index = _.findIndex(this.characters, ['cId', id])
     this.characters[index] = char
+    this.characters = [...this.characters]
     return true
   }
 

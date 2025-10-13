@@ -56,7 +56,7 @@ export const fromEnka = (rawData: Record<string, any>) => {
     return {
       level: item.level,
       ascension: +item.promotion || 0,
-      cons: item.rank,
+      cons: item?.rank || 0,
       cId,
       equipments: {
         weapon: {
@@ -72,8 +72,8 @@ export const fromEnka = (rawData: Record<string, any>) => {
         skill: findTalent('002') || 1,
         ult: findTalent('003') || 1,
         talent: findTalent('004') || 1,
-        memo_skill: 1,
-        memo_talent: 1,
+        memo_skill: findTalent('301') || 1,
+        memo_talent: findTalent('302') || 1,
       },
       major_traces: {
         a2: findTalent('101') || false,

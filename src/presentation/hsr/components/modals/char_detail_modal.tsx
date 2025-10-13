@@ -2,7 +2,7 @@ import { useParams } from '@src/core/hooks/useParams'
 import { findBaseLevel, findMaxLevel, findMaxTalentLevel, formatMinorTrace } from '@src/core/utils/data_format'
 import { findCharacter } from '@src/core/utils/finder'
 import { DefaultCharacterStore, MaxedCharacterStore } from '@src/data/stores/character_store'
-import { AscensionOptions, EidolonOptions, ICharStore } from '@src/domain/constant'
+import { AscensionOptions, EidolonOptions, ICharStore, PathType } from '@src/domain/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
@@ -268,6 +268,56 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
               />
             </div>
           </div>
+          {charData?.path === PathType.REMEMBRANCE && (
+            <>
+              <div className="flex items-center justify-center gap-3">
+                <TalentIcon
+                  talent={talent?.talents?.summon_skill}
+                  element={charData?.element}
+                  icon={`SkillIcon_1${charData?.id}_Servant01.png`}
+                  size="w-9 h-9"
+                  upgraded={(talent?.upgrade as any)?.memo_skill}
+                  level={char?.talents?.memo_skill}
+                  showUpgrade
+                  hideTip
+                  type={talent?.talents?.summon_skill?.trace}
+                />
+                <div>
+                  <p className="text-xs text-primary-lighter">M.Skill</p>
+                  <SelectInput
+                    value={params?.talents?.memo_skill?.toString()}
+                    onChange={(value) => setParams({ talents: { ...params.talents, memo_skill: parseInt(value) } })}
+                    options={basicLevels}
+                    style="w-14"
+                    disabled={!charData}
+                  />
+                </div>
+              </div>
+              <div className="flex items-center justify-center gap-3">
+                <TalentIcon
+                  talent={talent?.talents?.summon_skill}
+                  element={charData?.element}
+                  icon={`SkillIcon_1${charData?.id}_ServantPassive.png`}
+                  size="w-9 h-9"
+                  upgraded={(talent?.upgrade as any)?.memo_talent}
+                  level={char?.talents?.memo_talent}
+                  showUpgrade
+                  hideTip
+                  type={talent?.talents?.summon_skill?.trace}
+                />
+                <div>
+                  <p className="text-xs text-primary-lighter">M.Talent</p>
+                  <SelectInput
+                    value={params?.talents?.memo_talent?.toString()}
+                    onChange={(value) => setParams({ talents: { ...params.talents, memo_talent: parseInt(value) } })}
+                    options={basicLevels}
+                    style="w-14"
+                    disabled={!charData}
+                  />
+                </div>
+              </div>
+            </>
+          )}
           <p className="-mb-2 font-bold text-center text-white col-span-full">Ascension Passives</p>
           <div className="flex justify-around col-span-full">
             <div className="flex flex-col items-center gap-3">
