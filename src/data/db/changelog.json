@@ -1,6 +1,15 @@
 [
   {
     "version": "1.2-4",
+    "date": "Oct 17th, 2025",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v3.7v4</span>",
+      "Updated Character: <span class=\"text-hsr-ice\">Cyrene</span>, and <span class=\"text-hsr-ice\">Trailblazer (Remembrance)</span>",
+      "Updated Light Cones: <span class=\"text-desc\">Fly Into a Pink Tomorrow</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Oct 13th, 2025",
     "desc": [
       "Content Version: <span class=\"text-desc\">v3.7v3</span>",

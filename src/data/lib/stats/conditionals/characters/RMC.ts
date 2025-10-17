@@ -47,7 +47,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     normal_alt: {
       energy: 30,
       trace: 'Enhanced Basic ATK',
-      title: 'Together, Write the Shape of Tomorrow!',
+      title: 'We Script Tomorrow!',
       content: `Consumes <span class="text-desc">1</span> stack of <b class="text-desc">Epic</b> to dispel all Crowd Control debuffs on <b>Mem</b>. Trailblazer and <b>Mem</b> launch a <u>Joint ATK</u> and individually deal <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Trailblazer's ATK and {{0}}% of <b>Mem</b>'s ATK to all enemies. Then, <b>Mem</b> gains <span class="text-desc">10%</span> <b>Charge</b>.`,
       value: [{ base: 60, growth: 12, style: 'linear' }],
       level: basic,
@@ -145,7 +145,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     bonus: {
       trace: 'Bonus Ability',
       title: `Unfinished Epilogue`,
-      content: `After using Ultimate, gains <span class="text-desc">1</span> stack of <b class="text-desc">Epic</b>, up to <span class="text-desc">2</span> stacks. When <b>Mem</b> is on the field and this unit has <b class="text-desc">Epic</b>, Basic ATK is enhanced to <b>Together, Write the Shape of Tomorrow!</b>`,
+      content: `After using Ultimate, gains <span class="text-desc">1</span> stack of <b class="text-desc">Epic</b>, up to <span class="text-desc">2</span> stacks. When <b>Mem</b> is on the field and this unit has <b class="text-desc">Epic</b>, Basic ATK is enhanced to <b>We Script Tomorrow!</b>`,
     },
     c1: {
       trace: 'Eidolon 1',

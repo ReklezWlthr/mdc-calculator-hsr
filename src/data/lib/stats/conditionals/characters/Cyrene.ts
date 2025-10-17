@@ -105,8 +105,8 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       text: `Ode to Strife`,
       title: `Ode to Strife`,
       content: `<i class="text-amber-600">One-time effect.</i> When used on Mydei, removes all Crowd Control debuffs inflicted on him. And if Mydei is in the <b class="text-red">Vendetta</b> state, he automatically uses <span class="text-desc">1</span> instance of <b>Godslayer Be God</b> without consuming <b>Charge</b>. Mydei's CRIT DMG increases by <span class="text-desc">${calcScaling(
-        40,
-        8,
+        100,
+        20,
         memo_skill,
         'linear'
       )}%</span> during this attack. If the target gets defeated before the use, then it will target the newly arriving enemy targets instead. If Mydei is not in the <b class="text-red">Vendetta</b> state, then advances Mydei's action by <span class="text-desc">100%</span>.`,
@@ -220,7 +220,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: `Memosprite Skill`,
       text: `Ode to Worldbearing`,
       title: `Ode to Worldbearing`,
-      content: `<i class="text-amber-600">Effective for the entire battle.</i> After using on Phainon, Phainon gains <span class="text-desc">6</span> <b class="text-desc">Coreflames</b> as well as <b class="text-rose-500">Eternal Ignition</b> when Transforming. When Transforming, if <b class="text-desc">Coreflame</b> exceeds <span class="text-desc">12</span>, for each point in excess, Khaslana's CRIT DMG increases by <span class="text-desc">${calcScaling(
+      content: `<i class="text-amber-600">Effective for the entire battle.</i> After it is used on Phainon, Phainon gains <span class="text-desc">6</span> <b class="text-desc">Coreflames</b> as well as <b class="text-rose-500">Eternal Ignition</b> when Transforming. When Transforming, if <b class="text-desc">Coreflame</b> exceeds <span class="text-desc">12</span>, for each point in excess, Khaslana's CRIT DMG increases by <span class="text-desc">${calcScaling(
         6,
         1.2,
         memo_skill,
@@ -252,8 +252,8 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       text: `Ode to Ocean`,
       title: `Ode to Ocean`,
       content: `<i class="text-amber-600">One-time effect.</i> When used on Hysilens, Hysilens gains <b class="text-sky-400">Flowing Warmth</b>. After Hysilens uses an attack, consumes <b class="text-sky-400">Flowing Warmth</b> and regenerates <span class="text-desc">60</span> Energy for this unit. In this battle, increases DMG dealt by Hysilens by <span class="text-desc">${calcScaling(
-        50,
-        10,
+        60,
+        12,
         memo_skill,
         'linear'
       )}%</span>. After Hysilens uses Basic ATK/Skill to attack enemies, causes the DoT currently applied on the attacked enemy targets to immediately produce DMG equal to <span class="text-desc">${calcScaling(
@@ -315,8 +315,8 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         memo_skill,
         'linear'
       )}%</span> of the <b class="text-desc">Bondmate</b>'s <b class="text-indigo-300">Shield</b> Effect. When Dan Heng • Permansor Terrae holds <b class="text-hsr-physical">Ode to Earth</b>, the <b class="text-desc">Bondmate</b> deals <span class="text-desc">${calcScaling(
-        8,
-        1.6,
+        12,
+        2.4,
         memo_skill,
         'linear'
       )}%</span> more DMG. When used on Dan Heng • Permansor Terrae, additionally advances <b class="text-hsr-physical">Souldragon</b>'s action by <span class="text-desc">100%</span>. The <b class="text-hsr-physical">Souldragon</b>'s next action gains the enhance effects of Dan Heng • Permansor Terrae's Ultimate and the <b class="text-indigo-300">Shield</b> Effect provided by <b class="text-hsr-physical">Souldragon</b> is <span class="text-desc">150%</span> of its original <b class="text-indigo-300">Shield</b> value. Does not consume the enhancement <b>Charge</b> of Dan Heng • Permansor Terrae's Ultimate.`,
@@ -393,7 +393,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: 'Ultimate',
       title: `Verse ◦ Vow ∞`,
       content: `Summons memosprite <b>███</b>, causes it to immediately gain <span class="text-desc">1</span> extra turn, and activates all teammates' Ultimate. Then, enters the <b>Ripples of Past Reverie</b> state, with Basic ATK enhanced to <b>To Love and Tomorrow ♪</b> and can only use this Basic ATK. Increases Cyrene's and <b>███</b>'s CRIT Rate by {{0}}%, and deploys the Zone effect from the Skill with no active duration.
-      <br />Can only be used once per combat. <b>███</b>'s initial HP equals to <span class="text-desc">100%</span> of Cyrene's Max HP.`,
+      <br />Can only be used once per combat. <b>███</b>'s initial Max HP equals to <span class="text-desc">100%</span> of Cyrene's Max HP.`,
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: ult,
       tag: AbilityTag.SUMMON,
@@ -411,7 +411,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     talent: {
       trace: 'Talent',
       title: `Hearts Gather as One`,
-      content: `When combat begins or after Cyrene takes action, teammates and their memosprites gain <b class="text-desc">Future</b>. When ally targets with <b class="text-desc">Future</b> take action, they consume <b class="text-desc">Future</b> to grant Cyrene <span class="text-desc">1</span> <b class="text-pink-300">Recollection</b> point(s). When Cyrene has <span class="text-desc">24</span> <b class="text-pink-300">Recollection</b> points, her Ultimate can be activated, and all debuffs on her are dispelled. When she has <span class="text-desc">12</span> <b class="text-pink-300">Recollection</b> points while in the <b>Ripples of Past Reverie</b> state, its Ultimate can be activated. After reaching the maximum, <b class="text-pink-300">Recollection</b> points can overflow to a maximum of <span class="text-desc">27</span> points. While Cyrene is on the field, increases DMG dealt by all ally targets by {{0}}%.`,
+      content: `When combat begins or after Cyrene takes action, other ally characters under any state and their memosprites gain <b class="text-desc">Future</b>. When ally targets with <b class="text-desc">Future</b> take action, they consume <b class="text-desc">Future</b> to grant Cyrene <span class="text-desc">1</span> <b class="text-pink-300">Recollection</b> point(s). When Cyrene has <span class="text-desc">24</span> <b class="text-pink-300">Recollection</b> points, her Ultimate can be activated, and all debuffs on her are dispelled. When she has <span class="text-desc">12</span> <b class="text-pink-300">Recollection</b> points while in the <b>Ripples of Past Reverie</b> state, its Ultimate can be activated. After reaching the maximum, <b class="text-pink-300">Recollection</b> points can overflow to a maximum of <span class="text-desc">27</span> points. While Cyrene is on the field, increases DMG dealt by all ally targets by {{0}}%.`,
       value: [{ base: 10, growth: 1, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -473,7 +473,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c4: {
       trace: 'Eidolon 4',
       title: 'Please Write On, With a Smile',
-      content: `Each time after <b>███</b> uses <b>Minuet of Blooms and Plumes</b>, the Bounce DMG multiplier of the triggered Memosprite Skill <b>Ode to ██</b> increases by <span class="text-desc">12%</span> in the current battle and can be stacked up to <span class="text-desc">12</span> times.`,
+      content: `Each time after <b>███</b> uses <b>Minuet of Blooms and Plumes</b>, the Bounce DMG multiplier of the triggered Memosprite Skill <b>Ode to ██</b> increases by <span class="text-desc">6%</span> in the current battle and can be stacked up to <span class="text-desc">24</span> times.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -486,8 +486,8 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: 'Eidolon 6',
       title: 'Remembrance, Sung in Ripples ♪',
       content: `When Cyrene uses her Ultimate for the first time, all allies' actions advance by <span class="text-desc">100%</span>. Each time when <b>███</b> triggers triggers the Memosprite Skill <b>Ode to ██</b> and uses <b>Minuet of Blooms and Plumes</b>, based on the number of times it has been triggered, gains the following effects:
-      <br /><span class="text-desc">1</span> time: Reduces all enemy targets' DEF by <span class="text-desc">20%</span>.
-      <br /><span class="text-desc">2</span> times and more: Advances all allies' actions by <span class="text-desc">20%</span>.`,
+      <br /><span class="text-desc">1</span> time: When <b>███</b> is on the field, reduces all enemy targets' DEF by <span class="text-desc">20%</span>.
+      <br /><span class="text-desc">2</span> times and more: Advances all allies' actions by <span class="text-desc">24%</span>.`,
     },
   }
 
@@ -600,7 +600,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       show: c >= 4,
       default: 0,
       min: 0,
-      max: 12,
+      max: 24,
     },
     {
       type: 'toggle',
@@ -720,7 +720,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           name: 'Ode Extra DMG',
           value: [
             {
-              scaling: calcScaling(0.3, 0.06, memo_skill, 'linear') + (0.12 * form.cyrene_e4 || 0),
+              scaling: calcScaling(0.3, 0.06, memo_skill, 'linear') + (0.06 * form.cyrene_e4 || 0),
               multiplier: Stats.HP,
             },
           ],
@@ -840,7 +840,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                 t[Stats.ALL_DMG].push({
                   name: `Ode to Ocean`,
                   source: 'Cyrene',
-                  value: calcScaling(0.5, 0.1, memo_skill, 'linear'),
+                  value: calcScaling(0.6, 0.12, memo_skill, 'linear'),
                 })
                 const dots = _.flatMap(all, (item) => item.DOT_SCALING)
                 t.BASIC_SCALING.push(
@@ -964,7 +964,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
               if (t.ID === '1404' && form.cyrene_mydei && allForm[i].vendetta) {
                 t.MEMO_SKILL_SCALING = _.map(t.MEMO_SKILL_SCALING, (item) => ({
                   ...item,
-                  cd: calcScaling(0.4, 0.08, memo_skill, 'linear'),
+                  cd: calcScaling(1, 0.2, memo_skill, 'linear'),
                 }))
               }
               // Castorice
@@ -1061,7 +1061,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                 t[Stats.ALL_DMG].push({
                   name: `Ode to Earth`,
                   source: 'Cyrene',
-                  value: calcScaling(0.08, 0.016, memo_skill, 'linear'),
+                  value: calcScaling(0.12, 0.024, memo_skill, 'linear'),
                 })
                 all[_.findIndex(teamId, (item) => item === '1414')]?.ULT_SCALING.push({
                   name: `Ode - Bondmate Additional DMG`,

@@ -1519,7 +1519,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Gaze',
-      detail: `Increases the wearer's CRIT DMG by {{0}}%. When equipped by Trailblazer (Remembrance), increases all ally targets' DMG dealt by {{1}}% and DMG dealt by Enhanced Basic ATK <b>Together, Write the Shape of Tomorrow!</b> by {{2}}%.`,
+      detail: `Increases the wearer's CRIT DMG by {{0}}%. When equipped by Trailblazer (Remembrance), increases all ally targets' DMG dealt by {{1}}% and DMG dealt by Enhanced Basic ATK <b>We Script Tomorrow!</b> by {{2}}%.`,
       properties: [
         { base: 12, growth: 3 },
         { base: 8, growth: 2 },
