@@ -1,6 +1,6 @@
 import { StatsObject, StatsObjectKeys, TalentPropertyMap, TalentTypeMap } from '@src/data/lib/stats/baseConstant'
 import { IScaling } from '@src/domain/conditional'
-import { Element, StatIcons, Stats, TalentProperty } from '@src/domain/constant'
+import { Element, StatIcons, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 import { toPercentage } from '@src/core/utils/converter'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
 import _ from 'lodash'
@@ -19,6 +19,9 @@ export const superBreakStringConstruct = (
   if (!scaling || !stats || !level) return
 
   const element = scaling.element
+  
+  const isServant = scaling.type === TalentType.SERVANT
+  if (isServant) stats = _.cloneDeep(stats.SUMMON_STATS)
 
   const defPen =
     (stats.getValue(StatsObjectKeys.DEF_PEN) || 0) +

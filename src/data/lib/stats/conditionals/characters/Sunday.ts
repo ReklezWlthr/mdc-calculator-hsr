@@ -15,6 +15,7 @@ import {
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/calculator'
+import { teamOptionGenerator } from '@src/core/utils/data_format'
 
 const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
@@ -144,13 +145,14 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       duration: 2,
     },
     {
-      type: 'toggle',
+      type: 'element',
       id: 'sunday_ult',
       text: `The Beatified`,
       ...talents.ult,
       show: true,
-      default: false,
+      default: '0',
       duration: 3,
+      options: _.filter(teamOptionGenerator(team), (item) => item.value !== (index + 1).toString()),
     },
     {
       type: 'toggle',
@@ -174,13 +176,9 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'sunday_tech')]
+  const teammateContent: IContent[] = [findContentById(content, 'sunday_tech'), findContentById(content, 'sunday_ult')]
 
-  const allyContent: IContent[] = [
-    findContentById(content, 'sunday_skill'),
-    findContentById(content, 'sunday_ult'),
-    findContentById(content, 'sunday_e6'),
-  ]
+  const allyContent: IContent[] = [findContentById(content, 'sunday_skill'), findContentById(content, 'sunday_e6')]
 
   return {
     upgrade,
@@ -280,31 +278,7 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           })
         }
       }
-      if (aForm.sunday_ult) {
-        const multiplier = calcScaling(0.12, 0.018, skill, 'curved')
-        base.CALLBACK.push((x, d, w, all) => {
-          const value = {
-            name: `The Beatified`,
-            source: 'Sunday',
-            value: calcScaling(0.08, 0.004, skill, 'curved') + multiplier * all[index].getValue(Stats.CRIT_DMG),
-            multiplier,
-            base: toPercentage(all[index].getValue(Stats.CRIT_DMG)),
-            flat: toPercentage(calcScaling(0.08, 0.004, skill, 'curved')),
-          }
-          x.X_CRIT_DMG.push(value)
-          if (x.SUMMON_STATS) x.SUMMON_STATS.X_CRIT_DMG.push(value)
-          return x
-        })
-        if (c >= 2) {
-          const value = {
-            name: 'Eidolon 2',
-            source: 'Sunday',
-            value: 0.3,
-          }
-          base[Stats.ALL_DMG].push(value)
-          if (base.SUMMON_STATS) base.SUMMON_STATS[Stats.ALL_DMG].push(value)
-        }
-      }
+
       if (form.sunday_tech) {
         base[Stats.ALL_DMG].push({
           name: 'Technique',
@@ -359,20 +333,33 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       weakness: Element[],
       broken: boolean
     ) => {
-      if (form.sunday_ult) {
-        const multiplier = calcScaling(0.12, 0.018, skill, 'curved')
-        base.CALLBACK.push((x, d, w, all) => {
-          x.X_CRIT_DMG.push({
-            name: `The Beatified`,
-            source: 'Self',
-            value: calcScaling(0.08, 0.004, skill, 'curved') + multiplier * x.getValue(Stats.CRIT_DMG),
-            multiplier,
-            base: toPercentage(x.getValue(Stats.CRIT_DMG)),
-            flat: toPercentage(calcScaling(0.08, 0.004, skill, 'curved')),
+      _.forEach(team, (t, i) => {
+        if (+form.sunday_ult - 1 === i) {
+          const multiplier = calcScaling(0.12, 0.018, skill, 'curved')
+          t.CALLBACK.push((x, d, w, all) => {
+            const value = {
+              name: `The Beatified`,
+              source: 'Sunday',
+              value: calcScaling(0.08, 0.004, skill, 'curved') + multiplier * all[index].getValue(Stats.CRIT_DMG),
+              multiplier,
+              base: toPercentage(all[index].getValue(Stats.CRIT_DMG)),
+              flat: toPercentage(calcScaling(0.08, 0.004, skill, 'curved')),
+            }
+            x.X_CRIT_DMG.push(value)
+            if (x.SUMMON_STATS) x.SUMMON_STATS.X_CRIT_DMG.push(value)
+            return x
           })
-          return x
-        })
-      }
+          if (c >= 2) {
+            const value = {
+              name: 'Eidolon 2',
+              source: 'Sunday',
+              value: 0.3,
+            }
+            t[Stats.ALL_DMG].push(value)
+            if (t.SUMMON_STATS) t.SUMMON_STATS[Stats.ALL_DMG].push(value)
+          }
+        }
+      })
       if (form.sunday_e6) {
         base[Stats.CRIT_RATE].push({
           name: 'Talent',

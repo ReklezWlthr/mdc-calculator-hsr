@@ -15,6 +15,7 @@ import {
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/calculator'
+import { teamOptionGenerator } from '@src/core/utils/data_format'
 
 const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
@@ -145,22 +146,22 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const content: IContent[] = [
     {
-      type: 'toggle',
-      id: 'torrid_scorch',
-      text: `Torrid Scorch`,
+      type: 'element',
+      id: 'foxian_prayer',
+      text: `Foxian Prayer`,
       ...talents.skill,
-      show: true,
-      default: true,
-      sync: true,
+      show: c < 6,
+      default: '0',
       duration: 3,
+      options: teamOptionGenerator(team, true),
     },
     {
       type: 'toggle',
       id: 'foxian_prayer',
       text: `Foxian Prayer`,
       ...talents.skill,
-      show: true,
-      default: false,
+      show: c >= 6,
+      default: true,
       duration: 3,
     },
     {
@@ -187,12 +188,13 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'fugue_a6'), findContentById(content, 'fugue_skill')]
+  const teammateContent: IContent[] = [
+    findContentById(content, 'fugue_a6'),
+    findContentById(content, 'fugue_skill'),
+    findContentById(content, 'foxian_prayer'),
+  ]
 
   const allyContent: IContent[] = []
-
-  if (c >= 6) teammateContent.push(findContentById(content, 'foxian_prayer'))
-  else allyContent.push(findContentById(content, 'foxian_prayer'))
 
   return {
     upgrade,
@@ -212,9 +214,9 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     ) => {
       const base = _.cloneDeep(x)
 
-      if (form.torrid_scorch) base.BA_ALT = true
+      if (+form.foxian_prayer) base.BA_ALT = true
 
-      base.BASIC_SCALING = form.torrid_scorch
+      base.BASIC_SCALING = +form.foxian_prayer
         ? [
             {
               name: 'Main Target',
@@ -264,7 +266,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         source: 'Self',
         value: calcScaling(0.5, 0.05, talent, 'curved'),
       })
-      if (form.foxian_prayer) {
+      if ((c < 6 && +form.foxian_prayer - 1 === index) || (c >= 6 && form.foxian_prayer)) {
         base[Stats.BE].push({
           name: 'Foxian Prayer',
           source: 'Self',
@@ -325,7 +327,8 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         source: 'Fugue',
         value: calcScaling(0.5, 0.05, talent, 'curved'),
       })
-      if ((c < 6 && aForm.foxian_prayer) || (c >= 6 && form.foxian_prayer)) {
+      const aIndex = _.findIndex(team, (item) => item?.cId === base.ID) + (base.SUMMON_ID ? 10 : 0)
+      if ((c < 6 && +form.foxian_prayer - 1 === aIndex) || (c >= 6 && form.foxian_prayer)) {
         base[Stats.BE].push({
           name: 'Foxian Prayer',
           source: 'Fugue',
@@ -346,6 +349,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           })
         }
       }
+
       if (form.fugue_skill) {
         base.DEF_REDUCTION.push({
           name: 'Skill',
@@ -376,6 +380,13 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               source: 'Fugue',
               value: (base.getValue(Stats.BE) >= 2.1 ? 0.18 : 0.06) * form.fugue_a6,
             })
+          if (t.SUMMON_STATS) {
+            t.SUMMON_STATS?.[Stats.BE].push({
+              name: 'Ascension 6 Passive',
+              source: 'Fugue',
+              value: (base.getValue(Stats.BE) >= 2.1 ? 0.18 : 0.06) * form.fugue_a6,
+            })
+          }
         })
       }
 

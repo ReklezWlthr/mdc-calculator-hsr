@@ -15,6 +15,7 @@ import {
 import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/calculator'
+import { teamOptionGenerator } from '@src/core/utils/data_format'
 
 const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
@@ -49,7 +50,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       trace: 'Skill',
       title: `Acquisition Surety`,
       content: `Makes a single target ally become the <b>Debt Collector</b> and increases their SPD by <span class="text-desc">30</span>, lasting for <span class="text-desc">3</span> turn(s).
-      <br />After the <b>Debt Collector</b> attacks, deals <span class="text-desc">1</span> instance of Additional <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Jade's ATK to each enemy target hit, and consumes the Debt Collector's HP by an amount equal to <span class="text-desc">2%</span> of their Max HP. If the current HP is insufficient, reduces HP to <span class="text-desc">1</span>.
+      <br />After the <b>Debt Collector</b> attacks, deals <span class="text-desc">1</span> instance of Additional <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Jade's ATK to each enemy target hit, and consumes the <b>Debt Collector</b>'s HP by an amount equal to <span class="text-desc">2%</span> of their Max HP. If the current HP is insufficient, reduces HP to <span class="text-desc">1</span>.
       <br />If Jade becomes the <b>Debt Collector</b>, she cannot gain the SPD boost effect, and her attacks do not consume HP.
       <br />When the <b>Debt Collector</b> exists on the field, Jade cannot use her Skill. At the start of Jade's every turn, the <b>Debt Collector</b>'s duration reduces by <span class="text-desc">1</span> turn.`,
       value: [{ base: 15, growth: 1, style: 'curved' }],
@@ -150,14 +151,15 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       unique: true,
     },
     {
-      type: 'toggle',
+      type: 'element',
       id: 'debt_collector',
       text: `Debt Collector`,
       ...talents.skill,
       show: true,
-      default: false,
+      default: '0',
       unique: true,
       duration: 3,
+      options: teamOptionGenerator(team, true),
     },
     {
       type: 'toggle',
@@ -178,9 +180,9 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
   ]
 
-  const teammateContent: IContent[] = []
+  const teammateContent: IContent[] = [findContentById(content, 'debt_collector')]
 
-  const allyContent: IContent[] = [findContentById(content, 'debt_collector')]
+  const allyContent: IContent[] = []
 
   return {
     upgrade,
@@ -317,40 +319,63 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       weakness: Element[],
       broken: boolean
     ) => {
-      const dc = _.map(allForm, (item) => item.debt_collector)
-      const c6 = c >= 6 && _.some(dc)
-      dc[index] = c6 ? true : dc[index]
+      const dc = +form.debt_collector - 1
+      const c6 = c >= 6 && dc >= 0
       if (c6)
         base.QUANTUM_RES_PEN.push({
           name: 'Eidolon 6',
           source: 'Self',
           value: 0.2,
         })
-      _.forEach(dc, (f, i) => {
-        if (f) {
-          if (i !== index)
-            team[i][Stats.SPD].push({
-              name: 'Skill',
-              source: 'Jade',
-              value: 30,
-            })
-          team[i].CALLBACK.push((x) => {
+      const add = {
+        name: `Debt Collector's Additional DMG`,
+        value: [{ scaling: calcScaling(0.15, 0.01, skill, 'curved'), multiplier: Stats.ATK }],
+        element: Element.QUANTUM,
+        property: TalentProperty.ADD,
+        type: TalentType.NONE,
+        overrideIndex: index,
+        sum: true,
+      }
+      _.forEach(team, (t, i) => {
+        if (dc === i || (c6 && index === i)) {
+          t.CALLBACK.push((x) => {
             _.forEach(
               [x.BASIC_SCALING, x.SKILL_SCALING, x.ULT_SCALING, x.TALENT_SCALING, x.MEMO_SKILL_SCALING],
               (s) => {
-                if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
-                  s.push({
-                    name: `Debt Collector's Additional DMG`,
-                    value: [{ scaling: calcScaling(0.15, 0.01, skill, 'curved'), multiplier: Stats.ATK }],
-                    element: Element.QUANTUM,
-                    property: TalentProperty.ADD,
-                    type: TalentType.NONE,
-                    overrideIndex: index,
-                    sum: true,
-                  })
+                if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property))) {
+                  s.push(add)
+                }
               }
             )
             return x
+          })
+        }
+        if (dc === i + 10) {
+          t.CALLBACK.push((x) => {
+            _.forEach(
+              [
+                x.BASIC_SCALING,
+                x.SKILL_SCALING,
+                x.ULT_SCALING,
+                x.TALENT_SCALING,
+                x.MEMO_SKILL_SCALING,
+                x.MEMO_TALENT_SCALING,
+              ],
+              (s) => {
+                if (_.some(s, (item) => _.includes([TalentProperty.SERVANT], item.property))) {
+                  s.push(add)
+                }
+              }
+            )
+            return x
+          })
+        }
+
+        if (i !== index) {
+          team[i][Stats.SPD].push({
+            name: 'Skill',
+            source: 'Jade',
+            value: 30,
           })
         }
       })

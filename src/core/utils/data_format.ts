@@ -1,5 +1,5 @@
 import { MainStatValue, SubStatMap } from '@src/domain/artifact'
-import { Element, IArtifactEquip, ICharacter, ITeamChar, Stats } from '@src/domain/constant'
+import { Element, IArtifactEquip, ICharacter, ITeamChar, PathType, Stats, SummonName } from '@src/domain/constant'
 import _ from 'lodash'
 import { findCharacter } from './finder'
 import { TraceScaling } from '@src/domain/scaling'
@@ -205,3 +205,18 @@ export const swapElement = (array: any[], index1: number, index2: number) => {
 export const padArray = (array: any[], length: number, fill: any) => {
   return length > array.length ? array.concat(Array(length - array.length).fill(fill)) : array
 }
+
+export const teamOptionGenerator = (team: ITeamChar[], includeSummon?: boolean) => [
+  { name: 'None', value: '0' },
+  ..._.filter(
+    _.flatMap(team, (item, i) => {
+      const char = findCharacter(item?.cId)
+      if (!char) return null
+      const result = [{ name: char?.name, value: (i + 1).toString() }]
+      if (char?.path === PathType.REMEMBRANCE && includeSummon)
+        result.push({ name: SummonName[item?.cId], value: (i + 11).toString() })
+      return result
+    }),
+    (item) => !!item
+  ),
+]

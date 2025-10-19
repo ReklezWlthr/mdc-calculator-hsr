@@ -153,6 +153,15 @@ export const BaseSummonAggro = {
   '1415': 0,
 }
 
+export const SummonName = {
+  '1402': 'Garmentmaker',
+  '8007': 'Mem',
+  '1407': 'Netherwing: Pollux',
+  '1409': 'Little Ica',
+  '1413': 'Evey',
+  '1415': '███',
+}
+
 export enum TalentType {
   BA = 'Basic ATK',
   SKILL = 'Skill',

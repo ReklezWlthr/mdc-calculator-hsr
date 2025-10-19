@@ -16,6 +16,7 @@ import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/calculator'
 import { CallbackType } from '@src/domain/stats'
+import { teamOptionGenerator } from '@src/core/utils/data_format'
 
 const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
@@ -142,18 +143,19 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
 
   const content: IContent[] = [
     {
-      type: 'toggle',
+      type: 'element',
       id: 'bondmate',
       text: `Bondmate`,
       ...talents.skill,
       show: true,
-      default: false,
+      default: '0',
+      options: teamOptionGenerator(team),
     },
   ]
 
-  const teammateContent: IContent[] = []
+  const teammateContent: IContent[] = [findContentById(content, 'bondmate')]
 
-  const allyContent: IContent[] = [findContentById(content, 'bondmate')]
+  const allyContent: IContent[] = []
 
   return {
     upgrade,
@@ -290,7 +292,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           multiplier: 0.15,
         }
         _.forEach(all, (x, i) => {
-          if (allForm[i].bondmate && x?.ID) {
+          if (+form.bondmate - 1 === i && x?.ID) {
             x.X_ATK.push({ ...xATK, source: index === i ? 'Self' : 'Dan Heng • Permansor Terrae' })
             if (x.SUMMON_STATS) {
               x.SUMMON_STATS.X_ATK.push({ ...xATK, source: index === i ? 'Self' : 'Dan Heng • Permansor Terrae' })

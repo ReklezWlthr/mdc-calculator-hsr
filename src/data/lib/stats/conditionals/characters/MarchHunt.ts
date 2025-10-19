@@ -7,6 +7,7 @@ import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/calculator'
 import { PathType } from '../../../../../domain/constant'
+import { teamOptionGenerator } from '@src/core/utils/data_format'
 
 const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
@@ -19,6 +20,8 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
   const skill = t.skill + upgrade.skill
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
+
+  const index = _.findIndex(team, (item) => item?.cId === '1224')
 
   const talents: ITalent = {
     normal: {
@@ -47,7 +50,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       title: `Shifu, It's Tea Time!`,
       content: `Designates a single ally (excluding this unit) as <b class="text-hsr-imaginary">Shifu</b> and increases <b class="text-hsr-imaginary">Shifu</b>'s SPD by {{0}}%. Only the most recent target of March 7th's Skill is considered as <b class="text-hsr-imaginary">Shifu</b>.
       <br />When using Basic ATK or dealing <span class="text-desc">1</span> hit of Enhanced Basic ATK's DMG, triggers the corresponding effect if <b class="text-hsr-imaginary">Shifu</b> with the specified Path is present on the field:
-      <br /><b>Erudition, Destruction, The Hunt, Remembrance</b>: Deals Additional DMG (DMG Type based on <b class="text-hsr-imaginary">Shifu</b>'s Combat Type) equal to {{1}}% of March 7th's ATK.
+      <br /><b>Erudition, Destruction, The Hunt, Remembrance</b>: Deals <b>Additional DMG</b> (DMG Type based on <b class="text-hsr-imaginary">Shifu</b>'s Combat Type) equal to {{1}}% of March 7th's ATK.
       <br /><b>Harmony, Nihility, Preservation, Abundance</b>: Increases the Toughness Reduction of this instance of DMG by <span class="text-desc">100%</span>.`,
       value: [
         { base: 6, growth: 0.4, style: 'curved' },
@@ -159,18 +162,14 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       show: c >= 6,
       default: true,
     },
-  ]
-
-  const teammateContent: IContent[] = []
-
-  const allyContent: IContent[] = [
     {
-      type: 'toggle',
+      type: 'element',
       id: 'march_master',
       text: `March's Shifu`,
       ...talents.skill,
       show: true,
-      default: false,
+      default: '0',
+      options: _.filter(teamOptionGenerator(team, true), (item) => item.value !== (index + 1).toString()),
     },
     {
       type: 'toggle',
@@ -179,9 +178,13 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ...talents.a6,
       duration: 2,
       show: a.a6,
-      default: false,
+      default: true,
     },
   ]
+
+  const teammateContent: IContent[] = [findContentById(content, 'march_master'), findContentById(content, 'h_march_a6')]
+
+  const allyContent: IContent[] = []
 
   return {
     upgrade,
@@ -287,7 +290,8 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       weakness: Element[],
       broken: boolean
     ) => {
-      if (aForm.march_master && aForm.h_march_a6) {
+      const aIndex = _.findIndex(team, (item) => item?.cId === base.ID) + (base.SUMMON_ID ? 10 : 0)
+      if (+form.march_master - 1 === aIndex && form.h_march_a6) {
         base[Stats.CRIT_DMG].push({
           name: `Ascension 6 Passive`,
           source: 'March 7th',
@@ -313,9 +317,11 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       weakness: Element[],
       broken: boolean
     ) => {
-      const masterIndex = _.findIndex(allForm, (item) => item.march_master)
+      const memoTarget = +form.march_master >= 11
+      const masterIndex = +form.march_master - (memoTarget ? 11 : 1)
+      const target = memoTarget ? team[masterIndex].SUMMON_STATS : team[masterIndex]
       if (masterIndex >= 0) {
-        team[masterIndex][Stats.P_SPD].push({
+        target[Stats.P_SPD].push({
           name: 'Skill',
           source: 'March 7th',
           value: calcScaling(0.06, 0.004, skill, 'curved'),
@@ -343,26 +349,23 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             team[masterIndex].PATH
           )
         ) {
-          base.CALLBACK.push((x, _d, _w, all) => {
-            const add = {
-              name: `${team[masterIndex].NAME}'s Additional DMG`,
-              value: [{ scaling: calcScaling(0.1, 0.01, ult, 'curved'), multiplier: Stats.ATK }],
-              element: team[masterIndex].ELEMENT,
-              property: TalentProperty.ADD,
-              type: TalentType.NONE,
-              sum: true,
+          const add = {
+            name: `${target.NAME}'s Additional DMG`,
+            value: [{ scaling: calcScaling(0.1, 0.01, skill, 'curved'), multiplier: Stats.ATK }],
+            element: team[masterIndex].ELEMENT,
+            property: TalentProperty.ADD,
+            type: TalentType.NONE,
+            sum: true,
+          }
+          base.BASIC_SCALING.push(
+            { ...add, multiplier: form.h_march_ult ? 5 : 3, sum: false },
+            {
+              ...add,
+              name: `${target.NAME}'s Maximum Additional DMG`,
+              multiplier: form.h_march_ult ? 8 : 6,
             }
-            x.BASIC_SCALING.push(
-              { ...add, multiplier: form.h_march_ult ? 5 : 3, sum: false },
-              {
-                ...add,
-                name: `${team[masterIndex].NAME}'s Maximum Additional DMG`,
-                multiplier: form.h_march_ult ? 8 : 6,
-              }
-            )
-            if (c >= 2) x.SKILL_SCALING.push(add)
-            return x
-          })
+          )
+          if (c >= 2) base.SKILL_SCALING.push(add)
         } else {
           base.BASIC_SCALING = _.map(base.BASIC_SCALING, (item) => ({ ...item, break: item.break * 2 }))
           if (c >= 2) base.SKILL_SCALING = _.map(base.SKILL_SCALING, (item) => ({ ...item, break: item.break * 2 }))

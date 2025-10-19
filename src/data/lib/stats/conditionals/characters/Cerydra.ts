@@ -23,6 +23,7 @@ import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/calculator'
 import { CallbackType } from '@src/domain/stats'
+import { teamOptionGenerator } from '@src/core/utils/data_format'
 
 const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
@@ -154,22 +155,31 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     {
       type: 'element',
       id: 'military_merit',
-      text: `Military Merit Tier`,
+      text: `Military Merit`,
       ...talents.talent,
       show: true,
       default: '0',
-      options: [
-        { name: 'None', value: '0' },
-        { name: 'Military Merit', value: '1' },
-        { name: 'Peerage', value: '2' },
-      ],
+      options: teamOptionGenerator(team),
+      excludeSummon: true,
+    },
+    {
+      type: 'toggle',
+      id: 'peerage',
+      text: `Peerage`,
+      ...talents.skill,
+      show: true,
+      default: true,
       excludeSummon: true,
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'cerydra_a6')]
+  const teammateContent: IContent[] = [
+    findContentById(content, 'cerydra_a6'),
+    findContentById(content, 'military_merit'),
+    findContentById(content, 'peerage'),
+  ]
 
-  const allyContent: IContent[] = [findContentById(content, 'military_merit')]
+  const allyContent: IContent[] = []
 
   return {
     upgrade,
@@ -260,7 +270,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         }
 
         _.forEach(all, (f, i) => {
-          if (allForm[i].military_merit >= 1) {
+          if (+form.military_merit - 1 === i) {
             f.X_ATK.push({ ...atk, source: index === i ? 'Self' : 'Cerydra' })
             if (form.cerydra_a6 && index !== i) {
               f[Stats.SPD].push({
@@ -310,7 +320,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 }
               }
             )
-            if (allForm[i].military_merit >= 2) {
+            if (form.peerage) {
               f.SKILL_CD.push({ ...cd, source: index === i ? 'Self' : 'Cerydra' })
               f.ALL_TYPE_RES_PEN.push({
                 name: 'Peerage',
