@@ -425,20 +425,24 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
               _.forEach(
                 [x.BASIC_SCALING, x.SKILL_SCALING, x.ULT_SCALING, x.TALENT_SCALING, x.MEMO_SKILL_SCALING],
                 (s) => {
-                  if (
-                    _.some(s, (item) =>
-                      _.includes([TalentProperty.NORMAL, TalentProperty.FUA, TalentProperty.SERVANT], item.property)
-                    )
-                  )
+                  const add = {
+                    name: `Cipher E4's Additional DMG`,
+                    value: [{ scaling: 0.5, multiplier: Stats.ATK }],
+                    element: Element.QUANTUM,
+                    property: TalentProperty.ADD,
+                    type: TalentType.NONE,
+                    overrideIndex: index,
+                    sum: true,
+                  }
+                  if (_.some(s, (ss) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], ss.property))) {
+                    s.push(add)
+                  }
+                  if (_.some(s, (ss) => ss.property === TalentProperty.SERVANT)) {
                     s.push({
-                      name: `Cipher E4's Additional DMG`,
-                      value: [{ scaling: 0.5, multiplier: Stats.ATK }],
-                      element: Element.QUANTUM,
-                      property: TalentProperty.ADD,
-                      type: TalentType.NONE,
-                      overrideIndex: index,
-                      sum: true,
+                      ...add,
+                      name: add.name + ` (${x.SUMMON_STATS?.NAME})`,
                     })
+                  }
                 }
               )
               return x

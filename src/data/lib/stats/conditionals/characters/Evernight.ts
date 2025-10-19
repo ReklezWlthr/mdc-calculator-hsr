@@ -388,6 +388,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
                 type: TalentType.SERVANT,
                 break: 10,
                 sum: true,
+                hitSplit: [0.1, 0.1, 0.1, 0.1, 0.1, 0.5],
               },
             ]
       base.ULT_SCALING = [
@@ -526,6 +527,12 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           })
         }
       }
+
+      base.SUMMON_STATS?.AGGRO.push({
+        value: 3,
+        source: 'Self',
+        name: 'Memosprite Talent',
+      })
 
       return base
     },

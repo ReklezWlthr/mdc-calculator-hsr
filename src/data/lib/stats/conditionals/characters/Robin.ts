@@ -336,22 +336,26 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
                   team[i].MEMO_SKILL_SCALING,
                 ],
                 (s) => {
-                  if (
-                    _.some(s, (item) =>
-                      _.includes([TalentProperty.NORMAL, TalentProperty.FUA, TalentProperty.SERVANT], item.property)
-                    )
-                  )
+                  const add = {
+                    name: "Concerto's Additional DMG",
+                    value: [{ scaling: calcScaling(0.72, 0.048, skill, 'curved'), multiplier: Stats.ATK }],
+                    element: Element.PHYSICAL,
+                    property: TalentProperty.ADD,
+                    type: TalentType.NONE,
+                    overrideIndex: index,
+                    overrideCr: 1,
+                    overrideCd: form.robin_c6 ? 6 : 1.5,
+                    sum: true,
+                  }
+                  if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property))) {
+                    s.push(add)
+                  }
+                  if (_.some(s, (item) => item.property === TalentProperty.SERVANT)) {
                     s.push({
-                      name: "Concerto's Additional DMG",
-                      value: [{ scaling: calcScaling(0.72, 0.048, skill, 'curved'), multiplier: Stats.ATK }],
-                      element: Element.PHYSICAL,
-                      property: TalentProperty.ADD,
-                      type: TalentType.NONE,
-                      overrideIndex: index,
-                      overrideCr: 1,
-                      overrideCd: form.robin_c6 ? 6 : 1.5,
-                      sum: true,
+                      ...add,
+                      name: add.name + ` (${team[i].SUMMON_STATS?.NAME})`,
                     })
+                  }
                 }
               )
           })

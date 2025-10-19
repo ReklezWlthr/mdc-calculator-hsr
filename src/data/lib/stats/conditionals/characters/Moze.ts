@@ -316,16 +316,24 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
             _.forEach(
               [t.BASIC_SCALING, t.SKILL_SCALING, t.ULT_SCALING, t.TALENT_SCALING, t.MEMO_SKILL_SCALING],
               (s) => {
-                if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
+                const add = {
+                  name: `Prey Additional DMG`,
+                  value: [{ scaling: calcScaling(0.15, 0.015, skill, 'curved'), multiplier: Stats.ATK }],
+                  element: Element.LIGHTNING,
+                  property: TalentProperty.ADD,
+                  type: TalentType.NONE,
+                  overrideIndex: index,
+                  sum: true,
+                }
+                if (_.some(s, (ss) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], ss.property))) {
+                  s.push(add)
+                }
+                if (_.some(s, (ss) => ss.property === TalentProperty.SERVANT)) {
                   s.push({
-                    name: `Prey Additional DMG`,
-                    value: [{ scaling: calcScaling(0.15, 0.015, skill, 'curved'), multiplier: Stats.ATK }],
-                    element: Element.LIGHTNING,
-                    property: TalentProperty.ADD,
-                    type: TalentType.NONE,
-                    overrideIndex: index,
-                    sum: true,
+                    ...add,
+                    name: add.name + ` (${t.SUMMON_STATS?.NAME})`,
                   })
+                }
               }
             )
           }

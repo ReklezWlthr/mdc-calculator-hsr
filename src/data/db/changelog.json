@@ -1,6 +1,13 @@
 [
   {
     "version": "1.2-4",
+    "date": "Oct 19th, 2025",
+    "desc": [
+      "Updated: Now displays the team-wide <b>Additional DMG</b> (e.g. <span class=\"text-hsr-physical\">Robin</span>, <span class=\"text-hsr-quantum\">Tribbie</span>) from both memomaster and memosprite when performing <u>Joint Attacks</u>."
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Oct 17th, 2025",
     "desc": [
       "Content Version: <span class=\"text-desc\">v3.7v4</span>",

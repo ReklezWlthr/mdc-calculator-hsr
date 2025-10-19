@@ -322,21 +322,23 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             _.forEach(
               [t.BASIC_SCALING, t.SKILL_SCALING, t.ULT_SCALING, t.TALENT_SCALING, t.MEMO_SKILL_SCALING],
               (s) => {
-                if (
-                  _.some(
-                    s,
-                    (ss) => !_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property)
-                  )
-                ) {
+                const add = {
+                  name: 'Additional DMG per Enemy',
+                  value: [{ scaling: calcScaling(0.06, 0.006, ult, 'curved'), multiplier: Stats.HP }],
+                  element: Element.QUANTUM,
+                  property: TalentProperty.ADD,
+                  type: TalentType.NONE,
+                  multiplier: c >= 2 ? 1.2 : 1,
+                  overrideIndex: index,
+                  sum: true,
+                }
+                if (_.some(s, (ss) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], ss.property))) {
+                  s.push(add)
+                }
+                if (_.some(s, (ss) => ss.property === TalentProperty.SERVANT)) {
                   s.push({
-                    name: 'Additional DMG per Enemy',
-                    value: [{ scaling: calcScaling(0.06, 0.006, ult, 'curved'), multiplier: Stats.HP }],
-                    element: Element.QUANTUM,
-                    property: TalentProperty.ADD,
-                    type: TalentType.NONE,
-                    multiplier: c >= 2 ? 1.2 : 1,
-                    overrideIndex: index,
-                    sum: true,
+                    ...add,
+                    name: add.name + ` (${t.SUMMON_STATS?.NAME})`,
                   })
                 }
                 if (c >= 1) {

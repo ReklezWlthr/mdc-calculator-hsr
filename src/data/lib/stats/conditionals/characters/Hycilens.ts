@@ -280,6 +280,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           type: TalentType.BA,
           break: 10,
           sum: true,
+          hitSplit: [0.5, 0.5],
         },
       ]
       base.SKILL_SCALING = [

@@ -307,6 +307,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               type: TalentType.BA,
               break: 30,
               sum: true,
+              hitSplit: [0.3, 0.7],
             },
             {
               name: 'Adjacent',
@@ -315,6 +316,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 20,
+              hitSplit: [0.3, 0.7],
             },
           ]
         : [

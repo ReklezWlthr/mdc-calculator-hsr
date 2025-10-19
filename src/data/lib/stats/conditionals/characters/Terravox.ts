@@ -182,6 +182,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           type: TalentType.BA,
           break: 10,
           sum: true,
+          hitSplit: [0.3, 0.7],
         },
       ]
       base.SKILL_SCALING = [
@@ -229,6 +230,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           element: Element.PHYSICAL,
           property: TalentProperty.FUA,
           type: TalentType.NONE,
+          hitSplit: [0.25, 0.25, 0.25, 0.25],
         },
       ]
       base.TALENT_SCALING = [
