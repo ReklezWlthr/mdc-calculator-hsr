@@ -378,7 +378,7 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               sum: false,
             },
           ]
-      const c6Scaling = form.the_herta_c6 >= 3 ? 4 : form.the_herta_c6 === 2 ? 2.5 : form.the_herta_c6 === 1 ? 1.4 : 0
+      const c6Scaling = form.the_herta_c6 >= 3 ? 1.4 : form.the_herta_c6 === 2 ? 2.5 : form.the_herta_c6 === 1 ? 4 : 0
       base.ULT_SCALING = [
         {
           name: 'AoE',
