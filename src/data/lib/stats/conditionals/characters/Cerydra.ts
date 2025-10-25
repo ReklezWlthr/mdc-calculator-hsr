@@ -347,7 +347,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           })
         }
         if (c >= 2) {
-          base[Stats.CRIT_DMG].push({
+          base[Stats.ALL_DMG].push({
             name: 'Eidolon 2',
             value: 1.6,
             source: 'Self',

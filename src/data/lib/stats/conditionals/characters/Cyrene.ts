@@ -797,14 +797,14 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       base[Stats.ALL_DMG].push({
         name: `Talent`,
         source: 'Cyrene',
-        value: calcScaling(0.1, 0.01, ult, 'curved'),
+        value: calcScaling(0.1, 0.01, talent, 'curved'),
       })
 
       if (aForm.cyrene_non_ch) {
         base[Stats.ALL_DMG].push({
           name: `Memosprite Skill`,
           source: 'Cyrene',
-          value: calcScaling(0.2, 0.04, ult, 'curved'),
+          value: calcScaling(0.2, 0.04, memo_skill, 'linear'),
         })
       }
 
