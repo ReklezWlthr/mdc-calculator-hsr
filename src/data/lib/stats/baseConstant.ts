@@ -253,6 +253,7 @@ export const baseStatsObject: BaseStatsType = {
   SUMMON_ID: '',
 
   MAX_SP: 5,
+  CYRENE_SKILL_LEVEL: 1,
 }
 
 export const TalentTypeMap = {
