@@ -615,6 +615,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
   const teammateContent: IContent[] = [
     ...chrysosBuffs,
     findContentById(content, 'cyrene_skill'),
+    findContentById(content, 'cyrene_e2'),
     findContentById(content, 'cyrene_e6'),
     findContentById(content, 'cyrene_cas_count'),
     findContentById(content, 'cyrene_dhpt_shield'),
@@ -889,7 +890,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                         name: `${ss.name} - Cyrene`,
                         multiplier:
                           (ss.multiplier || 1) *
-                          (calcScaling(0.12, 0.012, skill, 'curved') + (0.05 * form.cyrene_e2 || 0)),
+                          (calcScaling(0.12, 0.012, skill, 'curved') + (0.06 * form.cyrene_e2 || 0)),
                         property: TalentProperty.TRUE,
                         break: ss.break * (calcScaling(0.12, 0.012, skill, 'curved') + (0.06 * form.cyrene_e2 || 0)),
                         chance: null,
@@ -1038,14 +1039,11 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                 }
               }
               // Cerydra
-              if (
-                _.includes(teamId, '1412') &&
-                form.cyrene_cerydra &&
-                _.includes(['1', '2'], allForm[i].military_merit)
-              ) {
-                t[Stats.CRIT_DMG].push({
+              if (t.ID === '1412' && form.cyrene_cerydra) {
+                const meritIndex = +allForm[i].military_merit - 1
+                all[meritIndex][Stats.CRIT_DMG].push({
                   name: `Ode to Law`,
-                  source: 'Cyrene',
+                  source: meritIndex === index ? 'Self' : 'Cyrene',
                   value: calcScaling(0.15, 0.03, memo_skill, 'linear'),
                 })
               }
@@ -1057,10 +1055,11 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                 }))
               }
               // Terravox
-              if (_.includes(teamId, '1414') && form.cyrene_dhpt && allForm[i].bondmate) {
-                t[Stats.ALL_DMG].push({
+              if (t.ID === '1414' && form.cyrene_dhpt) {
+                const bondmateIndex = +allForm[i].bondmate - 1
+                all[bondmateIndex][Stats.ALL_DMG].push({
                   name: `Ode to Earth`,
-                  source: 'Cyrene',
+                  source: bondmateIndex === index ? 'Self' : 'Cyrene',
                   value: calcScaling(0.12, 0.024, memo_skill, 'linear'),
                 })
                 all[_.findIndex(teamId, (item) => item === '1414')]?.ULT_SCALING.push({
@@ -1077,8 +1076,6 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                   ],
                   sum: true,
                 })
-              }
-              if (t.ID === '1414' && form.cyrene_dhpt) {
                 t.TALENT_SCALING.push(
                   ..._.map(t.TALENT_SCALING, (item) => ({
                     ...item,

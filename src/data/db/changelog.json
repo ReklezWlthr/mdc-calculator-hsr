@@ -3,7 +3,8 @@
     "version": "1.2-4",
     "date": "Oct 25th, 2025",
     "desc": [
-      "Fixed: <span class=\"text-hsr-wind\">Cerydra</span>'s E6 <b>All-Type RES PEN</b> is now applied correctly."
+      "Fixed: <span class=\"text-hsr-wind\">Cerydra</span>'s E6 <b>All-Type RES PEN</b> is now applied correctly.",
+      "Fixed: <span class=\"text-hsr-ice\">Cyrene</span>'s <b class=\"text-hsr-physical\">Ode to Earth</b> and <b class=\"text-hsr-wind\">Ode to Law</b> is now applied to the buff's target instead of the caster."
     ]
   },
   {
