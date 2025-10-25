@@ -812,7 +812,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         base.DEF_REDUCTION.push({
           name: `Eidolon 6`,
           source: 'Cyrene',
-          value: 0.12,
+          value: 0.2,
         })
       }
 
