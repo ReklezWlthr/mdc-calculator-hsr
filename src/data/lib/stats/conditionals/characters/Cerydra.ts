@@ -272,18 +272,18 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         _.forEach(all, (f, i) => {
           if (+form.military_merit - 1 === i) {
             f.X_ATK.push({ ...atk, source: index === i ? 'Self' : 'Cerydra' })
-            if (form.cerydra_a6 && index !== i) {
+            if (form.cerydra_aุ) {
               f[Stats.SPD].push({
                 name: 'Ascension 6 Passive',
                 value: 20,
-                source: 'Cerydra',
+                source: i === index ? 'Self' : 'Cerydra',
               })
             }
-            if (c >= 6 && index !== i) {
+            if (c >= 6) {
               f.ALL_TYPE_RES_PEN.push({
                 name: 'Eidolon 6',
                 value: 0.2,
-                source: 'Cerydra',
+                source: i === index ? 'Self' : 'Cerydra',
               })
             }
             if (c >= 1) {
@@ -338,7 +338,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         return all
       })
 
-      if (+form.military_merit - 1 >= 0) {
+      if (+form.military_merit - 1 >= 0 && +form.military_merit - 1 !== index) {
         if (form.cerydra_a6) {
           base[Stats.SPD].push({
             name: 'Ascension 6 Passive',
