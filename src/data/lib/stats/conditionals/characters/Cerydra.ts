@@ -280,13 +280,11 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               })
             }
             if (c >= 6 && index !== i) {
-              if (c >= 6) {
-                base.ALL_TYPE_RES_PEN.push({
-                  name: 'Eidolon 6',
-                  value: 0.2,
-                  source: 'Cerydra',
-                })
-              }
+              f.ALL_TYPE_RES_PEN.push({
+                name: 'Eidolon 6',
+                value: 0.2,
+                source: 'Cerydra',
+              })
             }
             if (c >= 1) {
               f.DEF_PEN.push({
@@ -324,7 +322,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               f.SKILL_CD.push({ ...cd, source: index === i ? 'Self' : 'Cerydra' })
               f.ALL_TYPE_RES_PEN.push({
                 name: 'Peerage',
-                value: 0.1,
+                value: calcScaling(0.08, 0.002, skill, 'curved'),
                 source: index === i ? 'Self' : 'Cerydra',
               })
               if (c >= 1) {
@@ -340,7 +338,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         return all
       })
 
-      if (_.some(allForm, (item) => item.military_merit)) {
+      if (+form.military_merit - 1 >= 0) {
         if (form.cerydra_a6) {
           base[Stats.SPD].push({
             name: 'Ascension 6 Passive',
