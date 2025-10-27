@@ -147,7 +147,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: `Memosprite Skill`,
       text: `Ode to Reason`,
       title: `Ode to Reason`,
-      content: `<i class="text-amber-600">One-time effect.</i> When used on Anaxa, recovers <span class="text-desc">1</span> Skill Point(s) for allies and allows Anaxa to take action immediately. Increases the number of Skill DMG instances by <span class="text-desc">3</span> for <span class="text-desc">1</span> turn. The next time Anaxa uses an ability, he gains <b class="text-desc">True Knowledge</b>: Increases the ATK of all Erudition Path characters by <span class="text-desc">${calcScaling(
+      content: `<i class="text-amber-600">One-time effect.</i> When used on Anaxa, recovers <span class="text-desc">1</span> Skill Point(s) for allies and allows Anaxa to take action immediately. Increases the number of Skill DMG instances by <span class="text-desc">3</span> for <span class="text-desc">1</span> turn. The next time Anaxa uses his Basic ATK or Skill, he gains <b class="text-desc">True Knowledge</b>: Increases the ATK of all Erudition Path characters by <span class="text-desc">${calcScaling(
         30,
         6,
         memo_skill,
@@ -293,7 +293,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         1.8,
         memo_skill,
         'linear'
-      )}%</span>. After Evernight uses a Skill/Ultimate, additionally gains <b class="text-indigo-300">Memoria</b>. The CRIT DMG boost effect provided by the Skill is further increased by an amount equal to <span class="text-desc">${calcScaling(
+      )}%</span>. After Evernight uses a Skill/Ultimate, additionally gains <span class="text-desc">1</span> <b class="text-indigo-300">Memoria</b> point(s). The CRIT DMG boost effect provided by the Skill is further increased by an amount equal to <span class="text-desc">${calcScaling(
         6,
         1.2,
         memo_skill,
@@ -366,7 +366,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     unique_summon_skill: {
       trace: 'Exclusive Memosprite Skill',
       title: 'This Ode, to All Lives',
-      content: `Applies a buff to one designated ally. When the target is a Chrysos Heir, the target gains a special effect. When the target is not a Chrysos Heir, increases the target's DMG dealt by {{0}}% for <span class="text-desc">2</span> turn(s).
+      content: `Applies a buff to one designated ally character. When the character is a Chrysos Heir, the target gains a special effect. When the character is not a Chrysos Heir, increases the target's DMG dealt by {{0}}% for <span class="text-desc">2</span> turns. This effect also applies on memosprites.
       <br />
       ${_.join(
         _.map(
@@ -806,6 +806,13 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           source: 'Cyrene',
           value: calcScaling(0.2, 0.04, memo_skill, 'linear'),
         })
+        if (base.SUMMON_STATS) {
+          base.SUMMON_STATS[Stats.ALL_DMG].push({
+            name: `Memosprite Skill`,
+            source: 'Cyrene',
+            value: calcScaling(0.2, 0.04, memo_skill, 'linear'),
+          })
+        }
       }
 
       if (form.cyrene_e6) {
