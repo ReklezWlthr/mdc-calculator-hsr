@@ -418,6 +418,8 @@ export const ScannerArtifactTypeMap = {
 }
 
 export const CustomConditionalMap = {
+  DEF_PEN: 'All-Type DEF PEN',
+
   ALL_TYPE_RES_PEN: 'All-Type RES PEN',
   ALL_TYPE_DEF_PEN: 'All-Type DEF PEN',
   BREAK_EFF: 'Weakness Break Efficiency',
@@ -460,6 +462,25 @@ export const CustomConditionalMap = {
   SUPER_BREAK_DEF_PEN: 'Super Break DEF PEN',
   FUA_CR: 'Follow-Up CRIT Rate',
   FUA_CD: 'Follow-Up CRIT DMG',
+
+  DEF_REDUCTION: 'DEF Reduction',
+  E_RES_RED: 'Effect RES Reduction',
+
+  VULNERABILITY: 'All-Type Vulnerability',
+  DOT_VUL: 'DoT Vulnerability',
+  FUA_VUL: 'Follow-Up DMG Vulnerability',
+  BREAK_VUL: 'Break DMG Vulnerability',
+  ULT_VUL: 'Ultimate Vulnerability',
+  FIRE_VUL: 'Fire DMG Vulnerability',
+
+  ALL_TYPE_RES_RED: 'All-Type RES Reduction',
+  PHYSICAL_RES_RED: 'Physical RES Reduction',
+  FIRE_RES_RED: 'Fire RES Reduction',
+  ICE_RES_RED: 'Ice RES Reduction',
+  WIND_RES_RED: 'Wind RES Reduction',
+  LIGHTNING_RES_RED: 'Lightning RES Reduction',
+  QUANTUM_RES_RED: 'Quantum RES Reduction',
+  IMAGINARY_RES_RED: 'Imaginary RES Reduction',
 }
 
 export const BreakDebuffType = {

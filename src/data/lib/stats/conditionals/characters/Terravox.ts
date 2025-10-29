@@ -268,6 +268,11 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       weakness: Element[],
       broken: boolean
     ) => {
+      _.forEach(team, (x, i) => {
+        if (+form.bondmate - 1 === i && x?.cId === base.ID) {
+          base.SUMMON = true
+        }
+      })
       return base
     },
     postCompute: (

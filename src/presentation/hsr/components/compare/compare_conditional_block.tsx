@@ -71,6 +71,7 @@ export const CompareConditionalBlock = observer(({ team, stats, content }: Compa
       <CustomConditionalBlock
         index={setupStore.selected[1]}
         customOverride={setupStore.custom[setupIndex][charIndex]}
+        customDebuffOverride={setupStore.customDebuff[setupIndex]}
         setValue={setupStore.setCustomValue}
         removeValue={setupStore.removeCustomValue}
       />

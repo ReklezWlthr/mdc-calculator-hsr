@@ -44,6 +44,12 @@ interface CalculatorOptions {
     debuff: boolean
     toggled: boolean
   }[][]
+  customDebuffOverride?: {
+    name: StatsObjectKeysT
+    value: number
+    debuff: boolean
+    toggled: boolean
+  }[]
   doNotSaveStats?: boolean
   indexOverride?: number
   talentOverride?: ITeamChar
@@ -57,6 +63,7 @@ export const useCalculator = ({
   teamOverride,
   formOverride,
   customOverride,
+  customDebuffOverride,
   indexOverride,
   talentOverride,
   weaknessOverride,
@@ -73,6 +80,7 @@ export const useCalculator = ({
   const forms = formOverride || calculatorStore.form
   const team = teamOverride || teamStore.characters
   const custom = customOverride || calculatorStore.custom
+  const customDebuff = customDebuffOverride || calculatorStore.customDebuff
   const buffer = buffedOverride || settingStore.settings.buffed
 
   const mainComputed = finalStats?.[selected]
@@ -306,6 +314,14 @@ export const useCalculator = ({
             value: v.value / (isFlat(v.name) ? 1 : 100),
           })
       })
+      _.forEach(customDebuff, (v) => {
+        if (v.toggled)
+          x[v.name as any].push({
+            name: 'Manual',
+            source: 'Custom',
+            value: v.value / (isFlat(v.name) ? 1 : 100),
+          })
+      })
       return x
     })
     // Always loop; artifact buffs are either self or team-wide so everything is in each character's own form
@@ -460,7 +476,16 @@ export const useCalculator = ({
     }
     setFinalStats(cleaned)
     setFinalDebuff(debuffs)
-  }, [baseStats, forms, custom, team, calculatorStore.weakness, calculatorStore.broken, calculatorStore.toughness])
+  }, [
+    baseStats,
+    forms,
+    custom,
+    customDebuff,
+    team,
+    calculatorStore.weakness,
+    calculatorStore.broken,
+    calculatorStore.toughness,
+  ])
 
   // =================
   //

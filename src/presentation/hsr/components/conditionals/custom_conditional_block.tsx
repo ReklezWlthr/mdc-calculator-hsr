@@ -12,6 +12,7 @@ import { Dispatch, SetStateAction, useCallback, useState } from 'react'
 import { CustomModal } from '@src/presentation/hsr/components/modals/custom_modal'
 import { CustomRemoverT, CustomSetterT } from '@src/data/stores/setup_store'
 import { StatsObjectKeysT } from '@src/data/lib/stats/baseConstant'
+import { CustomDebuffModal } from '../modals/custom_debuff_modal'
 
 interface CustomConditionalBlockProps {
   index: number
@@ -23,17 +24,29 @@ interface CustomConditionalBlockProps {
     debuff: boolean
     toggled: boolean
   }[]
+  customDebuffOverride?: {
+    name: StatsObjectKeysT
+    value: number
+    debuff: boolean
+    toggled: boolean
+  }[]
 }
 
 export const CustomConditionalBlock = observer(
-  ({ index, removeValue, setValue, customOverride }: CustomConditionalBlockProps) => {
+  ({ index, removeValue, setValue, customOverride, customDebuffOverride }: CustomConditionalBlockProps) => {
     const [open, setOpen] = useState(true)
 
     const { calculatorStore, modalStore } = useStore()
     const custom = customOverride || calculatorStore.custom[index]
+    const customDebuff = customDebuffOverride || calculatorStore.customDebuff
 
     const onOpenCustomModal = useCallback(
       () => modalStore.openModal(<CustomModal setCustomValue={setValue} />),
+      [setValue]
+    )
+
+    const onOpenCustomDebuffModal = useCallback(
+      () => modalStore.openModal(<CustomDebuffModal setCustomValue={setValue} />),
       [setValue]
     )
 
@@ -64,7 +77,7 @@ export const CustomConditionalBlock = observer(
           )}
         >
           <div className="space-y-3">
-            {!_.isEmpty(custom) &&
+            {!!_.size(custom) &&
               _.map(custom, (mod, i) => (
                 <div className="grid items-center grid-cols-12 text-xs gap-x-1" key={mod.name}>
                   <div className="col-span-5">
@@ -72,7 +85,7 @@ export const CustomConditionalBlock = observer(
                       {CustomConditionalMap[mod.name] || mod.name}
                     </p>
                   </div>
-                  <div className="col-span-2 text-center text-desc">Custom</div>
+                  <div className="col-span-2 text-center text-blue">Buff</div>
                   <TextInput
                     type="number"
                     value={mod.value?.toString()}
@@ -94,6 +107,36 @@ export const CustomConditionalBlock = observer(
                   </div>
                 </div>
               ))}
+            {!!_.size(customDebuff) &&
+              _.map(customDebuff, (mod, i) => (
+                <div className="grid items-center grid-cols-12 text-xs gap-x-1" key={mod.name}>
+                  <div className="col-span-5">
+                    <p className="w-full text-xs text-center text-white truncate">
+                      {CustomConditionalMap[mod.name] || mod.name}
+                    </p>
+                  </div>
+                  <div className="col-span-2 text-center text-red">Debuff</div>
+                  <TextInput
+                    type="number"
+                    value={mod.value?.toString()}
+                    onChange={(value) => set(i, mod.name, value ?? '', mod.toggled, mod.debuff)}
+                    style="col-span-2"
+                    small
+                  />
+                  <div className="flex justify-center col-span-2">
+                    <CheckboxInput
+                      onClick={(value) => set(i, mod.name, mod.value, value, mod.debuff)}
+                      checked={mod.toggled}
+                    />
+                  </div>
+                  <div className="flex justify-center">
+                    <i
+                      className="flex items-center justify-center h-6 cursor-pointer fa-solid fa-trash"
+                      onClick={() => remove(index, i, true)}
+                    />
+                  </div>
+                </div>
+              ))}
           </div>
           <div
             className="flex items-center justify-center w-full h-6 gap-2 text-sm duration-200 rounded-lg cursor-pointer hover:bg-primary"
@@ -101,6 +144,13 @@ export const CustomConditionalBlock = observer(
           >
             <i className="text-xs fa-solid fa-plus" />
             <p className="text-xs">Add New Custom Modifier</p>
+          </div>
+          <div
+            className="flex items-center justify-center w-full h-6 gap-2 text-sm duration-200 rounded-lg cursor-pointer hover:bg-primary"
+            onClick={onOpenCustomDebuffModal}
+          >
+            <i className="text-xs fa-solid fa-plus" />
+            <p className="text-xs">Add New Custom Debuff</p>
           </div>
         </div>
       </div>

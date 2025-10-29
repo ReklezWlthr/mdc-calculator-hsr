@@ -60,6 +60,12 @@ export interface SetupStoreType {
     debuff: boolean
     toggled: boolean
   }[][][]
+  customDebuff: {
+    name: StatsObjectKeysT
+    value: number
+    debuff: boolean
+    toggled: boolean
+  }[][]
   forms: Record<string, any>[][]
   hydrated: boolean
   res: Record<Element, number>
@@ -110,6 +116,12 @@ export class SetupStore {
     debuff: boolean
     toggled: boolean
   }[][][]
+  customDebuff: {
+    name: StatsObjectKeysT
+    value: number
+    debuff: boolean
+    toggled: boolean
+  }[][]
   hydrated: boolean = false
   forms: Record<string, any>[][]
   res: Record<Element, number>
@@ -127,7 +139,8 @@ export class SetupStore {
     this.team = []
     this.tab = 'mod'
     this.selected = [0, 0]
-    this.custom = Array(4).fill(Array(4))
+    this.custom = Array(4).fill(Array(4).fill([]))
+    this.customDebuff = Array(4).fill([])
     this.main = null
     this.mainChar = null
     this.comparing = Array(3)
@@ -309,21 +322,38 @@ export class SetupStore {
     debuff: boolean = false
   ) => {
     const [setupIndex, charIndex] = this.selected
-    if (innerIndex < 0) {
-      this.custom[setupIndex][charIndex] = [
-        ...(this.custom[setupIndex][charIndex] || []),
-        { name: key, value, debuff, toggled },
-      ]
+    if (debuff) {
+      if (innerIndex < 0) {
+        this.customDebuff[setupIndex] = [
+          ...(this.customDebuff[setupIndex] || []),
+          { name: key, value, debuff, toggled },
+        ]
+      } else {
+        this.customDebuff[setupIndex].splice(innerIndex, 1, { name: key, value, debuff, toggled })
+      }
+      this.customDebuff = _.cloneDeep(this.customDebuff)
     } else {
-      this.custom[setupIndex][charIndex].splice(innerIndex, 1, { name: key, value, debuff, toggled })
+      if (innerIndex < 0) {
+        this.custom[setupIndex][charIndex] = [
+          ...(this.custom[setupIndex][charIndex] || []),
+          { name: key, value, debuff, toggled },
+        ]
+      } else {
+        this.custom[setupIndex][charIndex].splice(innerIndex, 1, { name: key, value, debuff, toggled })
+      }
+      this.custom = _.cloneDeep(this.custom)
     }
-    this.custom = _.cloneDeep(this.custom)
   }
 
-  removeCustomValue = (_index: number, innerIndex: number) => {
+  removeCustomValue = (_index: number, innerIndex: number, debuff: boolean = false) => {
     const [setupIndex, charIndex] = this.selected
-    this.custom[setupIndex][charIndex].splice(innerIndex, 1)
-    this.custom = _.cloneDeep(this.custom)
+    if (debuff) {
+      this.customDebuff[setupIndex].splice(innerIndex, 1)
+      this.customDebuff = _.cloneDeep(this.customDebuff)
+    } else {
+      this.custom[setupIndex][charIndex].splice(innerIndex, 1)
+      this.custom = _.cloneDeep(this.custom)
+    }
   }
 
   saveTeam = (team: TSetup) => {

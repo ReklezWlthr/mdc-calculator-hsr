@@ -317,10 +317,11 @@ export const CharDetail = observer(() => {
                   body={
                     <p>
                       Some characters are enhanced: their abilities, Traces, and Eidolon effects may change. You can
-                      switch between states here. Changes are NOT reflected anywhere else in the calculator.
+                      switch between states here.
                     </p>
                   }
-                  style="max-w-[450px]"
+                  style="w-[450px]"
+                  position="bottom"
                 >
                   <i className="fa-regular fa-question-circle" />
                 </Tooltip>

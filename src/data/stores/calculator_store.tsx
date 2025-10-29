@@ -58,6 +58,7 @@ export class CalculatorStore {
   level: number | string
   selected: number
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean }[][]
+  customDebuff: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean }[]
 
   constructor() {
     this.tab = 'mod'
@@ -81,8 +82,9 @@ export class CalculatorStore {
       [Element.IMAGINARY]: 0,
       [Element.NONE]: 0,
     }
-    this.custom = Array(4)
+    this.custom = Array(4).fill([])
     this.debuffs = []
+    this.customDebuff = []
     this.hp = 1
     this.toughness = 30
     this.effRes = 0
@@ -127,18 +129,32 @@ export class CalculatorStore {
     toggled: boolean,
     debuff: boolean = false
   ) => {
-    const index = this.selected
-    if (innerIndex < 0) {
-      this.custom[index] = [...(this.custom[index] || []), { name: key, value, debuff, toggled }]
+    if (debuff) {
+      if (innerIndex < 0) {
+        this.customDebuff = [...(this.customDebuff || []), { name: key, value, debuff, toggled }]
+      } else {
+        this.customDebuff.splice(innerIndex, 1, { name: key, value, debuff, toggled })
+      }
+      this.customDebuff = _.cloneDeep(this.customDebuff)
     } else {
-      this.custom[index].splice(innerIndex, 1, { name: key, value, debuff, toggled })
+      const index = this.selected
+      if (innerIndex < 0) {
+        this.custom[index] = [...(this.custom[index] || []), { name: key, value, debuff, toggled }]
+      } else {
+        this.custom[index].splice(innerIndex, 1, { name: key, value, debuff, toggled })
+      }
+      this.custom = _.cloneDeep(this.custom)
     }
-    this.custom = _.cloneDeep(this.custom)
   }
 
-  removeCustomValue = (index: number, innerIndex: number) => {
-    this.custom[index].splice(innerIndex, 1)
-    this.custom = _.cloneDeep(this.custom)
+  removeCustomValue = (index: number, innerIndex: number, debuff: boolean = false) => {
+    if (debuff) {
+      this.customDebuff.splice(innerIndex, 1)
+      this.customDebuff = _.cloneDeep(this.customDebuff)
+    } else {
+      this.custom[index].splice(innerIndex, 1)
+      this.custom = _.cloneDeep(this.custom)
+    }
   }
 
   setTotal = (key: TalentType, index: number, name: string, value: number) => {
@@ -156,9 +172,9 @@ export class CalculatorStore {
   getDefMult = (level: number, defPen: number = 0, defRed: number = 0) => {
     const base = _.includes(this.enemy, 'Trot') ? 300 : 200
     const growth = _.includes(this.enemy, 'Trot') ? 15 : 10
-    const def = (base + growth * (+this.level || 1)) * (1 - defPen - defRed)
+    const def = (base + growth * (+this.level || 1)) * _.max([1 - defPen - defRed, 0])
 
-    return _.min([1 - def / (def + 200 + 10 * level), 1])
+    return 1 - def / (def + 200 + 10 * level)
   }
 
   getResMult = (element: Element, resPen: number) => {

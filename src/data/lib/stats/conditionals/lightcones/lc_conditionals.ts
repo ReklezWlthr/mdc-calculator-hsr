@@ -2469,18 +2469,17 @@ export const LCTeamConditionals: IWeaponContent[] = [
     id: '23051',
     excludeSummon: true,
     scaling: (base, form, r, { own }) => {
-      const hasSummon = base.PATH === PathType.REMEMBRANCE || _.includes(ActionBarSummon, base.ID)
       if (form['23051'] && !checkBuffExist(base[Stats.ALL_DMG], { name: 'Redoubt' })) {
         base[Stats.ALL_DMG].push({
           name: `Redoubt`,
           source: `Though Worlds Apart`,
-          value: calcRefinement(0.24, 0.06, r) * (hasSummon ? 1.5 : 1),
+          value: calcRefinement(0.24, 0.06, r) * (base.SUMMON ? 1.5 : 1),
         })
         if (base.SUMMON_STATS && !checkBuffExist(base.SUMMON_STATS[Stats.ALL_DMG], { name: 'Redoubt' })) {
           base.SUMMON_STATS[Stats.ALL_DMG].push({
             name: `Redoubt`,
             source: `Though Worlds Apart`,
-            value: calcRefinement(0.24, 0.06, r) * (hasSummon ? 1.5 : 1),
+            value: calcRefinement(0.24, 0.06, r) * (base.SUMMON ? 1.5 : 1),
           })
         }
       }

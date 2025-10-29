@@ -82,23 +82,6 @@ export const CustomModal = observer(({ setCustomValue }: { setCustomValue?: Cust
     { name: 'Break DMG', value: 'BREAK' },
     { name: 'Super Break DMG', value: 'SUPER_BREAK' },
   ]
-  const debuff = [
-    { name: 'DEF Reduction', value: StatsObjectKeys.DEF_REDUCTION },
-    { name: 'SPD Reduction', value: StatsObjectKeys.SPD_REDUCTION },
-    { name: 'Effect RES Reduction', value: StatsObjectKeys.E_RES_RED },
-    { name: 'All-Type Vulnerability', value: StatsObjectKeys.VULNERABILITY },
-    { name: 'DoT Vulnerability', value: StatsObjectKeys.DOT_VUL },
-    { name: 'Follow-Up DMG Vulnerability', value: StatsObjectKeys.FUA_VUL },
-    { name: 'Break DMG Vulnerability', value: StatsObjectKeys.BREAK_VUL },
-    { name: 'All-Type RES Reduction', value: StatsObjectKeys.ALL_TYPE_RES_RED },
-    { name: 'Physical RES Reduction', value: StatsObjectKeys.PHYSICAL_RES_RED },
-    { name: 'Fire RES Reduction', value: StatsObjectKeys.FIRE_RES_RED },
-    { name: 'Ice RES Reduction', value: StatsObjectKeys.ICE_RES_RED },
-    { name: 'Lightning RES Reduction', value: StatsObjectKeys.LIGHTNING_RES_RED },
-    { name: 'Wind RES Reduction', value: StatsObjectKeys.WIND_RES_RED },
-    { name: 'Quantum RES Reduction', value: StatsObjectKeys.QUANTUM_RES_RED },
-    { name: 'Imaginary RES Reduction', value: StatsObjectKeys.ICE_RES_RED },
-  ]
 
   const Tab = ({ title, value, defaultKey }: { title: string; value: string; defaultKey: any }) => (
     <div

@@ -154,7 +154,7 @@ export interface RawBaseStatType {
   BASE_AGGRO: StatsArray[]
 
   MAX_ENERGY: number
-  SUMMON: false
+  SUMMON: boolean
 
   // Multipliers
   BASIC_SCALING: IScaling[]
