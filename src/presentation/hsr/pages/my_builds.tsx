@@ -17,6 +17,7 @@ import { PrimaryButton } from '@src/presentation/components/primary.button'
 import classNames from 'classnames'
 import { GhostButton } from '@src/presentation/components/ghost.button'
 import { RelicSetterT } from '../components/modals/artifact_list_modal'
+import { EditBuildModal } from '../components/modals/edit_build_modal'
 
 export const MyBuilds = observer(() => {
   const { buildStore, artifactStore, modalStore, toastStore } = useStore()
@@ -103,6 +104,10 @@ export const MyBuilds = observer(() => {
     )
   }, [selected])
 
+  const onOpenEditModal = useCallback(() => {
+    modalStore.openModal(<EditBuildModal id={selected} oldName={selectedBuild.name} />)
+  }, [selected])
+
   const setRelic: RelicSetterT = (_i, type, value) => {
     const clone = _.cloneDeep(selectedBuild.artifacts)
     clone.splice(type - 1, 1, value)
@@ -142,10 +147,16 @@ export const MyBuilds = observer(() => {
         {selected ? (
           <div className="grid w-full grid-cols-11 gap-5">
             <div className="col-span-5">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-sm text-primary-lighter">{findCharacter(selectedBuild.cId)?.name}</p>
-                  <p className="mb-3 text-2xl font-bold text-white">{selectedBuild.name}</p>
+                  <div className="flex items-center gap-2 mb-3">
+                    <p className="text-2xl font-bold text-white">{selectedBuild.name}</p>
+                    <i
+                      className="flex items-center justify-center w-5 h-5 text-xs rounded-md cursor-pointer text-gray bg-primary-light fa-regular fa-pen-to-square shrink-0"
+                      onClick={onOpenEditModal}
+                    />
+                  </div>
                 </div>
                 <div className="flex items-center gap-x-2 shrink-0">
                   <PrimaryButton
@@ -155,7 +166,6 @@ export const MyBuilds = observer(() => {
                       onOpenDefaultModal()
                     }}
                     disabled={selectedBuild.isDefault}
-                    style="w-10"
                   />
                   <PrimaryButton
                     icon="fa-solid fa-trash"
@@ -163,7 +173,7 @@ export const MyBuilds = observer(() => {
                       event.stopPropagation()
                       onOpenConfirmModal()
                     }}
-                    style="w-10"
+                    style="w-11"
                   />
                 </div>
               </div>

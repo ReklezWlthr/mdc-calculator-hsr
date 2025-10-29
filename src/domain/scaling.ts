@@ -102,4 +102,4 @@ export const EnemyHpScaling = {
   ],
 }
 
-export const EnemyHpMultiplier = { '1': 1, '3': 1.5 }
+export const EnemyHpMultiplier = { '1': 1, '3': 1 }

@@ -30,7 +30,6 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
   const defMult = store.getDefMult(charLevel, pen, red)
 
   const enemyData = _.find(Enemies, (item) => item.name === enemy)
-  const spd = (+level >= 86 ? 1.32 : +level >= 78 ? 1.2 : +level >= 65 ? 1.1 : 1) * (enemyData?.baseSpd || 0)
 
   const enemies = settingStore.settings.variant
     ? Enemies
@@ -50,7 +49,7 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
               if (enemyData) {
                 setValue(
                   'res',
-                  _.mapValues(enemyData?.res, (item) => item * 100)
+                  _.mapValues(enemyData?.res, (item) => item * 100 || 0)
                 )
                 setValue('weakness', enemyData?.weakness)
                 setValue('hp', _.round(enemyData?.baseHp * EnemyHpScaling[scaling][+level - 1]))
@@ -239,10 +238,8 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
               <CheckboxInput checked={store.broken} onClick={() => setValue('broken', !store.broken)} />
             </div>
           </div>
-          <p>Advanced Stats</p>
+          <p>Status RES</p>
           <div className="flex items-center gap-x-2 !mt-2">
-            <img className="w-3.5" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconSpeed.png" />
-            <p className="pr-3 text-sm text-gray">{_.round(spd)}</p>
             {_.map(
               enemyData?.statusRes,
               (item, key) =>
@@ -261,7 +258,7 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
               <p className={classNames('whitespace-nowrap text-sm', item)}>{key} RES</p>
               <TextInput
                 type="number"
-                value={res[key].toString()}
+                value={(res[key] || 0).toString()}
                 onChange={(value) => calculatorStore.setRes(key, value as any as number)}
                 style="!w-[50px]"
                 disabled={!!calculatorStore.enemy}

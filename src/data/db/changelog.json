@@ -4,7 +4,9 @@
     "date": "Oct 29th, 2025",
     "desc": [
       "Fixed: <span class=\"text-hsr-lightning\">Tingyun</span>'s Skill no longer causes error when applied to allies.",
-      "Fixed: Modifying Relics no longer affects the ones in saved builds."
+      "Fixed: Modifying Relics no longer affects the ones in saved builds.",
+      "Updated: Builds can now be renamed.",
+      "Added: Enemy data up until 2.7"
     ]
   },
   {
