@@ -36,7 +36,8 @@ export const SaveBuildModal = observer(({ index }: { index: number }) => {
         note,
         cId: char?.cId,
         isDefault: false,
-        ..._.cloneDeep(char?.equipments),
+        artifacts: [...char?.equipments?.artifacts],
+        weapon: { ...char?.equipments?.weapon },
       })
       if (pass) {
         isDefault && buildStore.setDefault(id)
