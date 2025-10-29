@@ -288,7 +288,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             sum: true,
           }
           if (_.includes([i, i + 10], buffIndex)) {
-            const target = i >= 10 ? f : f?.SUMMON_STATS
+            const target = i >= 10 ? f?.SUMMON_STATS : f
             _.forEach(
               [
                 target.BASIC_SCALING,

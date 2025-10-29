@@ -1205,6 +1205,22 @@ export const Characters = [
     element: Element.ICE,
     beta: true,
   },
+  {
+    id: '1501',
+    name: 'The Dahlia',
+    stat: {
+      baseAtk: 60.72,
+      baseHp: 190.08,
+      baseDef: 79.2,
+      baseSpd: 101,
+      energy: 0,
+    },
+    trace: [Stats.CRIT_DMG, Stats.P_HP, Stats.SPD],
+    rarity: 5,
+    path: PathType.NIHILITY,
+    element: Element.FIRE,
+    beta: true,
+  },
 
   // Odd = Male, Even = Female
   {

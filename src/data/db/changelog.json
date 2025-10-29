@@ -1,6 +1,13 @@
 [
   {
     "version": "1.2-4",
+    "date": "Oct 29th, 2025",
+    "desc": [
+      "Fixed: <span class=\"text-hsr-lightning\">Tingyun</span>'s Skill no longer causes error when applied to allies."
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Oct 27th, 2025",
     "desc": [
       "Content Version: <span class=\"text-desc\">v3.7v5</span>",
