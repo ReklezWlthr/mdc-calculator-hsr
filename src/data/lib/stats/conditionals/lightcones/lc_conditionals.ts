@@ -1444,6 +1444,23 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `HP >= 50%`,
+    show: true,
+    default: false,
+    id: '21055',
+    scaling: (base, form, r) => {
+      if (form[`21055`]) {
+        base[Stats.ALL_DMG].push({
+          name: `Passive`,
+          source: `Unto Tomorrow's Morrow`,
+          value: calcRefinement(0.12, 0.02, r),
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [
