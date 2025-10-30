@@ -24,11 +24,13 @@ import classNames from 'classnames'
 
 export const LCTooltip = ({
   wId,
+  cId,
   refinement,
   children,
   position,
 }: {
   wId: string
+  cId?: string
   refinement: number
   children: React.ReactElement
   position?: TooltipPositionT
@@ -54,7 +56,16 @@ export const LCTooltip = ({
 
   return (
     <Tooltip
-      title={data?.desc?.name}
+      title={
+        <div className="flex items-center justify-between">
+          <div className="space-y-0.5">
+            <p className="text-xs font-normal opacity-75 text-gray">
+              {data?.name}{!!cId && ` - ${findCharacter(cId)?.name}`}
+            </p>
+            <p>{data?.desc?.name}</p>
+          </div>
+        </div>
+      }
       body={
         <div
           className="font-normal"

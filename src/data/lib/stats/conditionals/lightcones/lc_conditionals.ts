@@ -1384,23 +1384,6 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Shielded Ally Bonus`,
-    show: true,
-    default: true,
-    id: '21053',
-    scaling: (base, form, r) => {
-      if (form['21053']) {
-        base[Stats.ALL_DMG].push({
-          name: `Passive`,
-          source: 'Journey, Forever Peaceful',
-          value: calcRefinement(0.12, 0.02, r),
-        })
-      }
-      return base
-    },
-  },
-  {
-    type: 'toggle',
     text: `Outgoing Healing Bonus`,
     show: true,
     default: true,
@@ -1439,6 +1422,23 @@ export const LCConditionals: IWeaponContent[] = [
           name: `Passive`,
           source: `Maze Restaurant Forever`,
           value: form['22005'] * calcRefinement(0.08, 0.02, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Shielded DMG Bonus`,
+    show: true,
+    default: false,
+    id: '21053',
+    scaling: (base, form, r) => {
+      if (form[`21053`]) {
+        base[Stats.ALL_DMG].push({
+          name: `Passive`,
+          source: 'Journey, Forever Peaceful',
+          value: calcRefinement(0.12, 0.02, r),
         })
       }
       return base
@@ -1591,6 +1591,23 @@ export const LCAllyConditionals: IWeaponContent[] = [
           name: `Passive`,
           source: `Era Engraved By Golden Blood`,
           value: calcRefinement(0.54, 0.135, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Shielded DMG Bonus`,
+    show: true,
+    default: false,
+    id: '21053',
+    scaling: (base, form, r, { own, owner }) => {
+      if (form[`21053_${owner}`]) {
+        base[Stats.ALL_DMG].push({
+          name: `Passive`,
+          source: 'Journey, Forever Peaceful',
+          value: calcRefinement(0.12, 0.02, r),
         })
       }
       return base
