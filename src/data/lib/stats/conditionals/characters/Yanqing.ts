@@ -241,7 +241,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           name: 'Follow-Up',
           value: [{ scaling: calcScaling(0.25, 0.025, talent, 'curved'), multiplier: Stats.ATK }],
           element: Element.ICE,
-          property: TalentProperty.NORMAL,
+          property: TalentProperty.FUA,
           type: TalentType.TALENT,
           break: 10,
           chance: { base: calcScaling(50, 1, talent, 'curved') / 100, fixed: true },
