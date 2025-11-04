@@ -160,6 +160,10 @@ export const baseStatsObject: BaseStatsType = {
   BREAK_MULT: [],
   SUMMON_MULT: [],
   BASIC_SUPER_BREAK: [],
+  TALENT_SUPER_BREAK: [],
+  TECHNIQUE_SUPER_BREAK: [],
+
+  SUPER_BREAK_SCALING: [],
 
   // Mitigation
   DMG_REDUCTION: [],

@@ -1,40 +1,34 @@
 import { StatsObject, StatsObjectKeys, TalentPropertyMap, TalentTypeMap } from '@src/data/lib/stats/baseConstant'
-import { IScaling } from '@src/domain/conditional'
+import { IScaling, ISuperBreakScaling } from '@src/domain/conditional'
 import { Element, StatIcons, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 import { toPercentage } from '@src/core/utils/converter'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
 import _ from 'lodash'
 import { propertyColor } from '@src/presentation/hsr/components/tables/scaling_sub_rows'
-import { BreakBaseLevel, BreakElementMult } from '@src/domain/scaling'
-import { useStore } from '@src/data/providers/app_store_provider'
-import { CalculatorStore, CalculatorStoreType } from '@src/data/stores/calculator_store'
+import { BreakBaseLevel } from '@src/domain/scaling'
+
+import { CalculatorStore } from '@src/data/stores/calculator_store'
 import { SetupStore } from '@src/data/stores/setup_store'
 
-export const superBreakStringConstruct = (
+export const bonusSuperBreakStringConstruct = (
   calculatorStore: CalculatorStore | SetupStore,
-  scaling: IScaling,
+  scaling: ISuperBreakScaling,
   stats: StatsObject,
-  level: number
+  level: number,
+  type: TalentType
 ) => {
   if (!scaling || !stats || !level) return
 
   const element = scaling.element
 
-  const isServant = scaling.type === TalentType.SERVANT
-  if (isServant) stats = _.cloneDeep(stats.SUMMON_STATS)
-
   const defPen =
     (stats.getValue(StatsObjectKeys.DEF_PEN) || 0) +
     (stats.getValue(StatsObjectKeys.SUPER_BREAK_DEF_PEN) || 0) +
     (stats.getValue(StatsObjectKeys.BREAK_DEF_PEN) || 0) +
-    (stats.getValue(`${TalentTypeMap[scaling.type]}_DEF_PEN`) || 0)
+    (stats.getValue(`${TalentTypeMap[type]}_DEF_PEN`) || 0)
 
   const defMult = calculatorStore.getDefMult(level, defPen, stats.getValue(StatsObjectKeys.DEF_REDUCTION)) || 1
-  const vulMult =
-    1 +
-    stats.getValue(StatsObjectKeys.VULNERABILITY) +
-    (stats.getValue(StatsObjectKeys.BREAK_VUL) || 0) +
-    (scaling.vul || 0)
+  const vulMult = 1 + stats.getValue(StatsObjectKeys.VULNERABILITY) + (stats.getValue(StatsObjectKeys.BREAK_VUL) || 0)
   const resMult = _.max([
     _.min([
       calculatorStore.getResMult(
@@ -42,20 +36,18 @@ export const superBreakStringConstruct = (
         (stats.getValue(`${element.toUpperCase()}_RES_RED`) || 0) +
           (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_RED) || 0) +
           (stats.getValue(`${element.toUpperCase()}_RES_PEN`) || 0) +
-          (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0) +
-          (scaling.res_pen || 0) // Counted as Elemental RES PEN
+          (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0)
       ),
       2,
     ]),
     0.1,
   ])
-  const isDamage = !_.includes([TalentProperty.SHIELD, TalentProperty.HEAL], scaling.property)
-  const enemyMod = isDamage ? defMult * resMult * vulMult : 1
+  const enemyMod = defMult * resMult * vulMult
 
   const breakLevel = BreakBaseLevel[level - 1]
-  const toughnessMult = (scaling.break * (1 + stats.getValue(StatsObjectKeys.BREAK_EFF))) / 10
+  const toughnessMult = _.max([_.min([scaling.break * calculatorStore.toughness, scaling.max]), scaling.min]) / 10
   const breakMult =
-    stats.getValue(StatsObjectKeys.SUPER_BREAK_MULT) + stats.getValue(`${TalentTypeMap[scaling.type]}_SUPER_BREAK`)
+    stats.getValue(StatsObjectKeys.SUPER_BREAK_MULT) + stats.getValue(`${TalentTypeMap[type]}_SUPER_BREAK`)
 
   const raw = breakLevel * toughnessMult
   const dmg =
@@ -75,9 +67,7 @@ export const superBreakStringConstruct = (
     1
   ).toLocaleString()}</b> <i class="text-[10px]">TOUGHNESS</i>)`
 
-  const formulaString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.floor(
-    dmg
-  ).toLocaleString()}</b> = ${baseBreakScaling}${
+  const formulaString = `<b class="text-red">${_.floor(dmg).toLocaleString()}</b> = ${baseBreakScaling}${
     stats.getValue(Stats.BE) > 0
       ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconBreakUp.png" />${toPercentage(
           stats.getValue(Stats.BE)
@@ -114,4 +104,4 @@ export const superBreakStringConstruct = (
   }
 }
 
-export type SuperBreakStringConstructor = ReturnType<typeof superBreakStringConstruct>
+export type SuperBreakStringConstructor = ReturnType<typeof bonusSuperBreakStringConstruct>

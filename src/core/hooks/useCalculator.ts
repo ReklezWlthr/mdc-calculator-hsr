@@ -282,7 +282,7 @@ export const useCalculator = ({
               forms[index],
               debuffs,
               weakness,
-              calculatorStore.broken
+              calculatorStore.broken,
             ) || x
           if (x.SUMMON_STATS) {
             x.SUMMON_STATS =

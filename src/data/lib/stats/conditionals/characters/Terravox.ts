@@ -148,7 +148,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       text: `Bondmate`,
       ...talents.skill,
       show: true,
-      default: '0',
+      default: '1',
       options: teamOptionGenerator(team),
     },
   ]

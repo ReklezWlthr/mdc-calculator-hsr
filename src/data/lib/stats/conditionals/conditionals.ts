@@ -77,6 +77,7 @@ import Cerydra from './characters/Cerydra'
 import Terravox from './characters/Terravox'
 import Evernight from './characters/Evernight'
 import Cyrene from './characters/Cyrene'
+import Dahlia from './characters/Dahlia'
 
 export default [
   { id: '1001', conditionals: March },
@@ -140,6 +141,7 @@ export default [
   { id: '1314', conditionals: Jade },
   { id: '1315', conditionals: Boothill },
   { id: '1317', conditionals: Rappa },
+  { id: '1321', conditionals: Dahlia },
   { id: '1401', conditionals: TheHerta },
   { id: '1402', conditionals: Aglaea },
   { id: '1403', conditionals: Tribbie },

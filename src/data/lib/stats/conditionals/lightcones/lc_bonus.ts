@@ -1671,6 +1671,17 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23050',
+    scaling: (base, r) => {
+      base[Stats.BE].push({
+        name: 'Passive',
+        source: `Never Forget Her Flame`,
+        value: calcRefinement(0.6, 0.15, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

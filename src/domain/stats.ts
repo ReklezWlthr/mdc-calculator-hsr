@@ -1,6 +1,6 @@
 import { StatsArray } from '@src/data/lib/stats/baseConstant'
 import { Element, PathType, Stats } from './constant'
-import { IScaling, DebuffTypes } from './conditional'
+import { IScaling, DebuffTypes, ISuperBreakScaling } from './conditional'
 
 export interface RawBaseStatType {
   BASE_ATK_C: number
@@ -147,6 +147,10 @@ export interface RawBaseStatType {
   BREAK_MULT: StatsArray[]
   SUMMON_MULT: StatsArray[]
   BASIC_SUPER_BREAK: StatsArray[]
+  TALENT_SUPER_BREAK: StatsArray[]
+  TECHNIQUE_SUPER_BREAK: StatsArray[]
+
+  SUPER_BREAK_SCALING: ISuperBreakScaling[]
 
   // Mitigation
   DMG_REDUCTION: StatsArray[]

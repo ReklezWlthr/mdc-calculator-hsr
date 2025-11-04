@@ -156,7 +156,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       text: `Debt Collector`,
       ...talents.skill,
       show: true,
-      default: '0',
+      default: '1',
       unique: true,
       duration: 3,
       options: teamOptionGenerator(team, true),

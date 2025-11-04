@@ -150,7 +150,7 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       text: `The Beatified`,
       ...talents.ult,
       show: true,
-      default: '0',
+      default: '1',
       duration: 3,
       options: _.filter(teamOptionGenerator(team), (item) => item.value !== (index + 1).toString()),
     },

@@ -151,7 +151,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       text: `Foxian Prayer`,
       ...talents.skill,
       show: c < 6,
-      default: '0',
+      default: '1',
       duration: 3,
       options: teamOptionGenerator(team, true),
     },

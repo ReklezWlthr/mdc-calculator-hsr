@@ -24,6 +24,7 @@ import { EnemyModal } from '../modals/enemy_modal'
 import { DebuffModal } from '../modals/debuff_modal'
 import { AdditionalCompareBlock } from './additional_compare_block'
 import { CompareSummonConditionalBlock } from './compare_summon_conditional_block'
+import { CompareBonusSuperBreakSubRows } from '../tables/compare_bonus_super_break_sub_row '
 
 export const CompareBlock = observer(() => {
   const { setupStore, modalStore } = useStore()
@@ -189,6 +190,22 @@ export const CompareBlock = observer(() => {
               />
             )
           )}
+          {!!_.size(_.filter(mainComputed?.[type], (item) => !!item.break)) &&
+            _.map(mainComputed?.SUPER_BREAK_SCALING, (item) => (
+              <CompareBonusSuperBreakSubRows
+                key={item.name}
+                scaling={_.map(
+                  _.map(sumStats, (f) => f?.SUPER_BREAK_SCALING),
+                  (s) => _.find(s, (a) => a.name === item.name)
+                )}
+                stats={sumStats}
+                level={levels}
+                name={item.name}
+                element={item.element}
+                type={talent}
+                setupNames={_.map([setupStore.main, ...setupStore.comparing], 'name')}
+              />
+            ))}
         </div>
       )}
     </div>
@@ -343,25 +360,7 @@ export const CompareBlock = observer(() => {
               upgraded={0}
             >
               <div className="flex flex-col justify-between h-full gap-4 pb-2">
-                <div>
-                  {_.map(getUniqueComponent(StatsObjectKeys.TECHNIQUE_SCALING), (item) => (
-                    <CompareSubRows
-                      key={item.name}
-                      scaling={_.map(
-                        _.map(sumStats, (f) => f?.TECHNIQUE_SCALING),
-                        (s) => _.find(s, (a) => a.name === item.name)
-                      )}
-                      stats={sumStats}
-                      allStats={allStats}
-                      level={levels}
-                      name={item.name}
-                      property={item.property}
-                      element={item.property === TalentProperty.TRUE ? Element.NONE : item.element}
-                      type={TalentType.TECH}
-                      setupNames={_.map([setupStore.main, ...setupStore.comparing], 'name')}
-                    />
-                  ))}
-                </div>
+                {renderRow(StatsObjectKeys.TECHNIQUE_SCALING, TalentType.TECH)}
                 <CompareTotalRows type={TalentType.TECH} />
               </div>
             </ScalingWrapper>

@@ -1448,7 +1448,7 @@ export const LCConditionals: IWeaponContent[] = [
     type: 'toggle',
     text: `HP >= 50%`,
     show: true,
-    default: false,
+    default: true,
     id: '21055',
     scaling: (base, form, r) => {
       if (form[`21055`]) {
@@ -1456,6 +1456,23 @@ export const LCConditionals: IWeaponContent[] = [
           name: `Passive`,
           source: `Unto Tomorrow's Morrow`,
           value: calcRefinement(0.12, 0.02, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Break DMG Bonus`,
+    show: true,
+    default: true,
+    id: '23050',
+    scaling: (base, form, r) => {
+      if (form[`23050`]) {
+        base.BREAK_DMG.push({
+          name: `Passive`,
+          source: `Never Forget Her Flame`,
+          value: calcRefinement(0.32, 0.1, r),
         })
       }
       return base
@@ -1564,7 +1581,7 @@ export const LCAllyConditionals: IWeaponContent[] = [
     type: 'toggle',
     text: `HP >= 50%`,
     show: true,
-    default: false,
+    default: true,
     id: '21055',
     scaling: (base, form, r, { own, owner }) => {
       if (form[`21055_${owner}`]) {
@@ -1625,6 +1642,23 @@ export const LCAllyConditionals: IWeaponContent[] = [
           name: `Passive`,
           source: 'Journey, Forever Peaceful',
           value: calcRefinement(0.12, 0.02, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Break DMG Bonus`,
+    show: true,
+    default: false,
+    id: '23050',
+    scaling: (base, form, r, { own, owner }) => {
+      if (form[`23050_${owner}`]) {
+        base.BREAK_DMG.push({
+          name: `Passive`,
+          source: `Never Forget Her Flame`,
+          value: calcRefinement(0.32, 0.1, r),
         })
       }
       return base

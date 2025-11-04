@@ -158,7 +158,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       text: `Military Merit`,
       ...talents.talent,
       show: true,
-      default: '0',
+      default: '1',
       options: teamOptionGenerator(team),
       excludeSummon: true,
     },

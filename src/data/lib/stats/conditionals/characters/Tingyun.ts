@@ -138,7 +138,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       text: `Benediction`,
       ...talents.skill,
       show: true,
-      default: '0',
+      default: '1',
       options: teamOptionGenerator(team, true),
     },
     {

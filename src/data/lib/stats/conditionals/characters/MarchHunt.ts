@@ -168,7 +168,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       text: `March's Shifu`,
       ...talents.skill,
       show: true,
-      default: '0',
+      default: '1',
       options: _.filter(teamOptionGenerator(team, true), (item) => item.value !== (index + 1).toString()),
     },
     {

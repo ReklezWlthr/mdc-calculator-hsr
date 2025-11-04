@@ -31,6 +31,7 @@ import { StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { SummonStatBlock } from '../components/summon_stat_block'
 import { buffedList } from '@src/data/lib/stats/conditionals/conditionals_base'
 import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
+import { BonusSuperBreakSubRows } from '../components/tables/bonus_super_break_sub_rows'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
@@ -141,6 +142,10 @@ export const Calculator = observer(({}: {}) => {
                               <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.BA} />
                             )
                           )}
+                          {!!_.size(_.filter(mainComputed?.BASIC_SCALING, (item) => !!item.break)) &&
+                            _.map(mainComputed?.SUPER_BREAK_SCALING, (item) => (
+                              <BonusSuperBreakSubRows key={item.name} scaling={item} type={TalentType.BA} />
+                            ))}
                         </div>
                       )}
                     </div>
@@ -168,6 +173,10 @@ export const Calculator = observer(({}: {}) => {
                               <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.SKILL} />
                             )
                           )}
+                          {!!_.size(_.filter(mainComputed?.SKILL_SCALING, (item) => !!item.break)) &&
+                            _.map(mainComputed?.SUPER_BREAK_SCALING, (item) => (
+                              <BonusSuperBreakSubRows key={item.name} scaling={item} type={TalentType.SKILL} />
+                            ))}
                         </div>
                       )}
                     </div>
@@ -203,6 +212,10 @@ export const Calculator = observer(({}: {}) => {
                                   <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.SERVANT} />
                                 )
                               )}
+                              {!!_.size(_.filter(mainComputed?.MEMO_SKILL_SCALING, (item) => !!item.break)) &&
+                                _.map(mainComputed?.SUPER_BREAK_SCALING, (item) => (
+                                  <BonusSuperBreakSubRows key={item.name} scaling={item} type={TalentType.SERVANT} />
+                                ))}
                             </div>
                           )}
                         </div>
@@ -232,6 +245,10 @@ export const Calculator = observer(({}: {}) => {
                               <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.ULT} />
                             )
                           )}
+                          {!!_.size(_.filter(mainComputed?.ULT_SCALING, (item) => !!item.break)) &&
+                            _.map(mainComputed?.SUPER_BREAK_SCALING, (item) => (
+                              <BonusSuperBreakSubRows key={item.name} scaling={item} type={TalentType.ULT} />
+                            ))}
                         </div>
                       )}
                     </div>
@@ -259,6 +276,10 @@ export const Calculator = observer(({}: {}) => {
                               <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.TALENT} />
                             )
                           )}
+                          {!!_.size(_.filter(mainComputed?.TALENT_SCALING, (item) => !!item.break)) &&
+                            _.map(mainComputed?.SUPER_BREAK_SCALING, (item) => (
+                              <BonusSuperBreakSubRows key={item.name} scaling={item} type={TalentType.TALENT} />
+                            ))}
                         </div>
                       )}
                     </div>
@@ -294,6 +315,10 @@ export const Calculator = observer(({}: {}) => {
                               )}
                             </div>
                           )}
+                          {!!_.size(_.filter(mainComputed?.MEMO_TALENT_SCALING, (item) => !!item.break)) &&
+                            _.map(mainComputed?.SUPER_BREAK_SCALING, (item) => (
+                              <BonusSuperBreakSubRows key={item.name} scaling={item} type={TalentType.SERVANT_T} />
+                            ))}
                         </div>
                         <SubTotalRow type={TalentType.SERVANT_T} />
                       </div>
@@ -313,6 +338,20 @@ export const Calculator = observer(({}: {}) => {
                       {_.map(mainComputed?.TECHNIQUE_SCALING, (item) => (
                         <ScalingSubRows key={item.name} scaling={item} type={TalentType.TECH} />
                       ))}
+                      {mainComputed?.SUPER_BREAK && (
+                        <div className="pt-2 space-y-0.5">
+                          {_.map(
+                            _.filter(mainComputed?.TECHNIQUE_SCALING, (item) => !!item.break),
+                            (item) => (
+                              <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.TECH} />
+                            )
+                          )}
+                          {!!_.size(_.filter(mainComputed?.TECHNIQUE_SCALING, (item) => !!item.break)) &&
+                            _.map(mainComputed?.SUPER_BREAK_SCALING, (item) => (
+                              <BonusSuperBreakSubRows key={item.name} scaling={item} type={TalentType.TECH} />
+                            ))}
+                        </div>
+                      )}
                     </div>
                     <SubTotalRow type={TalentType.TECH} />
                   </div>

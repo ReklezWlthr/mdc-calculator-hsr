@@ -54,6 +54,14 @@ export interface IScaling {
   detonate?: boolean
 }
 
+export interface ISuperBreakScaling {
+  name: string
+  element: Element
+  break?: number
+  min?: number
+  max?: number
+}
+
 export interface IContent {
   type?: 'toggle' | 'number' | 'element' | 'multiple'
   trace?: string
