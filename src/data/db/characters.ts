@@ -1219,7 +1219,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.REMEMBRANCE,
     element: Element.ICE,
-    beta: true,
+    beta: false,
   },
 
   // Odd = Male, Even = Female

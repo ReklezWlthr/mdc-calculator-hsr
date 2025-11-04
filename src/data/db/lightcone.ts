@@ -2507,7 +2507,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 21,
     type: PathType.REMEMBRANCE,
-    beta: true,
+    beta: false,
     desc: {
       name: 'A Promise',
       detail: `Increases the wearer's SPD by {{0}}%. When the wearer's memosprite uses a Memosprite Skill on an ally, gains <b>Blank</b>, which increases DMG taken by all enemies by {{1}}%. When the wearer's memosprite uses a Memosprite Skill on an enemy, gains <b>Verse</b>, which increases CRIT DMG of all allies by {{2}}%. When the wearer's memosprite has both <b>Blank</b> and <b>Verse</b> increases the effects of <b>Blank</b> and <b>Verse</b> by {{3}}%.`,

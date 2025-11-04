@@ -1124,7 +1124,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's CRIT Rate by <span class="text-desc">8%</span>. While the wearer's memosprite is on the field, increases all allies' SPD by <span class="text-desc">8%</span>. This effect cannot be stacked.`,
     ],
-    beta: true,
+    beta: false,
     set: [`West Wind's End of Amphoreus`, `Eternal Verses of Amphoreus`],
   },
   {
@@ -1136,7 +1136,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's CRIT DMG by <span class="text-desc">16%</span>. If <span class="text-desc">3</span> or more Skill Points are consumed in the same turn, additionally increases the wearer's CRIT DMG by <span class="text-desc">32%</span> for <span class="text-desc">3</span> turns.`,
     ],
-    beta: true,
+    beta: false,
     set: [`Livestream's Myriad Facades`, `Livestream's Continuous Chatter`],
   },
 ]
