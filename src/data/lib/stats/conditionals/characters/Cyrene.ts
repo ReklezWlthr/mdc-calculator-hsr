@@ -51,12 +51,12 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         1.6,
         memo_skill,
         'linear'
-      )}%</span> of <b>███</b>'s Max HP, and increases Trailblazer (Remembrance)'s CRIT Rate by a value equal to <span class="text-desc">${calcScaling(
+      )}%</span> of <b>Demiurge</b>'s Max HP, and increases Trailblazer (Remembrance)'s CRIT Rate by a value equal to <span class="text-desc">${calcScaling(
         36,
         7.2,
         memo_skill,
         'linear'
-      )}%</span> of <b>███</b>'s CRIT Rate. This effect also applies to <b>Mem</b>. After Trailblazer (Remembrance) uses Enhanced Basic ATK in this battle, <b>███</b> immediately gains <span class="text-desc">1</span> extra turn and automatically uses <b>Minuet of Blooms and Plumes</b>. If the target was defeated before this ability is used, it will be used on newly appeared enemy targets instead.`,
+      )}%</span> of <b>Demiurge</b>'s CRIT Rate. This effect also applies to <b>Mem</b>. After Trailblazer (Remembrance) uses Enhanced Basic ATK in this battle, <b>Demiurge</b> immediately gains <span class="text-desc">1</span> extra turn and automatically uses <b>Minuet of Blooms and Plumes</b>. If the target was defeated before this ability is used, it will be used on newly appeared enemy targets instead.`,
       show: _.includes(teamId, '8007'),
       default: false,
       debuffElement: Element.ICE,
@@ -168,7 +168,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: `Memosprite Skill`,
       text: `Ode to Sky`,
       title: `Ode to Sky`,
-      content: `When <b>███</b> uses Memosprite Skill, causes Hyacine to gain <span class="text-desc">2</span> stacks of <b class="text-hsr-wind">Ode to Sky</b>. When used on Hyacine, regenerates <span class="text-desc">${calcScaling(
+      content: `When <b>Demiurge</b> uses Memosprite Skill, causes Hyacine to gain <span class="text-desc">2</span> stacks of <b class="text-hsr-wind">Ode to Sky</b>. When used on Hyacine, regenerates <span class="text-desc">${calcScaling(
         12,
         2.4,
         memo_skill,
@@ -309,7 +309,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: `Memosprite Skill`,
       text: `Ode to Earth`,
       title: `Ode to Earth`,
-      content: `When <b>███</b> uses Memosprite Skill, grants <b class="text-hsr-physical">Ode to Earth</b> to Dan Heng • Permansor Terrae, and the next <span class="text-desc">3</span> attack(s) of <b class="text-hsr-physical">Souldragon</b> deals <b>Additional DMG</b> of of the <b class="text-desc">Bondmate</b>'s Type, equal to <span class="text-desc">${calcScaling(
+      content: `When <b>Demiurge</b> uses Memosprite Skill, grants <b class="text-hsr-physical">Ode to Earth</b> to Dan Heng • Permansor Terrae, and the next <span class="text-desc">3</span> attack(s) of <b class="text-hsr-physical">Souldragon</b> deals <b>Additional DMG</b> of of the <b class="text-desc">Bondmate</b>'s Type, equal to <span class="text-desc">${calcScaling(
         40,
         8,
         memo_skill,
@@ -357,7 +357,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     summon_skill: {
       trace: 'Memosprite Skill',
       title: 'Minuet of Blooms and Plumes',
-      content: `Deals <b class="text-hsr-ice">Ice DMG</b> to all enemies equal to {{0}}% of <b>███</b>'s Max HP.`,
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> to all enemies equal to {{0}}% of <b>Demiurge</b>'s Max HP.`,
       value: [{ base: 30, growth: 6, style: 'linear' }],
       level: memo_skill,
       tag: AbilityTag.AOE,
@@ -379,8 +379,8 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         ),
         ''
       )}
-      <br /><b class="text-unique-end">✦</b> <b class="${ElementColor[Element.ICE]}">Ode to ██</b>
-      <br />After Cyrene has gained <b class="text-pink-300">Recollection</b> from each different teammate (other than <b>███</b>), when <b>███</b> uses <b>Minuet of Blooms and Plumes</b>, it additionally deals one instance of <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of ███'s Max HP to one random enemy. After Cyrene uses her Ultimate or when <b>███</b> is summoned, <b>███</b> immediately gains <span class="text-desc">1</span> <b class="text-desc">Story</b>. When <b class="text-desc">Story</b> reaches <span class="text-desc">3</span> points, <b>███</b> consumes all <b class="text-desc">Story</b> points to immediately gain <span class="text-desc">1</span> extra turn and automatically use <b>Minuet of Blooms and Plumes</b>.`,
+      <br /><b class="text-unique-end">✦</b> <b class="${ElementColor[Element.ICE]}">Ode to Ego</b>
+      <br />For every <span class="text-desc">1</span> different teammate (other than <b>Demiurge</b>) from whom Cyrene has gained <b class="text-pink-300">Recollection</b>, additionally deals <span class="text-desc">1</span> instance of <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of <b>Demiurge</b>'s Max HP to one random enemy when <b>Demiurge</b> uses <b>Minuet of Blooms and Plumes</b>. After Cyrene uses Ultimate or when <b>Demiurge</b> is summoned, <b>Demiurge</b> immediately gains <span class="text-desc">1</span> <b class="text-desc">Story</b>. When <b class="text-desc">Story</b> reaches <span class="text-desc">3</span>, <b>Demiurge</b> consumes all <b class="text-desc">Story</b> points to immediately gain <span class="text-desc">1</span> extra turn and automatically use <b>Minuet of Blooms and Plumes</b>.`,
       value: [
         { base: 20, growth: 4, style: 'linear' },
         { base: 25, growth: 5, style: 'linear' },
@@ -392,8 +392,8 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     ult: {
       trace: 'Ultimate',
       title: `Verse ◦ Vow ∞`,
-      content: `Summons memosprite <b>███</b>, causes it to immediately gain <span class="text-desc">1</span> extra turn, and activates all teammates' Ultimate. Then, enters the <b>Ripples of Past Reverie</b> state, with Basic ATK enhanced to <b>To Love and Tomorrow ♪</b> and can only use this Basic ATK. Increases Cyrene's and <b>███</b>'s CRIT Rate by {{0}}%, and deploys the Zone effect from the Skill with no active duration.
-      <br />Can only be used once per combat. <b>███</b>'s initial Max HP equals to <span class="text-desc">100%</span> of Cyrene's Max HP.`,
+      content: `Summons memosprite <b>Demiurge</b>, causes it to immediately gain <span class="text-desc">1</span> extra turn, and activates all teammates' Ultimate. Then, enters the <b>Ripples of Past Reverie</b> state, with Basic ATK enhanced to <b>To Love and Tomorrow ♪</b> and can only use this Basic ATK. Increases Cyrene's and <b>Demiurge</b>'s CRIT Rate by {{0}}%, and deploys the Zone effect from the Skill with no active duration.
+      <br />Can only be used once per combat. <b>Demiurge</b>'s initial Max HP equals to <span class="text-desc">100%</span> of Cyrene's Max HP.`,
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: ult,
       tag: AbilityTag.SUMMON,
@@ -402,7 +402,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     ult_alt: {
       trace: 'Alternate Ultimate',
       title: `Reunion at First Sight`,
-      content: `Causes <b>███</b> to immediately gain <span class="text-desc">1</span> extra turn.`,
+      content: `Causes <b>Demiurge</b> to immediately gain <span class="text-desc">1</span> extra turn.`,
       value: [],
       level: ult,
       tag: AbilityTag.SUMMON,
@@ -419,7 +419,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     summon_talent: {
       trace: 'Memosprite Talent [1]',
       title: `Waiting, In Every Past`,
-      content: `<b>███</b>'s SPD remains at <span class="text-desc">0</span>, and <b>███</b> will not appear on the Action Order. While on the field, it is considered as <u>Out-of-Bounds</u>. When changes occur on Cyrene's HP percentage, <b>███</b>'s HP percentage will also change accordingly. When <b>███</b> is on the field, Cyrene's and <b>███</b>'s Max HP increases by {{0}}%. After using abilities, all Continuous Effects' duration on this unit decreases by <span class="text-desc">1</span>.`,
+      content: `<b>Demiurge</b>'s SPD remains at <span class="text-desc">0</span>, and <b>Demiurge</b> will not appear on the Action Order. While on the field, it is considered as <u>Out-of-Bounds</u>. When changes occur on Cyrene's HP percentage, <b>Demiurge</b>'s HP percentage will also change accordingly. When <b>Demiurge</b> is on the field, Cyrene's and <b>Demiurge</b>'s Max HP increases by {{0}}%. After using abilities, all Continuous Effects' duration on this unit decreases by <span class="text-desc">1</span>.`,
       value: [{ base: 12, growth: 2.4, style: 'linear' }],
       level: memo_talent,
       tag: AbilityTag.ENHANCE,
@@ -427,7 +427,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     summon_talent_2: {
       trace: 'Memosprite Talent [2]',
       title: `"Hello, World ♪"`,
-      content: `When <b>███</b> is summoned, dispels Crowd Control debuffs from all allies.`,
+      content: `When <b>Demiurge</b> is summoned, dispels Crowd Control debuffs from all allies.`,
       value: [],
       level: memo_talent,
       tag: AbilityTag.ENHANCE,
@@ -435,7 +435,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     technique: {
       trace: 'Technique',
       title: `Peace at West Wind's End`,
-      content: `After the Technique is used, creates a Special Dimension that lasts for <span class="text-desc">30</span> second(s) around the character. Enemies within this dimension enters the <b>This Moment, Forever</b> state. Increases movement speed for the ally characters within this Special Dimension by <span class="text-desc">50%</span>. After entering combat within the duration, deploys the Skill's Zone. Only <span class="text-desc">1</span> Dimension Effect created by allies can exist at the same time.`,
+      content: `After using Technique, creates a Special Dimension that lasts for <span class="text-desc">30</span> second(s) around the character. Enemies within this Special Dimension enter the <b>This Moment, Forever</b> state. While in this state, enemies will cease all actions. Ally characters within this Special Dimension have <span class="text-desc">50%</span> increased movement speed. After entering combat within the duration, deploys the Skill's Zone. Only <span class="text-desc">1</span> Dimension Effect created by allies can exist at the same time.`,
       tag: AbilityTag.ST,
     },
     a2: {
@@ -446,22 +446,22 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Ripples Across Time`,
-      content: `When there are <span class="text-desc">1</span>/<span class="text-desc">2</span>/<span class="text-desc">3</span> Chrysos Heir(s) or Remembrance Path character(s) aside from Cyrene in the team, Cyrene gains <span class="text-desc">2</span>/<span class="text-desc">3</span>/<span class="text-desc">6</span> <b class="text-pink-300">Recollection</b> point(s) at the start of combat.`,
+      content: `When there are <span class="text-desc">1</span>/<span class="text-desc">2</span>/<span class="text-desc">3</span> Chrysos Heir(s) or Remembrance Path character(s) aside from Cyrene in the team, Cyrene gains <span class="text-desc">2</span>/<span class="text-desc">3</span>/<span class="text-desc">6</span> <b class="text-pink-300">Recollection</b> point(s) respectively at the start of combat.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Causality in Trichotomy`,
-      content: `When Cyrene's SPD is at <span class="text-desc">180</span> or higher, increases all allies' DMG dealt by <span class="text-desc">20%</span>. Then, for each point of SPD exceeded, increases Cyrene and <b>███</b>'s <b class="text-hsr-ice">Ice RES PEN</b> by <span class="text-desc">2%</span>, counting up to a maximum of <span class="text-desc">60</span> exceeded SPD points.`,
+      content: `When Cyrene's SPD is at <span class="text-desc">180</span> or higher, increases all allies' DMG dealt by <span class="text-desc">20%</span>. Then, for each point of SPD exceeded, increases Cyrene and <b>Demiurge</b>'s <b class="text-hsr-ice">Ice RES PEN</b> by <span class="text-desc">2%</span>, counting up to a maximum of <span class="text-desc">60</span> exceeded SPD points.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Epics, Born on a Blank Slate`,
-      content: `When <b>███</b> triggers the Memosprite Skill <b>Ode to ██</b> while using <b>Minuet of Blooms and Plumes</b>, gains <span class="text-desc">6</span> <b class="text-pink-300">Recollection</b> point(s) and increases the number of bounces for this attack by <span class="text-desc">12</span>.`,
+      content: `When <b>Demiurge</b> triggers the Memosprite Skill <b>Ode to Ego</b> while using <b>Minuet of Blooms and Plumes</b>, gains <span class="text-desc">6</span> <b class="text-pink-300">Recollection</b> point(s) and increases the number of bounces for this attack by <span class="text-desc">12</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `A Tomorrow in Thirteen Shades`,
-      content: `When entering combat, additionally gains <span class="text-desc">12</span> <b class="text-pink-300">Recollection</b> point(s). For each different ally character that gains the Memosprite Skill buff from <b>███</b>, the DMG multiplier of the <b class="text-true">True DMG</b> dealt by ally targets via the Skill's Zone increases by <span class="text-desc">6%</span>, up to a max increase of <span class="text-desc">24%</span>.`,
+      content: `When entering combat, additionally gains <span class="text-desc">12</span> <b class="text-pink-300">Recollection</b> point(s). For each different ally character that gains the Memosprite Skill buff from <b>Demiurge</b>, the DMG multiplier of the <b class="text-true">True DMG</b> dealt by ally targets via the Skill's Zone increases by <span class="text-desc">6%</span>, up to a max increase of <span class="text-desc">24%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -473,7 +473,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c4: {
       trace: 'Eidolon 4',
       title: 'Please Write On, With a Smile',
-      content: `Each time after <b>███</b> uses <b>Minuet of Blooms and Plumes</b>, the Bounce DMG multiplier of the triggered Memosprite Skill <b>Ode to ██</b> increases by <span class="text-desc">6%</span> in the current battle and can be stacked up to <span class="text-desc">24</span> times.`,
+      content: `Each time after <b>Demiurge</b> uses <b>Minuet of Blooms and Plumes</b>, the Bounce DMG multiplier of the triggered Memosprite Skill <b>Ode to Ego</b> increases by <span class="text-desc">6%</span> in the current battle and can be stacked up to <span class="text-desc">24</span> times.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -485,8 +485,8 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c6: {
       trace: 'Eidolon 6',
       title: 'Remembrance, Sung in Ripples ♪',
-      content: `When Cyrene uses her Ultimate for the first time, all allies' actions advance by <span class="text-desc">100%</span>. Each time when <b>███</b> triggers triggers the Memosprite Skill <b>Ode to ██</b> and uses <b>Minuet of Blooms and Plumes</b>, based on the number of times it has been triggered, gains the following effects:
-      <br /><span class="text-desc">1</span> time: When <b>███</b> is on the field, reduces all enemy targets' DEF by <span class="text-desc">20%</span>.
+      content: `When Cyrene uses her Ultimate for the first time, all allies' actions advance by <span class="text-desc">100%</span>. Each time when <b>Demiurge</b> triggers triggers the Memosprite Skill <b>Ode to Ego</b> and uses <b>Minuet of Blooms and Plumes</b>, based on the number of times it has been triggered, gains the following effects:
+      <br /><span class="text-desc">1</span> time: When <b>Demiurge</b> is on the field, reduces all enemy targets' DEF by <span class="text-desc">20%</span>.
       <br /><span class="text-desc">2</span> times and more: Advances all allies' actions by <span class="text-desc">24%</span>.`,
     },
   }
@@ -665,7 +665,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         [Stats.P_SPD]: [],
         [Stats.SPD]: [],
         SUMMON_ID: '1415',
-        NAME: '███',
+        NAME: 'Demiurge',
         MAX_ENERGY: 0,
       })
       base.CYRENE_SKILL_LEVEL = memo_skill
@@ -748,7 +748,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       if (form.cyrene_memo_talent) {
         base[Stats.P_HP].push({
           name: `Memosprite Talent`,
-          source: '███',
+          source: 'Demiurge',
           value: calcScaling(0.12, 0.024, memo_talent, 'linear'),
         })
         base.SUMMON_STATS[Stats.P_HP].push({
