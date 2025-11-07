@@ -313,7 +313,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           value: [{ scaling: calcScaling(1.2, 0.12, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.ICE,
           property: TalentProperty.SERVANT,
-          type: TalentType.SERVANT,
+          type: TalentType.ULT,
           break: 20,
           sum: true,
         },
