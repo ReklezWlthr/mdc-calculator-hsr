@@ -422,7 +422,10 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
                 (s) => {
                   _.forEach(s, (ss) => {
                     if (
-                      !_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property) &&
+                      !_.includes(
+                        [TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE, TalentProperty.SERVANT],
+                        ss.property
+                      ) &&
                       // If DMG is DOT, only trigger True DMG if it's a detonation from supported target
                       (ss.property === TalentProperty.DOT
                         ? ss.detonate && ss.overrideIndex === i
