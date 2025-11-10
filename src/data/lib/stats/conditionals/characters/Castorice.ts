@@ -477,7 +477,6 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           property: TalentProperty.SERVANT,
           type: TalentType.SERVANT,
           break: 4,
-          sum: true,
           useOwnerStats: true,
           bonus: form.castorice_a6 ? 0.3 * form.castorice_a6 : 0,
           multiplier: c1Mult,

@@ -1,6 +1,14 @@
 [
   {
     "version": "1.2-4",
+    "date": "Nov 10th, 2025",
+    "desc": [
+      "Updated: Added <span class=\"text-hsr-ice\">Cyrene</span> total single-target DMG to Memosrite Skill for clarity.",
+      "Fixed: <span class=\"text-hsr-quantum\">Castorice</span>'s Memosprite Talent DMG under the effect of <span class=\"text-hsr-ice\">Cyrene</span>'s <span class=\"text-hsr-quantum\">Ode to Life and Death</span>."
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Nov 4th, 2025",
     "desc": [
       "Content Version: <span class=\"text-desc\">v3.8v1</span>",

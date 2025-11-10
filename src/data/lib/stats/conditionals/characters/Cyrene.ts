@@ -179,7 +179,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         memo_skill,
         'linear'
       )}%</span> of the healing value this time. After Hyacine uses Skill/Ultimate, consumes <span class="text-desc">1</span> stack of <b class="text-hsr-wind">Ode to Sky</b>.`,
-      show: _.includes(teamId, '1409'),
+      show: false,
       default: false,
       debuffElement: Element.WIND,
     },
@@ -383,7 +383,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       <br />For every <span class="text-desc">1</span> different teammate (other than <b>Demiurge</b>) from whom Cyrene has gained <b class="text-pink-300">Recollection</b>, additionally deals <span class="text-desc">1</span> instance of <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of <b>Demiurge</b>'s Max HP to one random enemy when <b>Demiurge</b> uses <b>Minuet of Blooms and Plumes</b>. After Cyrene uses Ultimate or when <b>Demiurge</b> is summoned, <b>Demiurge</b> immediately gains <span class="text-desc">1</span> <b class="text-desc">Story</b>. When <b class="text-desc">Story</b> reaches <span class="text-desc">3</span>, <b>Demiurge</b> consumes all <b class="text-desc">Story</b> points to immediately gain <span class="text-desc">1</span> extra turn and automatically use <b>Minuet of Blooms and Plumes</b>.`,
       value: [
         { base: 20, growth: 4, style: 'linear' },
-        { base: 25, growth: 5, style: 'linear' },
+        { base: 30, growth: 6, style: 'linear' },
       ],
       level: memo_skill,
       tag: AbilityTag.SUPPORT,
@@ -493,6 +493,20 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
 
   const content: IContent[] = [
     {
+      type: 'number',
+      id: 'recollection',
+      trace: `Memosprite Skill`,
+      text: `Recollection Count`,
+      title: `Recollection Count`,
+      content: `<b class="text-unique-end">✦</b> <b class="${ElementColor[Element.ICE]}">Ode to Ego</b>
+      <br />For every <span class="text-desc">1</span> different teammate (other than <b>Demiurge</b>) from whom Cyrene has gained <b class="text-pink-300">Recollection</b>, additionally deals <span class="text-desc">1</span> instance of <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of <b>Demiurge</b>'s Max HP to one random enemy when <b>Demiurge</b> uses <b>Minuet of Blooms and Plumes</b>.`,
+      value: [{ base: 30, growth: 6, style: 'linear' }],
+      show: true,
+      default: 3,
+      min: 0,
+      max: c >= 1 ? 12 : 6,
+    },
+    {
       type: 'toggle',
       id: 'cyrene_eba',
       text: `Enhanced Basic Attack`,
@@ -502,16 +516,14 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     ...chrysosBuffs,
     {
-      type: 'number',
+      type: 'toggle',
       id: 'cyrene_cas_count',
       trace: `Memosprite Skill`,
-      text: `Enemies on Field`,
-      title: `Enemies on Field`,
-      content: `If there are <span class="text-desc">2</span> enemy target(s) on the field or fewer, the DMG multiplier additionally increases.`,
+      text: `Enemies Count <= 2`,
+      title: `Enemies Count <= 2`,
+      content: `Under the effect of <b class="text-hsr-quantum">Ode to Life and Death</b>, if there are <span class="text-desc">2</span> enemy target(s) on the field or fewer, the DMG multiplier of <b>Netherwing</b>'s Talent <b>Wings Sweep the Ruins</b> additionally increases.`,
       show: _.includes(teamId, '1407'),
-      default: 5,
-      min: 1,
-      max: 5,
+      default: false,
     },
     {
       type: 'number',
@@ -709,13 +721,28 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       base.SKILL_SCALING = []
       base.MEMO_SKILL_SCALING = [
         {
+          name: 'Total Single Target DMG',
+          value: [
+            { scaling: calcScaling(0.3, 0.06, memo_skill, 'linear'), multiplier: Stats.HP },
+            {
+              scaling:
+                (calcScaling(0.3, 0.06, memo_skill, 'linear') + (0.06 * form.cyrene_e4 || 0)) * form.recollection,
+              multiplier: Stats.HP,
+            },
+          ],
+          element: Element.ICE,
+          property: TalentProperty.SERVANT,
+          type: TalentType.SERVANT,
+          break: 10,
+          sum: true,
+        },
+        {
           name: 'AoE',
           value: [{ scaling: calcScaling(0.3, 0.06, memo_skill, 'linear'), multiplier: Stats.HP }],
           element: Element.ICE,
           property: TalentProperty.SERVANT,
           type: TalentType.SERVANT,
           break: 10,
-          sum: true,
         },
         {
           name: 'Ode Extra DMG',
@@ -976,8 +1003,8 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                 }))
               }
               // Castorice
-              if (t.ID === '1404' && form.cyrene_cas) {
-                t.MEMO_SKILL_SCALING = _.map(t.MEMO_SKILL_SCALING, (item) => {
+              if (t.ID === '1407' && form.cyrene_cas) {
+                t.MEMO_TALENT_SCALING = _.map(t.MEMO_TALENT_SCALING, (item) => {
                   if (item.property !== TalentProperty.SERVANT) return item
                   return {
                     ...item,
@@ -985,10 +1012,10 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                       ...v,
                       scaling:
                         v.scaling +
-                        (form.cyrene_cas_count <= 2
+                        (form.cyrene_cas_count
                           ? calcScaling(0.0036, 0.000072, memo_skill, 'linear')
                           : calcScaling(0.0012, 0.000024, memo_skill, 'linear')) *
-                          form.cyrene_cas_count,
+                          form.cyrene_cas,
                     })),
                   }
                 })
