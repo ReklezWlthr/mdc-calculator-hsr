@@ -608,7 +608,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       type: 'number',
       id: 'cyrene_e4',
       text: `E4 Memo. Skill Trigger Count`,
-      ...talents.c2,
+      ...talents.c4,
       show: c >= 4,
       default: 0,
       min: 0,
