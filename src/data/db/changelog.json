@@ -4,7 +4,8 @@
     "date": "Nov 10th, 2025",
     "desc": [
       "Updated: Added <span class=\"text-hsr-ice\">Cyrene</span> total single-target DMG to Memosrite Skill for clarity.",
-      "Fixed: <span class=\"text-hsr-quantum\">Castorice</span>'s Memosprite Talent DMG under the effect of <span class=\"text-hsr-ice\">Cyrene</span>'s <span class=\"text-hsr-quantum\">Ode to Life and Death</span>."
+      "Fixed: <span class=\"text-hsr-quantum\">Castorice</span>'s Memosprite Talent DMG under the effect of <span class=\"text-hsr-ice\">Cyrene</span>'s <span class=\"text-hsr-quantum\">Ode to Life and Death</span>.",
+      "Fixed: <span class=\"text-hsr-ice\">Evernight</span>'s buffs for Memosprites no longer doubles in value."
     ]
   },
   {

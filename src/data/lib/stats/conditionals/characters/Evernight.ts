@@ -573,16 +573,9 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       if (c >= 6) {
         base.ALL_TYPE_RES_PEN.push({
           name: `Eidolon 6`,
-          source: 'Self',
+          source: 'Evernight',
           value: 0.2,
         })
-        if (base.SUMMON_STATS) {
-          base.SUMMON_STATS.ALL_TYPE_RES_PEN.push({
-            name: `Eidolon 6`,
-            source: 'Evernight',
-            value: 0.2,
-          })
-        }
       }
       if (c >= 4 && base.SUMMON_STATS) {
         base.SUMMON_STATS.BREAK_EFF.push({
@@ -592,28 +585,11 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         })
       }
       if (form.darkest_riddle) {
-        base[Stats.ALL_DMG].push({
-          name: `Darkest Riddle`,
-          source: 'Evernight',
-          value: calcScaling(0.5, 0.05, ult, 'curved'),
-        })
         base.VULNERABILITY.push({
           name: `Darkest Riddle`,
           source: 'Evernight',
           value: calcScaling(0.15, 0.015, ult, 'curved'),
         })
-        if (base.SUMMON_STATS) {
-          base.SUMMON_STATS[Stats.ALL_DMG].push({
-            name: `Darkest Riddle`,
-            source: 'Evernight',
-            value: calcScaling(0.3, 0.03, ult, 'curved'),
-          })
-          base.SUMMON_STATS.VULNERABILITY.push({
-            name: `Darkest Riddle`,
-            source: 'Evernight',
-            value: calcScaling(0.15, 0.015, ult, 'curved'),
-          })
-        }
       }
 
       return base
