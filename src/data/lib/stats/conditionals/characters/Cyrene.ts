@@ -504,7 +504,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       show: true,
       default: 3,
       min: 0,
-      max: c >= 1 ? 12 : 6,
+      max: 6,
     },
     {
       type: 'toggle',
@@ -726,7 +726,8 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
             { scaling: calcScaling(0.3, 0.06, memo_skill, 'linear'), multiplier: Stats.HP },
             {
               scaling:
-                (calcScaling(0.3, 0.06, memo_skill, 'linear') + (0.06 * form.cyrene_e4 || 0)) * form.recollection,
+                (calcScaling(0.3, 0.06, memo_skill, 'linear') + (0.06 * form.cyrene_e4 || 0)) *
+                (form.recollection + (c >= 1 ? 12 : 0)),
               multiplier: Stats.HP,
             },
           ],
@@ -899,10 +900,10 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                   }))
                 )
               }
-              // Phainon Fire DMG
               _.forEach(
                 [t.BASIC_SCALING, t.SKILL_SCALING, t.ULT_SCALING, t.TALENT_SCALING, t.MEMO_SKILL_SCALING],
                 (s) => {
+                  // Phainon Fire DMG
                   if (t.ID === '1408' && form.cyrene_phainon && allForm[i].phainon_transform) {
                     s.push({
                       name: `Cyrene Ode Additional DMG`,
@@ -914,6 +915,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                       sum: true,
                     })
                   }
+                  // Skill True DMG
                   _.forEach(s, (ss) => {
                     if (
                       !_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property) &&

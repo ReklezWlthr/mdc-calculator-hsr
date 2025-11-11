@@ -47,7 +47,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: 'Skill',
       title: `Lick... Enkindled Betrayal`,
       content: `Deploys a Zone that lasts for <span class="text-desc">3</span> turn(s), with the Zone's duration decreasing by <span class="text-desc">1</span> at the start of The Dahlia's turn. Then, deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of The Dahlia's ATK to one designated enemy and their adjacent targets.
-      <br />While the Zone is active, increases all allies' Weakness Break Efficiency by <span class="text-desc">50%</span>, and Toughness Reduction taken by enemy targets while not Weakness Broken can be converted into Super Break DMG.`,
+      <br />While the Zone is active, increases all allies' Weakness Break Efficiency by <span class="text-desc">50%</span>. Toughness Reduction taken by enemy targets while not Weakness Broken can be converted into Super Break DMG.`,
       value: [{ base: 80, growth: 8, style: 'curved' }],
       level: skill,
       tag: AbilityTag.BLAST,
