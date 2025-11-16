@@ -34,6 +34,7 @@ export const superBreakStringConstruct = (
     1 +
     stats.getValue(StatsObjectKeys.VULNERABILITY) +
     (stats.getValue(StatsObjectKeys.BREAK_VUL) || 0) +
+    (stats.getValue(StatsObjectKeys.SUPER_BREAK_VUL) || 0) +
     (scaling.vul || 0)
   const resMult = _.max([
     _.min([

@@ -131,10 +131,11 @@ export const DebuffModal = observer(({ statsOverride, selectedOverride, debuffOv
             <AttributeBlock stats={stats} stat="All-Type Vulnerability" array={stats.VULNERABILITY} />
             <AttributeBlock stats={stats} stat="DoT Vulnerability" array={stats.DOT_VUL} />
             <AttributeBlock stats={stats} stat="Follow-Up DMG Vulnerability" array={stats.FUA_VUL} />
+            <AttributeBlock stats={stats} stat="Ultimate Vulnerability" array={stats.ULT_VUL} />
           </div>
           <div className="space-y-2">
             <AttributeBlock stats={stats} stat="Break DMG Vulnerability" array={stats.BREAK_VUL} />
-            <AttributeBlock stats={stats} stat="Ultimate Vulnerability" array={stats.ULT_VUL} />
+            <AttributeBlock stats={stats} stat="Super Break DMG Vulnerability" array={stats.SUPER_BREAK_VUL} />
             <AttributeBlock stats={stats} stat="Fire DMG Vulnerability" array={stats.FIRE_VUL} />
           </div>
         </div>

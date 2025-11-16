@@ -3024,6 +3024,23 @@ export const Enemies = [
     effRes: 0.3,
   },
   {
+    name: `Decimator, Karma of Daythunder, Eye of Twilight`,
+    type: 'Boss',
+    weakness: [Element.PHYSICAL, Element.ICE, Element.QUANTUM],
+    baseHp: 250,
+    toughness: 320,
+    res: {
+      [Element.WIND]: 0.2,
+      [Element.FIRE]: 0.2,
+      [Element.IMAGINARY]: 0.2,
+      [Element.LIGHTNING]: 0.2,
+    },
+    statusRes: {
+      [DebuffTypes.CONTROL]: Infinity,
+    },
+    effRes: 0.3,
+  },
+  {
     name: `Black Tide's Corroded Axe`,
     type: 'Normal',
     weakness: [Element.LIGHTNING, Element.PHYSICAL, Element.QUANTUM],
@@ -3244,12 +3261,29 @@ export const Enemies = [
     toughness: 200,
     res: {
       [Element.QUANTUM]: 0.2,
-      [Element.PHYSICAL]: 0.2,
+      [Element.IMAGINARY]: 0.2,
       [Element.FIRE]: 0.2,
       [Element.LIGHTNING]: 0.2,
     },
     statusRes: {
       [DebuffTypes.CONTROL]: 0.5,
+    },
+    effRes: 0.3,
+  },
+  {
+    name: `Anti-Creator, Hatred Inundate`,
+    type: 'Boss',
+    weakness: [Element.ICE, Element.LIGHTNING, Element.QUANTUM],
+    baseHp: 100,
+    toughness: 200,
+    res: {
+      [Element.IMAGINARY]: 0.2,
+      [Element.PHYSICAL]: 0.2,
+      [Element.FIRE]: 0.2,
+      [Element.WIND]: 0.2,
+    },
+    statusRes: {
+      [DebuffTypes.CONTROL]: 1,
     },
     effRes: 0.3,
   },

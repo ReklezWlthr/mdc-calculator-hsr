@@ -90,6 +90,7 @@ export const baseStatsObject: BaseStatsType = {
   DOT_VUL: [],
   FUA_VUL: [],
   ULT_VUL: [],
+  SUPER_BREAK_VUL: [],
 
   ULT_RES_PEN: [],
   SKILL_RES_PEN: [],

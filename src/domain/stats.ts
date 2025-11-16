@@ -77,6 +77,7 @@ export interface RawBaseStatType {
   DOT_VUL: StatsArray[]
   FUA_VUL: StatsArray[]
   ULT_VUL: StatsArray[]
+  SUPER_BREAK_VUL: StatsArray[]
 
   ULT_RES_PEN: StatsArray[]
   SKILL_RES_PEN: StatsArray[]
