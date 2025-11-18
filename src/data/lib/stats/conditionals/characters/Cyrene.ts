@@ -697,6 +697,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
               type: TalentType.BA,
               break: 5,
               sum: true,
+              hitSplit: [0.5, 0.15, 0.35],
             },
             {
               name: 'Single Instance',

@@ -84,7 +84,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Clairvoyant Loom`,
-      content: `Increases DMG dealt by this unit by an amount equal to <span class="text-desc">100%</span> of Break Effect, up to a maximum DMG increase of <span class="text-desc">2400%</span>.`,
+      content: `Increases DMG dealt by this unit by an amount equal to <span class="text-desc">100%</span> of Break Effect, up to a maximum DMG increase of <span class="text-desc">240%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',

@@ -29,7 +29,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
   const ult = t.ult + upgrade.ult
   const talent = t.talent + upgrade.talent
 
-  const index = _.findIndex(team, (item) => item?.cId === '1225')
+  const index = _.findIndex(team, (item) => item?.cId === '1321')
 
   const talents: ITalent = {
     normal: {
@@ -144,7 +144,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       ...talents.talent,
       show: true,
       default: '1',
-      options: teamOptionGenerator(team, true),
+      options: _.filter(teamOptionGenerator(team), (item) => item.value !== (index + 1).toString()),
     },
     {
       type: 'toggle',

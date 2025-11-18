@@ -166,7 +166,7 @@
     "date": "July 22nd, 2025",
     "desc": [
       "Content Version: <span class=\"text-desc\">v3.5v5</span>",
-      "Updated Characters: <span class=\"text-hsr-physical\">Hycilens</span>, and <span class=\"text-hsr-wind\">Cerydra</span>",
+      "Updated Characters: <span class=\"text-hsr-physical\">Hysilens</span>, and <span class=\"text-hsr-wind\">Cerydra</span>",
       "Updated Line Cones: <span class=\"text-desc\">Why Does the Ocean Sing</span>, and <span class=\"text-desc\">Era Engraved By Golden Blood</span>"
     ]
   },
@@ -184,7 +184,7 @@
     "date": "July 22nd, 2025",
     "desc": [
       "Content Version: <span class=\"text-desc\">v3.5v4</span>",
-      "Updated Wording: <span class=\"text-hsr-physical\">Hycilens</span>, and Light Cone <span class=\"text-desc\">Why Does the Ocean Sing</span>"
+      "Updated Wording: <span class=\"text-hsr-physical\">Hysilens</span>, and Light Cone <span class=\"text-desc\">Why Does the Ocean Sing</span>"
     ]
   },
   {
@@ -197,7 +197,7 @@
     "date": "July 15th, 2025",
     "desc": [
       "Content Version: <span class=\"text-desc\">v3.5v3</span>",
-      "Updated Characters: <span class=\"text-hsr-physical\">Hycilens</span>, and <span class=\"text-hsr-wind\">Cerydra</span>",
+      "Updated Characters: <span class=\"text-hsr-physical\">Hysilens</span>, and <span class=\"text-hsr-wind\">Cerydra</span>",
       "Updated Line Cones: <span class=\"text-desc\">Why Does the Ocean Sing</span>, and <span class=\"text-desc\">Era Engraved By Golden Blood</span>",
       "Fixed: Increased <span class=\"text-hsr-quantum\">Archer</span>'s A6 CRIT DMG Bonus"
     ]
@@ -207,7 +207,7 @@
     "date": "July 8th, 2025",
     "desc": [
       "Content Version: <span class=\"text-desc\">v3.5v2</span>",
-      "Updated Wording: <span class=\"text-hsr-physical\">Hycilens</span>, and <span class=\"text-hsr-wind\">Cerydra</span>"
+      "Updated Wording: <span class=\"text-hsr-physical\">Hysilens</span>, and <span class=\"text-hsr-wind\">Cerydra</span>"
     ]
   },
   {
@@ -228,7 +228,7 @@
     "date": "July 1st, 2025",
     "desc": [
       "Content Version: <span class=\"text-desc\">v3.5v1</span>",
-      "New Characters: <span class=\"text-hsr-physical\">Hycilens</span>, and <span class=\"text-hsr-wind\">Cerydra</span>",
+      "New Characters: <span class=\"text-hsr-physical\">Hysilens</span>, and <span class=\"text-hsr-wind\">Cerydra</span>",
       "New Line Cones: <span class=\"text-desc\">Why Does the Ocean Sing</span>, <span class=\"text-desc\">Era Engraved By Golden Blood</span>, and <span class=\"text-desc\">Maze Restaurant Forever</span>",
       "Fixed: <span class=\"text-hsr-lightning\">Tingyun</span>'s and <span class=\"text-hsr-physical\">Robin</span>'s ATK Bonus now correctly applies without stacking with itself."
     ]

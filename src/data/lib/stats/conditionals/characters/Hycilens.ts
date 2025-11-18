@@ -7,7 +7,7 @@ import { toPercentage } from '@src/core/utils/converter'
 import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
 import { calcScaling } from '@src/core/utils/calculator'
 
-const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
+const Hysilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
     basic: c >= 3 ? 1 : 0,
     skill: c >= 5 ? 2 : 0,
@@ -50,7 +50,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       energy: 5,
       trace: 'Ultimate',
       title: 'Maelstrom Rhapsody',
-      content: `Hycilens deploys a Zone that reduces enemy target's ATK by <span class="text-desc">15%</span> and DEF by {{0}}%, and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Hysilens's ATK to all enemies.
+      content: `Hysilens deploys a Zone that reduces enemy target's ATK by <span class="text-desc">15%</span> and DEF by {{0}}%, and deals <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Hysilens's ATK to all enemies.
       <br />For every <span class="text-desc">1</span> instance of DoT taken by an enemy target within the Zone, Hysilens deals <b class="text-hsr-physical">Physical DoT</b> equal to {{2}}% of her ATK to them. This damage triggers at the start of each turn or after one attack by an ally target, up to <span class="text-desc">8</span> time(s). And it cannot repeatedly trigger this effect.
       <br />The Zone lasts for <span class="text-desc">3</span> turn(s) and this duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn. When Hysilens gets knocked down, the Zone will also be dispelled.`,
       value: [
@@ -141,7 +141,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     {
       type: 'toggle',
       id: 'hycilens_ult',
-      text: `Hycilens Zone`,
+      text: `Hysilens Zone`,
       ...talents.ult,
       show: true,
       default: true,
@@ -151,7 +151,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     {
       type: 'toggle',
       id: 'hycilens_wind',
-      text: `Hycilens's Wind Shear`,
+      text: `Hysilens's Wind Shear`,
       ...talents.talent,
       show: true,
       default: true,
@@ -162,7 +162,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     {
       type: 'toggle',
       id: 'hycilens_shock',
-      text: `Hycilens's Shock`,
+      text: `Hysilens's Shock`,
       ...talents.talent,
       show: true,
       default: true,
@@ -173,7 +173,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     {
       type: 'toggle',
       id: 'hycilens_burn',
-      text: `Hycilens's Burn`,
+      text: `Hysilens's Burn`,
       ...talents.talent,
       show: true,
       default: true,
@@ -184,7 +184,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     {
       type: 'toggle',
       id: 'hycilens_bleed',
-      text: `Hycilens's Bleed`,
+      text: `Hysilens's Bleed`,
       ...talents.talent,
       show: true,
       default: true,
@@ -195,7 +195,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     {
       type: 'toggle',
       id: 'hycilens_e6_wind',
-      text: `Hycilens's E1 Wind Shear`,
+      text: `Hysilens's E1 Wind Shear`,
       ...talents.c6,
       show: c >= 1,
       default: true,
@@ -206,7 +206,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     {
       type: 'toggle',
       id: 'hycilens_e6_shock',
-      text: `Hycilens's E1 Shock`,
+      text: `Hysilens's E1 Shock`,
       ...talents.c6,
       show: c >= 1,
       default: true,
@@ -217,7 +217,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     {
       type: 'toggle',
       id: 'hycilens_e6_burn',
-      text: `Hycilens's E1 Burn`,
+      text: `Hysilens's E1 Burn`,
       ...talents.c6,
       show: c >= 1,
       default: true,
@@ -228,7 +228,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     {
       type: 'toggle',
       id: 'hycilens_e6_bleed',
-      text: `Hycilens's E1 Bleed`,
+      text: `Hysilens's E1 Bleed`,
       ...talents.c6,
       show: c >= 1,
       default: true,
@@ -473,20 +473,20 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       if (form.hycilens_skill) {
         base.VULNERABILITY.push({
           name: `Skill`,
-          source: 'Hycilens',
+          source: 'Hysilens',
           value: calcScaling(0.1, 0.01, skill, 'curved'),
         })
       }
       if (form.hycilens_ult) {
         base.ATK_REDUCTION.push({
           name: `Ultimate`,
-          source: 'Hycilens',
+          source: 'Hysilens',
           value: 0.15,
         })
 
         base.DEF_REDUCTION.push({
           name: `Ultimate`,
-          source: 'Hycilens',
+          source: 'Hysilens',
           value: calcScaling(0.15, 0.01, ult, 'curved'),
         })
 
@@ -545,7 +545,7 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
             const dot = _.filter(item, (v) => v.property === TalentProperty.DOT && _.endsWith(v.name, 'Detonation'))
             if (_.size(dot)) {
               item.push({
-                name: `Hycilens's Zone DoT`,
+                name: `Hysilens's Zone DoT`,
                 value: [
                   { scaling: calcScaling(0.32, 0.0528, ult, 'hycilens') + (c >= 6 ? 0.2 : 0), multiplier: Stats.ATK },
                 ],
@@ -587,4 +587,4 @@ const Hycilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
   }
 }
 
-export default Hycilens
+export default Hysilens
