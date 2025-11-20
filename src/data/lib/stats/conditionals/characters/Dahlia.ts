@@ -100,7 +100,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Outgrow the Old, Espouse the New`,
-      content: `When an ally target applies Weakness to an enemy target, increases SPD by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s). When this effect is triggered by an ally <b class="text-hsr-fire">Fire</b> character, also regenerates a set amount of Energy equal to <span class="text-desc">10%</span> of Max Energy, capping at <span class="text-desc">50%</span> of Max Energy. This effect can only be triggered once for each character in each turn.`,
+      content: `When an ally target adds Weakness to an enemy target, increases SPD by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s). If an ally <b class="text-hsr-fire">Fire</b> character implants a Weakness when using an attack, deals <span class="text-desc">20</span> fixed amount of <b class="text-hsr-fire">Fire</b> Toughness Reduction after the attack for every Weakness implanted. Also, regenerates Energy equal to <span class="text-desc">10%</span> of Max Energy. The maximum amount of Energy regenerated through this effect is capped at <span class="text-desc">50%</span> of Max Energy.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -110,7 +110,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c2: {
       trace: 'Eidolon 2',
       title: `Fresh, Ethereal, and Beloved`,
-      content: `<b class="text-red">Wilt</b> additionally reduces the target's <b>All-Type RES</b> by <span class="text-desc">18%</span>. When an enemy target enters the field, immediately inflicts <b class="text-red">Wilt</b> state on them, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `When The Dahlia is on the field, decreases all enemies' <b>All-Type RES</b> by <span class="text-desc">20%</span>. When an enemy target enters the field, immediately inflicts <b class="text-red">Wilt</b> state on them, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -132,7 +132,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c6: {
       trace: 'Eidolon 6',
       title: `And Yet, Always, Deathly Beautiful`,
-      content: `Increases The Dahlia's Break Effect by <span class="text-desc">150%</span>. When using her Talent's <u>Follow-Up ATK</u>, advances the next action of all <b class="text-desc">Dance Partners</b> by <span class="text-desc">15%</span>.`,
+      content: `Increases <b class="text-desc">Dance Partner</b>'s Break Effect by <span class="text-desc">150%</span>. When using her Talent's <u>Follow-Up ATK</u>, advances the next action of all <b class="text-desc">Dance Partners</b> by <span class="text-desc">20%</span>.`,
     },
   }
 
@@ -267,7 +267,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 30,
+          break: 20,
           sum: true,
         },
       ]
@@ -327,14 +327,15 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           value: calcScaling(0.08, 0.01, skill, 'curved'),
         })
         addDebuff(debuffs, DebuffTypes.DEF_RED)
-        if (c >= 2) {
-          base.ALL_TYPE_RES_RED.push({
-            name: 'Eidolon 2',
-            source: 'Self',
-            value: 0.18,
-          })
-          addDebuff(debuffs, DebuffTypes.OTHER)
-        }
+      }
+
+      if (c >= 2) {
+        base.ALL_TYPE_RES_RED.push({
+          name: 'Eidolon 2',
+          source: 'Self',
+          value: 0.18,
+        })
+        addDebuff(debuffs, DebuffTypes.OTHER)
       }
 
       if (form.dahlia_zone) {
@@ -389,6 +390,8 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           source: 'The Dahlia',
           value: calcScaling(0.3, 0.03, talent, 'curved') + (c >= 1 && isPartner ? 0.4 : 0),
         })
+      }
+      if (isPartner) {
         if (form.wilt) {
           weakness.push(base.ELEMENT)
         }
@@ -401,6 +404,13 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
             max: 300,
           })
         }
+        if (c >= 6) {
+          base[Stats.BE].push({
+            name: 'Eidolon 6',
+            source: 'The Dahlia',
+            value: 1.5,
+          })
+        }
       }
 
       if (form.wilt) {
@@ -409,13 +419,14 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           source: 'The Dahlia',
           value: calcScaling(0.08, 0.01, skill, 'curved'),
         })
-        if (c >= 2) {
-          base.ALL_TYPE_RES_RED.push({
-            name: 'Eidolon 2',
-            source: 'The Dahlia',
-            value: 0.18,
-          })
-        }
+      }
+
+      if (c >= 2) {
+        base.ALL_TYPE_RES_RED.push({
+          name: 'Eidolon 2',
+          source: 'The Dahlia',
+          value: 0.18,
+        })
       }
 
       if (form.dahlia_zone) {

@@ -1,6 +1,14 @@
 [
   {
     "version": "1.2-4",
+    "date": "Nov 20th, 2025",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v3.8v3</span>",
+      "Updated Character: <span class=\"text-hsr-fire\">The Dahlia</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Nov 10th, 2025",
     "desc": [
       "Updated: Added <span class=\"text-hsr-ice\">Cyrene</span> total single-target DMG to Memosrite Skill for clarity.",

@@ -991,7 +991,7 @@ export const Characters = [
       baseSpd: 96,
       energy: 130,
     },
-    trace: [Stats.BE, Stats.P_HP, Stats.E_RES],
+    trace: [Stats.BE, Stats.SPD, Stats.E_RES],
     rarity: 5,
     path: PathType.NIHILITY,
     element: Element.FIRE,

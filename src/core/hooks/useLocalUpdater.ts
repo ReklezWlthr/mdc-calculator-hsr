@@ -3,6 +3,8 @@ import { EnemyHpScaling } from '@src/domain/scaling'
 import _ from 'lodash'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { formatMinorTrace } from '../utils/data_format'
+import { findCharacter } from '../utils/finder'
 
 export const useLocalUpdater = (game: string) => {
   const router = useRouter()
@@ -47,10 +49,22 @@ export const useLocalUpdater = (game: string) => {
       localStorage.setItem(
         key,
         JSON.stringify({
-          team: teamStore.characters,
+          team: _.map(teamStore.characters, (c) => ({
+            ...c,
+            minor_traces: formatMinorTrace(
+              findCharacter(c.cId)?.trace,
+              _.map(c.minor_traces, (v) => v.toggled)
+            ),
+          })),
           artifacts: artifactStore.artifacts,
           builds: buildStore.builds,
-          characters: charStore.characters,
+          characters: _.map(charStore.characters, (c) => ({
+            ...c,
+            minor_traces: formatMinorTrace(
+              findCharacter(c.cId)?.trace,
+              _.map(c.minor_traces, (v) => v.toggled)
+            ),
+          })),
           setup: setupStore.team,
         })
       )
