@@ -31,9 +31,11 @@ export const CustomDebuffModal = observer(({ setCustomValue }: { setCustomValue?
     ],
     vul: [
       { name: 'All-Type Vulnerability', value: StatsObjectKeys.VULNERABILITY },
+      { name: 'Basic ATK Vulnerability', value: StatsObjectKeys.BASIC_VUL },
+      { name: 'Skill Vulnerability', value: StatsObjectKeys.SKILL_VUL },
+      { name: 'Ultimate Vulnerability', value: StatsObjectKeys.ULT_VUL },
       { name: 'DoT Vulnerability', value: StatsObjectKeys.DOT_VUL },
       { name: 'Follow-Up DMG Vulnerability', value: StatsObjectKeys.FUA_VUL },
-      { name: 'Ultimate Vulnerability', value: StatsObjectKeys.ULT_VUL },
       { name: 'Break DMG Vulnerability', value: StatsObjectKeys.BREAK_VUL },
       { name: 'Super Break DMG Vulnerability', value: StatsObjectKeys.SUPER_BREAK_VUL },
       { name: 'Fire DMG Vulnerability', value: StatsObjectKeys.FIRE_VUL },

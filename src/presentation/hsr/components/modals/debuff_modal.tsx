@@ -118,6 +118,9 @@ export const DebuffModal = observer(({ statsOverride, selectedOverride, debuffOv
                   stats.DOT_VUL,
                   stats.FUA_VUL,
                   stats.BREAK_VUL,
+                  stats.SUPER_BREAK_VUL,
+                  stats.BASIC_VUL,
+                  stats.SKILL_VUL,
                   stats.ULT_VUL,
                   stats.FIRE_VUL
                 )
@@ -129,14 +132,16 @@ export const DebuffModal = observer(({ statsOverride, selectedOverride, debuffOv
         <div className="grid grid-cols-2 gap-10">
           <div className="space-y-2">
             <AttributeBlock stats={stats} stat="All-Type Vulnerability" array={stats.VULNERABILITY} />
-            <AttributeBlock stats={stats} stat="DoT Vulnerability" array={stats.DOT_VUL} />
-            <AttributeBlock stats={stats} stat="Follow-Up DMG Vulnerability" array={stats.FUA_VUL} />
+            <AttributeBlock stats={stats} stat="Basic ATK Vulnerability" array={stats.BASIC_VUL} />
+            <AttributeBlock stats={stats} stat="Skill Vulnerability" array={stats.SKILL_VUL} />
             <AttributeBlock stats={stats} stat="Ultimate Vulnerability" array={stats.ULT_VUL} />
+            <AttributeBlock stats={stats} stat="Fire DMG Vulnerability" array={stats.FIRE_VUL} />
           </div>
           <div className="space-y-2">
+            <AttributeBlock stats={stats} stat="DoT Vulnerability" array={stats.DOT_VUL} />
+            <AttributeBlock stats={stats} stat="Follow-Up DMG Vulnerability" array={stats.FUA_VUL} />
             <AttributeBlock stats={stats} stat="Break DMG Vulnerability" array={stats.BREAK_VUL} />
             <AttributeBlock stats={stats} stat="Super Break DMG Vulnerability" array={stats.SUPER_BREAK_VUL} />
-            <AttributeBlock stats={stats} stat="Fire DMG Vulnerability" array={stats.FIRE_VUL} />
           </div>
         </div>
       </Collapsible>

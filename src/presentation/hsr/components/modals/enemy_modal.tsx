@@ -14,7 +14,6 @@ import { Enemies } from '@src/data/db/enemies'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 import { EnemyHpMultiplier, EnemyHpScaling } from '@src/domain/scaling'
 import { Tooltip } from '@src/presentation/components/tooltip'
-import { countDebuff } from '@src/core/utils/finder'
 
 export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; compare?: boolean }) => {
   const { calculatorStore, teamStore, settingStore, setupStore } = useStore()
@@ -30,10 +29,6 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
   const defMult = store.getDefMult(charLevel, pen, red)
 
   const enemyData = _.find(Enemies, (item) => item.name === enemy)
-
-  const enemies = settingStore.settings.variant
-    ? Enemies
-    : _.filter(Enemies, (item) => !item.name.match(/\((Complete|Bug|Complete - G&G)\)/g))
 
   return (
     <div className="w-[550px] p-4 text-white rounded-xl bg-primary-dark space-y-3 font-semibold">
@@ -57,7 +52,7 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
                 setValue('effRes', enemyData?.effRes)
               }
             }}
-            options={_.map(enemies, (item) => ({
+            options={_.map(Enemies, (item) => ({
               name: item.name,
               value: item.name,
             })).sort((a, b) => a.name.localeCompare(b.name))}

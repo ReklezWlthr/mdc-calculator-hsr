@@ -89,6 +89,8 @@ export const baseStatsObject: BaseStatsType = {
   BREAK_VUL: [],
   DOT_VUL: [],
   FUA_VUL: [],
+  BASIC_VUL: [],
+  SKILL_VUL: [],
   ULT_VUL: [],
   SUPER_BREAK_VUL: [],
 

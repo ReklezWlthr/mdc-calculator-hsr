@@ -32,7 +32,7 @@ export const SettingModal = observer(() => {
             Hide <b>Beta</b> Contents
           </p>
           <p className="text-xs italic text-red">✦ Does not apply to ones already in the account data.</p>
-        </div>{' '}
+        </div>
         <ToggleSwitch
           enabled={settingStore.settings.liveOnly}
           onClick={(v) => settingStore.setSettingValue({ liveOnly: v })}
@@ -46,32 +46,6 @@ export const SettingModal = observer(() => {
             value={settingStore.settings?.defaultEnemyLevel?.toString()}
             onChange={(v) => settingStore.setSettingValue({ defaultEnemyLevel: parseInt(v) })}
             style="!w-1/4"
-          />
-        </div>
-        <div className="flex items-center justify-between gap-x-2">
-          <div className="flex items-center gap-2">
-            <p className="text-sm text-gray">Show Enemy SU Variant</p>
-            <Tooltip
-              title="Show Enemy SU Variant"
-              body={
-                <div>
-                  Some Elite and Boss enemies will show up in <b>Simulated/Divergent Universe</b> in either{' '}
-                  <b>Complete</b> or <b>Bug</b> variant. These variants are hidden by default but you can disable it
-                  here.
-                  <p className="text-xs italic text-red">
-                    ✦ Do note that enemy's Max HP may differ across different contents. Feel free to modify it if the
-                    value provided is not the one you are looking for.
-                  </p>
-                </div>
-              }
-              style="w-[400px]"
-            >
-              <i className="fa-regular fa-question-circle" />
-            </Tooltip>
-          </div>
-          <ToggleSwitch
-            enabled={settingStore.settings.variant}
-            onClick={(v) => settingStore.setSettingValue({ variant: v })}
           />
         </div>
         <div className="space-y-0.5">
