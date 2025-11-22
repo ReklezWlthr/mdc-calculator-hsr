@@ -14,7 +14,7 @@ import { Tooltip } from '@src/presentation/components/tooltip'
 export const isFlat = (key: string) =>
   _.includes([Stats.ATK, Stats.HP, Stats.DEF, Stats.SPD], key) || _.includes(key, '_F_')
 
-export const CustomModal = observer(({ setCustomValue }: { setCustomValue?: CustomSetterT }) => {
+export const CustomModal = observer(({ setCustomValue, memo }: { setCustomValue?: CustomSetterT; memo?: boolean }) => {
   const { calculatorStore, modalStore } = useStore()
 
   const [selectedTab, setSelectedTab] = useState('stats')
@@ -100,17 +100,18 @@ export const CustomModal = observer(({ setCustomValue }: { setCustomValue?: Cust
   const onAddMod = () => {
     const v = parseFloat(value)
     if (selectedTab === 'stats') {
-      set(-1, key as any, v, true)
+      set(-1, key as any, v, true, false, memo)
     }
     if (selectedTab === 'element') {
-      if (key === 'percentage') set(-1, StatsObjectKeys[`${selectedElement} DMG%`] as any, v, true)
-      if (key === 'pen') set(-1, StatsObjectKeys[`${selectedElement.toUpperCase()}_RES_PEN`] as any, v, true)
+      if (key === 'percentage') set(-1, StatsObjectKeys[`${selectedElement} DMG%`] as any, v, true, false, memo)
+      if (key === 'pen')
+        set(-1, StatsObjectKeys[`${selectedElement.toUpperCase()}_RES_PEN`] as any, v, true, false, memo)
     }
     if (selectedTab === 'talent') {
-      set(-1, StatsObjectKeys[selectedTalent + key] as any, v, true)
+      set(-1, StatsObjectKeys[selectedTalent + key] as any, v, true, false, memo)
     }
     if (selectedTab === 'property') {
-      set(-1, StatsObjectKeys[selectedProperty + key] as any, v, true)
+      set(-1, StatsObjectKeys[selectedProperty + key] as any, v, true, false, memo)
     }
     modalStore.closeModal()
   }

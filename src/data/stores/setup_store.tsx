@@ -32,7 +32,8 @@ export type CustomSetterT = (
   key: StatsObjectKeysT,
   value: any,
   toggled: boolean,
-  debuff?: boolean
+  debuff?: boolean,
+  memo?: boolean
 ) => void
 export type CustomRemoverT = (_index: number, innerIndex: number) => void
 
@@ -59,6 +60,7 @@ export interface SetupStoreType {
     value: number
     debuff: boolean
     toggled: boolean
+    memo: boolean
   }[][][]
   customDebuff: {
     name: StatsObjectKeysT
@@ -115,6 +117,7 @@ export class SetupStore {
     value: number
     debuff: boolean
     toggled: boolean
+    memo: boolean
   }[][][]
   customDebuff: {
     name: StatsObjectKeysT
@@ -319,7 +322,8 @@ export class SetupStore {
     key: StatsObjectKeysT,
     value: any,
     toggled: boolean,
-    debuff: boolean = false
+    debuff: boolean = false,
+    memo: boolean = false
   ) => {
     const [setupIndex, charIndex] = this.selected
     if (debuff) {
@@ -336,10 +340,10 @@ export class SetupStore {
       if (innerIndex < 0) {
         this.custom[setupIndex][charIndex] = [
           ...(this.custom[setupIndex][charIndex] || []),
-          { name: key, value, debuff, toggled },
+          { name: key, value, debuff, toggled, memo },
         ]
       } else {
-        this.custom[setupIndex][charIndex].splice(innerIndex, 1, { name: key, value, debuff, toggled })
+        this.custom[setupIndex][charIndex].splice(innerIndex, 1, { name: key, value, debuff, toggled, memo })
       }
       this.custom = _.cloneDeep(this.custom)
     }

@@ -97,6 +97,14 @@ export const CompareSummonConditionalBlock = observer(
           compare
           memo
         />
+        <CustomConditionalBlock
+          index={setupStore.selected[1]}
+          customOverride={setupStore.custom[setupIndex][charIndex]}
+          customDebuffOverride={setupStore.customDebuff[setupIndex]}
+          setValue={setupStore.setCustomValue}
+          removeValue={setupStore.removeCustomValue}
+          memo
+        />
       </div>
     )
   }

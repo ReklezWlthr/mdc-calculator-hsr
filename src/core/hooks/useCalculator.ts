@@ -43,6 +43,7 @@ interface CalculatorOptions {
     value: number
     debuff: boolean
     toggled: boolean
+    memo: boolean
   }[][]
   customDebuffOverride?: {
     name: StatsObjectKeysT
@@ -282,7 +283,7 @@ export const useCalculator = ({
               forms[index],
               debuffs,
               weakness,
-              calculatorStore.broken,
+              calculatorStore.broken
             ) || x
           if (x.SUMMON_STATS) {
             x.SUMMON_STATS =
@@ -307,20 +308,38 @@ export const useCalculator = ({
     const postCustom = _.map(preComputeShared, (base, index) => {
       let x = base
       _.forEach(custom[index], (v) => {
-        if (v.toggled)
-          x[v.name as any].push({
-            name: 'Manual',
-            source: 'Custom',
-            value: v.value / (isFlat(v.name) ? 1 : 100),
-          })
+        if (v.toggled) {
+          if (!v.memo) {
+            x[v.name as any].push({
+              name: 'Manual',
+              source: 'Custom',
+              value: v.value / (isFlat(v.name) ? 1 : 100),
+            })
+          }
+          if (v.memo && x.SUMMON_STATS) {
+            x.SUMMON_STATS[v.name as any].push({
+              name: 'Manual',
+              source: 'Custom',
+              value: v.value / (isFlat(v.name) ? 1 : 100),
+            })
+          }
+        }
       })
       _.forEach(customDebuff, (v) => {
-        if (v.toggled)
+        if (v.toggled) {
           x[v.name as any].push({
             name: 'Manual',
             source: 'Custom',
             value: v.value / (isFlat(v.name) ? 1 : 100),
           })
+          if (x.SUMMON_STATS) {
+            x.SUMMON_STATS[v.name as any].push({
+              name: 'Manual',
+              source: 'Custom',
+              value: v.value / (isFlat(v.name) ? 1 : 100),
+            })
+          }
+        }
       })
       return x
     })

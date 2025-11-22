@@ -11,7 +11,7 @@ import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 
 interface NormalBlockProps {
-  stat: string
+  stat: React.ReactNode
   array: StatsArray[]
   stats: BaseStatsType
 }
@@ -28,12 +28,12 @@ interface ExtraBlockProps {
 
 export const AttributeBlock = ({ stat, array, stats }: NormalBlockProps) => (
   <div className="space-y-1">
-    <p className="font-bold text-white">
+    <div className="font-bold text-white">
       {stat}{' '}
       <span className="text-red">
         {toPercentage(stat === 'DMG Reduction' ? stats.getDmgRed() : _.sumBy(array, (item) => item.value))}
       </span>
-    </p>
+    </div>
     <div className="space-y-1 text-xs">
       {_.map(
         array,
@@ -270,7 +270,23 @@ export const StatsModal = observer(
               <AttributeBlock stats={stats} stat="Follow-Up DEF PEN" array={stats.FUA_DEF_PEN} />
               <AttributeBlock stats={stats} stat="Break DMG DEF PEN" array={stats.BREAK_DEF_PEN} />
               <AttributeBlock stats={stats} stat="Super Break DMG DEF PEN" array={stats.SUPER_BREAK_DEF_PEN} />
-              <AttributeBlock stats={stats} stat="Summon DEF PEN" array={stats.SUMMON_DEF_PEN} />
+              <AttributeBlock
+                stats={stats}
+                stat={
+                  <span>
+                    Summon DEF PEN
+                    <Tooltip
+                      title="Summon DEF PEN"
+                      body="Refers to the amount of DEF PEN granted to the character's Action Bar Summons (e.g. Lightning Lord, Numby). This value does not affect memosprites. Please refer to the Memosprite's own DEF PEN if that's what you are looking for."
+                      style="w-[350px] font-normal"
+                      containerStyle="inline-block mx-1"
+                    >
+                      <i className="fa-regular fa-question-circle" />
+                    </Tooltip>
+                  </span>
+                }
+                array={stats.SUMMON_DEF_PEN}
+              />
             </div>
           </div>
         </Collapsible>

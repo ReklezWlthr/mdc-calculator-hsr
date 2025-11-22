@@ -23,6 +23,7 @@ interface CustomConditionalBlockProps {
     value: number
     debuff: boolean
     toggled: boolean
+    memo: boolean
   }[]
   customDebuffOverride?: {
     name: StatsObjectKeysT
@@ -30,19 +31,20 @@ interface CustomConditionalBlockProps {
     debuff: boolean
     toggled: boolean
   }[]
+  memo?: boolean
 }
 
 export const CustomConditionalBlock = observer(
-  ({ index, removeValue, setValue, customOverride, customDebuffOverride }: CustomConditionalBlockProps) => {
+  ({ index, removeValue, setValue, customOverride, customDebuffOverride, memo }: CustomConditionalBlockProps) => {
     const [open, setOpen] = useState(true)
 
     const { calculatorStore, modalStore } = useStore()
-    const custom = customOverride || calculatorStore.custom[index]
+    const custom = _.filter(customOverride || calculatorStore.custom[index], (item) => !!item.memo === !!memo)
     const customDebuff = customDebuffOverride || calculatorStore.customDebuff
 
     const onOpenCustomModal = useCallback(
-      () => modalStore.openModal(<CustomModal setCustomValue={setValue} />),
-      [setValue]
+      () => modalStore.openModal(<CustomModal setCustomValue={setValue} memo={memo} />),
+      [setValue, memo]
     )
 
     const onOpenCustomDebuffModal = useCallback(
@@ -78,35 +80,38 @@ export const CustomConditionalBlock = observer(
         >
           <div className="space-y-3">
             {!!_.size(custom) &&
-              _.map(custom, (mod, i) => (
-                <div className="grid items-center grid-cols-12 text-xs gap-x-1" key={mod.name}>
-                  <div className="col-span-5">
-                    <p className="w-full text-xs text-center text-white truncate">
-                      {CustomConditionalMap[mod.name] || mod.name}
-                    </p>
-                  </div>
-                  <div className="col-span-2 text-center text-blue">Buff</div>
-                  <TextInput
-                    type="number"
-                    value={mod.value?.toString()}
-                    onChange={(value) => set(i, mod.name, value ?? '', mod.toggled, mod.debuff)}
-                    style="col-span-2"
-                    small
-                  />
-                  <div className="flex justify-center col-span-2">
-                    <CheckboxInput
-                      onClick={(value) => set(i, mod.name, mod.value, value, mod.debuff)}
-                      checked={mod.toggled}
+              _.map(custom, (mod) => {
+                const i = _.findIndex(customOverride || calculatorStore.custom[index], (item) => _.isEqual(item, mod))
+                return (
+                  <div className="grid items-center grid-cols-12 text-xs gap-x-1" key={mod.name}>
+                    <div className="col-span-5">
+                      <p className="w-full text-xs text-center text-white truncate">
+                        {CustomConditionalMap[mod.name] || mod.name}
+                      </p>
+                    </div>
+                    <div className="col-span-2 text-center text-blue">Buff</div>
+                    <TextInput
+                      type="number"
+                      value={mod.value?.toString()}
+                      onChange={(value) => set(i, mod.name, value ?? '', mod.toggled, mod.debuff, mod.memo)}
+                      style="col-span-2"
+                      small
                     />
+                    <div className="flex justify-center col-span-2">
+                      <CheckboxInput
+                        onClick={(value) => set(i, mod.name, mod.value, value, mod.debuff, mod.memo)}
+                        checked={mod.toggled}
+                      />
+                    </div>
+                    <div className="flex justify-center">
+                      <i
+                        className="flex items-center justify-center h-6 cursor-pointer fa-solid fa-trash"
+                        onClick={() => remove(index, i)}
+                      />
+                    </div>
                   </div>
-                  <div className="flex justify-center">
-                    <i
-                      className="flex items-center justify-center h-6 cursor-pointer fa-solid fa-trash"
-                      onClick={() => remove(index, i)}
-                    />
-                  </div>
-                </div>
-              ))}
+                )
+              })}
             {!!_.size(customDebuff) &&
               _.map(customDebuff, (mod, i) => (
                 <div className="grid items-center grid-cols-12 text-xs gap-x-1" key={mod.name}>

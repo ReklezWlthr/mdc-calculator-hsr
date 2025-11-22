@@ -470,9 +470,12 @@ export const CustomConditionalMap = {
   DOT_VUL: 'DoT Vulnerability',
   FUA_VUL: 'Follow-Up DMG Vulnerability',
   BREAK_VUL: 'Break DMG Vulnerability',
+  BASIC_VUL: 'Basic ATK Vulnerability',
+  SKILL_VUL: 'Skill Vulnerability',
   ULT_VUL: 'Ultimate Vulnerability',
   FIRE_VUL: 'Fire DMG Vulnerability',
   SUPER_BREAK_VUL: 'Super Break DMG Vulnerability',
+  SUMMON_VUL: 'Memosprite DMG Vulnerability',
 
   ALL_TYPE_RES_RED: 'All-Type RES Reduction',
   PHYSICAL_RES_RED: 'Physical RES Reduction',

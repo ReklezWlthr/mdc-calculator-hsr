@@ -499,6 +499,7 @@ export const Calculator = observer(({}: {}) => {
                 memo
                 selected={selected}
               />
+              <CustomConditionalBlock index={selected} memo />
             </>
           )}
           {charData && tab === 'load' && (

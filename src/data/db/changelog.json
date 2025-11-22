@@ -1,6 +1,11 @@
 [
   {
     "version": "1.2-4",
+    "date": "Nov 22nd, 2025",
+    "desc": ["Updated: Added custom modifier for memosprites"]
+  },
+  {
+    "version": "1.2-4",
     "date": "Nov 20th, 2025",
     "desc": [
       "Content Version: <span class=\"text-desc\">v3.8v3</span>",

@@ -103,7 +103,7 @@ export const damageStringConstruct = (
     1 +
     stats.getValue(StatsObjectKeys.VULNERABILITY) +
     (stats.getValue(`${TalentPropertyMap[scaling.property]}_VUL`) || 0) +
-    (stats.getValue(`${TalentTypeMap[scaling.type]}_VUL`) || 0) +
+    (scaling.type !== TalentType.SERVANT ? stats.getValue(`${TalentTypeMap[scaling.type]}_VUL`) || 0 : 0) +
     (stats.getValue(`${scaling.element.toUpperCase()}_VUL`) || 0) +
     (scaling.vul || 0)
   const resMult = _.max([

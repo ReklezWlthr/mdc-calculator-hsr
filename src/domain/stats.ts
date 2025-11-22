@@ -80,6 +80,7 @@ export interface RawBaseStatType {
   BASIC_VUL: StatsArray[]
   SKILL_VUL: StatsArray[]
   SUPER_BREAK_VUL: StatsArray[]
+  SUMMON_VUL: StatsArray[]
 
   ULT_RES_PEN: StatsArray[]
   SKILL_RES_PEN: StatsArray[]

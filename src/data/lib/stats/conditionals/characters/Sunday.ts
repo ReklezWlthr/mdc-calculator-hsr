@@ -276,6 +276,13 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
             source: 'Sunday',
             value: 0.4,
           })
+          if (base.SUMMON_STATS) {
+            base.SUMMON_STATS.DEF_PEN.push({
+              name: 'Eidolon 1',
+              source: 'Sunday',
+              value: 0.4,
+            })
+          }
         }
       }
 

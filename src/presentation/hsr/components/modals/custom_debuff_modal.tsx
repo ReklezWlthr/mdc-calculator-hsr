@@ -38,6 +38,7 @@ export const CustomDebuffModal = observer(({ setCustomValue }: { setCustomValue?
       { name: 'Follow-Up DMG Vulnerability', value: StatsObjectKeys.FUA_VUL },
       { name: 'Break DMG Vulnerability', value: StatsObjectKeys.BREAK_VUL },
       { name: 'Super Break DMG Vulnerability', value: StatsObjectKeys.SUPER_BREAK_VUL },
+      { name: 'Memosprite DMG Vulnerability', value: StatsObjectKeys.SUMMON_VUL },
       { name: 'Fire DMG Vulnerability', value: StatsObjectKeys.FIRE_VUL },
     ],
     res: [

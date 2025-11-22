@@ -25,11 +25,19 @@ export interface CalculatorStoreType {
   toughness: number
   effRes: number
   level: number | string
-  custom: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean }[][]
+  custom: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean; memo: boolean }[][]
+  customDebuff: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean }[]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (initData: Record<string, any>[]) => void
   setFormValue: (index: number, key: string, value: any, memo: boolean) => void
-  setCustomValue: (innerIndex: number, key: StatsObjectKeysT, value: any, toggled: boolean, debuff?: boolean) => void
+  setCustomValue: (
+    innerIndex: number,
+    key: StatsObjectKeysT,
+    value: any,
+    toggled: boolean,
+    debuff?: boolean,
+    memo?: boolean
+  ) => void
   removeCustomValue: (index: number, innerIndex: number) => void
   setTotal: (key: TalentType, index: number, name: string, value: number) => void
   getTotal: (key: TalentType, index: number) => number
@@ -57,7 +65,7 @@ export class CalculatorStore {
   enemy: string
   level: number | string
   selected: number
-  custom: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean }[][]
+  custom: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean; memo: boolean }[][]
   customDebuff: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean }[]
 
   constructor() {
@@ -127,7 +135,8 @@ export class CalculatorStore {
     key: StatsObjectKeysT,
     value: any,
     toggled: boolean,
-    debuff: boolean = false
+    debuff: boolean = false,
+    memo: boolean = false
   ) => {
     if (debuff) {
       if (innerIndex < 0) {
@@ -139,9 +148,9 @@ export class CalculatorStore {
     } else {
       const index = this.selected
       if (innerIndex < 0) {
-        this.custom[index] = [...(this.custom[index] || []), { name: key, value, debuff, toggled }]
+        this.custom[index] = [...(this.custom[index] || []), { name: key, value, debuff, toggled, memo }]
       } else {
-        this.custom[index].splice(innerIndex, 1, { name: key, value, debuff, toggled })
+        this.custom[index].splice(innerIndex, 1, { name: key, value, debuff, toggled, memo })
       }
       this.custom = _.cloneDeep(this.custom)
     }
