@@ -1813,6 +1813,22 @@ export const Enemies = [
     effRes: 0.1,
   },
   {
+    name: `Annihilator of Desolation Mistral`,
+    type: 'Boss',
+    weakness: [Element.FIRE, Element.LIGHTNING, Element.WIND, Element.QUANTUM],
+    baseHp: 62.5,
+    toughness: 100,
+    res: {
+      [Element.PHYSICAL]: 0.4,
+      [Element.ICE]: 0.6,
+      [Element.IMAGINARY]: 0.6,
+    },
+    statusRes: {
+      [DebuffTypes.CONTROL]: 1,
+    },
+    effRes: 0.1,
+  },
+  {
     name: `Annihilator of Desolation Mistral: Mother of Deception`,
     type: 'Boss',
     weakness: [Element.FIRE, Element.LIGHTNING, Element.WIND, Element.QUANTUM],
@@ -2576,5 +2592,73 @@ export const Enemies = [
       [DebuffTypes.ENTANGLE]: 1,
     },
     effRes: 0.3,
+  },
+  {
+    name: `Hellcharred Shadow General`,
+    type: 'Boss',
+    weakness: [Element.PHYSICAL, Element.FIRE, Element.LIGHTNING, Element.QUANTUM],
+    baseHp: 385,
+    toughness: 280,
+    res: {
+      [Element.ICE]: 0.4,
+      [Element.IMAGINARY]: 0.4,
+      [Element.WIND]: 0.4,
+    },
+    statusRes: {
+      [DebuffTypes.CONTROL]: 1,
+    },
+    effRes: 0.3,
+  },
+  {
+    name: `Flame Reaver of Doomsday Led Astray`,
+    type: 'Boss',
+    weakness: [Element.PHYSICAL, Element.ICE, Element.LIGHTNING, Element.QUANTUM],
+    baseHp: 110,
+    toughness: 300,
+    res: {
+      [Element.FIRE]: 0.4,
+      [Element.IMAGINARY]: 0.4,
+      [Element.WIND]: 0.4,
+    },
+    statusRes: {
+      [DebuffTypes.FROZEN]: 0.75,
+      [DebuffTypes.ENTANGLE]: 0.75,
+      [DebuffTypes.IMPRISON]: 0.75,
+    },
+    effRes: 0.3,
+  },
+  {
+    name: `Guide of Withering and Decay`,
+    type: 'Boss',
+    weakness: [Element.WIND, Element.ICE, Element.IMAGINARY, Element.QUANTUM],
+    baseHp: 500,
+    toughness: 800,
+    res: {
+      [Element.FIRE]: 0.2,
+      [Element.LIGHTNING]: 0.2,
+      [Element.PHYSICAL]: 0.2,
+    },
+    statusRes: {
+      [DebuffTypes.CONTROL]: 0.5,
+    },
+    effRes: 0.3,
+  },
+  {
+    name: `Fulminating Wolflord`,
+    type: 'Boss',
+    weakness: [Element.WIND, Element.PHYSICAL, Element.FIRE, Element.QUANTUM],
+    baseHp: 110,
+    toughness: 380,
+    res: {
+      [Element.IMAGINARY]: 0.4,
+      [Element.LIGHTNING]: 0.4,
+      [Element.ICE]: 0.4,
+    },
+    statusRes: {
+      [DebuffTypes.FROZEN]: 0.75,
+      [DebuffTypes.ENTANGLE]: 0.75,
+      [DebuffTypes.IMPRISON]: 0.75,
+    },
+    effRes: 0.2,
   },
 ]
