@@ -44,8 +44,16 @@ export const EnemyModal = observer(({ stats, compare }: { stats: StatsObject; co
               if (enemyData) {
                 setValue(
                   'res',
-                  _.mapValues(enemyData?.res, (item) => item * 100 || 0)
+                  _.reduce(
+                    _.map(Element),
+                    (acc, curr) => {
+                      acc[curr] = (enemyData?.res[curr] || 0) * 100
+                      return acc
+                    },
+                    {}
+                  )
                 )
+                console.log(res)
                 setValue('weakness', enemyData?.weakness)
                 setValue('hp', _.round(enemyData?.baseHp * EnemyHpScaling[scaling][+level - 1]))
                 setValue('toughness', enemyData?.toughness)

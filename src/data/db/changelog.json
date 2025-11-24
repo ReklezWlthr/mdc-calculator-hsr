@@ -1,6 +1,14 @@
 [
   {
     "version": "1.2-4",
+    "date": "Nov 24th, 2025",
+    "desc": [
+      "Fixed: Calculator should no longer crash when removing character from the team.",
+      "Fixed: On-element RES value should behave normally now."
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Nov 22nd, 2025",
     "desc": ["Updated: Added custom modifier for memosprites"]
   },

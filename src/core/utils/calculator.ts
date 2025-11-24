@@ -77,6 +77,7 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
       )
     : {}
   for (const trace in traces) {
+    console.log(trace)
     conditionals[trace].push({
       value: traces[trace],
       source: 'Self',

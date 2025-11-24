@@ -49,13 +49,16 @@ export const useLocalUpdater = (game: string) => {
       localStorage.setItem(
         key,
         JSON.stringify({
-          team: _.map(teamStore.characters, (c) => ({
-            ...c,
-            minor_traces: formatMinorTrace(
-              findCharacter(c.cId)?.trace,
-              _.map(c.minor_traces, (v) => v.toggled)
-            ),
-          })),
+          team: _.map(teamStore.characters, (c) => {
+            if (!c?.cId) return c
+            return {
+              ...c,
+              minor_traces: formatMinorTrace(
+                findCharacter(c.cId)?.trace,
+                _.map(c.minor_traces, (v) => v?.toggled || false)
+              ),
+            }
+          }),
           artifacts: artifactStore.artifacts,
           builds: buildStore.builds,
           characters: _.map(charStore.characters, (c) => ({
