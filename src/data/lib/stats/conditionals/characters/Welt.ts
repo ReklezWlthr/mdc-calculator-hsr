@@ -157,7 +157,11 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'welt_skill'), findContentById(content, 'welt_ult')]
+  const teammateContent: IContent[] = [
+    findContentById(content, 'welt_skill'),
+    findContentById(content, 'welt_ult'),
+    findContentById(content, 'welt_a2'),
+  ]
 
   const allyContent: IContent[] = []
 
