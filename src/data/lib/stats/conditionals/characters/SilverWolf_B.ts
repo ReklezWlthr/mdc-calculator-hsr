@@ -292,12 +292,12 @@ const SilverWolfBase = (
       ]
 
       if (form.sw_implant) {
-        const isQuantumWeak = _.includes(weakness, Element.QUANTUM)
+        const isQuantumWeak = _.includes(weakness, form.sw_implant)
         if (isQuantumWeak) {
           form.sw_implant_ally = false
         } else {
           form.sw_implant_ally = true
-          weakness.push(Element.QUANTUM)
+          weakness.push(form.sw_implant)
           base[`${form.sw_implant.toUpperCase()}_RES_RED`].push({
             name: `Skill`,
             source: 'Self',
