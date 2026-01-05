@@ -2469,10 +2469,10 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 21,
     type: PathType.NIHILITY,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Immolation',
-      detail: `Increases the wearer's Break Effect by {{0}}%. When entering combat, increases Break DMG dealt by the wearer and another teammate who triggered combat by {{1}}%. If there is no teammate who triggered combat, applies this effect to the wearer and the teammate with the highest Break Effect. Effects of the same type cannot be stacked. When the wearer applies Weakness to an enemy target, recovers <span class="text-desc">1</span> Skill Point. This effect can only trigger once, and trigger count resets when using Ultimate.`,
+      detail: `Increases the wearer's Break Effect by {{0}}%. When entering combat, increases Break DMG dealt by the wearer and another teammate who triggered combat by {{1}}%. If there is no teammate who triggered combat, applies this effect to the wearer and the teammate with the highest Break Effect. Effects of the same type cannot be stacked. When the wearer applies Weakness to an enemy target, recovers <span class="text-desc">1</span> Skill Point. This effect can only trigger once. And resets this trigger count when using Ultimate.`,
       properties: [
         { base: 60, growth: 15 },
         { base: 32, growth: 10 },

@@ -46,8 +46,8 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 30,
       trace: 'Skill',
       title: `Lick... Enkindled Betrayal`,
-      content: `Deploys a Zone that lasts for <span class="text-desc">3</span> turn(s), with the Zone's duration decreasing by <span class="text-desc">1</span> at the start of The Dahlia's turn. Then, deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of The Dahlia's ATK to one designated enemy and their adjacent targets.
-      <br />While the Zone is active, increases all allies' Weakness Break Efficiency by <span class="text-desc">50%</span>. Toughness Reduction taken by enemy targets while not Weakness Broken can be converted into Super Break DMG.`,
+      content: `Deploys a Zone that lasts for <span class="text-desc">3</span> turn(s) The Zone's duration decreases by <span class="text-desc">1</span> at the start of The Dahlia's turn. Then, deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of The Dahlia's ATK to one designated enemy and their adjacent targets.
+      <br />While the Zone lasts, increases all allies' Weakness Break Efficiency by <span class="text-desc">50%</span>. Toughness Reduction taken by enemy targets while not Weakness Broken can also be converted into Super Break DMG.`,
       value: [{ base: 80, growth: 8, style: 'curved' }],
       level: skill,
       tag: AbilityTag.BLAST,
@@ -57,8 +57,8 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 5,
       trace: 'Ultimate',
       title: `Wallow...Entombed Ash`,
-      content: `Inflicts <b class="text-red">Wilt</b> state on all enemies, lasting for <span class="text-desc">4</span> turn(s). Then, deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of The Dahlia's ATK, which is distributed across all enemies.
-      <br />Reduces DEF of enemy targets in the <b class="text-red">Wilt</b> state by {{1}}% and applies Weakness of all <b class="text-desc">Dance Partners</b>' Types to enemy targets.`,
+      content: `Inflicts a <b class="text-red">Wilt</b> state on all enemies, lasting for <span class="text-desc">4</span> turn(s). Then, deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of The Dahlia's ATK, which is distributed across all enemies.
+      <br />Enemy targets in the <b class="text-red">Wilt</b> state have their DEF reduced by {{1}}% and will be implanted with Weakness of all <b class="text-desc">Dance Partners</b>' Types.`,
       value: [
         { base: 180, growth: 12, style: 'curved' },
         { base: 8, growth: 1, style: 'curved' },
@@ -69,8 +69,8 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     talent: {
       trace: 'Talent',
       title: `Who's Afraid of Constance?`,
-      content: `When entering combat, The Dahlia regenerates <span class="text-desc">35</span> Energy and grants <b class="text-desc">Dance Partner</b> to this unit and the teammate who triggered combat. Whenever there is no other <b class="text-desc">Dance Partner</b> on the field, grants <b class="text-desc">Dance Partner</b> to this unit and the teammate with the highest Break Effect. After a <b class="text-desc">Dance Partner</b> attacks a Weakness Broken enemy target, the Toughness Reduction from this attack is converted into <span class="text-desc">1</span> instance of Super Break DMG at {{0}}%.
-      <br />After an enemy target is attacked by the other <b class="text-desc">Dance Partner</b>, The Dahlia launches a <u>Follow-Up ATK</u>, dealing <span class="text-desc">5</span> instance(s) of DMG, each dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of The Dahlia's ATK to one random enemy. After each instance of DMG dealt to a Weakness Broken enemy target, the Toughness Reduction from this DMG is converted into <span class="text-desc">1</span> instance of Super Break DMG at {{2}}%.
+      content: `When entering combat, The Dahlia regenerates <span class="text-desc">35</span> Energy and becomes <b class="text-desc">Dance Partner</b> along with the teammate that triggered combat. Whenever there is no other <b class="text-desc">Dance Partner</b> on the field, this unit and the teammate with the highest Break Effect become <b class="text-desc">Dance Partner</b> together. After a <b class="text-desc">Dance Partner</b> attacks a Weakness Broken enemy target, the Toughness Reduction from this attack is converted into <span class="text-desc">1</span> instance of Super Break DMG at {{0}}%.
+      <br />After an enemy target is attacked by the other <b class="text-desc">Dance Partner</b>, The Dahlia launches <u>Follow-Up ATK</u> and deals <span class="text-desc">5</span> instance(s) of DMG, each dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of The Dahlia's ATK to one random enemy. After each instance of DMG dealt to a Weakness Broken enemy target, the Toughness Reduction from this DMG will be converted into <span class="text-desc">1</span> instance of Super Break DMG at {{2}}%.
       <br />This effect can only trigger once per turn. If the target is defeated before the <u>Follow-Up ATK</u> is used, it will be launched at one random enemy instead.`,
       value: [
         { base: 30, growth: 3, style: 'curved' },
@@ -90,27 +90,27 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Yet Another Funeral`,
-      content: `When entering combat, increases other characters' Break Effect equal to <span class="text-desc">24%</span> of The Dahlia's Break Effect plus <span class="text-desc">50%</span> for <span class="text-desc">1</span> turn(s). This effect triggers again lasting <span class="text-desc">3</span> turn(s) when The Dahlia receives healing or a Shield from a teammate, but cannot be triggered repeatedly within a single turn.`,
+      content: `When entering combat, increases other characters' Break Effect by an amount equal to <span class="text-desc">24%</span> of The Dahlia's Break Effect plus <span class="text-desc">50%</span>, lasting for <span class="text-desc">1</span> turn(s). When The Dahlia receives healing or a Shield provided by a teammate, this effect triggers again, lasting for <span class="text-desc">3</span> turn(s). Cannot trigger repeatedly within one turn.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Lament, Lost Soul`,
-      content: `When using Talent's <u>Follow-Up ATK</u>, recovers <span class="text-desc">1</span> Skill Point for allies. This effect can be triggered once for every <span class="text-desc">2</span> Talent's <u>Follow-Up ATKs</u> used.`,
+      content: `When using Talent's <u>Follow-Up ATK</u>, recovers <span class="text-desc">1</span> Skill Point for allies. For every <span class="text-desc">2</span> instance(s) of Talent's <u>Follow-Up ATK</u> used, this effect can trigger once.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Outgrow the Old, Espouse the New`,
-      content: `When an ally target adds Weakness to an enemy target, increases SPD by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s). If an ally <b class="text-hsr-fire">Fire</b> character implants a Weakness when using an attack, deals <span class="text-desc">20</span> fixed amount of <b class="text-hsr-fire">Fire</b> Toughness Reduction after the attack for every Weakness implanted. Also, regenerates Energy equal to <span class="text-desc">10%</span> of Max Energy. The maximum amount of Energy regenerated through this effect is capped at <span class="text-desc">50%</span> of Max Energy.`,
+      content: `When an ally target adds Weakness to an enemy target, increases SPD by <span class="text-desc">30%</span> for <span class="text-desc">2</span> turn(s). If a <b class="text-hsr-fire">Fire</b> ally character has implanted a Weakness when using an attack, then after the attack, additionally deals a fixed amount of <span class="text-desc">20</span> <b class="text-hsr-fire">Fire</b> Toughness Reduction to every target implanted with Weakness. Also, regenerates Energy equal to <span class="text-desc">10%</span> of Max Energy. This effect can regenerate Energy up to <span class="text-desc">50%</span> of Max Energy.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `When a Bud Readies to Bloom`,
-      content: `Applies Talent's Super Break DMG multiplier provided to <b class="text-desc">Dance Partner</b> to all ally characters, with <b class="text-desc">Dance Partner</b> additionally receiving a <span class="text-desc">40%</span> boost. After <b class="text-desc">Dance Partner</b> uses an attack, deals an additional fixed amount of Toughness Reduction equal to <span class="text-desc">25%</span> of the enemy target's Max Toughness (minimum of <span class="text-desc">10</span> points, up to <span class="text-desc">300</span> points). This effect can only trigger once per enemy target, and the trigger count for each target resets after the enemy target receives a killing blow.`,
+      content: `The Super Break DMG multiplier provided by Talent to <b class="text-desc">Dance Partners</b> now applies to all ally characters, with <b class="text-desc">Dance Partners</b> additionally receiving a <span class="text-desc">40%</span> boost. After <b class="text-desc">Dance Partners</b> use an attack, additionally deals the attacked enemy targets a fixed amount of Toughness Reduction equal to <span class="text-desc">25%</span> of their Max Toughness (minimum of <span class="text-desc">10</span>, maximum <span class="text-desc">300</span>). This effect can only trigger once per enemy target, and this trigger count resets after the enemy target receives a killing blow.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Fresh, Ethereal, and Beloved`,
-      content: `When The Dahlia is on the field, decreases all enemies' <b>All-Type RES</b> by <span class="text-desc">20%</span>. When an enemy target enters the field, immediately inflicts <b class="text-red">Wilt</b> state on them, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `When The Dahlia is on the field, decreases all enemies' <b>All-Type RES</b> by <span class="text-desc">20%</span>. When an enemy target enters the field, immediately inflicts <b class="text-red">Wilt</b> on them, lasting for <span class="text-desc">3</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -121,7 +121,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c4: {
       trace: 'Eidolon 4',
       title: `Pity Its Heart Gnawed by Worms`,
-      content: `Increases the instances of DMG dealt by Talent's <u>Follow-Up ATK</u> by <span class="text-desc">5</span>, and every hit increases the target's DMG taken by <span class="text-desc">12%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `Increases the number of DMG instances dealt by Talent's <u>Follow-Up ATK</u> by <span class="text-desc">5</span>. Upon its use, the DMG taken by all enemy targets increases by <span class="text-desc">12%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -132,7 +132,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c6: {
       trace: 'Eidolon 6',
       title: `And Yet, Always, Deathly Beautiful`,
-      content: `Increases <b class="text-desc">Dance Partner</b>'s Break Effect by <span class="text-desc">150%</span>. When using her Talent's <u>Follow-Up ATK</u>, advances the next action of all <b class="text-desc">Dance Partners</b> by <span class="text-desc">20%</span>.`,
+      content: `Increases <b class="text-desc">Dance Partners</b>' Break Effect by <span class="text-desc">150%</span>. When using Talent's <u>Follow-Up ATK</u>, advances the next action of all <b class="text-desc">Dance Partners</b> by <span class="text-desc">20%</span>.`,
     },
   }
 
@@ -189,14 +189,12 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       default: true,
     },
     {
-      type: 'number',
+      type: 'toggle',
       id: 'dahlia_e4',
       text: `E4 Bounce Vulnerability`,
       ...talents.c4,
       show: c >= 4,
-      default: 5,
-      max: 10,
-      min: 0,
+      default: true,
     },
     {
       type: 'toggle',
@@ -366,7 +364,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         base.VULNERABILITY.push({
           name: 'Eidolon 4',
           source: 'Self',
-          value: form.dahlia_e4 * 0.12,
+          value: 0.12,
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
@@ -457,7 +455,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         base.VULNERABILITY.push({
           name: 'Eidolon 4',
           source: 'The Dahlia',
-          value: form.dahlia_e4 * 0.12,
+          value: 0.12,
         })
       }
 

@@ -966,7 +966,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [],
     bonusAdd: [],
     desc: [
-      `When a Party target uses a <u>follow-up attack</u>, the wearer receives <span class="text-desc">1</span> stack of <b>Merit</b>, stacking up to <span class="text-desc">5</span> times. Every stack of <b>Merit</b> increases the DMG dealt by the wearer's <u>follow-up attacks</u> by <span class="text-desc">5%</span>. When there are <span class="text-desc">5</span> stacks, additionally increases the wearer's CRIT DMG by <span class="text-desc">25%</span>.`,
+      `When an ally character uses a <u>Follow-Up ATK</u>, the wearer receives <span class="text-desc">1</span> stack of <b>Merit</b>, stacking up to <span class="text-desc">5</span> times. Each stack of <b>Merit</b> increases the DMG dealt by the wearer's <u>Follow-Up ATKs</u> by <span class="text-desc">5%</span>. When there are <span class="text-desc">5</span> stacks, additionally increases the wearer's CRIT DMG by <span class="text-desc">25%</span>.`,
     ],
     set: [`Duran's Tent of Golden Sky`, `Duran's Mechabeast Bridle`],
   },
