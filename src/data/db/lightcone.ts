@@ -1516,7 +1516,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 18,
     type: PathType.REMEMBRANCE,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Gaze',
       detail: `Increases the wearer's CRIT DMG by {{0}}%. When equipped by Trailblazer (Remembrance), increases all ally targets' DMG dealt by {{1}}% and DMG dealt by Enhanced Basic ATK <b>We Script Tomorrow!</b> by {{2}}%.`,
