@@ -200,7 +200,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       type: 'number',
       id: 'engagement',
       text: `Engagement Farming`,
-      ...talents.skill_alt,
+      ...talents.skill,
       show: true,
       default: 5,
       min: 0,
