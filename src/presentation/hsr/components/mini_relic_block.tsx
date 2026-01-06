@@ -1,4 +1,4 @@
-import { toPercentage } from '@src/core/utils/converter'
+import { toPercentage } from '@src/core/utils/data_format'
 import { getMainStat, getNearestSpd, getRolls } from '@src/core/utils/data_format'
 import { findArtifactSet } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
@@ -53,7 +53,7 @@ export const MiniRelicBlock = observer(
               <div className="flex items-center justify-between w-full gap-2 text-xs">
                 <img
                   className="w-3.5"
-                  src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[relic?.main]}`}
+                  src={`/icons/${StatIcons[relic?.main]}`}
                   onError={(e) => (e.currentTarget.src = `/icons/${StatIcons[relic?.main]}`)}
                 />
                 <p className="font-bold text-gray">
@@ -69,10 +69,7 @@ export const MiniRelicBlock = observer(
             <div className="grid w-7/12 grid-cols-1 gap-1">
               {_.map(subListWithRolls, (item) => (
                 <div className="flex items-center w-full gap-1.5 text-xs" key={item.stat}>
-                  <img
-                    className="w-3.5"
-                    src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[item.stat]}`}
-                  />
+                  <img className="w-3.5" src={`/icons/${StatIcons[item.stat]}`} />
                   <div className="text-primary-lighter">{_.repeat('\u{2771}', item.roll)}</div>
                   <hr className="w-full border border-primary-border" />
                   <p className="font-normal text-gray">

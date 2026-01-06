@@ -1,5 +1,5 @@
 import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
-import { DebuffTypes } from './conditional'
+import { DefaultWeapon } from '@src/data/stores/team_store'
 
 export enum HsrPage {
   TEAM = 'team',
@@ -9,6 +9,19 @@ export enum HsrPage {
   BUILD = 'build',
   INVENTORY = 'inventory',
   CHAR = 'char',
+}
+
+export interface GlobalModifiers {
+  punchline: number
+}
+
+export const DefaultGlobalMod: GlobalModifiers = {
+  punchline: 0,
+}
+
+export const DefaultBuild = {
+  weapon: DefaultWeapon,
+  artifacts: Array(6).fill(null),
 }
 
 export interface ICharacterStats {
@@ -37,6 +50,7 @@ export interface ITalentLevel {
   talent: number
   memo_skill: number
   memo_talent: number
+  elation: number
 }
 
 export interface ICharStoreBase {
@@ -120,6 +134,7 @@ export enum PathType {
   HARMONY = 'Harmony',
   NIHILITY = 'Nihility',
   REMEMBRANCE = 'Remembrance',
+  ELATION = 'Elation',
 }
 
 export const PathMap = {
@@ -131,6 +146,7 @@ export const PathMap = {
   [PathType.HARMONY]: '/shaman.webp',
   [PathType.NIHILITY]: '/warlock.webp',
   [PathType.REMEMBRANCE]: '/memory.webp',
+  [PathType.ELATION]: '/elation.webp',
 }
 
 export const BaseAggro = {
@@ -170,6 +186,7 @@ export enum TalentType {
   TALENT = 'Talent',
   SERVANT = 'Memosprite Skill',
   SERVANT_T = 'Memosprite Talent',
+  ELATION = 'Elation Skill',
   NONE = 'None',
 }
 
@@ -188,6 +205,7 @@ export enum TalentProperty {
   ENTANGLE = 'Entanglement',
   PURE = 'Pure DMG',
   TRUE = 'True DMG',
+  ELATION = 'Elation DMG',
 }
 
 export enum Element {
@@ -225,6 +243,7 @@ export enum Stats {
   IMAGINARY_DMG = 'Imaginary DMG%',
   HEAL = 'Outgoing Healing',
   ALL_DMG = 'DMG%',
+  ELATION = 'Elation',
   // Enemy
   EHP = 'Enemy HP',
 }
@@ -253,6 +272,23 @@ export const StatIcons = {
   [Stats.ERR]: 'IconEnergyRecovery.png',
   [Stats.EHR]: 'IconStatusProbability.png',
   [Stats.EHP]: 'IconMaxHP.png',
+  [Stats.ELATION]: 'IconJoy.webp',
+}
+
+export enum DebuffTypes {
+  WIND_SHEAR = 'Wind Shear',
+  BURN = 'Burn',
+  FROZEN = 'Frozen',
+  SHOCKED = 'Shock',
+  BLEED = 'Bleed',
+  ENTANGLE = 'Entangled',
+  IMPRISON = 'Imprisoned',
+  ATK_RED = 'ATK Reduced',
+  DEF_RED = 'DEF Reduced',
+  SPD_RED = 'SPD Reduced',
+  OTHER = 'Others',
+  DOT = 'DoT',
+  CONTROL = 'Control',
 }
 
 export const DebuffIcon = {

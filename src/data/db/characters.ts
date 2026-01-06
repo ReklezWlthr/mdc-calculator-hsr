@@ -1221,6 +1221,38 @@ export const Characters = [
     element: Element.ICE,
     beta: false,
   },
+  {
+    id: '1501',
+    name: 'Sparxie',
+    stat: {
+      baseAtk: 87.12,
+      baseHp: 142.56,
+      baseDef: 62.7,
+      baseSpd: 107,
+      energy: 160,
+    },
+    trace: [Stats.CRIT_DMG, Stats.CRIT_RATE, Stats.ELATION],
+    rarity: 5,
+    path: PathType.ELATION,
+    element: Element.FIRE,
+    beta: true,
+  },
+  {
+    id: '1502',
+    name: 'Yao Guang',
+    stat: {
+      baseAtk: 60.72,
+      baseHp: 190.08,
+      baseDef: 79.2,
+      baseSpd: 101,
+      energy: 180,
+    },
+    trace: [Stats.CRIT_RATE, Stats.ELATION, Stats.SPD],
+    rarity: 5,
+    path: PathType.ELATION,
+    element: Element.PHYSICAL,
+    beta: true,
+  },
 
   // Odd = Male, Even = Female
   {

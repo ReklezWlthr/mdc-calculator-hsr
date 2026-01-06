@@ -1,4 +1,4 @@
-import { toPercentage } from '@src/core/utils/converter'
+import { toPercentage } from '@src/core/utils/data_format'
 import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { Stats } from '@src/domain/constant'

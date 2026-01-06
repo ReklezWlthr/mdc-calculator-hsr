@@ -78,6 +78,8 @@ import Terravox from './characters/Terravox'
 import Evernight from './characters/Evernight'
 import Cyrene from './characters/Cyrene'
 import Dahlia from './characters/Dahlia'
+import Sparxie from './characters/Sparxie'
+import YaoGuang from './characters/YaoGuang'
 
 export default [
   { id: '1001', conditionals: March },
@@ -156,6 +158,8 @@ export default [
   { id: '1413', conditionals: Evernight },
   { id: '1414', conditionals: Terravox },
   { id: '1415', conditionals: Cyrene },
+  { id: '1501', conditionals: Sparxie },
+  { id: '1502', conditionals: YaoGuang },
   // MCs
   { id: '8001', conditionals: DMC },
   { id: '8003', conditionals: PMC },

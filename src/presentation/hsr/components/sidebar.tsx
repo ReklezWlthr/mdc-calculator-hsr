@@ -56,9 +56,9 @@ export const Sidebar = ({ currentPage, onChange }: { currentPage: HsrPage; onCha
             <div className="w-full px-2 py-1 text-xs text-white bg-green-700 rounded-md ring-1 ring-offset-2 ring-offset-primary-dark ring-green-400">
               <p className="flex items-center gap-1 font-bold">
                 <i className="fa-info-circle fa-solid" />
-                v3.8v3 Update
+                v4.0v1 Partial Update
               </p>
-              <p>The Dahlia Updated!</p>
+              <p>Yao Guang & Sparxie: Now Available!</p>
             </div>
           )}
           <div className="flex items-center gap-3 cursor-pointer text-gray" onClick={onOpenIntroModal}>

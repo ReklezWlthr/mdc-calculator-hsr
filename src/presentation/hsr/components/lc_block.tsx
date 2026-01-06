@@ -17,7 +17,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { LCModal } from '@src/presentation/hsr/components/modals/lc_modal'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { findCharacter, findLightCone } from '@src/core/utils/finder'
-import { toPercentage } from '@src/core/utils/converter'
+import { toPercentage } from '@src/core/utils/data_format'
 import { Tooltip, TooltipPositionT } from '@src/presentation/components/tooltip'
 import getConfig from 'next/config'
 import classNames from 'classnames'
@@ -60,7 +60,8 @@ export const LCTooltip = ({
         <div className="flex items-center justify-between">
           <div className="space-y-0.5">
             <p className="text-xs font-normal opacity-75 text-gray">
-              {data?.name}{!!cId && ` - ${findCharacter(cId)?.name}`}
+              {data?.name}
+              {!!cId && ` - ${findCharacter(cId)?.name}`}
             </p>
             <p>{data?.desc?.name}</p>
           </div>
@@ -258,10 +259,7 @@ export const LCBlock = observer(
             <div className="px-1 pt-1 space-y-3">
               <div className="flex items-center gap-2 text-xs">
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <img
-                    className="w-3.5"
-                    src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[Stats.HP]}`}
-                  />
+                  <img className="w-3.5" src={`/icons/${StatIcons[Stats.HP]}`} />
                   <p>Base HP</p>
                 </div>
                 <hr className="w-full border border-primary-border" />
@@ -269,10 +267,7 @@ export const LCBlock = observer(
               </div>
               <div className="flex items-center gap-2 text-xs">
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <img
-                    className="w-3.5"
-                    src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[Stats.ATK]}`}
-                  />
+                  <img className="w-3.5" src={`/icons/${StatIcons[Stats.ATK]}`} />
                   <p>Base ATK</p>
                 </div>
                 <hr className="w-full border border-primary-border" />
@@ -280,10 +275,7 @@ export const LCBlock = observer(
               </div>
               <div className="flex items-center gap-2 text-xs">
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <img
-                    className="w-3.5"
-                    src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[Stats.DEF]}`}
-                  />
+                  <img className="w-3.5" src={`/icons/${StatIcons[Stats.DEF]}`} />
                   <p>Base DEF</p>
                 </div>
                 <hr className="w-full border border-primary-border" />

@@ -3,7 +3,7 @@ import { Characters } from '@src/data/db/characters'
 import { Enemies } from '@src/data/db/enemies'
 import { LightCones } from '@src/data/db/lightcone'
 import { baseStatsObject, StatsArray } from '@src/data/lib/stats/baseConstant'
-import { DebuffTypes } from '@src/domain/conditional'
+import { DebuffTypes } from '@src/domain/constant'
 import { Element } from '@src/domain/constant'
 import _ from 'lodash'
 

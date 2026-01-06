@@ -7,7 +7,8 @@ import {
   findCharacter,
   findContentById,
 } from '@src/core/utils/finder'
-import { DebuffTypes, IWeaponContent } from '@src/domain/conditional'
+import { IWeaponContent } from '@src/domain/conditional'
+import { DebuffTypes } from '@src/domain/constant'
 import { Element, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 import _ from 'lodash'
 import { StatsObject, StatsObjectKeys, TalentTypeMap } from '../../baseConstant'
@@ -2626,6 +2627,61 @@ export const LCTeamConditionals: IWeaponContent[] = [
         }
       }
 
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Skill Point Consumed`,
+    show: true,
+    default: 1,
+    min: 0,
+    max: 4,
+    id: '23053',
+    scaling: (base, form, r, { index, owner }) => {
+      if (form['23053']) {
+        if (index === owner) {
+          base.ELATION_DEF_PEN.push({
+            name: `Passive`,
+            source: 'Dazzled By A Flowery World',
+            value: calcRefinement(0.05, 0.01, r) * form['23053'],
+          })
+        }
+        base[Stats.ELATION].push({
+          name: `Passive`,
+          source: 'Dazzled By A Flowery World',
+          value: calcRefinement(0.05, 0.01, r) * form['23053'],
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Great Fortune`,
+    show: true,
+    default: true,
+    id: '23054',
+    scaling: (base, form, r, { index, owner }) => {
+      if (form['23054']) {
+        if (index === owner) {
+          base[Stats.ERR].push({
+            name: `Passive`,
+            source: 'When She Decided To See',
+            value: calcRefinement(0.12, 0.02, r),
+          })
+        }
+        base[Stats.CRIT_RATE].push({
+          name: `Passive`,
+          source: 'When She Decided To See',
+          value: calcRefinement(0.1, 0.01, r),
+        })
+        base[Stats.CRIT_DMG].push({
+          name: `Passive`,
+          source: 'When She Decided To See',
+          value: calcRefinement(0.3, 0.08, r),
+        })
+      }
       return base
     },
   },

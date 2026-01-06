@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import _ from 'lodash'
-import { toPercentage } from '@src/core/utils/converter'
+import { toPercentage } from '@src/core/utils/data_format'
 
 import { StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { Stats } from '@src/domain/constant'

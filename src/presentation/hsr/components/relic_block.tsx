@@ -6,7 +6,7 @@ import { useCallback, useMemo } from 'react'
 import { ArtifactModal } from '@src/presentation/hsr/components/modals/artifact_modal'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { getMainStat, getNearestSpd, getRolls } from '@src/core/utils/data_format'
-import { toPercentage } from '@src/core/utils/converter'
+import { toPercentage } from '@src/core/utils/data_format'
 import { StatIcons } from '../../../domain/constant'
 import { findArtifactSet, findCharacter } from '@src/core/utils/finder'
 import classNames from 'classnames'
@@ -174,7 +174,7 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
               <div className="flex items-center gap-1.5 shrink-0">
                 <img
                   className="w-3.5"
-                  src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[artifact?.main]}`}
+                  src={`/icons/${StatIcons[artifact?.main]}`}
                   onError={(e) => (e.currentTarget.src = `/icons/${StatIcons[artifact?.main]}`)}
                 />
                 {artifact?.main}
@@ -190,10 +190,7 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
             {_.map(subListWithRolls, (item) => (
               <div className="flex items-center gap-2 text-xs" key={item.stat}>
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <img
-                    className="w-3.5"
-                    src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[item.stat]}`}
-                  />
+                  <img className="w-3.5" src={`/icons/${StatIcons[item.stat]}`} />
                   {item.stat}
                 </div>
                 <div className="text-primary-lighter">{_.repeat('\u{2771}', item.roll)}</div>

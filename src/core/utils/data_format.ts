@@ -5,7 +5,6 @@ import { findCharacter } from './finder'
 import { TraceScaling } from '@src/domain/scaling'
 import { ITalentDisplay } from '@src/domain/conditional'
 import { calcScaling } from './calculator'
-import { toPercentage } from './converter'
 
 export const escapeRegex = (string: string) => {
   return string.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&')
@@ -220,3 +219,12 @@ export const teamOptionGenerator = (team: ITeamChar[], includeSummon?: boolean) 
     (item) => !!item
   ),
 ]
+
+export const toPercentage = (value: number, precision: number = 1, round?: boolean) => {
+  return (
+    (round
+      ? _.round(value * 100, precision)
+      : _.floor(_.round(value * 100, precision + 1), precision)
+    ).toLocaleString() + '%'
+  )
+}

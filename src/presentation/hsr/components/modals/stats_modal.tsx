@@ -1,4 +1,4 @@
-import { toPercentage } from '@src/core/utils/converter'
+import { toPercentage } from '@src/core/utils/data_format'
 import { getTurnWithinCycle } from '@src/core/utils/data_format'
 import { checkBuffExist } from '@src/core/utils/finder'
 import { StatsArray, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
@@ -223,6 +223,12 @@ export const StatsModal = observer(
             </div>
           </div>
         </Collapsible>
+        <Collapsible label="Elation Attributes">
+          <div className="space-y-2">
+            <AttributeBlock stats={stats} stat="Elation" array={_.concat(stats[Stats.ELATION], stats.X_ELATION)} />
+            <AttributeBlock stats={stats} stat="Merrymake" array={stats.ELATION_MERRYMAKE} />
+          </div>
+        </Collapsible>
         <Collapsible label="DMG Bonuses">
           <div className="grid grid-cols-2 gap-10">
             <div className="space-y-2">
@@ -270,6 +276,7 @@ export const StatsModal = observer(
               <AttributeBlock stats={stats} stat="Follow-Up DEF PEN" array={stats.FUA_DEF_PEN} />
               <AttributeBlock stats={stats} stat="Break DMG DEF PEN" array={stats.BREAK_DEF_PEN} />
               <AttributeBlock stats={stats} stat="Super Break DMG DEF PEN" array={stats.SUPER_BREAK_DEF_PEN} />
+              <AttributeBlock stats={stats} stat="Elation DMG DEF PEN" array={stats.ELATION_DEF_PEN} />
               <AttributeBlock
                 stats={stats}
                 stat={

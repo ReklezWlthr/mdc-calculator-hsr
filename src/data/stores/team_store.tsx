@@ -1,8 +1,7 @@
-import { Element, IArtifactEquip, IBuild, ITeamChar, IWeapon, IWeaponEquip, PathType } from '@src/domain/constant'
+import { DefaultBuild, Element, IArtifactEquip, IBuild, ITeamChar, IWeapon, IWeaponEquip, PathType } from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
-import { DefaultBuild } from './build_store'
 import { swapElement } from '@src/core/utils/data_format'
 
 enableStaticRendering(typeof window === 'undefined')
@@ -30,6 +29,7 @@ export const DefaultCharacter = {
     talent: 1,
     memo_talent: 1,
     memo_skill: 1,
+    elation: 1,
   },
   minor_traces: Array(10),
   major_traces: {

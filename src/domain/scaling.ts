@@ -17,6 +17,7 @@ export const TraceScaling = {
   [Stats.WIND_DMG]: [0.032, 0.048, 0.064],
   [Stats.QUANTUM_DMG]: [0.032, 0.048, 0.064],
   [Stats.IMAGINARY_DMG]: [0.032, 0.048, 0.064],
+  [Stats.ELATION]: [0.04, 0.06, 0.08],
 }
 
 export const BreakBaseLevel = [

@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import _ from 'lodash'
-import { toPercentage } from '@src/core/utils/converter'
+import { toPercentage } from '@src/core/utils/data_format'
 
 import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { Stats } from '@src/domain/constant'
@@ -77,16 +77,31 @@ export const StatBlock = observer(({ stat, expands }: StatBlockProps) => {
       <DataRow title="Outgoing Healing" value={toPercentage(stat?.getValue(Stats.HEAL))} />
       <DataRow title="Energy Regen Rate" value={toPercentage(stat?.getValue(Stats.ERR))} />
       <DataRow title="Max Energy" value={stat?.MAX_ENERGY} />
-      <DataRow title="Physical DMG%" value={toPercentage(stat?.getValue(Stats.PHYSICAL_DMG))} />
-      <DataRow title="Fire DMG%" value={toPercentage(stat?.getValue(Stats.FIRE_DMG))} />
-      <DataRow title="Ice DMG%" value={toPercentage(stat?.getValue(Stats.ICE_DMG))} />
-      <DataRow title="Lightning DMG%" value={toPercentage(stat?.getValue(Stats.LIGHTNING_DMG))} />
-      <DataRow title="Wind DMG%" value={toPercentage(stat?.getValue(Stats.WIND_DMG))} />
-      <DataRow title="Quantum DMG%" value={toPercentage(stat?.getValue(Stats.QUANTUM_DMG))} />
-      <DataRow title="Imaginary DMG%" value={toPercentage(stat?.getValue(Stats.IMAGINARY_DMG))} />
-      <DataRow title="DMG%" value={toPercentage(stat?.getValue(Stats.ALL_DMG))} />
+      <DataRow
+        title="Physical DMG%"
+        value={toPercentage(stat?.getValue(Stats.PHYSICAL_DMG) + stat?.getValue(Stats.ALL_DMG))}
+      />
+      <DataRow title="Fire DMG%" value={toPercentage(stat?.getValue(Stats.FIRE_DMG) + stat?.getValue(Stats.ALL_DMG))} />
+      <DataRow title="Ice DMG%" value={toPercentage(stat?.getValue(Stats.ICE_DMG) + stat?.getValue(Stats.ALL_DMG))} />
+      <DataRow
+        title="Lightning DMG%"
+        value={toPercentage(stat?.getValue(Stats.LIGHTNING_DMG) + stat?.getValue(Stats.ALL_DMG))}
+      />
+      <DataRow title="Wind DMG%" value={toPercentage(stat?.getValue(Stats.WIND_DMG) + stat?.getValue(Stats.ALL_DMG))} />
+      <DataRow
+        title="Quantum DMG%"
+        value={toPercentage(stat?.getValue(Stats.QUANTUM_DMG) + stat?.getValue(Stats.ALL_DMG))}
+      />
+      <DataRow
+        title="Imaginary DMG%"
+        value={toPercentage(stat?.getValue(Stats.IMAGINARY_DMG) + stat?.getValue(Stats.ALL_DMG))}
+      />
       <DataRow title="Effect Hit Rate" value={toPercentage(stat?.getValue(Stats.EHR))} />
       <DataRow title="Effect RES" value={toPercentage(stat?.getValue(Stats.E_RES))} />
+      <DataRow
+        title="Elation"
+        value={toPercentage(stat?.getValue(Stats.ELATION) + stat?.getValue(StatsObjectKeys.X_ELATION))}
+      />
     </div>
   )
 })

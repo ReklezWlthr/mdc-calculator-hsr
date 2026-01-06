@@ -32,6 +32,7 @@ import { SummonStatBlock } from '../components/summon_stat_block'
 import { buffedList } from '@src/data/lib/stats/conditionals/conditionals_base'
 import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
 import { BonusSuperBreakSubRows } from '../components/tables/bonus_super_break_sub_rows'
+import { GlobalConditionalBlock } from '../components/conditionals/global_block'
 
 export const Calculator = observer(({}: {}) => {
   const { teamStore, modalStore, calculatorStore, settingStore } = useStore()
@@ -96,6 +97,10 @@ export const Calculator = observer(({}: {}) => {
           {teamStore?.characters[selected]?.cId ? (
             <>
               <div className="flex flex-col mb-5 text-sm rounded-lg bg-primary-darker h-fit">
+                <div className="px-3 py-1 mx-auto mb-3 text-sm text-center border-2 rounded-lg bg-red w-fit border-error">
+                  Elation DMG formula is currently unavailable due to insufficient data. If anyone has any info on the
+                  formula or values, feel free to contact me.
+                </div>
                 <div className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
                   <p>Damage Calculation{mainComputed?.NAME ? ` - ${mainComputed?.NAME}` : ''}</p>
                   {/* <p className='text-xs font-normal text-gray'>Hover Numbers for More Details</p> */}
@@ -433,6 +438,7 @@ export const Calculator = observer(({}: {}) => {
                   />
                 </div>
               )}
+              <GlobalConditionalBlock />
               <ConditionalBlock title="Self Modifiers" contents={_.filter(contents.main, 'show')} selected={selected} />
               <ConditionalBlock title="Team Modifiers" contents={_.filter(contents.team, 'show')} selected={selected} />
               <WeaponConditionalBlock contents={contents.weapon(selected)} selected={selected} />

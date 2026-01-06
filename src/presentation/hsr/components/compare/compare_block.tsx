@@ -49,6 +49,7 @@ export const CompareBlock = observer(() => {
     customDebuffOverride: setupStore.customDebuff[0],
     weaknessOverride: setupStore.weakness,
     buffedOverride: setupStore.main?.buffed,
+    globalOverride: setupStore.globalMod[0],
     initFormFunction: (f, e) => setupStore.initForm(0, f, e),
   })
   const sub1 = useCalculator({
@@ -60,6 +61,7 @@ export const CompareBlock = observer(() => {
     customDebuffOverride: setupStore.customDebuff[1],
     weaknessOverride: setupStore.weakness,
     buffedOverride: setupStore.comparing[0]?.buffed,
+    globalOverride: setupStore.globalMod[1],
     initFormFunction: (f, e) => setupStore.initForm(1, f, e),
     enabled: !!setupStore.comparing[0]?.char,
   })
@@ -72,6 +74,7 @@ export const CompareBlock = observer(() => {
     customDebuffOverride: setupStore.customDebuff[2],
     weaknessOverride: setupStore.weakness,
     buffedOverride: setupStore.comparing[1]?.buffed,
+    globalOverride: setupStore.globalMod[2],
     initFormFunction: (f, e) => setupStore.initForm(2, f, e),
     enabled: !!setupStore.comparing[1]?.char,
   })
@@ -84,6 +87,7 @@ export const CompareBlock = observer(() => {
     customDebuffOverride: setupStore.customDebuff[3],
     weaknessOverride: setupStore.weakness,
     buffedOverride: setupStore.comparing[2]?.buffed,
+    globalOverride: setupStore.globalMod[3],
     initFormFunction: (f, e) => setupStore.initForm(3, f, e),
     enabled: !!setupStore.comparing[2]?.char,
   })

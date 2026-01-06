@@ -19,7 +19,7 @@ import { TalentIcon } from './tables/scaling_wrapper'
 import { PathType, StatIcons, Stats, TalentType } from '@src/domain/constant'
 import { useParams } from '@src/core/hooks/useParams'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
-import { toPercentage } from '@src/core/utils/converter'
+import { toPercentage } from '@src/core/utils/data_format'
 import { CharDetailModal } from '@src/presentation/hsr/components/modals/char_detail_modal'
 import OldConditionalsObject, { buffedList } from '@src/data/lib/stats/conditionals/conditionals_base'
 import { Tooltip } from '@src/presentation/components/tooltip'
@@ -34,6 +34,7 @@ export const CharDetail = observer(() => {
     [TalentType.TALENT]: 10,
     'Memosprite Skill': 6,
     'Memosprite Talent': 6,
+    [TalentType.ELATION]: 10,
   })
 
   const { charStore, settingStore, teamStore, modalStore } = useStore()
@@ -54,6 +55,7 @@ export const CharDetail = observer(() => {
       talent: params[TalentType.TALENT] || 1,
       memo_skill: params['Memosprite Skill'] || 1,
       memo_talent: params['Memosprite Talent'] || 1,
+      elation: params[TalentType.ELATION] || 1,
     },
     teamStore.characters
   )
@@ -292,10 +294,7 @@ export const CharDetail = observer(() => {
                     return (
                       <div className="grid grid-cols-5" key={key}>
                         <div className="flex items-center col-span-4 gap-1.5">
-                          <img
-                            className="w-3"
-                            src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[key]}`}
-                          />
+                          <img className="w-3" src={`/icons/${StatIcons[key]}`} />
                           <p className="line-clamp-1">{key}</p>
                         </div>
                         <p className="text-end text-gray">{key === Stats.SPD ? total : toPercentage(total)}</p>

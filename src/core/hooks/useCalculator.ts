@@ -18,15 +18,18 @@ import {
 import {
   BreakDebuffType,
   Element,
+  GlobalModifiers,
   ITalentLevel,
   ITeamChar,
+  PathType,
   Stats,
   TalentProperty,
   TalentType,
 } from '@src/domain/constant'
 import { isFlat } from '@src/presentation/hsr/components/modals/custom_modal'
 import { StatsObject, StatsObjectKeysT } from '@src/data/lib/stats/baseConstant'
-import { DebuffTypes, IContent } from '@src/domain/conditional'
+import { IContent } from '@src/domain/conditional'
+import { DebuffTypes } from '@src/domain/constant'
 import { getSetCount } from '../utils/data_format'
 import { AllRelicSets } from '@src/data/db/artifacts'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
@@ -56,6 +59,7 @@ interface CalculatorOptions {
   talentOverride?: ITeamChar
   weaknessOverride?: Element[]
   buffedOverride?: Record<string, boolean>
+  globalOverride?: GlobalModifiers
   initFormFunction?: (f: Record<string, any>[], exclude: string[]) => void
 }
 
@@ -71,6 +75,7 @@ export const useCalculator = ({
   doNotSaveStats,
   initFormFunction,
   buffedOverride,
+  globalOverride,
 }: CalculatorOptions) => {
   const { teamStore, artifactStore, calculatorStore, settingStore } = useStore()
 
@@ -83,6 +88,7 @@ export const useCalculator = ({
   const custom = customOverride || calculatorStore.custom
   const customDebuff = customDebuffOverride || calculatorStore.customDebuff
   const buffer = buffedOverride || settingStore.settings.buffed
+  const globalMod = globalOverride || calculatorStore.globalMod
 
   const mainComputed = finalStats?.[selected]
 
@@ -248,7 +254,14 @@ export const useCalculator = ({
     const debuffs = _.map(DebuffTypes, (v) => ({ type: v, count: 0 }))
     const preCompute = _.map(conditionals, (base, index) => {
       let x =
-        base?.preCompute(baseStats[index], forms[index], debuffs, weakness, calculatorStore.broken) || baseStats[index]
+        base?.preCompute(baseStats[index], forms[index], debuffs, weakness, calculatorStore.broken, globalMod) ||
+        baseStats[index]
+
+      // Sparxie's Sig
+      if (_.some(team, (t) => t.equipments?.weapon?.wId === '23053')) {
+        const elation = _.size(_.filter(team, (t) => findCharacter(t.cId)?.path === PathType.ELATION))
+        x.MAX_SP += elation
+      }
 
       if (forms[index][`break_${x.NAME}`]) {
         x.DOT_SCALING.push({
@@ -268,6 +281,7 @@ export const useCalculator = ({
     const preComputeShared = _.map(preCompute, (base, index) => {
       // Compute all shared conditionals, call function for every char except the owner
       let x = base
+
       _.forEach(conditionals, (item, i) => {
         // Loop characters, exclude index of the current parent iteration
         if (i !== index) {
@@ -283,7 +297,8 @@ export const useCalculator = ({
               forms[index],
               debuffs,
               weakness,
-              calculatorStore.broken
+              calculatorStore.broken,
+              globalMod
             ) || x
           if (x.SUMMON_STATS) {
             x.SUMMON_STATS =
@@ -298,7 +313,8 @@ export const useCalculator = ({
                 forms[index].memo,
                 debuffs,
                 weakness,
-                calculatorStore.broken
+                calculatorStore.broken,
+                globalMod
               ) || x.SUMMON_STATS
           }
         }
@@ -434,7 +450,8 @@ export const useCalculator = ({
           debuffs,
           weakness,
           calculatorStore.broken,
-          globalCallback
+          globalCallback,
+          globalMod
         ) || postWeapon[index]
       if (x.SUMMON_STATS) {
         x.SUMMON_STATS =
@@ -446,7 +463,8 @@ export const useCalculator = ({
             debuffs,
             weakness,
             calculatorStore.broken,
-            globalCallback
+            globalCallback,
+            globalMod
           ) || postWeapon[index].SUMMON_STATS
       }
       return x
@@ -501,6 +519,7 @@ export const useCalculator = ({
     custom,
     customDebuff,
     team,
+    globalMod,
     calculatorStore.weakness,
     calculatorStore.broken,
     calculatorStore.toughness,

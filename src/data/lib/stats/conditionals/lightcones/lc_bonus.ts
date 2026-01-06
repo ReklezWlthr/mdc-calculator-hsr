@@ -1,9 +1,9 @@
-import { Element, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { Element, PathType, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 import { StatsObject } from '../../baseConstant'
 import _ from 'lodash'
 import { calcRefinement } from '@src/core/utils/data_format'
 import { checkBuffExist, countDebuff, countDot } from '@src/core/utils/finder'
-import { DebuffTypes } from '@src/domain/conditional'
+import { DebuffTypes } from '@src/domain/constant'
 
 const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: number) => StatsObject }[] = [
   {
@@ -1678,6 +1678,28 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
         name: 'Passive',
         source: `Never Forget Her Flame`,
         value: calcRefinement(0.6, 0.15, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23053',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: `Dazzled By A Flowery World`,
+        value: calcRefinement(0.36, 0.06, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23054',
+    scaling: (base, r) => {
+      base[Stats.P_SPD].push({
+        name: 'Passive',
+        source: `When She Decided To See`,
+        value: calcRefinement(0.18, 0.03, r),
       })
       return base
     },

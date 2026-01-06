@@ -1,7 +1,7 @@
 import { StatsObject, StatsObjectKeys, TalentPropertyMap, TalentTypeMap } from '@src/data/lib/stats/baseConstant'
 import { IScaling, ISuperBreakScaling } from '@src/domain/conditional'
 import { Element, StatIcons, Stats, TalentProperty, TalentType } from '@src/domain/constant'
-import { toPercentage } from '@src/core/utils/converter'
+import { toPercentage } from '../data_format'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
 import _ from 'lodash'
 import { propertyColor } from '@src/presentation/hsr/components/tables/scaling_sub_rows'
@@ -69,7 +69,7 @@ export const bonusSuperBreakStringConstruct = (
 
   const formulaString = `<b class="text-red">${_.floor(dmg).toLocaleString()}</b> = ${baseBreakScaling}${
     stats.getValue(Stats.BE) > 0
-      ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconBreakUp.png" />${toPercentage(
+      ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconBreakUp.png" />${toPercentage(
           stats.getValue(Stats.BE)
         )}</b>)</span>`
       : ''

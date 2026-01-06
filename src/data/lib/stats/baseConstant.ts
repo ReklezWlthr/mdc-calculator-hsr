@@ -1,4 +1,5 @@
-import { DebuffTypes, IScaling } from '@src/domain/conditional'
+import { IScaling } from '@src/domain/conditional'
+import { DebuffTypes } from '@src/domain/constant'
 import { Element, Stats, TalentProperty, PathType, TalentType } from '@src/domain/constant'
 import { BaseStatsType } from '@src/domain/stats'
 import _ from 'lodash'
@@ -50,10 +51,14 @@ export const baseStatsObject: BaseStatsType = {
   [Stats.P_SPD]: [],
   [Stats.EHR]: [],
   [Stats.E_RES]: [],
+  [Stats.ELATION]: [],
 
   X_HP: [], // Fu Xuan and Lynx
   X_CRIT_DMG: [], // Sparkle, Bronya, Sunday and Aventurine
   X_ATK: [], // Robin, Aglaea
+  X_ELATION: [], // Yao Guang
+
+  ELATION_MERRYMAKE: [],
 
   // DMG Bonuses
   [Stats.PHYSICAL_DMG]: [],
@@ -156,6 +161,7 @@ export const baseStatsObject: BaseStatsType = {
   FUA_DEF_PEN: [],
   BREAK_DEF_PEN: [],
   SUPER_BREAK_DEF_PEN: [],
+  ELATION_DEF_PEN: [],
 
   BREAK_DMG: [],
   SUPER_BREAK_DMG: [],
@@ -280,6 +286,7 @@ export const TalentPropertyMap = {
   [TalentProperty.SUPER_BREAK]: 'SUPER_BREAK',
   [TalentProperty.FUA]: 'FUA',
   [TalentProperty.SERVANT]: 'SUMMON',
+  [TalentProperty.ELATION]: 'ELATION',
 }
 
 export type StatsObject = typeof baseStatsObject

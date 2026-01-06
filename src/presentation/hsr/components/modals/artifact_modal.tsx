@@ -1,4 +1,4 @@
-import { toPercentage } from '@src/core/utils/converter'
+import { toPercentage } from '@src/core/utils/data_format'
 import { getMainStat } from '@src/core/utils/data_format'
 import { findArtifactSet } from '@src/core/utils/finder'
 import { PlanarSets, RelicSets } from '@src/data/db/artifacts'

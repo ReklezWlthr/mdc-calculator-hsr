@@ -2519,6 +2519,44 @@ export const LightCones = [
       ],
     },
   },
+  {
+    id: '23053',
+    name: 'Dazzled By A Flowery World',
+    rarity: 5,
+    baseHp: 48,
+    baseAtk: 26.4,
+    baseDef: 21,
+    type: PathType.ELATION,
+    beta: true,
+    desc: {
+      name: 'Center of Attention',
+      detail: `Increases the wearer's CRIT DMG by {{0}}%. While the wearer is on the field, for every Elation character on the team, increases the Skill Point upper limit by <span class="text-desc">1</span>, up to a max increase of <span class="text-desc">3</span>. For every <span class="text-desc">1</span> Skill Point the wearer consumes, ignores {{1}}% of enemy targets' DEF when this unit deals Elation DMG, and increases all allies' Elation by {{1}}%. This effect can stack up to <span class="text-desc">4</span> time(s). Light Cone effects of the same type cannot stack.`,
+      properties: [
+        { base: 36, growth: 6 },
+        { base: 5, growth: 1 },
+      ],
+    },
+  },
+  {
+    id: '23054',
+    name: 'When She Decided To See',
+    rarity: 5,
+    baseHp: 48,
+    baseAtk: 24,
+    baseDef: 24,
+    type: PathType.ELATION,
+    beta: true,
+    desc: {
+      name: 'Game Changer',
+      detail: `Increases the wearer's SPD by {{0}}%. When the wearer enters combat or uses Ultimate on an ally target, the wearer gains <b>Great Fortune</b> for <span class="text-desc">3</span> turn(s). While the wearer has <b>Great Fortune</b>, all allies' CRIT Rate increases by {{1}}%, CRIT DMG increases by {{2}}%, and the wearer's Energy Regeneration Rate increases by {{3}}%.`,
+      properties: [
+        { base: 18, growth: 3 },
+        { base: 10, growth: 1 },
+        { base: 30, growth: 8 },
+        { base: 12, growth: 2 },
+      ],
+    },
+  },
   //---------------------
   //   Herta 5 Star
   //---------------------

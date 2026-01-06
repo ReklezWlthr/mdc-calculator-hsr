@@ -10,6 +10,7 @@ import { IContent, IWeaponContent } from '@src/domain/conditional'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { ITeamChar } from '@src/domain/constant'
+import { GlobalConditionalBlock } from '../conditionals/global_block'
 
 interface CompareConditionalBlockProps {
   team: ITeamChar[]
@@ -30,6 +31,15 @@ export const CompareConditionalBlock = observer(({ team, stats, content }: Compa
 
   return (
     <div className="w-full space-y-3 text-white">
+      <GlobalConditionalBlock
+        formOverride={setupStore.globalMod[setupIndex]}
+        teamOverride={team}
+        setForm={(key, value) => {
+          const result = _.cloneDeep(setupStore.globalMod)
+          result.splice(setupIndex, 1, value)
+          setupStore.setValue(key as any, result)
+        }}
+      />
       <ConditionalBlock
         title="Self Modifiers"
         contents={_.filter(content.customMain(charIndex), 'show')}

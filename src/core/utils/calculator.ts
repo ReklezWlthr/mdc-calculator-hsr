@@ -77,12 +77,12 @@ export const calculateBase = (conditionals: StatsObject, char: ITeamChar, weapon
       )
     : {}
   for (const trace in traces) {
-    console.log(trace)
-    conditionals[trace].push({
-      value: traces[trace],
-      source: 'Self',
-      name: 'Minor Traces',
-    })
+    if (conditionals[trace])
+      conditionals[trace].push({
+        value: traces[trace],
+        source: 'Self',
+        name: 'Minor Traces',
+      })
   }
 
   conditionals = weaponBonus?.scaling(conditionals, weapon?.refinement) || conditionals

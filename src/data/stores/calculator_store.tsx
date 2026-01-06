@@ -1,8 +1,8 @@
-import { Element, ICharStore, ITeamChar, TalentType } from '@src/domain/constant'
+import { DefaultGlobalMod, Element, GlobalModifiers, ICharStore, ITeamChar, TalentType } from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { StatsObject, StatsObjectKeysT } from '../lib/stats/baseConstant'
-import { DebuffTypes } from '@src/domain/conditional'
+import { DebuffTypes } from '@src/domain/constant'
 import { enableStaticRendering } from 'mobx-react-lite'
 import { defaultTotal, TotalT } from './setup_store'
 
@@ -27,6 +27,7 @@ export interface CalculatorStoreType {
   level: number | string
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean; memo: boolean }[][]
   customDebuff: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean }[]
+  globalMod: GlobalModifiers
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (initData: Record<string, any>[]) => void
   setFormValue: (index: number, key: string, value: any, memo: boolean) => void
@@ -67,6 +68,7 @@ export class CalculatorStore {
   selected: number
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean; memo: boolean }[][]
   customDebuff: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean }[]
+  globalMod: GlobalModifiers
 
   constructor() {
     this.tab = 'mod'
@@ -96,6 +98,7 @@ export class CalculatorStore {
     this.hp = 1
     this.toughness = 30
     this.effRes = 0
+    this.globalMod = DefaultGlobalMod
 
     makeAutoObservable(this)
   }

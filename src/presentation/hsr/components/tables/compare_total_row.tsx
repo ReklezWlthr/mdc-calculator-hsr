@@ -2,7 +2,7 @@ import { Element, TalentProperty, TalentType } from '@src/domain/constant'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { toPercentage } from '@src/core/utils/converter'
+import { toPercentage } from '@src/core/utils/data_format'
 import { useStore } from '@src/data/providers/app_store_provider'
 
 interface CompareTotalRowsProps {

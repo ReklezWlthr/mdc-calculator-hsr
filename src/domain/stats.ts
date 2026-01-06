@@ -1,6 +1,7 @@
 import { StatsArray } from '@src/data/lib/stats/baseConstant'
 import { Element, PathType, Stats } from './constant'
-import { IScaling, DebuffTypes, ISuperBreakScaling } from './conditional'
+import { IScaling, ISuperBreakScaling } from './conditional'
+import { DebuffTypes } from './constant'
 
 export interface RawBaseStatType {
   BASE_ATK_C: number
@@ -37,10 +38,14 @@ export interface RawBaseStatType {
   [Stats.P_SPD]: StatsArray[]
   [Stats.EHR]: StatsArray[]
   [Stats.E_RES]: StatsArray[]
+  [Stats.ELATION]: StatsArray[]
 
   X_HP: StatsArray[] // Fu Xuan and Lynx
   X_CRIT_DMG: StatsArray[] // Sparkle, Bronya, Sunday and Aventurine
   X_ATK: StatsArray[] // Robin, Aglaea
+  X_ELATION: StatsArray[] // Yao Guang
+
+  ELATION_MERRYMAKE: StatsArray[]
 
   // DMG Bonuses
   [Stats.PHYSICAL_DMG]: StatsArray[]
@@ -143,6 +148,7 @@ export interface RawBaseStatType {
   FUA_DEF_PEN: StatsArray[]
   BREAK_DEF_PEN: StatsArray[]
   SUPER_BREAK_DEF_PEN: StatsArray[]
+  ELATION_DEF_PEN: StatsArray[]
 
   BREAK_DMG: StatsArray[]
   SUPER_BREAK_DMG: StatsArray[]

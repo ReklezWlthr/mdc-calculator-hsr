@@ -1,10 +1,11 @@
-import { DebuffTypes, IScaling } from '@src/domain/conditional'
+import { IScaling } from '@src/domain/conditional'
+import { DebuffTypes } from '@src/domain/constant'
 import { findEnemy } from '../finder'
 import { BreakDebuffType, Element, StatIcons, Stats, TalentProperty } from '@src/domain/constant'
 import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { CalculatorStore } from '@src/data/stores/calculator_store'
 import _ from 'lodash'
-import { toPercentage } from '../converter'
+import { toPercentage } from '../data_format'
 import classNames from 'classnames'
 import { ElementColor } from '@src/presentation/hsr/components/tables/scaling_sub_rows'
 import { SetupStore } from '@src/data/stores/setup_store'
@@ -36,7 +37,7 @@ export const chanceStringConstruct = (
           <b className="inline-flex items-center h-4">
             <img
               className="h-3 mx-1"
-              src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[Stats.EHR]}`}
+              src={`/icons/${StatIcons[Stats.EHR]}`}
             />
             {toPercentage(ehr)}
           </b>
@@ -50,7 +51,7 @@ export const chanceStringConstruct = (
             <b className="inline-flex items-center h-4">
               <img
                 className="h-3 mx-1"
-                src={`https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${StatIcons[Stats.E_RES]}`}
+                src={`/icons/${StatIcons[Stats.E_RES]}`}
               />
               <span className="text-fuchsia-300">{toPercentage(effRes)}</span>
             </b>

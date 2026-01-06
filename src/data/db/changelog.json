@@ -1,6 +1,15 @@
 [
   {
     "version": "1.2-4",
+    "date": "Jan 7th, 2026",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v4.0v1</span>",
+      "New Characters: <span class=\"text-hsr-physical\">Yao Guang</span>, and <span class=\"text-hsr-fire\">Sparxie</span>",
+      "New Light Cones: <span class=\"text-desc\">Dazzled By A Flowery World</span>, and <span class=\"text-desc\">When She Decided To See</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Nov 24th, 2025",
     "desc": [
       "Fixed: Calculator should no longer crash when removing character from the team.",

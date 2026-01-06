@@ -14,15 +14,6 @@ import _ from 'lodash'
 import { formatMinorTrace } from './data_format'
 import { findCharacter } from './finder'
 
-export const toPercentage = (value: number, precision: number = 1, round?: boolean) => {
-  return (
-    (round
-      ? _.round(value * 100, precision)
-      : _.floor(_.round(value * 100, precision + 1), precision)
-    ).toLocaleString() + '%'
-  )
-}
-
 export const fromEnka = (rawData: Record<string, any>) => {
   if (!rawData) return null
   const displayChars = rawData.detailInfo?.avatarDetailList
@@ -74,6 +65,7 @@ export const fromEnka = (rawData: Record<string, any>) => {
         talent: findTalent('004') || 1,
         memo_skill: findTalent('301') || 1,
         memo_talent: findTalent('302') || 1,
+        elation: 1,
       },
       major_traces: {
         a2: findTalent('101') || false,

@@ -1,5 +1,5 @@
 import { Element } from '../../domain/constant'
-import { DebuffTypes } from '../../domain/conditional'
+import { DebuffTypes } from '@src/domain/constant'
 
 export const Enemies = [
   {

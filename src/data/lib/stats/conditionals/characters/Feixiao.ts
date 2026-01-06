@@ -12,8 +12,9 @@ import {
   TalentType,
 } from '@src/domain/constant'
 
-import { toPercentage } from '@src/core/utils/converter'
-import { DebuffTypes, IContent, ITalent } from '@src/domain/conditional'
+import { toPercentage } from '@src/core/utils/data_format'
+import { IContent, ITalent } from '@src/domain/conditional'
+import { DebuffTypes } from '@src/domain/constant'
 import { calcScaling } from '@src/core/utils/calculator'
 
 const Feixiao = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {

@@ -1,7 +1,7 @@
 import { IArtifact, Stats, PathType, Element } from '@src/domain/constant'
 import _ from 'lodash'
 import { StatsObject } from '../lib/stats/baseConstant'
-import { DebuffTypes } from '@src/domain/conditional'
+import { DebuffTypes } from '@src/domain/constant'
 import { countDebuff } from '@src/core/utils/finder'
 
 export const RelicSets: IArtifact[] = [

@@ -6,11 +6,6 @@ import { DefaultWeapon } from './team_store'
 
 enableStaticRendering(typeof window === 'undefined')
 
-export const DefaultBuild = {
-  weapon: DefaultWeapon,
-  artifacts: Array(6).fill(null),
-}
-
 export interface BuildStoreType {
   builds: IBuild[]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void

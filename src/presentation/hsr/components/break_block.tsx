@@ -7,9 +7,9 @@ import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { ElementColor } from './tables/scaling_sub_rows'
-import { toPercentage } from '@src/core/utils/converter'
+import { toPercentage } from '@src/core/utils/data_format'
 import { Tooltip } from '@src/presentation/components/tooltip'
-import { DebuffTypes } from '@src/domain/conditional'
+import { DebuffTypes } from '@src/domain/constant'
 import { breakDamageStringConstruct } from '@src/core/utils/constructor/breakDamageStringConstruct'
 
 export const BreakBlock = observer(({ stats, index }: { stats: StatsObject; index: number }) => {

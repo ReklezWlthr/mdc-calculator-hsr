@@ -1,7 +1,7 @@
 import { StatsObject, StatsObjectKeys, TalentPropertyMap, TalentTypeMap } from '@src/data/lib/stats/baseConstant'
 import { IScaling } from '@src/domain/conditional'
 import { Element, StatIcons, Stats, TalentProperty, TalentType } from '@src/domain/constant'
-import { toPercentage } from '@src/core/utils/converter'
+import { toPercentage } from '../data_format'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
 import _ from 'lodash'
 import { propertyColor } from '@src/presentation/hsr/components/tables/scaling_sub_rows'
@@ -62,6 +62,7 @@ export const damageStringConstruct = (
   const breakScale = scaling.property === TalentProperty.BREAK
   const breakDoT = scaling.property === TalentProperty.BREAK_DOT
   const isPure = scaling.property === TalentProperty.PURE
+  const isElation = scaling.property === TalentProperty.ELATION
 
   const globalMultiplier =
     (scaling.multiplier || 1) + (stats.getValue(`${TalentPropertyMap[scaling.property]}_MULT`) || 0)
@@ -132,6 +133,7 @@ export const damageStringConstruct = (
     [Stats.DEF]: stats.getDef(),
     [Stats.HP]: isServant && scaling.useOwnerStats ? ownerStats.getHP() : stats.getHP(),
     [Stats.EHP]: calculatorStore.hp,
+    [Stats.ELATION]: 0,
   }
 
   const bonusDMG = (splitBonus?: number) =>
@@ -144,6 +146,7 @@ export const damageStringConstruct = (
       : TalentProperty.HEAL === scaling.property
       ? stats.getValue(Stats.HEAL) + stats.getValue(`${TalentTypeMap[scaling.type]}_HEAL`)
       : stats.getValue(Stats.ALL_DMG) + stats.getValue(`${element} DMG%`) + talentDmg + typeDmg)
+  const elation = _.max([stats.getValue(Stats.ELATION) || 0, scaling.elation || 0])
   const globalBonus = _.sum(_.map(scaling.bonusSplit, (item, i) => item * scaling.hitSplit?.[i])) + bonusDMG()
   const raw = (split: number) =>
     _.sumBy(scaling.value, (item) => split * item.scaling * (item.override || statForScale[item.multiplier])) +
@@ -160,7 +163,14 @@ export const damageStringConstruct = (
     scaling.hitSplit || [1],
     (split, i) =>
       (capped ? cap : breakScale ? breakRaw(split) : raw(split)) *
-      ((1 + (breakScale ? stats.getValue(Stats.BE) : isPure ? 0 : bonusDMG(scaling.bonusSplit?.[i]))) *
+      ((1 +
+        (breakScale
+          ? stats.getValue(Stats.BE)
+          : isPure
+          ? 0
+          : isElation
+          ? elation
+          : bonusDMG(scaling.bonusSplit?.[i]))) *
         (globalMultiplier || 1) *
         (breakScale ? 1 + (stats.getValue(StatsObjectKeys.BREAK_MULT) || 0) : 1) *
         enemyMod)
@@ -194,7 +204,7 @@ export const damageStringConstruct = (
   const scalingArray = _.map(
     capped ? [scaling.cap] : scaling.value,
     (item) =>
-      `<span class="inline-flex items-center h-4">(<b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/${
+      `<span class="inline-flex items-center h-4">(<b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/${
         StatIcons[item.multiplier]
       }" />${_.floor(item.override || statForScale[item.multiplier]).toLocaleString()}</b>${
         item.multiplier === Stats.EHP ? `<i class="text-[10px] ml-1">Enemy HP</i>` : ''
@@ -217,9 +227,13 @@ export const damageStringConstruct = (
     dmg
   ).toLocaleString()}</b> = ${breakScale ? baseBreakScaling : shouldWrap ? `(${baseWithFlat})` : baseWithFlat}${
     breakScale && stats.getValue(Stats.BE) > 0
-      ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconBreakUp.png" />${toPercentage(
+      ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconBreakUp.png" />${toPercentage(
           stats.getValue(Stats.BE)
         )}</b>)</span>`
+      : stats.getValue(Stats.ELATION) && isElation
+      ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(
+          elation
+        )}</b> <i class="text-[10px]">ELATION</i>)`
       : globalBonus > 0 && !isPure
       ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(
           breakScale ? stats.getValue(Stats.BE) : globalBonus
@@ -250,7 +264,7 @@ export const damageStringConstruct = (
     totalCrit
   ).toLocaleString()}</b> = <b>${_.floor(
     dmg
-  ).toLocaleString()}</b> \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconCriticalDamage.png" />${toPercentage(
+  ).toLocaleString()}</b> \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconCriticalDamage.png" />${toPercentage(
     globalCd
   )}</b>)</span>`
 
@@ -258,9 +272,9 @@ export const damageStringConstruct = (
     totalAvg
   ).toLocaleString()}</b> = <b>${_.floor(
     dmg
-  ).toLocaleString()}</b> \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconCriticalDamage.png" />${toPercentage(
+  ).toLocaleString()}</b> \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconCriticalDamage.png" />${toPercentage(
     globalCd
-  )}</b><span class="ml-1"> \u{00d7} </span><b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/IconCriticalChance.png" />${toPercentage(
+  )}</b><span class="ml-1"> \u{00d7} </span><b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconCriticalChance.png" />${toPercentage(
     totalCr
   )}</b>)</span>`
 

@@ -100,7 +100,7 @@ export const ArtifactInventory = observer(() => {
               values={params.main}
               options={_.map(MainStatOptions, (item) => ({
                 ...item,
-                img: 'https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/' + item.img,
+                img: '/icons/' + item.img,
               }))}
               onChange={(main) => setParams({ main })}
               placeholder="Main Stat - Match Any"
@@ -110,7 +110,7 @@ export const ArtifactInventory = observer(() => {
               values={params.subs}
               options={_.map(SubStatOptions, (item) => ({
                 ...item,
-                img: 'https://enka.network/ui/hsr/SpriteOutput/UI/Avatar/Icon/' + item.img,
+                img: '/icons/' + item.img,
               }))}
               onChange={(subs) => setParams({ subs })}
               placeholder="Sub Stats - Include All (Max 4)"

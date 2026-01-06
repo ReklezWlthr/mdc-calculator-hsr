@@ -1,23 +1,9 @@
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
-import { Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from './constant'
+import { DebuffTypes, Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from './constant'
+import _ from 'lodash'
+import { findCharacter } from '@src/core/utils/finder'
 
 export type TalentScalingStyle = 'linear' | 'curved' | 'flat' | 'heal' | 'pure' | 'arcana' | 'dot' | 'hycilens'
-
-export enum DebuffTypes {
-  WIND_SHEAR = 'Wind Shear',
-  BURN = 'Burn',
-  FROZEN = 'Frozen',
-  SHOCKED = 'Shock',
-  BLEED = 'Bleed',
-  ENTANGLE = 'Entangled',
-  IMPRISON = 'Imprisoned',
-  ATK_RED = 'ATK Reduced',
-  DEF_RED = 'DEF Reduced',
-  SPD_RED = 'SPD Reduced',
-  OTHER = 'Others',
-  DOT = 'DoT',
-  CONTROL = 'Control',
-}
 
 export interface IScaling {
   name: string
@@ -52,6 +38,7 @@ export interface IScaling {
   trueRaw?: boolean // Ignore enemy's multipliers
   atkBonus?: number
   detonate?: boolean
+  elation?: number // Used to compare higher (Yao Guang)
 }
 
 export interface ISuperBreakScaling {
@@ -151,3 +138,25 @@ export interface IConditional {
 }
 
 export type ConditionalFunction = (c: number, a: number, t: ITalentLevel, team?: ITeamChar[]) => IConditional
+
+export const GlobalContents: (team: ITeamChar[]) => IContent[] = (team) =>
+  _.filter(
+    [
+      {
+        type: 'number',
+        id: 'punchline',
+        text: `Punchline`,
+        trace: 'Mechanic - Elation',
+        content: `<b class="text-orange-400">Punchline</b> is shared by the whole team. When dealing Elation DMG, the more <b class="text-orange-400">Punchline</b> points taken into account, the higher the Elation DMG.
+        <br />After each <b>Aha Instant</b>, all <b class="text-orange-400">Punchline</b> point(s) will be cleared and given to each character as <b class="text-blue">Certified Banger</b>.
+        <br />
+        <br />This value is only used to calculate the effect of each character's Elation Skill within each single <b>Aha Instant</b>.`,
+        title: 'Punchline',
+        show: _.some(team, (item) => findCharacter(item.cId)?.path === PathType.ELATION),
+        default: 0,
+        min: 0,
+        unique: true,
+      },
+    ] as IContent[],
+    (item) => item.show
+  )

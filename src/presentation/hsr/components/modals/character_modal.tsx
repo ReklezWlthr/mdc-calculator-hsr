@@ -2,14 +2,13 @@ import _ from 'lodash'
 import { Characters } from '@src/data/db/characters'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
-import { Element, ITeamChar, IWeaponEquip, PathType } from '@src/domain/constant'
+import { DefaultBuild, Element, ITeamChar, IWeaponEquip, PathType } from '@src/domain/constant'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { useParams } from '@src/core/hooks/useParams'
 import classNames from 'classnames'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { useMemo } from 'react'
 import { DefaultWeapon } from '@src/data/stores/team_store'
-import { DefaultBuild } from '@src/data/stores/build_store'
 import { findLightCone } from '@src/core/utils/finder'
 import getConfig from 'next/config'
 import { getElementImage, getPathImage } from '@src/core/utils/fetcher'
@@ -94,6 +93,7 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
           <FilterIcon type="path" value={PathType.PRESERVATION} />
           <FilterIcon type="path" value={PathType.ABUNDANCE} />
           <FilterIcon type="path" value={PathType.REMEMBRANCE} />
+          <FilterIcon type="path" value={PathType.ELATION} />
         </div>
       </div>
       <div className="grid w-full grid-cols-10 gap-4 max-h-[70vh] overflow-y-auto hideScrollbar rounded-lg">
@@ -104,13 +104,27 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
               className="w-full text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95"
               onClick={() => {
                 const build = _.find(buildStore.builds, (build) => build.isDefault && build.cId === item.id)
-                const char = _.find(charStore.characters, (char) => char.cId === item.id)
+                const teamChar = _.find(teamStore.characters, (char) => char.cId === item.id)
+                const storeChar = _.find(charStore.characters, (char) => char.cId === item.id)
+                const char = teamChar || storeChar
                 charSetter(index, {
                   cId: item.id,
                   ascension: char?.ascension || 0,
                   level: char?.level || 1,
-                  talents: char?.talents || { basic: 1, skill: 1, ult: 1, talent: 1, memo_skill: 1, memo_talent: 1 },
-                  equipments: build ? { weapon: build.weapon, artifacts: build.artifacts } : DefaultBuild,
+                  talents: char?.talents || {
+                    basic: 1,
+                    skill: 1,
+                    ult: 1,
+                    talent: 1,
+                    memo_skill: 1,
+                    memo_talent: 1,
+                    elation: 1,
+                  },
+                  equipments: teamChar
+                    ? teamChar?.equipments
+                    : build
+                    ? { weapon: build.weapon, artifacts: build.artifacts }
+                    : DefaultBuild,
                   cons: char?.cons || 0,
                   major_traces: char?.major_traces || { a2: false, a4: false, a6: false },
                   minor_traces:

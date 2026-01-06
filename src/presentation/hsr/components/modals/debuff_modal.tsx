@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite'
 import { BulletPoint, Collapsible } from '@src/presentation/components/collapsible'
 import { AttributeBlock } from '@src/presentation/hsr/components/modals/stats_modal'
 import { countDebuff, countDot } from '@src/core/utils/finder'
-import { DebuffTypes } from '@src/domain/conditional'
+import { DebuffTypes } from '@src/domain/constant'
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 
 interface DebuffModalProps {

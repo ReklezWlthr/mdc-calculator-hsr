@@ -215,6 +215,7 @@ export const TeamSetup = observer(() => {
                       memo_talent: 6,
                       talent: 10,
                       ult: 10,
+                      elation: 10,
                     },
                     major_traces: {
                       a2: true,
@@ -247,6 +248,7 @@ export const TeamSetup = observer(() => {
                       memo_talent: char?.ascension || 1,
                       talent: findMaxTalentLevel(char?.ascension) || 1,
                       ult: findMaxTalentLevel(char?.ascension) || 1,
+                      elation: findMaxTalentLevel(char?.ascension) || 1,
                     },
                   })
                 }

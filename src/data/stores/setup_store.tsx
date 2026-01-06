@@ -1,4 +1,4 @@
-import { Element, ITeamChar, TalentType } from '@src/domain/constant'
+import { DefaultGlobalMod, Element, GlobalModifiers, ITeamChar, TalentType } from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
@@ -79,6 +79,7 @@ export interface SetupStoreType {
   effRes: number
   broken: boolean
   weakness: Element[]
+  globalMod: GlobalModifiers[]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (i: number, initData: Record<string, any>[], exclude: string[]) => void
   setForm: (index: number, value: Record<string, any>[]) => void
@@ -136,6 +137,7 @@ export class SetupStore {
   broken: boolean
   weakness: Element[]
   scaling: string
+  globalMod: GlobalModifiers[]
 
   constructor() {
     this.mode = 'avg'
@@ -166,6 +168,7 @@ export class SetupStore {
     this.effRes = 0
     this.broken = false
     this.weakness = []
+    this.globalMod = Array(4).fill(DefaultGlobalMod)
 
     makeAutoObservable(this)
   }

@@ -94,6 +94,7 @@ export const MyCharacters = observer(() => {
                 <FilterIcon type="path" value={PathType.PRESERVATION} />
                 <FilterIcon type="path" value={PathType.ABUNDANCE} />
                 <FilterIcon type="path" value={PathType.REMEMBRANCE} />
+                <FilterIcon type="path" value={PathType.ELATION} />
               </div>
             </div>
           </div>

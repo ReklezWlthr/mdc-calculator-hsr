@@ -1,6 +1,6 @@
 import { calcScaling } from '@src/core/utils/calculator'
 import { chanceStringConstruct } from '@src/core/utils/constructor/chanceStringConstruct'
-import { toPercentage } from '@src/core/utils/converter'
+import { toPercentage } from '@src/core/utils/data_format'
 import { findCharacter } from '@src/core/utils/finder'
 import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
