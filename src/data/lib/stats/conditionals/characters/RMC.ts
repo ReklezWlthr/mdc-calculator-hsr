@@ -147,6 +147,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       trace: 'Bonus Ability',
       title: `Unfinished Epilogue`,
       content: `After using Ultimate, gains <span class="text-desc">1</span> stack of <b class="text-desc">Epic</b>, up to <span class="text-desc">2</span> stacks. When <b>Mem</b> is on the field and this unit has <b class="text-desc">Epic</b>, Basic ATK is enhanced to <b>We Script Tomorrow!</b>`,
+      image: `asset/traces/SkillIcon_8007_Normal02.png`,
     },
     c1: {
       trace: 'Eidolon 1',
