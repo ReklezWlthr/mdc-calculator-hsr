@@ -269,6 +269,14 @@ export const CharDetail = observer(() => {
                         </div>
                       </>
                     )}
+                    {data?.path === PathType.ELATION && (
+                      <div className="flex justify-between">
+                        <p>Elation Skill</p>
+                        <p className={(cond.upgrade as any)?.elation ? 'text-blue' : 'text-desc'}>
+                          {charUpgrade.talents?.elation + (cond.upgrade as any)?.elation}
+                        </p>
+                      </div>
+                    )}
                   </div>
                   <div className="col-span-2 space-y-1">
                     {_.map(charUpgrade.major_traces, (item, index) => (
