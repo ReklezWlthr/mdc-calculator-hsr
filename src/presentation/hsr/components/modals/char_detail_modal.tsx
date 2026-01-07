@@ -308,9 +308,35 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
                 <div>
                   <p className="text-xs text-primary-lighter">M.Talent</p>
                   <SelectInput
-                    value={params?.talents?.memo_talent?.toString()}
+                    value={params?.talents?.elation?.toString()}
                     onChange={(value) => setParams({ talents: { ...params.talents, memo_talent: parseInt(value) } })}
                     options={basicLevels}
+                    style="w-14"
+                    disabled={!charData}
+                  />
+                </div>
+              </div>
+            </>
+          )}
+          {charData?.path === PathType.ELATION && (
+            <>
+              <div className="flex items-center gap-3">
+                <TalentIcon
+                  talent={talent?.talents?.summon_skill}
+                  element={charData?.element}
+                  icon={`SkillIcon_1${charData?.id}_Servant01.png`}
+                  size="w-9 h-9"
+                  upgraded={(talent?.upgrade as any)?.elation}
+                  level={char?.talents?.elation}
+                  showUpgrade
+                  type={talent?.talents?.talent?.trace}
+                />
+                <div>
+                  <p className="text-xs text-primary-lighter">E.Skill</p>
+                  <SelectInput
+                    value={params?.talents?.elation?.toString()}
+                    onChange={(value) => setParams({ talents: { ...params.talents, elation: parseInt(value) } })}
+                    options={talentLevels}
                     style="w-14"
                     disabled={!charData}
                   />

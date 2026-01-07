@@ -10,7 +10,15 @@ import { findCharacter } from '@src/core/utils/finder'
 export interface AbilityBlockProps {
   char: ITeamChar
   talents: ITalent
-  upgrade: { basic: number; skill: number; ult: number; talent: number; memo_skill?: number; memo_talent?: number }
+  upgrade: {
+    basic: number
+    skill: number
+    ult: number
+    talent: number
+    memo_skill?: number
+    memo_talent?: number
+    elation?: number
+  }
   onChange: (key: string, value: number) => void
   disabled?: boolean
 }
@@ -159,6 +167,32 @@ export const AbilityBlock = observer(({ char, onChange, upgrade, talents, disabl
                 value={char?.talents?.memo_talent?.toString()}
                 onChange={(value) => onChange('memo_talent', parseInt(value))}
                 options={basicLevels}
+                style="w-14"
+                disabled={!charData || disabled}
+              />
+            </div>
+          </div>
+        </>
+      )}
+      {charData?.path === PathType.ELATION && (
+        <>
+          <div className="flex items-center gap-3">
+            <TalentIcon
+              talent={talents?.summon_skill}
+              element={charData?.element}
+              icon={`SkillIcon_1${charData?.id}_Servant01.png`}
+              size="w-9 h-9"
+              upgraded={upgrade?.elation}
+              level={char?.talents?.elation}
+              showUpgrade
+              type={talents?.talent?.trace}
+            />
+            <div>
+              <p className="text-xs text-primary-lighter">E.Skill</p>
+              <SelectInput
+                value={char?.talents?.elation?.toString()}
+                onChange={(value) => onChange('elation', parseInt(value))}
+                options={talentLevels}
                 style="w-14"
                 disabled={!charData || disabled}
               />

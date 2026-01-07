@@ -300,7 +300,13 @@ export const CompareBlock = observer(() => {
                   element={charData.element}
                   level={mainComputed.PATH === PathType.REMEMBRANCE ? char.talents?.memo_skill : char.talents?.skill}
                   upgraded={
-                    (main?.upgrade as any)?.[mainComputed.PATH === PathType.REMEMBRANCE ? 'memo_skill' : 'skill']
+                    (main?.upgrade as any)?.[
+                      mainComputed.PATH === PathType.ELATION
+                        ? 'elation'
+                        : mainComputed.PATH === PathType.REMEMBRANCE
+                        ? 'memo_skill'
+                        : 'skill'
+                    ]
                   }
                 >
                   <div className="flex flex-col justify-between h-full gap-4">
