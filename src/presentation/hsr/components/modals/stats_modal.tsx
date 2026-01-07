@@ -320,6 +320,7 @@ export const StatsModal = observer(
               <AttributeBlock stats={stats} stat="Super Break Multiplier" array={stats.SUPER_BREAK_MULT} />
               <AttributeBlock stats={stats} stat="Basic ATK Super Break Multiplier" array={stats.BASIC_SUPER_BREAK} />
               <AttributeBlock stats={stats} stat="Talent Super Break Multiplier" array={stats.TALENT_SUPER_BREAK} />
+              <AttributeBlock stats={stats} stat="Elation Skill Multiplier" array={stats.ELATION_SKILL_MULT} />
             </div>
           </div>
         </Collapsible>

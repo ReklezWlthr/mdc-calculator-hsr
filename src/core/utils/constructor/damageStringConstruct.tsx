@@ -66,7 +66,10 @@ export const damageStringConstruct = (
   const isElation = scaling.property === TalentProperty.ELATION
 
   const globalMultiplier =
-    (scaling.multiplier || 1) + (stats.getValue(`${TalentPropertyMap[scaling.property]}_MULT`) || 0)
+    (scaling.multiplier || 1) *
+    (1 +
+      (stats.getValue(`${TalentPropertyMap[scaling.property]}_MULT`) || 0) +
+      (stats.getValue(`${TalentTypeMap[scaling.type]}_MULT`) || 0))
 
   const isServant = scaling.type === TalentType.SERVANT
   const isSplit = !!_.size(scaling.hitSplit)

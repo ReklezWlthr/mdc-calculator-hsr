@@ -199,6 +199,7 @@ export const baseStatsObject: BaseStatsType = {
   WIND_SHEAR_STACK: 0,
 
   DOT_MULT: [],
+  ELATION_SKILL_MULT: [],
 
   getAtk: function (exclude?: boolean, statBonus?: number) {
     return (
@@ -281,6 +282,7 @@ export const TalentTypeMap = {
   [TalentType.TALENT]: 'TALENT',
   [TalentType.TECH]: 'TECHNIQUE',
   [TalentType.SERVANT]: 'SUMMON',
+  [TalentType.ELATION]: 'ELATION_SKILL',
 }
 
 export const TalentPropertyMap = {

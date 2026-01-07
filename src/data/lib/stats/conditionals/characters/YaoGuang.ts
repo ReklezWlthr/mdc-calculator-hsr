@@ -257,7 +257,6 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
             { scaling: calcScaling(0.4, 0.04, elation, 'curved') * (c >= 6 ? 1.6 : 1), multiplier: Stats.ELATION },
             { scaling: calcScaling(0.1, 0.01, elation, 'curved') * 5 * (c >= 6 ? 1.6 : 1), multiplier: Stats.ELATION },
           ],
-          multiplier: c >= 1 ? 1.4 : 1,
           element: Element.PHYSICAL,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
@@ -269,7 +268,6 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           value: [
             { scaling: calcScaling(0.4, 0.04, elation, 'curved') * (c >= 6 ? 1.6 : 1), multiplier: Stats.ELATION },
           ],
-          multiplier: c >= 1 ? 1.4 : 1,
           element: Element.PHYSICAL,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
@@ -280,7 +278,6 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           value: [
             { scaling: calcScaling(0.1, 0.01, elation, 'curved') * (c >= 6 ? 1.6 : 1), multiplier: Stats.ELATION },
           ],
-          multiplier: c >= 1 ? 1.4 : 1,
           element: Element.PHYSICAL,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
@@ -308,6 +305,13 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           name: `Ascension 4 Pasive`,
           source: 'Self',
           value: 0.6,
+        })
+      }
+      if (c >= 1) {
+        base.ELATION_SKILL_MULT.push({
+          name: `Eidolon 1`,
+          source: 'Self',
+          value: 0.4,
         })
       }
       if (c >= 4) {

@@ -186,6 +186,7 @@ export interface RawBaseStatType {
   WIND_SHEAR_STACK: number
 
   DOT_MULT: StatsArray[]
+  ELATION_SKILL_MULT: StatsArray[]
 
   getAtk: (exclude?: boolean, statBonus?: number) => number
   getHP: (exclude?: boolean, statBonus?: number) => number
