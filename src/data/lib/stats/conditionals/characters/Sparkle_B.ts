@@ -8,7 +8,7 @@ import { IContent, ITalent } from '@src/domain/conditional'
 import { DebuffTypes } from '@src/domain/constant'
 import { calcScaling } from '@src/core/utils/calculator'
 
-const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
+const SparkleBase = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
     basic: c >= 5 ? 1 : 0,
     skill: c >= 3 ? 2 : 0,
@@ -21,6 +21,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
   const talent = t.talent + upgrade.talent
 
   const index = _.findIndex(team, (item) => item?.cId === '1306')
+  const quantumCount = _.filter(team, (item) => findCharacter(item.cId)?.element === Element.QUANTUM).length - 1
   const multiplier = calcScaling(0.12, 0.012, skill, 'curved') + (c >= 6 ? 0.3 : 0)
 
   const talents: ITalent = {
@@ -28,7 +29,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 20,
       trace: 'Basic ATK',
       title: 'Monodrama',
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Sparkle's ATK to one designated enemy target.`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Sparkle's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
@@ -38,8 +39,8 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 30,
       trace: 'Skill',
       title: 'Dreamdiver',
-      content: `Increases the CRIT DMG of a designated ally by {{0}}% of Sparkle's CRIT DMG plus {{1}}%, lasting for <span class="text-desc">1</span> turn(s). And at the same time, advances this ally's action by <span class="text-desc">50%</span>.
-      <br />When Sparkle uses this ability on herself, the Action Advance effect will not trigger.`,
+      content: `Increases the CRIT DMG of a single ally by {{0}}% of Sparkle's CRIT DMG plus {{1}}%, lasting for <span class="text-desc">1</span> turn(s). And at the same time, <u>Advances Forward</u> this ally's action by <span class="text-desc">50%</span>.
+      <br />When Sparkle uses this ability on herself, the <u>Action Advance</u> effect will not trigger.`,
       value: [
         { base: 12, growth: 1.2, style: 'curved' },
         { base: 27, growth: 1.8, style: 'curved' },
@@ -52,49 +53,49 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Ultimate',
       title: 'The Hero with a Thousand Faces',
-      content: `Recovers <span class="text-desc">6</span> Skill Points for the team. If Skill Points overflow, Sparkle gains <span class="text-desc">1</span> stack of <b class="text-desc">Mask</b> for each point that overflows. When an ally character's turn ends, if the team has fewer Skill Points than the maximum, Sparkle consumes <span class="text-desc">1</span> stack of <b class="text-desc">Mask</b> to recover <span class="text-desc">1</span> Skill Point for the team, until the limit is reached. Then, grants all allies <b class="text-hsr-quantum">Cipher</b>. For ally targets with <b class="text-hsr-quantum">Cipher</b> the DMG Boost effect provided by Sparkle's Talent increases by an additional {{0}}% per stack, lasting for <span class="text-desc">3</span> turns.`,
-      value: [{ base: 3, growth: 0.2, style: 'curved' }],
+      content: `Recovers <span class="text-desc">4</span> Skill Points for the team and grants all allies <b class="text-hsr-quantum">Cipher</b>. When allies with <b class="text-hsr-quantum">Cipher</b> trigger the DMG Boost effect provided by Sparkle's Talent, each stack additionally increases its effect by {{0}}%, lasting for <span class="text-desc">2</span> turns.`,
+      value: [{ base: 6, growth: 0.4, style: 'curved' }],
       level: ult,
       tag: AbilityTag.SUPPORT,
     },
     talent: {
       trace: 'Talent',
       title: 'Red Herring',
-      content: `While Sparkle is on the battlefield, additionally increases the max number of Skill Points by <span class="text-desc">2</span>. Whenever an ally consumes <span class="text-desc">1</span> Skill Point, all allies' DMG increases by {{0}}%. This effect lasts for <span class="text-desc">2</span> turn(s) and can stack up to <span class="text-desc">4</span> time(s).`,
-      value: [{ base: 1.5, growth: 0.15, style: 'curved' }],
+      content: `While Sparkle is on the battlefield, additionally increases the max number of Skill Points by <span class="text-desc">2</span>. Whenever an ally consumes <span class="text-desc">1</span> Skill Point, all allies' DMG increases by {{0}}%. This effect lasts for <span class="text-desc">2</span> turn(s) and can stack up to <span class="text-desc">3</span> time(s).`,
+      value: [{ base: 3, growth: 0.3, style: 'curved' }],
       level: talent,
       tag: AbilityTag.SUPPORT,
     },
     technique: {
       trace: 'Technique',
       title: 'Unreliable Narrator',
-      content: `Using the Technique grants all allies Misdirect for <span class="text-desc">20</span> seconds. Characters with Misdirect will not be detected by enemies, and entering battle in the Misdirect state recovers <span class="text-desc">3</span> Skill Point(s) for the team and regenerates <span class="text-desc">20</span> Energy for Sparkle.`,
+      content: `Using the Technique grants all allies Misdirect for <span class="text-desc">20</span> seconds. Characters with Misdirect will not be detected by enemies, and entering battle in the Misdirect state recovers <span class="text-desc">3</span> Skill Point(s) for the team.`,
       tag: AbilityTag.SUPPORT,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Almanac',
-      content: `When using Basic ATK, additionally regenerates <span class="text-desc">10</span> Energy. When an ally character who possesses the CRIT DMG Boost effect provided by the Skill consumes Skill Points, Sparkle additionally regenerates <span class="text-desc">1</span> Energy.`,
+      content: `When using Basic ATK, additionally regenerates <span class="text-desc">10</span> Energy.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Artificial Flower',
-      content: `If an ally consumes <span class="text-desc">3</span> or more Skill Points in a single action, Sparkle's next Skill usage will not consume Skill Points.`,
+      content: `The CRIT DMG Boost effect provided by the Skill will extend to last until the start of the target's next turn.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Nocturne',
-      content: `Increases ATK for all allies by <span class="text-desc">15%</span>. When an ally character possesses the CRIT DMG Boost effect provided by the Skill, their <b>All-Type RES PEN</b> increases by <span class="text-desc">10%</span>.`,
+      content: `Increases all allies' ATK by <span class="text-desc">15%</span>. When there are <span class="text-desc">1/2/3</span> <b class="text-hsr-quantum">Quantum</b> allies in your team, increases <b class="text-hsr-quantum">Quantum</b>-Type allies' ATK by <span class="text-desc">5%/15%/30%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Suspension of Disbelief',
-      content: `Increases the ATK of ally targets with <b class="text-hsr-quantum">Cipher</b> by <span class="text-desc">40%</span>. When the battle starts or when using Skill, increases Sparkle's SPD by <span class="text-desc">15%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `The <b class="text-hsr-quantum">Cipher</b> effect applied by the Ultimate lasts for <span class="text-desc">1</span> extra turn. All allies affected by <b class="text-hsr-quantum">Cipher</b> have their ATK increased by <span class="text-desc">40%</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'Purely Fictitious',
-      content: `Each stack of the Talent additionally reduces the enemy target's DEF by <span class="text-desc">8%</span>.`,
+      content: `Each Talent stack allows allies to ignore <span class="text-desc">8%</span> of the enemy target's DEF when dealing DMG to enemies.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -105,7 +106,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: 'Flitting Phantasm',
-      content: `The Ultimate recovers <span class="text-desc">1</span> more Skill Point. The Talent additionally increases the Max Skill Points by <span class="text-desc">1</span>.`,
+      content: `The Ultimate recovers <span class="text-desc">1</span> more Skill Point. The Talent additionally increases Max Skill Points by <span class="text-desc">1</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -116,7 +117,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: 'Narrative Polysemy',
-      content: `The CRIT DMG Boost effect provided by the Skill additionally increases by an amount equal to <span class="text-desc">30%</span> of Sparkle's CRIT DMG. When Sparkle uses Skill, her Skill's CRIT DMG Boost effect will apply to all teammates with <b class="text-hsr-quantum">Cipher</b>. When Sparkle uses her Ultimate, any single ally who benefits from her Skill's CRIT DMG Boost will spread that effect to teammates with <b class="text-hsr-quantum">Cipher</b>.`,
+      content: `The CRIT DMG Boost effect of Sparkle's Skill additionally increases by <span class="text-desc">30%</span> of Sparkle's CRIT DMG, and when she uses her Skill, the CRIT DMG Boost effect will apply to all allies currently with <b class="text-hsr-quantum">Cipher</b>. When Sparkle uses her Ultimate, this effect will spread to all allies with <b class="text-hsr-quantum">Cipher</b> should the allied target have the CRIT DMG increase effect provided by the Skill active on them.`,
     },
   }
 
@@ -136,26 +137,18 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       text: `Red Herring Stacks`,
       ...talents.talent,
       show: true,
-      default: 4,
+      default: 3,
       min: 0,
-      max: 4,
+      max: 3,
       duration: 2,
     },
+
     {
       type: 'toggle',
       id: 'cipher',
       text: `Cipher Effect`,
       ...talents.ult,
       show: true,
-      default: true,
-      duration: 2,
-    },
-    {
-      type: 'toggle',
-      id: 'sparkle_c1',
-      text: `E1 SPD Bonus`,
-      ...talents.c1,
-      show: c >= 1,
       default: true,
       duration: 2,
     },
@@ -202,8 +195,8 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Self',
           value:
             form.red_herring *
-            (calcScaling(0.015, 0.0015, talent, 'curved') +
-              (form.cipher ? calcScaling(0.03, 0.002, talent, 'curved') : 0)),
+            (calcScaling(0.03, 0.003, talent, 'curved') +
+              (form.cipher ? calcScaling(0.06, 0.004, talent, 'curved') : 0)),
         })
         if (c >= 2)
           base.DEF_PEN.push({
@@ -218,12 +211,31 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Self',
           value: 0.4,
         })
-      if (form.sparkle_c1) {
-        base[Stats.P_SPD].push({
-          name: `Eidolon 1`,
-          source: 'Self',
-          value: 0.15,
-        })
+      if (a.a6) {
+        if (!quantumCount)
+          base[Stats.P_ATK].push({
+            name: `Ascension 6 Passive`,
+            source: 'Self',
+            value: 0.15,
+          })
+        if (quantumCount === 1)
+          base[Stats.P_ATK].push({
+            name: `Ascension 6 Passive`,
+            source: 'Self',
+            value: 0.2,
+          })
+        if (quantumCount === 2)
+          base[Stats.P_ATK].push({
+            name: `Ascension 6 Passive`,
+            source: 'Self',
+            value: 0.3,
+          })
+        if (quantumCount === 3)
+          base[Stats.P_ATK].push({
+            name: `Ascension 6 Passive`,
+            source: 'Self',
+            value: 0.45,
+          })
       }
 
       return base
@@ -247,13 +259,6 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             base: toPercentage(all[index].getValue(Stats.CRIT_DMG)),
             flat: toPercentage(calcScaling(0.27, 0.018, skill, 'curved')),
           })
-          if (a.a6) {
-            base.ALL_TYPE_RES_PEN.push({
-              name: `Ascension 6 Passive`,
-              source: 'Sparkle',
-              value: 0.1,
-            })
-          }
           return x
         })
       }
@@ -263,8 +268,8 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Sparkle',
           value:
             form.red_herring *
-            (calcScaling(0.015, 0.0015, talent, 'curved') +
-              (form.cipher ? calcScaling(0.03, 0.002, talent, 'curved') : 0)),
+            (calcScaling(0.03, 0.003, talent, 'curved') +
+              (form.cipher ? calcScaling(0.06, 0.004, talent, 'curved') : 0)),
         })
         if (c >= 2)
           base.DEF_PEN.push({
@@ -279,6 +284,34 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Sparkle',
           value: 0.4,
         })
+      if (a.a6) {
+        if (form.element === Element.QUANTUM) {
+          if (quantumCount === 1)
+            base[Stats.P_ATK].push({
+              name: `Ascension 6 Passive`,
+              source: 'Sparkle',
+              value: 0.2,
+            })
+          if (quantumCount === 2)
+            base[Stats.P_ATK].push({
+              name: `Ascension 6 Passive`,
+              source: 'Sparkle',
+              value: 0.3,
+            })
+          if (quantumCount === 3)
+            base[Stats.P_ATK].push({
+              name: `Ascension 6 Passive`,
+              source: 'Sparkle',
+              value: 0.45,
+            })
+        } else {
+          base[Stats.P_ATK].push({
+            name: `Ascension 6 Passive`,
+            source: 'Sparkle',
+            value: 0.15,
+          })
+        }
+      }
       return base
     },
     postCompute: (
@@ -296,13 +329,6 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           base: toPercentage(base.getValue(Stats.CRIT_DMG)),
           flat: toPercentage(calcScaling(0.27, 0.018, skill, 'curved')),
         })
-        if (a.a6) {
-          base.ALL_TYPE_RES_PEN.push({
-            name: `Ascension 6 Passive`,
-            source: 'Self',
-            value: 0.1,
-          })
-        }
       }
       if (c >= 6 && _.some(allForm, (item) => item.sparkle_skill) && form.cipher) {
         for (const y of team) {
@@ -314,13 +340,6 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             base: toPercentage(base.getValue(Stats.CRIT_DMG)),
             flat: toPercentage(calcScaling(0.27, 0.018, skill, 'curved')),
           })
-          if (a.a6) {
-            base.ALL_TYPE_RES_PEN.push({
-              name: `Ascension 6 Passive`,
-              source: 'Sparkle',
-              value: 0.1,
-            })
-          }
         }
       }
 
@@ -329,4 +348,4 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
   }
 }
 
-export default Sparkle
+export default SparkleBase

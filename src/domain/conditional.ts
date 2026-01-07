@@ -20,6 +20,7 @@ export interface IScaling {
   cd?: number //Bonus crit dmg for each component
   overrideCd?: number
   res_pen?: number
+  def_pen?: number
   break?: number
   energy?: number
   chance?: { base: number; fixed: boolean }

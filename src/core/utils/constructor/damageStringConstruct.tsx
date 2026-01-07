@@ -95,6 +95,7 @@ export const damageStringConstruct = (
     (scaling.summon && summonDefPen ? summonDefPen : normalDefPen) +
     (stats.getValue(`${TalentTypeMap[scaling.type]}_DEF_PEN`) || 0) +
     (stats.getValue(`${TalentPropertyMap[scaling.property]}_DEF_PEN`) || 0) +
+    (scaling.def_pen || 0) +
     (scaling.property === TalentProperty.DOT && !scaling.detonate
       ? stats.getValue(StatsObjectKeys.ON_TURN_DOT_DEF_PEN)
       : 0)

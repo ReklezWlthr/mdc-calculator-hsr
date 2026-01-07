@@ -8,7 +8,7 @@ import { IContent, ITalent } from '@src/domain/conditional'
 import { DebuffTypes } from '@src/domain/constant'
 import { calcScaling } from '@src/core/utils/calculator'
 
-const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
+const BlackSwanBase = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
     basic: c >= 5 ? 1 : 0,
     skill: c >= 3 ? 2 : 0,
@@ -27,8 +27,11 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       energy: 20,
       trace: 'Basic ATK',
       title: 'Percipience, Silent Dawn',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Black Swan's ATK to one enemy target.`,
-      value: [{ base: 50, growth: 1, style: 'linear' }],
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Black Swan's ATK to a single target enemy, with a {{1}}% <u>base chance</u> of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b>. And if the hit target currently has <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-physical">Bleed</b>, <b class="text-hsr-fire">Burn</b>, or <b class="text-hsr-lightning">Shock</b> applied to them, each respectively has a {{1}}% <u>base chance</u> of inflicting <span class="text-desc">1</span> extra stack of <b>Arcana</b> onto the enemy.`,
+      value: [
+        { base: 30, growth: 6, style: 'linear' },
+        { base: 50, growth: 3, style: 'linear' },
+      ],
       level: basic,
       tag: AbilityTag.ST,
       sp: 1,
@@ -37,7 +40,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       energy: 30,
       trace: 'Skill',
       title: 'Decadence, False Twilight',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Black Swan's ATK to one designated enemy target and any adjacent targets. At the same time, there is a <span class="text-desc">100%</span> <u>base chance</u> of reducing the DEF of the enemy target and the adjacent targets by {{1}}%, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Black Swan's ATK to a single target enemy and any adjacent targets. At the same time, there is a <span class="text-desc">100%</span> <u>base chance</u> of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b> on the target enemy and the adjacent targets. And there is a <span class="text-desc">100%</span> <u>base chance</u> of reducing the DEF of the target enemy and the adjacent targets by {{1}}%, lasting for <span class="text-desc">3</span> turn(s).`,
       value: [
         { base: 45, growth: 4.5, style: 'curved' },
         { base: 14.8, growth: 0.6, style: 'curved' },
@@ -50,8 +53,9 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       energy: 5,
       trace: 'Ultimate',
       title: `Bliss of Otherworld's Embrace`,
-      content: `Inflicts <b>Epiphany</b> state on all enemies for <span class="text-desc">2</span> turn(s). Then deals <b class="text-hsr-wind">Wind DMG</b> to all enemies equal to {{1}}% of Black Swan's ATK.
-      <br />In <b>Epiphany</b> state, enemy targets take {{0}}% increased DMG. When gaining <span class="text-desc">1</span> stack of <b>Arcana</b>, there is a <span class="text-desc">50%</span> <u>fixed chance</u> to gain <span class="text-desc">1</span> additional stack, and <b>Arcana</b> stacks won't be halved after dealing DMG at the start of the turn.`,
+      content: `Inflicts <b>Epiphany</b> on all enemies for <span class="text-desc">2</span> turn(s).
+      <br />Enemies affected by <b>Epiphany</b> take {{0}}% more DMG in their turn, and their <b>Arcana</b> effect is regarded as <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-physical">Bleed</b>, <b class="text-hsr-fire">Burn</b>, and <b class="text-hsr-lightning">Shock</b> effects. In addition, when their <b>Arcana</b> effect is triggered at the beginning of the next turn, the <b>Arcana</b> stacks are not reset. The stack non-reset effect can be triggered up to <span class="text-desc">1</span> time(s) in <b>Epiphany</b>'s duration, and its charges are replenished when <b>Epiphany</b> is applied again.
+      <br />Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{1}}% of Black Swan's ATK to all enemies.`,
       value: [
         { base: 15, growth: 1, style: 'curved' },
         { base: 72, growth: 4.8, style: 'curved' },
@@ -62,10 +66,11 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     talent: {
       trace: 'Talent',
       title: `Loom of Fate's Caprice`,
-      content: `Each time an enemy target takes DoT, there is a {{0}}% <u>base chance</u> to inflict <span class="text-desc">1</span> stack of <b>Arcana</b>.
-      <br />When an enemy target is in <b>Arcana</b> state, they are also considered to be in <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-physical">Bleed</b>, <b class="text-hsr-fire">Burn</b>, and <b class="text-hsr-lightning">Shock</b> states. At the start of each turn, they take <b class="text-hsr-wind">Wind DoT</b> equal to {{1}}% of Black Swan's ATK, after which the stack count is halved. Each stack of <b>Arcana</b> increases this DMG multiplier by {{2}}%. <b>Arcana</b> can stack up to <span class="text-desc">50</span> time(s).
-      <br />Additional stacks beyond the limit can still be applied, but will be removed after dealing DMG.
-      <br /><b>Arcana</b> DMG ignores <span class="text-desc">20%</span> of the target's DEF. Only when <b>Arcana</b> deals DMG at the start of the enemy target's turn, adjacent targets additionally take <b class="text-hsr-wind">Wind DoT</b> equal to {{3}}% of Black Swan's ATK.`,
+      content: `Every time an enemy target receives DoT at the start of each turn, there is a {{0}}% <u>base chance</u> for it to be inflicted with <b>Arcana</b>.
+      <br />While afflicted with <b>Arcana</b>, enemy targets receive <b class="text-hsr-wind">Wind DoT</b> equal to {{1}}% of Black Swan's ATK at the start of each turn. Each stack of <b>Arcana</b> increases this DoT DMG multiplier by {{2}}%. Then <b>Arcana</b> resets to <span class="text-desc">1</span> stack. <b>Arcana</b> can stack up to <span class="text-desc">50</span> times.
+      <br />Only when <b>Arcana</b> causes DMG at the start of an enemy target's turn, Black Swan triggers additional effects based on the number of <b>Arcana</b> stacks inflicted on the target:
+      <br />When there are <span class="text-desc">3</span> or more <b>Arcana</b> stacks, deals <b class="text-hsr-wind">Wind DoT</b> equal to {{3}}% of Black Swan's ATK to adjacent targets, with a {{0}}% <u>base chance</u> of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b> on adjacent targets.
+      <br />When there are <span class="text-desc">7</span> or more <b>Arcana</b> stacks, enables the current DoT dealt this time to ignore <span class="text-desc">20%</span> of the target's and adjacent targets' DEF.`,
       value: [
         { base: 50, growth: 1.5, style: 'curved' },
         { base: 96, growth: 12, style: 'arcana' },
@@ -84,17 +89,17 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Viscera's Disquiet`,
-      content: `When an enemy target is attacked by Black Swan, there is a <span class="text-desc">65%</span> <u>base chance</u> of inflicting <span class="text-desc">5</span> stack(s) of <b>Arcana</b> on them.`,
+      content: `After using the Skill to hit an enemy that has <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-physical">Bleed</b>, <b class="text-hsr-fire">Burn</b>, or <b class="text-hsr-lightning">Shock</b>, each of these debuffs respectively has a <span class="text-desc">65%</span> <u>base chance</u> of inflicting 1 extra stack of <b>Arcana</b>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Goblet's Dredges`,
-      content: `When enemy targets enter combat, there is a <span class="text-desc">65%</span> <u>base chance</u> that they will be inflicted with <span class="text-desc">1</span> stack of <b>Arcana</b>, and a <span class="text-desc">100%</span> <u>base chance</u> to be inflicted with the DEF reduction effect from the Skill, which lasts for <span class="text-desc">3</span> turn(s).`,
+      content: `There is a <span class="text-desc">65%</span> <u>base chance</u> to inflict <span class="text-desc">1</span> stack of <b>Arcana</b> when a target enters battle. Every time an enemy target receives DoT during a single attack by an ally, there is a <span class="text-desc">65%</span> <u>base chance</u> for the target to be inflicted with <span class="text-desc">1</span> stack of <b>Arcana</b>, stacking up to <span class="text-desc">3</span> time(s) during <span class="text-desc">1</span> single attack.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Candleflame's Portent`,
-      content: `Increases the DMG dealt by all allies by an amount equal to <span class="text-desc">60%</span> of Black Swan's Effect Hit Rate, up to a maximum DMG increase of <span class="text-desc">72%</span>.`,
+      content: `Increases this unit's DMG by an amount equal to <span class="text-desc">60%</span> of Effect Hit Rate, up to a maximum DMG increase of <span class="text-desc">72%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -104,7 +109,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c2: {
       trace: 'Eidolon 2',
       title: `Weep Not For Me, My Lamb`,
-      content: `When enemy targets enter the battle, there is a <span class="text-desc">100%</span> <u>base chance</u> to inflict <span class="text-desc">30</span> stack(s) of <b>Arcana</b> on them.`,
+      content: `When an enemy target afflicted with Arcana is defeated, there is a <span class="text-desc">100%</span> <u>base chance</u> of inflicting <span class="text-desc">6</span> stack(s) of <b>Arcana</b> on adjacent targets.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -115,7 +120,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c4: {
       trace: 'Eidolon 4',
       title: 'In Tears We Gift',
-      content: `Under the <b>Epiphany</b> state, increases the DMG taken by enemy targets by <span class="text-desc">20%</span>, and Black Swan regenerates <span class="text-desc">8</span> Energy at the start of each turn or when they are defeated.`,
+      content: `While in the <b>Epiphany</b> state, enemy targets have their Effect RES reduced by <span class="text-desc">10%</span>. And at the start of their turn or when they get defeated, Black Swan regenerates <span class="text-desc">8</span> Energy. This Energy Regeneration effect can only trigger up to <span class="text-desc">1</span> time while <b>Epiphany</b> lasts. And this trigger count resets after the enemy gets inflicted with <b>Epiphany</b> again.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -126,9 +131,8 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c6: {
       trace: 'Eidolon 6',
       title: 'Pantheon Merciful, Masses Pitiful',
-      content: `Increases maximum stacks of of <b>Arcana</b> by <span class="text-desc">20</span>.
-      <br />When an enemy target is attacked by Black Swan's teammates, Black Swan has a <span class="text-desc">65%</span> <u>base chance</u> to inflict <span class="text-desc">1</span> stack of <b>Arcana</b> on the target.
-      <br />Every time Black Swan inflicts <span class="text-desc">1</span> stack of <b>Arcana</b> on an enemy target, the number of stacks added is additionally increased by <span class="text-desc">1</span>.`,
+      content: `When enemy targets get attacked by Black Swan's allies, Black Swan has a <span class="text-desc">65%</span> <u>base chance</u> of inflicting <span class="text-desc">1</span> stack of <b>Arcana</b> on the target.
+      <br />Each time Black Swan inflicts <b>Arcana</b> on an enemy target, there is a <span class="text-desc">50%</span> <u>fixed chance</u> to additionally increase the number of <b>Arcana</b> stacks afflicted this time by <span class="text-desc">1</span>.`,
     },
   }
 
@@ -141,7 +145,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       show: true,
       default: 1,
       min: 0,
-      max: c >= 6 ? 70 : 50,
+      max: 50,
       debuff: true,
     },
     {
@@ -161,7 +165,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       text: `Epiphany`,
       ...talents.ult,
       show: true,
-      default: true,
+      default: false,
       debuff: true,
     },
   ]
@@ -254,31 +258,33 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         type: TalentType.NONE,
         chance: { base: calcScaling(0.5, 0.015, talent, 'curved'), fixed: false },
         sum: true,
-        def_pen: 0.2,
       }
-      base.TALENT_SCALING = form.arcana
-        ? [
-            arcana,
-            {
-              name: 'Adjacent Arcana DMG',
-              value: [{ scaling: calcScaling(0.72, 0.09, talent, 'arcana'), multiplier: Stats.ATK }],
-              element: Element.WIND,
-              property: TalentProperty.DOT,
-              type: TalentType.NONE,
-              def_pen: 0.2,
-            },
-          ]
-        : []
+      base.TALENT_SCALING = form.arcana ? [arcana] : []
 
       if (form.arcana) {
         base.DOT_SCALING.push({
           ...arcana,
           overrideIndex: index,
-          dotType: DebuffTypes.DOT,
+          dotType: form.epiphany ? DebuffTypes.DOT : DebuffTypes.WIND_SHEAR,
         })
-        addDebuff(debuffs, DebuffTypes.DOT)
+        addDebuff(debuffs, form.epiphany ? DebuffTypes.DOT : DebuffTypes.WIND_SHEAR)
         base.WIND_SHEAR_STACK += form.arcana
       }
+      if (form.arcana >= 3)
+        base.TALENT_SCALING.push({
+          name: 'Adjacent Arcana DMG',
+          value: [{ scaling: calcScaling(0.72, 0.09, talent, 'arcana'), multiplier: Stats.ATK }],
+          element: Element.WIND,
+          property: TalentProperty.DOT,
+          type: TalentType.NONE,
+          chance: { base: calcScaling(0.5, 0.015, talent, 'curved'), fixed: false },
+        })
+      if (form.arcana >= 7)
+        base.ON_TURN_DOT_DEF_PEN.push({
+          name: `Talent (7+ Arcana)`,
+          source: 'Self',
+          value: 0.2,
+        })
 
       if (form.bs_skill) {
         base.DEF_REDUCTION.push({
@@ -292,8 +298,14 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         base.VULNERABILITY.push({
           name: `Epiphany`,
           source: 'Self',
-          value: calcScaling(0.15, 0.01, ult, 'curved') + (c >= 4 ? 0.2 : 0),
+          value: calcScaling(0.15, 0.01, ult, 'curved'),
         })
+        if (c >= 4)
+          base.E_RES_RED.push({
+            name: `Eidolon 4`,
+            source: 'Self',
+            value: 0.1,
+          })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
 
@@ -317,11 +329,23 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         })
       if (form.epiphany) {
         base.VULNERABILITY.push({
-          name: `Epiphany`,
+          name: `Ultimate (Epiphany)`,
           source: 'Black Swan',
-          value: calcScaling(0.15, 0.01, ult, 'curved') + (c >= 4 ? 0.2 : 0),
+          value: calcScaling(0.15, 0.01, ult, 'curved'),
         })
+        if (c >= 4)
+          base.E_RES_RED.push({
+            name: `Eidolon 4`,
+            source: 'Black Swan',
+            value: 0.1,
+          })
       }
+      if (form.arcana >= 7)
+        base.ON_TURN_DOT_DEF_PEN.push({
+          name: `Talent (7+ Arcana)`,
+          source: 'Self',
+          value: 0.2,
+        })
 
       return base
     },
@@ -338,15 +362,13 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       broken: boolean
     ) => {
       if (a.a6)
-        base.CALLBACK.push((base, _d, _w, a) => {
-          _.forEach(a, (item, i) => {
-            item[Stats.ALL_DMG].push({
-              name: 'Ascension 6 Passive',
-              source: index === i ? 'Self' : 'Black Swan',
-              value: _.min([base.getValue(Stats.EHR) * 0.6, 0.72]),
-              base: toPercentage(_.min([base.getValue(Stats.EHR), 1.2])),
-              multiplier: 0.6,
-            })
+        base.CALLBACK.push((base) => {
+          base[Stats.ALL_DMG].push({
+            name: 'Ascension 6 Passive',
+            source: 'Self',
+            value: _.min([base.getValue(Stats.EHR) * 0.6, 0.72]),
+            base: toPercentage(_.min([base.getValue(Stats.EHR), 1.2])),
+            multiplier: 0.6,
           })
           return base
         })
@@ -409,4 +431,4 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
   }
 }
 
-export default BlackSwan
+export default BlackSwanBase
