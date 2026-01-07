@@ -1479,6 +1479,42 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `Aha Instant Active`,
+    show: true,
+    default: false,
+    id: '20023',
+    scaling: (base, form, r) => {
+      if (form[`20023`]) {
+        base[Stats.ELATION].push({
+          name: `Passive`,
+          source: `Sneering`,
+          value: calcRefinement(0.16, 0.04, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Elation Bonus Stack`,
+    show: true,
+    default: 1,
+    min: 0,
+    max: 3,
+    id: '21065',
+    scaling: (base, form, r) => {
+      if (form[`21065`]) {
+        base[Stats.ELATION].push({
+          name: `Passive`,
+          source: `Elation Bonus Stack`,
+          value: calcRefinement(0.1, 0.01, r) * form[`21065`],
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [
@@ -2647,11 +2683,13 @@ export const LCTeamConditionals: IWeaponContent[] = [
             value: calcRefinement(0.05, 0.01, r) * form['23053'],
           })
         }
-        base[Stats.ELATION].push({
-          name: `Passive`,
-          source: 'Dazzled By A Flowery World',
-          value: calcRefinement(0.05, 0.01, r) * form['23053'],
-        })
+        if (!checkBuffExist(base[Stats.ELATION], { source: `Dazzled By A Flowery World` })) {
+          base[Stats.ELATION].push({
+            name: `Passive`,
+            source: 'Dazzled By A Flowery World',
+            value: calcRefinement(0.05, 0.01, r) * form['23053'],
+          })
+        }
       }
       return base
     },
@@ -2666,21 +2704,39 @@ export const LCTeamConditionals: IWeaponContent[] = [
       if (form['23054']) {
         if (index === owner) {
           base[Stats.ERR].push({
-            name: `Passive`,
+            name: `Great Fortune`,
             source: 'When She Decided To See',
             value: calcRefinement(0.12, 0.02, r),
           })
         }
         base[Stats.CRIT_RATE].push({
-          name: `Passive`,
+          name: `Great Fortune`,
           source: 'When She Decided To See',
           value: calcRefinement(0.1, 0.01, r),
         })
         base[Stats.CRIT_DMG].push({
-          name: `Passive`,
+          name: `Great Fortune`,
           source: 'When She Decided To See',
           value: calcRefinement(0.3, 0.08, r),
         })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Elation DMG Vulnerability`,
+    show: true,
+    default: true,
+    id: '21064',
+    scaling: (base, form, r, { debuffs, own }) => {
+      if (form['21064']) {
+        base.ELATION_VUL.push({
+          name: `Passive`,
+          source: `Mushy Shroomy's Adventures`,
+          value: calcRefinement(0.08, 0.01, r),
+        })
+        if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }
       return base
     },

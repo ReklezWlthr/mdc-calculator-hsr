@@ -653,6 +653,53 @@ export const RelicSets: IArtifact[] = [
       `Recluse's Soft Suede Boots`,
     ],
   },
+  {
+    id: '129',
+    name: `Diviner of Distant Reach`,
+    icon: '71052',
+    bonus: [{ stat: Stats.CRIT_DMG, value: 0.16 }],
+    bonusAdd: [],
+    desc: [
+      `Increases CRIT DMG by <span class="text-desc">16%</span>.`,
+      `The Elation DMG dealt by the wearer and their memosprites ignores <span class="text-desc">10%</span> of targets' DEF. For every <span class="text-desc">5</span> accumulated Punchline allies gain, the Elation DMG dealt additionally ignores <span class="text-desc">1%</span> of targets' DEF, which stacks up to <span class="text-desc">10</span> time(s).`,
+    ],
+    set: [
+      `Magical Girl's Shining Medal`,
+      `Magical Girl's Protective Gloves`,
+      `Magical Girl's Everdance Battle Skirt`,
+      `Magical Girl's Contract Boots`,
+    ],
+  },
+  {
+    id: '130',
+    name: `Diviner of Distant Reach`,
+    icon: '71053',
+    bonus: [{ stat: Stats.P_SPD, value: 0.06 }],
+    bonusAdd: [],
+    add: (base) => {
+      base.CALLBACK.push(function P999(x) {
+        if (x.getOFCSpd() >= 120) {
+          base[Stats.CRIT_RATE].push({
+            name: '4-Piece',
+            source: `Diviner of Distant Reach`,
+            value: x.getOFCSpd() >= 160 ? 0.18 : 0.1,
+          })
+        }
+        return x
+      })
+      return base
+    },
+    desc: [
+      `Increases SPD by <span class="text-desc">6%</span>.`,
+      `Before entering combat, if the wearer's SPD is greater than or equal to <span class="text-desc">120</span>/<span class="text-desc">160</span>, increases the wearer's CRIT Rate by <span class="text-desc">10%</span>/<span class="text-desc">18%</span>. When the wearer uses Elation Skill for the first time in each battle, enhances all allies' Elation by <span class="text-desc">10%</span>. This effect cannot stack.`,
+    ],
+    set: [
+      `Diviner's Extrapolation Jade Abacus`,
+      `Diviner's Ingenium Prosthetic Hand`,
+      `Diviner's Astral Robe`,
+      `Diviner's Cloud-Soaring Boots`,
+    ],
+  },
 ]
 
 export const PlanarSets: IArtifact[] = [

@@ -251,6 +251,28 @@ export const ArtifactForm = () => {
       id: '323',
       excludeSummon: true,
     },
+    {
+      type: 'number',
+      text: `Ever-Glorious Magical Girl`,
+      title: `Ever-Glorious Magical Girl`,
+      content: `The Elation DMG dealt by the wearer and their memosprites ignores <span class="text-desc">10%</span> of targets' DEF. For every <span class="text-desc">5</span> accumulated Punchline allies gain, the Elation DMG dealt additionally ignores <span class="text-desc">1%</span> of targets' DEF, which stacks up to <span class="text-desc">10</span> time(s).`,
+      show: true,
+      default: 0,
+      min: 0,
+      max: 10,
+      id: '129',
+      excludeSummon: true,
+    },
+    {
+      type: 'toggle',
+      text: `Diviner of Distant Reach`,
+      title: `Diviner of Distant Reach`,
+      content: `When the wearer uses Elation Skill for the first time in each battle, enhances all allies' Elation by <span class="text-desc">10%</span>. This effect cannot stack.`,
+      show: true,
+      default: true,
+      id: '130',
+      excludeSummon: true,
+    },
   ]
 
   // Team-Wide
@@ -260,6 +282,7 @@ export const ArtifactForm = () => {
     findContentById(content, '125'),
     findContentById(content, '127'),
     findContentById(content, '323'),
+    findContentById(content, '130'),
   ]
 
   // Single-Target

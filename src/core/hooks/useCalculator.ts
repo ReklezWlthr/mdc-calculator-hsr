@@ -491,12 +491,12 @@ export const useCalculator = ({
       let x = base
       const cbs = base.CALLBACK.sort((a, b) => compareWeight(a.name, b.name))
       _.forEach(cbs, (cb) => {
-        if (cb) x = cb(x, debuffs, weakness, postArtifactCallback, true)
+        if (cb) x = cb(x, debuffs, weakness, postArtifactCallback, true, globalMod)
       })
       if (base.SUMMON_STATS) {
         const mcbs = base.SUMMON_STATS.CALLBACK.sort((a, b) => compareWeight(a.name, b.name))
         _.forEach(mcbs, (cb) => {
-          if (cb) x.SUMMON_STATS = cb(x.SUMMON_STATS, debuffs, weakness, postArtifactCallback, true)
+          if (cb) x.SUMMON_STATS = cb(x.SUMMON_STATS, debuffs, weakness, postArtifactCallback, true, globalMod)
         })
       }
 
@@ -505,7 +505,7 @@ export const useCalculator = ({
     let cleaned = final
     const cbs = globalCallback.sort((a, b) => compareWeight(a.name, b.name))
     _.forEach(cbs, (cb) => {
-      if (cb) cleaned = cb(null, debuffs, weakness, cleaned, true)
+      if (cb) cleaned = cb(null, debuffs, weakness, cleaned, true, globalMod)
     })
     if (!doNotSaveStats) {
       calculatorStore.setValue('computedStats', cleaned)

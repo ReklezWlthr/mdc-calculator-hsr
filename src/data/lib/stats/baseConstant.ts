@@ -99,6 +99,7 @@ export const baseStatsObject: BaseStatsType = {
   ULT_VUL: [],
   SUPER_BREAK_VUL: [],
   SUMMON_VUL: [],
+  ELATION_VUL: [],
 
   ULT_RES_PEN: [],
   SKILL_RES_PEN: [],
@@ -223,10 +224,10 @@ export const baseStatsObject: BaseStatsType = {
   },
   getOFCSpd: function () {
     const flat = _.filter(this[Stats.SPD], (item) =>
-      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat'], item.name)
+      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat', 'Passive'], item.name)
     )
     const percentage = _.filter(this[Stats.P_SPD], (item) =>
-      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat'], item.name)
+      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat', 'Passive'], item.name)
     )
     return this.BASE_SPD * (1 + _.sumBy(percentage, 'value')) + _.sumBy(flat, 'value')
   },

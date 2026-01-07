@@ -144,6 +144,7 @@ export const DebuffModal = observer(({ statsOverride, selectedOverride, debuffOv
             <AttributeBlock stats={stats} stat="Break DMG Vulnerability" array={stats.BREAK_VUL} />
             <AttributeBlock stats={stats} stat="Super Break DMG Vulnerability" array={stats.SUPER_BREAK_VUL} />
             <AttributeBlock stats={stats} stat="Memosprite DMG Vulnerability" array={stats.SUMMON_VUL} />
+            <AttributeBlock stats={stats} stat="Elation DMG Vulnerability" array={stats.ELATION_VUL} />
           </div>
         </div>
       </Collapsible>

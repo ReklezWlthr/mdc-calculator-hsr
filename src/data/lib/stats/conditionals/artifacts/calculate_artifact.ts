@@ -190,6 +190,20 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       value: 0.32,
     })
   }
+  if (form['129']) {
+    base.ELATION_DEF_PEN.push({
+      name: `4-Piece`,
+      source: `Ever-Glorious Magical Girl`,
+      value: 0.1 + form['129'] / 100,
+    })
+    if (base.SUMMON_STATS) {
+      base.SUMMON_STATS.ELATION_DEF_PEN.push({
+        name: `4-Piece`,
+        source: `Ever-Glorious Magical Girl`,
+        value: 0.1 + form['129'] / 100,
+      })
+    }
+  }
 
   return base
 }
@@ -240,6 +254,12 @@ export const calculateTeamRelic = (base: StatsObject, form: Record<string, any>,
       name: `Amphoreus, The Eternal Land`,
       source: owner.NAME,
       value: 0.08,
+    })
+  if (form['130'] && !checkBuffExist(base[Stats.ELATION], { name: 'Diviner of Distant Reach' }))
+    base[Stats.ELATION].push({
+      name: `Diviner of Distant Reach`,
+      source: owner.NAME,
+      value: 0.1,
     })
 
   return base

@@ -1,5 +1,5 @@
 import { StatsArray } from '@src/data/lib/stats/baseConstant'
-import { Element, PathType, Stats } from './constant'
+import { Element, GlobalModifiers, PathType, Stats } from './constant'
 import { IScaling, ISuperBreakScaling } from './conditional'
 import { DebuffTypes } from './constant'
 
@@ -86,6 +86,7 @@ export interface RawBaseStatType {
   SKILL_VUL: StatsArray[]
   SUPER_BREAK_VUL: StatsArray[]
   SUMMON_VUL: StatsArray[]
+  ELATION_VUL: StatsArray[]
 
   ULT_RES_PEN: StatsArray[]
   SKILL_RES_PEN: StatsArray[]
@@ -223,5 +224,6 @@ export type CallbackType = (
   debuffs: { type: DebuffTypes; count: number }[],
   weakness: Element[],
   all: BaseStatsType[],
-  battle: boolean
+  battle: boolean,
+  globalMod: GlobalModifiers
 ) => any

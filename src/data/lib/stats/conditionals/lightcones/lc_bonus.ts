@@ -1704,6 +1704,44 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '20024',
+    scaling: (base, r) => {
+      base.CALLBACK.push(function (x, _d, _w, _a, _b, global) {
+        if (global.punchline >= 10) {
+          x[Stats.CRIT_DMG].push({
+            name: 'Passive',
+            source: `Lingering Tears`,
+            value: calcRefinement(0.2, 0.05, r),
+          })
+        }
+        return x
+      })
+      return base
+    },
+  },
+  {
+    id: '21065',
+    scaling: (base, r) => {
+      base[Stats.CRIT_RATE].push({
+        name: 'Passive',
+        source: `Today's Good Luck`,
+        value: calcRefinement(0.12, 0.02, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '21064',
+    scaling: (base, r) => {
+      base[Stats.ELATION].push({
+        name: 'Passive',
+        source: `Mushy Shroomy's Adventures`,
+        value: calcRefinement(0.12, 0.02, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus
