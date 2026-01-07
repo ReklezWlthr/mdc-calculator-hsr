@@ -250,10 +250,9 @@ export const damageStringConstruct = (
       : ''
   }${
     punchline && isElation
-      ? ` \u{00d7} (1 + <b class="text-orange-400">${toPercentage(
-          punchlineMultiplier,
-          2
-        )}</b> <i class="text-[10px]">PUNCHLINE</i>)`
+      ? ` \u{00d7} (1 + <b class="text-orange-400">${toPercentage(punchlineMultiplier, 2)}</b> <i class="text-[10px]">${
+          scaling.punchline ? 'BANGER' : 'PUNCHLINE'
+        }</i>)`
       : ''
   }${
     stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) && isElation
