@@ -51,7 +51,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       trace: 'Ultimate',
       title: `Bliss of Otherworld's Embrace`,
       content: `Inflicts <b>Epiphany</b> state on all enemies for <span class="text-desc">2</span> turn(s). Then deals <b class="text-hsr-wind">Wind DMG</b> to all enemies equal to {{1}}% of Black Swan's ATK.
-      <br />In <b>Epiphany</b> state, enemy targets take {{0}}% increased DMG. When gaining <span class="text-desc">1</span> stack of <b>Arcana</b>, there is a <span class="text-desc">50%</span> <u>fixed chance</u> to gain <span class="text-desc">1</span> additional stack, and <b>Arcana</b> stacks won't be halved after dealing DMG at the start of the turn.`,
+      <br />In <b>Epiphany</b> state, enemy targets take {{0}}% increased DMG. When gaining <span class="text-desc">1</span> stack of <b class="text-emerald-600">Arcana</b>, there is a <span class="text-desc">50%</span> <u>fixed chance</u> to gain <span class="text-desc">1</span> additional stack, and <b class="text-emerald-600">Arcana</b> stacks won't be halved after dealing DMG at the start of the turn.`,
       value: [
         { base: 15, growth: 1, style: 'curved' },
         { base: 72, growth: 4.8, style: 'curved' },
@@ -62,10 +62,10 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     talent: {
       trace: 'Talent',
       title: `Loom of Fate's Caprice`,
-      content: `Each time an enemy target takes DoT, there is a {{0}}% <u>base chance</u> to inflict <span class="text-desc">1</span> stack of <b>Arcana</b>.
-      <br />When an enemy target is in <b>Arcana</b> state, they are also considered to be in <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-physical">Bleed</b>, <b class="text-hsr-fire">Burn</b>, and <b class="text-hsr-lightning">Shock</b> states. At the start of each turn, they take <b class="text-hsr-wind">Wind DoT</b> equal to {{1}}% of Black Swan's ATK, after which the stack count is halved. Each stack of <b>Arcana</b> increases this DMG multiplier by {{2}}%. <b>Arcana</b> can stack up to <span class="text-desc">50</span> time(s).
+      content: `Each time an enemy target takes DoT, there is a {{0}}% <u>base chance</u> to inflict <span class="text-desc">1</span> stack of <b class="text-emerald-600">Arcana</b>.
+      <br />When an enemy target is in <b class="text-emerald-600">Arcana</b> state, they are also considered to be in <b class="text-hsr-wind">Wind Shear</b>, <b class="text-hsr-physical">Bleed</b>, <b class="text-hsr-fire">Burn</b>, and <b class="text-hsr-lightning">Shock</b> states. At the start of each turn, they take <b class="text-hsr-wind">Wind DoT</b> equal to {{1}}% of Black Swan's ATK, after which the stack count is halved. Each stack of <b class="text-emerald-600">Arcana</b> increases this DMG multiplier by {{2}}%. <b class="text-emerald-600">Arcana</b> can stack up to <span class="text-desc">50</span> time(s).
       <br />Additional stacks beyond the limit can still be applied, but will be removed after dealing DMG.
-      <br /><b>Arcana</b> DMG ignores <span class="text-desc">20%</span> of the target's DEF. Only when <b>Arcana</b> deals DMG at the start of the enemy target's turn, adjacent targets additionally take <b class="text-hsr-wind">Wind DoT</b> equal to {{3}}% of Black Swan's ATK.`,
+      <br /><b class="text-emerald-600">Arcana</b> DMG ignores <span class="text-desc">20%</span> of the target's DEF. Only when <b class="text-emerald-600">Arcana</b> deals DMG at the start of the enemy target's turn, adjacent targets additionally take <b class="text-hsr-wind">Wind DoT</b> equal to {{3}}% of Black Swan's ATK.`,
       value: [
         { base: 50, growth: 1.5, style: 'curved' },
         { base: 96, growth: 12, style: 'arcana' },
@@ -78,18 +78,18 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     technique: {
       trace: 'Technique',
       title: 'From Façade to Vérité',
-      content: `After this Technique is used, there is a <span class="text-desc">150%</span> <u>base chance</u> for each enemy to be inflicted with <span class="text-desc">1</span> stack of <b>Arcana</b> at the start of the next battle. For each successful application of <b>Arcana</b> on a target, inflicts another stack of <b>Arcana</b> on the same target. This process repeats until <b>Arcana</b> fails to be inflicted on this target. For each successive application of <b>Arcana</b> on a target, its <u>base chance</u> of success is equal to <span class="text-desc">50%</span> of the <u>base chance</u> of the previous successful infliction of <b>Arcana</b> on that target.`,
+      content: `After this Technique is used, there is a <span class="text-desc">150%</span> <u>base chance</u> for each enemy to be inflicted with <span class="text-desc">1</span> stack of <b class="text-emerald-600">Arcana</b> at the start of the next battle. For each successful application of <b class="text-emerald-600">Arcana</b> on a target, inflicts another stack of <b class="text-emerald-600">Arcana</b> on the same target. This process repeats until <b class="text-emerald-600">Arcana</b> fails to be inflicted on this target. For each successive application of <b class="text-emerald-600">Arcana</b> on a target, its <u>base chance</u> of success is equal to <span class="text-desc">50%</span> of the <u>base chance</u> of the previous successful infliction of <b class="text-emerald-600">Arcana</b> on that target.`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Viscera's Disquiet`,
-      content: `When an enemy target is attacked by Black Swan, there is a <span class="text-desc">65%</span> <u>base chance</u> of inflicting <span class="text-desc">5</span> stack(s) of <b>Arcana</b> on them.`,
+      content: `When an enemy target is attacked by Black Swan, there is a <span class="text-desc">65%</span> <u>base chance</u> of inflicting <span class="text-desc">5</span> stack(s) of <b class="text-emerald-600">Arcana</b> on them.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Goblet's Dredges`,
-      content: `When enemy targets enter combat, there is a <span class="text-desc">65%</span> <u>base chance</u> that they will be inflicted with <span class="text-desc">1</span> stack of <b>Arcana</b>, and a <span class="text-desc">100%</span> <u>base chance</u> to be inflicted with the DEF reduction effect from the Skill, which lasts for <span class="text-desc">3</span> turn(s).`,
+      content: `When enemy targets enter combat, there is a <span class="text-desc">65%</span> <u>base chance</u> that they will be inflicted with <span class="text-desc">1</span> stack of <b class="text-emerald-600">Arcana</b>, and a <span class="text-desc">100%</span> <u>base chance</u> to be inflicted with the DEF reduction effect from the Skill, which lasts for <span class="text-desc">3</span> turn(s).`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -104,7 +104,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c2: {
       trace: 'Eidolon 2',
       title: `Weep Not For Me, My Lamb`,
-      content: `When enemy targets enter the battle, there is a <span class="text-desc">100%</span> <u>base chance</u> to inflict <span class="text-desc">30</span> stack(s) of <b>Arcana</b> on them.`,
+      content: `When enemy targets enter the battle, there is a <span class="text-desc">100%</span> <u>base chance</u> to inflict <span class="text-desc">30</span> stack(s) of <b class="text-emerald-600">Arcana</b> on them.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -126,9 +126,9 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c6: {
       trace: 'Eidolon 6',
       title: 'Pantheon Merciful, Masses Pitiful',
-      content: `Increases maximum stacks of of <b>Arcana</b> by <span class="text-desc">20</span>.
-      <br />When an enemy target is attacked by Black Swan's teammates, Black Swan has a <span class="text-desc">65%</span> <u>base chance</u> to inflict <span class="text-desc">1</span> stack of <b>Arcana</b> on the target.
-      <br />Every time Black Swan inflicts <span class="text-desc">1</span> stack of <b>Arcana</b> on an enemy target, the number of stacks added is additionally increased by <span class="text-desc">1</span>.`,
+      content: `Increases maximum stacks of of <b class="text-emerald-600">Arcana</b> by <span class="text-desc">20</span>.
+      <br />When an enemy target is attacked by Black Swan's teammates, Black Swan has a <span class="text-desc">65%</span> <u>base chance</u> to inflict <span class="text-desc">1</span> stack of <b class="text-emerald-600">Arcana</b> on the target.
+      <br />Every time Black Swan inflicts <span class="text-desc">1</span> stack of <b class="text-emerald-600">Arcana</b> on an enemy target, the number of stacks added is additionally increased by <span class="text-desc">1</span>.`,
     },
   }
 
