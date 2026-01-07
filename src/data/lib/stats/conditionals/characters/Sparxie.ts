@@ -290,6 +290,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                     property: TalentProperty.ELATION,
                     type: TalentType.BA,
                     sum: true,
+                    punchline: form.banger,
                   },
                   {
                     name: 'Certified Banger Adjacent DMG',
@@ -297,6 +298,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                     element: Element.FIRE,
                     property: TalentProperty.ELATION,
                     type: TalentType.BA,
+                    punchline: form.banger,
                   },
                   {
                     name: 'Certified Banger Bounce DMG',
@@ -306,6 +308,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                     property: TalentProperty.ELATION,
                     type: TalentType.BA,
                     sum: true,
+                    punchline: form.banger,
                   },
                 ]
               : []),
@@ -468,6 +471,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 property: TalentProperty.ELATION,
                 type: TalentType.ULT,
                 sum: true,
+                punchline: form.banger,
               },
             ]
           : []),

@@ -56,6 +56,7 @@ export const CompareSubRows = observer(
     const [main, sub1, sub2, sub3] = _.map(Array(4), (_v, index) =>
       damageStringConstruct(
         setupStore,
+        setupStore.globalMod[index],
         scaling[index],
         scaling[index]?.overrideIndex >= 0 ? allStats[index]?.[scaling[index]?.overrideIndex] : stats[index],
         level[index].level[scaling[index]?.overrideIndex ?? level[index].selected]

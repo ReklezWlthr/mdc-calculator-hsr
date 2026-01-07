@@ -53,7 +53,14 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
   const {
     component: { DmgBody, AvgBody, CritBody },
     number: { dmg, totalCrit, totalAvg },
-  } = damageStringConstruct(calculatorStore, scaling, stats, teamStore.characters[index]?.level, true)
+  } = damageStringConstruct(
+    calculatorStore,
+    calculatorStore.globalMod,
+    scaling,
+    stats,
+    teamStore.characters[index]?.level,
+    true
+  )
 
   const { prob, ProbComponent } = chanceStringConstruct(
     calculatorStore,

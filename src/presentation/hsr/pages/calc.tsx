@@ -96,11 +96,10 @@ export const Calculator = observer(({}: {}) => {
           </div>
           {teamStore?.characters[selected]?.cId ? (
             <>
+              <div className="px-3 py-1 mx-auto mb-3 text-sm font-bold text-center border-2 rounded-lg bg-red w-fit border-error">
+                Currently, Elation DMG formula only works with character level 80.
+              </div>
               <div className="flex flex-col mb-5 text-sm rounded-lg bg-primary-darker h-fit">
-                <div className="px-3 py-1 mx-auto mb-3 text-sm text-center border-2 rounded-lg bg-red w-fit border-error">
-                  Elation DMG formula is currently unavailable due to insufficient data. If anyone has any info on the
-                  formula or values, feel free to contact me.
-                </div>
                 <div className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
                   <p>Damage Calculation{mainComputed?.NAME ? ` - ${mainComputed?.NAME}` : ''}</p>
                   {/* <p className='text-xs font-normal text-gray'>Hover Numbers for More Details</p> */}

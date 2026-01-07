@@ -222,6 +222,9 @@ export const baseStatsObject: BaseStatsType = {
   getSpd: function () {
     return this.BASE_SPD * (1 + _.sumBy(this[Stats.P_SPD], 'value')) + _.sumBy(this[Stats.SPD], 'value')
   },
+  getTotalElation: function () {
+    return (_.sumBy(this[Stats.ELATION], 'value') || 0) + (_.sumBy(this[StatsObjectKeys.X_ELATION], 'value') || 0)
+  },
   getOFCSpd: function () {
     const flat = _.filter(this[Stats.SPD], (item) =>
       _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat', 'Passive'], item.name)

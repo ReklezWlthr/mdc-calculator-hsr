@@ -191,6 +191,7 @@ export interface RawBaseStatType {
   getHP: (exclude?: boolean, statBonus?: number) => number
   getDef: (statBonus?: number) => number
   getSpd: () => number
+  getTotalElation: () => number
   getOFCSpd: () => number
   getOFCHP: () => number
   getValue: (key: string, exclude?: StatsArray[]) => number

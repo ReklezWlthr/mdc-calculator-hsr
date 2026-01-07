@@ -1,6 +1,6 @@
 import { StatsObject, StatsObjectKeys, TalentPropertyMap, TalentTypeMap } from '@src/data/lib/stats/baseConstant'
 import { IScaling } from '@src/domain/conditional'
-import { Element, StatIcons, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { Element, GlobalModifiers, StatIcons, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 import { toPercentage } from '../data_format'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
 import _ from 'lodash'
@@ -51,6 +51,7 @@ export const HitSplit = ({
 
 export const damageStringConstruct = (
   calculatorStore: CalculatorStore | SetupStore,
+  globalMod: GlobalModifiers,
   scaling: IScaling,
   stats: StatsObject,
   level: number,
@@ -133,7 +134,7 @@ export const damageStringConstruct = (
     [Stats.DEF]: stats.getDef(),
     [Stats.HP]: isServant && scaling.useOwnerStats ? ownerStats.getHP() : stats.getHP(),
     [Stats.EHP]: calculatorStore.hp,
-    [Stats.ELATION]: 0,
+    [Stats.ELATION]: 7535.107,
   }
 
   const bonusDMG = (splitBonus?: number) =>
@@ -146,7 +147,11 @@ export const damageStringConstruct = (
       : TalentProperty.HEAL === scaling.property
       ? stats.getValue(Stats.HEAL) + stats.getValue(`${TalentTypeMap[scaling.type]}_HEAL`)
       : stats.getValue(Stats.ALL_DMG) + stats.getValue(`${element} DMG%`) + talentDmg + typeDmg)
-  const elation = _.max([stats.getValue(Stats.ELATION) || 0, scaling.elation || 0])
+
+  const elation = _.max([stats.getTotalElation(), scaling.elation || 0])
+  const punchline = scaling.punchline || +globalMod.punchline
+  const punchlineMultiplier = (6 * punchline) / (+punchline + 200)
+
   const globalBonus = _.sum(_.map(scaling.bonusSplit, (item, i) => item * scaling.hitSplit?.[i])) + bonusDMG()
   const raw = (split: number) =>
     _.sumBy(scaling.value, (item) => split * item.scaling * (item.override || statForScale[item.multiplier])) +
@@ -169,7 +174,7 @@ export const damageStringConstruct = (
           : isPure
           ? 0
           : isElation
-          ? elation
+          ? elation + (1 + stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) || 0) + (1 + punchlineMultiplier)
           : bonusDMG(scaling.bonusSplit?.[i]))) *
         (globalMultiplier || 1) *
         (breakScale ? 1 + (stats.getValue(StatsObjectKeys.BREAK_MULT) || 0) : 1) *
@@ -242,6 +247,20 @@ export const damageStringConstruct = (
   }${globalMultiplier !== 1 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(globalMultiplier, 2)}</b>` : ''}${
     breakScale && stats.getValue(StatsObjectKeys.BREAK_MULT) > 0
       ? ` \u{00d7} <b class="text-amber-400">${toPercentage(1 + stats.getValue(StatsObjectKeys.BREAK_MULT), 2)}</b>`
+      : ''
+  }${
+    punchline && isElation
+      ? ` \u{00d7} (1 + <b class="text-orange-400">${toPercentage(
+          punchlineMultiplier,
+          2
+        )}</b> <i class="text-[10px]">PUNCHLINE</i>)`
+      : ''
+  }${
+    stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) && isElation
+      ? ` \u{00d7} (1 + <b class="text-desc">${toPercentage(
+          stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE),
+          2
+        )}</b> <i class="text-[10px]">MERRYMAKE</i>)`
       : ''
   }${
     isDamage

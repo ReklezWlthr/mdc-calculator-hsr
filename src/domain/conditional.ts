@@ -39,6 +39,7 @@ export interface IScaling {
   atkBonus?: number
   detonate?: boolean
   elation?: number // Used to compare higher (Yao Guang)
+  punchline?: number // Used for overriding Banger
 }
 
 export interface ISuperBreakScaling {

@@ -8,7 +8,15 @@ import {
   getWeaponBonus,
 } from '../utils/data_format'
 import _ from 'lodash'
-import { Element, IArtifactEquip, ITeamChar, IWeaponEquip, Stats, PathType } from '@src/domain/constant'
+import {
+  Element,
+  IArtifactEquip,
+  ITeamChar,
+  IWeaponEquip,
+  Stats,
+  PathType,
+  DefaultGlobalMod,
+} from '@src/domain/constant'
 import { findCharacter, findLightCone } from '../utils/finder'
 import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
 import { baseStatsObject, StatsObject } from '@src/data/lib/stats/baseConstant'
@@ -33,7 +41,7 @@ export const calculateFinal = (conditionals: StatsObject) => {
   const cb = conditionals.CALLBACK
   let x = conditionals
   _.forEach(cb, (item) => {
-    x = item(x, [], [], [], false)
+    x = item(x, [], [], [], false, DefaultGlobalMod)
   })
   return x
 }

@@ -414,6 +414,8 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               multiplier: calcScaling(0.06, 0.009, skill, 'curved'),
             })
           }
+        })
+        _.forEach(a, (item) => {
           if (form.banger) {
             _.forEach(
               [item.BASIC_SCALING, item.SKILL_SCALING, item.ULT_SCALING, item.TALENT_SCALING, item.MEMO_SKILL_SCALING],
@@ -425,9 +427,14 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
                   property: TalentProperty.ELATION,
                   type: TalentType.NONE,
                   sum: true,
-                  elation: x.getValue(Stats.ELATION),
+                  elation: x.getTotalElation(),
+                  punchline: form.banger,
                 }
-                if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property))) {
+                if (
+                  _.some(s, (item) =>
+                    _.includes([TalentProperty.NORMAL, TalentProperty.FUA, TalentProperty.ELATION], item.property)
+                  )
+                ) {
                   s.push(add)
                 }
                 if (_.some(s, (item) => item.property === TalentProperty.SERVANT)) {
