@@ -128,7 +128,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c2: {
       trace: 'Eidolon 2',
       title: 'Blind Arrows Guided by Feathers',
-      content: `While the Zone is active, increases all ally targets' SPD by 12%, and additionally increases Elation by 16%.`,
+      content: `While the Zone is active, increases all ally targets' SPD by <span class="text-desc">12%</span>, and additionally increases Elation by <span class="text-desc">16%</span>.`,
       image: 'asset/traces/SkillIcon_1502_Rank2.webp',
     },
     c3: {
@@ -142,7 +142,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c4: {
       trace: 'Eidolon 4',
       title: 'Threads of Fate Colored by Plumes',
-      content: `When all ally targets deal <b class="elation">Elation DMG</b>, they ignore 18% of the target's DEF.`,
+      content: `When all ally targets deal <b class="elation">Elation DMG</b>, they ignore <span class="text-desc">18%</span> of the target's DEF.`,
       image: 'asset/traces/SkillIcon_1502_Rank4.webp',
     },
     c5: {
@@ -156,7 +156,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c6: {
       trace: 'Eidolon 6',
       title: 'Ferried Along the Astral Arc',
-      content: `All allies' <b class="elation">Elation DMG</b> merrymakes by 20%. Increases DMG multiplier of Yao Guang's Elation Skill by 60% of the original multiplier.`,
+      content: `All allies' <b class="elation">Elation DMG</b> merrymakes by <span class="text-desc">20%</span>. Increases DMG multiplier of Yao Guang's Elation Skill by <span class="text-desc">60%</span> of the original multiplier.`,
       image: 'asset/traces/SkillIcon_1502_Rank6.webp',
     },
   }
