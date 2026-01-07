@@ -142,6 +142,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       default: 1,
       min: 0,
       max: c >= 6 ? 70 : 50,
+      chance: { base: calcScaling(0.5, 0.03, basic, 'linear'), fixed: false },
       debuff: true,
     },
     {
@@ -201,7 +202,6 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           type: TalentType.BA,
           break: 10,
           energy: 20,
-          chance: { base: calcScaling(0.5, 0.03, basic, 'linear'), fixed: false },
           sum: true,
         },
       ]
