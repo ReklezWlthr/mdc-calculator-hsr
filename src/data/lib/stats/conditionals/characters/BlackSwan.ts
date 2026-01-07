@@ -28,7 +28,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       trace: 'Basic ATK',
       title: 'Percipience, Silent Dawn',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Black Swan's ATK to one enemy target.`,
-      value: [{ base: 50, growth: 1, style: 'linear' }],
+      value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
       sp: 1,
@@ -196,7 +196,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       base.BASIC_SCALING = [
         {
           name: 'Single Target',
-          value: [{ scaling: calcScaling(0.3, 0.06, basic, 'linear'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear'), multiplier: Stats.ATK }],
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
@@ -207,7 +207,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ]
       base.SKILL_SCALING = [
         {
-          name: 'Main Target',
+          name: 'Blast',
           value: [{ scaling: calcScaling(0.45, 0.045, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.WIND,
           property: TalentProperty.NORMAL,
@@ -216,16 +216,6 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           energy: 30,
           chance: { base: 1, fixed: false },
           sum: true,
-        },
-        {
-          name: 'Adjacent',
-          value: [{ scaling: calcScaling(0.45, 0.045, skill, 'curved'), multiplier: Stats.ATK }],
-          element: Element.WIND,
-          property: TalentProperty.NORMAL,
-          type: TalentType.SKILL,
-          break: 10,
-          energy: 30,
-          chance: { base: 1, fixed: false },
         },
       ]
       base.ULT_SCALING = [
@@ -265,6 +255,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               element: Element.WIND,
               property: TalentProperty.DOT,
               type: TalentType.NONE,
+              chance: { base: calcScaling(0.5, 0.015, talent, 'curved'), fixed: false },
               def_pen: 0.2,
             },
           ]
