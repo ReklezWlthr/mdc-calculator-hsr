@@ -15,6 +15,12 @@
     -webkit-text-fill-color: transparent;
   }
 
+  .text-aha {
+    background: -webkit-linear-gradient(#eab57d, #ed7351, #a4251b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   .dropdownScrollbar {
     overflow: overlay;
   }

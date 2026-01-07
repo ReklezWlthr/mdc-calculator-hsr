@@ -13,7 +13,7 @@ import {
 } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/data_format'
-import { IContent, ITalent } from '@src/domain/conditional'
+import { Banger, IContent, ITalent } from '@src/domain/conditional'
 import { DebuffTypes } from '@src/domain/constant'
 import { calcScaling } from '@src/core/utils/calculator'
 import { CallbackType } from '@src/domain/stats'
@@ -76,7 +76,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     ult: {
       trace: 'Ultimate',
       title: 'Hexagram of Feathered Fortune',
-      content: `Gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline(s)</b>. <b>Aha</b> immediately gains <span class="text-desc">1</span> extra turn where a fixed amount of <span class="text-desc">20</span> <b class="text-orange-400">Punchline(s)</b> is taken into account. This turn, does not consume <b class="text-orange-400">Punchline(s)</b>, and increases all allies' <b>All-Type RES PEN</b> by {{0}}% for <span class="text-desc">3</span> turn(s).`,
+      content: `Gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline(s)</b>. <b class="text-aha">Aha</b> immediately gains <span class="text-desc">1</span> extra turn where a fixed amount of <span class="text-desc">20</span> <b class="text-orange-400">Punchline(s)</b> is taken into account. This turn, does not consume <b class="text-orange-400">Punchline(s)</b>, and increases all allies' <b>All-Type RES PEN</b> by {{0}}% for <span class="text-desc">3</span> turn(s).`,
       value: [{ base: 10, growth: 1, style: 'curved' }],
       level: ult,
       tag: AbilityTag.AOE,
@@ -122,7 +122,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c1: {
       trace: 'Eidolon 1',
       title: 'Chuckle Chimes Where Jade Falls',
-      content: `Increases the fixed amount of <b class="text-orange-400">Punchline</b> taken into account in <b>Aha</b>'s extra turn triggered by the Ultimate to <span class="text-desc">30</span>, and the DMG dealt by the Elation Skill becomes <span class="text-desc">140%</span> of the original DMG.`,
+      content: `Increases the fixed amount of <b class="text-orange-400">Punchline</b> taken into account in <b class="text-aha">Aha</b>'s extra turn triggered by the Ultimate to <span class="text-desc">30</span>, and the DMG dealt by the Elation Skill becomes <span class="text-desc">140%</span> of the original DMG.`,
       image: 'asset/traces/SkillIcon_1502_Rank1.webp',
     },
     c2: {
@@ -162,18 +162,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
   }
 
   const content: IContent[] = [
-    {
-      type: 'number',
-      id: 'banger',
-      text: `Total Certified Banger`,
-      trace: 'Mechanic - Elation',
-      content: `Ability effects and <b class="elation">Elation DMG</b> produced by the <b class="text-blue">Certified Banger</b> state are calculated based on the <b class="text-orange-400">Punchline</b> points taken into account.
-      <br /><b class="text-orange-400">Punchlines</b> taken into account for multiple <b class="text-blue">Certified Banger</b> states are combined for calculation.`,
-      title: 'Certified Banger',
-      show: true,
-      default: 5,
-      min: 0,
-    },
+    Banger,
     {
       type: 'toggle',
       id: 'yao_skill',

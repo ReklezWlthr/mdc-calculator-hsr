@@ -150,9 +150,9 @@ export const GlobalContents: (team: ITeamChar[]) => IContent[] = (team) =>
         text: `Punchline`,
         trace: 'Mechanic - Elation',
         content: `<b class="text-orange-400">Punchline</b> is shared by the whole team. When dealing <b class="elation">Elation DMG</b>, the more <b class="text-orange-400">Punchline</b> points taken into account, the higher the <b class="elation">Elation DMG</b>.
-        <br />After each <b>Aha Instant</b>, all <b class="text-orange-400">Punchline</b> point(s) will be cleared and given to each character as <b class="text-blue">Certified Banger</b>.
+        <br />After each <b class="text-aha">Aha Instant</b>, all <b class="text-orange-400">Punchline</b> point(s) will be cleared and given to each character as <b class="text-blue">Certified Banger</b>.
         <br />
-        <br />This value is only used to calculate the effect of each character's Elation Skill within each single <b>Aha Instant</b>.`,
+        <br />This value is only used to calculate the effect of each character's Elation Skill within each single <b class="text-aha">Aha Instant</b>.`,
         title: 'Punchline',
         show: _.some(team, (item) => findCharacter(item.cId)?.path === PathType.ELATION),
         default: 0,
@@ -162,3 +162,17 @@ export const GlobalContents: (team: ITeamChar[]) => IContent[] = (team) =>
     ] as IContent[],
     (item) => item.show
   )
+
+export const Banger: IContent = {
+  type: 'number',
+  id: 'banger',
+  text: `Total Certified Banger`,
+  trace: 'Elation',
+  content: `Characters participating in the <b class="text-aha">Aha Instant</b> obtain the <b class="text-blue">Certified Banger</b> state, and <b class="text-orange-400">Punchline</b> from the current <b class="text-aha">Aha Instant</b> are taken into account for this state, lasting for <span class="text-desc">2</span> turns. Ability effects and <b class="elation">Elation DMG</b> produced by the <b class="text-blue">Certified Banger</b> state are calculated based on the <b class="text-orange-400">Punchline</b> points taken into account.
+      <br /><b class="text-orange-400">Punchlines</b> taken into account for multiple <b class="text-blue">Certified Banger</b> states are combined for calculation.
+      <br />The duration of each <b class="text-blue">Certified Banger</b> state is calculated independently.`,
+  title: 'Certified Banger',
+  show: true,
+  default: 5,
+  min: 0,
+}

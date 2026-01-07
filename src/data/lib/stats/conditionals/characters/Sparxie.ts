@@ -13,7 +13,7 @@ import {
 } from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/data_format'
-import { IContent, ITalent } from '@src/domain/conditional'
+import { Banger, IContent, ITalent } from '@src/domain/conditional'
 import { DebuffTypes } from '@src/domain/constant'
 import { calcScaling } from '@src/core/utils/calculator'
 import { CallbackType } from '@src/domain/stats'
@@ -144,13 +144,13 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c1: {
       trace: 'Eidolon 1',
       title: '#GoingViral #WhoIsShe',
-      content: `After <b>Aha Instant</b> ends, gains an additional <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b>. For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> owned, increases <b>All-Type RES PEN</b> for all allies by <span class="text-desc">1.5%</span>, up to a max increase of <span class="text-desc">15%</span>.`,
+      content: `After <b class="text-aha">Aha Instant</b> ends, gains an additional <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b>. For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> owned, increases <b>All-Type RES PEN</b> for all allies by <span class="text-desc">1.5%</span>, up to a max increase of <span class="text-desc">15%</span>.`,
       image: 'asset/traces/SkillIcon_1501_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
       title: '#AudienceKnows',
-      content: `After <b>Aha Instant</b> ends, Sparxie gains <span class="text-desc">1</span> extra turn and <span class="text-desc">2</span> <b class="text-desc">Thrill</b>. Each time a <b class="text-desc">Thrill</b> is consumed, increases this unit's CRIT DMG by <span class="text-desc">10%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">4</span> time(s).`,
+      content: `After <b class="text-aha">Aha Instant</b> ends, Sparxie gains <span class="text-desc">1</span> extra turn and <span class="text-desc">2</span> <b class="text-desc">Thrill</b>. Each time a <b class="text-desc">Thrill</b> is consumed, increases this unit's CRIT DMG by <span class="text-desc">10%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">4</span> time(s).`,
       image: 'asset/traces/SkillIcon_1501_Rank2.webp',
     },
     c3: {
@@ -184,18 +184,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
   }
 
   const content: IContent[] = [
-    {
-      type: 'number',
-      id: 'banger',
-      text: `Total Certified Banger`,
-      trace: 'Mechanic - Elation',
-      content: `Ability effects and <b class="elation">Elation DMG</b> produced by the <b class="text-blue">Certified Banger</b> state are calculated based on the <b class="text-orange-400">Punchline</b> points taken into account.
-      <br /><b class="text-orange-400">Punchlines</b> taken into account for multiple <b class="text-blue">Certified Banger</b> states are combined for calculation.`,
-      title: 'Certified Banger',
-      show: true,
-      default: 5,
-      min: 0,
-    },
+    Banger,
     {
       type: 'number',
       id: 'engagement',

@@ -362,7 +362,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Indulgence',
-      detail: `When <b>Aha Instant</b> is activated, the wearer's Elation increases by {{0}}%, lasting until <b>Aha Instant</b> ends.`,
+      detail: `When <b class="text-aha">Aha Instant</b> is activated, the wearer's Elation increases by {{0}}%, lasting until <b class="text-aha">Aha Instant</b> ends.`,
       properties: [{ base: 16, growth: 4 }],
     },
   },
