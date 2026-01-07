@@ -93,7 +93,7 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       title: 'Vibe Checker',
       content: `After using Technique, The Herta's ATK increases by <span class="text-desc">60%</span> at the start of the next battle, lasting for <span class="text-desc">2</span> turn(s).
       <br />If there are Basic Treasures in this current map, using Technique will mark up to <span class="text-desc">3</span> Basic Treasures' locations.
-      <br />After entering battle by using Technique in Simulated Universe or Divergent Universe, deals <b class="text-true">True DMG</b> equal to <span class="text-desc">99%</span> of the target's Max HP to enemy targets lower than Elite-level, and <b class="text-true">True DMG</b> equal to <span class="text-desc">30%</span> of the target's Max HP to enemy targets at Elite-level and above.`,
+      <br />After entering battle by using Technique in Simulated Universe or Divergent Universe, deals <b class="true">True DMG</b> equal to <span class="text-desc">99%</span> of the target's Max HP to enemy targets lower than Elite-level, and <b class="true">True DMG</b> equal to <span class="text-desc">30%</span> of the target's Max HP to enemy targets at Elite-level and above.`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {

@@ -34,7 +34,7 @@ interface ConditionalBlockProps {
 
 export const WeaponConditionalBlock = observer(
   ({ contents, formOverride, teamOverride, setForm, memo, compare, selected }: ConditionalBlockProps) => {
-    const [open, setOpen] = useState(true)
+    const [open, setOpen] = useState(!!_.size(contents))
 
     const { calculatorStore, teamStore, setupStore } = useStore()
     const baseForm = formOverride || calculatorStore.form

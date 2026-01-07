@@ -102,7 +102,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c1: {
       trace: 'Eidolon 1',
       title: `Rite of Sugar Scoop`,
-      content: `While the Zone lasts, after ally targets attack enemies, additionally deals <b class="text-red">True DMG</b> equal to <span class="text-desc">24%</span> of the total DMG of this attack to the targets that have been dealt Additional DMG by the Zone.`,
+      content: `While the Zone lasts, after ally targets attack enemies, additionally deals <b class="true">True DMG</b> equal to <span class="text-desc">24%</span> of the total DMG of this attack to the targets that have been dealt Additional DMG by the Zone.`,
     },
     c2: {
       trace: 'Eidolon 2',

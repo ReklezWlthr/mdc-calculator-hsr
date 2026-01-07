@@ -79,7 +79,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     summon_skill: {
       trace: 'Elation Skill',
       title: 'Signal Overflow: The Great Encore!',
-      content: `Deals <b class="text-hsr-fire">Fire Elation DMG</b> equal to {{0}}% to all enemies. Then deals <span class="text-desc">20</span> hit(s) of <b class="text-hsr-fire">Fire Elation DMG</b> equal to {{1}}% to one random enemy. For every <span class="text-desc">10</span> <b class="text-orange-400">Punchlines</b> counted in this Elation Skill, Sparxie gains <span class="text-desc">1</span> <b class="text-desc">Thrill</b>, up to <span class="text-desc">20</span> <b class="text-orange-400">Punchlines</b> counted. A maximum of <span class="text-desc">4</span> <b class="text-desc">Thrill</b> can be held, which can be used to offset Sparxie's Skill Point consumption. Consuming <b class="text-desc">Thrill</b> is considered as consuming Skill Points.`,
+      content: `Deals <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> equal to {{0}}% to all enemies. Then deals <span class="text-desc">20</span> hit(s) of <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> equal to {{1}}% to one random enemy. For every <span class="text-desc">10</span> <b class="text-orange-400">Punchlines</b> counted in this Elation Skill, Sparxie gains <span class="text-desc">1</span> <b class="text-desc">Thrill</b>, up to <span class="text-desc">20</span> <b class="text-orange-400">Punchlines</b> counted. A maximum of <span class="text-desc">4</span> <b class="text-desc">Thrill</b> can be held, which can be used to offset Sparxie's Skill Point consumption. Consuming <b class="text-desc">Thrill</b> is considered as consuming Skill Points.`,
       value: [
         { base: 25, growth: 2.5, style: 'curved' },
         { base: 11, growth: 1.1, style: 'curved' },
@@ -103,8 +103,8 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: `Talent`,
       title: `Sleight of Sparx Hand`,
       content: `When Sparxie possesses <b class="text-blue">Certified Banger</b>:
-      <br />Using Enhanced Basic ATK deals <b class="text-hsr-fire">Fire Elation DMG</b> equal to {{0}}% to one designated enemy, and <b class="text-hsr-fire">Fire Elation DMG</b> equal to {{1}}% to adjacent targets. Additionally, for every time <b>Engagement Farming</b> is triggered, the Enhanced Basic ATK deals <span class="text-desc">1</span> extra instance of <b class="text-hsr-fire">Fire Elation DMG</b> equal to {{2}}% to <span class="text-desc">1</span> random attacked enemy target.
-      <br />Using Ultimate deals <b class="text-hsr-fire">Fire Elation DMG</b> equal to {{3}}% to all enemies.`,
+      <br />Using Enhanced Basic ATK deals <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> equal to {{0}}% to one designated enemy, and <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> equal to {{1}}% to adjacent targets. Additionally, for every time <b>Engagement Farming</b> is triggered, the Enhanced Basic ATK deals <span class="text-desc">1</span> extra instance of <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> equal to {{2}}% to <span class="text-desc">1</span> random attacked enemy target.
+      <br />Using Ultimate deals <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> equal to {{3}}% to all enemies.`,
       value: [
         { base: 10, growth: 1, style: 'curved' },
         { base: 5, growth: 0.5, style: 'curved' },
@@ -189,7 +189,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       id: 'banger',
       text: `Total Certified Banger`,
       trace: 'Mechanic - Elation',
-      content: `Ability effects and Elation DMG produced by the <b class="text-blue">Certified Banger</b> state are calculated based on the <b class="text-orange-400">Punchline</b> points taken into account.
+      content: `Ability effects and <b class="elation">Elation DMG</b> produced by the <b class="text-blue">Certified Banger</b> state are calculated based on the <b class="text-orange-400">Punchline</b> points taken into account.
       <br /><b class="text-orange-400">Punchlines</b> taken into account for multiple <b class="text-blue">Certified Banger</b> states are combined for calculation.`,
       title: 'Certified Banger',
       show: true,

@@ -1438,7 +1438,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Rumble',
-      detail: `Increases the wearer's Elation by {{0}}%. When the wearer uses an Elation Skill, increases Elation DMG taken by all enemies by {{1}}% for <span class="text-desc">2</span> turn(s).`,
+      detail: `Increases the wearer's Elation by {{0}}%. When the wearer uses an Elation Skill, increases <b class="elation">Elation DMG</b> taken by all enemies by {{1}}% for <span class="text-desc">2</span> turn(s).`,
       properties: [
         { base: 12, growth: 2 },
         { base: 8, growth: 1 },
@@ -2596,7 +2596,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Center of Attention',
-      detail: `Increases the wearer's CRIT DMG by {{0}}%. While the wearer is on the field, for every Elation character on the team, increases the Skill Point upper limit by <span class="text-desc">1</span>, up to a max increase of <span class="text-desc">3</span>. For every <span class="text-desc">1</span> Skill Point the wearer consumes, ignores {{1}}% of enemy targets' DEF when this unit deals Elation DMG, and increases all allies' Elation by {{1}}%. This effect can stack up to <span class="text-desc">4</span> time(s). Light Cone effects of the same type cannot stack.`,
+      detail: `Increases the wearer's CRIT DMG by {{0}}%. While the wearer is on the field, for every Elation character on the team, increases the Skill Point upper limit by <span class="text-desc">1</span>, up to a max increase of <span class="text-desc">3</span>. For every <span class="text-desc">1</span> Skill Point the wearer consumes, ignores {{1}}% of enemy targets' DEF when this unit deals <b class="elation">Elation DMG</b>, and increases all allies' Elation by {{1}}%. This effect can stack up to <span class="text-desc">4</span> time(s). Light Cone effects of the same type cannot stack.`,
       properties: [
         { base: 36, growth: 6 },
         { base: 5, growth: 1 },

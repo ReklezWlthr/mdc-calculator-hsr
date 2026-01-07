@@ -167,7 +167,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Eidolon 6',
       title: 'Embers of Old Rise Still',
       content: `The number of overflow points allowed for <b class="text-desc">Coreflame</b> no longer has an upper limit. When the battle starts, gains <span class="text-desc">6</span> <b class="text-desc">Coreflame(s)</b>.
-      <br />After using the attack from <b>Foundation: Stardeath Verdict</b>, additionally deals <b class="text-true">True DMG</b> equal to <span class="text-desc">36%</span> of the total DMG dealt in this attack to the enemy target with the highest HP
+      <br />After using the attack from <b>Foundation: Stardeath Verdict</b>, additionally deals <b class="true">True DMG</b> equal to <span class="text-desc">36%</span> of the total DMG dealt in this attack to the enemy target with the highest HP
       <br />
       <br /><i>**The max number of overflow <b class="text-desc">Coreflame</b> is actually <span class="text-desc">402,604,020</span>, which is equal to <span class="text-desc">33,550,336</span> Ultimates.**</i>`,
     },

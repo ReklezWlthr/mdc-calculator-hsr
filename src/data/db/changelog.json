@@ -141,7 +141,7 @@
       "New Light Cones: <span class=\"text-desc\">This Love, Forever</span>, and <span class=\"text-desc\">Take Flight Toward A Pink Tomorrow</span>",
       "New Planar Sets: <span class=\"text-desc\">Amphoreus, The Eternal Land</span>, and <span class=\"text-desc\">Tengoku @Live Stream</span>",
       "Fixed: <span class=\"text-hsr-wind\">Hyacine</span>'s Technique buff",
-      "Fixed: <b class=\"text-true\">True DMG</b>'s interaction with DoT (Read more in <b>Guide</b> > <b>Terms and Descriptions</b> > <b>Damage Properties</b>)",
+      "Fixed: <b class=\"true\">True DMG</b>'s interaction with DoT (Read more in <b>Guide</b> > <b>Terms and Descriptions</b> > <b>Damage Properties</b>)",
       "Added: DoT sources for easier understanding and trace-back"
     ]
   },
@@ -254,7 +254,7 @@
     "date": "July 7th, 2025",
     "desc": [
       "Fixed: <span class=\"text-hsr-ice\">RMC</span>'s CRIT DMG sharing now behaves properly.",
-      "Fixed: <span class=\"text-hsr-ice\">RMC</span>'s <span class=\"text-true\">True DMG</span> now applies to <span class=\"text-hsr-physical\">Phainon</span>'s Enhanced Skill."
+      "Fixed: <span class=\"text-hsr-ice\">RMC</span>'s <span class=\"true\">True DMG</span> now applies to <span class=\"text-hsr-physical\">Phainon</span>'s Enhanced Skill."
     ]
   },
   {
@@ -428,7 +428,7 @@
     "version": "1.1.1-10",
     "date": "March 14th, 2025",
     "desc": [
-      "Fixed: <span class=\"text-hsr-ice\">Remembrance TB</span>'s <span class=\"text-true\">True DMG</span> now applies to cross-character DMG (e.g. <span class=\"text-hsr-quantum\">Jade</span>'s Additional DMG)"
+      "Fixed: <span class=\"text-hsr-ice\">Remembrance TB</span>'s <span class=\"true\">True DMG</span> now applies to cross-character DMG (e.g. <span class=\"text-hsr-quantum\">Jade</span>'s Additional DMG)"
     ]
   },
   {
@@ -459,7 +459,7 @@
   {
     "version": "1.1.1-6",
     "date": "February 23rd, 2025",
-    "desc": ["Fixed: <span class=\"text-true\">True DMG</span> Calculation"]
+    "desc": ["Fixed: <span class=\"true\">True DMG</span> Calculation"]
   },
   {
     "version": "1.1.1-5",

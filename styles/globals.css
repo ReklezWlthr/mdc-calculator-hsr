@@ -3,6 +3,18 @@
 @import 'tailwindcss/utilities';
 
 @layer utilities {
+  .elation {
+    background: -webkit-linear-gradient(#ffce1dee, #d284d4, #c1bfff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .true {
+    background: -webkit-linear-gradient(#d9d9fd, #ead9f8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   .dropdownScrollbar {
     overflow: overlay;
   }
@@ -56,7 +68,7 @@
     transition: opacity 0.2s;
     border-radius: 5px;
   }
-  
+
   .slider::-webkit-slider-thumb {
     appearance: none;
     width: 16px;
@@ -66,7 +78,7 @@
     cursor: pointer;
     border: 1px solid #c7c9d9;
   }
-  
+
   .slider::-moz-range-thumb {
     width: 16px;
     height: 16px;

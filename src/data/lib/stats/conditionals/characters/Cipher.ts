@@ -52,7 +52,7 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 5,
       trace: 'Ultimate',
       title: `Yours Truly, Kitty Phantom Thief!!`,
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Cipher's ATK to one designated enemy. Then, deals <b class="text-true">True DMG</b> equal to <span class="text-desc">25%</span> of the current tally kept by Talent to the one designated enemy. Moreover, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Cipher's ATK alongside <b class="text-true">True DMG</b> equal to <span class="text-desc">75%</span> of the current tally kept by Talent to the one designated enemy and its adjacent targets. And this <b class="text-true">True DMG</b> is distributed evenly among all targets of this ability.`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Cipher's ATK to one designated enemy. Then, deals <b class="true">True DMG</b> equal to <span class="text-desc">25%</span> of the current tally kept by Talent to the one designated enemy. Moreover, deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Cipher's ATK alongside <b class="true">True DMG</b> equal to <span class="text-desc">75%</span> of the current tally kept by Talent to the one designated enemy and its adjacent targets. And this <b class="true">True DMG</b> is distributed evenly among all targets of this ability.`,
       value: [
         { base: 60, growth: 6, style: 'curved' },
         { base: 20, growth: 2, style: 'curved' },
@@ -66,7 +66,7 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       title: `The Hospitable Dolosian`,
       content: `When there are no enemy targets in the <b class="text-hsr-quantum">Patron</b> state on the battlefield, Cipher immediately causes one enemy target with the highest Max HP on the battlefield to become the <b class="text-hsr-quantum">Patron</b>. When using Skill and Ultimate, the primary target becomes the <b class="text-hsr-quantum">Patron</b>. The <b class="text-hsr-quantum">Patron</b> state only takes effect on the most recent target.
       <br />After the <b class="text-hsr-quantum">Patron</b> gets attacked by other ally targets, Cipher immediately launches <u>Follow-up ATK</u> against the <b class="text-hsr-quantum">Patron</b>, dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Cipher's ATK. This effect can only be triggered up to <span class="text-desc">1</span> time(s) per turn, and this trigger count resets at the start of Cipher's turn.
-      <br />Cipher will tally <span class="text-desc">12%</span> of the non-<b class="text-true">True DMG</b> dealt by ally targets to the <b class="text-hsr-quantum">Patron</b>. Overflow DMG will not be tallied. After using Ultimate, clears this tally.`,
+      <br />Cipher will tally <span class="text-desc">12%</span> of the non-<b class="true">True DMG</b> dealt by ally targets to the <b class="text-hsr-quantum">Patron</b>. Overflow DMG will not be tallied. After using Ultimate, clears this tally.`,
       value: [{ base: 75, growth: 7.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ST,
@@ -86,7 +86,7 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a4: {
       trace: 'Ascension 4 Passive',
       title: `300 Rogues`,
-      content: `Cipher tally <span class="text-desc">8%</span> of the non-<b class="text-true">True DMG</b> dealt by ally targets to the enemy targets other than the <b class="text-hsr-quantum">Patron</b>. Overflow DMG is not tallied.`,
+      content: `Cipher tally <span class="text-desc">8%</span> of the non-<b class="true">True DMG</b> dealt by ally targets to the enemy targets other than the <b class="text-hsr-quantum">Patron</b>. Overflow DMG is not tallied.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',

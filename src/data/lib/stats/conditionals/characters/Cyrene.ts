@@ -349,7 +349,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     skill: {
       trace: 'Skill',
       title: 'Bloom, Elysium of Beyond',
-      content: `Gains <span class="text-desc">3</span> <b class="text-pink-300">Recollection</b> point(s) and deploys a Zone that lasts <span class="text-desc">2</span> turns, with the Zone's duration decreasing by <span class="text-desc">1</span> at the start of Cyrene's turn. While the Zone is active, for each instance of DMG dealt by all ally targets, deals <span class="text-desc">1</span> additional instance of <b class="text-true">True DMG</b> equal to {{0}}% of the original DMG. When Cyrene is downed, the Zone will also be dispelled.`,
+      content: `Gains <span class="text-desc">3</span> <b class="text-pink-300">Recollection</b> point(s) and deploys a Zone that lasts <span class="text-desc">2</span> turns, with the Zone's duration decreasing by <span class="text-desc">1</span> at the start of Cyrene's turn. While the Zone is active, for each instance of DMG dealt by all ally targets, deals <span class="text-desc">1</span> additional instance of <b class="true">True DMG</b> equal to {{0}}% of the original DMG. When Cyrene is downed, the Zone will also be dispelled.`,
       value: [{ base: 12, growth: 1.2, style: 'curved' }],
       level: skill,
       tag: AbilityTag.SUPPORT,
@@ -462,7 +462,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c2: {
       trace: 'Eidolon 2',
       title: `A Tomorrow in Thirteen Shades`,
-      content: `When entering combat, additionally gains <span class="text-desc">12</span> <b class="text-pink-300">Recollection</b> point(s). For each different ally character that gains the Memosprite Skill buff from <b>Demiurge</b>, the DMG multiplier of the <b class="text-true">True DMG</b> dealt by ally targets via the Skill's Zone increases by <span class="text-desc">6%</span>, up to a max increase of <span class="text-desc">24%</span>.`,
+      content: `When entering combat, additionally gains <span class="text-desc">12</span> <b class="text-pink-300">Recollection</b> point(s). For each different ally character that gains the Memosprite Skill buff from <b>Demiurge</b>, the DMG multiplier of the <b class="true">True DMG</b> dealt by ally targets via the Skill's Zone increases by <span class="text-desc">6%</span>, up to a max increase of <span class="text-desc">24%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',

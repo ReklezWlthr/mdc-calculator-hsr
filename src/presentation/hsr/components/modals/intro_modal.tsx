@@ -59,7 +59,7 @@ export const IntroModal = observer(() => {
           being presented in tooltips.
         </BulletPoint>
         <BulletPoint>
-          Tribbie's E1 <b className="text-true">True DMG</b> is not portrayed to its maximum potential since it
+          Tribbie's E1 <b className="true">True DMG</b> is not portrayed to its maximum potential since it
           calculates the <b>TOTAL</b> damage dealt across all enemies which this calculator currently cannot do.
         </BulletPoint>
       </Collapsible>

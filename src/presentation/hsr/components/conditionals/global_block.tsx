@@ -32,14 +32,14 @@ interface ConditionalBlockProps {
 
 export const GlobalConditionalBlock = observer(
   ({ tooltipStyle = 'w-[40vw]', setForm, formOverride, teamOverride }: ConditionalBlockProps) => {
-    const [open, setOpen] = useState(true)
-
     const { calculatorStore, teamStore, setupStore } = useStore()
     const global = formOverride || calculatorStore.globalMod
     const set = setForm || calculatorStore.setValue
     const team = teamOverride || teamStore.characters
 
     const contents = GlobalContents(team)
+
+    const [open, setOpen] = useState(!!_.size(contents))
 
     return (
       <div className="w-full rounded-lg bg-primary-darker h-fit">

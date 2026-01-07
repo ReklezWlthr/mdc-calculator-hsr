@@ -82,7 +82,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       trace: 'Memosprite Skill [2]',
       title: 'Lemme! Help You!',
       content: `<u>Advances the action</u> of one designated ally by <span class="text-desc">100%</span> and grants them <b class="text-hsr-ice">Mem's Support</b>, lasting for <span class="text-desc">3</span> turn(s).
-      <br />For every <span class="text-desc">1</span> instance of DMG dealt by the target that has <b class="text-hsr-ice">Mem's Support</b>, additionally deals <span class="text-desc">1</span> instance of <b class="text-true">True DMG</b> equal to {{0}}% of the original DMG.
+      <br />For every <span class="text-desc">1</span> instance of DMG dealt by the target that has <b class="text-hsr-ice">Mem's Support</b>, additionally deals <span class="text-desc">1</span> instance of <b class="true">True DMG</b> equal to {{0}}% of the original DMG.
       <br />When using this ability on this unit, cannot trigger the <u>action advance</u> effect.`,
       value: [{ base: 18, growth: 2, style: 'linear' }],
       level: memo_skill,
@@ -141,7 +141,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Magnets and Long Chains`,
-      content: `When the Max Energy of the ally target that has <b class="text-hsr-ice">Mem's Support</b> exceeds <span class="text-desc">100</span>, for every <span class="text-desc">10</span> excess Energy, additionally increases the multiplier of the <b class="text-true">True DMG</b> dealt via <b class="text-hsr-ice">Mem's Support</b> by <span class="text-desc">2%</span>, up to a max increase of <span class="text-desc">20%</span>.`,
+      content: `When the Max Energy of the ally target that has <b class="text-hsr-ice">Mem's Support</b> exceeds <span class="text-desc">100</span>, for every <span class="text-desc">10</span> excess Energy, additionally increases the multiplier of the <b class="true">True DMG</b> dealt via <b class="text-hsr-ice">Mem's Support</b> by <span class="text-desc">2%</span>, up to a max increase of <span class="text-desc">20%</span>.`,
     },
     bonus: {
       trace: 'Bonus Ability',
@@ -169,7 +169,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     c4: {
       trace: 'Eidolon 4',
       title: 'Dancer of the Muse',
-      content: `When an ally target with <span class="text-desc">0</span> Max Energy actively uses an ability, <b>Mem</b> can also gain <span class="text-desc">3%</span> Charge, and the multiplier of the <b class="text-true">True DMG</b> dealt by this target via <b class="text-hsr-ice">Mem's Support</b> additionally increases by <span class="text-desc">6%</span>.`,
+      content: `When an ally target with <span class="text-desc">0</span> Max Energy actively uses an ability, <b>Mem</b> can also gain <span class="text-desc">3%</span> Charge, and the multiplier of the <b class="true">True DMG</b> dealt by this target via <b class="text-hsr-ice">Mem's Support</b> additionally increases by <span class="text-desc">6%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',

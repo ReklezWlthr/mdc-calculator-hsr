@@ -63,7 +63,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     summon_skill: {
       trace: 'Elation Skill',
       title: 'Let Thy Fortune Burst in Flames',
-      content: `Inflicts <b class="text-red">Woe's Whisper</b> on all enemies, lasting for <span class="text-desc">3</span> turn(s). Increases DMG received by enemy targets under the <b class="text-red">Woe's Whisper</b> state by <span class="text-desc">10%</span>. Deals <b class="text-hsr-physical">Physical Elation DMG</b> equal to {{0}}% to all enemies. Afterward, deals <b class="text-hsr-physical">Physical Elation DMG</b> equal to {{1}}% to one random enemy <span class="text-desc">5</span> time(s).`,
+      content: `Inflicts <b class="text-red">Woe's Whisper</b> on all enemies, lasting for <span class="text-desc">3</span> turn(s). Increases DMG received by enemy targets under the <b class="text-red">Woe's Whisper</b> state by <span class="text-desc">10%</span>. Deals <b class="text-hsr-physical">Physical <b class="elation">Elation DMG</b></b> equal to {{0}}% to all enemies. Afterward, deals <b class="text-hsr-physical">Physical <b class="elation">Elation DMG</b></b> equal to {{1}}% to one random enemy <span class="text-desc">5</span> time(s).`,
       value: [
         { base: 40, growth: 4, style: 'curved' },
         { base: 10, growth: 1, style: 'curved' },
@@ -86,8 +86,8 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     talent: {
       trace: `Talent`,
       title: `Behold Wherever Light Unfolds`,
-      content: `When Yao Guang possesses <b class="text-blue">Certified Banger</b>, ally targets will trigger the <b class="text-desc">Great Boon</b> effect after using an attack, dealing additional Elation DMG of the corresponding Type equal to {{0}}% to <span class="text-desc">1</span> random hit target. For every <span class="text-desc">1</span> Skill Point consumed during this attack, trigger the <b class="text-desc">Great Boon</b> effect <span class="text-desc">1</span> extra time, up to <span class="text-desc">3</span> times per attack.
-      <br />When triggering <b class="text-desc">Great Boon</b>, if the attacker's Elation is lower than Yao Guang's, this instance of Elation DMG is calculated using Yao Guang's Elation.
+      content: `When Yao Guang possesses <b class="text-blue">Certified Banger</b>, ally targets will trigger the <b class="text-desc">Great Boon</b> effect after using an attack, dealing additional <b class="elation">Elation DMG</b> of the corresponding Type equal to {{0}}% to <span class="text-desc">1</span> random hit target. For every <span class="text-desc">1</span> Skill Point consumed during this attack, trigger the <b class="text-desc">Great Boon</b> effect <span class="text-desc">1</span> extra time, up to <span class="text-desc">3</span> times per attack.
+      <br />When triggering <b class="text-desc">Great Boon</b>, if the attacker's Elation is lower than Yao Guang's, this instance of <b class="elation">Elation DMG</b> is calculated using Yao Guang's Elation.
       <br />Triggering <b class="text-desc">Great Boon</b> is not considered as an attack.`,
       value: [{ base: 12, growth: 1.2, style: 'curved' }],
       level: talent,
@@ -142,7 +142,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c4: {
       trace: 'Eidolon 4',
       title: 'Threads of Fate Colored by Plumes',
-      content: `When all ally targets deal Elation DMG, they ignore 18% of the target's DEF.`,
+      content: `When all ally targets deal <b class="elation">Elation DMG</b>, they ignore 18% of the target's DEF.`,
       image: 'asset/traces/SkillIcon_1502_Rank4.webp',
     },
     c5: {
@@ -156,7 +156,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c6: {
       trace: 'Eidolon 6',
       title: 'Ferried Along the Astral Arc',
-      content: `All allies' Elation DMG merrymakes by 20%. Increases DMG multiplier of Yao Guang's Elation Skill by 60% of the original multiplier.`,
+      content: `All allies' <b class="elation">Elation DMG</b> merrymakes by 20%. Increases DMG multiplier of Yao Guang's Elation Skill by 60% of the original multiplier.`,
       image: 'asset/traces/SkillIcon_1502_Rank6.webp',
     },
   }
@@ -167,7 +167,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       id: 'banger',
       text: `Total Certified Banger`,
       trace: 'Mechanic - Elation',
-      content: `Ability effects and Elation DMG produced by the <b class="text-blue">Certified Banger</b> state are calculated based on the <b class="text-orange-400">Punchline</b> points taken into account.
+      content: `Ability effects and <b class="elation">Elation DMG</b> produced by the <b class="text-blue">Certified Banger</b> state are calculated based on the <b class="text-orange-400">Punchline</b> points taken into account.
       <br /><b class="text-orange-400">Punchlines</b> taken into account for multiple <b class="text-blue">Certified Banger</b> states are combined for calculation.`,
       title: 'Certified Banger',
       show: true,

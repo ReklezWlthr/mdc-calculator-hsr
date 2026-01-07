@@ -149,7 +149,7 @@ export const GlobalContents: (team: ITeamChar[]) => IContent[] = (team) =>
         id: 'punchline',
         text: `Punchline`,
         trace: 'Mechanic - Elation',
-        content: `<b class="text-orange-400">Punchline</b> is shared by the whole team. When dealing Elation DMG, the more <b class="text-orange-400">Punchline</b> points taken into account, the higher the Elation DMG.
+        content: `<b class="text-orange-400">Punchline</b> is shared by the whole team. When dealing <b class="elation">Elation DMG</b>, the more <b class="text-orange-400">Punchline</b> points taken into account, the higher the <b class="elation">Elation DMG</b>.
         <br />After each <b>Aha Instant</b>, all <b class="text-orange-400">Punchline</b> point(s) will be cleared and given to each character as <b class="text-blue">Certified Banger</b>.
         <br />
         <br />This value is only used to calculate the effect of each character's Elation Skill within each single <b>Aha Instant</b>.`,

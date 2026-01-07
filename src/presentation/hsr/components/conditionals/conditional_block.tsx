@@ -49,13 +49,13 @@ export const ConditionalBlock = observer(
     memo,
     selected,
   }: ConditionalBlockProps) => {
-    const [open, setOpen] = useState(true)
-
     const { calculatorStore, teamStore, setupStore } = useStore()
     const baseForm = formOverride || calculatorStore.form
     const set = setForm || calculatorStore.setFormValue
     const teamStats = statsOverride || calculatorStore.computedStats
     const team = teamOverride || teamStore.characters
+
+    const [open, setOpen] = useState(!!_.size(contents))
 
     return (
       <div className="w-full rounded-lg bg-primary-darker h-fit">
