@@ -76,10 +76,15 @@ export const HelpModal = observer(() => {
           Broken. Scales with the attacker's Break Effect and the attack's Toughness DMG instead. Affected by Hit Split.
         </BulletPoint>
         <BulletPoint>
-          <b className="true">True DMG</b> - A Non-Type DMG which is not affected by any effects. Not considered a
-          hit nor an attack. DoT triggered at the start of enemy's turns <i>cannot</i> trigger{' '}
-          <b className="true">True DMG</b>. <b className="true">True DMG</b> from DoT Detonation always depend
-          on if the source holds the buff and not the detonator.
+          <b className="true">True DMG</b> - A Non-Type DMG which is not affected by any effects. Not considered a hit
+          nor an attack. DoT triggered at the start of enemy's turns <i>cannot</i> trigger{' '}
+          <b className="true">True DMG</b>. DoT Detonation can only proc <b className="true">True DMG</b> if the DoT
+          applier holds the buff, not the detonator.
+        </BulletPoint>
+        <BulletPoint>
+          <b className="elation">Elation DMG</b> - Damage dealt mainly by Elation Skills. Scales with the attacker's
+          level, Elation and <b className="text-orange-400">Punchline(s)</b>. <b className="elation">Elation DMG</b> is
+          not affected by DMG Boost effects, nor considered a hit or an attack.
         </BulletPoint>
       </Collapsible>
       <Collapsible label="Team Setup">

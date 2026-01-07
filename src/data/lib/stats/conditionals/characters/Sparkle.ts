@@ -225,6 +225,13 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           value: 0.15,
         })
       }
+      if (a.a6) {
+        base[Stats.P_ATK].push({
+          name: `Ascension 6 Passive`,
+          source: 'Self',
+          value: 0.45,
+        })
+      }
 
       return base
     },
@@ -279,6 +286,14 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Sparkle',
           value: 0.4,
         })
+      if (a.a6) {
+        base[Stats.P_ATK].push({
+          name: `Ascension 6 Passive`,
+          source: 'Sparkle',
+          value: 0.45,
+        })
+      }
+
       return base
     },
     postCompute: (
