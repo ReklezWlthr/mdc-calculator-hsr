@@ -16,7 +16,7 @@ export interface GlobalModifiers {
 }
 
 export const DefaultGlobalMod: GlobalModifiers = {
-  punchline: 0,
+  punchline: 20,
 }
 
 export const DefaultBuild = {

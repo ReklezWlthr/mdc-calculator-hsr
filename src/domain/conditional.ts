@@ -155,7 +155,7 @@ export const GlobalContents: (team: ITeamChar[]) => IContent[] = (team) =>
         <br />This value is only used to calculate the effect of each character's Elation Skill within each single <b class="text-aha">Aha Instant</b>.`,
         title: 'Punchline',
         show: _.some(team, (item) => findCharacter(item.cId)?.path === PathType.ELATION),
-        default: 0,
+        default: 20,
         min: 0,
         unique: true,
       },
@@ -173,6 +173,6 @@ export const Banger: IContent = {
       <br />The duration of each <b class="text-blue">Certified Banger</b> state is calculated independently.`,
   title: 'Certified Banger',
   show: true,
-  default: 5,
+  default: 20,
   min: 0,
 }

@@ -56,7 +56,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       tag: AbilityTag.BLAST,
       sp: 1,
       energy: 40,
-      image: 'asset/traces/SkillIcon_1501_Normal.webp',
+      image: 'asset/traces/SkillIcon_1501_Normal2.webp',
     },
     skill: {
       trace: 'Skill',
@@ -191,7 +191,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       text: `Engagement Farming`,
       ...talents.skill,
       show: true,
-      default: 5,
+      default: 10,
       min: 0,
       max: 20,
       sync: true,
