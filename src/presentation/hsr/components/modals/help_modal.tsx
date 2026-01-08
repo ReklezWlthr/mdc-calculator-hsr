@@ -37,6 +37,12 @@ export const HelpModal = observer(() => {
           <b>Joint Attacks</b> - A type of attack where multiple units act consecutively in a specific order during a
           single action. Each attacker can trigger their own on-hit or on-attack effects (e.g. Robin's Additional DMG).
         </BulletPoint>
+        <BulletPoint>
+          <b className="text-aha">Aha Instant</b> - An action bar entity. At a set interval, causes units capable of
+          using Elation Skills to each use their Elation Skill once. The Aha Instant lasts until the final Elation Skill
+          finishes this time. When the Aha Instant ends, participating characters gain the{' '}
+          <b className="text-blue">Certified Banger</b> state for the Punchline points taken into account.
+        </BulletPoint>
         <p>
           <b className="text-desc">Damage Properties</b>:
         </p>
