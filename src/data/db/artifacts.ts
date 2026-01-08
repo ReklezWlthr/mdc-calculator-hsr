@@ -655,13 +655,13 @@ export const RelicSets: IArtifact[] = [
   },
   {
     id: '129',
-    name: `Diviner of Distant Reach`,
+    name: `Ever-Glorious Magical Girl`,
     icon: '71052',
     bonus: [{ stat: Stats.CRIT_DMG, value: 0.16 }],
     bonusAdd: [],
     desc: [
       `Increases CRIT DMG by <span class="text-desc">16%</span>.`,
-      `The <b class="elation">Elation DMG</b> dealt by the wearer and their memosprites ignores <span class="text-desc">10%</span> of targets' DEF. For every <span class="text-desc">5</span> accumulated Punchline allies gain, the <b class="elation">Elation DMG</b> dealt additionally ignores <span class="text-desc">1%</span> of targets' DEF, which stacks up to <span class="text-desc">10</span> time(s).`,
+      `The <b class="elation">Elation DMG</b> dealt by the wearer and their memosprites ignores <span class="text-desc">10%</span> of targets' DEF. For every <span class="text-desc">5</span> accumulated <b class="text-orange-400">Punchline</b> allies gain, the <b class="elation">Elation DMG</b> dealt additionally ignores <span class="text-desc">1%</span> of targets' DEF, which stacks up to <span class="text-desc">10</span> time(s).`,
     ],
     set: [
       `Magical Girl's Shining Medal`,
