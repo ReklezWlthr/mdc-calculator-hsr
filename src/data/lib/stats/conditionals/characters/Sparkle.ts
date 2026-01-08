@@ -1,4 +1,4 @@
-import { findCharacter, findContentById } from '@src/core/utils/finder'
+import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
 import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
@@ -60,7 +60,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: 'Red Herring',
-      content: `While Sparkle is on the battlefield, additionally increases the max number of Skill Points by <span class="text-desc">2</span>. Whenever an ally consumes <span class="text-desc">1</span> Skill Point, all allies' DMG increases by {{0}}%. This effect lasts for <span class="text-desc">2</span> turn(s) and can stack up to <span class="text-desc">4</span> time(s).`,
+      content: `While Sparkle is on the battlefield, additionally increases the max number of Skill Points by <span class="text-desc">2</span>. Whenever an ally consumes <span class="text-desc">1</span> Skill Point, all enemies' DMG received increases by {{0}}%. This effect lasts for <span class="text-desc">2</span> turn(s) and can stack up to <span class="text-desc">4</span> time(s).`,
       value: [{ base: 1.5, growth: 0.15, style: 'curved' }],
       level: talent,
       tag: AbilityTag.SUPPORT,
@@ -197,7 +197,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ]
 
       if (form.red_herring) {
-        base[Stats.ALL_DMG].push({
+        base.VULNERABILITY.push({
           name: `Talent`,
           source: 'Self',
           value:
@@ -205,6 +205,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             (calcScaling(0.015, 0.0015, talent, 'curved') +
               (form.cipher ? calcScaling(0.03, 0.002, talent, 'curved') : 0)),
         })
+        addDebuff(debuffs, DebuffTypes.OTHER)
         if (c >= 2)
           base.DEF_PEN.push({
             name: `Eidolon 2`,
@@ -265,7 +266,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         })
       }
       if (form.red_herring) {
-        base[Stats.ALL_DMG].push({
+        base.VULNERABILITY.push({
           name: `Talent`,
           source: 'Sparkle',
           value:
