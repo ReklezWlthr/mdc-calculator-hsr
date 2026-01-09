@@ -295,7 +295,7 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
               </div>
               <div className="flex items-center justify-center gap-3">
                 <TalentIcon
-                  talent={talent?.talents?.summon_skill}
+                  talent={talent?.talents?.summon_talent}
                   element={charData?.element}
                   icon={`SkillIcon_1${charData?.id}_ServantPassive.png`}
                   size="w-9 h-9"
@@ -303,12 +303,12 @@ export const CharDetailModal = observer(({ char, cId }: { char: ICharStore; cId:
                   level={char?.talents?.memo_talent}
                   showUpgrade
                   hideTip
-                  type={talent?.talents?.summon_skill?.trace}
+                  type={talent?.talents?.summon_talent?.trace}
                 />
                 <div>
                   <p className="text-xs text-primary-lighter">M.Talent</p>
                   <SelectInput
-                    value={params?.talents?.elation?.toString()}
+                    value={params?.talents?.memo_talent?.toString()}
                     onChange={(value) => setParams({ talents: { ...params.talents, memo_talent: parseInt(value) } })}
                     options={basicLevels}
                     style="w-14"
