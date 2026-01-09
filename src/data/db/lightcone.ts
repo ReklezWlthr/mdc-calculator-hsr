@@ -377,7 +377,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Mourning',
-      detail: `When Punchline is <span class="text-desc">10</span> or more, the wearer's CRIT DMG increases by {{0}}%.`,
+      detail: `When <b class="text-orange-400">Punchline</b> is <span class="text-desc">10</span> or more, the wearer's CRIT DMG increases by {{0}}%.`,
       properties: [{ base: 20, growth: 5 }],
     },
   },
