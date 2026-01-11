@@ -18,23 +18,29 @@ export const MyCharacters = observer(() => {
     searchWord: '',
     element: [],
     path: [],
+    owned: false,
+    notOwned: false,
   })
+
+  const char = settingStore.settings.liveOnly ? _.filter(Characters, (item) => !item.beta) : Characters
 
   const filteredChar = useMemo(
     () =>
       _.filter(
-        Characters.sort((a, b) => a.name.localeCompare(b.name)),
+        char.sort((a, b) => a.name.localeCompare(b.name)),
         (item) => {
           const regex = new RegExp(params.searchWord, 'i')
           const nameMatch = item.name.match(regex)
           const elmMatch = _.size(params.element) ? _.includes(params.element, item.element) : true
           const pathMatch = _.size(params.path) ? _.includes(params.path, item.path) : true
           const liveMatch = !(item.beta && settingStore.settings.liveOnly)
+          const owned = !params.owned || _.some(charStore.characters, (c) => c.cId === item.id)
+          const notOwned = !params.notOwned || !_.some(charStore.characters, (c) => c.cId === item.id)
 
-          return nameMatch && elmMatch && pathMatch && liveMatch
+          return nameMatch && elmMatch && pathMatch && liveMatch && owned && notOwned
         }
       ),
-    [params, settingStore.settings.liveOnly]
+    [params, settingStore.settings.liveOnly, charStore.characters]
   )
 
   const FilterIcon = ({ type, value }: { type: 'element' | 'path'; value: Element | PathType }) => {
@@ -63,15 +69,39 @@ export const MyCharacters = observer(() => {
               <div className="flex items-end justify-between">
                 <p className="text-2xl font-bold text-white">My Characters</p>
                 <p className="text-gray">
-                  {_.size(_.filter(Characters, (item) => _.includes(_.map(charStore.characters, 'cId'), item.id)))}/
-                  {_.size(Characters)}
+                  {_.size(_.filter(char, (item) => _.includes(_.map(charStore.characters, 'cId'), item.id)))}/
+                  {_.size(char)}
                 </p>
               </div>
-              <TextInput
-                onChange={(value) => setParams({ searchWord: value })}
-                value={params.searchWord}
-                placeholder="Search Character Name"
-              />
+              <div className="flex items-center gap-2">
+                <TextInput
+                  onChange={(value) => setParams({ searchWord: value })}
+                  value={params.searchWord}
+                  placeholder="Search Character Name"
+                />
+                <div
+                  className={classNames(
+                    'text-white cursor-pointer whitespace-nowrap text-sm px-1.5 py-1 rounded-md duration-200 hover:bg-primary-light',
+                    {
+                      ' bg-primary-light': params.owned,
+                    }
+                  )}
+                  onClick={() => setParams({ owned: !params.owned, notOwned: false })}
+                >
+                  Owned
+                </div>
+                <div
+                  className={classNames(
+                    'text-white cursor-pointer whitespace-nowrap text-sm px-1.5 py-1 rounded-md duration-200 hover:bg-primary-light',
+                    {
+                      ' bg-primary-light': params.notOwned,
+                    }
+                  )}
+                  onClick={() => setParams({ owned: false, notOwned: !params.notOwned })}
+                >
+                  Not Owned
+                </div>
+              </div>
             </div>
             <div className="my-1 space-y-2">
               <div className="flex items-center gap-2">
