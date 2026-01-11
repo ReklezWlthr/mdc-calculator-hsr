@@ -153,7 +153,7 @@ export const CharDetail = observer(() => {
             onLoad={() => setLoading(false)}
           />
           <div className="absolute left-0 flex flex-col space-y-1 bottom-10">
-            <div className="flex gap-4">
+            <div className="flex gap-1">
               <img
                 src={getElementImage(data.element)}
                 className="w-10 h-10 p-1 bg-opacity-75 rounded-full shrink-0 bg-primary-bg"
