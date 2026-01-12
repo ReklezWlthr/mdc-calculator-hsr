@@ -223,6 +223,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           break: 10,
           chance: { base: calcScaling(0.12, 0.008, ult, 'curved') + (a.a2 ? 0.8 : 0), fixed: false },
           sum: true,
+          ehrBonus: form.misha_a4 ? 0.6 : 0,
         },
         {
           name: `Bounce [x2~${c >= 1 ? 14 : 9}]`,
@@ -232,6 +233,7 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.ULT,
           break: 5,
           chance: { base: calcScaling(0.12, 0.008, ult, 'curved'), fixed: false },
+          ehrBonus: form.misha_a4 ? 0.6 : 0,
         },
         {
           name: 'Frozen DMG',
@@ -242,12 +244,6 @@ const Misha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         },
       ]
 
-      if (form.misha_a4)
-        base[Stats.EHR].push({
-          name: 'Ascension 4 Passive',
-          source: 'Self',
-          value: 0.6,
-        })
       if (form.misha_c2) {
         base.DEF_REDUCTION.push({
           name: 'Eidolon 2',

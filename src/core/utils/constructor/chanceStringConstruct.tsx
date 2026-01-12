@@ -15,14 +15,15 @@ export const chanceStringConstruct = (
   stats: StatsObject,
   base: number,
   fixed: boolean,
-  element?: string
+  element?: string,
+  bonus?: number
 ) => {
   const property = BreakDebuffType[element]
   const isCC = _.includes([DebuffTypes.FROZEN, DebuffTypes.ENTANGLE, DebuffTypes.IMPRISON], property)
 
   const enemy = findEnemy(calculatorStore.enemy)
   const ccRes = enemy?.statusRes?.[DebuffTypes.CONTROL] || 0
-  const ehr = stats?.getValue(Stats.EHR)
+  const ehr = stats?.getValue(Stats.EHR) + (bonus || 0)
   const effRes = calculatorStore.getEffRes(stats?.getValue(StatsObjectKeys.E_RES_RED))
   const debuffRes = enemy?.statusRes?.[property === TalentProperty.DOT ? BreakDebuffType[element] : property] || 0
   const prob = fixed ? base : _.max([(base || 0) * (1 + ehr) * (1 - effRes) * (1 - debuffRes - (isCC ? ccRes : 0)), 0])
@@ -35,10 +36,7 @@ export const chanceStringConstruct = (
         <span className="inline-flex items-center h-4 ml-1">
           {` \u{00d7} (1 + `}
           <b className="inline-flex items-center h-4">
-            <img
-              className="h-3 mx-1"
-              src={`/icons/${StatIcons[Stats.EHR]}`}
-            />
+            <img className="h-3 mx-1" src={`/icons/${StatIcons[Stats.EHR]}`} />
             {toPercentage(ehr)}
           </b>
           {`)`}
@@ -49,10 +47,7 @@ export const chanceStringConstruct = (
           <span className="inline-flex items-center h-4 ml-1">
             {` \u{00d7} (1 - `}
             <b className="inline-flex items-center h-4">
-              <img
-                className="h-3 mx-1"
-                src={`/icons/${StatIcons[Stats.E_RES]}`}
-              />
+              <img className="h-3 mx-1" src={`/icons/${StatIcons[Stats.E_RES]}`} />
               <span className="text-fuchsia-300">{toPercentage(effRes)}</span>
             </b>
             {`)`}

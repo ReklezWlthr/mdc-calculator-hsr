@@ -38,6 +38,7 @@ export interface IScaling {
   useOwnerStats?: boolean // Used Owner's Stats (Netherwing)
   trueRaw?: boolean // Ignore enemy's multipliers
   atkBonus?: number
+  ehrBonus?: number
   detonate?: boolean
   elation?: number // Used to compare higher (Yao Guang)
   punchline?: number // Used for overriding Banger

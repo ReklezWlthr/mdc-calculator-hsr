@@ -769,12 +769,18 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
     scaling: (base, r) => {
       base.CALLBACK.push((x, d) => {
         const count = countDebuff(d)
-        if (count)
+        if (count) {
           x[Stats.ALL_DMG].push({
             name: 'Passive',
             source: 'In the Name of the World',
             value: calcRefinement(0.24, 0.04, r),
           })
+        }
+        x.SKILL_SCALING = _.map(x.SKILL_SCALING, (item) => ({
+          ...item,
+          atkBonus: calcRefinement(0.24, 0.04, r),
+          ehrBonus: calcRefinement(0.18, 0.03, r),
+        }))
         return x
       })
       return base

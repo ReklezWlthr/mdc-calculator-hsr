@@ -203,6 +203,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 10,
+          chance: { base: calcScaling(0.65, 0.01, skill, 'curved') + (c >= 4 ? 0.35 : 0), fixed: false },
         },
         {
           name: `Max Single Target DMG`,
@@ -226,6 +227,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           energy: 5,
           sum: true,
           hitSplit: [0.1, 0.9],
+          chance: { base: 1, fixed: false },
         },
       ]
       base.TALENT_SCALING = [

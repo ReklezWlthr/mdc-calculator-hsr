@@ -256,28 +256,28 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
-  {
-    type: 'toggle',
-    text: `Skill ATK/EHR Bonus`,
-    show: true,
-    default: false,
-    id: '23004',
-    scaling: (base, form, r) => {
-      if (form['23004']) {
-        base[Stats.EHR].push({
-          name: `Passive`,
-          source: 'In the Name of the World',
-          value: calcRefinement(0.18, 0.03, r),
-        })
-        base[Stats.P_ATK].push({
-          name: `Passive`,
-          source: 'In the Name of the World',
-          value: calcRefinement(0.24, 0.04, r),
-        })
-      }
-      return base
-    },
-  },
+  // {
+  //   type: 'toggle',
+  //   text: `Skill ATK/EHR Bonus`,
+  //   show: true,
+  //   default: false,
+  //   id: '23004',
+  //   scaling: (base, form, r) => {
+  //     if (form['23004']) {
+  //       base[Stats.EHR].push({
+  //         name: `Passive`,
+  //         source: 'In the Name of the World',
+  //         value: calcRefinement(0.18, 0.03, r),
+  //       })
+  //       base[Stats.P_ATK].push({
+  //         name: `Passive`,
+  //         source: 'In the Name of the World',
+  //         value: calcRefinement(0.24, 0.04, r),
+  //       })
+  //     }
+  //     return base
+  //   },
+  // },
   {
     type: 'toggle',
     text: `Shielded CRIT DMG Bonus`,

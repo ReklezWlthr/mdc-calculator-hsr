@@ -67,7 +67,8 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
     stats,
     scaling.chance?.base,
     scaling.chance?.fixed,
-    scaling.debuffElement || scaling.element
+    scaling.debuffElement || scaling.element,
+    scaling.ehrBonus
   )
   const noCrit =
     _.includes(
