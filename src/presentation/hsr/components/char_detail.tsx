@@ -347,6 +347,7 @@ export const CharDetail = observer(() => {
             ?.replaceAll('Enhanced', '')
             ?.replaceAll('Alternate', '')
             ?.replaceAll('Exclusive', '')
+            ?.replaceAll('Memo.', 'Memosprite')
             .replaceAll(/\[\d\]$/g, '')
             .trim()
           return (
@@ -397,7 +398,7 @@ export const CharDetail = observer(() => {
                           className="slider h-[8px] bg-gradient-to-r from-primary-lighter to-gray shrink-0"
                           step={1}
                           min="1"
-                          max={_.includes(item.trace, TalentType.BA) || _.includes(item.trace, 'Memosprite') ? 7 : 12}
+                          max={_.includes(item.trace, TalentType.BA) || _.includes(item.trace, 'Memo') ? 7 : 12}
                           value={params[baseType]}
                           onChange={(e) => {
                             const value = Number(e.target.value)
