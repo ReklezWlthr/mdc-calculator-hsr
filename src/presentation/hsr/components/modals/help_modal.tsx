@@ -39,9 +39,10 @@ export const HelpModal = observer(() => {
         </BulletPoint>
         <BulletPoint>
           <b className="text-aha">Aha Instant</b> - An action bar entity. At a set interval, causes units capable of
-          using Elation Skills to each use their Elation Skill once. The Aha Instant lasts until the final Elation Skill
-          finishes this time. When the Aha Instant ends, participating characters gain the{' '}
-          <b className="text-blue">Certified Banger</b> state for the Punchline points taken into account.
+          using Elation Skills to each use their Elation Skill once. The <b className="text-aha">Aha Instant</b> lasts
+          until the final Elation Skill finishes this time. When the <b className="text-aha">Aha Instant</b> ends,
+          participating characters gain the <b className="text-blue">Certified Banger</b> state for the{' '}
+          <b className="text-orange-400">Punchline</b> points taken into account.
         </BulletPoint>
         <p>
           <b className="text-desc">Damage Properties</b>:
@@ -89,8 +90,9 @@ export const HelpModal = observer(() => {
         </BulletPoint>
         <BulletPoint>
           <b className="elation">Elation DMG</b> - Damage dealt mainly by Elation Skills. Scales with the attacker's
-          level, Elation and <b className="text-orange-400">Punchline(s)</b>. <b className="elation">Elation DMG</b> is
-          not affected by DMG Boost effects, nor considered a hit or an attack.
+          level, Elation, <b className="text-orange-400">Punchline(s)</b> and Merrymaking.{' '}
+          <b className="elation">Elation DMG</b> is not affected by DMG Boost effects, nor considered a hit or an
+          attack.
         </BulletPoint>
       </Collapsible>
       <Collapsible label="Team Setup">
