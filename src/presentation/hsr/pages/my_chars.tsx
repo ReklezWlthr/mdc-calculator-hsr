@@ -141,7 +141,12 @@ export const MyCharacters = observer(() => {
                   key={item.name}
                 >
                   <div className="relative w-full">
-                    <img src={getElementImage(item.element)} className="absolute w-6 h-6 top-1 left-1" />
+                    <div
+                      className="flex items-center justify-center p-0.5 rounded-full bg-primary-darker bg-opacity-75 absolute w-6 h-6 top-1 left-1"
+                      title={item.element}
+                    >
+                      <img src={getElementImage(item.element)} />
+                    </div>
                     {owned && (
                       <div className="absolute px-1.5 py-1 rounded-full top-1 right-1 bg-primary-light font-bold">
                         E{_.find(charStore.characters, ['cId', item.id])?.cons || 0}

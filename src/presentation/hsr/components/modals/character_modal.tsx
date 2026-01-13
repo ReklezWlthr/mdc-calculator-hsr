@@ -135,7 +135,12 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
               key={item.name}
             >
               <div className="relative">
-                <img src={getElementImage(item.element)} className="absolute w-7 h-7 top-1.5 left-1.5" />
+                <div
+                  className="flex items-center justify-center p-0.5 rounded-full bg-primary-darker bg-opacity-75 absolute w-7 h-7 top-1.5 left-1.5"
+                  title={item.element}
+                >
+                  <img src={getElementImage(item.element)} />
+                </div>
                 {owned && (
                   <div className="absolute px-1.5 py-1 text-sm rounded-lg top-1 right-1 bg-primary font-bold">
                     E{_.find(charStore.characters, ['cId', item.id])?.cons || 0}
