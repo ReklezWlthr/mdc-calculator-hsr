@@ -257,7 +257,7 @@ export const ArtifactForm = () => {
       title: `Ever-Glorious Magical Girl`,
       content: `The <b class="elation">Elation DMG</b> dealt by the wearer and their memosprites ignores <span class="text-desc">10%</span> of targets' DEF. For every <span class="text-desc">5</span> accumulated <b class="text-orange-400">Punchline</b> allies gain, the <b class="elation">Elation DMG</b> dealt additionally ignores <span class="text-desc">1%</span> of targets' DEF, which stacks up to <span class="text-desc">10</span> time(s).`,
       show: true,
-      default: 0,
+      default: 10,
       min: 0,
       max: 10,
       id: '129',

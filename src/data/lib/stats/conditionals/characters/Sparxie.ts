@@ -60,7 +60,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     skill: {
       trace: 'Skill',
-      title: `Boom! Sparxicle is Poppin'`,
+      title: `Boom! Sparxicle's Poppin'`,
       content: `Start a livestream connection to transform Basic ATK into <b>Bloom! Winner Takes All</b> and trigger <b>Engagement Farming</b> <span class="text-desc">1</span> time. During this ability, <b>Engagement Farming</b> can be triggered repeatedly, up to <span class="text-desc">20</span> time(s). Using this ability is not considered as using a Skill.
       <br />
       <br /><b>Engagement Farming</b>
