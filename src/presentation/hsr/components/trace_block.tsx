@@ -5,6 +5,7 @@ import { Stats } from '@src/domain/constant'
 import { TraceScaling } from '@src/domain/scaling'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
+import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 
@@ -25,7 +26,12 @@ export const TraceBlock = observer(({ id, data, onClick, disabled }: TraceBlockP
       <div className="flex justify-center px-5 py-1 rounded-t-lg bg-primary-lighter">Minor Traces</div>
       <div className="p-3 space-y-2 text-xs font-normal">
         {_.map(data, (trace, index) => (
-          <div className="grid grid-cols-12 gap-3" key={index}>
+          <div
+            className={classNames('grid grid-cols-12 gap-3', {
+              'border-b-2 border-primary-light pb-2 border-opacity-50': _.includes([4, 6], index),
+            })}
+            key={index}
+          >
             <div className="col-span-7 text-center">{trace?.stat || '-'}</div>
             <div className="col-span-3 text-center text-gray">
               {id ? (trace?.stat === Stats.SPD ? trace?.value : toPercentage(trace?.value)) : '-'}
