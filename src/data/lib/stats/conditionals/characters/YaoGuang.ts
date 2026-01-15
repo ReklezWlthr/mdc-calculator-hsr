@@ -368,11 +368,11 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       globalCallback: CallbackType[],
       globalMod: GlobalModifiers
     ) => {
-      base.CALLBACK.push(function P1(x, _d, _w, a) {
-        const spd = x.getSpd()
+      globalCallback.push(function P1(_x, _d, _w, a) {
+        const spd = a[index].getSpd()
 
         if (spd >= 120) {
-          x[Stats.ELATION].push({
+          a[index][Stats.ELATION].push({
             name: `Ascension 2 Passive`,
             source: 'Self',
             value: 0.3 + _.min([spd - 120, 200]) * 0.01,
@@ -397,7 +397,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               })
             }
 
-            const elation = x.getValue(Stats.ELATION)
+            const elation = a[index].getValue(Stats.ELATION)
 
             item.X_ELATION.push({
               name: `Skill`,
@@ -420,7 +420,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
                   property: TalentProperty.ELATION,
                   type: TalentType.NONE,
                   sum: true,
-                  elation: x.getTotalElation(),
+                  elation: a[index].getTotalElation(),
                   punchline: form.banger,
                 }
                 if (
@@ -441,7 +441,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           }
         })
 
-        return x
+        return a
       })
       return base
     },

@@ -32,6 +32,8 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
   const talent = t.talent + upgrade.talent
   const elation = t.elation + upgrade.elation
 
+  const index = _.findIndex(team, (item) => item?.cId === '1501')
+
   const talents: ITalent = {
     normal: {
       trace: 'Basic ATK',
@@ -438,33 +440,6 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       globalCallback: CallbackType[],
       globalMod: GlobalModifiers
     ) => {
-      base.ULT_SCALING = [
-        {
-          name: 'AoE',
-          value: [
-            { scaling: calcScaling(0.3, 0.02, ult, 'curved'), multiplier: Stats.ATK },
-            { scaling: 0.6 * base.getValue(Stats.ELATION), multiplier: Stats.ATK },
-          ],
-          element: Element.FIRE,
-          property: TalentProperty.NORMAL,
-          type: TalentType.ULT,
-          break: 20,
-          sum: true,
-        },
-        ...(form.banger
-          ? [
-              {
-                name: 'Certified Banger DMG',
-                value: [{ scaling: calcScaling(0.24, 0.024, talent, 'curved'), multiplier: Stats.ELATION }],
-                element: Element.FIRE,
-                property: TalentProperty.ELATION,
-                type: TalentType.ULT,
-                sum: true,
-                punchline: form.banger,
-              },
-            ]
-          : []),
-      ]
       base.CALLBACK.push(function P99(x) {
         const atk = x.getAtk()
         if (atk > 2000)
@@ -477,6 +452,36 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           })
 
         return x
+      })
+      globalCallback.push(function P99(_x, _d, _w, a) {
+        a[index].ULT_SCALING = [
+          {
+            name: 'AoE',
+            value: [
+              { scaling: calcScaling(0.3, 0.02, ult, 'curved'), multiplier: Stats.ATK },
+              { scaling: 0.6 * a[index].getTotalElation(), multiplier: Stats.ATK },
+            ],
+            element: Element.FIRE,
+            property: TalentProperty.NORMAL,
+            type: TalentType.ULT,
+            break: 20,
+            sum: true,
+          },
+          ...(form.banger
+            ? [
+                {
+                  name: 'Certified Banger DMG',
+                  value: [{ scaling: calcScaling(0.24, 0.024, talent, 'curved'), multiplier: Stats.ELATION }],
+                  element: Element.FIRE,
+                  property: TalentProperty.ELATION,
+                  type: TalentType.ULT,
+                  sum: true,
+                  punchline: form.banger,
+                },
+              ]
+            : []),
+        ]
+        return a
       })
       return base
     },
