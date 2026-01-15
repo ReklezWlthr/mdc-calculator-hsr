@@ -158,6 +158,7 @@ export const BaseAggro = {
   [PathType.HARMONY]: 100,
   [PathType.NIHILITY]: 100,
   [PathType.REMEMBRANCE]: 100,
+  [PathType.ELATION]: 100,
 }
 
 export const BaseSummonAggro = {

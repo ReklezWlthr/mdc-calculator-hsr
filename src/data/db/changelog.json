@@ -1,6 +1,11 @@
 [
   {
     "version": "1.2-4",
+    "date": "Jan 15th, 2026",
+    "desc": ["Added: Display for <span class=\"text-aha\">Aha</span> SPD"]
+  },
+  {
+    "version": "1.2-4",
     "date": "Jan 7th, 2026",
     "desc": [
       "Enhanced Characters: <span class=\"text-hsr-quantum\">Sparkle</span>, and <span class=\"text-hsr-wind\">Black Swan</span>",

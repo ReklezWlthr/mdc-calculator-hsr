@@ -39,6 +39,7 @@ export const CompareSummonConditionalBlock = observer(
         modalStore.openModal(
           <StatsModal
             compare
+            teamIndex={setupIndex}
             stats={stats[charIndex].SUMMON_STATS}
             path={findCharacter(team[charIndex].cId)?.path}
             sumAggro={_.sumBy(

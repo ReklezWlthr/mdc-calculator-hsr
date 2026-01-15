@@ -28,6 +28,7 @@ export interface CalculatorStoreType {
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean; memo: boolean }[][]
   customDebuff: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean }[]
   globalMod: GlobalModifiers
+  ahaSpd: number[]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (initData: Record<string, any>[]) => void
   setFormValue: (index: number, key: string, value: any, memo: boolean) => void
@@ -69,6 +70,7 @@ export class CalculatorStore {
   custom: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean; memo: boolean }[][]
   customDebuff: { name: StatsObjectKeysT; value: number; debuff: boolean; toggled: boolean }[]
   globalMod: GlobalModifiers
+  ahaSpd: number[]
 
   constructor() {
     this.tab = 'mod'
@@ -99,6 +101,7 @@ export class CalculatorStore {
     this.toughness = 30
     this.effRes = 0
     this.globalMod = DefaultGlobalMod
+    this.ahaSpd = []
 
     makeAutoObservable(this)
   }

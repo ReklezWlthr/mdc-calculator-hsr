@@ -80,6 +80,7 @@ export interface SetupStoreType {
   broken: boolean
   weakness: Element[]
   globalMod: GlobalModifiers[]
+  ahaSpd: number[][]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
   initForm: (i: number, initData: Record<string, any>[], exclude: string[]) => void
   setForm: (index: number, value: Record<string, any>[]) => void
@@ -138,6 +139,7 @@ export class SetupStore {
   weakness: Element[]
   scaling: string
   globalMod: GlobalModifiers[]
+  ahaSpd: number[][]
 
   constructor() {
     this.mode = 'avg'
@@ -169,6 +171,7 @@ export class SetupStore {
     this.broken = false
     this.weakness = []
     this.globalMod = Array(4).fill(DefaultGlobalMod)
+    this.ahaSpd = Array(4).fill([])
 
     makeAutoObservable(this)
   }

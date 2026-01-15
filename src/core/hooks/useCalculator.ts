@@ -60,6 +60,7 @@ interface CalculatorOptions {
   weaknessOverride?: Element[]
   buffedOverride?: Record<string, boolean>
   globalOverride?: GlobalModifiers
+  ahaOverride?: (value: number[]) => void
   initFormFunction?: (f: Record<string, any>[], exclude: string[]) => void
 }
 
@@ -76,6 +77,7 @@ export const useCalculator = ({
   initFormFunction,
   buffedOverride,
   globalOverride,
+  ahaOverride,
 }: CalculatorOptions) => {
   const { teamStore, artifactStore, calculatorStore, settingStore } = useStore()
 
@@ -89,6 +91,7 @@ export const useCalculator = ({
   const customDebuff = customDebuffOverride || calculatorStore.customDebuff
   const buffer = buffedOverride || settingStore.settings.buffed
   const globalMod = globalOverride || calculatorStore.globalMod
+  const ahaSetter = (value: number[]) => (ahaOverride ? ahaOverride(value) : calculatorStore.setValue('ahaSpd', value))
 
   const mainComputed = finalStats?.[selected]
 
@@ -507,6 +510,16 @@ export const useCalculator = ({
     _.forEach(cbs, (cb) => {
       if (cb) cleaned = cb(null, debuffs, weakness, cleaned, true, globalMod)
     })
+
+    // Calculate Aha SPD
+    const elationSpd = _.sortBy(
+      _.map(
+        _.filter(cleaned, (item) => item.PATH === PathType.ELATION),
+        (item) => item.getSpd()
+      )
+    ).reverse()
+    ahaSetter(elationSpd)
+
     if (!doNotSaveStats) {
       calculatorStore.setValue('computedStats', cleaned)
       calculatorStore.setValue('debuffs', debuffs)

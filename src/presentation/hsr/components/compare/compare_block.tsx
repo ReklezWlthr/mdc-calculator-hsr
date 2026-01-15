@@ -51,6 +51,10 @@ export const CompareBlock = observer(() => {
     buffedOverride: setupStore.main?.buffed,
     globalOverride: setupStore.globalMod[0],
     initFormFunction: (f, e) => setupStore.initForm(0, f, e),
+    ahaOverride: (v) => {
+      setupStore.ahaSpd.splice(0, 1, v)
+      setupStore.setValue('ahaSpd', setupStore.ahaSpd)
+    },
   })
   const sub1 = useCalculator({
     teamOverride: setupStore.comparing[0]?.char,
@@ -64,6 +68,10 @@ export const CompareBlock = observer(() => {
     globalOverride: setupStore.globalMod[1],
     initFormFunction: (f, e) => setupStore.initForm(1, f, e),
     enabled: !!setupStore.comparing[0]?.char,
+    ahaOverride: (v) => {
+      setupStore.ahaSpd.splice(1, 1, v)
+      setupStore.setValue('ahaSpd', setupStore.ahaSpd)
+    },
   })
   const sub2 = useCalculator({
     teamOverride: setupStore.comparing[1]?.char,
@@ -77,6 +85,10 @@ export const CompareBlock = observer(() => {
     globalOverride: setupStore.globalMod[2],
     initFormFunction: (f, e) => setupStore.initForm(2, f, e),
     enabled: !!setupStore.comparing[1]?.char,
+    ahaOverride: (v) => {
+      setupStore.ahaSpd.splice(2, 1, v)
+      setupStore.setValue('ahaSpd', setupStore.ahaSpd)
+    },
   })
   const sub3 = useCalculator({
     teamOverride: setupStore.comparing[2]?.char,
@@ -90,6 +102,10 @@ export const CompareBlock = observer(() => {
     globalOverride: setupStore.globalMod[3],
     initFormFunction: (f, e) => setupStore.initForm(3, f, e),
     enabled: !!setupStore.comparing[2]?.char,
+    ahaOverride: (v) => {
+      setupStore.ahaSpd.splice(3, 1, v)
+      setupStore.setValue('ahaSpd', setupStore.ahaSpd)
+    },
   })
 
   const sumStats = [
@@ -121,6 +137,7 @@ export const CompareBlock = observer(() => {
       modalStore.openModal(
         <StatsModal
           compare
+          teamIndex={setupIndex}
           stats={allStats[setupIndex][charIndex]}
           path={findCharacter(focusedChar.cId)?.path}
           sumAggro={_.sumBy(

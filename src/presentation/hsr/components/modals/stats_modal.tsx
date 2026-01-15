@@ -1,6 +1,6 @@
 import { toPercentage } from '@src/core/utils/data_format'
 import { getTurnWithinCycle } from '@src/core/utils/data_format'
-import { checkBuffExist } from '@src/core/utils/finder'
+import { checkBuffExist, findCharacter } from '@src/core/utils/finder'
 import { StatsArray, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { BaseAggro, BaseSummonAggro, BreakPoints, PathType, Stats } from '@src/domain/constant'
@@ -71,12 +71,14 @@ export const StatsModal = observer(
     sumAggro,
     compare,
     memo,
+    teamIndex,
   }: {
     stats: BaseStatsType
     path: PathType
     sumAggro: number
     compare?: boolean
     memo?: boolean
+    teamIndex?: number
   }) => {
     const { calculatorStore, setupStore } = useStore()
 
@@ -173,6 +175,9 @@ export const StatsModal = observer(
         []
       )
 
+    const elationSpd = compare && teamIndex >= 0 ? setupStore.ahaSpd[teamIndex] : calculatorStore.ahaSpd
+    const ahaSpd = _.size(elationSpd) ? 80 + (elationSpd?.[0] || 0) / 5 + (elationSpd?.[1] || 0) / 10 : 0
+
     return (
       <div className="w-[65vw] bg-primary-dark rounded-lg p-3 space-y-2">
         <p className="text-lg font-bold text-white">Stats Breakdown: {stats?.NAME}</p>
@@ -227,6 +232,24 @@ export const StatsModal = observer(
           <div className="space-y-2">
             <AttributeBlock stats={stats} stat="Elation" array={_.concat(stats[Stats.ELATION], stats.X_ELATION)} />
             <AttributeBlock stats={stats} stat="Merrymake" array={stats.ELATION_MERRYMAKE} />
+            <div className="space-y-1">
+              <p className="font-bold text-white">
+                <b className="text-aha">Aha</b> SPD <span className="text-red">{_.floor(ahaSpd, 1)}</span>
+              </p>
+              {!!_.size(elationSpd) && (
+                <BulletPoint>
+                  <span className="text-xs">
+                    Sorted Elation SPD:{' '}
+                    <span className="text-desc">
+                      {_.join(
+                        _.map(elationSpd, (item) => _.floor(item, 1)),
+                        ' > '
+                      )}
+                    </span>
+                  </span>
+                </BulletPoint>
+              )}
+            </div>
           </div>
         </Collapsible>
         <Collapsible label="DMG Bonuses">
