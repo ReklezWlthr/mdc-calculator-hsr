@@ -9,7 +9,6 @@ import { observer } from 'mobx-react-lite'
 import { ElementColor } from './tables/scaling_sub_rows'
 import { toPercentage } from '@src/core/utils/data_format'
 import { Tooltip } from '@src/presentation/components/tooltip'
-import { DebuffTypes } from '@src/domain/constant'
 import { breakDamageStringConstruct } from '@src/core/utils/constructor/breakDamageStringConstruct'
 
 export const BreakBlock = observer(({ stats, index }: { stats: StatsObject; index: number }) => {
@@ -18,7 +17,7 @@ export const BreakBlock = observer(({ stats, index }: { stats: StatsObject; inde
   const {
     string: { breakString, debuffString },
     number: { delay, final, finalDebuff, prob },
-  } = breakDamageStringConstruct(calculatorStore, stats, teamStore.characters[index]?.level)
+  } = breakDamageStringConstruct(calculatorStore, calculatorStore.globalMod, stats, teamStore.characters[index]?.level)
 
   return (
     <div className="flex flex-col mb-5 text-sm rounded-lg bg-primary-darker h-fit">
@@ -77,7 +76,7 @@ export const BreakBlock = observer(({ stats, index }: { stats: StatsObject; inde
         <p
           className={classNames(
             'text-center truncate',
-            prob <= 0.6 ? 'text-red' : prob <= 0.8 ? 'text-desc' : 'text-heal'
+            prob <= 0.6 ? 'text-red' : prob <= 0.8 ? 'text-desc' : 'text-heal',
           )}
         >
           {toPercentage(prob)}

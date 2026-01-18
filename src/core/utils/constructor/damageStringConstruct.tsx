@@ -55,7 +55,7 @@ export const damageStringConstruct = (
   scaling: IScaling,
   stats: StatsObject,
   level: number,
-  showSplit?: boolean
+  showSplit?: boolean,
 ) => {
   if (!scaling || !stats || !level) return
 
@@ -80,7 +80,7 @@ export const damageStringConstruct = (
   const {
     string: { debuffString },
     number: { finalDebuff },
-  } = breakDamageStringConstruct(calculatorStore, stats, level, globalMultiplier)
+  } = breakDamageStringConstruct(calculatorStore, globalMod, stats, level, globalMultiplier)
 
   const talentDmg = stats.getValue(`${TalentPropertyMap[scaling.property]}_DMG`) || 0
   const typeDmg =
@@ -123,7 +123,7 @@ export const damageStringConstruct = (
             : (stats.getValue(`${TalentTypeMap[scaling.type]}_RES_PEN`) || 0) +
               (stats.getValue(`${element.toUpperCase()}_RES_PEN`) || 0) +
               (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0) +
-              (scaling.res_pen || 0)) // Counted as Elemental RES PEN
+              (scaling.res_pen || 0)), // Counted as Elemental RES PEN
       ),
       2,
     ]),
@@ -147,10 +147,10 @@ export const damageStringConstruct = (
     (scaling.trueRaw
       ? 0
       : TalentProperty.SHIELD === scaling.property
-      ? stats.getValue(StatsObjectKeys.SHIELD)
-      : TalentProperty.HEAL === scaling.property
-      ? stats.getValue(Stats.HEAL) + stats.getValue(`${TalentTypeMap[scaling.type]}_HEAL`)
-      : stats.getValue(Stats.ALL_DMG) + stats.getValue(`${element} DMG%`) + talentDmg + typeDmg)
+        ? stats.getValue(StatsObjectKeys.SHIELD)
+        : TalentProperty.HEAL === scaling.property
+          ? stats.getValue(Stats.HEAL) + stats.getValue(`${TalentTypeMap[scaling.type]}_HEAL`)
+          : stats.getValue(Stats.ALL_DMG) + stats.getValue(`${element} DMG%`) + talentDmg + typeDmg)
 
   const elation = _.max([stats.getTotalElation(), scaling.elation || 0])
   const punchline = scaling.punchline || +globalMod.punchline
@@ -176,13 +176,13 @@ export const damageStringConstruct = (
         (breakScale
           ? stats.getValue(Stats.BE)
           : isPure
-          ? 0
-          : isElation
-          ? elation + (1 + stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) || 0) + (1 + punchlineMultiplier)
-          : bonusDMG(scaling.bonusSplit?.[i]))) *
+            ? 0
+            : isElation
+              ? elation + (1 + stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) || 0) + (1 + punchlineMultiplier)
+              : bonusDMG(scaling.bonusSplit?.[i]))) *
         (globalMultiplier || 1) *
         (breakScale ? 1 + (stats.getValue(StatsObjectKeys.BREAK_MULT) || 0) : 1) *
-        enemyMod)
+        enemyMod),
   )
   const dmg = _.max([_.sum(dmgSplit), 1])
 
@@ -217,13 +217,13 @@ export const damageStringConstruct = (
         StatIcons[item.multiplier]
       }" />${_.floor(item.override || statForScale[item.multiplier]).toLocaleString()}</b>${
         item.multiplier === Stats.EHP ? `<i class="text-[10px] ml-1">Enemy HP</i>` : ''
-      }<span class="mx-1"> \u{00d7} </span><b>${toPercentage(item.scaling, 2, true)}</b>)</span>`
+      }<span class="mx-1"> \u{00d7} </span><b>${toPercentage(item.scaling, 2, true)}</b>)</span>`,
   )
   const baseScaling = _.join(scalingArray, ' + ')
   const baseBreakScaling = `(<b class="${
     ElementColor[scaling.element]
   }">${breakElementMult}</b> <i class="text-[10px]">ELEMENT</i> \u{00d7} <b>${_.round(
-    breakLevel
+    breakLevel,
   ).toLocaleString()}</b> <i class="text-[10px]">BASE</i> \u{00d7} <b>${toughnessMult}</b> <i class="text-[10px]">TOUGHNESS</i>)`
   const shouldWrap = (!!totalFlat || scaling.value.length > 1) && !!_.size(scaling.value)
   const baseWithFlat = totalFlat
@@ -233,21 +233,21 @@ export const damageStringConstruct = (
     : baseScaling
 
   const formulaString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.floor(
-    dmg
+    dmg,
   ).toLocaleString()}</b> = ${breakScale ? baseBreakScaling : shouldWrap ? `(${baseWithFlat})` : baseWithFlat}${
     breakScale && stats.getValue(Stats.BE) > 0
       ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconBreakUp.png" />${toPercentage(
-          stats.getValue(Stats.BE)
+          stats.getValue(Stats.BE),
         )}</b>)</span>`
       : stats.getValue(Stats.ELATION) && isElation
-      ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(
-          elation
-        )}</b> <i class="text-[10px]">ELATION</i>)`
-      : globalBonus > 0 && !isPure
-      ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(
-          breakScale ? stats.getValue(Stats.BE) : globalBonus
-        )}</b> <i class="text-[10px]">BONUS</i>)`
-      : ''
+        ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(
+            elation,
+          )}</b> <i class="text-[10px]">ELATION</i>)`
+        : globalBonus > 0 && !isPure
+          ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(
+              breakScale ? stats.getValue(Stats.BE) : globalBonus,
+            )}</b> <i class="text-[10px]">BONUS</i>)`
+          : ''
   }${globalMultiplier !== 1 ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(globalMultiplier, 2)}</b>` : ''}${
     breakScale && stats.getValue(StatsObjectKeys.BREAK_MULT) > 0
       ? ` \u{00d7} <b class="text-amber-400">${toPercentage(1 + stats.getValue(StatsObjectKeys.BREAK_MULT), 2)}</b>`
@@ -262,42 +262,42 @@ export const damageStringConstruct = (
     stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) && isElation
       ? ` \u{00d7} (1 + <b class="text-desc">${toPercentage(
           stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE),
-          2
+          2,
         )}</b> <i class="text-[10px]">MERRYMAKE</i>)`
       : ''
   }${
     isDamage
       ? ` \u{00d7} <b class="text-orange-300">${toPercentage(
           defMult,
-          2
+          2,
         )}</b> <i class="text-[10px]">DEF</i> \u{00d7} <b class="text-teal-200">${toPercentage(
           resMult,
-          2
+          2,
         )}</b> <i class="text-[10px]">RES</i> \u{00d7} <b class="text-rose-300">${toPercentage(
           vulMult,
-          2
+          2,
         )}</b> <i class="text-[10px]">VUL</i> \u{00d7} <b class="text-violet-300">${toPercentage(
-          brokenMult
+          brokenMult,
         )}</b> <i class="text-[10px]">BROKEN</i>`
       : ''
   }`
 
   const critString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.floor(
-    totalCrit
+    totalCrit,
   ).toLocaleString()}</b> = <b>${_.floor(
-    dmg
+    dmg,
   ).toLocaleString()}</b> \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconCriticalDamage.png" />${toPercentage(
-    globalCd
+    globalCd,
   )}</b>)</span>`
 
   const avgString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.floor(
-    totalAvg
+    totalAvg,
   ).toLocaleString()}</b> = <b>${_.floor(
-    dmg
+    dmg,
   ).toLocaleString()}</b> \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconCriticalDamage.png" />${toPercentage(
-    globalCd
+    globalCd,
   )}</b><span class="ml-1"> \u{00d7} </span><b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconCriticalChance.png" />${toPercentage(
-    totalCr
+    totalCr,
   )}</b>)</span>`
 
   const DmgBody = (

@@ -1,5 +1,5 @@
 import { StatsObject, StatsObjectKeys, TalentPropertyMap, TalentTypeMap } from '@src/data/lib/stats/baseConstant'
-import { DebuffTypes } from '@src/domain/constant'
+import { DebuffTypes, GlobalModifiers } from '@src/domain/constant'
 import { BreakDebuffType, Element, StatIcons, Stats } from '@src/domain/constant'
 import { toPercentage } from '../data_format'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
@@ -12,9 +12,10 @@ import { SetupStore } from '@src/data/stores/setup_store'
 
 export const breakDamageStringConstruct = (
   calculatorStore: CalculatorStore | SetupStore,
+  globalMod: GlobalModifiers,
   stats: StatsObject,
   level: number,
-  multiplier?: number
+  multiplier?: number,
 ) => {
   if (!stats || !level) return
 
@@ -44,7 +45,7 @@ export const breakDamageStringConstruct = (
         (stats.getValue(`${stats.ELEMENT.toUpperCase()}_RES_RED`) || 0) +
           (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_RED) || 0) +
           (stats.getValue(`${stats.ELEMENT.toUpperCase()}_RES_PEN`) || 0) +
-          (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0)
+          (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0),
       ),
       2,
     ]),
@@ -57,7 +58,7 @@ export const breakDamageStringConstruct = (
   const toughnessMult = 0.5 + calculatorStore.toughness / 40
   const base = breakElementMult * breakLevel * toughnessMult
   const final =
-    base * (1 + breakEffect) * defMult * vulMult * resMult * (calculatorStore.broken ? 1 : 0.9) * (multiplier || 1)
+    base * (1 + breakEffect) * defMult * vulMult * resMult * (globalMod.broken ? 1 : 0.9) * (multiplier || 1)
 
   const enemy = _.find(Enemies, (item) => item.name === calculatorStore.enemy)
   const enemyType = enemy?.type
@@ -80,74 +81,74 @@ export const breakDamageStringConstruct = (
   const baseBreakScaling = `(<b class="${
     ElementColor[stats?.ELEMENT]
   }">${breakElementMult}</b> <i class="text-[10px]">ELEMENT</i> \u{00d7} <b>${_.round(
-    breakLevel
+    breakLevel,
   ).toLocaleString()}</b> <i class="text-[10px]">BASE</i> \u{00d7} <b>${toughnessMult}</b> <i class="text-[10px]">TOUGHNESS</i>)`
 
   const baseDebuffScaling = `<b>${_.round(breakLevel).toLocaleString()}</b> <i class="text-[10px]">BASE</i>`
   const baseShockScaling = `(2 \u{00d7} <b>${_.round(breakLevel).toLocaleString()}</b> <i class="text-[10px]">BASE</i>)`
   const baseEntangleScaling = `(0.6 \u{00d7} <b>${_.round(
-    breakLevel
+    breakLevel,
   ).toLocaleString()}</b> <i class="text-[10px]">BASE</i> \u{00d7} <b>${toughnessMult}</b> <i class="text-[10px]">TOUGHNESS</i>)`
   const baseBleedScaling =
     bleedCap <= bleedHp
       ? `(2 \u{00d7} <b>${_.round(
-          breakLevel
+          breakLevel,
         ).toLocaleString()}</b> <i class="text-[10px]">BASE</i> \u{00d7} <b>${toughnessMult}</b> <i class="text-[10px]">TOUGHNESS</i>)`
       : `<span class="inline-flex items-center h-4">(<b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/${
           StatIcons[Stats.HP]
         }" />${_.round(
-          calculatorStore.hp
+          calculatorStore.hp,
         ).toLocaleString()}</b><i class="text-[10px] ml-1">Enemy HP</i><span class="mx-1"> \u{00d7} </span><b>${toPercentage(
           enemyType === 'Normal' ? 0.16 : 0.07,
-          2
+          2,
         )}</b>)</span>`
   const debuff =
     stats?.ELEMENT === Element.QUANTUM
       ? baseEntangleScaling
       : stats?.ELEMENT === Element.LIGHTNING
-      ? baseShockScaling
-      : stats?.ELEMENT === Element.PHYSICAL
-      ? baseBleedScaling
-      : baseDebuffScaling
+        ? baseShockScaling
+        : stats?.ELEMENT === Element.PHYSICAL
+          ? baseBleedScaling
+          : baseDebuffScaling
   const finalDebuff =
     (stats?.ELEMENT === Element.QUANTUM
       ? entangle
       : stats?.ELEMENT === Element.LIGHTNING
-      ? shock
-      : stats?.ELEMENT === Element.PHYSICAL
-      ? bleed
-      : breakLevel) *
+        ? shock
+        : stats?.ELEMENT === Element.PHYSICAL
+          ? bleed
+          : breakLevel) *
     (1 + breakEffect) *
     debuffDefMult *
     debuffVulMult *
     resMult *
-    (calculatorStore.broken ? 1 : 0.9) *
+    (globalMod.broken ? 1 : 0.9) *
     (multiplier || 1)
 
   const formulaString = (final: number, scale: string, broken: boolean, defMult: number, vulMult: number) =>
     `<b class="text-red">${_.round(final).toLocaleString()}</b> = ${scale}${
       stats.getValue(Stats.BE) > 0
         ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconBreakUp.png" />${toPercentage(
-            stats.getValue(Stats.BE)
+            stats.getValue(Stats.BE),
           )}</b>)</span>`
         : ''
     }${
       multiplier ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(multiplier, 2)}</b>` : ''
     } \u{00d7} <b class="text-orange-300">${toPercentage(
       defMult,
-      2
+      2,
     )}</b> <i class="text-[10px]">DEF</i> \u{00d7} <b class="text-teal-200">${toPercentage(
       resMult,
-      2
+      2,
     )}</b> <i class="text-[10px]">RES</i> \u{00d7} <b class="text-rose-300">${toPercentage(
       vulMult,
-      2
+      2,
     )}</b> <i class="text-[10px]">VUL</i> \u{00d7} <b class="text-violet-300">${toPercentage(
-      broken ? 1 : 0.9
+      broken ? 1 : 0.9,
     )}</b> <i class="text-[10px]">BROKEN</i>`
 
-  const breakString = formulaString(final, baseBreakScaling, calculatorStore.broken, defMult, vulMult)
-  const debuffString = formulaString(finalDebuff, debuff, calculatorStore.broken, debuffDefMult, debuffVulMult)
+  const breakString = formulaString(final, baseBreakScaling, globalMod.broken, defMult, vulMult)
+  const debuffString = formulaString(finalDebuff, debuff, globalMod.broken, debuffDefMult, debuffVulMult)
 
   return {
     string: { formulaString, breakString, debuffString },
