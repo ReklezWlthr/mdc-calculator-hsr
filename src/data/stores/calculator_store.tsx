@@ -16,7 +16,6 @@ export interface CalculatorStoreType {
   computedStats: StatsObject[]
   selected: number
   res: Record<Element, number>
-  broken: boolean
   weakness: Element[]
   debuffs: { type: DebuffTypes; count: number }[]
   enemy: string
@@ -38,7 +37,7 @@ export interface CalculatorStoreType {
     value: any,
     toggled: boolean,
     debuff?: boolean,
-    memo?: boolean
+    memo?: boolean,
   ) => void
   removeCustomValue: (index: number, innerIndex: number) => void
   setTotal: (key: TalentType, index: number, name: string, value: number) => void
@@ -57,7 +56,6 @@ export class CalculatorStore {
   form: Record<string, any>[]
   computedStats: StatsObject[]
   res: Record<Element, number>
-  broken: boolean
   weakness: Element[]
   hp: number
   scaling: string
@@ -80,7 +78,6 @@ export class CalculatorStore {
     this.computedStats = Array(4)
     this.selected = 0
     this.level = 1
-    this.broken = false
     this.weakness = []
     this.enemy = ''
     this.scaling = '1'
@@ -115,14 +112,14 @@ export class CalculatorStore {
       _.mapValues(item, (value, key) => {
         const old = this.form[index]?.[key]
         return _.isUndefined(old) ? value : old
-      })
+      }),
     )
     const mergedMemo = _.map(initData, (item, index) =>
       _.mapValues(item, (value, key) => {
         if (_.includes(exclude, key)) return null
         const old = this.form[index]?.memo?.[key]
         return _.isUndefined(old) ? value : old
-      })
+      }),
     )
     this.form = _.map(mergedData, (item, i) => ({ ...item, memo: _.omitBy(mergedMemo[i], (m) => _.isNull(m)) }))
   }
@@ -142,7 +139,7 @@ export class CalculatorStore {
     value: any,
     toggled: boolean,
     debuff: boolean = false,
-    memo: boolean = false
+    memo: boolean = false,
   ) => {
     if (debuff) {
       if (innerIndex < 0) {

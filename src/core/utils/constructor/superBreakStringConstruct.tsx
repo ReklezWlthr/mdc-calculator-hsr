@@ -1,6 +1,6 @@
 import { StatsObject, StatsObjectKeys, TalentPropertyMap, TalentTypeMap } from '@src/data/lib/stats/baseConstant'
 import { IScaling } from '@src/domain/conditional'
-import { Element, StatIcons, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { Element, GlobalModifiers, StatIcons, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 import { toPercentage } from '../data_format'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
 import _ from 'lodash'
@@ -12,9 +12,10 @@ import { SetupStore } from '@src/data/stores/setup_store'
 
 export const superBreakStringConstruct = (
   calculatorStore: CalculatorStore | SetupStore,
+  globalMod: GlobalModifiers,
   scaling: IScaling,
   stats: StatsObject,
-  level: number
+  level: number,
 ) => {
   if (!scaling || !stats || !level) return
 
@@ -44,14 +45,16 @@ export const superBreakStringConstruct = (
           (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_RED) || 0) +
           (stats.getValue(`${element.toUpperCase()}_RES_PEN`) || 0) +
           (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0) +
-          (scaling.res_pen || 0) // Counted as Elemental RES PEN
+          (scaling.res_pen || 0), // Counted as Elemental RES PEN
       ),
       2,
     ]),
     0.1,
   ])
-  const isDamage = !_.includes([TalentProperty.SHIELD, TalentProperty.HEAL], scaling.property)
-  const enemyMod = isDamage ? defMult * resMult * vulMult : 1
+  const weakness = _.includes(stats.WEAKNESS, scaling.element)
+  const bypass = _.max(_.concat(stats.WEAKNESS_BYPASS, scaling.weaknessBypass)) || 0
+  const brokenMult = globalMod.broken ? 1 : stats.DAHLIA_BYPASS ? 0.9 : 0
+  const enemyMod = defMult * resMult * vulMult * brokenMult * (weakness ? 1 : bypass)
 
   const breakLevel = BreakBaseLevel[level - 1]
   const toughnessMult = (scaling.break * (1 + stats.getValue(StatsObjectKeys.BREAK_EFF))) / 10
@@ -70,18 +73,18 @@ export const superBreakStringConstruct = (
 
   // String Construct
   const baseBreakScaling = `(<b>${_.round(
-    breakLevel
+    breakLevel,
   ).toLocaleString()}</b> <i class="text-[10px]">BASE</i> \u{00d7} <b>${_.round(
     toughnessMult,
-    1
+    1,
   ).toLocaleString()}</b> <i class="text-[10px]">TOUGHNESS</i>)`
 
   const formulaString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.floor(
-    dmg
+    dmg,
   ).toLocaleString()}</b> = ${baseBreakScaling}${
     stats.getValue(Stats.BE) > 0
       ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconBreakUp.png" />${toPercentage(
-          stats.getValue(Stats.BE)
+          stats.getValue(Stats.BE),
         )}</b>)</span>`
       : ''
   }${
@@ -91,7 +94,7 @@ export const superBreakStringConstruct = (
   }${
     breakMult > 0
       ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(
-          breakMult
+          breakMult,
         )}</b> <i class="text-[10px]">SUPER BREAK MULT</i>`
       : ''
   }${
@@ -100,14 +103,20 @@ export const superBreakStringConstruct = (
       : ''
   } \u{00d7} <b class="text-orange-300">${toPercentage(
     defMult,
-    2
+    2,
   )}</b> <i class="text-[10px]">DEF</i> \u{00d7} <b class="text-teal-200">${toPercentage(
     resMult,
-    2
+    2,
   )}</b> <i class="text-[10px]">RES</i> \u{00d7} <b class="text-rose-300">${toPercentage(
     vulMult,
-    2
-  )}</b> <i class="text-[10px]">VUL</i>`
+    2,
+  )}</b> <i class="text-[10px]">VUL</i> \u{00d7} <b class="text-violet-300">${toPercentage(
+    brokenMult,
+  )}</b> <i class="text-[10px]">BROKEN</i>${
+    !weakness
+      ? ` \u{00d7} <b class="text-rose-500">${toPercentage(bypass, 2)}</b> <i class="text-[10px]">BYPASS</i>`
+      : ''
+  }`
 
   return {
     formulaString,

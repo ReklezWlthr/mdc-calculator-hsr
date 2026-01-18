@@ -13,10 +13,12 @@ export enum HsrPage {
 
 export interface GlobalModifiers {
   punchline: number
+  broken: boolean
 }
 
 export const DefaultGlobalMod: GlobalModifiers = {
   punchline: 20,
+  broken: false,
 }
 
 export const DefaultBuild = {

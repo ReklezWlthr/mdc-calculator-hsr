@@ -206,7 +206,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -298,6 +298,9 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Self',
           value: calcScaling(0.1, 0.02, talent, 'curved'),
         })
+        if (a.a2) {
+          base.WEAKNESS_BYPASS.push(0.55)
+        }
         if (c >= 1)
           base.SKILL_DEF_PEN.push({
             name: 'Eidolon 1',
@@ -333,7 +336,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },
@@ -347,7 +350,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       _.last(team).CALLBACK.push(function P99(b, d, w, all) {
         const x = all[index]

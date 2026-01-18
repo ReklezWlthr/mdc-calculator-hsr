@@ -1,15 +1,11 @@
-import { IScaling, ISuperBreakScaling } from '@src/domain/conditional'
-import { Element, StatIcons, Stats, TalentProperty, PathType, TalentType } from '@src/domain/constant'
+import { ISuperBreakScaling } from '@src/domain/conditional'
+import { Element, TalentProperty, TalentType } from '@src/domain/constant'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { Tooltip } from '@src/presentation/components/tooltip'
-import { toPercentage } from '@src/core/utils/data_format'
-import { StatsObject, StatsObjectKeys, TalentPropertyMap } from '@src/data/lib/stats/baseConstant'
-import { TalentTypeMap } from '../../../../data/lib/stats/baseConstant'
+import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { BreakBaseLevel } from '@src/domain/scaling'
-import { superBreakStringConstruct } from '@src/core/utils/constructor/superBreakStringConstruct'
 import { useEffect, useState } from 'react'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { bonusSuperBreakStringConstruct } from '@src/core/utils/constructor/bonusSuperBreakStringConstruct'
@@ -54,7 +50,7 @@ export const BonusSuperBreakSubRows = observer(({ scaling, statsOverride, type }
     scaling,
     stats,
     teamStore.characters[index]?.level,
-    type
+    type,
   )
 
   useEffect(() => {

@@ -211,7 +211,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -273,6 +273,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           source: 'Self',
           value: calcScaling(0.2, 0.02, skill, 'curved'),
         })
+        base.WEAKNESS_BYPASS.push(0.5)
         if (c >= 1) {
           base.BREAK_EFF.push({
             name: 'Foxian Prayer',
@@ -281,10 +282,17 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           })
         }
         if (c >= 4) {
-          base.BREAK_MULT.push({
+          base.BREAK_DMG.push({
             name: 'Eidolon 4',
             source: 'Self',
             value: 0.2,
+          })
+        }
+        if (c >= 6) {
+          base.BREAK_EFF.push({
+            name: 'Eidolon 6',
+            source: 'Self',
+            value: 0.5,
           })
         }
       }
@@ -303,13 +311,6 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           value: 0.3,
         })
       }
-      if (c >= 6) {
-        base.BREAK_EFF.push({
-          name: 'Eidolon 6',
-          source: 'Self',
-          value: 0.5,
-        })
-      }
 
       return base
     },
@@ -320,7 +321,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       base.SUPER_BREAK = true
       base.SUPER_BREAK_MULT.push({
@@ -335,6 +336,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           source: 'Fugue',
           value: calcScaling(0.2, 0.02, skill, 'curved'),
         })
+        base.WEAKNESS_BYPASS.push(0.5)
         if (c >= 1) {
           base.BREAK_EFF.push({
             name: 'Foxian Prayer',
@@ -343,10 +345,17 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           })
         }
         if (c >= 4) {
-          base.BREAK_MULT.push({
+          base.BREAK_DMG.push({
             name: 'Eidolon 4',
             source: 'Fugue',
             value: 0.2,
+          })
+        }
+        if (c >= 6) {
+          base.BREAK_EFF.push({
+            name: 'Eidolon 6',
+            source: 'Self',
+            value: 0.5,
           })
         }
       }
@@ -371,7 +380,7 @@ const Fugue = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.fugue_a6) {
         _.forEach(team, (t, i) => {

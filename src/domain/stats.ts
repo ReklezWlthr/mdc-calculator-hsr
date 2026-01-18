@@ -188,6 +188,10 @@ export interface RawBaseStatType {
   DOT_MULT: StatsArray[]
   ELATION_SKILL_MULT: StatsArray[]
 
+  WEAKNESS: Element[]
+  WEAKNESS_BYPASS: number[]
+  DAHLIA_BYPASS: boolean
+
   getAtk: (exclude?: boolean, statBonus?: number) => number
   getHP: (exclude?: boolean, statBonus?: number) => number
   getDef: (statBonus?: number) => number
@@ -227,5 +231,5 @@ export type CallbackType = (
   weakness: Element[],
   all: BaseStatsType[],
   battle: boolean,
-  globalMod: GlobalModifiers
+  globalMod: GlobalModifiers,
 ) => any

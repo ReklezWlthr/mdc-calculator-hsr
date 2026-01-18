@@ -129,7 +129,7 @@ export const damageStringConstruct = (
     ]),
     0.1,
   ])
-  const brokenMult = calculatorStore.broken ? 1 : 0.9
+  const brokenMult = globalMod.broken ? 1 : 0.9
   const isDamage = !_.includes([TalentProperty.SHIELD, TalentProperty.HEAL], scaling.property) && !scaling.trueRaw
   const enemyMod = isDamage ? defMult * resMult * vulMult * brokenMult : 1
 

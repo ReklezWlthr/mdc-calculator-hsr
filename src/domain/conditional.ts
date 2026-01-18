@@ -42,6 +42,7 @@ export interface IScaling {
   detonate?: boolean
   elation?: number // Used to compare higher (Yao Guang)
   punchline?: number // Used for overriding Banger
+  weaknessBypass?: number
 }
 
 export interface ISuperBreakScaling {
@@ -103,7 +104,7 @@ export interface IWeaponContent {
       index: number
       owner?: number
       debuffs: { type: DebuffTypes; count: number }[]
-    }
+    },
     //"element" is the element of the wearer
     // "own" is the stat of the wearer
   ) => StatsObject
@@ -146,6 +147,19 @@ export const GlobalContents: (team: ITeamChar[]) => IContent[] = (team) =>
   _.filter(
     [
       {
+        type: 'toggle',
+        id: 'broken',
+        text: `Weakness Broken`,
+        trace: 'Mechanic - Weakness Break',
+        content: `Once the enemy's Toughness bar depleted, the enemy will suffer a Weakness Break and enters a Weakness Broken state. This affects some character's ability and enables some game mechanics (e.g. Super Break).
+        <br />
+        <br />Normally, Super Break's activation is tied to this toggle, unless <b class="text-hsr-fire">The Dahlia</b>'s zone is active to bypass this.`,
+        title: 'Weakness Broken',
+        show: true,
+        default: true,
+        unique: true,
+      },
+      {
         type: 'number',
         id: 'punchline',
         text: `Punchline`,
@@ -161,7 +175,7 @@ export const GlobalContents: (team: ITeamChar[]) => IContent[] = (team) =>
         unique: true,
       },
     ] as IContent[],
-    (item) => item.show
+    (item) => item.show,
   )
 
 export const Banger: IContent = {

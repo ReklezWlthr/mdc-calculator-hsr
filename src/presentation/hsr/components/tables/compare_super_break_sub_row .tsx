@@ -56,10 +56,11 @@ export const CompareSuperBreakSubRows = observer(
     const [main, sub1, sub2, sub3] = _.map(Array(4), (_v, index) =>
       superBreakStringConstruct(
         setupStore,
+        setupStore.globalMod[index],
         scaling[index],
         scaling[index]?.overrideIndex >= 0 ? allStats[index]?.[scaling[0]?.overrideIndex] : stats[index],
-        level[index].level[scaling[index]?.overrideIndex ?? level[index].selected]
-      )
+        level[index].level[scaling[index]?.overrideIndex ?? level[index].selected],
+      ),
     )
 
     const getDmg = (obj: SuperBreakStringConstructor) => {
@@ -128,7 +129,7 @@ export const CompareSuperBreakSubRows = observer(
                     'text-red': compare < 0,
                     'text-blue': compare === 0,
                   }
-                : ''
+                : '',
             )}
           >
             {mode === 'percent' ? percent : mode === 'abs' ? abs : _.floor(getDmg(obj)).toLocaleString()}
@@ -173,5 +174,5 @@ export const CompareSuperBreakSubRows = observer(
         </div>
       )
     )
-  }
+  },
 )

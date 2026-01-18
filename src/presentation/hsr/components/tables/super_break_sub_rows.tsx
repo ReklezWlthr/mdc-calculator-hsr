@@ -51,9 +51,10 @@ export const SuperBreakSubRows = observer(({ scaling, statsOverride, type }: Sca
 
   const { dmg, formulaString } = superBreakStringConstruct(
     calculatorStore,
+    calculatorStore.globalMod,
     scaling,
     stats,
-    teamStore.characters[index]?.level
+    teamStore.characters[index]?.level,
   )
 
   useEffect(() => {

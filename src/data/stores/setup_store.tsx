@@ -33,7 +33,7 @@ export type CustomSetterT = (
   value: any,
   toggled: boolean,
   debuff?: boolean,
-  memo?: boolean
+  memo?: boolean,
 ) => void
 export type CustomRemoverT = (_index: number, innerIndex: number) => void
 
@@ -77,11 +77,11 @@ export interface SetupStoreType {
   scaling: string
   toughness: number
   effRes: number
-  broken: boolean
   weakness: Element[]
   globalMod: GlobalModifiers[]
   ahaSpd: number[][]
   setValue: <k extends keyof this>(key: k, value: this[k]) => void
+  setGlobalValue: (setupIndex: number, key: string, value: any) => void
   initForm: (i: number, initData: Record<string, any>[], exclude: string[]) => void
   setForm: (index: number, value: Record<string, any>[]) => void
   setFormValue: (setupIndex: number, charIndex: number, key: string, value: any, memo: boolean, sync: boolean) => void
@@ -135,7 +135,6 @@ export class SetupStore {
   hp: number
   toughness: number
   effRes: number
-  broken: boolean
   weakness: Element[]
   scaling: string
   globalMod: GlobalModifiers[]
@@ -168,12 +167,16 @@ export class SetupStore {
     this.hp = 1
     this.toughness = 30
     this.effRes = 0
-    this.broken = false
     this.weakness = []
     this.globalMod = Array(4).fill(DefaultGlobalMod)
     this.ahaSpd = Array(4).fill([])
 
     makeAutoObservable(this)
+  }
+
+  setGlobalValue = (setupIndex: number, key: string, value: any) => {
+    this.globalMod[setupIndex][key] = value
+    this.globalMod = _.cloneDeep(this.globalMod)
   }
 
   setValue = <k extends keyof this>(key: k, value: this[k]) => {
@@ -185,14 +188,14 @@ export class SetupStore {
       _.mapValues(item, (value, key) => {
         const old = this.forms[i]?.[index]?.[key]
         return _.isUndefined(old) ? value : old
-      })
+      }),
     )
     const mergedMemo = _.map(initData, (item, index) =>
       _.mapValues(item, (value, key) => {
         if (_.includes(exclude, key)) return null
         const old = this.forms[i]?.[index]?.memo?.[key]
         return _.isUndefined(old) ? value : old
-      })
+      }),
     )
     this.forms[i] = _.map(mergedData, (item, i) => ({ ...item, memo: _.omitBy(mergedMemo[i], (m) => _.isNull(m)) }))
   }
@@ -290,7 +293,7 @@ export class SetupStore {
           _.forEach(this.main.char, (character, cI) => {
             const i = _.findIndex(character.equipments.artifacts, (item) => item === aId)
             if (i >= 0 && cI !== charIndex) character.equipments.artifacts[i] = null
-          })
+          }),
         )
       this.main.char[charIndex] = { ...this.main.char[charIndex], ...value }
       if (dupeIndex >= 0 && dupeIndex !== charIndex) this.main.char[dupeIndex] = oldData
@@ -304,7 +307,7 @@ export class SetupStore {
           _.forEach(arr.char, (character, cI) => {
             const i = _.findIndex(character.equipments.artifacts, (item) => item === aId)
             if (i >= 0 && cI !== charIndex) character.equipments.artifacts[i] = null
-          })
+          }),
         )
       arr.char[charIndex] = { ...arr.char[charIndex], ...value }
       if (dupeIndex >= 0 && dupeIndex !== charIndex) this.comparing[setupIndex - 1].char[dupeIndex] = oldData
@@ -329,7 +332,7 @@ export class SetupStore {
     value: any,
     toggled: boolean,
     debuff: boolean = false,
-    memo: boolean = false
+    memo: boolean = false,
   ) => {
     const [setupIndex, charIndex] = this.selected
     if (debuff) {

@@ -1,6 +1,15 @@
 [
   {
     "version": "1.2-4",
+    "date": "Jan 19th, 2026",
+    "desc": [
+      "Updated: Weakness Break and Super Break - UX overhaul",
+      "Updated: Weakness Broken toggle moved to Global Modifiers, and Super Break's activation is now tied to it",
+      "Updated: Weakness Type Bypass (e.g. Fugue's skill, Firefly's passive) is now supported"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Jan 15th, 2026",
     "desc": ["Added: Display for <span class=\"text-aha\">Aha</span> SPD"]
   },

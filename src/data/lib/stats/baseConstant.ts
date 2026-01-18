@@ -201,6 +201,10 @@ export const baseStatsObject: BaseStatsType = {
   DOT_MULT: [],
   ELATION_SKILL_MULT: [],
 
+  WEAKNESS: [],
+  WEAKNESS_BYPASS: [],
+  DAHLIA_BYPASS: false,
+
   getAtk: function (exclude?: boolean, statBonus?: number) {
     return (
       this.BASE_ATK * (1 + _.sumBy(this[Stats.P_ATK], 'value') + (statBonus || 0)) +
@@ -228,19 +232,19 @@ export const baseStatsObject: BaseStatsType = {
   },
   getOFCSpd: function () {
     const flat = _.filter(this[Stats.SPD], (item) =>
-      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat', 'Passive'], item.name)
+      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat', 'Passive'], item.name),
     )
     const percentage = _.filter(this[Stats.P_SPD], (item) =>
-      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat', 'Passive'], item.name)
+      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat', 'Passive'], item.name),
     )
     return this.BASE_SPD * (1 + _.sumBy(percentage, 'value')) + _.sumBy(flat, 'value')
   },
   getOFCHP: function () {
     const flat = _.filter(this[Stats.HP], (item) =>
-      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat', 'Passive'], item.name)
+      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat', 'Passive'], item.name),
     )
     const percentage = _.filter(this[Stats.P_HP], (item) =>
-      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat', 'Passive'], item.name)
+      _.includes(['2-Piece', '4-Piece', 'Minor Traces', 'Main Stat', 'Sub Stat', 'Passive'], item.name),
     )
     return this.BASE_HP * (1 + _.sumBy(percentage, 'value')) + _.sumBy(flat, 'value')
   },
@@ -249,7 +253,7 @@ export const baseStatsObject: BaseStatsType = {
       _.size(exclude)
         ? _.filter(this[key], (item) => _.every(exclude, (e) => !(e.source === item.source && e.name === item.name)))
         : this[key],
-      'value'
+      'value',
     )
   },
   getDmgRed: function () {

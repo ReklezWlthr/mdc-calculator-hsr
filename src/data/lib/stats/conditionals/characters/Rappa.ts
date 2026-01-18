@@ -192,7 +192,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -209,6 +209,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               multiplier: 3,
               break: 25 + (c >= 2 ? 10 : 0),
               sum: true,
+              weaknessBypass: 0.5,
             },
             {
               name: 'Blast Main Target',
@@ -217,6 +218,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 10 + (c >= 2 ? 5 : 0),
+              weaknessBypass: 0.5,
             },
             {
               name: 'Blast Adjacent',
@@ -225,6 +227,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 5,
+              weaknessBypass: 0.5,
             },
             {
               name: 'Final AoE',
@@ -233,6 +236,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 5,
+              weaknessBypass: 0.5,
             },
             {
               name: 'Talent Break DMG',
@@ -245,6 +249,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               type: TalentType.TALENT,
               break: 2 + form.rappa_charge,
               sum: true,
+              weaknessBypass: 1,
             },
           ]
         : [
@@ -343,7 +348,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.sealform && c >= 4) {
         base[Stats.P_SPD].push({
@@ -365,7 +370,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       _.last(team).CALLBACK.push(function P99(b, d, w, all) {
         const x = all[index]
@@ -379,7 +384,7 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               value: 0.02 + base * multiplier,
               base: `(${_.floor(base * 100).toLocaleString()} ÷ 100)`,
               multiplier,
-              flat: '3%',
+              flat: '2%',
             })
           }
         })

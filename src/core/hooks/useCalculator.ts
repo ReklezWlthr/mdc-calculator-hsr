@@ -110,13 +110,13 @@ export const useCalculator = ({
           item.cId,
         ])?.conditionals(data.cons, data.major_traces, data.talents, team)
       }),
-    [team, buffer]
+    [team, buffer],
   )
   const main = conditionals[selected]
 
   const artifactConditionals = useMemo(() => {
     const c = _.map(team, (t) =>
-      getRelicConditionals(_.map(t?.equipments?.artifacts, (a) => _.find(artifactStore.artifacts, (b) => b.id === a)))
+      getRelicConditionals(_.map(t?.equipments?.artifacts, (a) => _.find(artifactStore.artifacts, (b) => b.id === a))),
     )
     return _.map(c, (item) => {
       return {
@@ -128,8 +128,8 @@ export const useCalculator = ({
               owner,
               id: `${ac.id}_${owner}`,
               text: `${ac.text} (${findCharacter(team[owner]?.cId)?.name})`,
-            }))
-          )
+            })),
+          ),
         ),
         teamContent: item.teamContent,
       }
@@ -140,26 +140,26 @@ export const useCalculator = ({
   const weaponConditionals = _.map(team, (item, index) =>
     _.map(
       _.filter(LCConditionals, (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId) && checkValid(item)),
-      (cond) => ({ ...cond, title: '', content: '', index })
-    )
+      (cond) => ({ ...cond, title: '', content: '', index }),
+    ),
   )
   const weaponTeamConditionals = _.map(team, (item, index) =>
     _.map(
       _.filter(
         LCTeamConditionals,
-        (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId) && checkValid(item)
+        (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId) && checkValid(item),
       ),
-      (cond) => ({ ...cond, title: '', content: '', index })
-    )
+      (cond) => ({ ...cond, title: '', content: '', index }),
+    ),
   )
   const weaponAllyConditionals = _.map(team, (item, index) =>
     _.map(
       _.filter(
         LCAllyConditionals,
-        (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId) && checkValid(item)
+        (weapon) => _.includes(weapon.id, item?.equipments?.weapon?.wId) && checkValid(item),
       ),
-      (cond) => ({ ...cond, id: `${cond.id}_${index}`, title: '', content: '', index: selected, owner: index })
-    )
+      (cond) => ({ ...cond, id: `${cond.id}_${index}`, title: '', content: '', index: selected, owner: index }),
+    ),
   )
   const weaponAllySelectable = (i: number) => _.flatten(_.filter(weaponAllyConditionals, (_, i2) => i !== i2))
   const weaponEligible = (i: number) => [...weaponConditionals[i], ..._.flatten(weaponTeamConditionals)]
@@ -169,8 +169,8 @@ export const useCalculator = ({
     _.flatten(
       _.filter(
         _.map(conditionals, (item, index) => _.map(item?.allyContent, (content) => ({ ...content, owner: index }))),
-        (_, index) => (inverse ? index === i : index !== i)
-      )
+        (_, index) => (inverse ? index === i : index !== i),
+      ),
     )
   const breakContents: IContent[] = _.map(baseStats, (item) => {
     const color = ElementColor[item.ELEMENT]
@@ -208,7 +208,7 @@ export const useCalculator = ({
             artifactConditionals[index]?.content,
             artifactConditionals[index]?.teamContent,
             ...weaponSelectable(index),
-            breakContents[index]
+            breakContents[index],
           ),
           (acc, curr: IContent & { owner?: number }) => {
             if ((curr as any)?.excludeSummon) excluded.push(curr.id)
@@ -228,8 +228,8 @@ export const useCalculator = ({
             }
             return acc
           },
-          {}
-        )
+          {},
+        ),
       )
       if (initFormFunction) initFormFunction(f, excluded)
       else calculatorStore.initForm(f, excluded)
@@ -257,7 +257,7 @@ export const useCalculator = ({
     const debuffs = _.map(DebuffTypes, (v) => ({ type: v, count: 0 }))
     const preCompute = _.map(conditionals, (base, index) => {
       let x =
-        base?.preCompute(baseStats[index], forms[index], debuffs, weakness, calculatorStore.broken, globalMod) ||
+        base?.preCompute(baseStats[index], forms[index], debuffs, weakness, globalMod.broken, globalMod) ||
         baseStats[index]
 
       // Sparxie's Sig
@@ -300,8 +300,8 @@ export const useCalculator = ({
               forms[index],
               debuffs,
               weakness,
-              calculatorStore.broken,
-              globalMod
+              globalMod.broken,
+              globalMod,
             ) || x
           if (x.SUMMON_STATS) {
             x.SUMMON_STATS =
@@ -316,8 +316,8 @@ export const useCalculator = ({
                 forms[index].memo,
                 debuffs,
                 weakness,
-                calculatorStore.broken,
-                globalMod
+                globalMod.broken,
+                globalMod,
               ) || x.SUMMON_STATS
           }
         }
@@ -384,7 +384,7 @@ export const useCalculator = ({
         _.forEach(
           _.filter(
             i === index ? [...weaponConditionals[i], ...weaponTeamConditionals[i]] : weaponTeamConditionals[i],
-            (c) => _.includes(_.keys(form), c.id)
+            (c) => _.includes(_.keys(form), c.id),
           ),
           (c) => {
             x = c.scaling(x, form, team[i]?.equipments?.weapon?.refinement, {
@@ -407,7 +407,7 @@ export const useCalculator = ({
                 debuffs,
               })
             }
-          }
+          },
         )
       })
       // Targeted buffs are in each team member form aside from the giver so no need to loop
@@ -436,10 +436,10 @@ export const useCalculator = ({
                 totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
                 index,
                 debuffs,
-              }
+              },
             )
           }
-        }
+        },
       )
       return x
     })
@@ -452,9 +452,9 @@ export const useCalculator = ({
           forms,
           debuffs,
           weakness,
-          calculatorStore.broken,
+          globalMod.broken,
           globalCallback,
-          globalMod
+          globalMod,
         ) || postWeapon[index]
       if (x.SUMMON_STATS) {
         x.SUMMON_STATS =
@@ -465,9 +465,9 @@ export const useCalculator = ({
             _.map(forms, (f) => f.memo),
             debuffs,
             weakness,
-            calculatorStore.broken,
+            globalMod.broken,
             globalCallback,
-            globalMod
+            globalMod,
           ) || postWeapon[index].SUMMON_STATS
       }
       return x
@@ -475,7 +475,7 @@ export const useCalculator = ({
     const postArtifactCallback = _.map(postCompute, (base, index) => {
       let x = base
       const set = getSetCount(
-        _.map(team[index]?.equipments?.artifacts, (item) => _.find(artifactStore.artifacts, (a) => a.id === item))
+        _.map(team[index]?.equipments?.artifacts, (item) => _.find(artifactStore.artifacts, (a) => a.id === item)),
       )
       _.forEach(set, (value, key) => {
         if (value >= 2) {
@@ -510,13 +510,14 @@ export const useCalculator = ({
     _.forEach(cbs, (cb) => {
       if (cb) cleaned = cb(null, debuffs, weakness, cleaned, true, globalMod)
     })
+    cleaned = _.map(cleaned, (item) => ({ ...item, WEAKNESS: weakness }))
 
     // Calculate Aha SPD
     const elationSpd = _.sortBy(
       _.map(
         _.filter(cleaned, (item) => item.PATH === PathType.ELATION),
-        (item) => item.getSpd()
-      )
+        (item) => item.getSpd(),
+      ),
     ).reverse()
     ahaSetter(elationSpd)
 
@@ -526,17 +527,7 @@ export const useCalculator = ({
     }
     setFinalStats(cleaned)
     setFinalDebuff(debuffs)
-  }, [
-    baseStats,
-    forms,
-    custom,
-    customDebuff,
-    team,
-    globalMod,
-    calculatorStore.weakness,
-    calculatorStore.broken,
-    calculatorStore.toughness,
-  ])
+  }, [baseStats, forms, custom, customDebuff, team, globalMod, calculatorStore.weakness, calculatorStore.toughness])
 
   // =================
   //
@@ -551,9 +542,9 @@ export const useCalculator = ({
       _.map(conditionals, (item, index) =>
         index === selected
           ? _.concat(item?.content, breakContents[index])
-          : _.concat(item?.teammateContent, breakContents[index])
+          : _.concat(item?.teammateContent, breakContents[index]),
       ),
-      (item, index) => _.map(item, (inner) => ({ ...inner, index }))
+      (item, index) => _.map(item, (inner) => ({ ...inner, index })),
     )
   const mapped = customMapped(selected)
   const allyMapped = _.map(allyContents(selected), (item, index) => ({ ...item, index: selected }))
@@ -566,9 +557,9 @@ export const useCalculator = ({
   const artifactContents = (selected: number) =>
     _.flatMap(
       _.map(conditionals, (item, index) =>
-        index === selected ? artifactConditionals[index]?.content : artifactConditionals[index]?.teamContent
+        index === selected ? artifactConditionals[index]?.content : artifactConditionals[index]?.teamContent,
       ),
-      (item, index) => _.map(item, (inner) => ({ ...inner, index }))
+      (item, index) => _.map(item, (inner) => ({ ...inner, index })),
     )
 
   return {

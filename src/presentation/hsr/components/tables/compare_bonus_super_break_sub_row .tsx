@@ -7,10 +7,7 @@ import { Tooltip } from '@src/presentation/components/tooltip'
 import { toPercentage } from '@src/core/utils/data_format'
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
 import { useStore } from '@src/data/providers/app_store_provider'
-import {
-  SuperBreakStringConstructor,
-  superBreakStringConstruct,
-} from '@src/core/utils/constructor/superBreakStringConstruct'
+import { SuperBreakStringConstructor } from '@src/core/utils/constructor/superBreakStringConstruct'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
 import { useEffect, useState } from 'react'
 import { bonusSuperBreakStringConstruct } from '@src/core/utils/constructor/bonusSuperBreakStringConstruct'
@@ -59,8 +56,8 @@ export const CompareBonusSuperBreakSubRows = observer(
         scaling[index],
         stats[index],
         level[index].level[level[index].selected],
-        type
-      )
+        type,
+      ),
     )
 
     console.log('test', scaling[0])
@@ -131,7 +128,7 @@ export const CompareBonusSuperBreakSubRows = observer(
                     'text-red': compare < 0,
                     'text-blue': compare === 0,
                   }
-                : ''
+                : '',
             )}
           >
             {mode === 'percent' ? percent : mode === 'abs' ? abs : _.floor(getDmg(obj)).toLocaleString()}
@@ -174,5 +171,5 @@ export const CompareBonusSuperBreakSubRows = observer(
         </div>
       </div>
     )
-  }
+  },
 )

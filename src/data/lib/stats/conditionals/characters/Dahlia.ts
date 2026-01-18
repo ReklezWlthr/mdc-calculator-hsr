@@ -233,7 +233,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -343,6 +343,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           source: 'Self',
           value: 0.5,
         })
+        base.DAHLIA_BYPASS = true
       }
 
       if (form.dahlia_a6) {
@@ -379,7 +380,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const isPartner = +form.dance_partner - 1 === _.findIndex(team, (item) => item.cId === base.ID)
       if (isPartner || (c >= 1 && +form.dance_partner)) {
@@ -434,6 +435,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           source: 'The Dahlia',
           value: 0.5,
         })
+        base.DAHLIA_BYPASS = true
       }
 
       if (form.dahlia_tech) {
@@ -472,7 +474,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.dahlia_a2) {
         _.forEach(team, (t, i) => {
