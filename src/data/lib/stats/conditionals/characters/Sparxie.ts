@@ -70,8 +70,8 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       <br /><b class="text-hsr-fire">Straight Fire</b>: <span class="text-desc">2</span> <b class="text-orange-400">Punchline</b> point(s) and <span class="text-desc">2</span> Skill Point(s).
       <br /><b class="text-desc">Unreal Banger</b>: <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> point(s).`,
       value: [
-        { base: 20, growth: 2, style: 'curved' },
         { base: 10, growth: 1, style: 'curved' },
+        { base: 5, growth: 0.5, style: 'curved' },
       ],
       level: skill,
       tag: AbilityTag.ENHANCE,
@@ -81,10 +81,10 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     summon_skill: {
       trace: 'Elation Skill',
       title: 'Signal Overflow: The Great Encore!',
-      content: `Deals <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> equal to {{0}}% to all enemies. Then deals <span class="text-desc">20</span> hit(s) of <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> equal to {{1}}% to one random enemy. For every <span class="text-desc">10</span> <b class="text-orange-400">Punchlines</b> counted in this Elation Skill, Sparxie gains <span class="text-desc">1</span> <b class="text-desc">Thrill</b>, up to <span class="text-desc">20</span> <b class="text-orange-400">Punchlines</b> counted. A maximum of <span class="text-desc">4</span> <b class="text-desc">Thrill</b> can be held, which can be used to offset Sparxie's Skill Point consumption. Consuming <b class="text-desc">Thrill</b> is considered as consuming Skill Points.`,
+      content: `Deals {{0}}% <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> all enemies and deals <span class="text-desc">20</span> additional instance(s) of DMG. Each instance deals {{1}}% <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> to one random enemy. Grants <span class="text-desc">2</span> <b class="text-desc">Thrill</b> point(s) to Sparxie, which can be used to offset Sparxie's Skill Point consumption. Consuming <b class="text-desc">Thrill</b> is considered as consuming Skill Points.`,
       value: [
         { base: 25, growth: 2.5, style: 'curved' },
-        { base: 11, growth: 1.1, style: 'curved' },
+        { base: 12.5, growth: 1.25, style: 'curved' },
       ],
       level: skill,
       tag: AbilityTag.AOE,
@@ -108,9 +108,9 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       <br />Using Enhanced Basic ATK deals <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> equal to {{0}}% to one designated enemy, and <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> equal to {{1}}% to adjacent targets. Additionally, for every time <b>Engagement Farming</b> is triggered, the Enhanced Basic ATK deals <span class="text-desc">1</span> extra instance of <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> equal to {{2}}% to <span class="text-desc">1</span> random attacked enemy target.
       <br />Using Ultimate deals <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> equal to {{3}}% to all enemies.`,
       value: [
+        { base: 20, growth: 2, style: 'curved' },
         { base: 10, growth: 1, style: 'curved' },
-        { base: 5, growth: 0.5, style: 'curved' },
-        { base: 9, growth: 0.9, style: 'curved' },
+        { base: 10, growth: 1, style: 'curved' },
         { base: 24, growth: 2.4, style: 'curved' },
       ],
       level: talent,
@@ -121,26 +121,26 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Technique',
       title: 'Content Monetization',
       content: `After using the Technique, inflicts enemies within a set area with <b>Block</b> for <span class="text-desc">10</span> second(s). <b>Blocked</b> enemies cannot detect ally targets.
-      <br />After entering combat via actively attacking a <b>Blocked</b> enemy, deals <b class="text-hsr-fire">Fire DMG</b> to all enemies equal to <span class="text-desc">50%</span> of Sparxie's ATK and recovers <span class="text-desc">2</span> Skill Point(s).`,
+      <br />After entering combat via actively attacking a <b>Blocked</b> enemy, deals <b class="text-hsr-fire">Fire DMG</b> to all enemies equal to <span class="text-desc">50%</span> of Sparxie's ATK and recovers <span class="text-desc">2</span> Skill Point(s) for allies.`,
       tag: AbilityTag.IMPAIR,
       image: 'asset/traces/SkillIcon_1501_Maze.webp',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Sweet! Punchline Signing',
-      content: `For every <span class="text-desc">100</span> point(s) of Sparxie's ATK that exceeds <span class="text-desc">2,000</span>, increases this unit's Elation by <span class="text-desc">4%</span>, up to a maximum increase of <span class="text-desc">80%</span>.`,
+      content: `For every <span class="text-desc">100</span> point(s) of Sparxie's ATK that exceeds <span class="text-desc">2,000</span>, increases this unit's Elation by <span class="text-desc">5%</span>, up to a maximum increase of <span class="text-desc">80%</span>.`,
       image: 'asset/traces/SkillIcon_1501_SkillTree1.webp',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Dazzling! Persona Kaleidoscope',
-      content: `When there are <span class="text-desc">1/2/3</span> or more Elation characters in the team, using Sparxie's Ultimate will additionally gain <span class="text-desc">2/4/8</span> <b class="text-orange-400">Punchline(s)</b>.`,
+      content: `When there are <span class="text-desc">1/2/3</span> or more Elation characters in the team, using Sparxie's Ultimate will additionally gain <span class="text-desc">2/4/8</span> <b class="text-orange-400">Punchline(s)</b> and <span class="text-desc">1/1/4</span> <b class="text-desc">Thrill(s)</b>.`,
       image: 'asset/traces/SkillIcon_1501_SkillTree2.webp',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Frenzy! Palette of Truth and Lies',
-      content: `For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> currently owned, increases all allies' CRIT DMG by <span class="text-desc">4%</span>, up to a max increase of <span class="text-desc">40%</span>.`,
+      content: `For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> currently owned, increases all allies' CRIT DMG by <span class="text-desc">6%</span>, up to a max increase of <span class="text-desc">60%</span>.`,
       image: 'asset/traces/SkillIcon_1501_SkillTree3.webp',
     },
     c1: {
@@ -180,7 +180,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: '#BuiltDifferent #GoingExtinct',
-      content: `<b>All-Type RES PEN</b> increases by <span class="text-desc">20%</span>. For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> added, the Elation Skill gains <span class="text-desc">1</span> additional bounce for DMG, up to a max of <span class="text-desc">30</span> bounces.`,
+      content: `Increases <b>All-Type RES PEN</b> by <span class="text-desc">20%</span>. For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> taken into account, the Elation Skill additionally deals <span class="text-desc">1</span> instance of, up to a max of <span class="text-desc">40</span> times.`,
       image: 'asset/traces/SkillIcon_1501_Rank6.webp',
     },
   }
@@ -239,7 +239,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       }[],
       weakness: Element[],
       broken: boolean,
-      globalMod: GlobalModifiers
+      globalMod: GlobalModifiers,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -253,7 +253,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               name: 'Main Target',
               value: [
                 { scaling: calcScaling(0.5, 0.1, basic, 'linear'), multiplier: Stats.ATK },
-                { scaling: calcScaling(0.2, 0.02, skill, 'curved') * form.engagement, multiplier: Stats.ATK },
+                { scaling: calcScaling(0.1, 0.01, skill, 'curved') * form.engagement, multiplier: Stats.ATK },
               ],
               element: Element.FIRE,
               property: TalentProperty.NORMAL,
@@ -265,7 +265,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               name: 'Adjacent',
               value: [
                 { scaling: calcScaling(0.25, 0.05, basic, 'linear'), multiplier: Stats.ATK },
-                { scaling: calcScaling(0.1, 0.01, skill, 'curved') * form.engagement, multiplier: Stats.ATK },
+                { scaling: calcScaling(0.05, 0.005, skill, 'curved') * form.engagement, multiplier: Stats.ATK },
               ],
               element: Element.FIRE,
               property: TalentProperty.NORMAL,
@@ -276,7 +276,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               ? [
                   {
                     name: 'Certified Banger Main DMG',
-                    value: [{ scaling: calcScaling(0.1, 0.01, talent, 'curved'), multiplier: Stats.ELATION }],
+                    value: [{ scaling: calcScaling(0.2, 0.02, talent, 'curved'), multiplier: Stats.ELATION }],
                     element: Element.FIRE,
                     property: TalentProperty.ELATION,
                     type: TalentType.BA,
@@ -285,7 +285,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                   },
                   {
                     name: 'Certified Banger Adjacent DMG',
-                    value: [{ scaling: calcScaling(0.05, 0.005, talent, 'curved'), multiplier: Stats.ELATION }],
+                    value: [{ scaling: calcScaling(0.1, 0.01, talent, 'curved'), multiplier: Stats.ELATION }],
                     element: Element.FIRE,
                     property: TalentProperty.ELATION,
                     type: TalentType.BA,
@@ -293,7 +293,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                   },
                   {
                     name: 'Certified Banger Bounce DMG',
-                    value: [{ scaling: calcScaling(0.09, 0.009, talent, 'curved'), multiplier: Stats.ELATION }],
+                    value: [{ scaling: calcScaling(0.1, 0.01, talent, 'curved'), multiplier: Stats.ELATION }],
                     multiplier: form.engagement,
                     element: Element.FIRE,
                     property: TalentProperty.ELATION,
@@ -323,7 +323,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             { scaling: calcScaling(0.25, 0.025, elation, 'curved'), multiplier: Stats.ELATION },
             {
               scaling:
-                calcScaling(0.11, 0.011, elation, 'curved') * (c >= 6 ? _.min([20 + globalMod.punchline, 30]) : 20),
+                calcScaling(0.125, 0.0125, elation, 'curved') * (c >= 6 ? _.min([20 + globalMod.punchline, 40]) : 20),
               multiplier: Stats.ELATION,
             },
           ],
@@ -343,7 +343,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         },
         {
           name: 'DMG per Bounce',
-          value: [{ scaling: calcScaling(0.11, 0.011, elation, 'curved'), multiplier: Stats.ELATION }],
+          value: [{ scaling: calcScaling(0.125, 0.0125, elation, 'curved'), multiplier: Stats.ELATION }],
           element: Element.FIRE,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
@@ -365,7 +365,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base[Stats.CRIT_DMG].push({
           name: `Ascension 6 Passive`,
           source: 'Self',
-          value: _.min([globalMod.punchline * 0.04, 0.4]),
+          value: _.min([globalMod.punchline * 0.06, 0.6]),
         })
       }
       if (c >= 1 && globalMod.punchline) {
@@ -407,7 +407,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
       broken: boolean,
-      globalMod: GlobalModifiers
+      globalMod: GlobalModifiers,
     ) => {
       if (a.a6 && globalMod.punchline) {
         base[Stats.CRIT_DMG].push({
@@ -438,7 +438,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       weakness: Element[],
       broken: boolean,
       globalCallback: CallbackType[],
-      globalMod: GlobalModifiers
+      globalMod: GlobalModifiers,
     ) => {
       base.CALLBACK.push(function P99(x) {
         const atk = x.getAtk()
@@ -446,9 +446,9 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           x.Elation.push({
             name: `Ascension 2 Passive`,
             source: 'Self',
-            value: _.min([((atk - 2000) / 100) * 0.04, 0.8]),
+            value: _.min([((atk - 2000) / 100) * 0.05, 0.8]),
             base: `${_.floor(_.min([atk - 2000, 2000]), 1).toLocaleString()} ÷ 100`,
-            multiplier: 0.04,
+            multiplier: 0.05,
           })
 
         return x

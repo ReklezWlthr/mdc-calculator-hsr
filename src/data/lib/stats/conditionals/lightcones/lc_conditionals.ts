@@ -128,7 +128,7 @@ export const LCConditionals: IWeaponContent[] = [
                 ...item,
                 value: item.value * 2,
               }
-            : item
+            : item,
         )
       }
       return base
@@ -354,7 +354,7 @@ export const LCConditionals: IWeaponContent[] = [
     type: 'number',
     text: `ATK Bonus Stacks`,
     show: true,
-    default: 0,
+    default: 4,
     min: 0,
     max: 4,
     id: '24000',
@@ -526,7 +526,7 @@ export const LCConditionals: IWeaponContent[] = [
     scaling: (base, form, r) => {
       if (form['21012']) {
         base[Stats.ALL_DMG] = _.map(base[Stats.ALL_DMG], (item) =>
-          item.source === 'A Secret Vow' ? { ...item, value: item.value * 2 } : item
+          item.source === 'A Secret Vow' ? { ...item, value: item.value * 2 } : item,
         )
       }
       return base
@@ -910,7 +910,7 @@ export const LCConditionals: IWeaponContent[] = [
     scaling: (base, form, r) => {
       if (form['20003']) {
         base[Stats.P_DEF] = _.map(base[Stats.P_DEF], (item) =>
-          item.source === 'Amber' ? { ...item, value: item.value * 2 } : item
+          item.source === 'Amber' ? { ...item, value: item.value * 2 } : item,
         )
       }
       return base
@@ -1502,14 +1502,33 @@ export const LCConditionals: IWeaponContent[] = [
     show: true,
     default: 1,
     min: 0,
-    max: 3,
+    max: 2,
     id: '21065',
     scaling: (base, form, r) => {
       if (form[`21065`]) {
         base[Stats.ELATION].push({
           name: `Passive`,
-          source: `Elation Bonus Stack`,
-          value: calcRefinement(0.1, 0.01, r) * form[`21065`],
+          source: `Today's Good Luck`,
+          value: calcRefinement(0.12, 0.02, r) * form[`21065`],
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `Skill Point Consumed`,
+    show: true,
+    default: 4,
+    min: 0,
+    max: 4,
+    id: '23053',
+    scaling: (base, form, r) => {
+      if (form['23053']) {
+        base.ELATION_DEF_PEN.push({
+          name: `Passive`,
+          source: 'Dazzled By A Flowery World',
+          value: calcRefinement(0.05, 0.01, r) * form['23053'],
         })
       }
       return base
@@ -1878,7 +1897,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
             (s) => {
               if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
                 s.push(shock)
-            }
+            },
           )
           base.DOT_SCALING.push({
             ...shock,
@@ -2055,7 +2074,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
       if (form['21036']) {
         const exist = _.find(
           base[`${TalentTypeMap[form['21036']]}_DMG`],
-          (item) => item.source === 'Dreamville Adventure'
+          (item) => item.source === 'Dreamville Adventure',
         )
         const value = calcRefinement(0.12, 0.02, r)
         if (!exist)
@@ -2606,7 +2625,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
             type: TalentType.NONE,
             sum: false,
             multiplier: 2,
-          }
+          },
         )
       }
 
@@ -2667,29 +2686,18 @@ export const LCTeamConditionals: IWeaponContent[] = [
     },
   },
   {
-    type: 'number',
-    text: `Skill Point Consumed`,
+    type: 'toggle',
+    text: `Stream Promo`,
     show: true,
-    default: 1,
-    min: 0,
-    max: 4,
-    id: '23053',
-    scaling: (base, form, r, { index, owner }) => {
-      if (form['23053']) {
-        if (index === owner) {
-          base.ELATION_DEF_PEN.push({
-            name: `Passive`,
-            source: 'Dazzled By A Flowery World',
-            value: calcRefinement(0.05, 0.01, r) * form['23053'],
-          })
-        }
-        if (!checkBuffExist(base[Stats.ELATION], { source: `Dazzled By A Flowery World` })) {
-          base[Stats.ELATION].push({
-            name: `Passive`,
-            source: 'Dazzled By A Flowery World',
-            value: calcRefinement(0.05, 0.01, r) * form['23053'],
-          })
-        }
+    default: true,
+    id: '23053_1',
+    scaling: (base, form, r) => {
+      if (form['23053_1'] && !checkBuffExist(base[Stats.ELATION], { name: `Stream Promo` })) {
+        base[Stats.ELATION].push({
+          name: `Stream Promo`,
+          source: 'Dazzled By A Flowery World',
+          value: calcRefinement(0.2, 0.04, r),
+        })
       }
       return base
     },
@@ -2734,7 +2742,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
         base.ELATION_VUL.push({
           name: `Passive`,
           source: `Mushy Shroomy's Adventures`,
-          value: calcRefinement(0.08, 0.01, r),
+          value: calcRefinement(0.06, 0.01, r),
         })
         if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
       }

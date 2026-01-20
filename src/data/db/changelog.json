@@ -3,6 +3,15 @@
     "version": "1.2-4",
     "date": "Jan 19th, 2026",
     "desc": [
+      "Content Version: <span class=\"text-desc\">v4.0v3</span>",
+      "Updated Characters: <span class=\"text-hsr-physical\">Yao Guang</span>, <span class=\"text-hsr-fire\">Sparxie</span>, <span class=\"text-hsr-quantum\">Sparkle</span>, and <span class=\"text-hsr-wind\">Black Swan</span>",
+      "Updated Light Cones: <span class=\"text-desc\">Mushy Shroomy's Adventures</span>, <span class=\"text-desc\">Today's Good Luck</span>, <span class=\"text-desc\">Dazzled By A Flowery World</span>, and <span class=\"text-desc\">When She Decided To See</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
+    "date": "Jan 19th, 2026",
+    "desc": [
       "Updated: Weakness Break and Super Break - UX overhaul",
       "Updated: Weakness Broken toggle moved to Global Modifiers, and Super Break's activation is now tied to it",
       "Updated: Weakness Type Bypass (e.g. Fugue's skill, Firefly's passive) is now supported"

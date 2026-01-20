@@ -38,7 +38,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     normal: {
       trace: 'Basic ATK',
       title: 'Whistlebolt Sings Joy',
-      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yao Guang's ATK to one designated enemy and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Yao Guang's ATK to enemies adjacent to it. Increases Energy regenerated from Basic ATK.`,
+      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Yao Guang's ATK to one designated enemy and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Yao Guang's ATK to enemies adjacent to it. Increases Energy regenerated from Basic ATK to <span class="text-desc">30</span>.`,
       value: [
         { base: 45, growth: 9, style: 'linear' },
         { base: 15, growth: 3, style: 'linear' },
@@ -53,7 +53,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       trace: 'Skill',
       title: `Decalight Unveils All`,
       content: `Deploys a Zone for <span class="text-desc">3</span> turn(s). The Zone's remaining duration is reduced by <span class="text-desc">1</span> at the start of this unit's turn. While the Zone is active, increases the Elation of all allies by an amount equal to {{0}}% of Yao Guang's Elation. After using Basic ATK or Skill, Yao Guang gains <span class="text-desc">3</span> <b class="text-orange-400">Punchline(s)</b>.`,
-      value: [{ base: 6, growth: 0.9, style: 'curved' }],
+      value: [{ base: 10, growth: 1, style: 'curved' }],
       level: skill,
       tag: AbilityTag.SUPPORT,
       sp: -1,
@@ -63,9 +63,9 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     summon_skill: {
       trace: 'Elation Skill',
       title: 'Let Thy Fortune Burst in Flames',
-      content: `Inflicts <b class="text-red">Woe's Whisper</b> on all enemies, lasting for <span class="text-desc">3</span> turn(s). Increases DMG received by enemy targets under the <b class="text-red">Woe's Whisper</b> state by <span class="text-desc">10%</span>. Deals <b class="text-hsr-physical">Physical <b class="elation">Elation DMG</b></b> equal to {{0}}% to all enemies. Afterward, deals <b class="text-hsr-physical">Physical <b class="elation">Elation DMG</b></b> equal to {{1}}% to one random enemy <span class="text-desc">5</span> time(s).`,
+      content: `Inflicts <b class="text-red">Woe's Whisper</b> on all enemies, lasting for <span class="text-desc">3</span> turn(s). Increases DMG received by enemy targets under the <b class="text-red">Woe's Whisper</b> state by <span class="text-desc">16%</span>. Deals <b class="text-hsr-physical">Physical <b class="elation">Elation DMG</b></b> equal to {{0}}% to all enemies. Afterward, deals <b class="text-hsr-physical">Physical <b class="elation">Elation DMG</b></b> equal to {{1}}% to one random enemy <span class="text-desc">5</span> time(s).`,
       value: [
-        { base: 40, growth: 4, style: 'curved' },
+        { base: 50, growth: 5, style: 'curved' },
         { base: 10, growth: 1, style: 'curved' },
       ],
       level: skill,
@@ -86,9 +86,10 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     talent: {
       trace: `Talent`,
       title: `Behold Wherever Light Unfolds`,
-      content: `When Yao Guang possesses <b class="text-blue">Certified Banger</b>, ally targets will trigger the <b class="text-desc">Great Boon</b> effect after using an attack, dealing additional <b class="elation">Elation DMG</b> of the corresponding Type equal to {{0}}% to <span class="text-desc">1</span> random hit target. For every <span class="text-desc">1</span> Skill Point consumed during this attack, trigger the <b class="text-desc">Great Boon</b> effect <span class="text-desc">1</span> extra time, up to <span class="text-desc">3</span> times per attack.
-      <br />When triggering <b class="text-desc">Great Boon</b>, if the attacker's Elation is lower than Yao Guang's, this instance of <b class="elation">Elation DMG</b> is calculated using Yao Guang's Elation.
-      <br />Triggering <b class="text-desc">Great Boon</b> is not considered as an attack.`,
+      content: `When Yao Guang possesses <b class="text-blue">Certified Banger</b>:
+      <br />After an ally target uses an attack, triggers the <b class="text-desc">Great Boon</b> effect after using an attack, dealing <span class="text-desc">1</span> instance of {{0}}% <b class="elation">Elation DMG</b> of the corresponding Type to <span class="text-desc">1</span> random target hit. If Skill Points are consumed during this attack, additionally triggers <b class="text-desc">Great Boon</b> <span class="text-desc">1</span> additional time.
+      <br />When triggering the <b class="text-desc">Great Boon</b> effect, if the attacker's Elation is lower than Yao Guang's, this instance of <b class="elation">Elation DMG</b> will use Yao Guang's Elation for calculation.
+      <br />Triggering the <b class="text-desc">Great Boon</b> effect is not considered as using an attack.`,
       value: [{ base: 12, growth: 1.2, style: 'curved' }],
       level: talent,
       tag: AbilityTag.SUPPORT,
@@ -97,7 +98,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     technique: {
       trace: 'Technique',
       title: 'Untethered Glimmer Sails Far',
-      content: `After using the Technique, automatically triggers Skill <span class="text-desc">1</span> time at the start of the next battle without consuming any Skill Points. When Yao Guang is in the team, breaking destructible objects immediately grants <b>Red Envelope</b>, up to <span class="text-desc">8</span> within every Earth Week.`,
+      content: `After using the Technique, automatically triggers Skill <span class="text-desc">1</span> time at the start of the next battle without consuming any Skill Points. When Yao Guang is in the team, breaking destructible objects immediately grants <b>Fortune Pouch</b>, up to <span class="text-desc">8</span> within every Earth Week.`,
       tag: AbilityTag.SUPPORT,
       image: 'asset/traces/SkillIcon_1502_Maze.webp',
     },
@@ -122,7 +123,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c1: {
       trace: 'Eidolon 1',
       title: 'Chuckle Chimes Where Jade Falls',
-      content: `Increases the fixed amount of <b class="text-orange-400">Punchline</b> taken into account in <b class="text-aha">Aha</b>'s extra turn triggered by the Ultimate to <span class="text-desc">30</span>, and the DMG dealt by the Elation Skill becomes <span class="text-desc">140%</span> of the original DMG.`,
+      content: `Increases the fixed amount of <b class="text-orange-400">Punchline</b> taken into account in <b class="text-aha">Aha</b>'s Ultimate-triggered extra turn to <span class="text-desc">40</span>, and the <b class="elation">Elation DMG</b> dealt by all ally targets ignores <span class="text-desc">20%</span> of the target's DEF.`,
       image: 'asset/traces/SkillIcon_1502_Rank1.webp',
     },
     c2: {
@@ -142,7 +143,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c4: {
       trace: 'Eidolon 4',
       title: 'Threads of Fate Colored by Plumes',
-      content: `When all ally targets deal <b class="elation">Elation DMG</b>, they ignore <span class="text-desc">18%</span> of the target's DEF.`,
+      content: `In <b class="text-aha">Aha</b>'s extra turn triggered by Yao Guang's Ultimate, the DMG dealt by all ally characters' Elation Skill becomes <span class="text-desc">150%</span> of the original DMG.`,
       image: 'asset/traces/SkillIcon_1502_Rank4.webp',
     },
     c5: {
@@ -156,7 +157,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c6: {
       trace: 'Eidolon 6',
       title: 'Ferried Along the Astral Arc',
-      content: `All allies' <b class="elation">Elation DMG</b> merrymakes by <span class="text-desc">20%</span>. Increases DMG multiplier of Yao Guang's Elation Skill by <span class="text-desc">60%</span> of the original multiplier.`,
+      content: `All allies' <b class="elation">Elation DMG</b> merrymakes by <span class="text-desc">25%</span>. Increases DMG multiplier of Yao Guang's Elation Skill by <span class="text-desc">100%</span> of the original multiplier.`,
       image: 'asset/traces/SkillIcon_1502_Rank6.webp',
     },
   }
@@ -166,7 +167,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     {
       type: 'toggle',
       id: 'yao_skill',
-      text: `Yao Guang Skill Zone`,
+      text: `Yao Guang's Zone`,
       ...talents.skill,
       show: true,
       default: true,
@@ -191,12 +192,21 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       debuff: true,
       duration: 3,
     },
+    {
+      type: 'toggle',
+      id: 'yao_e4',
+      text: `E4 Elation Skill Multiplier`,
+      ...talents.c4,
+      show: c >= 4,
+      default: false,
+    },
   ]
 
   const teammateContent: IContent[] = [
     findContentById(content, 'yao_skill'),
     findContentById(content, 'yao_ult'),
     findContentById(content, 'woe_whisper'),
+    findContentById(content, 'yao_e4'),
   ]
 
   const allyContent: IContent[] = []
@@ -216,7 +226,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       }[],
       weakness: Element[],
       broken: boolean,
-      globalMod: GlobalModifiers
+      globalMod: GlobalModifiers,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -243,8 +253,8 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         {
           name: 'Max Single Target DMG',
           value: [
-            { scaling: calcScaling(0.4, 0.04, elation, 'curved') * (c >= 6 ? 1.6 : 1), multiplier: Stats.ELATION },
-            { scaling: calcScaling(0.1, 0.01, elation, 'curved') * 5 * (c >= 6 ? 1.6 : 1), multiplier: Stats.ELATION },
+            { scaling: calcScaling(0.5, 0.05, elation, 'curved') * (c >= 6 ? 2 : 1), multiplier: Stats.ELATION },
+            { scaling: calcScaling(0.1, 0.01, elation, 'curved') * 5 * (c >= 6 ? 2 : 1), multiplier: Stats.ELATION },
           ],
           element: Element.PHYSICAL,
           property: TalentProperty.ELATION,
@@ -254,9 +264,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         },
         {
           name: 'AoE',
-          value: [
-            { scaling: calcScaling(0.4, 0.04, elation, 'curved') * (c >= 6 ? 1.6 : 1), multiplier: Stats.ELATION },
-          ],
+          value: [{ scaling: calcScaling(0.5, 0.05, elation, 'curved') * (c >= 6 ? 2 : 1), multiplier: Stats.ELATION }],
           element: Element.PHYSICAL,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
@@ -264,9 +272,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         },
         {
           name: 'DMG per Bounce',
-          value: [
-            { scaling: calcScaling(0.1, 0.01, elation, 'curved') * (c >= 6 ? 1.6 : 1), multiplier: Stats.ELATION },
-          ],
+          value: [{ scaling: calcScaling(0.1, 0.01, elation, 'curved') * (c >= 6 ? 2 : 1), multiplier: Stats.ELATION }],
           element: Element.PHYSICAL,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
@@ -285,7 +291,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         base.VULNERABILITY.push({
           name: `Woe's Whisper`,
           source: 'Self',
-          value: 0.1,
+          value: 0.16,
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
@@ -297,24 +303,24 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         })
       }
       if (c >= 1) {
-        base.ELATION_SKILL_MULT.push({
+        base.ELATION_DEF_PEN.push({
           name: `Eidolon 1`,
           source: 'Self',
-          value: 0.4,
+          value: 0.2,
         })
       }
-      if (c >= 4) {
-        base.ELATION_DEF_PEN.push({
+      if (form.yao_e4) {
+        base.ELATION_SKILL_MULT.push({
           name: `Eidolon 4`,
           source: 'Self',
-          value: 0.18,
+          value: 0.5,
         })
       }
       if (c >= 6) {
         base.ELATION_MERRYMAKE.push({
           name: `Eidolon 6`,
           source: 'Self',
-          value: 0.2,
+          value: 0.25,
         })
       }
 
@@ -328,7 +334,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
       broken: boolean,
-      globalMod: GlobalModifiers
+      globalMod: GlobalModifiers,
     ) => {
       if (form.yao_ult) {
         base.ALL_TYPE_RES_PEN.push({
@@ -341,14 +347,28 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         base.VULNERABILITY.push({
           name: `Woe's Whisper`,
           source: 'Yao Guang',
-          value: 0.1,
+          value: 0.16,
+        })
+      }
+      if (c >= 1) {
+        base.ELATION_DEF_PEN.push({
+          name: `Eidolon 1`,
+          source: 'Yao Guang',
+          value: 0.2,
+        })
+      }
+      if (form.yao_e4) {
+        base.ELATION_SKILL_MULT.push({
+          name: `Eidolon 4`,
+          source: 'Yao Guang',
+          value: 0.5,
         })
       }
       if (c >= 6) {
         base.ELATION_MERRYMAKE.push({
           name: `Eidolon 6`,
           source: 'Yao Guang',
-          value: 0.2,
+          value: 0.25,
         })
       }
 
@@ -366,7 +386,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       weakness: Element[],
       broken: boolean,
       globalCallback: CallbackType[],
-      globalMod: GlobalModifiers
+      globalMod: GlobalModifiers,
     ) => {
       globalCallback.push(function P1(_x, _d, _w, a) {
         const spd = a[index].getSpd()
@@ -402,9 +422,9 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
             item.X_ELATION.push({
               name: `Skill`,
               source: i === index ? 'Self' : 'Yao Guang',
-              value: elation * calcScaling(0.06, 0.009, skill, 'curved'),
+              value: elation * calcScaling(0.1, 0.01, skill, 'curved'),
               base: toPercentage(elation),
-              multiplier: calcScaling(0.06, 0.009, skill, 'curved'),
+              multiplier: calcScaling(0.1, 0.01, skill, 'curved'),
             })
           }
         })
@@ -412,7 +432,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           if (form.banger) {
             _.forEach(
               [item.BASIC_SCALING, item.SKILL_SCALING, item.ULT_SCALING, item.TALENT_SCALING, item.MEMO_SKILL_SCALING],
-              (s) => {
+              (s, ix) => {
                 const add = {
                   name: 'Great Boon DMG',
                   value: [{ scaling: calcScaling(0.12, 0.012, talent, 'curved'), multiplier: Stats.ELATION }],
@@ -425,10 +445,11 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
                 }
                 if (
                   _.some(s, (item) =>
-                    _.includes([TalentProperty.NORMAL, TalentProperty.FUA, TalentProperty.ELATION], item.property)
+                    _.includes([TalentProperty.NORMAL, TalentProperty.FUA, TalentProperty.ELATION], item.property),
                   )
                 ) {
                   s.push(add)
+                  if (ix === 1) s.push({ ...add, name: 'Extra Great Boon DMG' })
                 }
                 if (_.some(s, (item) => item.property === TalentProperty.SERVANT)) {
                   s.push({
@@ -436,7 +457,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
                     name: add.name + ` (${item.SUMMON_STATS?.NAME})`,
                   })
                 }
-              }
+              },
             )
           }
         })

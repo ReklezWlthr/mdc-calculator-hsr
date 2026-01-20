@@ -126,7 +126,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c6: {
       trace: 'Eidolon 6',
       title: 'Pantheon Merciful, Masses Pitiful',
-      content: `Increases maximum stacks of of <b class="text-emerald-600">Arcana</b> by <span class="text-desc">20</span>.
+      content: `Increases maximum stacks of of <b class="text-emerald-600">Arcana</b> by <span class="text-desc">30</span>.
       <br />When an enemy target is attacked by Black Swan's teammates, Black Swan has a <span class="text-desc">65%</span> <u>base chance</u> to inflict <span class="text-desc">1</span> stack of <b class="text-emerald-600">Arcana</b> on the target.
       <br />Every time Black Swan inflicts <span class="text-desc">1</span> stack of <b class="text-emerald-600">Arcana</b> on an enemy target, the number of stacks added is additionally increased by <span class="text-desc">1</span>.`,
     },
@@ -141,7 +141,7 @@ const BlackSwan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       show: true,
       default: 1,
       min: 0,
-      max: c >= 6 ? 70 : 50,
+      max: c >= 6 ? 80 : 50,
       chance: { base: calcScaling(0.5, 0.03, basic, 'linear'), fixed: false },
       debuff: true,
     },

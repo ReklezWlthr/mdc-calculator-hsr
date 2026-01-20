@@ -15,7 +15,7 @@ export const Sidebar = ({ currentPage, onChange }: { currentPage: HsrPage; onCha
       <div
         className={classNames(
           'flex items-center gap-2 px-3 py-2 text-sm font-normal duration-200 rounded-lg cursor-pointer text-gray',
-          page === currentPage ? 'bg-primary' : 'hover:bg-primary-dark'
+          page === currentPage ? 'bg-primary' : 'hover:bg-primary-dark',
         )}
         onClick={() => onChange(page)}
       >
@@ -56,9 +56,9 @@ export const Sidebar = ({ currentPage, onChange }: { currentPage: HsrPage; onCha
             <div className="w-full px-2 py-1 text-xs text-white bg-green-700 rounded-md ring-1 ring-offset-2 ring-offset-primary-dark ring-green-400">
               <p className="flex items-center gap-1 font-bold">
                 <i className="fa-info-circle fa-solid" />
-                v4.0v2 Update
+                v4.0v3 Update
               </p>
-              <p>Yao Guang & Sparxie: Now Available!</p>
+              <p>Yao Guang & Sparxie: Updated!</p>
             </div>
           )}
           <div className="flex items-center gap-3 cursor-pointer text-gray" onClick={onOpenIntroModal}>

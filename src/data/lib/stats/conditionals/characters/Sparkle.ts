@@ -52,16 +52,16 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Ultimate',
       title: 'The Hero with a Thousand Faces',
-      content: `Recovers <span class="text-desc">6</span> Skill Points for the team. If Skill Points overflow, Sparkle gains <span class="text-desc">1</span> stack of <b class="text-desc">Mask</b> for each point that overflows. When an ally character's turn ends, if the team has fewer Skill Points than the maximum, Sparkle consumes <span class="text-desc">1</span> stack of <b class="text-desc">Mask</b> to recover <span class="text-desc">1</span> Skill Point for the team, until the limit is reached. Then, grants all allies <b class="text-hsr-quantum">Cipher</b>. For ally targets with <b class="text-hsr-quantum">Cipher</b> the DMG Boost effect provided by Sparkle's Talent increases by an additional {{0}}% per stack, lasting for <span class="text-desc">3</span> turns.`,
-      value: [{ base: 3, growth: 0.2, style: 'curved' }],
+      content: `Recovers <span class="text-desc">6</span> Skill Points for the team. If Skill Points overflow during recovery, overflowing Skill Points are recorded up to <span class="text-desc">10</span> point(s). When an ally character's turn ends, if the team has fewer Skill Points than the maximum, Sparkle consumes the recorded value to recover Skill Points for the team, until the limit is reached. Then, grants all allies <b class="text-hsr-quantum">Cipher</b>. For ally targets with <b class="text-hsr-quantum">Cipher</b> the DMG Boost effect provided by Sparkle's Talent increases by an additional {{0}}% per stack, lasting for <span class="text-desc">3</span> turns.`,
+      value: [{ base: 3.6, growth: 0.24, style: 'curved' }],
       level: ult,
       tag: AbilityTag.SUPPORT,
     },
     talent: {
       trace: 'Talent',
       title: 'Red Herring',
-      content: `While Sparkle is on the battlefield, additionally increases the max number of Skill Points by <span class="text-desc">2</span>. Whenever an ally consumes <span class="text-desc">1</span> Skill Point, all enemies' DMG received increases by {{0}}%. This effect lasts for <span class="text-desc">2</span> turn(s) and can stack up to <span class="text-desc">4</span> time(s).`,
-      value: [{ base: 1.5, growth: 0.15, style: 'curved' }],
+      content: `While Sparkle is on the field, additionally increases the max number of Skill Points by <span class="text-desc">2</span>. Whenever an ally consumes <span class="text-desc">1</span> Skill Point, Sparkle gains <span class="text-desc">1</span> stack of <b class="true">Figment</b>, with each stack increasing all enemies' DMG received by {{0}}%. This effect lasts for <span class="text-desc">2</span> turn(s) and can stack up to <span class="text-desc">3</span> time(s).`,
+      value: [{ base: 2, growth: 0.2, style: 'curved' }],
       level: talent,
       tag: AbilityTag.SUPPORT,
     },
@@ -74,7 +74,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Almanac',
-      content: `When using Basic ATK, additionally regenerates <span class="text-desc">10</span> Energy. When an ally character who possesses the CRIT DMG Boost effect provided by the Skill consumes Skill Points, Sparkle additionally regenerates <span class="text-desc">1</span> Energy.`,
+      content: `When using Basic ATK, additionally regenerates <span class="text-desc">10</span> Energy. When an ally characters, who have the CRIT DMG Boost effect provided by <b>Dreamdiver</b>, consume Skill Points, Sparkle additionally regenerates <span class="text-desc">1</span> Energy.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -94,7 +94,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c2: {
       trace: 'Eidolon 2',
       title: 'Purely Fictitious',
-      content: `Each stack of the Talent additionally reduces the enemy target's DEF by <span class="text-desc">8%</span>.`,
+      content: `Each stack of the Talent additionally reduces the enemy target's DEF by <span class="text-desc">10%</span>.`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -133,12 +133,12 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     {
       type: 'number',
       id: 'red_herring',
-      text: `Red Herring Stacks`,
+      text: `Figment Stacks`,
       ...talents.talent,
       show: true,
-      default: 4,
+      default: 3,
       min: 0,
-      max: 4,
+      max: 3,
       duration: 2,
     },
     {
@@ -177,7 +177,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       debuffs: {
         type: DebuffTypes
         count: number
-      }[]
+      }[],
     ) => {
       const base = _.cloneDeep(x)
 
@@ -202,15 +202,15 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Self',
           value:
             form.red_herring *
-            (calcScaling(0.015, 0.0015, talent, 'curved') +
-              (form.cipher ? calcScaling(0.03, 0.002, talent, 'curved') : 0)),
+            (calcScaling(0.02, 0.002, talent, 'curved') +
+              (form.cipher ? calcScaling(0.036, 0.0024, talent, 'curved') : 0)),
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
         if (c >= 2)
           base.DEF_PEN.push({
             name: `Eidolon 2`,
             source: 'Self',
-            value: 0.08 * form.red_herring,
+            value: 0.1 * form.red_herring,
           })
       }
       if (form.cipher && c >= 1)
@@ -241,7 +241,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base: StatsObject,
       form: Record<string, any>,
       aForm: Record<string, any>,
-      debuffs: { type: DebuffTypes; count: number }[]
+      debuffs: { type: DebuffTypes; count: number }[],
     ) => {
       base.MAX_SP += c >= 4 ? 3 : 2
 
@@ -271,14 +271,14 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Sparkle',
           value:
             form.red_herring *
-            (calcScaling(0.015, 0.0015, talent, 'curved') +
-              (form.cipher ? calcScaling(0.03, 0.002, talent, 'curved') : 0)),
+            (calcScaling(0.02, 0.002, talent, 'curved') +
+              (form.cipher ? calcScaling(0.036, 0.0024, talent, 'curved') : 0)),
         })
         if (c >= 2)
           base.DEF_PEN.push({
             name: `Eidolon 2`,
             source: 'Sparkle',
-            value: 0.08 * form.red_herring,
+            value: 0.1 * form.red_herring,
           })
       }
       if (form.cipher && c >= 1)
@@ -301,7 +301,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base: StatsObject,
       form: Record<string, any>,
       team: StatsObject[],
-      allForm: Record<string, any>[]
+      allForm: Record<string, any>[],
     ) => {
       if (form.sparkle_skill && (c < 6 || !form.cipher)) {
         base.X_CRIT_DMG.push({

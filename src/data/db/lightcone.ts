@@ -1441,7 +1441,7 @@ export const LightCones = [
       detail: `Increases the wearer's Elation by {{0}}%. When the wearer uses an Elation Skill, increases <b class="elation">Elation DMG</b> taken by all enemies by {{1}}% for <span class="text-desc">2</span> turn(s).`,
       properties: [
         { base: 12, growth: 2 },
-        { base: 8, growth: 1 },
+        { base: 6, growth: 1 },
       ],
     },
   },
@@ -1456,11 +1456,8 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Decision',
-      detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer uses an Elation Skill, increases Elation by {{1}}%, stacking up to <span class="text-desc">3</span> times.`,
-      properties: [
-        { base: 12, growth: 2 },
-        { base: 10, growth: 1 },
-      ],
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer uses an Elation Skill, increases Elation by {{0}}%, stacking up to <span class="text-desc">2</span> times.`,
+      properties: [{ base: 12, growth: 2 }],
     },
   },
   //---------------------
@@ -2596,10 +2593,11 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Center of Attention',
-      detail: `Increases the wearer's CRIT DMG by {{0}}%. While the wearer is on the field, for every Elation character on the team, increases the Skill Point upper limit by <span class="text-desc">1</span>, up to a max increase of <span class="text-desc">3</span>. For every <span class="text-desc">1</span> Skill Point the wearer consumes, ignores {{1}}% of enemy targets' DEF when this unit deals <b class="elation">Elation DMG</b>, and increases all allies' Elation by {{1}}%. This effect can stack up to <span class="text-desc">4</span> time(s). Light Cone effects of the same type cannot stack.`,
+      detail: `Increases the wearer's CRIT DMG by {{0}}%. While the wearer is on the field, for every Elation character on the team, increases the Skill Point upper limit by <span class="text-desc">1</span>, up to a max increase of <span class="text-desc">3</span>. For every <span class="text-desc">1</span> Skill Point the wearer consumes, ignores {{1}}% of enemy targets' DEF when this unit deals <b class="elation">Elation DMG</b>, stacking up to <span class="text-desc">4</span> times. If <span class="text-desc">4</span> or more Skill Points are consumed in the same turn, the wearer gains <b>Stream Promo</b>, which increases all allies' Elation by {{2}}%. Light Cone effects of the same type cannot stack.`,
       properties: [
-        { base: 36, growth: 6 },
+        { base: 48, growth: 8 },
         { base: 5, growth: 1 },
+        { base: 20, growth: 4 },
       ],
     },
   },
@@ -2614,7 +2612,8 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Game Changer',
-      detail: `Increases the wearer's SPD by {{0}}%. When the wearer enters combat or uses Ultimate on an ally target, the wearer gains <b>Great Fortune</b> for <span class="text-desc">3</span> turn(s). While the wearer has <b>Great Fortune</b>, all allies' CRIT Rate increases by {{1}}%, CRIT DMG increases by {{2}}%, and the wearer's Energy Regeneration Rate increases by {{3}}%.`,
+      detail: `Increases the wearer's SPD by {{0}}%. When the wearer enters combat or uses Ultimate on an ally target, the wearer gains <b>Great Fortune</b> for <span class="text-desc">3</span> turn(s). While the wearer has <b>Great Fortune</b>, all allies' CRIT Rate increases by {{1}}%, CRIT DMG increases by {{2}}%, and the wearer's Energy Regeneration Rate increases by {{3}}%.
+      <br />At the start of each wave, the wearer regenerates a fixed amount of <span class="text-desc">15</span> Energy.`,
       properties: [
         { base: 18, growth: 3 },
         { base: 10, growth: 1 },
