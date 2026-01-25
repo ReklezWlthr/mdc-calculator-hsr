@@ -1,6 +1,11 @@
 [
   {
     "version": "1.2-4",
+    "date": "Jan 25th, 2026",
+    "desc": ["Fix: Missing memosprite skill and talent level when importing from scanner"]
+  },
+  {
+    "version": "1.2-4",
     "date": "Jan 20th, 2026",
     "desc": [
       "Content Version: <span class=\"text-desc\">v4.0v3</span>",

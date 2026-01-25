@@ -58,7 +58,7 @@ export const AttributeBlock = ({ stat, array, stats }: NormalBlockProps) => (
                 </>
               )}
             </BulletPoint>
-          )
+          ),
       )}
     </div>
   </div>
@@ -131,7 +131,7 @@ export const StatsModal = observer(
                     </>
                   )}
                 </BulletPoint>
-              )
+              ),
           )}
           {stats === 'Aggro' && (
             <>
@@ -172,11 +172,12 @@ export const StatsModal = observer(
           }
           return _.cloneDeep(acc)
         },
-        []
+        [],
       )
 
     const elationSpd = compare && teamIndex >= 0 ? setupStore.ahaSpd[teamIndex] : calculatorStore.ahaSpd
     const ahaSpd = _.size(elationSpd) ? 80 + (elationSpd?.[0] || 0) / 5 + (elationSpd?.[1] || 0) / 10 : 0
+    const ahaDividend = [5, 10]
 
     return (
       <div className="w-[65vw] bg-primary-dark rounded-lg p-3 space-y-2">
@@ -239,13 +240,13 @@ export const StatsModal = observer(
               {!!_.size(elationSpd) && (
                 <BulletPoint>
                   <span className="text-xs">
-                    Sorted Elation SPD:{' '}
-                    <span className="text-desc">
-                      {_.join(
-                        _.map(elationSpd, (item) => _.floor(item, 1)),
-                        ' > '
-                      )}
-                    </span>
+                    <b className="text-red">{_.floor(ahaSpd, 1)}</b> = <span className="text-blue">80</span>
+                    {_.map(elationSpd, (ss, ii) => (
+                      <span key={`${ss}_${ii}`}>
+                        {' '}
+                        + (<span className="text-desc">{_.floor(ss, 1)}</span> ÷ {ahaDividend[ii]})
+                      </span>
+                    ))}
                   </span>
                 </BulletPoint>
               )}
@@ -359,7 +360,7 @@ export const StatsModal = observer(
                   eHP{' '}
                   <span className="text-red">
                     {_.round(
-                      stats.getHP() / defMult / (1 - stats.getValue(StatsObjectKeys.DMG_REDUCTION))
+                      stats.getHP() / defMult / (1 - stats.getValue(StatsObjectKeys.DMG_REDUCTION)),
                     ).toLocaleString()}
                   </span>
                   <Tooltip
@@ -434,5 +435,5 @@ export const StatsModal = observer(
         </Collapsible>
       </div>
     )
-  }
+  },
 )

@@ -89,7 +89,7 @@ export const fromEnka = (rawData: Record<string, any>) => {
           findTalent('206') || false,
           findTalent('209') || false,
         ],
-        findCharacter(cId)?.overwrite
+        findCharacter(cId)?.overwrite,
       ),
     }
   })
@@ -110,7 +110,7 @@ export const fromEnka = (rawData: Record<string, any>) => {
             sub.value * (_.includes([Stats.ATK, Stats.HP, Stats.SPD, Stats.DEF], EnkaStatsMap[sub.type]) ? 1 : 100),
         })),
       }
-    })
+    }),
   )
   return { charData, artifactData }
 }
@@ -144,7 +144,11 @@ export const fromScanner = (rawData: Record<string, any>) => {
       ascension: item.ascension,
       cons: item.eidolon,
       cId,
-      talents: item.skills,
+      talents: {
+        ...item.skills,
+        memo_talent: item.memosprite?.talent || 1,
+        memo_skill: item.memosprite?.skill || 1,
+      },
       major_traces: {
         a2: item.traces.ability_1 || false,
         a4: item.traces.ability_2 || false,
@@ -163,7 +167,7 @@ export const fromScanner = (rawData: Record<string, any>) => {
           item.traces.stat_2 || false,
           item.traces.stat_6 || false,
           item.traces.stat_9 || false,
-        ]
+        ],
         // findCharacter(cId)?.overwrite
       ),
     }
@@ -187,7 +191,7 @@ export const fromScanner = (rawData: Record<string, any>) => {
     const cId = (+item.id - (tb === 'Stelle' && _.head(item.id) === '8' ? 1 : 0)).toString()
     const lc = _.find(lcs, (l) => l.location === item.id)
     const equipped = _.filter(relics, (r) => r.location === item.id).sort(
-      (a, b) => ScannerArtifactTypeMap[a.slot] - ScannerArtifactTypeMap[b.slot]
+      (a, b) => ScannerArtifactTypeMap[a.slot] - ScannerArtifactTypeMap[b.slot],
     )
     return lc
       ? {
@@ -197,7 +201,7 @@ export const fromScanner = (rawData: Record<string, any>) => {
           isDefault: true,
           artifacts: _.map(
             Array(6),
-            (_v, i) => _.find(equipped, (item) => ScannerArtifactTypeMap[item.slot] === i + 1)?.id || null
+            (_v, i) => _.find(equipped, (item) => ScannerArtifactTypeMap[item.slot] === i + 1)?.id || null,
           ),
           weapon: {
             wId: lc.id,
