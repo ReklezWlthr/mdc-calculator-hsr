@@ -140,19 +140,19 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Frenzy! Palette of Truth and Lies',
-      content: `For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> currently owned, increases all allies' CRIT DMG by <span class="text-desc">6%</span>, up to a max increase of <span class="text-desc">60%</span>.`,
+      content: `For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> currently owned, increases all allies' CRIT DMG by <span class="text-desc">8%</span>, up to a max increase of <span class="text-desc">80%</span>.`,
       image: 'asset/traces/SkillIcon_1501_SkillTree3.webp',
     },
     c1: {
       trace: 'Eidolon 1',
       title: '#GoingViral #WhoIsShe',
-      content: `After <b class="text-aha">Aha Instant</b> ends, gains an additional <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b>. For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> owned, increases <b>All-Type RES PEN</b> for all allies by <span class="text-desc">1.5%</span>, up to a max increase of <span class="text-desc">15%</span>.`,
+      content: `When <b class="text-aha">Aha Instant</b> ends, gains an additional <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b>. For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> owned, increases <b>All-Type RES PEN</b> for all allies by <span class="text-desc">1.5%</span>, up to a max increase of <span class="text-desc">15%</span>.`,
       image: 'asset/traces/SkillIcon_1501_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
       title: '#AudienceKnows',
-      content: `After <b class="text-aha">Aha Instant</b> ends, Sparxie gains <span class="text-desc">1</span> extra turn and <span class="text-desc">2</span> <b class="text-desc">Thrill</b>. Each time a <b class="text-desc">Thrill</b> is consumed, increases this unit's CRIT DMG by <span class="text-desc">10%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">4</span> time(s).`,
+      content: `When <b class="text-aha">Aha Instant</b> ends, Sparxie gains <span class="text-desc">1</span> extra turn and <span class="text-desc">2</span> <b class="text-desc">Thrill</b>. Each time a <b class="text-desc">Thrill</b> is consumed, increases this unit's CRIT DMG by <span class="text-desc">10%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">4</span> time(s).`,
       image: 'asset/traces/SkillIcon_1501_Rank2.webp',
     },
     c3: {
@@ -166,7 +166,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: '#LockedIn #FaceCard',
-      content: `When using Ultimate, additionally gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b> point(s) and increases Elation by <span class="text-desc">25%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `When using Ultimate, additionally gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b> point(s) and increases Elation by <span class="text-desc">36%</span> for <span class="text-desc">3</span> turn(s).`,
       image: 'asset/traces/SkillIcon_1501_Rank4.webp',
     },
     c5: {
@@ -216,7 +216,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ...talents.c4,
       show: c >= 4,
       default: true,
-      duration: 2,
+      duration: 3,
     },
   ]
 
@@ -365,7 +365,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base[Stats.CRIT_DMG].push({
           name: `Ascension 6 Passive`,
           source: 'Self',
-          value: _.min([globalMod.punchline * 0.06, 0.6]),
+          value: _.min([globalMod.punchline * 0.08, 0.8]),
         })
       }
       if (c >= 1 && globalMod.punchline) {
@@ -386,7 +386,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base[Stats.ELATION].push({
           name: `Eidolon 4`,
           source: 'Self',
-          value: 0.25,
+          value: 0.36,
         })
       }
       if (c >= 6) {
@@ -413,7 +413,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base[Stats.CRIT_DMG].push({
           name: `Ascension 6 Passive`,
           source: 'Sparxie',
-          value: _.min([globalMod.punchline * 0.04, 0.4]),
+          value: _.min([globalMod.punchline * 0.08, 0.8]),
         })
       }
       if (c >= 1 && globalMod.punchline) {

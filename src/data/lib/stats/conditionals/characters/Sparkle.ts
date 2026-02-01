@@ -74,12 +74,12 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Almanac',
-      content: `When using Basic ATK, additionally regenerates <span class="text-desc">10</span> Energy. When an ally characters, who have the CRIT DMG Boost effect provided by <b>Dreamdiver</b>, consume Skill Points, Sparkle additionally regenerates <span class="text-desc">1</span> Energy.`,
+      content: `Using Basic ATK additionally regenerates <span class="text-desc">10</span> Energy. When an ally character who possesses the CRIT DMG Boost effect provided by the Skill consumes Skill Points, Sparkle additionally regenerates <span class="text-desc">1</span> Energy.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Artificial Flower',
-      content: `If an ally consumes <span class="text-desc">3</span> or more Skill Points in a single action, Sparkle's next Skill usage will not consume Skill Points.`,
+      content: `If an ally character consumes <span class="text-desc">3</span> or more Skill Points in a single turn, Sparkle's next Skill usage will not consume Skill Points.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',

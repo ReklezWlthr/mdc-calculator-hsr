@@ -1,6 +1,14 @@
 [
   {
     "version": "1.2-4",
+    "date": "Feb 1st, 2026",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v4.0v5</span>",
+      "Updated Characters: <span class=\"text-hsr-fire\">Sparxie</span>, and <span class=\"text-hsr-quantum\">Sparkle</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Jan 25th, 2026",
     "desc": ["Fix: Missing memosprite skill and talent level when importing from scanner"]
   },
