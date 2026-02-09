@@ -2622,6 +2622,25 @@ export const LightCones = [
       ],
     },
   },
+  {
+    id: '23056',
+    name: 'The Finale of a Lie',
+    rarity: 5,
+    baseHp: 48,
+    baseAtk: 26.4,
+    baseDef: 21,
+    type: PathType.HUNT,
+    beta: true,
+    desc: {
+      name: 'Subsume',
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. At the start of battle or for every <span class="text-desc">4</span> <u>Follow-Up ATKs</u> the wearer uses, the wearer gains <b>Umbra Devourer</b>, lasting for <span class="text-desc">3</span> turn(s). While the wearer has <b>Umbra Devourer</b>, increases ATK by {{1}}% and reduces all enemies' DEF by {{2}}%. Effects of the same kind cannot stack.`,
+      properties: [
+        { base: 18, growth: 3 },
+        { base: 40, growth: 10 },
+        { base: 12, growth: 3 },
+      ],
+    },
+  },
   //---------------------
   //   Herta 5 Star
   //---------------------
@@ -2733,6 +2752,24 @@ export const LightCones = [
       properties: [
         { base: 6, growth: 1.5 },
         { base: 8, growth: 2 },
+      ],
+    },
+  },
+  {
+    id: '24006',
+    name: `Elation Brimming With Blessings`,
+    rarity: 5,
+    baseHp: 43.2,
+    baseAtk: 24,
+    baseDef: 21,
+    type: PathType.ELATION,
+    beta: true,
+    desc: {
+      name: 'Opening',
+      detail: `Increases the wearer's ATK by {{0}}%. After the wearer uses their Skill or Ultimate on one ally character, increases the target's Elation stat by {{1}}% for <span class="text-desc">2</span> turn(s).`,
+      properties: [
+        { base: 20, growth: 5 },
+        { base: 12, growth: 3 },
       ],
     },
   },

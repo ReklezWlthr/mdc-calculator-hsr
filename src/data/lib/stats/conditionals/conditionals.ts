@@ -80,6 +80,7 @@ import Cyrene from './characters/Cyrene'
 import Dahlia from './characters/Dahlia'
 import Sparxie from './characters/Sparxie'
 import YaoGuang from './characters/YaoGuang'
+import Ashveil from './characters/Ashveil'
 
 export default [
   { id: '1001', conditionals: March },
@@ -160,6 +161,7 @@ export default [
   { id: '1415', conditionals: Cyrene },
   { id: '1501', conditionals: Sparxie },
   { id: '1502', conditionals: YaoGuang },
+  { id: '1504', conditionals: Ashveil },
   // MCs
   { id: '8001', conditionals: DMC },
   { id: '8003', conditionals: PMC },

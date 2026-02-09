@@ -273,6 +273,41 @@ export const ArtifactForm = () => {
       id: '130',
       excludeSummon: true,
     },
+    {
+      type: 'element',
+      text: `Punklorde Stage Zero`,
+      title: `Punklorde Stage Zero`,
+      content: `When Elation reaches <span class="text-desc">40%/80%</span> for the first time in battle, increases the wearer's CRIT DMG by <span class="text-desc">20%/30%</span>.`,
+      show: true,
+      default: '2',
+      options: [
+        { name: 'None', value: '0' },
+        { name: '40% Elation', value: '1' },
+        { name: '80% Elation', value: '2' },
+      ],
+      id: '325',
+      excludeSummon: true,
+    },
+    {
+      type: 'toggle',
+      text: `ATK Bonus (City of Myriad Forms)`,
+      title: `ATK Bonus (City of Myriad Forms)`,
+      content: `When the wearer uses a <u>Follow-Up ATK</u>, their ATK increases by <span class="text-desc">24%</span> for <span class="text-desc">2</span> turn(s).`,
+      show: true,
+      default: true,
+      id: '326_1',
+      excludeSummon: true,
+    },
+    {
+      type: 'toggle',
+      text: `Team CRIT DMG Bonus (City of Myriad Forms)`,
+      title: `Team CRIT DMG Bonus (City of Myriad Forms)`,
+      content: `When an enemy target is defeated, increases CRIT DMG for all allies by <span class="text-desc">12%</span> for the rest of the current battle.`,
+      show: true,
+      default: true,
+      id: '326_2',
+      excludeSummon: true,
+    },
   ]
 
   // Team-Wide
@@ -283,6 +318,7 @@ export const ArtifactForm = () => {
     findContentById(content, '127'),
     findContentById(content, '323'),
     findContentById(content, '130'),
+    findContentById(content, '326_2'),
   ]
 
   // Single-Target

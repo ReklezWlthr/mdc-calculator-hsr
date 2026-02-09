@@ -331,10 +331,10 @@ export const RelicSets: IArtifact[] = [
           _.filter(d, (item) =>
             _.includes(
               [DebuffTypes.BURN, DebuffTypes.SHOCKED, DebuffTypes.WIND_SHEAR, DebuffTypes.BLEED, DebuffTypes.DOT],
-              item.type
-            )
+              item.type,
+            ),
           ),
-          (item) => item.count
+          (item) => item.count,
         )
         if (count)
           x.DEF_PEN.push({
@@ -717,7 +717,7 @@ export const PlanarSets: IArtifact[] = [
                 ...item,
                 value: item.value + 0.12,
               }
-            : item
+            : item,
         )
 
       return base
@@ -784,7 +784,7 @@ export const PlanarSets: IArtifact[] = [
                   ...item,
                   value: item.value + 0.15,
                 }
-              : item
+              : item,
           )
         return x
       })
@@ -849,7 +849,7 @@ export const PlanarSets: IArtifact[] = [
                 ...item,
                 value: item.value + 0.2,
               }
-            : item
+            : item,
         )
       return base
     },
@@ -1185,6 +1185,30 @@ export const PlanarSets: IArtifact[] = [
     ],
     beta: false,
     set: [`Livestream's Myriad Facades`, `Livestream's Continuous Chatter`],
+  },
+  {
+    id: '325',
+    name: 'Punklorde Stage Zero',
+    icon: '71054',
+    bonus: [{ stat: Stats.ELATION, value: 0.1 }],
+    bonusAdd: [],
+    desc: [
+      `Increases the wearer's Elation by <span class="text-desc">10%</span>. When Elation reaches <span class="text-desc">40%/80%</span> for the first time in battle, increases the wearer's CRIT DMG by <span class="text-desc">20%/30%</span>.`,
+    ],
+    beta: true,
+    set: [`Punklorde's Rainbow City`, `Punklorde's Data Deluge`],
+  },
+  {
+    id: '326',
+    name: 'City of Myriad Forms',
+    icon: '71055',
+    bonus: [],
+    bonusAdd: [],
+    desc: [
+      `When the wearer uses a Follow-Up ATK, their ATK increases by <span class="text-desc">24%</span> for <span class="text-desc">2</span> turn(s). When an enemy target is defeated, increases CRIT DMG for all allies by <span class="text-desc">12%</span> for the rest of the current battle. This effect cannot stack.`,
+    ],
+    beta: true,
+    set: [`Astropolis Media Headquarters`, `Astropolis Employee Credentials`],
   },
 ]
 

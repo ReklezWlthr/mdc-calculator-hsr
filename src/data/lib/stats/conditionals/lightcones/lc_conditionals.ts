@@ -1720,6 +1720,23 @@ export const LCAllyConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `Elation Bonus`,
+    show: true,
+    default: false,
+    id: '24006',
+    scaling: (base, form, r, { own, owner }) => {
+      if (form[`24006_${owner}`]) {
+        base[Stats.ELATION].push({
+          name: `Passive`,
+          source: 'Elation Brimming With Blessings',
+          value: calcRefinement(0.12, 0.03, r),
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const LCTeamConditionals: IWeaponContent[] = [
@@ -2745,6 +2762,31 @@ export const LCTeamConditionals: IWeaponContent[] = [
           value: calcRefinement(0.06, 0.01, r),
         })
         if (base.NAME === own?.NAME) addDebuff(debuffs, DebuffTypes.OTHER)
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Umbra Devourer`,
+    show: true,
+    default: true,
+    id: '23056',
+    scaling: (base, form, r, { index, owner, debuffs }) => {
+      if (form['23056'] && !checkBuffExist(base.DEF_REDUCTION, { name: `Umbra Devourer` })) {
+        if (index === owner) {
+          base[Stats.P_ATK].push({
+            name: `Umbra Devourer`,
+            source: 'The Finale of a Lie',
+            value: calcRefinement(0.4, 0.1, r),
+          })
+          addDebuff(debuffs, DebuffTypes.DEF_RED)
+        }
+        base.DEF_REDUCTION.push({
+          name: `Umbra Devourer`,
+          source: 'The Finale of a Lie',
+          value: calcRefinement(0.12, 0.03, r),
+        })
       }
       return base
     },

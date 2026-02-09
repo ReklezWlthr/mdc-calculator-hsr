@@ -495,7 +495,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
                   },
                 ],
               }
-            : item
+            : item,
         )
         return x
       })
@@ -554,8 +554,8 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
                   property: TalentProperty.HEAL,
                   type: TalentType.NONE,
                 }
-              : undefined
-          )
+              : undefined,
+          ),
         )
         x.BASIC_SCALING.push(...scaling)
         return x
@@ -889,7 +889,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
             property: TalentProperty.HEAL,
             type: TalentType.NONE,
             overrideIndex: index,
-          })
+          }),
         )
         return x
       })
@@ -1744,6 +1744,28 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
         name: 'Passive',
         source: `Mushy Shroomy's Adventures`,
         value: calcRefinement(0.12, 0.02, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23056',
+    scaling: (base, r) => {
+      base[Stats.CRIT_RATE].push({
+        name: 'Passive',
+        source: `The Finale of a Lie`,
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '24006',
+    scaling: (base, r) => {
+      base[Stats.P_ATK].push({
+        name: 'Passive',
+        source: `Elation Brimming With Blessings`,
+        value: calcRefinement(0.2, 0.05, r),
       })
       return base
     },

@@ -1253,6 +1253,22 @@ export const Characters = [
     element: Element.PHYSICAL,
     beta: true,
   },
+  {
+    id: '1504',
+    name: 'Ashveil',
+    stat: {
+      baseAtk: 87.12,
+      baseHp: 137.28,
+      baseDef: 66,
+      baseSpd: 105,
+      energy: 160,
+    },
+    trace: [Stats.CRIT_DMG, Stats.P_ATK, Stats.LIGHTNING_DMG],
+    rarity: 5,
+    path: PathType.HUNT,
+    element: Element.LIGHTNING,
+    beta: true,
+  },
 
   // Odd = Male, Even = Female
   {

@@ -1,6 +1,16 @@
 [
   {
     "version": "1.2-4",
+    "date": "Feb 9th, 2026",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v4.1v1</span>",
+      "New Character: <span class=\"text-hsr-lightning\">Ashveil</span>",
+      "New Light Cones: <span class=\"text-desc\">The Finale of a Lie</span>, and <span class=\"text-desc\">Elation Brimming With Blessings</span>",
+      "New Planar Sets: <span class=\"text-desc\">Punklorde Stage Zero</span>, and <span class=\"text-desc\">City of Myriad Forms</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Feb 1st, 2026",
     "desc": [
       "Content Version: <span class=\"text-desc\">v4.0v5</span>",

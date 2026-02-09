@@ -57,10 +57,10 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
   if (form['117'])
     base.CALLBACK.push((x) => {
       x[Stats.CRIT_RATE] = _.map(x[Stats.CRIT_RATE], (item) =>
-        item.source === 'Pioneer Diver of Dead Waters' ? { ...item, value: item.value * 2 } : item
+        item.source === 'Pioneer Diver of Dead Waters' ? { ...item, value: item.value * 2 } : item,
       )
       x[Stats.CRIT_DMG] = _.map(x[Stats.CRIT_DMG], (item) =>
-        item.source === 'Pioneer Diver of Dead Waters' ? { ...item, value: item.value * 2 } : item
+        item.source === 'Pioneer Diver of Dead Waters' ? { ...item, value: item.value * 2 } : item,
       )
       return x
     })
@@ -204,6 +204,27 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       })
     }
   }
+  if (form['325'] === '1') {
+    base[Stats.CRIT_DMG].push({
+      name: `2-Piece`,
+      source: `Punklorde Stage Zero`,
+      value: 0.2,
+    })
+  }
+  if (form['325'] === '2') {
+    base[Stats.CRIT_DMG].push({
+      name: `2-Piece`,
+      source: `Punklorde Stage Zero`,
+      value: 0.3,
+    })
+  }
+  if (form['326_1']) {
+    base[Stats.P_ATK].push({
+      name: `2-Piece`,
+      source: `City of Myriad Forms`,
+      value: 0.24,
+    })
+  }
 
   return base
 }
@@ -261,6 +282,12 @@ export const calculateTeamRelic = (base: StatsObject, form: Record<string, any>,
       source: owner.NAME,
       value: 0.1,
     })
+  if (form['326_2'] && !checkBuffExist(base[Stats.CRIT_DMG], { name: 'City of Myriad Forms' }))
+    base[Stats.CRIT_DMG].push({
+      name: `City of Myriad Forms`,
+      source: owner.NAME,
+      value: 0.12,
+    })
 
   return base
 }
@@ -269,7 +296,7 @@ export const calculateAllyRelic = (
   base: StatsObject,
   form: Record<string, any>,
   owner: StatsObject,
-  ownerIndex: number
+  ownerIndex: number,
 ) => {
   if (form[`121_${ownerIndex}`]) {
     base[Stats.CRIT_DMG].push({
