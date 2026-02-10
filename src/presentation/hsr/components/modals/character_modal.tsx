@@ -44,9 +44,9 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
           const liveMatch = !(item.beta && settingStore.settings.liveOnly)
 
           return nameMatch && elmMatch && weaponMatch && liveMatch
-        }
+        },
       ),
-    [params, settingStore.settings.liveOnly]
+    [params, settingStore.settings.liveOnly],
   )
 
   const FilterIcon = ({ type, value }: { type: 'element' | 'path'; value: Element | PathType }) => {
@@ -104,7 +104,7 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
               className="w-full text-xs duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95"
               onClick={() => {
                 const build = _.find(buildStore.builds, (build) => build.isDefault && build.cId === item.id)
-                const teamChar = _.find(teamStore.characters, (char) => char.cId === item.id)
+                const teamChar = _.cloneDeep(_.find(teamStore.characters, (char) => char.cId === item.id))
                 const storeChar = _.find(charStore.characters, (char) => char.cId === item.id)
                 const char = teamChar || storeChar
                 charSetter(index, {
@@ -123,8 +123,8 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
                   equipments: teamChar
                     ? teamChar?.equipments
                     : build
-                    ? { weapon: build.weapon, artifacts: build.artifacts }
-                    : DefaultBuild,
+                      ? { weapon: build.weapon, artifacts: build.artifacts }
+                      : DefaultBuild,
                   cons: char?.cons || 0,
                   major_traces: char?.major_traces || { a2: false, a4: false, a6: false },
                   minor_traces:
@@ -155,7 +155,7 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
                 <img
                   src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
                     item.id,
-                    settingStore.settings?.travelerGender
+                    settingStore.settings?.travelerGender,
                   )}.webp`}
                   className="object-cover rounded-t-lg bg-primary-darker aspect-[47/64] w-full"
                 />

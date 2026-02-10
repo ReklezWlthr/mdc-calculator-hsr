@@ -57,7 +57,7 @@ export const CharDetail = observer(() => {
       memo_talent: params['Memosprite Talent'] || 1,
       elation: params[TalentType.ELATION] || 1,
     },
-    teamStore.characters
+    teamStore.characters,
   )
   const talent = cond.talents
 
@@ -132,7 +132,7 @@ export const CharDetail = observer(() => {
 
   const onOpenEditModal = useCallback(
     () => modalStore.openModal(<CharDetailModal char={charUpgrade} cId={selected} />),
-    [charUpgrade, charStore.selected]
+    [charUpgrade, charStore.selected],
   )
 
   return (
@@ -142,7 +142,7 @@ export const CharDetail = observer(() => {
           <div
             className={classNames(
               'items-center justify-center w-full h-full aspect-square shrink-0',
-              loading ? 'flex' : 'hidden'
+              loading ? 'flex' : 'hidden',
             )}
           >
             <i className="text-6xl animate-spin fa-solid fa-circle-notch text-gray" />
@@ -163,8 +163,12 @@ export const CharDetail = observer(() => {
                 className="w-10 h-10 p-1 bg-opacity-75 rounded-full shrink-0 bg-primary-bg"
               />
             </div>
-            <p className="px-3 py-2 text-3xl font-semibold break-words bg-opacity-75 rounded-lg text-end bg-primary-bg">
+            <p className="px-3 py-2 text-3xl font-semibold break-words bg-opacity-75 rounded-lg bg-primary-bg">
               {data.name}
+              {/* <br />
+              <span className="block text-base font-normal -pt-3 text-gray">
+                <ruby dangerouslySetInnerHTML={{ __html: data.jp }} />
+              </span> */}
             </p>
             <div className="ml-3 w-fit">
               <RarityGauge rarity={data.rarity} textSize="text-xl" />
@@ -285,7 +289,7 @@ export const CharDetail = observer(() => {
                         <i
                           className={classNames(
                             'font-bold fa-solid',
-                            item ? 'text-heal fa-check' : 'text-red fa-times'
+                            item ? 'text-heal fa-check' : 'text-red fa-times',
                           )}
                         />
                       </div>
@@ -297,7 +301,7 @@ export const CharDetail = observer(() => {
                   {_.map(totalTrace, (item, key) => {
                     const total = _.sumBy(
                       _.filter(item, (v) => v.toggled),
-                      'value'
+                      'value',
                     )
                     return (
                       <div className="grid grid-cols-5" key={key}>

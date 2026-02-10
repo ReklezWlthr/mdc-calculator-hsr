@@ -6,6 +6,7 @@ export const Characters = [
   {
     id: '1001',
     name: 'March 7th (Preservation)',
+    jp: '三月<rt>みつき</rt>なのか「存護」',
     stat: {
       baseAtk: 69.6,
       baseHp: 144,
@@ -22,6 +23,7 @@ export const Characters = [
   {
     id: '1002',
     name: 'Dan Heng',
+    jp: '丹恒<rt>タンコウ</rt>',
     stat: {
       baseAtk: 74.4,
       baseHp: 120,
@@ -38,6 +40,7 @@ export const Characters = [
   {
     id: '1003',
     name: 'Himeko',
+    jp: '姫子<rt>ひめこ</rt>',
     stat: {
       baseAtk: 102.96,
       baseHp: 142.56,
@@ -54,6 +57,7 @@ export const Characters = [
   {
     id: '1004',
     name: 'Welt',
+    jp: 'ヴェルト',
     stat: {
       baseAtk: 84.48,
       baseHp: 153.12,
@@ -70,6 +74,7 @@ export const Characters = [
   {
     id: '1005',
     name: 'Kafka',
+    jp: 'カフカ',
     stat: {
       baseAtk: 92.4,
       baseHp: 147.84,
@@ -86,6 +91,7 @@ export const Characters = [
   {
     id: '1006',
     name: 'Silver Wolf',
+    jp: '銀狼<rt>ぎんろう</rt>',
     stat: {
       baseAtk: 87.12,
       baseHp: 142.56,
@@ -102,6 +108,7 @@ export const Characters = [
   {
     id: '1008',
     name: 'Arlan',
+    jp: 'アーラン',
     stat: {
       baseAtk: 81.6,
       baseHp: 163.2,
@@ -118,6 +125,7 @@ export const Characters = [
   {
     id: '1009',
     name: 'Asta',
+    jp: 'アスター',
     stat: {
       baseAtk: 69.6,
       baseHp: 139.2,
@@ -134,6 +142,7 @@ export const Characters = [
   {
     id: '1013',
     name: 'Herta',
+    jp: 'ヘルタ',
     stat: {
       baseAtk: 79.3,
       baseHp: 129.6,
@@ -150,6 +159,7 @@ export const Characters = [
   {
     id: '1014',
     name: 'Saber',
+    jp: 'セイバー',
     stat: {
       baseAtk: 81.84,
       baseHp: 168.96,
@@ -168,6 +178,7 @@ export const Characters = [
   {
     id: '1015',
     name: 'Archer',
+    jp: 'アーチャー',
     stat: {
       baseAtk: 84.48,
       baseHp: 158.4,
@@ -184,6 +195,7 @@ export const Characters = [
   {
     id: '1101',
     name: 'Bronya',
+    jp: 'ブローニャ',
     stat: {
       baseAtk: 79.2,
       baseHp: 168.96,
@@ -200,6 +212,7 @@ export const Characters = [
   {
     id: '1102',
     name: 'Seele',
+    jp: 'ゼーレ',
     stat: {
       baseAtk: 87.12,
       baseHp: 126.72,
@@ -216,6 +229,7 @@ export const Characters = [
   {
     id: '1103',
     name: 'Serval',
+    jp: 'セーバル',
     stat: {
       baseAtk: 88.8,
       baseHp: 124.8,
@@ -232,6 +246,7 @@ export const Characters = [
   {
     id: '1104',
     name: 'Gepard',
+    jp: 'ジェパード',
     stat: {
       baseAtk: 73.92,
       baseHp: 190.08,
@@ -248,6 +263,7 @@ export const Characters = [
   {
     id: '1105',
     name: 'Natasha',
+    jp: 'ナターシャ',
     stat: {
       baseAtk: 81,
       baseHp: 172,
@@ -264,6 +280,7 @@ export const Characters = [
   {
     id: '1106',
     name: 'Pela',
+    jp: 'ぺラ',
     stat: {
       baseAtk: 74.4,
       baseHp: 134.4,
@@ -280,6 +297,7 @@ export const Characters = [
   {
     id: '1107',
     name: 'Clara',
+    jp: 'クラーラ',
     stat: {
       baseAtk: 100.32,
       baseHp: 168.96,
@@ -296,6 +314,7 @@ export const Characters = [
   {
     id: '1108',
     name: 'Sampo',
+    jp: 'サンポ',
     stat: {
       baseAtk: 84,
       baseHp: 139.2,
@@ -312,6 +331,7 @@ export const Characters = [
   {
     id: '1109',
     name: 'Hook',
+    jp: 'フック',
     stat: {
       baseAtk: 84,
       baseHp: 182.4,
@@ -328,6 +348,7 @@ export const Characters = [
   {
     id: '1110',
     name: 'Lynx',
+    jp: 'リンクス',
     stat: {
       baseAtk: 67.2,
       baseHp: 144,
@@ -344,6 +365,7 @@ export const Characters = [
   {
     id: '1111',
     name: 'Luka',
+    jp: 'ルカ',
     stat: {
       baseAtk: 79.2,
       baseHp: 124.8,
@@ -360,6 +382,7 @@ export const Characters = [
   {
     id: '1112',
     name: 'Topaz and Numby',
+    jp: 'トパーズ&カブ',
     stat: {
       baseAtk: 84.48,
       baseHp: 126.72,
@@ -376,6 +399,7 @@ export const Characters = [
   {
     id: '1201',
     name: 'Qingque',
+    jp: '青雀<rt>セイジャク</rt>',
     stat: {
       baseAtk: 88.8,
       baseHp: 139.2,
@@ -392,6 +416,7 @@ export const Characters = [
   {
     id: '1202',
     name: 'Tingyun',
+    jp: '停雲<rt>テイウン</rt>',
     stat: {
       baseAtk: 72,
       baseHp: 115.2,
@@ -408,6 +433,7 @@ export const Characters = [
   {
     id: '1203',
     name: 'Luocha',
+    jp: '羅刹<rt>ラセツ</rt>',
     stat: {
       baseAtk: 102.96,
       baseHp: 174.24,
@@ -424,6 +450,7 @@ export const Characters = [
   {
     id: '1204',
     name: 'Jing Yuan',
+    jp: '景元<rt>ケイゲン</rt>',
     stat: {
       baseAtk: 95.04,
       baseHp: 158.4,
@@ -440,6 +467,7 @@ export const Characters = [
   {
     id: '1205',
     name: 'Blade',
+    jp: '刃<rt>ジン</rt>',
     stat: {
       baseAtk: 73.92,
       baseHp: 184.8,
@@ -456,6 +484,7 @@ export const Characters = [
   {
     id: '1206',
     name: 'Sushang',
+    jp: '素裳<rt>スショウ</rt>',
     stat: {
       baseAtk: 76.8,
       baseHp: 124.8,
@@ -472,6 +501,7 @@ export const Characters = [
   {
     id: '1207',
     name: 'Yukong',
+    jp: '御空<rt>ギョクウ</rt>',
     stat: {
       baseAtk: 81.6,
       baseHp: 124.8,
@@ -488,6 +518,7 @@ export const Characters = [
   {
     id: '1208',
     name: 'Fu Xuan',
+    jp: '符玄<rt>フゲン</rt>',
     stat: {
       baseAtk: 63.36,
       baseHp: 200.64,
@@ -504,6 +535,7 @@ export const Characters = [
   {
     id: '1209',
     name: 'Yanqing',
+    jp: '彦卿<rt>ゲンキョウ</rt>',
     stat: {
       baseAtk: 92.4,
       baseHp: 121.44,
@@ -520,6 +552,7 @@ export const Characters = [
   {
     id: '1210',
     name: 'Guinaifen',
+    jp: '桂乃芬<rt>ケイナイフン</rt>',
     stat: {
       baseAtk: 79.2,
       baseHp: 120,
@@ -536,6 +569,7 @@ export const Characters = [
   {
     id: '1211',
     name: 'Bailu',
+    jp: '白露<rt>ビャクロ</rt>',
     stat: {
       baseAtk: 76.56,
       baseHp: 179.52,
@@ -552,6 +586,7 @@ export const Characters = [
   {
     id: '1212',
     name: 'Jingliu',
+    jp: '鏡流<rt>ケイリュウ</rt>',
     stat: {
       baseAtk: 92.4,
       baseHp: 195.36,
@@ -568,6 +603,7 @@ export const Characters = [
   {
     id: '1213',
     name: 'Dan Heng • Imbibitor Lunae',
+    jp: '<ruby>丹恒<rt>タンコウ</rt></ruby>・<ruby>飲月<rt>インゲツ</rt></ruby>',
     stat: {
       baseAtk: 95.04,
       baseHp: 168.96,
@@ -584,6 +620,7 @@ export const Characters = [
   {
     id: '1214',
     name: 'Xueyi',
+    jp: '雪衣<rt>セツイ</rt>',
     stat: {
       baseAtk: 81.6,
       baseHp: 144,
@@ -600,6 +637,7 @@ export const Characters = [
   {
     id: '1215',
     name: 'Hanya',
+    jp: '寒鴉<rt>カンア</rt>',
     stat: {
       baseAtk: 76.8,
       baseHp: 124.8,
@@ -616,6 +654,7 @@ export const Characters = [
   {
     id: '1217',
     name: 'Huohuo',
+    jp: 'フォフォ',
     stat: {
       baseAtk: 81.84,
       baseHp: 184.8,
@@ -632,6 +671,7 @@ export const Characters = [
   {
     id: '1218',
     name: 'Jiaoqiu',
+    jp: '椒丘<rt>ショウキュウ</rt>',
     stat: {
       baseAtk: 81.84,
       baseHp: 184.8,
@@ -648,6 +688,7 @@ export const Characters = [
   {
     id: '1220',
     name: 'Feixiao',
+    jp: '飛霄<rt>ヒショウ</rt>',
     stat: {
       baseAtk: 81.84,
       baseHp: 143,
@@ -664,6 +705,7 @@ export const Characters = [
   {
     id: '1221',
     name: 'Yunli',
+    jp: '雲璃<rt>ウンリ</rt>',
     stat: {
       baseAtk: 92.4,
       baseHp: 184.8,
@@ -680,6 +722,7 @@ export const Characters = [
   {
     id: '1222',
     name: 'Lingsha',
+    jp: '霊砂<rt>レイサ</rt>',
     stat: {
       baseAtk: 92.4,
       baseHp: 184.8,
@@ -696,6 +739,7 @@ export const Characters = [
   {
     id: '1223',
     name: 'Moze',
+    jp: 'モゼ',
     stat: {
       baseAtk: 81.6,
       baseHp: 110.4,
@@ -712,6 +756,7 @@ export const Characters = [
   {
     id: '1224',
     name: 'March 7th (The Hunt)',
+    jp: '三月<rt>みつき</rt>なのか「巡狩」',
     stat: {
       baseAtk: 76.8,
       baseHp: 124.8,
@@ -728,6 +773,7 @@ export const Characters = [
   {
     id: '1225',
     name: 'Fugue',
+    jp: '<ruby>帰忘<rt>きぼう</rt></ruby>の<ruby>流離<rt>さすらいび</rt></ruby>',
     stat: {
       baseAtk: 79.2,
       baseHp: 153.12,
@@ -744,6 +790,7 @@ export const Characters = [
   {
     id: '1301',
     name: 'Gallagher',
+    jp: 'ギャラガー',
     stat: {
       baseAtk: 72,
       baseHp: 177.6,
@@ -760,6 +807,7 @@ export const Characters = [
   {
     id: '1302',
     name: 'Argenti',
+    jp: 'アルジェンティ',
     stat: {
       baseAtk: 100.32,
       baseHp: 142.56,
@@ -776,6 +824,7 @@ export const Characters = [
   {
     id: '1303',
     name: 'Ruan Mei',
+    jp: 'ルアン・メェイ',
     stat: {
       baseAtk: 89.76,
       baseHp: 147.84,
@@ -792,6 +841,7 @@ export const Characters = [
   {
     id: '1304',
     name: 'Aventurine',
+    jp: 'アベンチュリン',
     stat: {
       baseAtk: 60.72,
       baseHp: 163.68,
@@ -808,6 +858,7 @@ export const Characters = [
   {
     id: '1305',
     name: 'Dr. Ratio',
+    jp: 'Dr.レイシオ',
     stat: {
       baseAtk: 105.6,
       baseHp: 142.56,
@@ -824,6 +875,7 @@ export const Characters = [
   {
     id: '1306',
     name: 'Sparkle',
+    jp: '花火<rt>はなび</rt>',
     stat: {
       baseAtk: 71.28,
       baseHp: 190.08,
@@ -840,6 +892,7 @@ export const Characters = [
   {
     id: '1307',
     name: 'Black Swan',
+    jp: 'ブラックスワン',
     stat: {
       baseAtk: 89.76,
       baseHp: 147.84,
@@ -856,6 +909,7 @@ export const Characters = [
   {
     id: '1308',
     name: 'Acheron',
+    jp: '黄泉<rt>よみ</rt>',
     stat: {
       baseAtk: 95.04,
       baseHp: 153.12,
@@ -872,6 +926,7 @@ export const Characters = [
   {
     id: '1309',
     name: 'Robin',
+    jp: 'ロビン',
     stat: {
       baseAtk: 87.12,
       baseHp: 174.24,
@@ -888,6 +943,7 @@ export const Characters = [
   {
     id: '1310',
     name: 'Firefly',
+    jp: 'ホタル',
     stat: {
       baseAtk: 71.28,
       baseHp: 111,
@@ -904,6 +960,7 @@ export const Characters = [
   {
     id: '1312',
     name: 'Misha',
+    jp: 'ミーシャ',
     stat: {
       baseAtk: 64.8,
       baseHp: 158.4,
@@ -920,6 +977,7 @@ export const Characters = [
   {
     id: '1313',
     name: 'Sunday',
+    jp: 'サンデー',
     stat: {
       baseAtk: 87.126,
       baseHp: 168.96,
@@ -936,6 +994,7 @@ export const Characters = [
   {
     id: '1314',
     name: 'Jade',
+    jp: 'ジェイド',
     stat: {
       baseAtk: 89.76,
       baseHp: 147.84,
@@ -952,6 +1011,7 @@ export const Characters = [
   {
     id: '1315',
     name: 'Boothill',
+    jp: 'ブートヒル',
     stat: {
       baseAtk: 84.48,
       baseHp: 163.68,
@@ -968,6 +1028,7 @@ export const Characters = [
   {
     id: '1317',
     name: 'Rappa',
+    jp: '乱破<rt>らんは</rt>',
     stat: {
       baseAtk: 97.68,
       baseHp: 147.84,
@@ -984,6 +1045,7 @@ export const Characters = [
   {
     id: '1321',
     name: 'The Dahlia',
+    jp: 'ダリア',
     stat: {
       baseAtk: 92.4,
       baseHp: 147.84,
@@ -1000,6 +1062,7 @@ export const Characters = [
   {
     id: '1401',
     name: 'The Herta',
+    jp: 'マダム・ヘルタ',
     stat: {
       baseAtk: 92.4,
       baseHp: 158.4,
@@ -1016,6 +1079,7 @@ export const Characters = [
   {
     id: '1402',
     name: 'Aglaea',
+    jp: 'アグライア',
     stat: {
       baseAtk: 95.04,
       baseHp: 168.96,
@@ -1032,6 +1096,7 @@ export const Characters = [
   {
     id: '1403',
     name: 'Tribbie',
+    jp: 'トリビー',
     stat: {
       baseAtk: 71.28,
       baseHp: 142.56,
@@ -1048,6 +1113,7 @@ export const Characters = [
   {
     id: '1404',
     name: 'Mydei',
+    jp: 'モーディス',
     stat: {
       baseAtk: 58.08,
       baseHp: 211.2,
@@ -1064,6 +1130,7 @@ export const Characters = [
   {
     id: '1405',
     name: 'Anaxa',
+    jp: 'アナイクス',
     stat: {
       baseAtk: 102.96,
       baseHp: 132,
@@ -1080,6 +1147,7 @@ export const Characters = [
   {
     id: '1406',
     name: 'Cipher',
+    jp: 'サフェル',
     stat: {
       baseAtk: 87.12,
       baseHp: 126.72,
@@ -1096,6 +1164,7 @@ export const Characters = [
   {
     id: '1407',
     name: 'Castorice',
+    jp: 'キャストリス',
     stat: {
       baseAtk: 71.28,
       baseHp: 221.76,
@@ -1112,6 +1181,7 @@ export const Characters = [
   {
     id: '1408',
     name: 'Phainon',
+    jp: 'ファイノン',
     stat: {
       baseAtk: 79.2,
       baseHp: 195.36,
@@ -1128,6 +1198,7 @@ export const Characters = [
   {
     id: '1409',
     name: 'Hyacine',
+    jp: 'ヒアンシー',
     stat: {
       baseAtk: 52.8,
       baseHp: 147.84,
@@ -1144,6 +1215,7 @@ export const Characters = [
   {
     id: '1410',
     name: 'Hysilens',
+    jp: 'セイレンス',
     stat: {
       baseAtk: 81.84,
       baseHp: 163.68,
@@ -1160,6 +1232,7 @@ export const Characters = [
   {
     id: '1412',
     name: 'Cerydra',
+    jp: 'ケリュドラ',
     stat: {
       baseAtk: 84.48,
       baseHp: 184.8,
@@ -1176,6 +1249,7 @@ export const Characters = [
   {
     id: '1413',
     name: 'Evernight',
+    jp: '長夜月<rt>ながよづき</rt>',
     stat: {
       baseAtk: 73.92,
       baseHp: 179.52,
@@ -1192,6 +1266,7 @@ export const Characters = [
   {
     id: '1414',
     name: 'Dan Heng • Permansor Terrae',
+    jp: '<ruby>丹恒<rt>たんこう</rt></ruby>・<ruby>騰荒<rt>とうこう</rt></ruby>',
     stat: {
       baseAtk: 79.2,
       baseHp: 142.56,
@@ -1208,6 +1283,7 @@ export const Characters = [
   {
     id: '1415',
     name: 'Cyrene',
+    jp: 'キュレネ',
     stat: {
       baseAtk: 60.72,
       baseHp: 190.08,
@@ -1224,6 +1300,7 @@ export const Characters = [
   {
     id: '1501',
     name: 'Sparxie',
+    jp: '火花<rt>ひばな</rt>',
     stat: {
       baseAtk: 87.12,
       baseHp: 142.56,
@@ -1240,6 +1317,7 @@ export const Characters = [
   {
     id: '1502',
     name: 'Yao Guang',
+    jp: '爻光<rt>コウコウ</rt>',
     stat: {
       baseAtk: 60.72,
       baseHp: 190.08,
@@ -1256,6 +1334,7 @@ export const Characters = [
   {
     id: '1504',
     name: 'Ashveil',
+    jp: '不死途<rt>シナズ</rt>',
     stat: {
       baseAtk: 87.12,
       baseHp: 137.28,
@@ -1274,6 +1353,7 @@ export const Characters = [
   {
     id: '8001',
     name: 'Trailblazer (Destruction)',
+    jp: '開拓者「壊滅」',
     stat: {
       baseAtk: 81.84,
       baseHp: 168.96,
@@ -1290,6 +1370,7 @@ export const Characters = [
   {
     id: '8003',
     name: 'Trailblazer (Preservation)',
+    jp: '開拓者「存護」',
     stat: {
       baseAtk: 84.48,
       baseHp: 163.68,
@@ -1306,6 +1387,7 @@ export const Characters = [
   {
     id: '8005',
     name: 'Trailblazer (Harmony)',
+    jp: '開拓者「調和」',
     stat: {
       baseAtk: 60.72,
       baseHp: 147.84,
@@ -1322,6 +1404,7 @@ export const Characters = [
   {
     id: '8007',
     name: 'Trailblazer (Remembrance)',
+    jp: '開拓者「記憶」',
     stat: {
       baseAtk: 73.92,
       baseHp: 142.56,

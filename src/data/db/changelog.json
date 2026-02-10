@@ -1,6 +1,11 @@
 [
   {
     "version": "1.2-4",
+    "date": "Feb 10th, 2026",
+    "desc": ["Fixed: Character's Build no longer becomes overwritten when switching teammates"]
+  },
+  {
+    "version": "1.2-4",
     "date": "Feb 9th, 2026",
     "desc": [
       "Content Version: <span class=\"text-desc\">v4.1v1</span>",
