@@ -76,7 +76,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Talent',
       title: `Rancor: Retribution in Kind`,
-      content: `Ashveil starts with <span class="text-desc">3</span> <b>Charge(s)</b>, up to a max of <span class="text-desc">5</span>. After <b class="text-red">Bait</b> is attacked by another ally target, Ashveil consumes <span class="text-desc">4</span> <b>Charge(s)</b> to launch a <u>Follow-Up ATK</u> against <b class="text-red">Bait</b>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Ashveil's ATK, and subsequently gaining <span class="text-desc">1</span> stack(s) of <b class="text-violet-400">Gluttony</b>, stacking up to <span class="text-desc">12</span> time(s).`,
+      content: `Ashveil starts with <span class="text-desc">3</span> <b>Charge(s)</b>, up to a max of <span class="text-desc">5</span>. After <b class="text-red">Bait</b> is attacked by another ally target, Ashveil consumes <span class="text-desc">1</span> <b>Charge(s)</b> to launch a <u>Follow-Up ATK</u> against <b class="text-red">Bait</b>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Ashveil's ATK, and subsequently gaining <span class="text-desc">1</span> stack(s) of <b class="text-violet-400">Gluttony</b>, stacking up to <span class="text-desc">12</span> time(s).`,
       value: [{ base: 180, growth: 18, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ST,
