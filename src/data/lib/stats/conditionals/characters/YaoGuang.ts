@@ -63,7 +63,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     summon_skill: {
       trace: 'Elation Skill',
       title: 'Let Thy Fortune Burst in Flames',
-      content: `Inflicts <b class="text-red">Woe's Whisper</b> on all enemies, lasting for <span class="text-desc">3</span> turn(s). Increases DMG received by enemy targets under the <b class="text-red">Woe's Whisper</b> state by <span class="text-desc">16%</span>. Deals <b class="text-hsr-physical">Physical <b class="elation">Elation DMG</b></b> equal to {{0}}% to all enemies. Afterward, deals <b class="text-hsr-physical">Physical <b class="elation">Elation DMG</b></b> equal to {{1}}% to one random enemy <span class="text-desc">5</span> time(s).`,
+      content: `Inflicts <b class="text-red">Woe's Whisper</b> on all enemies, lasting for <span class="text-desc">3</span> turn(s). Increases DMG received by enemy targets under the <b class="text-red">Woe's Whisper</b> state by <span class="text-desc">16%</span>. Deals {{0}}% <b class="text-hsr-physical">Physical <b class="elation">Elation DMG</b></b> to all enemies. Then, deals <span class="text-desc">5</span> instance(s) of {{1}}% <b class="text-hsr-physical">Physical <b class="elation">Elation DMG</b></b> to one random enemy.`,
       value: [
         { base: 50, growth: 5, style: 'curved' },
         { base: 10, growth: 1, style: 'curved' },
@@ -123,7 +123,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c1: {
       trace: 'Eidolon 1',
       title: 'Chuckle Chimes Where Jade Falls',
-      content: `Increases the fixed amount of <b class="text-orange-400">Punchline</b> taken into account in <b class="text-aha">Aha</b>'s Ultimate-triggered extra turn to <span class="text-desc">40</span>, and the <b class="elation">Elation DMG</b> dealt by all ally targets ignores <span class="text-desc">20%</span> of the target's DEF.`,
+      content: `In <b class="text-aha">Aha</b>'s extra turn triggered by Yao Guang's Ultimate, the fixed amount of <b class="text-orange-400">Punchline</b> taken into account increases to <span class="text-desc">40</span>. When all all targets deal <b class="elation">Elation DMG</b>, ignores <span class="text-desc">20%</span> of the target's DEF.`,
       image: 'asset/traces/SkillIcon_1502_Rank1.webp',
     },
     c2: {
@@ -157,7 +157,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c6: {
       trace: 'Eidolon 6',
       title: 'Ferried Along the Astral Arc',
-      content: `All allies' <b class="elation">Elation DMG</b> merrymakes by <span class="text-desc">25%</span>. Increases DMG multiplier of Yao Guang's Elation Skill by <span class="text-desc">100%</span> of the original multiplier.`,
+      content: `All ally targets' <b class="elation">Elation DMG</b> merrymakes by <span class="text-desc">25%</span>. Increases the DMG multiplier of Yao Guang's Elation Skill by <span class="text-desc">100%</span> of the original multiplier.`,
       image: 'asset/traces/SkillIcon_1502_Rank6.webp',
     },
   }
