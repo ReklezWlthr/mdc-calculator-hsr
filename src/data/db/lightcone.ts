@@ -359,7 +359,7 @@ export const LightCones = [
     baseAtk: 16.8,
     baseDef: 12,
     type: PathType.ELATION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Indulgence',
       detail: `When <b class="text-aha">Aha Instant</b> is activated, the wearer's Elation increases by {{0}}%, lasting until <b class="text-aha">Aha Instant</b> ends.`,
@@ -374,7 +374,7 @@ export const LightCones = [
     baseAtk: 14.4,
     baseDef: 12,
     type: PathType.ELATION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Mourning',
       detail: `When <b class="text-orange-400">Punchline</b> is <span class="text-desc">10</span> or more, the wearer's CRIT DMG increases by {{0}}%.`,
@@ -1435,7 +1435,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 18,
     type: PathType.ELATION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Rumble',
       detail: `Increases the wearer's Elation by {{0}}%. When the wearer uses an Elation Skill, increases <b class="elation">Elation DMG</b> taken by all enemies by {{1}}% for <span class="text-desc">2</span> turn(s).`,
@@ -1453,7 +1453,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 18,
     type: PathType.ELATION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Decision',
       detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer uses an Elation Skill, increases Elation by {{0}}%, stacking up to <span class="text-desc">2</span> times.`,
@@ -2609,7 +2609,7 @@ export const LightCones = [
     baseAtk: 24,
     baseDef: 24,
     type: PathType.ELATION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Game Changer',
       detail: `Increases the wearer's SPD by {{0}}%. When the wearer enters combat or uses Ultimate on an ally target, the wearer gains <b>Great Fortune</b> for <span class="text-desc">3</span> turn(s). While the wearer has <b>Great Fortune</b>, all allies' CRIT Rate increases by {{1}}%, CRIT DMG increases by {{2}}%, and the wearer's Energy Regeneration Rate increases by {{3}}%.

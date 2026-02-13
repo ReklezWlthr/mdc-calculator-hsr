@@ -1329,7 +1329,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.ELATION,
     element: Element.PHYSICAL,
-    beta: true,
+    beta: false,
   },
   {
     id: '1504',
