@@ -154,7 +154,7 @@ export const damageStringConstruct = (
 
   const elation = _.max([stats.getTotalElation(), scaling.elation || 0])
   const punchline = scaling.punchline || +globalMod.punchline
-  const punchlineMultiplier = (6 * punchline) / (+punchline + 200)
+  const punchlineMultiplier = (5 * punchline) / (+punchline + 240)
 
   const globalBonus = _.sum(_.map(scaling.bonusSplit, (item, i) => item * scaling.hitSplit?.[i])) + bonusDMG()
   const raw = (split: number) =>
