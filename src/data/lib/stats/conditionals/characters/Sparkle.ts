@@ -52,7 +52,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Ultimate',
       title: 'The Hero with a Thousand Faces',
-      content: `Recovers <span class="text-desc">6</span> Skill Points for the team. If Skill Points overflow during recovery, overflowing Skill Points are recorded up to <span class="text-desc">10</span> point(s). When an ally character's turn ends, if the team has fewer Skill Points than the maximum, Sparkle consumes the recorded value to recover Skill Points for the team, until the limit is reached. Then, grants all allies <b class="text-hsr-quantum">Cipher</b>. For ally targets with <b class="text-hsr-quantum">Cipher</b> each stack of Boost of DMG taken by enemies effect provided by Sparkle's Talent additionally increases by {{0}}%, lasting for <span class="text-desc">3</span> turns.`,
+      content: `Recovers <span class="text-desc">6</span> Skill Points for the team. If Skill Points overflow during recovery, overflowing Skill Points are recorded up to <span class="text-desc">10</span> point(s). When an ally character's turn ends, if the team has fewer Skill Points than the maximum, Sparkle consumes the recorded value to recover Skill Points for the team, until the limit is reached. Then, grants all allies <b class="text-hsr-quantum">Cipher</b>. For ally targets with <b class="text-hsr-quantum">Cipher</b>, each stack of the DMG Boost effect provided by Sparkle's Talent additionally increases by {{0}}%, lasting for <span class="text-desc">3</span> turns.`,
       value: [{ base: 3.6, growth: 0.24, style: 'curved' }],
       level: ult,
       tag: AbilityTag.SUPPORT,
