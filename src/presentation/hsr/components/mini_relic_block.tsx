@@ -2,7 +2,7 @@ import { toPercentage } from '@src/core/utils/data_format'
 import { getMainStat, getNearestSpd, getRolls } from '@src/core/utils/data_format'
 import { findArtifactSet } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { RelicPiece, RelicPieceIcon, StatIcons, Stats } from '@src/domain/constant'
+import { RelicPiece, StatIcons, Stats } from '@src/domain/constant'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
@@ -45,10 +45,7 @@ export const MiniRelicBlock = observer(
         {aId ? (
           <div className="flex items-center justify-between gap-4">
             <div className="relative flex flex-col items-center w-1/3 gap-1">
-              <img
-                src={`https://api.hakush.in/hsr/UI/relicfigures/IconRelic_${setData?.id}_${relic?.type}.webp`}
-                className="w-11 h-11"
-              />
+              <img src={`/asset/relic/piece/${setData?.id}_${(relic?.type - 1) % 4}.webp`} className="w-11 h-11" />
               <RarityGauge rarity={relic?.quality} textSize="text-xs" />
               <div className="flex items-center justify-between w-full gap-2 text-xs">
                 <img
@@ -88,5 +85,5 @@ export const MiniRelicBlock = observer(
         )}
       </div>
     )
-  }
+  },
 )

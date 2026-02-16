@@ -81,7 +81,7 @@ export const TeamModalBlock = ({ team, button }: { team: TSetup; button: React.R
             >
               {!!item.cId && (
                 <img
-                  src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
+                  src={`/asset/avatar/portrait//${formatIdIcon(
                     item.cId,
                     settingStore.settings?.travelerGender
                   )}.webp`}

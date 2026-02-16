@@ -50,7 +50,7 @@ export const ArtifactListModal = observer(
                 (artifact) => ({
                   name: artifact.name,
                   value: artifact.id.toString(),
-                  img: `https://api.hakush.in/hsr/UI/itemfigures/${artifact?.icon}.webp`,
+                  img: `/asset/relic/set/${artifact.id}.webp`,
                 })
               )}
               placeholder="Artifact Set"

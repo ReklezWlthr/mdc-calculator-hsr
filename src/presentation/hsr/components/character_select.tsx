@@ -27,7 +27,7 @@ export const CharacterSelect = ({
       <img
         src={
           id
-            ? `https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
+            ? `/asset/avatar/portrait//${formatIdIcon(
                 id,
                 settingStore.settings?.travelerGender
               )}.webp`

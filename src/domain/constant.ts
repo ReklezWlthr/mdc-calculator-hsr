@@ -315,12 +315,12 @@ export const RelicPiece = Object.freeze({
 })
 
 export const RelicPieceIcon = Object.freeze({
-  1: 'Head',
-  2: 'Hands',
-  3: 'Body',
-  4: 'Foot',
-  5: 'Neck',
-  6: 'Goods',
+  1: 'partHead',
+  2: 'partHands',
+  3: 'partBody',
+  4: 'partFeet',
+  5: 'partPlanarSphere',
+  6: 'partLinkRope',
 })
 
 export const AscensionOptions = [

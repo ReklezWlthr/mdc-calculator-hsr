@@ -77,7 +77,7 @@ export const ArtifactInventory = observer(() => {
               {_.map(Array(6), (_item, index) => (
                 <TypeButton
                   field="types"
-                  icon={`https://api.hakush.in/hsr/UI/relicfigures/IconRelic${RelicPieceIcon[index + 1]}.webp`}
+                  icon={`/asset/relic/part/${RelicPieceIcon[index + 1]}.webp`}
                   value={index + 1}
                   key={index}
                 />
@@ -90,8 +90,8 @@ export const ArtifactInventory = observer(() => {
                 (artifact) => ({
                   name: artifact.name,
                   value: artifact.id.toString(),
-                  img: `https://api.hakush.in/hsr/UI/itemfigures/${artifact?.icon}.webp`,
-                })
+                  img: `/asset/relic/set/${artifact.id}.webp`,
+                }),
               )}
               placeholder="Relic Set"
               onChange={(value) => setParams({ set: value?.value })}
@@ -126,7 +126,7 @@ export const ArtifactInventory = observer(() => {
                 _.slice(filteredArtifacts, params.per_page * (params.page - 1), params.per_page * params.page),
                 (artifact) => (
                   <RelicBlock key={artifact.id} piece={artifact?.type} aId={artifact?.id} showWearer />
-                )
+                ),
               )}
             </div>
             <div className="flex items-center gap-4 text-gray">

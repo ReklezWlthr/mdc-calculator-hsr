@@ -22,7 +22,7 @@ export const BuildModalBlock = ({ build, button }: { build: IBuild; button: Reac
           <div className="relative w-24 h-full overflow-hidden shrink-0">
             <div className="absolute top-0 left-0 z-10 w-full h-full from-12% to-60% bg-gradient-to-l from-primary-darker to-transparent" />
             <img
-              src={`https://api.hakush.in/hsr/UI/lightconemaxfigures/${lc.id}.webp`}
+              src={`/asset/lightcone/full/${lc.id}.webp`}
               className="object-cover h-16 scale-[300%] mt-9 ml-4"
             />
             <div className="absolute z-10 p-1 text-xs text-white rounded-md bottom-1 left-1 bg-primary-dark">
@@ -46,7 +46,7 @@ export const BuildModalBlock = ({ build, button }: { build: IBuild; button: Reac
                 value >= 2 &&
                 _.map(Array(_.floor(value / 2)), (_item) => (
                   <img
-                    src={`https://api.hakush.in/hsr/UI/itemfigures/${findArtifactSet(key)?.icon}.webp`}
+                    src={`/asset/relic/set/${findArtifactSet(key)?.icon}.webp`}
                     className="w-8 h-8"
                   />
                 ))

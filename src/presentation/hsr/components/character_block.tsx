@@ -59,7 +59,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
           {characterData && (
             <>
               <img
-                src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
+                src={`/asset/avatar/portrait//${formatIdIcon(
                   characterData?.id,
                   settingStore.settings?.travelerGender
                 )}.webp`}

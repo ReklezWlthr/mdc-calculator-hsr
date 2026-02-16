@@ -148,7 +148,7 @@ export const CharDetail = observer(() => {
             <i className="text-6xl animate-spin fa-solid fa-circle-notch text-gray" />
           </div>
           <img
-            src={`https://api.hakush.in/hsr/UI/avatardrawcard/${id}.webp`}
+            src={`/asset/avatar/full/${id}.webp`}
             className={loading ? 'hidden' : 'block'}
             onLoad={() => setLoading(false)}
           />

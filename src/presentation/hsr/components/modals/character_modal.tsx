@@ -153,7 +153,7 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
                   <RarityGauge rarity={item.rarity} />
                 </div>
                 <img
-                  src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
+                  src={`/asset/avatar/portrait//${formatIdIcon(
                     item.id,
                     settingStore.settings?.travelerGender,
                   )}.webp`}

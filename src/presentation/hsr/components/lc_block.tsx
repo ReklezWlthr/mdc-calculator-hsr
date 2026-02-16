@@ -173,7 +173,7 @@ export const LCBlock = observer(
                   <i className="text-5xl animate-spin fa-solid fa-circle-notch text-gray" />
                 </div>
                 <img
-                  src={`https://api.hakush.in/hsr/UI/lightconemaxfigures/${weaponData?.id}.webp`}
+                  src={`/asset/lightcone/full/${weaponData?.id}.webp`}
                   className={classNames(
                     'object-contain p-1 flex h-full justify-center border rounded-lg bg-primary-darker duration-200',
                     loading ? 'hidden' : 'block',

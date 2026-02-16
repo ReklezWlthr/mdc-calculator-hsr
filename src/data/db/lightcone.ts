@@ -2590,7 +2590,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 21,
     type: PathType.ELATION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Center of Attention',
       detail: `Increases the wearer's CRIT DMG by {{0}}%. While the wearer is on the field, for every Elation character on the team, increases the Skill Point upper limit by <span class="text-desc">1</span>, up to a max increase of <span class="text-desc">3</span>. For every <span class="text-desc">1</span> Skill Point the wearer consumes, ignores {{1}}% of enemy targets' DEF when this unit deals <b class="elation">Elation DMG</b>, stacking up to <span class="text-desc">4</span> times. If <span class="text-desc">4</span> or more Skill Points are consumed in the same turn, the wearer gains <b>Stream Promo</b>, which increases all allies' Elation by {{2}}%. Light Cone effects of the same type cannot stack.`,
@@ -2622,25 +2622,25 @@ export const LightCones = [
       ],
     },
   },
-  {
-    id: '23056',
-    name: 'The Finale of a Lie',
-    rarity: 5,
-    baseHp: 48,
-    baseAtk: 26.4,
-    baseDef: 21,
-    type: PathType.HUNT,
-    beta: true,
-    desc: {
-      name: 'Subsume',
-      detail: `Increases the wearer's CRIT Rate by {{0}}%. At the start of battle or for every <span class="text-desc">4</span> <u>Follow-Up ATKs</u> the wearer uses, the wearer gains <b>Umbra Devourer</b>, lasting for <span class="text-desc">3</span> turn(s). While the wearer has <b>Umbra Devourer</b>, increases ATK by {{1}}% and reduces all enemies' DEF by {{2}}%. Effects of the same kind cannot stack.`,
-      properties: [
-        { base: 18, growth: 3 },
-        { base: 40, growth: 10 },
-        { base: 12, growth: 3 },
-      ],
-    },
-  },
+  // {
+  //   id: '23056',
+  //   name: 'The Finale of a Lie',
+  //   rarity: 5,
+  //   baseHp: 48,
+  //   baseAtk: 26.4,
+  //   baseDef: 21,
+  //   type: PathType.HUNT,
+  //   beta: true,
+  //   desc: {
+  //     name: 'Subsume',
+  //     detail: `Increases the wearer's CRIT Rate by {{0}}%. At the start of battle or for every <span class="text-desc">4</span> <u>Follow-Up ATKs</u> the wearer uses, the wearer gains <b>Umbra Devourer</b>, lasting for <span class="text-desc">3</span> turn(s). While the wearer has <b>Umbra Devourer</b>, increases ATK by {{1}}% and reduces all enemies' DEF by {{2}}%. Effects of the same kind cannot stack.`,
+  //     properties: [
+  //       { base: 18, growth: 3 },
+  //       { base: 40, growth: 10 },
+  //       { base: 12, growth: 3 },
+  //     ],
+  //   },
+  // },
   //---------------------
   //   Herta 5 Star
   //---------------------
@@ -2755,22 +2755,22 @@ export const LightCones = [
       ],
     },
   },
-  {
-    id: '24006',
-    name: `Elation Brimming With Blessings`,
-    rarity: 5,
-    baseHp: 43.2,
-    baseAtk: 24,
-    baseDef: 21,
-    type: PathType.ELATION,
-    beta: true,
-    desc: {
-      name: 'Opening',
-      detail: `Increases the wearer's ATK by {{0}}%. After the wearer uses their Skill or Ultimate on one ally character, increases the target's Elation stat by {{1}}% for <span class="text-desc">2</span> turn(s).`,
-      properties: [
-        { base: 20, growth: 5 },
-        { base: 12, growth: 3 },
-      ],
-    },
-  },
+  // {
+  //   id: '24006',
+  //   name: `Elation Brimming With Blessings`,
+  //   rarity: 5,
+  //   baseHp: 43.2,
+  //   baseAtk: 24,
+  //   baseDef: 21,
+  //   type: PathType.ELATION,
+  //   beta: true,
+  //   desc: {
+  //     name: 'Opening',
+  //     detail: `Increases the wearer's ATK by {{0}}%. After the wearer uses their Skill or Ultimate on one ally character, increases the target's Elation stat by {{1}}% for <span class="text-desc">2</span> turn(s).`,
+  //     properties: [
+  //       { base: 20, growth: 5 },
+  //       { base: 12, growth: 3 },
+  //     ],
+  //   },
+  // },
 ]

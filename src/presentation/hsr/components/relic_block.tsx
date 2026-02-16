@@ -40,14 +40,14 @@ const MenuButton = ({
     <div
       className={classNames(
         'flex items-center gap-1.5 translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100',
-        duration
+        duration,
       )}
     >
       <p className="text-xs">{title}</p>
       <i
         className={classNames(
           'flex items-center justify-center w-10 h-10 p-2 text-lg rounded-full bg-primary-light hover:bg-primary cursor-pointer duration-200',
-          icon
+          icon,
         )}
         onClick={onClick}
       />
@@ -95,7 +95,7 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
         title="Unequip Artifact"
         desc="Do you want to unequip this artifact?"
         onConfirm={onUnEquip}
-      />
+      />,
     )
   }, [props.index, props.aId])
 
@@ -128,7 +128,7 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
         title="Delete Artifact"
         desc="Do you want to delete this artifact? This will also remove and unequip this artifact in every build that uses it."
         onConfirm={onDelete}
-      />
+      />,
     )
   }, [props.index, props.aId])
 
@@ -141,12 +141,12 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
         'flex flex-col w-full font-bold text-white duration-200 rounded-lg bg-primary-dark h-[250px] group ring-inset ring-1 ring-primary-light relative',
         {
           'hover:scale-[97%]': canEdit,
-        }
+        },
       )}
     >
       <div className="absolute top-0 right-0 flex items-center justify-center h-8 pointer-events-none w-9 rounded-se-lg rounded-es-lg bg-primary-light">
         <img
-          src={`https://api.hakush.in/hsr/UI/relicfigures/IconRelic${RelicPieceIcon[props.piece]}.webp`}
+          src={`/asset/relic/part/${RelicPieceIcon[props.piece]}.webp`}
           className="w-5 h-5"
         />
       </div>
@@ -156,7 +156,7 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
             <div className="flex gap-4">
               <div className="relative w-14 h-14 shrink-0">
                 <img
-                  src={`https://api.hakush.in/hsr/UI/relicfigures/IconRelic_${setData?.id}_${artifact?.type}.webp`}
+                  src={`/asset/relic/piece/${setData?.id}_${(artifact?.type - 1) % 4}.webp`}
                   className="w-full h-full"
                 />
                 <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs bg-opacity-75 rounded-full -bottom-0 -right-2 bg-primary-light">

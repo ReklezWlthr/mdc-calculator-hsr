@@ -159,7 +159,7 @@ export const MyCharacters = observer(() => {
                       <div className="absolute right-0 px-1 rounded-l-[4px] bottom-1/4 bg-rose-600">Beta</div>
                     )}
                     <img
-                      src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
+                      src={`/asset/avatar/portrait//${formatIdIcon(
                         item.id,
                         settingStore.settings?.travelerGender
                       )}.webp`}

@@ -59,8 +59,8 @@ export const IntroModal = observer(() => {
           being presented in tooltips.
         </BulletPoint>
         <BulletPoint>
-          Tribbie's E1 <b className="true">True DMG</b> is not portrayed to its maximum potential since it
-          calculates the <b>TOTAL</b> damage dealt across all enemies which this calculator currently cannot do.
+          Tribbie's E1 <b className="true">True DMG</b> is not portrayed to its maximum potential since it calculates
+          the <b>TOTAL</b> damage dealt across all enemies which this calculator currently cannot do.
         </BulletPoint>
       </Collapsible>
       <div className="p-3 space-y-1 text-sm transition-all duration-200 rounded-lg bg-primary-darker text-gray">
@@ -117,16 +117,6 @@ export const IntroModal = observer(() => {
               Wanderer.moe
             </a>{' '}
             - Emotes
-          </BulletPoint>
-          <BulletPoint>
-            <a className="cursor-pointer focus:outline-none text-desc" href="https://hsr17.hakush.in/" target="_blank">
-              Hakush.in
-            </a>{' '}
-            and{' '}
-            <a className="cursor-pointer focus:outline-none text-desc" href="https://homdgcat.wiki/sr/" target="_blank">
-              Homdgcat.wiki
-            </a>{' '}
-            - Images and Information on Beta Contents
           </BulletPoint>
         </div>
       </div>

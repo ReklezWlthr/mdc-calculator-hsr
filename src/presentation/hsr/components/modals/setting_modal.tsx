@@ -26,7 +26,7 @@ export const SettingModal = observer(() => {
           <p>Stelle</p>
         </div>
       </div>
-      <div className="flex items-center justify-between p-3 rounded-lg bg-primary-darker gap-x-2">
+      {/* <div className="flex items-center justify-between p-3 rounded-lg bg-primary-darker gap-x-2">
         <div className="w-2/3">
           <p className="text-sm text-gray">
             Hide <b>Beta</b> Contents
@@ -37,7 +37,7 @@ export const SettingModal = observer(() => {
           enabled={settingStore.settings.liveOnly}
           onClick={(v) => settingStore.setSettingValue({ liveOnly: v })}
         />
-      </div>
+      </div> */}
       <div className="p-3 space-y-3 rounded-lg bg-primary-darker">
         <p className="text-white">Default Data</p>
         <div className="flex items-center justify-between gap-x-2">

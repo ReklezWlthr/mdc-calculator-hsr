@@ -66,7 +66,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
           setValue('main', _.head(MainStat[buttonType]))
         }}
       >
-        <img src={`https://api.hakush.in/hsr/UI/relicfigures/IconRelic${RelicPieceIcon[buttonType]}.webp`} />
+        <img src={`/asset/relic/part/${RelicPieceIcon[buttonType]}.webp`} />
       </div>
     )
   }
@@ -76,7 +76,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
 
     const trimmedSub = _.map(
       _.filter(subList, (item) => item.stat && item.value),
-      (item) => ({ ...item, value: parseFloat(item.value) })
+      (item) => ({ ...item, value: parseFloat(item.value) }),
     )
     const unique = _.uniqBy(trimmedSub, 'stat')
     if (unique.length !== trimmedSub.length) return setError('Duplicated Sub Stats')
@@ -109,9 +109,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
       </div>
       <div className="flex items-center gap-2">
         <div className="border rounded-full w-9 h-9 bg-primary-darker border-primary-light shrink-0">
-          {setData?.icon && (
-            <img src={`https://api.hakush.in/hsr/UI/itemfigures/${setData?.icon}.webp`} className="scale-105" />
-          )}
+          {setData?.icon && <img src={`/asset/relic/set/${setData.id}.webp`} className="scale-105" />}
         </div>
         <Controller
           name="setId"
@@ -125,8 +123,8 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
                 (artifact) => ({
                   name: artifact.name,
                   value: artifact.id.toString(),
-                  img: `https://api.hakush.in/hsr/UI/itemfigures/${artifact.icon}.webp`,
-                })
+                  img: `/asset/relic/set/${artifact.id}.webp`,
+                }),
               )}
               placeholder="Relic Set"
               onChange={(value) => field.onChange(value?.value)}

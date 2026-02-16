@@ -31,7 +31,7 @@ export const BuildBlock = observer(({ build, owner, onClick, selected }: BuildBl
         <div className="relative w-16 h-full overflow-hidden shrink-0">
           <div className="absolute top-0 left-0 z-10 w-full h-full from-8% to-40% bg-gradient-to-l from-primary-dark to-transparent" />
           <img
-            src={`https://api.hakush.in/hsr/UI/avatarshopicon/${formatIdIcon(
+            src={`/asset/avatar/portrait//${formatIdIcon(
               owner,
               settingStore.settings?.travelerGender
             )}.webp`}
