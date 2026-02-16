@@ -176,8 +176,11 @@ export const StatsModal = observer(
       )
 
     const elationSpd = compare && teamIndex >= 0 ? setupStore.ahaSpd[teamIndex] : calculatorStore.ahaSpd
+    const punchline =
+      compare && teamIndex >= 0 ? calculatorStore.globalMod[teamIndex].punchline : calculatorStore.globalMod.punchline
     const ahaSpd = _.size(elationSpd) ? 80 + (elationSpd?.[0] || 0) / 5 + (elationSpd?.[1] || 0) / 10 : 0
     const ahaDividend = [5, 10]
+    const punchlineMulti = (5 * punchline) / (+punchline + 240)
 
     return (
       <div className="w-[65vw] bg-primary-dark rounded-lg p-3 space-y-2">
@@ -238,7 +241,7 @@ export const StatsModal = observer(
                 <b className="text-aha">Aha</b> SPD <span className="text-red">{_.floor(ahaSpd, 1)}</span>
               </p>
               {!!_.size(elationSpd) && (
-                <BulletPoint>
+                <BulletPoint color="text-xs text-blue">
                   <span className="text-xs">
                     <b className="text-red">{_.floor(ahaSpd, 1)}</b> = <span className="text-blue">80</span>
                     {_.map(elationSpd, (ss, ii) => (
@@ -247,6 +250,21 @@ export const StatsModal = observer(
                         + (<span className="text-desc">{_.floor(ss, 1)}</span> ÷ {ahaDividend[ii]})
                       </span>
                     ))}
+                  </span>
+                </BulletPoint>
+              )}
+            </div>
+            <div className="space-y-1">
+              <p className="font-bold text-white">
+                Global <b className="text-orange-400">Punchline</b> Multiplier{' '}
+                <span className="text-red">{toPercentage(punchlineMulti, 2)}</span>
+              </p>
+              {!!_.size(elationSpd) && (
+                <BulletPoint color="text-xs text-blue">
+                  <span className="text-xs">
+                    <b className="text-red">{toPercentage(punchlineMulti, 2)}</b> = (
+                    <span className="text-orange-400">{punchline}</span> × 5) ÷ (
+                    <span className="text-orange-400">{punchline}</span> + 240)
                   </span>
                 </BulletPoint>
               )}
