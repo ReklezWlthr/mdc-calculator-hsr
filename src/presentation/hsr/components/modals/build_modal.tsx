@@ -46,7 +46,7 @@ export const BuildModalBlock = ({ build, button }: { build: IBuild; button: Reac
                 value >= 2 &&
                 _.map(Array(_.floor(value / 2)), (_item) => (
                   <img
-                    src={`/asset/relic/set/${findArtifactSet(key)?.icon}.webp`}
+                    src={`/asset/relic/set/${findArtifactSet(key)?.id}.webp`}
                     className="w-8 h-8"
                   />
                 ))
