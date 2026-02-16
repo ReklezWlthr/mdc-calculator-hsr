@@ -1319,9 +1319,9 @@ export const Characters = [
     name: 'Yao Guang',
     jp: '爻光<rt>コウコウ</rt>',
     stat: {
-      baseAtk: 60.72,
-      baseHp: 190.08,
-      baseDef: 79.2,
+      baseAtk: 63.36,
+      baseHp: 168.96,
+      baseDef: 89.1,
       baseSpd: 101,
       energy: 180,
     },
@@ -1346,7 +1346,7 @@ export const Characters = [
   //   rarity: 5,
   //   path: PathType.HUNT,
   //   element: Element.LIGHTNING,
-  //   beta: true,
+  //   beta: false,
   // },
 
   // Odd = Male, Even = Female
