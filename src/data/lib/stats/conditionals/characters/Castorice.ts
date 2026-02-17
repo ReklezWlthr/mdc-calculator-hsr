@@ -355,7 +355,6 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               property: TalentProperty.SERVANT,
               type: TalentType.SERVANT,
               sum: true,
-              summon: true,
               useOwnerStats: true,
               multiplier: c1Mult,
             },

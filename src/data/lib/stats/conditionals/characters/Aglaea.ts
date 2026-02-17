@@ -225,7 +225,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
       base.SUMMON_STATS = _.cloneDeep({
@@ -282,7 +282,6 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               type: TalentType.SERVANT,
               break: 10,
               sum: true,
-              summon: true,
             },
             {
               name: 'Adjacent - Garmentmaker',
@@ -291,7 +290,6 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               property: TalentProperty.SERVANT,
               type: TalentType.SERVANT,
               break: 5,
-              summon: true,
             },
           ]
         : [
@@ -397,7 +395,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.aglea_c1) {
         base.VULNERABILITY.push({
@@ -419,7 +417,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.supreme_stance && a.a2)
         base.CALLBACK.push(function (x) {

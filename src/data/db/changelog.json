@@ -1,6 +1,15 @@
 [
   {
     "version": "1.2-4",
+    "date": "Feb 17th, 2026",
+    "desc": [
+      "Fixed: Cyrene's A6 now properly states the sources of DMG Bonus.",
+      "Fixed: Some remembrance characters' memoprite attacks are no longer incorrectly labeled as Action Bar Summons.",
+      "Updated: Sunday's skill now grants the full <span class=\"text-desc\">80%</span> DMG Bonus to targets with DHPT's Souldragon."
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Feb 10th, 2026",
     "desc": ["Fixed: Character's Build no longer becomes overwritten when switching teammates"]
   },

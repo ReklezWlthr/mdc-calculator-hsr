@@ -1130,10 +1130,10 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       const spd = x.getSpd()
 
       if (a.a6 && spd >= 180) {
-        _.forEach(all, (t) => {
+        _.forEach(all, (t, ii) => {
           t[Stats.ALL_DMG].push({
             name: `Ascension 6 Passive`,
-            source: 'Self',
+            source: index === ii ? 'Self' : 'Cyrene',
             value: 0.2,
           })
           if (t.SUMMON_STATS) {

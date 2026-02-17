@@ -222,7 +222,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
       base.SUMMON_STATS = _.cloneDeep({
@@ -264,7 +264,6 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
               property: TalentProperty.SERVANT,
               type: TalentType.SERVANT,
               sum: true,
-              summon: true,
             },
           ]
         : [
@@ -348,7 +347,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },
@@ -362,7 +361,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       x.CALLBACK.push(function P99(base, b, w, all) {
         const index = _.findIndex(team, (item) => item.cId === '8007')
@@ -426,7 +425,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
                     if (
                       !_.includes(
                         [TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE, TalentProperty.SERVANT],
-                        ss.property
+                        ss.property,
                       ) &&
                       // If DMG is DOT, only trigger True DMG if it's a detonation from supported target
                       (ss.property === TalentProperty.DOT
@@ -443,7 +442,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
                       })
                     }
                   })
-                }
+                },
               )
             })
           }

@@ -172,7 +172,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -234,6 +234,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           property: TalentProperty.FUA,
           type: TalentType.NONE,
           hitSplit: [0.25, 0.25, 0.25, 0.25],
+          summon: true,
         },
       ]
       base.TALENT_SCALING = [
@@ -267,7 +268,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       _.forEach(team, (x, i) => {
         if (+form.bondmate - 1 === i && x?.cId === base.ID) {
@@ -287,7 +288,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       }[],
       weakness: Element[],
       broken: boolean,
-      globalCallback: CallbackType[]
+      globalCallback: CallbackType[],
     ) => {
       globalCallback.push(function P99(_b, _d, _w, all) {
         const atk = all[index].getAtk(true)
@@ -311,6 +312,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               type: TalentType.NONE,
               multiplier: c >= 2 ? 2 : 1,
               overrideIndex: i,
+              summon: true,
             })
             if (a.a6) {
               base.ULT_SCALING.push({
@@ -321,6 +323,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
                 type: TalentType.NONE,
                 multiplier: c >= 2 ? 2 : 1,
                 overrideIndex: i,
+                summon: true,
               })
             }
             if (c >= 1) {
@@ -345,6 +348,7 @@ const Terravox = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
                 property: TalentProperty.ADD,
                 type: TalentType.NONE,
                 overrideIndex: i,
+                summon: true,
               })
             }
           }

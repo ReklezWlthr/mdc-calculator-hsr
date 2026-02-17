@@ -326,8 +326,8 @@ export const StatsModal = observer(
                     Summon DEF PEN
                     <Tooltip
                       title="Summon DEF PEN"
-                      body="Refers to the amount of DEF PEN granted to the character's Action Bar Summons (e.g. Lightning Lord, Numby). This value does not affect memosprites. Please refer to the Memosprite's own DEF PEN if that's what you are looking for."
-                      style="w-[350px] font-normal"
+                      body={`Refers to the amount of "additional" DEF PEN granted to the character's Action Bar Summons (e.g. Lightning Lord, Numby, Souldragon). This value is additive to other DEF PEN, and does not affect memosprites. Please refer to the Memosprite's own DEF PEN if that's what you are looking for.`}
+                      style="w-[380px] font-normal"
                       containerStyle="inline-block mx-1"
                     >
                       <i className="fa-regular fa-question-circle" />

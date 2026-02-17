@@ -195,7 +195,7 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -249,15 +249,18 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (aForm.sunday_skill) {
-        base[Stats.ALL_DMG].push({
-          name: 'Skill',
-          source: 'Sunday',
-          value:
-            calcScaling(0.15, 0.015, skill, 'curved') +
-            (base.SUMMON || base.SUMMON_STATS?.SUMMON_ID ? calcScaling(0.25, 0.025, skill, 'curved') : 0),
+        base.CALLBACK.push((x) => {
+          x[Stats.ALL_DMG].push({
+            name: 'Skill',
+            source: 'Sunday',
+            value:
+              calcScaling(0.15, 0.015, skill, 'curved') +
+              (x.SUMMON || x.SUMMON_STATS?.SUMMON_ID ? calcScaling(0.25, 0.025, skill, 'curved') : 0),
+          })
+          return x
         })
         if (c < 6) {
           base[Stats.CRIT_RATE].push({
@@ -275,7 +278,7 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           base.SUMMON_DEF_PEN.push({
             name: 'Eidolon 1',
             source: 'Sunday',
-            value: 0.4,
+            value: 0.24,
           })
           if (base.SUMMON_STATS) {
             base.SUMMON_STATS.DEF_PEN.push({
@@ -339,7 +342,7 @@ const Sunday = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       _.forEach(team, (t, i) => {
         if (+form.sunday_ult - 1 === i) {
