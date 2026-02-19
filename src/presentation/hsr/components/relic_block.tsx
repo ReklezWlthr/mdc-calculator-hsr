@@ -1,5 +1,5 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { RelicPiece, RelicPieceIcon, IArtifactEquip, Stats } from '@src/domain/constant'
+import { RelicPiece, RelicPieceIcon, IArtifactEquip, Stats, ITeamChar } from '@src/domain/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
 import { useCallback, useMemo } from 'react'
@@ -18,6 +18,7 @@ const { publicRuntimeConfig } = getConfig()
 
 interface RelicBlockProps {
   index?: number
+  charData?: { rec: Stats[] }
   piece: number
   aId: string
   showWearer?: boolean
@@ -58,7 +59,7 @@ const MenuButton = ({
 export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProps) => {
   const pieceName = RelicPiece[props.piece]
 
-  const { modalStore, teamStore, artifactStore, buildStore, settingStore, toastStore } = useStore()
+  const { modalStore, teamStore, artifactStore, buildStore, setupStore, toastStore } = useStore()
   const artifact = _.find(props.override || artifactStore.artifacts, ['id', props.aId])
   const setData = findArtifactSet(artifact?.setId)
 
@@ -85,8 +86,8 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
   }, [modalStore, props.index, props.aId])
 
   const onOpenSwapModal = useCallback(() => {
-    modalStore.openModal(<ArtifactListModal index={props.index} type={props.piece} />)
-  }, [props.index, props.aId])
+    modalStore.openModal(<ArtifactListModal index={props.index} type={props.piece} charData={props.charData} />)
+  }, [props.index, props.aId, props.charData])
 
   const onOpenConfirmModal = useCallback(() => {
     modalStore.openModal(
@@ -132,8 +133,7 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
     )
   }, [props.index, props.aId])
 
-  const wearer = _.find(teamStore.characters, (item) => _.includes(item.equipments.artifacts, props.aId))
-  const charData = findCharacter(wearer?.cId)
+  // const wearer = _.find(teamStore.characters, (item) => _.includes(item.equipments.artifacts, props.aId))
 
   return (
     <div
@@ -145,10 +145,7 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
       )}
     >
       <div className="absolute top-0 right-0 flex items-center justify-center h-8 pointer-events-none w-9 rounded-se-lg rounded-es-lg bg-primary-light">
-        <img
-          src={`/asset/relic/part/${RelicPieceIcon[props.piece]}.webp`}
-          className="w-5 h-5"
-        />
+        <img src={`/asset/relic/part/${RelicPieceIcon[props.piece]}.webp`} className="w-5 h-5" />
       </div>
       {props.aId ? (
         <div className="relative w-full">
@@ -193,9 +190,22 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
                   <img className="w-3.5" src={`/icons/${StatIcons[item.stat]}`} />
                   {item.stat}
                 </div>
-                <div className="text-primary-lighter">{_.repeat('\u{2771}', item.roll)}</div>
+                {item.roll > 1 && (
+                  <div
+                    className={classNames(
+                      'px-1.5 rounded-full',
+                      _.includes(props.charData?.rec, item.stat) ? 'bg-amber-300 text-amber-800' : 'bg-primary-lighter',
+                    )}
+                  >
+                    +{item.roll - 1}
+                  </div>
+                )}
                 <hr className="w-full border border-primary-border" />
-                <p className="font-normal text-gray">
+                <p
+                  className={classNames(
+                    _.includes(props.charData?.rec, item.stat) ? 'text-amber-400 font-bold' : 'text-gray font-normal',
+                  )}
+                >
                   {_.includes([Stats.HP, Stats.ATK, Stats.DEF, Stats.SPD], item.stat)
                     ? item.stat === Stats.SPD
                       ? _.round(getNearestSpd(item.value), 1).toLocaleString()

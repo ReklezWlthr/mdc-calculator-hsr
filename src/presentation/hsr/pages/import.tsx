@@ -43,7 +43,7 @@ export const ImportExport = observer(() => {
       const date = new Date()
       localStorage.setItem(
         'enka_cache',
-        JSON.stringify({ ...JSON.parse(localStorage.getItem('enka_cache')), [uid]: { data: accountData, date } })
+        JSON.stringify({ ...JSON.parse(localStorage.getItem('enka_cache')), [uid]: { data: accountData, date } }),
       )
       console.log(accountData)
       const { charData, artifactData } = fromEnka(accountData)
@@ -61,7 +61,7 @@ export const ImportExport = observer(() => {
           title="Wrong UID Format"
           desc="Please check the entered UID again."
           onConfirm={() => modalStore.closeModal()}
-        />
+        />,
       )
     else if (error?.response?.status === 404)
       modalStore.openModal(
@@ -70,7 +70,7 @@ export const ImportExport = observer(() => {
           title="Account Not Found"
           desc="This account does not exist, or the owner chooses not to display the characters."
           onConfirm={() => modalStore.closeModal()}
-        />
+        />,
       )
     else if (error?.response?.status === 424)
       modalStore.openModal(
@@ -79,7 +79,7 @@ export const ImportExport = observer(() => {
           title="Game Server is Under Maintenance"
           desc="Please try again after the maintenance ends."
           onConfirm={() => modalStore.closeModal()}
-        />
+        />,
       )
     else if (error?.message)
       modalStore.openModal(
@@ -90,16 +90,17 @@ export const ImportExport = observer(() => {
           \n"${error?.message}"
           \nPlease use this to as a reference for inquiry or report.`}
           onConfirm={() => modalStore.closeModal()}
-        />
+        />,
       )
   }, [error])
 
   const char = importStore.characters[selected]
+  const charData = findCharacter(char?.cId)
   const talent = _.find(ConditionalsObject, ['id', char?.cId])?.conditionals(
     char?.cons,
     char?.major_traces,
     char?.talents,
-    []
+    [],
   )
   const equippedArtifacts = _.filter(importStore.artifacts, (item) => _.includes(char?.equipments?.artifacts, item.id))
   const raw = calculateOutOfCombat(_.cloneDeep(baseStatsObject), selected, importStore.characters, equippedArtifacts)
@@ -128,7 +129,7 @@ export const ImportExport = observer(() => {
         title="Overwrite Data?"
         desc={`The file contains ${char} characters, ${build} builds and ${artifact} relics.\nAre you sure you want to overwrite the current data with this?`}
         onConfirm={onConfirm}
-      />
+      />,
     )
   }, [])
 
@@ -160,7 +161,7 @@ export const ImportExport = observer(() => {
       <div
         className={classNames(
           'flex flex-col w-full gap-5 p-5 text-white max-w-[1200px] mx-auto',
-          _.size(importStore.characters) ? 'h-fit' : 'h-full'
+          _.size(importStore.characters) ? 'h-fit' : 'h-full',
         )}
       >
         <div className="flex gap-5">
@@ -204,7 +205,7 @@ export const ImportExport = observer(() => {
                         icon: 'fa-solid fa-circle-check',
                         color: 'green',
                       })
-                    }
+                    },
                   )
                 })
                 reader.readAsText(file)
@@ -357,50 +358,30 @@ export const ImportExport = observer(() => {
                 </div>
               </div>
               <div className="w-1/5 space-y-5">
-                <RelicBlock
-                  index={selected}
-                  piece={1}
-                  aId={char?.equipments?.artifacts?.[0]}
-                  override={importStore.artifacts}
-                  canEdit={false}
-                />
-                <RelicBlock
-                  index={selected}
-                  piece={3}
-                  aId={char?.equipments?.artifacts?.[2]}
-                  override={importStore.artifacts}
-                  canEdit={false}
-                />
-                <RelicBlock
-                  index={selected}
-                  piece={5}
-                  aId={char?.equipments?.artifacts?.[4]}
-                  override={importStore.artifacts}
-                  canEdit={false}
-                />
+                {_.map([1, 3, 5], (ii) => (
+                  <RelicBlock
+                    index={selected}
+                    piece={ii}
+                    aId={char?.equipments?.artifacts?.[ii - 1]}
+                    override={importStore.artifacts}
+                    canEdit={false}
+                    charData={charData}
+                    key={ii}
+                  />
+                ))}
               </div>
               <div className="w-1/5 space-y-5">
-                <RelicBlock
-                  index={selected}
-                  piece={2}
-                  aId={char?.equipments?.artifacts?.[1]}
-                  override={importStore.artifacts}
-                  canEdit={false}
-                />
-                <RelicBlock
-                  index={selected}
-                  piece={4}
-                  aId={char?.equipments?.artifacts?.[3]}
-                  override={importStore.artifacts}
-                  canEdit={false}
-                />
-                <RelicBlock
-                  index={selected}
-                  piece={6}
-                  aId={char?.equipments?.artifacts?.[5]}
-                  override={importStore.artifacts}
-                  canEdit={false}
-                />
+                {_.map([2, 4, 6], (ii) => (
+                  <RelicBlock
+                    index={selected}
+                    piece={ii}
+                    aId={char?.equipments?.artifacts?.[ii - 1]}
+                    override={importStore.artifacts}
+                    canEdit={false}
+                    charData={charData}
+                    key={ii}
+                  />
+                ))}
               </div>
             </div>
           </>

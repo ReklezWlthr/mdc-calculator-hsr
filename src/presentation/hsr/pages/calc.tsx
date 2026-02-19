@@ -60,12 +60,12 @@ export const Calculator = observer(({}: {}) => {
                 (BaseSummonAggro[item.SUMMON_STATS?.SUMMON_ID] *
                   (1 + (item.SUMMON_STATS?.getValue(StatsObjectKeys.BASE_AGGRO) || 0)) *
                   (1 + (item.SUMMON_STATS?.getValue(StatsObjectKeys.AGGRO) || 0)) || 0)
-              : 0
+              : 0,
           )}
           memo={memo}
-        />
+        />,
       ),
-    [mainComputed, charData, finalStats]
+    [mainComputed, charData, finalStats],
   )
 
   useEffect(() => {
@@ -144,7 +144,7 @@ export const Calculator = observer(({}: {}) => {
                             _.filter(mainComputed?.BASIC_SCALING, (item) => !!item.break),
                             (item) => (
                               <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.BA} />
-                            )
+                            ),
                           )}
                           {!!_.size(_.filter(mainComputed?.BASIC_SCALING, (item) => !!item.break)) &&
                             _.map(mainComputed?.SUPER_BREAK_SCALING, (item) => (
@@ -175,7 +175,7 @@ export const Calculator = observer(({}: {}) => {
                             _.filter(mainComputed?.SKILL_SCALING, (item) => !!item.break),
                             (item) => (
                               <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.SKILL} />
-                            )
+                            ),
                           )}
                           {!!_.size(_.filter(mainComputed?.SKILL_SCALING, (item) => !!item.break)) &&
                             _.map(mainComputed?.SUPER_BREAK_SCALING, (item) => (
@@ -204,8 +204,8 @@ export const Calculator = observer(({}: {}) => {
                           mainComputed.PATH === PathType.ELATION
                             ? 'elation'
                             : mainComputed.PATH === PathType.REMEMBRANCE
-                            ? 'memo_skill'
-                            : 'skill'
+                              ? 'memo_skill'
+                              : 'skill'
                         ]
                       }
                     >
@@ -220,7 +220,7 @@ export const Calculator = observer(({}: {}) => {
                                 _.filter(mainComputed?.MEMO_SKILL_SCALING, (item) => !!item.break),
                                 (item) => (
                                   <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.SERVANT} />
-                                )
+                                ),
                               )}
                               {!!_.size(_.filter(mainComputed?.MEMO_SKILL_SCALING, (item) => !!item.break)) &&
                                 _.map(mainComputed?.SUPER_BREAK_SCALING, (item) => (
@@ -253,7 +253,7 @@ export const Calculator = observer(({}: {}) => {
                             _.filter(mainComputed?.ULT_SCALING, (item) => !!item.break),
                             (item) => (
                               <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.ULT} />
-                            )
+                            ),
                           )}
                           {!!_.size(_.filter(mainComputed?.ULT_SCALING, (item) => !!item.break)) &&
                             _.map(mainComputed?.SUPER_BREAK_SCALING, (item) => (
@@ -284,7 +284,7 @@ export const Calculator = observer(({}: {}) => {
                             _.filter(mainComputed?.TALENT_SCALING, (item) => !!item.break),
                             (item) => (
                               <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.TALENT} />
-                            )
+                            ),
                           )}
                           {!!_.size(_.filter(mainComputed?.TALENT_SCALING, (item) => !!item.break)) &&
                             _.map(mainComputed?.SUPER_BREAK_SCALING, (item) => (
@@ -321,7 +321,7 @@ export const Calculator = observer(({}: {}) => {
                                 _.filter(mainComputed?.MEMO_TALENT_SCALING, (item) => !!item.break),
                                 (item) => (
                                   <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.SERVANT_T} />
-                                )
+                                ),
                               )}
                             </div>
                           )}
@@ -354,7 +354,7 @@ export const Calculator = observer(({}: {}) => {
                             _.filter(mainComputed?.TECHNIQUE_SCALING, (item) => !!item.break),
                             (item) => (
                               <SuperBreakSubRows key={item.name} scaling={item} type={TalentType.TECH} />
-                            )
+                            ),
                           )}
                           {!!_.size(_.filter(mainComputed?.TECHNIQUE_SCALING, (item) => !!item.break)) &&
                             _.map(mainComputed?.SUPER_BREAK_SCALING, (item) => (
@@ -543,6 +543,7 @@ export const Calculator = observer(({}: {}) => {
                         team[i].equipments.artifacts.splice(t - 1, 1, a)
                         calculatorStore.setValue('team', _.cloneDeep(team))
                       }}
+                      charData={charData}
                     />
                   ))}
                 </div>

@@ -68,7 +68,7 @@ export const TeamSetup = observer(() => {
   const selected = teamStore.selected
 
   const artifactData = _.filter(artifactStore.artifacts, (item) =>
-    _.includes(teamStore.characters[selected]?.equipments?.artifacts, item.id)
+    _.includes(teamStore.characters[selected]?.equipments?.artifacts, item.id),
   )
 
   const char = teamStore.characters[selected]
@@ -86,7 +86,7 @@ export const TeamSetup = observer(() => {
         oneButton
       />
     ),
-    []
+    [],
   )
 
   const onOpenSaveModal = useCallback(() => {
@@ -112,7 +112,7 @@ export const TeamSetup = observer(() => {
         title="Unequip All"
         desc="This will unequip everything from this character, including weapons and artifacts. Do you wish to proceed?"
         onConfirm={() => teamStore.unequipAll(selected)}
-      />
+      />,
     )
   }, [selected])
 
@@ -121,7 +121,7 @@ export const TeamSetup = observer(() => {
   const buffed = _.includes(buffedList, char.cId)
   const talent = _.find(
     settingStore.settings.buffed[char.cId] || !buffed ? ConditionalsObject : OldConditionalsObject,
-    ['id', char.cId]
+    ['id', char.cId],
   )?.conditionals(char?.cons, char?.major_traces, char?.talents, teamStore.characters)
 
   return (
@@ -302,14 +302,26 @@ export const TeamSetup = observer(() => {
           </div>
         </div>
         <div className="w-1/5 space-y-5">
-          <RelicBlock index={selected} piece={1} aId={teamStore.characters[selected]?.equipments?.artifacts?.[0]} />
-          <RelicBlock index={selected} piece={3} aId={teamStore.characters[selected]?.equipments?.artifacts?.[2]} />
-          <RelicBlock index={selected} piece={5} aId={teamStore.characters[selected]?.equipments?.artifacts?.[4]} />
+          {_.map([1, 3, 5], (ii) => (
+            <RelicBlock
+              index={selected}
+              piece={ii}
+              aId={teamStore.characters[selected]?.equipments?.artifacts?.[ii - 1]}
+              charData={charData}
+              key={ii}
+            />
+          ))}
         </div>
         <div className="w-1/5 space-y-5">
-          <RelicBlock index={selected} piece={2} aId={teamStore.characters[selected]?.equipments?.artifacts?.[1]} />
-          <RelicBlock index={selected} piece={4} aId={teamStore.characters[selected]?.equipments?.artifacts?.[3]} />
-          <RelicBlock index={selected} piece={6} aId={teamStore.characters[selected]?.equipments?.artifacts?.[5]} />
+          {_.map([2, 4, 6], (ii) => (
+            <RelicBlock
+              index={selected}
+              piece={ii}
+              aId={teamStore.characters[selected]?.equipments?.artifacts?.[ii - 1]}
+              charData={charData}
+              key={ii}
+            />
+          ))}
         </div>
       </div>
     </div>

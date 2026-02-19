@@ -11,7 +11,19 @@ import { ArtifactListModal, RelicSetterT } from '@src/presentation/hsr/component
 import classNames from 'classnames'
 
 export const MiniRelicBlock = observer(
-  ({ aId, index, setRelic, type }: { aId: string; index?: number; setRelic?: RelicSetterT; type: number }) => {
+  ({
+    aId,
+    index,
+    setRelic,
+    type,
+    charData,
+  }: {
+    aId: string
+    index?: number
+    setRelic?: RelicSetterT
+    type: number
+    charData?: { rec: Stats[] }
+  }) => {
     const { artifactStore, modalStore } = useStore()
 
     const relic = _.find(artifactStore.artifacts, ['id', aId])
@@ -32,8 +44,9 @@ export const MiniRelicBlock = observer(
     }, [relic])
 
     const onOpenSwapModal = useCallback(() => {
-      if (setRelic) modalStore.openModal(<ArtifactListModal index={index} type={type} setRelic={setRelic} />)
-    }, [index, aId, setRelic, relic, type])
+      if (setRelic)
+        modalStore.openModal(<ArtifactListModal index={index} type={type} setRelic={setRelic} charData={charData} />)
+    }, [index, aId, setRelic, relic, type, charData])
 
     return (
       <div
@@ -67,9 +80,21 @@ export const MiniRelicBlock = observer(
               {_.map(subListWithRolls, (item) => (
                 <div className="flex items-center w-full gap-1.5 text-xs" key={item.stat}>
                   <img className="w-3.5" src={`/icons/${StatIcons[item.stat]}`} />
-                  <div className="text-primary-lighter">{_.repeat('\u{2771}', item.roll)}</div>
+                  {item.roll > 1 && (
+                    <div
+                      className={classNames(
+                        _.includes(charData?.rec, item.stat) ? 'text-amber-300' : 'text-primary-lighter',
+                      )}
+                    >
+                      {_.repeat('\u{2771}', item.roll - 1)}
+                    </div>
+                  )}
                   <hr className="w-full border border-primary-border" />
-                  <p className="font-normal text-gray">
+                  <p
+                    className={classNames(
+                      _.includes(charData?.rec, item.stat) ? 'text-amber-400 font-bold' : 'text-gray font-normal',
+                    )}
+                  >
                     {_.includes([Stats.HP, Stats.ATK, Stats.DEF, Stats.SPD], item.stat)
                       ? item.stat === Stats.SPD
                         ? _.round(getNearestSpd(item.value), 1).toLocaleString()

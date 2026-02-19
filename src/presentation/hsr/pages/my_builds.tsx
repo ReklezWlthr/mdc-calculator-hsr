@@ -30,13 +30,14 @@ export const MyBuilds = observer(() => {
         buildStore.builds,
         (item) =>
           _.includes(findCharacter(item.cId)?.name?.toLowerCase(), params.searchWord.toLowerCase()) ||
-          _.includes(item.name.toLowerCase(), params.searchWord.toLowerCase())
+          _.includes(item.name.toLowerCase(), params.searchWord.toLowerCase()),
       )
     : buildStore.builds
   const groupedBuild = _.groupBy(builds, 'cId')
 
   const [selected, setSelected] = useState('')
   const selectedBuild = _.find(buildStore.builds, ['id', selected])
+  const charData = findCharacter(selectedBuild?.cId)
 
   const [note, setNote] = useState(selectedBuild?.note || '')
   const [editing, setEditing] = useState(false)
@@ -62,7 +63,7 @@ export const MyBuilds = observer(() => {
             color: 'green',
           })
         }}
-      />
+      />,
     )
   }, [selected])
 
@@ -81,7 +82,7 @@ export const MyBuilds = observer(() => {
             color: 'green',
           })
         }}
-      />
+      />,
     )
   }, [selected, note])
 
@@ -100,7 +101,7 @@ export const MyBuilds = observer(() => {
             color: 'green',
           })
         }}
-      />
+      />,
     )
   }, [selected])
 
@@ -149,7 +150,7 @@ export const MyBuilds = observer(() => {
             <div className="col-span-5">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <p className="text-sm text-primary-lighter">{findCharacter(selectedBuild.cId)?.name}</p>
+                  <p className="text-sm text-primary-lighter">{charData?.name}</p>
                   <div className="flex items-center gap-2 mb-3">
                     <p className="text-2xl font-bold text-white">{selectedBuild.name}</p>
                     <i
@@ -221,18 +222,38 @@ export const MyBuilds = observer(() => {
               <p className="font-bold text-center text-white">Cavern Relics</p>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
-                  <MiniRelicBlock type={1} aId={selectedBuild?.artifacts?.[0]} setRelic={setRelic} />
-                  <MiniRelicBlock type={3} aId={selectedBuild?.artifacts?.[2]} setRelic={setRelic} />
+                  <MiniRelicBlock
+                    type={1}
+                    aId={selectedBuild?.artifacts?.[0]}
+                    setRelic={setRelic}
+                    charData={charData}
+                  />
+                  <MiniRelicBlock
+                    type={3}
+                    aId={selectedBuild?.artifacts?.[2]}
+                    setRelic={setRelic}
+                    charData={charData}
+                  />
                 </div>
                 <div className="space-y-4">
-                  <MiniRelicBlock type={2} aId={selectedBuild?.artifacts?.[1]} setRelic={setRelic} />
-                  <MiniRelicBlock type={4} aId={selectedBuild?.artifacts?.[3]} setRelic={setRelic} />
+                  <MiniRelicBlock
+                    type={2}
+                    aId={selectedBuild?.artifacts?.[1]}
+                    setRelic={setRelic}
+                    charData={charData}
+                  />
+                  <MiniRelicBlock
+                    type={4}
+                    aId={selectedBuild?.artifacts?.[3]}
+                    setRelic={setRelic}
+                    charData={charData}
+                  />
                 </div>
               </div>
               <p className="font-bold text-center text-white">Planar Ornaments</p>
               <div className="grid grid-cols-2 gap-4">
-                <MiniRelicBlock type={5} aId={selectedBuild?.artifacts?.[4]} setRelic={setRelic} />
-                <MiniRelicBlock type={6} aId={selectedBuild?.artifacts?.[5]} setRelic={setRelic} />
+                <MiniRelicBlock type={5} aId={selectedBuild?.artifacts?.[4]} setRelic={setRelic} charData={charData} />
+                <MiniRelicBlock type={6} aId={selectedBuild?.artifacts?.[5]} setRelic={setRelic} charData={charData} />
               </div>
               <div className="grid grid-cols-2 gap-2 pt-3">
                 <div className="w-full px-3 py-2 space-y-1 rounded-lg h-fit bg-primary-dark">

@@ -8,14 +8,24 @@ import { useMemo } from 'react'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
 import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
-import { MainStatOptions, SubStatOptions } from '@src/domain/constant'
+import { MainStatOptions, Stats, SubStatOptions } from '@src/domain/constant'
 import { isSubsetOf } from '@src/core/utils/finder'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 
 export type RelicSetterT = (index: number, type: number, aId: string) => void
 
 export const ArtifactListModal = observer(
-  ({ index, type, setRelic }: { index: number; type: number; setRelic?: RelicSetterT }) => {
+  ({
+    index,
+    charData,
+    type,
+    setRelic,
+  }: {
+    index: number
+    charData?: { rec: Stats[] }
+    type: number
+    setRelic?: RelicSetterT
+  }) => {
     const { params, setParams } = useParams({
       main: [],
       subs: [],
@@ -51,7 +61,7 @@ export const ArtifactListModal = observer(
                   name: artifact.name,
                   value: artifact.id.toString(),
                   img: `/asset/relic/set/${artifact.id}.webp`,
-                })
+                }),
               )}
               placeholder="Artifact Set"
               onChange={(value) => setParams({ set: value?.value })}
@@ -98,11 +108,18 @@ export const ArtifactListModal = observer(
                 modalStore.closeModal()
               }}
             >
-              <RelicBlock piece={artifact?.type} aId={artifact?.id} showWearer canEdit={false} />
+              <RelicBlock
+                piece={artifact?.type}
+                aId={artifact?.id}
+                showWearer
+                canEdit={false}
+                index={index}
+                charData={charData}
+              />
             </div>
           ))}
         </div>
       </div>
     )
-  }
+  },
 )

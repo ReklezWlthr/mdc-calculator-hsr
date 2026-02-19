@@ -40,6 +40,7 @@ export const CompareBlock = observer(() => {
   const selectedS3 = _.findIndex(setupStore.comparing[2]?.char, (item) => item.cId === setupStore.mainChar)
   const char = setupStore.main?.char?.[selected]
   const charData = findCharacter(setupStore.mainChar)
+  const focusedCharData = findCharacter(focusedChar?.cId)
   const { finalStats, mainComputed, main, ...mainContent } = useCalculator({
     teamOverride: setupStore.main?.char,
     doNotSaveStats: true,
@@ -128,8 +129,8 @@ export const CompareBlock = observer(() => {
     _.filter(
       _.uniqBy(
         _.flatMap(sumStats, (f) => f?.[key]),
-        (item) => item?.name
-      )
+        (item) => item?.name,
+      ),
     )
 
   const onOpenStatsModal = useCallback(
@@ -139,7 +140,7 @@ export const CompareBlock = observer(() => {
           compare
           teamIndex={setupIndex}
           stats={allStats[setupIndex][charIndex]}
-          path={findCharacter(focusedChar.cId)?.path}
+          path={focusedCharData?.path}
           sumAggro={_.sumBy(
             allStats[setupIndex],
             (item) =>
@@ -148,15 +149,15 @@ export const CompareBlock = observer(() => {
                 (1 + (item.getValue(StatsObjectKeys.AGGRO) || 0)) || 0) +
               (BaseSummonAggro[item.SUMMON_STATS?.SUMMON_ID] *
                 (1 + (item.SUMMON_STATS?.getValue(StatsObjectKeys.BASE_AGGRO) || 0)) *
-                (1 + (item.SUMMON_STATS?.getValue(StatsObjectKeys.AGGRO) || 0)) || 0)
+                (1 + (item.SUMMON_STATS?.getValue(StatsObjectKeys.AGGRO) || 0)) || 0),
           )}
-        />
+        />,
       ),
-    [allStats, charData]
+    [allStats, charData],
   )
   const onOpenEnemyModal = useCallback(
     () => modalStore.openModal(<EnemyModal stats={allStats[setupIndex][charIndex]} compare />),
-    [allStats, setupIndex, charIndex]
+    [allStats, setupIndex, charIndex],
   )
   const onOpenDebuffModal = useCallback(
     () =>
@@ -166,9 +167,9 @@ export const CompareBlock = observer(() => {
           selectedOverride={charIndex}
           debuffOverride={allDebuffs[setupIndex]}
           setup={setupIndex ? setupStore.comparing[setupIndex - 1]?.name : setupStore.main?.name}
-        />
+        />,
       ),
-    [allStats, setupIndex, charIndex, allDebuffs]
+    [allStats, setupIndex, charIndex, allDebuffs],
   )
 
   const renderRow = (type: string, talent: TalentType) => (
@@ -178,7 +179,7 @@ export const CompareBlock = observer(() => {
           key={item.name}
           scaling={_.map(
             _.map(sumStats, (f) => f?.[type]),
-            (s) => _.find(s, (a) => a.name === item.name)
+            (s) => _.find(s, (a) => a.name === item.name),
           )}
           stats={sumStats}
           allStats={allStats}
@@ -199,7 +200,7 @@ export const CompareBlock = observer(() => {
                 key={item.name}
                 scaling={_.map(
                   _.map(sumStats, (f) => f?.[type]),
-                  (s) => _.find(s, (a) => a.name === item.name)
+                  (s) => _.find(s, (a) => a.name === item.name),
                 )}
                 stats={sumStats}
                 allStats={allStats}
@@ -209,7 +210,7 @@ export const CompareBlock = observer(() => {
                 type={talent}
                 setupNames={_.map([setupStore.main, ...setupStore.comparing], 'name')}
               />
-            )
+            ),
           )}
           {!!_.size(_.filter(mainComputed?.[type], (item) => !!item.break)) &&
             _.map(mainComputed?.SUPER_BREAK_SCALING, (item) => (
@@ -217,7 +218,7 @@ export const CompareBlock = observer(() => {
                 key={item.name}
                 scaling={_.map(
                   _.map(sumStats, (f) => f?.SUPER_BREAK_SCALING),
-                  (s) => _.find(s, (a) => a.name === item.name)
+                  (s) => _.find(s, (a) => a.name === item.name),
                 )}
                 stats={sumStats}
                 level={levels}
@@ -321,8 +322,8 @@ export const CompareBlock = observer(() => {
                       mainComputed.PATH === PathType.ELATION
                         ? 'elation'
                         : mainComputed.PATH === PathType.REMEMBRANCE
-                        ? 'memo_skill'
-                        : 'skill'
+                          ? 'memo_skill'
+                          : 'skill'
                     ]
                   }
                 >
@@ -411,7 +412,7 @@ export const CompareBlock = observer(() => {
                       team[index]
                         ? 'bg-primary-dark cursor-pointer'
                         : 'bg-primary-darker text-primary-lighter cursor-not-allowed',
-                      { 'ring-2 ring-primary-border': index === setupIndex }
+                      { 'ring-2 ring-primary-border': index === setupIndex },
                     )}
                     onClick={() => team[index] && setupStore.setValue('selected', [index, charIndex])}
                   >
@@ -467,7 +468,7 @@ export const CompareBlock = observer(() => {
                 >
                   Stats
                 </div>
-                {findCharacter(focusedChar?.cId).path === PathType.REMEMBRANCE && (
+                {focusedCharData?.path === PathType.REMEMBRANCE && (
                   <div
                     className={classNames('rounded-lg px-2 py-1 text-white cursor-pointer duration-200', {
                       'bg-primary': tab === 'summon',
@@ -537,6 +538,7 @@ export const CompareBlock = observer(() => {
                         focusedChar.equipments.artifacts.splice(t - 1, 1, a)
                         setupStore.setComparing(focusedChar)
                       }}
+                      charData={focusedCharData}
                     />
                   ))}
                 </div>
