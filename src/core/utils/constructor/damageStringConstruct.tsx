@@ -240,7 +240,7 @@ export const damageStringConstruct = (
       ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconBreakUp.png" />${toPercentage(
           stats.getValue(Stats.BE),
         )}</b>)</span>`
-      : stats.getValue(Stats.ELATION) && isElation
+      : elation && isElation
         ? ` \u{00d7} (1 + <b class="${ElementColor[scaling.element]}">${toPercentage(
             elation,
           )}</b> <i class="text-[10px]">ELATION</i>)`
