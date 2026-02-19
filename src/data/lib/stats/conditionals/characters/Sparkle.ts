@@ -84,7 +84,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Nocturne',
-      content: `Increases ATK for all allies by <span class="text-desc">15%</span>. When an ally character possesses the CRIT DMG Boost effect provided by the Skill, their <b>All-Type RES PEN</b> increases by <span class="text-desc">10%</span>.`,
+      content: `Increases ATK for all allies by <span class="text-desc">45%</span>. When an ally character possesses the CRIT DMG Boost effect provided by the Skill, their <b>All-Type RES PEN</b> increases by <span class="text-desc">10%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
