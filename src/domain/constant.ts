@@ -278,6 +278,14 @@ export const StatIcons = {
   [Stats.ELATION]: 'IconJoy.png',
 }
 
+export const StatAbbr = {
+  [Stats.ATK]: 'ATK',
+  [Stats.HP]: 'HP',
+  [Stats.DEF]: 'DEF',
+  [Stats.BE]: 'BREAK',
+  [Stats.ELATION]: 'BASE',
+}
+
 export enum DebuffTypes {
   WIND_SHEAR = 'Wind Shear',
   BURN = 'Burn',
