@@ -1,6 +1,13 @@
 [
   {
     "version": "1.2-4",
+    "date": "Feb 20th, 2026",
+    "desc": [
+      "Updated: <span class=\"text-hsr-physical\">Yao Guang</span>'s and <span class=\"text-hsr-fire\">Sparxie</span>'s skill icons"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Feb 19th, 2026",
     "desc": ["Updated: Highlight recommended substats for each character."]
   },

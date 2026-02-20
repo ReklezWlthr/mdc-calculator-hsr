@@ -275,7 +275,7 @@ export const StatIcons = {
   [Stats.ERR]: 'IconEnergyRecovery.png',
   [Stats.EHR]: 'IconStatusProbability.png',
   [Stats.EHP]: 'IconMaxHP.png',
-  [Stats.ELATION]: 'IconJoy.webp',
+  [Stats.ELATION]: 'IconJoy.png',
 }
 
 export enum DebuffTypes {
