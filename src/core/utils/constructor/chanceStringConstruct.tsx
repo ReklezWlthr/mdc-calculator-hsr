@@ -16,7 +16,7 @@ export const chanceStringConstruct = (
   base: number,
   fixed: boolean,
   element?: string,
-  bonus?: number
+  bonus?: number,
 ) => {
   const property = BreakDebuffType[element]
   const isCC = _.includes([DebuffTypes.FROZEN, DebuffTypes.ENTANGLE, DebuffTypes.IMPRISON], property)
@@ -33,22 +33,22 @@ export const chanceStringConstruct = (
       <b className="text-red">{toPercentage(prob)}</b> = <b>{toPercentage(base)}</b>
       {fixed && <i className="ml-1 text-desc text-[10px]">Fixed</i>}
       {!!ehr && !fixed && (
-        <span className="inline-flex items-center h-4 ml-1">
+        <span>
           {` \u{00d7} (1 + `}
-          <b className="inline-flex items-center h-4">
-            <img className="h-3 mx-1" src={`/icons/${StatIcons[Stats.EHR]}`} />
+          <b>
             {toPercentage(ehr)}
+            <i className="text-[10px] mx-0.5 font-normal">EHR</i>
           </b>
           {`)`}
         </span>
       )}
       {!!effRes && !fixed && (
         <>
-          <span className="inline-flex items-center h-4 ml-1">
+          <span>
             {` \u{00d7} (1 - `}
-            <b className="inline-flex items-center h-4">
-              <img className="h-3 mx-1" src={`/icons/${StatIcons[Stats.E_RES]}`} />
+            <b>
               <span className="text-fuchsia-300">{toPercentage(effRes)}</span>
+              <i className="text-[10px] mx-0.5 font-normal">RES</i>
             </b>
             {`)`}
           </span>

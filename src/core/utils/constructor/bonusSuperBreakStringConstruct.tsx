@@ -15,7 +15,7 @@ export const bonusSuperBreakStringConstruct = (
   scaling: ISuperBreakScaling,
   stats: StatsObject,
   level: number,
-  type: TalentType
+  type: TalentType,
 ) => {
   if (!scaling || !stats || !level) return
 
@@ -36,7 +36,7 @@ export const bonusSuperBreakStringConstruct = (
         (stats.getValue(`${element.toUpperCase()}_RES_RED`) || 0) +
           (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_RED) || 0) +
           (stats.getValue(`${element.toUpperCase()}_RES_PEN`) || 0) +
-          (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0)
+          (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0),
       ),
       2,
     ]),
@@ -61,17 +61,15 @@ export const bonusSuperBreakStringConstruct = (
 
   // String Construct
   const baseBreakScaling = `(<b>${_.round(
-    breakLevel
+    breakLevel,
   ).toLocaleString()}</b> <i class="text-[10px]">BASE</i> \u{00d7} <b>${_.round(
     toughnessMult,
-    1
+    1,
   ).toLocaleString()}</b> <i class="text-[10px]">TOUGHNESS</i>)`
 
   const formulaString = `<b class="text-red">${_.floor(dmg).toLocaleString()}</b> = ${baseBreakScaling}${
     stats.getValue(Stats.BE) > 0
-      ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconBreakUp.png" />${toPercentage(
-          stats.getValue(Stats.BE)
-        )}</b>)</span>`
+      ? ` \u{00d7} (1 + <b>${toPercentage(stats.getValue(Stats.BE))}</b> <i class="text-[10px]">BREAK</i>)`
       : ''
   }${
     stats.getValue(StatsObjectKeys.SUPER_BREAK_DMG) > 0
@@ -80,7 +78,7 @@ export const bonusSuperBreakStringConstruct = (
   }${
     breakMult > 0
       ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(
-          breakMult
+          breakMult,
         )}</b> <i class="text-[10px]">SUPER BREAK MULT</i>`
       : ''
   }${
@@ -89,13 +87,13 @@ export const bonusSuperBreakStringConstruct = (
       : ''
   } \u{00d7} <b class="text-orange-300">${toPercentage(
     defMult,
-    2
+    2,
   )}</b> <i class="text-[10px]">DEF</i> \u{00d7} <b class="text-teal-200">${toPercentage(
     resMult,
-    2
+    2,
   )}</b> <i class="text-[10px]">RES</i> \u{00d7} <b class="text-rose-300">${toPercentage(
     vulMult,
-    2
+    2,
   )}</b> <i class="text-[10px]">VUL</i>`
 
   return {

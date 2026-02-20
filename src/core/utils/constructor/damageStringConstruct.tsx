@@ -1,6 +1,6 @@
 import { StatsObject, StatsObjectKeys, TalentPropertyMap, TalentTypeMap } from '@src/data/lib/stats/baseConstant'
 import { IScaling } from '@src/domain/conditional'
-import { Element, GlobalModifiers, StatIcons, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import { Element, GlobalModifiers, StatAbbr, StatIcons, Stats, TalentProperty, TalentType } from '@src/domain/constant'
 import { toPercentage } from '../data_format'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
 import _ from 'lodash'
@@ -214,11 +214,7 @@ export const damageStringConstruct = (
   const scalingArray = _.map(
     capped ? [scaling.cap] : scaling.value,
     (item) =>
-      `<span class="inline-flex items-center h-4">(<b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/${
-        StatIcons[item.multiplier]
-      }" />${_.floor(item.override || statForScale[item.multiplier]).toLocaleString()}</b>${
-        item.multiplier === Stats.EHP ? `<i class="text-[10px] ml-1">Enemy HP</i>` : ''
-      }<span class="mx-1"> \u{00d7} </span><b>${toPercentage(item.scaling, 2, true)}</b>)</span>`,
+      `(<b>${_.floor(item.override || statForScale[item.multiplier]).toLocaleString()}</b> <i class="text-[10px]">${item.multiplier === Stats.EHP ? 'Enemy HP' : StatAbbr[item.multiplier]}</i><span class="mx-0.5"> \u{00d7} </span><b>${toPercentage(item.scaling, 2, true)}</b>)`,
   )
   const baseScaling = _.join(scalingArray, ' + ')
   const baseBreakScaling = `(<b class="${
@@ -285,21 +281,15 @@ export const damageStringConstruct = (
 
   const critString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.floor(
     totalCrit,
-  ).toLocaleString()}</b> = <b>${_.floor(
-    dmg,
-  ).toLocaleString()}</b> \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconCriticalDamage.png" />${toPercentage(
+  ).toLocaleString()}</b> = <b>${_.floor(dmg).toLocaleString()}</b> \u{00d7} (1 + <b>${toPercentage(
     globalCd,
-  )}</b>)</span>`
+  )}</b> <i class="text-[10px]">CDMG</i> )`
 
   const avgString = `<b class="${propertyColor[scaling.property] || 'text-red'}">${_.floor(
     totalAvg,
-  ).toLocaleString()}</b> = <b>${_.floor(
-    dmg,
-  ).toLocaleString()}</b> \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconCriticalDamage.png" />${toPercentage(
+  ).toLocaleString()}</b> = <b>${_.floor(dmg).toLocaleString()}</b> \u{00d7} (1 + <b>${toPercentage(
     globalCd,
-  )}</b><span class="ml-1"> \u{00d7} </span><b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconCriticalChance.png" />${toPercentage(
-    totalCr,
-  )}</b>)</span>`
+  )}</b> <i class="text-[10px]">CDMG</i> \u{00d7} </span><b>${toPercentage(totalCr)}</b> <i class="text-[10px]">CR</i> )`
 
   const DmgBody = (
     <div className="space-y-1">

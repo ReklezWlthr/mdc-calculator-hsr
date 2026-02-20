@@ -94,14 +94,12 @@ export const breakDamageStringConstruct = (
       ? `(2 \u{00d7} <b>${_.round(
           breakLevel,
         ).toLocaleString()}</b> <i class="text-[10px]">BASE</i> \u{00d7} <b>${toughnessMult}</b> <i class="text-[10px]">TOUGHNESS</i>)`
-      : `<span class="inline-flex items-center h-4">(<b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/${
-          StatIcons[Stats.HP]
-        }" />${_.round(
+      : `(<b>${_.round(
           calculatorStore.hp,
-        ).toLocaleString()}</b><i class="text-[10px] ml-1">Enemy HP</i><span class="mx-1"> \u{00d7} </span><b>${toPercentage(
+        ).toLocaleString()}</b><i class="text-[10px] ml-1">Enemy HP</i><span class="mx-0.5"> \u{00d7} </span><b>${toPercentage(
           enemyType === 'Normal' ? 0.16 : 0.07,
           2,
-        )}</b>)</span>`
+        )}</b>)`
   const debuff =
     stats?.ELEMENT === Element.QUANTUM
       ? baseEntangleScaling
@@ -128,9 +126,7 @@ export const breakDamageStringConstruct = (
   const formulaString = (final: number, scale: string, broken: boolean, defMult: number, vulMult: number) =>
     `<b class="text-red">${_.round(final).toLocaleString()}</b> = ${scale}${
       stats.getValue(Stats.BE) > 0
-        ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconBreakUp.png" />${toPercentage(
-            stats.getValue(Stats.BE),
-          )}</b>)</span>`
+        ? ` \u{00d7} (1 + <b>${toPercentage(stats.getValue(Stats.BE))}</b> <i class="text-[10px]">BREAK</i>)`
         : ''
     }${
       multiplier ? ` \u{00d7} <b class="text-indigo-300">${toPercentage(multiplier, 2)}</b>` : ''

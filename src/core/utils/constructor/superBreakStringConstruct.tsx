@@ -83,9 +83,7 @@ export const superBreakStringConstruct = (
     dmg,
   ).toLocaleString()}</b> = ${baseBreakScaling}${
     stats.getValue(Stats.BE) > 0
-      ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconBreakUp.png" />${toPercentage(
-          stats.getValue(Stats.BE),
-        )}</b>)</span>`
+      ? ` \u{00d7} (1 + <b>${toPercentage(stats.getValue(Stats.BE))}</b> <i class="text-[10px]">BREAK</i>)`
       : ''
   }${
     stats.getValue(StatsObjectKeys.SUPER_BREAK_DMG) > 0
