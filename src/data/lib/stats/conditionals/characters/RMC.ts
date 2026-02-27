@@ -419,7 +419,14 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
               (c >= 4 && all[i]?.MAX_ENERGY === 0 ? 0.06 : 0)
             _.forEach(all, (a, j) => {
               _.forEach(
-                [a.BASIC_SCALING, a.SKILL_SCALING, a.ULT_SCALING, a.TALENT_SCALING, a.MEMO_SKILL_SCALING],
+                [
+                  a.BASIC_SCALING,
+                  a.SKILL_SCALING,
+                  a.ULT_SCALING,
+                  a.TALENT_SCALING,
+                  a.MEMO_SKILL_SCALING,
+                  a.MEMO_TALENT_SCALING,
+                ],
                 (s) => {
                   _.forEach(s, (ss) => {
                     if (

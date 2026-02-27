@@ -51,12 +51,12 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         8,
         1.6,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span> of <b>Demiurge</b>'s Max HP, and increases Trailblazer (Remembrance)'s CRIT Rate by a value equal to <span class="text-desc">${calcScaling(
         36,
         7.2,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span> of <b>Demiurge</b>'s CRIT Rate. This effect also applies to <b>Mem</b>. After Trailblazer (Remembrance) uses Enhanced Basic ATK in this battle, <b>Demiurge</b> immediately gains <span class="text-desc">1</span> extra turn and automatically uses <b>Minuet of Blooms and Plumes</b>. If the target was defeated before this ability is used, it will be used on newly appeared enemy targets instead.`,
       show: _.includes(teamId, '8007'),
       default: false,
@@ -72,12 +72,12 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         36,
         7.2,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span>, and ignores <span class="text-desc">${calcScaling(
         18,
         3.6,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span> of the target's DEF, lasting until Aglaea exits the <b class="text-desc">Supreme Stance</b> state.`,
       show: _.includes(teamId, '1402'),
       default: false,
@@ -93,7 +93,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         6,
         1.2,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span> of the enemy's DEF. When Tribbie launches <u>Follow-up ATK</u> and triggers the <b>Additional DMG</b> from Tribbie's Zone, it further deals <span class="text-desc">1</span> instance(s) of <b>Additional DMG</b>.`,
       show: _.includes(teamId, '1403'),
       default: false,
@@ -109,7 +109,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         100,
         20,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span> during this attack. If the target gets defeated before the use, then it will target the newly arriving enemy targets instead. If Mydei is not in the <b class="text-red">Vendetta</b> state, then advances Mydei's action by <span class="text-desc">100%</span>.`,
       show: _.includes(teamId, '1404'),
       default: false,
@@ -125,14 +125,14 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         0.12,
         0.024,
         memo_skill,
-        'linear'
+        'linear',
       ).toLocaleString('en', {
         maximumFractionDigits: 3,
       })}%</span> for every <span class="text-desc">1%</span> of overflow value consumed when the summoned <b>Netherwing</b> triggers the ability effect of its Talent, <b>Wings Sweep the Ruins</b>. If there are <span class="text-desc">2</span> enemy target(s) on the field or fewer when summoned, the DMG multiplier additionally increases by <span class="text-desc">${calcScaling(
         0.24,
         0.048,
         memo_skill,
-        'linear'
+        'linear',
       ).toLocaleString('en', {
         maximumFractionDigits: 3,
       })}%</span> when summoning.`,
@@ -152,12 +152,12 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         30,
         6,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span> and Skill DMG dealt by <span class="text-desc">${calcScaling(
         20,
         4,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span> until the start of Anaxa's next turn.`,
       show: _.includes(teamId, '1405'),
       default: false,
@@ -173,12 +173,12 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         12,
         2.4,
         memo_skill,
-        'linear'
+        'linear',
       )}</span> Energy for Hyacine. When Hyacine has <b class="text-hsr-wind">Ode to Sky</b> and is providing healing, additionally increases the healing value for <b>Little Ica</b>'s Memosprite Skill by an amount equal to <span class="text-desc">${calcScaling(
         36,
         7.2,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span> of the healing value this time. After Hyacine uses Skill/Ultimate, consumes <span class="text-desc">1</span> stack of <b class="text-hsr-wind">Ode to Sky</b>.`,
       show: false,
       default: false,
@@ -194,17 +194,17 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         18,
         3.6,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span>, and decreases the DEF of the <b class="text-hsr-quantum">Patron</b> by <span class="text-desc">${calcScaling(
         10,
         2,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span> and the DEF of enemy targets other than <b class="text-hsr-quantum">Patron</b> by <span class="text-desc">${calcScaling(
         6,
         1.2,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span>.`,
       show: _.includes(teamId, '1406'),
       default: 'none',
@@ -225,22 +225,22 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         6,
         1.2,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span>, up to <span class="text-desc">${calcScaling(
         36,
         7.2,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span>. While <b class="text-rose-500">Eternal Ignition</b> persists, increases Khaslana's CRIT Rate by <span class="text-desc">${calcScaling(
         8,
         1.6,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span>. After Khaslana's extra turns are depleted, the Transformation does not end, but refreshes all of Khaslana's extra turns and gains <span class="text-desc">4</span> point(s) of <b class="text-red">Scourge</b>. At the start of Khaslana's extra turns, Khaslana consumes an amount of HP equal to <span class="text-desc">15%</span> of his current HP. After using an attack, deals <span class="text-desc">5</span> instances of <b>Additional DMG</b>, with each instance dealing <b class="text-hsr-fire">Fire Additional DMG</b> equal to <span class="text-desc">${calcScaling(
         5,
         1,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span> of Khaslana's ATK to one random enemy.`,
       show: _.includes(teamId, '1408'),
       default: false,
@@ -256,12 +256,12 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         60,
         12,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span>. After Hysilens uses Basic ATK/Skill to attack enemies, causes the DoT currently applied on the attacked enemy targets to immediately produce DMG equal to <span class="text-desc">${calcScaling(
         30,
         6,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span>/<span class="text-desc">${calcScaling(40, 8, memo_skill, 'linear')}%</span> of the original DMG.`,
       show: _.includes(teamId, '1410'),
       default: false,
@@ -277,7 +277,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         15,
         3,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span>. After <b class="text-desc">Coup de Main</b> ends, Cerydra immediately gains <span class="text-desc">1</span> point(s) of <b>Charge</b>.`,
       show: _.includes(teamId, '1412'),
       default: false,
@@ -293,12 +293,12 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         9,
         1.8,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span>. After Evernight uses a Skill/Ultimate, additionally gains <span class="text-desc">1</span> <b class="text-indigo-300">Memoria</b> point(s). The CRIT DMG boost effect provided by the Skill is further increased by an amount equal to <span class="text-desc">${calcScaling(
         6,
         1.2,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span> of Evernight's CRIT DMG.`,
       show: _.includes(teamId, '1413'),
       default: false,
@@ -314,12 +314,12 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         40,
         8,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span> of the <b class="text-desc">Bondmate</b>'s <b class="text-indigo-300">Shield</b> Effect. When Dan Heng • Permansor Terrae holds <b class="text-hsr-physical">Ode to Earth</b>, the <b class="text-desc">Bondmate</b> deals <span class="text-desc">${calcScaling(
         12,
         2.4,
         memo_skill,
-        'linear'
+        'linear',
       )}%</span> more DMG. When used on Dan Heng • Permansor Terrae, additionally advances <b class="text-hsr-physical">Souldragon</b>'s action by <span class="text-desc">100%</span>. The <b class="text-hsr-physical">Souldragon</b>'s next action gains the enhance effects of Dan Heng • Permansor Terrae's Ultimate and the <b class="text-indigo-300">Shield</b> Effect provided by <b class="text-hsr-physical">Souldragon</b> is <span class="text-desc">150%</span> of its original <b class="text-indigo-300">Shield</b> value. Does not consume the enhancement <b>Charge</b> of Dan Heng • Permansor Terrae's Ultimate.`,
       show: _.includes(teamId, '1414'),
       default: false,
@@ -376,9 +376,9 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
             item.text
           }</b>
         <br />${item.content}
-        <br />`
+        <br />`,
         ),
-        ''
+        '',
       )}
       <br /><b class="text-unique-end">✦</b> <b class="${ElementColor[Element.ICE]}">Ode to Ego</b>
       <br />For every <span class="text-desc">1</span> different teammate (other than <b>Demiurge</b>) from whom Cyrene has gained <b class="text-pink-300">Recollection</b>, additionally deals <span class="text-desc">1</span> instance of <b class="text-hsr-ice">Ice DMG</b> equal to {{1}}% of <b>Demiurge</b>'s Max HP to one random enemy when <b>Demiurge</b> uses <b>Minuet of Blooms and Plumes</b>. After Cyrene uses Ultimate or when <b>Demiurge</b> is summoned, <b>Demiurge</b> immediately gains <span class="text-desc">1</span> <b class="text-desc">Story</b>. When <b class="text-desc">Story</b> reaches <span class="text-desc">3</span>, <b>Demiurge</b> consumes all <b class="text-desc">Story</b> points to immediately gain <span class="text-desc">1</span> extra turn and automatically use <b>Minuet of Blooms and Plumes</b>.`,
@@ -663,7 +663,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
       base.SUMMON_STATS = _.cloneDeep({
@@ -822,7 +822,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       base[Stats.ALL_DMG].push({
         name: `Talent`,
@@ -866,7 +866,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       }[],
       weakness: Element[],
       broken: boolean,
-      globalCallback: CallbackType[]
+      globalCallback: CallbackType[],
     ) => {
       if (x.SUMMON_STATS) {
         globalCallback.push(function P99(_b, _d, _w, all) {
@@ -889,7 +889,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                     multiplier: (item.multiplier || 1) * calcScaling(0.3, 0.06, ult, 'curved'),
                     sum: true,
                     detonate: true,
-                  }))
+                  })),
                 )
                 t.SKILL_SCALING.push(
                   ..._.map(dots, (item, i) => ({
@@ -899,11 +899,18 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                     multiplier: (item.multiplier || 1) * calcScaling(0.4, 0.08, ult, 'curved'),
                     sum: true,
                     detonate: true,
-                  }))
+                  })),
                 )
               }
               _.forEach(
-                [t.BASIC_SCALING, t.SKILL_SCALING, t.ULT_SCALING, t.TALENT_SCALING, t.MEMO_SKILL_SCALING],
+                [
+                  t.BASIC_SCALING,
+                  t.SKILL_SCALING,
+                  t.ULT_SCALING,
+                  t.TALENT_SCALING,
+                  t.MEMO_SKILL_SCALING,
+                  t.MEMO_TALENT_SCALING,
+                ],
                 (s) => {
                   // Phainon Fire DMG
                   if (t.ID === '1408' && form.cyrene_phainon && allForm[i].phainon_transform) {
@@ -935,7 +942,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                       })
                     }
                   })
-                }
+                },
               )
               // Trailblazer
               if (t.ID === '8007' && form.cyrene_tb) {
@@ -1119,7 +1126,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                     ...item,
                     name: `Ode - ${item.name}`,
                     multiplier: 1.5,
-                  }))
+                  })),
                 )
               }
             })
