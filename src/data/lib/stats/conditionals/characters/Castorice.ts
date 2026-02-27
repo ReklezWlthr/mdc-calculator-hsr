@@ -117,7 +117,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       trace: 'Memosprite Talent [1]',
       title: `Wings Sweep the Ruins`,
       content: `When the <b>Netherwing</b> disappears, deals <span class="text-desc">6</span> instance(s) of DMG, with each instance dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Castorice's Max HP to one random enemy. At the same time, restores HP by an amount equal to <span class="text-desc">6%</span> of Castorice's Max HP plus <span class="text-desc">800</span> for all allies.`,
-      value: [{ base: 25, growth: 5, style: 'linear' }],
+      value: [{ base: 20, growth: 4, style: 'linear' }],
       level: memo_talent,
       tag: AbilityTag.BOUNCE,
     },
@@ -460,7 +460,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       base.MEMO_TALENT_SCALING = [
         {
           name: 'Total Single Target DMG',
-          value: [{ scaling: calcScaling(0.25, 0.05, memo_talent, 'linear'), multiplier: Stats.HP }],
+          value: [{ scaling: calcScaling(0.2, 0.04, memo_talent, 'linear'), multiplier: Stats.HP }],
           multiplier: (c >= 6 ? 9 : 6) * (c1Mult || 1),
           element: Element.QUANTUM,
           property: TalentProperty.SERVANT,
@@ -472,7 +472,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         },
         {
           name: 'Bounce DMG',
-          value: [{ scaling: calcScaling(0.25, 0.05, memo_talent, 'linear'), multiplier: Stats.HP }],
+          value: [{ scaling: calcScaling(0.2, 0.04, memo_talent, 'linear'), multiplier: Stats.HP }],
           element: Element.QUANTUM,
           property: TalentProperty.SERVANT,
           type: TalentType.SERVANT,

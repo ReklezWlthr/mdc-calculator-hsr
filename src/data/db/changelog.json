@@ -2,7 +2,10 @@
   {
     "version": "1.2-4",
     "date": "Feb 27th, 2026",
-    "desc": ["Fixed: <span class=\"text-hsr-ice\">RMC</span>'s minor traces are now correct"]
+    "desc": [
+      "Fixed: <span class=\"text-hsr-ice\">RMC</span>'s minor traces are now correct",
+      "Fixed: <span class=\"text-hsr-quantum\">Castorice</span>'s <b>Wings Sweep the Ruins</b>'s DMG Multiplier"
+    ]
   },
   {
     "version": "1.2-4",

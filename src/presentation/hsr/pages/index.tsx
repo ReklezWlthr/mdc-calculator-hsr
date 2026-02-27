@@ -41,11 +41,11 @@ export const GenshinHome = observer(() => {
   const [page, setPage] = useState<HsrPage>(HsrPage.TEAM)
 
   const { modalStore } = useStore()
-  useLocalUpdater('hsr')
+  const { hydrated } = useLocalUpdater('hsr')
 
   return (
     <div className="flex flex-shrink w-full h-full overflow-y-auto">
-      <Sidebar onChange={setPage} currentPage={page} />
+      <Sidebar onChange={setPage} currentPage={page} hydrated={hydrated} />
       <InternalPage page={page} />
     </div>
   )

@@ -111,5 +111,5 @@ export const useLocalUpdater = (game: string) => {
     setHydrated(true)
   }, [router.asPath])
 
-  return { data, updateData }
+  return { data, updateData, hydrated }
 }

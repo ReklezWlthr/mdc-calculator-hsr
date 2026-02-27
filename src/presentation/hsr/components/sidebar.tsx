@@ -7,7 +7,15 @@ import { HelpModal } from '@src/presentation/hsr/components/modals/help_modal'
 import { IntroModal } from '@src/presentation/hsr/components/modals/intro_modal'
 import Link from 'next/link'
 
-export const Sidebar = ({ currentPage, onChange }: { currentPage: HsrPage; onChange: (page: HsrPage) => void }) => {
+export const Sidebar = ({
+  currentPage,
+  onChange,
+  hydrated,
+}: {
+  currentPage: HsrPage
+  onChange: (page: HsrPage) => void
+  hydrated: boolean
+}) => {
   const { modalStore, settingStore } = useStore()
 
   const Pill = ({ name, page, icon }: { name: string; page: HsrPage; icon: string }) => {
@@ -59,7 +67,7 @@ export const Sidebar = ({ currentPage, onChange }: { currentPage: HsrPage; onCha
             </p>
             <p>Sparxie & Yao Guang: Now Available</p>
           </div>
-          {!settingStore.settings.storeData && (
+          {!settingStore.settings.storeData && hydrated && (
             <div className="w-full px-2 py-1 text-xs text-white rounded-md bg-error ring-1 ring-offset-2 ring-offset-primary-dark ring-red">
               <p className="flex items-center gap-1 font-bold">
                 <i className="fa-exclamation-circle fa-solid" />
