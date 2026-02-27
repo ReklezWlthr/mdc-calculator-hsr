@@ -184,7 +184,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -270,7 +270,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.numinosity) {
         base.ALL_TYPE_RES_PEN.push({
@@ -306,7 +306,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       _.last(team).CALLBACK.push(function P99(x, _d, _w, all) {
         if (form.tribbie_ult && a.a4) {
@@ -321,7 +321,14 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         if (form.tribbie_ult) {
           _.forEach(all, (t) =>
             _.forEach(
-              [t.BASIC_SCALING, t.SKILL_SCALING, t.ULT_SCALING, t.TALENT_SCALING, t.MEMO_SKILL_SCALING],
+              [
+                t.BASIC_SCALING,
+                t.SKILL_SCALING,
+                t.ULT_SCALING,
+                t.TALENT_SCALING,
+                t.MEMO_SKILL_SCALING,
+                t.MEMO_TALENT_SCALING,
+              ],
               (s) => {
                 const add = {
                   name: 'Additional DMG per Enemy',
@@ -359,8 +366,8 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                     }
                   })
                 }
-              }
-            )
+              },
+            ),
           )
         }
         return x
