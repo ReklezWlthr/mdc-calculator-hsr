@@ -55,7 +55,7 @@ export const MaxedCharacterStore: ICharStore = {
 export const DefaultAccount = _.map(['8001', '1001', '1002'], (item) => ({
   ...DefaultCharacterStore,
   cId: item,
-  minor_traces: formatMinorTrace(findCharacter(item)?.trace, Array(10).fill(false)),
+  minor_traces: formatMinorTrace(findCharacter(item)?.trace, Array(10).fill(false), findCharacter(item)?.overwrite),
 }))
 
 export interface CharacterStoreType {

@@ -55,7 +55,8 @@ export const useLocalUpdater = (game: string) => {
               ...c,
               minor_traces: formatMinorTrace(
                 findCharacter(c.cId)?.trace,
-                _.map(c.minor_traces, (v) => v?.toggled || false)
+                _.map(c.minor_traces, (v) => v?.toggled || false),
+                findCharacter(c.cId)?.overwrite,
               ),
             }
           }),
@@ -65,11 +66,12 @@ export const useLocalUpdater = (game: string) => {
             ...c,
             minor_traces: formatMinorTrace(
               findCharacter(c.cId)?.trace,
-              _.map(c.minor_traces, (v) => v.toggled)
+              _.map(c.minor_traces, (v) => v.toggled),
+              findCharacter(c.cId)?.overwrite,
             ),
           })),
           setup: setupStore.team,
-        })
+        }),
       )
     }
   }, [
@@ -94,7 +96,7 @@ export const useLocalUpdater = (game: string) => {
             builds: [],
             characters: [],
             setup: [],
-          })
+          }),
         )
     }
   }, [settingStore.settings])

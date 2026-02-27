@@ -168,7 +168,7 @@ export const fromScanner = (rawData: Record<string, any>) => {
           item.traces.stat_6 || false,
           item.traces.stat_9 || false,
         ],
-        // findCharacter(cId)?.overwrite
+        findCharacter(cId)?.overwrite
       ),
     }
   })

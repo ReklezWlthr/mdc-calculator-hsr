@@ -119,7 +119,7 @@ export const getSetCount = (artifacts: IArtifactEquip[]) => {
       acc[curr.setId] ? (acc[curr.setId] += 1) : (acc[curr.setId] = 1)
       return acc
     },
-    {}
+    {},
   )
   return setBonus
 }
@@ -134,7 +134,7 @@ export const getResonanceCount = (chars: ITeamChar[]) => {
       acc[curr.element] ? (acc[curr.element] += 1) : (acc[curr.element] = 1)
       return acc
     },
-    {}
+    {},
   )
   return setBonus
 }
@@ -152,7 +152,7 @@ export const formatIdIcon = (id: string, gender: 'PlayerBoy' | 'PlayerGirl') => 
 export const formatMinorTrace = (
   stats: Stats[],
   defaultValue: boolean[],
-  overwrite?: { index: number; stat: Stats }[]
+  overwrite?: { index: number; stat: Stats }[],
 ) => {
   const statOrder = [0, 0, 0, 0, 0, 1, 1, 2, 2, 2]
   const magnitudeOrder = [0, 0, 1, 1, 2, 0, 1, 0, 1, 2]
@@ -181,17 +181,17 @@ export const formatScaleString = (talent: ITalentDisplay, level: number) =>
         talent?.value?.[index]?.base,
         talent?.value?.[index]?.growth,
         level,
-        talent?.value?.[index]?.style
+        talent?.value?.[index]?.style,
       )
       return _.replace(
         acc,
         curr[0],
         `<span class="text-desc">${
           isPercentage ? toPercentage(raw / 100, 2) : _.floor(_.round(raw, 3), 2).toLocaleString()
-        }</span>`
+        }</span>`,
       )
     },
-    talent?.content
+    talent?.content,
   )
 
 export const getTurnWithinCycle = (cycle: number, spd: number) => _.floor((50 + 100 * (cycle + 1)) / (10000 / spd))
@@ -216,7 +216,7 @@ export const teamOptionGenerator = (team: ITeamChar[], includeSummon?: boolean) 
         result.push({ name: SummonName[item?.cId], value: (i + 11).toString() })
       return result
     }),
-    (item) => !!item
+    (item) => !!item,
   ),
 ]
 

@@ -59,6 +59,15 @@ export const Sidebar = ({ currentPage, onChange }: { currentPage: HsrPage; onCha
             </p>
             <p>Sparxie & Yao Guang: Now Available</p>
           </div>
+          {!settingStore.settings.storeData && (
+            <div className="w-full px-2 py-1 text-xs text-white rounded-md bg-error ring-1 ring-offset-2 ring-offset-primary-dark ring-red">
+              <p className="flex items-center gap-1 font-bold">
+                <i className="fa-exclamation-circle fa-solid" />
+                Your data is currently not saved!
+              </p>
+              <p>If you want to save your data to PC, please enable it in the settings.</p>
+            </div>
+          )}
           <div className="flex items-center gap-3 cursor-pointer text-gray" onClick={onOpenIntroModal}>
             <i className="text-xl fa-solid fa-circle-info" />
             <p>About</p>
