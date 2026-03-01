@@ -441,7 +441,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       globalMod: GlobalModifiers,
     ) => {
       base.CALLBACK.push(function P99(x) {
-        const atk = x.getAtk()
+        const atk = x.getAtk(true)
         if (atk > 2000)
           x.Elation.push({
             name: `Ascension 2 Passive`,
