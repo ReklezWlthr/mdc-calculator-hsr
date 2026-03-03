@@ -52,7 +52,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     skill: {
       trace: 'Skill',
       title: `Decalight Unveils All`,
-      content: `Deploys a Zone for <span class="text-desc">3</span> turn(s). The Zone's remaining duration is reduced by <span class="text-desc">1</span> at the start of this unit's turn. While the Zone is active, increases the Elation of all allies by an amount equal to {{0}}% of Yao Guang's Elation. After using Basic ATK or Skill, Yao Guang gains <span class="text-desc">3</span> <b class="text-orange-400">Punchline(s)</b>.`,
+      content: `Deploys a Zone for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn. While the Zone is active, increases all allies' Elation by an amount equal to {{0}}% of Yao Guang's Elation. After Yao Guang uses Basic ATK or Skill, gains <span class="text-desc">3</span> <b class="text-orange-400">Punchline</b>.`,
       value: [{ base: 10, growth: 1, style: 'curved' }],
       level: skill,
       tag: AbilityTag.SUPPORT,
@@ -63,7 +63,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     summon_skill: {
       trace: 'Elation Skill',
       title: 'Let Thy Fortune Burst in Flames',
-      content: `Inflicts <b class="text-red">Woe's Whisper</b> on all enemies, lasting for <span class="text-desc">3</span> turn(s). Increases DMG received by enemy targets under the <b class="text-red">Woe's Whisper</b> state by <span class="text-desc">16%</span>. Deals {{0}}% <b class="text-hsr-physical">Physical <b class="elation">Elation DMG</b></b> to all enemies. Then, deals <span class="text-desc">5</span> instance(s) of {{1}}% <b class="text-hsr-physical">Physical <b class="elation">Elation DMG</b></b> to one random enemy.`,
+      content: `Inflicts <b class="text-red">Woe's Whisper</b> on all enemies, lasting for <span class="text-desc">3</span> turn(s). Enemy targets under the <b class="text-red">Woe's Whisper</b> state take <span class="text-desc">16%</span> increased DMG. Deals {{0}}% <b class="text-hsr-physical">Physical <b class="elation">Elation DMG</b></b> to all enemies. Then, deals <span class="text-desc">5</span> instance(s) of {{1}}% <b class="text-hsr-physical">Physical <b class="elation">Elation DMG</b></b> to one random enemy.`,
       value: [
         { base: 50, growth: 5, style: 'curved' },
         { base: 10, growth: 1, style: 'curved' },
@@ -76,7 +76,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     ult: {
       trace: 'Ultimate',
       title: 'Hexagram of Feathered Fortune',
-      content: `Gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline(s)</b>. <b class="text-aha">Aha</b> immediately gains <span class="text-desc">1</span> extra turn where a fixed amount of <span class="text-desc">20</span> <b class="text-orange-400">Punchline(s)</b> is taken into account. This turn, does not consume <b class="text-orange-400">Punchline(s)</b>, and increases all allies' <b>All-Type RES PEN</b> by {{0}}% for <span class="text-desc">3</span> turn(s).`,
+      content: `Gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b>. <b class="text-aha">Aha</b> immediately gains <span class="text-desc">1</span> extra turn where a fixed amount of <span class="text-desc">20</span> <b class="text-orange-400">Punchline(s)</b> is taken into account. This turn, does not consume <b class="text-orange-400">Punchline(s)</b>, and increases all allies' <b>All-Type RES PEN</b> by {{0}}% for <span class="text-desc">3</span> turn(s).`,
       value: [{ base: 10, growth: 1, style: 'curved' }],
       level: ult,
       tag: AbilityTag.AOE,
@@ -86,7 +86,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     talent: {
       trace: `Talent`,
       title: `Behold Wherever Light Unfolds`,
-      content: `When Yao Guang possesses <b class="text-blue">Certified Banger</b>:
+      content: `When Yao Guang holds <b class="text-blue">Certified Banger</b>:
       <br />After an ally target uses an attack, triggers the <b class="text-desc">Great Boon</b> effect after using an attack, dealing <span class="text-desc">1</span> instance of {{0}}% <b class="elation">Elation DMG</b> of the corresponding Type to <span class="text-desc">1</span> random target hit. If Skill Points are consumed during this attack, additionally triggers <b class="text-desc">Great Boon</b> <span class="text-desc">1</span> additional time.
       <br />When triggering the <b class="text-desc">Great Boon</b> effect, if the attacker's Elation is lower than Yao Guang's, this instance of <b class="elation">Elation DMG</b> will use Yao Guang's Elation for calculation.
       <br />Triggering the <b class="text-desc">Great Boon</b> effect is not considered as using an attack.`,
@@ -105,7 +105,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Amaze-In Grace',
-      content: `When Yao Guang's SPD is <span class="text-desc">120</span> or higher, increases this unit's Elation by <span class="text-desc">30%</span>. For every <span class="text-desc">1</span> points of SPD exceeded, increases this unit's Elation by <span class="text-desc">1%</span>, up to <span class="text-desc">200</span> points of excess SPD.`,
+      content: `When Yao Guang's SPD is <span class="text-desc">120</span> or higher, increases this unit's Elation by <span class="text-desc">30%</span>. For every <span class="text-desc">1</span> points of SPD exceeded, increases this unit's Elation by <span class="text-desc">1%</span>. Up to a max of <span class="text-desc">200</span> excess SPD can be taken into account for this effect.`,
       image: 'asset/traces/SkillIcon_1502_SkillTree1.webp',
     },
     a4: {
@@ -117,13 +117,13 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Felicity Ensemble',
-      content: `When Yao Guang obtains <b class="text-blue">Certified Banger</b>, increase its duration by <span class="text-desc">1</span> turn(s).`,
+      content: `When Yao Guang obtains <b class="text-blue">Certified Banger</b>, its duration increases by <span class="text-desc">1</span> turn(s).`,
       image: 'asset/traces/SkillIcon_1502_SkillTree3.webp',
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Chuckle Chimes Where Jade Falls',
-      content: `In <b class="text-aha">Aha</b>'s extra turn triggered by Yao Guang's Ultimate, the fixed amount of <b class="text-orange-400">Punchline</b> taken into account increases to <span class="text-desc">40</span>. When all all targets deal <b class="elation">Elation DMG</b>, ignores <span class="text-desc">20%</span> of the target's DEF.`,
+      content: `In <b class="text-aha">Aha</b>'s extra turn triggered by Ultimate, the fixed amount of <b class="text-orange-400">Punchline</b> taken into account increases to <span class="text-desc">40</span>. When all all targets deal <b class="elation">Elation DMG</b>, ignores <span class="text-desc">20%</span> of the target's DEF.`,
       image: 'asset/traces/SkillIcon_1502_Rank1.webp',
     },
     c2: {
