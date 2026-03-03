@@ -49,7 +49,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     normal_alt: {
       trace: 'Enhanced Basic ATK',
       title: 'Bloom! Winner Takes All',
-      content: `Upon finalizing the livestream connection results, deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Sparxie's ATK to one designated enemy, and <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Sparxie's ATK to adjacent targets.`,
+      content: `Finalizes the livestream. Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Sparxie's ATK to one designated enemy, and <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Sparxie's ATK to adjacent targets.`,
       value: [
         { base: 50, growth: 10, style: 'linear' },
         { base: 25, growth: 5, style: 'linear' },
@@ -63,12 +63,13 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill: {
       trace: 'Skill',
       title: `Boom! Sparxicle's Poppin'`,
-      content: `Start a livestream connection to transform Basic ATK into <b>Bloom! Winner Takes All</b> and trigger <b>Engagement Farming</b> <span class="text-desc">1</span> time. During this ability, <b>Engagement Farming</b> can be triggered repeatedly, up to <span class="text-desc">20</span> time(s). Using this ability is not considered as using a Skill.
+      content: `Start a livestream to transform Basic ATK into <b>Bloom! Winner Takes All</b> and trigger <b>Engagement Farming</b> <span class="text-desc">1</span> time. During this ability, <b>Engagement Farming</b> can be triggered repeatedly, up to <span class="text-desc">20</span> time(s). Using this ability is not considered as using a Skill.
       <br />
       <br /><b>Engagement Farming</b>
       <br />Causes <b>Bloom! Winner Takes All</b> to increase the DMG multiplier against one designated enemy by {{0}}% and the DMG multiplier against adjacent targets by {{1}}%. Randomly gains one of the following gifts:
       <br /><b class="text-hsr-fire">Straight Fire</b>: <span class="text-desc">2</span> <b class="text-orange-400">Punchline</b> point(s) and <span class="text-desc">2</span> Skill Point(s).
-      <br /><b class="text-desc">Unreal Banger</b>: <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> point(s).`,
+      <br /><b class="text-desc">Unreal Banger</b>: <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> point(s).
+      <br />Using this ability is not considered as using a Skill.`,
       value: [
         { base: 10, growth: 1, style: 'curved' },
         { base: 5, growth: 0.5, style: 'curved' },
@@ -104,8 +105,8 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: `Talent`,
       title: `Sleight of Sparx Hand`,
-      content: `When Sparxie possesses <b class="text-blue">Certified Banger</b>:
-      <br />Using Enhanced Basic ATK deals <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> equal to {{0}}% to one designated enemy, and <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> equal to {{1}}% to adjacent targets. Additionally, for every time <b>Engagement Farming</b> is triggered, the Enhanced Basic ATK deals <span class="text-desc">1</span> extra instance of <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> equal to {{2}}% to <span class="text-desc">1</span> random attacked enemy target.
+      content: `When Sparxie holds <b class="text-blue">Certified Banger</b>:
+      <br />Using Enhanced Basic ATK deals {{0}}% <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> to one designated enemy, and {{1}}% <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> to adjacent targets. Additionally, for every <span class="text-desc">1</span> instance of <b>Engagement Farming</b> triggered, the Enhanced Basic ATK deals <span class="text-desc">1</span> extra instance of {{2}}% <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> to <span class="text-desc">1</span> random attacked enemy target.
       <br />Using Ultimate deals <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> equal to {{3}}% to all enemies.`,
       value: [
         { base: 20, growth: 2, style: 'curved' },
@@ -134,7 +135,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Dazzling! Persona Kaleidoscope',
-      content: `When there are <span class="text-desc">1/2/3</span> or more Elation characters in the team, using Sparxie's Ultimate will additionally gain <span class="text-desc">2/4/8</span> <b class="text-orange-400">Punchline(s)</b> and <span class="text-desc">1/1/4</span> <b class="text-desc">Thrill(s)</b>.`,
+      content: `When there are <span class="text-desc">1/2/(3 or more)</span> Elation characters in the team, using Sparxie's Ultimate will additionally gain <span class="text-desc">2/4/8</span> <b class="text-orange-400">Punchline(s)</b> and <span class="text-desc">1/1/4</span> <b class="text-desc">Thrill(s)</b>.`,
       image: 'asset/traces/SkillIcon_1501_SkillTree2.webp',
     },
     a6: {
@@ -146,13 +147,13 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c1: {
       trace: 'Eidolon 1',
       title: '#GoingViral #WhoIsShe',
-      content: `When <b class="text-aha">Aha Instant</b> ends, gains an additional <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b>. For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> owned, increases <b>All-Type RES PEN</b> for all allies by <span class="text-desc">1.5%</span>, up to a max increase of <span class="text-desc">15%</span>.`,
+      content: `When <b class="text-aha">Aha Instant</b> ends, gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b>. For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> owned, increases <b>All-Type RES PEN</b> for all allies by <span class="text-desc">1.5%</span>, up to a max increase of <span class="text-desc">15%</span>.`,
       image: 'asset/traces/SkillIcon_1501_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
       title: '#AudienceKnows',
-      content: `When <b class="text-aha">Aha Instant</b> ends, Sparxie gains <span class="text-desc">1</span> extra turn and <span class="text-desc">2</span> <b class="text-desc">Thrill</b>. Each time a <b class="text-desc">Thrill</b> is consumed, increases this unit's CRIT DMG by <span class="text-desc">10%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">4</span> time(s).`,
+      content: `When <b class="text-aha">Aha Instant</b> ends, Sparxie gains <span class="text-desc">1</span> extra turn and <span class="text-desc">2</span> <b class="text-desc">Thrill</b>. For every <span class="text-desc">1</span> <b class="text-desc">Thrill</b> consumed, increases this unit's CRIT DMG by <span class="text-desc">10%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">4</span> time(s).`,
       image: 'asset/traces/SkillIcon_1501_Rank2.webp',
     },
     c3: {
@@ -166,7 +167,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: '#LockedIn #FaceCard',
-      content: `When using Ultimate, additionally gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b> point(s) and increases Elation by <span class="text-desc">36%</span> for <span class="text-desc">3</span> turn(s).`,
+      content: `When using Ultimate, additionally gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b> point(s) and increases this unit's Elation by <span class="text-desc">36%</span> for <span class="text-desc">3</span> turn(s).`,
       image: 'asset/traces/SkillIcon_1501_Rank4.webp',
     },
     c5: {
@@ -180,7 +181,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: '#BuiltDifferent #GoingExtinct',
-      content: `Increases <b>All-Type RES PEN</b> by <span class="text-desc">20%</span>. For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> taken into account, the Elation Skill additionally deals <span class="text-desc">1</span> instance of, up to a max of <span class="text-desc">40</span> times.`,
+      content: `Increases <b>All-Type RES PEN</b> by <span class="text-desc">20%</span>. For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> taken into account by the Elation Skill, the number of its additional DMG instances increases by <span class="text-desc">1</span>, up to a max of <span class="text-desc">40</span>.`,
       image: 'asset/traces/SkillIcon_1501_Rank6.webp',
     },
   }
