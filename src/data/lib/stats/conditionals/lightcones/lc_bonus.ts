@@ -1694,7 +1694,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       base[Stats.CRIT_DMG].push({
         name: 'Passive',
         source: `Dazzled By A Flowery World`,
-        value: calcRefinement(0.36, 0.06, r),
+        value: calcRefinement(0.48, 0.08, r),
       })
       return base
     },
