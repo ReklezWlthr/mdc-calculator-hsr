@@ -1770,6 +1770,44 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23057',
+    scaling: (base, r) => {
+      base[Stats.P_ATK].push({
+        name: 'Passive',
+        source: `Welcome to Cosmic City`,
+        value: calcRefinement(0.64, 0.16, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23058',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: `Encounter at Flowering's Coming`,
+        value: calcRefinement(0.6, 0.225, r),
+      })
+      base[Stats.ERR].push({
+        name: 'Passive',
+        source: `Encounter at Flowering's Coming`,
+        value: calcRefinement(0.1, 0.015, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '22007',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: `We'll face the Hereafter together`,
+        value: calcRefinement(0.12, 0.03, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

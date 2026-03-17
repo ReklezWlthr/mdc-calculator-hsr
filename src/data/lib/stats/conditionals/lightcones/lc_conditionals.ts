@@ -1534,6 +1534,24 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `Superpower`,
+    show: true,
+    default: true,
+    duration: 3,
+    id: '23057',
+    scaling: (base, form, r) => {
+      if (form['23057']) {
+        base.ELATION_DEF_PEN.push({
+          name: `Superpower`,
+          source: 'Welcome to Cosmic City',
+          value: calcRefinement(0.18, 0.03, r),
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [
@@ -2773,19 +2791,66 @@ export const LCTeamConditionals: IWeaponContent[] = [
     default: true,
     id: '23056',
     scaling: (base, form, r, { index, owner, debuffs }) => {
-      if (form['23056'] && !checkBuffExist(base.DEF_REDUCTION, { name: `Umbra Devourer` })) {
+      if (form['23056'] && !checkBuffExist(base.VULNERABILITY, { name: `Umbra Devourer` })) {
         if (index === owner) {
           base[Stats.P_ATK].push({
             name: `Umbra Devourer`,
             source: 'The Finale of a Lie',
             value: calcRefinement(0.4, 0.1, r),
           })
-          addDebuff(debuffs, DebuffTypes.DEF_RED)
+          addDebuff(debuffs, DebuffTypes.OTHER)
         }
-        base.DEF_REDUCTION.push({
+        base.VULNERABILITY.push({
           name: `Umbra Devourer`,
           source: 'The Finale of a Lie',
-          value: calcRefinement(0.12, 0.03, r),
+          value: calcRefinement(0.2, 0.025, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `On-Elation Vulnerability`,
+    show: true,
+    default: true,
+    id: '23058',
+    scaling: (base, form, r, { index, owner, debuffs, own }) => {
+      if (index === owner && own.MAX_ENERGY >= 120) {
+        const err = (_.min([own.MAX_ENERGY - 120, 360]) / 10) * 0.003
+        base[Stats.ERR].push({
+          name: `Passive`,
+          source: 'A Rendezvous in the Next Flower Season',
+          value: err,
+          multiplier: 0.003,
+          base: `${_.floor(_.min([own.MAX_ENERGY - 120, 360])).toLocaleString()} ÷ 10`,
+        })
+      }
+      if (form['23058']) {
+        if (index === owner) {
+          addDebuff(debuffs, DebuffTypes.OTHER)
+        }
+        base.VULNERABILITY.push({
+          name: `Passive`,
+          source: 'A Rendezvous in the Next Flower Season',
+          value: calcRefinement(0.15, 0.0625, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `On-Ult Elation Bonus`,
+    show: true,
+    default: true,
+    id: '22007',
+    scaling: (base, form, r) => {
+      if (form['22007']) {
+        base[Stats.ELATION].push({
+          name: `Passive`,
+          source: `We'll face the Hereafter together`,
+          value: calcRefinement(0.08, 0.01, r),
         })
       }
       return base

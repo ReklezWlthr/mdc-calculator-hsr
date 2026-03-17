@@ -23,7 +23,7 @@ const defaultSetting: ISetting = {
   storeData: false,
   variant: false,
   formMode: 'default',
-  liveOnly: false,
+  liveOnly: true,
   buffed: _.reduce(
     buffedList,
     (acc, key) => {

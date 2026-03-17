@@ -451,13 +451,13 @@ export const CharDetail = observer(() => {
         <div className="space-y-5">
           {_.map([talent.c1, talent.c2, talent.c3, talent.c4, talent.c5, talent.c6], (item, i) => (
             <div className="flex gap-x-3" key={item.trace}>
-              <div className="w-28 h-28 shrink-0">
+              {/* <div className="w-28 h-28 shrink-0">
                 <img
                   src={`https://api.hakush.in/hsr/UI/rank/_dependencies/textures/${id}/${id}_Rank_${i + 1}.webp`}
                   className="object-contain w-full cons"
                   onLoad={(e) => (e.currentTarget.style.display = 'block')}
                 />
-              </div>
+              </div> */}
               <div>
                 <div className="flex gap-3">
                   <TalentIcon

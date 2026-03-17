@@ -1,6 +1,15 @@
 [
   {
     "version": "1.2-4",
+    "date": "Feb 9th, 2026",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v4.2 Beta</span>",
+      "New Character: <span class=\"text-hsr-lightning\">Trailblazer (Elation)</span>, <span class=\"text-hsr-imaginary\">Silver Wolf LV.999</span>, and <span class=\"text-hsr-physical\">Evanescia</span>",
+      "New Light Cones: <span class=\"text-desc\">Welcome to Cosmic City</span>, <span class=\"text-desc\">A Rendezvous in the Next Flower Season</span>, and <span class=\"text-desc\">We'll face the Hereafter together</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Feb 27th, 2026",
     "desc": [
       "Fixed: <span class=\"text-hsr-ice\">RMC</span>'s minor traces are now correct",
@@ -41,7 +50,7 @@
       "Content Version: <span class=\"text-desc\">v4.1v1</span>",
       "New Character: <span class=\"text-hsr-lightning\">Ashveil</span>",
       "New Light Cones: <span class=\"text-desc\">The Finale of a Lie</span>, and <span class=\"text-desc\">Elation Brimming With Blessings</span>",
-      "New Planar Sets: <span class=\"text-desc\">Punklorde Stage Zero</span>, and <span class=\"text-desc\">City of Myriad Forms</span>"
+      "New Planar Sets: <span class=\"text-desc\">Punklorde Stage Zero</span>, and <span class=\"text-desc\">City of Converging Stars</span>"
     ]
   },
   {

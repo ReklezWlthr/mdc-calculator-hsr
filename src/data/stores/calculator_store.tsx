@@ -191,7 +191,9 @@ export class CalculatorStore {
 
   getResMult = (element: Element, resPen: number) => {
     if (this.res[element] === Infinity) return 0
-    const res = this.res[element] / 100 - resPen
+    let baseRes = this.res[element] / 100
+    if (_.some(this.debuffs, (v) => v.type === DebuffTypes.ABSOLUTE)) baseRes = baseRes === 0 ? -0.2 : 0
+    const res = baseRes - resPen
     return 1 - res
   }
 

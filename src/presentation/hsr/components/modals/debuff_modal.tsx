@@ -32,15 +32,15 @@ export const DebuffModal = observer(({ statsOverride, selectedOverride, debuffOv
           _.groupBy(
             _.filter(
               _.flatMap(allStats, (item) => item.DOT_SCALING),
-              (item) => _.includes([type, DebuffTypes.DOT], item.dotType)
+              (item) => _.includes([type, DebuffTypes.DOT], item.dotType),
             ),
-            'overrideIndex'
+            'overrideIndex',
           ),
           (item, index) => (
             <BulletPoint key={index}>
               {allStats[index].NAME} - <span className="text-desc">{_.size(item)}</span>
             </BulletPoint>
-          )
+          ),
         )}
         <BulletPoint key="total">
           <b>Total Count</b> -{' '}
@@ -72,8 +72,8 @@ export const DebuffModal = observer(({ statsOverride, selectedOverride, debuffOv
                   stats.SPD_REDUCTION,
                   stats.E_RES_RED,
                   stats.EHR_RED,
-                  stats.WEAKEN
-                )
+                  stats.WEAKEN,
+                ),
               ) + (countDebuff(debuffOverride || calculatorStore.debuffs, DebuffTypes.IMPRISON) ? 1 : 0)}
             </div>
           </div>
@@ -115,16 +115,17 @@ export const DebuffModal = observer(({ statsOverride, selectedOverride, debuffOv
               {_.size(
                 _.concat(
                   stats.VULNERABILITY,
-                  stats.DOT_VUL,
-                  stats.FUA_VUL,
-                  stats.BREAK_VUL,
-                  stats.SUPER_BREAK_VUL,
                   stats.BASIC_VUL,
                   stats.SKILL_VUL,
                   stats.ULT_VUL,
                   stats.FIRE_VUL,
-                  stats.SUMMON_VUL
-                )
+                  stats.DOT_VUL,
+                  stats.FUA_VUL,
+                  stats.BREAK_VUL,
+                  stats.SUPER_BREAK_VUL,
+                  stats.SUMMON_VUL,
+                  stats.ELATION_VUL,
+                ),
               )}
             </div>
           </div>
@@ -162,8 +163,8 @@ export const DebuffModal = observer(({ statsOverride, selectedOverride, debuffOv
                   stats.LIGHTNING_RES_RED,
                   stats.WIND_RES_RED,
                   stats.QUANTUM_RES_RED,
-                  stats.IMAGINARY_RES_RED
-                )
+                  stats.IMAGINARY_RES_RED,
+                ),
               )}
             </div>
           </div>

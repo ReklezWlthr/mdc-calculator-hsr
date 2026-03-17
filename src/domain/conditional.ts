@@ -14,7 +14,7 @@ export interface IScaling {
   type: TalentType
   multiplier?: number
   flat?: number
-  bonus?: number //Bonus dmg for each component
+  bonus?: number //Bonus dmg or bonus elation for each component
   cr?: number //Bonus crit rate for each component
   overrideCr?: number
   cd?: number //Bonus crit dmg for each component
@@ -42,6 +42,7 @@ export interface IScaling {
   detonate?: boolean
   elation?: number // Used to compare higher (Yao Guang)
   punchline?: number // Used for overriding Banger
+  punchlineBonus?: number
   weaknessBypass?: number
 }
 

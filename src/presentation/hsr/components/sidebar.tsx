@@ -60,13 +60,24 @@ export const Sidebar = ({
       </div>
       <div className="flex items-end justify-between px-3">
         <div className="w-full space-y-3 text-sm">
-          <div className="w-full px-2 py-1 text-xs text-white bg-green-700 rounded-md ring-1 ring-offset-2 ring-offset-primary-dark ring-green-400">
-            <p className="flex items-center gap-1 font-bold">
-              <i className="fa-info-circle fa-solid" />
-              v4.0 is Live!
-            </p>
-            <p>Sparxie & Yao Guang: Now Available</p>
-          </div>
+          {settingStore.settings.liveOnly ? (
+            <div className="w-full px-2 py-1 text-xs text-white bg-green-700 rounded-md ring-1 ring-offset-2 ring-offset-primary-dark ring-green-400">
+              <p className="flex items-center gap-1 font-bold">
+                <i className="fa-info-circle fa-solid" />
+                v4.0 is Live!
+              </p>
+              <p>Sparxie & Yao Guang: Now Available</p>
+            </div>
+          ) : (
+            <div className="w-full px-2 py-1 text-xs text-white bg-green-700 rounded-md ring-1 ring-offset-2 ring-offset-primary-dark ring-green-400">
+              <p className="flex items-center gap-1 font-bold">
+                <i className="fa-info-circle fa-solid" />
+                v4.2 Beta is up!
+              </p>
+              <p>SW LV.999, Evanescia and Trailblazer (Elation): Now Available</p>
+              <p>Novaflare: To be updated...</p>
+            </div>
+          )}
           {!settingStore.settings.storeData && hydrated && (
             <div className="w-full px-2 py-1 text-xs text-white rounded-md bg-error ring-1 ring-offset-2 ring-offset-primary-dark ring-red">
               <p className="flex items-center gap-1 font-bold">

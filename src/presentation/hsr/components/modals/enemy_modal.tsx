@@ -230,10 +230,9 @@ export const EnemyModal = observer(
                 enemyData?.statusRes,
                 (item, key) =>
                   !!item && (
-                    <>
-                      <img className="h-4" src={`https://homdgcat.wiki/images/Debuff/${DebuffIcon[key]}`} />
-                      <p className="pr-3 text-sm text-gray">{toPercentage(item)}</p>
-                    </>
+                    <p className="pr-3 text-sm text-gray" key={key}>
+                      {key}: {toPercentage(item)}
+                    </p>
                   ),
               )}
             </div>

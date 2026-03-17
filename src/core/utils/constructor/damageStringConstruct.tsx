@@ -63,7 +63,8 @@ export const damageStringConstruct = (
   const breakScale = scaling.property === TalentProperty.BREAK
   const breakDoT = scaling.property === TalentProperty.BREAK_DOT
   const isPure = scaling.property === TalentProperty.PURE
-  const isElation = scaling.property === TalentProperty.ELATION
+  const isElation =
+    scaling.property === TalentProperty.ELATION || _.every(scaling.value, (v) => v.multiplier === Stats.ELATION)
 
   const globalMultiplier =
     (scaling.multiplier || 1) *
@@ -153,8 +154,8 @@ export const damageStringConstruct = (
           ? stats.getValue(Stats.HEAL) + stats.getValue(`${TalentTypeMap[scaling.type]}_HEAL`)
           : stats.getValue(Stats.ALL_DMG) + stats.getValue(`${element} DMG%`) + talentDmg + typeDmg)
 
-  const elation = _.max([stats.getTotalElation(), scaling.elation || 0])
-  const punchline = scaling.punchline || +globalMod.punchline
+  const elation = _.max([stats.getTotalElation() + (scaling.bonus || 0), scaling.elation || 0])
+  const punchline = (scaling.punchline || +globalMod.punchline) + (scaling.punchlineBonus || 0)
   const punchlineMultiplier = (5 * punchline) / (+punchline + 240)
 
   const globalBonus = _.sum(_.map(scaling.bonusSplit, (item, i) => item * scaling.hitSplit?.[i])) + bonusDMG()

@@ -300,6 +300,8 @@ export enum DebuffTypes {
   OTHER = 'Others',
   DOT = 'DoT',
   CONTROL = 'Control',
+
+  ABSOLUTE = 'Absolute Weakness'
 }
 
 export const DebuffIcon = {

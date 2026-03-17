@@ -1590,6 +1590,24 @@ export const LightCones = [
       ],
     },
   },
+  {
+    id: '22007',
+    name: `We'll face the Hereafter together`,
+    rarity: 4,
+    baseHp: 43.2,
+    baseAtk: 21.6,
+    baseDef: 15,
+    type: PathType.ELATION,
+    beta: true,
+    desc: {
+      name: 'Companion',
+      detail: `Increases the wearer's CRIT DMG by {{0}}%. After the wearer uses their Ultimate, increases the Elation of all allies by {{1}}%, lasting for <span class="text-desc">1</span> turn(s).`,
+      properties: [
+        { base: 12, growth: 3 },
+        { base: 8, growth: 1 },
+      ],
+    },
+  },
   //---------------------
   //   5 Star
   //---------------------
@@ -2622,25 +2640,63 @@ export const LightCones = [
       ],
     },
   },
-  // {
-  //   id: '23056',
-  //   name: 'The Finale of a Lie',
-  //   rarity: 5,
-  //   baseHp: 48,
-  //   baseAtk: 26.4,
-  //   baseDef: 21,
-  //   type: PathType.HUNT,
-  //   beta: true,
-  //   desc: {
-  //     name: 'Subsume',
-  //     detail: `Increases the wearer's CRIT Rate by {{0}}%. At the start of battle or for every <span class="text-desc">4</span> <u>Follow-Up ATKs</u> the wearer uses, the wearer gains <b>Umbra Devourer</b>, lasting for <span class="text-desc">3</span> turn(s). While the wearer has <b>Umbra Devourer</b>, increases ATK by {{1}}% and reduces all enemies' DEF by {{2}}%. Effects of the same kind cannot stack.`,
-  //     properties: [
-  //       { base: 18, growth: 3 },
-  //       { base: 40, growth: 10 },
-  //       { base: 12, growth: 3 },
-  //     ],
-  //   },
-  // },
+  {
+    id: '23056',
+    name: 'The Finale of a Lie',
+    rarity: 5,
+    baseHp: 38.4,
+    baseAtk: 28.8,
+    baseDef: 24,
+    type: PathType.HUNT,
+    beta: true,
+    desc: {
+      name: 'Subsume',
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. At the start of battle or for every <span class="text-desc">4</span> <u>Follow-Up ATKs</u> the wearer uses, the wearer gains <b>Umbra Devourer</b>, lasting for <span class="text-desc">3</span> turn(s). While the wearer has <b>Umbra Devourer</b>, increases ATK by {{1}}% and increases the DMG taken by all enemies by {{2}}%. Effects of the same kind cannot stack.`,
+      properties: [
+        { base: 18, growth: 3 },
+        { base: 40, growth: 10 },
+        { base: 20, growth: 2.5 },
+      ],
+    },
+  },
+  {
+    id: '23057',
+    name: 'Welcome to Cosmic City',
+    rarity: 5,
+    baseHp: 43.2,
+    baseAtk: 28.8,
+    baseDef: 21,
+    type: PathType.ELATION,
+    beta: true,
+    desc: {
+      name: 'Sure Win',
+      detail: `Increases the wearer's ATK by {{0}}%. When the wearer uses their Ultimate, they gain <b>Superpower</b>, lasting for <span class="text-desc">3</span> turn(s). While in the <b>Superpower</b> state, the wearer's Elation DMG ignores {{1}}% of the target's DEF, and the wearer gains <span class="text-desc">2</span> Punchline(s) after using a Basic ATK. When <b>Superpower</b> is removed, gains {{2}} Punchline(s).`,
+      properties: [
+        { base: 64, growth: 16 },
+        { base: 18, growth: 3 },
+        { base: 12, growth: 2 },
+      ],
+    },
+  },
+  {
+    id: '23058',
+    name: `A Rendezvous in the Next Flower Season`,
+    rarity: 5,
+    baseHp: 43.2,
+    baseAtk: 28.8,
+    baseDef: 21,
+    type: PathType.ELATION,
+    beta: true,
+    desc: {
+      name: 'Daydream',
+      detail: `Increases the wearer's CRIT DMG by {{0}}% and Energy Regeneration Rate by {{1}}%. When the wearer's Max Energy is greater than <span class="text-desc">120</span>, for every <span class="text-desc">10</span> points of Max Energy that exceeds this amount, further increases Energy Regeneration Rate by <span class="text-desc">0.3%</span>, up to a maximum of <span class="text-desc">360</span> points of excess Max Energy taken into account. When the wearer uses an Elation Skill, increases the DMG received by enemy targets by {{2}}% for <span class="text-desc">2</span> turn(s).`,
+      properties: [
+        { base: 60, growth: 22.5 },
+        { base: 10, growth: 1.5 },
+        { base: 15, growth: 6.25 },
+      ],
+    },
+  },
   //---------------------
   //   Herta 5 Star
   //---------------------
@@ -2755,22 +2811,22 @@ export const LightCones = [
       ],
     },
   },
-  // {
-  //   id: '24006',
-  //   name: `Elation Brimming With Blessings`,
-  //   rarity: 5,
-  //   baseHp: 43.2,
-  //   baseAtk: 24,
-  //   baseDef: 21,
-  //   type: PathType.ELATION,
-  //   beta: true,
-  //   desc: {
-  //     name: 'Opening',
-  //     detail: `Increases the wearer's ATK by {{0}}%. After the wearer uses their Skill or Ultimate on one ally character, increases the target's Elation stat by {{1}}% for <span class="text-desc">2</span> turn(s).`,
-  //     properties: [
-  //       { base: 20, growth: 5 },
-  //       { base: 12, growth: 3 },
-  //     ],
-  //   },
-  // },
+  {
+    id: '24006',
+    name: `Elation Brimming With Blessings`,
+    rarity: 5,
+    baseHp: 43.2,
+    baseAtk: 24,
+    baseDef: 21,
+    type: PathType.ELATION,
+    beta: true,
+    desc: {
+      name: 'Opening',
+      detail: `Increases the wearer's ATK by {{0}}%. After the wearer uses their Skill or Ultimate on one ally character, increases the target's Elation stat by {{1}}% for <span class="text-desc">2</span> turn(s).`,
+      properties: [
+        { base: 20, growth: 5 },
+        { base: 12, growth: 3 },
+      ],
+    },
+  },
 ]

@@ -68,7 +68,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         { base: 50, growth: 5, style: 'curved' },
         { base: 10, growth: 1, style: 'curved' },
       ],
-      level: skill,
+      level: elation,
       tag: AbilityTag.AOE,
       energy: 5,
       image: 'asset/traces/SkillIcon_1502_Elation.webp',

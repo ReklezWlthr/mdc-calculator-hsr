@@ -221,7 +221,7 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
   if (form['326_1']) {
     base[Stats.P_ATK].push({
       name: `2-Piece`,
-      source: `City of Myriad Forms`,
+      source: `City of Converging Stars`,
       value: 0.24,
     })
   }
@@ -282,9 +282,9 @@ export const calculateTeamRelic = (base: StatsObject, form: Record<string, any>,
       source: owner.NAME,
       value: 0.1,
     })
-  if (form['326_2'] && !checkBuffExist(base[Stats.CRIT_DMG], { name: 'City of Myriad Forms' }))
+  if (form['326_2'] && !checkBuffExist(base[Stats.CRIT_DMG], { name: 'City of Converging Stars' }))
     base[Stats.CRIT_DMG].push({
-      name: `City of Myriad Forms`,
+      name: `City of Converging Stars`,
       source: owner.NAME,
       value: 0.12,
     })

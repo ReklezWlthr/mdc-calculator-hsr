@@ -153,10 +153,7 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
                   <RarityGauge rarity={item.rarity} />
                 </div>
                 <img
-                  src={`/asset/avatar/portrait//${formatIdIcon(
-                    item.id,
-                    settingStore.settings?.travelerGender,
-                  )}.webp`}
+                  src={`/asset/avatar/portrait/${formatIdIcon(item.id, settingStore.settings?.travelerGender)}.webp`}
                   className="object-cover rounded-t-lg bg-primary-darker aspect-[47/64] w-full"
                 />
               </div>

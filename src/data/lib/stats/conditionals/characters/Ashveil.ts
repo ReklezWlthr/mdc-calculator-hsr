@@ -35,7 +35,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     normal: {
       energy: 20,
       trace: 'Basic ATK',
-      title: `Talons: Induction of Etiquette`,
+      title: `Talons: Inculcate Decorum`,
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Ashveil's ATK to one designated enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
@@ -46,10 +46,10 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill: {
       energy: 30,
       trace: 'Skill',
-      title: 'Flog: Purge the Vile Beasts',
-      content: `Marks one designated enemy target as <b class="text-red">Bait</b>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Ashveil's ATK, and Ashveil gains <span class="text-desc">1</span> <b>Charge(s)</b>. If the target is already marked as <b class="text-red">Bait</b>, additionally deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Ashveil's ATK to the target, as well as recovers <span class="text-desc">1</span> Skill Point(s). When <b class="text-red">Bait</b> does not exist on the field, Ashveil immediate inflicts <b class="text-red">Bait</b> on the enemy target with the lowest HP on the current field. The <b class="text-red">Bait</b> state only applies to the most recently marked target. When <b class="text-red">Bait</b> receives a killing blow, marks the enemy target with the lowest HP on the current field as the new <b class="text-red">Bait</b>. While <b class="text-red">Bait</b> exists on the field, all enemies' DEF is reduced by {{2}}%.`,
+      title: 'Flog: Smite Evil',
+      content: `Makes one designated enemy become the <b class="text-red">Bait</b>, dealing it <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Ashveil's ATK. If the target is already the <b class="text-red">Bait</b>, additionally deals it <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Ashveil's ATK, and recovers <span class="text-desc">1</span> Skill Point(s). When the <b class="text-red">Bait</b> exists on the field, all enemies' DEF gets reduced by {{2}}%. When there is no <b class="text-red">Bait</b> on the field, Ashveil immediate makes the enemy target with the lowest HP on the field become the <b class="text-red">Bait</b>. The <b class="text-red">Bait</b> state only takes effect on the most recently applied target.`,
       value: [
-        { base: 150, growth: 15, style: 'curved' },
+        { base: 100, growth: 10, style: 'curved' },
         { base: 50, growth: 5, style: 'curved' },
         { base: 20, growth: 2, style: 'curved' },
       ],
@@ -61,12 +61,12 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ult: {
       energy: 5,
       trace: 'Ultimate',
-      title: `Banquet: Infinite Eucharist`,
-      content: `Marks one designated enemy as <b class="text-red">Bait</b>, deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Ashveil's ATK to them, then immediately launches enhanced Talent's <u>Follow-Up ATK</u> to them <span class="text-desc">1</span> time, and Ashveil gains <span class="text-desc">2</span> <b>Charge(s)</b>.
-      <br />This enhanced Talent's <u>Follow-Up ATK</u> does not consume <b>Charge</b>, and for every <span class="text-desc">4</span> stacks of <b class="text-violet-400">Gluttony</b> possessed, consumes <span class="text-desc">4</span> stacks of <b class="text-violet-400">Gluttony</b> to additionally deal <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Ashveil's ATK. During the enhanced Talent's <u>Follow-Up ATK</u>, if the original <b class="text-red">Bait</b> receives a killing blow, and the stack count of <b class="text-violet-400">Gluttony</b> is <span class="text-desc">4</span> or more, Ashveil will continue to consume <b class="text-violet-400">Gluttony</b> to deal DMG to a new <b class="text-red">Bait</b>. The enhanced Talent's <u>Follow-Up ATK</u> immediately ends after all enemy targets in the current field receive a killing blow.`,
+      title: `Banquet: Insatiable Appetite`,
+      content: `Makes one designated enemy become the <b class="text-red">Bait</b>, dealing it <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Ashveil's ATK. Then, immediately launches <span class="text-desc">1</span> instance of enhanced Talent's <u>Follow-Up ATK</u> against the <b class="text-red">Bait</b>. And Ashveil gains <span class="text-desc">3</span> <b>Charge</b>.
+      <br />This enhanced Talent's <u>Follow-Up ATK</u> does not consume <b>Charge</b>. Whenever <b class="text-violet-400">Gluttony</b> reaches <span class="text-desc">4</span> stack(s) or more, consumes <span class="text-desc">4</span> stack(s) of <b class="text-violet-400">Gluttony</b> to additionally deal <span class="text-desc">1</span> instance of <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Ashveil's ATK. And when this instance of <u>Follow-Up ATK</u> deals a killing blow to the target, it will continue to deal DMG to a new <b class="text-red">Bait</b>. This triggers until <b class="text-violet-400">Gluttony</b> becomes lower than <span class="text-desc">4</span> stack(s). If all enemy targets currently on the field have been dealt killing blows, the enhanced Talent's <u>Follow-Up ATK</u> will immediately end.`,
       value: [
-        { base: 250, growth: 25, style: 'curved' },
-        { base: 300, growth: 30, style: 'curved' },
+        { base: 200, growth: 20, style: 'curved' },
+        { base: 100, growth: 10, style: 'curved' },
       ],
       level: ult,
       tag: AbilityTag.ST,
@@ -75,9 +75,9 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       energy: 5,
       trace: 'Talent',
-      title: `Rancor: Retribution in Kind`,
-      content: `Ashveil starts with <span class="text-desc">3</span> <b>Charge(s)</b>, up to a max of <span class="text-desc">5</span>. After <b class="text-red">Bait</b> is attacked by another ally target, Ashveil consumes <span class="text-desc">1</span> <b>Charge(s)</b> to launch a <u>Follow-Up ATK</u> against <b class="text-red">Bait</b>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Ashveil's ATK, and subsequently gaining <span class="text-desc">1</span> stack(s) of <b class="text-violet-400">Gluttony</b>, stacking up to <span class="text-desc">12</span> time(s).`,
-      value: [{ base: 180, growth: 18, style: 'curved' }],
+      title: `Rancor: Enmity Reprisal`,
+      content: `Ashveil has an initial <b>Charge(s)</b> of <span class="text-desc">2</span> and can hold up to a max of <span class="text-desc">3</span>. After the <b class="text-red">Bait</b> gets attacked by other ally targets, Ashveil regenerates a fixed amount of <span class="text-desc">8</span> Energy, then consumes <span class="text-desc">1</span> <b>Charge(s)</b> to launch a <u>Follow-Up ATK</u> against the <b class="text-red">Bait</b>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Ashveil's ATK. Afterwards, gains <span class="text-desc">2</span> stack(s) of <b class="text-violet-400">Gluttony</b>, stacking up to <span class="text-desc">12</span> time(s).`,
+      value: [{ base: 100, growth: 10, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ST,
       image: 'asset/traces/SkillIcon_1504_Passive.webp',
@@ -85,57 +85,57 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: 'Devour: O Loathsome Hand',
-      content: `After using Technique, enemies within a set area are inflicted with Daze for <span class="text-desc">10</span> second(s). Dazed enemies will not actively attack ally targets.
-      <br />When attacking a Dazed enemy to enter combat, deals <b class="text-hsr-lightning">Lightning DMG</b> to all enemies equal to <span class="text-desc">100%</span> of Ashveil's ATK, and Ashveil gains <span class="text-desc">1</span> point(s) of <b>Charge</b>.`,
+      content: `After using Technique, inflicts Daze on enemies within a set area for <span class="text-desc">10</span> second(s). Dazed enemies will not actively attack ally targets.
+      <br />When entering combat via actively attacking a Dazed enemy, deals <b class="text-hsr-lightning">Lightning DMG</b> to all enemies equal to <span class="text-desc">100%</span> of Ashveil's ATK, and grants Ashveil <span class="text-desc">1</span> <b>Charge</b>.`,
       tag: AbilityTag.IMPAIR,
       image: 'asset/traces/SkillIcon_1504_Maze.webp',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Felonious Path`,
-      content: `When Ashveil uses Skill or Ultimate, gains <span class="text-desc">1/2</span> stacks of <b class="text-violet-400">Gluttony</b>. During Ashveil's <u>Follow-Up ATK</u>, whenever <span class="text-desc">1</span> enemies suffer a killing blow, Ashveil gains <span class="text-desc">1</span> stack(s) of <b class="text-violet-400">Gluttony</b>.`,
+      content: `When Ashveil uses Skill/Ultimate, gains <span class="text-desc">1/2</span> stacks of <b class="text-violet-400">Gluttony</b>. During Ashveil's <u>Follow-Up ATK</u>, for every <span class="text-desc">1</span> enemy(ies) suffer a killing blow, Ashveil gains <span class="text-desc">1</span> stack(s) of <b class="text-violet-400">Gluttony</b>.`,
       image: 'asset/traces/SkillIcon_1504_SkillTree1.webp',
     },
     a4: {
       trace: 'Ascension 4 Passive',
-      title: `Umbral Limb`,
-      content: `When an ally target launches a <u>Follow-Up ATK</u>, increases the DMG dealt by this <u>Follow-Up ATK</u> by <span class="text-desc">80%</span>. If the <u>Follow-Up ATK</u> is launched by Ashveil, additionally regenerates <span class="text-desc">3</span> Energy for Ashveil.`,
+      title: `Phantom Limb`,
+      content: `DMG dealt by Ashveil's <u>Follow-Up ATK</u> increases by by <span class="text-desc">80%</span>. And for every <span class="text-desc">1</span> stack(s) of <b class="text-violet-400">Gluttony</b> in possession, DMG dealt by <u>Follow-Up ATK</u> additionally increases by <span class="text-desc">10%</span>.`,
       image: 'asset/traces/SkillIcon_1504_SkillTree2.webp',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `First Fang`,
-      content: `While Ashveil is on the field, CRIT DMG dealt by ally targets increases by <span class="text-desc">40%</span>, and CRIT DMG dealt by ally target's <u>Follow-Up ATKs</u> increases by an additional <span class="text-desc">80%</span>.`,
+      content: `While Ashveil is on the field, CRIT DMG dealt by ally targets increases by <span class="text-desc">40%</span>, and CRIT DMG dealt by ally target's <u>Follow-Up ATK</u> additionally increases by <span class="text-desc">80%</span>.`,
       image: 'asset/traces/SkillIcon_1504_SkillTree3.webp',
     },
     c1: {
       trace: 'Eidolon 1',
-      title: `Beware: Wander Not in Full Moon`,
-      content: `While Ashveil is on the field, increases DMG taken by all enemies by <span class="text-desc">24%</span>. When an enemy target's current HP percentage is <span class="text-desc">80%</span> or lower, the DMG they take increases to <span class="text-desc">36%</span>.`,
+      title: `Beware: Venture Not at Full Moon`,
+      content: `While Ashveil is on the field, increases DMG taken by all enemies by <span class="text-desc">24%</span>. When an enemy target's current HP percentage is <span class="text-desc">50%</span> or lower, the DMG they take increases to <span class="text-desc">36%</span>.`,
       image: 'asset/traces/SkillIcon_1504_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Knock: Where Snickers Echo`,
-      content: `The max stack limit of <b class="text-violet-400">Gluttony</b> increases to <span class="text-desc">18</span>. Whenever Ashveil triggers an enhanced Talent's <u>Follow-Up ATK</u>, refunds <span class="text-desc">35%</span> of the removed <b class="text-violet-400">Gluttony</b> stacks.`,
+      content: `The max stack limit of <b class="text-violet-400">Gluttony</b> increases to <span class="text-desc">18</span>. After each time Ashveil launches the enhanced Talent's <u>Follow-Up ATK</u>, refunds <span class="text-desc">35%</span> of the removed <b class="text-violet-400">Gluttony</b> stacks.`,
       image: 'asset/traces/SkillIcon_1504_Rank2.webp',
     },
     c3: {
       trace: 'Eidolon 3',
-      title: `Hush: Weight of Unspoken Truths`,
+      title: `Hush: Unsaid Between Friends`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
       image: 'asset/traces/SkillIcon_1504_Ultra.webp',
     },
     c4: {
       trace: 'Eidolon 4',
-      title: `Heed: Truth Needs No Mastication`,
+      title: `Heed: Swallow Truth Whole`,
       content: `When Ashveil uses his Ultimate, increases ATK by <span class="text-desc">40%</span> for <span class="text-desc">3</span> turn(s).`,
       image: 'asset/traces/SkillIcon_1504_Rank4.webp',
     },
     c5: {
       trace: 'Eidolon 5',
-      title: `Advisory: The Sleuth Is But the Slayer`,
+      title: `Caution: Sleuth Turns Slayer`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
       image: 'asset/traces/SkillIcon_1504_BP.webp',
@@ -143,7 +143,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: `Finale: And Then There Were None`,
-      content: `While <b class="text-red">Bait</b> exists on the field, reduces all enemies' <b>All-Type RES</b> by <span class="text-desc">20%</span>. For each stack of <b class="text-violet-400">Gluttony</b> Ashveil has gained, his DMG dealt increases by <span class="text-desc">3%</span>. This effect can stack up to <span class="text-desc">30</span> time(s).`,
+      content: `When the <b class="text-red">Bait</b> exists on the field, reduces all enemies' <b>All-Type RES</b> by <span class="text-desc">20%</span>. For every <span class="text-desc">1</span> stack of <b class="text-violet-400">Gluttony</b> Ashveil has gained, the DMG dealt increases by <span class="text-desc">3%</span>. This effect can stack up to <span class="text-desc">30</span> time(s).`,
       image: 'asset/traces/SkillIcon_1504_Rank6.webp',
     },
   }
@@ -236,8 +236,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           name: 'Single Target',
           value: [
             {
-              scaling:
-                calcScaling(1.5, 0.15, skill, 'curved') + (form.bait ? calcScaling(0.5, 0.05, ult, 'curved') : 0),
+              scaling: calcScaling(1, 0.1, skill, 'curved') + (form.bait ? calcScaling(0.5, 0.05, ult, 'curved') : 0),
               multiplier: Stats.ATK,
             },
           ],
@@ -251,7 +250,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base.ULT_SCALING = [
         {
           name: 'Single Target',
-          value: [{ scaling: calcScaling(2.5, 0.25, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(2, 0.2, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
@@ -262,7 +261,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           ? [
               {
                 name: 'Enhanced Follow-Up DMG',
-                value: [{ scaling: calcScaling(1.8, 0.18, talent, 'curved'), multiplier: Stats.ATK }],
+                value: [{ scaling: calcScaling(1, 0.1, talent, 'curved'), multiplier: Stats.ATK }],
                 element: Element.LIGHTNING,
                 property: TalentProperty.FUA,
                 type: TalentType.TALENT,
@@ -272,7 +271,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               {
                 name: 'Gluttony Additional DMG',
                 value: [
-                  { scaling: calcScaling(3, 0.3, ult, 'curved') * _.floor(form.gluttony / 4), multiplier: Stats.ATK },
+                  { scaling: calcScaling(1, 0.1, ult, 'curved') * _.floor(form.gluttony / 4), multiplier: Stats.ATK },
                 ],
                 element: Element.LIGHTNING,
                 property: TalentProperty.ADD,
@@ -285,7 +284,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base.TALENT_SCALING = [
         {
           name: 'Single Target',
-          value: [{ scaling: calcScaling(1.8, 0.18, talent, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1, 0.1, talent, 'curved'), multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
@@ -325,7 +324,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base.FUA_DMG.push({
           name: 'Ascension 4 Passive',
           source: 'Self',
-          value: 0.8,
+          value: 0.8 + 0.1 * form.gluttony,
         })
       }
       if (a.a6) {
@@ -387,13 +386,6 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             value: 0.2,
           })
         }
-      }
-      if (a.a4) {
-        base.FUA_DMG.push({
-          name: 'Ascension 4 Passive',
-          source: 'Ashveil',
-          value: 0.8,
-        })
       }
       if (a.a6) {
         base[Stats.CRIT_DMG].push({

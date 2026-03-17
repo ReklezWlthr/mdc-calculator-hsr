@@ -87,7 +87,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         { base: 25, growth: 2.5, style: 'curved' },
         { base: 12.5, growth: 1.25, style: 'curved' },
       ],
-      level: skill,
+      level: elation,
       tag: AbilityTag.AOE,
       energy: 5,
       image: 'asset/traces/SkillIcon_1501_Elation.webp',
@@ -448,7 +448,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             name: `Ascension 2 Passive`,
             source: 'Self',
             value: _.min([((atk - 2000) / 100) * 0.05, 0.8]),
-            base: `${_.floor(_.min([atk - 2000, 2000]), 1).toLocaleString()} ÷ 100`,
+            base: `${_.floor(_.min([atk - 2000, 1600]), 1).toLocaleString()} ÷ 100`,
             multiplier: 0.05,
           })
 

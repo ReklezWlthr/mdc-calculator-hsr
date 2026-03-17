@@ -290,8 +290,8 @@ export const ArtifactForm = () => {
     },
     {
       type: 'toggle',
-      text: `ATK Bonus (City of Myriad Forms)`,
-      title: `ATK Bonus (City of Myriad Forms)`,
+      text: `ATK Bonus (City of Converging Stars)`,
+      title: `ATK Bonus (City of Converging Stars)`,
       content: `When the wearer uses a <u>Follow-Up ATK</u>, their ATK increases by <span class="text-desc">24%</span> for <span class="text-desc">2</span> turn(s).`,
       show: true,
       default: true,
@@ -300,8 +300,8 @@ export const ArtifactForm = () => {
     },
     {
       type: 'toggle',
-      text: `Team CRIT DMG Bonus (City of Myriad Forms)`,
-      title: `Team CRIT DMG Bonus (City of Myriad Forms)`,
+      text: `Team CRIT DMG Bonus (City of Converging Stars)`,
+      title: `Team CRIT DMG Bonus (City of Converging Stars)`,
       content: `When an enemy target is defeated, increases CRIT DMG for all allies by <span class="text-desc">12%</span> for the rest of the current battle.`,
       show: true,
       default: true,
