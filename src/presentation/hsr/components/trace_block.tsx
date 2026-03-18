@@ -18,10 +18,12 @@ interface TraceBlockProps {
   }[]
   onClick: (index: number) => void
   disabled?: boolean
+  buffed?: boolean
 }
 
-export const TraceBlock = observer(({ id, data, onClick, disabled }: TraceBlockProps) => {
+export const TraceBlock = observer(({ id, data, onClick, disabled, buffed }: TraceBlockProps) => {
   const charData = findCharacter(id)
+  const traces = buffed ? charData?.novaTrace || charData?.trace : charData?.trace
   const groupedStats = _.groupBy(
     _.map(data, (v, i) => ({ ...v, tIndex: i })),
     'stat',
@@ -31,13 +33,13 @@ export const TraceBlock = observer(({ id, data, onClick, disabled }: TraceBlockP
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark">
       <div className="flex justify-center px-5 py-1 rounded-t-lg bg-primary-lighter">Minor Traces</div>
       <div className="p-3 space-y-2 text-xs font-normal">
-        {_.map(charData?.trace, (s, i) => {
+        {_.map(traces, (s, i) => {
           const sorted = _.sortBy(groupedStats[s], 'value')
           return _.map(sorted, (trace, index) => (
             <div
               className={classNames('grid grid-cols-12 gap-3', {
                 'border-b-2 border-primary-light pb-2 border-opacity-50':
-                  index === _.size(sorted) - 1 && i !== _.size(charData?.trace) - 1,
+                  index === _.size(sorted) - 1 && i !== _.size(traces) - 1,
               })}
               key={index}
             >

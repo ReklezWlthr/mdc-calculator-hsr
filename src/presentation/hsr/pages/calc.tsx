@@ -18,7 +18,7 @@ import { EnemyModal } from '@src/presentation/hsr/components/modals/enemy_modal'
 import { WeaponConditionalBlock } from '@src/presentation/hsr/components/conditionals/weapon_conditional_block'
 import { useCalculator } from '@src/core/hooks/useCalculator'
 import { CustomConditionalBlock } from '@src/presentation/hsr/components/conditionals/custom_conditional_block'
-import { formatIdIcon } from '@src/core/utils/data_format'
+import { formatIdIcon, formatMinorTrace } from '@src/core/utils/data_format'
 import { StatsModal } from '@src/presentation/hsr/components/modals/stats_modal'
 import { SuperBreakSubRows } from '../components/tables/super_break_sub_rows'
 import { DebuffModal } from '@src/presentation/hsr/components/modals/debuff_modal'
@@ -40,7 +40,8 @@ export const Calculator = observer(({}: {}) => {
 
   const char = team[selected]
   const charData = findCharacter(char.cId)
-  const buffed = _.includes(buffedList, char.cId)
+  const buffed = _.includes(buffedList, char.cId) && !(settingStore.settings.liveOnly && charData.novaBeta)
+  const buffToggled = settingStore.settings.buffed[char.cId]
 
   const { main, mainComputed, contents, finalStats } = useCalculator({ teamOverride: team })
 
@@ -97,7 +98,7 @@ export const Calculator = observer(({}: {}) => {
           {teamStore?.characters[selected]?.cId ? (
             <>
               <div className="px-3 py-1 mx-auto mb-3 text-sm font-bold text-center border-2 rounded-lg bg-red w-fit border-error">
-                Currently, Elation DMG formula only works with character level 80.
+                Currently, Elation DMG formula will always assume the character is level 80.
               </div>
               <div className="flex flex-col mb-5 text-sm rounded-lg bg-primary-darker h-fit">
                 <div className="px-2 py-1 text-lg font-bold text-center rounded-t-lg bg-primary-light">
@@ -436,10 +437,18 @@ export const Calculator = observer(({}: {}) => {
                     </Tooltip>
                   </div>
                   <ToggleSwitch
-                    enabled={settingStore.settings.buffed[char.cId]}
-                    onClick={(v) =>
+                    enabled={buffToggled}
+                    onClick={(v) => {
                       settingStore.setSettingValue({ buffed: { ...settingStore.settings.buffed, [char.cId]: v } })
-                    }
+                      teamStore.updateMinorTrace(
+                        selected,
+                        formatMinorTrace(
+                          v ? charData.novaTrace || charData.trace : charData.trace,
+                          char?.minor_traces ? _.map(char?.minor_traces, (t) => t.toggled) : Array(10).fill(false),
+                          charData.overwrite,
+                        ),
+                      )
+                    }}
                   />
                 </div>
               )}

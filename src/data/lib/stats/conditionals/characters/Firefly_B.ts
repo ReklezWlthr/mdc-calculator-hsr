@@ -17,7 +17,7 @@ import { IContent, ITalent } from '@src/domain/conditional'
 import { DebuffTypes } from '@src/domain/constant'
 import { calcScaling } from '@src/core/utils/calculator'
 
-const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
+const FireflyBase = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
     basic: c >= 5 ? 1 : 0,
     skill: c >= 3 ? 2 : 0,
@@ -36,7 +36,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 20,
       trace: 'Basic ATK',
       title: `Order: Flare Propulsion`,
-      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of SAM's ATK to one designated enemy target.`,
+      content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of SAM's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
@@ -45,7 +45,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     normal_alt: {
       trace: 'Enhanced Basic ATK',
       title: `Fyrefly Type-IV: Pyrogenic Decimation`,
-      content: `Restores HP by an amount equal to <span class="text-desc">20%</span> of this unit's Max HP. Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of SAM's ATK to one designated enemy target.`,
+      content: `Restores HP by an amount equal to <span class="text-desc">20%</span> of this unit's Max HP. Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of SAM's ATK to a single target enemy.`,
       value: [{ base: 100, growth: 20, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
@@ -54,7 +54,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill: {
       trace: 'Skill',
       title: `Order: Aerial Bombardment`,
-      content: `Consumes SAM's HP equal to <span class="text-desc">40%</span> of SAM's Max HP and regenerates a fixed amount of Energy equal to {{1}}% of SAM's Max Energy. Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of SAM's ATK to one designated enemy target. If the current HP is not sufficient, then SAM's HP is reduced to <span class="text-desc">1</span> when using this Skill. <u>Advances</u> this unit's next Action by <span class="text-desc">25%</span>.`,
+      content: `Consumes SAM's HP equal to <span class="text-desc">40%</span> of SAM's Max HP and regenerates a fixed amount of Energy equal to {{1}}% of SAM's Max Energy. Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of SAM's ATK to a single target enemy. If the current HP is not sufficient, then SAM's HP is reduced to <span class="text-desc">1</span> when using this Skill. <u>Advances</u> this unit's next Action by <span class="text-desc">25%</span>.`,
       value: [
         { base: 100, growth: 10, style: 'curved' },
         { base: 50, growth: 1, style: 'curved' },
@@ -66,7 +66,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill_alt: {
       trace: 'Enhanced Skill',
       title: `Fyrefly Type-IV: Deathstar Overload`,
-      content: `Restores HP by an amount equal to <span class="text-desc">25%</span> of this unit's Max HP. Adds <b class="text-hsr-fire">Fire</b> Weakness to one designated enemy target and its adjacent targets, lasting for <span class="text-desc">2</span> turns. Deals <b class="text-hsr-fire">Fire DMG</b> equal to (<span class="text-desc">0.2</span> x Break Effect + {{0}}%) of SAM's ATK to this target. At the same time, deals <b class="text-hsr-fire">Fire DMG</b> equal to (<span class="text-desc">0.1</span> x Break Effect + {{1}}%) of SAM's ATK to adjacent targets. The Break Effect taken into the calculation is capped at <span class="text-desc">360%</span>.`,
+      content: `Restores HP by an amount equal to <span class="text-desc">25%</span> of this unit's Max HP. Applies <b class="text-hsr-fire">Fire</b> Weakness to a single target enemy, lasting for <span class="text-desc">2</span> turn(s). Deals <b class="text-hsr-fire">Fire DMG</b> equal to (<span class="text-desc">0.2</span> x Break Effect + {{0}}%) of SAM's ATK to this target. At the same time, deals <b class="text-hsr-fire">Fire DMG</b> equal to (<span class="text-desc">0.1</span> x Break Effect + {{1}}%) of SAM's ATK to adjacent targets. The Break Effect taken into the calculation is capped at <span class="text-desc">360%</span>.`,
       value: [
         { base: 100, growth: 10, style: 'curved' },
         { base: 50, growth: 5, style: 'curved' },
@@ -114,12 +114,12 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Module β: Autoreactive Armor`,
-      content: `When SAM is in <b class="text-hsr-fire">Complete Combustion</b> with a Break Effect that is equal to or greater than <span class="text-desc">150%</span>/<span class="text-desc">300%</span>, attacking a Weakness-Broken enemy target will convert the Toughness Reduction of this attack into <span class="text-desc">1</span> instance of <span class="text-desc">100%</span>/<span class="text-desc">150%</span> Super Break DMG.`,
+      content: `When SAM is in <b class="text-hsr-fire">Complete Combustion</b> with a Break Effect that is equal to or greater than <span class="text-desc">200%</span>/<span class="text-desc">360%</span>, attacking a Weakness-Broken enemy target will convert the Toughness Reduction of this attack into <span class="text-desc">1</span> instance of <span class="text-desc">35%</span>/<span class="text-desc">50%</span> Super Break DMG.`,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Module α: Antilag Outburst`,
-      content: `While in the <b class="text-hsr-fire">Complete Combustion</b> state, SAM's Break Effect increases by <span class="text-desc">25%</span>. When using Enhanced Basic ATK or Enhanced Skill to inflict Weakness Break on a target, the <b class="text-hsr-fire">Complete Combustion</b> countdown is delayed by <span class="text-desc">10%</span>. This effect can trigger a maximum of <span class="text-desc">3</span> time(s) during each <b class="text-hsr-fire">Complete Combustion</b> state.`,
+      content: `During the <b class="text-hsr-fire">Complete Combustion</b>, attacking enemies that have no <b class="text-hsr-fire">Fire</b> Weakness can also reduce their Toughness, with the effect being equivalent to <span class="text-desc">55%</span> of the original Toughness Reduction from abilities.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -129,7 +129,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c2: {
       trace: 'Eidolon 2',
       title: `From Shattered Sky, I Free Fall`,
-      content: `While in the <b class="text-hsr-fire">Complete Combustion</b> state, using the Enhanced Basic ATK or the Enhanced Skill to defeat an enemy target or to Break their Weakness allows SAM to immediately gain <span class="text-desc">1</span> extra turn. This effect can only trigger <span class="text-desc">1</span> time per turn, and the trigger count resets at the start of SAM's turn.`,
+      content: `When using the Enhanced Basic ATK or the Enhanced Skill in <b class="text-hsr-fire">Complete Combustion</b> state to defeat an enemy target or to Break their Weakness allows SAM to immediately gain <span class="text-desc">1</span> extra turn. This effect can trigger again after <span class="text-desc">1</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -299,11 +299,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           value: calcScaling(0.1, 0.02, talent, 'curved'),
         })
         if (a.a2) {
-          base[Stats.BE].push({
-            name: 'Ascension 2 Passive',
-            source: 'Self',
-            value: 0.25,
-          })
+          base.WEAKNESS_BYPASS.push(0.55)
         }
         if (c >= 1)
           base.SKILL_DEF_PEN.push({
@@ -369,7 +365,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             multiplier,
           })
         }
-        const superBreak = x.getValue(Stats.BE) >= 3 ? 1.5 : x.getValue(Stats.BE) >= 1.5 ? 1 : 0
+        const superBreak = x.getValue(Stats.BE) >= 3.6 ? 0.5 : x.getValue(Stats.BE) >= 2 ? 0.35 : 0
         if (superBreak && form.complete_combustion) {
           base.SUPER_BREAK = true
           base.SUPER_BREAK_MULT.push({
@@ -425,4 +421,4 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
   }
 }
 
-export default Firefly
+export default FireflyBase

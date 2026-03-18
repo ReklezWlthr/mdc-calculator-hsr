@@ -107,6 +107,9 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
                 const teamChar = _.cloneDeep(_.find(teamStore.characters, (char) => char.cId === item.id))
                 const storeChar = _.find(charStore.characters, (char) => char.cId === item.id)
                 const char = teamChar || storeChar
+                const buffed =
+                  settingStore.settings.buffed?.[char?.cId] && !(settingStore.settings.liveOnly && item.novaBeta)
+
                 charSetter(index, {
                   cId: item.id,
                   ascension: char?.ascension || 0,
@@ -128,7 +131,12 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
                   cons: char?.cons || 0,
                   major_traces: char?.major_traces || { a2: false, a4: false, a6: false },
                   minor_traces:
-                    char?.minor_traces || formatMinorTrace(item.trace, Array(10).fill(false), item.overwrite),
+                    char?.minor_traces ||
+                    formatMinorTrace(
+                      buffed ? item.novaTrace || item.trace : item.trace,
+                      Array(10).fill(false),
+                      item.overwrite,
+                    ),
                 })
                 modalStore.closeModal()
               }}

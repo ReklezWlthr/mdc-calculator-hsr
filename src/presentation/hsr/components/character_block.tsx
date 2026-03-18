@@ -39,14 +39,14 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
         (item, index) => ({
           name: _.toString(item + index),
           value: _.toString(item + index),
-        })
+        }),
       ).reverse(),
-    [ascension]
+    [ascension],
   )
 
   const onOpenModal = useCallback(() => {
     modalStore.openModal(<CharacterModal index={props.index} />)
-  }, [modalStore, props.index])
+  }, [modalStore, props.index, settingStore.settings])
 
   return (
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark">
@@ -61,7 +61,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
               <img
                 src={`/asset/avatar/portrait//${formatIdIcon(
                   characterData?.id,
-                  settingStore.settings?.travelerGender
+                  settingStore.settings?.travelerGender,
                 )}.webp`}
                 className="object-cover aspect-square object-[0_20%]"
               />
@@ -124,7 +124,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
                     (item, key: 'basic' | 'skill' | 'ult' | 'talent') => {
                       const m = key === 'basic' ? parseInt(value) || 1 : max
                       if (item > m) teamStore.setTalentLevel(props.index, key, m)
-                    }
+                    },
                   )
                 }}
                 options={AscensionOptions}

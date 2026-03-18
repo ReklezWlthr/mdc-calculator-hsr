@@ -9,7 +9,7 @@ import { useStore } from '@src/data/providers/app_store_provider'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { BuildModal } from '@src/presentation/hsr/components/modals/build_modal'
 import { findCharacter } from '@src/core/utils/finder'
-import { findMaxTalentLevel, getSetCount } from '@src/core/utils/data_format'
+import { findMaxTalentLevel, formatMinorTrace, getSetCount } from '@src/core/utils/data_format'
 import { PlanarSets, RelicSets } from '@src/data/db/artifacts'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { CommonModal } from '@src/presentation/components/common_modal'
@@ -118,7 +118,8 @@ export const TeamSetup = observer(() => {
 
   const set = getSetCount(artifactData)
 
-  const buffed = _.includes(buffedList, char.cId)
+  const buffed = _.includes(buffedList, char.cId) && !(settingStore.settings.liveOnly && charData.novaBeta)
+  const buffToggled = settingStore.settings.buffed[char.cId]
   const talent = _.find(
     settingStore.settings.buffed[char.cId] || !buffed ? ConditionalsObject : OldConditionalsObject,
     ['id', char.cId],
@@ -184,10 +185,18 @@ export const TeamSetup = observer(() => {
                   </Tooltip>
                 </div>
                 <ToggleSwitch
-                  enabled={settingStore.settings.buffed[char.cId]}
-                  onClick={(v) =>
+                  enabled={buffToggled}
+                  onClick={(v) => {
                     settingStore.setSettingValue({ buffed: { ...settingStore.settings.buffed, [char.cId]: v } })
-                  }
+                    teamStore.updateMinorTrace(
+                      selected,
+                      formatMinorTrace(
+                        v ? charData.novaTrace || charData.trace : charData.trace,
+                        char?.minor_traces ? _.map(char?.minor_traces, (t) => t.toggled) : Array(10).fill(false),
+                        charData.overwrite,
+                      ),
+                    )
+                  }}
                 />
               </div>
             )}
@@ -196,6 +205,7 @@ export const TeamSetup = observer(() => {
                 id={char?.cId}
                 data={char?.minor_traces}
                 onClick={(i) => teamStore.toggleMinorTrace(selected, i)}
+                buffed={buffToggled}
               />
             </div>
           </div>

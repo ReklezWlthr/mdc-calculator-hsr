@@ -1,8 +1,17 @@
-import { DefaultBuild, Element, IArtifactEquip, IBuild, ITeamChar, IWeapon, IWeaponEquip, PathType } from '@src/domain/constant'
+import {
+  DefaultBuild,
+  Element,
+  IArtifactEquip,
+  IBuild,
+  ITeamChar,
+  IWeapon,
+  IWeaponEquip,
+  PathType,
+  Stats,
+} from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
-import { swapElement } from '@src/core/utils/data_format'
 
 enableStaticRendering(typeof window === 'undefined')
 
@@ -49,6 +58,14 @@ export interface TeamStoreType {
   setMemberInfo: (index: number, info: Partial<ITeamChar>) => void
   toggleMajorTrace: (index: number, traceKey: string) => void
   toggleMinorTrace: (index: number, traceIndex: number) => void
+  updateMinorTrace: (
+    index: number,
+    newTrace: {
+      stat: Stats
+      value: any
+      toggled: boolean
+    }[],
+  ) => void
   setWeapon: (index: number, info: Partial<IWeaponEquip>) => void
   setArtifact: (index: number, type: number, aId: string) => void
   unequipAll: (index: number) => void
@@ -86,7 +103,7 @@ export class Team {
         _.forEach(this.characters, (character, cI) => {
           const i = _.findIndex(character.equipments.artifacts, (item) => item === aId)
           if (i >= 0 && cI !== index) character.equipments.artifacts[i] = null
-        })
+        }),
       )
     this.characters[index] = { ...this.characters[index], ...info }
     if (dupeIndex >= 0 && dupeIndex !== index) this.characters[dupeIndex] = oldData
@@ -114,6 +131,18 @@ export class Team {
   toggleMinorTrace = (index: number, traceIndex: number) => {
     const v = this.characters[index].minor_traces[traceIndex].toggled
     this.characters[index].minor_traces[traceIndex].toggled = !v
+    this.characters[index] = { ...this.characters[index] }
+  }
+
+  updateMinorTrace = (
+    index: number,
+    newTrace: {
+      stat: Stats
+      value: any
+      toggled: boolean
+    }[],
+  ) => {
+    this.characters[index].minor_traces = newTrace
     this.characters[index] = { ...this.characters[index] }
   }
 

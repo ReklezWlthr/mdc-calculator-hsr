@@ -9,7 +9,13 @@ import { findCharacter } from '@src/core/utils/finder'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { findBaseLevel, findMaxLevel, findMaxTalentLevel, formatIdIcon } from '@src/core/utils/data_format'
+import {
+  findBaseLevel,
+  findMaxLevel,
+  findMaxTalentLevel,
+  formatIdIcon,
+  formatMinorTrace,
+} from '@src/core/utils/data_format'
 import { useCallback, useMemo } from 'react'
 import { AbilityBlock } from '@src/presentation/hsr/components/ability_block'
 import { BonusAbilityBlock } from '@src/presentation/hsr/components/bonus_ability_block'
@@ -24,14 +30,15 @@ export const CompareTraceBlock = observer(({ char, team }: { char: ITeamChar; te
 
   const charData = findCharacter(char?.cId)
   const [setupIndex, charIndex] = setupStore.selected
-  const buffed =
+  const buffed = _.includes(buffedList, char?.cId) && !(settingStore.settings.liveOnly && charData.novaBeta)
+  const buffToggled =
     setupIndex === 0 ? setupStore.main.buffed?.[char?.cId] : setupStore.comparing[setupIndex - 1]?.buffed?.[char?.cId]
 
   const talent = _.find(ConditionalsObject, ['id', char?.cId])?.conditionals(
     char?.cons,
     char?.major_traces,
     char?.talents,
-    setupIndex === 0 ? setupStore.main.char : setupStore.comparing[setupIndex - 1]?.char
+    setupIndex === 0 ? setupStore.main.char : setupStore.comparing[setupIndex - 1]?.char,
   )
 
   const levels = useMemo(
@@ -39,15 +46,15 @@ export const CompareTraceBlock = observer(({ char, team }: { char: ITeamChar; te
       char?.ascension
         ? _.map(
             Array(findMaxLevel(char.ascension) - findBaseLevel(char.ascension) + 1 || 1).fill(
-              findBaseLevel(char.ascension)
+              findBaseLevel(char.ascension),
             ),
             (item, index) => ({
               name: _.toString(item + index),
               value: _.toString(item + index),
-            })
+            }),
           ).reverse()
         : [{ name: '1', value: '1' }],
-    [char?.ascension]
+    [char?.ascension],
   )
 
   const onOpenModal = useCallback(() => {
@@ -128,7 +135,7 @@ export const CompareTraceBlock = observer(({ char, team }: { char: ITeamChar; te
                 })
               }
             />
-            {_.includes(buffedList, char?.cId) && (
+            {buffed && (
               <div className="flex items-center justify-between px-3 py-2 text-white border-2 rounded-lg col-span-full bg-primary-dark border-primary-light">
                 <div className="flex items-center gap-1">
                   <p className="text-sm font-bold">Enhanced State</p>
@@ -137,7 +144,7 @@ export const CompareTraceBlock = observer(({ char, team }: { char: ITeamChar; te
                     body={
                       <p>
                         Some characters are enhanced: their abilities, Traces, and Eidolon effects may change. You can
-                        switch between states here. Changes are NOT reflected anywhere else in the calculator.
+                        switch between states here. Only applied to this current compare session.
                       </p>
                     }
                     style="w-[450px]"
@@ -146,7 +153,18 @@ export const CompareTraceBlock = observer(({ char, team }: { char: ITeamChar; te
                     <i className="fa-regular fa-question-circle" />
                   </Tooltip>
                 </div>
-                <ToggleSwitch enabled={buffed} onClick={(v) => setupStore.setBuffed(setupIndex, char.cId, v)} />
+                <ToggleSwitch
+                  enabled={buffToggled}
+                  onClick={(v) => {
+                    setupStore.setBuffed(setupIndex, char.cId, v)
+                    char.minor_traces = formatMinorTrace(
+                      v ? charData.novaTrace || charData.trace : charData.trace,
+                      char?.minor_traces ? _.map(char?.minor_traces, (t) => t.toggled) : Array(10).fill(false),
+                      charData.overwrite,
+                    )
+                    setupStore.setComparing(char)
+                  }}
+                />
               </div>
             )}
             <div className="col-span-full">
@@ -157,6 +175,7 @@ export const CompareTraceBlock = observer(({ char, team }: { char: ITeamChar; te
                   char.minor_traces[i].toggled = !char?.minor_traces[i].toggled
                   setupStore.setComparing(char)
                 }}
+                buffed={buffToggled}
               />
             </div>
           </>

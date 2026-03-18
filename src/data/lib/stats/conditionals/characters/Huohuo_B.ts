@@ -17,7 +17,7 @@ import { IContent, ITalent } from '@src/domain/conditional'
 import { DebuffTypes } from '@src/domain/constant'
 import { calcScaling } from '@src/core/utils/calculator'
 
-const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
+const HuohuoBase = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
     basic: c >= 5 ? 1 : 0,
     skill: c >= 5 ? 2 : 0,
@@ -48,10 +48,10 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       title: `Talisman: Protection`,
       content: `Dispels <span class="text-desc">1</span> debuff(s) from a single target ally and immediately restores this ally's HP by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}. At the same time, restores HP for allies that are adjacent to this target ally by an amount equal to {{2}}% of Huohuo's Max HP plus {{3}}.`,
       value: [
-        { base: 16, growth: 1, style: 'heal' },
-        { base: 160, growth: 96, style: 'flat' },
-        { base: 12.8, growth: 0.8, style: 'heal' },
-        { base: 128, growth: 76.8, style: 'flat' },
+        { base: 14, growth: 0.875, style: 'heal' },
+        { base: 140, growth: 84, style: 'flat' },
+        { base: 11.2, growth: 0.7, style: 'heal' },
+        { base: 112, growth: 67.2, style: 'flat' },
       ],
       level: skill,
       tag: AbilityTag.RESTORE,
@@ -61,7 +61,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 5,
       trace: 'Ultimate',
       title: `Tail: Spiritual Domination`,
-      content: `Regenerates Energy for all teammates (excluding this character) by an amount equal to {{0}}% of their respective Max Energy. At the same time, increases their ATK by {{1}}% for <span class="text-desc">2</span> turn(s).`,
+      content: `Regenerates Energy for all allies (excluding this character) by an amount equal to {{0}}% of their respective Max Energy. At the same time, increases their ATK by {{1}}% for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 15, growth: 0.5, style: 'curved' },
         { base: 24, growth: 1.6, style: 'curved' },
@@ -72,8 +72,8 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     talent: {
       trace: 'Talent',
       title: `Possession: Ethereal Metaflow`,
-      content: `After using her Skill or Ultimate, Huohuo gains <b class="text-hsr-wind">Divine Provision</b>, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> turn at the start of each Huohuo's turn. When Huohuo has <b class="text-hsr-wind">Divine Provision</b> at the start of an ally target's turn or when they use their Ultimate, restores HP for that ally and the ally with the lowest HP percentage by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}. Then, restores HP for every ally with a current HP percentage at or below <span class="text-desc">50%</span> by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}.
-      <br />When <b class="text-hsr-wind">Divine Provision</b> is triggered to heal an ally target, dispels <span class="text-desc">1</span> debuff(s) from that target. This effect can be triggered <span class="text-desc">6</span> time(s). Gaining <b class="text-hsr-wind">Divine Provision</b> again resets the effect's trigger count.`,
+      content: `After using her Skill, Huohuo gains <b class="text-hsr-wind">Divine Provision</b>, lasting for <span class="text-desc">2</span> turn(s). This duration decreases by <span class="text-desc">1</span> turn at the start of each Huohuo's turn. If Huohuo has <b class="text-hsr-wind">Divine Provision</b> when an ally's turn starts or when an ally uses their Ultimate, restores HP for that ally by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}. At the same time, every ally with <span class="text-desc">50%</span> HP or lower receives healing once.
+      <br />When <b class="text-hsr-wind">Divine Provision</b> is triggered to heal an ally, dispel <span class="text-desc">1</span> debuff(s) from that ally. This effect can be triggered up to <span class="text-desc">6</span> time(s). Using the skill again resets the effect's trigger count.`,
       value: [
         { base: 3, growth: 0.1875, style: 'heal' },
         { base: 30, growth: 18, style: 'flat' },
@@ -90,12 +90,12 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Fearful to Act`,
-      content: `When battle starts, Huohuo gains <span class="text-desc">30</span> Energy and <b class="text-hsr-wind">Divine Provision</b>, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `When battle starts, Huohuo gains <b class="text-hsr-wind">Divine Provision</b>, lasting for <span class="text-desc">1</span> turn(s).`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `The Cursed One`,
-      content: `The chance to resist Crowd Control Debuffs increases by <span class="text-desc">35%</span>. When using Ultimate, if an ally target's Max Energy is <span class="text-desc">160</span> or higher, additionally increases their ATK by <span class="text-desc">24%</span>.`,
+      content: `The chance to resist Crowd Control Debuffs increases by <span class="text-desc">35%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -105,7 +105,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c1: {
       trace: 'Eidolon 1',
       title: `Anchored to Vessel, Specters Nestled`,
-      content: `The duration of <b class="text-hsr-wind">Divine Provision</b> produced by the Talent is extended by <span class="text-desc">1</span> turn(s). When Huohuo possesses <b class="text-hsr-wind">Divine Provision</b>, her Outgoing Healing increases by <span class="text-desc">100%</span>, all allies' SPD increases by <span class="text-desc">20%</span>.`,
+      content: `The duration of <b class="text-hsr-wind">Divine Provision</b> produced by the Talent is extended by <span class="text-desc">1</span> turn(s). When Huohuo possesses <b class="text-hsr-wind">Divine Provision</b>, all allies' SPD increases by <span class="text-desc">12%</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -160,7 +160,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     {
       type: 'toggle',
       id: 'huohuo_c1',
-      text: `E1 Divine Provision Bonus`,
+      text: `E1 SPD Bonus`,
       ...talents.c1,
       show: c >= 1,
       default: true,
@@ -210,7 +210,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         count: number
       }[],
       weakness: Element[],
-      broken: boolean,
+      broken: boolean
     ) => {
       const base = _.cloneDeep(x)
 
@@ -229,8 +229,8 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       base.SKILL_SCALING = [
         {
           name: 'Main Target',
-          value: [{ scaling: calcScaling(0.16, 0.01, skill, 'heal'), multiplier: Stats.HP }],
-          flat: calcScaling(160, 96, skill, 'flat'),
+          value: [{ scaling: calcScaling(0.14, 0.00875, skill, 'heal'), multiplier: Stats.HP }],
+          flat: calcScaling(140, 84, skill, 'flat'),
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
@@ -238,8 +238,8 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         },
         {
           name: 'Adjacent',
-          value: [{ scaling: calcScaling(0.128, 0.008, skill, 'heal'), multiplier: Stats.HP }],
-          flat: calcScaling(128, 76.8, skill, 'flat'),
+          value: [{ scaling: calcScaling(0.112, 0.007, skill, 'heal'), multiplier: Stats.HP }],
+          flat: calcScaling(112, 67.2, skill, 'flat'),
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
@@ -247,29 +247,9 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       ]
       base.TALENT_SCALING = [
         {
-          name: 'Base Healing',
+          name: 'Turn-Start Healing',
           value: [{ scaling: calcScaling(0.03, 0.001875, skill, 'heal'), multiplier: Stats.HP }],
           flat: calcScaling(30, 18, skill, 'flat'),
-          element: TalentProperty.HEAL,
-          property: TalentProperty.HEAL,
-          type: TalentType.NONE,
-          sum: true,
-        },
-        {
-          name: 'Double-Proc Healing',
-          value: [{ scaling: calcScaling(0.03, 0.001875, skill, 'heal'), multiplier: Stats.HP }],
-          flat: calcScaling(30, 18, skill, 'flat'),
-          multiplier: 2,
-          element: TalentProperty.HEAL,
-          property: TalentProperty.HEAL,
-          type: TalentType.NONE,
-          sum: true,
-        },
-        {
-          name: 'Triple-Proc Healing',
-          value: [{ scaling: calcScaling(0.03, 0.001875, skill, 'heal'), multiplier: Stats.HP }],
-          flat: calcScaling(30, 18, skill, 'flat'),
-          multiplier: 3,
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
@@ -291,18 +271,12 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
-      if (form.huohuo_c1) {
-        base[Stats.HEAL].push({
-          name: 'Eidolon 1',
-          source: 'Self',
-          value: 1,
-        })
+      if (form.huohuo_c1)
         base[Stats.P_SPD].push({
           name: 'Eidolon 1',
           source: 'Self',
-          value: 0.2,
+          value: 0.12,
         })
-      }
       if (form.huohuo_c4)
         base[Stats.HEAL].push({
           name: 'Eidolon 4',
@@ -319,13 +293,13 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean,
+      broken: boolean
     ) => {
       if (form.huohuo_ult)
         base[Stats.P_ATK].push({
           name: 'Ultimate',
           source: 'Huohuo',
-          value: calcScaling(0.24, 0.016, ult, 'curved') + (base.MAX_ENERGY >= 160 && a.a4 ? 0.24 : 0),
+          value: calcScaling(0.24, 0.016, ult, 'curved'),
         })
       if (form.huohuo_tech)
         base.ATK_REDUCTION.push({
@@ -337,7 +311,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         base[Stats.P_SPD].push({
           name: 'Eidolon 1',
           source: 'Huohuo',
-          value: 0.2,
+          value: 0.12,
         })
       if (aForm.huohuo_c6)
         base[Stats.ALL_DMG].push({
@@ -358,11 +332,11 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         count: number
       }[],
       weakness: Element[],
-      broken: boolean,
+      broken: boolean
     ) => {
       return base
     },
   }
 }
 
-export default Huohuo
+export default HuohuoBase

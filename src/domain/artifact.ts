@@ -1,4 +1,4 @@
-import { IArtifact, Stats } from './constant'
+import { Stats } from './constant'
 
 export const SubStatMap = {
   0: { stat: Stats.ATK, min: 16.935, bonus: 2.1168754 },

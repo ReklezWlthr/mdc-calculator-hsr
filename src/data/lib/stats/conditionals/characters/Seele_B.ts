@@ -8,7 +8,7 @@ import { IContent, ITalent } from '@src/domain/conditional'
 import { DebuffTypes } from '@src/domain/constant'
 import { calcScaling } from '@src/core/utils/calculator'
 
-const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
+const SeeleBase = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
     basic: c >= 5 ? 1 : 0,
     skill: c >= 3 ? 2 : 0,
@@ -27,7 +27,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 20,
       trace: 'Basic ATK',
       title: 'Thwack',
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Seele's ATK to one designated enemy.`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Seele's ATK to a single target enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
@@ -37,9 +37,8 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: 'Sheathed Blade',
-      content: `Increases Seele's SPD by <span class="text-desc">25%</span> for <span class="text-desc">3</span> turn(s) and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Seele's ATK to one designated enemy target.
-      <br />After an ally target attacks, if the attack target's current HP percentage is <span class="text-desc">50%</span> or below, Seele will automatically use her Skill at that target <span class="text-desc">1</span> time. This Skill does not consume Skill Points or regenerate Energy. This effect can only be triggered <span class="text-desc">1</span> time per turn and resets at the start of Seele's turn. If there are no valid targets to attack, she attacks the enemy target with the lowest HP percentage instead.`,
-      value: [{ base: 180, growth: 18, style: 'curved' }],
+      content: `Increases Seele's SPD by <span class="text-desc">25%</span> for <span class="text-desc">2</span> turn(s) and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Seele's ATK to a single enemy.`,
+      value: [{ base: 110, growth: 11, style: 'curved' }],
       level: skill,
       tag: AbilityTag.ST,
       sp: -1,
@@ -49,14 +48,14 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Ultimate',
       title: 'Butterfly Flurry',
       content: `Seele enters the Amplification state and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of her ATK to a single enemy.`,
-      value: [{ base: 360, growth: 36, style: 'curved' }],
+      value: [{ base: 255, growth: 17, style: 'curved' }],
       level: ult,
       tag: AbilityTag.ST,
     },
     talent: {
       trace: 'Talent',
       title: 'Resurgence',
-      content: `Enters the Amplification state upon defeating an enemy with Basic ATK, Skill, or Ultimate, and receives an extra turn. While in the Amplification state, the DMG dealt by Seele increases by {{0}}% for <span class="text-desc">3</span> turn(s).
+      content: `Enters the Amplification state upon defeating an enemy with Basic ATK, Skill, or Ultimate, and receives an extra turn. While in the Amplification state, the DMG of Seele's attacks increases by {{0}}% for <span class="text-desc">1</span> turn(s).
       <br />Enemies defeated in the extra turn provided by <b>Resurgence</b> will not trigger another <b>Resurgence</b>.`,
       value: [{ base: 40, growth: 4, style: 'curved' }],
       level: talent,
@@ -65,18 +64,18 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     technique: {
       trace: 'Technique',
       title: 'Phantom Illusion',
-      content: `After using her Technique, Seele gains Stealth for <span class="text-desc">20</span> second(s). While Stealth is active, Seele cannot be detected by enemies. And when entering battle by attacking enemies, Seele will immediately enter the Amplification state and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to Seele's Skill DMG multiplier to random enemy target <span class="text-desc">1</span> time. This DMG is guaranteed CRIT Hit.`,
+      content: `After using her Technique, Seele gains Stealth for <span class="text-desc">20</span> second(s). While Stealth is active, Seele cannot be detected by enemies. And when entering battle by attacking enemies, Seele will immediately enter the Amplification state.`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Nightshade',
-      content: `When defeating an enemy target, increases the wearer's DMG dealt by <span class="text-desc">50%</span>. This effect can stack up to <span class="text-desc">3</span> time(s) and lasts for <span class="text-desc">3</span> turn(s).`,
+      content: `When current HP percentage is <span class="text-desc">50%</span> or lower, reduces the chance of being attacked by enemies.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Lacerate',
-      content: `While Seele is in the Amplification state, her <b class="text-hsr-quantum">Quantum RES PEN</b> increases by <span class="text-desc">25%</span>.`,
+      content: `While Seele is in the Amplification state, her <b class="text-hsr-quantum">Quantum RES PEN</b> increases by <span class="text-desc">20%</span>.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -86,7 +85,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c1: {
       trace: 'Eidolon 1',
       title: 'Extirpating Slash',
-      content: `When dealing DMG to an enemy whose HP percentage is <span class="text-desc">80%</span> or lower, increases CRIT Rate by <span class="text-desc">15%</span>, and DMG ignores <span class="text-desc">20%</span> of target's DEF.`,
+      content: `When dealing DMG to an enemy whose HP percentage is <span class="text-desc">80%</span> or lower, CRIT Rate increases by <span class="text-desc">15%</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -113,7 +112,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c6: {
       trace: 'Eidolon 6',
       title: 'Shattering Shambles',
-      content: `After attacking with Ultimate, Seele inflicts <b class="text-hsr-quantum">Butterfly Flurry</b> on the target for <span class="text-desc">3</span> turn(s). Enemies targets in <b class="text-hsr-quantum">Butterfly Flurry</b> will additionally take <span class="text-desc">1</span> instance of <b class="text-true">True DMG</b> equal to <span class="text-desc">30%</span> of Seele's Ultimate DMG after receiving an attack. When the target under the <b class="text-hsr-quantum">Butterfly Flurry</b> state is defeated by any unit, Seele's Talent will also be triggered.
+      content: `After attacking with Ultimate, Seele inflicts <b class="text-hsr-quantum">Butterfly Flurry</b> on the attacked target for <span class="text-desc">1</span> turn(s). Enemies in <b class="text-hsr-quantum">Butterfly Flurry</b> will additionally take <span class="text-desc">1</span> instance of <b class="text-hsr-quantum">Quantum Additional DMG</b> equal to <span class="text-desc">15%</span> of Seele's Ultimate DMG every time they are attacked. If the target is defeated by the <b class="text-hsr-quantum">Butterfly Flurry</b> state's Additional DMG triggered by other allies' attacks, Seele's Talent will not be triggered.
       <br />When Seele is knocked down, the <b class="text-hsr-quantum">Butterfly Flurry</b> inflicted on the enemies will be removed.`,
     },
   }
@@ -126,7 +125,6 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ...talents.talent,
       show: true,
       default: true,
-      duration: 3,
     },
     {
       type: 'toggle',
@@ -135,7 +133,6 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ...talents.skill,
       show: c < 2,
       default: true,
-      duration: 3,
     },
     {
       type: 'number',
@@ -148,20 +145,17 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       max: 2,
     },
     {
-      type: 'number',
+      type: 'toggle',
       id: 'seele_a2',
-      text: `A2 Dmg Bonus Stack`,
+      text: `Current HP <= 50%`,
       ...talents.a2,
       show: a.a2,
-      default: 1,
-      min: 0,
-      max: 3,
-      duration: 3,
+      default: false,
     },
     {
       type: 'toggle',
       id: 'seele_c1',
-      text: `E1 CRIT Rate & DEF PEN`,
+      text: `Target HP <= 80%`,
       ...talents.c1,
       show: c >= 1,
       default: false,
@@ -213,7 +207,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       base.SKILL_SCALING = [
         {
           name: 'Single Target',
-          value: [{ scaling: calcScaling(1.8, 0.18, skill, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.1, 0.11, skill, 'curved'), multiplier: Stats.ATK }],
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
@@ -226,25 +220,13 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       base.ULT_SCALING = [
         {
           name: 'Single Target',
-          value: [{ scaling: calcScaling(3.6, 0.36, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(2.55, 0.17, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.QUANTUM,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 30,
           energy: 5,
           sum: true,
-        },
-      ]
-      base.TECHNIQUE_SCALING = [
-        {
-          name: 'Single Target',
-          value: [{ scaling: calcScaling(1.8, 0.18, skill, 'curved'), multiplier: Stats.ATK }],
-          element: Element.QUANTUM,
-          property: TalentProperty.NORMAL,
-          type: TalentType.TECH,
-          break: 20,
-          sum: true,
-          cr: 1,
         },
       ]
 
@@ -258,7 +240,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           base.QUANTUM_RES_PEN.push({
             name: `Ascension 4 Passive`,
             source: 'Self',
-            value: 0.25,
+            value: 0.2,
           })
       }
       if (form.seele_spd) {
@@ -269,23 +251,17 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         })
       }
       if (form.seele_a2)
-        base[Stats.ALL_DMG].push({
+        base.AGGRO.push({
           name: `Ascension 2 Passive`,
           source: 'Self',
-          value: 0.5 * form.seele_a2,
+          value: -0.5,
         })
-      if (form.seele_c1) {
+      if (form.seele_c1)
         base[Stats.CRIT_RATE].push({
           name: `Eidolon 1`,
           source: 'Self',
           value: 0.15,
         })
-        base.DEF_PEN.push({
-          name: `Eidolon 1`,
-          source: 'Self',
-          value: 0.2,
-        })
-      }
       if (form.seele_c6) {
         base.ADD_DEBUFF.push({
           name: 'Butterfly Flurry',
@@ -331,9 +307,9 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             (s) => {
               const add = {
                 name: 'Blutterfly Flurry Additional DMG',
-                value: [{ scaling: calcScaling(3.6, 0.36, ult, 'curved') * 0.3, multiplier: Stats.ATK }],
+                value: [{ scaling: calcScaling(2.55, 0.17, ult, 'curved') * 0.15, multiplier: Stats.ATK }],
                 element: Element.QUANTUM,
-                property: TalentProperty.TRUE,
+                property: TalentProperty.ADD,
                 type: TalentType.NONE,
                 overrideIndex: index,
                 sum: true,
@@ -356,4 +332,4 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
   }
 }
 
-export default Seele
+export default SeeleBase

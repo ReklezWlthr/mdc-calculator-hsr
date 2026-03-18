@@ -69,11 +69,13 @@ export const Characters = [
       energy: 120,
     },
     trace: [Stats.P_ATK, Stats.E_RES, Stats.IMAGINARY_DMG],
+    novaTrace: [Stats.EHR, Stats.E_RES, Stats.IMAGINARY_DMG],
     rec: [Stats.CRIT_DMG, Stats.CRIT_RATE, Stats.P_ATK, Stats.SPD],
     rarity: 5,
     path: PathType.NIHILITY,
     element: Element.IMAGINARY,
     beta: false,
+    novaBeta: true,
   },
   {
     id: '1005',

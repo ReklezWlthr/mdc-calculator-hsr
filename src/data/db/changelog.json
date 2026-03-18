@@ -1,7 +1,14 @@
 [
   {
     "version": "1.2-4",
-    "date": "Feb 9th, 2026",
+    "date": "Mar 18th, 2026",
+    "desc": [
+      "New Novaflare: <span class=\"text-hsr-fire\">Firefly</span>, <span class=\"text-hsr-quantum\">Seele</span>, <span class=\"text-hsr-imaginary\">Welt</span>, and <span class=\"text-hsr-wind\">Huohuo</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
+    "date": "Mar 17th, 2026",
     "desc": [
       "Content Version: <span class=\"text-desc\">v4.2 Beta</span>",
       "New Character: <span class=\"text-hsr-lightning\">Trailblazer (Elation)</span>, <span class=\"text-hsr-imaginary\">Silver Wolf LV.999</span>, and <span class=\"text-hsr-physical\">Evanescia</span>",

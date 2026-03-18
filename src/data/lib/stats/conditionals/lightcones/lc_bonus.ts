@@ -132,7 +132,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
           x[Stats.CRIT_DMG].push({
             name: 'Passive',
             source: 'Boundless Choreo',
-            value: calcRefinement(0.08, 0.02, r),
+            value: calcRefinement(0.24, 0.06, r),
           })
         return x
       })

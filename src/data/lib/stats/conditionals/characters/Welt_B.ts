@@ -1,4 +1,4 @@
-import { addDebuff, countDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
+import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
 import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
@@ -8,7 +8,7 @@ import { IContent, ITalent } from '@src/domain/conditional'
 import { DebuffTypes } from '@src/domain/constant'
 import { calcScaling } from '@src/core/utils/calculator'
 
-const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
+const WeltBase = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
     basic: c >= 3 ? 1 : 0,
     skill: c >= 3 ? 2 : 0,
@@ -25,17 +25,17 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       energy: 20,
       trace: 'Basic ATK',
       title: 'Gravity Suppression',
-      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to one designated enemy.`,
+      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to a single enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
       sp: 1,
     },
     skill: {
-      energy: 30,
+      energy: c >= 6 ? 40 : 30,
       trace: 'Skill',
       title: 'Edge of the Void',
-      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to a single enemy and further deals DMG <span class="text-desc">4</span> extra times, with each time dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to one random enemy. On hit, there is a {{1}}% <u>base chance</u> to reduce the enemy's SPD by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to a single enemy and further deals DMG <span class="text-desc">2</span> extra times, with each time dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to a random enemy. On hit, there is a {{1}}% <u>base chance</u> to reduce the enemy's SPD by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 36, growth: 3.6, style: 'curved' },
         { base: 65, growth: 1, style: 'curved' },
@@ -48,11 +48,11 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       energy: 5,
       trace: 'Ultimate',
       title: 'Synthetic Black Hole',
-      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to all enemies. Has a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-imaginary">Imprison</b> hit enemy targets for <span class="text-desc">1</span> turn.
-      <br />While <b class="text-hsr-imaginary">Imprisoned</b>, enemy targets have their actions delayed by {{1}}% and their SPD reduced by <span class="text-desc">10%</span>. After using his Ultimate, inflicts Slow on all enemies. When Slow targets are attacked, their actions are delayed by <span class="text-desc">4%</span>. This effect can trigger up to <span class="text-desc">8</span> time(s) per target per turn. Slow lasts for <span class="text-desc">2</span> turn(s).`,
+      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to all enemies, with a <span class="text-desc">100%</span> <u>base chance</u> for enemies hit by this ability to be <b class="text-hsr-imaginary">Imprisoned</b> for <span class="text-desc">1</span> turn.
+      <br /><b class="text-hsr-imaginary">Imprisoned</b> enemies have their actions delayed by {{1}}% and SPD reduced by <span class="text-desc">10%</span>.`,
       value: [
         { base: 138, growth: 9.2, style: 'curved' },
-        { base: 6, growth: 0.6, style: 'curved' },
+        { base: 32, growth: 0.8, style: 'curved' },
       ],
       level: ult,
       tag: AbilityTag.AOE,
@@ -60,8 +60,8 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     talent: {
       trace: 'Talent',
       title: 'Time Distortion',
-      content: `Enemy targets in the <b class="text-hsr-imaginary">Weightless</b> state have their DEF reduced by <span class="text-desc">40%</span>. When hitting an enemy that is already <b>Slowed</b>, Welt deals <b class="text-hsr-imaginary">Imaginary Additional DMG</b> equal to {{0}}% of his ATK to the enemy.`,
-      value: [{ base: 50, growth: 5, style: 'curved' }],
+      content: `When hitting an enemy that is already <b>Slowed</b>, Welt deals Additional <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of his ATK to the enemy.`,
+      value: [{ base: 30, growth: 3, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
     },
@@ -75,22 +75,22 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Retribution',
-      content: `When using Ultimate, there is a <span class="text-desc">100%</span> <u>base chance</u> to increase the DMG received by the targets by <span class="text-desc">35%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `When using Ultimate, there is a <span class="text-desc">100%</span> <u>base chance</u> to increase the DMG received by the targets by <span class="text-desc">12%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Judgment',
-      content: `When Welt uses Basic ATK or Skill, additionally deals <span class="text-desc">1</span> extra instance of Additional DMG to the enemy target. The Additional DMG dealt when using Basic ATK is equal to <span class="text-desc">80%</span> of Basic ATK DMG multiplier. The Additional DMG dealt when using Skill is equal to <span class="text-desc">120%</span> of Skill DMG multiplier.`,
+      content: `Using Ultimate additionally regenerates <span class="text-desc">10</span> Energy.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Punishment',
-      content: `When Welt's Effect Hit Rate is greater than <span class="text-desc">40%</span>, for every <span class="text-desc">10%</span> that exceeds this value, increases ATK by <span class="text-desc">20%</span>, up to a maximum increase of <span class="text-desc">80%</span>. When using Ultimate, additionally restores <span class="text-desc">5</span> Energy.`,
+      content: `Deals <span class="text-desc">20%</span> more DMG to enemies inflicted with Weakness Break.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Legacy of Honor',
-      content: `After using a Skill or Ultimate to hit a target in the <b class="text-hsr-imaginary">Weightless</b> state, deals <span class="text-desc">1</span> additional instance of <b class="text-hsr-imaginary">Imaginary Additional DMG</b> equal to <span class="text-desc">40%</span> of the Ultimate's DMG multiplier. This effect can only be triggered once per target per attack.`,
+      content: `After Welt uses his Ultimate, his abilities are enhanced. The next <span class="text-desc">2</span> time(s) he uses his Basic ATK or Skill, deals Additional DMG to the target equal to <span class="text-desc">50%</span> of his Basic ATK's DMG multiplier or <span class="text-desc">80%</span> of his Skill's DMG multiplier respectively.`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -106,7 +106,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c4: {
       trace: 'Eidolon 4',
       title: 'Appellation of Justice',
-      content: `When using a Skill or Ultimate to hit an enemy target in the Slow state, increases CRIT Rate by <span class="text-desc">20%</span> and CRIT DMG by <span class="text-desc">50%</span>.`,
+      content: `<u>Base chance</u> for Skill to inflict SPD Reduction increases by <span class="text-desc">35%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -117,7 +117,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c6: {
       trace: 'Eidolon 6',
       title: 'Prospect of Glory',
-      content: `Enemy targets in the <b class="text-hsr-imaginary">Weightless</b> state have their <b>All-Type RES</b> reduced by <span class="text-desc">30%</span>.`,
+      content: `When using Skill, deals DMG for <span class="text-desc">1</span> extra time to a random enemy.`,
     },
   }
 
@@ -130,7 +130,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       show: true,
       default: true,
       debuff: true,
-      chance: { base: calcScaling(0.65, 0.01, skill, 'curved'), fixed: false },
+      chance: { base: calcScaling(0.65, 0.01, skill, 'curved') + (c >= 4 ? 0.35 : 0), fixed: false },
       duration: 2,
     },
     {
@@ -156,22 +156,12 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       chance: { base: 1, fixed: false },
       duration: 2,
     },
-    {
-      type: 'toggle',
-      id: 'weightless',
-      text: `Weightless`,
-      ...talents.talent,
-      show: true,
-      default: true,
-      debuff: true,
-    },
   ]
 
   const teammateContent: IContent[] = [
     findContentById(content, 'welt_skill'),
     findContentById(content, 'welt_ult'),
     findContentById(content, 'welt_a2'),
-    findContentById(content, 'weightless'),
   ]
 
   const allyContent: IContent[] = []
@@ -190,7 +180,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         count: number
       }[],
       weakness: Element[],
-      broken: boolean,
+      broken: boolean
     ) => {
       const base = _.cloneDeep(x)
 
@@ -213,7 +203,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 10,
-          chance: { base: calcScaling(0.65, 0.01, skill, 'curved'), fixed: false },
+          chance: { base: calcScaling(0.65, 0.01, skill, 'curved') + (c >= 4 ? 0.35 : 0), fixed: false },
         },
         {
           name: `Max Single Target DMG`,
@@ -221,8 +211,8 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          multiplier: 5,
-          break: 50,
+          multiplier: c >= 6 ? 4 : 3,
+          break: (c >= 6 ? 4 : 3) * 10,
           sum: true,
         },
       ]
@@ -243,7 +233,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       base.TALENT_SCALING = [
         {
           name: 'Additional Damage',
-          value: [{ scaling: calcScaling(0.5, 0.05, talent, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.3, 0.03, talent, 'curved'), multiplier: Stats.ATK }],
           element: Element.IMAGINARY,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
@@ -266,30 +256,20 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         base.VULNERABILITY.push({
           name: `Ascension 2 Passive`,
           source: 'Self',
-          value: 0.35,
+          value: 0.12,
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
-      if (form.weightless) {
-        base.DEF_REDUCTION.push({
-          name: `Talent`,
+      if (a.a6 && broken)
+        base[Stats.ALL_DMG].push({
+          name: `Ascension 6 Passive`,
           source: 'Self',
-          value: 0.4,
+          value: 0.2,
         })
-        addDebuff(debuffs, DebuffTypes.DEF_RED)
-        if (c >= 6) {
-          base.ALL_TYPE_RES_RED.push({
-            name: `Eidolon 6`,
-            source: 'Self',
-            value: 0.3,
-          })
-          addDebuff(debuffs, DebuffTypes.OTHER)
-        }
-      }
-      if (a.a4) {
+      if (c >= 1) {
         base.BASIC_SCALING.push({
-          name: 'A4 Additional DMG',
-          value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear') * 0.8, multiplier: Stats.ATK }],
+          name: 'E1 Additional DMG',
+          value: [{ scaling: calcScaling(0.5, 0.1, basic, 'linear') * 0.5, multiplier: Stats.ATK }],
           element: Element.IMAGINARY,
           property: TalentProperty.ADD,
           type: TalentType.NONE,
@@ -297,21 +277,21 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         })
         base.SKILL_SCALING.push(
           {
-            name: 'A4 Additional DMG',
-            value: [{ scaling: calcScaling(0.36, 0.036, skill, 'curved') * 1.2, multiplier: Stats.ATK }],
+            name: 'E1 Additional DMG',
+            value: [{ scaling: calcScaling(0.36, 0.036, skill, 'curved') * 0.8, multiplier: Stats.ATK }],
             element: Element.IMAGINARY,
             property: TalentProperty.ADD,
             type: TalentType.NONE,
           },
           {
-            name: `A4 Max Single Target Additional DMG`,
-            value: [{ scaling: calcScaling(0.36, 0.036, skill, 'curved') * 1.2, multiplier: Stats.ATK }],
+            name: `E1 Max Single Target Additional DMG`,
+            value: [{ scaling: calcScaling(0.36, 0.036, skill, 'curved') * 0.8, multiplier: Stats.ATK }],
             element: Element.IMAGINARY,
             property: TalentProperty.ADD,
             type: TalentType.NONE,
-            multiplier: 5,
+            multiplier: c >= 6 ? 4 : 3,
             sum: true,
-          },
+          }
         )
       }
 
@@ -324,7 +304,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean,
+      broken: boolean
     ) => {
       if (form.welt_skill)
         base.SPD_REDUCTION.push({
@@ -338,25 +318,17 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           source: 'Welt',
           value: 0.1,
         })
-      if (form.weightless) {
-        base.DEF_REDUCTION.push({
-          name: `Talent`,
+      if (form.welt_tech)
+        base.SPD_REDUCTION.push({
+          name: `Technique`,
           source: 'Welt',
-          value: 0.4,
+          value: 0.1,
         })
-        if (c >= 6) {
-          base.ALL_TYPE_RES_RED.push({
-            name: `Eidolon 6`,
-            source: 'Welt',
-            value: 0.3,
-          })
-        }
-      }
       if (form.welt_a2)
         base.VULNERABILITY.push({
           name: `Ascension 2 Passive`,
           source: 'Welt',
-          value: 0.35,
+          value: 0.12,
         })
 
       return base
@@ -371,81 +343,11 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         count: number
       }[],
       weakness: Element[],
-      broken: boolean,
+      broken: boolean
     ) => {
-      if (a.a6) {
-        base.CALLBACK.push((base, _d, _w, a) => {
-          const ehr = base.getValue(Stats.EHR)
-          if (ehr > 0.4) {
-            base[Stats.P_ATK].push({
-              name: 'Ascension 6 Passive',
-              source: 'Self',
-              value: _.min([(ehr - 0.4) * 2, 0.8]),
-              base: toPercentage(_.min([ehr - 0.4, 0.4])),
-              multiplier: 2,
-            })
-          }
-          if (countDebuff(debuffs, DebuffTypes.SPD_RED) || countDebuff(debuffs, DebuffTypes.IMPRISON)) {
-            const add = {
-              name: 'Talent Additional DMG',
-              value: [{ scaling: calcScaling(0.5, 0.05, talent, 'curved'), multiplier: Stats.ATK }],
-              element: Element.IMAGINARY,
-              property: TalentProperty.ADD,
-              type: TalentType.NONE,
-              sum: true,
-            }
-            base.BASIC_SCALING.push(add)
-            base.SKILL_SCALING.push(
-              { ...add, sum: false },
-              {
-                ...add,
-                name: `Talent Max Single Target Additional DMG`,
-                multiplier: 5,
-                sum: true,
-              },
-            )
-            base.ULT_SCALING.push(add)
-            if (c >= 4) {
-              base.SKILL_CR.push({
-                name: `Eidolon 4`,
-                source: 'Self',
-                value: 0.2,
-              })
-              base.ULT_CR.push({
-                name: `Eidolon 4`,
-                source: 'Self',
-                value: 0.2,
-              })
-              base.SKILL_CD.push({
-                name: `Eidolon 4`,
-                source: 'Self',
-                value: 0.5,
-              })
-              base.ULT_CD.push({
-                name: `Eidolon 4`,
-                source: 'Self',
-                value: 0.5,
-              })
-            }
-          }
-          if (form.weightless && c >= 1) {
-            const add = {
-              name: 'E1 Additional DMG',
-              value: [{ scaling: calcScaling(0.9, 0.06, ult, 'curved') * 0.4, multiplier: Stats.ATK }],
-              element: Element.IMAGINARY,
-              property: TalentProperty.ADD,
-              type: TalentType.NONE,
-              sum: true,
-            }
-            base.SKILL_SCALING.push(add)
-            base.ULT_SCALING.push(add)
-          }
-          return base
-        })
-      }
       return base
     },
   }
 }
 
-export default Welt
+export default WeltBase

@@ -64,18 +64,21 @@ export const Sidebar = ({
             <div className="w-full px-2 py-1 text-xs text-white bg-green-700 rounded-md ring-1 ring-offset-2 ring-offset-primary-dark ring-green-400">
               <p className="flex items-center gap-1 font-bold">
                 <i className="fa-info-circle fa-solid" />
-                v4.0 is Live!
+                Viewing Live: v4.0
               </p>
-              <p>Sparxie & Yao Guang: Now Available</p>
+              <p>
+                <b>NEW:</b> Sparxie & Yao Guang
+              </p>
             </div>
           ) : (
-            <div className="w-full px-2 py-1 text-xs text-white bg-green-700 rounded-md ring-1 ring-offset-2 ring-offset-primary-dark ring-green-400">
+            <div className="w-full px-2 py-1 text-xs text-white rounded-md bg-amber-700 ring-1 ring-offset-2 ring-offset-primary-dark ring-amber-400">
               <p className="flex items-center gap-1 font-bold">
                 <i className="fa-info-circle fa-solid" />
-                v4.2 Beta is up!
+                Viewing Beta: v4.2 Beta
               </p>
-              <p>SW LV.999, Evanescia and Trailblazer (Elation): Now Available</p>
-              <p>Novaflare: To be updated...</p>
+              <p>
+                <b>NEW:</b> SW LV.999, Evanescia, Trailblazer (Elation) and 4 Novaflare
+              </p>
             </div>
           )}
           {!settingStore.settings.storeData && hydrated && (

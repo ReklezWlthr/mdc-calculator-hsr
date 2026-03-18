@@ -58,7 +58,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Ultimate',
       title: `Vox Harmonique, Opus Cosmique	`,
       content: `Robin enters the <b>Concerto</b> state and makes all other allies immediately take action.
-      <br />While in the <b>Concerto</b> state, increase all allies' ATK by {{0}}% of Robin's ATK plus {{1}}. Moreover, after every attack by allies, Robin deals Additional <b class="text-hsr-physical">Physical DMG</b> equal to {{2}}% of her ATK for <span class="text-desc">1</span> time, with a fixed CRIT Rate for this damage set at <span class="text-desc">100%</span> and fixed CRIT DMG set at <span class="text-desc">150%</span>.
+      <br />While in the <b>Concerto</b> state, increase all allies' ATK by {{0}}% of Robin's ATK plus {{1}}. Moreover, after every attack by ally targets, Robin deals Additional <b class="text-hsr-physical">Physical DMG</b> equal to {{2}}% of her ATK for <span class="text-desc">1</span> time, with a fixed CRIT Rate for this damage set at <span class="text-desc">100%</span> and fixed CRIT DMG set at <span class="text-desc">150%</span>.
       <br />While in the <b>Concerto</b> state, Robin is immune to Crowd Control debuffs and cannot enter her turn or take action until the <b>Concerto</b> state ends.
       <br />A <b>Concerto</b> countdown appears on the Action Order bar. When the countdown's turn begins, Robin exits the <b>Concerto</b> state and immediately takes action. The countdown has its own fixed SPD of <span class="text-desc">90</span>.`,
       value: [
@@ -182,7 +182,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -247,7 +247,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       base[Stats.CRIT_DMG].push({
         name: 'Talent',
@@ -301,7 +301,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       }[],
       weakness: Element[],
       broken: boolean,
-      globalCallback: CallbackType[]
+      globalCallback: CallbackType[],
     ) => {
       if (form.concerto) {
         globalCallback.push(function P99(_b, _d, _w, a) {
@@ -335,11 +335,12 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
                   team[i].ULT_SCALING,
                   team[i].TALENT_SCALING,
                   team[i].MEMO_SKILL_SCALING,
+                  team[i].MEMO_TALENT_SCALING,
                 ],
                 (s) => {
                   const add = {
                     name: "Concerto's Additional DMG",
-                    value: [{ scaling: calcScaling(0.72, 0.048, skill, 'curved'), multiplier: Stats.ATK }],
+                    value: [{ scaling: calcScaling(0.72, 0.048, ult, 'curved'), multiplier: Stats.ATK }],
                     element: Element.PHYSICAL,
                     property: TalentProperty.ADD,
                     type: TalentType.NONE,
@@ -357,7 +358,7 @@ const Robin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
                       name: add.name + ` (${team[i].SUMMON_STATS?.NAME})`,
                     })
                   }
-                }
+                },
               )
           })
           return a
