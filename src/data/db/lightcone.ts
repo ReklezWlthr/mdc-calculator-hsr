@@ -2670,7 +2670,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Sure Win',
-      detail: `Increases the wearer's ATK by {{0}}%. When the wearer uses their Ultimate, they gain <b>Superpower</b>, lasting for <span class="text-desc">3</span> turn(s). While in the <b>Superpower</b> state, the wearer's Elation DMG ignores {{1}}% of the target's DEF, and the wearer gains <span class="text-desc">2</span> Punchline(s) after using a Basic ATK. When <b>Superpower</b> is removed, gains {{2}} Punchline(s).`,
+      detail: `Increases the wearer's ATK by {{0}}%. When the wearer uses their Ultimate, they gain <b>Superpower</b>, lasting for <span class="text-desc">3</span> turn(s). While in the <b>Superpower</b> state, the wearer's <b class="elation">Elation DMG</b> ignores {{1}}% of the target's DEF, and the wearer gains <span class="text-desc">2</span> <b class="text-orange-400">Punchline(s)</b> after using a Basic ATK. When <b>Superpower</b> is removed, gains {{2}} <b class="text-orange-400">Punchline(s)</b>.`,
       properties: [
         { base: 64, growth: 16 },
         { base: 18, growth: 3 },

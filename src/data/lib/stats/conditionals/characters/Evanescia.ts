@@ -166,7 +166,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
   }
 
   const content: IContent[] = [
-    Banger,
+    { ...Banger, default: 280 },
     {
       type: 'number',
       id: 'eva_enemy_count',
