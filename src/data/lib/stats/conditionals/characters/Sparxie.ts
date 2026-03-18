@@ -80,6 +80,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       image: 'asset/traces/SkillIcon_1501_BP.webp',
     },
     summon_skill: {
+      participantId: 144,
       trace: 'Elation Skill',
       title: 'Signal Overflow: The Great Encore!',
       content: `Deals {{0}}% <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> all enemies and deals <span class="text-desc">20</span> additional instance(s) of DMG. Each instance deals {{1}}% <b class="text-hsr-fire">Fire <b class="elation">Elation DMG</b></b> to one random enemy. Grants <span class="text-desc">2</span> <b class="text-desc">Thrill</b> point(s) to Sparxie, which can be used to offset Sparxie's Skill Point consumption. Consuming <b class="text-desc">Thrill</b> is considered as consuming Skill Points.`,

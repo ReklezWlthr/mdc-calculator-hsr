@@ -75,6 +75,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       image: 'asset/traces/SkillIcon_1506_BP.webp',
     },
     summon_skill: {
+      participantId: 999,
       trace: 'Elation Skill',
       title: 'Honkai-Level DPS Showcase',
       content: `<span class="text-xs opacity-75 text-gray">Elation Skill</span>
@@ -126,6 +127,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       value: [],
       level: talent,
       tag: AbilityTag.SUPPORT,
+      image: 'asset/traces/SkillIcon_1506_Passive.webp',
     },
     technique: {
       trace: 'Technique',
@@ -157,7 +159,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     c1: {
       trace: 'Eidolon 1',
       title: 'Aether Editing: Eidolon +1',
-      content: `<b>Premium Supply Mystery Box</b> additionally provides <span class="text-desc">2</span> <b class="text-orange-400">Punchline(s)</b> and increases the Elation of DMG dealt by <span class="text-desc">200</span>.`,
+      content: `<b>Premium Supply Mystery Box</b> additionally provides <span class="text-desc">2</span> <b class="text-orange-400">Punchline(s)</b> and increases the Elation of DMG dealt by <span class="text-desc">200%</span>.`,
       image: 'asset/traces/SkillIcon_1506_Rank1.webp',
     },
     c2: {

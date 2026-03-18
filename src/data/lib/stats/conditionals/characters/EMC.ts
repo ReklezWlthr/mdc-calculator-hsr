@@ -58,6 +58,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       image: 'asset/traces/SkillIcon_8009_BP.webp',
     },
     summon_skill: {
+      participantId: 120,
       trace: 'Elation Skill',
       title: 'Elation, Are You Deaf or Something?',
       content: `Deals <span class="text-desc">8</span> instances of DMG, with each instance dealing {{0}}% <b class="text-hsr-lightning">Lightning</b> <b class="elation">Elation DMG</b> to one random enemy. Then, deals {{1}}% <b class="text-hsr-lightning">Lightning</b> <b class="elation">Elation DMG</b>, which is split evenly among all enemies.`,

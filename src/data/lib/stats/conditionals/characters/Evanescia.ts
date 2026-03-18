@@ -58,6 +58,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       image: 'asset/traces/SkillIcon_1505_BP.webp',
     },
     summon_skill: {
+      participantId: 146,
       trace: 'Elation Skill',
       title: 'Scarlet: Sombre Rend',
       content: `Deals <b class="text-hsr-physical">Physical</b> <b class="elation">Elation DMG</b> equal to {{0}}% to all enemies and additionally gains <span class="text-desc">10</span> point(s) of <b class="text-blue">Certified Banger</b>.`,

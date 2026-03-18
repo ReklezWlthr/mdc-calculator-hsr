@@ -382,6 +382,9 @@ export const CharDetail = observer(() => {
                         {!!item.energy && (
                           <p className="font-normal text-rose-300 opacity-80">[{item.energy} Energy]</p>
                         )}
+                        {!!item.participantId && (
+                          <p className="font-normal text-orange-300 opacity-80">[Participant ID: {item.participantId}]</p>
+                        )}
                         {!!item.sp && (
                           <div className="flex items-center font-normal opacity-100 text-gray">
                             <img className="size-5" src="asset/PointBPFull.png" />
@@ -475,12 +478,12 @@ export const CharDetail = observer(() => {
                   <div>
                     <p className="text-sm font-normal text-primary-lighter">{item.trace}</p>
                     <p className="font-semibold">{item.title}</p>
+                    <p
+                      className="pt-1.5 text-sm font-normal text-gray"
+                      dangerouslySetInnerHTML={{ __html: formatScaleString(item, 1) }}
+                    />
                   </div>
                 </div>
-                <p
-                  className="pt-1.5 text-sm font-normal text-gray"
-                  dangerouslySetInnerHTML={{ __html: formatScaleString(item, 1) }}
-                />
               </div>
             </div>
           ))}

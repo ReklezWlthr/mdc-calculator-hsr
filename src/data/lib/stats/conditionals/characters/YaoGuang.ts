@@ -61,6 +61,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       image: 'asset/traces/SkillIcon_1502_BP.webp',
     },
     summon_skill: {
+      participantId: 116,
       trace: 'Elation Skill',
       title: 'Let Thy Fortune Burst in Flames',
       content: `Inflicts <b class="text-red">Woe's Whisper</b> on all enemies, lasting for <span class="text-desc">3</span> turn(s). Enemy targets under the <b class="text-red">Woe's Whisper</b> state take <span class="text-desc">16%</span> increased DMG. Deals {{0}}% <b class="text-hsr-physical">Physical <b class="elation">Elation DMG</b></b> to all enemies. Then, deals <span class="text-desc">5</span> instance(s) of {{1}}% <b class="text-hsr-physical">Physical <b class="elation">Elation DMG</b></b> to one random enemy.`,

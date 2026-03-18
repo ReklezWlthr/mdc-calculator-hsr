@@ -65,7 +65,7 @@ export const TalentIcon = observer(
         <div
           className={classNames(
             'p-[5%] rounded-full bg-opacity-35 ring-2 ring-offset-2 ring-offset-primary-darker bg-primary-light ring-primary-lighter opacity-50',
-            size || 'w-12 h-12'
+            size || 'w-12 h-12',
           )}
         />
       )
@@ -78,7 +78,7 @@ export const TalentIcon = observer(
             'p-[5%] rounded-full bg-opacity-35 ring-2 ring-offset-2 duration-200 ring-offset-primary-darker flex justify-center items-center shrink-0',
             active ? iconColor[element] : 'bg-primary-light ring-primary-lighter opacity-50',
             size || 'w-12 h-12',
-            { 'group-hover:ring-offset-4': !hideTip }
+            { 'group-hover:ring-offset-4': !hideTip },
           )}
         >
           <img src={talent?.image || `asset/traces/${icon}`} />
@@ -116,6 +116,11 @@ export const TalentIcon = observer(
                   Energy: <span className="text-desc"></span>
                 </p>
               )}
+              {!!talent.participantId && (
+                <p className="text-xs font-normal text-gray">
+                  Participant ID: <span className="text-desc">{talent.participantId}</span>
+                </p>
+              )}
             </div>
           </div>
         }
@@ -128,7 +133,7 @@ export const TalentIcon = observer(
             <div
               className={classNames(
                 'absolute flex items-center justify-center px-1.5 py-0.5 text-xs rounded-full -bottom-1 -right-3 text-white',
-                upgraded ? 'bg-cyan-600' : 'bg-primary-light'
+                upgraded ? 'bg-cyan-600' : 'bg-primary-light',
               )}
             >
               {level + (upgraded || 0)}
@@ -142,7 +147,7 @@ export const TalentIcon = observer(
         </div>
       </Tooltip>
     )
-  }
+  },
 )
 
 export const ScalingWrapper = observer(({ children, icon, talent, element, level, upgraded }: ScalingWrapperProps) => {
@@ -162,6 +167,11 @@ export const ScalingWrapper = observer(({ children, icon, talent, element, level
         {level && (
           <p className="text-xs text-gray">
             Level <span className={upgraded ? 'text-blue font-bold' : 'text-gray'}>{level + upgraded}</span>
+          </p>
+        )}
+        {talent.participantId && (
+          <p className="text-xs font-normal text-gray opacity-80">
+            &lt; Participant ID: <span className="text-desc">{talent.participantId}</span> &gt;
           </p>
         )}
       </div>

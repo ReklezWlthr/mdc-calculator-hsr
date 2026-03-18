@@ -122,6 +122,7 @@ export interface ITalentDisplay {
   image?: string
   tag?: string
   sp?: number
+  participantId?: number
 }
 
 export interface ITalent {
