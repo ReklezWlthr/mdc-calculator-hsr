@@ -4,6 +4,7 @@ import { baseStatsObject, StatsObject } from '../../baseConstant'
 import {
   AbilityTag,
   Element,
+  GlobalModifiers,
   ITalentLevel,
   ITeamChar,
   PathType,
@@ -234,6 +235,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       }[],
       weakness: Element[],
       broken: boolean,
+      globalMod: GlobalModifiers,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -263,6 +265,7 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         {
           name: 'AoE',
           value: [{ scaling: calcScaling(1.8, 0.12, ult, 'curved'), multiplier: Stats.ATK }],
+          multiplier: 1 / globalMod.enemy_count,
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,

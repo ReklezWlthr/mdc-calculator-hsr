@@ -168,18 +168,6 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
   const content: IContent[] = [
     { ...Banger, default: 280 },
     {
-      type: 'number',
-      id: 'eva_enemy_count',
-      trace: 'Miscellaneous',
-      text: `On-Field Enemy Count`,
-      content: 'Used for Ascension 2 Passive bounce increment.',
-      title: 'On-Field Enemy Count',
-      show: a.a2,
-      default: 5,
-      min: 1,
-      max: 5,
-    },
-    {
       type: 'toggle',
       id: 'fox_vuln',
       text: `Fox Teacher Vulnerability`,
@@ -268,13 +256,13 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             ]
           : []),
       ]
-      const bounce = form.eva_enemy_count === 1 ? 9 : form.eva_enemy_count === 2 ? 7 : form.eva_enemy_count >= 3 ? 6 : 5
+      const bounce = globalMod.enemy_count === 1 ? 9 : globalMod.enemy_count === 2 ? 7 : globalMod.enemy_count >= 3 ? 6 : 5
       base.ULT_SCALING = [
         {
           name: 'Total Single-Target DMG',
           value: [
             { scaling: calcScaling(1.44, 0.096, ult, 'curved'), multiplier: Stats.ATK },
-            { scaling: calcScaling(0.96, 0.064, ult, 'curved') * bounce, multiplier: Stats.ATK },
+            { scaling: calcScaling(0.96, 0.064, ult, 'curved') * (a.a2 ? bounce : 5), multiplier: Stats.ATK },
           ],
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
@@ -304,7 +292,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
                 name: 'Total Certified Banger DMG',
                 value: [
                   { scaling: calcScaling(0.11, 0.011, talent, 'curved'), multiplier: Stats.ELATION },
-                  { scaling: calcScaling(0.12, 0.013, talent, 'curved') * bounce, multiplier: Stats.ELATION },
+                  { scaling: calcScaling(0.12, 0.013, talent, 'curved') * (a.a2 ? bounce : 5), multiplier: Stats.ELATION },
                 ],
                 element: Element.PHYSICAL,
                 property: TalentProperty.ELATION,

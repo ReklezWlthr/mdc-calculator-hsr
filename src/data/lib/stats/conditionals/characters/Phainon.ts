@@ -1,7 +1,16 @@
 import { addDebuff, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  GlobalModifiers,
+  ITalentLevel,
+  ITeamChar,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/data_format'
 import { IContent, ITalent } from '@src/domain/conditional'
@@ -203,18 +212,6 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       max: 4,
     },
     {
-      type: 'number',
-      id: 'phainon_enemy',
-      text: `Enemies on Field`,
-      content:
-        'Used in calculating the DMG distribution from <b>Foundation: Stardeath Verdict</b> and <b>He Who Bears the World Must Burn</b>.',
-      title: 'Enemies on Field',
-      trace: 'Utility',
-      show: true,
-      default: 1,
-      min: 1,
-    },
-    {
       type: 'toggle',
       id: 'phainon_talent',
       text: `Talent CRIT DMG Bonus`,
@@ -289,7 +286,9 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         type: DebuffTypes
         count: number
       }[],
-      weakness: Element[]
+      weakness: Element[],
+      broken: boolean,
+      globalMod: GlobalModifiers,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -413,7 +412,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 property: TalentProperty.NORMAL,
                 type: TalentType.SKILL,
                 break: 20,
-                multiplier: 1 / form.phainon_enemy,
+                multiplier: 1 / globalMod.enemy_count,
               },
               {
                 name: 'DMG per Bounce',
@@ -433,7 +432,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 20,
-          multiplier: 1 / form.phainon_enemy,
+          multiplier: 1 / globalMod.enemy_count,
           sum: true,
         },
       ]
@@ -527,7 +526,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base: StatsObject,
       form: Record<string, any>,
       aForm: Record<string, any>,
-      debuffs: { type: DebuffTypes; count: number }[]
+      debuffs: { type: DebuffTypes; count: number }[],
     ) => {
       if (form.phainon_talent_spd) {
         base[Stats.P_SPD].push({
@@ -543,7 +542,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base: StatsObject,
       form: Record<string, any>,
       team: StatsObject[],
-      allForm: Record<string, any>[]
+      allForm: Record<string, any>[],
     ) => {
       if (c >= 6) {
         _.forEach([base.MEMO_SKILL_SCALING], (s) => {

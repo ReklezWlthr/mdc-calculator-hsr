@@ -395,6 +395,7 @@ export const useCalculator = ({
               totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
               index: i,
               debuffs,
+              globalMod,
             })
             if (x.SUMMON_STATS) {
               x.SUMMON_STATS = c.scaling(x.SUMMON_STATS, form.memo, team[i]?.equipments?.weapon?.refinement, {
@@ -405,6 +406,7 @@ export const useCalculator = ({
                 totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
                 index: i,
                 debuffs,
+                globalMod,
               })
             }
           },
@@ -422,6 +424,7 @@ export const useCalculator = ({
             index,
             owner: c.owner,
             debuffs,
+            globalMod,
           })
           if (x.SUMMON_STATS) {
             x.SUMMON_STATS = c.scaling(
@@ -436,6 +439,7 @@ export const useCalculator = ({
                 totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
                 index,
                 debuffs,
+                globalMod,
               },
             )
           }

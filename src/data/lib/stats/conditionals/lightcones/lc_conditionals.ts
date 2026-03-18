@@ -314,33 +314,19 @@ export const LCConditionals: IWeaponContent[] = [
     },
   },
   {
-    type: 'number',
-    text: `Enemy Count ATK Bonus`,
-    show: true,
-    default: 1,
-    min: 1,
-    max: 5,
-    id: '23000',
-    scaling: (base, form, r) => {
-      if (form['23000']) {
-        base[Stats.P_ATK].push({
-          name: `Passive`,
-          source: 'Night on the Milky Way',
-          value: calcRefinement(0.09, 0.015, r) * form['23000'],
-        })
-      }
-      return base
-    },
-  },
-  {
     type: 'toggle',
     text: `On-Break DMG Bonus`,
     show: true,
     default: true,
     duration: 1,
-    id: '23000_1',
-    scaling: (base, form, r) => {
-      if (form['23000_1']) {
+    id: '23000',
+    scaling: (base, form, r, { globalMod }) => {
+      base[Stats.P_ATK].push({
+        name: `Passive`,
+        source: 'Night on the Milky Way',
+        value: calcRefinement(0.09, 0.015, r) * globalMod.enemy_count,
+      })
+      if (form['23000']) {
         base[Stats.ALL_DMG].push({
           name: `Passive`,
           source: 'Night on the Milky Way',

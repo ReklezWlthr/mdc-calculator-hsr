@@ -3,7 +3,8 @@
     "version": "1.2-4",
     "date": "Mar 18th, 2026",
     "desc": [
-      "New Novaflare: <span class=\"text-hsr-fire\">Firefly</span>, <span class=\"text-hsr-quantum\">Seele</span>, <span class=\"text-hsr-imaginary\">Welt</span>, and <span class=\"text-hsr-wind\">Huohuo</span>"
+      "New Novaflare: <span class=\"text-hsr-fire\">Firefly</span>, <span class=\"text-hsr-quantum\">Seele</span>, <span class=\"text-hsr-imaginary\">Welt</span>, and <span class=\"text-hsr-wind\">Huohuo</span>",
+      "Updated: \"Enemy On-Field Count\" is now presented as a Global Modifier for simplicity"
     ]
   },
   {

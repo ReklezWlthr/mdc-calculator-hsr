@@ -180,18 +180,6 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       ],
     },
     {
-      type: 'number',
-      id: 'emc_enemy_count',
-      trace: 'Miscellaneous',
-      text: `On-Field Enemy Count`,
-      content: 'Used for DMG distribution of Elation Skill.',
-      title: 'On-Field Enemy Count',
-      show: a.a2,
-      default: 5,
-      min: 1,
-      max: 5,
-    },
-    {
       type: 'toggle',
       id: 'emc_ult',
       text: `EMC CRIT DMG Bonus`,
@@ -285,7 +273,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         {
           name: 'AoE',
           value: [{ scaling: calcScaling(0.3, 0.03, elation, 'curved'), multiplier: Stats.ELATION }],
-          multiplier: 1 / form.emc_enemy_count,
+          multiplier: 1 / globalMod.enemy_count,
           element: Element.LIGHTNING,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,

@@ -4,6 +4,7 @@ import { baseStatsObject, StatsObject } from '../../baseConstant'
 import {
   AbilityTag,
   Element,
+  GlobalModifiers,
   ITalentLevel,
   ITeamChar,
   PathType,
@@ -133,16 +134,6 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
 
   const content: IContent[] = [
     {
-      type: 'number',
-      id: 'anaxa_enemy',
-      text: `Enemies on Field`,
-      ...talents.skill,
-      show: true,
-      default: 5,
-      min: 0,
-      max: 5,
-    },
-    {
       type: 'multiple',
       id: 'anaxa_implant',
       text: `Weakness Implant`,
@@ -151,7 +142,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       default: [],
       options: _.map(
         _.filter(Element, (item) => item !== Element.NONE),
-        (item) => ({ name: item, value: item })
+        (item) => ({ name: item, value: item }),
       ),
       duration: 3,
       debuff: true,
@@ -211,7 +202,8 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
+      globalMod: GlobalModifiers,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -239,7 +231,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           type: TalentType.SKILL,
           break: 50,
           sum: true,
-          bonus: form.anaxa_enemy * 0.2,
+          bonus: globalMod.enemy_count * 0.2,
         },
         {
           name: 'Bounce DMG',
@@ -250,7 +242,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           break: 10,
           sum: false,
           multiplier,
-          bonus: form.anaxa_enemy * 0.2,
+          bonus: globalMod.enemy_count * 0.2,
         },
       ]
       base.ULT_SCALING = [
@@ -274,7 +266,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           base.ADD_DEBUFF.push({
             name: `${item} Weakness Implant`,
             source: 'Self',
-          })
+          }),
         )
         globalImplant = newImplant
         addDebuff(debuffs, DebuffTypes.OTHER, _.size(newImplant))
@@ -283,8 +275,8 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         weakness.push(
           ..._.filter<Element>(
             _.filter(Element, (item) => item !== Element.NONE),
-            (item) => !_.includes(weakness, item)
-          )
+            (item) => !_.includes(weakness, item),
+          ),
         )
         base.ADD_DEBUFF.push({
           name: `Sublimation`,
@@ -357,14 +349,14 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (_.size(form.anaxa_implant)) {
         _.forEach(globalImplant, (item) =>
           base.ADD_DEBUFF.push({
             name: `${item} Weakness Implant`,
             source: 'Anaxa',
-          })
+          }),
         )
       }
       if (form.sublimation) {
@@ -413,7 +405,7 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },

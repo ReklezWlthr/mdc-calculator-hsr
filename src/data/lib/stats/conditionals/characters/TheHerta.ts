@@ -4,6 +4,7 @@ import { baseStatsObject, StatsObject } from '../../baseConstant'
 import {
   AbilityTag,
   Element,
+  GlobalModifiers,
   ITalentLevel,
   ITeamChar,
   PathType,
@@ -213,16 +214,6 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       min: 1,
       max: 99,
     },
-    {
-      type: 'number',
-      id: 'the_herta_c6',
-      text: `Enemies on Field`,
-      ...talents.c6,
-      show: c >= 6,
-      default: 3,
-      min: 1,
-      max: 3,
-    },
   ]
 
   const teammateContent: IContent[] = []
@@ -243,7 +234,8 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
+      globalMod: GlobalModifiers,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -261,7 +253,7 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         },
       ]
       const additionalStackCount = _.head(
-        _.sortBy([form.interpretation, form.interpretation_c1_l, form.interpretation_c1_r]).reverse()
+        _.sortBy([form.interpretation, form.interpretation_c1_l, form.interpretation_c1_r]).reverse(),
       )
       const stackCount =
         (c >= 1 ? form.interpretation + _.floor(additionalStackCount * 0.5) : form.interpretation) *
@@ -379,7 +371,8 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               sum: false,
             },
           ]
-      const c6Scaling = form.the_herta_c6 >= 3 ? 1.4 : form.the_herta_c6 === 2 ? 2.5 : form.the_herta_c6 === 1 ? 4 : 0
+      const c6Scaling =
+        globalMod.enemy_count >= 3 ? 1.4 : globalMod.enemy_count === 2 ? 2.5 : globalMod.enemy_count === 1 ? 4 : 0
       base.ULT_SCALING = [
         {
           name: 'AoE',
@@ -440,7 +433,7 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (a.a4 && eruditionCount >= 2) {
         base[Stats.CRIT_DMG].push({
@@ -470,7 +463,7 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },

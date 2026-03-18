@@ -4,6 +4,7 @@ import { baseStatsObject, StatsObject, StatsObjectKeys } from '../../baseConstan
 import {
   AbilityTag,
   Element,
+  GlobalModifiers,
   ITalentLevel,
   ITeamChar,
   PathType,
@@ -257,21 +258,11 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       show: true,
       default: true,
     },
-    {
-      type: 'number',
-      id: 'evernight_c1',
-      text: `Enemies on Field`,
-      ...talents.c1,
-      show: c >= 1,
-      default: 4,
-      min: 1,
-    },
   ]
 
   const teammateContent: IContent[] = [
     findContentById(content, 'evernight_skill'),
     findContentById(content, 'darkest_riddle'),
-    findContentById(content, 'evernight_c1'),
   ]
 
   const allyContent: IContent[] = []
@@ -290,7 +281,8 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
+      globalMod: GlobalModifiers
     ) => {
       const base = _.cloneDeep(x)
       base.SUMMON_STATS = _.cloneDeep({
@@ -312,7 +304,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       if (form.memoria >= 16) base.MEMO_SKILL_ALT = true
 
       let c1Bonus = 0
-      switch (form.evernight_c1) {
+      switch (globalMod.enemy_count) {
         case 0:
           break
         case 1:
@@ -544,10 +536,11 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
+      globalMod: GlobalModifiers,
     ) => {
       let c1Bonus = 0
-      switch (form.evernight_c1) {
+      switch (globalMod.enemy_count) {
         case 0:
           break
         case 1:
@@ -606,7 +599,7 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       }[],
       weakness: Element[],
       broken: boolean,
-      globalCallback: CallbackType[]
+      globalCallback: CallbackType[],
     ) => {
       if (x.SUMMON_STATS) {
         globalCallback.push(function P99(b, d, w, all) {

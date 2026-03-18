@@ -13,11 +13,13 @@ export enum HsrPage {
 
 export interface GlobalModifiers {
   punchline: number
+  enemy_count: number
   broken: boolean
 }
 
 export const DefaultGlobalMod: GlobalModifiers = {
   punchline: 20,
+  enemy_count: 3,
   broken: false,
 }
 
@@ -301,7 +303,7 @@ export enum DebuffTypes {
   DOT = 'DoT',
   CONTROL = 'Control',
 
-  ABSOLUTE = 'Absolute Weakness'
+  ABSOLUTE = 'Absolute Weakness',
 }
 
 export const DebuffIcon = {

@@ -4,6 +4,7 @@ import { baseStatsObject, StatsObject } from '../../baseConstant'
 import {
   AbilityTag,
   Element,
+  GlobalModifiers,
   ITalentLevel,
   ITeamChar,
   PathType,
@@ -144,16 +145,6 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       duration: 2,
     },
     {
-      type: 'number',
-      id: 'hmc_a2',
-      text: `Enemies on Field`,
-      ...talents.a2,
-      show: a.a2,
-      default: 5,
-      min: 1,
-      max: 5,
-    },
-    {
       type: 'toggle',
       id: 'hmc_c2',
       text: `E2 Energy Regen Bonus`,
@@ -164,11 +155,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     },
   ]
 
-  const teammateContent: IContent[] = [
-    findContentById(content, 'backup_dancer'),
-    findContentById(content, 'hmc_tech'),
-    findContentById(content, 'hmc_a2'),
-  ]
+  const teammateContent: IContent[] = [findContentById(content, 'backup_dancer'), findContentById(content, 'hmc_tech')]
 
   const allyContent: IContent[] = []
 
@@ -186,7 +173,8 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
+      globalMod: GlobalModifiers,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -240,7 +228,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         base.SUPER_BREAK_MULT.push({
           name: 'Ultimate',
           source: 'Self',
-          value: 1 + (form.hmc_a2 ? 0.7 - 0.1 * form.hmc_a2 : 0),
+          value: 1 + (a.a2 ? 0.7 - 0.1 * globalMod.enemy_count : 0),
         })
       }
       if (form.hmc_tech)
@@ -265,7 +253,8 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
+      globalMod: GlobalModifiers,
     ) => {
       if (form.backup_dancer) {
         base[Stats.BE].push({
@@ -277,7 +266,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         base.SUPER_BREAK_MULT.push({
           name: 'Ultimate',
           source: 'Trailblazer',
-          value: 1 + (form.hmc_a2 ? 0.7 - 0.1 * form.hmc_a2 : 0),
+          value: 1 + (a.a2 ? 0.7 - 0.1 * globalMod.enemy_count : 0),
         })
       }
       if (form.hmc_tech)
@@ -299,7 +288,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (c >= 4)
         _.forEach(team, (t, i) => {

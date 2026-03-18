@@ -4,6 +4,7 @@ import { baseStatsObject, StatsObject, StatsObjectKeys } from '../../baseConstan
 import {
   AbilityTag,
   Element,
+  GlobalModifiers,
   ITalentLevel,
   ITeamChar,
   PathType,
@@ -517,16 +518,6 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     ...chrysosBuffs,
     {
-      type: 'toggle',
-      id: 'cyrene_cas_count',
-      trace: `Memosprite Skill`,
-      text: `Enemies Count <= 2`,
-      title: `Enemies Count <= 2`,
-      content: `Under the effect of <b class="text-hsr-quantum">Ode to Life and Death</b>, if there are <span class="text-desc">2</span> enemy target(s) on the field or fewer, the DMG multiplier of <b>Netherwing</b>'s Talent <b>Wings Sweep the Ruins</b> additionally increases.`,
-      show: _.includes(teamId, '1407'),
-      default: false,
-    },
-    {
       type: 'number',
       id: 'cyrene_dhpt_shield',
       trace: `Memosprite Skill`,
@@ -630,7 +621,6 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     findContentById(content, 'cyrene_skill'),
     findContentById(content, 'cyrene_e2'),
     findContentById(content, 'cyrene_e6'),
-    findContentById(content, 'cyrene_cas_count'),
     findContentById(content, 'cyrene_dhpt_shield'),
     findContentById(content, 'true_knowledge'),
     findContentById(content, 'phainon_excess_coreflame'),
@@ -867,6 +857,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       weakness: Element[],
       broken: boolean,
       globalCallback: CallbackType[],
+      globalMod: GlobalModifiers
     ) => {
       if (x.SUMMON_STATS) {
         globalCallback.push(function P99(_b, _d, _w, all) {
@@ -1023,7 +1014,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                       ...v,
                       scaling:
                         v.scaling +
-                        (form.cyrene_cas_count
+                        (globalMod.enemy_count <= 2
                           ? calcScaling(0.0036, 0.000072, memo_skill, 'linear')
                           : calcScaling(0.0012, 0.000024, memo_skill, 'linear')) *
                           form.cyrene_cas,

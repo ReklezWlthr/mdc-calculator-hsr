@@ -1,5 +1,15 @@
 import { StatsObject } from '@src/data/lib/stats/baseConstant'
-import { DebuffTypes, Element, ITalentLevel, ITeamChar, PathType, Stats, TalentProperty, TalentType } from './constant'
+import {
+  DebuffTypes,
+  Element,
+  GlobalModifiers,
+  ITalentLevel,
+  ITeamChar,
+  PathType,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from './constant'
 import _ from 'lodash'
 import { findCharacter } from '@src/core/utils/finder'
 
@@ -105,6 +115,7 @@ export interface IWeaponContent {
       index: number
       owner?: number
       debuffs: { type: DebuffTypes; count: number }[]
+      globalMod: GlobalModifiers
     },
     //"element" is the element of the wearer
     // "own" is the stat of the wearer
@@ -160,6 +171,18 @@ export const GlobalContents: (team: ITeamChar[]) => IContent[] = (team) =>
         show: true,
         default: true,
         unique: true,
+      },
+      {
+        type: 'number',
+        id: 'enemy_count',
+        text: `Enemies On-Field`,
+        trace: 'Mechanic - Enemies On-Field',
+        content: `Modifier determining the amount of enemies on the current field. Mostly used for DMG distribution and/or effect enhancement of some abilities or Light Cones.`,
+        title: 'Weakness Broken',
+        show: true,
+        unique: true,
+        default: 3,
+        min: 1,
       },
       {
         type: 'number',
