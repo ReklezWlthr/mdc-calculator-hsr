@@ -76,7 +76,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 5,
       trace: 'Talent',
       title: `Rancor: Enmity Reprisal`,
-      content: `Ashveil has an initial <b>Charge(s)</b> of <span class="text-desc">2</span> and can hold up to a max of <span class="text-desc">3</span>. After the <b class="text-red">Bait</b> gets attacked by other ally targets, Ashveil regenerates a fixed amount of <span class="text-desc">8</span> Energy, then consumes <span class="text-desc">1</span> <b>Charge(s)</b> to launch a <u>Follow-Up ATK</u> against the <b class="text-red">Bait</b>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Ashveil's ATK. Afterwards, gains <span class="text-desc">2</span> stack(s) of <b class="text-violet-400">Gluttony</b>, stacking up to <span class="text-desc">12</span> time(s).`,
+      content: `Ashveil has an initial <b>Charge(s)</b> of <span class="text-desc">2</span> and can hold up to a max of <span class="text-desc">3</span>. After the <b class="text-red">Bait</b> gets attacked by other ally targets, Ashveil regenerates a fixed amount of <span class="text-desc">8</span> Energy, then consumes <span class="text-desc">1</span> <b>Charge(s)</b> to launch a <u>Follow-Up ATK</u> against the <b class="text-red">Bait</b>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Ashveil's ATK. Afterwards, gains <span class="text-desc">2</span> stack(s) of <b class="text-violet-400">Gluttony</b>, which can stack up to <span class="text-desc">12</span>.`,
       value: [{ base: 100, growth: 10, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ST,

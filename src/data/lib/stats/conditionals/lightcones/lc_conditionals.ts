@@ -1531,7 +1531,7 @@ export const LCConditionals: IWeaponContent[] = [
       if (form['23057']) {
         base.ELATION_DEF_PEN.push({
           name: `Superpower`,
-          source: 'Welcome to Cosmic City',
+          source: 'Welcome to the Cosmic City',
           value: calcRefinement(0.18, 0.03, r),
         })
       }
@@ -2806,7 +2806,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
         const err = (_.min([own.MAX_ENERGY - 120, 360]) / 10) * 0.003
         base[Stats.ERR].push({
           name: `Passive`,
-          source: 'A Rendezvous in the Next Flower Season',
+          source: 'Until the Flowers Bloom Again',
           value: err,
           multiplier: 0.003,
           base: `${_.floor(_.min([own.MAX_ENERGY - 120, 360])).toLocaleString()} ÷ 10`,
@@ -2818,7 +2818,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
         }
         base.VULNERABILITY.push({
           name: `Passive`,
-          source: 'A Rendezvous in the Next Flower Season',
+          source: 'Until the Flowers Bloom Again',
           value: calcRefinement(0.15, 0.0625, r),
         })
       }
@@ -2835,7 +2835,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
       if (form['22007']) {
         base[Stats.ELATION].push({
           name: `Passive`,
-          source: `We'll face the Hereafter together`,
+          source: `Tomorrow, As One`,
           value: calcRefinement(0.08, 0.01, r),
         })
       }

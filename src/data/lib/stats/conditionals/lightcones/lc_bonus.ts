@@ -1775,7 +1775,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
     scaling: (base, r) => {
       base[Stats.P_ATK].push({
         name: 'Passive',
-        source: `Welcome to Cosmic City`,
+        source: `Welcome to the Cosmic City`,
         value: calcRefinement(0.64, 0.16, r),
       })
       return base
@@ -1802,7 +1802,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
     scaling: (base, r) => {
       base[Stats.CRIT_DMG].push({
         name: 'Passive',
-        source: `We'll face the Hereafter together`,
+        source: `Tomorrow, As One`,
         value: calcRefinement(0.12, 0.03, r),
       })
       return base

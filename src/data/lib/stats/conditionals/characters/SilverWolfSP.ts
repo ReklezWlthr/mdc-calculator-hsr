@@ -77,13 +77,13 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     summon_skill: {
       participantId: 999,
       trace: 'Elation Skill',
-      title: 'Honkai-Level DPS Showcase',
+      title: 'Honkai-Level DMG Demonstration',
       content: `<span class="text-xs opacity-75 text-gray">Elation Skill</span>
-      <br /><b>Hall-of-Fame Rewind</b>
+      <br /><b>Pro-Gamer Move</b>
       <br />Gains <span class="text-desc">20</span> <b class="text-violet-300">Hidden Ranking</b> point(s).
       <br />
       <br /><span class="text-xs opacity-75 text-gray">Enhanced Elation Skill</span>
-      <br /><b>Honkai-Level DPS Showcase</b>
+      <br /><b>Honkai-Level DMG Demonstration</b>
       <br />Deals {{0}}% <b class="text-hsr-imaginary">Imaginary</b> <b class="elation">Elation DMG</b> to all enemies and resets the <u>fixed chance</u> to trigger <b>Premium Supply Mystery Box</b> to its initial value.`,
       value: [{ base: 100, growth: 10, style: 'curved' }],
       level: elation,
@@ -95,11 +95,11 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       trace: 'Ultimate',
       title: `God Mode: Activate!`,
       content: `Gains <span class="text-desc">80</span> <b class="text-violet-300">Hidden Ranking</b> point(s), enters the <b class="text-red">Invincible Player</b> state, and advances action by <span class="text-desc">100%</span>.
-      <br />Deploys a Zone while in the <b class="text-red">Invincible Player</b> state. When holding <b class="text-blue">Certified Banger</b>, each time an ally target within the Zone consumes <span class="text-desc">1</span> Skill Point, there is a chance to trigger <span class="text-desc">1</span> instance of Silver Wolf LV.999's <b>Premium Supply Mystery Box</b>: Deal <b class="text-hsr-imaginary">Imaginary</b> <b class="elation">Elation DMG</b> equal to {{0}}% to all enemies and randomly trigger <span class="text-desc">1</span> of the following effects:
-      <br /><b class="text-true">Super-Mega-Ultra Blade</b>: Deal additional <b class="text-true">True DMG</b> to the enemy target with the highest HP equal to <span class="text-desc">20%</span> of the total DMG dealt this time;
-      <br /><b class="text-sky-300">Boom-Boom-BOOM Egg</b>: Restore <span class="text-desc">2</span> Skill Points;
-      <br /><b class="text-orange-300">Weird-Weird-Weirdo Beans</b>: Gain <span class="text-desc">3</span> <b class="text-orange-400">Punchlines</b>.
-      <br />The initial <u>fixed chance</u> to trigger this effect is <span class="text-desc">100%</span>. After successfully triggering, the <u>fixed chance</u> for the next trigger is reduced to <span class="text-desc">20%</span> of the current chance. If the target is eliminated before triggering, trigger on the newly entered enemy target instead.`,
+      <br />Deploys a Zone while in the <b class="text-red">Invincible Player</b> state. While possessing <b class="text-blue">Certified Banger</b>, each time an ally target within the Zone consumes <span class="text-desc">1</span> Skill Point, there is a chance to trigger <span class="text-desc">1</span> instance of Silver Wolf LV.999's <b>Premium Supply Mystery Box</b>: Deal <b class="text-hsr-imaginary">Imaginary</b> <b class="elation">Elation DMG</b> equal to {{0}}% to all enemies and randomly trigger <span class="text-desc">1</span> of the following effects:
+      <br /><b class="text-true">Big Flipping Sword</b>: Additionally deals <b class="text-true">True DMG</b> to the enemy target with the highest HP equal to <span class="text-desc">20%</span> of the total DMG dealt this time;
+      <br /><b class="text-sky-300">Bombastic Egg Bomb</b>: Recovers <span class="text-desc">2</span> Skill Point(s);
+      <br /><b class="text-orange-300">Funky-Flavor Beans</b>: Gains <span class="text-desc">3</span> <b class="text-orange-400">Punchline(s)</b>.
+      <br />The initial <u>fixed chance</u> to trigger this effect is <span class="text-desc">100%</span>. After successfully triggering, the <u>fixed chance</u> for the subsequent trigger is reduced to <span class="text-desc">20%</span> of the current chance. If the target is defeated before triggering, this effect triggers on the enemy target that just entered instead.`,
       value: [{ base: 17, growth: 1.7, style: 'curved' }],
       level: ult,
       tag: AbilityTag.AOE,
@@ -132,9 +132,9 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     technique: {
       trace: 'Technique',
       title: 'Trust Me, This is Tier 0',
-      content: `Summons <b>Funky-Flavor Bean</b>. Use again to dismiss. Using Technique does not consume Technique Points. When Technique Points reach 0, the summon is dismissed and Technique cannot be used.
-      <br /><b>Funky-Flavor Bean</b> causes Normal Enemies within a certain range to enter a Terrified state. It will also automatically search for and attack Normal Enemies, consuming <span class="text-desc">1</span> Technique Point to instantly defeat them without entering combat.
-      <br />While <b>Funky-Flavor Bean</b> is present, after entering combat, <span class="text-desc">1</span> <b>Premium Supply Mystery Box</b> corresponding to <b>Funky-Flavor Bean</b> is triggered at the start of each wave.`,
+      content: `Summons <b class="text-orange-300">Funky-Flavor Beans</b>. Use again to dismiss. Using Technique does not consume Technique Points. When Technique Points reach 0, the summon is dismissed and Technique cannot be used.
+      <br /><b class="text-orange-300">Funky-Flavor Beans</b> causes Normal Enemies within a certain range to enter a Terrified state. It will also automatically search for and attack Normal Enemies, consuming <span class="text-desc">1</span> Technique Point to instantly defeat them without entering combat.
+      <br />While <b class="text-orange-300">Funky-Flavor Beans</b> is present, after entering combat, <span class="text-desc">1</span> <b>Premium Supply Mystery Box</b> corresponding to <b class="text-orange-300">Funky-Flavor Beans</b> is triggered at the start of each wave.`,
       tag: AbilityTag.SUMMON,
       image: 'asset/traces/SkillIcon_1506_Maze.webp',
     },
@@ -153,7 +153,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Hidden Stage Completionist',
-      content: `At the start of Combat, gains <span class="text-desc">20</span> <b class="text-violet-300">Hidden Ranking</b> point(s).`,
+      content: `At the start of combat, gains <span class="text-desc">20</span> <b class="text-violet-300">Hidden Ranking</b> point(s).`,
       image: 'asset/traces/SkillIcon_1506_SkillTree3.webp',
     },
     c1: {
@@ -185,7 +185,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     },
     c5: {
       trace: 'Eidolon 5',
-      title: 'Basic Atk Is the New Ultimate',
+      title: 'Basic ATK Is the New Ultimate',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
@@ -380,7 +380,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           bonus: c >= 1 ? 2 : 0,
         },
         {
-          name: 'Super-Mega-Ultra Blade True DMG',
+          name: 'Big Flipping Sword True DMG',
           value: [{ scaling: calcScaling(0.17, 0.017, skill, 'curved'), multiplier: Stats.ELATION }],
           multiplier: 0.2,
           element: Element.IMAGINARY,

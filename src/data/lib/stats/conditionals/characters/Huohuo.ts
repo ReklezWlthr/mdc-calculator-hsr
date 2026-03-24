@@ -90,7 +90,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Fearful to Act`,
-      content: `When battle starts, Huohuo gains <span class="text-desc">30</span> Energy and <b class="text-hsr-wind">Divine Provision</b>, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `When battle starts, Huohuo gains <span class="text-desc">30</span> Energy and <b class="text-hsr-wind">Divine Provision</b>, lasting for <span class="text-desc">2</span> turn(s).`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -105,7 +105,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c1: {
       trace: 'Eidolon 1',
       title: `Anchored to Vessel, Specters Nestled`,
-      content: `The duration of <b class="text-hsr-wind">Divine Provision</b> produced by the Talent is extended by <span class="text-desc">1</span> turn(s). When Huohuo possesses <b class="text-hsr-wind">Divine Provision</b>, her Outgoing Healing increases by <span class="text-desc">100%</span>, all allies' SPD increases by <span class="text-desc">20%</span>.`,
+      content: `The duration of <b class="text-hsr-wind">Divine Provision</b> produced by the Talent is extended by <span class="text-desc">1</span> turn(s). When Huohuo possesses <b class="text-hsr-wind">Divine Provision</b>, her Outgoing Healing increases by <span class="text-desc">20%</span>, all allies' SPD increases by <span class="text-desc">12%</span>.`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -295,12 +295,12 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         base[Stats.HEAL].push({
           name: 'Eidolon 1',
           source: 'Self',
-          value: 1,
+          value: 0.2,
         })
         base[Stats.P_SPD].push({
           name: 'Eidolon 1',
           source: 'Self',
-          value: 0.2,
+          value: 0.12,
         })
       }
       if (form.huohuo_c4)
@@ -337,7 +337,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         base[Stats.P_SPD].push({
           name: 'Eidolon 1',
           source: 'Huohuo',
-          value: 0.2,
+          value: 0.12,
         })
       if (aForm.huohuo_c6)
         base[Stats.ALL_DMG].push({

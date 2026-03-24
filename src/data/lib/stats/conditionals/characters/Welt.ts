@@ -49,7 +49,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       trace: 'Ultimate',
       title: 'Synthetic Black Hole',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to all enemies. Has a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-imaginary">Imprison</b> hit enemy targets for <span class="text-desc">1</span> turn.
-      <br />While <b class="text-hsr-imaginary">Imprisoned</b>, enemy targets have their actions delayed by {{1}}% and their SPD reduced by <span class="text-desc">10%</span>. After using his Ultimate, inflicts Slow on all enemies. When Slow targets are attacked, their actions are delayed by <span class="text-desc">4%</span>. This effect can trigger up to <span class="text-desc">8</span> time(s) per target per turn. Slow lasts for <span class="text-desc">2</span> turn(s).`,
+      <br />While <b class="text-hsr-imaginary">Imprisoned</b>, enemy targets have their actions delayed by {{1}}% and their SPD reduced by <span class="text-desc">10%</span>. After using his Ultimate, inflicts the <b class="text-amber-500">Weightless</b> state on all enemies. When targets in <b class="text-amber-500">Weightless</b> state are attacked, their actions are delayed by <span class="text-desc">4%</span>. This effect can trigger up to <span class="text-desc">8</span> time(s) per target per turn. <b class="text-amber-500">Weightless</b> lasts for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 138, growth: 9.2, style: 'curved' },
         { base: 6, growth: 0.6, style: 'curved' },
@@ -60,7 +60,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     talent: {
       trace: 'Talent',
       title: 'Time Distortion',
-      content: `Enemy targets in the <b class="text-hsr-imaginary">Weightless</b> state have their DEF reduced by <span class="text-desc">40%</span>. When hitting an enemy that is already <b>Slowed</b>, Welt deals <b class="text-hsr-imaginary">Imaginary Additional DMG</b> equal to {{0}}% of his ATK to the enemy.`,
+      content: `Enemy targets in the <b class="text-amber-500">Weightless</b> state have their DEF reduced by <span class="text-desc">40%</span>. When hitting an enemy that is already <b>Slowed</b>, Welt deals <b class="text-hsr-imaginary">Imaginary Additional DMG</b> equal to {{0}}% of his ATK to the enemy.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -90,7 +90,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c1: {
       trace: 'Eidolon 1',
       title: 'Legacy of Honor',
-      content: `After using a Skill or Ultimate to hit a target in the <b class="text-hsr-imaginary">Weightless</b> state, deals <span class="text-desc">1</span> additional instance of <b class="text-hsr-imaginary">Imaginary Additional DMG</b> equal to <span class="text-desc">40%</span> of the Ultimate's DMG multiplier. This effect can only be triggered once per target per attack.`,
+      content: `After using a Skill or Ultimate to hit a target in the <b class="text-amber-500">Weightless</b> state, deals <span class="text-desc">1</span> additional instance of <b class="text-hsr-imaginary">Imaginary Additional DMG</b> equal to <span class="text-desc">40%</span> of the Ultimate's DMG multiplier. This effect can only be triggered once per target per attack.`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -117,7 +117,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c6: {
       trace: 'Eidolon 6',
       title: 'Prospect of Glory',
-      content: `Enemy targets in the <b class="text-hsr-imaginary">Weightless</b> state have their <b>All-Type RES</b> reduced by <span class="text-desc">30%</span>.`,
+      content: `Enemy targets in the <b class="text-amber-500">Weightless</b> state have their <b>All-Type RES</b> reduced by <span class="text-desc">30%</span>.`,
     },
   }
 

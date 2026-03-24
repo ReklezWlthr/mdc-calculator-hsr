@@ -87,7 +87,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     talent: {
       trace: `Talent`,
       title: `Behold Wherever Light Unfolds`,
-      content: `When Yao Guang holds <b class="text-blue">Certified Banger</b>:
+      content: `When Yao Guang is in possession of <b class="text-blue">Certified Banger</b>:
       <br />After an ally target uses an attack, triggers the <b class="text-desc">Great Boon</b> effect after using an attack, dealing <span class="text-desc">1</span> instance of {{0}}% <b class="elation">Elation DMG</b> of the corresponding Type to <span class="text-desc">1</span> random target hit. If Skill Points are consumed during this attack, additionally triggers <b class="text-desc">Great Boon</b> <span class="text-desc">1</span> additional time.
       <br />When triggering the <b class="text-desc">Great Boon</b> effect, if the attacker's Elation is lower than Yao Guang's, this instance of <b class="elation">Elation DMG</b> will use Yao Guang's Elation for calculation.
       <br />Triggering the <b class="text-desc">Great Boon</b> effect is not considered as using an attack.`,

@@ -75,8 +75,8 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       trace: 'Ultimate',
       title: `Fly High, Trailblaze's by Your Side`,
       content: `Gains <span class="text-desc">5</span> Punchline point(s), increases the CRIT DMG of a designated ally by {{0}}% for <span class="text-desc">3</span> turn(s), and dispels Crowd Control debuffs from them.
-      <br />If the target possesses an Elation Skill, they additionally gain <span class="text-desc">10</span> point(s) of <b class="text-blue">Certified Banger</b> and immediately use their Elation Skill <span class="text-desc">1</span> time, taking <span class="text-desc">20</span> <b class="text-orange-400">Punchline</b> point(s) into account.
-      <br />If the target does not possess an Elation Skill, their action is advanced by <span class="text-desc">50%</span>.`,
+      <br />If the target possesses an Elation Skill, they additionally gain <span class="text-desc">10</span> point(s) of <b class="text-blue">Certified Banger</b> and immediately use their Elation Skill <span class="text-desc">1</span> time, taking a fixed amount of <span class="text-desc">20</span> <b class="text-orange-400">Punchline</b> point(s) into account.
+      <br />If the target does not possess an Elation Skill, their action advances by <span class="text-desc">50%</span>.`,
       value: [{ base: 30, growth: 2, style: 'curved' }],
       level: ult,
       tag: AbilityTag.SUPPORT,

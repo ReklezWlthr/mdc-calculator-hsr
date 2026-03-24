@@ -1592,7 +1592,7 @@ export const LightCones = [
   },
   {
     id: '22007',
-    name: `We'll face the Hereafter together`,
+    name: `Tomorrow, As One`,
     rarity: 4,
     baseHp: 43.2,
     baseAtk: 21.6,
@@ -2661,7 +2661,7 @@ export const LightCones = [
   },
   {
     id: '23057',
-    name: 'Welcome to Cosmic City',
+    name: 'Welcome to the Cosmic City',
     rarity: 5,
     baseHp: 43.2,
     baseAtk: 28.8,
@@ -2669,7 +2669,7 @@ export const LightCones = [
     type: PathType.ELATION,
     beta: true,
     desc: {
-      name: 'Sure Win',
+      name: 'Guaranteed Victory',
       detail: `Increases the wearer's ATK by {{0}}%. When the wearer uses their Ultimate, they gain <b>Superpower</b>, lasting for <span class="text-desc">3</span> turn(s). While in the <b>Superpower</b> state, the wearer's <b class="elation">Elation DMG</b> ignores {{1}}% of the target's DEF, and the wearer gains <span class="text-desc">2</span> <b class="text-orange-400">Punchline(s)</b> after using a Basic ATK. When <b>Superpower</b> is removed, gains {{2}} <b class="text-orange-400">Punchline(s)</b>.`,
       properties: [
         { base: 64, growth: 16 },
@@ -2680,7 +2680,7 @@ export const LightCones = [
   },
   {
     id: '23058',
-    name: `A Rendezvous in the Next Flower Season`,
+    name: `Until the Flowers Bloom Again`,
     rarity: 5,
     baseHp: 43.2,
     baseAtk: 28.8,

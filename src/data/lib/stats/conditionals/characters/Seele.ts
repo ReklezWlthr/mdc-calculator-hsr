@@ -65,7 +65,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     technique: {
       trace: 'Technique',
       title: 'Phantom Illusion',
-      content: `After using her Technique, Seele gains Stealth for <span class="text-desc">20</span> second(s). While Stealth is active, Seele cannot be detected by enemies. And when entering battle by attacking enemies, Seele will immediately enter the Amplification state and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to Seele's Skill DMG multiplier to random enemy target <span class="text-desc">1</span> time. This DMG is guaranteed CRIT Hit.`,
+      content: `After using her Technique, Seele gains Stealth for <span class="text-desc">20</span> second(s). While Stealth is active, Seele cannot be detected by enemies. And when entering battle by attacking enemies, Seele will immediately enter the Amplification state and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to Seele's Skill DMG multiplier to random enemy target <span class="text-desc">1</span> time. This DMG is a guaranteed CRIT Hit.`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {

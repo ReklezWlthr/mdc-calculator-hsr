@@ -49,7 +49,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     skill: {
       trace: 'Skill',
       title: `Discipline: Inevitable Judgment`,
-      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Evanescia's ATK to a designated enemy target and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Evanescia's ATK to adjacent targets. Additionally gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b> point(s).`,
+      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Evanescia's ATK to one designated enemy target and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Evanescia's ATK to adjacent targets. Additionally gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b> point(s).`,
       value: [{ base: 80, growth: 8, style: 'curved' }],
       level: skill,
       tag: AbilityTag.AOE,
@@ -126,18 +126,18 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c1: {
       trace: 'Eidolon 1',
       title: 'Homeland, Dance in Prayer',
-      content: `Increases <b>All-Type PEN</b> by <span class="text-desc">20%</span>. After <b>Fox Teacher</b> uses an attack, triggers <span class="text-desc">1</span> additional Elation Skill. Elation Skill grants this unit <span class="text-desc">10</span> additional <b class="text-blue">Certified Banger</b> stack(s).`,
+      content: `Increases <b>All-Type PEN</b> by <span class="text-desc">20%</span>. After <b>Fox Teacher</b> uses an attack, triggers <span class="text-desc">1</span> additional Elation Skill. Elation Skill grants this unit <span class="text-desc">10</span> additional <b class="text-blue">Certified Banger</b> point(s).`,
       image: 'asset/traces/SkillIcon_1505_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
-      title: 'Long May the Road Be',
+      title: 'Journey, Wish for Everbloom',
       content: `Increases Elation by <span class="text-desc">25%</span>. The Vulnerability effect of the Trace <b>Fulfilled Adjudication</b> can stack, up to <span class="text-desc">2</span> stacks.`,
       image: 'asset/traces/SkillIcon_1505_Rank2.webp',
     },
     c3: {
       trace: 'Eidolon 3',
-      title: 'Blade, Devour the Crimson Demonic Moon',
+      title: `Blade, Devour the Red Moon's Bane`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Attack Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
@@ -145,7 +145,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     c4: {
       trace: 'Eidolon 4',
-      title: 'Purloined Garden',
+      title: 'Meadow, Despoiled by Evil',
       content: `Evanescia's DMG dealt ignores <span class="text-desc">15%</span> of the enemy target's DEF.`,
       image: 'asset/traces/SkillIcon_1505_Rank4.webp',
     },
@@ -159,7 +159,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     c6: {
       trace: 'Eidolon 6',
-      title: 'Girl Dreaming in Vicissitude',
+      title: 'Maiden, Dreaming in Vicissitude',
       content: `<b class="elation">Elation DMG</b> dealt by Evanescia merrymakes by <span class="text-desc">25%</span>. When teammates whose Participant ID is lower than Evanescia's gain <b class="text-blue">Certified Banger</b> or when ally teammates' <b class="text-blue">Certified Banger</b> expires, Evanescia additionally gains <span class="text-desc">50%</span>/<span class="text-desc">50%</span> of it as her own <b class="text-blue">Certified Banger</b>. After using her Ultimate for the first time upon entering combat, Evanescia regenerates <span class="text-desc">120</span> Energy. This effect can trigger <span class="text-desc">1</span> time for every <span class="text-desc">4</span> Ultimates used.`,
       image: 'asset/traces/SkillIcon_1505_Rank6.webp',
     },
@@ -241,6 +241,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
+          break: 10,
         },
         ...(form.banger
           ? [
@@ -256,7 +257,8 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             ]
           : []),
       ]
-      const bounce = globalMod.enemy_count === 1 ? 9 : globalMod.enemy_count === 2 ? 7 : globalMod.enemy_count >= 3 ? 6 : 5
+      const bounce =
+        globalMod.enemy_count === 1 ? 9 : globalMod.enemy_count === 2 ? 7 : globalMod.enemy_count >= 3 ? 6 : 5
       base.ULT_SCALING = [
         {
           name: 'Total Single-Target DMG',
@@ -267,7 +269,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 1,
+          break: 45,
           sum: true,
         },
         {
@@ -276,7 +278,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 10,
+          break: 20,
         },
         {
           name: 'DMG per Bounce',
@@ -284,7 +286,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 1,
+          break: 5,
         },
         ...(form.banger
           ? [
@@ -292,7 +294,10 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
                 name: 'Total Certified Banger DMG',
                 value: [
                   { scaling: calcScaling(0.11, 0.011, talent, 'curved'), multiplier: Stats.ELATION },
-                  { scaling: calcScaling(0.12, 0.013, talent, 'curved') * (a.a2 ? bounce : 5), multiplier: Stats.ELATION },
+                  {
+                    scaling: calcScaling(0.12, 0.013, talent, 'curved') * (a.a2 ? bounce : 5),
+                    multiplier: Stats.ELATION,
+                  },
                 ],
                 element: Element.PHYSICAL,
                 property: TalentProperty.ELATION,
@@ -337,6 +342,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           element: Element.PHYSICAL,
           property: TalentProperty.ELATION,
           type: TalentType.TALENT,
+          break: 10,
           sum: true,
         },
       ]

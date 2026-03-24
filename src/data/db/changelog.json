@@ -1,6 +1,14 @@
 [
   {
     "version": "1.2-4",
+    "date": "Mar 17th, 2026",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v4.2 Beta 2</span>",
+      "Updated Wording: <span class=\"text-hsr-lightning\">Trailblazer (Elation)</span>, <span class=\"text-hsr-imaginary\">Silver Wolf LV.999</span>, <span class=\"text-hsr-physical\">Evanescia</span>, <span class=\"text-hsr-quantum\">Seele</span>, <span class=\"text-hsr-imaginary\">Welt</span>, and <span class=\"text-hsr-wind\">Huohuo</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Mar 18th, 2026",
     "desc": [
       "New Novaflare: <span class=\"text-hsr-fire\">Firefly</span>, <span class=\"text-hsr-quantum\">Seele</span>, <span class=\"text-hsr-imaginary\">Welt</span>, and <span class=\"text-hsr-wind\">Huohuo</span>",
@@ -13,7 +21,7 @@
     "desc": [
       "Content Version: <span class=\"text-desc\">v4.2 Beta</span>",
       "New Character: <span class=\"text-hsr-lightning\">Trailblazer (Elation)</span>, <span class=\"text-hsr-imaginary\">Silver Wolf LV.999</span>, and <span class=\"text-hsr-physical\">Evanescia</span>",
-      "New Light Cones: <span class=\"text-desc\">Welcome to Cosmic City</span>, <span class=\"text-desc\">A Rendezvous in the Next Flower Season</span>, and <span class=\"text-desc\">We'll face the Hereafter together</span>"
+      "New Light Cones: <span class=\"text-desc\">Welcome to the Cosmic City</span>, <span class=\"text-desc\">Until the Flowers Bloom Again</span>, and <span class=\"text-desc\">Tomorrow, As One</span>"
     ]
   },
   {
