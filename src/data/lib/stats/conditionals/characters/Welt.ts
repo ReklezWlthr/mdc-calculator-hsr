@@ -51,7 +51,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to all enemies. Has a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-imaginary">Imprison</b> hit enemy targets for <span class="text-desc">1</span> turn.
       <br />While <b class="text-hsr-imaginary">Imprisoned</b>, enemy targets have their actions delayed by {{1}}% and their SPD reduced by <span class="text-desc">10%</span>. After using his Ultimate, inflicts the <b class="text-amber-500">Weightless</b> state on all enemies. When targets in <b class="text-amber-500">Weightless</b> state are attacked, their actions are delayed by <span class="text-desc">4%</span>. This effect can trigger up to <span class="text-desc">8</span> time(s) per target per turn. <b class="text-amber-500">Weightless</b> lasts for <span class="text-desc">2</span> turn(s).`,
       value: [
-        { base: 138, growth: 9.2, style: 'curved' },
+        { base: 90, growth: 6, style: 'curved' },
         { base: 6, growth: 0.6, style: 'curved' },
       ],
       level: ult,
