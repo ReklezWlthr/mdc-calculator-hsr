@@ -1,5 +1,5 @@
 import { IScaling } from '@src/domain/conditional'
-import { Element, StatIcons, Stats, TalentProperty, PathType, TalentType } from '@src/domain/constant'
+import { Element, StatIcons, Stats, TalentProperty, PathType, TalentType, DebuffTypes } from '@src/domain/constant'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
@@ -24,6 +24,10 @@ interface ScalingSubRowsProps {
   property: string
   type: TalentType
   element: string
+  debuffs: {
+    type: DebuffTypes
+    count: number
+  }[][]
 }
 
 export const propertyColor = {
@@ -48,7 +52,7 @@ export const ElementColor = {
 }
 
 export const CompareSubRows = observer(
-  ({ scaling, stats, allStats, level, name, property, type, element, setupNames }: ScalingSubRowsProps) => {
+  ({ scaling, stats, allStats, level, name, property, type, element, setupNames, debuffs }: ScalingSubRowsProps) => {
     const { setupStore } = useStore()
     const [sum, setSum] = useState(_.some(scaling, (item) => item?.sum))
 
@@ -59,8 +63,10 @@ export const CompareSubRows = observer(
         setupStore.globalMod[index],
         scaling[index],
         scaling[index]?.overrideIndex >= 0 ? allStats[index]?.[scaling[index]?.overrideIndex] : stats[index],
-        level[index].level[scaling[index]?.overrideIndex ?? level[index].selected]
-      )
+        level[index].level[scaling[index]?.overrideIndex ?? level[index].selected],
+        false,
+        debuffs[index],
+      ),
     )
 
     const noCrit =
@@ -73,7 +79,7 @@ export const CompareSubRows = observer(
           TalentProperty.BREAK_DOT,
           TalentProperty.SUPER_BREAK,
         ],
-        property
+        property,
       ) || _.some(scaling, (item) => item?.trueRaw)
     const toughness = _.map(scaling, (item, i) => item?.break * (1 + stats[i]?.getValue(StatsObjectKeys.BREAK_EFF)))
 
@@ -82,8 +88,8 @@ export const CompareSubRows = observer(
         (noCrit || mode === 'base'
           ? obj?.number.dmg
           : mode === 'crit'
-          ? obj?.number.totalCrit
-          : obj?.number.totalAvg) || 0
+            ? obj?.number.totalCrit
+            : obj?.number.totalAvg) || 0
       )
     }
 
@@ -177,7 +183,7 @@ export const CompareSubRows = observer(
                     'text-red': compare < 0,
                     'text-blue': compare === 0,
                   }
-                : ''
+                : '',
             )}
           >
             {mode === 'percent' ? percent : mode === 'abs' ? abs : _.floor(getDmg(obj)).toLocaleString()}
@@ -227,5 +233,5 @@ export const CompareSubRows = observer(
         </div>
       </div>
     )
-  }
+  },
 )

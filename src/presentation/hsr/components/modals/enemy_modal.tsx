@@ -54,7 +54,6 @@ export const EnemyModal = observer(
                       {},
                     ),
                   )
-                  console.log(res)
                   setValue('weakness', enemyData?.weakness)
                   setValue('hp', _.round(enemyData?.baseHp * EnemyHpScaling[scaling][+level - 1]))
                   setValue('toughness', enemyData?.toughness)
@@ -244,9 +243,9 @@ export const EnemyModal = observer(
                 <TextInput
                   type="number"
                   value={(res[key] || 0).toString()}
-                  onChange={(value) => calculatorStore.setRes(key, value as any as number)}
+                  onChange={(value) => store.setRes(key, value as any as number)}
                   style="!w-[50px]"
-                  disabled={!!calculatorStore.enemy}
+                  disabled={!!store.enemy}
                 />
               </div>
             ))}

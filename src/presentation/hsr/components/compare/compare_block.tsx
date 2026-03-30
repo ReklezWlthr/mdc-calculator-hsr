@@ -189,6 +189,7 @@ export const CompareBlock = observer(() => {
           element={item.property === TalentProperty.TRUE ? Element.NONE : item.element}
           type={talent}
           setupNames={_.map([setupStore.main, ...setupStore.comparing], 'name')}
+          debuffs={allDebuffs}
         />
       ))}
       {_.some(sumStats, (item) => item?.SUPER_BREAK) && (

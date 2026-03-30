@@ -1,6 +1,15 @@
 import { StatsObject, StatsObjectKeys, TalentPropertyMap, TalentTypeMap } from '@src/data/lib/stats/baseConstant'
 import { IScaling } from '@src/domain/conditional'
-import { Element, GlobalModifiers, StatAbbr, StatIcons, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  DebuffTypes,
+  Element,
+  GlobalModifiers,
+  StatAbbr,
+  StatIcons,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 import { toPercentage } from '../data_format'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
 import _ from 'lodash'
@@ -64,6 +73,10 @@ export const damageStringConstruct = (
   stats: StatsObject,
   level: number,
   showSplit?: boolean,
+  debuffs?: {
+    type: DebuffTypes
+    count: number
+  }[],
 ) => {
   if (!scaling || !stats || !level) return
 
@@ -134,6 +147,7 @@ export const damageStringConstruct = (
               (stats.getValue(`${element.toUpperCase()}_RES_PEN`) || 0) +
               (stats.getValue(StatsObjectKeys.ALL_TYPE_RES_PEN) || 0) +
               (scaling.res_pen || 0)), // Counted as Elemental RES PEN
+        _.find(debuffs, (d) => d.type === DebuffTypes.ABSOLUTE)?.count > 0,
       ),
       2,
     ]),

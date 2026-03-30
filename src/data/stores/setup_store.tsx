@@ -1,4 +1,4 @@
-import { DefaultGlobalMod, Element, GlobalModifiers, ITeamChar, TalentType } from '@src/domain/constant'
+import { DebuffTypes, DefaultGlobalMod, Element, GlobalModifiers, ITeamChar, TalentType } from '@src/domain/constant'
 import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
@@ -93,7 +93,7 @@ export interface SetupStoreType {
   getEffRes: (reduction?: number) => number
   getEhr: (reduction?: number) => number
   getDefMult: (level: number, defPen: number, defRed: number) => number
-  getResMult: (element: Element, resPen: number) => number
+  getResMult: (element: Element, resPen: number, absolute?: boolean) => number
   clearTotal: () => void
   clearComparing: () => void
   setCustomValue: CustomSetterT
@@ -269,9 +269,11 @@ export class SetupStore {
     return _.min([1 - def / (def + 200 + 10 * level), 1])
   }
 
-  getResMult = (element: Element, resPen: number) => {
+  getResMult = (element: Element, resPen: number, absolute?: boolean) => {
     if (this.res[element] === Infinity) return 0
-    const res = this.res[element] / 100 - resPen
+    let baseRes = this.res[element] / 100
+    if (absolute) baseRes = baseRes === 0 ? -0.2 : 0
+    const res = baseRes - resPen
     return 1 - res
   }
 
