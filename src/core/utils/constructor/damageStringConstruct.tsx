@@ -15,11 +15,13 @@ export const HitSplit = ({
   dmgSplit,
   bonusSplit,
   cdSplit,
+  atkSplit,
 }: {
   split: number[]
   dmgSplit: number[]
   bonusSplit?: number[]
   cdSplit?: number[]
+  atkSplit?: number[]
 }) => {
   return (
     <div className="pt-2 !mt-2 border-t border-dashed border-primary-border text-xs space-y-0.5">
@@ -34,13 +36,19 @@ export const HitSplit = ({
           {!!bonusSplit?.[i] && (
             <span className="pl-1">
               <span className="pr-1 text-blue">✦</span>
-              Hit Boost: <span className="text-desc">{toPercentage(bonusSplit[i])}</span>
+              DMG Bonus: <span className="text-desc">{toPercentage(bonusSplit[i])}</span>
             </span>
           )}
           {!!cdSplit?.[i] && (
             <span className="pl-1">
               <span className="pr-1 text-blue">✦</span>
-              Hit Boost: <span className="text-desc">{toPercentage(cdSplit[i])}</span>
+              Crit DMG Bonus: <span className="text-desc">{toPercentage(cdSplit[i])}</span>
+            </span>
+          )}
+          {!!atkSplit?.[i] && (
+            <span className="pl-1">
+              <span className="pr-1 text-blue">✦</span>
+              ATK Bonus: <span className="text-desc">{toPercentage(atkSplit[i])}</span>
             </span>
           )}
         </div>
@@ -159,8 +167,21 @@ export const damageStringConstruct = (
   const punchlineMultiplier = (5 * punchline) / (+punchline + 240)
 
   const globalBonus = _.sum(_.map(scaling.bonusSplit, (item, i) => item * scaling.hitSplit?.[i])) + bonusDMG()
-  const raw = (split: number) =>
-    _.sumBy(scaling.value, (item) => split * item.scaling * (item.override || statForScale[item.multiplier])) +
+  const globalAtk = stats.getAtk(
+    false,
+    (scaling.atkBonus || 0) + _.sum(_.map(scaling.atkSplit, (item, i) => item * scaling.hitSplit?.[i])),
+  )
+  const raw = (split: number, atkSplit: number) =>
+    _.sumBy(
+      scaling.value,
+      (item) =>
+        split *
+        item.scaling *
+        (item.override ||
+          (item.multiplier === Stats.ATK && atkSplit
+            ? stats.getAtk(false, (scaling.atkBonus || 0) + atkSplit)
+            : statForScale[item.multiplier])),
+    ) +
     (scaling.flat || 0) +
     elementFlat +
     talentFlat
@@ -169,11 +190,11 @@ export const damageStringConstruct = (
   const toughnessMult = 0.5 + _.min([calculatorStore.toughness, scaling.toughCap || calculatorStore.toughness]) / 40
   const breakRaw = (split: number) => breakElementMult * breakLevel * toughnessMult * split
   const cap = scaling.cap ? scaling.cap?.scaling * statForScale[scaling.cap?.multiplier] : 0
-  const capped = scaling.cap ? cap < raw(1) : false
+  const capped = scaling.cap ? cap < raw(1, 0) : false
   const dmgSplit = _.map(
     scaling.hitSplit || [1],
     (split, i) =>
-      (capped ? cap : breakScale ? breakRaw(split) : raw(split)) *
+      (capped ? cap : breakScale ? breakRaw(split) : raw(split, scaling.atkSplit?.[i] || 0)) *
       ((1 +
         (breakScale
           ? stats.getValue(Stats.BE)
@@ -215,7 +236,7 @@ export const damageStringConstruct = (
   const scalingArray = _.map(
     capped ? [scaling.cap] : scaling.value,
     (item) =>
-      `(<b>${_.floor(item.override || statForScale[item.multiplier]).toLocaleString()}</b> <i class="text-[10px]">${item.multiplier === Stats.EHP ? 'Enemy HP' : StatAbbr[item.multiplier]}</i><span class="mx-0.5"> \u{00d7} </span><b>${toPercentage(item.scaling, 2, true)}</b>)`,
+      `(<b>${_.floor(item.override || (item.multiplier === Stats.ATK ? globalAtk : statForScale[item.multiplier])).toLocaleString()}</b> <i class="text-[10px]">${item.multiplier === Stats.EHP ? 'Enemy HP' : StatAbbr[item.multiplier]}</i><span class="mx-0.5"> \u{00d7} </span><b>${toPercentage(item.scaling, 2, true)}</b>)`,
   )
   const baseScaling = _.join(scalingArray, ' + ')
   const baseBreakScaling = `(<b class="${
@@ -315,8 +336,18 @@ export const damageStringConstruct = (
           {scaling.type} Bonus: <span className="text-desc">{toPercentage(typeDmg)}</span>
         </p>
       )}
+      {!!scaling.atkBonus && (
+        <p className="text-xs">
+          ATK Bonus: <span className="text-desc">{toPercentage(scaling.atkBonus)}</span>
+        </p>
+      )}
       {isSplit && showSplit && (
-        <HitSplit split={scaling.hitSplit} dmgSplit={dmgSplit} bonusSplit={scaling.bonusSplit} />
+        <HitSplit
+          split={scaling.hitSplit}
+          dmgSplit={dmgSplit}
+          bonusSplit={scaling.bonusSplit}
+          atkSplit={scaling.atkSplit}
+        />
       )}
     </div>
   )

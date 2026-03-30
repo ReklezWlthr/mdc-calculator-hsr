@@ -64,10 +64,10 @@ export const Sidebar = ({
             <div className="w-full px-2 py-1 text-xs text-white bg-green-700 rounded-md ring-1 ring-offset-2 ring-offset-primary-dark ring-green-400">
               <p className="flex items-center gap-1 font-bold">
                 <i className="fa-info-circle fa-solid" />
-                Viewing Live: v4.0
+                Viewing Live: v4.1
               </p>
               <p>
-                <b>NEW:</b> Sparxie & Yao Guang
+                <b>NEW:</b> Ashveil
               </p>
             </div>
           ) : (

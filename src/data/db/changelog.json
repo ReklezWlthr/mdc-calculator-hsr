@@ -1,6 +1,14 @@
 [
   {
     "version": "1.2-4",
+    "date": "Mar 30th, 2026",
+    "desc": [
+      "Updated: <span class=\"text-hsr-lightning\">Ashveil</span> moved to Live",
+      "Updated: The effect of The Ashblazing Grand Duke relic set now automatically applies to FUA (still have to be manually set for non-FUA)"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Mar 17th, 2026",
     "desc": [
       "Content Version: <span class=\"text-desc\">v4.2 Beta 2</span>",

@@ -1427,7 +1427,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.HUNT,
     element: Element.LIGHTNING,
-    beta: true,
+    beta: false,
   },
   {
     id: '1505',

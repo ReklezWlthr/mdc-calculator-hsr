@@ -228,7 +228,6 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.BA,
           break: 10,
           sum: true,
-          hitSplit: [0.15, 0.15, 0.7],
         },
       ]
       base.SKILL_SCALING = [
@@ -245,6 +244,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.SKILL,
           break: 20,
           sum: true,
+          hitSplit: [0.6, 0.4],
         },
       ]
       base.ULT_SCALING = [
@@ -256,6 +256,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.ULT,
           break: 30,
           sum: true,
+          hitSplit: Array(20).fill(0.05),
         },
         ...(form.gluttony >= 4
           ? [
@@ -267,6 +268,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 type: TalentType.TALENT,
                 break: 5,
                 sum: true,
+                hitSplit: Array(10).fill(0.1),
               },
               {
                 name: 'Gluttony Additional DMG',
@@ -290,6 +292,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.TALENT,
           break: 5,
           sum: true,
+          hitSplit: Array(10).fill(0.1),
         },
       ]
       base.TECHNIQUE_SCALING = [

@@ -1,4 +1,4 @@
-import { IArtifact, Stats, PathType, Element } from '@src/domain/constant'
+import { IArtifact, Stats, PathType, Element, TalentProperty } from '@src/domain/constant'
 import _ from 'lodash'
 import { StatsObject } from '../lib/stats/baseConstant'
 import { DebuffTypes } from '@src/domain/constant'
@@ -305,6 +305,32 @@ export const RelicSets: IArtifact[] = [
         name: '2-Piece',
         source: 'The Ashblazing Grand Duke',
         value: 0.2,
+      })
+      return base
+    },
+    add: (base) => {
+      base.CALLBACK.push(function P99(x) {
+        _.forEach(
+          [
+            x.BASIC_SCALING,
+            x.SKILL_SCALING,
+            x.ULT_SCALING,
+            x.TALENT_SCALING,
+            x.MEMO_SKILL_SCALING,
+            x.MEMO_TALENT_SCALING,
+            x.TECHNIQUE_SCALING,
+          ],
+          (s) => {
+            _.forEach(s, (ss) => {
+              if (ss.property === TalentProperty.FUA) {
+                if (_.size(ss.hitSplit) > 1)
+                  ss.atkSplit = _.map(Array(_.size(ss.hitSplit)), (_x, i) => 0.06 * (_.min([i, 7]) + 1))
+                else ss.atkBonus = 0.06
+              }
+            })
+          },
+        )
+        return x
       })
       return base
     },
@@ -1195,7 +1221,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's Elation by <span class="text-desc">10%</span>. When Elation reaches <span class="text-desc">40%/80%</span> for the first time in combat, increases the wearer's CRIT DMG by <span class="text-desc">20%/30%</span>.`,
     ],
-    beta: true,
+    beta: false,
     set: [`Punklorde's Rainbow City`, `Punklorde's Data Deluge`],
   },
   {
@@ -1207,7 +1233,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `When the wearer uses Follow-Up ATK, increases ATK by <span class="text-desc">24%</span> for <span class="text-desc">2</span> turn(s). When an enemy target gets defeated, increases CRIT DMG for all allies by <span class="text-desc">12%</span> in the current battle. This effect cannot stack.`,
     ],
-    beta: true,
+    beta: false,
     set: [`Astropolis Media Headquarters`, `Astropolis Employee Credentials`],
   },
 ]

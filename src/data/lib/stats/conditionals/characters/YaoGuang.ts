@@ -240,6 +240,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           type: TalentType.BA,
           break: 10,
           sum: true,
+          hitSplit: [0.25, 0.25, 0.25, 0.25],
         },
         {
           name: 'Adjacent',
@@ -248,6 +249,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           property: TalentProperty.NORMAL,
           type: TalentType.BA,
           break: 5,
+          hitSplit: [0.25, 0.25, 0.25, 0.25],
         },
       ]
       base.MEMO_SKILL_SCALING = [

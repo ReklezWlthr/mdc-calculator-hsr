@@ -1,4 +1,4 @@
-import { IArtifactEquip, Stats } from '@src/domain/constant'
+import { IArtifactEquip, Stats, TalentProperty } from '@src/domain/constant'
 import { StatsObject } from '../../baseConstant'
 import { getSetCount } from '@src/core/utils/data_format'
 import _ from 'lodash'
@@ -49,11 +49,33 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       value: 0.08 * form['113'],
     })
   if (form['115'])
-    base[Stats.P_ATK].push({
-      name: `4-Piece`,
-      source: 'The Ashblazing Grand Duke',
-      value: 0.06 * form['115'],
+    base.CALLBACK.push(function P99(x) {
+      _.forEach(
+        [
+          x.BASIC_SCALING,
+          x.SKILL_SCALING,
+          x.ULT_SCALING,
+          x.TALENT_SCALING,
+          x.MEMO_SKILL_SCALING,
+          x.MEMO_TALENT_SCALING,
+          x.TECHNIQUE_SCALING,
+        ],
+        (s) => {
+          _.forEach(s, (ss) => {
+            if (
+              !_.includes(
+                [TalentProperty.FUA, TalentProperty.SERVANT, TalentProperty.HEAL, TalentProperty.SHIELD],
+                ss.property,
+              )
+            ) {
+              ss.atkBonus = 0.06 * form['115']
+            }
+          })
+        },
+      )
+      return x
     })
+
   if (form['117'])
     base.CALLBACK.push((x) => {
       x[Stats.CRIT_RATE] = _.map(x[Stats.CRIT_RATE], (item) =>

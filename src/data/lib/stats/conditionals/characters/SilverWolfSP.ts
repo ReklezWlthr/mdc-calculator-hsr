@@ -111,7 +111,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       title: `I'm the Carry`,
       content: `After reaching <span class="text-desc">80</span> <b class="text-violet-300">Hidden Ranking</b> points, the Ultimate can be activated. After reaching the maximum limit, it can overflow by an additional <span class="text-desc">80</span> point(s). When gaining <b class="text-orange-400">Punchline</b>, Silver Wolf LV.999 also gains an equal amount of <b class="text-violet-300">Hidden Ranking</b>.
       <br />While in the <b class="text-red">Invincible Player</b> state, Silver Wolf LV.999 is immune to Crowd Control debuffs, her CRIT DMG increases by {{0}}%, cannot use the Ultimate, and gains Enhanced Basic ATK and Enhanced Elation Skill. After completing Enhanced Basic ATK usage <span class="text-desc">3</span> time(s), she exits the <b class="text-red">Invincible Player</b> state.
-      <br />While in possession of <b class="text-blue">Certified Banger</b>, using Basic ATK or Skill against attacked enemy targets deals {{1}}% <b class="text-hsr-imaginary">Imaginary</b> <b class="elation">Elation DMG</b>. Enhanced Basic ATK's ability DMG is converted to Elation DMG at the same multiplier.`,
+      <br />While in possession of <b class="text-blue">Certified Banger</b>, using Basic ATK or Skill against attacked enemy targets deals {{1}}% <b class="text-hsr-imaginary">Imaginary</b> <b class="elation">Elation DMG</b>. Enhanced Basic ATK's ability DMG is converted to <b class="elation">Elation DMG</b> at the same multiplier.`,
       value: [
         { base: 15, growth: 1.5, style: 'curved' },
         { base: 20, growth: 2, style: 'curved' },
@@ -132,7 +132,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     technique: {
       trace: 'Technique',
       title: 'Trust Me, This is Tier 0',
-      content: `Summons <b class="text-orange-300">Funky-Flavor Beans</b>. Use again to dismiss. Using Technique does not consume Technique Points. When Technique Points reach 0, the summon is dismissed and Technique cannot be used.
+      content: `Summons <b class="text-orange-300">Funky-Flavor Beans</b>. Use again to dismiss. Using Technique does not consume Technique Points. When Technique Points reach <span class="text-desc">0</span>, the summon is dismissed and Technique cannot be used.
       <br /><b class="text-orange-300">Funky-Flavor Beans</b> causes Normal Enemies within a certain range to enter a Terrified state. It will also automatically search for and attack Normal Enemies, consuming <span class="text-desc">1</span> Technique Point to instantly defeat them without entering combat.
       <br />While <b class="text-orange-300">Funky-Flavor Beans</b> is present, after entering combat, <span class="text-desc">1</span> <b>Premium Supply Mystery Box</b> corresponding to <b class="text-orange-300">Funky-Flavor Beans</b> is triggered at the start of each wave.`,
       tag: AbilityTag.SUMMON,

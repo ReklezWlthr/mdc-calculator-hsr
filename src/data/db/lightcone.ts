@@ -2648,7 +2648,7 @@ export const LightCones = [
     baseAtk: 28.8,
     baseDef: 24,
     type: PathType.HUNT,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Subsume',
       detail: `Increases the wearer's CRIT Rate by {{0}}%. At the start of battle or for every <span class="text-desc">4</span> <u>Follow-Up ATKs</u> the wearer uses, the wearer gains <b>Umbra Devourer</b>, lasting for <span class="text-desc">3</span> turn(s). While the wearer has <b>Umbra Devourer</b>, increases ATK by {{1}}% and increases the DMG taken by all enemies by {{2}}%. Effects of the same kind cannot stack.`,
