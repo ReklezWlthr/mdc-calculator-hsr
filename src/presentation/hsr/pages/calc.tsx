@@ -421,10 +421,11 @@ export const Calculator = observer(({}: {}) => {
               </div>
               {buffed && (
                 <div className="flex items-center justify-between w-2/3 px-3 py-2 text-white border-2 rounded-lg bg-primary-dark border-primary-light">
-                  <div className="flex items-center gap-1">
-                    <p className="text-sm font-bold">Enhanced State</p>
+                  <div className="flex items-center gap-1.5">
+                    <i className="text-indigo-400 fa-solid fa-meteor" />
+                    <p className="text-sm font-bold">Novaflare</p>
                     <Tooltip
-                      title="Enhanced State"
+                      title="Enhanced State - Novaflare"
                       body={
                         <p>
                           Some characters are enhanced: their abilities, Traces, and Eidolon effects may change. You can
@@ -432,6 +433,7 @@ export const Calculator = observer(({}: {}) => {
                         </p>
                       }
                       style="max-w-[450px]"
+                      position="bottom"
                     >
                       <i className="fa-regular fa-question-circle" />
                     </Tooltip>

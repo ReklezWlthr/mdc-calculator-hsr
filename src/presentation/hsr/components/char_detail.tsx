@@ -321,10 +321,11 @@ export const CharDetail = observer(() => {
           </div>
           {_.includes(buffedList, data?.id) && (
             <div className="flex items-center justify-between px-3 py-2 text-white border-2 rounded-lg col-span-full bg-primary-dark border-primary-light">
-              <div className="flex items-center gap-1">
-                <p className="text-sm font-bold">Enhanced State</p>
+              <div className="flex items-center gap-1.5">
+                <i className="text-indigo-400 fa-solid fa-meteor" />
+                <p className="text-sm font-bold">Novaflare</p>
                 <Tooltip
-                  title="Enhanced State"
+                  title="Enhanced State - Novaflare"
                   body={
                     <p>
                       Some characters are enhanced: their abilities, Traces, and Eidolon effects may change. You can
@@ -383,7 +384,9 @@ export const CharDetail = observer(() => {
                           <p className="font-normal text-rose-300 opacity-80">[{item.energy} Energy]</p>
                         )}
                         {!!item.participantId && (
-                          <p className="font-normal text-orange-300 opacity-80">[Participant ID: {item.participantId}]</p>
+                          <p className="font-normal text-orange-300 opacity-80">
+                            [Participant ID: {item.participantId}]
+                          </p>
                         )}
                         {!!item.sp && (
                           <div className="flex items-center font-normal opacity-100 text-gray">
