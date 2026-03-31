@@ -53,22 +53,22 @@ export const useLocalUpdater = (game: string) => {
             if (!c?.cId) return c
             return {
               ...c,
-              // minor_traces: formatMinorTrace(
-              //   findCharacter(c.cId)?.trace,
-              //   _.map(c.minor_traces, (v) => v?.toggled || false),
-              //   findCharacter(c.cId)?.overwrite,
-              // ),
+              minor_traces: formatMinorTrace(
+                findCharacter(c.cId)?.trace,
+                _.map(c.minor_traces, (v) => v?.toggled || false),
+                findCharacter(c.cId)?.overwrite,
+              ),
             }
           }),
           artifacts: artifactStore.artifacts,
           builds: buildStore.builds,
           characters: _.map(charStore.characters, (c) => ({
             ...c,
-            // minor_traces: formatMinorTrace(
-            //   findCharacter(c.cId)?.trace,
-            //   _.map(c.minor_traces, (v) => v.toggled),
-            //   findCharacter(c.cId)?.overwrite,
-            // ),
+            minor_traces: formatMinorTrace(
+              findCharacter(c.cId)?.trace,
+              _.map(c.minor_traces, (v) => v.toggled),
+              findCharacter(c.cId)?.overwrite,
+            ),
           })),
           setup: setupStore.team,
         }),

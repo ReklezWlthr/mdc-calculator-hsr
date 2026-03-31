@@ -53,6 +53,7 @@ export interface IScaling {
   detonate?: boolean
   elation?: number // Used to compare higher (Yao Guang)
   punchline?: number // Used for overriding Banger
+  merrymake?: number
   punchlineBonus?: number
   weaknessBypass?: number
 }

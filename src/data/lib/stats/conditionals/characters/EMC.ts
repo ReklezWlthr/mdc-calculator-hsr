@@ -37,7 +37,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
   const talents: ITalent = {
     normal: {
       trace: 'Basic ATK',
-      title: 'Fan Support Is Here',
+      title: 'Make Some Noise',
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Trailblazer's ATK to one designated enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
@@ -48,7 +48,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     },
     skill: {
       trace: 'Skill',
-      title: `So Wild the Storm Rages`,
+      title: `Let the Storm Rage On`,
       content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of the Trailblazer's ATK to all enemies and gains <span class="text-desc">20</span> point(s) of <b class="text-blue">Certified Banger</b>.`,
       value: [{ base: 30, growth: 3, style: 'curved' }],
       level: skill,
@@ -60,7 +60,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     summon_skill: {
       participantId: 120,
       trace: 'Elation Skill',
-      title: 'Elation, Are You Deaf or Something?',
+      title: 'I Said "Elation," Did I Stutter?',
       content: `Deals <span class="text-desc">8</span> instances of DMG, with each instance dealing {{0}}% <b class="text-hsr-lightning">Lightning</b> <b class="elation">Elation DMG</b> to one random enemy. Then, deals {{1}}% <b class="text-hsr-lightning">Lightning</b> <b class="elation">Elation DMG</b>, which is split evenly among all enemies.`,
       value: [
         { base: 10, growth: 1, style: 'curved' },
@@ -73,9 +73,9 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     },
     ult: {
       trace: 'Ultimate',
-      title: `Fly High, Trailblaze's by Your Side`,
+      title: `May the Trailblaze Fly You Starward`,
       content: `Gains <span class="text-desc">5</span> Punchline point(s), increases the CRIT DMG of a designated ally by {{0}}% for <span class="text-desc">3</span> turn(s), and dispels Crowd Control debuffs from them.
-      <br />If the target possesses an Elation Skill, they additionally gain <span class="text-desc">10</span> point(s) of <b class="text-blue">Certified Banger</b> and immediately use their Elation Skill <span class="text-desc">1</span> time, taking a fixed amount of <span class="text-desc">20</span> <b class="text-orange-400">Punchline</b> point(s) into account.
+      <br />If the target possesses an Elation Skill, they additionally gain <span class="text-desc">10</span> point(s) of <b class="text-blue">Certified Banger</b> and immediately use their Elation Skill <span class="text-desc">1</span> time, taking a fixed amount of <span class="text-desc">20</span> <b class="text-orange-400">Punchline</b> point(s) into account. If the enemy target is defeated before the Elation Skill is unleashed, the Elation Skill is unleashed on enemy targets that just entered combat instead.
       <br />If the target does not possess an Elation Skill, their action advances by <span class="text-desc">50%</span>.`,
       value: [{ base: 30, growth: 2, style: 'curved' }],
       level: ult,
@@ -85,8 +85,8 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     },
     talent: {
       trace: `Talent`,
-      title: `When Heroes Laugh, Lives Hang in the Balance`,
-      content: `Regenerates <span class="text-desc">10</span> Energy and gains <span class="text-desc">2</span> <b class="text-orange-400">Punchline</b> point(s) after using an attack.
+      title: `That Smile Hits Different`,
+      content: `Regenerates <span class="text-desc">10</span> Energy and gains <span class="text-desc">3</span> <b class="text-orange-400">Punchline</b> point(s) after using an attack.
       <br />When the Trailblazer possesses <b class="text-blue">Certified Banger</b>, their Skill deals additional <b class="text-hsr-lightning">Lightning</b> <b class="elation">Elation DMG</b> equal to {{0}}% to all enemies. This DMG is calculated using the highest <b class="text-blue">Certified Banger</b> value among all allies.`,
       value: [{ base: 15, growth: 1.5, style: 'curved' }],
       level: talent,
@@ -95,10 +95,10 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     },
     technique: {
       trace: 'Technique',
-      title: `The Mood's On Fire!`,
+      title: `We Are So Back!`,
       content: `After using Technique, <span class="text-desc">1</span> of the following effects will be randomly granted:
-      <br />Small chance to gain <b class="text-desc">Peal of Laughter</b>: Increases Elation by <span class="text-desc">30%</span>.
-      <br />High chance to gain <b class="text-red">Unrestrained Laughter</b>: Increases Elation by <span class="text-desc">20%</span>.
+      <br />Small chance to gain <b class="text-desc">Hearty Laughter</b>: Increases Elation by <span class="text-desc">30%</span>.
+      <br />High chance to gain <b class="text-red">Irrepressible Laughter</b>: Increases Elation by <span class="text-desc">20%</span>.
       <br />When the next battle begins, increases all allies' Elation stat by the corresponding amount for <span class="text-desc">3</span> turn(s).`,
       tag: AbilityTag.ENHANCE,
       image: 'asset/traces/SkillIcon_8009_Maze.webp',
@@ -123,19 +123,19 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     },
     c1: {
       trace: 'Eidolon 1',
-      title: 'Believe in the Light',
+      title: 'Believe In the Light',
       content: `After using a Skill, the next Ultimate increases the <b class="text-blue">Certified Banger</b> gained by ally targets by <span class="text-desc">2</span>. This effect can stack up to <span class="text-desc">3</span> times.`,
       image: 'asset/traces/SkillIcon_8009_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
-      title: 'Iconic Scene in Progress...',
+      title: 'History in the Making...',
       content: `Ultimate additionally increases the Elation of a designated ally by <span class="text-desc">12%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
       image: 'asset/traces/SkillIcon_8009_Rank2.webp',
     },
     c3: {
       trace: 'Eidolon 3',
-      title: 'Eyes On Me',
+      title: 'Into the Spotlight',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
@@ -143,13 +143,13 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     },
     c4: {
       trace: 'Eidolon 4',
-      title: 'Saving the World Just Cause',
+      title: 'Save the World. Just Because.',
       content: `When using an Elation Skill, increases DMG taken by enemy targets by <span class="text-desc">12%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
       image: 'asset/traces/SkillIcon_8009_Rank4.webp',
     },
     c5: {
       trace: 'Eidolon 5',
-      title: 'Love and Courage Never Go Out of Style',
+      title: 'Love & Courage: Always in Style',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Attack Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
@@ -157,8 +157,8 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     },
     c6: {
       trace: 'Eidolon 6',
-      title: 'A Cosmic Legend Cometh!',
-      content: `When the Trailblazer uses their Ultimate on an ally target other than themselves, the Trailblazer also gains the same Ultimate effect.`,
+      title: 'The Cosmic Legend Cometh!',
+      content: `Ultimate additionally increases the SPD of one designated ally by <span class="text-desc">12%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
       image: 'asset/traces/SkillIcon_8009_Rank6.webp',
     },
   }
@@ -295,6 +295,13 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           source: 'Self',
           value: calcScaling(0.3, 0.02, ult, 'curved'),
         })
+        if (c >= 6) {
+          base[Stats.P_SPD].push({
+            name: `Eidolon 6`,
+            source: 'Self',
+            value: 0.12,
+          })
+        }
       }
       if (form.emc_e2) {
         base[Stats.ELATION].push({
@@ -344,6 +351,13 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           source: 'Trailblazer',
           value: calcScaling(0.3, 0.02, ult, 'curved'),
         })
+        if (c >= 6) {
+          base[Stats.P_SPD].push({
+            name: `Eidolon 6`,
+            source: 'Trailblazer',
+            value: 0.12,
+          })
+        }
       }
       if (aForm.emc_e2) {
         base[Stats.ELATION].push({

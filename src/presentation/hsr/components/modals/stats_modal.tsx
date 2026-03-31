@@ -178,8 +178,7 @@ export const StatsModal = observer(
     const elationSpd = compare && teamIndex >= 0 ? setupStore.ahaSpd[teamIndex] : calculatorStore.ahaSpd
     const punchline =
       compare && teamIndex >= 0 ? calculatorStore.globalMod[teamIndex].punchline : calculatorStore.globalMod.punchline
-    const ahaSpd = _.size(elationSpd) ? 80 + (elationSpd?.[0] || 0) / 5 + (elationSpd?.[1] || 0) / 10 : 0
-    const ahaDividend = [5, 10]
+    const ahaSpd = _.size(elationSpd) ? 80 + _.sum(_.map(elationSpd, (es, i) => (es || 0) / (5 * 2 ** i))) : 0
     const punchlineMulti = (5 * punchline) / (+punchline + 240)
 
     return (
@@ -247,7 +246,7 @@ export const StatsModal = observer(
                     {_.map(elationSpd, (ss, ii) => (
                       <span key={`${ss}_${ii}`}>
                         {' '}
-                        + (<span className="text-desc">{_.floor(ss, 1)}</span> ÷ {ahaDividend[ii]})
+                        + (<span className="text-desc">{_.floor(ss, 1)}</span> ÷ {5 * 2 ** ii})
                       </span>
                     ))}
                   </span>

@@ -1773,10 +1773,15 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
   {
     id: '23057',
     scaling: (base, r) => {
-      base[Stats.P_ATK].push({
+      base[Stats.P_SPD].push({
         name: 'Passive',
         source: `Welcome to the Cosmic City`,
-        value: calcRefinement(0.64, 0.16, r),
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      base.ELATION_DEF_PEN.push({
+        name: 'Passive',
+        source: `Welcome to the Cosmic City`,
+        value: calcRefinement(0.2, 0.04, r),
       })
       return base
     },
@@ -1802,7 +1807,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
     scaling: (base, r) => {
       base[Stats.CRIT_DMG].push({
         name: 'Passive',
-        source: `Tomorrow, As One`,
+        source: `Tomorrow, Together`,
         value: calcRefinement(0.12, 0.03, r),
       })
       return base

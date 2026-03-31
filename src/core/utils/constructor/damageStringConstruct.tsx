@@ -215,7 +215,9 @@ export const damageStringConstruct = (
           : isPure
             ? 0
             : isElation
-              ? elation + (1 + stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) || 0) + (1 + punchlineMultiplier)
+              ? elation +
+                (1 + (stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) || 0) + (scaling.merrymake || 0)) +
+                (1 + punchlineMultiplier)
               : bonusDMG(scaling.bonusSplit?.[i]))) *
         (globalMultiplier || 1) *
         (breakScale ? 1 + (stats.getValue(StatsObjectKeys.BREAK_MULT) || 0) : 1) *
@@ -292,9 +294,9 @@ export const damageStringConstruct = (
         }</i>)`
       : ''
   }${
-    stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) && isElation
+    stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) + scaling.merrymake && isElation
       ? ` \u{00d7} (1 + <b class="text-desc">${toPercentage(
-          stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE),
+          stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) + scaling.merrymake,
           2,
         )}</b> <i class="text-[10px]">MERRYMAKE</i>)`
       : ''

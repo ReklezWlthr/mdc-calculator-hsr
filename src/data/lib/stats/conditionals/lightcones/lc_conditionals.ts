@@ -1520,24 +1520,6 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
-  {
-    type: 'toggle',
-    text: `Superpower`,
-    show: true,
-    default: true,
-    duration: 3,
-    id: '23057',
-    scaling: (base, form, r) => {
-      if (form['23057']) {
-        base.ELATION_DEF_PEN.push({
-          name: `Superpower`,
-          source: 'Welcome to the Cosmic City',
-          value: calcRefinement(0.18, 0.03, r),
-        })
-      }
-      return base
-    },
-  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [
@@ -2835,7 +2817,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
       if (form['22007']) {
         base[Stats.ELATION].push({
           name: `Passive`,
-          source: `Tomorrow, As One`,
+          source: `Tomorrow, Together`,
           value: calcRefinement(0.08, 0.01, r),
         })
       }
