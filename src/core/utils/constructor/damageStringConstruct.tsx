@@ -337,7 +337,7 @@ export const damageStringConstruct = (
           Exclusive Bonus: <span className="text-desc">{toPercentage(scaling.bonus)}</span>
         </p>
       )}
-      {!!stats.getValue(`${element} DMG%`) && (
+      {!!stats.getValue(`${element} DMG%`) && !isElation && (
         <p className="text-xs">
           {element} DMG Bonus: <span className="text-desc">{toPercentage(stats.getValue(`${element} DMG%`))}</span>
         </p>

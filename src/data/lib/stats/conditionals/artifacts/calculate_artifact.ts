@@ -237,7 +237,7 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
     base[Stats.CRIT_DMG].push({
       name: `2-Piece`,
       source: `Punklorde Stage Zero`,
-      value: 0.3,
+      value: 0.32,
     })
   }
   if (form['326_1']) {

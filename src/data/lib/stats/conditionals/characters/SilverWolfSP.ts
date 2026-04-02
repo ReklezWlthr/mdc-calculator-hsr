@@ -277,7 +277,6 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
               break: 10,
               sum: true,
               punchline: form.banger,
-              vul: c >= 1 ? 0.2 : 0,
             },
             {
               name: 'Final Hit AoE',
@@ -294,7 +293,6 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
               break: 10,
               sum: true,
               punchline: form.banger,
-              vul: c >= 1 ? 0.2 : 0,
             },
           ]
         : [
@@ -392,7 +390,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           sum: true,
           punchline: form.banger,
         }
-        base.BASIC_SCALING.push({ ...add, vul: c >= 1 && form.invincible_player ? 0.2 : 0 })
+        base.BASIC_SCALING.push(add)
         base.SKILL_SCALING.push(add)
       }
 
@@ -445,7 +443,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       globalCallback: CallbackType[],
       globalMod: GlobalModifiers,
     ) => {
-      globalCallback.push(function P1(_x, _d, _w, a) {
+      globalCallback.push(function P999(_x, _d, _w, a) {
         const spd = a[index].getSpd()
         if (spd >= 150) {
           a[index][Stats.ELATION].push({
@@ -456,6 +454,13 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
             multiplier: 0.02,
             flat: `30%`,
           })
+        }
+
+        if (form.invincible_player && c >= 1) {
+          base.BASIC_SCALING = _.map(base.BASIC_SCALING, (s) => ({
+            ...s,
+            vul: 0.2,
+          }))
         }
 
         return a
