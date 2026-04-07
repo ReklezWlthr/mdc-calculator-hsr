@@ -54,8 +54,8 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       <br />After all of the above DMG is dealt, unleashes a Final Hit that deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Silver Wolf LV.999's ATK, split evenly among all enemies.
       <br />Enhanced Basic ATK cannot recover Skill Points. For every <span class="text-desc">60</span> points of <b class="text-violet-300">Hidden MMR</b>, increases DMG dealt during Enhanced Basic ATK by <span class="text-desc">15%</span> of the original DMG, stackable up to <span class="text-desc">2</span> times.`,
       value: [
-        { base: 110, growth: 22, style: 'linear' },
-        { base: 45, growth: 9, style: 'linear' },
+        { base: 120, growth: 24, style: 'linear' },
+        { base: 50, growth: 10, style: 'linear' },
       ],
       level: basic,
       tag: AbilityTag.BOUNCE,
@@ -83,7 +83,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       <br />
       <br /><span class="text-xs opacity-75 text-gray">Enhanced Elation Skill</span>
       <br /><b>Honkai-DMG Demo</b>
-      <br />Deals <span class="text-desc">6</span> instances of DMG, with each instance dealing {{0}}% <b class="text-hsr-imaginary">Imaginary</b> <b class="elation">Elation DMG</b> a random enemy. Then, resets the <u>fixed chance</u> to trigger <b>Top Loot Box</b> to its initial value.`,
+      <br />Deals <span class="text-desc">6</span> instances of DMG, with each instance dealing {{0}}% <b class="text-hsr-imaginary">Imaginary</b> <b class="elation">Elation DMG</b> one random enemy. Then, resets the <u>fixed chance</u> to trigger <b>Top Loot Box</b> to its initial value.`,
       value: [{ base: 45, growth: 4.5, style: 'curved' }],
       level: elation,
       tag: AbilityTag.BOUNCE,
@@ -114,8 +114,8 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       <br />While in possession of <b class="text-blue">Certified Banger</b>, using Basic ATK or Skill against attacked enemy targets deals {{0}}% <b class="text-hsr-imaginary">Imaginary</b> <b class="elation">Elation DMG</b>. Enhanced Basic ATK's ability DMG is converted to <b class="elation">Elation DMG</b> at the same multiplier.`,
       value: [
         { base: 20, growth: 2, style: 'curved' },
-        { base: 0.15, growth: 0.015, style: 'curved' },
-        { base: 0.3, growth: 0.03, style: 'curved' },
+        { base: 0.2, growth: 0.02, style: 'curved' },
+        { base: 0.4, growth: 0.04, style: 'curved' },
       ],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -142,13 +142,13 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'False Ending Speedrun',
-      content: `When SPD is <span class="text-desc">150</span> or higher, increases this unit's Elation by <span class="text-desc">30%</span>. For every <span class="text-desc">1</span> SPD exceeded, increases this unit's Elation by <span class="text-desc">2%</span>. Up to a max of <span class="text-desc">100</span> excess SPD can be taken into account for this effect.`,
+      content: `When SPD is <span class="text-desc">160</span> or higher, increases this unit's Elation by <span class="text-desc">50%</span>. For every <span class="text-desc">1</span> SPD exceeded, increases this unit's Elation by <span class="text-desc">2%</span>. Up to a max of <span class="text-desc">100</span> excess SPD can be taken into account for this effect.`,
       image: 'asset/traces/SkillIcon_1506_SkillTree1.webp',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'True Ending Unlocked',
-      content: `When using an Elation Skill, if the number of <b class="text-orange-400">Punchline</b> points taken into account for this Elation Skill reaches <span class="text-desc">20</span>/<span class="text-desc">40</span>, gains <span class="text-desc">20</span>/<span class="text-desc">40</span> <b class="text-violet-300">Hidden MMR</b> points.`,
+      content: `If the number of <b class="text-orange-400">Punchlines</b> taken into account when using an Elation Skill is <span class="text-desc">20</span> or more, gain an additional <span class="text-desc">20</span> <b class="text-violet-300">Hidden MMR</b> points (if <span class="text-desc">40</span> or more, gain <span class="text-desc">20</span> points on top of that).`,
       image: 'asset/traces/SkillIcon_1506_SkillTree2.webp',
     },
     a6: {
@@ -160,8 +160,8 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     c1: {
       trace: 'Eidolon 1',
       title: 'Aether Editing: Eidolon +1',
-      content: `During Enhanced Basic ATK, DMG taken by enemy targets increases by <span class="text-desc">20%</span>.
-      <br />When leaving the <b class="text-red">Godmode Player</b> state, <b class="text-violet-300">Hidden MMR</b> will not be cleared, but will have <span class="text-desc">20%</span> of <b class="text-violet-300">Hidden MMR</b> retained instead.`,
+      content: `Increases the DMG taken by enemy targets in the Zone by <span class="text-desc">20%</span>.
+      <br />When leaving the <b class="text-red">Godmode Player</b> state, <b class="text-violet-300">Hidden MMR</b> will not be cleared, <span class="text-desc">20%</span> of <b class="text-violet-300">Hidden MMR</b> will be retained instead.`,
       image: 'asset/traces/SkillIcon_1506_Rank1.webp',
     },
     c2: {
@@ -181,7 +181,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     c4: {
       trace: 'Eidolon 4',
       title: 'I Came. I Saw. I One-Shot.',
-      content: `<b class="elation">Elation DMG</b> dealt by <b>Honkai-DMG Demo</b> additionally takes into account <span class="text-desc">999</span> <b class="text-orange-400">Punchline</b> points.`,
+      content: `<b class="elation">Elation DMG</b> dealt by <b>Honkai-DMG Demo</b> additionally takes into account <b class="text-orange-400">Punchline</b> points times <span class="text-desc">5</span>.`,
       image: 'asset/traces/SkillIcon_1506_Rank4.webp',
     },
     c5: {
@@ -195,7 +195,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     c6: {
       trace: 'Eidolon 6',
       title: 'Max Solo Leveling',
-      content: `<b class="elation">Elation DMG</b> dealt by <b>Top Loot Box</b> merrymakes by <span class="text-desc">40%</span>.
+      content: `<b class="elation">Elation DMG</b> dealt during Enhanced Basic ATK merrymakes by <span class="text-desc">50%</span>.
       <br />When enemy targets enter combat, they are inflicted with <b class="text-desc">Absolute Weakness</b>: Has All-Type Weakness, and <b>All-Type Base RES</b> is reduced to <span class="text-desc">0</span> (If <b>Base RES</b> is already <span class="text-desc">0</span>, then the corresponding Type <b>RES</b> decreases by <span class="text-desc">20%</span>).`,
       image: 'asset/traces/SkillIcon_1506_Rank6.webp',
     },
@@ -231,6 +231,14 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       default: true,
       debuff: true,
     },
+    {
+      type: 'toggle',
+      id: 'swsp_e6_merry',
+      text: `E6 Enhanced BA Merrymake`,
+      ...talents.c6,
+      show: c >= 6,
+      default: true,
+    },
   ]
 
   const teammateContent: IContent[] = [findContentById(content, 'swsp_e6')]
@@ -258,6 +266,12 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
 
       if (form.invincible_player) {
         base.BA_ALT = true
+        base.VULNERABILITY.push({
+          name: `Eidolon 1`,
+          source: 'Self',
+          value: 0.2,
+        })
+        addDebuff(debuffs, DebuffTypes.OTHER)
       }
 
       base.BASIC_SCALING = form.invincible_player
@@ -266,7 +280,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
               name: 'Total Bounce DMG',
               value: [
                 {
-                  scaling: calcScaling(1.1, 0.22, basic, 'linear'),
+                  scaling: calcScaling(1.2, 0.24, basic, 'linear'),
                   multiplier: form.banger ? Stats.ELATION : Stats.ATK,
                 },
               ],
@@ -277,12 +291,13 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
               break: 10,
               sum: true,
               punchline: form.banger,
+              merrymake: form.swsp_e6_merry ? 0.4 : 0,
             },
             {
               name: 'Final Hit AoE',
               value: [
                 {
-                  scaling: calcScaling(0.45, 0.09, basic, 'linear'),
+                  scaling: calcScaling(0.5, 0.1, basic, 'linear'),
                   multiplier: form.banger ? Stats.ELATION : Stats.ATK,
                 },
               ],
@@ -293,6 +308,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
               break: 10,
               sum: true,
               punchline: form.banger,
+              merrymake: form.swsp_e6_merry ? 0.4 : 0,
             },
           ]
         : [
@@ -325,10 +341,9 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           element: Element.IMAGINARY,
           property: TalentProperty.ELATION,
           type: TalentType.NONE,
-          break: 10,
           sum: true,
           punchline: form.banger,
-          merrymake: c >= 6 ? 0.4 : 0,
+          merrymake: form.swsp_e6_merry ? 0.4 : 0,
         },
         {
           name: 'Big Flipping Sword True DMG',
@@ -337,10 +352,9 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           element: Element.IMAGINARY,
           property: TalentProperty.TRUE,
           type: TalentType.SKILL,
-          break: 1,
           sum: true,
           punchline: form.banger,
-          merrymake: c >= 6 ? 0.4 : 0,
+          merrymake: form.swsp_e6_merry ? 0.4 : 0,
         },
       ]
       base.MEMO_SKILL_SCALING = [
@@ -351,9 +365,9 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           element: Element.IMAGINARY,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
-          break: 30,
+          break: 60,
           sum: true,
-          punchlineBonus: c >= 4 ? 999 : 0,
+          punchlineBonus: c >= 4 ? globalMod.punchline * 5 : 0,
         },
         {
           name: 'DMG per Bounce',
@@ -361,8 +375,8 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           element: Element.IMAGINARY,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
-          break: 5,
-          punchlineBonus: c >= 4 ? 999 : 0,
+          break: 10,
+          punchlineBonus: c >= 4 ? globalMod.punchline * 5 : 0,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -376,7 +390,6 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           break: 10,
           sum: true,
           punchline: 99,
-          merrymake: c >= 6 ? 0.4 : 0,
         },
       ]
 
@@ -390,7 +403,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           sum: true,
           punchline: form.banger,
         }
-        base.BASIC_SCALING.push(add)
+        base.BASIC_SCALING.push({ ...add, merrymake: form.swsp_e6_merry ? 0.4 : 0 })
         base.SKILL_SCALING.push(add)
       }
 
@@ -445,22 +458,15 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     ) => {
       globalCallback.push(function P999(_x, _d, _w, a) {
         const spd = a[index].getSpd()
-        if (spd >= 150) {
+        if (spd >= 160) {
           a[index][Stats.ELATION].push({
             name: `Ascension 2 Passive`,
             source: 'Self',
-            value: 0.3 + _.min([spd - 150, 100]) * 0.02,
-            base: _.floor(_.min([spd - 150, 100]), 1).toLocaleString(),
+            value: 0.5 + _.min([spd - 160, 100]) * 0.02,
+            base: _.floor(_.min([spd - 160, 100]), 1).toLocaleString(),
             multiplier: 0.02,
-            flat: `30%`,
+            flat: `50%`,
           })
-        }
-
-        if (form.invincible_player && c >= 1) {
-          base.BASIC_SCALING = _.map(base.BASIC_SCALING, (s) => ({
-            ...s,
-            vul: 0.2,
-          }))
         }
 
         return a
@@ -468,21 +474,21 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       base.CALLBACK.push(function P99(x) {
         if (form.invincible_player) {
           const cr = _.min([x.getValue(Stats.CRIT_RATE), 1])
-          const stacksForCr = _.ceil((1 - cr) / calcScaling(0.0015, 0.00015, talent, 'curved'))
+          const stacksForCr = _.ceil((1 - cr) / calcScaling(0.002, 0.0002, talent, 'curved'))
           x[Stats.CRIT_RATE].push({
             name: `Talent`,
             source: 'Self',
-            value: _.min([form.hidden_ranking, stacksForCr]) * calcScaling(0.0015, 0.00015, talent, 'curved'),
+            value: _.min([form.hidden_ranking, stacksForCr]) * calcScaling(0.002, 0.0002, talent, 'curved'),
             base: _.min([form.hidden_ranking, stacksForCr]),
-            multiplier: calcScaling(0.0015, 0.00015, talent, 'curved'),
+            multiplier: calcScaling(0.002, 0.0002, talent, 'curved'),
           })
           if (form.hidden_ranking > stacksForCr) {
             x[Stats.CRIT_DMG].push({
               name: `Talent`,
               source: 'Self',
-              value: (form.hidden_ranking - stacksForCr) * calcScaling(0.003, 0.0003, talent, 'curved'),
+              value: (form.hidden_ranking - stacksForCr) * calcScaling(0.004, 0.0004, talent, 'curved'),
               base: form.hidden_ranking - stacksForCr,
-              multiplier: calcScaling(0.003, 0.0003, talent, 'curved'),
+              multiplier: calcScaling(0.004, 0.0004, talent, 'curved'),
             })
           }
         }

@@ -158,7 +158,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     c6: {
       trace: 'Eidolon 6',
       title: 'The Cosmic Legend Cometh!',
-      content: `Ultimate additionally increases the SPD of one designated ally by <span class="text-desc">12%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `When using Elation Skill, increases this unit's CRIT DMG by <span class="text-desc">100%</span> for <span class="text-desc">3</span> turns.`,
       image: 'asset/traces/SkillIcon_8009_Rank6.webp',
     },
   }
@@ -182,7 +182,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     {
       type: 'toggle',
       id: 'emc_ult',
-      text: `EMC CRIT DMG Bonus`,
+      text: `EMC Ult Bonus`,
       ...talents.ult,
       show: true,
       default: false,
@@ -194,24 +194,33 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       text: `E2 Elation Bonus`,
       ...talents.c2,
       show: c >= 2,
-      default: false,
+      default: true,
       duration: 2,
     },
     {
       type: 'toggle',
       id: 'emc_e4',
-      text: `E2 Vulnerability`,
+      text: `E4 Vulnerability`,
       ...talents.c4,
       show: c >= 4,
-      default: false,
+      default: true,
       duration: 2,
       debuff: true,
+    },
+    {
+      type: 'toggle',
+      id: 'emc_e6',
+      text: `E6 CRIT DMG Bonus`,
+      ...talents.c6,
+      show: c >= 6,
+      default: true,
+      duration: 3,
     },
   ]
 
   const teammateContent: IContent[] = [findContentById(content, 'emc_e4')]
 
-  const allyContent: IContent[] = [findContentById(content, 'emc_ult'), findContentById(content, 'emc_e2')]
+  const allyContent: IContent[] = [findContentById(content, 'emc_ult')]
 
   return {
     upgrade,
@@ -295,20 +304,13 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           source: 'Self',
           value: calcScaling(0.3, 0.02, ult, 'curved'),
         })
-        if (c >= 6) {
-          base[Stats.P_SPD].push({
-            name: `Eidolon 6`,
+        if (c >= 2) {
+          base[Stats.ELATION].push({
+            name: `Eidolon 2`,
             source: 'Self',
             value: 0.12,
           })
         }
-      }
-      if (form.emc_e2) {
-        base[Stats.ELATION].push({
-          name: `Eidolon 2`,
-          source: 'Self',
-          value: 0.12,
-        })
       }
       if (form.emc_e4) {
         base.VULNERABILITY.push({
@@ -323,6 +325,13 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           name: `Technique`,
           source: 'Self',
           value: +form.emc_tech,
+        })
+      }
+      if (form.emc_e6) {
+        base[Stats.CRIT_DMG].push({
+          name: `Eidolon 6`,
+          source: 'Self',
+          value: 1,
         })
       }
 
@@ -351,9 +360,9 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           source: 'Trailblazer',
           value: calcScaling(0.3, 0.02, ult, 'curved'),
         })
-        if (c >= 6) {
-          base[Stats.P_SPD].push({
-            name: `Eidolon 6`,
+        if (c >= 2) {
+          base[Stats.ELATION].push({
+            name: `Eidolon 2`,
             source: 'Trailblazer',
             value: 0.12,
           })

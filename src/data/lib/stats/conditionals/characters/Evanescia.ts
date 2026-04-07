@@ -65,7 +65,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       trace: 'Elation Skill',
       title: 'Scarlet: Elation or Execution',
       content: `Deals <b class="text-hsr-physical">Physical</b> <b class="elation">Elation DMG</b> equal to {{0}}% to all enemies and additionally gains <span class="text-desc">5</span> point(s) of <b class="text-blue">Certified Banger</b>.`,
-      value: [{ base: 50, growth: 5, style: 'curved' }],
+      value: [{ base: 55, growth: 5.5, style: 'curved' }],
       level: elation,
       tag: AbilityTag.AOE,
       energy: 5,
@@ -87,7 +87,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     talent: {
       trace: `Talent`,
       title: `Youth: Halcyon Evermore`,
-      content: `Evanescia gains Elation equal to <span class="text-desc">25%</span> of her CRIT DMG. When Evanescia gains Energy, she simultaneously gains an equal amount of <b class="text-blue">Certified Banger</b>. When Evanescia gains <b class="text-blue">Certified Banger</b>, she simultaneously gains an equal amount of Energy. The <b class="text-blue">Certified Banger</b> gained through this method in a single instance cannot exceed <span class="text-desc">100</span> points.
+      content: `Evanescia gains Elation equal to <span class="text-desc">20%</span> of her CRIT DMG. When Evanescia gains Energy, she simultaneously gains an equal amount of <b class="text-blue">Certified Banger</b>. When Evanescia gains <b class="text-blue">Certified Banger</b>, she simultaneously gains an equal amount of Energy. The <b class="text-blue">Certified Banger</b> gained through this method in a single instance cannot exceed <span class="text-desc">100</span> points.
       <br />After accumulating <span class="text-desc">240</span> Energy, she consumes <span class="text-desc">240</span> accumulated amount, and <b>Master Fox</b> launches <u>Follow-Up ATK</u>, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{4}}% of Evanescia's ATK to all enemies and regenerating <span class="text-desc">10</span> Energy for Evanescia. When Evanescia possesses <b class="text-blue">Certified Banger</b>:
       <br />Using her Skill deals <b class="text-hsr-physical">Physical</b> <b class="elation">Elation DMG</b> equal to {{0}}% to the attacked enemy target.
       <br />Using her Ultimate deals <b class="text-hsr-physical">Physical</b> <b class="elation">Elation DMG</b> equal to {{1}}% to all enemies and deals <b class="text-hsr-physical">Physical</b> <b class="elation">Elation DMG</b> equal to {{2}}% to the enemy target randomly attacked by Ultimate. When Ultimate deals <b class="elation">Elation DMG</b>, it takes into account <b class="text-blue">Certified Banger</b> at least equal to Max Energy.
@@ -95,7 +95,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       value: [
         { base: 8, growth: 0.8, style: 'curved' },
         { base: 12, growth: 1.2, style: 'curved' },
-        { base: 12, growth: 1.3, style: 'curved' },
+        { base: 14, growth: 1.4, style: 'curved' },
         { base: 12.5, growth: 1.25, style: 'curved' },
         { base: 50, growth: 5, style: 'curved' },
       ],
@@ -131,13 +131,13 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c1: {
       trace: 'Eidolon 1',
       title: 'Home: A Prayer in Dance',
-      content: `Increases CRIT DMG by <span class="text-desc">36%</span>. After <b>Master Fox</b> uses an attack, triggers <span class="text-desc">1</span> additional Elation Skill. Elation Skill grants this unit <span class="text-desc">10</span> additional <b class="text-blue">Certified Banger</b> point(s).`,
+      content: `Increases <b>All-Type RES PEN</b> by <span class="text-desc">20%</span>. After <b>Master Fox</b> uses an attack, triggers <span class="text-desc">1</span> additional Elation Skill. Elation Skill grants this unit <span class="text-desc">10</span> additional <b class="text-blue">Certified Banger</b> point(s).`,
       image: 'asset/traces/SkillIcon_1505_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'Voyage: A Wish for Everbloom',
-      content: `<b>All-Type RES PEN</b> increases by <span class="text-desc">20%</span>. When teammates whose Participant ID is lower than Evanescia's gain <b class="text-blue">Certified Banger</b> or when ally teammates' <b class="text-blue">Certified Banger</b> expires, Evanescia additionally gains <span class="text-desc">50%</span>/<span class="text-desc">50%</span> of it as her own <b class="text-blue">Certified Banger</b>.`,
+      content: `CRIT DMG increases by <span class="text-desc">36%</span>. When teammates whose Participant ID is lower than Evanescia's gain <b class="text-blue">Certified Banger</b> or when ally teammates' <b class="text-blue">Certified Banger</b> expires, Evanescia additionally gains <span class="text-desc">50%</span>/<span class="text-desc">100%</span> of it as her own <b class="text-blue">Certified Banger</b>.`,
       image: 'asset/traces/SkillIcon_1505_Rank2.webp',
     },
     c3: {
@@ -236,19 +236,6 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           type: TalentType.SKILL,
           break: 10,
         },
-        ...(form.banger
-          ? [
-              {
-                name: 'Certified Banger DMG',
-                value: [{ scaling: calcScaling(0.08, 0.008, talent, 'curved'), multiplier: Stats.ELATION }],
-                element: Element.PHYSICAL,
-                property: TalentProperty.ELATION,
-                type: TalentType.SKILL,
-                sum: true,
-                punchline: form.banger,
-              },
-            ]
-          : []),
       ]
       const bounce =
         globalMod.enemy_count === 1 ? 9 : globalMod.enemy_count === 2 ? 7 : globalMod.enemy_count >= 3 ? 6 : 5
@@ -281,46 +268,11 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           type: TalentType.ULT,
           break: 5,
         },
-        ...(form.banger
-          ? [
-              {
-                name: 'Total Certified Banger DMG',
-                value: [
-                  { scaling: calcScaling(0.12, 0.012, talent, 'curved'), multiplier: Stats.ELATION },
-                  {
-                    scaling: calcScaling(0.12, 0.013, talent, 'curved') * (a.a2 ? bounce : 5),
-                    multiplier: Stats.ELATION,
-                  },
-                ],
-                element: Element.PHYSICAL,
-                property: TalentProperty.ELATION,
-                type: TalentType.ULT,
-                sum: true,
-                punchline: _.max([form.banger, 480]),
-              },
-              {
-                name: 'AoE Certified Banger DMG',
-                value: [{ scaling: calcScaling(0.12, 0.012, talent, 'curved'), multiplier: Stats.ELATION }],
-                element: Element.PHYSICAL,
-                property: TalentProperty.ELATION,
-                type: TalentType.ULT,
-                punchline: _.max([form.banger, 480]),
-              },
-              {
-                name: 'Bounce Certified Banger DMG',
-                value: [{ scaling: calcScaling(0.12, 0.013, talent, 'curved'), multiplier: Stats.ELATION }],
-                element: Element.PHYSICAL,
-                property: TalentProperty.ELATION,
-                type: TalentType.ULT,
-                punchline: _.max([form.banger, 480]),
-              },
-            ]
-          : []),
       ]
       base.MEMO_SKILL_SCALING = [
         {
           name: 'AoE',
-          value: [{ scaling: calcScaling(0.5, 0.05, elation, 'curved'), multiplier: Stats.ELATION }],
+          value: [{ scaling: calcScaling(0.55, 0.055, elation, 'curved'), multiplier: Stats.ELATION }],
           element: Element.PHYSICAL,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
@@ -338,18 +290,6 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           break: 10,
           sum: true,
         },
-        ...(form.banger
-          ? [
-              {
-                name: 'AoE Banger DMG',
-                value: [{ scaling: calcScaling(0.125, 0.0125, talent, 'curved'), multiplier: Stats.ELATION }],
-                element: Element.PHYSICAL,
-                property: TalentProperty.ELATION,
-                type: TalentType.TALENT,
-                sum: true,
-              },
-            ]
-          : []),
       ]
       base.TECHNIQUE_SCALING = [
         {
@@ -361,6 +301,59 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           sum: true,
         },
       ]
+
+      if (form.banger) {
+        base.SKILL_SCALING.push({
+          name: 'Certified Banger DMG',
+          value: [{ scaling: calcScaling(0.08, 0.008, talent, 'curved'), multiplier: Stats.ELATION }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.ELATION,
+          type: TalentType.SKILL,
+          sum: true,
+          punchline: form.banger,
+        })
+        base.ULT_SCALING.push(
+          {
+            name: 'Total Certified Banger DMG',
+            value: [
+              { scaling: calcScaling(0.12, 0.012, talent, 'curved'), multiplier: Stats.ELATION },
+              {
+                scaling: calcScaling(0.14, 0.014, talent, 'curved') * (a.a2 ? bounce : 5),
+                multiplier: Stats.ELATION,
+              },
+            ],
+            element: Element.PHYSICAL,
+            property: TalentProperty.ELATION,
+            type: TalentType.ULT,
+            sum: true,
+            punchline: _.max([form.banger, 480]),
+          },
+          {
+            name: 'AoE Certified Banger DMG',
+            value: [{ scaling: calcScaling(0.12, 0.012, talent, 'curved'), multiplier: Stats.ELATION }],
+            element: Element.PHYSICAL,
+            property: TalentProperty.ELATION,
+            type: TalentType.ULT,
+            punchline: _.max([form.banger, 480]),
+          },
+          {
+            name: 'Bounce Certified Banger DMG',
+            value: [{ scaling: calcScaling(0.14, 0.014, talent, 'curved'), multiplier: Stats.ELATION }],
+            element: Element.PHYSICAL,
+            property: TalentProperty.ELATION,
+            type: TalentType.ULT,
+            punchline: _.max([form.banger, 480]),
+          },
+        )
+        base.TALENT_SCALING.push({
+          name: 'AoE Certified Banger DMG',
+          value: [{ scaling: calcScaling(0.125, 0.0125, talent, 'curved'), multiplier: Stats.ELATION }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.ELATION,
+          type: TalentType.TALENT,
+          sum: true,
+        })
+      }
 
       if (a.a2) {
         base[Stats.CRIT_RATE].push({
@@ -377,16 +370,16 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         })
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
-      if (c >= 1) {
+      if (c >= 2) {
         base[Stats.CRIT_DMG].push({
-          name: `Eidolon 1`,
+          name: `Eidolon 2`,
           source: 'Self',
           value: 0.36,
         })
       }
-      if (c >= 2) {
+      if (c >= 1) {
         base.ALL_TYPE_RES_PEN.push({
-          name: `Eidolon 2`,
+          name: `Eidolon 1`,
           source: 'Self',
           value: 0.2,
         })
@@ -445,6 +438,19 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       globalCallback: CallbackType[],
       globalMod: GlobalModifiers,
     ) => {
+      globalCallback.push(function P999(_x, _d, _w, a) {
+        const cdmg = a[index].getValue(Stats.CRIT_DMG)
+        a[index][Stats.ELATION].push({
+          name: `Talent`,
+          source: 'Self',
+          value: cdmg * 0.2,
+          base: toPercentage(cdmg),
+          multiplier: 0.2,
+        })
+
+        return a
+      })
+
       return base
     },
   }
