@@ -74,7 +74,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     ult: {
       trace: 'Ultimate',
       title: `May the Trailblaze Fly You Starward`,
-      content: `Gains <span class="text-desc">5</span> Punchline point(s), increases the CRIT DMG of a designated ally by {{0}}% for <span class="text-desc">3</span> turn(s), and dispels Crowd Control debuffs from them.
+      content: `Gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b> point(s), increases the CRIT DMG of a designated ally by {{0}}% for <span class="text-desc">3</span> turn(s), and dispels Crowd Control debuffs from them.
       <br />If the target possesses an Elation Skill, they additionally gain <span class="text-desc">10</span> point(s) of <b class="text-blue">Certified Banger</b> and immediately use their Elation Skill <span class="text-desc">1</span> time, taking a fixed amount of <span class="text-desc">20</span> <b class="text-orange-400">Punchline</b> point(s) into account. If the enemy target is defeated before the Elation Skill is unleashed, the Elation Skill is unleashed on enemy targets that just entered combat instead.
       <br />If the target does not possess an Elation Skill, their action advances by <span class="text-desc">50%</span>.`,
       value: [{ base: 30, growth: 2, style: 'curved' }],
@@ -86,8 +86,8 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     talent: {
       trace: `Talent`,
       title: `That Smile Hits Different`,
-      content: `Regenerates <span class="text-desc">10</span> Energy and gains <span class="text-desc">3</span> <b class="text-orange-400">Punchline</b> point(s) after using an attack.
-      <br />When the Trailblazer possesses <b class="text-blue">Certified Banger</b>, their Skill deals additional <b class="text-hsr-lightning">Lightning</b> <b class="elation">Elation DMG</b> equal to {{0}}% to all enemies. This DMG is calculated using the highest <b class="text-blue">Certified Banger</b> value among all allies.`,
+      content: `After using an attack, regenerates a fixed amount of <span class="text-desc">10</span> Energy and gains <span class="text-desc">3</span> <b class="text-orange-400">Punchline</b> point(s).
+      <br />When the Trailblazer holds <b class="text-blue">Certified Banger</b>, their Skill additionally deals {{0}}% <b class="text-hsr-lightning">Lightning</b> <b class="elation">Elation DMG</b> to all enemies. This DMG is calculated using the highest <b class="text-blue">Certified Banger</b> value among all allies.`,
       value: [{ base: 15, growth: 1.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.SUPPORT,

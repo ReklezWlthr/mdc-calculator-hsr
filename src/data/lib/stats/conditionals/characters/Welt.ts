@@ -60,7 +60,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     talent: {
       trace: 'Talent',
       title: 'Time Distortion',
-      content: `Enemy targets in the <b class="text-amber-500">Weightless</b> state have their DEF reduced by <span class="text-desc">40%</span>. When hitting an enemy that is already <b>Slowed</b>, Welt deals <b class="text-hsr-imaginary">Imaginary Additional DMG</b> equal to {{0}}% of his ATK to the enemy.`,
+      content: `Enemy targets in the <b class="text-amber-500">Weightless</b> state have their DEF reduced by <span class="text-desc">40%</span> and their SPD reduced by <span class="text-desc">5%</span>. When Welt attacks an enemy that is already <b>Slowed</b>, he additionally deals <b class="text-hsr-imaginary">Imaginary Additional DMG</b> equal to {{0}}% of his ATK to the enemy.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -75,7 +75,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Retribution',
-      content: `When ally targets attack targets under the <b class="text-amber-500">Weightless</b> state, their DMG dealt increases by <span class="text-desc">6%</span>. This effect stacks up to <span class="text-desc">15</span> times and lasts for <span class="text-desc">2</span> turn(s). At the start of the battle, Welt regenerates <span class="text-desc">30</span> Energy.`,
+      content: `When ally targets attack targets under the <b class="text-amber-500">Weightless</b> state, their DMG dealt increases by <span class="text-desc">10%</span>. This effect stacks up to <span class="text-desc">10</span> times and lasts for <span class="text-desc">2</span> turn(s). At the start of the battle, Welt regenerates <span class="text-desc">30</span> Energy.`,
       image: `asset/traces/SkillIcon_1004_SkillTree1_New.webp`,
     },
     a4: {
@@ -157,8 +157,8 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       text: `A2 DMG Bonus`,
       ...talents.a2,
       show: a.a2,
-      default: 1,
-      max: 15,
+      default: 10,
+      max: 10,
       min: 0,
       duration: 2,
     },
@@ -272,7 +272,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         base[Stats.ALL_DMG].push({
           name: `Ascension 2 Passive`,
           source: 'Self',
-          value: 0.06 * form.welt_a2,
+          value: 0.1 * form.welt_a2,
         })
       }
       if (form.weightless) {
@@ -281,7 +281,13 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           source: 'Self',
           value: 0.4,
         })
+        base.SPD_REDUCTION.push({
+          name: `Talent`,
+          source: 'Self',
+          value: 0.05,
+        })
         addDebuff(debuffs, DebuffTypes.DEF_RED)
+        addDebuff(debuffs, DebuffTypes.SPD_RED)
         if (c >= 4) {
           base.ALL_TYPE_RES_RED.push({
             name: `Eidolon 6`,
@@ -349,6 +355,11 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           source: 'Welt',
           value: 0.4,
         })
+        base.SPD_REDUCTION.push({
+          name: `Talent`,
+          source: 'Welt',
+          value: 0.05,
+        })
         if (c >= 4) {
           base.ALL_TYPE_RES_RED.push({
             name: `Eidolon 6`,
@@ -361,7 +372,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         base[Stats.ALL_DMG].push({
           name: `Ascension 2 Passive`,
           source: 'Welt',
-          value: 0.06 * form.welt_a2,
+          value: 0.1 * form.welt_a2,
         })
 
       return base
