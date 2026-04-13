@@ -202,7 +202,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -258,11 +258,10 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         },
         {
           name: 'Max Single Target DMG',
-          value: [{ scaling: 0.5, multiplier: Stats.ATK }],
+          value: [{ scaling: 0.5, multiplier: Stats.ATK, hits: 4 }],
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.TECH,
-          multiplier: 4,
           break: 20,
           sum: true,
         },
@@ -316,7 +315,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.firekiss)
         base.VULNERABILITY.push({
@@ -343,7 +342,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (countDebuff(debuffs, DebuffTypes.BURN) && a.a6)
         base[Stats.ALL_DMG].push({
@@ -354,7 +353,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       base.CALLBACK.push((x, d, w, all) => {
         const burn = _.filter(
           _.flatMap(all, (item) => item.DOT_SCALING),
-          (item) => _.includes([DebuffTypes.BURN, DebuffTypes.DOT], item.dotType)
+          (item) => _.includes([DebuffTypes.BURN, DebuffTypes.DOT], item.dotType),
         )
         x.ULT_SCALING.push(
           ..._.map(burn, (item, i) => ({
@@ -364,7 +363,7 @@ const Guinaifen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             multiplier: (item.multiplier || 1) * calcScaling(0.72, 0.02, talent, 'curved'),
             sum: true,
             detonate: true,
-          }))
+          })),
         )
         return x
       })

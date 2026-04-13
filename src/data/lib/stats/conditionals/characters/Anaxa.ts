@@ -224,8 +224,8 @@ const Anaxa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       base.SKILL_SCALING = [
         {
           name: 'Total Single Target DMG',
-          value: [{ scaling: calcScaling(0.4, 0.04, skill, 'curved'), multiplier: Stats.ATK }],
-          multiplier: 5 * multiplier,
+          value: [{ scaling: calcScaling(0.4, 0.04, skill, 'curved'), multiplier: Stats.ATK, hits: 5 }],
+          multiplier,
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,

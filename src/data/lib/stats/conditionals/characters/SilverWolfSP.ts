@@ -360,8 +360,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       base.MEMO_SKILL_SCALING = [
         {
           name: 'Total Single Target DMG',
-          value: [{ scaling: calcScaling(0.45, 0.045, elation, 'curved'), multiplier: Stats.ELATION }],
-          multiplier: 6,
+          value: [{ scaling: calcScaling(0.45, 0.045, elation, 'curved'), hits: 6, multiplier: Stats.ELATION }],
           element: Element.IMAGINARY,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,

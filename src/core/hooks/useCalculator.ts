@@ -236,9 +236,9 @@ export const useCalculator = ({
     }
   }, [team, conditionals, settingStore.settings.formMode, enabled])
 
-  useEffect(() => {
-    console.log(_.cloneDeep(forms))
-  }, [forms])
+  // useEffect(() => {
+  //   console.log(_.cloneDeep(forms))
+  // }, [forms])
   // =================
   //
   // Main Calculator

@@ -180,7 +180,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -237,11 +237,10 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         },
         {
           name: 'Max Single Target DMG',
-          value: [{ scaling: calcScaling(0.45, 0.045, talent, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.45, 0.045, talent, 'curved'), multiplier: Stats.ATK, hits: 3 }],
           element: Element.QUANTUM,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
-          multiplier: 3,
           break: 15,
           sum: true,
         },
@@ -300,7 +299,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },
@@ -314,7 +313,7 @@ const Xueyi = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (a.a2)
         base.CALLBACK.push((x) => {

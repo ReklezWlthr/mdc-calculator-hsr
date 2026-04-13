@@ -223,11 +223,10 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         },
         {
           name: `Max Single Target DMG`,
-          value: [{ scaling: calcScaling(0.36, 0.036, skill, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.36, 0.036, skill, 'curved'), multiplier: Stats.ATK, hits: 5 }],
           element: Element.IMAGINARY,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          multiplier: 5,
           break: 50,
           sum: true,
         },

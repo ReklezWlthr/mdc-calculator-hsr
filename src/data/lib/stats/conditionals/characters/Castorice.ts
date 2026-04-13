@@ -295,7 +295,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
       base.SUMMON_STATS = _.cloneDeep({
@@ -378,33 +378,6 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               break: 10,
             },
           ]
-      const lastDragonHit = a.a6
-        ? _.map([3, 4, 5, 6], (i) => ({
-            name: `Breath Stage 3 DMG (${i} Stacks)`,
-            value: [{ scaling: calcScaling(0.17, 0.034, memo_skill, 'linear'), multiplier: Stats.HP }],
-            element: Element.QUANTUM,
-            property: TalentProperty.SERVANT,
-            type: TalentType.SERVANT,
-            break: 10,
-            sum: i <= 4,
-            useOwnerStats: true,
-            bonus: a.a6 ? 0.3 * i : 0,
-            multiplier: c1Mult,
-          }))
-        : [
-            {
-              name: 'Breath Stage 3 DMG',
-              value: [{ scaling: calcScaling(0.17, 0.034, memo_skill, 'linear'), multiplier: Stats.HP }],
-              element: Element.QUANTUM,
-              property: TalentProperty.SERVANT,
-              type: TalentType.SERVANT,
-              break: 10,
-              sum: true,
-              useOwnerStats: true,
-              bonus: a.a6 ? 0.9 : 0,
-              multiplier: c1Mult,
-            },
-          ]
 
       const breath1 = calcScaling(0.12, 0.022, memo_skill, 'linear')
       const breath2 = calcScaling(0.14, 0.028, memo_skill, 'linear')
@@ -460,8 +433,10 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       base.MEMO_TALENT_SCALING = [
         {
           name: 'Total Single Target DMG',
-          value: [{ scaling: calcScaling(0.2, 0.04, memo_talent, 'linear'), multiplier: Stats.HP }],
-          multiplier: (c >= 6 ? 9 : 6) * (c1Mult || 1),
+          value: [
+            { scaling: calcScaling(0.2, 0.04, memo_talent, 'linear'), multiplier: Stats.HP, hits: c >= 6 ? 9 : 6 },
+          ],
+          multiplier: c1Mult || 1,
           element: Element.QUANTUM,
           property: TalentProperty.SERVANT,
           type: TalentType.SERVANT,
@@ -571,7 +546,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.lost_netherland) {
         base.ALL_TYPE_RES_PEN.push({
@@ -607,7 +582,7 @@ const Castorice = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       // Clear Bonus HP for Netherwing
       base.CALLBACK.push(function P999(x) {

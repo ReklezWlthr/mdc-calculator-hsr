@@ -187,7 +187,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -265,11 +265,10 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         },
         {
           name: `Total Cull Extra DMG`,
-          value: [{ scaling: calcScaling(0.432, 0.0288, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.432, 0.0288, ult, 'curved'), hits: c >= 1 ? 9 : 6, multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.FUA,
           type: TalentType.ULT,
-          multiplier: c >= 1 ? 9 : 6,
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
           break: (c >= 1 ? 9 : 6) * 2.5,
@@ -334,12 +333,11 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         },
         {
           name: `Total Cull Extra DMG`,
-          value: [{ scaling: calcScaling(0.432, 0.0288, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.432, 0.0288, ult, 'curved'), multiplier: Stats.ATK, hits: c >= 1 ? 9 : 6 }],
           element: Element.PHYSICAL,
           property: TalentProperty.FUA,
           type: TalentType.ULT,
           bonus: 0.8,
-          multiplier: c >= 1 ? 9 : 6,
           cr: c >= 6 ? 0.15 : 0,
           res_pen: c >= 6 ? 0.2 : 0,
           break: (c >= 1 ? 9 : 6) * 2.5,
@@ -394,7 +392,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },
@@ -408,7 +406,7 @@ const Yunli = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },

@@ -273,7 +273,11 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               {
                 name: 'Gluttony Additional DMG',
                 value: [
-                  { scaling: calcScaling(1, 0.1, ult, 'curved') * _.floor(form.gluttony / 4), multiplier: Stats.ATK },
+                  {
+                    scaling: calcScaling(1, 0.1, ult, 'curved'),
+                    hits: _.floor(form.gluttony / 4),
+                    multiplier: Stats.ATK,
+                  },
                 ],
                 element: Element.LIGHTNING,
                 property: TalentProperty.ADD,

@@ -202,11 +202,10 @@ const Rappa = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         ? [
             {
               name: 'Max Single Target DMG',
-              value: [{ scaling: calcScaling(0.6, 0.08, basic, 'linear'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.6, 0.08, basic, 'linear'), hits: 3, multiplier: Stats.ATK }],
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              multiplier: 3,
               break: 25 + (c >= 2 ? 10 : 0),
               sum: true,
               weaknessBypass: 0.5,

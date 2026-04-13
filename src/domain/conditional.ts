@@ -18,7 +18,7 @@ export type TalentScalingStyle = 'linear' | 'curved' | 'flat' | 'heal' | 'pure' 
 export interface IScaling {
   name: string
   scale?: Stats
-  value: { scaling: number; multiplier: Stats; override?: number }[]
+  value: { scaling: number; multiplier: Stats; override?: number; hits?: number }[]
   element: Element | TalentProperty
   property: TalentProperty
   type: TalentType
@@ -36,7 +36,7 @@ export interface IScaling {
   chance?: { base: number; fixed: boolean }
   overrideIndex?: number
   dotType?: DebuffTypes
-  cap?: { scaling: number; multiplier: Stats; override?: number } //Bleed Cap
+  cap?: { scaling: number; multiplier: Stats; override?: number; hits?: number } //Bleed Cap
   toughCap?: number
   vul?: number
   debuffElement?: Element // Only used for chance

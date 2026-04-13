@@ -170,7 +170,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -205,11 +205,10 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         },
         {
           name: `Max Single Target DMG`,
-          value: [{ scaling: calcScaling(0.28, 0.028, skill, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.28, 0.028, skill, 'curved'), hits: c >= 1 ? 6 : 5, multiplier: Stats.ATK }],
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
-          multiplier: c >= 1 ? 6 : 5,
           break: 10 + (c >= 1 ? 5 : 4) * 5,
           sum: true,
         },
@@ -267,7 +266,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.sampo_ult)
         base.DOT_VUL.push({
@@ -289,7 +288,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (countDot(debuffs, DebuffTypes.WIND_SHEAR) && a.a6) {
         base.WEAKEN.push({
@@ -302,7 +301,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         base.CALLBACK.push((x, d, w, all) => {
           const wind_shear = _.filter(
             _.flatMap(all, (item) => item.DOT_SCALING),
-            (item) => _.includes([DebuffTypes.WIND_SHEAR, DebuffTypes.DOT], item.dotType)
+            (item) => _.includes([DebuffTypes.WIND_SHEAR, DebuffTypes.DOT], item.dotType),
           )
           x.SKILL_SCALING.push(
             ..._.map(wind_shear, (item, i) => ({
@@ -312,7 +311,7 @@ const Sampo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               multiplier: (item.multiplier || 1) * 0.08,
               sum: true,
               detonate: true,
-            }))
+            })),
           )
           return x
         })

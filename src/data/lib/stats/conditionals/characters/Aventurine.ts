@@ -227,7 +227,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -283,11 +283,12 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         },
         {
           name: 'Max Single Target DMG',
-          value: [{ scaling: calcScaling(0.125, 0.0125, skill, 'curved'), multiplier: Stats.DEF }],
+          value: [
+            { scaling: calcScaling(0.125, 0.0125, skill, 'curved'), hits: c >= 4 ? 10 : 7, multiplier: Stats.DEF },
+          ],
           element: Element.IMAGINARY,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
-          multiplier: c >= 4 ? 10 : 7,
           break: (10 / 3) * (c >= 4 ? 10 : 7),
           sum: true,
         },
@@ -341,7 +342,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
             element: TalentProperty.SHIELD,
             property: TalentProperty.SHIELD,
             type: TalentType.NONE,
-          }
+          },
         )
       if (form.aven_c2) {
         base.ALL_TYPE_RES_RED.push({
@@ -373,7 +374,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (aForm.wager) {
         base[Stats.E_RES].push({
@@ -424,7 +425,7 @@ const Aventurine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (a.a2)
         base[Stats.CRIT_RATE].push({

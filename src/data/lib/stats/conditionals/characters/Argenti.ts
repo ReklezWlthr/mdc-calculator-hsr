@@ -193,7 +193,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       debuffs: {
         type: DebuffTypes
         count: number
-      }[]
+      }[],
     ) => {
       const base = _.cloneDeep(x)
 
@@ -241,10 +241,8 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             {
               name: 'Max Single Target DMG',
               value: [
-                {
-                  scaling: calcScaling(1.68, 0.112, ult, 'curved') + calcScaling(0.57, 0.038, ult, 'curved') * 6,
-                  multiplier: Stats.ATK,
-                },
+                { scaling: calcScaling(1.68, 0.112, ult, 'curved'), multiplier: Stats.ATK },
+                { scaling: calcScaling(0.57, 0.038, ult, 'curved'), hits: 6, multiplier: Stats.ATK },
               ],
               element: Element.PHYSICAL,
               property: TalentProperty.NORMAL,
@@ -313,7 +311,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base: StatsObject,
       form: Record<string, any>,
       aForm: Record<string, any>,
-      debuffs: { type: DebuffTypes; count: number }[]
+      debuffs: { type: DebuffTypes; count: number }[],
     ) => {
       return base
     },
@@ -321,7 +319,7 @@ const Argenti = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base: StatsObject,
       form: Record<string, any>,
       team: StatsObject[],
-      allForm: Record<string, any>[]
+      allForm: Record<string, any>[],
     ) => {
       return base
     },

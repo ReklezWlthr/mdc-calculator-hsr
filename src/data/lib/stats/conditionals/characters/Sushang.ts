@@ -206,7 +206,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -232,6 +232,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               chance: { base: broken ? 1 : 0.33, fixed: true },
               bonus: form.sushang_a4 ? form.sushang_a4 * 0.02 : 0,
               hitSplit: [0.3, 0.7],
+              break: 20,
             },
             {
               name: 'Extra Sword Stance DMG',
@@ -244,13 +245,17 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             },
             {
               name: 'Total Sword Stance DMG',
-              value: [{ scaling: calcScaling(0.5, 0.05, skill, 'curved') * 2, multiplier: Stats.ATK }],
+              value: [
+                { scaling: calcScaling(0.5, 0.05, skill, 'curved'), multiplier: Stats.ATK },
+                { scaling: calcScaling(0.5, 0.05, skill, 'curved') * 0.5, hits: 2, multiplier: Stats.ATK },
+              ],
               element: Element.PHYSICAL,
               property: TalentProperty.ADD,
               type: TalentType.NONE,
               bonus: form.sushang_a4 ? form.sushang_a4 * 0.02 : 0,
               chance: { base: broken ? 1 : 0.33 ** 3, fixed: true },
               sum: true,
+              break: 20,
             },
           ]
         : [
@@ -340,7 +345,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },
@@ -354,7 +359,7 @@ const Sushang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },

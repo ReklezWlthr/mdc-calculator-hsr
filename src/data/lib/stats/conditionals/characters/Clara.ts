@@ -184,7 +184,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -216,23 +216,6 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           hitSplit: form.mark_of_counter ? [0.125, 0.125, 0.125, 0.125, 0.5] : undefined,
         },
       ]
-      const ult_adj = form.clara_ult
-        ? [
-            {
-              name: 'Adjacent',
-              value: [
-                {
-                  scaling: (calcScaling(0.8, 0.08, talent, 'curved') + calcScaling(0.96, 0.064, ult, 'curved')) * 0.5,
-                  multiplier: Stats.ATK,
-                },
-              ],
-              element: Element.PHYSICAL,
-              property: TalentProperty.FUA,
-              type: TalentType.TALENT,
-              break: 20,
-            },
-          ]
-        : []
       base.TALENT_SCALING = [
         {
           name: 'Counter',
@@ -240,7 +223,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             {
               scaling:
                 calcScaling(0.8, 0.08, talent, 'curved') +
-                (form.clara_ult ? calcScaling(0.96, 0.064, talent, 'curved') : 0),
+                (form.clara_ult ? calcScaling(0.96, 0.064, ult, 'curved') : 0),
               multiplier: Stats.ATK,
             },
           ],
@@ -250,8 +233,24 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           break: 20,
           sum: true,
         },
-        ...ult_adj,
       ]
+
+      if (form.clara_ult) {
+        base.TALENT_SCALING.push({
+          name: 'Adjacent',
+          value: [
+            {
+              scaling: (calcScaling(0.8, 0.08, talent, 'curved') + calcScaling(0.96, 0.064, ult, 'curved')) * 0.5,
+              multiplier: Stats.ATK,
+            },
+          ],
+          element: Element.PHYSICAL,
+          property: TalentProperty.FUA,
+          type: TalentType.TALENT,
+          break: 20,
+        })
+      }
+
       base.DMG_REDUCTION.push({
         name: 'Talent',
         source: 'Self',
@@ -303,7 +302,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },
@@ -317,7 +316,7 @@ const Clara = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },

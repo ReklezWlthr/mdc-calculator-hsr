@@ -282,7 +282,7 @@ const RMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         {
           name: 'Max Single Target DMG',
           value: [
-            ...Array(4).fill({ scaling: calcScaling(0.18, 0.036, memo_skill, 'linear'), multiplier: Stats.ATK }),
+            { scaling: calcScaling(0.18, 0.036, memo_skill, 'linear'), hits: 4, multiplier: Stats.ATK },
             { scaling: calcScaling(0.45, 0.09, memo_skill, 'linear'), multiplier: Stats.ATK },
           ],
           element: Element.ICE,

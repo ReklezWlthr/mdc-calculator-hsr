@@ -176,7 +176,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -234,9 +234,8 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         },
         {
           name: 'Bounce Adjacent Per Hit',
-          value: [
-            { scaling: calcScaling(0.33, 0.033, talent, 'curved') * (c >= 1 ? 0.5 : 0.25), multiplier: Stats.ATK },
-          ],
+          value: [{ scaling: calcScaling(0.33, 0.033, talent, 'curved'), multiplier: Stats.ATK }],
+          multiplier: c >= 1 ? 0.5 : 0.25,
           element: Element.LIGHTNING,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
@@ -246,12 +245,13 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         },
         {
           name: 'Total Single Target',
-          value: [{ scaling: calcScaling(0.33, 0.033, talent, 'curved'), multiplier: Stats.ATK }],
+          value: [
+            { scaling: calcScaling(0.33, 0.033, talent, 'curved'), hits: form.jingyuan_talent, multiplier: Stats.ATK },
+          ],
           element: Element.LIGHTNING,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
           break: 5 * form.jingyuan_talent,
-          multiplier: form.jingyuan_talent,
           cd: form.jingyuan_talent >= 6 && a.a2 ? 0.25 : 0,
           vul,
           sum: true,
@@ -260,12 +260,16 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         {
           name: 'Total Adjacent',
           value: [
-            { scaling: calcScaling(0.33, 0.033, talent, 'curved') * (c >= 1 ? 0.5 : 0.25), multiplier: Stats.ATK },
+            {
+              scaling: calcScaling(0.33, 0.033, talent, 'curved'),
+              hits: form.jingyuan_talent,
+              multiplier: Stats.ATK,
+            },
           ],
+          multiplier: c >= 1 ? 0.5 : 0.25,
           element: Element.LIGHTNING,
           property: TalentProperty.FUA,
           type: TalentType.TALENT,
-          multiplier: form.jingyuan_talent,
           cd: form.jingyuan_talent >= 6 && a.a2 ? 0.25 : 0,
           vul,
           summon: true,
@@ -305,7 +309,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },
@@ -319,7 +323,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },

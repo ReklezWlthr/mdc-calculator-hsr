@@ -178,7 +178,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -188,7 +188,10 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           ? [
               {
                 name: 'Max Single Target DMG',
-                value: [{ scaling: talentBase * 2 + 2, multiplier: Stats.ATK }],
+                value: [
+                  { scaling: talentBase, hits: 2, multiplier: Stats.ATK },
+                  { scaling: 0.5, hits: 4, multiplier: Stats.ATK },
+                ],
                 element: Element.FIRE,
                 property: TalentProperty.FUA,
                 type: TalentType.TALENT,
@@ -218,7 +221,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           : [
               {
                 name: 'Max Single Target DMG',
-                value: [{ scaling: talentBase * 2, multiplier: Stats.ATK }],
+                value: [{ scaling: talentBase, hits: 2, multiplier: Stats.ATK }],
                 element: Element.FIRE,
                 property: TalentProperty.FUA,
                 type: TalentType.TALENT,
@@ -358,7 +361,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.befog) {
         base.BREAK_VUL.push({
@@ -401,7 +404,7 @@ const Lingsha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (a.a2) {
         base.CALLBACK.push((x) => {

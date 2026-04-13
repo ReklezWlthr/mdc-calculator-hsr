@@ -227,7 +227,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         type: DebuffTypes
         count: number
       }[],
-      weakness: Element[]
+      weakness: Element[],
     ) => {
       const base = _.cloneDeep(x)
 
@@ -320,7 +320,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           name: 'Total Single Target DMG',
           value: [
             { scaling: calcScaling(1.4, 0.14, ult, 'curved'), multiplier: Stats.ATK },
-            { scaling: calcScaling(0.55, 0.055, ult, 'curved') * 10, multiplier: Stats.ATK },
+            { scaling: calcScaling(0.55, 0.055, ult, 'curved'), hits: 10, multiplier: Stats.ATK },
           ],
           element: Element.WIND,
           property: TalentProperty.NORMAL,
@@ -417,7 +417,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       base: StatsObject,
       form: Record<string, any>,
       aForm: Record<string, any>,
-      debuffs: { type: DebuffTypes; count: number }[]
+      debuffs: { type: DebuffTypes; count: number }[],
     ) => {
       return base
     },
@@ -425,7 +425,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       base: StatsObject,
       form: Record<string, any>,
       team: StatsObject[],
-      allForm: Record<string, any>[]
+      allForm: Record<string, any>[],
     ) => {
       return base
     },

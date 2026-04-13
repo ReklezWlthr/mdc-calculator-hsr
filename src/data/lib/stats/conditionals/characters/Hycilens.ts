@@ -268,7 +268,7 @@ const Hysilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -469,7 +469,7 @@ const Hysilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.hycilens_skill) {
         base.VULNERABILITY.push({
@@ -519,7 +519,7 @@ const Hysilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (a.a6) {
         base.CALLBACK.push((x, d, w, all) => {
@@ -548,9 +548,12 @@ const Hysilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               item.push({
                 name: `Hysilens's Zone DoT`,
                 value: [
-                  { scaling: calcScaling(0.32, 0.0528, ult, 'hycilens') + (c >= 6 ? 0.2 : 0), multiplier: Stats.ATK },
+                  {
+                    scaling: calcScaling(0.32, 0.0528, ult, 'hycilens') + (c >= 6 ? 0.2 : 0),
+                    hits: _.min([_.size(dot), c >= 6 ? 12 : 8]),
+                    multiplier: Stats.ATK,
+                  },
                 ],
-                multiplier: _.min([_.size(dot), c >= 6 ? 12 : 8]),
                 element: Element.PHYSICAL,
                 property: TalentProperty.DOT,
                 type: TalentType.NONE,
@@ -576,7 +579,7 @@ const Hysilens = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
               multiplier: (item.multiplier || 1) * 1.5,
               sum: true,
               detonate: true,
-            }))
+            })),
           )
 
           return x

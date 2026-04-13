@@ -277,8 +277,9 @@ const Dahlia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         ? [
             {
               name: 'Total Single Target DMG',
-              value: [{ scaling: calcScaling(0.15, 0.015, talent, 'curved'), multiplier: Stats.ATK }],
-              multiplier: c >= 4 ? 10 : 5,
+              value: [
+                { scaling: calcScaling(0.15, 0.015, talent, 'curved'), multiplier: Stats.ATK, hits: c >= 4 ? 10 : 5 },
+              ],
               element: Element.FIRE,
               property: TalentProperty.FUA,
               type: TalentType.TALENT,

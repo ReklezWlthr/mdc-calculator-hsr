@@ -266,7 +266,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       base.MEMO_SKILL_SCALING = [
         {
           name: 'Total Bounce DMG',
-          value: [{ scaling: calcScaling(0.1, 0.01, elation, 'curved') * 8, multiplier: Stats.ELATION }],
+          value: [{ scaling: calcScaling(0.1, 0.01, elation, 'curved'), hits: 8, multiplier: Stats.ELATION }],
           element: Element.LIGHTNING,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,

@@ -336,10 +336,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               name: 'Total Single Target DMG',
               value: [
                 { scaling: calcScaling(0.2, 0.02, skill, 'curved'), multiplier: Stats.ATK },
-                ..._.map(Array(4), (_v) => ({
-                  scaling: calcScaling(0.15, 0.015, skill, 'curved'),
-                  multiplier: Stats.ATK,
-                })),
+                { scaling: calcScaling(0.15, 0.015, skill, 'curved'), hits: 4, multiplier: Stats.ATK },
               ],
               element: Element.PHYSICAL,
               property: TalentProperty.NORMAL,
@@ -393,11 +390,18 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 name: 'Max Single Target DMG',
                 value: [
                   {
-                    scaling:
-                      (form.scourge >= 4 ? calcScaling(2.25, 0.225, skill, 'curved') : 0) +
-                      calcScaling(0.225, 0.0225, skill, 'curved') * 4 * form.scourge,
+                    scaling: calcScaling(0.225, 0.0225, skill, 'curved'),
+                    hits: 4 * form.scourge,
                     multiplier: Stats.ATK,
                   },
+                  ...(form.scourge >= 4
+                    ? [
+                        {
+                          scaling: form.scourge >= 4 ? calcScaling(2.25, 0.225, skill, 'curved') : 0,
+                          multiplier: Stats.ATK,
+                        },
+                      ]
+                    : []),
                 ],
                 element: Element.PHYSICAL,
                 property: TalentProperty.NORMAL,

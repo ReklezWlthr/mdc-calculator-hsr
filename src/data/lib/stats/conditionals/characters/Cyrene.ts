@@ -498,23 +498,16 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       type: 'number',
       id: 'recollection',
       trace: `Memosprite Skill`,
-      text: `Recollection Count`,
-      title: `Recollection Count`,
-      content: `<b class="text-unique-end">✦</b> <b class="${ElementColor[Element.ICE]}">Ode to Ego</b>
-      <br />For every <span class="text-desc">1</span> different teammate (other than <b>Demiurge</b>) from whom Cyrene has gained <b class="text-pink-300">Recollection</b>, additionally deals <span class="text-desc">1</span> instance of <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of <b>Demiurge</b>'s Max HP to one random enemy when <b>Demiurge</b> uses <b>Minuet of Blooms and Plumes</b>.`,
+      text: `Ode to Ego`,
+      title: `Ode to Ego`,
+      content: `For every <span class="text-desc">1</span> different teammate (other than <b>Demiurge</b>) from whom Cyrene has gained <b class="text-pink-300">Recollection</b>, additionally deals <span class="text-desc">1</span> instance of <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of <b>Demiurge</b>'s Max HP to one random enemy when <b>Demiurge</b> uses <b>Minuet of Blooms and Plumes</b>.`,
       value: [{ base: 30, growth: 6, style: 'linear' }],
       show: true,
+      level: memo_skill,
       default: 3,
       min: 0,
       max: 6,
-    },
-    {
-      type: 'toggle',
-      id: 'cyrene_eba',
-      text: `Enhanced Basic Attack`,
-      ...talents.ult,
-      show: true,
-      default: true,
+      unique: true,
     },
     ...chrysosBuffs,
     {
@@ -572,17 +565,9 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     {
       type: 'toggle',
-      id: 'cyrene_ult_cr',
-      text: `Ult CRIT Rate`,
+      id: 'cyrene_ult',
+      text: `Cyrene's Ult`,
       ...talents.ult,
-      show: true,
-      default: true,
-    },
-    {
-      type: 'toggle',
-      id: 'cyrene_memo_talent',
-      text: `Memo. Talent Max HP`,
-      ...talents.summon_talent,
       show: true,
       default: true,
     },
@@ -673,16 +658,13 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       })
       base.CYRENE_SKILL_LEVEL = memo_skill
 
-      if (form.cyrene_eba) base.BA_ALT = true
+      if (form.cyrene_ult) base.BA_ALT = true
 
-      base.BASIC_SCALING = form.cyrene_eba
+      base.BASIC_SCALING = form.cyrene_ult
         ? [
             {
               name: 'Max Single Target DMG',
-              value: [
-                { scaling: calcScaling(0.15, 0.03, basic, 'linear'), multiplier: Stats.HP },
-                { scaling: calcScaling(0.15, 0.03, basic, 'linear'), multiplier: Stats.HP },
-              ],
+              value: [{ scaling: calcScaling(0.15, 0.03, basic, 'linear'), multiplier: Stats.HP, hits: 2 }],
               element: Element.ICE,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
@@ -717,9 +699,8 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           value: [
             { scaling: calcScaling(0.3, 0.06, memo_skill, 'linear'), multiplier: Stats.HP },
             {
-              scaling:
-                (calcScaling(0.3, 0.06, memo_skill, 'linear') + (0.06 * form.cyrene_e4 || 0)) *
-                (form.recollection + (c >= 1 ? 12 : 0)),
+              scaling: calcScaling(0.3, 0.06, memo_skill, 'linear') + (0.06 * form.cyrene_e4 || 0),
+              hits: form.recollection + (c >= 1 ? 12 : 0),
               multiplier: Stats.HP,
             },
           ],
@@ -753,7 +734,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       base.ULT_SCALING = []
       base.TECHNIQUE_SCALING = []
 
-      if (form.cyrene_ult_cr) {
+      if (form.cyrene_ult) {
         base[Stats.CRIT_RATE].push({
           name: `Ultimate`,
           source: 'Self',
@@ -764,8 +745,6 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           source: 'Cyrene',
           value: calcScaling(0.25, 0.025, ult, 'curved'),
         })
-      }
-      if (form.cyrene_memo_talent) {
         base[Stats.P_HP].push({
           name: `Memosprite Talent`,
           source: 'Demiurge',
@@ -857,7 +836,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       weakness: Element[],
       broken: boolean,
       globalCallback: CallbackType[],
-      globalMod: GlobalModifiers
+      globalMod: GlobalModifiers,
     ) => {
       if (x.SUMMON_STATS) {
         globalCallback.push(function P99(_b, _d, _w, all) {

@@ -191,6 +191,7 @@ export const damageStringConstruct = (
       (item) =>
         split *
         item.scaling *
+        (item.hits || 1) *
         (item.override ||
           (item.multiplier === Stats.ATK && atkSplit
             ? stats.getAtk(false, (scaling.atkBonus || 0) + atkSplit)
@@ -252,7 +253,7 @@ export const damageStringConstruct = (
   const scalingArray = _.map(
     capped ? [scaling.cap] : scaling.value,
     (item) =>
-      `(<b>${_.floor(item.override || (item.multiplier === Stats.ATK ? globalAtk : statForScale[item.multiplier])).toLocaleString()}</b> <i class="text-[10px]">${item.multiplier === Stats.EHP ? 'Enemy HP' : StatAbbr[item.multiplier]}</i><span class="mx-0.5"> \u{00d7} </span><b>${toPercentage(item.scaling, 2, true)}</b>)`,
+      `(<b>${_.floor(item.override || (item.multiplier === Stats.ATK ? globalAtk : statForScale[item.multiplier])).toLocaleString()}</b> <i class="text-[10px]">${item.multiplier === Stats.EHP ? 'Enemy HP' : StatAbbr[item.multiplier]}</i><span class="mx-0.5"> \u{00d7} </span><b>${toPercentage(item.scaling, 2, true)}</b>${item.hits ? ` \u{00d7} </span><b class="text-desc">${item.hits}</b>` : ''})`,
   )
   const baseScaling = _.join(scalingArray, ' + ')
   const baseBreakScaling = `(<b class="${

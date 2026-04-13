@@ -244,7 +244,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           name: 'Total Single-Target DMG',
           value: [
             { scaling: calcScaling(0.8, 0.08, ult, 'curved'), multiplier: Stats.ATK },
-            { scaling: calcScaling(0.72, 0.048, ult, 'curved') * (a.a2 ? bounce : 5), multiplier: Stats.ATK },
+            { scaling: calcScaling(0.72, 0.048, ult, 'curved'), multiplier: Stats.ATK, hits: a.a2 ? bounce : 5 },
           ],
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
@@ -254,7 +254,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         },
         {
           name: 'AoE',
-          value: [{ scaling: calcScaling(1.44, 0.096, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.8, 0.08, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
@@ -262,7 +262,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         },
         {
           name: 'DMG per Bounce',
-          value: [{ scaling: calcScaling(0.96, 0.064, ult, 'curved'), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.72, 0.048, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.PHYSICAL,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,

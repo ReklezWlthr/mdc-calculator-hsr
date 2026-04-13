@@ -274,37 +274,6 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               type: TalentType.BA,
               break: 5,
             },
-            ...(form.banger
-              ? [
-                  {
-                    name: 'Certified Banger Main DMG',
-                    value: [{ scaling: calcScaling(0.2, 0.02, talent, 'curved'), multiplier: Stats.ELATION }],
-                    element: Element.FIRE,
-                    property: TalentProperty.ELATION,
-                    type: TalentType.BA,
-                    sum: true,
-                    punchline: form.banger,
-                  },
-                  {
-                    name: 'Certified Banger Adjacent DMG',
-                    value: [{ scaling: calcScaling(0.1, 0.01, talent, 'curved'), multiplier: Stats.ELATION }],
-                    element: Element.FIRE,
-                    property: TalentProperty.ELATION,
-                    type: TalentType.BA,
-                    punchline: form.banger,
-                  },
-                  {
-                    name: 'Certified Banger Bounce DMG',
-                    value: [{ scaling: calcScaling(0.1, 0.01, talent, 'curved'), multiplier: Stats.ELATION }],
-                    multiplier: form.engagement,
-                    element: Element.FIRE,
-                    property: TalentProperty.ELATION,
-                    type: TalentType.BA,
-                    sum: true,
-                    punchline: form.banger,
-                  },
-                ]
-              : []),
           ]
         : [
             {
@@ -324,8 +293,8 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           value: [
             { scaling: calcScaling(0.25, 0.025, elation, 'curved'), multiplier: Stats.ELATION },
             {
-              scaling:
-                calcScaling(0.125, 0.0125, elation, 'curved') * (c >= 6 ? _.min([20 + globalMod.punchline, 40]) : 20),
+              scaling: calcScaling(0.125, 0.0125, elation, 'curved'),
+              hits: c >= 6 ? _.min([20 + globalMod.punchline, 40]) : 20,
               multiplier: Stats.ELATION,
             },
           ],
@@ -362,6 +331,39 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           sum: true,
         },
       ]
+
+      if (form.banger) {
+        base.BASIC_SCALING.push(
+          {
+            name: 'Certified Banger Main DMG',
+            value: [{ scaling: calcScaling(0.2, 0.02, talent, 'curved'), multiplier: Stats.ELATION }],
+            element: Element.FIRE,
+            property: TalentProperty.ELATION,
+            type: TalentType.BA,
+            sum: true,
+            punchline: form.banger,
+          },
+          {
+            name: 'Certified Banger Adjacent DMG',
+            value: [{ scaling: calcScaling(0.1, 0.01, talent, 'curved'), multiplier: Stats.ELATION }],
+            element: Element.FIRE,
+            property: TalentProperty.ELATION,
+            type: TalentType.BA,
+            punchline: form.banger,
+          },
+          {
+            name: 'Certified Banger Bounce DMG',
+            value: [
+              { scaling: calcScaling(0.1, 0.01, talent, 'curved'), hits: form.engagement, multiplier: Stats.ELATION },
+            ],
+            element: Element.FIRE,
+            property: TalentProperty.ELATION,
+            type: TalentType.BA,
+            sum: true,
+            punchline: form.banger,
+          },
+        )
+      }
 
       if (a.a6 && globalMod.punchline) {
         base[Stats.CRIT_DMG].push({
@@ -469,20 +471,18 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             break: 20,
             sum: true,
           },
-          ...(form.banger
-            ? [
-                {
-                  name: 'Certified Banger DMG',
-                  value: [{ scaling: calcScaling(0.24, 0.024, talent, 'curved'), multiplier: Stats.ELATION }],
-                  element: Element.FIRE,
-                  property: TalentProperty.ELATION,
-                  type: TalentType.ULT,
-                  sum: true,
-                  punchline: form.banger,
-                },
-              ]
-            : []),
         ]
+        if (form.banger) {
+          a[index].ULT_SCALING.push({
+            name: 'Certified Banger DMG',
+            value: [{ scaling: calcScaling(0.24, 0.024, talent, 'curved'), multiplier: Stats.ELATION }],
+            element: Element.FIRE,
+            property: TalentProperty.ELATION,
+            type: TalentType.ULT,
+            sum: true,
+            punchline: form.banger,
+          })
+        }
         return a
       })
       return base

@@ -256,9 +256,14 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         {
           name: 'Max Single Target DMG',
           value: [
-            { scaling: calcScaling(0.5, 0.05, elation, 'curved') * (c >= 6 ? 2 : 1), multiplier: Stats.ELATION },
-            { scaling: calcScaling(0.1, 0.01, elation, 'curved') * 5 * (c >= 6 ? 2 : 1), multiplier: Stats.ELATION },
+            { scaling: calcScaling(0.5, 0.05, elation, 'curved'), multiplier: Stats.ELATION },
+            {
+              scaling: calcScaling(0.1, 0.01, elation, 'curved'),
+              multiplier: Stats.ELATION,
+              hits: 5,
+            },
           ],
+          multiplier: c >= 6 ? 2 : 1,
           element: Element.PHYSICAL,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
@@ -267,7 +272,8 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         },
         {
           name: 'AoE',
-          value: [{ scaling: calcScaling(0.5, 0.05, elation, 'curved') * (c >= 6 ? 2 : 1), multiplier: Stats.ELATION }],
+          value: [{ scaling: calcScaling(0.5, 0.05, elation, 'curved'), multiplier: Stats.ELATION }],
+          multiplier: c >= 6 ? 2 : 1,
           element: Element.PHYSICAL,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
@@ -275,7 +281,8 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
         },
         {
           name: 'DMG per Bounce',
-          value: [{ scaling: calcScaling(0.1, 0.01, elation, 'curved') * (c >= 6 ? 2 : 1), multiplier: Stats.ELATION }],
+          value: [{ scaling: calcScaling(0.1, 0.01, elation, 'curved'), multiplier: Stats.ELATION }],
+          multiplier: c >= 6 ? 2 : 1,
           element: Element.PHYSICAL,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,

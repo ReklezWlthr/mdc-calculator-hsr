@@ -104,7 +104,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Cycle Braking`,
-      content: `For every stack of Fighting Will obtained, additionally regenerates <span class="text-desc">3</span> Energy.`,
+      content: `For every stack of <b>Fighting Will</b> obtained, additionally regenerates <span class="text-desc">3</span> Energy.`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
@@ -228,12 +228,22 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
       base.BASIC_SCALING = form.luka_enhance
         ? [
+            {
+              name: 'Total Direct Punch DMG',
+              value: [{ scaling: calcScaling(0.1, 0.02, basic, 'linear'), hits: 3, multiplier: Stats.ATK }],
+              element: Element.PHYSICAL,
+              property: TalentProperty.NORMAL,
+              type: TalentType.BA,
+              break: 10,
+              sum: !a.a6,
+              hitSplit: [1 / 3, 1 / 3, 1 / 3],
+            },
             {
               name: 'Direct Punch DMG',
               value: [{ scaling: calcScaling(0.1, 0.02, basic, 'linear'), multiplier: Stats.ATK }],
@@ -241,7 +251,6 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
               break: 10 / 3,
-              sum: true,
             },
             {
               name: 'Rising Uppercut DMG',
@@ -264,6 +273,19 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               sum: true,
             },
           ]
+      if (a.a6 && form.luka_enhance) {
+        base.BASIC_SCALING.unshift({
+          name: 'Max A6 Direct Punch DMG',
+          value: [{ scaling: calcScaling(0.1, 0.02, basic, 'linear'), hits: 6, multiplier: Stats.ATK }],
+          element: Element.PHYSICAL,
+          property: TalentProperty.NORMAL,
+          type: TalentType.BA,
+          break: 10,
+          sum: true,
+          hitSplit: Array(6).fill(1 / 6),
+          chance: { base: 0.5 ** 3, fixed: true },
+        })
+      }
       base.SKILL_SCALING = [
         {
           name: 'Single Target',
@@ -349,7 +371,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.luka_ult)
         base.VULNERABILITY.push({
@@ -370,13 +392,13 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.luka_enhance)
         base.CALLBACK.push((x, d, w, all) => {
           const bleed = _.filter(
             _.flatMap(all, (item) => item.DOT_SCALING),
-            (item) => _.includes([DebuffTypes.BLEED, DebuffTypes.DOT], item.dotType)
+            (item) => _.includes([DebuffTypes.BLEED, DebuffTypes.DOT], item.dotType),
           )
           x.BASIC_SCALING.push(
             ..._.map(bleed, (item, i) => ({
@@ -386,7 +408,7 @@ const Luka = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
               multiplier: (item.multiplier || 1) * (calcScaling(0.68, 0.017, talent, 'curved') + form.luka_c6 * 0.08),
               sum: true,
               detonate: true,
-            }))
+            })),
           )
           return x
         })

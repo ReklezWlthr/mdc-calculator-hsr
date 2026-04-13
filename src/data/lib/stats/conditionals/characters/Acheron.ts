@@ -193,7 +193,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       debuffs: {
         type: DebuffTypes
         count: number
-      }[]
+      }[],
     ) => {
       const base = _.cloneDeep(x)
 
@@ -361,7 +361,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       if (a.a6) {
         base.ULT_SCALING.push({
           name: 'Total Thunder Core DMG',
-          value: [{ scaling: 0.25 * 6, multiplier: Stats.ATK }],
+          value: [{ scaling: 0.25, hits: 6, multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
@@ -403,7 +403,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base: StatsObject,
       form: Record<string, any>,
       aForm: Record<string, any>,
-      debuffs: { type: DebuffTypes; count: number }[]
+      debuffs: { type: DebuffTypes; count: number }[],
     ) => {
       if (form.crimson_knot) {
         base.ADD_DEBUFF.push({
@@ -424,7 +424,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base: StatsObject,
       form: Record<string, any>,
       team: StatsObject[],
-      allForm: Record<string, any>[]
+      allForm: Record<string, any>[],
     ) => {
       return base
     },

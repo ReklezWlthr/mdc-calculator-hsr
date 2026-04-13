@@ -201,7 +201,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -209,13 +209,18 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         ? [
             {
               name: 'Base DMG',
-              value: [{ scaling: calcScaling(0.4, 0.08, basic, 'linear'), multiplier: Stats.ATK }],
+              value: [
+                {
+                  scaling: calcScaling(0.4, 0.08, basic, 'linear'),
+                  hits: form.h_march_ult ? 5 : 3,
+                  multiplier: Stats.ATK,
+                },
+              ],
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              multiplier: form.h_march_ult ? 5 : 3,
               break: 5 * (form.h_march_ult ? 5 : 3),
-              hitSplit: form.h_march_ult ? [1 / 5, 1 / 5, 1 / 5, 1 / 5, 1 / 5] : [1 / 3, 1 / 3, 1 / 3],
+              hitSplit: Array(form.h_march_ult ? 5 : 3).fill(1 / (form.h_march_ult ? 5 : 3)),
             },
             {
               name: 'DMG Per Hit',
@@ -228,17 +233,20 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             },
             {
               name: 'Max Single Target DMG',
-              value: [{ scaling: calcScaling(0.4, 0.08, basic, 'linear'), multiplier: Stats.ATK }],
+              value: [
+                {
+                  scaling: calcScaling(0.4, 0.08, basic, 'linear'),
+                  multiplier: Stats.ATK,
+                  hits: form.h_march_ult ? 8 : 6,
+                },
+              ],
               element: Element.IMAGINARY,
               property: TalentProperty.NORMAL,
               type: TalentType.BA,
-              multiplier: form.h_march_ult ? 8 : 6,
               break: 5 * (form.h_march_ult ? 8 : 6),
               chance: { base: (form.h_march_ult ? 0.8 : 0.6) ** 3, fixed: true },
               sum: true,
-              hitSplit: form.h_march_ult
-                ? [0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125]
-                : [1 / 6, 1 / 6, 1 / 6, 1 / 6, 1 / 6, 1 / 6],
+              hitSplit: Array(form.h_march_ult ? 8 : 6).fill(1 / (form.h_march_ult ? 8 : 6)),
             },
           ]
         : [
@@ -289,7 +297,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const aIndex = _.findIndex(team, (item) => item?.cId === base.ID) + (base.SUMMON_ID ? 10 : 0)
       if (+form.march_master - 1 === aIndex && form.h_march_a6) {
@@ -316,7 +324,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const memoTarget = +form.march_master >= 11
       const masterIndex = +form.march_master - (memoTarget ? 11 : 1)
@@ -347,7 +355,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         if (
           _.includes(
             [PathType.DESTRUCTION, PathType.HUNT, PathType.ERUDITION, PathType.REMEMBRANCE],
-            team[masterIndex].PATH
+            team[masterIndex].PATH,
           )
         ) {
           const add = {
@@ -364,7 +372,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
               ...add,
               name: `${target.NAME}'s Maximum Additional DMG`,
               multiplier: form.h_march_ult ? 8 : 6,
-            }
+            },
           )
           if (c >= 2) base.SKILL_SCALING.push(add)
         } else {
