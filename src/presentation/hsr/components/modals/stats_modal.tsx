@@ -177,7 +177,7 @@ export const StatsModal = observer(
 
     const elationSpd = compare && teamIndex >= 0 ? setupStore.ahaSpd[teamIndex] : calculatorStore.ahaSpd
     const punchline =
-      compare && teamIndex >= 0 ? calculatorStore.globalMod[teamIndex].punchline : calculatorStore.globalMod.punchline
+      compare && teamIndex >= 0 ? setupStore.globalMod[teamIndex].punchline : calculatorStore.globalMod.punchline
     const ahaSpd = _.size(elationSpd) ? 80 + _.sum(_.map(elationSpd, (es, i) => (es || 0) / (5 * 2 ** i))) : 0
     const punchlineMulti = (5 * punchline) / (+punchline + 240)
 
