@@ -1598,7 +1598,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 15,
     type: PathType.ELATION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Companion',
       detail: `Increases the wearer's CRIT DMG by {{0}}%. After the wearer uses their Ultimate, increases the Elation of all allies by {{1}}%, lasting for <span class="text-desc">1</span> turn(s).`,
@@ -2667,7 +2667,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 24,
     type: PathType.ELATION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Guaranteed Victory',
       detail: `Increases the wearer's SPD by {{0}}%, and the wearer's <b class="elation">Elation DMG</b> ignores {{1}}% of the target's DEF. When the wearer uses their Ultimate on themselves, gains <span class="text-desc">20</span> <b class="text-orange-400">Punchline</b>. This effect can be triggered up to <span class="text-desc">1</span> time, and will be reset after using Basic ATK <span class="text-desc">3</span> time(s).`,

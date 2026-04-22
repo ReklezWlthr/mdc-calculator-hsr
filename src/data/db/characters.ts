@@ -1463,8 +1463,26 @@ export const Characters = [
     rarity: 5,
     path: PathType.ELATION,
     element: Element.IMAGINARY,
-    beta: true,
+    beta: false,
   },
+  // {
+  //   id: '1507',
+  //   name: 'Mortenax Blade',
+  //   jp: '',
+  //   stat: {
+  //     baseAtk: 52.8,
+  //     baseHp: 142.56,
+  //     baseDef: 89.1,
+  //     baseSpd: 110,
+  //     energy: 0,
+  //   },
+  //   trace: [Stats.CRIT_RATE, Stats.ELATION, Stats.SPD],
+  //   rec: [Stats.CRIT_DMG, Stats.CRIT_RATE, Stats.SPD],
+  //   rarity: 5,
+  //   path: PathType.NIHILITY,
+  //   element: Element.FIRE,
+  //   beta: true,
+  // },
 
   // Odd = Male, Even = Female
   {
@@ -1556,6 +1574,6 @@ export const Characters = [
     rarity: 5,
     path: PathType.ELATION,
     element: Element.LIGHTNING,
-    beta: true,
+    beta: false,
   },
 ]
