@@ -162,7 +162,7 @@ export const damageStringConstruct = (
     [Stats.DEF]: stats.getDef(),
     [Stats.HP]: isServant && scaling.useOwnerStats ? ownerStats.getHP() : stats.getHP(),
     [Stats.EHP]: calculatorStore.hp,
-    [Stats.ELATION]: 7535.107,
+    [Stats.ELATION]: BreakBaseLevel[level - 1] * 2,
   }
 
   const bonusDMG = (splitBonus?: number) =>

@@ -136,7 +136,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Dazzling! Persona Kaleidoscope',
-      content: `When there are <span class="text-desc">1/2/(3 or more)</span> Elation characters in the team, using Sparxie's Ultimate will additionally gain <span class="text-desc">2/4/8</span> <b class="text-orange-400">Punchline(s)</b> and <span class="text-desc">1/1/4</span> <b class="text-desc">Thrill(s)</b>.`,
+      content: `When there are <span class="text-desc">1/2/≥3</span> Elation characters in the team, using Sparxie's Ultimate will additionally gain <span class="text-desc">2/4/8</span> <b class="text-orange-400">Punchline(s)</b> and <span class="text-desc">1/1/4</span> <b class="text-desc">Thrill(s)</b>.`,
       image: 'asset/traces/SkillIcon_1501_SkillTree2.webp',
     },
     a6: {

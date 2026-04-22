@@ -48,7 +48,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     },
     normal_alt: {
       trace: 'Enhanced Basic ATK',
-      title: 'Bonus Stage: α Wolf Instant',
+      title: 'Bonus Stage: αWolf Instant',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Silver Wolf LV.999's ATK, split evenly into <span class="text-desc">100</span> bounces that hit random single enemies. After bouncing a certain number of times, the bouncing pauses and triggers <b>Top Loot Box</b> <span class="text-desc">1</span> time, for a total of <span class="text-desc">3</span> triggers.
       <br />If all enemies on the field take fatal damage, this ability ends. After enemy targets that can be attacked emerges, gains <span class="text-desc">1</span> extra turn and uses this ability again based on the remaining bounces and <b>Top Loot Box</b> triggers. The first time this effect triggers per turn, extends the duration of all buffs on this unit by <span class="text-desc">1</span> turn.
       <br />After all of the above DMG is dealt, unleashes a Final Hit that deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Silver Wolf LV.999's ATK, split evenly among all enemies.
@@ -61,7 +61,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       tag: AbilityTag.BOUNCE,
       sp: 0,
       energy: 0,
-      image: 'asset/traces/SkillIcon_1506_Normal.webp',
+      image: 'asset/traces/SkillIcon_1506_Normal02.webp',
     },
     skill: {
       trace: 'Skill',
@@ -194,7 +194,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     },
     c6: {
       trace: 'Eidolon 6',
-      title: 'Max Solo Leveling',
+      title: 'Solo Maxxing!',
       content: `<b class="elation">Elation DMG</b> dealt during Enhanced Basic ATK merrymakes by <span class="text-desc">50%</span>.
       <br />When enemy targets enter combat, they are inflicted with <b class="text-desc">Absolute Weakness</b>: Has All-Type Weakness, and <b>All-Type Base RES</b> is reduced to <span class="text-desc">0</span> (If <b>Base RES</b> is already <span class="text-desc">0</span>, then the corresponding Type <b>RES</b> decreases by <span class="text-desc">20%</span>).`,
       image: 'asset/traces/SkillIcon_1506_Rank6.webp',
@@ -294,6 +294,22 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
               merrymake: form.swsp_e6_merry ? 0.4 : 0,
             },
             {
+              name: 'DMG per Bounce',
+              value: [
+                {
+                  scaling: calcScaling(0.012, 0.0024, basic, 'linear'),
+                  multiplier: form.banger ? Stats.ELATION : Stats.ATK,
+                },
+              ],
+              multiplier: 1 + _.min([_.floor(form.hidden_ranking / 60), 2]) * 0.15,
+              element: Element.IMAGINARY,
+              property: form.banger ? TalentProperty.ELATION : TalentProperty.NORMAL,
+              type: TalentType.BA,
+              break: 0.1,
+              punchline: form.banger,
+              merrymake: form.swsp_e6_merry ? 0.4 : 0,
+            },
+            {
               name: 'Final Hit AoE',
               value: [
                 {
@@ -305,7 +321,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
               element: Element.IMAGINARY,
               property: form.banger ? TalentProperty.ELATION : TalentProperty.NORMAL,
               type: TalentType.BA,
-              break: 10,
+              break: 10 / globalMod.enemy_count,
               sum: true,
               punchline: form.banger,
               merrymake: form.swsp_e6_merry ? 0.4 : 0,
