@@ -726,6 +726,53 @@ export const RelicSets: IArtifact[] = [
       `Diviner's Cloud-Soaring Boots`,
     ],
   },
+  {
+    id: '131',
+    name: `As Navigator Isee Sees It`,
+    icon: '71056',
+    bonus: [{ stat: Stats.P_ATK, value: 0.12 }],
+    bonusAdd: [],
+    desc: [
+      `Increases ATK by <span class="text-desc">12%</span>.`,
+      `When the wearer uses their Ultimate, the Ultimate DMG dealt increases by <span class="text-desc">18%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">3</span> time(s).`,
+    ],
+    set: [
+      `Navigator's Deep Space Mirror`,
+      `Navigator's Game Die`,
+      `Navigator's Astral Chart Uniform`,
+      `Navigator's Everstride Boots`,
+    ],
+  },
+  {
+    id: '132',
+    name: `Divine-Querying Master Smith`,
+    icon: '71057',
+    bonus: [{ stat: Stats.P_HP, value: 0.12 }],
+    bonusAdd: [],
+    add: (base) => {
+      base.CALLBACK.push(function P999(x, d) {
+        if (_.find(d, (item) => item.type === DebuffTypes.DEF_RED)?.count >= 1) {
+          base.X_CRIT_DMG.push({
+            name: '4-Piece',
+            source: `Divine-Querying Master Smith`,
+            value: 0.28,
+          })
+        }
+        return x
+      })
+      return base
+    },
+    desc: [
+      `Increases Max HP by <span class="text-desc">12%</span>.`,
+      `Increases the wearer's CRIT DMG dealt to enemy targets in the DEF reduction state by <span class="text-desc">28%</span>. After the wearer inflicts the DEF reduction state on an enemy target, all allies gain <b>Comburent</b> for <span class="text-desc">2</span> turn(s). This effect cannot be stacked. DMG dealt by ally targets with <b>Comburent</b> increases by <span class="text-desc">15%</span>. This effect can be triggered again after the wearer uses an attack.`,
+    ],
+    set: [
+      `Smith's Fire Beast Mask`,
+      `Smith's Damascus Steel Gauntlets`,
+      `Smith's Fireproof Garment`,
+      `Smith's Unbridled Boots`,
+    ],
+  },
 ]
 
 export const PlanarSets: IArtifact[] = [

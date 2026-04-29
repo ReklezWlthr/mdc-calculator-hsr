@@ -247,6 +247,13 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       value: 0.24,
     })
   }
+  if (form['131']) {
+    base.ULT_DMG.push({
+      name: `4-Piece`,
+      source: `As Navigator Isee Sees It`,
+      value: 0.18 * form['131'],
+    })
+  }
 
   return base
 }
@@ -309,6 +316,12 @@ export const calculateTeamRelic = (base: StatsObject, form: Record<string, any>,
       name: `City of Converging Stars`,
       source: owner.NAME,
       value: 0.12,
+    })
+  if (form['132'] && !checkBuffExist(base[Stats.ALL_DMG], { name: 'Comburent' }))
+    base[Stats.ALL_DMG].push({
+      name: `Comburent`,
+      source: owner.NAME,
+      value: 0.15,
     })
 
   return base

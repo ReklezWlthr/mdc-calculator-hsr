@@ -2696,6 +2696,24 @@ export const LightCones = [
       ],
     },
   },
+  {
+    id: '23059',
+    name: `Reforged in Hellfire`,
+    rarity: 5,
+    baseHp: 57.6,
+    baseAtk: 21.6,
+    baseDef: 21,
+    type: PathType.NIHILITY,
+    beta: true,
+    desc: {
+      name: 'Hone',
+      detail: `Increases the wearer's Max HP by {{0}}%. At the start of each wave, the wearer regenerates <span class="text-desc">20</span> Energy. After the wearer uses a Skill Attack, inflicts the target with the <b>Purgatory</b> state, lasting for <span class="text-desc">20</span> turn(s). While in the <b>Purgatory</b> state, CRIT DMG taken by the target increases by {{1}}%, and CRIT DMG taken from the wearer additionally increases by {{1}}%.`,
+      properties: [
+        { base: 24, growth: 6 },
+        { base: 30, growth: 7.5 },
+      ],
+    },
+  },
   //---------------------
   //   Herta 5 Star
   //---------------------

@@ -310,6 +310,29 @@ export const ArtifactForm = () => {
       id: '326_2',
       excludeSummon: true,
     },
+    {
+      type: 'number',
+      text: `Ultimate DMG Bonus Stacks`,
+      title: `Ultimate DMG Bonus Stacks`,
+      content: `When the wearer uses their Ultimate, the Ultimate DMG dealt increases by <span class="text-desc">18%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">3</span> time(s).`,
+      show: true,
+      default: 1,
+      min: 0,
+      max: 3,
+      duration: 2,
+      id: '131',
+      excludeSummon: true,
+    },
+    {
+      type: 'toggle',
+      text: `Comburent`,
+      title: `Comburent`,
+      content: `DMG dealt by ally targets with <b>Comburent</b> increases by <span class="text-desc">15%</span>.`,
+      show: true,
+      default: true,
+      id: '132',
+      excludeSummon: true,
+    },
   ]
 
   // Team-Wide
@@ -321,6 +344,7 @@ export const ArtifactForm = () => {
     findContentById(content, '323'),
     findContentById(content, '130'),
     findContentById(content, '326_2'),
+    findContentById(content, '132'),
   ]
 
   // Single-Target

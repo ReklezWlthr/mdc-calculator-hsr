@@ -1,6 +1,16 @@
 [
   {
     "version": "1.2-4",
+    "date": "Mar 17th, 2026",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v4.3 Beta 1</span>",
+      "New Character: <span class=\"text-hsr-fire\">Mortenax Blade</span>",
+      "New Light Cone: <span class=\"text-desc\">Reforged in Hellfire</span>",
+      "New Relic Sets: <span class=\"text-desc\">As Navigator Isee Sees It</span>, and <span class=\"text-desc\">Divine-Querying Master Smith</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Mar 31th, 2026",
     "desc": [
       "Content Version: <span class=\"text-desc\">v4.2 Beta 4</span>",

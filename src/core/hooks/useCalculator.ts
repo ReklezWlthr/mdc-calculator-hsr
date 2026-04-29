@@ -393,7 +393,7 @@ export const useCalculator = ({
               own: postArtifact[i],
               owner: i,
               totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
-              index: i,
+              index,
               debuffs,
               globalMod,
             })
@@ -404,7 +404,7 @@ export const useCalculator = ({
                 own: postArtifact[i].SUMMON_STATS,
                 owner: i,
                 totalEnergy: _.sumBy(postArtifact, (pa) => pa.MAX_ENERGY),
-                index: i,
+                index,
                 debuffs,
                 globalMod,
               })

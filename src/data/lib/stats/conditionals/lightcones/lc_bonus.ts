@@ -1813,6 +1813,17 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23059',
+    scaling: (base, r) => {
+      base[Stats.P_HP].push({
+        name: 'Passive',
+        source: `Reforged in Hellfire`,
+        value: calcRefinement(0.24, 0.06, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

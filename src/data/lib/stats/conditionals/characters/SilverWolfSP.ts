@@ -123,7 +123,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     },
     unique_talent: {
       trace: 'Exclusive Talent',
-      title: `"999" Security Guard`,
+      title: `McAwolfee 999`,
       content: `After obtaining Silver Wolf LV.999 or when Silver Wolf LV.999 is in the current team, gain the following effect: In Combat, when an enemy target inflicts a Crowd Control debuff on an ally, all allies gain <b class="text-desc">Firewall</b> for <span class="text-desc">1</span> turn. While in the <b class="text-desc">Firewall</b> state, ally targets are immune to Crowd Control debuffs inflicted by enemy targets. This effect can trigger at most <span class="text-desc">1</span> time per wave.`,
       value: [],
       level: talent,

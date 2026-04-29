@@ -2824,4 +2824,28 @@ export const LCTeamConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `Purgatory`,
+    show: true,
+    default: true,
+    id: '23059',
+    scaling: (base, form, r, { index, owner, debuffs, own }) => {
+      if (form['23059']) {
+        if (index === owner) {
+          addDebuff(debuffs, DebuffTypes.OTHER)
+        }
+        base.ADD_DEBUFF.push({
+          name: 'Purgatory',
+          source: base.NAME === own?.NAME ? 'Self' : own?.NAME,
+        })
+        base.X_CRIT_DMG.push({
+          name: `Purgatory`,
+          source: 'Reforged in Hellfire',
+          value: calcRefinement(0.3, 0.075, r) * (index === owner ? 2 : 1),
+        })
+      }
+      return base
+    },
+  },
 ]

@@ -84,6 +84,7 @@ import Ashveil from './characters/Ashveil'
 import SilverWolfSP from './characters/SilverWolfSP'
 import Evanescia from './characters/Evanescia'
 import EMC from './characters/EMC'
+import MBlade from './characters/MBlade'
 
 export default [
   { id: '1001', conditionals: March },
@@ -167,6 +168,7 @@ export default [
   { id: '1504', conditionals: Ashveil },
   { id: '1505', conditionals: Evanescia },
   { id: '1506', conditionals: SilverWolfSP },
+  { id: '1507', conditionals: MBlade },
   // MCs
   { id: '8001', conditionals: DMC },
   { id: '8003', conditionals: PMC },

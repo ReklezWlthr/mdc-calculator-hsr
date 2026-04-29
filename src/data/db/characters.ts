@@ -1465,24 +1465,24 @@ export const Characters = [
     element: Element.IMAGINARY,
     beta: false,
   },
-  // {
-  //   id: '1507',
-  //   name: 'Mortenax Blade',
-  //   jp: '',
-  //   stat: {
-  //     baseAtk: 52.8,
-  //     baseHp: 142.56,
-  //     baseDef: 89.1,
-  //     baseSpd: 110,
-  //     energy: 0,
-  //   },
-  //   trace: [Stats.CRIT_RATE, Stats.ELATION, Stats.SPD],
-  //   rec: [Stats.CRIT_DMG, Stats.CRIT_RATE, Stats.SPD],
-  //   rarity: 5,
-  //   path: PathType.NIHILITY,
-  //   element: Element.FIRE,
-  //   beta: true,
-  // },
+  {
+    id: '1507',
+    name: 'Mortenax Blade',
+    jp: '',
+    stat: {
+      baseAtk: 73.92,
+      baseHp: 184.8,
+      baseDef: 66,
+      baseSpd: 107,
+      energy: 80,
+    },
+    trace: [Stats.FIRE_DMG, Stats.P_HP, Stats.CRIT_RATE],
+    rec: [Stats.CRIT_DMG, Stats.CRIT_RATE, Stats.SPD, Stats.P_HP],
+    rarity: 5,
+    path: PathType.NIHILITY,
+    element: Element.FIRE,
+    beta: true,
+  },
 
   // Odd = Male, Even = Female
   {
