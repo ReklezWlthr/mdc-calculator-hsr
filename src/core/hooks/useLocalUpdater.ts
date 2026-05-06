@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { formatMinorTrace } from '../utils/data_format'
 import { findCharacter } from '../utils/finder'
+import { buffedList } from '@src/data/lib/stats/conditionals/conditionals_base'
 
 export const useLocalUpdater = (game: string) => {
   const router = useRouter()
@@ -46,30 +47,44 @@ export const useLocalUpdater = (game: string) => {
 
   useEffect(() => {
     if (hydrated && settingStore.settings.storeData) {
+      const team = _.map(teamStore.characters, (c) => {
+        if (!c?.cId) return c
+        const charData = findCharacter(c.cId)
+        const buffed = _.includes(buffedList, c.cId) && !(settingStore.settings.liveOnly && charData.novaBeta)
+        return {
+          ...c,
+          minor_traces: formatMinorTrace(
+            buffed && settingStore.settings.buffed[c.cId]
+              ? findCharacter(c.cId)?.novaTrace
+              : findCharacter(c.cId)?.trace,
+            _.map(c.minor_traces, (v) => v?.toggled || false),
+            findCharacter(c.cId)?.overwrite,
+          ),
+        }
+      })
+      const characters = _.map(charStore.characters, (c) => {
+        const charData = findCharacter(c.cId)
+        const buffed = _.includes(buffedList, c.cId) && !(settingStore.settings.liveOnly && charData.novaBeta)
+        return {
+          ...c,
+          minor_traces: formatMinorTrace(
+            buffed && settingStore.settings.buffed[c.cId]
+              ? findCharacter(c.cId)?.novaTrace
+              : findCharacter(c.cId)?.trace,
+            _.map(c.minor_traces, (v) => v.toggled),
+            findCharacter(c.cId)?.overwrite,
+          ),
+        }
+      })
+      // teamStore.setValue('characters', team)
+      // charStore.setValue('characters', characters)
       localStorage.setItem(
         key,
         JSON.stringify({
-          team: _.map(teamStore.characters, (c) => {
-            if (!c?.cId) return c
-            return {
-              ...c,
-              minor_traces: formatMinorTrace(
-                findCharacter(c.cId)?.trace,
-                _.map(c.minor_traces, (v) => v?.toggled || false),
-                findCharacter(c.cId)?.overwrite,
-              ),
-            }
-          }),
+          team,
           artifacts: artifactStore.artifacts,
           builds: buildStore.builds,
-          characters: _.map(charStore.characters, (c) => ({
-            ...c,
-            minor_traces: formatMinorTrace(
-              findCharacter(c.cId)?.trace,
-              _.map(c.minor_traces, (v) => v.toggled),
-              findCharacter(c.cId)?.overwrite,
-            ),
-          })),
+          characters,
           setup: setupStore.team,
         }),
       )
@@ -80,6 +95,7 @@ export const useLocalUpdater = (game: string) => {
     buildStore.builds,
     charStore.characters,
     settingStore.settings.storeData,
+    settingStore.settings.liveOnly,
     setupStore.team,
   ])
 
@@ -109,7 +125,7 @@ export const useLocalUpdater = (game: string) => {
     updateSettings(settings)
 
     setHydrated(true)
-  }, [router.asPath])
+  }, [router.asPath, settingStore.settings.liveOnly])
 
   return { data, updateData, hydrated }
 }

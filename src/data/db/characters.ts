@@ -75,7 +75,7 @@ export const Characters = [
     path: PathType.NIHILITY,
     element: Element.IMAGINARY,
     beta: false,
-    novaBeta: true,
+    novaBeta: false,
   },
   {
     id: '1005',

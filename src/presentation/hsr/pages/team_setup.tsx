@@ -120,10 +120,10 @@ export const TeamSetup = observer(() => {
 
   const buffed = _.includes(buffedList, char.cId) && !(settingStore.settings.liveOnly && charData.novaBeta)
   const buffToggled = settingStore.settings.buffed[char.cId]
-  const talent = _.find(
-    settingStore.settings.buffed[char.cId] || !buffed ? ConditionalsObject : OldConditionalsObject,
-    ['id', char.cId],
-  )?.conditionals(char?.cons, char?.major_traces, char?.talents, teamStore.characters)
+  const talent = _.find(buffed && buffToggled ? ConditionalsObject : OldConditionalsObject, [
+    'id',
+    char.cId,
+  ])?.conditionals(char?.cons, char?.major_traces, char?.talents, teamStore.characters)
 
   return (
     <div className="w-full customScrollbar">
@@ -206,7 +206,7 @@ export const TeamSetup = observer(() => {
                 id={char?.cId}
                 data={char?.minor_traces}
                 onClick={(i) => teamStore.toggleMinorTrace(selected, i)}
-                buffed={buffToggled}
+                buffed={buffed && buffToggled}
               />
             </div>
           </div>

@@ -1,7 +1,14 @@
 [
   {
     "version": "1.2-4",
-    "date": "Mar 17th, 2026",
+    "date": "May 6th, 2026",
+    "desc": [
+      "Fixed: <span class=\"text-hsr-imaginary\">Welt</span>'s Novaflare should work as intended"
+    ]
+  },
+  {
+    "version": "1.2-4",
+    "date": "Apr 17th, 2026",
     "desc": [
       "Content Version: <span class=\"text-desc\">v4.3 Beta 1</span>",
       "New Character: <span class=\"text-hsr-fire\">Mortenax Blade</span>",
