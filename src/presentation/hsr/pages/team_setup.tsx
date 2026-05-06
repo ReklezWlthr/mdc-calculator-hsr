@@ -120,7 +120,7 @@ export const TeamSetup = observer(() => {
 
   const buffed = _.includes(buffedList, char.cId) && !(settingStore.settings.liveOnly && charData.novaBeta)
   const buffToggled = settingStore.settings.buffed[char.cId]
-  const talent = _.find(buffed && buffToggled ? ConditionalsObject : OldConditionalsObject, [
+  const talent = _.find(buffToggled || !buffed ? ConditionalsObject : OldConditionalsObject, [
     'id',
     char.cId,
   ])?.conditionals(char?.cons, char?.major_traces, char?.talents, teamStore.characters)
