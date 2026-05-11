@@ -350,12 +350,12 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           })
         }
         if (a.a6) {
-          base[Stats.ALL_DMG].push({
-            name: `Ascension 6 Passive`,
-            source: 'Self',
-            value: c >= 4 ? 1 : 0.5,
-          })
           if (nihilityCount > 1) {
+            base[Stats.ALL_DMG].push({
+              name: `Ascension 6 Passive`,
+              source: 'Self',
+              value: c >= 4 ? 1 : 0.5,
+            })
             base.ULT_DMG.push({
               name: `Ascension 6 Passive`,
               source: 'Self',
@@ -365,7 +365,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
             base[Stats.ALL_DMG].push({
               name: `Ascension 6 Passive`,
               source: 'Self',
-              value: 0.75,
+              value: c >= 4 ? 1.75 : 0.125,
             })
           }
         }
