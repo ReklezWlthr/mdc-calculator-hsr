@@ -2707,7 +2707,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Hone',
-      detail: `Increases the wearer's Max HP by {{0}}%. At the start of the wearer's turn, they regenerate a fixed amount of <span class="text-desc">20</span> Energy. This effect can trigger <span class="text-desc">1</span> time each wave. After the wearer uses a Skill Attack, inflicts the target with the <b>Purgatory</b> state, lasting for <span class="text-desc">20</span> turn(s). While in the <b>Purgatory</b> state, CRIT DMG taken by the target increases by {{0}}%, and CRIT DMG taken from the wearer additionally increases by {{0}}%.`,
+      detail: `Increases the wearer's Max HP by {{0}}%. At the start of the wearer's turn, they regenerate a fixed amount of <span class="text-desc">20</span> Energy. This effect can trigger <span class="text-desc">1</span> time each wave. After the wearer uses a Skill Attack, inflicts the target with the <b>Purgatory</b> state, lasting for <span class="text-desc">2</span> turn(s). While in the <b>Purgatory</b> state, CRIT DMG taken by the target increases by {{0}}%, and CRIT DMG taken from the wearer additionally increases by {{0}}%.`,
       properties: [{ base: 30, growth: 7.5 }],
     },
   },
