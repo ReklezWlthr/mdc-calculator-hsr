@@ -365,7 +365,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
             base[Stats.ALL_DMG].push({
               name: `Ascension 6 Passive`,
               source: 'Self',
-              value: c >= 4 ? 1.75 : 0.125,
+              value: c >= 4 ? 1.75 : 1.25,
             })
           }
         }
