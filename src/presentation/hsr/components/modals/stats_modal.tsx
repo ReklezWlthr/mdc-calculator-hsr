@@ -376,9 +376,7 @@ export const StatsModal = observer(
                 <p className="font-bold text-white">
                   eHP{' '}
                   <span className="text-red">
-                    {_.round(
-                      stats.getHP() / defMult / (1 - stats.getValue(StatsObjectKeys.DMG_REDUCTION)),
-                    ).toLocaleString()}
+                    {_.round(stats.getHP() / defMult / (1 - stats.getDmgRed())).toLocaleString()}
                   </span>
                   <Tooltip
                     title="eHP: Effective HP"
@@ -396,8 +394,7 @@ export const StatsModal = observer(
                 </BulletPoint>
                 <BulletPoint>
                   <span className="text-xs">
-                    DMG Reduction Multiplier{' '}
-                    <span className="text-desc">{toPercentage(1 - stats.getValue(StatsObjectKeys.DMG_REDUCTION))}</span>
+                    DMG Reduction Multiplier <span className="text-desc">{toPercentage(1 - stats.getDmgRed())}</span>
                   </span>
                 </BulletPoint>
               </div>

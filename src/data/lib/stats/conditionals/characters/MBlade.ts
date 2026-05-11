@@ -21,10 +21,10 @@ import { CallbackType } from '@src/domain/stats'
 
 const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
-    basic: c >= 3 ? 1 : 0,
-    skill: c >= 3 ? 2 : 0,
-    ult: c >= 5 ? 2 : 0,
-    talent: c >= 5 ? 2 : 0,
+    basic: c >= 5 ? 1 : 0,
+    skill: c >= 5 ? 2 : 0,
+    ult: c >= 3 ? 2 : 0,
+    talent: c >= 3 ? 2 : 0,
   }
   const basic = t.basic + upgrade.basic
   const skill = t.skill + upgrade.skill
@@ -280,18 +280,20 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           break: 5,
         },
       ]
-      base.ULT_SCALING = [
-        {
-          name: 'AoE',
-          value: [{ scaling: calcScaling(2.1, 0.14, ult, 'curved'), multiplier: Stats.HP }],
-          element: Element.FIRE,
-          property: c >= 2 ? TalentProperty.FUA : TalentProperty.NORMAL,
-          type: TalentType.ULT,
-          break: 20,
-          sum: true,
-          multiplier: c >= 6 ? 1.5 : 1,
-        },
-      ]
+      base.ULT_SCALING = form.mblade_ult
+        ? [
+            {
+              name: 'AoE',
+              value: [{ scaling: calcScaling(2.1, 0.14, ult, 'curved'), multiplier: Stats.HP }],
+              element: Element.FIRE,
+              property: c >= 2 ? TalentProperty.FUA : TalentProperty.NORMAL,
+              type: TalentType.ULT,
+              break: 20,
+              sum: true,
+              multiplier: c >= 6 ? 1.5 : 1,
+            },
+          ]
+        : []
       base.TALENT_SCALING = [
         {
           name: 'Total Single Target DMG',
