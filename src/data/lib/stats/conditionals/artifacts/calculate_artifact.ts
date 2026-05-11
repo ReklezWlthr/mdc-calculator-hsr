@@ -248,6 +248,11 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
     })
   }
   if (form['131']) {
+    base.SKILL_DMG.push({
+      name: `4-Piece`,
+      source: `As Navigator Isee Sees It`,
+      value: 0.18 * form['131'],
+    })
     base.ULT_DMG.push({
       name: `4-Piece`,
       source: `As Navigator Isee Sees It`,

@@ -1555,7 +1555,7 @@ export const LightCones = [
   },
   {
     id: '22005',
-    name: `Maze Restaurant Forever`,
+    name: `The Forever Victual`,
     rarity: 4,
     baseHp: 43.2,
     baseAtk: 21.6,
@@ -1563,7 +1563,7 @@ export const LightCones = [
     type: PathType.HARMONY,
     beta: false,
     desc: {
-      name: 'So good!',
+      name: 'So Good!',
       detail: `Increases the wearer's ATK by {{0}}%. After using their Skill, the wearer's ATK increases by {{1}}%, stacking up to <span class="text-desc">3</span> times.`,
       properties: [
         { base: 16, growth: 4 },
@@ -2700,18 +2700,15 @@ export const LightCones = [
     id: '23059',
     name: `Reforged in Hellfire`,
     rarity: 5,
-    baseHp: 57.6,
-    baseAtk: 21.6,
+    baseHp: 62.4,
+    baseAtk: 19.2,
     baseDef: 21,
     type: PathType.NIHILITY,
     beta: true,
     desc: {
       name: 'Hone',
-      detail: `Increases the wearer's Max HP by {{0}}%. At the start of each wave, the wearer regenerates <span class="text-desc">20</span> Energy. After the wearer uses a Skill Attack, inflicts the target with the <b>Purgatory</b> state, lasting for <span class="text-desc">20</span> turn(s). While in the <b>Purgatory</b> state, CRIT DMG taken by the target increases by {{1}}%, and CRIT DMG taken from the wearer additionally increases by {{1}}%.`,
-      properties: [
-        { base: 24, growth: 6 },
-        { base: 30, growth: 7.5 },
-      ],
+      detail: `Increases the wearer's Max HP by {{0}}%. At the start of the wearer's turn, they regenerate a fixed amount of <span class="text-desc">20</span> Energy. This effect can trigger <span class="text-desc">1</span> time each wave. After the wearer uses a Skill Attack, inflicts the target with the <b>Purgatory</b> state, lasting for <span class="text-desc">20</span> turn(s). While in the <b>Purgatory</b> state, CRIT DMG taken by the target increases by {{0}}%, and CRIT DMG taken from the wearer additionally increases by {{0}}%.`,
+      properties: [{ base: 30, growth: 7.5 }],
     },
   },
   //---------------------

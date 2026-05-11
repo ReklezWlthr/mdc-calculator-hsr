@@ -1,10 +1,18 @@
 [
   {
     "version": "1.2-4",
-    "date": "May 6th, 2026",
+    "date": "May 11th, 2026",
     "desc": [
-      "Fixed: <span class=\"text-hsr-imaginary\">Welt</span>'s Novaflare should work as intended"
+      "Content Version: <span class=\"text-desc\">v4.3 Beta 2</span>",
+      "Updated Character: <span class=\"text-hsr-fire\">Mortenax Blade</span>",
+      "Updated Light Cone: <span class=\"text-desc\">Reforged in Hellfire</span>",
+      "Updated Relic Sets: <span class=\"text-desc\">As Navigator Isee Sees It</span>"
     ]
+  },
+  {
+    "version": "1.2-4",
+    "date": "May 6th, 2026",
+    "desc": ["Fixed: <span class=\"text-hsr-imaginary\">Welt</span>'s Novaflare should work as intended"]
   },
   {
     "version": "1.2-4",

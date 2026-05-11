@@ -734,7 +734,7 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [],
     desc: [
       `Increases ATK by <span class="text-desc">12%</span>.`,
-      `When the wearer uses their Ultimate, the Ultimate DMG dealt increases by <span class="text-desc">18%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">3</span> time(s).`,
+      `When the wearer enters combat or uses Skill, their Skill and Ultimate DMG dealt increases by <span class="text-desc">18%</span>, stacking up to <span class="text-desc">3</span> time(s). At the start of the wearer's turn or after using their Ultimate, removes <span class="text-desc">1</span> stack(s) of this effect.`,
     ],
     set: [
       `Navigator's Deep Space Mirror`,

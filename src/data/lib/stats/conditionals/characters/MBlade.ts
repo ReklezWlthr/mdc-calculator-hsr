@@ -60,8 +60,8 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 30,
       trace: 'Skill',
       title: `A Rain of Blades Seals Fate`,
-      content: `Consumes HP equal to <span class="text-desc">15%</span> of Mortenax Blade's Max HP and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Mortenax Blade's Max HP to all enemies, and additionally deals <span class="text-desc">4</span> instance(s) of DMG, with each instance dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Mortenax Blade's Max HP to one random enemy.
-      <br />If the current HP is insufficient, Mortenax Blade's current HP will be reduced to <span class="text-desc">1</span> when using his Skill.
+      content: `Consumes HP equal to <span class="text-desc">10%</span> of Mortenax Blade's Max HP and deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Mortenax Blade's Max HP to all enemies. If the current HP is insufficient, current HP will be reduced to <span class="text-desc">1</span>. Additionally deals <span class="text-desc">4</span> instance(s) of DMG, with each instance dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Mortenax Blade's Max HP to one random enemy.
+      <br />When not in the <b class="text-orange-400">Infinite Fury</b> state or when current HP is <span class="text-desc">1</span> or lower, Mortenax Blade cannot use his Skill.
       <br />Using Skill does not consume Skill Points.`,
       value: [
         { base: 36, growth: 3.6, style: 'curved' },
@@ -76,11 +76,10 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 5,
       trace: 'Ultimate',
       title: 'Fornax Ex Corpore',
-      content: `Inflicts <b class="text-red">Balefire Bind</b> on all enemies. Enemy targets in the <b class="text-red">Balefire Bind</b> state have their DEF reduced by {{0}}% and DMG received increased by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). Then, consumes HP equal to <span class="text-desc">30%</span> of Mortenax Blade's Max HP to deploy a Zone. While the Zone is active, Mortenax Blade enters the <b class="text-orange-400">Infinite Fury</b> state.
-      <br />While in the <b class="text-orange-400">Infinite Fury</b> state, CRIT Rate increases by <span class="text-desc">20%</span> and CRIT DMG increases by {{2}}%, unlocks his Skill, and gains a new Ultimate <b>Tenax Per Ignem</b>. When receiving a killing blow, this unit will not be knocked down, but will dispel the Zone, exit the <b class="text-orange-400">Infinite Fury</b> state, and recover HP equal to <span class="text-desc">50%</span> of this unit's Max HP.
+      content: `Inflicts <b class="text-red">Balefire Bind</b> on all enemies. Enemy targets in the <b class="text-red">Balefire Bind</b> state have their DEF reduced by {{0}}% and DMG received increased by {{1}}%, lasting for <span class="text-desc">2</span> turn(s). Then, consumes HP equal to <span class="text-desc">20%</span> of Mortenax Blade's Max HP to deploy a Zone. While the Zone is active, Mortenax Blade enters the <b class="text-orange-400">Infinite Fury</b> state.
+      <br />While in the <b class="text-orange-400">Infinite Fury</b> state, CRIT Rate increases by <span class="text-desc">20%</span> and CRIT DMG increases by {{2}}%, unlocks his Skill, and gains a new Ultimate <b>Tenax Per Ignem</b>. When receiving a killing blow, this unit will not be knocked down, but will dispel the Zone, exit the <b class="text-orange-400">Infinite Fury</b> state, and restore HP equal to <span class="text-desc">50%</span> of this unit's Max HP.
       <br />When entering the <b class="text-orange-400">Infinite Fury</b> state, a corresponding countdown appears on the Action Order. The countdown has a fixed SPD of <span class="text-desc">70</span>. At the start of the countdown's turn, dispels the Zone and exits the <b class="text-orange-400">Infinite Fury</b> state.
-      <br />If the current HP is insufficient, Mortenax Blade's current HP will be reduced to <span class="text-desc">1</span> when using this ability.
-      <br />Mortenax Blade cannot use his Skill when not in the <b class="text-orange-400">Infinite Fury</b> state.`,
+      <br />If the current HP is insufficient, Mortenax Blade's current HP will be reduced to <span class="text-desc">1</span> when using this ability.`,
       value: [
         { base: 20, growth: 1, style: 'curved' },
         { base: 30, growth: 2, style: 'curved' },
@@ -95,7 +94,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       trace: 'Ultimate',
       title: 'Tenax Per Ignem',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Mortenax Blade's Max HP to all enemies.`,
-      value: [{ base: 180, growth: 12, style: 'curved' }],
+      value: [{ base: 210, growth: 14, style: 'curved' }],
       level: ult,
       tag: AbilityTag.AOE,
       image: 'asset/traces/SkillIcon_1507_Ultra02_on.webp',
@@ -103,7 +102,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     talent: {
       trace: 'Talent',
       title: `All Karma Comes Due`,
-      content: `While the Zone is active, after each attack an ally target uses on an enemy, inflicts the <b class="text-red">Balefire Bind</b> state on the corresponding enemy target and grants <span class="text-desc">1</span> <b>Charge</b> to Mortenax Blade. When <b>Charge</b> reaches <span class="text-desc">9</span> points, Mortenax Blade consumes <span class="text-desc">9</span> <b>Charge</b> points, regenerates {{0}} Energy, and uses his Skill <span class="text-desc">1</span> extra time. This extra Skill usage does not consume HP and is considered as a <u>Follow-Up ATK</u>.`,
+      content: `While the Zone is active, after each attack an ally target uses on an enemy, inflicts the <b class="text-red">Balefire Bind</b> state on the corresponding enemy target and grants <span class="text-desc">1</span> <b>Charge</b> to Mortenax Blade. When <b>Charge</b> reaches <span class="text-desc">9</span> points and Mortenax Blade's current HP is more than <span class="text-desc">1</span>, Mortenax Blade consumes <span class="text-desc">9</span> <b>Charge</b> points, regenerates {{0}} Energy, and uses his Skill <span class="text-desc">1</span> extra time. This extra Skill usage is considered as a <u>Follow-Up ATK</u>.`,
       value: [{ base: 15, growth: 1, style: 'curved' }],
       level: talent,
       tag: AbilityTag.IMPAIR,
@@ -119,13 +118,13 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Heart, Refined ad Infinitum',
-      content: `While the Zone is active, DMG dealt by ally targets increases by <span class="text-desc">50%</span>. If there are other Nihility characters aside from Mortenax Blade in the ally team, Ultimate DMG dealt by ally targets increases by <span class="text-desc">50%</span>. Otherwise, <u>Follow-Up ATK</u> DMG dealt by ally targets increases by <span class="text-desc">50%</span>.`,
+      content: `While the Zone is active, DMG dealt by ally targets increases by <span class="text-desc">50%</span>. If there are other Nihility characters aside from Mortenax Blade in the ally team, Ultimate DMG dealt by ally targets increases by <span class="text-desc">75%</span>. Otherwise, DMG dealt by Mortenax Blade additionally increases by <span class="text-desc">75%</span>.`,
       image: 'asset/traces/SkillIcon_1507_SkillTree3.webp',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Soul, Tempered ad Mortem',
-      content: `While the Zone is active, increases the chance of being attacked by enemies. After being attacked, inflicts the <b class="text-red">Balefire Bind</b> state on the attacker and Mortenax Blade gains <span class="text-desc">1</span> <b>Charge</b>.`,
+      content: `While the Zone is active, increases the chance of being attacked by enemies, decreases DMG taken by this unit by <span class="text-desc">50%</span>, and increases Incoming Healing by <span class="text-desc">50%</span>. After being attacked, inflicts the <b class="text-red">Balefire Bind</b> state on the attacker, and Mortenax Blade gains <span class="text-desc">1</span> <b>Charge</b>.`,
       image: 'asset/traces/SkillIcon_1507_SkillTree2.webp',
     },
     a2: {
@@ -143,7 +142,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c2: {
       trace: 'Eidolon 2',
       title: `Ash Was My Heart, Yet the Flame Stayed`,
-      content: `Increases DMG dealt by the extra Skill from Talent by <span class="text-desc">50%</span>. When an ally character uses their Ultimate to deal DMG, it is considered as launching a <u>Follow-Up ATK</u>. While the Zone is active, when other allies use a <u>Follow-Up ATK</u>, Mortenax Blade gains <span class="text-desc">1</span> Charge. This effect can be triggered up to <span class="text-desc">9</span> time(s), and the trigger count resets at the start of Mortenax Blade's turn or when the Zone is deployed.`,
+      content: `When an ally character deals DMG by using their Ultimate, it is considered as having launched a <u>Follow-Up ATK</u>. The <u>Follow-Up ATK</u> DMG dealt by ally targets increases by <span class="text-desc">75%</span>.`,
       image: 'asset/traces/SkillIcon_1507_Rank2.webp',
     },
     c3: {
@@ -284,7 +283,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       base.ULT_SCALING = [
         {
           name: 'AoE',
-          value: [{ scaling: calcScaling(1.8, 0.12, ult, 'curved'), multiplier: Stats.HP }],
+          value: [{ scaling: calcScaling(2.1, 0.14, ult, 'curved'), multiplier: Stats.HP }],
           element: Element.FIRE,
           property: c >= 2 ? TalentProperty.FUA : TalentProperty.NORMAL,
           type: TalentType.ULT,
@@ -338,6 +337,18 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           source: 'Self',
           value: calcScaling(0.3, 0.03, ult, 'curved'),
         })
+        if (a.a4) {
+          base.DMG_REDUCTION.push({
+            name: `Ascension 4 Passive`,
+            source: 'Self',
+            value: 0.5,
+          })
+          base.I_HEAL.push({
+            name: `Ascension 4 Passive`,
+            source: 'Self',
+            value: 0.5,
+          })
+        }
         if (a.a6) {
           base[Stats.ALL_DMG].push({
             name: `Ascension 6 Passive`,
@@ -348,13 +359,13 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
             base.ULT_DMG.push({
               name: `Ascension 6 Passive`,
               source: 'Self',
-              value: 0.5,
+              value: 0.75,
             })
           } else {
-            base.FUA_DMG.push({
+            base[Stats.ALL_DMG].push({
               name: `Ascension 6 Passive`,
               source: 'Self',
-              value: 0.5,
+              value: 0.75,
             })
           }
         }
@@ -366,6 +377,13 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           })
           addDebuff(debuffs, DebuffTypes.OTHER)
         }
+      }
+      if (c >= 2) {
+        base.FUA_DMG.push({
+          name: `Eidolon 2`,
+          source: 'Self',
+          value: 0.75,
+        })
       }
       if (form.balefire_bind) {
         base.VULNERABILITY.push({
@@ -411,13 +429,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
             base.ULT_DMG.push({
               name: `Ascension 6 Passive`,
               source: 'Mortenax Blade',
-              value: 0.5,
-            })
-          } else {
-            base.FUA_DMG.push({
-              name: `Ascension 6 Passive`,
-              source: 'Mortenax Blade',
-              value: 0.5,
+              value: 0.75,
             })
           }
         }
@@ -428,6 +440,13 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
             value: 0.2,
           })
         }
+      }
+      if (c >= 2) {
+        base.FUA_DMG.push({
+          name: `Eidolon 2`,
+          source: 'Mortenax Blade',
+          value: 0.75,
+        })
       }
       if (form.balefire_bind) {
         base.VULNERABILITY.push({
@@ -458,17 +477,6 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       globalCallback: CallbackType[],
       globalMod: GlobalModifiers,
     ) => {
-      globalCallback.push(function P999(_x, _d, _w, a) {
-        if (c >= 2) {
-          _.forEach(a, (c) => {
-            c.ULT_SCALING = _.map(c.ULT_SCALING, (u) =>
-              u.property === TalentProperty.NORMAL ? { ...u, property: TalentProperty.FUA } : u,
-            )
-          })
-        }
-        return a
-      })
-
       return base
     },
   }
