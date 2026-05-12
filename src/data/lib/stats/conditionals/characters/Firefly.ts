@@ -129,7 +129,7 @@ const Firefly = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c2: {
       trace: 'Eidolon 2',
       title: `From Shattered Sky, I Free Fall`,
-      content: `While in the <b class="text-hsr-fire">Complete Combustion</b> state, using the Enhanced Basic ATK or the Enhanced Skill to defeat an enemy target or to Break their Weakness allows SAM to immediately gain <span class="text-desc">1</span> extra turn. This effect can only trigger <span class="text-desc">1</span> time per turn, and the trigger count resets at the start of SAM's turn.`,
+      content: `While in <b class="text-hsr-fire">Complete Combustion</b>, using the Enhanced Basic ATK or the Enhanced Skill to defeat an enemy target or to Break their Weakness allows SAM to immediately gain <span class="text-desc">1</span> extra turn. This effect can only trigger <span class="text-desc">1</span> time per turn, and the trigger count resets at the start of SAM's turn.`,
     },
     c3: {
       trace: 'Eidolon 3',

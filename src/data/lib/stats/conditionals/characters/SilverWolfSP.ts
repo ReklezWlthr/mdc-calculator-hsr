@@ -49,10 +49,10 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     normal_alt: {
       trace: 'Enhanced Basic ATK',
       title: 'Bonus Stage: αWolf Instant',
-      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Silver Wolf LV.999's ATK, split evenly into <span class="text-desc">100</span> bounces that hit random single enemies. After bouncing a certain number of times, the bouncing pauses and triggers <b>Top Loot Box</b> <span class="text-desc">1</span> time, for a total of <span class="text-desc">3</span> triggers.
-      <br />If all enemies on the field take fatal damage, this ability ends. After enemy targets that can be attacked emerges, gains <span class="text-desc">1</span> extra turn and uses this ability again based on the remaining bounces and <b>Top Loot Box</b> triggers. The first time this effect triggers per turn, extends the duration of all buffs on this unit by <span class="text-desc">1</span> turn.
-      <br />After all of the above DMG is dealt, unleashes a Final Hit that deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Silver Wolf LV.999's ATK, split evenly among all enemies.
-      <br />Enhanced Basic ATK cannot recover Skill Points. For every <span class="text-desc">60</span> points of <b class="text-violet-300">Hidden MMR</b>, increases DMG dealt during Enhanced Basic ATK by <span class="text-desc">15%</span> of the original DMG, stackable up to <span class="text-desc">2</span> times.`,
+      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to a total of {{0}}% of Silver Wolf LV.999's ATK, split evenly into <span class="text-desc">100</span> hits that bounce onto random single enemies. After every set number of bounces, the bouncing pauses and the <b>Top Loot Box</b> triggers <span class="text-desc">1</span> time. Can trigger up to <span class="text-desc">3</span> time(s) in total.
+      <br />When dealing fatal damage to all enemies on the field, this ability ends. After attackable enemy targets appear, gains <span class="text-desc">1</span> extra turn and uses this ability again based on the remaining number of bounces and <b>Top Loot Box</b> triggers. The first time this effect triggers in each turn, extends the duration of all buffs on this unit by <span class="text-desc">1</span> turn.
+      <br />After all of the above DMG is dealt, launches a Final Hit that deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{1}}% of Silver Wolf LV.999's ATK, split evenly among all enemies.
+      <br />Enhanced Basic ATK cannot recover Skill Points. For every <span class="text-desc">60</span> points of <b class="text-violet-300">Hidden MMR</b> held, increases DMG dealt during Enhanced Basic ATK by <span class="text-desc">15%</span> of the original DMG, stacking up to <span class="text-desc">2</span> time(s).`,
       value: [
         { base: 120, growth: 24, style: 'linear' },
         { base: 50, growth: 10, style: 'linear' },
@@ -94,11 +94,11 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       trace: 'Ultimate',
       title: `God Mode: ON!`,
       content: `Enters the <b class="text-red">Godmode Player</b> state, and advances action by <span class="text-desc">100%</span>.
-      <br />Deploys a Zone while in the <b class="text-red">Godmode Player</b> state. While Silver Wolf LV.999 possesses <b class="text-blue">Certified Banger</b>, each time an ally target within the Zone consumes <span class="text-desc">1</span> Skill Point, there is a chance to trigger <span class="text-desc">1</span> instance of Silver Wolf LV.999's <b>Top Loot Box</b>: Deal <b class="text-hsr-imaginary">Imaginary</b> <b class="elation">Elation DMG</b> equal to {{0}}% split evenly among all enemies, and randomly trigger <span class="text-desc">1</span> of the following effects:
-      <br /><b class="text-true">Big Flipping Sword</b>: Additionally deals <b class="text-true">True DMG</b> to the enemy target with the highest HP equal to <span class="text-desc">20%</span> of the total DMG dealt this time;
-      <br /><b class="text-sky-300">Kaboom Eggsplosion</b>: Recovers <span class="text-desc">2</span> Skill Point(s);
-      <br /><b class="text-orange-300">Funky Munch Bean</b>: Gains <span class="text-desc">3</span> <b class="text-orange-400">Punchline(s)</b>.
-      <br />The initial <u>fixed chance</u> to trigger this effect is <span class="text-desc">100%</span>. After successfully triggering, the <u>fixed chance</u> for the subsequent trigger is reduced to <span class="text-desc">20%</span> of the current chance. If the target is defeated before triggering, this effect triggers on the enemy target that just entered instead.`,
+      <br />Deploys a Zone while in the <b class="text-red">Godmode Player</b> state. While Silver Wolf LV.999 holds <b class="text-blue">Certified Banger</b>, for every <span class="text-desc">1</span> Skill Point consumed by an ally target within the Zone, there is a chance to trigger <span class="text-desc">1</span> instance of Silver Wolf LV.999's <b>Top Loot Box</b>: Deals {{0}}% <b class="text-hsr-imaginary">Imaginary</b> <b class="elation">Elation DMG</b> that is distributed evenly among all enemies, and randomly triggers <span class="text-desc">1</span> of the following effects:
+      <br /><b class="text-true">Big Flipping Sword</b>: Additionally deals <b class="text-true">True DMG</b> equal to <span class="text-desc">20%</span> of the total DMG dealt this time to the enemy target with the highest HP.
+      <br /><b class="text-sky-300">Kaboom Eggsplosion</b>: Recovers <span class="text-desc">2</span> Skill Point(s).
+      <br /><b class="text-orange-300">Funky Munch Bean</b>: Gains <span class="text-desc">3</span> <b class="text-orange-400">Punchline</b> point(s).
+      <br />The initial <u>fixed chance</u> to trigger the effect is <span class="text-desc">100%</span>. After a successfully trigger, the <u>fixed chance</u> for the next trigger is reduced to <span class="text-desc">20%</span> of the current chance. If the target is defeated before it triggers, it will instead trigger on a newly entering enemy target.`,
       value: [{ base: 45, growth: 4.5, style: 'curved' }],
       level: ult,
       tag: AbilityTag.AOE,
@@ -108,10 +108,10 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     talent: {
       trace: `Talent`,
       title: `I Carry, We Win`,
-      content: `After reaching <span class="text-desc">60</span> <b class="text-violet-300">Hidden MMR</b> points, the Ultimate can be activated. After reaching the maximum limit, it can overflow by an additional <span class="text-desc">240</span> point(s).
-      <br />When gaining <b class="text-orange-400">Punchline</b>, Silver Wolf LV.999 also gains an equal amount of <b class="text-violet-300">Hidden MMR</b>. Each point of <b class="text-violet-300">Hidden MMR</b> increases CRIT Rate by {{1}}%. After CRIT Rate increases to <span class="text-desc">100%</span>, each remaining point of <b class="text-violet-300">Hidden MMR</b> switches to increasing CRIT DMG by {{2}}%.
-      <br />While in the <b class="text-red">Godmode Player</b> state, Silver Wolf LV.999 is immune to Crowd Control debuffs, cannot use her Ultimate, and gains Enhanced Basic ATK and Enhanced Elation Skill. After completely using Enhanced Basic ATK usage <span class="text-desc">3</span> time(s), she exits the <b class="text-red">Godmode Player</b> state. After exiting the <b class="text-red">Godmode Player</b> state, <b class="text-violet-300">Hidden MMR</b> is cleared.
-      <br />While in possession of <b class="text-blue">Certified Banger</b>, using Basic ATK or Skill against attacked enemy targets deals {{0}}% <b class="text-hsr-imaginary">Imaginary</b> <b class="elation">Elation DMG</b>. Enhanced Basic ATK's ability DMG is converted to <b class="elation">Elation DMG</b> at the same multiplier.`,
+      content: `After <b class="text-violet-300">Hidden MMR</b> reaches <span class="text-desc">60</span>, can activate Ultimate. And after reaching its maximum limit, it can overflow by an additional <span class="text-desc">240</span> point(s).
+      <br />When gaining <b class="text-orange-400">Punchline</b>, Silver Wolf LV.999 also gains an equal amount of <b class="text-violet-300">Hidden MMR</b>. Each point of <b class="text-violet-300">Hidden MMR</b> increases CRIT Rate by {{1}}%. Once CRIT Rate reaches <span class="text-desc">100%</span>, each additional point of <b class="text-violet-300">Hidden MMR</b> instead increases CRIT DMG by {{2}}%.
+      <br />While in the <b class="text-red">Godmode Player</b> state, Silver Wolf LV.999 becomes immune to Crowd Control debuffs, cannot use Ultimate, and gains Enhanced Basic ATK and Enhanced Elation Skill. After fully using Enhanced Basic ATK usage <span class="text-desc">3</span> time(s), she exits the <b class="text-red">Godmode Player</b> state. When exiting the <b class="text-red">Godmode Player</b> state, clears <b class="text-violet-300">Hidden MMR</b>.
+      <br />While holding <b class="text-blue">Certified Banger</b>, using Basic ATK or Skill deals {{0}}% <b class="text-hsr-imaginary">Imaginary</b> <b class="elation">Elation DMG</b> to the attacked enemy targets. And the Enhanced Basic ATK's ability DMG changes to <b class="elation">Elation DMG</b> at the same multiplier.`,
       value: [
         { base: 20, growth: 2, style: 'curved' },
         { base: 0.2, growth: 0.02, style: 'curved' },
@@ -135,7 +135,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       title: 'This? Absolute Meta!',
       content: `Summons <b class="text-orange-300">Funky Munch Bean</b>. Use again to dismiss. Using Technique does not consume Technique Points. When Technique Points reach <span class="text-desc">0</span>, the summon is dismissed and Technique cannot be used.
       <br /><b class="text-orange-300">Funky Munch Bean</b> causes Normal Enemies within a certain range to enter a Terrified state. It will also automatically search for and attack Normal Enemies, consuming <span class="text-desc">1</span> Technique Point to instantly defeat them without entering combat.
-      <br />While <b class="text-orange-300">Funky Munch Bean</b> is present, after entering combat, <span class="text-desc">1</span> instance of <b>Top Loot Box</b> from <b class="text-orange-300">Funky Munch Bean</b> is triggered at the start of each wave. The <b class="elation">Elation DMG</b> dealt in this instance takes into account a fixed amount of <span class="text-desc">99</span> <b class="text-blue">Certified Banger</b> points.`,
+      <br />While <b class="text-orange-300">Funky Munch Bean</b> is present, after entering combat, <span class="text-desc">1</span> instance of <b>Top Loot Box</b> from <b class="text-orange-300">Funky Munch Bean</b> is triggered at the start of each wave. A fixed amount of <span class="text-desc">99</span> <b class="text-blue">Certified Banger</b> is taken into account for the <b class="elation">Elation DMG</b> dealt in this instance.`,
       tag: AbilityTag.SUMMON,
       image: 'asset/traces/SkillIcon_1506_Maze.webp',
     },
@@ -148,26 +148,26 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'True Ending Unlocked',
-      content: `If the number of <b class="text-orange-400">Punchlines</b> taken into account when using an Elation Skill is <span class="text-desc">20</span> or more, gain an additional <span class="text-desc">20</span> <b class="text-violet-300">Hidden MMR</b> points (if <span class="text-desc">40</span> or more, gain <span class="text-desc">20</span> points on top of that).`,
+      content: `If the number of <b class="text-orange-400">Punchline</b> points taken into account when using Elation Skill is <span class="text-desc">20</span> or more, additionally gains <span class="text-desc">20</span> <b class="text-violet-300">Hidden MMR</b> points (And if it's <span class="text-desc">40</span> or more, then gains <span class="text-desc">20</span> more points on top of that).`,
       image: 'asset/traces/SkillIcon_1506_SkillTree2.webp',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Secret Level Maxed',
-      content: `After entering the <b class="text-red">Godmode Player</b> state, gains <span class="text-desc">20</span> point(s) of <b class="text-violet-300">Hidden MMR</b>.`,
+      content: `After entering the <b class="text-red">Godmode Player</b> state, gains <span class="text-desc">20</span> <b class="text-violet-300">Hidden MMR</b> point(s).`,
       image: 'asset/traces/SkillIcon_1506_SkillTree3.webp',
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Aether Editing: Eidolon +1',
-      content: `Increases the DMG taken by enemy targets in the Zone by <span class="text-desc">20%</span>.
-      <br />When leaving the <b class="text-red">Godmode Player</b> state, <b class="text-violet-300">Hidden MMR</b> will not be cleared, <span class="text-desc">20%</span> of <b class="text-violet-300">Hidden MMR</b> will be retained instead.`,
+      content: `Enemy targets in the Zone take <span class="text-desc">20%</span> increased DMG.
+      <br />When exiting the <b class="text-red">Godmode Player</b> state, <b class="text-violet-300">Hidden MMR</b> will not be cleared. Instead, <span class="text-desc">20%</span> of <b class="text-violet-300">Hidden MMR</b> will be retained instead.`,
       image: 'asset/traces/SkillIcon_1506_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `It's a Feature, Not a Bug`,
-      content: `After entering the <b class="text-red">Godmode Player</b> state, all buffs on this unit are extended by <span class="text-desc">1</span> turn. In the current <b class="text-red">Godmode Player</b> state, for every <span class="text-desc">120</span> point(s) of <b class="text-violet-300">Hidden MMR</b> (including the initial <b class="text-violet-300">Hidden MMR</b>) increased, Silver Wolf LV.999 gains <span class="text-desc">1</span> extra turn and regains <span class="text-desc">1</span> use of Enhanced Basic ATK.`,
+      content: `After entering the <b class="text-red">Godmode Player</b> state, extends the duration of all buffs on this unit by <span class="text-desc">1</span> turn. In the current <b class="text-red">Godmode Player</b> state, for every <span class="text-desc">120</span> point(s) of <b class="text-violet-300">Hidden MMR</b> increased (including the initial <b class="text-violet-300">Hidden MMR</b>), Silver Wolf LV.999 gains <span class="text-desc">1</span> extra turn and regains <span class="text-desc">1</span> use of Enhanced Basic ATK.`,
       image: 'asset/traces/SkillIcon_1506_Rank2.webp',
     },
     c3: {
@@ -181,7 +181,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     c4: {
       trace: 'Eidolon 4',
       title: 'I Came. I Saw. I One-Shot.',
-      content: `<b class="elation">Elation DMG</b> dealt by <b>Honkai-DMG Demo</b> additionally takes into account <b class="text-orange-400">Punchline</b> points times <span class="text-desc">5</span>.`,
+      content: `<b class="elation">Elation DMG</b> dealt by <b>Honkai-DMG Demo</b> additionally takes into account <b class="text-orange-400">Punchline</b>, equal to the original amount multiplied by <span class="text-desc">5</span>.`,
       image: 'asset/traces/SkillIcon_1506_Rank4.webp',
     },
     c5: {
@@ -196,7 +196,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       trace: 'Eidolon 6',
       title: 'Solo Maxxing!',
       content: `<b class="elation">Elation DMG</b> dealt during Enhanced Basic ATK merrymakes by <span class="text-desc">50%</span>.
-      <br />When enemy targets enter combat, they are inflicted with <b class="text-desc">Absolute Weakness</b>: Has All-Type Weakness, and <b>All-Type Base RES</b> is reduced to <span class="text-desc">0</span> (If <b>Base RES</b> is already <span class="text-desc">0</span>, then the corresponding Type <b>RES</b> decreases by <span class="text-desc">20%</span>).`,
+      <br />When enemy targets enter combat, they are implanted with <b class="text-desc">Absolute Weakness</b>: Has All-Type Weakness, and reduces their <b>All-Type Base RES</b> to <span class="text-desc">0</span>. (If <b>Base RES</b> is already <span class="text-desc">0</span>, then the corresponding Type <b>RES</b> decreases by <span class="text-desc">20%</span> instead).`,
       image: 'asset/traces/SkillIcon_1506_Rank6.webp',
     },
   }

@@ -61,7 +61,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       participantId: 120,
       trace: 'Elation Skill',
       title: 'I Said "Elation," Did I Stutter?',
-      content: `Deals <span class="text-desc">8</span> instances of DMG, with each instance dealing {{0}}% <b class="text-hsr-lightning">Lightning</b> <b class="elation">Elation DMG</b> to one random enemy. Then, deals {{1}}% <b class="text-hsr-lightning">Lightning</b> <b class="elation">Elation DMG</b>, which is split evenly among all enemies.`,
+      content: `Deals <span class="text-desc">8</span> instances of DMG, with each instance dealing {{0}}% <b class="text-hsr-lightning">Lightning</b> <b class="elation">Elation DMG</b> to one random enemy. At last, deals {{1}}% <b class="text-hsr-lightning">Lightning</b> <b class="elation">Elation DMG</b>, which is split evenly among all enemies.`,
       value: [
         { base: 10, growth: 1, style: 'curved' },
         { base: 30, growth: 3, style: 'curved' },
@@ -74,9 +74,9 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     ult: {
       trace: 'Ultimate',
       title: `May the Trailblaze Fly You Starward`,
-      content: `Gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b> point(s), increases the CRIT DMG of a designated ally by {{0}}% for <span class="text-desc">3</span> turn(s), and dispels Crowd Control debuffs from them.
-      <br />If the target possesses an Elation Skill, they additionally gain <span class="text-desc">10</span> point(s) of <b class="text-blue">Certified Banger</b> and immediately use their Elation Skill <span class="text-desc">1</span> time, taking a fixed amount of <span class="text-desc">20</span> <b class="text-orange-400">Punchline</b> point(s) into account. If the enemy target is defeated before the Elation Skill is unleashed, the Elation Skill is unleashed on enemy targets that just entered combat instead.
-      <br />If the target does not possess an Elation Skill, their action advances by <span class="text-desc">50%</span>.`,
+      content: `Gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b> point(s). Increases the CRIT DMG of one designated ally by {{0}}% for <span class="text-desc">3</span> turn(s), and dispels Crowd Control debuffs on them.
+      <br />If the target has Elation Skill, they additionally gain <span class="text-desc">10</span> point(s) of <b class="text-blue">Certified Banger</b> and immediately use their Elation Skill <span class="text-desc">1</span> time, taking into account a fixed amount of <span class="text-desc">20</span> <b class="text-orange-400">Punchline</b> point(s). If the enemy target is defeated before the Elation Skill is unleashed, then the Elation Skill is instead launched on a newly entering enemy target.
+      <br />If the target does not have an Elation Skill, their action advances by <span class="text-desc">50%</span>.`,
       value: [{ base: 30, growth: 2, style: 'curved' }],
       level: ult,
       tag: AbilityTag.SUPPORT,
@@ -96,9 +96,9 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     technique: {
       trace: 'Technique',
       title: `We Are So Back!`,
-      content: `After using Technique, <span class="text-desc">1</span> of the following effects will be randomly granted:
-      <br />Small chance to gain <b class="text-desc">Hearty Laughter</b>: Increases Elation by <span class="text-desc">30%</span>.
-      <br />High chance to gain <b class="text-red">Irrepressible Laughter</b>: Increases Elation by <span class="text-desc">20%</span>.
+      content: `After using Technique, randomly gains <span class="text-desc">1</span> of the following effects:
+      <br />A low chance to gain <b class="text-desc">Hearty Laughter</b>: Increases Elation by <span class="text-desc">30%</span>.
+      <br />A high chance to gain <b class="text-red">Irrepressible Laughter</b>: Increases Elation by <span class="text-desc">20%</span>.
       <br />When the next battle begins, increases all allies' Elation stat by the corresponding amount for <span class="text-desc">3</span> turn(s).`,
       tag: AbilityTag.ENHANCE,
       image: 'asset/traces/SkillIcon_8009_Maze.webp',
@@ -106,7 +106,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Faster! Faster!',
-      content: `For every <span class="text-desc">200</span> point(s) of ATK that exceeds <span class="text-desc">1,000</span>, increases this unit's Elation by <span class="text-desc">10%</span>, up to a maximum increase of <span class="text-desc">60%</span>.`,
+      content: `For every <span class="text-desc">200</span> point(s) of ATK that exceeds <span class="text-desc">1,000</span>, increases this unit's Elation stat by <span class="text-desc">10%</span>, up to a maximum increase of <span class="text-desc">60%</span>.`,
       image: 'asset/traces/SkillIcon_8009_SkillTree1.webp',
     },
     a4: {
@@ -124,13 +124,13 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     c1: {
       trace: 'Eidolon 1',
       title: 'Believe In the Light',
-      content: `After using a Skill, the next Ultimate increases the <b class="text-blue">Certified Banger</b> gained by ally targets by <span class="text-desc">2</span>. This effect can stack up to <span class="text-desc">3</span> times.`,
+      content: `After using Skill, the next Ultimate increases amount of the <b class="text-blue">Certified Banger</b> gained by ally targets by <span class="text-desc">2</span>. This effect can stack up to <span class="text-desc">3</span> time(s).`,
       image: 'asset/traces/SkillIcon_8009_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'History in the Making...',
-      content: `Ultimate additionally increases the Elation of a designated ally by <span class="text-desc">12%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `Ultimate additionally increases the Elation of one designated ally by <span class="text-desc">12%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
       image: 'asset/traces/SkillIcon_8009_Rank2.webp',
     },
     c3: {
@@ -144,7 +144,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     c4: {
       trace: 'Eidolon 4',
       title: 'Save the World. Just Because.',
-      content: `When using an Elation Skill, increases DMG taken by enemy targets by <span class="text-desc">12%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
+      content: `When using Elation Skill, increases DMG taken by enemy targets by <span class="text-desc">12%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
       image: 'asset/traces/SkillIcon_8009_Rank4.webp',
     },
     c5: {

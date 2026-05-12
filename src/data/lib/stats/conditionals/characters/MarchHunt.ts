@@ -51,7 +51,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       title: `Shifu, It's Tea Time!`,
       content: `Designates a single ally (excluding this unit) as <b class="text-hsr-imaginary">Shifu</b> and increases <b class="text-hsr-imaginary">Shifu</b>'s SPD by {{0}}%. Only the most recent target of March 7th's Skill is considered as <b class="text-hsr-imaginary">Shifu</b>.
       <br />When using Basic ATK or dealing <span class="text-desc">1</span> hit of Enhanced Basic ATK's DMG, triggers the corresponding effect if <b class="text-hsr-imaginary">Shifu</b> with the specified Path is present on the field:
-      <br /><b>Erudition, Destruction, The Hunt, Remembrance</b>: Deals <b>Additional DMG</b> (DMG Type based on <b class="text-hsr-imaginary">Shifu</b>'s Combat Type) equal to {{1}}% of March 7th's ATK.
+      <br /><b>Erudition, Destruction, The Hunt, Remembrance, Elation</b>: Deals <b>Additional DMG</b> (DMG Type based on <b class="text-hsr-imaginary">Shifu</b>'s Combat Type) equal to {{1}}% of March 7th's ATK.
       <br /><b>Harmony, Nihility, Preservation, Abundance</b>: Increases the Toughness Reduction of this instance of DMG by <span class="text-desc">100%</span>.`,
       value: [
         { base: 6, growth: 0.4, style: 'curved' },
@@ -354,7 +354,7 @@ const MarchHunt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           })
         if (
           _.includes(
-            [PathType.DESTRUCTION, PathType.HUNT, PathType.ERUDITION, PathType.REMEMBRANCE],
+            [PathType.DESTRUCTION, PathType.HUNT, PathType.ERUDITION, PathType.REMEMBRANCE, PathType.ELATION],
             team[masterIndex].PATH,
           )
         ) {

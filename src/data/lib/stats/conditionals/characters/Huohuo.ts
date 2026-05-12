@@ -36,7 +36,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 20,
       trace: 'Basic ATK',
       title: `Banner: Stormcaller`,
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Huohuo's Max HP to a target enemy.`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Huohuo's Max HP to one designated enemy.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
@@ -46,7 +46,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       energy: 30,
       trace: 'Skill',
       title: `Talisman: Protection`,
-      content: `Dispels <span class="text-desc">1</span> debuff(s) from a single target ally and immediately restores this ally's HP by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}. At the same time, restores HP for allies that are adjacent to this target ally by an amount equal to {{2}}% of Huohuo's Max HP plus {{3}}.`,
+      content: `Dispels <span class="text-desc">1</span> debuff(s) from one designated ally and immediately restores this ally's HP by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}. At the same time, restores HP for allies that are adjacent to this target ally by an amount equal to {{2}}% of Huohuo's Max HP plus {{3}}.`,
       value: [
         { base: 16, growth: 1, style: 'heal' },
         { base: 160, growth: 96, style: 'flat' },
@@ -72,7 +72,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     talent: {
       trace: 'Talent',
       title: `Possession: Ethereal Metaflow`,
-      content: `After using her Skill or Ultimate, Huohuo gains <b class="text-hsr-wind">Divine Provision</b>, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> turn at the start of each Huohuo's turn. When Huohuo has <b class="text-hsr-wind">Divine Provision</b> at the start of an ally target's turn or when they use their Ultimate, restores HP for that ally and the ally with the lowest HP percentage by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}. Then, restores HP for every ally with a current HP percentage at or below <span class="text-desc">50%</span> by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}.
+      content: `After using her Skill or Ultimate, Huohuo gains <b class="text-hsr-wind">Divine Provision</b>, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> turn at the start of each Huohuo's turn. When Huohuo has <b class="text-hsr-wind">Divine Provision</b> at the start of an ally target's turn or when they use their Ultimate, restores HP for that ally target and the ally target with the lowest HP percentage by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}. Then, restores HP for every ally with a current HP percentage at or below <span class="text-desc">50%</span> by an amount equal to {{0}}% of Huohuo's Max HP plus {{1}}.
       <br />When <b class="text-hsr-wind">Divine Provision</b> is triggered to heal an ally target, dispels <span class="text-desc">1</span> debuff(s) from that target. This effect can be triggered <span class="text-desc">6</span> time(s). Gaining <b class="text-hsr-wind">Divine Provision</b> again resets the effect's trigger count.`,
       value: [
         { base: 3, growth: 0.1875, style: 'heal' },
@@ -84,7 +84,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     technique: {
       trace: 'Technique',
       title: `Fiend: Impeachment of Evil`,
-      content: `Huohuo terrorizes surrounding enemies, afflicting Horror-Struck on them. Enemies in Horror-Struck will flee away from Huohuo for <span class="text-desc">10</span> second(s). When entering battle with enemies in Horror-Struck, there is a <span class="text-desc">100%</span> <u>base chance</u> of reducing every single enemy's ATK by <span class="text-desc">25%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `Huohuo terrorizes surrounding enemies, inflicting Horror-Struck on them. Enemies in Horror-Struck will flee away from Huohuo for <span class="text-desc">10</span> second(s). When entering combat with enemies in Horror-Struck, there is a <span class="text-desc">100%</span> <u>base chance</u> of reducing every single enemy's ATK by <span class="text-desc">25%</span> for <span class="text-desc">2</span> turn(s).`,
       tag: AbilityTag.IMPAIR,
     },
     a2: {
@@ -100,7 +100,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Stress Reaction to Horror`,
-      content: `When her Talent is triggered to heal allies, Huohuo regenerates <span class="text-desc">1</span> Energy.`,
+      content: `When her Talent is triggered to heal ally targets, Huohuo regenerates <span class="text-desc">1</span> Energy.`,
     },
     c1: {
       trace: 'Eidolon 1',
@@ -121,7 +121,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c4: {
       trace: 'Eidolon 4',
       title: `Tied in Life, Bound to Strife`,
-      content: `When healing a target ally via Skill or Talent, the less HP the target ally currently has, the higher the amount of healing they will receive. The maximum increase in healing provided by Huohuo is <span class="text-desc">80%</span>.`,
+      content: `When healing an ally target via Skill or Talent, the less HP the target ally currently has, the higher the amount of healing they will receive. The maximum increase in healing provided by Huohuo is <span class="text-desc">80%</span>.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -132,7 +132,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c6: {
       trace: 'Eidolon 6',
       title: `Woven Together, Cohere Forever`,
-      content: `When healing a target ally, increases the target ally's DMG dealt by <span class="text-desc">50%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `When healing an ally target, increases the ally target's DMG dealt by <span class="text-desc">50%</span> for <span class="text-desc">2</span> turn(s).`,
     },
   }
 

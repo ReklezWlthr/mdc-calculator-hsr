@@ -162,12 +162,12 @@ const Evernight = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Kindle the Morn, Drop the Rain`,
-      content: `When there are <span class="text-desc">1/2/3/4</span> or more Remembrance characters in the team, while Evernight's Skill persists, additionally increases all memosprites' CRIT DMG by <span class="text-desc">5%/15%/50%/65%</span>.`,
+      content: `When there are <span class="text-desc">1/2/3/≥4</span> Remembrance characters in the team, while Evernight's Skill persists, additionally increases all memosprites' CRIT DMG by <span class="text-desc">5%/15%/50%/65%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Sleep Tight, the Night Dreams Long`,
-      content: `When Evernight is on the field and when there are <span class="text-desc">4 or more/3/2/1</span> enemy targets on the field, ally memosprites deal <span class="text-desc">120%/125%/130%/150%</span> of their original DMG respectively.`,
+      content: `When Evernight is on the field and when there are <span class="text-desc">(≥4)/3/2/1</span> enemy targets on the field, ally memosprites deal <span class="text-desc">120%/125%/130%/150%</span> of their original DMG respectively.`,
     },
     c2: {
       trace: 'Eidolon 2',

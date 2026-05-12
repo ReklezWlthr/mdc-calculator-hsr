@@ -35,7 +35,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       energy: 30,
       trace: 'Skill',
       title: 'Edge of the Void',
-      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to a single enemy and further deals DMG <span class="text-desc">4</span> extra times, with each time dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to one random enemy. On hit, there is a {{1}}% <u>base chance</u> to reduce the enemy's SPD by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to a single enemy and additionally deals DMG <span class="text-desc">4</span> times, with each time dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to one random enemy. On hit, there is a {{1}}% <u>base chance</u> to reduce the enemy's SPD by <span class="text-desc">10%</span> for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 36, growth: 3.6, style: 'curved' },
         { base: 65, growth: 1, style: 'curved' },
@@ -49,7 +49,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       trace: 'Ultimate',
       title: 'Synthetic Black Hole',
       content: `Deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to {{0}}% of Welt's ATK to all enemies. Has a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-imaginary">Imprison</b> hit enemy targets for <span class="text-desc">1</span> turn.
-      <br />While <b class="text-hsr-imaginary">Imprisoned</b>, enemy targets have their actions delayed by {{1}}% and their SPD reduced by <span class="text-desc">10%</span>. After using his Ultimate, inflicts the <b class="text-amber-500">Weightless</b> state on all enemies. When targets in <b class="text-amber-500">Weightless</b> state are attacked, their actions are delayed by <span class="text-desc">4%</span>. This effect can trigger up to <span class="text-desc">8</span> time(s) per target per turn. <b class="text-amber-500">Weightless</b> lasts for <span class="text-desc">2</span> turn(s).`,
+      <br />While <b class="text-hsr-imaginary">Imprisoned</b>, enemy targets have their actions delayed by {{1}}% and their SPD reduced by <span class="text-desc">10%</span>. After using his Ultimate, inflicts the <b class="text-amber-500">Weightless</b> state on all enemies. When targets in <b class="text-amber-500">Weightless</b> state get attacked, their actions are delayed by <span class="text-desc">4%</span>. This effect can trigger up to <span class="text-desc">8</span> time(s) per target per turn. <b class="text-amber-500">Weightless</b> lasts for <span class="text-desc">2</span> turn(s).`,
       value: [
         { base: 90, growth: 6, style: 'curved' },
         { base: 6, growth: 0.6, style: 'curved' },
@@ -68,7 +68,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     technique: {
       trace: 'Technique',
       title: 'Gravitational Imprisonment',
-      content: `After using Welt's Technique, create a dimension that lasts for <span class="text-desc">15</span> second(s). Enemies in this dimension have their Movement SPD reduced by <span class="text-desc">50%</span>. After entering battle with enemies in the dimension, there is a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-imaginary">Imprison</b> the enemies for <span class="text-desc">1</span> turn.
+      content: `After using Welt's Technique, create a dimension that lasts for <span class="text-desc">15</span> second(s). Enemies in this dimension have their Movement SPD reduced by <span class="text-desc">50%</span>. After entering combat with enemies in the dimension, there is a <span class="text-desc">100%</span> <u>base chance</u> to <b class="text-hsr-imaginary">Imprison</b> the enemies for <span class="text-desc">1</span> turn.
       <br /><b class="text-hsr-imaginary">Imprisoned</b> enemies have their actions delayed by <span class="text-desc">20%</span> and SPD reduced by <span class="text-desc">10%</span>. Only <span class="text-desc">1</span> dimension created by allies can exist at the same time.`,
       tag: AbilityTag.IMPAIR,
     },
@@ -93,7 +93,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c1: {
       trace: 'Eidolon 1',
       title: 'Legacy of Honor',
-      content: `After using a Skill or Ultimate to hit a target in the <b class="text-amber-500">Weightless</b> state, deals <span class="text-desc">1</span> additional instance of <b class="text-hsr-imaginary">Imaginary Additional DMG</b> equal to <span class="text-desc">40%</span> of the Ultimate's DMG multiplier. This effect can only be triggered once per target per attack.`,
+      content: `After using a Skill or Ultimate to hit a target in the <b class="text-amber-500">Weightless</b> state, additionally deals <span class="text-desc">1</span> instance of <b class="text-hsr-imaginary">Imaginary Additional DMG</b> equal to <span class="text-desc">40%</span> of the Ultimate's DMG multiplier. This effect can only be triggered once per target per attack.`,
       image: `asset/traces/SkillIcon_1004_Rank1_New.webp`,
     },
     c2: {
@@ -122,7 +122,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
     c6: {
       trace: 'Eidolon 6',
       title: 'Prospect of Glory',
-      content: `When using a Skill or Ultimate to hit an enemy target in the Slow state, increases CRIT Rate by <span class="text-desc">30%</span> and CRIT DMG by <span class="text-desc">60%</span>.`,
+      content: `When using Skill or Ultimate to hit an enemy target in the Slow state, increases CRIT Rate by <span class="text-desc">30%</span> and CRIT DMG by <span class="text-desc">60%</span> for the DMG dealt.`,
       image: `asset/traces/SkillIcon_1004_Rank6_New.webp`,
     },
   }

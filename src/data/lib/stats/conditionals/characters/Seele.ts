@@ -37,7 +37,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: 'Sheathed Blade',
-      content: `Increases Seele's SPD by <span class="text-desc">25%</span> for <span class="text-desc">3</span> turn(s) and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Seele's ATK to one designated enemy target.
+      content: `Increases Seele's SPD by <span class="text-desc">25%</span> for <span class="text-desc">3</span> turn(s) and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Seele's ATK to one designated enemy.
       <br />After an ally target attacks, if the attack target's current HP percentage is <span class="text-desc">50%</span> or below, Seele will automatically use her Skill at that target <span class="text-desc">1</span> time. This Skill does not consume Skill Points or regenerate Energy. This effect can only be triggered <span class="text-desc">1</span> time per turn and resets at the start of Seele's turn. If there are no valid targets to attack, she attacks the enemy target with the lowest HP percentage instead.`,
       value: [{ base: 180, growth: 18, style: 'curved' }],
       level: skill,
@@ -65,7 +65,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     technique: {
       trace: 'Technique',
       title: 'Phantom Illusion',
-      content: `After using her Technique, Seele gains Stealth for <span class="text-desc">20</span> second(s). While Stealth is active, Seele cannot be detected by enemies. And when entering battle by attacking enemies, Seele will immediately enter the Amplification state and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to Seele's Skill DMG multiplier to random enemy target <span class="text-desc">1</span> time. This DMG is a guaranteed CRIT Hit.`,
+      content: `After using her Technique, Seele gains Stealth for <span class="text-desc">20</span> second(s). While Stealth is active, Seele cannot be detected by enemies. And when entering combat by attacking enemies, Seele will immediately enter the Amplification state and deals <b class="text-hsr-quantum">Quantum DMG</b> equal to Seele's Skill DMG multiplier to random enemy target <span class="text-desc">1</span> time. This DMG is a guaranteed CRIT Hit.`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {
@@ -81,12 +81,12 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Rippling Waves',
-      content: `After using a Basic ATK, Seele's next action will be <u>Advanced Forward</u> by <span class="text-desc">20%</span>.`,
+      content: `After using a Basic ATK, advances Seele's next action by <span class="text-desc">20%</span>.`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Extirpating Slash',
-      content: `When dealing DMG to an enemy whose HP percentage is <span class="text-desc">80%</span> or lower, increases CRIT Rate by <span class="text-desc">15%</span>, and DMG ignores <span class="text-desc">20%</span> of target's DEF.`,
+      content: `When dealing DMG to an enemy whose HP percentage is <span class="text-desc">80%</span> or lower, increases CRIT Rate by <span class="text-desc">15%</span>, and ignores <span class="text-desc">20%</span> of target's DEF.`,
     },
     c2: {
       trace: 'Eidolon 2',

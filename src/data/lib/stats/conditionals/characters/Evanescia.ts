@@ -49,7 +49,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     skill: {
       trace: 'Skill',
       title: `Discipline: Final Verdict`,
-      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Evanescia's ATK to one designated enemy target and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Evanescia's ATK to adjacent targets. Additionally gains <span class="text-desc">10</span> <b class="text-orange-400">Punchline</b> point(s).`,
+      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Evanescia's ATK to one designated enemy target and <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Evanescia's ATK to adjacent targets. Additionally gains <span class="text-desc">10</span> <b class="text-orange-400">Punchline</b>.`,
       value: [
         { base: 150, growth: 15, style: 'curved' },
         { base: 75, growth: 7.5, style: 'curved' },
@@ -64,7 +64,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       participantId: 146,
       trace: 'Elation Skill',
       title: 'Scarlet: Elation or Execution',
-      content: `Deals <b class="text-hsr-physical">Physical</b> <b class="elation">Elation DMG</b> equal to {{0}}% to all enemies and additionally gains <span class="text-desc">5</span> point(s) of <b class="text-blue">Certified Banger</b>.`,
+      content: `Deals {{0}}% <b class="text-hsr-physical">Physical</b> <b class="elation">Elation DMG</b> to all enemies and additionally gains <span class="text-desc">5</span> point(s) of <b class="text-blue">Certified Banger</b>.`,
       value: [{ base: 55, growth: 5.5, style: 'curved' }],
       level: elation,
       tag: AbilityTag.AOE,
@@ -74,7 +74,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     ult: {
       trace: 'Ultimate',
       title: `Swordsong: Absolution Denied`,
-      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Evanescia's ATK to all enemy targets, then deals <span class="text-desc">5</span> instances of DMG, with each instance of DMG dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Evanescia's ATK to one random enemy target.`,
+      content: `Deals <b class="text-hsr-physical">Physical DMG</b> equal to {{0}}% of Evanescia's ATK to all enemy targets, then deals <span class="text-desc">5</span> instances of DMG, with each instance dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{1}}% of Evanescia's ATK to one random enemy.`,
       value: [
         { base: 80, growth: 8, style: 'curved' },
         { base: 72, growth: 6.8, style: 'curved' },
@@ -87,11 +87,11 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     talent: {
       trace: `Talent`,
       title: `Youth: Halcyon Evermore`,
-      content: `Evanescia gains Elation equal to <span class="text-desc">20%</span> of her CRIT DMG. When Evanescia gains Energy, she simultaneously gains an equal amount of <b class="text-blue">Certified Banger</b>. When Evanescia gains <b class="text-blue">Certified Banger</b>, she simultaneously gains an equal amount of Energy. The <b class="text-blue">Certified Banger</b> gained through this method in a single instance cannot exceed <span class="text-desc">100</span> points.
-      <br />After accumulating <span class="text-desc">240</span> Energy, she consumes <span class="text-desc">240</span> accumulated amount, and <b>Master Fox</b> launches <u>Follow-Up ATK</u>, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{4}}% of Evanescia's ATK to all enemies and regenerating <span class="text-desc">10</span> Energy for Evanescia, with each instance of Energy regeneration gaining up to an accumulated total of <span class="text-desc">240</span> Energy. When Evanescia possesses <b class="text-blue">Certified Banger</b>:
-      <br />Using her Skill deals <b class="text-hsr-physical">Physical</b> <b class="elation">Elation DMG</b> equal to {{0}}% to the attacked enemy target.
-      <br />Using her Ultimate deals <b class="text-hsr-physical">Physical</b> <b class="elation">Elation DMG</b> equal to {{1}}% to all enemies and deals <b class="text-hsr-physical">Physical</b> <b class="elation">Elation DMG</b> equal to {{2}}% to the enemy target randomly attacked by Ultimate. When Ultimate deals <b class="elation">Elation DMG</b>, it takes into account <b class="text-blue">Certified Banger</b> at least equal to Max Energy.
-      <br /><b>Master Fox</b>'s <u>Follow-Up ATK</u> deals <b class="text-hsr-physical">Physical</b> <b class="elation">Elation DMG</b> equal to {{3}}% of ATK to all enemies.`,
+      content: `Evanescia gains Elation equal to <span class="text-desc">20%</span> of CRIT DMG. When Evanescia gains Energy, she will simultaneously gain an equal amount of <b class="text-blue">Certified Banger</b>. When Evanescia gains <b class="text-blue">Certified Banger</b>, she will simultaneously gain an equal amount of Energy. The amount of <b class="text-blue">Certified Banger</b> taken into calculation via this method in a single instance cannot exceed <span class="text-desc">100</span> points in a single instance.
+      <br />After accumulating <span class="text-desc">240</span> Energy, she consumes this accumulation of <span class="text-desc">240</span>, and <b>Master Fox</b> launches <u>Follow-Up ATK</u>, dealing <b class="text-hsr-physical">Physical DMG</b> equal to {{4}}% of Evanescia's ATK to all enemies, and regenerates <span class="text-desc">10</span> Energy for Evanescia. Each instance of Energy regeneration grants up to an accumulation <span class="text-desc">240</span> Energy. While Evanescia holds <b class="text-blue">Certified Banger</b>:
+      <br />Using Skill can deal {{0}}% <b class="text-hsr-physical">Physical</b> <b class="elation">Elation DMG</b> to the attacked enemy targets.
+      <br />Using Ultimate can deal {{1}}% <b class="text-hsr-physical">Physical</b> <b class="elation">Elation DMG</b> to all enemies and also deals {{2}}% <b class="text-hsr-physical">Physical</b> <b class="elation">Elation DMG</b> to the enemy targets that have been randomly dealt DMG by Ultimate. When Ultimate deals <b class="elation">Elation DMG</b>, the amount of <b class="text-blue">Certified Banger</b> taken into account is at least equal to Max Energy.
+      <br /><b>Master Fox</b>'s <u>Follow-Up ATK</u> deals {{3}}% <b class="text-hsr-physical">Physical</b> <b class="elation">Elation DMG</b> to all enemies.`,
       value: [
         { base: 8, growth: 0.8, style: 'curved' },
         { base: 12, growth: 1.2, style: 'curved' },
@@ -113,7 +113,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Watch All Revels',
-      content: `Increases Evanescia's CRIT Rate by <span class="text-desc">30%</span>. When there are <span class="text-desc">3 or more</span>/<span class="text-desc">2</span>/<span class="text-desc">1</span> enemy target(s) on the field, her Ultimate's bounce count increases by <span class="text-desc">1</span>/<span class="text-desc">2</span>/<span class="text-desc">4</span>. When a teammate with an Elation Skill Participant ID lower than Evanescia's gains <b class="text-blue">Certified Banger</b>, Evanescia converts <span class="text-desc">50%</span> of it into her own <b class="text-blue">Certified Banger</b>.`,
+      content: `Increases Evanescia's CRIT Rate by <span class="text-desc">30%</span>. When there are <span class="text-desc">(≥3)</span>/<span class="text-desc">2</span>/<span class="text-desc">1</span> enemy target(s) on the field, the Ultimate's bounce count increases by <span class="text-desc">1</span>/<span class="text-desc">2</span>/<span class="text-desc">4</span>. When a teammate with an Elation Skill Participant ID lower than Evanescia's gains <b class="text-blue">Certified Banger</b>, Evanescia converts <span class="text-desc">50%</span> of it into her own <b class="text-blue">Certified Banger</b>.`,
       image: 'asset/traces/SkillIcon_1505_SkillTree1.webp',
     },
     a4: {
@@ -131,13 +131,13 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c1: {
       trace: 'Eidolon 1',
       title: 'Home: A Prayer in Dance',
-      content: `Increases <b>All-Type RES PEN</b> by <span class="text-desc">20%</span>. After <b>Master Fox</b> uses an attack, triggers <span class="text-desc">1</span> additional Elation Skill. Elation Skill grants this unit <span class="text-desc">10</span> additional <b class="text-blue">Certified Banger</b> point(s).`,
+      content: `Increases <b>All-Type RES PEN</b> by <span class="text-desc">20%</span>. After <b>Master Fox</b> uses an attack, additionally triggers <span class="text-desc">1</span> instance of Elation Skill. Elation Skill additionally grants this unit <span class="text-desc">10</span> <b class="text-blue">Certified Banger</b> point(s).`,
       image: 'asset/traces/SkillIcon_1505_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'Voyage: A Wish for Everbloom',
-      content: `CRIT DMG increases by <span class="text-desc">36%</span>. triggering the Trace <b>Watch All Revels</b> or <b>Best All Blooms</b> and gaining <b class="text-blue">Certified Banger</b>, additionally gains <b class="text-blue">Certified Banger</b> equal to <span class="text-desc">50%</span>/<span class="text-desc">100%</span> of the <b class="text-blue">Certified Banger</b> gained this time.`,
+      content: `CRIT DMG increases by <span class="text-desc">36%</span>. When triggering the <b class="text-blue">Certified Banger</b> gain effect from the Trace <b>Watch All Revels</b>/<b>Best All Blooms</b>, additionally gains <b class="text-blue">Certified Banger</b> equal to <span class="text-desc">50%</span>/<span class="text-desc">100%</span> of the <b class="text-blue">Certified Banger</b> gained this time.`,
       image: 'asset/traces/SkillIcon_1505_Rank2.webp',
     },
     c3: {
@@ -151,7 +151,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c4: {
       trace: 'Eidolon 4',
       title: 'Meadow: A Ruin by Vice',
-      content: `Evanescia's DMG dealt ignores <span class="text-desc">15%</span> of the enemy target's DEF.`,
+      content: `Evanescia's DMG dealt ignores <span class="text-desc">15%</span> of the enemy targets' DEF.`,
       image: 'asset/traces/SkillIcon_1505_Rank4.webp',
     },
     c5: {
@@ -165,7 +165,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c6: {
       trace: 'Eidolon 6',
       title: 'Maiden: A Step into Dreams',
-      content: `The duration of Evanescia's <b class="text-blue">Certified Banger</b> increases by <span class="text-desc">1</span> turn(s). <b class="elation">Elation DMG</b> dealt by Evanescia merrymakes by <span class="text-desc">15%</span>. For every <span class="text-desc">100</span> points of <b class="text-blue">Certified Banger</b> possessed, it additionally merrymakes by <span class="text-desc">2%</span>, with a maximum of <span class="text-desc">1,000</span> points of <b class="text-blue">Certified Banger</b> taken into account. After using her Ultimate for the first time upon entering combat, Evanescia regenerates <span class="text-desc">120</span> Energy. This effect can trigger <span class="text-desc">1</span> time for every <span class="text-desc">4</span> Ultimates used.`,
+      content: `The duration of Evanescia's <b class="text-blue">Certified Banger</b> increases by <span class="text-desc">1</span> turn(s). The <b class="elation">Elation DMG</b> dealt by Evanescia merrymakes by <span class="text-desc">15%</span>. For every <span class="text-desc">100</span> points of <b class="text-blue">Certified Banger</b> possessed, it additionally merrymakes by <span class="text-desc">2%</span>. Up to <span class="text-desc">1,000</span> points of <b class="text-blue">Certified Banger</b> can be taken into account. After using her Ultimate for the first time upon entering combat, regenerates a fixed amount of <span class="text-desc">120</span> Energy for Evanescia. This effect can trigger <span class="text-desc">1</span> time for every <span class="text-desc">4</span> more instances of Ultimate used.`,
       image: 'asset/traces/SkillIcon_1505_Rank6.webp',
     },
   }

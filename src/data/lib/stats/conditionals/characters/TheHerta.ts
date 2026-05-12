@@ -142,7 +142,7 @@ const TheHerta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     c6: {
       trace: 'Eidolon 6',
       title: 'Sweet Lure of Answer',
-      content: `The Herta's <b class="text-hsr-ice">Ice RES PEN</b> increases by <span class="text-desc">20%</span>. When the number of enemy targets on the field is <span class="text-desc">3</span> (or more)/<span class="text-desc">2</span>/<span class="text-desc">1</span>, Ultimate's DMG multiplier increases by <span class="text-desc">140%</span>/<span class="text-desc">250%</span>/<span class="text-desc">400%</span>.`,
+      content: `The Herta's <b class="text-hsr-ice">Ice RES PEN</b> increases by <span class="text-desc">20%</span>. When the number of enemy targets on the field is <span class="text-desc">(≥3)</span>/<span class="text-desc">2</span>/<span class="text-desc">1</span>, Ultimate's DMG multiplier increases by <span class="text-desc">140%</span>/<span class="text-desc">250%</span>/<span class="text-desc">400%</span>.`,
     },
   }
 

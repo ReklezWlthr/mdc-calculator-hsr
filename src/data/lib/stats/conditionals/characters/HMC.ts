@@ -79,7 +79,7 @@ const HMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Dance With the One`,
-      content: `When the number of enemy targets on the field is <span class="text-desc">5</span> or more/<span class="text-desc">4</span>/<span class="text-desc">3</span>/<span class="text-desc">2</span>/<span class="text-desc">1</span>, the Super Break DMG triggered by the <b class="text-hsr-imaginary">Backup Dancer</b> effect increases by <span class="text-desc">20%</span>/<span class="text-desc">30%</span>/<span class="text-desc">40%</span>/<span class="text-desc">50%</span>/<span class="text-desc">60%</span>.`,
+      content: `When the number of enemy targets on the field is <span class="text-desc">(≥5)</span>/<span class="text-desc">4</span>/<span class="text-desc">3</span>/<span class="text-desc">2</span>/<span class="text-desc">1</span>, the Super Break DMG triggered by the <b class="text-hsr-imaginary">Backup Dancer</b> effect increases by <span class="text-desc">20%</span>/<span class="text-desc">30%</span>/<span class="text-desc">40%</span>/<span class="text-desc">50%</span>/<span class="text-desc">60%</span>.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
