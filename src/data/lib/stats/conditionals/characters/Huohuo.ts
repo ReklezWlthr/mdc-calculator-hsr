@@ -285,7 +285,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         })
       if (form.huohuo_tech) {
         base.ATK_REDUCTION.push({
-          name: 'Talent',
+          name: 'Horror-Struck',
           source: 'Self',
           value: 0.25,
         })
@@ -329,7 +329,7 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         })
       if (form.huohuo_tech)
         base.ATK_REDUCTION.push({
-          name: 'Talent',
+          name: 'Horror-Struck',
           source: 'Huohuo',
           value: 0.25,
         })

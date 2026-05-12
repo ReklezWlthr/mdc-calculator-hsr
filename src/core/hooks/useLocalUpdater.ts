@@ -55,7 +55,7 @@ export const useLocalUpdater = (game: string) => {
           ...c,
           minor_traces: formatMinorTrace(
             buffed && settingStore.settings.buffed[c.cId]
-              ? findCharacter(c.cId)?.novaTrace
+              ? findCharacter(c.cId)?.novaTrace || findCharacter(c.cId)?.trace
               : findCharacter(c.cId)?.trace,
             _.map(c.minor_traces, (v) => v?.toggled || false),
             findCharacter(c.cId)?.overwrite,
@@ -69,7 +69,7 @@ export const useLocalUpdater = (game: string) => {
           ...c,
           minor_traces: formatMinorTrace(
             buffed && settingStore.settings.buffed[c.cId]
-              ? findCharacter(c.cId)?.novaTrace
+              ? findCharacter(c.cId)?.novaTrace || findCharacter(c.cId)?.trace
               : findCharacter(c.cId)?.trace,
             _.map(c.minor_traces, (v) => v.toggled),
             findCharacter(c.cId)?.overwrite,

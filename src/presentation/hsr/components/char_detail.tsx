@@ -38,11 +38,12 @@ export const CharDetail = observer(() => {
   })
 
   const { charStore, settingStore, teamStore, modalStore } = useStore()
-  const [buffed, setBuffed] = useState(false)
+  const [buffToggled, setBuffToggled] = useState(false)
   const selected = charStore.selected
   const data = findCharacter(selected)
   const charUpgrade = _.find(charStore.characters, ['cId', selected])
-  const cond = _.find(buffed || !_.includes(buffedList, data?.id) ? ConditionalsObject : OldConditionalsObject, [
+  const buffed = _.includes(buffedList, selected) && !(settingStore.settings.liveOnly && data.novaBeta)
+  const cond = _.find(buffToggled || !buffed ? ConditionalsObject : OldConditionalsObject, [
     'id',
     charStore.selected,
   ])?.conditionals(
@@ -65,7 +66,7 @@ export const CharDetail = observer(() => {
 
   useEffect(() => {
     setLoading(true)
-    setBuffed(true)
+    setBuffToggled(true)
     const elms = document.getElementsByClassName('cons')
     _.forEach(elms, (elm: HTMLImageElement) => (elm.style.display = 'none'))
     document.getElementById('detail_container').scrollTo(0, 0)
@@ -128,11 +129,18 @@ export const CharDetail = observer(() => {
   const baseLevel = params.asc === 7 ? 80 : findBaseLevel(params.asc)
   const asc = _.min([params.asc, 6])
 
-  const totalTrace = _.groupBy(charUpgrade?.minor_traces, 'stat')
+  const totalTrace = _.groupBy(
+    formatMinorTrace(
+      buffed && buffToggled ? data?.novaTrace || data?.trace : data?.trace,
+      _.map(charUpgrade.minor_traces, (v) => v.toggled),
+      data?.overwrite,
+    ),
+    'stat',
+  )
 
   const onOpenEditModal = useCallback(
-    () => modalStore.openModal(<CharDetailModal char={charUpgrade} cId={selected} />),
-    [charUpgrade, charStore.selected],
+    () => modalStore.openModal(<CharDetailModal char={charUpgrade} cId={selected} buffToggled={buffToggled} />),
+    [charUpgrade, charStore.selected, buffToggled],
   )
 
   return (
@@ -338,7 +346,7 @@ export const CharDetail = observer(() => {
                   <i className="fa-regular fa-question-circle" />
                 </Tooltip>
               </div>
-              <ToggleSwitch enabled={buffed} onClick={(v) => setBuffed(v)} />
+              <ToggleSwitch enabled={buffToggled} onClick={(v) => setBuffToggled(v)} />
             </div>
           )}
         </div>

@@ -28,6 +28,7 @@ export const TraceBlock = observer(({ id, data, onClick, disabled, buffed }: Tra
     _.map(data, (v, i) => ({ ...v, tIndex: i })),
     'stat',
   )
+  console.log(data, traces)
 
   return (
     <div className="w-full font-bold text-white rounded-lg bg-primary-dark">
