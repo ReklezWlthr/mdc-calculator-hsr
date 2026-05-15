@@ -92,8 +92,8 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     a2: {
       trace: 'Ascension 2 Passive',
-      title: `Felonious Path`,
-      content: `When Ashveil uses Skill/Ultimate, gains <span class="text-desc">1/2</span> stacks of <b class="text-violet-400">Gluttony</b>. During Ashveil's <u>Follow-Up ATK</u>, for every <span class="text-desc">1</span> enemy(ies) suffer a killing blow, Ashveil gains <span class="text-desc">1</span> stack(s) of <b class="text-violet-400">Gluttony</b>.`,
+      title: `Damnation Trail`,
+      content: `When Ashveil uses Skill/Ultimate, gains <span class="text-desc">1/2</span> stacks of <b class="text-violet-400">Gluttony</b>. During Ashveil's <u>Follow-Up ATK</u>, for every <span class="text-desc">1</span> enemy(ies) that suffer a killing blow, Ashveil gains <span class="text-desc">1</span> stack(s) of <b class="text-violet-400">Gluttony</b>.`,
       image: 'asset/traces/SkillIcon_1504_SkillTree1.webp',
     },
     a4: {

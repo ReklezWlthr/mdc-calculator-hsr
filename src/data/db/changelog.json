@@ -1,6 +1,14 @@
 [
   {
     "version": "1.2-4",
+    "date": "May 15th, 2026",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v4.3 Beta 4</span>",
+      "Updated Character: <span class=\"text-hsr-fire\">Mortenax Blade</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "May 11th, 2026",
     "desc": [
       "Content Version: <span class=\"text-desc\">v4.3 Beta 2</span>",

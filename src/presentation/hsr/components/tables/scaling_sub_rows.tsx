@@ -56,7 +56,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
     scaling,
     stats,
     teamStore.characters[index]?.level,
-    true
+    true,
   )
 
   const { prob, ProbComponent } = chanceStringConstruct(
@@ -65,7 +65,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
     scaling.chance?.base,
     scaling.chance?.fixed,
     scaling.debuffElement || scaling.element,
-    scaling.ehrBonus
+    scaling.ehrBonus,
   )
   const noCrit =
     _.includes(
@@ -77,7 +77,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
         TalentProperty.BREAK_DOT,
         TalentProperty.SUPER_BREAK,
       ],
-      scaling.property
+      scaling.property,
     ) || scaling.trueRaw
   const toughness = scaling.break * (1 + stats.getValue(StatsObjectKeys.BREAK_EFF))
 
@@ -113,7 +113,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
         className={classNames(
           'col-span-1 text-center text-gray',
           { 'font-bold': highlight },
-          highlight ? propertyColor[scaling.property] || 'text-red' : 'text-gray'
+          highlight ? propertyColor[scaling.property] || 'text-red' : 'text-gray',
         )}
       >
         {_.floor(dmg).toLocaleString()}
@@ -138,12 +138,12 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
   }, [scaling])
 
   return (
-    <div className="grid items-center grid-cols-9 gap-2 pr-2">
+    <div className="grid items-center grid-cols-9 gap-1 pr-2">
       <p className="col-span-2 text-center">{scaling.property}</p>
       <p className={classNames('col-span-1 text-center', ElementColor[element])}>{element}</p>
       <DmgBlock />
       {noCrit ? (
-        <p className="col-span-1 text-center text-gray">-</p>
+        <DmgBlock />
       ) : (
         <Tooltip title={'CRIT: ' + scaling.name} body={CritBody} style="w-[400px]">
           <p className="col-span-1 text-center text-gray">{_.floor(totalCrit).toLocaleString()}</p>
@@ -167,7 +167,7 @@ export const ScalingSubRows = observer(({ scaling, statsOverride, type }: Scalin
           <p
             className={classNames(
               'text-xs text-center truncate',
-              prob <= 0.6 ? 'text-red' : prob <= 0.8 ? 'text-desc' : 'text-heal'
+              prob <= 0.6 ? 'text-red' : prob <= 0.8 ? 'text-desc' : 'text-heal',
             )}
           >
             {toPercentage(prob, 1)}

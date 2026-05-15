@@ -73,29 +73,21 @@ export const BonusSuperBreakSubRows = observer(({ scaling, statsOverride, type }
     <div className="grid items-center grid-cols-9 gap-2 pr-2">
       <p className="col-span-2 text-center">{element === Element.NONE ? 'True DMG' : 'Super Break DMG'}</p>
       <p className={classNames('col-span-1 text-center', ElementColor[element])}>{element}</p>
-      <Tooltip
-        title={scaling.name}
-        body={
-          <div className="space-y-1">
-            <p dangerouslySetInnerHTML={{ __html: formulaString }} />
-          </div>
-        }
-        style="w-[400px]"
-      >
-        <p className="col-span-1 text-center text-gray">{_.floor(dmg).toLocaleString()}</p>
-      </Tooltip>
-      <p className="col-span-1 text-center text-gray">-</p>
-      <Tooltip
-        title={scaling.name}
-        body={
-          <div className="space-y-1">
-            <p dangerouslySetInnerHTML={{ __html: formulaString }} />
-          </div>
-        }
-        style="w-[400px]"
-      >
-        <p className="col-span-1 font-bold text-center text-red">{_.floor(dmg).toLocaleString()}</p>
-      </Tooltip>
+      {_.map(Array(3), (_x, i) => (
+        <Tooltip
+          title={scaling.name}
+          body={
+            <div className="space-y-1">
+              <p dangerouslySetInnerHTML={{ __html: formulaString }} />
+            </div>
+          }
+          style="w-[400px]"
+        >
+          <p className={classNames('col-span-1 text-center', i === 2 ? 'text-red font-bold' : 'text-gray')}>
+            {_.floor(dmg).toLocaleString()}
+          </p>
+        </Tooltip>
+      ))}
       <p className="text-xs text-center truncate text-gray">-</p>
       <div className="flex col-span-2 gap-1 text-xs" title={scaling.name}>
         <p className="w-full truncate">{scaling.name}</p>

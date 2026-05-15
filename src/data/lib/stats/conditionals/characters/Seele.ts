@@ -71,7 +71,7 @@ const Seele = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Nightshade',
-      content: `When defeating an enemy target, increases the wearer's DMG dealt by <span class="text-desc">50%</span>. This effect can stack up to <span class="text-desc">3</span> time(s) and lasts for <span class="text-desc">3</span> turn(s).`,
+      content: `When defeating an enemy target, increases this unit's DMG dealt by <span class="text-desc">50%</span>. This effect can stack up to <span class="text-desc">3</span> time(s) and lasts for <span class="text-desc">3</span> turn(s).`,
     },
     a4: {
       trace: 'Ascension 4 Passive',

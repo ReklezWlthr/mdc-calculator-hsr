@@ -130,7 +130,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Bone, Hardened ad Nauseam',
-      content: `Mortenax Blade can accumulate up to <span class="text-desc">80</span> Energy overflow. After using Ultimate, the Energy overflow is cleared and a corresponding amount of Energy is regenerated. When the battle starts or when the Zone is dispelled, if Energy is below <span class="text-desc">50%</span>, it is immediately regenerated to <span class="text-desc">50%</span>.`,
+      content: `Mortenax Blade can accumulate up to <span class="text-desc">80</span> Energy overflow. After using Ultimate, the Energy overflow is cleared and a corresponding amount of Energy is regenerated. When the battle starts or when the Zone is dispelled, if Energy is below <span class="text-desc">75%</span>, it is immediately regenerated to <span class="text-desc">75%</span>.`,
       image: 'asset/traces/SkillIcon_1507_SkillTree1.webp',
     },
     c1: {
@@ -142,7 +142,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     c2: {
       trace: 'Eidolon 2',
       title: `Ash Was My Heart, Yet the Flame Stayed`,
-      content: `When an ally character deals DMG by using their Ultimate, it is considered as having launched a <u>Follow-Up ATK</u>. The <u>Follow-Up ATK</u> DMG dealt by ally targets increases by <span class="text-desc">75%</span>.`,
+      content: `When an ally character deals DMG by using their Ultimate, it is considered as having launched a <u>Follow-Up ATK</u>. The <u>Follow-Up ATK</u> DMG dealt by ally targets increases by <span class="text-desc">75%</span>. The amount of <b>Charge</b> required to trigger the Trace <b>All Karma Comes Due</b> is reduced to <span class="text-desc">7</span>.`,
       image: 'asset/traces/SkillIcon_1507_Rank2.webp',
     },
     c3: {

@@ -132,7 +132,7 @@ export const CharDetail = observer(() => {
   const totalTrace = _.groupBy(
     formatMinorTrace(
       buffed && buffToggled ? data?.novaTrace || data?.trace : data?.trace,
-      _.map(charUpgrade.minor_traces, (v) => v.toggled),
+      _.map(charUpgrade?.minor_traces, (v) => v.toggled),
       data?.overwrite,
     ),
     'stat',
