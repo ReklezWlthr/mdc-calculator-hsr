@@ -1445,7 +1445,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.ELATION,
     element: Element.PHYSICAL,
-    beta: true,
+    beta: false,
   },
   {
     id: '1506',
@@ -1468,7 +1468,7 @@ export const Characters = [
   {
     id: '1507',
     name: 'Mortenax Blade',
-    jp: '',
+    jp: '<ruby>千冶<rt>センヤ</rt></ruby>・<ruby>刃<rt>ジン</rt></ruby>',
     stat: {
       baseAtk: 73.92,
       baseHp: 184.8,
@@ -1483,6 +1483,24 @@ export const Characters = [
     element: Element.FIRE,
     beta: true,
   },
+  // {
+  //   id: '1508',
+  //   name: 'Himeko • Nova',
+  //   jp: '<ruby>姫子<rt>ひめこ</rt></ruby>・<ruby>旅立ち<rt>たびだち</rt></ruby>',
+  //   stat: {
+  //     baseAtk: 73.92,
+  //     baseHp: 184.8,
+  //     baseDef: 66,
+  //     baseSpd: 107,
+  //     energy: 160,
+  //   },
+  //   trace: [Stats.FIRE_DMG, Stats.P_HP, Stats.CRIT_RATE],
+  //   rec: [Stats.CRIT_DMG, Stats.CRIT_RATE, Stats.SPD, Stats.P_HP],
+  //   rarity: 5,
+  //   path: PathType.ERUDITION,
+  //   element: Element.FIRE,
+  //   beta: true,
+  // },
 
   // Odd = Male, Even = Female
   {

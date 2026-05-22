@@ -67,7 +67,7 @@ export const Sidebar = ({
                 Viewing Live: v4.2
               </p>
               <p>
-                <b>NEW:</b> SW LV.999, Trailblazer (Elation) and 4 Novaflare
+                <b>NEW:</b> SW LV.999, Evanescia, Trailblazer (Elation) and 4 Novaflare
               </p>
             </div>
           ) : (

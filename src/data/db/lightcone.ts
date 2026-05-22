@@ -2685,7 +2685,7 @@ export const LightCones = [
     baseAtk: 28.8,
     baseDef: 21,
     type: PathType.ELATION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Daydream',
       detail: `Increases the wearer's CRIT DMG by {{0}}% and Energy Regeneration Rate by {{1}}%. When the wearer's Max Energy is greater than <span class="text-desc">120</span>, for every <span class="text-desc">10</span> points of Max Energy that exceeds this amount, further increases Energy Regeneration Rate by <span class="text-desc">0.3%</span>, up to a maximum of <span class="text-desc">360</span> points of excess Max Energy taken into account. When the wearer uses an Elation Skill, increases the DMG received by enemy targets by {{2}}% for <span class="text-desc">2</span> turn(s). Effects of the same type cannot be stacked.`,
