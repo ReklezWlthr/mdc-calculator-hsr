@@ -65,7 +65,7 @@ export const fromEnka = (rawData: Record<string, any>) => {
         talent: findTalent('004') || 1,
         memo_skill: findTalent('301') || 1,
         memo_talent: findTalent('302') || 1,
-        elation: 1,
+        elation: findTalent('420') || 1,
       },
       major_traces: {
         a2: findTalent('101') || false,
@@ -168,7 +168,7 @@ export const fromScanner = (rawData: Record<string, any>) => {
           item.traces.stat_6 || false,
           item.traces.stat_9 || false,
         ],
-        findCharacter(cId)?.overwrite
+        findCharacter(cId)?.overwrite,
       ),
     }
   })

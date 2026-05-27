@@ -1,6 +1,14 @@
 [
   {
     "version": "1.2-4",
+    "date": "May 27th, 2026",
+    "desc": [
+      "Fixed: <span class=\"text-hsr-ice\">Cyrene</span>'s Ode to Reason now correctly gives <span class=\"text-hsr-wind\">Anaxa</span> <span class=\"text-desc\">8</span> skill hits.",
+      "Fixed: Elation Skill level from import tool"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "May 15th, 2026",
     "desc": [
       "Content Version: <span class=\"text-desc\">v4.3 Beta 4</span>",

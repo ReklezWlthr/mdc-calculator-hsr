@@ -1004,7 +1004,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
               // Anaxa
               if (t.ID === '1405' && form.cyrene_anaxa) {
                 const total = _.find(t.SKILL_SCALING, (item) => item.name === 'Total Single Target DMG')
-                total.multiplier = (total.multiplier / 5) * 8
+                total.value[0].hits = 8
               }
               if (_.includes(teamId, '1405') && t.PATH === PathType.ERUDITION && form.cyrene_anaxa) {
                 t.SKILL_DMG.push({
