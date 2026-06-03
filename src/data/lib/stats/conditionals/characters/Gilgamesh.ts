@@ -361,6 +361,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             type: TalentType.TALENT,
             break: 20,
             overrideIndex: gilIndex,
+            sum: true,
           },
           {
             name: 'Saber Joint AoE DMG',
@@ -370,10 +371,11 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             type: TalentType.TALENT,
             break: 20,
             overrideIndex: saberIndex,
+            sum: true,
           },
         ]
         base.TALENT_SCALING.push(...joint)
-        own.TALENT_SCALING.push(..._.map(joint, (j) => ({ ...j, sum: true })))
+        own.TALENT_SCALING.push(...joint)
       }
 
       if (form.kings_acknowledgement && c >= 1) {
