@@ -64,20 +64,20 @@ export const Sidebar = ({
             <div className="w-full px-2 py-1 text-xs text-white bg-green-700 rounded-md ring-1 ring-offset-2 ring-offset-primary-dark ring-green-400">
               <p className="flex items-center gap-1 font-bold">
                 <i className="fa-info-circle fa-solid" />
-                Viewing Live: v4.2
+                Viewing Live: v4.3
               </p>
               <p>
-                <b>NEW:</b> SW LV.999, Evanescia, Trailblazer (Elation) and 4 Novaflare
+                <b>NEW:</b> Mortenax Blade
               </p>
             </div>
           ) : (
             <div className="w-full px-2 py-1 text-xs text-white rounded-md bg-amber-700 ring-1 ring-offset-2 ring-offset-primary-dark ring-amber-400">
               <p className="flex items-center gap-1 font-bold">
                 <i className="fa-info-circle fa-solid" />
-                Viewing Beta: v4.3 Beta 4
+                Viewing Beta: v4.4 Beta 1
               </p>
               <p>
-                <b>UPDATED:</b> Mortenax Blade
+                <b>NEW:</b> Himeko • Nova, Rin Tohsaka, Gilgamesh
               </p>
             </div>
           )}

@@ -180,7 +180,7 @@ export const SummonName = {
   '1407': 'Netherwing: Pollux',
   '1409': 'Little Ica',
   '1413': 'Evey',
-  '1415': '███',
+  '1415': 'Demiurge',
 }
 
 export enum TalentType {
@@ -192,6 +192,7 @@ export enum TalentType {
   SERVANT = 'Memosprite Skill',
   SERVANT_T = 'Memosprite Talent',
   ELATION = 'Elation Skill',
+  ASSIST = 'Assist Skill',
   NONE = 'None',
 }
 

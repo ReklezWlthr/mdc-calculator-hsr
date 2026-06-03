@@ -104,6 +104,7 @@ export const damageStringConstruct = (
     number: { finalDebuff },
   } = breakDamageStringConstruct(calculatorStore, globalMod, stats, level, globalMultiplier)
 
+  const assistDmg = scaling.assist ? stats.getValue(StatsObjectKeys.ASSIST_DMG) || 0 : 0
   const talentDmg = stats.getValue(`${TalentPropertyMap[scaling.property]}_DMG`) || 0
   const typeDmg =
     stats.getValue(`${TalentTypeMap[scaling.type]}_DMG`, stats[`${TalentPropertyMap[scaling.property]}_DMG`]) || 0
@@ -174,7 +175,7 @@ export const damageStringConstruct = (
         ? stats.getValue(StatsObjectKeys.SHIELD)
         : TalentProperty.HEAL === scaling.property
           ? stats.getValue(Stats.HEAL) + stats.getValue(`${TalentTypeMap[scaling.type]}_HEAL`)
-          : stats.getValue(Stats.ALL_DMG) + stats.getValue(`${element} DMG%`) + talentDmg + typeDmg)
+          : stats.getValue(Stats.ALL_DMG) + stats.getValue(`${element} DMG%`) + talentDmg + typeDmg + assistDmg)
 
   const elation = _.max([stats.getTotalElation() + (scaling.bonus || 0), scaling.elation || 0])
   const punchline = (scaling.punchline || +globalMod.punchline) + (scaling.punchlineBonus || 0)
@@ -351,6 +352,11 @@ export const damageStringConstruct = (
       {!!typeDmg && (
         <p className="text-xs">
           {scaling.type} Bonus: <span className="text-desc">{toPercentage(typeDmg)}</span>
+        </p>
+      )}
+      {!!assistDmg && (
+        <p className="text-xs">
+          Assist Skill Bonus: <span className="text-desc">{toPercentage(assistDmg)}</span>
         </p>
       )}
       {!!scaling.atkBonus && (

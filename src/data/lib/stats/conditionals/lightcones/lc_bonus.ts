@@ -4,6 +4,7 @@ import _ from 'lodash'
 import { calcRefinement } from '@src/core/utils/data_format'
 import { checkBuffExist, countDebuff, countDot } from '@src/core/utils/finder'
 import { DebuffTypes } from '@src/domain/constant'
+import { TrailblazeCompanion } from '@src/data/db/characters'
 
 const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: number) => StatsObject }[] = [
   {
@@ -1820,6 +1821,59 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
         name: 'Passive',
         source: `Reforged in Hellfire`,
         value: calcRefinement(0.3, 0.075, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23060',
+    scaling: (base, r) => {
+      base[Stats.P_ATK].push({
+        name: 'Passive',
+        source: `A Star That Lights the Night`,
+        value: calcRefinement(0.4, 0.1, r),
+      })
+      base.CALLBACK.push(function (x, _d, _w, a, _b) {
+        if (_.filter(a, (aa) => _.includes(TrailblazeCompanion, aa.ID)).length >= 2) {
+          x.DEF_PEN.push({
+            name: 'Passive',
+            source: `A Star That Lights the Night`,
+            value: calcRefinement(0.2, 0.05, r),
+          })
+        }
+        return x
+      })
+      return base
+    },
+  },
+  {
+    id: '23061',
+    scaling: (base, r) => {
+      base[Stats.CRIT_RATE].push({
+        name: 'Passive',
+        source: `Flickering Stars`,
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      base.SKILL_DMG.push({
+        name: 'Passive',
+        source: `Flickering Stars`,
+        value: calcRefinement(0.36, 0.06, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23062',
+    scaling: (base, r) => {
+      base[Stats.P_ATK].push({
+        name: 'Passive',
+        source: `I Am As You Behold`,
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      base[Stats.ERR].push({
+        name: 'Passive',
+        source: `I Am As You Behold`,
+        value: calcRefinement(0.1, 0.025, r),
       })
       return base
     },

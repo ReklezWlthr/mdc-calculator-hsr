@@ -356,13 +356,16 @@ export const CharDetail = observer(() => {
       </p>
       <div className="grid gap-6">
         {_.map(_.omit(talent, 'a2', 'a4', 'a6', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6'), (item) => {
-          const baseType = item?.trace
-            ?.replaceAll('Enhanced', '')
-            ?.replaceAll('Alternate', '')
-            ?.replaceAll('Exclusive', '')
-            ?.replaceAll('Memo.', 'Memosprite')
-            .replaceAll(/\[\d\]$/g, '')
-            .trim()
+          const baseType =
+            item?.trace === 'Assist Skill'
+              ? 'Talent'
+              : item?.trace
+                  ?.replaceAll('Enhanced', '')
+                  ?.replaceAll('Alternate', '')
+                  ?.replaceAll('Exclusive', '')
+                  ?.replaceAll('Memo.', 'Memosprite')
+                  .replaceAll(/\[\d\]$/g, '')
+                  .trim()
           return (
             item && (
               <div className="flex gap-x-3" key={item.trace}>

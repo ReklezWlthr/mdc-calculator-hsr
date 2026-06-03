@@ -56,6 +56,7 @@ export interface IScaling {
   merrymake?: number
   punchlineBonus?: number
   weaknessBypass?: number
+  assist?: boolean // Assist Skill
 }
 
 export interface ISuperBreakScaling {

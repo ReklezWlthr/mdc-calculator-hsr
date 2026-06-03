@@ -1,6 +1,16 @@
 [
   {
     "version": "1.2-4",
+    "date": "Apr 17th, 2026",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v4.4 Beta 1</span>",
+      "New Characters: <span class=\"text-hsr-fire\">Himeko • Nova</span>, <span class=\"text-hsr-quantum\">Rin Tohsaka</span>, and <span class=\"text-hsr-lightning\">Gilgamesh</span>",
+      "New Light Cones: <span class=\"text-desc\">A Star That Lights the Night</span>, <span class=\"text-desc\">Flickering Stars</span>, and <span class=\"text-desc\">I Am As You Behold</span>",
+      "New Relic Sets: <span class=\"text-desc\">Fallen Star Anchorage</span>, and <span class=\"text-desc\">Cosmic Life Sciences Institute</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "May 27th, 2026",
     "desc": [
       "Fixed: <span class=\"text-hsr-ice\">Cyrene</span>'s Ode to Reason now correctly gives <span class=\"text-hsr-wind\">Anaxa</span> <span class=\"text-desc\">8</span> skill hits.",

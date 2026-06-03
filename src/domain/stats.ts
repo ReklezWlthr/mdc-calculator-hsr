@@ -123,6 +123,7 @@ export interface RawBaseStatType {
   FUA_DMG: StatsArray[]
   ADD_DMG: StatsArray[]
   SUMMON_DMG: StatsArray[]
+  ASSIST_DMG: StatsArray[]
 
   BASIC_F_DMG: StatsArray[]
   SKILL_F_DMG: StatsArray[]
@@ -187,6 +188,7 @@ export interface RawBaseStatType {
 
   DOT_MULT: StatsArray[]
   ELATION_SKILL_MULT: StatsArray[]
+  SKILL_MULT: StatsArray[]
 
   WEAKNESS: Element[]
   WEAKNESS_BYPASS: number[]

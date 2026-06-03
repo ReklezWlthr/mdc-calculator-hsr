@@ -1,6 +1,23 @@
 import { Element, PathType, Stats } from '@src/domain/constant'
 
 export const ActionBarSummon = ['1112', '1204', '1222', '1414']
+export const TrailblazeCompanion = [
+  '1001',
+  '1002',
+  '1003',
+  '1004',
+  '1213',
+  '1224',
+  '1313',
+  '1413',
+  '1414',
+  '1510',
+  '8001',
+  '8003',
+  '8005',
+  '8007',
+  '8009',
+]
 
 export const Characters = [
   {
@@ -1481,26 +1498,62 @@ export const Characters = [
     rarity: 5,
     path: PathType.NIHILITY,
     element: Element.FIRE,
+    beta: false,
+  },
+  {
+    id: '1509',
+    name: 'Gilgamesh',
+    jp: '<ruby>姫子<rt>ひめこ</rt></ruby>・<ruby>旅立ち<rt>たびだち</rt></ruby>',
+    stat: {
+      baseAtk: 97.68,
+      baseHp: 153.12,
+      baseDef: 69.3,
+      baseSpd: 97,
+      energy: 600,
+    },
+    trace: [Stats.CRIT_RATE, Stats.LIGHTNING_DMG, Stats.P_ATK],
+    rec: [Stats.CRIT_DMG, Stats.CRIT_RATE, Stats.SPD, Stats.P_ATK],
+    rarity: 5,
+    path: PathType.DESTRUCTION,
+    element: Element.LIGHTNING,
     beta: true,
   },
-  // {
-  //   id: '1508',
-  //   name: 'Himeko • Nova',
-  //   jp: '<ruby>姫子<rt>ひめこ</rt></ruby>・<ruby>旅立ち<rt>たびだち</rt></ruby>',
-  //   stat: {
-  //     baseAtk: 73.92,
-  //     baseHp: 184.8,
-  //     baseDef: 66,
-  //     baseSpd: 107,
-  //     energy: 160,
-  //   },
-  //   trace: [Stats.FIRE_DMG, Stats.P_HP, Stats.CRIT_RATE],
-  //   rec: [Stats.CRIT_DMG, Stats.CRIT_RATE, Stats.SPD, Stats.P_HP],
-  //   rarity: 5,
-  //   path: PathType.ERUDITION,
-  //   element: Element.FIRE,
-  //   beta: true,
-  // },
+  {
+    id: '1508',
+    name: 'Rin Tohsaka',
+    jp: '<ruby>姫子<rt>ひめこ</rt></ruby>・<ruby>旅立ち<rt>たびだち</rt></ruby>',
+    stat: {
+      baseAtk: 95.04,
+      baseHp: 142.56,
+      baseDef: 62.7,
+      baseSpd: 102,
+      energy: 160,
+    },
+    trace: [Stats.CRIT_DMG, Stats.QUANTUM_DMG, Stats.P_ATK],
+    rec: [Stats.CRIT_DMG, Stats.CRIT_RATE, Stats.SPD, Stats.P_ATK],
+    rarity: 5,
+    path: PathType.ERUDITION,
+    element: Element.QUANTUM,
+    beta: true,
+  },
+  {
+    id: '1510',
+    name: 'Himeko • Nova',
+    jp: '<ruby>姫子<rt>ひめこ</rt></ruby>・<ruby>旅立ち<rt>たびだち</rt></ruby>',
+    stat: {
+      baseAtk: 102.96,
+      baseHp: 153.12,
+      baseDef: 66,
+      baseSpd: 98,
+      energy: 140,
+    },
+    trace: [Stats.P_ATK, Stats.FIRE_DMG, Stats.CRIT_RATE],
+    rec: [Stats.CRIT_DMG, Stats.CRIT_RATE, Stats.SPD, Stats.P_ATK],
+    rarity: 5,
+    path: PathType.ERUDITION,
+    element: Element.FIRE,
+    beta: true,
+  },
 
   // Odd = Male, Even = Female
   {

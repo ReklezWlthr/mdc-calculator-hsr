@@ -169,7 +169,7 @@ export const ScalingWrapper = observer(({ children, icon, talent, element, level
             Level <span className={upgraded ? 'text-blue font-bold' : 'text-gray'}>{level + upgraded}</span>
           </p>
         )}
-        {talent.participantId && (
+        {talent?.participantId && (
           <p className="text-xs font-normal text-gray opacity-80">
             &lt; Participant ID: <span className="text-desc">{talent.participantId}</span> &gt;
           </p>

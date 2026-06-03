@@ -3,6 +3,7 @@ import _ from 'lodash'
 import { StatsObject } from '../lib/stats/baseConstant'
 import { DebuffTypes } from '@src/domain/constant'
 import { countDebuff } from '@src/core/utils/finder'
+import { TrailblazeCompanion } from './characters'
 
 export const RelicSets: IArtifact[] = [
   {
@@ -734,7 +735,7 @@ export const RelicSets: IArtifact[] = [
     bonusAdd: [],
     desc: [
       `Increases ATK by <span class="text-desc">12%</span>.`,
-      `When the wearer enters combat or uses Skill, their Skill and Ultimate DMG dealt increases by <span class="text-desc">18%</span>, stacking up to <span class="text-desc">3</span> time(s). At the start of the wearer's turn or after using their Ultimate, removes <span class="text-desc">1</span> stack(s) of this effect.`,
+      `When the wearer enters combat or uses Skill, the DMG dealt by their Skill and Ultimate increases by <span class="text-desc">18%</span>, stacking up to <span class="text-desc">3</span> time(s). At the start of the wearer's turn or after using Ultimate, removes <span class="text-desc">1</span> stack(s) of this effect.`,
     ],
     set: [
       `Navigator's Deep Space Mirror`,
@@ -764,7 +765,7 @@ export const RelicSets: IArtifact[] = [
     },
     desc: [
       `Increases Max HP by <span class="text-desc">12%</span>.`,
-      `Increases the wearer's CRIT DMG dealt to enemy targets in the DEF reduction state by <span class="text-desc">28%</span>. After the wearer inflicts the DEF reduction state on an enemy target, all allies gain <b>Comburent</b> for <span class="text-desc">2</span> turn(s). This effect cannot be stacked. DMG dealt by ally targets with <b>Comburent</b> increases by <span class="text-desc">15%</span>. This effect can be triggered again after the wearer uses an attack.`,
+      `Increases the wearer's CRIT DMG dealt to enemy targets in the DEF reduction state by <span class="text-desc">28%</span>. After the wearer inflicts the DEF reduction state on an enemy target, all allies gain <b>Comburent</b> for <span class="text-desc">2</span> turn(s). This effect cannot be stacked. The DMG dealt by ally targets with <b>Comburent</b> increases by <span class="text-desc">15%</span>. This effect can be triggered again after the wearer uses an attack.`,
     ],
     set: [
       `Smith's Fire Beast Mask`,
@@ -1282,6 +1283,59 @@ export const PlanarSets: IArtifact[] = [
     ],
     beta: false,
     set: [`Astropolis Media Headquarters`, `Astropolis Employee Credentials`],
+  },
+  {
+    id: '327',
+    name: 'Fallen Star Anchorage',
+    icon: '71058',
+    bonus: [{ stat: Stats.CRIT_RATE, value: 0.08 }],
+    bonusAdd: [],
+    half: (base) => {
+      base.CALLBACK.push((x, _d, _w, all) => {
+        if (
+          _.includes(TrailblazeCompanion, x.ID) &&
+          _.filter(all, (a) => _.includes(TrailblazeCompanion, a.ID)).length >= 2
+        ) {
+          x[Stats.CRIT_DMG].push({
+            name: '2-Piece',
+            source: 'Fallen Star Anchorage',
+            value: 0.32,
+          })
+        }
+        return x
+      })
+      return base
+    },
+    desc: [
+      `Increases the wearer's CRIT Rate by <span class="text-desc">8%</span>. When entering combat, if the wearer and another teammate are both <u>Trailblaze Companions</u> characters, increases the wearer's CRIT DMG by <span class="text-desc">32%</span>.`,
+    ],
+    beta: true,
+    set: [`Stranded Express at the Anchorage`, `Silver Rails of the Anchorage`],
+  },
+  {
+    id: '328',
+    name: 'Cosmic Life Sciences Institute',
+    icon: '71059',
+    bonus: [],
+    bonusAdd: [],
+    half: (base) => {
+      base.CALLBACK.push((x) => {
+        if (x.MAX_ENERGY >= 200) {
+          x[Stats.ALL_DMG].push({
+            name: '2-Piece',
+            source: 'Cosmic Life Sciences Institute',
+            value: _.min([0.002 * (x.MAX_ENERGY - 200), 0.32]),
+          })
+        }
+        return x
+      })
+      return base
+    },
+    desc: [
+      `When entering combat, if the wearer's Max Energy is greater than or equal to <span class="text-desc">200</span>, increases the wearer's DMG dealt by <span class="text-desc">0.2%</span> for every <span class="text-desc">ๅ</span> point exceeding this value, up to a max increase of <span class="text-desc">32%</span>.`,
+    ],
+    beta: true,
+    set: [`Central Synapse of the Life Sciences Institute`, `Peripheral Conduits of the Life Sciences Institute`],
   },
 ]
 

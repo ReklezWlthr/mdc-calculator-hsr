@@ -136,6 +136,7 @@ export const baseStatsObject: BaseStatsType = {
   FUA_DMG: [],
   ADD_DMG: [],
   SUMMON_DMG: [],
+  ASSIST_DMG: [],
 
   BASIC_F_DMG: [],
   SKILL_F_DMG: [],
@@ -200,6 +201,7 @@ export const baseStatsObject: BaseStatsType = {
 
   DOT_MULT: [],
   ELATION_SKILL_MULT: [],
+  SKILL_MULT: [],
 
   WEAKNESS: [],
   WEAKNESS_BYPASS: [],
