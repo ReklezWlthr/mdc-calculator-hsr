@@ -249,6 +249,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           type: TalentType.BA,
           break: 10,
           sum: true,
+          hitSplit: form.mblade_ult ? [0.2, 0.2, 0.2, 0.2, 0.2] : undefined,
         },
       ]
       base.SKILL_SCALING = [
