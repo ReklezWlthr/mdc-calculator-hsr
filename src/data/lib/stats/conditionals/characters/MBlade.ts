@@ -484,7 +484,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
               s.property === TalentProperty.NORMAL ? { ...s, property: TalentProperty.FUA } : s,
             )
           })
-          return a
+          return all
         })
       }
       return base
