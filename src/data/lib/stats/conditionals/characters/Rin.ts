@@ -253,7 +253,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           sum: true,
         },
       ]
-      const totalHits = _.min([_.floor(form.rin_gem / 3) + _.max([form.rin_sp - 2, 0]) * 2, 33])
+      const totalHits = _.min([_.floor((form.rin_gem + _.max([form.rin_sp - 2, 0]) * 2) / 3), 33])
       base.SKILL_SCALING = base.SKILL_ALT
         ? [
             {
