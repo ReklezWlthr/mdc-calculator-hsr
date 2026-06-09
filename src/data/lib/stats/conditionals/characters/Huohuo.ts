@@ -248,8 +248,8 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       base.TALENT_SCALING = [
         {
           name: 'Base Healing',
-          value: [{ scaling: calcScaling(0.03, 0.001875, skill, 'heal'), multiplier: Stats.HP }],
-          flat: calcScaling(30, 18, skill, 'flat'),
+          value: [{ scaling: calcScaling(0.03, 0.001875, talent, 'heal'), multiplier: Stats.HP }],
+          flat: calcScaling(30, 18, talent, 'flat'),
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
@@ -257,23 +257,21 @@ const Huohuo = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         },
         {
           name: 'Double-Proc Healing',
-          value: [{ scaling: calcScaling(0.03, 0.001875, skill, 'heal'), multiplier: Stats.HP }],
-          flat: calcScaling(30, 18, skill, 'flat'),
+          value: [{ scaling: calcScaling(0.03, 0.001875, talent, 'heal'), multiplier: Stats.HP }],
+          flat: calcScaling(30, 18, talent, 'flat'),
           multiplier: 2,
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
-          sum: true,
         },
         {
           name: 'Triple-Proc Healing',
-          value: [{ scaling: calcScaling(0.03, 0.001875, skill, 'heal'), multiplier: Stats.HP }],
-          flat: calcScaling(30, 18, skill, 'flat'),
+          value: [{ scaling: calcScaling(0.03, 0.001875, talent, 'heal'), multiplier: Stats.HP }],
+          flat: calcScaling(30, 18, talent, 'flat'),
           multiplier: 3,
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
-          sum: true,
         },
       ]
 

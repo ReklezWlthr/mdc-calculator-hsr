@@ -61,7 +61,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       trace: 'Ultimate',
       title: 'We, Too, Stride the Stars',
       content: `Immediately pilots <b class="text-orange-500">Starblazer</b>. <b class="text-orange-500">Starblazer</b> can launch <b>Hyperluminal Particle Beam</b> against enemies <span class="text-desc">6</span> times, or consume <b class="text-desc">Source Energy</b> to launch <b>Orbital Annihilation Pulse</b>.
-      <br />When the uses of <b>Hyperluminal Particle Beam</b> are depleted, automatically launches <b>Orbital Annihilation Pulse</b>, followed by a Final Hit, dealing <span class="text-desc">3</span> instances of DMG, with each instance dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Himeko • Nova's ATK to a random single enemy.
+      <br />When the uses of <b>Hyperluminal Particle Beam</b> are depleted, automatically launches <b>Orbital Annihilation Pulse</b>, followed by Final Hit, dealing <span class="text-desc">3</span> instances of DMG, with each instance dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Himeko • Nova's ATK to one random enemy.
       <br />When using <b>Hyperluminal Particle Beam</b> or <b>Orbital Annihilation Pulse</b> deals fatal damage to all enemies on the field, or when enemy HP can no longer be reduced, immediately launches the Final Hit.
       <br />
       <br /><b>Hyperluminal Particle Beam</b>
@@ -87,9 +87,9 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       <br />
       <br /><span class="text-primary-lighter text-xs">Assist Skill</span>
       <br /><b>Trailblaze, By Your Side</b>
-      <br />Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{2}}% of Himeko • Nova's ATK to all enemies, and deals <span class="text-desc">3</span> extra instances of DMG, with each instance dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{3}}% of Himeko • Nova's ATK to a random single enemy. When used by Himeko • Nova, deals <b class="text-hsr-fire">Fire DMG</b> equal to {{4}}% of Himeko • Nova's ATK to all enemies, and deals <span class="text-desc">4</span> extra instances of DMG, with each instance dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{5}}% of Himeko • Nova's ATK to a random single enemy.
-      <br />If the user is a <u>Trailblaze Companions</u> character other than Himeko • Nova, Himeko • Nova will gain either the <b>Companion Protocol: Verdict</b> or <b>Companion Protocol: Decimation</b> state depending on the user.
-      <br />The extra <u>Assist Skill</u> triggered by the <b>Companion Protocol: Verdict</b> or <b>Companion Protocol: Decimation</b> Status Effect can be triggered up to <span class="text-desc">2</span> time(s) per Combat, and the trigger count is refreshed after Himeko • Nova uses her Ultimate.`,
+      <br />Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{2}}% of Himeko • Nova's ATK to all enemies, and deals <span class="text-desc">3</span> extra instances of DMG, with each instance dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{3}}% of Himeko • Nova's ATK to one random enemy. When used by Himeko • Nova, deals <b class="text-hsr-fire">Fire DMG</b> equal to {{4}}% of Himeko • Nova's ATK to all enemies, and deals <span class="text-desc">4</span> extra instances of DMG, with each instance dealing <b class="text-hsr-fire">Fire DMG</b> equal to {{5}}% of Himeko • Nova's ATK to one random enemy.
+      <br />If used by a <u>Trailblaze Companions</u> character other than Himeko • Nova, Himeko • Nova will gain either the <b>Companion Protocol: Verdict</b> or <b>Companion Protocol: Decimation</b> state depending on the user.
+      <br />The extra <u>Assist Skill</u> triggered by the <b>Companion Protocol: Verdict</b> or <b>Companion Protocol: Decimation</b> Status Effect can be triggered up to <span class="text-desc">2</span> time(s) per battle, and the trigger count is reset after Himeko • Nova uses her Ultimate.`,
       value: [
         { base: 10, growth: 1, style: 'curved' },
         { base: 30, growth: 2, style: 'curved' },
@@ -106,13 +106,13 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       trace: 'Assist Skill',
       title: 'Trailblaze, By Your Side',
       content: `<b>Companion Protocol: Verdict</b>
-      <br />Enters the <b>Companion Protocol: Verdict</b> state. When Himeko • Nova deals Ultimate DMG, increases CRIT DMG by {{0}}%. After Himeko • Nova's teammates use their Ultimate actively <span class="text-desc">2</span> time(s), Himeko • Nova immediately launches <span class="text-desc">1</span> <u>Assist Skill</u> against an enemy at no cost, and Himeko • Nova additionally regenerates <span class="text-desc">10</span> Energy.
+      <br />Enters the <b>Companion Protocol: Verdict</b> state. When Himeko • Nova deals Ultimate DMG, increases CRIT DMG by {{0}}%. After Himeko • Nova's teammates actively use their Ultimate <span class="text-desc">2</span> time(s), Himeko • Nova immediately launches <span class="text-desc">1</span> <u>Assist Skill</u> against the enemy at no cost, and Himeko • Nova additionally regenerates <span class="text-desc">10</span> Energy.
       <br />
       <br /><b>Companion Protocol: Decimation</b>
-      <br />Enters the <b>Companion Protocol: Decimation</b> state. Increases all allies' CRIT DMG by {{1}}%, and additionally increases the CRIT DMG dealt by Skills by {{1}}%. For every <span class="text-desc">1</span> enemy target hit by an ally, gains <span class="text-desc">1</span> point of <b>Charge</b>. When <b>Charge</b> reaches <span class="text-desc">9</span> points, consumes all <b>Charge</b>, and Himeko • Nova immediately launches <span class="text-desc">1</span> <u>Assist Skill</u> against the enemy at no cost. This instance of <u>Assist Skill</u> cannot gain <b>Charge</b>.`,
+      <br />Enters the <b>Companion Protocol: Decimation</b> state. Increases all allies' CRIT DMG by {{1}}%, and additionally increases the CRIT DMG dealt by Skills by {{1}}%. Gains <span class="text-desc">1</span> point of <b>Charge</b> for each enemy target hit by an ally. When <b>Charge</b> reaches <span class="text-desc">9</span> points, consumes all <b>Charge</b>, and Himeko • Nova immediately launches <span class="text-desc">1</span> <u>Assist Skill</u> against the enemy at no cost. This instance of <u>Assist Skill</u> cannot gain <b>Charge</b>.`,
       value: [
-        { base: 50, growth: 5, style: 'curved' },
-        { base: 40, growth: 4, style: 'curved' },
+        { base: 100, growth: 10, style: 'curved' },
+        { base: 25, growth: 2.5, style: 'curved' },
       ],
       level: talent,
       tag: AbilityTag.AOE,
@@ -123,7 +123,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       trace: 'Technique',
       title: `Starcharter Cruise`,
       content: `When Himeko • Nova is in the team, increases max Technique Points by <span class="text-desc">3</span>.
-      <br />After using the Technique, she enters the "Cruise" state lasting for <span class="text-desc">30</span> seconds. Actively using the Technique consumes <span class="text-desc">2</span> Technique Points and immediately attacks all enemies within a certain range. After entering combat, immediately uses Skill <span class="text-desc">1</span> time at the start of each wave.
+      <br />After using the Technique, she enters the <b>Cruise</b> state, lasting for <span class="text-desc">30</span> seconds. Actively using the Technique consumes <span class="text-desc">2</span> Technique Points and immediately attacks all enemies within a certain range. After entering combat, immediately uses Skill <span class="text-desc">1</span> time at the start of each wave.
       <br />If attacking a Normal Enemy, immediately defeats them without entering combat. No Technique Points are consumed if no enemies are hit.`,
       tag: AbilityTag.ENHANCE,
       image: 'asset/traces/SkillIcon_1510_Maze.webp',
@@ -131,13 +131,13 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'The Silver Rail, Hushed in Antiquity',
-      content: `When using Ultimate, immediately gains <span class="text-desc">3</span> point(s) of <b class="text-desc">Source Energy</b>. When using the <b>Orbital Annihilation Pulse</b> attack, if current <b class="text-desc">Source Energy</b> is <span class="text-desc">3</span> points or more, the DMG multiplier of <b>Orbital Annihilation Pulse</b> against random single enemies increases by <span class="text-desc">40%</span>.`,
+      content: `When using Ultimate, immediately gains <span class="text-desc">3</span> point(s) of <b class="text-desc">Source Energy</b>. If current <b class="text-desc">Source Energy</b> is <span class="text-desc">3</span> point(s) or more, when using the <b>Orbital Annihilation Pulse</b> attack, the DMG multiplier of <b>Orbital Annihilation Pulse</b> against random single enemies increases by <span class="text-desc">40%</span>.`,
       image: 'asset/traces/SkillIcon_1510_SkillTree3.webp',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Hark! The Express's Pulse Roars`,
-      content: `When a <u>Trailblaze Companion</u> character other than Himeko • Nova actively uses an <u>Assist Skill</u>, that character immediately gains <span class="text-desc">1</span> extra turn during which they can use their Ultimate. An extra turn gained from an <u>Assist Skill</u> will not repeatedly trigger this Trace effect.`,
+      content: `When a <u>Trailblaze Companions</u> character other than Himeko • Nova actively uses an <u>Assist Skill</u>, that character immediately gains <span class="text-desc">1</span> extra turn during which they can use their Ultimate. An extra turn gained from an <u>Assist Skill</u> will not repeatedly trigger this Trace effect.`,
       image: 'asset/traces/SkillIcon_1510_SkillTree2.webp',
     },
     a2: {
@@ -149,13 +149,13 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     c1: {
       trace: 'Eidolon 1',
       title: 'That Which We Stride Is the Trailblaze',
-      content: `Increases the number of times the Talent triggers the extra Assist Skill effect by <span class="text-desc">1</span>. While in the <b>Companion Protocol: Verdict</b> state, the number of Ultimate uses required to launch the <u>Assist Skill</u> is reduced by <span class="text-desc">1</span>. While in the <b>Companion Protocol: Decimation</b> state, the <b>Charge</b> required to launch the <u>Assist Skill</u> is reduced by <span class="text-desc">3</span>. When Himeko • Nova launches the <u>Assist Skill</u>, the number of times the extra DMG effect is triggered increases by <span class="text-desc">1</span>.`,
+      content: `Increases the number of times the Talent triggers the extra Assist Skill effect by <span class="text-desc">1</span>. When in the <b>Companion Protocol: Verdict</b> state, the number of Ultimate uses required to launch the <u>Assist Skill</u> is reduced by <span class="text-desc">1</span>. When in the <b>Companion Protocol: Decimation</b> state, the <b>Charge</b> required to launch the <u>Assist Skill</u> is reduced by <span class="text-desc">3</span>. When Himeko • Nova launches the <u>Assist Skill</u>, the number of times the extra DMG effect is triggered increases by <span class="text-desc">1</span>.`,
       image: 'asset/traces/SkillIcon_1510_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `The Colors We Never Strike`,
-      content: `Max uses of <u>Assist Skill</u> increase to <span class="text-desc">2</span>, and DMG dealt by Assist Skill increases by <span class="text-desc">24%</span>. At the start of <b class="text-hsr-fire">Navigator's Semaphore</b>'s turn, immediately recovers <span class="text-desc">2</span> <u>Assist Skill</u> uses. Trace <b>Hark! The Express's Pulse Roars</b> effect: When characters other than <u>Trailblaze Companions</u> use <u>Assist Skill</u>, they also gain <span class="text-desc">1</span> extra turn.`,
+      content: `Max uses of <u>Assist Skill</u> increase to <span class="text-desc">2</span>, and DMG dealt by Assist Skill increases by <span class="text-desc">24%</span>. At the start of each turn, immediately recovers <span class="text-desc">2</span> <u>Assist Skill</u> uses. Trace <b>Hark! The Express's Pulse Roars</b> effect: When characters other than <u>Trailblaze Companions</u> use <u>Assist Skill</u>, they also gain <span class="text-desc">1</span> extra turn.`,
       image: 'asset/traces/SkillIcon_1510_Rank2.webp',
     },
     c3: {
@@ -181,7 +181,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     c6: {
       trace: 'Eidolon 6',
       title: 'Ours Is the Oath to Sail Starward',
-      content: `Himeko • Nova's <b class="text-hsr-fire">Fire RES PEN</b> increases by <span class="text-desc">20%</span>. Max <b class="text-desc">Source Energy</b> increases to <span class="text-desc">6</span> points, and when an ally uses or unleashes an <u>Assist Skill</u>, Himeko • Nova gains <span class="text-desc">1</span> points of <b class="text-desc">Source Energy</b>. When launching an <b>Hyperluminal Particle Beam</b> attack during the Ultimate, additionally gains <span class="text-desc">1</span> point of <b class="text-desc">Source Energy</b>. When launching <b>Orbital Annihilation Pulse</b>, if current <b class="text-desc">Source Energy</b> is greater than or equal to <span class="text-desc">6</span> points, additionally deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">120%</span> of Himeko • Nova's ATK to all enemies <span class="text-desc">1</span> time.`,
+      content: `Himeko • Nova's <b class="text-hsr-fire">Fire RES PEN</b> increases by <span class="text-desc">20%</span>. Max <b class="text-desc">Source Energy</b> increases to <span class="text-desc">6</span> point(s), and when an ally uses or unleashes the <u>Assist Skill</u>, Himeko • Nova gains <span class="text-desc">1</span> point(s) of <b class="text-desc">Source Energy</b>. When launching an <b>Hyperluminal Particle Beam</b> attack during the Ultimate, additionally gains <span class="text-desc">1</span> point of <b class="text-desc">Source Energy</b>. When launching <b>Orbital Annihilation Pulse</b>, if current <b class="text-desc">Source Energy</b> is greater than or equal to <span class="text-desc">6</span> point(s), additionally deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">120%</span> of Himeko • Nova's ATK to all enemies <span class="text-desc">1</span> time.`,
       image: 'asset/traces/SkillIcon_1510_Rank6.webp',
     },
   }
@@ -344,7 +344,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          break: 52,
+          break: 42,
           sum: true,
         },
         {
@@ -407,19 +407,19 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         base.ULT_CD.push({
           name: `Companion Protocol: Verdict`,
           source: 'Self',
-          value: calcScaling(0.5, 0.05, skill, 'curved'),
+          value: calcScaling(1, 0.1, skill, 'curved'),
         })
       }
       if (form.companion_protocol === 'decimation') {
         base[Stats.CRIT_DMG].push({
           name: `Companion Protocol: Decimation`,
           source: 'Self',
-          value: calcScaling(0.4, 0.04, skill, 'curved'),
+          value: calcScaling(0.25, 0.025, skill, 'curved'),
         })
         base.SKILL_CD.push({
           name: `Companion Protocol: Decimation`,
           source: 'Self',
-          value: calcScaling(0.4, 0.04, skill, 'curved'),
+          value: calcScaling(0.25, 0.025, skill, 'curved'),
         })
       }
       if (form.nova_assist) {
@@ -464,12 +464,12 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         base[Stats.CRIT_DMG].push({
           name: `Companion Protocol: Decimation`,
           source: 'Himeko • Nova',
-          value: calcScaling(0.4, 0.04, skill, 'curved'),
+          value: calcScaling(0.25, 0.025, skill, 'curved'),
         })
         base.SKILL_CD.push({
           name: `Companion Protocol: Decimation`,
           source: 'Himeko • Nova',
-          value: calcScaling(0.4, 0.04, skill, 'curved'),
+          value: calcScaling(0.25, 0.025, skill, 'curved'),
         })
       }
       if (form.nova_assist && c >= 2) {

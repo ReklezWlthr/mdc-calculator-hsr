@@ -287,6 +287,7 @@ export const StatsModal = observer(
               <AttributeBlock stats={stats} stat="Skill DMG Bonus" array={stats.SKILL_DMG} />
               <AttributeBlock stats={stats} stat="Ultimate DMG Bonus" array={stats.ULT_DMG} />
               <AttributeBlock stats={stats} stat="Talent DMG Bonus" array={stats.TALENT_DMG} />
+              <AttributeBlock stats={stats} stat="Assist Skill DMG Bonus" array={stats.ASSIST_DMG} />
               <AttributeBlock stats={stats} stat="DoT Bonus" array={stats.DOT_DMG} />
               <AttributeBlock stats={stats} stat="Follow-Up DMG Bonus" array={stats.FUA_DMG} />
               <AttributeBlock stats={stats} stat="Break DMG Bonus" array={stats.BREAK_DMG} />

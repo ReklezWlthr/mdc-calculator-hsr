@@ -1916,7 +1916,7 @@ export const LightCones = [
     beta: false,
     desc: {
       name: 'One At A Time',
-      detail: `Increase the wearer's CRIT Rate by {{0}}% and their <u>follow-up attacks</u>' DMG by {{1}}%. After the wearer uses a <u>follow-up attack</u>, apply the <b>Tame</b> state to the target, stacking up to <span class="text-desc">2</span> stacks. When allies hit enemy targets under the <b>Tame</b> state, every <b>Tame</b> stack increases the CRIT DMG dealt by {{2}}%.`,
+      detail: `Increase the wearer's CRIT Rate by {{0}}% and increases DMG dealt by <u>Follow-Up ATK</u> by {{1}}%. After the wearer uses a <u>Follow-Up ATK</u>, inflicts the target with the <b>Tame</b> state, stacking up to <span class="text-desc">2</span> stacks. When allies hit enemy targets under the <b>Tame</b> state, each <b>Tame</b> stack increases the CRIT DMG dealt by {{2}}%.`,
       properties: [
         { base: 18, growth: 3 },
         { base: 30, growth: 5 },
@@ -2722,11 +2722,12 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'First Wish',
-      detail: `Increases the wearer's ATK by {{0}}%. If there are <span class="text-desc">2</span> <u>Trailblaze Companion</u> characters in the team, the wearer ignores {{1}}% of the target's DEF when dealing DMG. When the wearer uses an <u>Assist Skill</u>, they gain the <b>Safe Escort</b> state, lasting for <span class="text-desc">2</span> turn(s) and stacking up to <span class="text-desc">3</span> time(s). Each stack of <b>Safe Escort</b> increases <u>Assist Skill</u> DMG by {{1}}%. When <b>Safe Escort</b> reaches <span class="text-desc">3</span> stacks, each stack of <b>Safe Escort</b> increases Ultimate DMG by {{2}}%.`,
+      detail: `Increases the wearer's ATK by {{0}}%. If there are <span class="text-desc">2</span> <u>Trailblaze Companion</u> characters in the team, the wearer ignores {{1}}% of the target's DEF when dealing DMG. When the wearer uses an <u>Assist Skill</u>, they gain the <b>Safe Escort</b> state, lasting for <span class="text-desc">2</span> turn(s) and stacking up to <span class="text-desc">3</span> time(s). Each stack of <b>Safe Escort</b> increases <u>Assist Skill</u> DMG by {{2}}%. When <b>Safe Escort</b> reaches <span class="text-desc">3</span> stacks, each stack of <b>Safe Escort</b> increases Ultimate DMG by {{3}}%.`,
       properties: [
         { base: 40, growth: 10 },
         { base: 20, growth: 5 },
-        { base: 60, growth: 15 },
+        { base: 25, growth: 6.25 },
+        { base: 30, growth: 7.5 },
       ],
     },
   },

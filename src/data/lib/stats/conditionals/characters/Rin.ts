@@ -122,7 +122,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       trace: 'Eidolon 1',
       title: `Zelretch's Apprentice`,
       content: `If the amount of <b class="text-indigo-400">Gem Energy</b> consumed by a single Enhanced Skill is <span class="text-desc">30</span> or more, Rin Tohsaka gains <b class="text-red">Shadow Gem</b> equal to the amount of <b class="text-indigo-400">Gem Energy</b> consumed.
-      <br />While possessing <b class="text-red">Shadow Gem</b>, the Skill is enhanced to <b>Second Magic Experiment</b>. The Enhanced Skill consumes all <b class="text-red">Shadow Gem</b>, does not trigger the effect of converting Skill Points into <b class="text-indigo-400">Gem Energy</b>, and does not consume <b class="text-indigo-400">Gem Energy</b>.`,
+      <br />While possessing <b class="text-red">Shadow Gem</b>, Skill is enhanced to <b>Second Magic Experiment</b>. The Enhanced Skill consumes all <b class="text-red">Shadow Gem</b>, does not trigger the effect of converting Skill Points into <b class="text-indigo-400">Gem Energy</b>, and does not consume <b class="text-indigo-400">Gem Energy</b>.`,
       image: 'asset/traces/SkillIcon_1508_Rank1.webp',
     },
     c2: {

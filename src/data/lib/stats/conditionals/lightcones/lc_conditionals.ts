@@ -1533,13 +1533,13 @@ export const LCConditionals: IWeaponContent[] = [
         base.ASSIST_DMG.push({
           name: `Safe Escort`,
           source: 'A Star That Lights the Night',
-          value: calcRefinement(0.2, 0.05, r) * form['23060'],
+          value: calcRefinement(0.25, 0.0625, r) * form['23060'],
         })
         if (form['23060'] >= 3) {
           base.ULT_DMG.push({
             name: `Safe Escort`,
             source: 'A Star That Lights the Night',
-            value: calcRefinement(0.6, 0.15, r) * form['23060'],
+            value: calcRefinement(0.3, 0.075, r) * form['23060'],
           })
         }
       }

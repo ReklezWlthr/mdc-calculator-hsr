@@ -74,9 +74,9 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     talent: {
       trace: 'Talent',
       title: `"Amuse Me to the Fullest"`,
-      content: `When an ally uses their Ultimate, Gilgamesh gains <b class="text-desc">King's Burden</b>, increasing Ultimate DMG dealt by this unit by {{0}}%, lasting for <span class="text-desc">3</span> turn(s).
+      content: `When an ally teammate uses their Ultimate, Gilgamesh gains <b class="text-desc">King's Burden</b>, increasing Ultimate DMG dealt by this unit by {{0}}%, lasting for <span class="text-desc">3</span> turn(s).
       <br />Initially, automatically uses Basic ATK at the start of this unit's turn. When an ally target takes action, Gilgamesh gains <span class="text-desc">1</span> point of <b class="text-heal">Interest</b>. When <b class="text-heal">Interest</b> reaches <span class="text-desc">10</span> points, Gilgamesh consumes <span class="text-desc">10</span> points of <b class="text-heal">Interest</b> and immediately takes action.
-      <br />When <b class="text-heal">Interest</b> reaches <span class="text-desc">10</span> points for the first time, Gilgamesh enters the <b class="text-red">Interest Piqued!</b> state and can only use his Skill.
+      <br />When <b class="text-heal">Interest</b> reaches <span class="text-desc">10</span> point(s) for the first time, Gilgamesh enters the <b class="text-red">Interest Piqued!</b> state and can only use his Skill.
       <br />
       <br /><b>"I Grant You Permission To Strike"</b>
       <br />After Saber cumulatively uses <span class="text-desc">3</span> attacks, Gilgamesh and Saber launch a <u>Joint Follow-Up ATK</u> together, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Gilgamesh's ATK and <b class="text-hsr-wind">Wind DMG</b> equal to {{2}}% of Saber's ATK to all enemies. Afterward, Gilgamesh gains <span class="text-desc">3</span> point(s) of <b class="text-heal">Interest</b>, Saber regenerates a fixed amount of <span class="text-desc">200</span> Energy and her action advances by {{3}}%, resetting Saber's cumulative attack tally.`,
