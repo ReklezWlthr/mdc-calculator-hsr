@@ -426,7 +426,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         base.ALL_TYPE_RES_PEN.push({
           name: 'Talent',
           source: 'Self',
-          value: calcScaling(0.1, 0.01, talent, 'curved') + (c >= 2 ? 0.1 : 0),
+          value: calcScaling(0.1, 0.01, talent, 'curved') + (c >= 4 ? 0.1 : 0),
         })
         base[Stats.CRIT_DMG].push({
           name: 'Talent',
@@ -472,7 +472,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           value: calcScaling(0.25, 0.025, skill, 'curved'),
         })
       }
-      if (form.nova_assist && c >= 2) {
+      if (form.nova_assist && c >= 4) {
         base.ALL_TYPE_RES_PEN.push({
           name: 'Talent',
           source: 'Himeko • Nova',
