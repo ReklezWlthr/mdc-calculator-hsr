@@ -189,6 +189,8 @@ export interface RawBaseStatType {
   DOT_MULT: StatsArray[]
   ELATION_SKILL_MULT: StatsArray[]
   SKILL_MULT: StatsArray[]
+  ULT_MULT: StatsArray[]
+  ASSIST_MULT: StatsArray[]
 
   WEAKNESS: Element[]
   WEAKNESS_BYPASS: number[]

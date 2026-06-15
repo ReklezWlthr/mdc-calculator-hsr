@@ -1,6 +1,15 @@
 [
   {
     "version": "1.2-4",
+    "date": "Jun 15th, 2026",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v4.4 Beta 3</span>",
+      "Updated Characters: <span class=\"text-hsr-fire\">Himeko • Nova</span>, <span class=\"text-hsr-quantum\">Rin Tohsaka</span>, and <span class=\"text-hsr-lightning\">Gilgamesh</span>",
+      "Updated Light Cones: <span class=\"text-desc\">A Star That Lights the Night</span>, <span class=\"text-desc\">Flickering Stars</span>, and <span class=\"text-desc\">I Am As You Behold</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Jun 9th, 2026",
     "desc": [
       "Content Version: <span class=\"text-desc\">v4.4 Beta 2</span>",

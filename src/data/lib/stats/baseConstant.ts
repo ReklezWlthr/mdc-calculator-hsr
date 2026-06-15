@@ -202,6 +202,8 @@ export const baseStatsObject: BaseStatsType = {
   DOT_MULT: [],
   ELATION_SKILL_MULT: [],
   SKILL_MULT: [],
+  ASSIST_MULT: [],
+  ULT_MULT: [],
 
   WEAKNESS: [],
   WEAKNESS_BYPASS: [],

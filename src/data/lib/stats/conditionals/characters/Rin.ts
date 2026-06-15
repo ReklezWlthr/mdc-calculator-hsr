@@ -48,7 +48,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       trace: 'Skill',
       title: `Jeweled Sword Zelretch`,
       content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to one designated enemy target.`,
-      value: [{ base: 90, growth: 0.9, style: 'curved' }],
+      value: [{ base: 80, growth: 0.8, style: 'curved' }],
       level: skill,
       tag: AbilityTag.ST,
       sp: -1,
@@ -57,8 +57,8 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     skill_alt: {
       trace: 'Enhanced Skill',
       title: 'Second Magic Experiment',
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to all enemies. Then, consumes <span class="text-desc">3</span> points of <b class="text-indigo-400">Gem Energy</b> to deal additional <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to one random enemy target. This repeats until <b class="text-indigo-400">Gem Energy</b> is less than <span class="text-desc">3</span> or there are no enemy targets with current HP greater than <span class="text-desc">0</span>, up to a maximum of <span class="text-desc">33</span> times. When used, if current Skill Points are greater than <span class="text-desc">2</span>, consumes Skill Points until only <span class="text-desc">2</span> points left, immediately gaining <span class="text-desc">2</span> points of <b class="text-indigo-400">Gem Energy</b> for every <span class="text-desc">1</span> Skill Point consumed.`,
-      value: [{ base: 45, growth: 4.5, style: 'curved' }],
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to all enemies. Then, consumes <span class="text-desc">3</span> point(s) of <b class="text-indigo-400">Gem Energy</b> to deal additional <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to one random enemy target. This repeats until <b class="text-indigo-400">Gem Energy</b> is less than <span class="text-desc">3</span> or there are no enemy targets with current HP greater than <span class="text-desc">0</span>, up to a maximum of <span class="text-desc">33</span> times. When used, if current Skill Points are greater than <span class="text-desc">2</span>, consumes Skill Points until only <span class="text-desc">2</span> points left, immediately gaining <span class="text-desc">2</span> points of <b class="text-indigo-400">Gem Energy</b> for every <span class="text-desc">1</span> Skill Point consumed.`,
+      value: [{ base: 40, growth: 4, style: 'curved' }],
       level: talent,
       tag: AbilityTag.BOUNCE,
       energy: 30,
@@ -84,9 +84,9 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       content: `When entering combat, gains <span class="text-desc">20</span> <b class="text-indigo-400">Gem Energy</b>. When an ally consumes or recovers Skill Points, CRIT DMG increases by {{0}}% for <span class="text-desc">2</span> turn(s). For every <span class="text-desc">1</span> Skill Point consumed or recovered, Rin Tohsaka gains <span class="text-desc">1</span> <b class="text-indigo-400">Gem Energy</b>. If Rin Tohsaka possesses <span class="text-desc">15</span> or more <b class="text-indigo-400">Gem Energy</b> or if current Skill Points are <span class="text-desc">7</span> or more, her Skill is enhanced into <b>Second Magic Experiment</b>.
       <br />
       <br /><b>Freeform Tohsaka Style</b>
-      <br />After attacking Archer uses his Skill <b>Caladbolg II: Fake Spiral Sword</b>, if there are fewer or equal to <span class="text-desc">3</span> Skill Point(s), Rin Tohsaka and Archer will launch a <u>Joint Follow-Up ATK</u> on all enemies, each dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Rin Tohsaka's ATK and {{1}}% of Archer's ATK, and recover <span class="text-desc">4</span> Skill Point(s) for allies. This <u>Joint ATK</u> can only trigger once. The trigger count resets after Rin Tohsaka's turn ends.`,
+      <br />After attacking Archer uses his Skill <b>Caladbolg II: Fake Spiral Sword</b>, if there are <span class="text-desc">3</span> or fewer Skill Point(s) remaining or if <b>Caladbolg II: Fake Spiral Sword</b> has been actively used <span class="text-desc">5</span> times during the current <b>Circuit Connection</b> state, and the <u>Joint Follow-Up ATK</u> from <b>Freeform Tohsaka Style</b> has not been triggered, Rin Tohsaka and Archer will launch a <u>Joint Follow-Up ATK</u> on all enemies, each dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Rin Tohsaka's ATK and {{1}}% of Archer's ATK, and recover <span class="text-desc">4</span> Skill Point(s) for allies. This <u>Joint ATK</u> can only trigger once. The trigger count resets after Rin Tohsaka's turn ends.`,
       value: [
-        { base: 50, growth: 5, style: 'curved' },
+        { base: 35, growth: 3.5, style: 'curved' },
         { base: 150, growth: 15, style: 'curved' },
       ],
       level: talent,
@@ -109,13 +109,13 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Ladylike Poise`,
-      content: `After Rin Tohsaka uses her Enhanced Skill, her SPD increases by <span class="text-desc">20%</span> for <span class="text-desc">3</span> turn(s).`,
+      content: `When entering combat and after using Enhanced Skill, Rin Tohsaka's SPD increases by <span class="text-desc">20%</span> for <span class="text-desc">3</span> turn(s).`,
       image: 'asset/traces/SkillIcon_1508_SkillTree2.webp',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Elegant Conduct',
-      content: `When Rin Tohsaka is on the field, additionally increases the max number of Skill Points by <span class="text-desc">2</span>. When entering combat, Rin Tohsaka's ATK increases by <span class="text-desc">150%</span>, and DMG dealt ignores <span class="text-desc">20%</span> of the target's DEF. If Archer is in the team, Archer also gains this effect.`,
+      content: `When Rin Tohsaka is on the field, additionally increases the max number of Skill Points by <span class="text-desc">2</span>. When entering combat, Rin Tohsaka's ATK increases by <span class="text-desc">150%</span>, and <b>All-Type RES PEN</b> increases by <span class="text-desc">10%</span>. If Archer is in the team, Archer also gains this effect.`,
       image: 'asset/traces/SkillIcon_1508_SkillTree1.webp',
     },
     c1: {
@@ -128,7 +128,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     c2: {
       trace: 'Eidolon 2',
       title: `Dimensional Traveler`,
-      content: `Increases Rin Tohsaka's Skill DMG by <span class="text-desc">30%</span>. While Rin Tohsaka is on the field, Skill DMG dealt by all allies becomes <span class="text-desc">110%</span> of the original DMG.`,
+      content: `Increases Rin Tohsaka's Skill DMG by <span class="text-desc">30%</span>. While Rin Tohsaka is on the field, Skill DMG dealt by all allies becomes <span class="text-desc">130%</span> of the original DMG.`,
       image: 'asset/traces/SkillIcon_1508_Rank2.webp',
     },
     c3: {
@@ -141,7 +141,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     c4: {
       trace: 'Eidolon 4',
       title: `Red Devil: Triple Speed`,
-      content: `While Rin Tohsaka is on the field, when an ally target consumes or recovers Skill Points, increases their SPD by <span class="text-desc">10%</span> for <span class="text-desc">3</span> turn(s).`,
+      content: `When the CRIT DMG boost effect from Talent <b>Gem Magecraft</b> takes effect on Rin Tohsaka, the effect can stack up to <span class="text-desc">2</span> time(s).`,
       image: 'asset/traces/SkillIcon_1508_Rank4.webp',
     },
     c5: {
@@ -154,7 +154,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     c6: {
       trace: 'Eidolon 6',
       title: 'Nailed It This Time!',
-      content: `Rin Tohsaka's <b>All-Type RES PEN</b> increases by <span class="text-desc">20%</span>. When using Ultimate, gains <span class="text-desc">18</span> point(s) of <b class="text-indigo-400">Gem Energy</b> and <span class="text-desc">1</span> extra turn.`,
+      content: `Rin Tohsaka's <b>All-Type RES PEN</b> increases by <span class="text-desc">20%</span>. When using Ultimate, gains <span class="text-desc">24</span> point(s) of <b class="text-indigo-400">Gem Energy</b> and <span class="text-desc">1</span> extra turn.`,
       image: 'asset/traces/SkillIcon_1508_Rank6.webp',
     },
   }
@@ -193,8 +193,19 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       id: 'rin_talent',
       text: `Talent CRIT DMG`,
       ...talents.talent,
-      show: true,
+      show: c < 4,
       default: true,
+      duration: 2,
+    },
+    {
+      type: 'number',
+      id: 'rin_talent',
+      text: `Talent CRIT DMG`,
+      ...talents.talent,
+      show: c >= 4,
+      default: 2,
+      min: 0,
+      max: 2,
       duration: 2,
     },
     {
@@ -210,17 +221,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
 
   const teammateContent: IContent[] = [findContentById(content, 'rin_ult')]
 
-  const allyContent: IContent[] = [
-    {
-      type: 'toggle',
-      id: 'rin_c4',
-      text: `E4 SPD Bonus`,
-      ...talents.c4,
-      show: c >= 4,
-      default: true,
-      duration: 3,
-    },
-  ]
+  const allyContent: IContent[] = []
 
   return {
     upgrade,
@@ -258,9 +259,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         ? [
             {
               name: 'Total Single Target DMG',
-              value: [
-                { scaling: calcScaling(0.45, 0.045, skill, 'curved'), hits: totalHits + 1, multiplier: Stats.ATK },
-              ],
+              value: [{ scaling: calcScaling(0.4, 0.04, skill, 'curved'), hits: totalHits + 1, multiplier: Stats.ATK }],
               element: Element.QUANTUM,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
@@ -269,7 +268,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
             },
             {
               name: 'AoE',
-              value: [{ scaling: calcScaling(0.45, 0.045, skill, 'curved'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.4, 0.04, skill, 'curved'), multiplier: Stats.ATK }],
               element: Element.QUANTUM,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
@@ -277,7 +276,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
             },
             {
               name: 'Bounce',
-              value: [{ scaling: calcScaling(0.45, 0.045, skill, 'curved'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.4, 0.04, skill, 'curved'), multiplier: Stats.ATK }],
               element: Element.QUANTUM,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
@@ -287,7 +286,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         : [
             {
               name: 'Single Target',
-              value: [{ scaling: calcScaling(0.9, 0.09, skill, 'curved'), multiplier: Stats.ATK }],
+              value: [{ scaling: calcScaling(0.8, 0.08, skill, 'curved'), multiplier: Stats.ATK }],
               element: Element.QUANTUM,
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
@@ -327,7 +326,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         base[Stats.CRIT_DMG].push({
           name: `Talent`,
           source: 'Self',
-          value: calcScaling(0.5, 0.05, talent, 'curved'),
+          value: calcScaling(0.35, 0.035, talent, 'curved') * form.rin_talent,
         })
       }
       if (a.a2) {
@@ -336,10 +335,10 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           source: 'Self',
           value: 1.5,
         })
-        base.DEF_PEN.push({
+        base.ALL_TYPE_RES_PEN.push({
           name: `Ascension 2 Passive`,
           source: 'Self',
-          value: 0.2,
+          value: 0.1,
         })
       }
       if (form.rin_a4) {
@@ -358,7 +357,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         base.SKILL_MULT.push({
           name: `Eisolon 2`,
           source: 'Self',
-          value: 0.1,
+          value: 0.3,
         })
       }
       if (form.rin_c4) {
@@ -420,10 +419,10 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
             source: 'Rin Tohsaka',
             value: 1.5,
           })
-          base.DEF_PEN.push({
+          base.ALL_TYPE_RES_PEN.push({
             name: `Ascension 2 Passive`,
             source: 'Rin Tohsaka',
-            value: 0.2,
+            value: 0.1,
           })
         }
       }
@@ -439,14 +438,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         base.SKILL_MULT.push({
           name: `Eisolon 2`,
           source: 'Rin Tohsaka',
-          value: 0.1,
-        })
-      }
-      if (aForm.rin_c4) {
-        base[Stats.P_SPD].push({
-          name: `Eidolon 4`,
-          source: 'Rin Tohsaka',
-          value: 0.1,
+          value: 0.3,
         })
       }
 

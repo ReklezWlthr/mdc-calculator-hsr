@@ -1828,20 +1828,10 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
   {
     id: '23060',
     scaling: (base, r) => {
-      base[Stats.P_ATK].push({
+      base.DEF_PEN.push({
         name: 'Passive',
         source: `A Star That Lights the Night`,
-        value: calcRefinement(0.4, 0.1, r),
-      })
-      base.CALLBACK.push(function (x, _d, _w, a, _b) {
-        if (_.filter(a, (aa) => _.includes(TrailblazeCompanion, aa.ID)).length >= 2) {
-          x.DEF_PEN.push({
-            name: 'Passive',
-            source: `A Star That Lights the Night`,
-            value: calcRefinement(0.2, 0.05, r),
-          })
-        }
-        return x
+        value: calcRefinement(0.2, 0.05, r),
       })
       return base
     },
@@ -1853,11 +1843,6 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
         name: 'Passive',
         source: `Flickering Stars`,
         value: calcRefinement(0.18, 0.03, r),
-      })
-      base.SKILL_DMG.push({
-        name: 'Passive',
-        source: `Flickering Stars`,
-        value: calcRefinement(0.36, 0.06, r),
       })
       return base
     },

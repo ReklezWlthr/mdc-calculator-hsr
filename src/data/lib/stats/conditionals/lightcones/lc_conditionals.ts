@@ -1522,7 +1522,7 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'number',
-    text: `Safe Escort`,
+    text: `Sail`,
     show: true,
     default: 3,
     min: 0,
@@ -1531,15 +1531,15 @@ export const LCConditionals: IWeaponContent[] = [
     scaling: (base, form, r) => {
       if (form['23060']) {
         base.ASSIST_DMG.push({
-          name: `Safe Escort`,
+          name: `Sail`,
           source: 'A Star That Lights the Night',
-          value: calcRefinement(0.25, 0.0625, r) * form['23060'],
+          value: calcRefinement(0.24, 0.06, r) * form['23060'],
         })
         if (form['23060'] >= 3) {
           base.ULT_DMG.push({
-            name: `Safe Escort`,
+            name: `Sail`,
             source: 'A Star That Lights the Night',
-            value: calcRefinement(0.3, 0.075, r) * form['23060'],
+            value: calcRefinement(0.24, 0.06, r) * form['23060'],
           })
         }
       }
@@ -2886,11 +2886,15 @@ export const LCTeamConditionals: IWeaponContent[] = [
           base.DEF_PEN.push({
             name: `Radiant Crown`,
             source: 'Flickering Stars',
-            value: calcRefinement(0.1, 0.02, r),
+            value: calcRefinement(0.2, 0.04, r),
           })
         }
         if (index === owner) {
-          _.find(base.DEF_PEN, { name: 'Radiant Crown' }).value += calcRefinement(0.2, 0.03, r)
+          base.SKILL_DMG.push({
+            name: `Radiant Crown`,
+            source: 'Flickering Stars',
+            value: calcRefinement(0.6, 0.1, r),
+          })
         }
       }
       return base
@@ -2907,19 +2911,17 @@ export const LCTeamConditionals: IWeaponContent[] = [
         base.ULT_DMG.push({
           name: `Passive`,
           source: 'I Am As You Behold',
-          value: _.min([(calcRefinement(0.1, 0.025, r) * base.MAX_ENERGY) / 100, calcRefinement(0.6, 0.15, r)]),
-          base: base.MAX_ENERGY,
-          multiplier: calcRefinement(0.1, 0.025, r),
+          value: _.min([(calcRefinement(0.2, 0.05, r) * base.MAX_ENERGY) / 100, calcRefinement(0.72, 0.18, r)]),
+          base: _.min([base.MAX_ENERGY, 360]),
+          multiplier: calcRefinement(0.2, 0.05, r),
         })
       }
-      if (form['23062']) {
-        if (!checkBuffExist(base[Stats.CRIT_DMG], { name: `King's Entertainment` })) {
-          base[Stats.CRIT_DMG].push({
-            name: `King's Entertainment`,
-            source: 'I Am As You Behold',
-            value: calcRefinement(0.25, 0.0625, r),
-          })
-        }
+      if (form['23062'] && !checkBuffExist(base[Stats.CRIT_DMG], { name: `King's Entertainment` })) {
+        base[Stats.CRIT_DMG].push({
+          name: `King's Entertainment`,
+          source: 'I Am As You Behold',
+          value: calcRefinement(0.24, 0.06, r),
+        })
       }
       return base
     },

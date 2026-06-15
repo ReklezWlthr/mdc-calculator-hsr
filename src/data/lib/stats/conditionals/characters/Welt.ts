@@ -289,7 +289,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         addDebuff(debuffs, DebuffTypes.SPD_RED)
         if (c >= 4) {
           base.ALL_TYPE_RES_RED.push({
-            name: `Eidolon 6`,
+            name: `Eidolon 4`,
             source: 'Self',
             value: 0.3,
           })
@@ -361,7 +361,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         })
         if (c >= 4) {
           base.ALL_TYPE_RES_RED.push({
-            name: `Eidolon 6`,
+            name: `Eidolon 4`,
             source: 'Welt',
             value: 0.3,
           })
