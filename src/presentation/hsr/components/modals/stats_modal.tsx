@@ -358,11 +358,16 @@ export const StatsModal = observer(
         <Collapsible label="Original DMG Multiplier">
           <div className="grid grid-cols-2 gap-10">
             <div className="space-y-2">
+              <AttributeBlock stats={stats} stat="Skill Multiplier" array={stats.SKILL_MULT} />
+              <AttributeBlock stats={stats} stat="Ultimate Multiplier" array={stats.ULT_MULT} />
+              <AttributeBlock stats={stats} stat="Assist Skill Multiplier" array={stats.ASSIST_MULT} />
+              <AttributeBlock stats={stats} stat="Elation Skill Multiplier" array={stats.ELATION_SKILL_MULT} />
+            </div>
+            <div className="space-y-2">
               <AttributeBlock stats={stats} stat="DoT Multiplier" array={stats.DOT_MULT} />
               <AttributeBlock stats={stats} stat="Super Break Multiplier" array={stats.SUPER_BREAK_MULT} />
               <AttributeBlock stats={stats} stat="Basic ATK Super Break Multiplier" array={stats.BASIC_SUPER_BREAK} />
               <AttributeBlock stats={stats} stat="Talent Super Break Multiplier" array={stats.TALENT_SUPER_BREAK} />
-              <AttributeBlock stats={stats} stat="Elation Skill Multiplier" array={stats.ELATION_SKILL_MULT} />
             </div>
           </div>
         </Collapsible>

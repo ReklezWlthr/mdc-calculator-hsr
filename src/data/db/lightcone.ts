@@ -2724,8 +2724,8 @@ export const LightCones = [
       name: 'First Wish',
       detail: `The wearer ignores wearer ignores {{0}}% of the target's DEF when dealing DMG. When the wearer uses an <u>Assist Skill</u>, they regenerate <span class="text-desc">6</span> Energy and gain <b>Sail</b>, lasting for <span class="text-desc">2</span> turns and stacking up to <span class="text-desc">3</span> time(s). Each stack of <b>Sail</b> increases <u>Assist Skill</u> DMG by {{1}}%. When <b>Sail</b> reaches <span class="text-desc">3</span> stacks, each stack of <b>Sail</b> increases Ultimate DMG by {{1}}%.`,
       properties: [
+        { base: 32, growth: 4 },
         { base: 20, growth: 5 },
-        { base: 24, growth: 6 },
       ],
     },
   },
@@ -2744,7 +2744,7 @@ export const LightCones = [
       properties: [
         { base: 18, growth: 3 },
         { base: 20, growth: 4 },
-        { base: 60, growth: 10 },
+        { base: 72, growth: 12 },
       ],
     },
   },

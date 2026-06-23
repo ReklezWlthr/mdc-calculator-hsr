@@ -74,7 +74,7 @@ export const Sidebar = ({
             <div className="w-full px-2 py-1 text-xs text-white rounded-md bg-amber-700 ring-1 ring-offset-2 ring-offset-primary-dark ring-amber-400">
               <p className="flex items-center gap-1 font-bold">
                 <i className="fa-info-circle fa-solid" />
-                Viewing Beta: v4.4 Beta 3
+                Viewing Beta: v4.4 Beta 4
               </p>
               <p>
                 <b>UPDATED:</b> Himeko • Nova, Rin Tohsaka, Gilgamesh

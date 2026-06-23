@@ -74,9 +74,9 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     talent: {
       trace: 'Talent',
       title: `"Amuse Me to the Fullest"`,
-      content: `When an ally teammate uses their Ultimate, Gilgamesh gains <b class="text-desc">King's Burden</b>, increasing Ultimate DMG dealt by this unit by {{0}}%, lasting for <span class="text-desc">3</span> turn(s).
-      <br />Initially, automatically uses Basic ATK at the start of this unit's turn. When another ally target takes action, Gilgamesh gains <span class="text-desc">1</span> point of <b class="text-heal">Interest</b>. When <b class="text-heal">Interest</b> reaches <span class="text-desc">10</span> points, Gilgamesh consumes <span class="text-desc">10</span> points of <b class="text-heal">Interest</b> and immediately takes action.
-      <br />When <b class="text-heal">Interest</b> reaches <span class="text-desc">10</span> point(s) for the first time, Gilgamesh enters the <b class="text-red">Interest Piqued!</b> state and can only use his Skill.
+      content: `When an ally uses their Ultimate, Gilgamesh gains <b class="text-desc">King's Burden</b>, which increases Ultimate DMG dealt by this unit by {{0}}%, lasting for <span class="text-desc">3</span> turn(s).
+      <br />Initially, automatically uses Basic ATK at the start of this unit's turn. When another ally target takes action, Gilgamesh gains <span class="text-desc">1</span> point of <b class="text-heal">Interest</b>. For each point of <b class="text-heal">Interest</b> in possession, SPD increases by <span class="text-desc">10%</span>.
+      <br />When <b class="text-heal">Interest</b> reaches <span class="text-desc">10</span> point(s) for the first time, Gilgamesh enters the <b class="text-red">Interest Piqued!</b> state. In that state, he can only use his Skill, lasting for the entire battle. After using Skill, this unit's <b class="text-heal">Interest</b> resets.
       <br />
       <br /><b>"I Grant You Permission To Strike"</b>
       <br />When Gilgamesh or Saber attacks, they accumulate <span class="text-desc">1</span> attack tally. After any unit attacks, if the accumulated attack tally reaches <span class="text-desc">8</span>, Gilgamesh and Saber launch a <u>Joint Follow-Up ATK</u> together, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Gilgamesh's ATK and <b class="text-hsr-wind">Wind DMG</b> equal to {{2}}% of Saber's ATK to all enemies. Then, Gilgamesh gains <span class="text-desc">3</span> point(s) of <b class="text-heal">Interest</b>, and Saber regenerates <span class="text-desc">120</span> Energy and the DMG dealt when she next uses her Ultimate becomes {{3}}% of the original DMG.
@@ -102,7 +102,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Hegemon's Strife`,
-      content: `While Gilgamesh is on the field, increases the ATK of all ally targets by <span class="text-desc">30%</span> and CRIT DMG by <span class="text-desc">30%</span>. If the target's Max Energy exceeds <span class="text-desc">140</span>, every <span class="text-desc">1</span> excess point of Max Energy additionally increases ATK and CRIT DMG by <span class="text-desc">1%</span>, up to a maximum of <span class="text-desc">60%</span>.`,
+      content: `While Gilgamesh is on the field, increases the ATK of all ally targets by <span class="text-desc">20%</span> and CRIT DMG by <span class="text-desc">20%</span>. If the target's Max Energy exceeds <span class="text-desc">140</span>, every <span class="text-desc">1</span> excess point of Max Energy additionally increases ATK and CRIT DMG by <span class="text-desc">1%</span>, up to a maximum of <span class="text-desc">100%</span>.`,
       image: 'asset/traces/SkillIcon_1509_SkillTree3.webp',
     },
     a4: {
@@ -120,13 +120,13 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c1: {
       trace: 'Eidolon 1',
       title: `He Who Saw the Deep`,
-      content: `When Gilgamesh possesses <b class="text-violet-400">King's Acknowledgement</b>, its DEF-ignoring effect will apply to other teammates as well, and <b class="text-violet-400">King's Acknowledgement</b> will additionally increase Gilgamesh's ATK by <span class="text-desc">60%</span>. After Gilgamesh consumes <b class="text-heal">Interest</b>, he additionally regenerates a fixed <span class="text-desc">60</span> Energy the next time he uses his Skill.`,
+      content: `When Gilgamesh possesses <b class="text-violet-400">King's Acknowledgement</b>, its DEF-ignoring effect will apply to other teammates as well, and <b class="text-violet-400">King's Acknowledgement</b> will additionally increase Gilgamesh's ATK by <span class="text-desc">60%</span>. He additionally regenerates a fixed <span class="text-desc">40</span> Energy when he uses his Skill.`,
       image: 'asset/traces/SkillIcon_1509_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Wisdom That Encompassed All`,
-      content: `When entering combat, Gilgamesh gains <span class="text-desc">8</span> point(s) of <b class="text-heal">Interest</b>, and additionally gains <span class="text-desc">3</span> point(s) of <b class="text-heal">Interest</b> when using his Ultimate. The DMG multiplier of the Skill <b>Gate of Babylon</b> dealt to the primary target increases by <span class="text-desc">100%</span>, and the DMG multiplier dealt to adjacent targets increases by <span class="text-desc">50%</span>.`,
+      content: `When entering combat, Gilgamesh gains <span class="text-desc">5</span> point(s) of <b class="text-heal">Interest</b>, and additionally gains <span class="text-desc">5</span> point(s) of <b class="text-heal">Interest</b> when using his Ultimate. The DMG multiplier of the Skill <b>Gate of Babylon</b> dealt to the primary target increases by <span class="text-desc">100%</span>, and the DMG multiplier dealt to adjacent targets increases by <span class="text-desc">50%</span>.`,
       image: 'asset/traces/SkillIcon_1509_Rank2.webp',
     },
     c3: {
@@ -144,7 +144,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     c5: {
       trace: 'Eidolon 5',
-      title: `Sword That Parted God from Man`,
+      title: `Sword That Parted Gods from Man`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
       image: 'asset/traces/SkillIcon_1509_BP.webp',
@@ -152,7 +152,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     c6: {
       trace: 'Eidolon 6',
       title: 'Soul That Bore Friendship',
-      content: `Increases the bounce DMG multiplier of the Ultimate <b>Enuma Elish</b> by <span class="text-desc">30%</span>. While Gilgamesh is on the field, increases the <b>All-Type RES PEN</b> of ally characters by <span class="text-desc">20%</span>, and when an ally character uses their Ultimate, Gilgamesh gains <span class="text-desc">1</span> point of <b class="text-desc">Golden Rule</b>, up to a total of <span class="text-desc">6</span> points. If Gilgamesh has <span class="text-desc">6</span> points of <b class="text-desc">Golden Rule</b> after using his Ultimate, he consumes all <b class="text-desc">Golden Rule</b> to activate his Ultimate.`,
+      content: `Increases the bounce DMG multiplier of the Ultimate <b>Enuma Elish</b> by <span class="text-desc">80%</span>. While Gilgamesh is on the field, increases the <b>All-Type RES PEN</b> of ally characters by <span class="text-desc">20%</span>. When a teammate uses their Ultimate, Gilgamesh gains <span class="text-desc">1</span> point of <b class="text-desc">Golden Rule</b>, up to a total of <span class="text-desc">3</span> points. When this unit uses his Ultimate, he consumes all <b class="text-desc">Golden Rule</b> points and increases his Ultimate DMG's CRIT DMG by <span class="text-desc">100%</span> for each point of <b class="text-desc">Golden Rule</b> consumed.`,
       image: 'asset/traces/SkillIcon_1509_Rank6.webp',
     },
   }
@@ -178,6 +178,15 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
     {
       type: 'number',
+      id: 'interest_spd',
+      text: `Interest SPD Stacks`,
+      ...talents.talent,
+      show: true,
+      default: 5,
+      min: 0,
+    },
+    {
+      type: 'number',
       id: 'gil_a4',
       text: `A4 CRIT DMG Stacks`,
       ...talents.a4,
@@ -193,6 +202,16 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ...talents.talent,
       show: true,
       default: true,
+    },
+    {
+      type: 'number',
+      id: 'golden_rule',
+      text: `Golden Rule`,
+      ...talents.c6,
+      show: c >= 6,
+      default: 3,
+      min: 0,
+      max: 3,
     },
   ]
 
@@ -255,7 +274,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           name: 'Total Single Target DMG',
           value: [
             { scaling: calcScaling(2, 0.2, ult, 'curved'), multiplier: Stats.ATK },
-            { scaling: calcScaling(0.5, 0.05, ult, 'curved') + (c >= 6 ? 0.3 : 0), hits: 10, multiplier: Stats.ATK },
+            { scaling: calcScaling(0.5, 0.05, ult, 'curved') + (c >= 6 ? 0.8 : 0), hits: 10, multiplier: Stats.ATK },
           ],
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
@@ -273,7 +292,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         },
         {
           name: 'Bounce',
-          value: [{ scaling: calcScaling(0.5, 0.05, ult, 'curved') + (c >= 6 ? 0.3 : 0), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(0.5, 0.05, ult, 'curved') + (c >= 6 ? 0.8 : 0), multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
@@ -323,12 +342,12 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         base[Stats.P_ATK].push({
           name: `Ascension 6 Passive`,
           source: 'Self',
-          value: 0.3 + _.min([0.01 * _.max([base.MAX_ENERGY - 100, 0]), 1]),
+          value: 0.2 + _.min([0.01 * _.max([base.MAX_ENERGY - 140, 0]), 1]),
         })
         base[Stats.CRIT_DMG].push({
           name: `Ascension 6 Passive`,
           source: 'Self',
-          value: 0.3 + _.min([0.01 * _.max([base.MAX_ENERGY - 100, 0]), 1]),
+          value: 0.2 + _.min([0.01 * _.max([base.MAX_ENERGY - 140, 0]), 1]),
         })
       }
       if (c >= 4) {
@@ -343,6 +362,20 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           name: `Eidolon 6`,
           source: 'Self',
           value: 0.2,
+        })
+      }
+      if (form.interest_spd) {
+        base[Stats.P_SPD].push({
+          name: `Interest`,
+          source: 'Self',
+          value: 0.1 * form.interest_spd,
+        })
+      }
+      if (form.golden_rule) {
+        base.ULT_CD.push({
+          name: `Golden Rule`,
+          source: 'Self',
+          value: 1 * form.golden_rule,
         })
       }
 
@@ -409,12 +442,12 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         base[Stats.P_ATK].push({
           name: `Ascension 6 Passive`,
           source: 'Gilgamesh',
-          value: 0.3 + _.min([0.01 * _.max([base.MAX_ENERGY - 140, 0]), 0.6]),
+          value: 0.2 + _.min([0.01 * _.max([base.MAX_ENERGY - 140, 0]), 1]),
         })
         base[Stats.CRIT_DMG].push({
           name: `Ascension 6 Passive`,
           source: 'Gilgamesh',
-          value: 0.3 + _.min([0.01 * _.max([base.MAX_ENERGY - 140, 0]), 0.6]),
+          value: 0.2 + _.min([0.01 * _.max([base.MAX_ENERGY - 140, 0]), 1]),
         })
       }
       if (c >= 6 && !base.SUMMON_ID) {

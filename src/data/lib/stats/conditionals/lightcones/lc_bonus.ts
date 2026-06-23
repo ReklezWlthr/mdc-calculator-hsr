@@ -1831,7 +1831,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       base.DEF_PEN.push({
         name: 'Passive',
         source: `A Star That Lights the Night`,
-        value: calcRefinement(0.2, 0.05, r),
+        value: calcRefinement(0.32, 0.04, r),
       })
       return base
     },

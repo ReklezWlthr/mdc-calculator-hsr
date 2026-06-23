@@ -1533,13 +1533,13 @@ export const LCConditionals: IWeaponContent[] = [
         base.ASSIST_DMG.push({
           name: `Sail`,
           source: 'A Star That Lights the Night',
-          value: calcRefinement(0.24, 0.06, r) * form['23060'],
+          value: calcRefinement(0.2, 0.05, r) * form['23060'],
         })
         if (form['23060'] >= 3) {
           base.ULT_DMG.push({
             name: `Sail`,
             source: 'A Star That Lights the Night',
-            value: calcRefinement(0.24, 0.06, r) * form['23060'],
+            value: calcRefinement(0.2, 0.05, r) * form['23060'],
           })
         }
       }
@@ -2893,7 +2893,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
           base.SKILL_DMG.push({
             name: `Radiant Crown`,
             source: 'Flickering Stars',
-            value: calcRefinement(0.6, 0.1, r),
+            value: calcRefinement(0.72, 0.12, r),
           })
         }
       }
