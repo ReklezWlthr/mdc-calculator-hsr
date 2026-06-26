@@ -57,7 +57,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     skill_alt: {
       trace: 'Enhanced Skill',
       title: 'Second Magic Experiment',
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to all enemies. Then, consumes <span class="text-desc">3</span> point(s) of <b class="text-indigo-400">Gem Energy</b> to deal additional <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to one random enemy target. This repeats until <b class="text-indigo-400">Gem Energy</b> is less than <span class="text-desc">3</span> or there are no enemy targets with current HP greater than <span class="text-desc">0</span>, up to a maximum of <span class="text-desc">33</span> time(s). When used, if current Skill Points are greater than <span class="text-desc">2</span>, consumes Skill Points until <span class="text-desc">2</span> left, immediately gaining <span class="text-desc">2</span> points of <b class="text-indigo-400">Gem Energy</b> for every <span class="text-desc">1</span> Skill Point consumed.`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to all enemies. Then, consumes <span class="text-desc">3</span> point(s) of <b class="text-indigo-400">Gem Energy</b> to deal additional <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to one random enemy target. This repeats until <b class="text-indigo-400">Gem Energy</b> is less than <span class="text-desc">3</span> or there are no enemy targets with current HP greater than <span class="text-desc">0</span>, up to a maximum of <span class="text-desc">33</span> time(s). When used, if current Skill Points are greater than <span class="text-desc">2</span>, consumes Skill Points until there are <span class="text-desc">2</span> point(s) left, immediately gaining <span class="text-desc">2</span> points of <b class="text-indigo-400">Gem Energy</b> for every <span class="text-desc">1</span> Skill Point consumed.`,
       value: [{ base: 45, growth: 4.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.BOUNCE,
@@ -115,7 +115,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Elegant Conduct',
-      content: `When Rin Tohsaka is on the field, additionally increases the max number of Skill Points by <span class="text-desc">2</span>. When entering combat, Rin Tohsaka's ATK increases by <span class="text-desc">150%</span>, and <b>All-Type RES PEN</b> increases by <span class="text-desc">15%</span>. If Archer is in the team, Archer also gains this effect.`,
+      content: `When Rin Tohsaka is on the field, additionally increases the max number of Skill Points by <span class="text-desc">2</span>. When entering combat, Rin Tohsaka's ATK increases by <span class="text-desc">150%</span>, and <b class="text-hsr-quantum">Quantum RES PEN</b> increases by <span class="text-desc">15%</span>. If Archer is in the team, Archer also gains this effect.`,
       image: 'asset/traces/SkillIcon_1508_SkillTree1.webp',
     },
     c1: {
@@ -337,7 +337,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           source: 'Self',
           value: 1.5,
         })
-        base.ALL_TYPE_RES_PEN.push({
+        base.QUANTUM_RES_PEN.push({
           name: `Ascension 2 Passive`,
           source: 'Self',
           value: 0.15,
@@ -421,7 +421,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
             source: 'Rin Tohsaka',
             value: 1.5,
           })
-          base.ALL_TYPE_RES_PEN.push({
+          base.QUANTUM_RES_PEN.push({
             name: `Ascension 2 Passive`,
             source: 'Rin Tohsaka',
             value: 0.15,

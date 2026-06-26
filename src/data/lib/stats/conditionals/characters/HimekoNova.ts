@@ -66,10 +66,10 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       <br />Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{1}}% of Himeko • Nova's ATK to all enemies and gains <span class="text-desc">1</span> point(s) of <b class="text-desc">Source Energy</b>. A maximum of <span class="text-desc">3</span> <b class="text-desc">Source Energy</b> can be held.
       <br />
       <br /><b>Orbital Annihilation Pulse</b>
-      <br />Consumes <span class="text-desc">1</span> point of <b class="text-desc">Source Energy</b> to deal <b class="text-hsr-fire">Fire DMG</b> equal to {{2}}% of Himeko • Nova's ATK to all enemies. When current <b class="text-desc">Source Energy</b> is <span class="text-desc">1</span> point or more, for every <span class="text-desc">1</span> point(s) of <b class="text-desc">Source Energy</b> consumed, additionally deals <span class="text-desc">1</span> instance of <b class="text-hsr-fire">Fire DMG</b> equal to {{3}}% of Himeko • Nova's ATK to one random enemy.`,
+      <br />Consumes <span class="text-desc">1</span> point of <b class="text-desc">Source Energy</b> to deal <b class="text-hsr-fire">Fire DMG</b> equal to {{2}}% of Himeko • Nova's ATK to all enemies. When current <b class="text-desc">Source Energy</b> is more than <span class="text-desc">1</span> point, for every <span class="text-desc">1</span> point(s) of <b class="text-desc">Source Energy</b> consumed, additionally deals <span class="text-desc">1</span> instance of <b class="text-hsr-fire">Fire DMG</b> equal to {{3}}% of Himeko • Nova's ATK to one random enemy.`,
       value: [
         { base: 40, growth: 4, style: 'curved' },
-        { base: 16, growth: 1.6 , style: 'curved' },
+        { base: 16, growth: 1.6, style: 'curved' },
         { base: 10, growth: 1, style: 'curved' },
         { base: 15, growth: 1.5, style: 'curved' },
         { base: 381, growth: 38.1, style: 'curved' },
@@ -153,7 +153,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     c2: {
       trace: 'Eidolon 2',
       title: `The Colors We Never Strike`,
-      content: `Max uses of <u>Assist Skill</u> increase to <span class="text-desc">2</span>, and DMG dealt by Ultimate and <u>Assist Skill</u> increases by <span class="text-desc">124%</span> of their original DMG. At the start of each turn in the <b class="text-hsr-fire">Navigator's Semaphore</b> state, immediately recovers <span class="text-desc">1</span> extra <u>Assist Skill</u> use. Trace <b>Hark! The Express's Pulse Roars</b> effect: When characters other than <u>Trailblaze Companions</u> use <u>Assist Skill</u>, they also gain <span class="text-desc">1</span> extra turn.`,
+      content: `Max uses of <u>Assist Skill</u> increase to <span class="text-desc">2</span>, and DMG dealt by Ultimate and <u>Assist Skill</u> increases by <span class="text-desc">130%</span> of their original DMG. At the start of each turn in the <b class="text-hsr-fire">Navigator's Semaphore</b> state, immediately recovers <span class="text-desc">1</span> extra <u>Assist Skill</u> use. Trace <b>Hark! The Express's Pulse Roars</b> effect: When characters other than <u>Trailblaze Companions</u> use <u>Assist Skill</u>, they also gain <span class="text-desc">1</span> extra turn.`,
       image: 'asset/traces/SkillIcon_1510_Rank2.webp',
     },
     c3: {
@@ -179,7 +179,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
     c6: {
       trace: 'Eidolon 6',
       title: 'Ours Is the Oath to Sail Starward',
-      content: `Himeko • Nova's <b class="text-hsr-fire">Fire RES PEN</b> increases by <span class="text-desc">20%</span>. Max <b class="text-desc">Source Energy</b> increases to <span class="text-desc">6</span> point(s), and when an ally uses or triggers an <u>Assist Skill</u>, DMG dealt by the <u>Assist Skill</u> increases by <span class="text-desc">60%</span>, and Himeko • Nova gains <span class="text-desc">1</span> point(s) of <b class="text-desc">Source Energy</b>. When launching an <b>Hyperluminal Particle Beam</b> attack during the Ultimate, additionally gains <span class="text-desc">1</span> point of <b class="text-desc">Source Energy</b>. When launching <b>Orbital Annihilation Pulse</b>, if current <b class="text-desc">Source Energy</b> is greater than or equal to <span class="text-desc">6</span> point(s), additionally deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">160%</span> of Himeko • Nova's ATK to all enemies <span class="text-desc">1</span> time.`,
+      content: `Himeko • Nova's <b class="text-hsr-fire">Fire RES PEN</b> increases by <span class="text-desc">20%</span>. Max <b class="text-desc">Source Energy</b> increases to <span class="text-desc">6</span> point(s), and when an ally uses or triggers an <u>Assist Skill</u>, DMG dealt by the <u>Assist Skill</u> increases by <span class="text-desc">75%</span>, and Himeko • Nova gains <span class="text-desc">1</span> point(s) of <b class="text-desc">Source Energy</b>. When launching an <b>Hyperluminal Particle Beam</b> attack during the Ultimate, additionally gains <span class="text-desc">1</span> point of <b class="text-desc">Source Energy</b>. When launching <b>Orbital Annihilation Pulse</b>, if current <b class="text-desc">Source Energy</b> is greater than or equal to <span class="text-desc">6</span> point(s), additionally deals <b class="text-hsr-fire">Fire DMG</b> equal to <span class="text-desc">160%</span> of Himeko • Nova's ATK to all enemies <span class="text-desc">1</span> time.`,
       image: 'asset/traces/SkillIcon_1510_Rank6.webp',
     },
   }
@@ -319,7 +319,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       ]
       base.ULT_SCALING = [
         {
-          name: 'Max DMG (6 Beams + 3 Pulses + 9 Bounces)',
+          name: 'Max DMG (6 Beams + 3 Pulses + 9 Bounces + 3 Final Hits)',
           value: [
             // Beam
             { scaling: calcScaling(0.16, 0.016, ult, 'curved'), hits: 6, multiplier: Stats.ATK },
@@ -339,6 +339,19 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           type: TalentType.ULT,
           break: 48,
           sum: true,
+        },
+        {
+          name: 'Min DMG (6 Beams + 3 Pulses)',
+          value: [
+            // Beam
+            { scaling: calcScaling(0.16, 0.016, ult, 'curved'), hits: 6, multiplier: Stats.ATK },
+            // Orbital AoE
+            { scaling: calcScaling(0.1, 0.01, ult, 'curved'), hits: 3, multiplier: Stats.ATK },
+          ],
+          element: Element.FIRE,
+          property: TalentProperty.NORMAL,
+          type: TalentType.ULT,
+          break: 18,
         },
         {
           name: 'Hyperluminal Particle Beam',
@@ -439,19 +452,19 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         base.ASSIST_DMG.push({
           name: 'Eidolon 6',
           source: 'Self',
-          value: 0.6,
+          value: 0.75,
         })
       }
       if (c >= 2) {
         base.ULT_MULT.push({
           name: 'Eidolon 2',
           source: 'Self',
-          value: 0.24,
+          value: 0.3,
         })
         base.ASSIST_MULT.push({
           name: 'Eidolon 2',
           source: 'Self',
-          value: 0.24,
+          value: 0.3,
         })
       }
 

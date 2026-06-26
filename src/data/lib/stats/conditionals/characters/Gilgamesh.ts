@@ -46,7 +46,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     skill: {
       energy: 30,
       trace: 'Skill',
-      title: `King's Treasure`,
+      title: `Gate of Babylon`,
       content: `Obtains <b class="text-violet-400">King's Acknowledgement</b>, allowing this unit to ignore {{0}}% of the target's DEF when dealing DMG, lasting for <span class="text-desc">3</span> turn(s).
       <br />Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Gilgamesh's ATK to one designated enemy, and deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{2}}% of Gilgamesh's ATK to adjacent targets.`,
       value: [
@@ -79,12 +79,12 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       <br />When <b class="text-heal">Interest</b> reaches <span class="text-desc">10</span> point(s) for the first time, Gilgamesh enters the <b class="text-red">Interest Piqued!</b> state. In that state, he can only use his Skill, lasting for the entire battle. After using Skill, this unit's <b class="text-heal">Interest</b> resets.
       <br />
       <br /><b>"I Grant You Permission To Strike"</b>
-      <br />When Gilgamesh or Saber attacks, they accumulate <span class="text-desc">1</span> attack tally. After any unit attacks, if the accumulated attack tally reaches <span class="text-desc">8</span>, Gilgamesh and Saber launch a <u>Joint Follow-Up ATK</u> together, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Gilgamesh's ATK and <b class="text-hsr-wind">Wind DMG</b> equal to {{2}}% of Saber's ATK to all enemies. Then, Gilgamesh gains <span class="text-desc">3</span> point(s) of <b class="text-heal">Interest</b>, and Saber regenerates <span class="text-desc">120</span> Energy and the DMG dealt when she next uses her Ultimate becomes {{3}}% of the original DMG.
+      <br />When Gilgamesh or Saber attacks, they accumulate <span class="text-desc">1</span> attack tally. After either unit attacks, if the accumulated attack tally reaches <span class="text-desc">8</span>, Gilgamesh and Saber launch a <u>Joint Follow-Up ATK</u> together, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{1}}% of Gilgamesh's ATK and <b class="text-hsr-wind">Wind DMG</b> equal to {{2}}% of Saber's ATK to all enemies. Then, Gilgamesh gains <span class="text-desc">3</span> point(s) of <b class="text-heal">Interest</b>, and Saber regenerates <span class="text-desc">120</span> Energy and the DMG dealt when she next uses her Ultimate becomes {{3}}% of the original DMG.
       <br />The accumulated attack tally is reset after using the <u>Joint Follow-Up ATK</u>.`,
       value: [
         { base: 20, growth: 2, style: 'curved' },
-        { base: 150, growth: 15, style: 'curved' },
         { base: 200, growth: 20, style: 'curved' },
+        { base: 300, growth: 30, style: 'curved' },
         { base: 120, growth: 8, style: 'curved' },
       ],
       level: talent,
@@ -397,7 +397,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         const joint: IScaling[] = [
           {
             name: 'Gilgamesh Joint AoE DMG',
-            value: [{ scaling: calcScaling(1.5, 0.15, talent, 'curved'), multiplier: Stats.ATK }],
+            value: [{ scaling: calcScaling(2, 0.2, talent, 'curved'), multiplier: Stats.ATK }],
             element: Element.LIGHTNING,
             property: TalentProperty.FUA,
             type: TalentType.TALENT,
@@ -407,7 +407,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           },
           {
             name: 'Saber Joint AoE DMG',
-            value: [{ scaling: calcScaling(2, 0.2, talent, 'curved'), multiplier: Stats.ATK }],
+            value: [{ scaling: calcScaling(3, 0.3, talent, 'curved'), multiplier: Stats.ATK }],
             element: Element.WIND,
             property: TalentProperty.FUA,
             type: TalentType.TALENT,
