@@ -2719,7 +2719,7 @@ export const LightCones = [
     baseAtk: 28.8,
     baseDef: 24,
     type: PathType.ERUDITION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'First Wish',
       detail: `The wearer ignores wearer ignores {{0}}% of the target's DEF when dealing DMG. When the wearer uses an <u>Assist Skill</u>, they regenerate <span class="text-desc">6</span> Energy and gain <b>Sail</b>, lasting for <span class="text-desc">2</span> turns and stacking up to <span class="text-desc">3</span> time(s). Each stack of <b>Sail</b> increases <u>Assist Skill</u> DMG by {{1}}%. When <b>Sail</b> reaches <span class="text-desc">3</span> stacks, each stack of <b>Sail</b> increases Ultimate DMG by {{1}}%.`,

@@ -216,6 +216,14 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       min: 0,
       max: c >= 6 ? 6 : 3,
     },
+    {
+      type: 'toggle',
+      id: 'nova_e6',
+      text: `E6 Extra AoE Hit`,
+      ...talents.c6,
+      show: c >= 6,
+      default: true,
+    },
   ]
 
   const teammateContent: IContent[] = [
@@ -319,7 +327,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       ]
       base.ULT_SCALING = [
         {
-          name: 'Max DMG (6 Beams + 3 Pulses + 9 Bounces + 3 Final Hits)',
+          name: `Max Main DMG (6 Beams + 3 Pulses + ${c >= 6 ? 18 : 9} Enhanced Bounces + 3 Final Hits)`,
           value: [
             // Beam
             { scaling: calcScaling(0.16, 0.016, ult, 'curved'), hits: 6, multiplier: Stats.ATK },
@@ -328,7 +336,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
             // Orbital Bounce
             {
               scaling: calcScaling(0.15, 0.015, ult, 'curved') + (form.source_energy >= 3 ? 0.3 : 0),
-              hits: 9,
+              hits: c >= 6 ? 18 : 9,
               multiplier: Stats.ATK,
             },
             // Final Hit
@@ -341,7 +349,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           sum: true,
         },
         {
-          name: 'Min DMG (6 Beams + 3 Pulses)',
+          name: 'Max Other DMG (6 Beams + 3 Pulses)',
           value: [
             // Beam
             { scaling: calcScaling(0.16, 0.016, ult, 'curved'), hits: 6, multiplier: Stats.ATK },
@@ -370,19 +378,6 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           break: 2,
         },
         {
-          name: 'Source Energy Bounce',
-          value: [
-            {
-              scaling: calcScaling(0.15, 0.015, ult, 'curved') + (form.source_energy >= 3 ? 0.3 : 0),
-              multiplier: Stats.ATK,
-            },
-          ],
-          element: Element.FIRE,
-          property: TalentProperty.NORMAL,
-          type: TalentType.ULT,
-          break: 2,
-        },
-        {
           name: 'Final Hit (Each)',
           value: [{ scaling: calcScaling(0.4, 0.04, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.FIRE,
@@ -390,16 +385,44 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           type: TalentType.ULT,
           break: 4,
         },
-      ]
-      if (c >= 6 && form.source_energy >= 6) {
-        base.ULT_SCALING.push({
-          name: 'E6 Source Energy AoE',
-          value: [{ scaling: 1.6, multiplier: Stats.ATK }],
+        {
+          name: 'Source Energy Bounce',
+          value: [{ scaling: calcScaling(0.15, 0.015, ult, 'curved'), multiplier: Stats.ATK }],
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
-          sum: true,
+          break: 2,
+        },
+      ]
+      if (a.a6) {
+        base.ULT_SCALING.push({
+          name: 'A6 Enhanced Source Energy Bounce',
+          value: [{ scaling: calcScaling(0.15, 0.015, ult, 'curved') + 0.3, multiplier: Stats.ATK }],
+          element: Element.FIRE,
+          property: TalentProperty.NORMAL,
+          type: TalentType.ULT,
+          break: 2,
         })
+      }
+      if (form.nova_e6) {
+        base.ULT_SCALING.push(
+          {
+            name: 'Max E6 Source Energy AoE',
+            value: [{ scaling: 1.6, hits: 3, multiplier: Stats.ATK }],
+            element: Element.FIRE,
+            property: TalentProperty.NORMAL,
+            type: TalentType.ULT,
+            sum: true,
+          },
+          {
+            name: 'E6 Source Energy AoE',
+            value: [{ scaling: 1.6, multiplier: Stats.ATK }],
+            element: Element.FIRE,
+            property: TalentProperty.NORMAL,
+            type: TalentType.ULT,
+            sum: true,
+          },
+        )
       }
 
       if (form.nova_skill) {
