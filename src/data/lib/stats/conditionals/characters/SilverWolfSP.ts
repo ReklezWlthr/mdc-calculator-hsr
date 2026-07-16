@@ -471,10 +471,10 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       globalCallback: CallbackType[],
       globalMod: GlobalModifiers,
     ) => {
-      globalCallback.push(function P999(_x, _d, _w, a) {
-        const spd = a[index].getSpd()
-        if (spd >= 160) {
-          a[index][Stats.ELATION].push({
+      globalCallback.push(function P999(_x, _d, _w, all) {
+        const spd = all[index].getSpd()
+        if (spd >= 160 && a.a2) {
+          all[index][Stats.ELATION].push({
             name: `Ascension 2 Passive`,
             source: 'Self',
             value: 0.5 + _.min([spd - 160, 100]) * 0.02,
@@ -484,7 +484,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           })
         }
 
-        return a
+        return all
       })
       base.CALLBACK.push(function P99(x) {
         if (form.invincible_player) {

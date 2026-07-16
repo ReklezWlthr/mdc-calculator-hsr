@@ -1863,6 +1863,56 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23063',
+    scaling: (base, r) => {
+      base[Stats.P_HP].push({
+        name: 'Passive',
+        source: `Rise and Sing`,
+        value: calcRefinement(0.3, 0.075, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23064',
+    scaling: (base, r) => {
+      base[Stats.CRIT_RATE].push({
+        name: 'Passive',
+        source: `Summer Rides the Surf`,
+        value: calcRefinement(0.18, 0.03, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '21066',
+    scaling: (base, r) => {
+      base[Stats.ELATION].push({
+        name: 'Passive',
+        source: `A Little Getaway`,
+        value: calcRefinement(0.2, 0.05, r),
+      })
+      base.CALLBACK.push(function P100(x) {
+        x.MEMO_SKILL_SCALING = _.map(x.MEMO_SKILL_SCALING, (s) =>
+          s.type === TalentType.ELATION ? { ...s, def_pen: calcRefinement(0.08, 0.02, r) } : s,
+        )
+        return x
+      })
+      return base
+    },
+  },
+  {
+    id: '22008',
+    scaling: (base, r) => {
+      base[Stats.P_ATK].push({
+        name: 'Passive',
+        source: `Race to the Horizon`,
+        value: calcRefinement(0.12, 0.03, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

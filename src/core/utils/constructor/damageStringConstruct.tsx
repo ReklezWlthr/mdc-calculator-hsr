@@ -85,7 +85,8 @@ export const damageStringConstruct = (
   const breakDoT = scaling.property === TalentProperty.BREAK_DOT
   const isPure = scaling.property === TalentProperty.PURE
   const isElation =
-    scaling.property === TalentProperty.ELATION || _.every(scaling.value, (v) => v.multiplier === Stats.ELATION)
+    scaling.property === TalentProperty.ELATION ||
+    (_.size(scaling.value) && _.every(scaling.value, (v) => v.multiplier === Stats.ELATION))
 
   const globalMultiplier =
     (scaling.multiplier || 1) +

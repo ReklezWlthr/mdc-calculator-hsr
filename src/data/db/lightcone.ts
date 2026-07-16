@@ -1460,6 +1460,24 @@ export const LightCones = [
       properties: [{ base: 12, growth: 2 }],
     },
   },
+  {
+    id: '21066',
+    name: `A Little Getaway`,
+    rarity: 4,
+    baseHp: 43.2,
+    baseAtk: 19.2,
+    baseDef: 18,
+    type: PathType.ELATION,
+    beta: true,
+    desc: {
+      name: 'Whisper',
+      detail: `Increases the wearer's Elation by {{0}}%. When the wearer uses an Elation Skill, ignores {{1}}% of the target's DEF.`,
+      properties: [
+        { base: 20, growth: 5 },
+        { base: 8, growth: 2 },
+      ],
+    },
+  },
   //---------------------
   //   Event 4 Star
   //---------------------
@@ -1605,6 +1623,24 @@ export const LightCones = [
       properties: [
         { base: 12, growth: 3 },
         { base: 8, growth: 1 },
+      ],
+    },
+  },
+  {
+    id: '22008',
+    name: `Race to the Horizon`,
+    rarity: 4,
+    baseHp: 38.4,
+    baseAtk: 21.6,
+    baseDef: 18,
+    type: PathType.HUNT,
+    beta: true,
+    desc: {
+      name: 'Overtake',
+      detail: `Increases the wearer's ATK by {{0}}%. After the wearer uses a <u>Follow-Up ATK</u>, increases their CRIT DMG by {{1}}% for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">10</span> times.`,
+      properties: [
+        { base: 12, growth: 3 },
+        { base: 3, growth: 0.5 },
       ],
     },
   },
@@ -2766,6 +2802,45 @@ export const LightCones = [
         { base: 0.2, growth: 0.05 },
         { base: 72, growth: 18 },
         { base: 24, growth: 6 },
+      ],
+    },
+  },
+  {
+    id: '23063',
+    name: `Rise and Sing`,
+    rarity: 5,
+    baseHp: 52.8,
+    baseAtk: 26.4,
+    baseDef: 18,
+    type: PathType.REMEMBRANCE,
+    beta: true,
+    desc: {
+      name: 'Improvisation',
+      detail: `Increases the wearer's Max HP by {{0}}%. After the wearer uses their Ultimate, recovers <span class="text-desc">1</span> Skill Point for allies. When entering combat, advances the wearer's action by {{1}}% and grants the wearer <b>New Melody</b> for <span class="text-desc">2</span> turn(s). While the wearer has <b>New Melody</b>, all allies' SPD increases by {{2}}%.`,
+      properties: [
+        { base: 30, growth: 7.5 },
+        { base: 40, growth: 5 },
+        { base: 20, growth: 4 },
+      ],
+    },
+  },
+  {
+    id: '23064',
+    name: `Summer Rides the Surf`,
+    rarity: 5,
+    baseHp: 43.2,
+    baseAtk: 26.4,
+    baseDef: 24,
+    type: PathType.ELATION,
+    beta: true,
+    desc: {
+      name: 'Waveriding',
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer uses an Elation Skill, gains <b>Hype</b>, which increases the wearer's SPD by {{1}}%. If the Elation Skill used is different from the last Elation Skill used, additionally gains <b>Trend</b>, which increases the wearer's Elation by {{2}}%.
+      <br />At the start of every wave or after the wearer uses their Elation Skill <span class="text-desc">3</span> time(s), recovers <span class="text-desc">1</span> Skill Point.`,
+      properties: [
+        { base: 18, growth: 3 },
+        { base: 20, growth: 3 },
+        { base: 36, growth: 13.5 },
       ],
     },
   },

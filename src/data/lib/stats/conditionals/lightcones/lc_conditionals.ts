@@ -1546,6 +1546,59 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `Hype`,
+    show: true,
+    default: true,
+    id: '23064_1',
+    scaling: (base, form, r) => {
+      if (form['23064_1']) {
+        base[Stats.P_SPD].push({
+          name: `Hype`,
+          source: 'Summer Rides the Surf',
+          value: calcRefinement(0.2, 0.03, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Trend`,
+    show: true,
+    default: true,
+    id: '23064_2',
+    scaling: (base, form, r) => {
+      if (form['23064_2']) {
+        base[Stats.ELATION].push({
+          name: `Trend`,
+          source: 'Summer Rides the Surf',
+          value: calcRefinement(0.36, 0.135, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'number',
+    text: `FUA CRIT DMG Bonus`,
+    show: true,
+    default: 10,
+    min: 0,
+    max: 10,
+    id: '22008',
+    scaling: (base, form, r) => {
+      if (form['22008']) {
+        base[Stats.CRIT_DMG].push({
+          name: `Passive`,
+          source: 'Race to the Horizon',
+          value: calcRefinement(0.03, 0.005, r),
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [
@@ -2923,6 +2976,24 @@ export const LCTeamConditionals: IWeaponContent[] = [
           value: calcRefinement(0.24, 0.06, r),
         })
       }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `New Melody`,
+    show: true,
+    default: true,
+    id: '23063',
+    scaling: (base, form, r, { index, owner }) => {
+      if (form['23063']) {
+        base[Stats.P_SPD].push({
+          name: `Passive`,
+          source: 'New Melody',
+          value: calcRefinement(0.2, 0.04, r),
+        })
+      }
+
       return base
     },
   },

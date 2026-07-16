@@ -88,6 +88,8 @@ import MBlade from './characters/MBlade'
 import HimekoNova from './characters/HimekoNova'
 import Rin from './characters/Rin'
 import Gilgamesh from './characters/Gilgamesh'
+import AventurineSP from './characters/AventurineSP'
+import RobinSP from './characters/RobinSP'
 
 export default [
   { id: '1001', conditionals: March },
@@ -175,6 +177,8 @@ export default [
   { id: '1508', conditionals: Rin },
   { id: '1509', conditionals: Gilgamesh },
   { id: '1510', conditionals: HimekoNova },
+  { id: '1512', conditionals: RobinSP },
+  { id: '1513', conditionals: AventurineSP },
   // MCs
   { id: '8001', conditionals: DMC },
   { id: '8003', conditionals: PMC },
