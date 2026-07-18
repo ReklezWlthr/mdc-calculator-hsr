@@ -2758,7 +2758,7 @@ export const LightCones = [
     beta: false,
     desc: {
       name: 'First Wish',
-      detail: `The wearer ignores wearer ignores {{0}}% of the target's DEF when dealing DMG. When the wearer uses an <u>Assist Skill</u>, they regenerate <span class="text-desc">6</span> Energy and gain <b>Sail</b>, lasting for <span class="text-desc">2</span> turns and stacking up to <span class="text-desc">3</span> time(s). Each stack of <b>Sail</b> increases <u>Assist Skill</u> DMG by {{1}}%. When <b>Sail</b> reaches <span class="text-desc">3</span> stacks, each stack of <b>Sail</b> increases Ultimate DMG by {{1}}%.`,
+      detail: `The wearer ignores wearer ignores {{0}}% of the target's DEF when dealing DMG. When the wearer uses <u>Assist Skill</u>, they regenerate <span class="text-desc">6</span> Energy and gain <b>Sail</b>, lasting for <span class="text-desc">2</span> turns and stacking up to <span class="text-desc">3</span> time(s). Each stack of <b>Sail</b> increases <u>Assist Skill</u> DMG by {{1}}%. When <b>Sail</b> reaches <span class="text-desc">3</span> stacks, each stack of <b>Sail</b> increases Ultimate DMG by {{1}}%.`,
       properties: [
         { base: 32, growth: 4 },
         { base: 20, growth: 5 },
@@ -2776,7 +2776,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Sprout',
-      detail: `Increases the wearer's CRIT Rate by {{0}}%. When any ally character consumes a total of <span class="text-desc">4</span> or more Skill Points in a single turn, the wearer gains <b>Radiant Crown</b>, lasting for <span class="text-desc">3</span> turn(s). While the wearer has <b>Radiant Crown</b>, all allies' DMG ignores {{1}}% of the target's DEF, and Skill DMG dealt by the wearer increases by {{2}}%. Effects of the same type cannot stack.`,
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. When any ally character consumes a total of <span class="text-desc">4</span> or more Skill Points in a single turn, the wearer gains <b>Radiant Crown</b>, lasting for <span class="text-desc">3</span> turn(s). While the wearer holds <b>Radiant Crown</b>, all allies' DMG dealt ignores {{1}}% of the target's DEF, and the Skill DMG dealt by the wearer increases by {{2}}%. Effects of the same type cannot stack.`,
       properties: [
         { base: 18, growth: 3 },
         { base: 20, growth: 4 },
@@ -2795,7 +2795,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'At Will',
-      detail: `Increases the wearer's ATK by {{0}}% and Energy Regeneration Rate by {{1}}%. When the wearer uses their Ultimate, increases the Ultimate DMG dealt this time by {{2}}% for every <span class="text-desc">1</span> Energy consumed, up to {{3}}%. When the wearer enters combat or uses their Ultimate, the wearer gains <b>King's Entertainment</b>, lasting for <span class="text-desc">3</span> turn(s). While the wearer has <b>King's Entertainment</b>, increases all allies' CRIT DMG by {{4}}%. Effects of the same type cannot stack.`,
+      detail: `Increases the wearer's ATK by {{0}}% and Energy Regeneration Rate by {{1}}%. When the wearer uses their Ultimate, for every <span class="text-desc">1</span> Energy consumed, increases the Ultimate DMG dealt this time by {{2}}%, up to a max increase of {{3}}%. When the wearer enters combat or uses Ultimate, the wearer gains <b>King's Entertainment</b>, lasting for <span class="text-desc">3</span> turn(s). While the wearer holds <b>King's Entertainment</b>, increases all allies' CRIT DMG by {{4}}%. Effects of the same type cannot stack.`,
       properties: [
         { base: 18, growth: 3 },
         { base: 10, growth: 2.5 },

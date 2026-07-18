@@ -1332,7 +1332,7 @@ export const PlanarSets: IArtifact[] = [
       return base
     },
     desc: [
-      `When entering combat, if the wearer's Max Energy is greater than or equal to <span class="text-desc">200</span>, increases the wearer's DMG dealt by <span class="text-desc">0.2%</span> for every <span class="text-desc">ๅ</span> point exceeding this value, up to a max increase of <span class="text-desc">32%</span>.`,
+      `When entering combat, if the wearer's Max Energy is greater than or equal to <span class="text-desc">200</span>, for every <span class="text-desc">1</span> excess point, increases the wearer's DMG dealt by <span class="text-desc">0.2%</span>, up to a max increase of <span class="text-desc">32%</span>.`,
     ],
     beta: false,
     set: [`Central Synapse of the Life Sciences Institute`, `Peripheral Conduits of the Life Sciences Institute`],

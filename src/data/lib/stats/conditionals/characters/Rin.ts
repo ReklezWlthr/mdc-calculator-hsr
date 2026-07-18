@@ -36,7 +36,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       energy: 20,
       trace: 'Basic ATK',
       title: 'Bajiquan',
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to one designated enemy target.`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to one designated enemy.`,
       value: [{ base: 50, growth: 10, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
@@ -47,7 +47,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       energy: 30,
       trace: 'Skill',
       title: `Jeweled Sword Zelretch`,
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to one designated enemy target.`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to one designated enemy.`,
       value: [{ base: 90, growth: 0.9, style: 'curved' }],
       level: skill,
       tag: AbilityTag.ST,
@@ -57,7 +57,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     skill_alt: {
       trace: 'Enhanced Skill',
       title: 'Second Magic Experiment',
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to all enemies. Then, consumes <span class="text-desc">3</span> point(s) of <b class="text-indigo-400">Gem Energy</b> to deal additional <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to one random enemy target. This repeats until <b class="text-indigo-400">Gem Energy</b> is less than <span class="text-desc">3</span> or there are no enemy targets with current HP greater than <span class="text-desc">0</span>, up to a maximum of <span class="text-desc">33</span> time(s). When used, if current Skill Points are greater than <span class="text-desc">2</span>, consumes Skill Points until there are <span class="text-desc">2</span> point(s) left, immediately gaining <span class="text-desc">2</span> points of <b class="text-indigo-400">Gem Energy</b> for every <span class="text-desc">1</span> Skill Point consumed.`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to all enemies. Then, consumes <span class="text-desc">3</span> <b class="text-indigo-400">Gem Energy</b> to additionally deal <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to one random enemy target. This repeats until <b class="text-indigo-400">Gem Energy</b> is less than <span class="text-desc">3</span> or there are no enemy targets with current HP greater than <span class="text-desc">0</span>. Can repeat up to a maximum of <span class="text-desc">33</span> cycle(s). When used, if the current Skill Points are greater than <span class="text-desc">2</span>, consumes Skill Points down to <span class="text-desc">2</span>, and for each Point consumed, immediately gains <span class="text-desc">2</span> <b class="text-indigo-400">Gem Energy</b>.`,
       value: [{ base: 45, growth: 4.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.BOUNCE,
@@ -68,7 +68,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       energy: 5,
       trace: 'Ultimate',
       title: 'An Gal Ta Ki Gal Šè',
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to one designated enemy, and <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Rin Tohsaka's ATK to other enemy targets. When used, recovers <span class="text-desc">1</span> Skill Point(s) for allies, and increases the DMG taken by all enemies by {{2}}% for <span class="text-desc">3</span> turn(s).`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Rin Tohsaka's ATK to one designated enemy, and <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Rin Tohsaka's ATK to other enemy targets. When used, recovers <span class="text-desc">1</span> Skill Point(s) for allies, and increases the DMG taken by all enemies by {{2}}%, lasting for <span class="text-desc">3</span> turn(s).`,
       value: [
         { base: 300, growth: 30, style: 'curved' },
         { base: 100, growth: 10, style: 'curved' },
@@ -81,10 +81,10 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     talent: {
       trace: 'Talent',
       title: `Gem Magecraft`,
-      content: `When entering combat, gains <span class="text-desc">20</span> <b class="text-indigo-400">Gem Energy</b>. When an ally target consumes or recovers Skill Points, increases their CRIT DMG by {{0}}% for <span class="text-desc">2</span> turn(s). For every <span class="text-desc">1</span> Skill Point consumed or recovered, Rin Tohsaka gains <span class="text-desc">1</span> <b class="text-indigo-400">Gem Energy</b>. If Rin Tohsaka possesses <span class="text-desc">15</span> or more <b class="text-indigo-400">Gem Energy</b> or if current Skill Points are <span class="text-desc">7</span> or more, her Skill is enhanced into <b>Second Magic Experiment</b>.
+      content: `When entering combat, gains <span class="text-desc">20</span> <b class="text-indigo-400">Gem Energy</b>. When an ally target consumes or recovers Skill Points, increases their CRIT DMG by {{0}}% for <span class="text-desc">2</span> turn(s). For every <span class="text-desc">1</span> Skill Point consumed or recovered, Rin Tohsaka gains <span class="text-desc">1</span> <b class="text-indigo-400">Gem Energy</b>. If Rin Tohsaka holds more than <span class="text-desc">15</span> <b class="text-indigo-400">Gem Energy</b>, or if the current Skill Points are <span class="text-desc">7</span> or more, her Skill is enhanced to <b>Second Magic Experiment</b>.
       <br />
       <br /><b>Freeform Tohsaka Style</b>
-      <br />After attacking Archer uses his Skill <b>Caladbolg II: Fake Spiral Sword</b>, if there are <span class="text-desc">3</span> or fewer Skill Point(s) remaining or if <b>Caladbolg II: Fake Spiral Sword</b> has been actively used <span class="text-desc">5</span> times during the current <b>Circuit Connection</b> state, and the <u>Joint Follow-Up ATK</u> from <b>Freeform Tohsaka Style</b> has not been triggered, Rin Tohsaka and Archer will launch a <u>Joint Follow-Up ATK</u> on all enemies, each dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Rin Tohsaka's ATK and {{1}}% of Archer's ATK respectively, and recovering <span class="text-desc">4</span> Skill Point(s) for allies. This <u>Joint ATK</u> can only trigger once. The trigger count resets when Rin Tohsaka's turn ends.`,
+      <br />After attacking Archer uses his Skill <b>Caladbolg II: Fake Spiral Sword</b>, if Skill Points are <span class="text-desc">3</span> or fewer or if <b>Caladbolg II: Fake Spiral Sword</b> has been actively used <span class="text-desc">5</span> times during the current <b>Circuit Connection</b> state, and the <u>Joint Follow-Up ATK</u> from <b>Freeform Tohsaka Style</b> has not been triggered, Rin Tohsaka and Archer will launch <u>Joint Follow-Up ATK</u> on all enemies, each dealing <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Rin Tohsaka's ATK and {{1}}% of Archer's ATK respectively, and recovering <span class="text-desc">4</span> Skill Point(s) for allies. This <u>Joint ATK</u> can only trigger once. The trigger count resets when Rin Tohsaka's turn ends.`,
       value: [
         { base: 35, growth: 3.5, style: 'curved' },
         { base: 150, growth: 15, style: 'curved' },
@@ -96,39 +96,39 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     technique: {
       trace: 'Technique',
       title: `Conversion Charge`,
-      content: `After using the Technique, gains <span class="text-desc">10</span> point(s) of <b class="text-indigo-400">Gem Energy</b> at the start of the next combat.`,
+      content: `After using Technique, gains <span class="text-desc">10</span> <b class="text-indigo-400">Gem Energy</b> at the start of the next battle.`,
       tag: AbilityTag.ENHANCE,
       image: 'asset/traces/SkillIcon_1508_Maze.webp',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Inbound Prosperity',
-      content: `When Rin Tohsaka uses her Ultimate, she gains <span class="text-desc">12</span> point(s) of <b class="text-indigo-400">Gem Energy</b>.`,
+      content: `When Rin Tohsaka uses Ultimate, gains <span class="text-desc">12</span> <b class="text-indigo-400">Gem Energy</b>.`,
       image: 'asset/traces/SkillIcon_1508_SkillTree3.webp',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Ladylike Poise`,
-      content: `When entering combat and after using Enhanced Skill, Rin Tohsaka's SPD increases by <span class="text-desc">20%</span> for <span class="text-desc">3</span> turn(s).`,
+      content: `When entering combat or after using Enhanced Skill, increases Rin Tohsaka's SPD by <span class="text-desc">20%</span> for <span class="text-desc">3</span> turn(s).`,
       image: 'asset/traces/SkillIcon_1508_SkillTree2.webp',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Elegant Conduct',
-      content: `When Rin Tohsaka is on the field, additionally increases the max number of Skill Points by <span class="text-desc">2</span>. When entering combat, Rin Tohsaka's ATK increases by <span class="text-desc">150%</span>, and <b class="text-hsr-quantum">Quantum RES PEN</b> increases by <span class="text-desc">15%</span>. If Archer is in the team, Archer also gains this effect.`,
+      content: `While Rin Tohsaka is on the field, additionally increases the upper limit of Skill Points by <span class="text-desc">2</span>. When entering combat, Rin Tohsaka's ATK increases by <span class="text-desc">150%</span>, and <b class="text-hsr-quantum">Quantum RES PEN</b> increases by <span class="text-desc">15%</span>. If Archer is in the team, Archer also gains this effect.`,
       image: 'asset/traces/SkillIcon_1508_SkillTree1.webp',
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Zelretch's Apprentice`,
-      content: `If the amount of <b class="text-indigo-400">Gem Energy</b> consumed by a single Enhanced Skill is <span class="text-desc">30</span> or more, Rin Tohsaka gains <b class="text-red">Shadow Gem</b> equal to the amount of <b class="text-indigo-400">Gem Energy</b> consumed.
-      <br />While possessing <b class="text-red">Shadow Gem</b>, Skill is enhanced to <b>Second Magic Experiment</b>. The Enhanced Skill consumes all <b class="text-red">Shadow Gem</b>, does not trigger the effect of converting Skill Points into <b class="text-indigo-400">Gem Energy</b>, and does not consume <b class="text-indigo-400">Gem Energy</b>.`,
+      content: `If one instance of the Enhanced Skill consumes <span class="text-desc">30</span> or more <b class="text-indigo-400">Gem Energy</b>, Rin Tohsaka gains <b class="text-red">Shadow Gem</b> equal to the amount of <b class="text-indigo-400">Gem Energy</b> consumed.
+      <br />While holding <b class="text-red">Shadow Gem</b>, enhances Skill to <b>Second Magic Experiment</b>. The Enhanced Skill consumes all <b class="text-red">Shadow Gem</b>, does not trigger the effect that converts Skill Points into <b class="text-indigo-400">Gem Energy</b>, and does not consume <b class="text-indigo-400">Gem Energy</b>.`,
       image: 'asset/traces/SkillIcon_1508_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Dimensional Traveler`,
-      content: `Increases Rin Tohsaka's Skill DMG by <span class="text-desc">30%</span>. While Rin Tohsaka is on the field, Skill DMG dealt by all allies becomes <span class="text-desc">130%</span> of the original DMG.`,
+      content: `Rin Tohsaka's Skill DMG dealt increases by <span class="text-desc">30%</span>. While Rin Tohsaka is on the field, Skill DMG dealt by all allies becomes <span class="text-desc">130%</span> of the original DMG.`,
       image: 'asset/traces/SkillIcon_1508_Rank2.webp',
     },
     c3: {
@@ -141,7 +141,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     c4: {
       trace: 'Eidolon 4',
       title: `Red Devil: Triple Speed`,
-      content: `When the CRIT DMG boost effect from Talent <b>Gem Magecraft</b> takes effect on Rin Tohsaka, the effect can stack up to <span class="text-desc">2</span> time(s).`,
+      content: `When the CRIT DMG boost effect from the Talent <b>Gem Magecraft</b> applies to Rin Tohsaka, the effect can stack, up to <span class="text-desc">2</span> time(s).`,
       image: 'asset/traces/SkillIcon_1508_Rank4.webp',
     },
     c5: {
@@ -154,7 +154,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     c6: {
       trace: 'Eidolon 6',
       title: 'Nailed It This Time!',
-      content: `Rin Tohsaka's <b>All-Type RES PEN</b> increases by <span class="text-desc">20%</span>. When using Ultimate, gains <span class="text-desc">24</span> point(s) of <b class="text-indigo-400">Gem Energy</b> and <span class="text-desc">1</span> extra turn.`,
+      content: `Rin Tohsaka's <b>All-Type RES PEN</b> increases by <span class="text-desc">20%</span>. When using Ultimate, gains <span class="text-desc">24</span> <b class="text-indigo-400">Gem Energy</b> and <span class="text-desc">1</span> extra turn.`,
       image: 'asset/traces/SkillIcon_1508_Rank6.webp',
     },
   }
