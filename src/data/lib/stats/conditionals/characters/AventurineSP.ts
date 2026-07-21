@@ -176,7 +176,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     c6: {
       trace: 'Eidolon 6',
       title: 'Cashing the Past for a Wild Ride',
-      content: `<b class="elation">Elation DMG</b> dealt by Aventurine • Waveflair merrymakes by <span class="text-desc">25%</span>. After Aventurine • Waveflair uses his Ultimate <span class="text-desc">2</span> time(s), all subsequent Elation Skills used become <b>All in! To the Blazing Summer</b>, and when using the Elation Skill <b>All in! To the Blazing Summer</b> additionally deals DMG outside of <b class="text-aha">Aha Instant</b>, it no longer consumes <b class="text-green-300">Fervor</b>.`,
+      content: `<b class="elation">Elation DMG</b> dealt by Aventurine • Waveflair merrymakes by <span class="text-desc">25%</span>. After Aventurine • Waveflair uses his Ultimate <span class="text-desc">2</span> time(s), all subsequent Elation Skills used become <b>All in! To the Blazing Summer</b>, and when using the Elation Skill <b>All in! To the Blazing Summer</b> to additionally deal DMG outside of <b class="text-aha">Aha Instant</b>, it no longer consumes <b class="text-green-300">Fervor</b>.`,
       image: 'asset/traces/SkillIcon_1513_Rank6.webp',
     },
   }

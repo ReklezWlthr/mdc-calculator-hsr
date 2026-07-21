@@ -2835,7 +2835,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Waveriding',
-      detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer uses an Elation Skill, gains <b>Hype</b>, which increases the wearer's SPD by {{1}}%. If the Elation Skill used is different from the last Elation Skill used, additionally gains <b>Trend</b>, which increases the wearer's Elation by {{2}}%.
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer uses an Elation Skill, gains <b>Updraft</b>, which increases the wearer's SPD by {{1}}%. If the Elation Skill used is different from the last Elation Skill used, additionally gains <b>Uptrend</b>, which increases the wearer's Elation by {{2}}%.
       <br />At the start of every wave or after the wearer uses their Elation Skill <span class="text-desc">3</span> time(s), recovers <span class="text-desc">1</span> Skill Point.`,
       properties: [
         { base: 18, growth: 3 },

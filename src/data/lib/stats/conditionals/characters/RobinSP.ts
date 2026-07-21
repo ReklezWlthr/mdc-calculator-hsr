@@ -171,7 +171,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: 'Hearing the Chord Variations',
-      content: `Upon entering the <b class="text-orange-400">Fever</b> state, immediately gains <span class="text-desc">12</span> <b class="text-blue">Vibes</b>, and the SPD of <b>Summer Songbirds</b> increases by <span class="text-desc">20%</span> plus current <b class="text-blue">Vibes</b> × <span class="text-desc">0.5%</span>.`,
+      content: `Upon entering the <b class="text-orange-400">Fever</b> state, immediately gains <span class="text-desc">12</span> point(s) of <b class="text-blue">Vibes</b>, and the SPD of <b>Summer Songbirds</b> increases by <span class="text-desc">20%</span> plus current <b class="text-blue">Vibes</b> × <span class="text-desc">0.5%</span>.`,
       image: 'asset/traces/SkillIcon_1512_Rank4.webp',
     },
     c5: {

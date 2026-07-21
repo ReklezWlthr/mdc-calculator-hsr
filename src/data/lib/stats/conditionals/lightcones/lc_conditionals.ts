@@ -1548,14 +1548,14 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Hype`,
+    text: `Updraft`,
     show: true,
     default: true,
     id: '23064_1',
     scaling: (base, form, r) => {
       if (form['23064_1']) {
         base[Stats.P_SPD].push({
-          name: `Hype`,
+          name: `Updraft`,
           source: 'Summer Rides the Surf',
           value: calcRefinement(0.2, 0.03, r),
         })
@@ -1565,14 +1565,14 @@ export const LCConditionals: IWeaponContent[] = [
   },
   {
     type: 'toggle',
-    text: `Trend`,
+    text: `Uptrend`,
     show: true,
     default: true,
     id: '23064_2',
     scaling: (base, form, r) => {
       if (form['23064_2']) {
         base[Stats.ELATION].push({
-          name: `Trend`,
+          name: `Uptrend`,
           source: 'Summer Rides the Surf',
           value: calcRefinement(0.36, 0.135, r),
         })

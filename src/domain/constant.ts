@@ -172,6 +172,7 @@ export const BaseSummonAggro = {
   '1409': 100,
   '1413': 125,
   '1415': 0,
+  '1512': 100,
 }
 
 export const SummonName = {
