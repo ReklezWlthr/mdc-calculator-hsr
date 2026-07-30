@@ -57,6 +57,8 @@ export interface IScaling {
   punchlineBonus?: number
   weaknessBypass?: number
   assist?: boolean // Assist Skill
+  isFua?: boolean // Used for FUA multi-type override
+  // Don't set this if the ability is already a FUA
 }
 
 export interface ISuperBreakScaling {

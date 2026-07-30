@@ -113,13 +113,16 @@ export const damageStringConstruct = (
   const talentCr = stats.getValue(`${TalentTypeMap[scaling.type]}_CR`) || 0
   const propertyCr = stats.getValue(`${TalentPropertyMap[scaling.property]}_CR`) || 0
   const talentCd = stats.getValue(`${TalentTypeMap[scaling.type]}_CD`) || 0
-  const propertyCd = stats.getValue(`${TalentPropertyMap[scaling.property]}_CD`) || 0
+  const propertyCd =
+    (stats.getValue(`${TalentPropertyMap[scaling.property]}_CD`) || 0) +
+    (scaling.isFua ? stats.getValue(StatsObjectKeys.FUA_CD) || 0 : 0)
   const elementCd = stats.getValue(`${element.toUpperCase()}_CD`) || 0
   const elementFlat = stats.getValue(`${element.toUpperCase()}_F_DMG`) || 0
   const normalDefPen = stats.getValue(StatsObjectKeys.DEF_PEN) || 0
   const summonDefPen = stats.getValue(StatsObjectKeys.SUMMON_DEF_PEN) || 0
   const defPen =
     normalDefPen +
+    (scaling.isFua ? stats.getValue(StatsObjectKeys.FUA_DEF_PEN) || 0 : 0) +
     (scaling.summon ? summonDefPen : 0) +
     (stats.getValue(`${TalentTypeMap[scaling.type]}_DEF_PEN`) || 0) +
     (stats.getValue(`${TalentPropertyMap[scaling.property]}_DEF_PEN`) || 0) +
@@ -133,6 +136,7 @@ export const damageStringConstruct = (
   const vulMult =
     1 +
     stats.getValue(StatsObjectKeys.VULNERABILITY) +
+    (scaling.isFua ? stats.getValue(StatsObjectKeys.FUA_VUL) || 0 : 0) +
     (stats.getValue(`${TalentPropertyMap[scaling.property]}_VUL`) || 0) +
     (scaling.type !== TalentType.SERVANT ? stats.getValue(`${TalentTypeMap[scaling.type]}_VUL`) || 0 : 0) +
     (stats.getValue(`${scaling.element.toUpperCase()}_VUL`) || 0) +

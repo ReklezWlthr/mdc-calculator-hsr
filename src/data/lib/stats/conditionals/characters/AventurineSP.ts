@@ -61,11 +61,11 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     summon_skill: {
       participantId: 156,
       trace: 'Elation Skill',
-      title: 'Cheers! To the Blazing Summer',
+      title: `Cheers! To Summer's Blaze`,
       content: `Deals {{0}}% <b class="text-hsr-quantum">Quantum</b> <b class="elation">Elation DMG</b> to all enemies, and additionally deals <span class="text-desc">10</span> instance(s) of DMG, with each instance dealing {{1}}% <b class="text-hsr-quantum">Quantum</b> <b class="elation">Elation DMG</b> to one random enemy.`,
       value: [
         { base: 30, growth: 3, style: 'curved' },
-        { base: 7.5, growth: 0.75, style: 'curved' },
+        { base: 9, growth: 0.9, style: 'curved' },
       ],
       level: elation,
       tag: AbilityTag.AOE,
@@ -75,11 +75,11 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     summon_skill_alt: {
       participantId: 156,
       trace: 'Enhanced Elation Skill',
-      title: 'All in! To the Blazing Summer',
+      title: `All In! To Summer's Blaze`,
       content: `Deals {{0}}% <b class="text-hsr-quantum">Quantum</b> <b class="elation">Elation DMG</b> to all enemies, and additionally deals <span class="text-desc">10</span> instance(s) of DMG, with each instance dealing {{1}}% <b class="text-hsr-quantum">Quantum</b> <b class="elation">Elation DMG</b> to one random enemy. Consumes all <b class="text-green-300">Fervor</b> upon use. For every <span class="text-desc">1</span> point of <b class="text-green-300">Fervor</b> consumed, additionally deals <span class="text-desc">1</span> instance of {{1}}% <b class="text-hsr-quantum">Quantum</b> <b class="elation">Elation DMG</b> to one random enemy.`,
       value: [
         { base: 30, growth: 3, style: 'curved' },
-        { base: 7.5, growth: 0.75, style: 'curved' },
+        { base: 9, growth: 0.9, style: 'curved' },
       ],
       level: elation,
       tag: AbilityTag.AOE,
@@ -88,11 +88,11 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     },
     ult: {
       trace: 'Ultimate',
-      title: `Winning Hand, Over the Tempest`,
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Aventurine • Waveflair's ATK to all enemies, and gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b> and <span class="text-desc">8</span> point(s) of <b class="text-green-300">Fervor</b>. Increases this unit's SPD by {{1}}% for <span class="text-desc">3</span> turn(s).`,
+      title: `Grand Slam, Crest That High Tide`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Aventurine • Waveflair's ATK to all enemies, and gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b> and <span class="text-desc">8</span> point(s) of <b class="text-green-300">Fervor</b>. Increases this unit's SPD by {{1}}% for <span class="text-desc">4</span> turn(s).`,
       value: [
         { base: 240, growth: 16, style: 'curved' },
-        { base: 10, growth: 1.5, style: 'curved' },
+        { base: 12, growth: 1.8, style: 'curved' },
       ],
       level: ult,
       tag: AbilityTag.AOE,
@@ -103,7 +103,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       trace: `Talent`,
       title: `Place Your Bets, Hear the Deep`,
       content: `The duration of Aventurine • Waveflair's <b class="text-blue">Certified Banger</b> increases by <span class="text-desc">1</span> turn. After a teammate uses an attack, Aventurine • Waveflair gains <span class="text-desc">1</span> point(s) of <b class="text-green-300">Fervor</b> and <span class="text-desc">1</span> <b class="text-orange-400">Punchline(s)</b>. The max limit for <b class="text-green-300">Fervor</b> is <span class="text-desc">30</span> points.
-      <br />When <b class="text-green-300">Fervor</b> reaches <span class="text-desc">10</span> points, Aventurine • Waveflair uses <b>Cheers! To the Blazing Summer</b> <span class="text-desc">3</span> time, which takes a fixed <span class="text-desc">20</span> <b class="text-orange-400">Punchline(s)</b> into account. After this use, the Elation Skill used by this unit in the next Aha Instant is enhanced into <b>All in! To the Blazing Summer</b>.
+      <br />When <b class="text-green-300">Fervor</b> reaches <span class="text-desc">10</span> points, Aventurine • Waveflair uses <b>Cheers! To Summer's Blaze</b> <span class="text-desc">3</span> time, which takes a fixed <span class="text-desc">20</span> <b class="text-orange-400">Punchline(s)</b> into account. After this use, the next Elation Skill used by this unit in the Aha Instant is enhanced into <b>All In! To Summer's Blaze</b>.
       <br />While Aventurine • Waveflair has <b class="text-blue">Certified Banger</b>, his Skill additionally deals {{0}}% <b class="text-hsr-quantum">Quantum</b> <b class="elation">Elation DMG</b> to all enemies, and his Ultimate additionally deals {{1}}% <b class="text-hsr-quantum">Quantum</b> <b class="elation">Elation DMG</b> to all enemies.`,
       value: [
         { base: 20, growth: 2, style: 'curved' },
@@ -116,7 +116,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     technique: {
       trace: 'Technique',
       title: 'Stirring Waves in Still Waters',
-      content: `Moves forward rapidly for a set distance, attacking all enemies in contact and blocking all incoming attacks. After entering combat via attacking enemies, Aventurine • Waveflair deals <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">100%</span> of his ATK to all enemies, and gains <span class="text-desc">2</span> point(s) of <b class="text-green-300">Fervor</b> and <span class="text-desc">20</span> points of <b class="text-blue">Certified Banger</b>.`,
+      content: `Moves forward rapidly for a set distance, attacking all enemies in contact and blocking all incoming attacks. After entering combat via attacking enemies, Aventurine • Waveflair deals <b class="text-hsr-quantum">Quantum DMG</b> equal to <span class="text-desc">100%</span> of his ATK to all enemies, and gains <span class="text-desc">2</span> point(s) of <b class="text-green-300">Fervor</b> and <span class="text-desc">20</span> points of <b class="text-blue">Certified Banger</b>. Technique Points are not consumed if no enemies are hit.`,
       tag: AbilityTag.IMPAIR,
       image: 'asset/traces/SkillIcon_1513_Maze.webp',
     },
@@ -130,7 +130,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       trace: 'Ascension 4 Passive',
       title: 'Revel in Surging Waves',
       content: `At the start of the battle, if there are other Elation characters in the team besides Aventurine • Waveflair, Aventurine • Waveflair's Elation increases by <span class="text-desc">100%</span>.
-      <br />At the start of the battle, if Aventurine • Waveflair is the only Elation character in the team, after a teammate uses an attack, Aventurine • Waveflair gains <span class="text-desc">2</span> point(s) of <b class="text-blue">Certified Banger</b> and <span class="text-desc">1</span> <b class="text-orange-400">Punchline(s)</b>, and increases <b class="text-aha">Aha</b>'s SPD by <span class="text-desc">25</span>. The SPD Boost effect lasts until the end of <b class="text-aha">Aha Instant</b>.`,
+      <br />At the start of the battle, if Aventurine • Waveflair is the only Elation character in the team, when Aventurine • Waveflair deals DMG using his Elation Skill, it is considered as launching a <u>Follow-Up ATK</u>. After a teammate uses an attack, Aventurine • Waveflair gains <span class="text-desc">2</span> point(s) of <b class="text-blue">Certified Banger</b> and <span class="text-desc">1</span> <b class="text-orange-400">Punchline(s)</b>, and increases <b class="text-aha">Aha</b>'s SPD by <span class="text-desc">25</span>. The SPD Boost effect lasts until the end of <b class="text-aha">Aha Instant</b>.`,
       image: 'asset/traces/SkillIcon_1513_SkillTree2.webp',
     },
     a6: {
@@ -142,13 +142,14 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     c1: {
       trace: 'Eidolon 1',
       title: 'Vacation At Stake',
-      content: `Increases <b>All-Type RES PEN</b> by <span class="text-desc">24%</span>. Every time Aventurine • Waveflair gains <span class="text-desc">10</span> points of <b class="text-green-300">Fervor</b>, he can trigger his Talent to use <b>Cheers! To the Blazing Summer</b>.`,
+      content: `Increases <b>All-Type RES PEN</b> by <span class="text-desc">24%</span>.
+      <br />Talent is enhanced: When <b class="text-green-300">Fervor</b> reaches <span class="text-desc">10/20/30</span> points, immediately uses <b>Cheers! To the Blazing Summer</b>.`,
       image: 'asset/traces/SkillIcon_1513_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'Tidal Fluctuations of Leisure',
-      content: `Increases the max limit of <b class="text-green-300">Fervor</b> to <span class="text-desc">50</span> points, and additionally grants <span class="text-desc">2</span> point(s) of <b class="text-green-300">Fervor</b> after using Skill, Ultimate, or Elation Skill.`,
+      content: `Increases the max limit of <b class="text-green-300">Fervor</b> to <span class="text-desc">50</span> points. When <b class="text-green-300">Fervor</b> reaches <span class="text-desc">40/50</span> points, immediately uses <b>Cheers! To the Blazing Summer</b>. After using an Elation Skill, additionally grants <span class="text-desc">4</span> point(s) of <b class="text-green-300">Fervor</b>`,
       image: 'asset/traces/SkillIcon_1513_Rank2.webp',
     },
     c3: {
@@ -176,7 +177,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     c6: {
       trace: 'Eidolon 6',
       title: 'Cashing the Past for a Wild Ride',
-      content: `<b class="elation">Elation DMG</b> dealt by Aventurine • Waveflair merrymakes by <span class="text-desc">25%</span>. After Aventurine • Waveflair uses his Ultimate <span class="text-desc">2</span> time(s), all subsequent Elation Skills used become <b>All in! To the Blazing Summer</b>, and when using the Elation Skill <b>All in! To the Blazing Summer</b> to additionally deal DMG outside of <b class="text-aha">Aha Instant</b>, it no longer consumes <b class="text-green-300">Fervor</b>.`,
+      content: `<b class="elation">Elation DMG</b> dealt by Aventurine • Waveflair merrymakes by <span class="text-desc">25%</span>. After Aventurine • Waveflair uses his Elation Skill <span class="text-desc">2</span> time(s), all subsequent Elation Skills used become <b>All in! To the Blazing Summer</b>, and when using the Elation Skill <b>All in! To the Blazing Summer</b> to additionally deal DMG outside of <b class="text-aha">Aha Instant</b>, it no longer consumes <b class="text-green-300">Fervor</b>.`,
       image: 'asset/traces/SkillIcon_1513_Rank6.webp',
     },
   }
@@ -308,13 +309,14 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           name: 'Max Single Target DMG',
           value: [
             { scaling: calcScaling(0.3, 0.03, elation, 'curved'), multiplier: Stats.ELATION },
-            { scaling: calcScaling(0.075, 0.0075, elation, 'curved'), hits, multiplier: Stats.ELATION },
+            { scaling: calcScaling(0.09, 0.009, elation, 'curved'), hits, multiplier: Stats.ELATION },
           ],
           element: Element.QUANTUM,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
           break: (form.aven_sp_elation ? 20 : 10) + hits * (form.aven_sp_elation ? 5 : 10 / 3),
           sum: true,
+          isFua: a.a4 && elationCount == 1,
         },
         {
           name: 'AoE',
@@ -323,14 +325,16 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
           break: form.aven_sp_elation ? 20 : 10,
+          isFua: a.a4 && elationCount == 1,
         },
         {
           name: 'DMG per Bounce',
-          value: [{ scaling: calcScaling(0.075, 0.0075, elation, 'curved'), multiplier: Stats.ELATION }],
+          value: [{ scaling: calcScaling(0.09, 0.009, elation, 'curved'), multiplier: Stats.ELATION }],
           element: Element.QUANTUM,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
           break: form.aven_sp_elation ? 5 : 10 / 3,
+          isFua: a.a4 && elationCount == 1,
         },
       ]
       base.TECHNIQUE_SCALING = [
@@ -348,11 +352,11 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
         base[Stats.P_SPD].push({
           name: `Eidolon 4`,
           source: 'Self',
-          value: calcScaling(0.1, 0.015, skill, 'curved'),
+          value: calcScaling(0.12, 0.018, skill, 'curved'),
         })
       }
 
-      if (a.a4 && elationCount === 1) {
+      if (a.a4 && elationCount > 1) {
         base[Stats.ELATION].push({
           name: `Ascension 4 Passive`,
           source: 'Self',
