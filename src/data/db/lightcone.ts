@@ -2773,7 +2773,7 @@ export const LightCones = [
     baseAtk: 28.8,
     baseDef: 24,
     type: PathType.ERUDITION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Sprout',
       detail: `Increases the wearer's CRIT Rate by {{0}}%. When any ally character consumes a total of <span class="text-desc">4</span> or more Skill Points in a single turn, the wearer gains <b>Radiant Crown</b>, lasting for <span class="text-desc">3</span> turn(s). While the wearer holds <b>Radiant Crown</b>, all allies' DMG dealt ignores {{1}}% of the target's DEF, and the Skill DMG dealt by the wearer increases by {{2}}%. Effects of the same type cannot stack.`,
@@ -2792,7 +2792,7 @@ export const LightCones = [
     baseAtk: 28.8,
     baseDef: 21,
     type: PathType.DESTRUCTION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'At Will',
       detail: `Increases the wearer's ATK by {{0}}% and Energy Regeneration Rate by {{1}}%. When the wearer uses their Ultimate, for every <span class="text-desc">1</span> Energy consumed, increases the Ultimate DMG dealt this time by {{2}}%, up to a max increase of {{3}}%. When the wearer enters combat or uses Ultimate, the wearer gains <b>King's Entertainment</b>, lasting for <span class="text-desc">3</span> turn(s). While the wearer holds <b>King's Entertainment</b>, increases all allies' CRIT DMG by {{4}}%. Effects of the same type cannot stack.`,

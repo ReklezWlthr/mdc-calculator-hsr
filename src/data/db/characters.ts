@@ -1516,7 +1516,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.DESTRUCTION,
     element: Element.LIGHTNING,
-    beta: true,
+    beta: false,
   },
   {
     id: '1508',
@@ -1534,7 +1534,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.ERUDITION,
     element: Element.QUANTUM,
-    beta: true,
+    beta: false,
   },
   {
     id: '1510',
