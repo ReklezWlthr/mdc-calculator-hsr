@@ -2990,7 +2990,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
         base[Stats.P_SPD].push({
           name: `Passive`,
           source: 'New Melody',
-          value: calcRefinement(0.2, 0.04, r),
+          value: calcRefinement(0.2, 0.05, r),
         })
       }
 

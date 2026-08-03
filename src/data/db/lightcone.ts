@@ -2819,8 +2819,8 @@ export const LightCones = [
       detail: `Increases the wearer's Max HP by {{0}}%. After the wearer uses their Ultimate, recovers <span class="text-desc">1</span> Skill Point for allies. When entering combat, advances the wearer's action by {{1}}% and grants the wearer <b>New Melody</b> for <span class="text-desc">2</span> turn(s). While the wearer has <b>New Melody</b>, all allies' SPD increases by {{2}}%.`,
       properties: [
         { base: 30, growth: 7.5 },
-        { base: 40, growth: 5 },
-        { base: 20, growth: 4 },
+        { base: 30, growth: 2.5 },
+        { base: 20, growth: 5 },
       ],
     },
   },

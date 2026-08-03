@@ -51,7 +51,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     skill: {
       trace: 'Skill',
       title: 'Fatal Shot, Boiling Sands',
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Aventurine • Waveflair's ATK to all enemies, and gains <span class="text-desc">2</span> <b class="text-orange-400">Punchline</b> and <span class="text-desc">4</span> point(s) of <b class="text-green-300">Fervor</b>.`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Aventurine • Waveflair's ATK to all enemies, and gains <span class="text-desc">4</span> <b class="text-orange-400">Punchline</b> and <span class="text-desc">4</span> point(s) of <b class="text-green-300">Fervor</b>.`,
       value: [{ base: 120, growth: 12, style: 'curved' }],
       level: skill,
       tag: AbilityTag.AOE,
@@ -89,7 +89,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     ult: {
       trace: 'Ultimate',
       title: `Grand Slam, Crest That High Tide`,
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Aventurine • Waveflair's ATK to all enemies, and gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b> and <span class="text-desc">8</span> point(s) of <b class="text-green-300">Fervor</b>. Increases this unit's SPD by {{1}}% for <span class="text-desc">4</span> turn(s).`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Aventurine • Waveflair's ATK to all enemies, and gains <span class="text-desc">6</span> <b class="text-orange-400">Punchline</b> and <span class="text-desc">8</span> point(s) of <b class="text-green-300">Fervor</b>. Increases this unit's SPD by {{1}}% for <span class="text-desc">4</span> turn(s).`,
       value: [
         { base: 240, growth: 16, style: 'curved' },
         { base: 12, growth: 1.8, style: 'curved' },
@@ -123,27 +123,27 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Party of Euphoria',
-      content: `When SPD is <span class="text-desc">160</span> or higher, increases this unit's Elation by <span class="text-desc">30%</span>. For every <span class="text-desc">1</span> SPD exceeded, increases this unit's Elation by <span class="text-desc">1%</span>. Up to a max of <span class="text-desc">200</span> excess SPD can be taken into account for this effect.`,
+      content: `When SPD is <span class="text-desc">140</span> or higher, increases this unit's Elation by <span class="text-desc">30%</span>. For every <span class="text-desc">1</span> SPD exceeded, increases this unit's Elation by <span class="text-desc">1%</span>. Up to a max of <span class="text-desc">200</span> excess SPD can be taken into account for this effect.`,
       image: 'asset/traces/SkillIcon_1513_SkillTree1.webp',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Revel in Surging Waves',
-      content: `At the start of the battle, if there are other Elation characters in the team besides Aventurine • Waveflair, Aventurine • Waveflair's Elation increases by <span class="text-desc">100%</span>.
+      content: `At the start of the battle, if there are other Elation characters in the team besides Aventurine • Waveflair, Aventurine • Waveflair's Elation increases by <span class="text-desc">80%</span>.
       <br />At the start of the battle, if Aventurine • Waveflair is the only Elation character in the team, when Aventurine • Waveflair deals DMG using his Elation Skill, it is considered as launching a <u>Follow-Up ATK</u>. After a teammate uses an attack, Aventurine • Waveflair gains <span class="text-desc">2</span> point(s) of <b class="text-blue">Certified Banger</b> and <span class="text-desc">1</span> <b class="text-orange-400">Punchline(s)</b>, and increases <b class="text-aha">Aha</b>'s SPD by <span class="text-desc">25</span>. The SPD Boost effect lasts until the end of <b class="text-aha">Aha Instant</b>.`,
       image: 'asset/traces/SkillIcon_1513_SkillTree2.webp',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Old Dream's Gold Rush`,
-      content: `Increases CRIT DMG by <span class="text-desc">48%</span>. After a teammate uses a Basic ATK, Skill, <u>Follow-Up ATK</u>, or Ultimate, Aventurine • Waveflair's CRIT DMG increases by <span class="text-desc">48%</span>, lasting for <span class="text-desc">3</span> turn(s), and he additionally gains <span class="text-desc">1</span> point(s) of <b class="text-green-300">Fervor</b>. This effect can be triggered up to <span class="text-desc">6</span> time(s), and the trigger count resets when Aventurine • Waveflair uses his Skill.`,
+      content: `Increases CRIT DMG by <span class="text-desc">48%</span>. After a teammate uses a Basic ATK, Skill, <u>Follow-Up ATK</u>, or Ultimate, all allies' CRIT DMG increases by <span class="text-desc">48%</span>, lasting for <span class="text-desc">3</span> turn(s), and Aventurine • Waveflair additionally gains <span class="text-desc">1</span> point(s) of <b class="text-green-300">Fervor</b>. This effect can be triggered up to <span class="text-desc">6</span> time(s), and the trigger count resets when Aventurine • Waveflair uses his Skill.`,
       image: 'asset/traces/SkillIcon_1513_SkillTree3.webp',
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Vacation At Stake',
       content: `Increases <b>All-Type RES PEN</b> by <span class="text-desc">24%</span>.
-      <br />Talent is enhanced: When <b class="text-green-300">Fervor</b> reaches <span class="text-desc">10/20/30</span> points, immediately uses <b>Cheers! To the Blazing Summer</b>.`,
+      <br />Talent is enhanced: When <b class="text-green-300">Fervor</b> reaches <span class="text-desc">10/20/30</span> points, immediately uses <b>Cheers! To Summer's Blaze</b>.`,
       image: 'asset/traces/SkillIcon_1513_Rank1.webp',
     },
     c2: {
@@ -177,7 +177,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     c6: {
       trace: 'Eidolon 6',
       title: 'Cashing the Past for a Wild Ride',
-      content: `<b class="elation">Elation DMG</b> dealt by Aventurine • Waveflair merrymakes by <span class="text-desc">25%</span>. After Aventurine • Waveflair uses his Elation Skill <span class="text-desc">2</span> time(s), all subsequent Elation Skills used become <b>All in! To the Blazing Summer</b>, and when using the Elation Skill <b>All in! To the Blazing Summer</b> to additionally deal DMG outside of <b class="text-aha">Aha Instant</b>, it no longer consumes <b class="text-green-300">Fervor</b>.`,
+      content: `<b class="elation">Elation DMG</b> dealt by Aventurine • Waveflair merrymakes by <span class="text-desc">25%</span>. After Aventurine • Waveflair uses his Elation Skill <span class="text-desc">2</span> time(s), all subsequent Elation Skills used become <b>All in! To Summer's Blaze</b>, and when using the Elation Skill <b>All in! To Summer's Blaze</b> to additionally deal DMG outside of <b class="text-aha">Aha Instant</b>, it no longer consumes <b class="text-green-300">Fervor</b>.`,
       image: 'asset/traces/SkillIcon_1513_Rank6.webp',
     },
   }
@@ -360,7 +360,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
         base[Stats.ELATION].push({
           name: `Ascension 4 Passive`,
           source: 'Self',
-          value: 1,
+          value: 0.8,
         })
       }
 
@@ -405,6 +405,14 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       broken: boolean,
       globalMod: GlobalModifiers,
     ) => {
+      if (form.aven_sp_a6) {
+        base[Stats.CRIT_DMG].push({
+          name: `Ascension 6 Passive`,
+          source: 'Aventurine • Waveflair',
+          value: 0.48,
+        })
+      }
+
       return base
     },
     postCompute: (
@@ -423,12 +431,12 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     ) => {
       globalCallback.push(function P999(_x, _d, _w, all) {
         const spd = all[index].getSpd()
-        if (spd >= 160 && a.a2) {
+        if (spd >= 140 && a.a2) {
           all[index][Stats.ELATION].push({
             name: `Ascension 2 Passive`,
             source: 'Self',
-            value: 0.3 + _.min([spd - 160, 200]) * 0.01,
-            base: _.floor(_.min([spd - 160, 200]), 1).toLocaleString(),
+            value: 0.3 + _.min([spd - 140, 200]) * 0.01,
+            base: _.floor(_.min([spd - 140, 200]), 1).toLocaleString(),
             multiplier: 0.01,
             flat: `30%`,
           })

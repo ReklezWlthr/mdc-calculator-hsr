@@ -73,7 +73,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ult: {
       trace: 'Ultimate',
       title: `Leap into the Ocean Blue Rhapsody`,
-      content: `Advances the action of one designated ally unit (excluding Robin • Summeretto) by <span class="text-desc">100%</span> and regenerates a fixed amount of Energy equal to {{0}}% of their Max Energy. Then, this character gains the <b class="text-desc">Special Guest</b> effect. When the character with <b class="text-desc">Special Guest</b> attacks, Robin additionally gains <span class="text-desc">2</span> point of <b class="text-blue">Vibes</b>. This character and her summons cannot advance the actions of other friendly targets. This effect lasts for <span class="text-desc">2</span> turn(s), and its duration decreases by <span class="text-desc">1</span> at the start of this character's turn.`,
+      content: `Advances the action of one designated ally unit (excluding Robin • Summeretto) by <span class="text-desc">100%</span> and regenerates a fixed amount of Energy equal to {{0}}% of their Max Energy, and then, grants them the <b class="text-desc">Special Guest</b> effect. When the character with <b class="text-desc">Special Guest</b> and their summon attacks, they additionally grant Robin <span class="text-desc">2</span> point of <b class="text-blue">Vibes</b> and cannot advance the actions of other friendly targets. This effect lasts for <span class="text-desc">2</span> turn(s), and its duration decreases by <span class="text-desc">1</span> at the start of this character's turn.`,
       value: [{ base: 12, growth: 0.8, style: 'curved' }],
       level: ult,
       tag: AbilityTag.ENHANCE,
@@ -126,14 +126,14 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: 'We Form A Melody',
-      content: `After using Technique, at the start of the next combat, immediately gains <span class="text-desc">6</span> <b class="text-blue">Vibes</b>, and grants all allies a <span class="text-desc">30%</span> DMG Boost for <span class="text-desc">2</span> turn(s).`,
+      content: `After using Technique, at the start of the next combat, action advances by <span class="text-desc">20%</span>, immediately gains <span class="text-desc">6</span> <b class="text-blue">Vibes</b>, and grants all allies a <span class="text-desc">30%</span> DMG Boost for <span class="text-desc">2</span> turn(s).`,
       tag: AbilityTag.ENHANCE,
       image: 'asset/traces/SkillIcon_1512_Maze.webp',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Deviated Chord`,
-      content: `When an ally target causes Robin • Summeretto to gain <b class="text-blue">Vibes</b>, if their ATK is higher than Robin • Summeretto's, increases that target's ATK by an amount equal to (<span class="text-desc">16%</span> + <b class="text-blue">Vibes</b> × <span class="text-desc">0.4%</span>) of Robin • Summeretto's Max HP. Otherwise, increases that target's CRIT DMG by <span class="text-desc">40%</span> + <b class="text-blue">Vibes</b> × <span class="text-desc">1%</span>. Lasts for <span class="text-desc">2</span> turn(s).`,
+      content: `When an ally target causes Robin • Summeretto to gain <b class="text-blue">Vibes</b>, if their ATK is higher than Robin • Summeretto's, increases that target's ATK by an amount equal to (<span class="text-desc">16%</span> + <b class="text-blue">Vibes</b> × <span class="text-desc">0.4%</span>) of Robin • Summeretto's Max HP. Otherwise, increases that target's CRIT DMG by <span class="text-desc">40%</span> + <b class="text-blue">Vibes</b> × <span class="text-desc">1.5%</span>. Lasts for <span class="text-desc">2</span> turn(s).`,
       image: 'asset/traces/SkillIcon_1512_SkillTree1.webp',
     },
     a4: {
@@ -151,13 +151,13 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c1: {
       trace: 'Eidolon 1',
       title: `Stray Birds of Summer`,
-      content: `Robin • Summeretto's Max <b class="text-blue">Vibes</b> increases by <span class="text-desc">20</span>. The first time an ally target uses an ability that causes Robin • Summeretto to gain <b class="text-blue">Vibes</b> within any target's turn, she gains an additional <span class="text-desc">2</span> points.`,
+      content: `<b>Summer Songbirds</b> records <span class="text-desc">100%</span> of the non-<b class="text-true">True DMG</b> dealt by ally targets. When using the Memosprite Skill, it additionally deals <b class="text-true">True DMG</b> equal to <span class="text-desc">11%</span> of the total recorded DMG plus current <b class="text-blue">Vibes</b> points × <span class="text-desc">0.1%</span> to the enemy target with the highest HP, then clears <span class="text-desc">50%</span> of the recorded value.`,
       image: 'asset/traces/SkillIcon_1512_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Heart Like Still Waters`,
-      content: `<b>Summer Songbirds</b> records <span class="text-desc">100%</span> of the non-<b class="text-true">True DMG</b> dealt by ally targets. When using the Memosprite Skill, it additionally deals <b class="text-true">True DMG</b> equal to <span class="text-desc">11%</span> of the total recorded DMG plus current <b class="text-blue">Vibes</b> points × <span class="text-desc">0.1%</span> to the enemy target with the highest HP, then clears <span class="text-desc">50%</span> of the recorded value.`,
+      content: `Increases the <b>All-Type RES PEN</b> of ally targets by <span class="text-desc">20%</span>. Robin • Summeretto's Max <b class="text-blue">Vibes</b> increases by <span class="text-desc">20</span>. The first time an ally target uses an ability that causes Robin • Summeretto to gain <b class="text-blue">Vibes</b> within any target's turn, she gains an additional <span class="text-desc">2</span> points.`,
       image: 'asset/traces/SkillIcon_1512_Rank2.webp',
     },
     c3: {
@@ -185,7 +185,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: 'To Sing an Aria Untitled',
-      content: `Increases the <b>All-Type RES PEN</b> of ally targets by <span class="text-desc">20%</span>. Robin • Summeretto's Ultimate can be stored up to <span class="text-desc">2</span> times. When entering the <b class="text-orange-400">Fever</b> state for the first time or at the start of a <b class="text-orange-400">Fever</b> countdown turn in this battle, immediately regenerates <span class="text-desc">140</span> Energy.`,
+      content: `Increases the DMG multiplier of Robin • Summeretto's Memosprite Skill by <span class="text-desc">100%</span> of its original multiplier. Robin • Summeretto's Ultimate can be stored up to <span class="text-desc">2</span> times. When entering the <b class="text-orange-400">Fever</b> state for the first time or at the start of a <b class="text-orange-400">Fever</b> countdown turn in this battle, immediately regenerates <span class="text-desc">140</span> Energy.`,
       image: 'asset/traces/SkillIcon_1512_Rank6.webp',
     },
   }
@@ -199,7 +199,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       show: true,
       default: 12,
       min: 0,
-      max: c >= 1 ? 70 : 50,
+      max: c >= 2 ? 70 : 50,
     },
     {
       type: 'toggle',
@@ -228,10 +228,10 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     {
       type: 'number',
-      id: 'robin_sp_c2',
-      text: `E2 Non-True DMG Tally`,
-      ...talents.c2,
-      show: c >= 2,
+      id: 'robin_sp_c1',
+      text: `E1 Non-True DMG Tally`,
+      ...talents.c1,
+      show: c >= 1,
       default: 10000,
       min: 0,
     },
@@ -295,6 +295,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         {
           name: 'AoE',
           value: [{ scaling: calcScaling(0.75, 0.15, memo_skill, 'linear'), multiplier: Stats.HP }],
+          multiplier: c >= 6 ? 2 : 1,
           element: Element.WIND,
           property: TalentProperty.SERVANT,
           type: TalentType.SERVANT,
@@ -401,11 +402,11 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         })
       }
 
-      if (form.robin_sp_c2) {
+      if (form.robin_sp_c1) {
         base.MEMO_SKILL_SCALING.push({
-          name: 'E2 True DMG',
+          name: 'E1 True DMG',
           value: [],
-          flat: form.robin_sp_c2,
+          flat: form.robin_sp_c1,
           multiplier: 0.11 + 0.001 * form.vibes || 0,
           element: Element.NONE,
           property: TalentProperty.TRUE,
@@ -415,7 +416,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         })
       }
 
-      if (c >= 6) {
+      if (c >= 2) {
         base.ALL_TYPE_RES_PEN.push({
           name: `Eidolon 6`,
           source: 'Self',
@@ -470,7 +471,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
               : calcScaling(0.05, 0.01, memo_talent, 'linear'),
       })
 
-      if (c >= 6) {
+      if (c >= 2) {
         base.ALL_TYPE_RES_PEN.push({
           name: `Eidolon 6`,
           source: 'Robin • Summeretto',
@@ -511,9 +512,9 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 t.X_CRIT_DMG.push({
                   name: `Ascension 2 Passive`,
                   source: index === i ? 'Self' : 'Robin • Summeretto',
-                  value: 0.4 + 0.001 * (form.vibes || 0),
+                  value: 0.4 + 0.015 * (form.vibes || 0),
                   base: form.vibes || 0,
-                  multiplier: 0.01,
+                  multiplier: 0.015,
                   flat: '40%',
                 })
               }
