@@ -1,6 +1,13 @@
 [
   {
     "version": "1.2-4",
+    "date": "Aug 4th, 2026",
+    "desc": [
+      "Fixed: <span class=\"text-desc\">A Thankless Coronation</span>'s passive now correctly gives ATK% instead of DMG%"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Jul 30th, 2026",
     "desc": [
       "Content Version: <span class=\"text-desc\">v4.5 Beta 3</span>",

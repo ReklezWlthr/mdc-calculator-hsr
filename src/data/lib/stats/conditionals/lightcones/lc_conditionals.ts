@@ -1360,7 +1360,7 @@ export const LCConditionals: IWeaponContent[] = [
         atkBonus: (item.atkBonus || 0) + calcRefinement(0.4, 0.1, r),
       }))
       if (form['23045']) {
-        base[Stats.ALL_DMG].push({
+        base[Stats.P_ATK].push({
           name: `Passive`,
           source: 'A Thankless Coronation',
           value: calcRefinement(0.4, 0.1, r),

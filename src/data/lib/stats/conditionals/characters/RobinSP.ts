@@ -42,7 +42,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     normal: {
       trace: 'Basic ATK',
       title: 'Soundwaves, Tuning the Ocean Breeze',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Robin • Summeretto's Max HP to one enemy..`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Robin • Summeretto's Max HP to one enemy.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
       tag: AbilityTag.ST,
