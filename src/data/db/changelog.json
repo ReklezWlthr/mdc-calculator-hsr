@@ -3,6 +3,7 @@
     "version": "1.2-4",
     "date": "Aug 4th, 2026",
     "desc": [
+      "Fixed: <span class=\"text-hsr-fire\">Himeko • Nova</span>'s skills now correctly scales with ATK instead of HP",
       "Fixed: <span class=\"text-desc\">A Thankless Coronation</span>'s passive now correctly gives ATK% instead of DMG%"
     ]
   },

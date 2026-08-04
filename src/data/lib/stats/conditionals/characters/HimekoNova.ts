@@ -279,7 +279,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         },
         {
           name: 'AoE',
-          value: [{ scaling: calcScaling(0.8, 0.08, talent, 'curved'), multiplier: Stats.HP }],
+          value: [{ scaling: calcScaling(0.8, 0.08, talent, 'curved'), multiplier: Stats.ATK }],
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
@@ -288,7 +288,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
         },
         {
           name: 'DMG per Bounce',
-          value: [{ scaling: calcScaling(0.12, 0.012, talent, 'curved'), multiplier: Stats.HP }],
+          value: [{ scaling: calcScaling(0.12, 0.012, talent, 'curved'), multiplier: Stats.ATK }],
           element: Element.FIRE,
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
