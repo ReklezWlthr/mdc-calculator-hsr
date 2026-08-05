@@ -42,6 +42,7 @@ export const CustomModal = observer(({ setCustomValue, memo }: { setCustomValue?
       { name: Stats.BE, value: Stats.BE },
       { name: Stats.EHR, value: Stats.EHR },
       { name: Stats.ALL_DMG, value: Stats.ALL_DMG },
+      { name: Stats.ELATION, value: Stats.ELATION },
       { name: Stats.HEAL, value: Stats.HEAL },
       { name: Stats.ERR, value: Stats.ERR },
       { name: 'All-Type RES PEN', value: StatsObjectKeys.ALL_TYPE_RES_PEN },
@@ -62,10 +63,10 @@ export const CustomModal = observer(({ setCustomValue, memo }: { setCustomValue?
       { name: 'CRIT DMG', value: '_CD' },
     ],
     property: [
-      { name: 'Percentage Bonus', value: '_DMG' },
+      { name: 'Percentage Bonus', value: '_DMG', excludes: ['ELATION'] },
       { name: 'DEF PEN', value: '_DEF_PEN' },
-      { name: 'CRIT Rate', value: '_CR' },
-      { name: 'CRIT DMG', value: '_CD' },
+      { name: 'CRIT Rate', value: '_CR', excludes: ['DOT', 'BREAK', 'SUPER_BREAK'] },
+      { name: 'CRIT DMG', value: '_CD', excludes: ['DOT', 'BREAK', 'SUPER_BREAK'] },
     ],
   }
 
@@ -75,12 +76,15 @@ export const CustomModal = observer(({ setCustomValue, memo }: { setCustomValue?
     { name: 'Skill', value: 'SKILL' },
     { name: 'Ultimate', value: 'ULT' },
     { name: 'Talent', value: 'TALENT' },
+    { name: 'Elation Skill', value: 'ELATION_SKILL' },
+    { name: 'Assist Skill', value: 'ASSIST' },
   ]
   const property = [
     { name: 'Follow-Up DMG', value: 'FUA' },
     { name: 'DoT', value: 'DOT' },
     { name: 'Break DMG', value: 'BREAK' },
     { name: 'Super Break DMG', value: 'SUPER_BREAK' },
+    { name: 'Elation DMG', value: 'ELATION' },
   ]
 
   const Tab = ({ title, value, defaultKey }: { title: string; value: string; defaultKey: any }) => (
@@ -166,15 +170,15 @@ export const CustomModal = observer(({ setCustomValue, memo }: { setCustomValue?
               value={selectedProperty}
               onChange={(v) => {
                 setSelectedProperty(v as any)
-                if (selectedProperty !== 'FUA' && !_.includes(_.map(_.take(options.property, 2), 'value'), key))
-                  setKey(options.property[0].value)
+                const exProps = _.filter(options.property, (p) => !_.includes(p.excludes, v))
+                if (!_.includes(_.map(exProps, 'value'), key)) setKey(exProps[0].value)
               }}
               options={property}
             />
             <SelectInput
               value={key}
               onChange={(v) => setKey(v)}
-              options={selectedProperty !== 'FUA' ? _.take(options.property, 2) : options.property}
+              options={_.filter(options.property, (p) => !_.includes(p.excludes, selectedProperty))}
             />
           </>
         )}

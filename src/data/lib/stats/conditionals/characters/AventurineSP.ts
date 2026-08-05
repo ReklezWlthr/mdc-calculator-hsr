@@ -129,7 +129,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Revel in Surging Waves',
-      content: `At the start of the battle, if there are other Elation characters in the team besides Aventurine • Waveflair, Aventurine • Waveflair's Elation increases by <span class="text-desc">80%</span>.
+      content: `At the start of the battle, if there are other Elation characters in the team besides Aventurine • Waveflair, all allies' Elation increases by <span class="text-desc">20%</span> while Aventurine • Waveflair's Elation increases by an additional <span class="text-desc">80%</span>.
       <br />At the start of the battle, if Aventurine • Waveflair is the only Elation character in the team, when Aventurine • Waveflair deals DMG using his Elation Skill, it is considered as launching a <u>Follow-Up ATK</u>. After a teammate uses an attack, Aventurine • Waveflair gains <span class="text-desc">2</span> point(s) of <b class="text-blue">Certified Banger</b> and <span class="text-desc">1</span> <b class="text-orange-400">Punchline(s)</b>, and increases <b class="text-aha">Aha</b>'s SPD by <span class="text-desc">25</span>. The SPD Boost effect lasts until the end of <b class="text-aha">Aha Instant</b>.`,
       image: 'asset/traces/SkillIcon_1513_SkillTree2.webp',
     },
@@ -163,7 +163,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     c4: {
       trace: 'Eidolon 4',
       title: 'No Deals with the Sun',
-      content: `DMG dealt by Aventurine • Waveflair ignores <span class="text-desc">18%</span> of the enemy target's DEF.`,
+      content: `When Aventurine • Waveflair uses Skill, all allies ignore <span class="text-desc">18%</span> of the enemy target's DEF for <span class="text-desc">3</span> turns.`,
       image: 'asset/traces/SkillIcon_1513_Rank4.webp',
     },
     c5: {
@@ -221,9 +221,18 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       default: true,
       duration: 3,
     },
+    {
+      type: 'toggle',
+      id: 'aven_sp_c4',
+      text: `E4 Team DEF PEN`,
+      ...talents.c4,
+      show: c >= 4,
+      default: true,
+      duration: 3,
+    },
   ]
 
-  const teammateContent: IContent[] = []
+  const teammateContent: IContent[] = [findContentById(content, 'aven_sp_c4')]
 
   const allyContent: IContent[] = []
 
@@ -360,7 +369,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
         base[Stats.ELATION].push({
           name: `Ascension 4 Passive`,
           source: 'Self',
-          value: 0.8,
+          value: 1,
         })
       }
 
@@ -378,7 +387,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           value: 0.24,
         })
       }
-      if (c >= 4) {
+      if (form.aven_sp_c4) {
         base.DEF_PEN.push({
           name: `Eidolon 4`,
           source: 'Self',
@@ -405,11 +414,27 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       broken: boolean,
       globalMod: GlobalModifiers,
     ) => {
+      if (a.a4 && elationCount > 1) {
+        base[Stats.ELATION].push({
+          name: `Ascension 4 Passive`,
+          source: 'Aventurine • Waveflair',
+          value: 0.2,
+        })
+      }
+
       if (form.aven_sp_a6) {
         base[Stats.CRIT_DMG].push({
           name: `Ascension 6 Passive`,
           source: 'Aventurine • Waveflair',
           value: 0.48,
+        })
+      }
+
+      if (form.aven_sp_c4) {
+        base.DEF_PEN.push({
+          name: `Eidolon 4`,
+          source: 'Aventurine • Waveflair',
+          value: 0.18,
         })
       }
 

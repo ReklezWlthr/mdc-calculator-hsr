@@ -1,6 +1,14 @@
 [
   {
     "version": "1.2-4",
+    "date": "Aug 5th, 2026",
+    "desc": [
+      "Fixed: <span class=\"text-hsr-quantum\">Aventurine • Waveflair</span>'s A6 and E4 should now work as intended (effects implied from CN text)",
+      "Added: Custom modifiers related to Assist Skill and <b class=\"elation\">Elation DMG</b>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Aug 4th, 2026",
     "desc": [
       "Fixed: <span class=\"text-hsr-fire\">Himeko • Nova</span>'s skills now correctly scales with ATK instead of HP",
