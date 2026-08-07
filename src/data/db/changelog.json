@@ -1,6 +1,15 @@
 [
   {
     "version": "1.2-4",
+    "date": "Aug 7th, 2026",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v4.5 Beta 5</span>",
+      "Updated Characters: <span class=\"text-hsr-quantum\">Aventurine • Waveflair</span>, and <span class=\"text-hsr-wind\">Robin • Summeretto</span>",
+      "Updated Light Cone: <span class=\"text-desc\">Summer Rides the Surf</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Aug 5th, 2026",
     "desc": [
       "Fixed: <span class=\"text-hsr-quantum\">Aventurine • Waveflair</span>'s A6 and E4 should now work as intended (effects implied from CN text)",
@@ -20,7 +29,7 @@
     "date": "Jul 30th, 2026",
     "desc": [
       "Content Version: <span class=\"text-desc\">v4.5 Beta 3</span>",
-      "New Characters: <span class=\"text-hsr-quantum\">Aventurine • Waveflair</span>, and <span class=\"text-hsr-wind\">Robin • Summeretto</span>"
+      "Updated Characters: <span class=\"text-hsr-quantum\">Aventurine • Waveflair</span>, and <span class=\"text-hsr-wind\">Robin • Summeretto</span>"
     ]
   },
   {

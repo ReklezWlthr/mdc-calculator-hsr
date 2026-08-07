@@ -2839,8 +2839,8 @@ export const LightCones = [
       <br />At the start of every wave or after the wearer uses their Elation Skill <span class="text-desc">3</span> time(s), recovers <span class="text-desc">1</span> Skill Point.`,
       properties: [
         { base: 18, growth: 3 },
-        { base: 20, growth: 3 },
-        { base: 36, growth: 13.5 },
+        { base: 24, growth: 4 },
+        { base: 40, growth: 15 },
       ],
     },
   },

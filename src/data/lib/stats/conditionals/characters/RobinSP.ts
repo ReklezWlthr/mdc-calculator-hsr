@@ -41,7 +41,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
   const talents: ITalent = {
     normal: {
       trace: 'Basic ATK',
-      title: 'Soundwaves, Tuning the Ocean Breeze',
+      title: 'The Sea Sings in My Key',
       content: `Deals <b class="text-hsr-wind">Wind DMG</b> equal to {{0}}% of Robin • Summeretto's Max HP to one enemy.`,
       value: [{ base: 25, growth: 5, style: 'linear' }],
       level: basic,
@@ -52,7 +52,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     skill: {
       trace: 'Skill',
-      title: 'Midsummer Is the Musician of the Soul',
+      title: 'Summer Strums the Soul',
       content: `Summons the memosprite <b>Summer Songbirds</b> Bessie. If any among the <b>Summer Songbirds</b> is already on the field, restores its HP by an amount equal to {{0}}% of <b>Summer Songbirds</b>'s Max HP, and gains <span class="text-desc">6</span> <b class="text-blue">Vibes</b>.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: skill,
@@ -72,7 +72,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     ult: {
       trace: 'Ultimate',
-      title: `Leap into the Ocean Blue Rhapsody`,
+      title: `Ascend That Rhapsody in Blue`,
       content: `Advances the action of one designated ally unit (excluding Robin • Summeretto) by <span class="text-desc">100%</span> and regenerates a fixed amount of Energy equal to {{0}}% of their Max Energy, and then, grants them the <b class="text-desc">Special Guest</b> effect. When the character with <b class="text-desc">Special Guest</b> and their summon attacks, they additionally grant Robin <span class="text-desc">2</span> point of <b class="text-blue">Vibes</b> and cannot advance the actions of other friendly targets. This effect lasts for <span class="text-desc">2</span> turn(s), and its duration decreases by <span class="text-desc">1</span> at the start of this character's turn.`,
       value: [{ base: 12, growth: 0.8, style: 'curved' }],
       level: ult,
@@ -82,7 +82,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     talent: {
       trace: 'Talent',
-      title: `Cruising the Boundless Skies`,
+      title: `Wings Heed No Borders`,
       content: `The memosprite <b>Summer Songbirds</b> has an initial Max HP equal to <span class="text-desc">70%</span> of Robin • Summeretto's Max HP and an initial SPD equal to <span class="text-desc">180%</span> of Robin • Summeretto's SPD. When an ally target uses an attack, or when providing healing effect or Shield for the first time in any target's turn, Robin • Summeretto gains <span class="text-desc">1</span> <b class="text-blue">Vibes</b>, up to a max of <span class="text-desc">50</span>. While <b>Summer Songbirds</b> Bessie is on the field, if Robin's <b class="text-blue">Vibes</b> is <span class="text-desc">6</span> or more, immediately summons the <b>Summer Songbird</b> Drummie, and if <b class="text-blue">Vibes</b> is <span class="text-desc">12</span> or more, immediately summons the <b>Summer Songbird</b> Paddie. When all <b>Summer Songbirds</b> take the stage, dispels all Crowd Control debuffs that Robin • Summeretto and the <b>Summer Songbirds</b> are under, enter the <b class="text-orange-400">Fever</b> state and deploy a Zone. When ally targets deal DMG inside the Zone, they ignore {{0}}% plus <b class="text-blue">Vibes</b> × <span class="text-desc">0.5%</span> of enemy targets' DEF.
       <br />While in the <b class="text-orange-400">Fever</b> state, Robin • Summeretto and the <b>Summer Songbirds</b> are immune to Crowd Control debuffs, and Robin • Summeretto will not enter her turns until the <b class="text-orange-400">Fever</b> state ends.`,
       value: [{ base: 10, growth: 0.5, style: 'curved' }],
@@ -97,9 +97,9 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       value: [
         { base: 30, growth: 6, style: 'linear' },
         { base: 1, growth: 0.2, style: 'linear' },
-        { base: 5, growth: 1, style: 'linear' },
-        { base: 7.5, growth: 1.5, style: 'linear' },
-        { base: 10, growth: 2, style: 'linear' },
+        { base: 4, growth: 0.8, style: 'linear' },
+        { base: 6, growth: 1.2, style: 'linear' },
+        { base: 8, growth: 1.6, style: 'linear' },
       ],
       level: memo_talent,
       tag: AbilityTag.SUPPORT,
@@ -125,7 +125,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     technique: {
       trace: 'Technique',
-      title: 'We Form A Melody',
+      title: 'We Are the Melody',
       content: `After using Technique, at the start of the next combat, action advances by <span class="text-desc">20%</span>, immediately gains <span class="text-desc">6</span> <b class="text-blue">Vibes</b>, and grants all allies a <span class="text-desc">30%</span> DMG Boost for <span class="text-desc">2</span> turn(s).`,
       tag: AbilityTag.ENHANCE,
       image: 'asset/traces/SkillIcon_1512_Maze.webp',
@@ -334,19 +334,19 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         source: 'Summer Songbirds',
         value:
           form.vibes >= 12
-            ? calcScaling(0.1, 0.02, memo_talent, 'linear')
+            ? calcScaling(0.08, 0.016, memo_talent, 'linear')
             : form.vibes >= 6
-              ? calcScaling(0.075, 0.015, memo_talent, 'linear')
-              : calcScaling(0.05, 0.01, memo_talent, 'linear'),
+              ? calcScaling(0.06, 0.012, memo_talent, 'linear')
+              : calcScaling(0.04, 0.008, memo_talent, 'linear'),
       })
       base.SUMMON_STATS.VULNERABILITY.push({
         name: `Memosprite Passive`,
         source: 'Self',
         value:
           form.vibes >= 12
-            ? calcScaling(0.1, 0.02, memo_talent, 'linear')
+            ? calcScaling(0.08, 0.016, memo_talent, 'linear')
             : form.vibes >= 6
-              ? calcScaling(0.075, 0.015, memo_talent, 'linear')
+              ? calcScaling(0.06, 0.012, memo_talent, 'linear')
               : calcScaling(0.05, 0.01, memo_talent, 'linear'),
       })
       addDebuff(debuffs, DebuffTypes.OTHER)
@@ -465,10 +465,10 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         source: 'Summer Songbirds',
         value:
           form.vibes >= 12
-            ? calcScaling(0.1, 0.02, memo_talent, 'linear')
+            ? calcScaling(0.08, 0.016, memo_talent, 'linear')
             : form.vibes >= 6
-              ? calcScaling(0.075, 0.015, memo_talent, 'linear')
-              : calcScaling(0.05, 0.01, memo_talent, 'linear'),
+              ? calcScaling(0.06, 0.012, memo_talent, 'linear')
+              : calcScaling(0.04, 0.008, memo_talent, 'linear'),
       })
 
       if (c >= 2) {

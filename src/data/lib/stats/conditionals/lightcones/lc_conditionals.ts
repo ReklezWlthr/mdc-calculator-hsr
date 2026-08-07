@@ -1557,7 +1557,7 @@ export const LCConditionals: IWeaponContent[] = [
         base[Stats.P_SPD].push({
           name: `Updraft`,
           source: 'Summer Rides the Surf',
-          value: calcRefinement(0.2, 0.03, r),
+          value: calcRefinement(0.24, 0.04, r),
         })
       }
       return base
@@ -1574,7 +1574,7 @@ export const LCConditionals: IWeaponContent[] = [
         base[Stats.ELATION].push({
           name: `Uptrend`,
           source: 'Summer Rides the Surf',
-          value: calcRefinement(0.36, 0.135, r),
+          value: calcRefinement(0.4, 0.15, r),
         })
       }
       return base
