@@ -420,12 +420,12 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base.ALL_TYPE_RES_PEN.push({
           name: `Eidolon 6`,
           source: 'Self',
-          value: 0.2,
+          value: 0.18,
         })
         base.SUMMON_STATS.ALL_TYPE_RES_PEN.push({
           name: `Eidolon 6`,
           source: 'Robin • Summeretto',
-          value: 0.2,
+          value: 0.18,
         })
       }
 
@@ -475,7 +475,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base.ALL_TYPE_RES_PEN.push({
           name: `Eidolon 6`,
           source: 'Robin • Summeretto',
-          value: 0.2,
+          value: 0.18,
         })
       }
 
