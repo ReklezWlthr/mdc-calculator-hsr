@@ -132,7 +132,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     a2: {
       trace: 'Ascension 2 Passive',
-      title: `Deviated Chord`,
+      title: `Deviated Chords`,
       content: `When an ally target causes Robin • Summeretto to gain <b class="text-blue">Vibes</b>, if their ATK is higher than Robin • Summeretto's, increases that target's ATK by an amount equal to (<span class="text-desc">16%</span> + <b class="text-blue">Vibes</b> × <span class="text-desc">0.4%</span>) of Robin • Summeretto's Max HP. Otherwise, increases that target's CRIT DMG by <span class="text-desc">40%</span> + <b class="text-blue">Vibes</b> × <span class="text-desc">1.5%</span>. Lasts for <span class="text-desc">2</span> turn(s).`,
       image: 'asset/traces/SkillIcon_1512_SkillTree1.webp',
     },
@@ -144,25 +144,25 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     a6: {
       trace: 'Ascension 6 Passive',
-      title: `Reconstructed Harmony`,
+      title: `Rebuilt Harmony`,
       content: `Increases the CRIT Rate of Robin • Summeretto and <b>Summer Songbirds</b> by <span class="text-desc">50%</span>.`,
       image: 'asset/traces/SkillIcon_1512_SkillTree3.webp',
     },
     c1: {
       trace: 'Eidolon 1',
-      title: `Stray Birds of Summer`,
+      title: `Stray Bird of Summer`,
       content: `<b>Summer Songbirds</b> records <span class="text-desc">100%</span> of the non-<b class="text-true">True DMG</b> dealt by ally targets. When using the Memosprite Skill, it additionally deals <b class="text-true">True DMG</b> equal to <span class="text-desc">11%</span> of the total recorded DMG plus current <b class="text-blue">Vibes</b> points × <span class="text-desc">0.1%</span> to the enemy target with the highest HP, then clears <span class="text-desc">50%</span> of the recorded value.`,
       image: 'asset/traces/SkillIcon_1512_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
-      title: `Heart Like Still Waters`,
-      content: `Increases the <b>All-Type RES PEN</b> of ally targets by <span class="text-desc">20%</span>. Robin • Summeretto's Max <b class="text-blue">Vibes</b> increases by <span class="text-desc">20</span>. The first time an ally target uses an ability that causes Robin • Summeretto to gain <b class="text-blue">Vibes</b> within any target's turn, she gains an additional <span class="text-desc">2</span> points.`,
+      title: `A Heart of Still Water`,
+      content: `Increases the <b>All-Type RES PEN</b> of ally targets by <span class="text-desc">18%</span>. Robin • Summeretto's Max <b class="text-blue">Vibes</b> increases by <span class="text-desc">20</span>. The first time an ally target uses an ability that causes Robin • Summeretto to gain <b class="text-blue">Vibes</b> within any target's turn, she gains an additional <span class="text-desc">2</span> points.`,
       image: 'asset/traces/SkillIcon_1512_Rank2.webp',
     },
     c3: {
       trace: 'Eidolon 3',
-      title: `Gleanings of Lost Echoes`,
+      title: `Echoes Left Along the Way`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Memosprite Talent Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
@@ -170,13 +170,13 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     c4: {
       trace: 'Eidolon 4',
-      title: 'Hearing the Chord Variations',
+      title: 'Her Variation on the Theme',
       content: `Upon entering the <b class="text-orange-400">Fever</b> state, immediately gains <span class="text-desc">12</span> point(s) of <b class="text-blue">Vibes</b>, and the SPD of <b>Summer Songbirds</b> increases by <span class="text-desc">20%</span> plus current <b class="text-blue">Vibes</b> × <span class="text-desc">0.5%</span>.`,
       image: 'asset/traces/SkillIcon_1512_Rank4.webp',
     },
     c5: {
       trace: 'Eidolon 5',
-      title: `Together, Toward a New Dawn`,
+      title: `To Chase the Dawn Anew`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.
       <br />Memosprite Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
@@ -184,8 +184,8 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     },
     c6: {
       trace: 'Eidolon 6',
-      title: 'To Sing an Aria Untitled',
-      content: `Increases the DMG multiplier of Robin • Summeretto's Memosprite Skill by <span class="text-desc">100%</span> of its original multiplier. Robin • Summeretto's Ultimate can be stored up to <span class="text-desc">2</span> times. When entering the <b class="text-orange-400">Fever</b> state for the first time or at the start of a <b class="text-orange-400">Fever</b> countdown turn in this battle, immediately regenerates <span class="text-desc">140</span> Energy.`,
+      title: 'A Song Yet Unnamed',
+      content: `Increases the Memosprite Skill's DMG multiplier by <span class="text-desc">100%</span> of the original multiplier. While in the <b class="text-orange-400">Fever</b> state, Robin • Summeretto's Ultimate can be stored up to <span class="text-desc">2</span> times. After entering the <b class="text-orange-400">Fever</b> state for the first time or at the start of a <b class="text-orange-400">Fever</b> countdown turn in this battle, regenerates a fixed amount of <span class="text-desc">140</span> Energy.`,
       image: 'asset/traces/SkillIcon_1512_Rank6.webp',
     },
   }
