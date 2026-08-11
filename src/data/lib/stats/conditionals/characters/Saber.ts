@@ -199,7 +199,7 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       max: 15,
     },
     {
-      type: 'toggle',
+      type: 'number',
       id: 'saber_c4',
       text: `E4 Wind RES PEN`,
       ...talents.c4,

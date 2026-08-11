@@ -64,7 +64,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 20,
       trace: 'Memosprite Skill',
       title: 'Chirrup Quartet',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> to all enemies equal to {{0}}% of Summer Songbirds's Max HP.`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> to all enemies equal to {{0}}% of <b>Summer Songbirds</b>'s Max HP.`,
       value: [{ base: 75, growth: 15, style: 'linear' }],
       level: memo_skill,
       tag: AbilityTag.AOE,
@@ -509,7 +509,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                   multiplier: 0.16 + 0.004 * (form.vibes || 0),
                 })
               } else {
-                t.X_CRIT_DMG.push({
+                t[Stats.CRIT_DMG].push({
                   name: `Ascension 2 Passive`,
                   source: index === i ? 'Self' : 'Robin • Summeretto',
                   value: 0.4 + 0.015 * (form.vibes || 0),
@@ -529,12 +529,12 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                   multiplier: 0.16 + 0.004 * (form.vibes || 0),
                 })
               } else {
-                t.SUMMON_STATS.X_CRIT_DMG.push({
+                t.SUMMON_STATS[Stats.CRIT_DMG].push({
                   name: `Ascension 2 Passive`,
                   source: 'Robin • Summeretto',
-                  value: 0.4 + 0.001 * (form.vibes || 0),
+                  value: 0.4 + 0.0015 * (form.vibes || 0),
                   base: form.vibes || 0,
-                  multiplier: 0.01,
+                  multiplier: 0.015,
                   flat: '40%',
                 })
               }
