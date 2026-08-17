@@ -238,7 +238,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         },
       ]
       const bounce =
-        globalMod.enemy_count === 1 ? 9 : globalMod.enemy_count === 2 ? 7 : globalMod.enemy_count >= 3 ? 6 : 5
+        +globalMod.enemy_count === 1 ? 9 : +globalMod.enemy_count === 2 ? 7 : +globalMod.enemy_count >= 3 ? 6 : 5
       base.ULT_SCALING = [
         {
           name: 'Total Single-Target DMG',

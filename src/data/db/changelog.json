@@ -1,6 +1,14 @@
 [
   {
     "version": "1.2-4",
+    "date": "Aug 17th, 2026",
+    "desc": [
+      "Fixed: Light Cones with <u>base chance</u> listed in their passive effects now correctly display the chance based on refinement level",
+      "Fixed: <span class=\"text-hsr-physical\">Evanescia</span>'s A2 now correctly scales its bounces based on enemies on field"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Aug 11th, 2026",
     "desc": [
       "Fixed: <span class=\"text-hsr-wind\">Robin • Summeretto</span>'s A2 CRIT DMG now correctly scales with <span class=\"text-desc\">1.5%</span> of <b class=\"text-blue\">Vibes</b>",

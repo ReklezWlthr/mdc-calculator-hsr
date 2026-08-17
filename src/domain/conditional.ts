@@ -83,7 +83,7 @@ export interface IContent {
   debuff?: boolean
   unique?: boolean
   options?: { name: string; value: string }[]
-  chance?: { base: number; fixed: boolean }
+  chance?: { base: number; fixed: boolean; growth?: number }
   duration?: number
   expireTurnStart?: boolean // Apply to Aura-type buffs that reduce count on turn start
   value?: { base: number; growth: number; style: TalentScalingStyle }[]
@@ -101,7 +101,7 @@ export interface IWeaponContent {
   max?: number | string
   min?: number | string
   debuff?: boolean
-  chance?: { base: number; fixed: boolean }
+  chance?: { base: number; fixed: boolean; growth?: number }
   duration?: number
   text: string
   show: boolean

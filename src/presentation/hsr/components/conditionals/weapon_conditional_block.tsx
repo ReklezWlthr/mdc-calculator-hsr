@@ -11,7 +11,7 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import { LCTooltip } from '@src/presentation/hsr/components/lc_block'
 import { findCharacter } from '@src/core/utils/finder'
 import { CheckboxInput } from '@src/presentation/components/inputs/checkbox'
-import { toPercentage } from '@src/core/utils/data_format'
+import { calcRefinement, toPercentage } from '@src/core/utils/data_format'
 import { StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { FormSetterT } from '@src/presentation/hsr/components/conditionals/conditional_block'
 import { chanceStringConstruct } from '@src/core/utils/constructor/chanceStringConstruct'
@@ -46,7 +46,7 @@ export const WeaponConditionalBlock = observer(
         <p
           className={classNames(
             'px-2 py-1 text-lg font-bold text-center duration-300 cursor-pointer bg-primary-light',
-            open ? 'rounded-t-lg' : 'rounded-lg'
+            open ? 'rounded-t-lg' : 'rounded-lg',
           )}
           onClick={() => setOpen((prev) => !prev)}
         >
@@ -54,25 +54,26 @@ export const WeaponConditionalBlock = observer(
           <i
             className={classNames(
               'ml-2 text-base align-top fa-solid fa-caret-down duration-300',
-              open && '-rotate-180'
+              open && '-rotate-180',
             )}
           />
         </p>
         <div
           className={classNames(
             'space-y-3 duration-300 ease-out px-4',
-            open ? 'h-fit overflow-visible py-3' : 'h-0 overflow-hidden'
+            open ? 'h-fit overflow-visible py-3' : 'h-0 overflow-hidden',
           )}
         >
           {_.size(_.filter(contents, 'show')) ? (
             _.map(contents, (content) => {
+              const r = team[content.owner || content.index]?.equipments?.weapon?.refinement
               const stats = calculatorStore.computedStats[content.index]
               const { prob, ProbComponent } = chanceStringConstruct(
                 compare ? setupStore : calculatorStore,
                 stats,
-                content.chance?.base,
+                calcRefinement(content.chance?.base, content.chance?.growth, r),
                 content.chance?.fixed,
-                content.debuffElement
+                content.debuffElement,
               )
 
               const form =
@@ -87,7 +88,7 @@ export const WeaponConditionalBlock = observer(
                     <div className="col-span-5">
                       <LCTooltip
                         wId={_.split(content.id, '_')[0]}
-                        refinement={team[content.owner || content.index]?.equipments?.weapon?.refinement}
+                        refinement={r}
                         position="left"
                         cId={team[content.owner || content.index]?.cId}
                       >
@@ -114,9 +115,9 @@ export const WeaponConditionalBlock = observer(
                               ? prob <= 0.6
                                 ? 'text-red'
                                 : prob <= 0.8
-                                ? 'text-desc'
-                                : 'text-heal'
-                              : 'text-gray'
+                                  ? 'text-desc'
+                                  : 'text-heal'
+                              : 'text-gray',
                           )}
                         >
                           {toPercentage(prob, 1)}
@@ -179,5 +180,5 @@ export const WeaponConditionalBlock = observer(
         </div>
       </div>
     )
-  }
+  },
 )
