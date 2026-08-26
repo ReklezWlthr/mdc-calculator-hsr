@@ -221,7 +221,17 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
 
   const teammateContent: IContent[] = [findContentById(content, 'rin_ult')]
 
-  const allyContent: IContent[] = []
+  const allyContent: IContent[] = [
+    {
+      type: 'toggle',
+      id: 'rin_talent_ally',
+      text: `Rin's Talent CRIT DMG`,
+      ...talents.talent,
+      show: true,
+      default: true,
+      duration: 2,
+    },
+  ]
 
   return {
     upgrade,
@@ -388,6 +398,14 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       weakness: Element[],
       broken: boolean,
     ) => {
+      if (aForm.rin_talent_ally) {
+        base[Stats.CRIT_DMG].push({
+          name: `Talent`,
+          source: 'Rin Tohsaka',
+          value: calcScaling(0.35, 0.035, talent, 'curved'),
+        })
+      }
+
       if (base.ID === '1015') {
         const rinIndex = _.findIndex(team, (item) => item?.cId === own.ID)
         const archerIndex = _.findIndex(team, (item) => item?.cId === base.ID)

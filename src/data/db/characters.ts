@@ -1570,7 +1570,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.REMEMBRANCE,
     element: Element.WIND,
-    beta: true,
+    beta: false,
   },
   {
     id: '1513',

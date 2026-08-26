@@ -1,6 +1,11 @@
 [
   {
     "version": "1.2-4",
+    "date": "Aug 26th, 2026",
+    "desc": ["Fixed: <span class=\"text-hsr-quantum\">Rin</span>'s Talent now gives CRIT DMG to allies"]
+  },
+  {
+    "version": "1.2-4",
     "date": "Aug 17th, 2026",
     "desc": [
       "Fixed: Light Cones with <u>base chance</u> listed in their passive effects now correctly display the chance based on refinement level",

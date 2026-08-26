@@ -1,4 +1,4 @@
-import { addDebuff, findContentById } from '@src/core/utils/finder'
+import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _ from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
 import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
@@ -15,6 +15,8 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     ult: c >= 3 ? 2 : 0,
     talent: c >= 5 ? 2 : 0,
   }
+  const gilgamesh = _.find(team, (x) => x?.cId === '1509')
+  const gilTalentLevel = gilgamesh ? gilgamesh.talents.talent + (gilgamesh.cons >= 5 ? 2 : 0) : 1
   const basic = t.basic + upgrade.basic
   const skill = t.skill + upgrade.skill
   const ult = t.ult + upgrade.ult
@@ -207,6 +209,18 @@ const Saber = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       default: 0,
       min: 0,
       max: 3,
+    },
+    {
+      type: 'toggle',
+      id: 'gil_saber_buff',
+      text: `Gilgamesh's Ult Multiplier Buff`,
+      content: `Saber regenerates a fixed <span class="text-desc">120</span> Energy, and the next time she uses Ultimate, the DMG dealt becomes {{0}}% of the original DMG.`,
+      title: `"I Grant You Permission To Strike"`,
+      show: !!gilgamesh,
+      default: true,
+      trace: 'Joint Interaction',
+      value: [{ base: 120, growth: 8, style: 'curved' }],
+      level: gilTalentLevel,
     },
   ]
 

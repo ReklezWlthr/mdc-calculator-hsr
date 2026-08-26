@@ -196,14 +196,6 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       max: 6,
     },
     {
-      type: 'toggle',
-      id: 'gil_saber_buff',
-      text: `Saber's Ult Multiplier Buff`,
-      ...talents.talent,
-      show: true,
-      default: true,
-    },
-    {
       type: 'number',
       id: 'golden_rule',
       text: `Golden Rule`,
@@ -419,7 +411,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         base.TALENT_SCALING.push(...joint)
         own.TALENT_SCALING.push(...joint)
 
-        if (form.gil_saber_buff) {
+        if (aForm.gil_saber_buff) {
           base.ULT_SCALING = _.map(base.ULT_SCALING, (s) =>
             s.property === TalentProperty.NORMAL && s.type === TalentType.ULT
               ? {
