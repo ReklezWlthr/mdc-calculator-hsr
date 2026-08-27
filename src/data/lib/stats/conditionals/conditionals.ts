@@ -90,6 +90,7 @@ import Rin from './characters/Rin'
 import Gilgamesh from './characters/Gilgamesh'
 import AventurineSP from './characters/AventurineSP'
 import RobinSP from './characters/RobinSP'
+import Pearl from './characters/Pearl'
 
 export default [
   { id: '1001', conditionals: March },
@@ -170,6 +171,7 @@ export default [
   { id: '1415', conditionals: Cyrene },
   { id: '1501', conditionals: Sparxie },
   { id: '1502', conditionals: YaoGuang },
+  { id: '1503', conditionals: Pearl },
   { id: '1504', conditionals: Ashveil },
   { id: '1505', conditionals: Evanescia },
   { id: '1506', conditionals: SilverWolfSP },

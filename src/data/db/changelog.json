@@ -1,6 +1,16 @@
 [
   {
     "version": "1.2-4",
+    "date": "Aug 27th, 2026",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v4.1 Beta 1</span>",
+      "New Characters: <span class=\"text-hsr-ice\">Pearl</span>",
+      "New Light Cone: <span class=\"text-desc\">Colors for Tomorrow</span>",
+      "New Relic Sets: <span class=\"text-desc\">The Edacious Heretic</span>, and <span class=\"text-desc\">Dreamlit Actor</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Aug 26th, 2026",
     "desc": ["Fixed: <span class=\"text-hsr-quantum\">Rin</span>'s Talent now gives CRIT DMG to allies"]
   },

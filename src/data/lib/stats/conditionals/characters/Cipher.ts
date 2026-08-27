@@ -209,7 +209,7 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -371,7 +371,7 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.cipher_skill_weaken) {
         base.WEAKEN.push({
@@ -407,7 +407,7 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const spd = base.getSpd()
 
@@ -435,7 +435,11 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                     overrideIndex: index,
                     sum: true,
                   }
-                  if (_.some(s, (ss) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], ss.property))) {
+                  if (
+                    _.some(s, (ss) =>
+                      _.includes([TalentProperty.NORMAL, TalentProperty.FUA, TalentProperty.ELATION], ss.property),
+                    )
+                  ) {
                     s.push(add)
                   }
                   if (_.some(s, (ss) => ss.property === TalentProperty.SERVANT)) {
@@ -444,7 +448,7 @@ const Cipher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
                       name: add.name + ` (${x.SUMMON_STATS?.NAME})`,
                     })
                   }
-                }
+                },
               )
               return x
             })

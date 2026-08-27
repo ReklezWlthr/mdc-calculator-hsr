@@ -1913,6 +1913,17 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23055',
+    scaling: (base, r) => {
+      base[Stats.P_DEF].push({
+        name: 'Passive',
+        source: `Colors for Tomorrow`,
+        value: calcRefinement(0.48, 0.12, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

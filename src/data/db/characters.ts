@@ -1429,6 +1429,28 @@ export const Characters = [
     beta: false,
   },
   {
+    id: '1503',
+    name: 'Pearl',
+    jp: 'パール',
+    stat: {
+      baseAtk: 63.36,
+      baseHp: 163.68,
+      baseDef: 99,
+      baseSpd: 99,
+      energy: 180,
+    },
+    trace: [Stats.P_DEF, Stats.ELATION, Stats.SPD, Stats.E_RES],
+    rec: [Stats.SPD, Stats.P_DEF],
+    overwrite: [
+      { index: 1, stat: Stats.E_RES },
+      { index: 3, stat: Stats.E_RES },
+    ],
+    rarity: 5,
+    path: PathType.ELATION,
+    element: Element.ICE,
+    beta: true,
+  },
+  {
     id: '1504',
     name: 'Ashveil',
     jp: '不死途<rt>シナズ</rt>',

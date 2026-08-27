@@ -340,7 +340,11 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                   overrideIndex: index,
                   sum: true,
                 }
-                if (_.some(s, (ss) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], ss.property))) {
+                if (
+                  _.some(s, (ss) =>
+                    _.includes([TalentProperty.NORMAL, TalentProperty.FUA, TalentProperty.ELATION], ss.property),
+                  )
+                ) {
                   s.push(add)
                 }
                 if (_.some(s, (ss) => ss.property === TalentProperty.SERVANT)) {

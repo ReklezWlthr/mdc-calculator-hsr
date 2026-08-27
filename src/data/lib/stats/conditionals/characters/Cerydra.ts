@@ -196,7 +196,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -240,7 +240,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },
@@ -255,7 +255,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       }[],
       weakness: Element[],
       broken: boolean,
-      globalCallback: CallbackType[]
+      globalCallback: CallbackType[],
     ) => {
       globalCallback.push(function P3(_x, _d, _w, all) {
         const cap = calcScaling(0.18, 0.006, ult, 'curved') * all[index].getAtk()
@@ -304,7 +304,11 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             _.forEach(
               [f.BASIC_SCALING, f.SKILL_SCALING, f.ULT_SCALING, f.TALENT_SCALING, f.MEMO_SKILL_SCALING],
               (item) => {
-                if (_.some(item, (v) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], v.property))) {
+                if (
+                  _.some(item, (v) =>
+                    _.includes([TalentProperty.NORMAL, TalentProperty.FUA, TalentProperty.ELATION], v.property),
+                  )
+                ) {
                   item.push({
                     name: `Military Merit Additional DMG`,
                     value: [
@@ -317,7 +321,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                     overrideIndex: index,
                   })
                 }
-              }
+              },
             )
             if (form.peerage) {
               f.SKILL_CD.push({ ...cd, source: index === i ? 'Self' : 'Cerydra' })

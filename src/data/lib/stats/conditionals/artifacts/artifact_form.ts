@@ -332,6 +332,25 @@ export const ArtifactForm = () => {
       id: '132',
       excludeSummon: true,
     },
+    {
+      type: 'toggle',
+      text: `The Edacious Heretic`,
+      title: `The Edacious Heretic`,
+      content: `When the wearer uses a Basic ATK, increases the wearer's ATK by <span class="text-desc">20%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
+      show: true,
+      default: true,
+      id: '134',
+      excludeSummon: true,
+    },
+    {
+      type: 'toggle',
+      text: `Dreamlit Actor - Banger`,
+      title: `Dreamlit Actor - Banger`,
+      content: `If the wearer has <span class="text-desc">10</span> or more points of <b class="text-blue">Certified Banger</b>, additionally increases all allies' CRIT DMG by <span class="text-desc">12%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
+      show: true,
+      default: true,
+      id: '135',
+    },
   ]
 
   // Team-Wide
@@ -344,6 +363,7 @@ export const ArtifactForm = () => {
     findContentById(content, '130'),
     findContentById(content, '326_2'),
     findContentById(content, '132'),
+    findContentById(content, '135'),
   ]
 
   // Single-Target
@@ -365,8 +385,17 @@ export const ArtifactForm = () => {
       title: `Self-Enshrouded Recluse`,
       content: `Increases Shield Effect provided by the wearer by <span class="text-desc">12%</span>. When an ally target has a Shield provided by the wearer, the ally target's CRIT DMG increases by <span class="text-desc">15%</span>.`,
       show: true,
-      default: false,
+      default: true,
       id: '128',
+    },
+    {
+      type: 'toggle',
+      text: `Dreamlit Actor`,
+      title: `Dreamlit Actor`,
+      content: `When the wearer uses their Skill or Ultimate on one other ally target, increases the ability target's Elation by <span class="text-desc">16%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
+      show: true,
+      default: false,
+      id: '135',
     },
   ]
 

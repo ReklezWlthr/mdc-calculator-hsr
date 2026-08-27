@@ -199,7 +199,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -304,7 +304,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },
@@ -318,7 +318,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const dc = +form.debt_collector - 1
       const c6 = c >= 6 && dc >= 0
@@ -343,10 +343,14 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
             _.forEach(
               [x.BASIC_SCALING, x.SKILL_SCALING, x.ULT_SCALING, x.TALENT_SCALING, x.MEMO_SKILL_SCALING],
               (s) => {
-                if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property))) {
+                if (
+                  _.some(s, (item) =>
+                    _.includes([TalentProperty.NORMAL, TalentProperty.FUA, TalentProperty.ELATION], item.property),
+                  )
+                ) {
                   s.push(add)
                 }
-              }
+              },
             )
             return x
           })
@@ -366,7 +370,7 @@ const Jade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
                 if (_.some(s, (item) => _.includes([TalentProperty.SERVANT], item.property))) {
                   s.push(add)
                 }
-              }
+              },
             )
             return x
           })

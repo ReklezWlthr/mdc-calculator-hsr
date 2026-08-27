@@ -1977,7 +1977,11 @@ export const LCTeamConditionals: IWeaponContent[] = [
           _.forEach(
             [base.BASIC_SCALING, base.SKILL_SCALING, base.ULT_SCALING, base.TALENT_SCALING, base.TECHNIQUE_SCALING],
             (s) => {
-              if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property)))
+              if (
+                _.some(s, (item) =>
+                  _.includes([TalentProperty.NORMAL, TalentProperty.FUA, TalentProperty.ELATION], item.property),
+                )
+              )
                 s.push(shock)
             },
           )
@@ -2994,6 +2998,34 @@ export const LCTeamConditionals: IWeaponContent[] = [
         })
       }
 
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Post-Elation Skill Vulnerability`,
+    show: true,
+    default: true,
+    id: '23055',
+    scaling: (base, form, r, { index, owner, own, debuffs, team }) => {
+      if (index === owner && own.PATH === PathType.ELATION) {
+        base.MEMO_SKILL_SCALING.push({
+          name: 'Elation Skill Healing',
+          value: [{ scaling: calcRefinement(0.1, 0.01, r), multiplier: Stats.DEF }],
+          element: TalentProperty.HEAL,
+          property: TalentProperty.HEAL,
+          type: TalentType.NONE,
+        })
+      }
+      if (form['23055']) {
+        const elationCount = _.filter(team, (t) => findCharacter(t.cId)?.path === PathType.ELATION)?.length - 1 || 0
+        base.VULNERABILITY.push({
+          name: `Passive`,
+          source: 'Colors for Tomorrow',
+          value: calcRefinement(0.1, 0.02, r) + elationCount * calcRefinement(0.04, 0.01, r),
+        })
+        if (index === owner) addDebuff(debuffs, DebuffTypes.OTHER)
+      }
       return base
     },
   },

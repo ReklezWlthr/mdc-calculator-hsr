@@ -1468,10 +1468,10 @@ export const LightCones = [
     baseAtk: 19.2,
     baseDef: 18,
     type: PathType.ELATION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Whisper',
-      detail: `Increases the wearer's Elation by {{0}}%. When the wearer uses an Elation Skill, ignores {{1}}% of the target's DEF.`,
+      detail: `Increases the wearer's Elation by {{0}}%. During the use of Elation Skill by the wearer, ignores {{1}}% of the target's DEF.`,
       properties: [
         { base: 20, growth: 5 },
         { base: 8, growth: 2 },
@@ -1637,7 +1637,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Overtake',
-      detail: `Increases the wearer's ATK by {{0}}%. After the wearer uses a <u>Follow-Up ATK</u>, increases their CRIT DMG by {{1}}% for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">10</span> times.`,
+      detail: `Increases the wearer's ATK by {{0}}%. After the wearer uses <u>Follow-Up ATK</u>, increases their CRIT DMG by {{1}}% for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">10</span> times.`,
       properties: [
         { base: 12, growth: 3 },
         { base: 3, growth: 0.5 },
@@ -2677,6 +2677,26 @@ export const LightCones = [
     },
   },
   {
+    id: '23055',
+    name: `Colors for Tomorrow`,
+    rarity: 5,
+    baseHp: 48,
+    baseAtk: 21.6,
+    baseDef: 27,
+    type: PathType.ELATION,
+    beta: true,
+    desc: {
+      name: 'Ink Splash',
+      detail: `Increases the wearer's DEF by {{0}}%. When the wearer uses an Elation Skill on all allies, restores HP for all allies equal to {{1}}% of the wearer's DEF and increases DMG taken by all enemies by {{2}}%, lasting for <span class="text-desc">3</span> turn(s). For every other Elation character in the team, additionally increases DMG taken by all enemies by {{3}}%, lasting for <span class="text-desc">3</span> turn(s).`,
+      properties: [
+        { base: 48, growth: 12 },
+        { base: 10, growth: 1 },
+        { base: 10, growth: 2.5 },
+        { base: 4, growth: 1 },
+      ],
+    },
+  },
+  {
     id: '23056',
     name: 'The Finale of a Lie',
     rarity: 5,
@@ -2835,8 +2855,8 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Waveriding',
-      detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer uses an Elation Skill, gains <b>Updraft</b>, which increases the wearer's SPD by {{1}}%. If the Elation Skill used is different from the last Elation Skill used, additionally gains <b>Uptrend</b>, which increases the wearer's Elation by {{2}}%.
-      <br />At the start of every wave or after the wearer uses their Elation Skill <span class="text-desc">3</span> time(s), recovers <span class="text-desc">1</span> Skill Point.`,
+      detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer uses Elation Skill, gains <b>Updraft</b>, which increases the wearer's SPD by {{1}}%. If the Elation Skill used is different from one used last time, additionally gains <b>Uptrend</b>, which increases the wearer's Elation by {{2}}%.
+      <br />When every wave starts or after the wearer uses their Elation Skill <span class="text-desc">3</span> time(s), recovers <span class="text-desc">1</span> Skill Point.`,
       properties: [
         { base: 18, growth: 3 },
         { base: 24, growth: 4 },

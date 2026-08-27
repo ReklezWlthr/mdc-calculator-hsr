@@ -774,6 +774,48 @@ export const RelicSets: IArtifact[] = [
       `Smith's Unbridled Boots`,
     ],
   },
+  {
+    id: '134',
+    name: `The Edacious Heretic`,
+    icon: '71060',
+    bonus: [{ stat: Stats.P_ATK, value: 0.12 }],
+    bonusAdd: [],
+    add: (base) => {
+      base.BASIC_DMG.push({
+        name: '4-Piece',
+        source: 'The Edacious Heretic',
+        value: 0.36,
+      })
+      return base
+    },
+    desc: [
+      `Increases ATK by <span class="text-desc">12%</span>.`,
+      `Increases DMG dealt by the wearer's Basic ATK by <span class="text-desc">36%</span>. When the wearer uses a Basic ATK, increases the wearer's ATK by <span class="text-desc">20%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
+    ],
+    set: [
+      `Heretic's Cranial Apparatus`,
+      `Heretic's Injection Gloves`,
+      `Heretic's Straitjacket of Reason`,
+      `Heretic's Ravenous Ankle-Boots`,
+    ],
+  },
+  {
+    id: '135',
+    name: `Dreamlit Actor`,
+    icon: '71061',
+    bonus: [{ stat: Stats.P_SPD, value: 0.06 }],
+    bonusAdd: [],
+    desc: [
+      `Increases SPD by <span class="text-desc">6%</span>.`,
+      `When the wearer uses their Skill or Ultimate on one other ally target, increases the ability target's Elation by <span class="text-desc">16%</span>, lasting for <span class="text-desc">3</span> turn(s). If the wearer has <span class="text-desc">10</span> or more points of <b class="text-blue">Certified Banger</b>, additionally increases all allies' CRIT DMG by <span class="text-desc">12%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
+    ],
+    set: [
+      `Smith's Fire Beast Mask`,
+      `Smith's Damascus Steel Gauntlets`,
+      `Smith's Fireproof Garment`,
+      `Smith's Unbridled Boots`,
+    ],
+  },
 ]
 
 export const PlanarSets: IArtifact[] = [

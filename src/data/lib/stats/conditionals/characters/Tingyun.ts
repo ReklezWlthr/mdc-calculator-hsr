@@ -192,7 +192,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -243,7 +243,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (aForm.tingyun_ult)
         base[Stats.ALL_DMG].push({
@@ -271,7 +271,7 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       }[],
       weakness: Element[],
       broken: boolean,
-      globalCallback: CallbackType[]
+      globalCallback: CallbackType[],
     ) => {
       globalCallback.push(function P2(_x, _d, _w, all) {
         _.forEach(all, (f, i) => {
@@ -304,13 +304,15 @@ const Tingyun = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
                 if (
                   _.some(s, (item) =>
                     _.includes(
-                      i >= 10 ? [TalentProperty.SERVANT] : [TalentProperty.NORMAL, TalentProperty.FUA],
-                      item.property
-                    )
+                      i >= 10
+                        ? [TalentProperty.SERVANT]
+                        : [TalentProperty.NORMAL, TalentProperty.FUA, TalentProperty.ELATION],
+                      item.property,
+                    ),
                   )
                 )
                   s.push(add)
-              }
+              },
             )
             const raw = calcScaling(0.25, 0.025, skill, 'curved') * target.BASE_ATK
             const cap = calcScaling(0.15, 0.01, skill, 'curved') * all[index].getAtk()

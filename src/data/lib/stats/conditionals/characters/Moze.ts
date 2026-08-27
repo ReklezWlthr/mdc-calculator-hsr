@@ -178,7 +178,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -274,7 +274,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.prey) {
         base.ADD_DEBUFF.push({
@@ -309,7 +309,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.prey) {
         _.forEach(team, (t, i) => {
@@ -326,7 +326,11 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
                   overrideIndex: index,
                   sum: true,
                 }
-                if (_.some(s, (ss) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], ss.property))) {
+                if (
+                  _.some(s, (ss) =>
+                    _.includes([TalentProperty.NORMAL, TalentProperty.FUA, TalentProperty.ELATION], ss.property),
+                  )
+                ) {
                   s.push(add)
                 }
                 if (_.some(s, (ss) => ss.property === TalentProperty.SERVANT)) {
@@ -335,7 +339,7 @@ const Moze = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
                     name: add.name + ` (${t.SUMMON_STATS?.NAME})`,
                   })
                 }
-              }
+              },
             )
           }
         })

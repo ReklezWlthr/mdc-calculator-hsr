@@ -259,6 +259,13 @@ export const calculateRelic = (base: StatsObject, form: Record<string, any>) => 
       value: 0.18 * form['131'],
     })
   }
+  if (form['134']) {
+    base[Stats.P_ATK].push({
+      name: `4-Piece`,
+      source: `The Edacious Heretic`,
+      value: 0.2,
+    })
+  }
 
   return base
 }
@@ -328,6 +335,12 @@ export const calculateTeamRelic = (base: StatsObject, form: Record<string, any>,
       source: owner.NAME,
       value: 0.15,
     })
+  if (form['135'])
+    base[Stats.CRIT_DMG].push({
+      name: `Dreamlit Actor`,
+      source: owner.NAME,
+      value: 0.12,
+    })
 
   return base
 }
@@ -350,6 +363,13 @@ export const calculateAllyRelic = (
       name: `Self-Enshrouded Recluse`,
       source: owner.NAME,
       value: 0.15,
+    })
+  }
+  if (form[`135_${ownerIndex}`]) {
+    base[Stats.ELATION].push({
+      name: `Dreamlit Actor`,
+      source: owner.NAME,
+      value: 0.16,
     })
   }
 

@@ -53,7 +53,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     skill: {
       trace: 'Skill',
       title: 'Summer Strums the Soul',
-      content: `Summons the memosprite <b>Summer Songbirds</b> Bessie. If any among the <b>Summer Songbirds</b> is already on the field, restores its HP by an amount equal to {{0}}% of <b>Summer Songbirds</b>'s Max HP, and gains <span class="text-desc">6</span> <b class="text-blue">Vibes</b>.`,
+      content: `Summons the memosprite <b>Summer Songbirds</b> Bessie. If any member of the <b>Summer Songbirds</b> is already on the field, restores their HP by an amount equal to {{0}}% of <b>Summer Songbirds</b>' Max HP, and gains <span class="text-desc">6</span> <b class="text-blue">Vibes</b>.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: skill,
       tag: AbilityTag.SUMMON,
@@ -64,7 +64,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 20,
       trace: 'Memosprite Skill',
       title: 'Chirrup Quartet',
-      content: `Deals <b class="text-hsr-wind">Wind DMG</b> to all enemies equal to {{0}}% of <b>Summer Songbirds</b>'s Max HP.`,
+      content: `Deals <b class="text-hsr-wind">Wind DMG</b> to all enemies equal to {{0}}% of <b>Summer Songbirds</b>' Max HP.`,
       value: [{ base: 75, growth: 15, style: 'linear' }],
       level: memo_skill,
       tag: AbilityTag.AOE,
@@ -73,18 +73,18 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     ult: {
       trace: 'Ultimate',
       title: `Ascend That Rhapsody in Blue`,
-      content: `Advances the action of one designated ally unit (excluding Robin • Summeretto) by <span class="text-desc">100%</span> and regenerates a fixed amount of Energy equal to {{0}}% of their Max Energy, and then, grants them the <b class="text-desc">Special Guest</b> effect. When the character with <b class="text-desc">Special Guest</b> and their summon attacks, they additionally grant Robin <span class="text-desc">2</span> point of <b class="text-blue">Vibes</b> and cannot advance the actions of other friendly targets. This effect lasts for <span class="text-desc">2</span> turn(s), and its duration decreases by <span class="text-desc">1</span> at the start of this character's turn.`,
+      content: `Advances the action of one designated ally character (excluding Robin • Summeretto) by <span class="text-desc">100%</span> and regenerates a fixed amount of Energy equal to {{0}}% of their Max Energy. Then, grants them the <b class="text-desc">Special Guest</b> effect. When the <b class="text-desc">Special Guest</b> character or their summon attacks, they additionally grant Robin • Summeretto <span class="text-desc">2</span> <b class="text-blue">Vibes</b> but cannot make other friendly targets gain the action advance effect. This lasts for <span class="text-desc">2</span> turn(s), and its duration decreases by <span class="text-desc">1</span> at the start of this character's turn.`,
       value: [{ base: 12, growth: 0.8, style: 'curved' }],
       level: ult,
-      tag: AbilityTag.ENHANCE,
+      tag: AbilityTag.SUPPORT,
       energy: 5,
       image: 'asset/traces/SkillIcon_1512_Ultra_on.webp',
     },
     talent: {
       trace: 'Talent',
       title: `Wings Heed No Borders`,
-      content: `The memosprite <b>Summer Songbirds</b> has an initial Max HP equal to <span class="text-desc">70%</span> of Robin • Summeretto's Max HP and an initial SPD equal to <span class="text-desc">180%</span> of Robin • Summeretto's SPD. When an ally target uses an attack, or when providing healing effect or Shield for the first time in any target's turn, Robin • Summeretto gains <span class="text-desc">1</span> <b class="text-blue">Vibes</b>, up to a max of <span class="text-desc">50</span>. While <b>Summer Songbirds</b> Bessie is on the field, if Robin's <b class="text-blue">Vibes</b> is <span class="text-desc">6</span> or more, immediately summons the <b>Summer Songbird</b> Drummie, and if <b class="text-blue">Vibes</b> is <span class="text-desc">12</span> or more, immediately summons the <b>Summer Songbird</b> Paddie. When all <b>Summer Songbirds</b> take the stage, dispels all Crowd Control debuffs that Robin • Summeretto and the <b>Summer Songbirds</b> are under, enter the <b class="text-orange-400">Fever</b> state and deploy a Zone. When ally targets deal DMG inside the Zone, they ignore {{0}}% plus <b class="text-blue">Vibes</b> × <span class="text-desc">0.5%</span> of enemy targets' DEF.
-      <br />While in the <b class="text-orange-400">Fever</b> state, Robin • Summeretto and the <b>Summer Songbirds</b> are immune to Crowd Control debuffs, and Robin • Summeretto will not enter her turns until the <b class="text-orange-400">Fever</b> state ends.`,
+      content: `Memosprite <b>Summer Songbirds</b> has an initial Max HP equal to <span class="text-desc">70%</span> of Robin • Summeretto's Max HP and an initial SPD equal to <span class="text-desc">180%</span> of Robin • Summeretto's SPD. When an ally target uses an attack, or when they provide healing or Shield for the first time in any target's turn, Robin • Summeretto gains <b class="text-blue">Vibes</b> by <span class="text-desc">1</span> point, capped at <span class="text-desc">50</span>. While <b>Summer Songbirds</b> Bessie is on the field, if Robin • Summeretto's <b class="text-blue">Vibes</b> is <span class="text-desc">6</span> or higher, immediately summons <b>Summer Songbirds</b> Drummie, and if <b class="text-blue">Vibes</b> is <span class="text-desc">12</span> or higher, immediately summons <b>Summer Songbirds</b> Paddie. When all <b>Summer Songbirds</b> take the stage, dispels all Crowd Control debuffs inflicted upon Robin • Summeretto and the <b>Summer Songbirds</b>, starts the <b class="text-orange-400">Fever</b> state, and deploys a Zone. When ally targets deal DMG within the Zone, they ignore a percentage of enemy targets' DEF equal to ({{0}}% + <b class="text-blue">Vibes</b> × <span class="text-desc">0.5%</span>).
+      <br />While in the <b class="text-orange-400">Fever</b> state, Robin • Summeretto and the <b>Summer Songbirds</b> are immune to Crowd Control debuffs. Robin • Summeretto will not enter her turn until the <b class="text-orange-400">Fever</b> state ends.`,
       value: [{ base: 10, growth: 0.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -93,7 +93,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     summon_talent: {
       trace: 'Memosprite Talent [1]',
       title: `A Warble of Wings`,
-      content: `While in the <b class="text-orange-400">Fever</b> state, the <b>Summer Songbirds</b> and a countdown will appear on the action bar, increasing the DMG dealt by Robin • Summeretto and this unit by {{0}}% + <b class="text-blue">Vibes</b> × {{1}}%. When <b>Summer Songbirds</b>' turn starts, they use the Memosprite Skill. The countdown has an initial SPD of <span class="text-desc">140</span>. When their turn starts, <span class="text-desc">50%</span> of current <b class="text-blue">Vibes</b> (a minimum of <span class="text-desc">12</span> points) gets deducted. When <b class="text-blue">Vibes</b> reach <span class="text-desc">0</span>, the <b>Summer Songbirds</b> disappear and Robin • Summeretto exits the <b class="text-orange-400">Fever</b> state. While <b>Summer Songbirds</b> are on the field, increases the DMG taken by all enemies by {{2}}%/{{3}}%/{{4}}% respectively based on the number of members present.`,
+      content: `While in the <b class="text-orange-400">Fever</b> state, the <b>Summer Songbirds</b> and a countdown will appear on the Action Order. And the DMG dealt by Robin • Summeretto and <b>Summer Songbirds<b> increases by an amount equal to ({{0}}% + <b class="text-blue">Vibes</b> × {{1}}%). When <b>Summer Songbirds</b>' turn starts, uses the Memosprite Skill. The countdown has an initial SPD of <span class="text-desc">140</span>. And when its turn starts, deducts <span class="text-desc">50%</span> of the current <b class="text-blue">Vibes</b> (minimum <span class="text-desc">12</span> points). When the <b class="text-blue">Vibes</b> reaches <span class="text-desc">0</span>, the <b>Summer Songbirds</b> disappears and Robin • Summeretto exits the <b class="text-orange-400">Fever</b> state. While the <b>Summer Songbirds</b> is on the field, based on the number of its members present, increases the DMG taken by all enemies by {{2}}%/{{3}}%/{{4}}% respectively.`,
       value: [
         { base: 30, growth: 6, style: 'linear' },
         { base: 1, growth: 0.2, style: 'linear' },
@@ -126,20 +126,20 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     technique: {
       trace: 'Technique',
       title: 'We Are the Melody',
-      content: `After using Technique, at the start of the next combat, action advances by <span class="text-desc">20%</span>, immediately gains <span class="text-desc">6</span> <b class="text-blue">Vibes</b>, and grants all allies a <span class="text-desc">30%</span> DMG Boost for <span class="text-desc">2</span> turn(s).`,
+      content: `After using Technique, advances action by <span class="text-desc">20%</span> at the start of the next battle, immediately gains <span class="text-desc">6</span> <b class="text-blue">Vibes</b>, and increases all allies' DMG dealt by <span class="text-desc">30%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
       tag: AbilityTag.ENHANCE,
       image: 'asset/traces/SkillIcon_1512_Maze.webp',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Deviated Chords`,
-      content: `When an ally target causes Robin • Summeretto to gain <b class="text-blue">Vibes</b>, if their ATK is higher than Robin • Summeretto's, increases that target's ATK by an amount equal to (<span class="text-desc">16%</span> + <b class="text-blue">Vibes</b> × <span class="text-desc">0.4%</span>) of Robin • Summeretto's Max HP. Otherwise, increases that target's CRIT DMG by <span class="text-desc">40%</span> + <b class="text-blue">Vibes</b> × <span class="text-desc">1.5%</span>. Lasts for <span class="text-desc">2</span> turn(s).`,
+      content: `When an ally target causes Robin • Summeretto to gain <b class="text-blue">Vibes</b>, if their ATK is higher than Robin • Summeretto's, increases that target's ATK by an amount equal to (<span class="text-desc">16%</span> + <b class="text-blue">Vibes</b> × <span class="text-desc">0.4%</span>) of Robin • Summeretto's Max HP. Otherwise, increases that target's CRIT DMG by an amount equal to (<span class="text-desc">40%</span> + <b class="text-blue">Vibes</b> × <span class="text-desc">1.5%</span>). Lasts for <span class="text-desc">2</span> turn(s).`,
       image: 'asset/traces/SkillIcon_1512_SkillTree1.webp',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Improvised Blues`,
-      content: `When Robin • Summeretto or <b>Summer Songbirds</b> receive healing or a Shield provided by teammates, they gain <span class="text-desc">12</span> stack(s) of <b class="text-heal">Groove</b>, up to a max of <span class="text-desc">12</span> stack(s). The first time Robin • Summeretto gains <b class="text-blue">Vibes</b> on any unit's turn, if she has <b class="text-heal">Groove</b>, she consumes <span class="text-desc">1</span> stack of <b class="text-heal">Groove</b> and regenerates <span class="text-desc">3</span> Energy.`,
+      content: `When Robin • Summeretto or the <b>Summer Songbirds</b> receive healing or a Shield provided by teammates, causes Robin • Summeretto to gain <span class="text-desc">12</span> stack(s) of <b class="text-heal">Groove</b>, capped at <span class="text-desc">12</span>. The first time Robin • Summeretto gains <b class="text-blue">Vibes</b> during any target's turn, if she has <b class="text-heal">Groove</b>, consumes <span class="text-desc">1</span> stack of <b class="text-heal">Groove</b> and regenerates a fixed <span class="text-desc">3</span> Energy.`,
       image: 'asset/traces/SkillIcon_1512_SkillTree2.webp',
     },
     a6: {
@@ -151,13 +151,13 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c1: {
       trace: 'Eidolon 1',
       title: `Stray Bird of Summer`,
-      content: `<b>Summer Songbirds</b> records <span class="text-desc">100%</span> of the non-<b class="text-true">True DMG</b> dealt by ally targets. When using the Memosprite Skill, it additionally deals <b class="text-true">True DMG</b> equal to <span class="text-desc">11%</span> of the total recorded DMG plus current <b class="text-blue">Vibes</b> points × <span class="text-desc">0.1%</span> to the enemy target with the highest HP, then clears <span class="text-desc">50%</span> of the recorded value.`,
+      content: `<b>Summer Songbirds</b> will keep a tally of <span class="text-desc">100%</span> of the non-<b class="text-true">True DMG</b> dealt by ally targets. When using the Memosprite Skill, additionally deals <b class="text-true">True DMG</b> to the enemy target with the highest HP, equal to (<span class="text-desc">11%</span> + current <b class="text-blue">Vibes</b> × <span class="text-desc">0.1%</span>) of the total tally. Then, clears <span class="text-desc">50%</span> of the tally.`,
       image: 'asset/traces/SkillIcon_1512_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `A Heart of Still Water`,
-      content: `Increases the <b>All-Type RES PEN</b> of ally targets by <span class="text-desc">18%</span>. Robin • Summeretto's Max <b class="text-blue">Vibes</b> increases by <span class="text-desc">20</span>. The first time an ally target uses an ability that causes Robin • Summeretto to gain <b class="text-blue">Vibes</b> within any target's turn, she gains an additional <span class="text-desc">2</span> points.`,
+      content: `Ally targets' <b>All-Type RES PEN</b> increases by <span class="text-desc">18%</span>. The upper limit of Robin • Summeretto's <b class="text-blue">Vibes</b> increases by <span class="text-desc">20</span>. The first time an ally target uses an ability during any target's turn to cause Robin • Summeretto to gain <b class="text-blue">Vibes</b>, she gains an additional <span class="text-desc">2</span> points.`,
       image: 'asset/traces/SkillIcon_1512_Rank2.webp',
     },
     c3: {
@@ -171,7 +171,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c4: {
       trace: 'Eidolon 4',
       title: 'Her Variation on the Theme',
-      content: `Upon entering the <b class="text-orange-400">Fever</b> state, immediately gains <span class="text-desc">12</span> point(s) of <b class="text-blue">Vibes</b>, and the SPD of <b>Summer Songbirds</b> increases by <span class="text-desc">20%</span> plus current <b class="text-blue">Vibes</b> × <span class="text-desc">0.5%</span>.`,
+      content: `Upon entering the <b class="text-orange-400">Fever</b> state, immediately gains <span class="text-desc">12</span> <b class="text-blue">Vibes</b>, and increases the SPD of <b>Summer Songbirds</b> an amount equal to (<span class="text-desc">20%</span> + current <b class="text-blue">Vibes</b> × <span class="text-desc">0.5%</span>).`,
       image: 'asset/traces/SkillIcon_1512_Rank4.webp',
     },
     c5: {
@@ -185,7 +185,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     c6: {
       trace: 'Eidolon 6',
       title: 'A Song Yet Unnamed',
-      content: `Increases the Memosprite Skill's DMG multiplier by <span class="text-desc">100%</span> of the original multiplier. While in the <b class="text-orange-400">Fever</b> state, Robin • Summeretto's Ultimate can be stored up to <span class="text-desc">2</span> times. After entering the <b class="text-orange-400">Fever</b> state for the first time or at the start of a <b class="text-orange-400">Fever</b> countdown turn in this battle, regenerates a fixed amount of <span class="text-desc">140</span> Energy.`,
+      content: `Increases the Memosprite Skill's DMG multiplier by <span class="text-desc">100%</span> of its original value. While in the <b class="text-orange-400">Fever</b> state, Robin • Summeretto store her Ultimate up to <span class="text-desc">2</span> times. After entering the <b class="text-orange-400">Fever</b> state for the first time in this battle or when the <b class="text-orange-400">Fever</b>'s turn starts, regenerates a fixed <span class="text-desc">140</span> Energy.`,
       image: 'asset/traces/SkillIcon_1512_Rank6.webp',
     },
   }

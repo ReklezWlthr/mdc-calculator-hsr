@@ -314,7 +314,11 @@ const SeeleBase = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
                 overrideIndex: index,
                 sum: true,
               }
-              if (_.some(s, (item) => _.includes([TalentProperty.NORMAL, TalentProperty.FUA], item.property))) {
+              if (
+                _.some(s, (item) =>
+                  _.includes([TalentProperty.NORMAL, TalentProperty.FUA, TalentProperty.ELATION], item.property),
+                )
+              ) {
                 s.push(add)
               }
               if (_.some(s, (item) => item.property === TalentProperty.SERVANT)) {
