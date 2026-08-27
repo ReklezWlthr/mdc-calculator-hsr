@@ -77,7 +77,7 @@ export const Sidebar = ({
                 Viewing Beta: v4.6 Beta 1
               </p>
               <p>
-                <b>UPDATED:</b> Pearl
+                <b>NEW:</b> Pearl
               </p>
             </div>
           )}
