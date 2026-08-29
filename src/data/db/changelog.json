@@ -3,7 +3,8 @@
     "version": "1.2-4",
     "date": "Aug 29th, 2026",
     "desc": [
-      "Fixed: <span class=\"text-hsr-imaginary\">Silver Wolf LV.999</span>'s E6 merrymake value is now correctly applied"
+      "Fixed: <span class=\"text-hsr-imaginary\">Silver Wolf LV.999</span>'s E6 merrymake value is now correctly applied",
+      "Fixed: <span class=\"elation\">Elation DMG</span> now correctly multiplies its multipliers"
     ]
   },
   {

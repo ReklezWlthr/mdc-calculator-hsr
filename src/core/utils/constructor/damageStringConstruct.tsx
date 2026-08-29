@@ -222,8 +222,8 @@ export const damageStringConstruct = (
           : isPure
             ? 0
             : isElation
-              ? elation +
-                (1 + (stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) || 0) + (scaling.merrymake || 0)) +
+              ? elation *
+                (1 + (stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) || 0) + (scaling.merrymake || 0)) *
                 (1 + punchlineMultiplier)
               : bonusDMG(scaling.bonusSplit?.[i]))) *
         (globalMultiplier || 1) *
