@@ -216,16 +216,11 @@ export const damageStringConstruct = (
     scaling.hitSplit || [1],
     (split, i) =>
       (capped ? cap : breakScale ? breakRaw(split) : raw(split, scaling.atkSplit?.[i] || 0)) *
-      ((1 +
-        (breakScale
-          ? stats.getValue(Stats.BE)
-          : isPure
-            ? 0
-            : isElation
-              ? elation *
-                (1 + (stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) || 0) + (scaling.merrymake || 0)) *
-                (1 + punchlineMultiplier)
-              : bonusDMG(scaling.bonusSplit?.[i]))) *
+      ((isElation
+        ? (1 + elation) *
+          (1 + (stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) || 0) + (scaling.merrymake || 0)) *
+          (1 + punchlineMultiplier)
+        : 1 + (breakScale ? stats.getValue(Stats.BE) : isPure ? 0 : bonusDMG(scaling.bonusSplit?.[i]))) *
         (globalMultiplier || 1) *
         (breakScale ? 1 + (stats.getValue(StatsObjectKeys.BREAK_MULT) || 0) : 1) *
         enemyMod),
