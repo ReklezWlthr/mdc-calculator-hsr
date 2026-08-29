@@ -537,9 +537,9 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
                   element: c.ELEMENT,
                   property: TalentProperty.ELATION,
                   type: TalentType.NONE,
-                  overrideIndex: index,
-                  elation: all[index].getTotalElation(),
-                  punchline: allForm[index].banger,
+                  overrideIndex: i,
+                  elation: all[i].getTotalElation(),
+                  punchline: allForm[i].banger,
                   sum: true,
                 }
                 if (
