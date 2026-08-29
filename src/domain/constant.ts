@@ -538,6 +538,8 @@ export const CustomConditionalMap = {
   LIGHTNING_RES_RED: 'Lightning RES Reduction',
   QUANTUM_RES_RED: 'Quantum RES Reduction',
   IMAGINARY_RES_RED: 'Imaginary RES Reduction',
+
+  ELATION_MERRYMAKE: 'Merrymake',
 }
 
 export const BreakDebuffType = {
