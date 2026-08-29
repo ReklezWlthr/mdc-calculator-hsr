@@ -266,11 +266,13 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
 
       if (form.invincible_player) {
         base.BA_ALT = true
-        base.VULNERABILITY.push({
-          name: `Eidolon 1`,
-          source: 'Self',
-          value: 0.2,
-        })
+        if (c >= 1) {
+          base.VULNERABILITY.push({
+            name: `Eidolon 1`,
+            source: 'Self',
+            value: 0.2,
+          })
+        }
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
 
