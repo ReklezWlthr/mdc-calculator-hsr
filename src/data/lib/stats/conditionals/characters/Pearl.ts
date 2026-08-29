@@ -61,12 +61,12 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       tag: AbilityTag.AOE,
       sp: 1,
       energy: 30,
-      image: 'asset/traces/SkillIcon_1503_Normal_2.webp',
+      image: 'asset/traces/SkillIcon_1503_Normal2.webp',
     },
     normal_alt2: {
       trace: 'Enhanced Basic ATK [2]',
       title: 'Brushstroke: Imagenate the Starry Night',
-      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pearl's DEF to all enemies, restores HP for all allies equal to {{1}}% of Pearl's DEF plus {{2}}, and additionally restores HP for the ally target with the lowest HP percentage equal to {{1}}% of Pearl's DEF plus {{2}}. When in possession of <b class="text-blue">Certified Banger</b>, additionally deals <b class="text-hsr-ice">Ice</b> <b class="elation">Elation DMG</b> equal to {{3}}% of Pearl's DEF to the attacked enemy targets.`,
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pearl's DEF to all enemies, restores HP for all allies equal to {{1}}% of Pearl's DEF plus {{2}}, and additionally restores HP for the ally target with the lowest HP percentage equal to {{1}}% of Pearl's DEF plus {{2}}. When in possession of <b class="text-blue">Certified Banger</b>, additionally deals {{3}}% <b class="text-hsr-ice">Ice</b> <b class="elation">Elation DMG</b> to the attacked enemy targets.`,
       value: [
         { base: 50, growth: 10, style: 'linear' },
         { base: 4, growth: 0.8, style: 'linear' },
@@ -77,7 +77,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       tag: AbilityTag.AOE,
       sp: 1,
       energy: 30,
-      image: 'asset/traces/SkillIcon_1503_Normal_3.webp',
+      image: 'asset/traces/SkillIcon_1503_Normal3.webp',
     },
     skill: {
       trace: 'Skill',
@@ -256,6 +256,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       const aesIndex = Number(form.aesthetic_archetype) - 1
       if (aesIndex >= 0) {
         if (findCharacter(team[aesIndex]?.cId)?.path === PathType.ELATION) {
+          base.BA_ALT = 2
           base.BASIC_SCALING = [
             {
               name: 'AoE',
@@ -296,6 +297,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             })
           }
         } else {
+          base.BA_ALT = 1
           base.BASIC_SCALING = [
             {
               name: 'AoE',
@@ -490,8 +492,8 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             value: [{ scaling: calcScaling(0.3, 0.03, ult, 'curved'), multiplier: Stats.ELATION }],
             overrideIndex: aesIndex,
             element: Element.ICE,
-            property: TalentProperty.NORMAL,
-            type: TalentType.ULT,
+            property: TalentProperty.ELATION,
+            type: TalentType.NONE,
             sum: true,
             punchline: allForm[aesIndex].banger,
           })

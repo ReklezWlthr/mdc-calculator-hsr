@@ -116,8 +116,7 @@ export const Calculator = observer(({}: {}) => {
                 <ScalingWrapper
                   talent={
                     mainComputed?.BA_ALT
-                      ? main?.talents?.[`normal_alt${calculatorStore.form[selected]?.dhil_sp}`] ||
-                        main?.talents?.normal_alt
+                      ? main?.talents?.[`normal_alt${mainComputed?.BA_ALT}`] || main?.talents?.normal_alt
                       : main?.talents?.normal
                   }
                   icon={`SkillIcon_${charData.id}_Normal${

@@ -282,8 +282,9 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
               name: 'Total Bounce DMG',
               value: [
                 {
-                  scaling: calcScaling(1.2, 0.24, basic, 'linear'),
+                  scaling: calcScaling(0.012, 0.0024, basic, 'linear'),
                   multiplier: form.banger ? Stats.ELATION : Stats.ATK,
+                  hits: 100,
                 },
               ],
               multiplier: 1 + _.min([_.floor(form.hidden_ranking / 60), 2]) * 0.15,

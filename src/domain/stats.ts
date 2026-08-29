@@ -208,7 +208,7 @@ export interface RawBaseStatType {
 
   CALLBACK: CallbackType[]
 
-  BA_ALT: boolean
+  BA_ALT: boolean | number
   SKILL_ALT: boolean
   ULT_ALT: boolean
   TALENT_ALT: boolean

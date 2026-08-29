@@ -229,7 +229,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -382,7 +382,9 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       ]
 
       if (form.dhil_sp) {
-        base.BA_ALT = true
+        base.BA_ALT = +form.dhil_sp
+      } else {
+        base.BA_ALT = false
       }
 
       const r_offset = (hit: number) => _.min([form.righteous_heart + hit * (c >= 1 ? 2 : 1), c >= 1 ? 10 : 6])
@@ -410,7 +412,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
                 bonus: r_offset(hit) * calcScaling(0.05, 0.005, talent, 'curved'),
                 cd: o_offset(hit) * calcScaling(0.06, 0.006, skill, 'curved'),
               }
-            : item
+            : item,
         )
         x.ULT_SCALING = _.map(x.ULT_SCALING, (item) =>
           item.property === TalentProperty.ADD
@@ -419,7 +421,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
                 bonus: r_offset(3) * calcScaling(0.05, 0.005, talent, 'curved'),
                 cd: o_offset(0) * calcScaling(0.06, 0.006, skill, 'curved'),
               }
-            : item
+            : item,
         )
 
         return x
@@ -434,7 +436,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },
@@ -448,7 +450,7 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (_.includes(weakness, Element.IMAGINARY) && a.a6)
         base[Stats.CRIT_DMG].push({
