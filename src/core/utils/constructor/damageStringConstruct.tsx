@@ -301,9 +301,9 @@ export const damageStringConstruct = (
         }</i>)`
       : ''
   }${
-    stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) + scaling.merrymake && isElation
+    stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) + (scaling.merrymake || 0) && isElation
       ? ` \u{00d7} (1 + <b class="text-desc">${toPercentage(
-          stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) + scaling.merrymake,
+          stats.getValue(StatsObjectKeys.ELATION_MERRYMAKE) + (scaling.merrymake || 0),
           2,
         )}</b> <i class="text-[10px]">MERRYMAKE</i>)`
       : ''
@@ -367,6 +367,11 @@ export const damageStringConstruct = (
       {!!scaling.atkBonus && (
         <p className="text-xs">
           ATK Bonus: <span className="text-desc">{toPercentage(scaling.atkBonus)}</span>
+        </p>
+      )}
+      {!!scaling.merrymake && (
+        <p className="text-xs">
+          Exclusive Merrymake: <span className="text-desc">{toPercentage(scaling.merrymake)}</span>
         </p>
       )}
       {isSplit && showSplit && (

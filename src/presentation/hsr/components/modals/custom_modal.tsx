@@ -67,6 +67,7 @@ export const CustomModal = observer(({ setCustomValue, memo }: { setCustomValue?
       { name: 'DEF PEN', value: '_DEF_PEN' },
       { name: 'CRIT Rate', value: '_CR', excludes: ['DOT', 'BREAK', 'SUPER_BREAK'] },
       { name: 'CRIT DMG', value: '_CD', excludes: ['DOT', 'BREAK', 'SUPER_BREAK'] },
+      { name: 'Merrymake', value: '_MERRYMAKE', excludes: ['FUA', 'DOT', 'BREAK', 'SUPER_BREAK'] },
     ],
   }
 

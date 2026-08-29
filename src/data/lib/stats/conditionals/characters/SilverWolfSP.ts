@@ -291,7 +291,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
               break: 10,
               sum: true,
               punchline: form.banger,
-              merrymake: form.swsp_e6_merry ? 0.4 : 0,
+              merrymake: form.swsp_e6_merry ? 0.5 : 0,
             },
             {
               name: 'DMG per Bounce',
@@ -307,7 +307,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
               type: TalentType.BA,
               break: 0.1,
               punchline: form.banger,
-              merrymake: form.swsp_e6_merry ? 0.4 : 0,
+              merrymake: form.swsp_e6_merry ? 0.5 : 0,
             },
             {
               name: 'Final Hit AoE',
@@ -359,7 +359,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           type: TalentType.NONE,
           sum: true,
           punchline: form.banger,
-          merrymake: form.swsp_e6_merry ? 0.4 : 0,
+          merrymake: form.swsp_e6_merry ? 0.5 : 0,
         },
         {
           name: 'Big Flipping Sword True DMG',
@@ -370,7 +370,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           type: TalentType.SKILL,
           sum: true,
           punchline: form.banger,
-          merrymake: form.swsp_e6_merry ? 0.4 : 0,
+          merrymake: form.swsp_e6_merry ? 0.5 : 0,
         },
       ]
       base.MEMO_SKILL_SCALING = [
@@ -418,7 +418,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           sum: true,
           punchline: form.banger,
         }
-        base.BASIC_SCALING.push({ ...add, merrymake: form.swsp_e6_merry ? 0.4 : 0 })
+        base.BASIC_SCALING.push({ ...add, merrymake: form.swsp_e6_merry ? 0.5 : 0 })
         base.SKILL_SCALING.push(add)
       }
 
