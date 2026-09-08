@@ -1,6 +1,16 @@
 [
   {
     "version": "1.2-4",
+    "date": "Aug 27th, 2026",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v4.1 Beta 2</span>",
+      "Updated Characters: <span class=\"text-hsr-ice\">Pearl</span>",
+      "Updated Light Cone: <span class=\"text-desc\">Colors for Tomorrow</span>",
+      "Updated Relic Sets: <span class=\"text-desc\">The Edacious Heretic</span>, and <span class=\"text-desc\">Dreamlit Actor</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Aug 29th, 2026",
     "desc": [
       "Fixed: <span class=\"text-hsr-imaginary\">Silver Wolf LV.999</span>'s E6 merrymake value is now correctly applied",

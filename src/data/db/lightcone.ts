@@ -2687,12 +2687,11 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Ink Splash',
-      detail: `Increases the wearer's DEF by {{0}}%. When the wearer uses an Elation Skill on all allies, restores HP for all allies equal to {{1}}% of the wearer's DEF and increases DMG taken by all enemies by {{2}}%, lasting for <span class="text-desc">3</span> turn(s). For every other Elation character in the team, additionally increases DMG taken by all enemies by {{3}}%, lasting for <span class="text-desc">3</span> turn(s).`,
+      detail: `Increases the wearer's DEF by {{0}}%. When the wearer uses an Elation Skill on all allies, increases DMG taken by all enemies by {{1}}%, lasting for <span class="text-desc">3</span> turn(s). Regenerates a fixed <span class="text-desc">10</span> Energy for the wearer, and restores HP equal to {{2}}% of the wearer's DEF for all allies.`,
       properties: [
         { base: 48, growth: 12 },
-        { base: 10, growth: 1 },
+        { base: 22, growth: 5.5 },
         { base: 10, growth: 2.5 },
-        { base: 4, growth: 1 },
       ],
     },
   },

@@ -370,6 +370,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,
           break: 2,
+          hitSplit: [0.25, 0.25, 0.25, 0.25],
         },
         {
           name: 'Orbital Annihilation Pulse',

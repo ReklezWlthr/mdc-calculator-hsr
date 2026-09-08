@@ -66,7 +66,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     normal_alt2: {
       trace: 'Enhanced Basic ATK [2]',
       title: 'Brushstroke: Imagenate the Starry Night',
-      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pearl's DEF to all enemies, restores HP for all allies equal to {{1}}% of Pearl's DEF plus {{2}}, and additionally restores HP for the ally target with the lowest HP percentage equal to {{1}}% of Pearl's DEF plus {{2}}. When in possession of <b class="text-blue">Certified Banger</b>, additionally deals {{3}}% <b class="text-hsr-ice">Ice</b> <b class="elation">Elation DMG</b> to the attacked enemy targets.`,
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pearl's DEF to all enemies, restores HP for all ally targets equal to {{1}}% of Pearl's DEF plus {{2}}, and additionally restores HP for the ally target with the lowest HP percentage equal to {{1}}% of Pearl's DEF plus {{2}}. When in possession of <b class="text-blue">Certified Banger</b>, additionally deals {{3}}% <b class="text-hsr-ice">Ice</b> <b class="elation">Elation DMG</b> to the attacked enemy targets.`,
       value: [
         { base: 50, growth: 10, style: 'linear' },
         { base: 4, growth: 0.8, style: 'linear' },
@@ -82,7 +82,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     skill: {
       trace: 'Skill',
       title: `Relume Life's Light`,
-      content: `Gains <span class="text-desc">15</span> point(s) of <b class="text-blue">Certified Banger</b>, restores HP for all allies equal to {{0}}% of Pearl's DEF plus {{1}}, and additionally restores HP for the ally target with the lowest current HP percentage equal to {{0}}% of Pearl's DEF plus {{1}}.`,
+      content: `Gains <span class="text-desc">15</span> point(s) of <b class="text-blue">Certified Banger</b>, restores HP for all ally targets equal to {{0}}% of Pearl's DEF plus {{1}}, and additionally restores HP for the ally target with the lowest current HP percentage equal to {{0}}% of Pearl's DEF plus {{1}}.`,
       value: [
         { base: 6, growth: 0.6, style: 'curved' },
         { base: 120, growth: 12, style: 'curved' },
@@ -114,7 +114,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       title: `Appraise Soul's Ground`,
       content: `Gains <span class="text-desc">20</span> point(s) of <b class="text-blue">Certified Banger</b>. Uses <b class="text-purple">Deep Learning</b> on one designated ally other than this unit, making the target the <b class="text-sky-500">Aesthetic Archetype</b>.
       <br />When there are <span class="text-desc">1</span>/<span class="text-desc">2</span>/<span class="text-desc">3</span> or more Elation characters on the team, advances the <b class="text-sky-500">Aesthetic Archetype</b>'s action by <span class="text-desc">10%</span>/<span class="text-desc">15%</span>/<span class="text-desc">30%</span>. When there are <span class="text-desc">4</span> or more Elation characters on the team, the <b class="text-sky-500">Aesthetic Archetype</b> gains <span class="text-desc">1</span> extra turn. At the start of this extra turn, the <b class="text-sky-500">Aesthetic Archetype</b> gains <span class="text-desc">30</span> point(s) of <b class="text-blue">Certified Banger</b> and <span class="text-desc">60</span> point(s) of <b class="text-orange-400">Punchline</b>, which are removed at the end of the extra turn.
-      <br />While in <b class="text-purple">Deep Learning</b>, Basic ATK <b>Brushstroke: Trace the Severed Stream</b> is enhanced to <b>Brushstroke: Render the Great Wave</b>. If the <b class="text-sky-500">Aesthetic Archetype</b> is on the Path of Elation, it is instead enhanced to <b>Brushstroke: Imagenate the Starry Night</b>. When dealing DMG, additionally deals {{0}}% <b class="text-hsr-ice">Ice</b> <b class="elation">Elation DMG</b>. This <b class="elation">Elation DMG</b> is calculated using the <b class="text-sky-500">Aesthetic Archetype</b>'s stats. <b class="text-purple">Deep Learning</b> has <span class="text-desc">3</span> point(s) of <b>Charge</b>. After Pearl uses an Enhanced Basic ATK, <span class="text-desc">1</span> point of <b>Charge</b> is consumed. If no <b>Charge</b> remains after taking action, <b class="text-purple">Deep Learning</b> ends.`,
+      <br />While in <b class="text-purple">Deep Learning</b>, Basic ATK <b>Brushstroke: Trace the Severed Stream</b> is enhanced to <b>Brushstroke: Render the Great Wave</b>. If the <b class="text-sky-500">Aesthetic Archetype</b> is on the Path of Elation, it is instead enhanced to <b>Brushstroke: Imagenate the Starry Night</b>. After dealing DMG, additionally deals {{0}}% <b class="text-hsr-ice">Ice</b> <b class="elation">Elation DMG</b>. This <b class="elation">Elation DMG</b> is calculated using the <b class="text-sky-500">Aesthetic Archetype</b>'s stats. <b class="text-purple">Deep Learning</b> has <span class="text-desc">3</span> point(s) of <b>Charge</b>. After Pearl uses an Enhanced Basic ATK, <span class="text-desc">1</span> point of <b>Charge</b> is consumed. If no <b>Charge</b> remains after taking action, <b class="text-purple">Deep Learning</b> ends.`,
       value: [{ base: 30, growth: 3, style: 'curved' }],
       level: ult,
       tag: AbilityTag.SUPPORT,
@@ -141,13 +141,13 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Panoptic Vision',
-      content: `When DEF is <span class="text-desc">2400</span> or higher, increases this unit's Elation by <span class="text-desc">32%</span>. For every <span class="text-desc">100</span> DEF exceeded, increases this unit's Elation by <span class="text-desc">3%</span>. Up to a max of <span class="text-desc">3600</span> excess DEF can be taken into account for this effect.`,
+      content: `When DEF is <span class="text-desc">2400</span> or higher, increases this unit's Elation by <span class="text-desc">32%</span>. For every <span class="text-desc">100</span> DEF exceeded, increases this unit's Elation by <span class="text-desc">3%</span>. Up to a max of <span class="text-desc">3600</span> excess DEF can be taken into account for this effect. Pearl gains a bonus to Outgoing Healing equal to <span class="text-desc">20%</span> of her Elation.`,
       image: 'asset/traces/SkillIcon_1503_SkillTree1.webp',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Sensory Latitude',
-      content: `When an ally target's turn begins, Pearl gains <span class="text-desc">5</span> point(s) of <b class="text-blue">Certified Banger</b>, up to a max of <span class="text-desc">50</span> point(s) of <b class="text-blue">Certified Banger</b>. The obtainable amount of <b class="text-blue">Certified Banger</b> resets at the start of Pearl's turn. When using Enhanced Basic ATK or Skill, dispels <span class="text-desc">1</span> debuff(s) from all allies.`,
+      content: `While possessing <b class="text-blue">Certified Banger</b>, all allies' Effect RES increases by <span class="text-desc">50%</span>. When an ally target's turn begins, Pearl gains <span class="text-desc">5</span> point(s) of <b class="text-blue">Certified Banger</b>, up to a max of <span class="text-desc">50</span> point(s) of <b class="text-blue">Certified Banger</b>. The obtainable amount of <b class="text-blue">Certified Banger</b> resets at the start of Pearl's turn. When using Enhanced Basic ATK or Skill, dispels <span class="text-desc">1</span> debuff(s) from all ally targets.`,
       image: 'asset/traces/SkillIcon_1503_SkillTree2.webp',
     },
     a6: {
@@ -159,7 +159,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c1: {
       trace: 'Eidolon 1',
       title: 'Nestle That Pearl in Uninked Tides',
-      content: `When there are <span class="text-desc">2</span>/<span class="text-desc">3</span>/<span class="text-desc">4</span> or more Elation characters in the team, increases all allies' Elation stat by an amount equal to <span class="text-desc">10%</span>/<span class="text-desc">20%</span>/<span class="text-desc">80%</span> of Pearl's Elation, up to a max increase of <span class="text-desc">60%</span> Elation.`,
+      content: `When the number of Elation Path characters on the team equals <span class="text-desc">2</span>/<span class="text-desc">3</span>/<span class="text-desc">4</span> or more, increases Elation for all allies by <span class="text-desc">10%</span>/<span class="text-desc">20%</span>/<span class="text-desc">60%</span>. When an ally target is struck with fatal damage, instead of becoming knocked down, their HP immediately restores to <span class="text-desc">50%</span> of their Max HP. This effect can trigger <span class="text-desc">2</span> time(s) per battle.`,
       image: 'asset/traces/SkillIcon_1503_Rank1.webp',
     },
     c2: {
@@ -179,7 +179,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c4: {
       trace: 'Eidolon 4',
       title: 'Study That Veiled Smile',
-      content: `In the Talent <b>Grow Grace from Grit</b>, <b class="text-teal-500">Repellency</b> provided by each point of <b class="text-blue">Certified Banger</b> increases by <span class="text-desc">40</span>, and the percentage of DMG it can block increases by <span class="text-desc">5%</span>.`,
+      content: `Increases the <b class="text-elation">Elation DMG</b> multiplier provided by the Elation Skill for all allies by <span class="text-desc">100%</span>`,
       image: 'asset/traces/SkillIcon_1503_Rank4.webp',
     },
     c5: {
@@ -199,7 +199,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
   }
 
   const content: IContent[] = [
-    { ...Banger, max: 50 },
+    { ...Banger, max: 50, default: 50 },
     {
       type: 'element',
       id: 'aesthetic_archetype',
@@ -387,6 +387,14 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         })
       }
 
+      if (form.banger && a.a6) {
+        base[Stats.E_RES].push({
+          name: `Ascension 6 Passive`,
+          source: 'Self',
+          value: 0.5,
+        })
+      }
+
       return base
     },
     preComputeShared: (
@@ -399,6 +407,14 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       broken: boolean,
       globalMod: GlobalModifiers,
     ) => {
+      if (form.banger && a.a6) {
+        base[Stats.E_RES].push({
+          name: `Ascension 6 Passive`,
+          source: 'Pearl',
+          value: 0.5,
+        })
+      }
+
       if (c >= 2) {
         base.ELATION_MERRYMAKE.push({
           name: `Eidolon 2`,
@@ -453,8 +469,6 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         }
 
         if (c >= 1) {
-          const elation = all[index].getValue(Stats.ELATION)
-
           let scaling = 0
           switch (elationCount) {
             case 2:
@@ -464,7 +478,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               scaling = 0.2
               break
             case 4:
-              scaling = 0.8
+              scaling = 0.6
               break
           }
 
@@ -473,9 +487,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               item.X_ELATION.push({
                 name: `Eidolon 1`,
                 source: i === index ? 'Self' : 'Pearl',
-                value: _.min([elation * scaling, 0.6]),
-                base: _.min([toPercentage(elation), toPercentage(0.6 / scaling)]),
-                multiplier: scaling,
+                value: scaling,
               })
             })
           }
@@ -485,6 +497,18 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       })
 
       globalCallback.push(function P99999(_x, _d, _w, all) {
+        if (a.a2) {
+          const elation = all[index].getValue(Stats.ELATION)
+
+          all[index][Stats.HEAL].push({
+            name: `Ascension 2 Passive`,
+            source: 'Self',
+            value: elation * 0.2,
+            base: toPercentage(elation, 1),
+            multiplier: 0.2,
+          })
+        }
+
         const aesIndex = Number(form.aesthetic_archetype) - 1
         if (findCharacter(team[aesIndex]?.cId)?.path === PathType.ELATION) {
           all[index].BASIC_SCALING.push({
@@ -511,7 +535,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           })
         }
 
-        let scaling = 0
+        let scaling = c >= 4 ? 1 : 0
         switch (elationCount) {
           case 1:
             scaling = calcScaling(0.05, 0.005, elation, 'curved')

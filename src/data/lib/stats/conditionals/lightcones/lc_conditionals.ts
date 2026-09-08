@@ -3007,22 +3007,21 @@ export const LCTeamConditionals: IWeaponContent[] = [
     show: true,
     default: true,
     id: '23055',
-    scaling: (base, form, r, { index, owner, own, debuffs, team }) => {
+    scaling: (base, form, r, { index, owner, own, debuffs }) => {
       if (index === owner && own.PATH === PathType.ELATION) {
         base.MEMO_SKILL_SCALING.push({
           name: 'Elation Skill Healing',
-          value: [{ scaling: calcRefinement(0.1, 0.01, r), multiplier: Stats.DEF }],
+          value: [{ scaling: calcRefinement(0.1, 0.025, r), multiplier: Stats.DEF }],
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
           type: TalentType.NONE,
         })
       }
       if (form['23055']) {
-        const elationCount = _.filter(team, (t) => findCharacter(t.cId)?.path === PathType.ELATION)?.length - 1 || 0
         base.VULNERABILITY.push({
           name: `Passive`,
           source: 'Colors for Tomorrow',
-          value: calcRefinement(0.1, 0.02, r) + elationCount * calcRefinement(0.04, 0.01, r),
+          value: calcRefinement(0.22, 0.055, r),
         })
         if (index === owner) addDebuff(debuffs, DebuffTypes.OTHER)
       }

@@ -227,6 +227,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           type: TalentType.SKILL,
           break: 20,
           sum: true,
+          hitSplit: [0.2, 0.2, 0.2, 0.4],
         },
         {
           name: 'Adjacent',

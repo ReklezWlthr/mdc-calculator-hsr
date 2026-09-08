@@ -374,6 +374,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           sum: true,
           punchline: form.banger,
           merrymake: form.swsp_e6_merry ? 0.5 : 0,
+          hitSplit: [0.2, 0.2, 0.2, 0.2, 0.2],
         },
       ]
       base.MEMO_SKILL_SCALING = [

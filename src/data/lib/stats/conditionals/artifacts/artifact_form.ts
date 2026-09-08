@@ -346,7 +346,7 @@ export const ArtifactForm = () => {
       type: 'toggle',
       text: `Dreamlit Actor - Banger`,
       title: `Dreamlit Actor - Banger`,
-      content: `If the wearer has <span class="text-desc">10</span> or more points of <b class="text-blue">Certified Banger</b>, additionally increases all allies' CRIT DMG by <span class="text-desc">12%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
+      content: `If the wearer has <span class="text-desc">10</span> or more points of <b class="text-blue">Certified Banger</b>, additionally increases all ally targets' CRIT DMG by <span class="text-desc">12%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
       show: true,
       default: true,
       id: '135',

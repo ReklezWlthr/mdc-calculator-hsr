@@ -240,6 +240,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           type: TalentType.BA,
           break: 10,
           sum: true,
+          hitSplit: [0.3, 0.3, 0.4],
         },
       ]
       base.SKILL_SCALING = [
@@ -251,6 +252,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           type: TalentType.SKILL,
           break: 20,
           sum: true,
+          hitSplit: [0.1, 0.1, 0.2, 0.2, 0.4],
         },
         {
           name: 'Adjacent',
@@ -259,6 +261,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           property: TalentProperty.NORMAL,
           type: TalentType.SKILL,
           break: 10,
+          hitSplit: [0.1, 0.1, 0.2, 0.2, 0.4],
         },
       ]
       base.ULT_SCALING = [
@@ -396,6 +399,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
             break: 20,
             overrideIndex: gilIndex,
             sum: true,
+            hitSplit: [0.18, 0.18, 0.18, 0.46],
           },
           {
             name: 'Saber Joint AoE DMG',

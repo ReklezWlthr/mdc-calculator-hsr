@@ -285,6 +285,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
               property: TalentProperty.NORMAL,
               type: TalentType.SKILL,
               break: 20,
+              hitSplit: [0.25, 0.25, 0.25, 0.25],
             },
             {
               name: 'Bounce',
@@ -419,6 +420,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
             type: TalentType.TALENT,
             break: 20,
             overrideIndex: rinIndex,
+            hitSplit: [0.2, 0.2, 0.2, 0.2, 0.2],
           },
           {
             name: 'Archer Joint AoE DMG',
@@ -428,6 +430,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
             type: TalentType.TALENT,
             break: 20,
             overrideIndex: archerIndex,
+            hitSplit: [0.25, 0.25, 0.25, 0.25],
           },
         ]
         base.TALENT_SCALING.push(...joint)
