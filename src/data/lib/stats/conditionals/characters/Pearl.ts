@@ -387,9 +387,9 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         })
       }
 
-      if (form.banger && a.a6) {
+      if (form.banger && a.a4) {
         base[Stats.E_RES].push({
-          name: `Ascension 6 Passive`,
+          name: `Ascension 4 Passive`,
           source: 'Self',
           value: 0.5,
         })
@@ -407,9 +407,9 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       broken: boolean,
       globalMod: GlobalModifiers,
     ) => {
-      if (form.banger && a.a6) {
+      if (form.banger && a.a4) {
         base[Stats.E_RES].push({
-          name: `Ascension 6 Passive`,
+          name: `Ascension 4 Passive`,
           source: 'Pearl',
           value: 0.5,
         })
