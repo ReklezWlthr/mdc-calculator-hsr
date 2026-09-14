@@ -1610,7 +1610,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.ELATION,
     element: Element.QUANTUM,
-    beta: true,
+    beta: false,
   },
 
   // Odd = Male, Even = Female

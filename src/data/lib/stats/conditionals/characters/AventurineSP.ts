@@ -130,8 +130,8 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Revel in Raging Tides',
-      content: `At the start of combat, if the team includes an Elation character besides Aventurine • Waveflair, then while Aventurine • Waveflair is on the field, increases all allies' Elation by <span class="text-desc">20%</span> and Aventurine • Waveflair's Elation by an additional <span class="text-desc">80%</span>.
-      <br />At the start of combat, if Aventurine • Waveflair is the only Elation character in the team, when Aventurine • Waveflair uses Elation Skill to deal DMG, it is considered as having launched <u>Follow-Up ATK</u>. After a teammate uses an attack, Aventurine • Waveflair gains <span class="text-desc">2</span> <b class="text-blue">Certified Banger</b> and <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b>, and increases <b class="text-aha">Aha</b>'s SPD by <span class="text-desc">25</span>. The SPD Boost effect lasts until the end of <b class="text-aha">Aha Instant</b>.`,
+      content: `At the start of the battle, if there are other Elation characters in the team besides Aventurine • Waveflair, then while Aventurine • Waveflair is on the field, increases all allies' Elation by <span class="text-desc">20%</span>, with Aventurine • Waveflair's Elation additionally increases by <span class="text-desc">80%</span>.
+      <br />At the start of the battle, if Aventurine • Waveflair is the only Elation character in the team, when Aventurine • Waveflair deals DMG using his Elation Skill, it is considered as launching a <u>Follow-Up ATK</u>. After a teammate uses an attack, Aventurine • Waveflair gains <span class="text-desc">2</span> point(s) of <b class="text-blue">Certified Banger</b> and <span class="text-desc">1</span> <b class="text-orange-400">Punchline(s)</b>, and increases <b class="text-aha">Aha</b>'s SPD by <span class="text-desc">25</span>. The SPD Boost effect lasts until the end of <b class="text-aha">Aha Instant</b>.`,
       image: 'asset/traces/SkillIcon_1513_SkillTree2.webp',
     },
     a6: {

@@ -2851,7 +2851,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 24,
     type: PathType.ELATION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Waveriding',
       detail: `Increases the wearer's CRIT Rate by {{0}}%. When the wearer uses Elation Skill, gains <b>Updraft</b>, which increases the wearer's SPD by {{1}}%. If the Elation Skill used is different from one used last time, additionally gains <b>Uptrend</b>, which increases the wearer's Elation by {{2}}%.

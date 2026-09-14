@@ -51,7 +51,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     normal_alt1: {
       trace: 'Enhanced Basic ATK [1]',
       title: 'Brushstroke: Render the Great Wave',
-      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pearl's DEF to all enemies. Restores HP for all allies equal to {{1}}% of Pearl's DEF plus {{2}}, and additionally restores HP for the ally with the lowest HP percentage equal to {{1}}% of Pearl's DEF plus {{2}}.`,
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pearl's DEF to all enemies. Restores HP for all ally targets equal to {{1}}% of Pearl's DEF plus {{2}}, and additionally restores HP for the ally with the lowest current HP percentage equal to {{1}}% of Pearl's DEF plus {{2}}.`,
       value: [
         { base: 50, growth: 10, style: 'linear' },
         { base: 4, growth: 0.8, style: 'linear' },
@@ -66,7 +66,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     normal_alt2: {
       trace: 'Enhanced Basic ATK [2]',
       title: 'Brushstroke: Imagenate the Starry Night',
-      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pearl's DEF to all enemies, restores HP for all ally targets equal to {{1}}% of Pearl's DEF plus {{2}}, and additionally restores HP for the ally target with the lowest HP percentage equal to {{1}}% of Pearl's DEF plus {{2}}. When in possession of <b class="text-blue">Certified Banger</b>, additionally deals {{3}}% <b class="text-hsr-ice">Ice</b> <b class="elation">Elation DMG</b> to the attacked enemy targets.`,
+      content: `Deals <b class="text-hsr-ice">Ice DMG</b> equal to {{0}}% of Pearl's DEF to all enemies, restores HP for all ally targets equal to {{1}}% of Pearl's DEF plus {{2}}, and additionally restores HP for the ally target with the lowest current HP percentage equal to {{1}}% of Pearl's DEF plus {{2}}. When in possession of <b class="text-blue">Certified Banger</b>, additionally deals {{3}}% <b class="text-hsr-ice">Ice</b> <b class="elation">Elation DMG</b>.`,
       value: [
         { base: 50, growth: 10, style: 'linear' },
         { base: 4, growth: 0.8, style: 'linear' },
@@ -112,9 +112,9 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     ult: {
       trace: 'Ultimate',
       title: `Appraise Soul's Ground`,
-      content: `Gains <span class="text-desc">20</span> point(s) of <b class="text-blue">Certified Banger</b>. Uses <b class="text-purple">Deep Learning</b> on one designated ally other than this unit, making the target the <b class="text-sky-500">Aesthetic Archetype</b>.
+      content: `Gains <span class="text-desc">20</span> point(s) of <b class="text-blue">Certified Banger</b>. Uses <b class="text-purple">Deep Learning</b> on one designated ally character other than this unit, making the target the <b class="text-sky-500">Aesthetic Archetype</b>.
       <br />When there are <span class="text-desc">1</span>/<span class="text-desc">2</span>/<span class="text-desc">3</span> or more Elation characters on the team, advances the <b class="text-sky-500">Aesthetic Archetype</b>'s action by <span class="text-desc">10%</span>/<span class="text-desc">15%</span>/<span class="text-desc">30%</span>. When there are <span class="text-desc">4</span> or more Elation characters on the team, the <b class="text-sky-500">Aesthetic Archetype</b> gains <span class="text-desc">1</span> extra turn. At the start of this extra turn, the <b class="text-sky-500">Aesthetic Archetype</b> gains <span class="text-desc">30</span> point(s) of <b class="text-blue">Certified Banger</b> and <span class="text-desc">60</span> point(s) of <b class="text-orange-400">Punchline</b>, which are removed at the end of the extra turn.
-      <br />While in <b class="text-purple">Deep Learning</b>, Basic ATK <b>Brushstroke: Trace the Severed Stream</b> is enhanced to <b>Brushstroke: Render the Great Wave</b>. If the <b class="text-sky-500">Aesthetic Archetype</b> is on the Path of Elation, it is instead enhanced to <b>Brushstroke: Imagenate the Starry Night</b>. After dealing DMG, additionally deals {{0}}% <b class="text-hsr-ice">Ice</b> <b class="elation">Elation DMG</b>. This <b class="elation">Elation DMG</b> is calculated using the <b class="text-sky-500">Aesthetic Archetype</b>'s stats. <b class="text-purple">Deep Learning</b> has <span class="text-desc">3</span> point(s) of <b>Charge</b>. After Pearl uses an Enhanced Basic ATK, <span class="text-desc">1</span> point of <b>Charge</b> is consumed. If no <b>Charge</b> remains after taking action, <b class="text-purple">Deep Learning</b> ends.`,
+      <br />While in <b class="text-purple">Deep Learning</b>, Basic ATK <b>Brushstroke: Trace the Severed Stream</b> is enhanced to <b>Brushstroke: Render the Great Wave</b>. If the <b class="text-sky-500">Aesthetic Archetype</b> is on the Path of Elation, it is instead enhanced to <b>Brushstroke: Imagenate the Starry Night</b>. After attacking, additionally deals {{0}}% <b class="text-hsr-ice">Ice</b> <b class="elation">Elation DMG</b>. This <b class="elation">Elation DMG</b> is calculated using the <b class="text-sky-500">Aesthetic Archetype</b>'s stats. <b class="text-purple">Deep Learning</b> has <span class="text-desc">3</span> point(s) of <b>Charge</b>. After Pearl uses an Enhanced Basic ATK, <span class="text-desc">1</span> point of <b>Charge</b> is consumed. If no <b>Charge</b> remains after taking action, <b class="text-purple">Deep Learning</b> ends.`,
       value: [{ base: 30, growth: 3, style: 'curved' }],
       level: ult,
       tag: AbilityTag.SUPPORT,
@@ -134,20 +134,20 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     technique: {
       trace: 'Technique',
       title: 'Recast Masterwork in Nacre',
-      content: `After using Technique, gains <b class="text-sky-500">Aesthetic Archetype</b>. When switching active characters, <b class="text-sky-500">Aesthetic Archetype</b> transfers to the active character. At the start of the next battle, gains <span class="text-desc">20</span> point(s) of <b class="text-blue">Certified Banger</b>, and Pearl applies <b class="text-purple">Deep Learning</b> to the character with <b class="text-sky-500">Aesthetic Archetype</b>. This <b class="text-purple">Deep Learning</b> has <span class="text-desc">2</span> Charge. Pearl can only apply <b class="text-purple">Deep Learning</b> to characters other than herself.`,
+      content: `After using Technique, gains <b class="text-sky-500">Aesthetic Archetype</b>. When switching active characters, <b class="text-sky-500">Aesthetic Archetype</b> transfers to the active character. At the start of the next battle, Pearl gains <span class="text-desc">20</span> point(s) of <b class="text-blue">Certified Banger</b> and applies <b class="text-purple">Deep Learning</b> to the character with <b class="text-sky-500">Aesthetic Archetype</b>. This <b class="text-purple">Deep Learning</b> has <span class="text-desc">2</span> Charge. Pearl can only apply <b class="text-purple">Deep Learning</b> to characters other than herself.`,
       tag: AbilityTag.IMPAIR,
       image: 'asset/traces/SkillIcon_1503_Maze.webp',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Panoptic Vision',
-      content: `When DEF is <span class="text-desc">2400</span> or higher, increases this unit's Elation by <span class="text-desc">32%</span>. For every <span class="text-desc">100</span> DEF exceeded, increases this unit's Elation by <span class="text-desc">3%</span>. Up to a max of <span class="text-desc">3600</span> excess DEF can be taken into account for this effect. Pearl gains a bonus to Outgoing Healing equal to <span class="text-desc">20%</span> of her Elation.`,
+      content: `When Pearl's DEF is <span class="text-desc">2400</span> or higher, increases this unit's Elation by <span class="text-desc">32%</span>. For every <span class="text-desc">100</span> DEF exceeded, increases this unit's Elation by <span class="text-desc">3%</span>. Up to a max of <span class="text-desc">3600</span> excess DEF can be taken into account for this effect. Pearl gains a bonus to Outgoing Healing equal to <span class="text-desc">20%</span> of this unit's Elation.`,
       image: 'asset/traces/SkillIcon_1503_SkillTree1.webp',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Sensory Latitude',
-      content: `While possessing <b class="text-blue">Certified Banger</b>, all allies' Effect RES increases by <span class="text-desc">50%</span>. When an ally target's turn begins, Pearl gains <span class="text-desc">5</span> point(s) of <b class="text-blue">Certified Banger</b>, up to a max of <span class="text-desc">50</span> point(s) of <b class="text-blue">Certified Banger</b>. The obtainable amount of <b class="text-blue">Certified Banger</b> resets at the start of Pearl's turn. When using Enhanced Basic ATK or Skill, dispels <span class="text-desc">1</span> debuff(s) from all ally targets.`,
+      content: `While possessing <b class="text-blue">Certified Banger</b>, all ally targets' Effect RES increases by <span class="text-desc">50%</span>. When an ally target's turn begins, Pearl gains <span class="text-desc">5</span> point(s) of <b class="text-blue">Certified Banger</b>, up to a max of <span class="text-desc">50</span> point(s) of <b class="text-blue">Certified Banger</b>. The obtainable amount of <b class="text-blue">Certified Banger</b> resets at the start of Pearl's turn. When using Enhanced Basic ATK or Skill, dispels <span class="text-desc">1</span> debuff(s) from all ally targets.`,
       image: 'asset/traces/SkillIcon_1503_SkillTree2.webp',
     },
     a6: {
@@ -159,7 +159,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c1: {
       trace: 'Eidolon 1',
       title: 'Nestle That Pearl in Uninked Tides',
-      content: `When the number of Elation Path characters on the team equals <span class="text-desc">2</span>/<span class="text-desc">3</span>/<span class="text-desc">4</span> or more, increases Elation for all allies by <span class="text-desc">10%</span>/<span class="text-desc">20%</span>/<span class="text-desc">60%</span>. When an ally target is struck with fatal damage, instead of becoming knocked down, their HP immediately restores to <span class="text-desc">50%</span> of their Max HP. This effect can trigger <span class="text-desc">2</span> time(s) per battle.`,
+      content: `When the number of Elation Path characters on the team equals <span class="text-desc">2</span>/<span class="text-desc">3</span>/<span class="text-desc">4</span> or more, increases Elation for all allies by <span class="text-desc">10%</span>/<span class="text-desc">20%</span>/<span class="text-desc">60%</span>. When an ally target is struck with fatal damage, instead of becoming knocked down, immediately restores HP equal to <span class="text-desc">50%</span> of their Max HP. This effect can trigger <span class="text-desc">2</span> time(s) per battle.`,
       image: 'asset/traces/SkillIcon_1503_Rank1.webp',
     },
     c2: {
@@ -174,7 +174,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Attack Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1503_BP.webp',
+      image: 'asset/traces/SkillIcon_1503_Ultra.webp',
     },
     c4: {
       trace: 'Eidolon 4',
@@ -188,7 +188,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1503_Ultra.webp',
+      image: 'asset/traces/SkillIcon_1503_BP.webp',
     },
     c6: {
       trace: 'Eidolon 6',
