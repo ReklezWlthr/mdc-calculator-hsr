@@ -2684,7 +2684,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 27,
     type: PathType.ELATION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Ink Splash',
       detail: `Increases the wearer's DEF by {{0}}%. When the wearer uses an Elation Skill on all allies, increases DMG taken by all enemies by {{1}}%, lasting for <span class="text-desc">3</span> turn(s). Regenerates a fixed <span class="text-desc">10</span> Energy for the wearer, and restores HP equal to {{2}}% of the wearer's DEF for all allies.`,
