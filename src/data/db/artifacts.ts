@@ -809,12 +809,7 @@ export const RelicSets: IArtifact[] = [
       `Increases SPD by <span class="text-desc">6%</span>.`,
       `When the wearer uses their Skill or Ultimate on one other ally target, increases the ability target's Elation by <span class="text-desc">16%</span>, lasting for <span class="text-desc">3</span> turn(s). If the wearer has <span class="text-desc">10</span> or more points of <b class="text-blue">Certified Banger</b>, additionally increases all ally targets' CRIT DMG by <span class="text-desc">12%</span>, lasting for <span class="text-desc">3</span> turn(s).`,
     ],
-    set: [
-      `Smith's Fire Beast Mask`,
-      `Smith's Damascus Steel Gauntlets`,
-      `Smith's Fireproof Garment`,
-      `Smith's Unbridled Boots`,
-    ],
+    set: [`Actor's Weeping Masque`, `Actor's Vibrant Handfan`, `Actor's Jester Garb`, `Actor's Crescent Dance Boots`],
   },
 ]
 
