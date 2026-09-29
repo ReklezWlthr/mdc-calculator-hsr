@@ -3028,4 +3028,21 @@ export const LCTeamConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `Post-Skill DEF PEN`,
+    show: true,
+    default: true,
+    id: '23065',
+    scaling: (base, form, r) => {
+      if (form['23065']) {
+        base.DEF_PEN.push({
+          name: `Passive`,
+          source: 'Upon the First Echo of "Aha"',
+          value: calcRefinement(0.16, 0.02, r),
+        })
+      }
+      return base
+    },
+  },
 ]

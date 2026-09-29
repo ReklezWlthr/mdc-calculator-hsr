@@ -183,6 +183,22 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     },
   }
 
+  const nihilux = _.find(team, (x) => x?.cId === '1511')
+  if (nihilux) {
+    talents.innate = {
+      trace: `Innate Trace`,
+      title: `Faces of Elation ★ Three-Card Monte`,
+      content: `When <i class="text-red">the Path of Elation ascends</i>, if Aeon ★ Aha is the only Elation Path teammate, the effect in the Trace <b>Revel in Raging Tides</b> that triggers when Aventurine • Waveflair is the only Elation Path character will also take effect, and this effect is enhanced: Increases the SPD of all allies by {{0}}%. After a teammate uses an attack, Aventurine • Waveflair additionally gains {{1}} <b class="text-green-300">Fervor</b> and {{1}} <b class="text-orange-600">Bliss</b>.`,
+      value: [
+        { base: 15, growth: 10, style: 'linear' },
+        { base: 1, growth: 1, style: 'linear' },
+      ],
+      tag: AbilityTag.ENHANCE,
+      level: nihilux?.cons || -1 >= 2 ? 2 : 1,
+      image: 'asset/traces/SkillIcon_1513_Innate.webp',
+    }
+  }
+
   const content: IContent[] = [
     Banger,
     {
@@ -198,8 +214,8 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     {
       type: 'toggle',
       id: 'aven_sp_skill',
-      text: `Skill SPD Bonus`,
-      ...talents.skill,
+      text: `Ultimate SPD Bonus`,
+      ...talents.ult,
       show: true,
       default: true,
     },
@@ -333,7 +349,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           type: TalentType.ELATION,
           break: (form.aven_sp_elation ? 20 : 10) + hits * 5 + 100 / 3,
           sum: true,
-          isFua: a.a4 && elationCount == 1,
+          isFua: a.a4 && elationCount === (nihilux ? 2 : 1),
         },
         {
           name: 'AoE',
@@ -342,7 +358,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
           break: form.aven_sp_elation ? 20 : 10,
-          isFua: a.a4 && elationCount == 1,
+          isFua: a.a4 && elationCount === (nihilux ? 2 : 1),
         },
         {
           name: 'DMG per Bounce',
@@ -351,7 +367,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
           break: 10 / 3,
-          isFua: a.a4 && elationCount == 1,
+          isFua: a.a4 && elationCount === (nihilux ? 2 : 1),
         },
       ]
       if (form.aven_sp_elation && form.fervor) {
@@ -362,7 +378,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
           break: 5,
-          isFua: a.a4 && elationCount == 1,
+          isFua: a.a4 && elationCount === (nihilux ? 2 : 1),
         })
       }
       base.TECHNIQUE_SCALING = [
@@ -376,9 +392,17 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
         },
       ]
 
+      if (nihilux && elationCount === 2) {
+        base[Stats.P_SPD].push({
+          name: `Faces of Elation`,
+          source: 'Self',
+          value: nihilux?.cons || -1 >= 2 ? 0.25 : 0.15,
+        })
+      }
+
       if (form.aven_sp_skill) {
         base[Stats.P_SPD].push({
-          name: `Eidolon 4`,
+          name: `Ultimate`,
           source: 'Self',
           value: calcScaling(0.12, 0.018, skill, 'curved'),
         })
@@ -454,6 +478,14 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           name: `Eidolon 4`,
           source: 'Aventurine • Waveflair',
           value: 0.18,
+        })
+      }
+
+      if (nihilux && elationCount === 2) {
+        base[Stats.P_SPD].push({
+          name: `Faces of Elation`,
+          source: 'Aventurine • Waveflair',
+          value: nihilux?.cons || -1 >= 2 ? 0.25 : 0.15,
         })
       }
 

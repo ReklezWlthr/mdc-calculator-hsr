@@ -6,6 +6,8 @@ import classNames from 'classnames'
 import { Element } from '@src/domain/constant'
 import { TalentIcon } from './tables/scaling_wrapper'
 import { ElementColor } from './tables/scaling_sub_rows'
+import { useStore } from '@src/data/providers/app_store_provider'
+import _ from 'lodash'
 
 interface AscensionProps {
   talents: ITalent
@@ -20,6 +22,10 @@ interface AscensionProps {
 }
 
 export const AscensionIcons = (props: AscensionProps) => {
+  const { teamStore } = useStore()
+
+  const nihilux = _.find(teamStore.characters, (cc) => cc.cId === '1511')
+
   return (
     <div className="flex flex-col items-center justify-around gap-1">
       <TalentIcon
@@ -45,6 +51,18 @@ export const AscensionIcons = (props: AscensionProps) => {
         active={props.ascension?.a6}
         type={props.talents?.a6?.trace}
       />
+      {!!props.talents?.innate && nihilux && (
+        <>
+          <div className={classNames('opacity-30', ElementColor[props.element])}>✦</div>
+          <TalentIcon
+            element={Element.NONE}
+            icon={`SkillIcon_${props.id}_Innate.png`}
+            talent={props.talents?.innate}
+            type={props.talents?.innate?.trace}
+            level={props.talents?.innate?.level}
+          />
+        </>
+      )}
     </div>
   )
 }

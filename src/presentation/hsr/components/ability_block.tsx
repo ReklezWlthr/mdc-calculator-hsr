@@ -185,7 +185,7 @@ export const AbilityBlock = observer(({ char, onChange, upgrade, talents, disabl
               upgraded={upgrade?.elation}
               level={char?.talents?.elation}
               showUpgrade
-              type={talents?.talent?.trace}
+              type={talents?.summon_skill?.trace}
             />
             <div>
               <p className="text-xs text-primary-lighter">E.Skill</p>

@@ -91,6 +91,7 @@ import Gilgamesh from './characters/Gilgamesh'
 import AventurineSP from './characters/AventurineSP'
 import RobinSP from './characters/RobinSP'
 import Pearl from './characters/Pearl'
+import Aha from './characters/Aha'
 
 export default [
   { id: '1001', conditionals: March },
@@ -181,6 +182,7 @@ export default [
   { id: '1510', conditionals: HimekoNova },
   { id: '1512', conditionals: RobinSP },
   { id: '1513', conditionals: AventurineSP },
+  { id: '1511', conditionals: Aha },
   // MCs
   { id: '8001', conditionals: DMC },
   { id: '8003', conditionals: PMC },

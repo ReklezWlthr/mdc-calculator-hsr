@@ -163,6 +163,22 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     },
   }
 
+  const nihilux = _.find(team, (x) => x?.cId === '1511')
+  if (nihilux) {
+    talents.innate = {
+      trace: `Innate Trace`,
+      title: `Faces of Elation ★ Plot Armor`,
+      content: `When <i class="text-red">the Path of Elation ascends</i>, the Ultimate's CRIT DMG boost effect additionally increases by {{0}}%, and takes effect on all allies. If the Ultimate's target is Aeon ★ Aha, additionally triggers this unit's Elation Skill once. This Elation Skill's DMG multiplier increases by {{1}}% of its original multiplier, and is calculated based on the highest value of <b class="text-indigo-300">Party Trick</b> held by an ally character.`,
+      value: [
+        { base: 20, growth: 10, style: 'linear' },
+        { base: 200, growth: 100, style: 'linear' },
+      ],
+      tag: AbilityTag.ENHANCE,
+      level: nihilux?.cons || -1 >= 2 ? 2 : 1,
+      image: 'asset/traces/SkillIcon_8009_Innate.webp',
+    }
+  }
+
   const content: IContent[] = [
     Banger,
     {
@@ -185,7 +201,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       text: `EMC Ult Bonus`,
       ...talents.ult,
       show: true,
-      default: false,
+      default: !!nihilux,
       duration: 3,
     },
     {
@@ -216,11 +232,23 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       default: true,
       duration: 3,
     },
+    {
+      type: 'toggle',
+      id: 'emc_aha_elation',
+      text: `Faces of Elation ★ Plot Armor`,
+      ...talents.innate,
+      show: !!nihilux,
+      default: true,
+    },
   ]
 
   const teammateContent: IContent[] = [findContentById(content, 'emc_e4')]
 
-  const allyContent: IContent[] = [findContentById(content, 'emc_ult')]
+  const allyContent: IContent[] = []
+
+  nihilux
+    ? teammateContent.push(findContentById(content, 'emc_ult'))
+    : allyContent.push(findContentById(content, 'emc_ult'))
 
   return {
     upgrade,
@@ -268,6 +296,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         {
           name: 'Total Bounce DMG',
           value: [{ scaling: calcScaling(0.1, 0.01, elation, 'curved'), hits: 8, multiplier: Stats.ELATION }],
+          multiplier: form.emc_aha_elation ? (nihilux?.cons || -1 >= 2 ? 4 : 3) : 1,
           element: Element.LIGHTNING,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
@@ -276,6 +305,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         {
           name: 'DMG per Bounce',
           value: [{ scaling: calcScaling(0.1, 0.01, elation, 'curved'), multiplier: Stats.ELATION }],
+          multiplier: form.emc_aha_elation ? (nihilux?.cons || -1 >= 2 ? 4 : 3) : 1,
           element: Element.LIGHTNING,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
@@ -283,7 +313,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         {
           name: 'AoE',
           value: [{ scaling: calcScaling(0.3, 0.03, elation, 'curved'), multiplier: Stats.ELATION }],
-          multiplier: 1 / globalMod.enemy_count,
+          multiplier: (form.emc_aha_elation ? (nihilux?.cons || -1 >= 2 ? 4 : 3) : 1) / globalMod.enemy_count,
           element: Element.LIGHTNING,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
@@ -303,7 +333,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         base[Stats.CRIT_DMG].push({
           name: `Ultimate`,
           source: 'Self',
-          value: calcScaling(0.3, 0.02, ult, 'curved'),
+          value: calcScaling(0.3, 0.02, ult, 'curved') + (nihilux ? (nihilux?.cons || -1 >= 2 ? 0.3 : 0.2) : 0),
         })
         if (c >= 2) {
           base[Stats.ELATION].push({
@@ -355,11 +385,11 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           value: +form.emc_tech,
         })
       }
-      if (aForm.emc_ult) {
+      if (nihilux ? form.emc_ult : aForm.emc_ult) {
         base[Stats.CRIT_DMG].push({
           name: `Ultimate`,
           source: 'Trailblazer',
-          value: calcScaling(0.3, 0.02, ult, 'curved'),
+          value: calcScaling(0.3, 0.02, ult, 'curved') + (nihilux ? (nihilux?.cons || -1 >= 2 ? 0.3 : 0.2) : 0),
         })
         if (c >= 2) {
           base[Stats.ELATION].push({
@@ -422,6 +452,12 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         sum: true,
         punchline: _.max(_.map(allForm, (f) => f.banger || 0)),
       })
+      if (form.emc_aha_elation) {
+        base.MEMO_SKILL_SCALING = _.map(base.MEMO_SKILL_SCALING, (tt) => ({
+          ...tt,
+          punchline: _.max(_.map(allForm, (f) => f.banger || 0)),
+        }))
+      }
       return base
     },
   }

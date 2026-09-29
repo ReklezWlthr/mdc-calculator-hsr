@@ -1612,24 +1612,24 @@ export const Characters = [
     element: Element.QUANTUM,
     beta: false,
   },
-  // {
-  //   id: '1514',
-  //   name: 'Aeon ★ Aha',
-  //   jp: 'アハ',
-  //   stat: {
-  //     baseAtk: 66,
-  //     baseHp: 158.4,
-  //     baseDef: 82.5,
-  //     baseSpd: 107,
-  //     energy: 130,
-  //   },
-  //   trace: [Stats.CRIT_RATE, Stats.P_DEF, Stats.SPD],
-  //   rec: [Stats.CRIT_DMG, Stats.CRIT_RATE, Stats.SPD],
-  //   rarity: 5,
-  //   path: PathType.ELATION,
-  //   element: Element.QUANTUM,
-  //   beta: true,
-  // },
+  {
+    id: '1511',
+    name: 'Aeon ★ Aha',
+    jp: '星神★アッハ',
+    stat: {
+      baseAtk: 92.4,
+      baseHp: 142.56,
+      baseDef: 69.3,
+      baseSpd: 94,
+      energy: 0,
+    },
+    trace: [Stats.CRIT_DMG, Stats.SPD, Stats.CRIT_RATE],
+    rec: [Stats.CRIT_DMG, Stats.CRIT_RATE, Stats.SPD],
+    rarity: 5,
+    path: PathType.ELATION,
+    element: Element.QUANTUM,
+    beta: true,
+  },
 
   // Odd = Male, Even = Female
   {

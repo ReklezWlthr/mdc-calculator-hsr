@@ -1,4 +1,4 @@
-import { toPercentage } from '@src/core/utils/data_format'
+import { calcRefinement, toPercentage } from '@src/core/utils/data_format'
 import { getTurnWithinCycle } from '@src/core/utils/data_format'
 import { checkBuffExist, findCharacter } from '@src/core/utils/finder'
 import { StatsArray, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
@@ -178,7 +178,18 @@ export const StatsModal = observer(
     const elationSpd = compare && teamIndex >= 0 ? setupStore.ahaSpd[teamIndex] : calculatorStore.ahaSpd
     const punchline =
       compare && teamIndex >= 0 ? setupStore.globalMod[teamIndex].punchline : calculatorStore.globalMod.punchline
-    const ahaSpd = _.size(elationSpd) ? 80 + _.sum(_.map(elationSpd, (es, i) => (es || 0) / (5 * 2 ** i))) : 0
+    const team =
+      compare && teamIndex >= 0
+        ? teamIndex === 0
+          ? setupStore.main.char
+          : setupStore.comparing[teamIndex - 1].char
+        : calculatorStore.team
+    const lc = _.find(team, (tt) => tt.cId === '1511')?.equipments?.weapon?.refinement || 1
+    const ahaBaseSpd = _.some(team, (tt) => tt.cId === '1511')
+      ? findCharacter('1511').stat.baseSpd +
+        (_.find(team, (tt) => tt.cId === '1511').equipments.weapon.wId === '23065' ? calcRefinement(12, 2, lc) : 0)
+      : 80
+    const ahaSpd = _.size(elationSpd) ? ahaBaseSpd + _.sum(_.map(elationSpd, (es, i) => (es || 0) / (5 * 2 ** i))) : 0
     const punchlineMulti = (5 * punchline) / (+punchline + 240)
 
     return (
@@ -242,7 +253,7 @@ export const StatsModal = observer(
               {!!_.size(elationSpd) && (
                 <BulletPoint color="text-xs text-blue">
                   <span className="text-xs">
-                    <b className="text-red">{_.floor(ahaSpd, 1)}</b> = <span className="text-blue">80</span>
+                    <b className="text-red">{_.floor(ahaSpd, 1)}</b> = <span className="text-blue">{ahaBaseSpd}</span>
                     {_.map(elationSpd, (ss, ii) => (
                       <span key={`${ss}_${ii}`}>
                         {' '}

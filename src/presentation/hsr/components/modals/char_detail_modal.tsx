@@ -350,7 +350,8 @@ export const CharDetailModal = observer(
                     upgraded={(talent?.upgrade as any)?.elation}
                     level={char?.talents?.elation}
                     showUpgrade
-                    type={talent?.talents?.talent?.trace}
+                    hideTip
+                    type={talent?.talents?.innate?.trace}
                   />
                   <div>
                     <p className="text-xs text-primary-lighter">E.Skill</p>

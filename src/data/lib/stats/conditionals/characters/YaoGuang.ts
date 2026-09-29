@@ -163,6 +163,22 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     },
   }
 
+  const nihilux = _.find(team, (x) => x?.cId === '1511')
+  if (nihilux) {
+    talents.innate = {
+      trace: `Innate Trace`,
+      title: `Faces of Elation ★ Mind Reading`,
+      content: `When <i class="text-red">the Path of Elation ascends</i>, the DMG multiplier of the <b class="text-desc">Great Boon</b> effect increases by an amount equal to {{0}}% of the original DMG multiplier. For every <span class="text-desc">10</span> points of <b class="text-orange-600">Bliss</b> taken into account during <b class="text-aha">Aha Instant</b>, Yao Guang regenerates <span class="text-desc">1</span> Energy when it ends, up to a maximum of {{1}}.`,
+      value: [
+        { base: 20, growth: 20, style: 'linear' },
+        { base: 10, growth: 5, style: 'linear' },
+      ],
+      tag: AbilityTag.ENHANCE,
+      level: nihilux?.cons || -1 >= 2 ? 2 : 1,
+      image: 'asset/traces/SkillIcon_1502_Innate.webp',
+    }
+  }
+
   const content: IContent[] = [
     Banger,
     {
@@ -446,6 +462,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
                 const add = {
                   name: 'Great Boon DMG',
                   value: [{ scaling: calcScaling(0.12, 0.012, talent, 'curved'), multiplier: Stats.ELATION }],
+                  multiplier: nihilux ? (nihilux?.cons || -1 >= 2 ? 1.4 : 1.2) : 1,
                   element: item.ELEMENT,
                   property: TalentProperty.ELATION,
                   type: TalentType.NONE,

@@ -790,7 +790,7 @@ export const RelicSets: IArtifact[] = [
     },
     desc: [
       `Increases CRIT DMG by <span class="text-desc">16%</span>.`,
-      `Increases DMG dealt by the wearer's Basic ATK by <span class="text-desc">36%</span>. When the wearer uses a Basic ATK, increases the wearer's ATK by <span class="text-desc">20%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
+      `Increases DMG dealt by the wearer's Basic ATK by <span class="text-desc">36%</span>. When the wearer uses Basic ATK, increases the wearer's ATK by <span class="text-desc">20%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
     ],
     set: [
       `Heretic's Cranial Apparatus`,
@@ -1373,6 +1373,46 @@ export const PlanarSets: IArtifact[] = [
     ],
     beta: false,
     set: [`Central Synapse of the Life Sciences Institute`, `Peripheral Conduits of the Life Sciences Institute`],
+  },
+  {
+    id: '329',
+    name: `God's Moment of Joy`,
+    icon: '71062',
+    bonus: [{ stat: Stats.P_SPD, value: 0.06 }],
+    bonusAdd: [],
+    desc: [
+      `Increases the wearer's SPD by <span class="text-desc">6%</span>. When the wearer's Elation reaches <span class="text-desc">40%</span> or higher, the wearer's action advances by <span class="text-desc">40%</span> immediately when entering combat.`,
+    ],
+    beta: true,
+    set: [`Moment of Joy's Eternal Stage`, `Moment of Joy's Magic Prop`],
+  },
+  {
+    id: '330',
+    name: 'Subspace ASC Center',
+    icon: '71063',
+    bonus: [{ stat: Stats.P_SPD, value: 0.06 }],
+    bonusAdd: [],
+    half: (base) => {
+      base.CALLBACK.push((x: StatsObject, _d, _w, all) => {
+        if (x.getSpd() >= 145) {
+          _.forEach(all, (item) => {
+            item[Stats.BE].push({
+              name: `Subspace ASC Center`,
+              source: item.ID === x.ID ? 'Self' : x.NAME,
+              value: 0.15,
+            })
+          })
+        }
+
+        return x
+      })
+      return base
+    },
+    desc: [
+      `Increases the wearer's SPD by <span class="text-desc">6%</span>. When the wearer's SPD reaches <span class="text-desc">145</span> or higher, increases all allies' Break Effect by <span class="text-desc">15%</span> after entering combat. This effect cannot stack.`,
+    ],
+    beta: true,
+    set: [`ASC Dark Fissure`, `ASC Negative Film`],
   },
 ]
 

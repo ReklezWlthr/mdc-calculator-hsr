@@ -16,7 +16,7 @@ import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import _ from 'lodash'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import { TalentIcon } from './tables/scaling_wrapper'
-import { PathType, StatIcons, Stats, TalentType } from '@src/domain/constant'
+import { Element, PathType, StatIcons, Stats, TalentType } from '@src/domain/constant'
 import { useParams } from '@src/core/hooks/useParams'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { toPercentage } from '@src/core/utils/data_format'
@@ -142,6 +142,8 @@ export const CharDetail = observer(() => {
     () => modalStore.openModal(<CharDetailModal char={charUpgrade} cId={selected} buffToggled={buffToggled} />),
     [charUpgrade, charStore.selected, buffToggled],
   )
+
+  const nihilux = _.find(charStore.characters, (cc) => cc.cId === '1511')
 
   return (
     <div className="w-full h-full p-2 pr-5 text-white customScrollbar" id="detail_container">
@@ -355,89 +357,96 @@ export const CharDetail = observer(() => {
         <span className="text-desc">✦</span> Abilities <span className="text-desc">✦</span>
       </p>
       <div className="grid gap-6">
-        {_.map(_.omit(talent, 'a2', 'a4', 'a6', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6'), (item) => {
-          const baseType =
-            item?.trace === 'Assist Skill'
-              ? 'Talent'
-              : item?.trace
-                  ?.replaceAll('Enhanced', '')
-                  ?.replaceAll('Alternate', '')
-                  ?.replaceAll('Exclusive', '')
-                  ?.replaceAll('Memo.', 'Memosprite')
-                  .replaceAll(/\[\d\]$/g, '')
-                  .trim()
-          return (
-            item && (
-              <div className="flex gap-x-3" key={item.trace}>
-                <TalentIcon
-                  element={data.element}
-                  talent={item}
-                  icon={`SkillIcon_${_.includes(item.trace, 'Memo') ? '1' : ''}${selected}_${
-                    skillIcon[item.trace]
-                  }.png`}
-                  size="w-10 h-10 mt-1"
-                  hideTip
-                />
-                <div className="w-full">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      {_.startsWith(item.trace, 'Exclusive') ? (
-                        <p className="px-2 text-sm font-normal text-white rounded-md bg-gradient-to-r from-unique-start to-unique-end w-fit">
-                          {item.trace}
-                        </p>
-                      ) : (
-                        <p className="text-sm font-normal text-primary-lighter">{item.trace}</p>
-                      )}
-                      <p className="font-semibold">{item.title}</p>
-                      <div className="flex items-center gap-1 text-xs">
-                        {!!item.tag && <p className="text-desc opacity-80">[{item.tag}]</p>}
-                        {!!item.energy && (
-                          <p className="font-normal text-rose-300 opacity-80">[{item.energy} Energy]</p>
-                        )}
-                        {!!item.participantId && (
-                          <p className="font-normal text-orange-300 opacity-80">
-                            [Participant ID: {item.participantId}]
-                          </p>
-                        )}
-                        {!!item.sp && (
-                          <div className="flex items-center font-normal opacity-100 text-gray">
-                            <img className="size-5" src="asset/PointBPFull.png" />
-                            {Intl.NumberFormat('en-US', {
-                              signDisplay: 'exceptZero',
-                            }).format(item.sp)}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    {item.trace !== TalentType.TECH && (
-                      <div className="flex items-center justify-end w-1/3 gap-2 pr-4">
-                        <p className="text-xs">
-                          Level: <span className="text-desc">{params[baseType]}</span>
-                        </p>
-                        <input
-                          type="range"
-                          className="slider h-[8px] bg-gradient-to-r from-primary-lighter to-gray shrink-0"
-                          step={1}
-                          min="1"
-                          max={_.includes(item.trace, TalentType.BA) || _.includes(item.trace, 'Memo') ? 7 : 12}
-                          value={params[baseType]}
-                          onChange={(e) => {
-                            const value = Number(e.target.value)
-                            setParams({ [baseType]: value })
-                          }}
-                        />
-                      </div>
-                    )}
-                  </div>
-                  <p
-                    className="pt-1.5 text-sm font-normal text-gray"
-                    dangerouslySetInnerHTML={{ __html: formatScaleString(item, params[baseType]) }}
+        {_.map(
+          _.omit(talent, 'a2', 'a4', 'a6', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6', nihilux ? '' : 'innate'),
+          (item) => {
+            const baseType =
+              item?.trace === 'Assist Skill'
+                ? 'Talent'
+                : item?.trace
+                    ?.replaceAll('Enhanced', '')
+                    ?.replaceAll('Alternate', '')
+                    ?.replaceAll('Exclusive', '')
+                    ?.replaceAll('Memo.', 'Memosprite')
+                    .replaceAll(/\[\d\]$/g, '')
+                    .trim()
+
+            const level = item.trace === 'Innate Trace' ? (nihilux?.cons >= 2 ? 2 : 1) : params[baseType]
+            return (
+              item && (
+                <div className="flex gap-x-3" key={item.trace}>
+                  <TalentIcon
+                    element={item.trace === 'Innate Trace' ? Element.NONE : data.element}
+                    talent={item}
+                    icon={`SkillIcon_${_.includes(item.trace, 'Memo') ? '1' : ''}${selected}_${
+                      skillIcon[item.trace]
+                    }.png`}
+                    size="w-10 h-10 mt-1"
+                    hideTip
                   />
+                  <div className="w-full">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        {_.startsWith(item.trace, 'Exclusive') ? (
+                          <p className="px-2 text-sm font-normal text-white rounded-md bg-gradient-to-r from-unique-start to-unique-end w-fit">
+                            {item.trace}
+                          </p>
+                        ) : (
+                          <p className="text-sm font-normal text-primary-lighter">{item.trace}</p>
+                        )}
+                        <p className="font-semibold">{item.title}</p>
+                        <div className="flex items-center gap-1 text-xs">
+                          {!!item.tag && <p className="text-desc opacity-80">[{item.tag}]</p>}
+                          {!!item.energy && (
+                            <p className="font-normal text-rose-300 opacity-80">[{item.energy} Energy]</p>
+                          )}
+                          {!!item.participantId && (
+                            <p className="font-normal text-orange-300 opacity-80">
+                              [Participant ID: {item.participantId}]
+                            </p>
+                          )}
+                          {!!item.sp && (
+                            <div className="flex items-center font-normal opacity-100 text-gray">
+                              <img className="size-5" src="asset/PointBPFull.png" />
+                              {Intl.NumberFormat('en-US', {
+                                signDisplay: 'exceptZero',
+                              }).format(item.sp)}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      {item.trace !== TalentType.TECH && (
+                        <div className="flex items-center justify-end w-1/3 gap-2 pr-4">
+                          <p className="text-xs">
+                            Level: <span className="text-desc">{level}</span>
+                          </p>
+                          {item.trace !== 'Innate Trace' && (
+                            <input
+                              type="range"
+                              className="slider h-[8px] bg-gradient-to-r from-primary-lighter to-gray shrink-0"
+                              step={1}
+                              min="1"
+                              max={_.includes(item.trace, TalentType.BA) || _.includes(item.trace, 'Memo') ? 7 : 12}
+                              value={params[baseType]}
+                              onChange={(e) => {
+                                const value = Number(e.target.value)
+                                setParams({ [baseType]: value })
+                              }}
+                            />
+                          )}
+                        </div>
+                      )}
+                    </div>
+                    <p
+                      className="pt-1.5 text-sm font-normal text-gray"
+                      dangerouslySetInnerHTML={{ __html: formatScaleString(item, level) }}
+                    />
+                  </div>
                 </div>
-              </div>
+              )
             )
-          )
-        })}
+          },
+        )}
         <p className="flex justify-center gap-2 mb-1 text-2xl font-bold">
           <span className="text-desc">✦</span> Bonus Abilities <span className="text-desc">✦</span>
         </p>

@@ -1924,6 +1924,32 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23065',
+    scaling: (base, r) => {
+      base.BASE_SPD += calcRefinement(12, 2, r)
+      return base
+    },
+  },
+  {
+    id: '22009',
+    scaling: (base, r) => {
+      base.CALLBACK.push((x, _d, _w, all) => {
+        const elationCount = _.size(_.filter(all, (item) => item.PATH === PathType.ELATION))
+        x[Stats.CRIT_DMG].push({
+          name: 'Passive',
+          source: `See You at the World's End!`,
+          value:
+            calcRefinement(0.06, 0.01, r) * elationCount +
+            (_.some(all, (item) => item.ID === '1511') ? calcRefinement(0.12, 0.02, r) : 0),
+        })
+
+        return x
+      })
+
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

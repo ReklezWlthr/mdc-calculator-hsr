@@ -192,13 +192,15 @@ export const GlobalContents: (team: ITeamChar[]) => IContent[] = (team) =>
       {
         type: 'number',
         id: 'punchline',
-        text: `Punchline`,
+        text: `Punchline [Bliss]`,
         trace: 'Mechanic - Elation',
         content: `<b class="text-orange-400">Punchline</b> is shared by the whole team. When dealing <b class="elation">Elation DMG</b>, the more <b class="text-orange-400">Punchline</b> points taken into account, the higher the <b class="elation">Elation DMG</b>.
         <br />After each <b class="text-aha">Aha Instant</b>, all <b class="text-orange-400">Punchline</b> point(s) will be cleared and given to each character as <b class="text-blue">Certified Banger</b>.
         <br />
-        <br />This value is only used to calculate the effect of each character's Elation Skill within each single <b class="text-aha">Aha Instant</b>.`,
-        title: 'Punchline',
+        <br />This value is only used to calculate the effect of each character's Elation Skill within each single <b class="text-aha">Aha Instant</b>.
+        <br />
+       <br />When Aeon ★ Aha possesses the <b class="text-rose-400">Faces of Elation</b> state, enhance <b class="text-orange-400">Punchline</b> to <b class="text-orange-600">Bliss</b>.`,
+        title: 'Punchline [Bliss]',
         show: _.some(team, (item) => findCharacter(item.cId)?.path === PathType.ELATION),
         default: 20,
         min: 0,
@@ -211,12 +213,14 @@ export const GlobalContents: (team: ITeamChar[]) => IContent[] = (team) =>
 export const Banger: IContent = {
   type: 'number',
   id: 'banger',
-  text: `Total Certified Banger`,
+  text: `Certified Banger [Party Trick]`,
   trace: 'Elation',
   content: `Characters participating in the <b class="text-aha">Aha Instant</b> obtain the <b class="text-blue">Certified Banger</b> state, and <b class="text-orange-400">Punchline</b> from the current <b class="text-aha">Aha Instant</b> are taken into account for this state, lasting for <span class="text-desc">2</span> turns. Ability effects and <b class="elation">Elation DMG</b> produced by the <b class="text-blue">Certified Banger</b> state are calculated based on the <b class="text-orange-400">Punchline</b> points taken into account.
       <br /><b class="text-orange-400">Punchlines</b> taken into account for multiple <b class="text-blue">Certified Banger</b> states are combined for calculation.
-      <br />The duration of each <b class="text-blue">Certified Banger</b> state is calculated independently.`,
-  title: 'Certified Banger',
+      <br />The duration of each <b class="text-blue">Certified Banger</b> state is calculated independently.
+      <br />
+      <br />When Aeon ★ Aha possesses the <b class="text-rose-400">Faces of Elation</b> state, enhance <b class="text-blue">Certified Banger</b> to <b class="text-indigo-300">Party Trick</b> which affect the <b>Innate Trace</b> effects of ally Elation characters.`,
+  title: 'Certified Banger [Party Trick]',
   show: true,
   default: 20,
   min: 0,

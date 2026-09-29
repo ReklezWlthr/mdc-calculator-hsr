@@ -201,6 +201,22 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     },
   }
 
+  const nihilux = _.find(team, (x) => x?.cId === '1511')
+  if (nihilux) {
+    talents.innate = {
+      trace: `Innate Trace`,
+      title: `Faces of Elation ★ Holographic Mirage`,
+      content: `When <i class="text-red">the Path of Elation ascends</i>, <b class="text-violet-300">Hidden MMR</b> can output up to {{0}} overflow when it reaches its max limit. Increases CRIT DMG by <span class="text-desc">40%</span>, and when gaining <b class="text-indigo-300">Party Trick</b> provides Silver Wolf LV.999 with {{1}}% of <b class="text-violet-300">Hidden MMR</b>.`,
+      value: [
+        { base: 360, growth: 639, style: 'linear' },
+        { base: 20, growth: 20, style: 'linear' },
+      ],
+      tag: AbilityTag.ENHANCE,
+      level: nihilux?.cons || -1 >= 2 ? 2 : 1,
+      image: 'asset/traces/SkillIcon_1506_Innate.webp',
+    }
+  }
+
   const content: IContent[] = [
     Banger,
     {

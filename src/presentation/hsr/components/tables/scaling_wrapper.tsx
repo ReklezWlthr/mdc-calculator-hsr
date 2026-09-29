@@ -56,9 +56,10 @@ export const TalentIcon = observer(
       [Element.WIND]: 'bg-hsr-wind ring-hsr-wind',
       [Element.QUANTUM]: 'bg-hsr-quantum ring-hsr-quantum',
       [Element.IMAGINARY]: 'bg-hsr-imaginary ring-hsr-imaginary',
+      [Element.NONE]: 'bg-rose-600 ring-rose-500',
     }
 
-    const formattedString = formatScaleString(talent, level + upgraded)
+    const formattedString = formatScaleString(talent, level + (upgraded || 0))
 
     if (!talent)
       return (
