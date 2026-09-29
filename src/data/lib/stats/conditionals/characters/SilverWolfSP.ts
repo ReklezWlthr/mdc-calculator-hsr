@@ -255,6 +255,14 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       show: c >= 6,
       default: true,
     },
+    {
+      type: 'toggle',
+      id: 'swsp_aha',
+      text: `Faces of Elation ★ Holographic Mirage`,
+      ...talents.innate,
+      show: !!nihilux,
+      default: true,
+    },
   ]
 
   const teammateContent: IContent[] = [findContentById(content, 'swsp_e6')]
@@ -440,6 +448,14 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
         }
         base.BASIC_SCALING.push({ ...add, merrymake: form.swsp_e6_merry ? 0.5 : 0 })
         base.SKILL_SCALING.push(add)
+      }
+
+      if (form.swsp_aha) {
+        base[Stats.CRIT_DMG].push({
+          name: `Faces of Elation ★ Holographic Mirage`,
+          source: 'Self',
+          value: 0.4,
+        })
       }
 
       if (form.swsp_e6) {

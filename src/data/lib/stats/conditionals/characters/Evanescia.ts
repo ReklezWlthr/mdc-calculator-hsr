@@ -202,7 +202,15 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     {
       type: 'toggle',
       id: 'aha_ult_mult',
-      text: `Faces of Elation ★ Pages to Petals`,
+      text: `Faces of Elation [Ult Multiplier]`,
+      ...talents.innate,
+      show: !!nihilux,
+      default: true,
+    },
+    {
+      type: 'toggle',
+      id: 'aha_def_pen',
+      text: `Faces of Elation [DEF PEN]`,
       ...talents.innate,
       show: !!nihilux,
       default: true,
@@ -268,8 +276,8 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
 
       if (form.aha_ult_mult) {
         base.ULT_MULT.push({
-          name: `Faces of Elation`,
-          source: 'Aeon ★ Aha',
+          name: `Faces of Elation ★ Pages to Petals`,
+          source: 'Self',
           value: nihilux?.cons || -1 >= 2 ? 1 : 0.5,
         })
       }
@@ -387,6 +395,14 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
           property: TalentProperty.ELATION,
           type: TalentType.TALENT,
           sum: true,
+        })
+      }
+
+      if (form.aha_def_pen) {
+        base.DEF_PEN.push({
+          name: `Faces of Elation ★ Pages to Petals`,
+          source: 'Self',
+          value: nihilux?.cons || -1 >= 2 ? 0.24 : 0.1,
         })
       }
 

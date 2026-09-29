@@ -394,7 +394,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
 
       if (nihilux && elationCount === 2) {
         base[Stats.P_SPD].push({
-          name: `Faces of Elation`,
+          name: `Faces of Elation ★ Three-Card Monte`,
           source: 'Self',
           value: nihilux?.cons || -1 >= 2 ? 0.25 : 0.15,
         })
@@ -483,7 +483,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
 
       if (nihilux && elationCount === 2) {
         base[Stats.P_SPD].push({
-          name: `Faces of Elation`,
+          name: `Faces of Elation ★ Three-Card Monte`,
           source: 'Aventurine • Waveflair',
           value: nihilux?.cons || -1 >= 2 ? 0.25 : 0.15,
         })

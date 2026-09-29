@@ -237,9 +237,17 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       default: true,
       duration: 3,
     },
+    {
+      type: 'toggle',
+      id: 'sparxie_aha',
+      text: `Faces of Elation ★ Hat Trick`,
+      ...talents.innate,
+      show: !!nihilux,
+      default: true,
+    },
   ]
 
-  const teammateContent: IContent[] = []
+  const teammateContent: IContent[] = [findContentById(content, 'sparxie_aha')]
 
   const allyContent: IContent[] = []
 
@@ -382,6 +390,14 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         )
       }
 
+      if (form.sparxie_aha) {
+        base[Stats.CRIT_DMG].push({
+          name: `Faces of Elation ★ Hat Trick`,
+          source: 'Self',
+          value: nihilux?.cons || -1 >= 2 ? 1.2 : 0.3,
+        })
+      }
+
       if (a.a6 && globalMod.punchline) {
         base[Stats.CRIT_DMG].push({
           name: `Ascension 6 Passive`,
@@ -418,6 +434,14 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         })
       }
 
+      if (form.sparxie_aha) {
+        base.DEF_PEN.push({
+          name: `Faces of Elation ★ Hat Trick`,
+          source: 'Self',
+          value: nihilux?.cons || -1 >= 2 ? 0.2 : 0.15,
+        })
+      }
+
       return base
     },
     preComputeShared: (
@@ -430,6 +454,14 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       broken: boolean,
       globalMod: GlobalModifiers,
     ) => {
+      if (form.sparxie_aha) {
+        base.DEF_PEN.push({
+          name: `Faces of Elation ★ Hat Trick`,
+          source: 'Sparxie',
+          value: nihilux?.cons || -1 >= 2 ? 0.2 : 0.15,
+        })
+      }
+
       if (a.a6 && globalMod.punchline) {
         base[Stats.CRIT_DMG].push({
           name: `Ascension 6 Passive`,

@@ -209,17 +209,16 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     {
       type: 'toggle',
       id: 'faces_of_elation',
-      text: `Faces of Elation`,
-      ...talents.ult,
+      text: `Faces of Elation ★ Ex Nihilo`,
+      ...talents.innate,
       show: true,
       default: true,
-      duration: 3,
     },
   ]
 
   const teammateContent: IContent[] = []
 
-  const allyContent: IContent[] = [findContentById(content, 'faces_of_elation'), findContentById(content, 'aha_talent')]
+  const allyContent: IContent[] = [findContentById(content, 'aha_talent')]
 
   return {
     upgrade,
@@ -266,7 +265,7 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
 
       if (form.faces_of_elation) {
         base.DEF_PEN.push({
-          name: `Faces of Elation`,
+          name: `Faces of Elation ★ Ex Nihilo`,
           source: 'Self',
           value: c >= 2 ? 0.6 : 0.3,
         })
@@ -306,38 +305,6 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           source: 'Aeon ★ Aha',
           value: calcScaling(0.12, 0.012, talent, 'curved'),
         })
-      }
-
-      if (form.faces_of_elation) {
-        switch (own.ID) {
-          // SW999
-          case '1506': {
-            base[Stats.CRIT_DMG].push({
-              name: `Faces of Elation`,
-              source: 'Aeon ★ Aha',
-              value: 0.4,
-            })
-            break
-          }
-          // Sparxie
-          case '1501': {
-            base[Stats.CRIT_DMG].push({
-              name: `Faces of Elation`,
-              source: 'Aeon ★ Aha',
-              value: c >= 2 ? 1.2 : 0.3,
-            })
-            break
-          }
-          // Eva
-          case '1505': {
-            base.DEF_PEN.push({
-              name: `Faces of Elation`,
-              source: 'Aeon ★ Aha',
-              value: c >= 2 ? 0.24 : 0.1,
-            })
-            break
-          }
-        }
       }
 
       return base
@@ -457,16 +424,6 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
             name: `Ascension 6 Passive`,
             source: 'Self',
             value: spd >= 150 ? 1.5 : 1.2,
-          })
-        }
-
-        if (form.faces_of_elation && _.some(all, (cc) => cc.ID === '1501')) {
-          _.forEach(all, (cc, ii) => {
-            cc.DEF_PEN.push({
-              name: `Faces of Elation`,
-              source: ii === index ? 'Self' : 'Aeon ★ Aha',
-              value: c >= 2 ? 0.2 : 0.15,
-            })
           })
         }
 
