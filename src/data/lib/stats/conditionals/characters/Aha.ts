@@ -82,19 +82,25 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       image: 'asset/traces/SkillIcon_1511_Ultra_on.webp',
     },
     talent: {
-      trace: `Exclusive Talent`,
+      trace: `Talent`,
       title: `Work Wonders with THEM`,
-      content: `The Ultimate can be activated once <b class="text-desc">Wishpower</b> reaches <span class="text-desc">8</span> points. Aeon ★ Aha gains <span class="text-desc">1</span> point(s) of <b class="text-desc">Wishpower</b> after using Basic ATK, Skill, or Elation Skill. Once the team's <b class="text-orange-400">Punchline</b> reach <span class="text-desc">40</span> points for the first time, Aeon ★ Aha will immediately gain <span class="text-desc">1</span> point(s) of <b class="text-desc">Wishpower</b>, then increase all allies' CRIT DMG by {{0}}% for <span class="text-desc">3</span> turn(s). This can be triggered again after <b class="text-aha">Aha</b>'s turn ends.
-      <br />
-      <br /><b>Aha Instant in</b>
-      <br />Effect obtained after acquiring Aeon ★ Aha or when Aeon ★ Aha is in the current team: In combat, Aeon ★ Aha will personally lead the <b class="text-aha">Aha Instant</b> and can fast-forward the Elation Skill being used. The base SPD of <b class="text-aha">Aha Instant</b> increases from <span class="text-desc">80</span> to Aeon ★ Aha's base SPD.`,
+      content: `The Ultimate can be activated once <b class="text-desc">Wishpower</b> reaches <span class="text-desc">8</span> points. Aeon ★ Aha gains <span class="text-desc">1</span> point(s) of <b class="text-desc">Wishpower</b> after using Basic ATK, Skill, or Elation Skill. Once the team's <b class="text-orange-400">Punchline</b> reach <span class="text-desc">40</span> points for the first time, Aeon ★ Aha will immediately gain <span class="text-desc">1</span> point(s) of <b class="text-desc">Wishpower</b>, then increase all allies' CRIT DMG by {{0}}% for <span class="text-desc">3</span> turn(s). This can be triggered again after <b class="text-aha">Aha</b>'s turn ends.`,
       value: [{ base: 12, growth: 1.2, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
       image: 'asset/traces/SkillIcon_1511_Passive.webp',
     },
+    unique_talent: {
+      trace: `Exclusive Talent`,
+      title: `Aha Instant in`,
+      content: `Effect obtained after acquiring Aeon ★ Aha or when Aeon ★ Aha is in the current team: In combat, Aeon ★ Aha will personally lead the <b class="text-aha">Aha Instant</b> and can fast-forward the Elation Skill being used. The base SPD of <b class="text-aha">Aha Instant</b> increases from <span class="text-desc">80</span> to Aeon ★ Aha's base SPD.`,
+      value: [{ base: 12, growth: 1.2, style: 'curved' }],
+      level: talent,
+      tag: AbilityTag.SUPPORT,
+      image: 'asset/traces/SkillIcon_1511_Passive.webp',
+    },
     talent_2: {
-      trace: `Talent`,
+      trace: `Additional Talent`,
       title: `The True Story of Aha`,
       content: `When Aeon ★ Aha and teammates deal DMG, additionally deal <b class="text-red">Elation Debt</b> effect equal to <span class="text-desc">25%</span> of the DMG to the enemy target. During the enemy target's phase transition, they maintain the <b class="text-red">Elation Debt</b> value, with a maximum not exceeding <span class="text-desc">10%</span> of the target's Max HP.`,
       value: [{ base: 12, growth: 1.2, style: 'curved' }],

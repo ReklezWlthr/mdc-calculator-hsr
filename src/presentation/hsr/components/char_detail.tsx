@@ -415,7 +415,7 @@ export const CharDetail = observer(() => {
                           )}
                         </div>
                       </div>
-                      {item.trace !== TalentType.TECH && (
+                      {!_.includes([TalentType.TECH, 'Additional Talent'], item.trace) && (
                         <div className="flex items-center justify-end w-1/3 gap-2 pr-4">
                           <p className="text-xs">
                             Level: <span className="text-desc">{level}</span>
