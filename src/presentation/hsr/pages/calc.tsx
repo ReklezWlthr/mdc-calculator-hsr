@@ -184,7 +184,7 @@ export const Calculator = observer(({}: {}) => {
                     <SubTotalRow type={TalentType.SKILL} />
                   </div>
                 </ScalingWrapper>
-                {!!mainComputed?.MEMO_SKILL_SCALING && (
+                {!_.isEmpty(mainComputed?.MEMO_SKILL_SCALING) && (
                   <>
                     <div className="w-full my-2 border-t-2 border-primary-border" />
                     <ScalingWrapper
