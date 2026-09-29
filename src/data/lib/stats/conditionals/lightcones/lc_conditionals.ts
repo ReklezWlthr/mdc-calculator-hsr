@@ -3035,7 +3035,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
     default: true,
     id: '23065',
     scaling: (base, form, r) => {
-      if (form['23065']) {
+      if (form['23065'] && !checkBuffExist(base.DEF_PEN, { source: `Upon the First Echo of "Aha"` })) {
         base.DEF_PEN.push({
           name: `Passive`,
           source: 'Upon the First Echo of "Aha"',
