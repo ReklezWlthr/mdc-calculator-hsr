@@ -2661,4 +2661,35 @@ export const Enemies = [
     },
     effRes: 0.2,
   },
+  {
+    name: `Unwaning Ageless Immortal`,
+    type: 'Boss',
+    weakness: [Element.ICE, Element.PHYSICAL, Element.FIRE, Element.QUANTUM],
+    baseHp: 110,
+    toughness: 240,
+    res: {
+      [Element.IMAGINARY]: 0.4,
+      [Element.LIGHTNING]: 0.4,
+      [Element.WIND]: 0.4,
+    },
+    statusRes: {
+      [DebuffTypes.FROZEN]: 0.5,
+      [DebuffTypes.CONTROL]: 0.5,
+    },
+    effRes: 0.3,
+  },
+  {
+    name: `Super Idol: Center of Attention`,
+    type: 'Boss',
+    weakness: [Element.IMAGINARY, Element.PHYSICAL, Element.FIRE, Element.QUANTUM],
+    baseHp: 110,
+    toughness: 440,
+    res: {
+      [Element.ICE]: 0.4,
+      [Element.LIGHTNING]: 0.4,
+      [Element.WIND]: 0.4,
+    },
+    statusRes: {},
+    effRes: 0.3,
+  },
 ]

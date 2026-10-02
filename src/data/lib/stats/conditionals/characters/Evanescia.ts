@@ -170,12 +170,13 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
   }
 
+  const totalPT = `For every <span class="text-desc">500</span> point(s) of <b class="text-indigo-300">Party Trick</b> accumulated, increases the DMG multiplier of the next Ultimate by {{2}}% of the original multiplier.`
   const nihilux = _.find(team, (x) => x?.cId === '1511')
   if (nihilux) {
     talents.innate = {
       trace: `Innate Trace`,
       title: `Faces of Elation ★ Pages to Petals`,
-      content: `When <i class="text-red">the Path of Elation ascends</i>, overflow Energy can accumulate up to {{0}} point(s), which is cleared after using an Ultimate to regenerate the corresponding amount of Energy. This instance of regeneration will not trigger the Talent's effect of gaining <b class="text-blue">Certified Banger</b>. The DMG dealt ignores {{1}}% of the enemy target's DEF. For every <span class="text-desc">500</span> point(s) of <b class="text-indigo-300">Party Trick</b> accumulated, increases the DMG multiplier of the next Ultimate by {{2}}% of the original multiplier.`,
+      content: `When <i class="text-red">the Path of Elation ascends</i>, overflow Energy can accumulate up to {{0}} point(s), which is cleared after using an Ultimate to regenerate the corresponding amount of Energy. This instance of regeneration will not trigger the Talent's effect of gaining <b class="text-blue">Certified Banger</b>. The DMG dealt ignores {{1}}% of the enemy target's DEF. ${totalPT}`,
       value: [
         { base: 60, growth: 180, style: 'linear' },
         { base: 10, growth: 14, style: 'linear' },
@@ -200,12 +201,14 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       duration: 3,
     },
     {
-      type: 'toggle',
+      type: 'number',
       id: 'aha_ult_mult',
-      text: `Faces of Elation [Ult Multiplier]`,
+      text: `Accumulated Party Trick`,
       ...talents.innate,
+      content: totalPT,
       show: !!nihilux,
-      default: true,
+      default: 500,
+      min: 0,
     },
     {
       type: 'toggle',
@@ -274,11 +277,11 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       const bounce =
         +globalMod.enemy_count === 1 ? 9 : +globalMod.enemy_count === 2 ? 7 : +globalMod.enemy_count >= 3 ? 6 : 5
 
-      if (form.aha_ult_mult) {
+      if (+form.aha_ult_mult >= 500) {
         base.ULT_MULT.push({
           name: `Faces of Elation ★ Pages to Petals`,
           source: 'Self',
-          value: nihilux?.cons || -1 >= 2 ? 1 : 0.5,
+          value: _.floor(form.aha_ult_mult / 500) * (nihilux?.cons || -1 >= 2 ? 1 : 0.5),
         })
       }
 

@@ -81,6 +81,8 @@ export const baseStatsObject: BaseStatsType = {
 
   SUMMON_DEF_PEN: [],
 
+  ENEMY_DMG_REDUCTION: [],
+
   //DEBUFFS
   ATK_REDUCTION: [],
   DEF_REDUCTION: [],
@@ -262,6 +264,9 @@ export const baseStatsObject: BaseStatsType = {
   },
   getDmgRed: function () {
     return _.min([1 - _.reduce(this.DMG_REDUCTION, (acc, curr) => acc * (1 - curr.value), 1), 0.99])
+  },
+  getEnemyDmgRed: function () {
+    return _.min([1 - _.reduce(this.ENEMY_DMG_REDUCTION, (acc, curr) => acc * (1 - curr.value), 1), 0.99])
   },
 
   CALLBACK: [],

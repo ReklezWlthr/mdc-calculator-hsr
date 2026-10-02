@@ -169,6 +169,8 @@ export interface RawBaseStatType {
   AGGRO: StatsArray[]
   BASE_AGGRO: StatsArray[]
 
+  ENEMY_DMG_REDUCTION: StatsArray[]
+
   MAX_ENERGY: number
   SUMMON: boolean
 
@@ -205,6 +207,7 @@ export interface RawBaseStatType {
   getOFCHP: () => number
   getValue: (key: string, exclude?: StatsArray[]) => number
   getDmgRed: () => number
+  getEnemyDmgRed: () => number
 
   CALLBACK: CallbackType[]
 

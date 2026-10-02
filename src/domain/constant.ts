@@ -540,6 +540,8 @@ export const CustomConditionalMap = {
   IMAGINARY_RES_RED: 'Imaginary RES Reduction',
 
   ELATION_MERRYMAKE: 'Merrymake',
+
+  ENEMY_DMG_REDUCTION: 'DMG Reduction (Enemy)',
 }
 
 export const BreakDebuffType = {

@@ -25,6 +25,7 @@ export const CustomDebuffModal = observer(({ setCustomValue }: { setCustomValue?
   const [value, setValue] = useState('0')
 
   const options = {
+    buff: [{ name: 'DMG Reduction', value: StatsObjectKeys.ENEMY_DMG_REDUCTION }],
     red: [
       { name: 'DEF Reduction', value: StatsObjectKeys.DEF_REDUCTION },
       { name: 'Effect RES Reduction', value: StatsObjectKeys.E_RES_RED },
@@ -44,7 +45,10 @@ export const CustomDebuffModal = observer(({ setCustomValue }: { setCustomValue?
     ],
     res: [
       { name: 'All-Type RES Reduction', value: StatsObjectKeys.ALL_TYPE_RES_RED },
-      ..._.map(Element, (item) => ({ name: `${item} RES Reduction`, value: `${item?.toUpperCase()}_RES_RED` })),
+      ..._.map(
+        _.filter(Element, (e) => e !== Element.NONE),
+        (item) => ({ name: `${item} RES Reduction`, value: `${item?.toUpperCase()}_RES_RED` }),
+      ),
     ],
   }
 
@@ -64,7 +68,7 @@ export const CustomDebuffModal = observer(({ setCustomValue }: { setCustomValue?
 
   const onAddMod = () => {
     const v = parseFloat(value)
-    set(-1, key as any, v, true, true)
+    set(-1, key as any, v, true, selectedTab !== 'buff')
     modalStore.closeModal()
   }
 
@@ -77,8 +81,7 @@ export const CustomDebuffModal = observer(({ setCustomValue }: { setCustomValue?
             title="Custom Modifiers"
             body={
               <p>
-                Add custom modifiers to the character to quickly simulate certain scenarios. The value may also be
-                negative to simulate <span className="text-red">Debuff</span> on self.
+                Add custom modifiers to the enemy to quickly simulate certain scenarios. The value may also be negative.
               </p>
             }
             style="w-[450px]"
@@ -94,6 +97,7 @@ export const CustomDebuffModal = observer(({ setCustomValue }: { setCustomValue?
         <Tab title="Attribute Reduction" value="red" defaultKey={options.red[0].value} />
         <Tab title="Vulnerability" value="vul" defaultKey={options.vul[0].value} />
         <Tab title="RES Reduction" value="res" defaultKey={options.res[0].value} />
+        <Tab title="Buffs" value="buff" defaultKey={options.buff[0].value} />
       </div>
       <div className="grid items-center grid-cols-3 pb-4 border-b gap-x-3 border-primary-border">
         <SelectInput

@@ -171,6 +171,8 @@ export const damageStringConstruct = (
     [Stats.ELATION]: BreakBaseLevel[level - 1] * 2,
   }
 
+  const dmgReduction = stats.getEnemyDmgRed() || 0
+
   const bonusDMG = (splitBonus?: number) =>
     (splitBonus || 0) +
     (scaling.bonus || 0) +
@@ -223,7 +225,8 @@ export const damageStringConstruct = (
         : 1 + (breakScale ? stats.getValue(Stats.BE) : isPure ? 0 : bonusDMG(scaling.bonusSplit?.[i]))) *
         (globalMultiplier || 1) *
         (breakScale ? 1 + (stats.getValue(StatsObjectKeys.BREAK_MULT) || 0) : 1) *
-        enemyMod),
+        enemyMod *
+        (1 - dmgReduction)),
   )
   const dmg = _.max([_.sum(dmgSplit), 1])
 
@@ -315,7 +318,11 @@ export const damageStringConstruct = (
           2,
         )}</b> <i class="text-[10px]">VUL</i> \u{00d7} <b class="text-violet-300">${toPercentage(
           brokenMult,
-        )}</b> <i class="text-[10px]">BROKEN</i>`
+        )}</b> <i class="text-[10px]">BROKEN</i>${
+          dmgReduction > 0
+            ? ` \u{00d7} (1 - <b class="text-violet-300">${toPercentage(dmgReduction)}</b> <i class="text-[10px]">DMG Reduction</i>)`
+            : ''
+        }`
       : ''
   }`
 

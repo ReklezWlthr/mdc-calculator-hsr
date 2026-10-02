@@ -44,12 +44,12 @@ export const CustomConditionalBlock = observer(
 
     const onOpenCustomModal = useCallback(
       () => modalStore.openModal(<CustomModal setCustomValue={setValue} memo={memo} />),
-      [setValue, memo]
+      [setValue, memo],
     )
 
     const onOpenCustomDebuffModal = useCallback(
       () => modalStore.openModal(<CustomDebuffModal setCustomValue={setValue} />),
-      [setValue]
+      [setValue],
     )
 
     const set = setValue || calculatorStore.setCustomValue
@@ -60,7 +60,7 @@ export const CustomConditionalBlock = observer(
         <p
           className={classNames(
             'px-2 py-1 text-lg font-bold text-center duration-300 cursor-pointer bg-primary-light',
-            open ? 'rounded-t-lg' : 'rounded-lg'
+            open ? 'rounded-t-lg' : 'rounded-lg',
           )}
           onClick={() => setOpen((prev) => !prev)}
         >
@@ -68,14 +68,14 @@ export const CustomConditionalBlock = observer(
           <i
             className={classNames(
               'ml-2 text-base align-top fa-solid fa-caret-down duration-300',
-              open && '-rotate-180'
+              open && '-rotate-180',
             )}
           />
         </p>
         <div
           className={classNames(
             'space-y-2 duration-300 ease-out px-4 w-full',
-            open ? 'h-fit overflow-visible py-3' : 'h-0 overflow-hidden'
+            open ? 'h-fit overflow-visible py-3' : 'h-0 overflow-hidden',
           )}
         >
           <div className="space-y-3">
@@ -155,10 +155,10 @@ export const CustomConditionalBlock = observer(
             onClick={onOpenCustomDebuffModal}
           >
             <i className="text-xs fa-solid fa-plus" />
-            <p className="text-xs">Add New Custom Debuff</p>
+            <p className="text-xs">Add New Custom Enemy Modifier</p>
           </div>
         </div>
       </div>
     )
-  }
+  },
 )

@@ -236,7 +236,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       show: true,
       default: 60,
       min: 0,
-      max: 300,
+      max: nihilux ? (nihilux?.cons || -1 >= 2 ? 999 : 360) : 300,
     },
     {
       type: 'toggle',

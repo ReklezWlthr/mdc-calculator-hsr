@@ -1301,10 +1301,10 @@ export const PlanarSets: IArtifact[] = [
     id: '325',
     name: 'Punklorde Stage Zero',
     icon: '71054',
-    bonus: [{ stat: Stats.ELATION, value: 0.1 }],
+    bonus: [{ stat: Stats.ELATION, value: 0.08 }],
     bonusAdd: [],
     desc: [
-      `Increases the wearer's Elation by <span class="text-desc">10%</span>. When Elation reaches <span class="text-desc">40%/80%</span> for the first time in combat, increases the wearer's CRIT DMG by <span class="text-desc">20%/32%</span>.`,
+      `Increases the wearer's Elation by <span class="text-desc">8%</span>. When Elation reaches <span class="text-desc">40%/80%</span> for the first time in combat, increases the wearer's CRIT DMG by <span class="text-desc">20%/32%</span>.`,
     ],
     beta: false,
     set: [`Punklorde's Rainbow City`, `Punklorde's Data Deluge`],

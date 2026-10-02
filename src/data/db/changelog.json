@@ -1,6 +1,15 @@
 [
   {
     "version": "1.2-4",
+    "date": "Oct 2nd, 2026",
+    "desc": [
+      "Fixed: <span class=\"text-hsr-imaginary\">Silver Wolf LV.999</span>'s Innate Trace now correctly increase her <b class=\"text-violet-300\">Hidden MMR</b> overflow",
+      "Fixed: <span class=\"text-hsr-physical\">Evanescia</span>'s Innate Trace input now accepts numbers as total accumulated <b class=\"text-indigo-300\">Party Trick</b>",
+      "Added: Custom DMG Reduction for enemies"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Sep 29th, 2026",
     "desc": [
       "Content Version: <span class=\"text-desc\">v4.7 Beta 1</span>",
