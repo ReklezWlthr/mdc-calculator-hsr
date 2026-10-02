@@ -58,7 +58,18 @@ export const CharDetail = observer(() => {
       memo_talent: params['Memosprite Talent'] || 1,
       elation: params[TalentType.ELATION] || 1,
     },
-    teamStore.characters,
+    [
+      {
+        cId: '1511',
+        ascension: 0,
+        cons: 0,
+        equipments: null,
+        level: 0,
+        major_traces: null,
+        minor_traces: null,
+        talents: null,
+      },
+    ],
   )
   const talent = cond.talents
 
@@ -360,6 +371,7 @@ export const CharDetail = observer(() => {
         {_.map(
           _.omit(talent, 'a2', 'a4', 'a6', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6', nihilux ? '' : 'innate'),
           (item) => {
+            console.log(nihilux)
             const baseType =
               item?.trace === 'Assist Skill'
                 ? 'Talent'

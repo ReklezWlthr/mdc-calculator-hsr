@@ -296,7 +296,6 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         {
           name: 'Total Bounce DMG',
           value: [{ scaling: calcScaling(0.1, 0.01, elation, 'curved'), hits: 8, multiplier: Stats.ELATION }],
-          multiplier: form.emc_aha_elation ? (nihilux?.cons || -1 >= 2 ? 4 : 3) : 1,
           element: Element.LIGHTNING,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
@@ -305,7 +304,6 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         {
           name: 'DMG per Bounce',
           value: [{ scaling: calcScaling(0.1, 0.01, elation, 'curved'), multiplier: Stats.ELATION }],
-          multiplier: form.emc_aha_elation ? (nihilux?.cons || -1 >= 2 ? 4 : 3) : 1,
           element: Element.LIGHTNING,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
@@ -313,7 +311,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         {
           name: 'AoE',
           value: [{ scaling: calcScaling(0.3, 0.03, elation, 'curved'), multiplier: Stats.ELATION }],
-          multiplier: (form.emc_aha_elation ? (nihilux?.cons || -1 >= 2 ? 4 : 3) : 1) / globalMod.enemy_count,
+          multiplier: 1 / globalMod.enemy_count,
           element: Element.LIGHTNING,
           property: TalentProperty.ELATION,
           type: TalentType.ELATION,
@@ -363,6 +361,14 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
           name: `Eidolon 6`,
           source: 'Self',
           value: 1,
+        })
+      }
+
+      if (form.emc_aha_elation) {
+        base.ELATION_SKILL_MULT.push({
+          name: `Faces of Elation ★ Plot Armor`,
+          source: 'Self',
+          value: nihilux?.cons || -1 >= 2 ? 3 : 2,
         })
       }
 
