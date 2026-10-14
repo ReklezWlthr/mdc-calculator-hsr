@@ -146,7 +146,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
 
     {
-      type: 'toggle',
+      type: 'number',
       id: 'fx_c6',
       text: `Total HP Loss Tally`,
       ...talents.c6,
@@ -172,7 +172,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       debuffs: {
         type: DebuffTypes
         count: number
-      }[]
+      }[],
     ) => {
       const base = _.cloneDeep(x)
 
@@ -225,7 +225,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       base: StatsObject,
       form: Record<string, any>,
       aForm: Record<string, any>,
-      debuffs: { type: DebuffTypes; count: number }[]
+      debuffs: { type: DebuffTypes; count: number }[],
     ) => {
       if (form.knowledge) {
         base[Stats.CRIT_RATE].push({
@@ -259,7 +259,7 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       base: StatsObject,
       form: Record<string, any>,
       team: StatsObject[],
-      allForm: Record<string, any>[]
+      allForm: Record<string, any>[],
     ) => {
       if (form.knowledge)
         base.X_HP.push({

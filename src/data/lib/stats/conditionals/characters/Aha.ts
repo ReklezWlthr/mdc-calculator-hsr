@@ -84,7 +84,7 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     talent: {
       trace: `Talent`,
       title: `Work Wonders with THEM`,
-      content: `The Ultimate can be activated once <b class="text-desc">Wishpower</b> reaches <span class="text-desc">8</span> points. Aeon ★ Aha gains <span class="text-desc">1</span> point(s) of <b class="text-desc">Wishpower</b> after using Basic ATK, Skill, or Elation Skill. Once the team's <b class="text-orange-400">Punchline</b> reach <span class="text-desc">40</span> points for the first time, Aeon ★ Aha will immediately gain <span class="text-desc">1</span> point(s) of <b class="text-desc">Wishpower</b>, then increase all allies' CRIT DMG by {{0}}% for <span class="text-desc">3</span> turn(s). This can be triggered again after <b class="text-aha">Aha</b>'s turn ends.`,
+      content: `The Ultimate can be activated once <b class="text-desc">Wishpower</b> reaches <span class="text-desc">8</span> point(s). Aeon ★ Aha gains <span class="text-desc">1</span> point(s) of <b class="text-desc">Wishpower</b> after using Basic ATK, Skill, or Elation Skill. Once allies' <b class="text-orange-400">Punchline</b> reaches <span class="text-desc">40</span> point(s) for the first time, Aeon ★ Aha will immediately gain <span class="text-desc">1</span> point(s) of <b class="text-desc">Wishpower</b> and increase all allies' CRIT DMG by {{0}}%, lasting for <span class="text-desc">3</span> turn(s). This can be triggered again after <b class="text-aha">Aha</b>'s turn ends.`,
       value: [{ base: 12, growth: 1.2, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -102,7 +102,7 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     talent_2: {
       trace: `Additional Talent`,
       title: `The True Story of Aha`,
-      content: `When Aeon ★ Aha and teammates deal DMG, additionally deal <b class="text-red">Elation Debt</b> effect equal to <span class="text-desc">25%</span> of the DMG to the enemy target. During the enemy target's phase transition, they maintain the <b class="text-red">Elation Debt</b> value, with a maximum not exceeding <span class="text-desc">10%</span> of the target's Max HP.`,
+      content: `When Aeon ★ Aha and teammates deal DMG, additionally deal <b class="text-red">Elation Debt</b> effect equal to <span class="text-desc">25%</span> of DMG to the enemy target. During the enemy target's phase transition, they maintain the <b class="text-red">Elation Debt</b> value, with a maximum not exceeding <span class="text-desc">10%</span> of the target's Max HP.`,
       value: [{ base: 12, growth: 1.2, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -151,7 +151,7 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     c2: {
       trace: 'Eidolon 2',
       title: 'Between THEIR Eyes and Yours',
-      content: `Enhances <i class="text-red">Elation Path ascension</i> effects: Upgrading Elation characters' Innate Trace level by <span class="text-desc">1</span>.`,
+      content: `Enhances <i class="text-red">Path of Elation Ascension</i> effects: Upgrading Elation characters' Innate Trace level by <span class="text-desc">1</span>.`,
       image: 'asset/traces/SkillIcon_1511_Rank2.webp',
     },
     c3: {
@@ -165,7 +165,7 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     c4: {
       trace: 'Eidolon 4',
       title: `A Joke's Fate Boxed in Black`,
-      content: `Increases the multiplier of the <b class="text-true">True DMG</b> dealt by Elation Skills by <span class="text-desc">25%</span> of the original multiplier. When Aeon ★ Aha deals <b class="elation">Elation DMG</b>, an additional <span class="text-desc">100%</span> of the cumulative <b class="text-blue">Certified Banger</b> stacks possessed by teammates will be taken into the account.`,
+      content: `The multiplier of the <b class="text-true">True DMG</b> dealt by Elation Skills increases by <span class="text-desc">25%</span> of the original multiplier. When Aeon ★ Aha deals <b class="elation">Elation DMG</b>, an additional <span class="text-desc">100%</span> of the cumulative <b class="text-blue">Certified Banger</b> stacks possessed by teammates will be taken into account.`,
       image: 'asset/traces/SkillIcon_1511_Rank4.webp',
     },
     c5: {
@@ -179,7 +179,7 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     c6: {
       trace: 'Eidolon 6',
       title: 'For THEY Said: You Are Elation',
-      content: `Enemy targets always have the <b class="text-red">Elation Debt</b> effect that is at least equal to <span class="text-desc">20%</span> of the target's Max HP. The first time Aeon ★ Aha casts the Ultimate, <b class="text-aha">Aha</b> immediately gains <span class="text-desc">1</span> extra turn that adds a fixed <span class="text-desc">40</span> <b class="text-orange-400">Punchline</b> to the count. Each subsequent Ultimate cast advances the <b class="text-aha">Aha</b>'s action by <span class="text-desc">20%</span>.`,
+      content: `Enemy targets always have the <b class="text-red">Elation Debt</b> effect that is at least equal to <span class="text-desc">20%</span> of the target's Max HP. The first time Aeon ★ Aha casts the Ultimate, <b class="text-aha">Aha</b> immediately gains <span class="text-desc">1</span> extra turn that adds a fixed <span class="text-desc">40</span> <b class="text-orange-400">Punchline</b> to the count. Each subsequent Ultimate cast advances <b class="text-aha">Aha</b>'s action by <span class="text-desc">20%</span>.`,
       image: 'asset/traces/SkillIcon_1511_Rank6.webp',
     },
   }

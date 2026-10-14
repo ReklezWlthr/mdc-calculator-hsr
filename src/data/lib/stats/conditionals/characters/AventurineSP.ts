@@ -188,7 +188,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     talents.innate = {
       trace: `Innate Trace`,
       title: `Faces of Elation ★ Three-Card Monte`,
-      content: `When <i class="text-red">the Path of Elation ascends</i>, if Aeon ★ Aha is the only Elation Path teammate, the effect in the Trace <b>Revel in Raging Tides</b> that triggers when Aventurine • Waveflair is the only Elation Path character will also take effect, and this effect is enhanced: Increases the SPD of all allies by {{0}}%. After a teammate uses an attack, Aventurine • Waveflair additionally gains {{1}} <b class="text-green-300">Fervor</b> and {{1}} <b class="text-orange-600">Bliss</b>.`,
+      content: `When <i class="text-red">the Path of Elation ascends</i>, if Aeon ★ Aha is the only Elation teammate, the effect in the Trace <b>Revel in Raging Tides</b> that triggers when Aventurine • Waveflair is the only Elation character will also take effect, and this effect is enhanced: The SPD of all allies increases by {{0}}%. After a teammate uses an attack, Aventurine • Waveflair additionally gains {{1}} <b class="text-green-300">Fervor</b> and {{1}} <b class="text-orange-600">Bliss</b>.`,
       value: [
         { base: 15, growth: 10, style: 'linear' },
         { base: 1, growth: 1, style: 'linear' },
@@ -285,6 +285,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
           type: TalentType.BA,
           break: 10,
           sum: true,
+          hitSplit: [0.25, 0.25, 0.25, 0.25],
         },
       ]
       base.SKILL_SCALING = [

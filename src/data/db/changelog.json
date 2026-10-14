@@ -1,6 +1,13 @@
 [
   {
     "version": "1.2-4",
+    "date": "Oct 14th, 2026",
+    "desc": [
+      "Fixed: <span class=\"text-hsr-quantum\">Fu Xuan</span>'s E6 now correctly accepts number inputs instead of a toggle"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Oct 2nd, 2026",
     "desc": [
       "Fixed: <span class=\"text-hsr-imaginary\">Silver Wolf LV.999</span>'s Innate Trace now correctly increase her <b class=\"text-violet-300\">Hidden MMR</b> overflow",

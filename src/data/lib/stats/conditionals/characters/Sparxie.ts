@@ -192,7 +192,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talents.innate = {
       trace: `Innate Trace`,
       title: `Faces of Elation ★ Hat Trick`,
-      content: `When <i class="text-red">the Path of Elation ascends</i>, CRIT DMG increases by {{0}}%, and ally targets ignore {{1}}% of enemy targets' DEF when dealing DMG. For every <span class="text-desc">10</span> point(s) of <b class="text-indigo-300">Party Trick</b> held, triggering <b class="text-hsr-fire">Straight Fire</b> additionally provides <span class="text-desc">1</span> point(s) of <b class="text-orange-600">Bliss</b>, up to a max additional increase of {{2}} point(s).`,
+      content: `When <i class="text-red">the Path of Elation ascends</i>, CRIT DMG increases by {{0}}%, and ally targets ignore {{1}}% of the enemy target's DEF when dealing DMG. For every <span class="text-desc">10</span> point(s) of <b class="text-indigo-300">Party Trick</b> held, triggering <b class="text-hsr-fire">Straight Fire</b> additionally provides <span class="text-desc">1</span> point(s) of <b class="text-orange-600">Bliss</b>, up to a max additional increase of {{2}} point(s).`,
       value: [
         { base: 30, growth: 90, style: 'linear' },
         { base: 15, growth: 5, style: 'linear' },

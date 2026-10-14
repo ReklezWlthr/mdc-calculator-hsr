@@ -1655,7 +1655,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Conspirator',
-      detail: `For every Elation character on the team, increase the wearer's CRIT DMG by {{0}}%. When Aeon ★ Aha is on the field, the wearer's CRIT DMG increases by {{1}}%.`,
+      detail: `For every Elation character on the team, increase the wearer's CRIT DMG by {{0}}%. When Aeon ★ Aha is on the field, the wearer's CRIT DMG additionally increases by {{1}}%.`,
       properties: [
         { base: 6, growth: 1 },
         { base: 12, growth: 2 },

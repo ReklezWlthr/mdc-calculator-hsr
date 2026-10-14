@@ -97,7 +97,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       participantId: 104,
       trace: 'Elation Skill',
       title: `Dissolve Reason into Elation`,
-      content: `When there are <span class="text-desc">1</span>/<span class="text-desc">2</span>/<span class="text-desc">3</span>/<span class="text-desc">4</span> or more Elation characters in the team, then after all ally targets to use their next attack, enables them additionally deal <b class="elation">Elation DMG</b> of their corresponding Type to the attack target, equal to {{0}}/{{1}}/{{2}}/{{3}}% respectively.`,
+      content: `When there are <span class="text-desc">1</span>/<span class="text-desc">2</span>/<span class="text-desc">3</span>/(<span class="text-desc">4</span> or more) Elation characters in the team, then after all ally targets to use their next attack, enables them additionally deal <b class="elation">Elation DMG</b> of their corresponding Type to the attack target, equal to {{0}}/{{1}}/{{2}}/{{3}}% respectively.`,
       value: [
         { base: 5, growth: 0.5, style: 'curved' },
         { base: 7.5, growth: 0.75, style: 'curved' },
@@ -113,7 +113,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       trace: 'Ultimate',
       title: `Appraise Soul's Ground`,
       content: `Gains <span class="text-desc">20</span> point(s) of <b class="text-blue">Certified Banger</b>. Uses <b class="text-purple">Deep Learning</b> on one designated ally character other than this unit, making the target the <b class="text-sky-500">Aesthetic Archetype</b>.
-      <br />When there are <span class="text-desc">1</span>/<span class="text-desc">2</span>/<span class="text-desc">3</span> or more Elation characters on the team, advances the <b class="text-sky-500">Aesthetic Archetype</b>'s action by <span class="text-desc">10%</span>/<span class="text-desc">15%</span>/<span class="text-desc">30%</span>. When there are <span class="text-desc">4</span> or more Elation characters on the team, the <b class="text-sky-500">Aesthetic Archetype</b> gains <span class="text-desc">1</span> extra turn. At the start of this extra turn, the <b class="text-sky-500">Aesthetic Archetype</b> gains <span class="text-desc">30</span> point(s) of <b class="text-blue">Certified Banger</b> and <span class="text-desc">60</span> point(s) of <b class="text-orange-400">Punchline</b>, which are removed at the end of the extra turn.
+      <br />When there are <span class="text-desc">1</span>/<span class="text-desc">2</span>/(<span class="text-desc">3</span> or more) Elation characters on the team, advances the <b class="text-sky-500">Aesthetic Archetype</b>'s action by <span class="text-desc">10%</span>/<span class="text-desc">15%</span>/<span class="text-desc">30%</span> respectively. When there are <span class="text-desc">4</span> or more Elation characters on the team, the <b class="text-sky-500">Aesthetic Archetype</b> gains <span class="text-desc">1</span> extra turn. At the start of this extra turn, the <b class="text-sky-500">Aesthetic Archetype</b> gains <span class="text-desc">30</span> point(s) of <b class="text-blue">Certified Banger</b> and <span class="text-desc">60</span> point(s) of <b class="text-orange-400">Punchline</b>, which are removed at the end of the extra turn.
       <br />While in <b class="text-purple">Deep Learning</b>, Basic ATK <b>Brushstroke: Trace the Severed Stream</b> gets enhanced to <b>Brushstroke: Render the Great Wave</b>. If the <b class="text-sky-500">Aesthetic Archetype</b> is on the Path of Elation, it is instead enhanced to <b>Brushstroke: Imagenate the Starry Night</b>. After attacking, additionally deals {{0}}% <b class="text-hsr-ice">Ice</b> <b class="elation">Elation DMG</b>. This <b class="elation">Elation DMG</b> is calculated based on the <b class="text-sky-500">Aesthetic Archetype</b>'s stats. <b class="text-purple">Deep Learning</b> has <span class="text-desc">3</span> point(s) of <b>Charge</b>. After Pearl uses an Enhanced Basic ATK, <span class="text-desc">1</span> point of <b>Charge</b> is consumed. If no <b>Charge</b> remains after taking action, <b class="text-purple">Deep Learning</b> ends.`,
       value: [{ base: 30, growth: 3, style: 'curved' }],
       level: ult,
@@ -147,7 +147,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Sensory Latitude',
-      content: `While holding <b class="text-blue">Certified Banger</b>, all ally targets' Effect RES increases by <span class="text-desc">50%</span>. When an ally target's turn begins, Pearl gains <span class="text-desc">5</span> point(s) of <b class="text-blue">Certified Banger</b>, up to a max of <span class="text-desc">50</span> point(s) of <b class="text-blue">Certified Banger</b>. The obtainable amount of <b class="text-blue">Certified Banger</b> resets at the start of Pearl's turn. When using Enhanced Basic ATK or Skill, dispels <span class="text-desc">1</span> debuff(s) from all ally targets.`,
+      content: `While holding <b class="text-blue">Certified Banger</b>, increases all ally targets' Effect RES by <span class="text-desc">50%</span>. When an ally target's turn begins, Pearl gains <span class="text-desc">5</span> point(s) of <b class="text-blue">Certified Banger</b>, up to a max of <span class="text-desc">50</span> point(s) of <b class="text-blue">Certified Banger</b>. The obtainable amount of <b class="text-blue">Certified Banger</b> resets at the start of Pearl's turn. When using Enhanced Basic ATK or Skill, dispels <span class="text-desc">1</span> debuff(s) from all ally targets.`,
       image: 'asset/traces/SkillIcon_1503_SkillTree2.webp',
     },
     a6: {
@@ -159,7 +159,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     c1: {
       trace: 'Eidolon 1',
       title: 'Nestle That Pearl in Uninked Tides',
-      content: `When the number of Elation Path characters on the team equals <span class="text-desc">2</span>/<span class="text-desc">3</span>/<span class="text-desc">4</span> or more, increases Elation for all allies by <span class="text-desc">10%</span>/<span class="text-desc">20%</span>/<span class="text-desc">60%</span> respectively. If an ally target takes fatal damage, they will not get knocked down. Instead, immediately restores their HP by an amount equal to <span class="text-desc">50%</span> of their Max HP. This effect can trigger <span class="text-desc">2</span> time(s) per battle.`,
+      content: `When the number of Elation Path characters on the team equals <span class="text-desc">2</span>/<span class="text-desc">3</span>/(<span class="text-desc">4</span> or more), increases Elation for all allies by <span class="text-desc">10%</span>/<span class="text-desc">20%</span>/<span class="text-desc">60%</span> respectively. If an ally target takes fatal damage, they will not get knocked down. Instead, immediately restores their HP by an amount equal to <span class="text-desc">50%</span> of their Max HP. This effect can trigger <span class="text-desc">2</span> time(s) per battle.`,
       image: 'asset/traces/SkillIcon_1503_Rank1.webp',
     },
     c2: {
@@ -203,7 +203,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     talents.innate = {
       trace: `Innate Trace`,
       title: `Faces of Elation ★ Leaping Off the Page`,
-      content: `When <i class="text-red">the Path of Elation ascends</i>, Pearl's max <b class="text-indigo-300">Party Trick</b> limit increases to <span class="text-desc">75</span>. At the end of the extra turn provided by the Ultimate, {{0}}% of <b class="text-blue">Certified Banger</b> and {{0}}% of the <b class="text-orange-400">Punchline</b> increment effect gained at the start of the extra turn are retained.`,
+      content: `When <i class="text-red">the Path of Elation ascends</i>, Pearl's max <b class="text-indigo-300">Party Trick</b> limit increases to <span class="text-desc">75</span>. At the end of the extra turn provided by the Ultimate, {{0}}% of the <b class="text-blue">Certified Banger</b> and {{0}}% of the <b class="text-orange-400">Punchline</b> increment effect gained at the start of the extra turn are retained.`,
       value: [{ base: 10, growth: 10, style: 'linear' }],
       tag: AbilityTag.ENHANCE,
       level: nihilux?.cons || -1 >= 2 ? 2 : 1,
