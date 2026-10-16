@@ -168,10 +168,10 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
     talents.innate = {
       trace: `Innate Trace`,
       title: `Faces of Elation ★ Mind Reading`,
-      content: `When <i class="text-red">the Path of Elation ascends</i>, the DMG multiplier of the <b class="text-desc">Great Boon</b> effect increases by an amount equal to {{0}}% of the original DMG multiplier. For every <span class="text-desc">10</span> points of <b class="text-orange-600">Bliss</b> taken into account during <b class="text-aha">Aha Instant</b>, Yao Guang regenerates <span class="text-desc">1</span> Energy when it ends, up to a maximum of {{1}}.`,
+      content: `When <i class="text-red">the Path of Elation ascends</i>, the DMG multiplier of the <b class="text-desc">Great Boon</b> effect increases by an amount equal to {{0}}% of the original DMG multiplier. Yao Guang regenerates a fixed <span class="text-desc">{{1}}</span> Energy after using her Ultimate and gains <span class="text-desc">10</span> <b class="text-orange-400">Punchlines</b>.`,
       value: [
         { base: 20, growth: 20, style: 'linear' },
-        { base: 10, growth: 5, style: 'linear' },
+        { base: 12, growth: 18, style: 'linear' },
       ],
       tag: AbilityTag.ENHANCE,
       level: nihilux?.cons || -1 >= 2 ? 2 : 1,

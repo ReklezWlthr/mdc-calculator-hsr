@@ -71,7 +71,7 @@ export const WeaponConditionalBlock = observer(
               const { prob, ProbComponent } = chanceStringConstruct(
                 compare ? setupStore : calculatorStore,
                 stats,
-                calcRefinement(content.chance?.base, content.chance?.growth, r),
+                calcRefinement(content.chance?.base, content.chance?.growth || 0, r),
                 content.chance?.fixed,
                 content.debuffElement,
               )

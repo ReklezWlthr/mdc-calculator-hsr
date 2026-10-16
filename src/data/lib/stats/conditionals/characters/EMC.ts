@@ -168,7 +168,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     talents.innate = {
       trace: `Innate Trace`,
       title: `Faces of Elation ★ Plot Armor`,
-      content: `When <i class="text-red">the Path of Elation ascends</i>, the Ultimate's CRIT DMG boost effect additionally increases by {{0}}%, and takes effect on all allies. If the Ultimate's target is Aeon ★ Aha, additionally triggers this unit's Elation Skill once. This Elation Skill's DMG multiplier increases by {{1}}% of its original multiplier, and is calculated based on the highest value of <b class="text-indigo-300">Party Trick</b> held by an ally character.`,
+      content: `When <i class="text-red">the Path of Elation ascends</i>, the Ultimate's CRIT DMG boost effect additionally increases by {{0}}% and takes effect on all allies. Before the Ultimate triggers Aeon ★ Aha's Elation Skill, it additionally triggers the Trailblazer's Elation Skill. This Elation Skill's DMG multiplier increases by {{1}}% of the original multiplier, and is calculated based on the highest value of <b class="text-indigo-300">Party Trick</b> held by an ally character. Then, Aeon ★ Aha's Elation Skill is triggered, with its <b class="text-true">True DMG</b> changed to be calculated based on <span class="text-desc">20%</span> of DMG dealt by the aforementioned Trailblazer's Elation Skill, and is distributed equally among all enemies.`,
       value: [
         { base: 20, growth: 10, style: 'linear' },
         { base: 200, growth: 100, style: 'linear' },

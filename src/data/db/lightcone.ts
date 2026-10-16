@@ -2892,7 +2892,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Waveriding',
-      detail: `Increases the wearer's base Speed by {{0}}. When using a Skill on one other ally, gains {{1}} <b class="text-orange-400">Punchline</b>. This effect can trigger at most once every <span class="text-desc">2</span> turn(s). Then, causes all allies to ignore {{2}}% of the enemy target's DEF when dealing DMG during this combat. This effect cannot be stacked.`,
+      detail: `Increases the wearer's base Speed by {{0}}. When using a Skill on one other ally, gains {{1}} <b class="text-orange-400">Punchline</b>. This effect can trigger at most once every interval of <span class="text-desc">1</span> turn(s). Then, causes all allies to ignore {{2}}% of the enemy target's DEF when dealing DMG during this combat. This effect cannot be stacked.`,
       properties: [
         { base: 12, growth: 2 },
         { base: 10, growth: 2 },

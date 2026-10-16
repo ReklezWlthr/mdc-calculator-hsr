@@ -1,6 +1,15 @@
 [
   {
     "version": "1.2-4",
+    "date": "Sep 29th, 2026",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v4.7 Beta 3</span>",
+      "Updated Characters: <span class=\"text-hsr-quantum\">Aeon ★ Aha</span>",
+      "Updated Light Cone: <span class=\"text-desc\">Upon the First Echo of \"Aha\"</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Oct 14th, 2026",
     "desc": [
       "Fixed: <span class=\"text-hsr-quantum\">Fu Xuan</span>'s E6 now correctly accepts number inputs instead of a toggle"

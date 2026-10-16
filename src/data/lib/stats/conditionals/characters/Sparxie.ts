@@ -192,11 +192,11 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talents.innate = {
       trace: `Innate Trace`,
       title: `Faces of Elation ★ Hat Trick`,
-      content: `When <i class="text-red">the Path of Elation ascends</i>, CRIT DMG increases by {{0}}%, and ally targets ignore {{1}}% of the enemy target's DEF when dealing DMG. For every <span class="text-desc">10</span> point(s) of <b class="text-indigo-300">Party Trick</b> held, triggering <b class="text-hsr-fire">Straight Fire</b> additionally provides <span class="text-desc">1</span> point(s) of <b class="text-orange-600">Bliss</b>, up to a max additional increase of {{2}} point(s).`,
+      content: `When <i class="text-red">the Path of Elation ascends</i>, CRIT DMG increases bElation Skill DMG multiplier increases by {{0}}% of the original multiplier, and ally targets ignore {{1}}% of the enemy target's DEF when dealing DMG. For every <span class="text-desc">10</span> point(s) of <b class="text-indigo-300">Party Trick</b> held, triggering <b class="text-hsr-fire">Straight Fire</b> additionally provides <span class="text-desc">1</span> point(s) of <b class="text-orange-600">Bliss</b>, up to a max additional increase of {{2}} point(s).`,
       value: [
-        { base: 30, growth: 90, style: 'linear' },
+        { base: 50, growth: 70, style: 'linear' },
         { base: 15, growth: 5, style: 'linear' },
-        { base: 8, growth: 2, style: 'linear' },
+        { base: 8, growth: 4, style: 'linear' },
       ],
       tag: AbilityTag.ENHANCE,
       level: nihilux?.cons || -1 >= 2 ? 2 : 1,
@@ -391,10 +391,10 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       }
 
       if (form.sparxie_aha) {
-        base[Stats.CRIT_DMG].push({
+        base.ELATION_SKILL_MULT.push({
           name: `Faces of Elation ★ Hat Trick`,
           source: 'Self',
-          value: nihilux?.cons || -1 >= 2 ? 1.2 : 0.3,
+          value: nihilux?.cons || -1 >= 2 ? 1.2 : 0.5,
         })
       }
 

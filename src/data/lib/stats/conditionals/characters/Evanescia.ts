@@ -170,7 +170,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
   }
 
-  const totalPT = `For every <span class="text-desc">500</span> point(s) of <b class="text-indigo-300">Party Trick</b> accumulated, increases the DMG multiplier of the next Ultimate by {{2}}% of the original multiplier.`
+  const totalPT = `For every <span class="text-desc">480</span> point(s) of <b class="text-indigo-300">Party Trick</b> accumulated, increases the DMG multiplier of the next Ultimate by {{2}}% of the original multiplier.`
   const nihilux = _.find(team, (x) => x?.cId === '1511')
   if (nihilux) {
     talents.innate = {
@@ -180,7 +180,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       value: [
         { base: 60, growth: 180, style: 'linear' },
         { base: 10, growth: 14, style: 'linear' },
-        { base: 50, growth: 50, style: 'linear' },
+        { base: 75, growth: 75, style: 'linear' },
       ],
       tag: AbilityTag.ENHANCE,
       level: nihilux?.cons || -1 >= 2 ? 2 : 1,
@@ -277,11 +277,11 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       const bounce =
         +globalMod.enemy_count === 1 ? 9 : +globalMod.enemy_count === 2 ? 7 : +globalMod.enemy_count >= 3 ? 6 : 5
 
-      if (+form.aha_ult_mult >= 500) {
+      if (+form.aha_ult_mult >= 480) {
         base.ULT_MULT.push({
           name: `Faces of Elation ★ Pages to Petals`,
           source: 'Self',
-          value: _.floor(form.aha_ult_mult / 500) * (nihilux?.cons || -1 >= 2 ? 1 : 0.5),
+          value: _.floor(form.aha_ult_mult / 480) * (nihilux?.cons || -1 >= 2 ? 1.5 : 0.75),
         })
       }
 
