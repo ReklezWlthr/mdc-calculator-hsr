@@ -101,6 +101,7 @@ export const ImportExport = observer(() => {
     char?.major_traces,
     char?.talents,
     [],
+    false,
   )
   const equippedArtifacts = _.filter(importStore.artifacts, (item) => _.includes(char?.equipments?.artifacts, item.id))
   const raw = calculateOutOfCombat(_.cloneDeep(baseStatsObject), selected, importStore.characters, equippedArtifacts)
