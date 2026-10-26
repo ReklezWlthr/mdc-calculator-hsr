@@ -68,6 +68,7 @@ export const CharDetailModal = observer(
       params?.major_traces,
       params?.talents,
       [],
+      false,
     )
 
     const maxTalentLevel = findMaxTalentLevel(params?.ascension)
