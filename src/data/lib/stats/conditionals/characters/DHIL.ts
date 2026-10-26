@@ -399,7 +399,7 @@ const DHIL = (
           type: TalentType.TECH,
           break: 20,
           sum: true,
-          bonusSplit: righteous_heart(3),
+          bonusSplit: righteous_heart(1),
         },
       ]
 
@@ -411,6 +411,8 @@ const DHIL = (
           property: TalentProperty.FUA,
           type: TalentType.BA,
           sum: true,
+          cd: outroar_norm,
+          bonusSplit: righteous_heart(1),
         })
       }
       if (form.dhil_ex) {
