@@ -21,7 +21,7 @@ import { useParams } from '@src/core/hooks/useParams'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { toPercentage } from '@src/core/utils/data_format'
 import { CharDetailModal } from '@src/presentation/hsr/components/modals/char_detail_modal'
-import OldConditionalsObject, { buffedList } from '@src/data/lib/stats/conditionals/conditionals_base'
+import OldConditionalsObject, { buffedList, exList } from '@src/data/lib/stats/conditionals/conditionals_base'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
 
@@ -43,6 +43,7 @@ export const CharDetail = observer(() => {
   const data = findCharacter(selected)
   const charUpgrade = _.find(charStore.characters, ['cId', selected])
   const buffed = _.includes(buffedList, selected) && !(settingStore.settings.liveOnly && data.novaBeta)
+  const ex = _.includes(exList, selected) && !(settingStore.settings.liveOnly && data.exBeta)
   const cond = _.find(buffToggled || !buffed ? ConditionalsObject : OldConditionalsObject, [
     'id',
     charStore.selected,
@@ -70,8 +71,12 @@ export const CharDetail = observer(() => {
         talents: null,
       },
     ],
+    ex,
   )
   const talent = cond.talents
+
+  const eidolon = [talent.c1, talent.c2, talent.c3, talent.c4, talent.c5, talent.c6]
+  if (!settingStore.settings.liveOnly && talent.ex) eidolon.push(talent.ex)
 
   const [loading, setLoading] = useState(true)
 
@@ -340,24 +345,11 @@ export const CharDetail = observer(() => {
               <p className="text-center text-gray">Not Owned</p>
             )}
           </div>
-          {_.includes(buffedList, data?.id) && (
+          {buffed && (
             <div className="flex items-center justify-between px-3 py-2 text-white border-2 rounded-lg col-span-full bg-primary-dark border-primary-light">
               <div className="flex items-center gap-1.5">
                 <i className="text-indigo-400 fa-solid fa-meteor" />
                 <p className="text-sm font-bold">Novaflare</p>
-                <Tooltip
-                  title="Enhanced State - Novaflare"
-                  body={
-                    <p>
-                      Some characters are enhanced: their abilities, Traces, and Eidolon effects may change. You can
-                      switch between states here.
-                    </p>
-                  }
-                  style="w-[450px]"
-                  position="bottom"
-                >
-                  <i className="fa-regular fa-question-circle" />
-                </Tooltip>
               </div>
               <ToggleSwitch enabled={buffToggled} onClick={(v) => setBuffToggled(v)} />
             </div>
@@ -369,7 +361,7 @@ export const CharDetail = observer(() => {
       </p>
       <div className="grid gap-6">
         {_.map(
-          _.omit(talent, 'a2', 'a4', 'a6', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6', nihilux ? '' : 'innate'),
+          _.omit(talent, 'a2', 'a4', 'a6', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'ex', nihilux ? '' : 'innate'),
           (item) => {
             console.log(nihilux)
             const baseType =
@@ -487,7 +479,7 @@ export const CharDetail = observer(() => {
           <span className="text-desc">✦</span> Eidolons <span className="text-desc">✦</span>
         </p>
         <div className="space-y-5">
-          {_.map([talent.c1, talent.c2, talent.c3, talent.c4, talent.c5, talent.c6], (item, i) => (
+          {_.map(eidolon, (item, i) => (
             <div className="flex gap-x-3" key={item.trace}>
               {/* <div className="w-28 h-28 shrink-0">
                 <img

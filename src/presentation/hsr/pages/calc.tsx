@@ -29,7 +29,7 @@ import { BulletPoint } from '@src/presentation/components/collapsible'
 import { SubTotalRow } from '../components/tables/sub_total_row'
 import { StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { SummonStatBlock } from '../components/summon_stat_block'
-import { buffedList } from '@src/data/lib/stats/conditionals/conditionals_base'
+import { buffedList, exList } from '@src/data/lib/stats/conditionals/conditionals_base'
 import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
 import { BonusSuperBreakSubRows } from '../components/tables/bonus_super_break_sub_rows'
 import { GlobalConditionalBlock } from '../components/conditionals/global_block'
@@ -42,6 +42,9 @@ export const Calculator = observer(({}: {}) => {
   const charData = findCharacter(char.cId)
   const buffed = _.includes(buffedList, char.cId) && !(settingStore.settings.liveOnly && charData.novaBeta)
   const buffToggled = settingStore.settings.buffed[char.cId]
+
+  const exEidolon = _.includes(exList, char.cId) && !(settingStore.settings.liveOnly && charData.exBeta)
+  const exToggled = settingStore.settings.exEidolon[char.cId]
 
   const { main, mainComputed, contents, finalStats } = useCalculator({ teamOverride: team })
 
@@ -420,19 +423,6 @@ export const Calculator = observer(({}: {}) => {
                   <div className="flex items-center gap-1.5">
                     <i className="text-indigo-400 fa-solid fa-meteor" />
                     <p className="text-sm font-bold">Novaflare</p>
-                    <Tooltip
-                      title="Enhanced State - Novaflare"
-                      body={
-                        <p>
-                          Some characters are enhanced: their abilities, Traces, and Eidolon effects may change. You can
-                          switch between states here.
-                        </p>
-                      }
-                      style="max-w-[450px]"
-                      position="bottom"
-                    >
-                      <i className="fa-regular fa-question-circle" />
-                    </Tooltip>
                   </div>
                   <ToggleSwitch
                     enabled={buffToggled}
@@ -446,6 +436,20 @@ export const Calculator = observer(({}: {}) => {
                           charData.overwrite,
                         ),
                       )
+                    }}
+                  />
+                </div>
+              )}
+              {exEidolon && (
+                <div className="flex items-center justify-between w-2/3 px-3 py-2 text-white border-2 rounded-lg bg-primary-dark border-primary-light">
+                  <div className="flex items-center gap-1.5">
+                    <i className="text-indigo-400 fa-solid fa-fire" />
+                    <p className="text-sm font-bold">Affinitive Eidolon</p>
+                  </div>
+                  <ToggleSwitch
+                    enabled={exToggled}
+                    onClick={(v) => {
+                      settingStore.setSettingValue({ exEidolon: { ...settingStore.settings.exEidolon, [char.cId]: v } })
                     }}
                   />
                 </div>

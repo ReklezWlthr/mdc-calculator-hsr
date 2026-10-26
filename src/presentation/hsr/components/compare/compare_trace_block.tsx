@@ -21,7 +21,7 @@ import { AbilityBlock } from '@src/presentation/hsr/components/ability_block'
 import { BonusAbilityBlock } from '@src/presentation/hsr/components/bonus_ability_block'
 import { CharacterModal } from '../modals/character_modal'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
-import { buffedList } from '@src/data/lib/stats/conditionals/conditionals_base'
+import { buffedList, exList } from '@src/data/lib/stats/conditionals/conditionals_base'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import { ToggleSwitch } from '@src/presentation/components/inputs/toggle'
 
@@ -34,11 +34,18 @@ export const CompareTraceBlock = observer(({ char, team }: { char: ITeamChar; te
   const buffToggled =
     setupIndex === 0 ? setupStore.main.buffed?.[char?.cId] : setupStore.comparing[setupIndex - 1]?.buffed?.[char?.cId]
 
+  const exEidolon = _.includes(exList, char.cId) && !(settingStore.settings.liveOnly && charData.exBeta)
+  const exToggled =
+    setupIndex === 0
+      ? setupStore.main.exEidolon?.[char?.cId]
+      : setupStore.comparing[setupIndex - 1]?.exEidolon?.[char?.cId]
+
   const talent = _.find(ConditionalsObject, ['id', char?.cId])?.conditionals(
     char?.cons,
     char?.major_traces,
     char?.talents,
     setupIndex === 0 ? setupStore.main.char : setupStore.comparing[setupIndex - 1]?.char,
+    exToggled,
   )
 
   const levels = useMemo(
@@ -140,19 +147,6 @@ export const CompareTraceBlock = observer(({ char, team }: { char: ITeamChar; te
                 <div className="flex items-center gap-1.5">
                   <i className="text-indigo-400 fa-solid fa-meteor" />
                   <p className="text-sm font-bold">Novaflare</p>
-                  <Tooltip
-                    title="Enhanced State - Novaflare"
-                    body={
-                      <p>
-                        Some characters are enhanced: their abilities, Traces, and Eidolon effects may change. You can
-                        switch between states here. Only applied to this current compare session.
-                      </p>
-                    }
-                    style="w-[450px]"
-                    position="bottom"
-                  >
-                    <i className="fa-regular fa-question-circle" />
-                  </Tooltip>
                 </div>
                 <ToggleSwitch
                   enabled={buffToggled}
@@ -163,6 +157,21 @@ export const CompareTraceBlock = observer(({ char, team }: { char: ITeamChar; te
                       char?.minor_traces ? _.map(char?.minor_traces, (t) => t.toggled) : Array(10).fill(false),
                       charData.overwrite,
                     )
+                    setupStore.setComparing(char)
+                  }}
+                />
+              </div>
+            )}
+            {exEidolon && (
+              <div className="flex items-center justify-between px-3 py-2 text-white border-2 rounded-lg col-span-full bg-primary-dark border-primary-light">
+                <div className="flex items-center gap-1.5">
+                  <i className="text-indigo-400 fa-solid fa-fire" />
+                  <p className="text-sm font-bold">Affinitive Eidolon</p>
+                </div>
+                <ToggleSwitch
+                  enabled={exToggled}
+                  onClick={(v) => {
+                    setupStore.setExEidolon(setupIndex, char.cId, v)
                     setupStore.setComparing(char)
                   }}
                 />

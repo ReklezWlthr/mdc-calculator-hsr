@@ -203,7 +203,7 @@ const Pearl = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     talents.innate = {
       trace: `Innate Trace`,
       title: `Faces of Elation ★ Leaping Off the Page`,
-      content: `When <i class="text-red">the Path of Elation ascends</i>, Pearl's max <b class="text-indigo-300">Party Trick</b> limit increases to <span class="text-desc">75</span>. At the end of the extra turn provided by the Ultimate, {{0}}% of the <b class="text-blue">Certified Banger</b> and {{0}}% of the <b class="text-orange-400">Punchline</b> increment effect gained at the start of the extra turn are retained.`,
+      content: `When <i class="text-red">the Path of Elation ascends</i>, Pearl's max <b class="text-indigo-300">Party Trick</b> limit increases to <span class="text-desc">75</span>. At the end of the extra turn provided by the Ultimate, {{0}}% of the <b class="text-blue">Certified Banger</b> and {{0}}% of the <b class="text-orange-400">Punchline</b> gained at the start of the extra turn are retained.`,
       value: [{ base: 10, growth: 10, style: 'linear' }],
       tag: AbilityTag.ENHANCE,
       level: nihilux?.cons || -1 >= 2 ? 2 : 1,

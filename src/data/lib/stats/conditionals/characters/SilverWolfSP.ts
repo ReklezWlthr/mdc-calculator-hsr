@@ -206,7 +206,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
     talents.innate = {
       trace: `Innate Trace`,
       title: `Faces of Elation ★ Holographic Mirage`,
-      content: `When <i class="text-red">the Path of Elation ascends</i>, <b class="text-violet-300">Hidden MMR</b> can output up to {{0}} overflow when it reaches its max limit. Increases CRIT DMG by <span class="text-desc">40%</span>, and when gaining <b class="text-indigo-300">Party Trick</b> provides Silver Wolf LV.999 with {{1}}% of <b class="text-violet-300">Hidden MMR</b>.`,
+      content: `When <i class="text-red">the Path of Elation ascends</i>, <b class="text-violet-300">Hidden MMR</b> can output up to {{0}} overflow when it reaches its max limit. Increases CRIT DMG by <span class="text-desc">40%</span>, and when for every <span class="text-desc">1</span> point of <b class="text-indigo-300">Party Trick</b> gained, simultaneously grants <b class="text-violet-300">Hidden MMR</b> equal to {{1}}% of that amount.`,
       value: [
         { base: 360, growth: 639, style: 'linear' },
         { base: 20, growth: 20, style: 'linear' },

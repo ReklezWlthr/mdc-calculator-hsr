@@ -170,7 +170,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
   }
 
-  const totalPT = `For every <span class="text-desc">480</span> point(s) of <b class="text-indigo-300">Party Trick</b> accumulated, increases the DMG multiplier of the next Ultimate by {{2}}% of the original multiplier.`
+  const totalPT = `For every <span class="text-desc">480</span> point(s) of <b class="text-indigo-300">Party Trick</b> accumulated, increases the next Ultimate DMG multiplier and the <b class="elation">Elation DMG</b> multiplier dealt by the next Ultimate used via the Talent by {{2}}% of the original multiplier. This effect cannot stack.`
   const nihilux = _.find(team, (x) => x?.cId === '1511')
   if (nihilux) {
     talents.innate = {

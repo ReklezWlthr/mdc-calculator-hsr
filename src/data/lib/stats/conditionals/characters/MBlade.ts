@@ -92,7 +92,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
     },
     ult_alt: {
       energy: 5,
-      trace: 'Ultimate',
+      trace: 'Enhanced Ultimate',
       title: 'Tenax Per Ignem',
       content: `Deals <b class="text-hsr-fire">Fire DMG</b> equal to {{0}}% of Mortenax Blade's Max HP to all enemies.`,
       value: [{ base: 210, growth: 14, style: 'curved' }],

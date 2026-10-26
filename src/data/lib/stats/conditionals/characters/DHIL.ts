@@ -16,8 +16,15 @@ import { toPercentage } from '@src/core/utils/data_format'
 import { IContent, ITalent } from '@src/domain/conditional'
 import { DebuffTypes } from '@src/domain/constant'
 import { calcScaling } from '@src/core/utils/calculator'
+import { useStore } from '@src/data/providers/app_store_provider'
 
-const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
+const DHIL = (
+  c: number,
+  a: { a2: boolean; a4: boolean; a6: boolean },
+  t: ITalentLevel,
+  team: ITeamChar[],
+  exToggled: boolean,
+) => {
   const upgrade = {
     basic: c >= 3 ? 1 : 0,
     skill: c >= 3 ? 2 : 0,
@@ -162,6 +169,12 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       title: `Reign, Returned`,
       content: `After any other ally uses their Ultimate, the <b class="text-hsr-imaginary">Imaginary RES PEN</b> of Dan Heng • Imbibitor Lunae's next <b>Fulgurant Leap</b> attack increases by <span class="text-desc">20%</span>. This effect can stack up to <span class="text-desc">3</span> time(s).`,
     },
+    ex: {
+      trace: 'Affinitive Eidolon',
+      title: `Moonset Stills the Deep`,
+      content: `Increases the <b class="text-hsr-imaginary">Squama Sacrosancta</b> limit by <span class="text-desc">1</span>. For every <span class="text-desc">5</span> Skill Point(s) consumed by allies, Dan Heng • Imbibitor Lunae launches a <u>Follow-Up ATK</u>, increasing DMG dealt by this unit by <span class="text-desc">240%</span>, lasting for <span class="text-desc">3</span> turns. Then, deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to <span class="text-desc">500%</span> of Dan Heng • Imbibitor Lunae's ATK to all enemies, and this unit gains <span class="text-desc">1</span> <b class="text-hsr-imaginary">Squama Sacrosancta</b>. When this instance of <u>Follow-Up ATK</u> deals DMG, it is considered as dealing <b>Basic ATK</b> DMG.`,
+      image: `asset/traces/SkillIcon_1213_Affinitive.webp`,
+    },
   }
 
   const content: IContent[] = [
@@ -208,6 +221,15 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       default: 0,
       min: 0,
       max: 3,
+    },
+    {
+      type: 'toggle',
+      id: 'dhil_ex',
+      text: `Affinitive Eidolon Bonus DMG`,
+      ...talents.ex,
+      show: exToggled,
+      default: true,
+      duration: 3,
     },
   ]
 
@@ -380,6 +402,24 @@ const DHIL = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
           bonusSplit: righteous_heart(3),
         },
       ]
+
+      if (exToggled) {
+        base.TALENT_SCALING.push({
+          name: 'Affinitive Eidolon - AoE',
+          value: [{ scaling: 5, multiplier: Stats.ATK }],
+          element: Element.IMAGINARY,
+          property: TalentProperty.FUA,
+          type: TalentType.BA,
+          sum: true,
+        })
+      }
+      if (form.dhil_ex) {
+        base[Stats.ALL_DMG].push({
+          name: 'Affinitive Eidolon',
+          source: 'Self',
+          value: 2.4,
+        })
+      }
 
       if (form.dhil_sp) {
         base.BA_ALT = +form.dhil_sp

@@ -123,7 +123,7 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     technique: {
       trace: 'Technique',
       title: 'ABRACADABRA!',
-      content: `After using the Technique, creates a Special Dimension around this unit lasting <span class="text-desc">20</span> second(s). Enemies within the Special Dimension are inflicted with <b class="text-desc">Misjudgment</b>. Enemies inflicted with <b class="text-desc">Misjudgment</b> cannot detect ally targets. After entering combat, <b class="text-aha">Aha</b> immediately gains <span class="text-desc">1</span> extra turn that adds a fixed <span class="text-desc">20</span> <b class="text-orange-400">Punchline</b> to the count. Only <span class="text-desc">1</span> dimension effect created by allies can exist at the same time.`,
+      content: `After using the Technique, creates a Special Dimension around this unit lasting <span class="text-desc">20</span> second(s). Enemies within the Special Dimension are inflicted with <b class="text-desc">Misjudgment</b>. Enemies inflicted with <b class="text-desc">Misjudgment</b> cannot detect ally targets. After entering combat, <b class="text-aha">Aha</b> immediately gains <span class="text-desc">1</span> extra turn that takes a fixed <span class="text-desc">20</span> <b class="text-orange-400">Punchline</b> into account. Only <span class="text-desc">1</span> dimension effect created by allies can exist at the same time.`,
       tag: AbilityTag.ENHANCE,
       image: 'asset/traces/SkillIcon_1511_Maze.webp',
     },

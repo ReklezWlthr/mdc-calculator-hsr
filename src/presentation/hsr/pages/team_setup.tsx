@@ -16,7 +16,7 @@ import { CommonModal } from '@src/presentation/components/common_modal'
 import { CharacterSelect } from '../components/character_select'
 import { TalentIcon } from '../components/tables/scaling_wrapper'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
-import OldConditionalsObject, { buffedList } from '@src/data/lib/stats/conditionals/conditionals_base'
+import OldConditionalsObject, { buffedList, exList } from '@src/data/lib/stats/conditionals/conditionals_base'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { calculateFinal, calculateOutOfCombat } from '@src/core/utils/calculator'
 import { baseStatsObject } from '@src/data/lib/stats/baseConstant'
@@ -120,10 +120,13 @@ export const TeamSetup = observer(() => {
 
   const buffed = _.includes(buffedList, char.cId) && !(settingStore.settings.liveOnly && charData.novaBeta)
   const buffToggled = settingStore.settings.buffed[char.cId]
+  const exEidolon = _.includes(exList, char.cId) && !(settingStore.settings.liveOnly && charData.exBeta)
+  const exToggled = settingStore.settings.exEidolon[char.cId]
+
   const talent = _.find(buffToggled || !buffed ? ConditionalsObject : OldConditionalsObject, [
     'id',
     char.cId,
-  ])?.conditionals(char?.cons, char?.major_traces, char?.talents, teamStore.characters)
+  ])?.conditionals(char?.cons, char?.major_traces, char?.talents, teamStore.characters, exToggled)
 
   return (
     <div className="w-full customScrollbar">
@@ -172,18 +175,6 @@ export const TeamSetup = observer(() => {
                 <div className="flex items-center gap-1.5">
                   <i className="text-indigo-400 fa-solid fa-meteor" />
                   <p className="text-sm font-bold">Novaflare</p>
-                  <Tooltip
-                    title="Enhanced State - Novaflare"
-                    body={
-                      <p>
-                        Some characters are enhanced: their abilities, Traces, and Eidolon effects may change. You can
-                        switch between states here.
-                      </p>
-                    }
-                    style="max-w-[450px]"
-                  >
-                    <i className="fa-regular fa-question-circle" />
-                  </Tooltip>
                 </div>
                 <ToggleSwitch
                   enabled={buffToggled}
@@ -197,6 +188,20 @@ export const TeamSetup = observer(() => {
                         charData.overwrite,
                       ),
                     )
+                  }}
+                />
+              </div>
+            )}
+            {exEidolon && (
+              <div className="flex items-center justify-between px-3 py-2 text-white border-2 rounded-lg col-span-full bg-primary-dark border-primary-light">
+                <div className="flex items-center gap-1.5">
+                  <i className="text-indigo-400 fa-solid fa-fire" />
+                  <p className="text-sm font-bold">Affinitive Eidolon</p>
+                </div>
+                <ToggleSwitch
+                  enabled={exToggled}
+                  onClick={(v) => {
+                    settingStore.setSettingValue({ exEidolon: { ...settingStore.settings.exEidolon, [char.cId]: v } })
                   }}
                 />
               </div>

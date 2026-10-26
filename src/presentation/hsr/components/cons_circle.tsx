@@ -10,6 +10,8 @@ import { observer } from 'mobx-react-lite'
 import getConfig from 'next/config'
 import { SyntheticEvent } from 'react'
 import { TalentIcon } from './tables/scaling_wrapper'
+import { useStore } from '@src/data/providers/app_store_provider'
+import { exList } from '@src/data/lib/stats/conditionals/conditionals_base'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -62,6 +64,8 @@ export const ConsCircle = observer(
     cons: number
     stats?: StatsObject
   }) => {
+    const { settingStore } = useStore()
+
     const char = findCharacter(id)
 
     const consImage = {
@@ -70,6 +74,9 @@ export const ConsCircle = observer(
       U: 'Ultra',
       T: 'Passive',
     }
+
+    const exEidolon = _.includes(exList, id) && !(settingStore.settings.liveOnly && char.exBeta)
+    const exToggled = settingStore.settings.exEidolon[id]
 
     return (
       <div className="space-y-5">
@@ -113,7 +120,7 @@ export const ConsCircle = observer(
             <div
               className={classNames(
                 'absolute -translate-x-1/2 -translate-y-1/2 rounded-full w-[200px] h-[200px] ring top-1/2 left-1/2 bg-opacity-0 ring-opacity-50 pointer-events-none',
-                ElementIconColor[element]
+                ElementIconColor[element],
               )}
             />
             <img
@@ -158,7 +165,22 @@ export const ConsCircle = observer(
             </div>
           </div>
         </div>
+
+        {exEidolon && (
+          <div className="flex flex-col items-center justify-center">
+            <div className="rounded-full bg-primary-bg">
+              <TalentIcon
+                talent={talents?.ex}
+                icon={talents?.ex?.image}
+                element={element}
+                active={exToggled}
+                tooltipSize="w-[30vw]"
+                type={talents?.ex?.trace}
+              />
+            </div>
+          </div>
+        )}
       </div>
     )
-  }
+  },
 )

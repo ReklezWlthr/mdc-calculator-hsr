@@ -34,7 +34,7 @@ export const ComparePage = observer(() => {
           onConfirm()
           setupStore.setValue('comparing', Array(3))
         }}
-      />
+      />,
     )
   }, [])
 
@@ -45,7 +45,7 @@ export const ComparePage = observer(() => {
         title="Duplicate Main Setup"
         desc={`You are about to overwrite this current setup with a copy from Main. Do you wish to proceed?`}
         onConfirm={onConfirm}
-      />
+      />,
     )
   }, [])
 
@@ -60,7 +60,7 @@ export const ComparePage = observer(() => {
         title="Set As Main"
         desc={`By confirming, this setup will be swapped with the current Main setup, along with any changes made to it. Do you wish to proceed?`}
         onConfirm={onConfirm}
-      />
+      />,
     )
   }, [])
 
@@ -71,7 +71,7 @@ export const ComparePage = observer(() => {
         title="Remove Setup"
         desc={`Do you want to remove this setup? Any changes made will not be saved.`}
         onConfirm={onConfirm}
-      />
+      />,
     )
   }, [])
 
@@ -187,7 +187,15 @@ export const ComparePage = observer(() => {
                             acc[t.cId] = settingStore.settings.buffed[t.cId] || false
                             return acc
                           },
-                          {}
+                          {},
+                        ),
+                        exEidolon: _.reduce(
+                          team.char,
+                          (acc, t) => {
+                            acc[t.cId] = settingStore.settings.exEidolon[t.cId] || false
+                            return acc
+                          },
+                          {},
                         ),
                       })
                       setupStore.setValue('mainChar', team.char[0].cId)
@@ -291,7 +299,7 @@ export const ComparePage = observer(() => {
                       'flex gap-3 px-2 py-2 duration-200 rounded-lg bg-primary-dark h-[64px] w-[244px]',
                       {
                         'cursor-pointer hover:ring-2 hover:ring-primary-light hover:ring-inset': setupStore.mainChar,
-                      }
+                      },
                     )}
                     key={tI}
                     onClick={() => {
@@ -308,12 +316,20 @@ export const ComparePage = observer(() => {
                                   acc[t.cId] = settingStore.settings.buffed[t.cId] || false
                                   return acc
                                 },
-                                {}
+                                {},
+                              ),
+                              exEidolon: _.reduce(
+                                team.char,
+                                (acc, t) => {
+                                  acc[t.cId] = settingStore.settings.exEidolon[t.cId] || false
+                                  return acc
+                                },
+                                {},
                               ),
                             })
                             const name = findValidName(
                               _.map([setupStore.main, ...setupStore.comparing], 'name'),
-                              team.name
+                              team.name,
                             )
                             newCompare[tI].name = name
                             setupStore.setValue('comparing', newCompare)

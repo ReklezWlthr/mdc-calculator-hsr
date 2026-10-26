@@ -3,7 +3,7 @@ import _ from 'lodash'
 import { makeAutoObservable } from 'mobx'
 import { enableStaticRendering } from 'mobx-react-lite'
 import { StatsObject } from '../lib/stats/baseConstant'
-import { buffedList } from '../lib/stats/conditionals/conditionals_base'
+import { buffedList, exList } from '../lib/stats/conditionals/conditionals_base'
 
 enableStaticRendering(typeof window === 'undefined')
 
@@ -15,6 +15,7 @@ interface ISetting {
   formMode: 'default' | 'min' | 'max'
   liveOnly: boolean
   buffed: Record<string, boolean>
+  exEidolon: Record<string, boolean>
 }
 
 const defaultSetting: ISetting = {
@@ -30,7 +31,15 @@ const defaultSetting: ISetting = {
       acc[key] = true
       return acc
     },
-    {}
+    {},
+  ),
+  exEidolon: _.reduce(
+    exList,
+    (acc, key) => {
+      acc[key] = false
+      return acc
+    },
+    {},
   ),
 }
 

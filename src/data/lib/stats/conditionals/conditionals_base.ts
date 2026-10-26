@@ -25,4 +25,6 @@ const baseConditional = [
 
 export const buffedList = _.map(baseConditional, (item) => item.id)
 
+export const exList = ['1204', '1213', '1308']
+
 export default baseConditional

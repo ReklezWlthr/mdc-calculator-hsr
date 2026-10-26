@@ -34,7 +34,7 @@ import { getSetCount } from '../utils/data_format'
 import { AllRelicSets } from '@src/data/db/artifacts'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
 import { BaseStatsType, CallbackType } from '@src/domain/stats'
-import { buffedList } from '@src/data/lib/stats/conditionals/conditionals_base'
+import { buffedList, exList } from '@src/data/lib/stats/conditionals/conditionals_base'
 import OldConditionalsObject from '@src/data/lib/stats/conditionals/conditionals_base'
 
 interface CalculatorOptions {
@@ -59,6 +59,7 @@ interface CalculatorOptions {
   talentOverride?: ITeamChar
   weaknessOverride?: Element[]
   buffedOverride?: Record<string, boolean>
+  exOverride?: Record<string, boolean>
   globalOverride?: GlobalModifiers
   ahaOverride?: (value: number[]) => void
   initFormFunction?: (f: Record<string, any>[], exclude: string[]) => void
@@ -76,6 +77,7 @@ export const useCalculator = ({
   doNotSaveStats,
   initFormFunction,
   buffedOverride,
+  exOverride,
   globalOverride,
   ahaOverride,
 }: CalculatorOptions) => {
@@ -90,6 +92,7 @@ export const useCalculator = ({
   const custom = customOverride || calculatorStore.custom
   const customDebuff = customDebuffOverride || calculatorStore.customDebuff
   const buffer = buffedOverride || settingStore.settings.buffed
+  const exEidolon = exOverride || settingStore.settings.exEidolon
   const globalMod = globalOverride || calculatorStore.globalMod
   const ahaSetter = (value: number[]) => (ahaOverride ? ahaOverride(value) : calculatorStore.setValue('ahaSpd', value))
 
@@ -104,13 +107,14 @@ export const useCalculator = ({
         if (!item) return null
         const data = talentOverride?.cId === item?.cId ? talentOverride : item
         const buffed = _.includes(buffedList, item?.cId)
+        const exToggled = exEidolon[item?.cId]
 
         return _.find(buffer[item?.cId] || !buffed ? ConditionalsObject : OldConditionalsObject, [
           'id',
           item.cId,
-        ])?.conditionals(data.cons, data.major_traces, data.talents, team)
+        ])?.conditionals(data.cons, data.major_traces, data.talents, team, exToggled)
       }),
-    [team, buffer],
+    [team, buffer, exEidolon],
   )
   const main = conditionals[selected]
 

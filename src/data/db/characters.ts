@@ -509,6 +509,7 @@ export const Characters = [
     path: PathType.ERUDITION,
     element: Element.LIGHTNING,
     beta: false,
+    exBeta: true,
   },
   {
     id: '1205',
@@ -671,6 +672,7 @@ export const Characters = [
     path: PathType.DESTRUCTION,
     element: Element.IMAGINARY,
     beta: false,
+    exBeta: true,
   },
   {
     id: '1214',
@@ -995,6 +997,7 @@ export const Characters = [
     path: PathType.NIHILITY,
     element: Element.LIGHTNING,
     beta: false,
+    exBeta: true,
   },
   {
     id: '1309',

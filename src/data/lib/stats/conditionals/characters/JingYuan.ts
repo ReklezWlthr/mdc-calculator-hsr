@@ -16,8 +16,15 @@ import { toPercentage } from '@src/core/utils/data_format'
 import { IContent, ITalent } from '@src/domain/conditional'
 import { DebuffTypes } from '@src/domain/constant'
 import { calcScaling } from '@src/core/utils/calculator'
+import { useStore } from '@src/data/providers/app_store_provider'
 
-const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
+const JingYuan = (
+  c: number,
+  a: { a2: boolean; a4: boolean; a6: boolean },
+  t: ITalentLevel,
+  team: ITeamChar[],
+  exToggled: boolean,
+) => {
   const upgrade = {
     basic: c >= 3 ? 1 : 0,
     skill: c >= 5 ? 2 : 0,
@@ -124,6 +131,12 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       content: `Each hit performed by the <b class="text-hsr-lightning">Lightning-Lord</b> when it takes action will make the target enemy <b>Vulnerable</b>.
       <br />While <b>Vulnerable</b>, enemies receive <span class="text-desc">12%</span> more DMG until the end of the <b class="text-hsr-lightning">Lightning-Lord</b>'s current turn, stacking up to <span class="text-desc">3</span> time(s).`,
     },
+    ex: {
+      trace: 'Affinitive Eidolon',
+      title: `One Quiet Cup of Thunder`,
+      content: `The Max Hits Per Action for <b class="text-hsr-lightning">Lightning-Lord</b> increases by <span class="text-desc">20</span>. When <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action reach the limit, it immediately takes action. At the start of combat and after every <span class="text-desc">1</span> time(s) <b class="text-hsr-lightning">Lightning-Lord</b> takes action, <b class="text-hsr-lightning">Lightning-Lord</b> is enhanced, granting Jing Yuan a <span class="text-desc">240%</span> DMG Boost. When he uses his Skill/Ultimate, <b class="text-hsr-lightning">Lightning-Lord</b> Hits Per Action increases by an extra <span class="text-desc">6</span>/<span class="text-desc">12</span>, lasting for <span class="text-desc">4</span> turn(s).`,
+      image: `asset/traces/SkillIcon_1204_Affinitive.webp`,
+    },
   }
 
   const content: IContent[] = [
@@ -135,7 +148,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       show: true,
       default: 3,
       min: 3,
-      max: 10,
+      max: exToggled ? 30 : 10,
       unique: true,
     },
     {
@@ -155,6 +168,14 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       show: c >= 2,
       default: true,
       duration: 2,
+    },
+    {
+      type: 'toggle',
+      id: 'jingyuan_ex',
+      text: `Affinitive Eidolon Bonus DMG`,
+      ...talents.ex,
+      show: exToggled,
+      default: true,
     },
   ]
 
@@ -231,6 +252,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           cd: form.jingyuan_talent >= 6 && a.a2 ? 0.25 : 0,
           vul,
           summon: true,
+          bonus: form.jingyuan_ex ? 2.4 : 0,
         },
         {
           name: 'Bounce Adjacent Per Hit',
@@ -242,6 +264,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           cd: form.jingyuan_talent >= 6 && a.a2 ? 0.25 : 0,
           vul,
           summon: true,
+          bonus: form.jingyuan_ex ? 2.4 : 0,
         },
         {
           name: 'Total Single Target',
@@ -256,6 +279,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           vul,
           sum: true,
           summon: true,
+          bonus: form.jingyuan_ex ? 2.4 : 0,
         },
         {
           name: 'Total Adjacent',
@@ -273,6 +297,7 @@ const JingYuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
           cd: form.jingyuan_talent >= 6 && a.a2 ? 0.25 : 0,
           vul,
           summon: true,
+          bonus: form.jingyuan_ex ? 2.4 : 0,
         },
       ]
 

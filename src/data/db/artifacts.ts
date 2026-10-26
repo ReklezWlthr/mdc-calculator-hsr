@@ -1399,7 +1399,7 @@ export const PlanarSets: IArtifact[] = [
             item[Stats.BE].push({
               name: `Subspace ASC Center`,
               source: item.ID === x.ID ? 'Self' : x.NAME,
-              value: 0.15,
+              value: 0.18,
             })
           })
         }
@@ -1409,7 +1409,7 @@ export const PlanarSets: IArtifact[] = [
       return base
     },
     desc: [
-      `Increases the wearer's SPD by <span class="text-desc">6%</span>. When the wearer's SPD reaches <span class="text-desc">145</span> or higher, increases all allies' Break Effect by <span class="text-desc">15%</span> after entering combat. This effect cannot stack.`,
+      `Increases the wearer's SPD by <span class="text-desc">6%</span>. When the wearer's SPD reaches <span class="text-desc">145</span> or higher, increases all allies' Break Effect by <span class="text-desc">18%</span> after entering combat. This effect cannot stack.`,
     ],
     beta: true,
     set: [`ASC Dark Fissure`, `ASC Negative Film`],

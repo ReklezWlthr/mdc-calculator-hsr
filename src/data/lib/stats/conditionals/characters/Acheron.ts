@@ -16,8 +16,15 @@ import { toPercentage } from '@src/core/utils/data_format'
 import { IContent, ITalent } from '@src/domain/conditional'
 import { DebuffTypes } from '@src/domain/constant'
 import { calcScaling } from '@src/core/utils/calculator'
+import { useStore } from '@src/data/providers/app_store_provider'
 
-const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
+const Acheron = (
+  c: number,
+  a: { a2: boolean; a4: boolean; a6: boolean },
+  t: ITalentLevel,
+  team: ITeamChar[],
+  exToggled: boolean,
+) => {
   const upgrade = {
     basic: c >= 3 ? 1 : 0,
     skill: c >= 5 ? 2 : 0,
@@ -81,7 +88,7 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
     talent: {
       trace: 'Talent',
       title: 'Atop Rainleaf Hangs Oneness',
-      content: `When <b class="text-hsr-lightning">Slashed Dream</b> reaches <span class="text-desc">9</span> point(s), the Ultimate can be activated. During the Ultimate, reduces enemies' Toughness regardless of Weakness Types and reduces all enemies' All-Type RES by {{0}}%, lasting until the end of the Ultimate.
+      content: `When <b class="text-hsr-lightning">Slashed Dream</b> reaches <span class="text-desc">9</span> point(s), the Ultimate can be activated. During the Ultimate, reduces enemies' Toughness regardless of Weakness Types and reduces all enemies' <b>All-Type RES</b> by {{0}}%, lasting until the end of the Ultimate.
       <br />When any unit inflicts debuffs on an enemy target while using their ability, Acheron gains <span class="text-desc">1</span> point of <b class="text-hsr-lightning">Slashed Dream</b> and inflicts <span class="text-desc">1</span> stack of <b class="text-hsr-fire">Crimson Knot</b> on the target. If debuffs are inflicted on multiple targets, then the <span class="text-desc">1</span> stack of <b class="text-hsr-fire">Crimson Knot</b> will be inflicted on the enemy target with the most <b class="text-hsr-fire">Crimson Knot</b> stacks. This effect can only trigger once per every ability usage.
       <br />After an enemy target exits the field or gets defeated by any unit while Acheron is on the field, their <b class="text-hsr-fire">Crimson Knot</b> stacks will be transferred to the enemy target with the most <b class="text-hsr-fire">Crimson Knot</b> stacks on the whole field.`,
       value: [{ base: 10, growth: 1, style: 'curved' }],
@@ -141,6 +148,13 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       trace: 'Eidolon 6',
       title: 'Apocalypse, the Emancipator',
       content: `Increases the <b>All-Type RES PEN</b> for the Ultimate DMG dealt by Acheron by <span class="text-desc">20%</span>. The DMG dealt by Basic ATK and Skill will also be considered as Ultimate DMG and can reduce enemy toughness regardless of Weakness Types. When Weakness is broken, triggers the <b class="text-hsr-lightning">Lightning</b> Weakness Break effect.`,
+    },
+    ex: {
+      trace: 'Affinitive Eidolon',
+      title: 'A Glance Through Rime to Bone',
+      content: `When a teammate attacks an enemy target with <b class="text-hsr-fire">Crimson Knot</b>, Acheron deals <span class="text-desc">1</span> instance of <b class="text-hsr-lightning">Lightning Additional DMG</b> equal to <span class="text-desc">80%</span> of this unit's ATK to the target and launches a <u>Follow-Up ATK</u>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">300%</span> of Acheron's ATK to all enemies, then gains <span class="text-desc">1</span> point(s) of <b class="text-hsr-lightning">Slashed Dream</b> and inflicts <span class="text-desc">1</span> stack(s) of <b class="text-hsr-fire">Crimson Knot</b> on the enemy target with the most <b class="text-hsr-fire">Crimson Knot</b>.
+      <br />This effect can trigger up to <span class="text-desc">1</span> time(s) per turn. The trigger count resets at the start of Acheron's turn.`,
+      image: `asset/traces/SkillIcon_1308_Affinitive.webp`,
     },
   }
 
@@ -344,6 +358,27 @@ const Acheron = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         break: 20,
         sum: true,
       })
+
+      if (exToggled) {
+        base.TALENT_SCALING.push(
+          {
+            name: 'Affinitive Eidolon - Additional DMG',
+            value: [{ scaling: 0.8, multiplier: Stats.ATK }],
+            element: Element.LIGHTNING,
+            property: TalentProperty.ADD,
+            type: TalentType.NONE,
+            sum: false,
+          },
+          {
+            name: 'Affinitive Eidolon - AoE',
+            value: [{ scaling: 3, multiplier: Stats.ATK }],
+            element: Element.LIGHTNING,
+            property: TalentProperty.FUA,
+            type: TalentType.NONE,
+            sum: true,
+          },
+        )
+      }
 
       base.ULT_RES_PEN.push({
         name: `Talent`,
