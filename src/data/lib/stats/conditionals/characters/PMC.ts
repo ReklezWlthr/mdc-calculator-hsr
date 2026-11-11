@@ -158,6 +158,17 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     },
     {
       type: 'toggle',
+      id: 'pmc_taunt',
+      text: `PMC Skill Taunt`,
+      ...talents.skill,
+      show: true,
+      default: true,
+      duration: 1,
+      debuff: true,
+      chance: { base: 1, fixed: false },
+    },
+    {
+      type: 'toggle',
       id: 'pmc_a2',
       text: `A2 Team DMG Reduction`,
       ...talents.a2,
@@ -185,7 +196,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     },
   ]
 
-  const teammateContent: IContent[] = [findContentById(content, 'pmc_a2')]
+  const teammateContent: IContent[] = [findContentById(content, 'pmc_a2'), findContentById(content, 'pmc_taunt')]
 
   const allyContent: IContent[] = []
 
@@ -203,7 +214,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -277,6 +288,9 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         },
       ]
 
+      if (form.pmc_taunt) {
+        addDebuff(debuffs, DebuffTypes.OTHER)
+      }
       if (form.pmc_enhance) base.BA_ALT = true
       if (form.pmc_a2)
         base.DMG_REDUCTION.push({
@@ -315,7 +329,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.pmc_a2)
         base.DMG_REDUCTION.push({
@@ -336,7 +350,7 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },
