@@ -172,7 +172,7 @@ const DHIL = (
     ex: {
       trace: 'Affinitive Eidolon',
       title: `Moonset Stills the Deep`,
-      content: `Increases the <b class="text-hsr-imaginary">Squama Sacrosancta</b> limit by <span class="text-desc">1</span>. For every <span class="text-desc">5</span> Skill Point(s) consumed by allies, Dan Heng • Imbibitor Lunae launches a <u>Follow-Up ATK</u>, increasing DMG dealt by this unit by <span class="text-desc">240%</span>, lasting for <span class="text-desc">3</span> turns. Then, deals <b class="text-hsr-imaginary">Imaginary DMG</b> equal to <span class="text-desc">500%</span> of Dan Heng • Imbibitor Lunae's ATK to all enemies, and this unit gains <span class="text-desc">1</span> <b class="text-hsr-imaginary">Squama Sacrosancta</b>. When this instance of <u>Follow-Up ATK</u> deals DMG, it is considered as dealing <b>Basic ATK</b> DMG.`,
+      content: `Increases the <b class="text-hsr-imaginary">Squama Sacrosancta</b> limit by <span class="text-desc">1</span>. For every <span class="text-desc">5</span> Skill Point(s) consumed by allies, Dan Heng • Imbibitor Lunae launches a <u>Follow-Up ATK</u>, increasing own DMG dealt by <span class="text-desc">240%</span>, lasting for <span class="text-desc">3</span> turns. Then, he uses a <span class="text-desc">6</span>-hit attack, dealing <b class="text-hsr-imaginary">Imaginary DMG</b> equal to <span class="text-desc">500%</span> of Dan Heng • Imbibitor Lunae's ATK to all enemies, and this unit gains <span class="text-desc">1</span> <b class="text-hsr-imaginary">Squama Sacrosancta</b>. When this instance of <u>Follow-Up ATK</u> deals DMG, it is considered as dealing <b>Basic ATK</b> DMG.`,
       image: `asset/traces/SkillIcon_1213_Affinitive.webp`,
     },
   }
@@ -412,7 +412,8 @@ const DHIL = (
           type: TalentType.BA,
           sum: true,
           cd: outroar_norm,
-          bonusSplit: righteous_heart(1),
+          bonusSplit: righteous_heart(6),
+          hitSplit: [100 / 6, 100 / 6, 100 / 6, 100 / 6, 100 / 6, 100 / 6],
         })
       }
       if (form.dhil_ex) {

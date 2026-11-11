@@ -1652,7 +1652,7 @@ export const LightCones = [
     baseAtk: 21.6,
     baseDef: 18,
     type: PathType.ELATION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Conspirator',
       detail: `For every Elation character on the team, increase the wearer's CRIT DMG by {{0}}%. When Aeon ★ Aha is on the field, the wearer's CRIT DMG additionally increases by {{1}}%.`,
@@ -2889,7 +2889,7 @@ export const LightCones = [
     baseAtk: 26.4,
     baseDef: 24,
     type: PathType.ELATION,
-    beta: true,
+    beta: false,
     desc: {
       name: 'Waveriding',
       detail: `Increases the wearer's base Speed by {{0}}. When using a Skill on one other ally, gains {{1}} <b class="text-orange-400">Punchline</b>. This effect can trigger at most once every interval of <span class="text-desc">1</span> turn(s). Then, causes all allies to ignore {{2}}% of the enemy target's DEF when dealing DMG during this combat. This effect cannot be stacked.`,

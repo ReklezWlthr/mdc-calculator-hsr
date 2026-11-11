@@ -1383,7 +1383,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's SPD by <span class="text-desc">6%</span>. When the wearer's Elation reaches <span class="text-desc">40%</span> or higher, the wearer's action advances by <span class="text-desc">40%</span> immediately when entering combat.`,
     ],
-    beta: true,
+    beta: false,
     set: [`Moment of Joy's Eternal Stage`, `Moment of Joy's Magic Prop`],
   },
   {
@@ -1411,7 +1411,7 @@ export const PlanarSets: IArtifact[] = [
     desc: [
       `Increases the wearer's SPD by <span class="text-desc">6%</span>. When the wearer's SPD reaches <span class="text-desc">145</span> or higher, increases all allies' Break Effect by <span class="text-desc">18%</span> after entering combat. This effect cannot stack.`,
     ],
-    beta: true,
+    beta: false,
     set: [`ASC Dark Fissure`, `ASC Negative Film`],
   },
 ]

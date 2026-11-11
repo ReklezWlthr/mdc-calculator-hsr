@@ -51,7 +51,7 @@ const JingYuan = (
       energy: 30,
       trace: 'Skill',
       title: `Rifting Zenith`,
-      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Jing Yuan's ATK to all enemies and increases <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action by <span class="text-desc">2</span> for the next turn.`,
+      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Jing Yuan's ATK to all enemies and increases <b class="text-amber-400">Lightning-Lord</b>'s Hits Per Action by <span class="text-desc">2</span> for the next turn.`,
       value: [{ base: 50, growth: 5, style: 'curved' }],
       level: skill,
       tag: AbilityTag.AOE,
@@ -61,7 +61,7 @@ const JingYuan = (
       energy: 5,
       trace: 'Ultimate',
       title: 'Lightbringer',
-      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Jing Yuan's ATK to all enemies and increases <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action by <span class="text-desc">3</span> for the next turn.`,
+      content: `Deals <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Jing Yuan's ATK to all enemies and increases <b class="text-amber-400">Lightning-Lord</b>'s Hits Per Action by <span class="text-desc">3</span> for the next turn.`,
       value: [{ base: 20, growth: 3, style: 'curved' }],
       level: ult,
       tag: AbilityTag.AOE,
@@ -69,10 +69,10 @@ const JingYuan = (
     talent: {
       trace: 'Talent',
       title: `Prana Extirpated`,
-      content: `Summons <b class="text-hsr-lightning">Lightning-Lord</b> at the start of the battle. <b class="text-hsr-lightning">Lightning-Lord</b> has <span class="text-desc">60</span> base SPD and <span class="text-desc">3</span> base Hits Per Action. When the <b class="text-hsr-lightning">Lightning-Lord</b> takes action, its hits are considered as <u>follow-up attacks</u>, with each hit dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Jing Yuan's ATK to a random single enemy, and enemies adjacent to it also receive <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">25%</span> of the DMG dealt to the target enemy.
-      <br />The <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action can reach a max of <span class="text-desc">10</span>. Every time <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action increases by <span class="text-desc">1</span>, its SPD increases by <span class="text-desc">10</span>. After the <b class="text-hsr-lightning">Lightning-Lord</b>'s action ends, its SPD and Hits Per Action return to their base values.
-      <br />When Jing Yuan is knocked down, the <b class="text-hsr-lightning">Lightning-Lord</b> will disappear.
-      <br />When Jing Yuan is affected by Crowd Control debuff, the <b class="text-hsr-lightning">Lightning-Lord</b> is unable to take action.`,
+      content: `Summons <b class="text-amber-400">Lightning-Lord</b> at the start of the battle. <b class="text-amber-400">Lightning-Lord</b> has <span class="text-desc">60</span> base SPD and <span class="text-desc">3</span> base Hits Per Action. When the <b class="text-amber-400">Lightning-Lord</b> takes action, its hits are considered as <u>follow-up attacks</u>, with each hit dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to {{0}}% of Jing Yuan's ATK to a random single enemy, and enemies adjacent to it also receive <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">25%</span> of the DMG dealt to the target enemy.
+      <br />The <b class="text-amber-400">Lightning-Lord</b>'s Hits Per Action can reach a max of <span class="text-desc">10</span>. Every time <b class="text-amber-400">Lightning-Lord</b>'s Hits Per Action increases by <span class="text-desc">1</span>, its SPD increases by <span class="text-desc">10</span>. After the <b class="text-amber-400">Lightning-Lord</b>'s action ends, its SPD and Hits Per Action return to their base values.
+      <br />When Jing Yuan is knocked down, the <b class="text-amber-400">Lightning-Lord</b> will disappear.
+      <br />When Jing Yuan is affected by Crowd Control debuff, the <b class="text-amber-400">Lightning-Lord</b> is unable to take action.`,
       value: [{ base: 30, growth: 3, style: 'curved' }],
       level: talent,
       tag: AbilityTag.BOUNCE,
@@ -80,13 +80,13 @@ const JingYuan = (
     technique: {
       trace: 'Technique',
       title: 'Spirit Invocation',
-      content: `After the Technique is used, the <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action in the first turn increases by <span class="text-desc">3</span> at the start of the next battle.`,
+      content: `After the Technique is used, the <b class="text-amber-400">Lightning-Lord</b>'s Hits Per Action in the first turn increases by <span class="text-desc">3</span> at the start of the next battle.`,
       tag: AbilityTag.ENHANCE,
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Battalia Crush`,
-      content: `If the <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action is greater or equal to <span class="text-desc">6</span> in the next turn, its CRIT DMG increases by <span class="text-desc">25%</span> for the next turn.`,
+      content: `If the <b class="text-amber-400">Lightning-Lord</b>'s Hits Per Action is greater or equal to <span class="text-desc">6</span> in the next turn, its CRIT DMG increases by <span class="text-desc">25%</span> for the next turn.`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
@@ -101,12 +101,12 @@ const JingYuan = (
     c1: {
       trace: 'Eidolon 1',
       title: `Slash, Seas Split`,
-      content: `When <b class="text-hsr-lightning">Lightning-Lord</b> attacks, the DMG multiplier on enemies adjacent to the target enemy increases by an extra amount equal to <span class="text-desc">25%</span> of the DMG multiplier against the target enemy.`,
+      content: `When <b class="text-amber-400">Lightning-Lord</b> attacks, the DMG multiplier on enemies adjacent to the target enemy increases by an extra amount equal to <span class="text-desc">25%</span> of the DMG multiplier against the target enemy.`,
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Swing, Skies Squashed`,
-      content: `After <b class="text-hsr-lightning">Lightning-Lord</b> takes action, DMG caused by Jing Yuan's Basic ATK, Skill, and Ultimate increases by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
+      content: `After <b class="text-amber-400">Lightning-Lord</b> takes action, DMG caused by Jing Yuan's Basic ATK, Skill, and Ultimate increases by <span class="text-desc">20%</span> for <span class="text-desc">2</span> turn(s).`,
     },
     c3: {
       trace: 'Eidolon 3',
@@ -117,7 +117,7 @@ const JingYuan = (
     c4: {
       trace: 'Eidolon 4',
       title: `Spin, Stars Sieged`,
-      content: `For each hit performed by the <b class="text-hsr-lightning">Lightning-Lord</b> when it takes action, Jing Yuan regenerates <span class="text-desc">2</span> Energy.`,
+      content: `For each hit performed by the <b class="text-amber-400">Lightning-Lord</b> when it takes action, Jing Yuan regenerates <span class="text-desc">2</span> Energy.`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -128,13 +128,13 @@ const JingYuan = (
     c6: {
       trace: 'Eidolon 6',
       title: `Sweep, Souls Slain`,
-      content: `Each hit performed by the <b class="text-hsr-lightning">Lightning-Lord</b> when it takes action will make the target enemy <b>Vulnerable</b>.
-      <br />While <b>Vulnerable</b>, enemies receive <span class="text-desc">12%</span> more DMG until the end of the <b class="text-hsr-lightning">Lightning-Lord</b>'s current turn, stacking up to <span class="text-desc">3</span> time(s).`,
+      content: `Each hit performed by the <b class="text-amber-400">Lightning-Lord</b> when it takes action will make the target enemy <b>Vulnerable</b>.
+      <br />While <b>Vulnerable</b>, enemies receive <span class="text-desc">12%</span> more DMG until the end of the <b class="text-amber-400">Lightning-Lord</b>'s current turn, stacking up to <span class="text-desc">3</span> time(s).`,
     },
     ex: {
       trace: 'Affinitive Eidolon',
       title: `One Quiet Cup of Thunder`,
-      content: `The Max Hits Per Action for <b class="text-hsr-lightning">Lightning-Lord</b> increases by <span class="text-desc">20</span>. When <b class="text-hsr-lightning">Lightning-Lord</b>'s Hits Per Action reach the limit, it immediately takes action. At the start of combat and after every <span class="text-desc">1</span> time(s) <b class="text-hsr-lightning">Lightning-Lord</b> takes action, <b class="text-hsr-lightning">Lightning-Lord</b> is enhanced, granting Jing Yuan a <span class="text-desc">240%</span> DMG Boost. When he uses his Skill/Ultimate, <b class="text-hsr-lightning">Lightning-Lord</b> Hits Per Action increases by an extra <span class="text-desc">6</span>/<span class="text-desc">12</span>, lasting for <span class="text-desc">4</span> turn(s).`,
+      content: `The Max Hits Per Action for <b class="text-amber-400">Lightning-Lord</b> increases by <span class="text-desc">20</span>. When <b class="text-amber-400">Lightning-Lord</b>'s Hits Per Action reach its upper limit, it immediately takes action. At the start of combat and after every <span class="text-desc">1</span> time(s) <b class="text-amber-400">Lightning-Lord</b> takes action, <b class="text-amber-400">Lightning-Lord</b> gets enhanced, and Jing Yuan's DMG dealt increases by <span class="text-desc">240%</span>. When using Skill/Ultimate, additionally increases <b class="text-amber-400">Lightning-Lord</b> Hits Per Action by an extra <span class="text-desc">6</span>/<span class="text-desc">12</span> respectively, lasting for <span class="text-desc">4</span> turn(s).`,
       image: `asset/traces/SkillIcon_1204_Affinitive.webp`,
     },
   }

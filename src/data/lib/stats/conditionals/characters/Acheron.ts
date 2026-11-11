@@ -152,8 +152,8 @@ const Acheron = (
     ex: {
       trace: 'Affinitive Eidolon',
       title: 'A Glance Through Rime to Bone',
-      content: `When a teammate attacks an enemy target with <b class="text-hsr-fire">Crimson Knot</b>, Acheron deals <span class="text-desc">1</span> instance of <b class="text-hsr-lightning">Lightning Additional DMG</b> equal to <span class="text-desc">80%</span> of this unit's ATK to the target and launches a <u>Follow-Up ATK</u>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">300%</span> of Acheron's ATK to all enemies, then gains <span class="text-desc">1</span> point(s) of <b class="text-hsr-lightning">Slashed Dream</b> and inflicts <span class="text-desc">1</span> stack(s) of <b class="text-hsr-fire">Crimson Knot</b> on the enemy target with the most <b class="text-hsr-fire">Crimson Knot</b>.
-      <br />This effect can trigger up to <span class="text-desc">1</span> time(s) per turn. The trigger count resets at the start of Acheron's turn.`,
+      content: `After a teammate attacks an enemy target with <b class="text-hsr-fire">Crimson Knot</b>, Acheron launches a <u>Follow-Up ATK</u>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">300%</span> of Acheron's ATK to all enemies. Then, deals <span class="text-desc">6</span> instances of DMG, with each dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">80%</span> of Acheron's ATK to one random enemy. Gains <span class="text-desc">1</span> point(s) of <b class="text-hsr-lightning">Slashed Dream</b> and inflicts <span class="text-desc">1</span> stack(s) of <b class="text-hsr-fire">Crimson Knot</b> on the enemy target with the most <b class="text-hsr-fire">Crimson Knot</b>. When this instance of <u>Follow-Up ATK</u> deals DMG, it is considered as dealing Ultimate DMG.
+      <br />This effect can trigger up to <span class="text-desc">1</span> time(s) per turn. The trigger count resets at the start of Acheron's turn. The Trace <b>The Abyss</b> will also take effect on this instance of <u>Follow-Up ATK</u>.`,
       image: `asset/traces/SkillIcon_1308_Affinitive.webp`,
     },
   }
@@ -362,19 +362,33 @@ const Acheron = (
       if (exToggled) {
         base.TALENT_SCALING.push(
           {
-            name: 'Affinitive Eidolon - Additional DMG',
-            value: [{ scaling: 0.8, multiplier: Stats.ATK }],
-            element: Element.LIGHTNING,
-            property: TalentProperty.ADD,
-            type: TalentType.NONE,
-            sum: false,
-          },
-          {
             name: 'Affinitive Eidolon - AoE',
             value: [{ scaling: 3, multiplier: Stats.ATK }],
             element: Element.LIGHTNING,
             property: TalentProperty.FUA,
-            type: TalentType.NONE,
+            type: TalentType.ULT,
+            multiplier,
+            sum: true,
+          },
+          {
+            name: 'Affinitive Eidolon - Bounce',
+            value: [{ scaling: 0.8, multiplier: Stats.ATK }],
+            element: Element.LIGHTNING,
+            property: TalentProperty.FUA,
+            type: TalentType.ULT,
+            multiplier,
+            sum: false,
+          },
+          {
+            name: 'Affinitive Eidolon - Total Single Target',
+            value: [
+              { scaling: 3, multiplier: Stats.ATK },
+              { scaling: 0.8, hits: 6, multiplier: Stats.ATK },
+            ],
+            element: Element.LIGHTNING,
+            property: TalentProperty.FUA,
+            type: TalentType.ULT,
+            multiplier,
             sum: true,
           },
         )

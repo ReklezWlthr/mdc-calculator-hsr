@@ -509,7 +509,7 @@ export const Characters = [
     path: PathType.ERUDITION,
     element: Element.LIGHTNING,
     beta: false,
-    exBeta: true,
+    exBeta: false,
   },
   {
     id: '1205',
@@ -672,7 +672,7 @@ export const Characters = [
     path: PathType.DESTRUCTION,
     element: Element.IMAGINARY,
     beta: false,
-    exBeta: true,
+    exBeta: false,
   },
   {
     id: '1214',
@@ -997,7 +997,7 @@ export const Characters = [
     path: PathType.NIHILITY,
     element: Element.LIGHTNING,
     beta: false,
-    exBeta: true,
+    exBeta: false,
   },
   {
     id: '1309',
@@ -1631,7 +1631,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.ELATION,
     element: Element.QUANTUM,
-    beta: true,
+    beta: false,
   },
 
   // Odd = Male, Even = Female
