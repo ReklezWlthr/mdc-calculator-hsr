@@ -1645,7 +1645,7 @@ export const Characters = [
       energy: 240,
     },
     trace: [Stats.CRIT_RATE, Stats.SPD, Stats.ICE_DMG],
-    rec: [Stats.CRIT_DMG, Stats.CRIT_RATE, Stats.SPD],
+    rec: [Stats.CRIT_DMG, Stats.CRIT_RATE, Stats.SPD, Stats.P_ATK],
     rarity: 5,
     path: PathType.DESTRUCTION,
     element: Element.ICE,
