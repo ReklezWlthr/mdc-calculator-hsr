@@ -4,6 +4,7 @@ import { baseStatsObject, StatsObject } from '../../baseConstant'
 import {
   AbilityTag,
   Element,
+  GlobalModifiers,
   ITalentLevel,
   ITeamChar,
   PathType,
@@ -16,6 +17,7 @@ import { toPercentage } from '@src/core/utils/data_format'
 import { IContent, ITalent } from '@src/domain/conditional'
 import { DebuffTypes } from '@src/domain/constant'
 import { calcScaling } from '@src/core/utils/calculator'
+import { CallbackType } from '@src/domain/stats'
 
 const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
@@ -198,7 +200,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -329,7 +331,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },
@@ -343,7 +345,9 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
+      globalCallback: CallbackType[],
+      globalMod: GlobalModifiers,
     ) => {
       if (_.includes(weakness, Element.ICE) && a.a2)
         base.TALENT_SCALING.push({
@@ -354,7 +358,7 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           type: TalentType.NONE,
           sum: true,
         })
-      if (countDebuff(debuffs, DebuffTypes.FROZEN) && c >= 1)
+      if (globalMod.frozen && c >= 1)
         base.TALENT_SCALING.push({
           name: 'E1 Additional DMG',
           value: [{ scaling: 0.6, multiplier: Stats.ATK }],

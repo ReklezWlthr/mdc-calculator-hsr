@@ -361,6 +361,7 @@ const Ellen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
           source: 'Self',
           value: calcScaling(0.25, 0.025, skill, 'curved'),
         })
+        addDebuff(debuffs, DebuffTypes.OTHER)
         base.ULT_SCALING.push({
           name: 'Bite Mark Added DMG',
           value: [{ scaling: calcScaling(1.6, 0.16, ult, 'curved'), multiplier: Stats.ATK }],

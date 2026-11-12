@@ -15,12 +15,14 @@ export interface GlobalModifiers {
   punchline: number
   enemy_count: number
   broken: boolean
+  frozen: boolean
 }
 
 export const DefaultGlobalMod: GlobalModifiers = {
   punchline: 20,
   enemy_count: 3,
   broken: false,
+  frozen: false,
 }
 
 export const DefaultBuild = {

@@ -259,6 +259,8 @@ export const useCalculator = ({
     const globalCallback: CallbackType[] = []
     const weakness = _.cloneDeep(weaknessOverride || calculatorStore.weakness)
     const debuffs = _.map(DebuffTypes, (v) => ({ type: v, count: 0 }))
+    if (globalMod.frozen) addDebuff(debuffs, DebuffTypes.FROZEN)
+
     const preCompute = _.map(conditionals, (base, index) => {
       let x =
         base?.preCompute(baseStats[index], forms[index], debuffs, weakness, globalMod.broken, globalMod) ||

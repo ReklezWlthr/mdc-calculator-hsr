@@ -178,6 +178,18 @@ export const GlobalContents: (team: ITeamChar[]) => IContent[] = (team) =>
         unique: true,
       },
       {
+        type: 'toggle',
+        id: 'frozen',
+        text: `Frozen`,
+        trace: 'Mechanic - Frozen',
+        content: `This toggle is mainly used as a trigger condition for certain abilities of some characters, like Misha, Herta or Yanqing.
+        <br />By toggling this modifier on, the enemy will also be considered suffering an extra debuff count.`,
+        title: 'Frozen',
+        show: true,
+        default: true,
+        debuff: true,
+      },
+      {
         type: 'number',
         id: 'enemy_count',
         text: `Enemies On-Field`,

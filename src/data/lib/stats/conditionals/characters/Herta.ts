@@ -1,12 +1,22 @@
 import { addDebuff, findCharacter, findContentById } from '@src/core/utils/finder'
 import _, { chain } from 'lodash'
 import { baseStatsObject, StatsObject } from '../../baseConstant'
-import { AbilityTag, Element, ITalentLevel, ITeamChar, Stats, TalentProperty, TalentType } from '@src/domain/constant'
+import {
+  AbilityTag,
+  Element,
+  GlobalModifiers,
+  ITalentLevel,
+  ITeamChar,
+  Stats,
+  TalentProperty,
+  TalentType,
+} from '@src/domain/constant'
 
 import { toPercentage } from '@src/core/utils/data_format'
 import { IContent, ITalent } from '@src/domain/conditional'
 import { DebuffTypes } from '@src/domain/constant'
 import { calcScaling } from '@src/core/utils/calculator'
+import { CallbackType } from '@src/domain/stats'
 
 const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalentLevel, team: ITeamChar[]) => {
   const upgrade = {
@@ -179,7 +189,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -282,7 +292,7 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },
@@ -296,10 +306,11 @@ const Herta = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
+      globalCallback: CallbackType[],
+      globalMod: GlobalModifiers,
     ) => {
-      const frozen = _.find(debuffs, (item) => item.type === DebuffTypes.FROZEN)?.count >= 1
-      if (frozen && a.a6)
+      if (globalMod.frozen && a.a6)
         base.ULT_DMG.push({
           name: `Ascension 6 Passive`,
           source: 'Self',
