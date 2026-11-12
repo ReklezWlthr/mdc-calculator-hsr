@@ -349,24 +349,29 @@ const Yanqing = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       globalCallback: CallbackType[],
       globalMod: GlobalModifiers,
     ) => {
-      if (_.includes(weakness, Element.ICE) && a.a2)
-        base.TALENT_SCALING.push({
-          name: 'A2 Additional DMG',
-          value: [{ scaling: 0.3, multiplier: Stats.ATK }],
-          element: Element.ICE,
-          property: TalentProperty.ADD,
-          type: TalentType.NONE,
-          sum: true,
-        })
-      if (globalMod.frozen && c >= 1)
-        base.TALENT_SCALING.push({
-          name: 'E1 Additional DMG',
-          value: [{ scaling: 0.6, multiplier: Stats.ATK }],
-          element: Element.ICE,
-          property: TalentProperty.ADD,
-          type: TalentType.NONE,
-          sum: true,
-        })
+      _.forEach([base.BASIC_SCALING, base.SKILL_SCALING, base.ULT_SCALING, base.TALENT_SCALING], (tt) => {
+        if (_.includes(weakness, Element.ICE) && a.a2) {
+          tt.push({
+            name: 'A2 Additional DMG',
+            value: [{ scaling: 0.3, multiplier: Stats.ATK }],
+            element: Element.ICE,
+            property: TalentProperty.ADD,
+            type: TalentType.NONE,
+            sum: true,
+          })
+        }
+        if (globalMod.frozen && c >= 1) {
+          tt.push({
+            name: 'E1 Additional DMG',
+            value: [{ scaling: 0.6, multiplier: Stats.ATK }],
+            element: Element.ICE,
+            property: TalentProperty.ADD,
+            type: TalentType.NONE,
+            sum: true,
+          })
+        }
+      })
+
       return base
     },
   }
