@@ -158,6 +158,15 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     },
     {
       type: 'toggle',
+      id: 'pmc_skill',
+      text: `Skill DMG Reduction`,
+      ...talents.skill,
+      show: true,
+      default: true,
+      duration: 1,
+    },
+    {
+      type: 'toggle',
       id: 'pmc_taunt',
       text: `PMC Skill Taunt`,
       ...talents.skill,
@@ -292,12 +301,20 @@ const PMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
         addDebuff(debuffs, DebuffTypes.OTHER)
       }
       if (form.pmc_enhance) base.BA_ALT = true
-      if (form.pmc_a2)
+      if (form.pmc_a2) {
         base.DMG_REDUCTION.push({
           name: 'Ascension 2 Passive',
           source: 'Self',
           value: 0.15,
         })
+      }
+      if (form.pmc_skill) {
+        base.DMG_REDUCTION.push({
+          name: 'Skill',
+          source: 'Self',
+          value: calcScaling(0.4, 0.01, skill, 'curved'),
+        })
+      }
 
       if (a.a4 && form.pmc_enhance)
         base.BASIC_SCALING.push({
