@@ -1950,6 +1950,38 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       return base
     },
   },
+  {
+    id: '23066',
+    scaling: (base, r) => {
+      base[Stats.CRIT_DMG].push({
+        name: 'Passive',
+        source: `No Shifts on Rainy Days`,
+        value: calcRefinement(0.24, 0.4, r),
+      })
+      base[Stats.ERR].push({
+        name: 'Passive',
+        source: `No Shifts on Rainy Days`,
+        value: calcRefinement(0.12, 0.02, r),
+      })
+      return base
+    },
+  },
+  {
+    id: '23067',
+    scaling: (base, r) => {
+      base[Stats.P_ATK].push({
+        name: 'Passive',
+        source: `Shine Bright Like Her`,
+        value: calcRefinement(0.24, 0.6, r),
+      })
+      base[Stats.ERR].push({
+        name: 'Passive',
+        source: `Shine Bright Like Her`,
+        value: calcRefinement(0.12, 0.01, r),
+      })
+      return base
+    },
+  },
 ]
 
 export default LightConeBonus

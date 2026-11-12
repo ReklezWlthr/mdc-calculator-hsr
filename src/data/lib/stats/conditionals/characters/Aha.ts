@@ -50,7 +50,7 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     skill: {
       trace: 'Skill',
       title: `This Emanator Was Certified by Aha™`,
-      content: `Causes one designated ally character (except this unit) to gain the <b class="text-violet-400">Emanator of Elation</b> state, then immediately launches a <u>Follow-up ATK</u>, dealing {{0}}% <b class="text-hsr-quantum">Quantum</b> <b class="elation">Elation DMG</b> to all enemies. The <b class="text-violet-400">Emanator of Elation</b> state lasts for the entire battle until switching to the next target. The target with the <b class="text-violet-400">Emanator of Elation</b> state has their Elation stat increased by {{1}}% and, at the start of their turn, causes Aeon ★ Aha to gain <span class="text-desc">1</span> point(s) of <b class="text-desc">Wishpower</b>.`,
+      content: `Enables one designated ally character (excluding this unit) to gain the <b class="text-violet-400">Emanator of Elation</b> state, then immediately launches <u>Follow-up ATK</u>, dealing {{0}}% <b class="text-hsr-quantum">Quantum</b> <b class="elation">Elation DMG</b> to all enemies. The <b class="text-violet-400">Emanator of Elation</b> state lasts for the entire battle until it switches to the next target. The target with the <b class="text-violet-400">Emanator of Elation</b> state has their Elation stat increased by {{1}}% and, at the start of their turn, enables Aeon ★ Aha to gain <span class="text-desc">1</span> point(s) of <b class="text-desc">Wishpower</b>.`,
       value: [
         { base: 25, growth: 2.5, style: 'curved' },
         { base: 10, growth: 1, style: 'curved' },
@@ -63,7 +63,7 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     summon_skill: {
       trace: 'Elation Skill',
       title: `Yes Aha At Full Moon`,
-      content: `Ignores Participant ID and is always used at the end of the <b class="text-aha">Aha Instant</b>. Deals {{0}}% <b class="text-hsr-quantum">Quantum</b> <b class="elation">Elation DMG</b> to all enemies, then deals <b class="text-true">True DMG</b> equal to <span class="text-desc">20%</span> of the total non-<b class="text-true">True DMG</b> dealt by ally targets this <b class="text-aha">Aha Instant</b>, equally distributed among all enemies.`,
+      content: `Always gets used at the end of <b class="text-aha">Aha Instant</b> regardless of Participant ID. Deals {{0}}% <b class="text-hsr-quantum">Quantum</b> <b class="elation">Elation DMG</b> to all enemies, and deals <b class="text-true">True DMG</b> based on <span class="text-desc">20%</span> of the total non-<b class="text-true">True DMG</b> dealt by ally targets during this <b class="text-aha">Aha Instant</b>, distributed evenly among all enemies.`,
       value: [{ base: 30, growth: 3, style: 'curved' }],
       level: elation,
       tag: AbilityTag.AOE,
@@ -72,7 +72,7 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     ult: {
       trace: 'Ultimate',
       title: `Aha! Let There Be Laughter`,
-      content: `Causes <b class="text-aha">Aha</b>'s action to advance by <span class="text-desc">20%</span>. Aeon ★ Aha gains the <b class="text-rose-400">Faces of Elation</b> state, lasting for <span class="text-desc">3</span> turn(s). At the start of each Aeon ★ Aha's turn, duration decreases by <span class="text-desc">1</span>. Deals {{0}}% <b class="text-hsr-quantum">Quantum</b> <b class="elation">Elation DMG</b> to all enemies, then deals <span class="text-desc">5</span> instance(s) of DMG. Each instance deals {{1}}% <b class="text-hsr-quantum">Quantum</b> <b class="elation">Elation DMG</b> to one random enemy.`,
+      content: `<b class="text-aha">Aha</b>'s action advances by <span class="text-desc">20%</span>. Aeon ★ Aha gains the <b class="text-rose-400">Faces of Elation</b> state, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> at the start of Aeon ★ Aha's every turn. Deals {{0}}% <b class="text-hsr-quantum">Quantum</b> <b class="elation">Elation DMG</b> to all enemies. Then, deals <span class="text-desc">5</span> instance(s) of DMG, with each instance dealing {{1}}% <b class="text-hsr-quantum">Quantum</b> <b class="elation">Elation DMG</b> to one random enemy.`,
       value: [
         { base: 120, growth: 8, style: 'curved' },
         { base: 36, growth: 2.4, style: 'curved' },
@@ -102,7 +102,7 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     talent_2: {
       trace: `Additional Talent`,
       title: `The True Story of Aha`,
-      content: `When Aeon ★ Aha and teammates deal DMG, additionally deal <b class="text-red">Elation Debt</b> effect equal to <span class="text-desc">25%</span> of DMG to the enemy target. During the enemy target's phase transition, they maintain the <b class="text-red">Elation Debt</b> value, with a maximum not exceeding <span class="text-desc">10%</span> of the target's Max HP.`,
+      content: `When Aeon ★ Aha or a teammate deals DMG, additionally applies the <b class="text-red">Elation Debt</b> effect onto the enemy target, equal to <span class="text-desc">25%</span> of their HP loss. <b class="text-red">Elation Debt</b> persists through the enemy target's phase transition, capped at <span class="text-desc">10%</span> of the target's Max HP.`,
       value: [{ base: 12, growth: 1.2, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
@@ -111,7 +111,7 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     innate: {
       trace: `Innate Trace`,
       title: `Faces of Elation ★ Ex Nihilo`,
-      content: `While possessing the <b class="text-rose-400">Faces of Elation</b> state, Aeon ★ Aha causes allies' <i class="text-red">Path of Elation to ascend</i>, enhancing <b class="text-orange-400">Punchline</b> and the <b class="text-blue">Certified Banger</b> state into <b class="text-orange-600">Bliss</b> and the <b class="text-indigo-300">Party Trick</b> state. <b class="text-orange-600">Bliss</b> recovers <span class="text-desc">10%</span> of the consumed <b class="text-orange-400">Punchline</b> at the end of the <b class="text-aha">Aha Instant</b> turn. During <b class="text-rose-400">Faces of Elation</b>, Aeon ★ Aha's CRIT Rate increases by {{0}}%, and the DMG dealt by Aeon ★ Aha ignores {{1}}% of the enemy target's DEF.`,
+      content: `While holding the <b class="text-rose-400">Faces of Elation</b> state, Aeon ★ Aha enables allies' <i class="text-red">Path of Elation to ascend</i>, and enhances <b class="text-orange-400">Punchline</b> and <b class="text-blue">Certified Banger</b> into <b class="text-orange-600">Bliss</b> and <b class="text-indigo-300">Party Trick</b>, respectively. <b class="text-orange-600">Bliss</b> recovers <span class="text-desc">10%</span> of its consumed amount when <b class="text-aha">Aha Instant</b> ends. During <b class="text-rose-400">Faces of Elation</b>, Aeon ★ Aha's CRIT Rate increases by {{0}}%, and the DMG dealt ignores {{1}}% of the enemy target's DEF.`,
       value: [
         { base: 12, growth: 8, style: 'linear' },
         { base: 30, growth: 30, style: 'linear' },
@@ -123,38 +123,40 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     technique: {
       trace: 'Technique',
       title: 'ABRACADABRA!',
-      content: `After using the Technique, creates a Special Dimension around this unit lasting <span class="text-desc">20</span> second(s). Enemies within the Special Dimension are inflicted with <b class="text-desc">Misjudgment</b>. Enemies inflicted with <b class="text-desc">Misjudgment</b> cannot detect ally targets. After entering combat, <b class="text-aha">Aha</b> immediately gains <span class="text-desc">1</span> extra turn that takes a fixed <span class="text-desc">20</span> <b class="text-orange-400">Punchline</b> into account. Only <span class="text-desc">1</span> dimension effect created by allies can exist at the same time.`,
+      content: `After using Technique, creates a Special Dimension around this unit, lasting for <span class="text-desc">20</span> second(s). Enemies within this Special Dimension get inflicted with <b class="text-desc">Optical Illusion</b>. Once inflicted with <b class="text-desc">Optical Illusion</b>, they cannot detect ally targets. After entering combat, <b class="text-aha">Aha</b> immediately gains <span class="text-desc">1</span> extra turn where a fixed amount of <span class="text-desc">20</span> <b class="text-orange-400">Punchline</b> is taken into account. This turn does not consume <b class="text-orange-400">Punchline</b>. Only <span class="text-desc">1</span> dimension effect created by allies can exist at the same time.`,
       tag: AbilityTag.ENHANCE,
       image: 'asset/traces/SkillIcon_1511_Maze.webp',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'A Prank on Aeons',
-      content: `Skill's <u>Follow-Up ATK</u> additionally deals <span class="text-desc">20%</span> <b class="elation">Elation DMG</b> of the corresponding Type to the target with <b class="text-violet-400">Emanator of Elation</b> state and recovers <span class="text-desc">1</span> Skill Point(s). The <b class="elation">Elation DMG</b> additionally dealt in this instance does not count as <span class="text-desc">1</span> instance of attack.`,
+      content: `Skill's <u>Follow-Up ATK</u> additionally deals <span class="text-desc">20%</span> <b class="elation">Elation DMG</b> of the same Type as the target who holds the <b class="text-violet-400">Emanator of Elation</b> state, and recovers <span class="text-desc">1</span> Skill Point(s). This additionally dealt <b class="elation">Elation DMG</b> is not considered as an instance of attack.`,
       image: 'asset/traces/SkillIcon_1511_SkillTree1.webp',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'A Carnival in Whimsy',
-      content: `When receiving healing or a Shield provided by a teammate, gains <span class="text-desc">1</span> point(s) of <b class="text-desc">Wishpower</b>. This can be triggered up to <span class="text-desc">1</span> times. The trigger count resets after using Ultimate.`,
+      content: `When receiving healing or a Shield provided by a teammate, gains <span class="text-desc">1</span> <b class="text-desc">Wishpower</b>. This can be triggered up to <span class="text-desc">1</span> time(s). The trigger count resets after the Ultimate is used.`,
       image: 'asset/traces/SkillIcon_1511_SkillTree2.webp',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `A Box of Everything`,
-      content: `When Aeon ★ Aha's SPD reaches <span class="text-desc">125</span>/<span class="text-desc">150</span> or higher, Elation increases by <span class="text-desc">120%</span>/<span class="text-desc">150%</span>. When entering combat, advances THEIR own action by <span class="text-desc">30%</span>.`,
+      content: `When Aeon ★ Aha's SPD reaches <span class="text-desc">125</span>/<span class="text-desc">150</span> or higher, the Elation stat increases by <span class="text-desc">120%</span>/<span class="text-desc">150%</span>, respectively. When combat starts, own action advances by <span class="text-desc">30%</span>.`,
       image: 'asset/traces/SkillIcon_1511_SkillTree3.webp',
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Who Giggled at the Primordial Hush?',
-      content: `When entering combat, immediately gains <span class="text-desc">5</span> point(s) of <b class="text-desc">Wishpower</b>. When Aeon ★ Aha is present, merrymakes <b class="elation">Elation DMG</b> dealt by all ally targets by <span class="text-desc">15%</span>.`,
+      content: `When entering combat, immediately gains <span class="text-desc">5</span> <b class="text-desc">Wishpower</b>. When Aeon ★ Aha is present, <b class="elation">Elation DMG</b> dealt by all ally targets merrymakes by <span class="text-desc">15%</span>.`,
       image: 'asset/traces/SkillIcon_1511_Rank1.webp',
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'Between THEIR Eyes and Yours',
-      content: `Enhances <i class="text-red">Path of Elation Ascension</i> effects: Upgrading Elation characters' Innate Trace level by <span class="text-desc">1</span>.`,
+      content: `Enhances the <i class="text-red">Elation Path Ascension</i> effects: Upgrading Elation characters' Innate Trace level by <span class="text-desc">1</span>.
+      <br />
+      <br /><i>For the full enhanced Ascension effect on each character, refer to the repective character's detail page.</i>`,
       image: 'asset/traces/SkillIcon_1511_Rank2.webp',
     },
     c3: {
@@ -168,7 +170,7 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     c4: {
       trace: 'Eidolon 4',
       title: `A Joke's Fate Boxed in Black`,
-      content: `The multiplier of the <b class="text-true">True DMG</b> dealt by Elation Skills increases by <span class="text-desc">25%</span> of the original multiplier. When Aeon ★ Aha deals <b class="elation">Elation DMG</b>, an additional <span class="text-desc">100%</span> of the cumulative <b class="text-blue">Certified Banger</b> stacks possessed by teammates will be taken into account.`,
+      content: `The multiplier of the <b class="text-true">True DMG</b> dealt by Elation Skill increases by <span class="text-desc">25%</span> of its original value. When Aeon ★ Aha deals <b class="elation">Elation DMG</b>, an additional <span class="text-desc">100%</span> of the total <b class="text-blue">Certified Banger</b> held by teammates will be taken into account.`,
       image: 'asset/traces/SkillIcon_1511_Rank4.webp',
     },
     c5: {
@@ -182,7 +184,7 @@ const Aha = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
     c6: {
       trace: 'Eidolon 6',
       title: 'For THEY Said: You Are Elation',
-      content: `Enemy targets always have the <b class="text-red">Elation Debt</b> effect that is at least equal to <span class="text-desc">20%</span> of the target's Max HP. The first time Aeon ★ Aha uses THEIR Ultimate, <b class="text-aha">Aha</b>'s action advances by <span class="text-desc">100%</span>, and <b class="text-aha">Aha</b> gains <span class="text-desc">100</span> <b class="text-orange-400">Punchline(s)</b>.`,
+      content: `Enemy targets always carry an <b class="text-red">Elation Debt</b> effect that claims at least <span class="text-desc">20%</span> of their Max HP. After Aeon ★ Aha uses Ultimate for the first time, <b class="text-aha">Aha</b>'s action advances by <span class="text-desc">100%</span>, and <b class="text-aha">Aha</b> gains <span class="text-desc">100</span> <b class="text-orange-400">Punchline</b>.`,
       image: 'asset/traces/SkillIcon_1511_Rank6.webp',
     },
   }

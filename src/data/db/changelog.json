@@ -1,6 +1,15 @@
 [
   {
     "version": "1.2-4",
+    "date": "Nov 12th, 2026",
+    "desc": [
+      "Content Version: <span class=\"text-desc\">v4.8 Beta 1</span>",
+      "New Characters: <span class=\"text-hsr-ice\">Ellen</span>, and <span class=\"text-hsr-quantum\">Astra Yao</span>",
+      "New Light Cone: <span class=\"text-desc\">No Shifts on Rainy Days</span>, and <span class=\"text-desc\">Shine Bright Like Her</span>"
+    ]
+  },
+  {
+    "version": "1.2-4",
     "date": "Sep 29th, 2026",
     "desc": [
       "Content Version: <span class=\"text-desc\">v4.7 Beta 3</span>",

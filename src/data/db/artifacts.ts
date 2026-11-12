@@ -1381,7 +1381,7 @@ export const PlanarSets: IArtifact[] = [
     bonus: [{ stat: Stats.P_SPD, value: 0.06 }],
     bonusAdd: [],
     desc: [
-      `Increases the wearer's SPD by <span class="text-desc">6%</span>. When the wearer's Elation reaches <span class="text-desc">40%</span> or higher, the wearer's action advances by <span class="text-desc">40%</span> immediately when entering combat.`,
+      `Increases the wearer's SPD by <span class="text-desc">6%</span>. When the wearer's Elation stat reaches <span class="text-desc">40%</span> or higher, advances the wearer's action by <span class="text-desc">40%</span> immediately upon entering combat.`,
     ],
     beta: false,
     set: [`Moment of Joy's Eternal Stage`, `Moment of Joy's Magic Prop`],

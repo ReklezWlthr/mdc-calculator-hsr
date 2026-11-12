@@ -1599,6 +1599,45 @@ export const LCConditionals: IWeaponContent[] = [
       return base
     },
   },
+  {
+    type: 'toggle',
+    text: `Snack`,
+    show: true,
+    default: true,
+    id: '23066_1',
+    scaling: (base, form, r) => {
+      if (form['23066_1']) {
+        base[Stats.P_ATK].push({
+          name: `Snack`,
+          source: 'No Shifts on Rainy Days',
+          value: calcRefinement(0.2, 0.03, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Iced Drink`,
+    show: true,
+    default: true,
+    id: '23066_2',
+    scaling: (base, form, r) => {
+      if (form['23066_2']) {
+        base.BASIC_DEF_PEN.push({
+          name: `Iced Drink`,
+          source: 'No Shifts on Rainy Days',
+          value: calcRefinement(0.12, 0.02, r) * (form['23066_1'] ? 2 : 1),
+        })
+        base.ULT_DEF_PEN.push({
+          name: `Iced Drink`,
+          source: 'No Shifts on Rainy Days',
+          value: calcRefinement(0.12, 0.02, r) * (form['23066_1'] ? 2 : 1),
+        })
+      }
+      return base
+    },
+  },
 ]
 
 export const LCAllyConditionals: IWeaponContent[] = [
@@ -3040,6 +3079,23 @@ export const LCTeamConditionals: IWeaponContent[] = [
           name: `Passive`,
           source: 'Upon the First Echo of "Aha"',
           value: calcRefinement(0.16, 0.02, r),
+        })
+      }
+      return base
+    },
+  },
+  {
+    type: 'toggle',
+    text: `Our Melody`,
+    show: true,
+    default: true,
+    id: '23067',
+    scaling: (base, form, r) => {
+      if (form['23067']) {
+        base[Stats.CRIT_DMG].push({
+          name: `Our Melody`,
+          source: 'Shine Bright Like Her',
+          value: calcRefinement(0.48, 0.12, r),
         })
       }
       return base

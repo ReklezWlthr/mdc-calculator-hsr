@@ -229,8 +229,6 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     ) => {
       const base = _.cloneDeep(x)
 
-      base.SKILL_ALT = form.rin_gem >= 15 || form.rin_sp >= 7
-
       base.BASIC_SCALING = [
         {
           name: 'Single Target',
@@ -296,11 +294,11 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ]
       base.TECHNIQUE_SCALING = [
         {
-          name: 'Total Single Target DMG',
+          name: 'AoE',
           value: [{ scaling: 2, multiplier: Stats.ATK }],
           element: Element.LIGHTNING,
           property: TalentProperty.NORMAL,
-          type: TalentType.TALENT,
+          type: TalentType.TECH,
           sum: true,
         },
       ]

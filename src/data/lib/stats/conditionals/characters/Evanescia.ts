@@ -170,13 +170,13 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
     },
   }
 
-  const totalPT = `For every <span class="text-desc">480</span> point(s) of <b class="text-indigo-300">Party Trick</b> accumulated, increases the next Ultimate DMG multiplier and the <b class="elation">Elation DMG</b> multiplier dealt by the next Ultimate used via the Talent by {{2}}% of the original multiplier. This effect cannot stack.`
+  const totalPT = `For every <span class="text-desc">480</span> <b class="text-indigo-300">Party Trick</b> accumulated, the DMG multiplier of the next Ultimate and the multiplier of the <b class="text-elation">Elation DMG</b> dealt by that Ultimate via the Talent increases by {{2}}% of their respective original values. This effect cannot stack.`
   const nihilux = _.find(team, (x) => x?.cId === '1511')
   if (nihilux) {
     talents.innate = {
       trace: `Innate Trace`,
       title: `Faces of Elation ★ Pages to Petals`,
-      content: `When the <i class="text-red">the Path of Elation ascends</i>, overflow Energy can accumulate up to {{0}} point(s), which is cleared after using an Ultimate to regenerate the corresponding amount of Energy. This instance of regeneration will not trigger the Talent's effect of gaining <b class="text-blue">Certified Banger</b>. The DMG dealt ignores {{1}}% of the enemy target's DEF. ${totalPT}`,
+      content: `When the <i class="text-red">the Path of Elation ascends</i>, overflow Energy can accumulate up to {{0}}. After using Ultimate, clears this accumulation to regenerate an equal amount of Energy. This instance of regeneration will not trigger the Talent's <b class="text-blue">Certified Banger</b> gain effect. The DMG dealt ignores {{1}}% of the enemy target's DEF. ${totalPT}`,
       value: [
         { base: 60, growth: 180, style: 'linear' },
         { base: 10, growth: 14, style: 'linear' },

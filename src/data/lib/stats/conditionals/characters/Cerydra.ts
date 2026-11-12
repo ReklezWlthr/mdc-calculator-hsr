@@ -214,7 +214,7 @@ const Cerydra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       base.ULT_SCALING = [
         {
           name: 'AoE',
-          value: [{ scaling: calcScaling(1.44, 0.096, ult, 'linear') + (c >= 4 ? 2.4 : 0), multiplier: Stats.ATK }],
+          value: [{ scaling: calcScaling(1.44, 0.096, ult, 'curved') + (c >= 4 ? 2.4 : 0), multiplier: Stats.ATK }],
           element: Element.WIND,
           property: TalentProperty.NORMAL,
           type: TalentType.ULT,

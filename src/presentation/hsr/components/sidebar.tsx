@@ -74,10 +74,10 @@ export const Sidebar = ({
             <div className="w-full px-2 py-1 text-xs text-white rounded-md bg-amber-700 ring-1 ring-offset-2 ring-offset-primary-dark ring-amber-400">
               <p className="flex items-center gap-1 font-bold">
                 <i className="fa-info-circle fa-solid" />
-                Viewing Beta: v4.7 Beta 5
+                Viewing Beta: v4.8 Beta 1
               </p>
               <p>
-                <b>NEW:</b> Aeon ★ Aha
+                <b>NEW:</b> Ellen, and Astra Yao
               </p>
             </div>
           )}

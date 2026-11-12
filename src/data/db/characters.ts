@@ -1633,6 +1633,42 @@ export const Characters = [
     element: Element.QUANTUM,
     beta: false,
   },
+  {
+    id: '1514',
+    name: 'Ellen',
+    jp: '星神★アッハ',
+    stat: {
+      baseAtk: 102.96,
+      baseHp: 153.12,
+      baseDef: 66,
+      baseSpd: 96,
+      energy: 240,
+    },
+    trace: [Stats.CRIT_RATE, Stats.SPD, Stats.ICE_DMG],
+    rec: [Stats.CRIT_DMG, Stats.CRIT_RATE, Stats.SPD],
+    rarity: 5,
+    path: PathType.DESTRUCTION,
+    element: Element.ICE,
+    beta: true,
+  },
+  {
+    id: '1515',
+    name: 'Astra Yao',
+    jp: '星神★アッハ',
+    stat: {
+      baseAtk: 89.76,
+      baseHp: 168.96,
+      baseDef: 62.7,
+      baseSpd: 99,
+      energy: 240,
+    },
+    trace: [Stats.QUANTUM_DMG, Stats.SPD, Stats.P_ATK],
+    rec: [Stats.P_ATK, Stats.ATK, Stats.SPD],
+    rarity: 5,
+    path: PathType.HARMONY,
+    element: Element.QUANTUM,
+    beta: true,
+  },
 
   // Odd = Male, Even = Female
   {
