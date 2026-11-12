@@ -270,21 +270,6 @@ const Ellen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               sum: false,
               res_pen: (c >= 4 ? form.shark_gotta_bite * 0.02 : 0) + (c >= 6 ? 0.2 : 0),
             },
-            {
-              name: 'Total Bounce DMG',
-              value: [
-                {
-                  scaling: calcScaling(1.6, 0.32, basic, 'linear'),
-                  multiplier: Stats.ATK,
-                  hits: form.shark_gotta_bite + (c >= 6 ? 3 : 0),
-                },
-              ],
-              element: Element.ICE,
-              property: TalentProperty.NORMAL,
-              type: TalentType.BA,
-              sum: true,
-              res_pen: (c >= 4 ? form.shark_gotta_bite * 0.02 : 0) + (c >= 6 ? 0.2 : 0),
-            },
           ]
         : [
             {
@@ -297,6 +282,23 @@ const Ellen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               sum: true,
             },
           ]
+      if (form.shark_gotta_bite > 3) {
+        base.BASIC_SCALING.push({
+          name: 'Total Bounce DMG',
+          value: [
+            {
+              scaling: calcScaling(1.6, 0.32, basic, 'linear'),
+              multiplier: Stats.ATK,
+              hits: form.shark_gotta_bite - 3 + (c >= 6 ? 3 : 0),
+            },
+          ],
+          element: Element.ICE,
+          property: TalentProperty.NORMAL,
+          type: TalentType.BA,
+          sum: true,
+          res_pen: (c >= 4 ? form.shark_gotta_bite * 0.02 : 0) + (c >= 6 ? 0.2 : 0),
+        })
+      }
       base.SKILL_SCALING = [
         {
           name: 'Main',
