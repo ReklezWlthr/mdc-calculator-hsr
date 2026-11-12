@@ -153,7 +153,7 @@ const Ellen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       title: 'The Morning Melts Sweet',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1514_Ultra.webp',
+      image: 'asset/traces/SkillIcon_1514_BP.webp',
     },
     c4: {
       trace: 'Eidolon 4',
@@ -166,7 +166,7 @@ const Ellen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       title: `The Ocean Swims Her Home`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
-      image: 'asset/traces/SkillIcon_1514_BP.webp',
+      image: 'asset/traces/SkillIcon_1514_Ultra.webp',
     },
     c6: {
       trace: 'Eidolon 6',
