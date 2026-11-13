@@ -413,7 +413,7 @@ const DHIL = (
           sum: true,
           cd: outroar_norm,
           bonusSplit: righteous_heart(6),
-          hitSplit: [100 / 6, 100 / 6, 100 / 6, 100 / 6, 100 / 6, 100 / 6],
+          hitSplit: [1 / 6, 1 / 6, 1 / 6, 1 / 6, 1 / 6, 1 / 6],
         })
       }
       if (form.dhil_ex) {

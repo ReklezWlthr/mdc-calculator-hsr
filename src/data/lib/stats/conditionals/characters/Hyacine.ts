@@ -242,7 +242,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
       base.SUMMON_STATS = _.cloneDeep({
@@ -322,6 +322,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           property: TalentProperty.HEAL,
           type: TalentType.SERVANT,
           sum: true,
+          useOwnerStats: true,
         },
       ]
       base.ULT_SCALING = [
@@ -441,6 +442,16 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           source: 'Self',
           value: calcScaling(150, 90, ult, 'flat'),
         })
+        base.SUMMON_STATS[Stats.P_HP].push({
+          name: `After Rain`,
+          source: 'Self',
+          value: calcScaling(0.15, 0.015, ult, 'curved') + (c >= 1 ? 0.5 : 0),
+        })
+        base.SUMMON_STATS[Stats.HP].push({
+          name: `After Rain`,
+          source: 'Self',
+          value: calcScaling(150, 90, ult, 'flat'),
+        })
       }
 
       return base
@@ -452,7 +463,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.hyacine_tech) {
         base[Stats.P_HP].push({
@@ -500,7 +511,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const spd = base.getSpd()
 

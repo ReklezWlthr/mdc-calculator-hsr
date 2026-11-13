@@ -202,7 +202,7 @@ export const StatsModal = observer(
                 stats="HP"
                 cBase={memo ? stats?.BASE_HP : stats.BASE_HP_C}
                 lBase={memo ? 0 : stats.BASE_HP_L}
-                totalValue={_.floor(memo ? stats?.BASE_HP : stats.getHP()).toLocaleString()}
+                totalValue={_.floor(stats.getHP()).toLocaleString()}
                 pArray={stats[Stats.P_HP]}
                 fArray={mergeBuffs(_.concat(stats[Stats.HP], stats.X_HP))}
               />
