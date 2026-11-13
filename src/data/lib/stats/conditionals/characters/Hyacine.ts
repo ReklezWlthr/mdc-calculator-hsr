@@ -320,7 +320,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
           flat: calcScaling(10, 2, memo_talent, 'linear') * (form.clear_skies ? 2 : 1),
           element: TalentProperty.HEAL,
           property: TalentProperty.HEAL,
-          type: TalentType.SERVANT,
+          type: TalentType.SERVANT_T,
           sum: true,
           useOwnerStats: true,
         },
@@ -529,23 +529,23 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
         base[Stats.HEAL].push({
           name: `Ascension 6 Passive`,
           source: 'Self',
-          value: _.min([spd - 200, 200]) / 100,
+          value: _.floor(_.min([spd - 200, 200])) / 100,
         })
         base.SUMMON_STATS[Stats.HEAL].push({
           name: `Ascension 6 Passive`,
           source: 'Hyacine',
-          value: _.min([spd - 200, 200]) / 100,
+          value: _.floor(_.min([spd - 200, 200])) / 100,
         })
         if (c >= 4) {
           base[Stats.CRIT_DMG].push({
             name: `Eidolon 4`,
             source: 'Self',
-            value: _.min([spd - 200, 200]) / 50,
+            value: _.floor(_.min([spd - 200, 200])) / 50,
           })
           base.SUMMON_STATS[Stats.CRIT_DMG].push({
             name: `Eidolon 4`,
             source: 'Hyacine',
-            value: _.min([spd - 200, 200]) / 50,
+            value: _.floor(_.min([spd - 200, 200])) / 50,
           })
         }
       }
