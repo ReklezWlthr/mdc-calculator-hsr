@@ -101,12 +101,7 @@ const Ellen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       <br />When attacks triggered by <b>Zoned In on Zero</b> select a primary target, both Ellen and Astra Yao prioritize enemy targets in the <b class="text-red">Bite Mark</b> state.
       <br />Basic ATKs triggered by <b>Zoned In on Zero</b> do not recover Skill Points, and <b>Ice Sea Diving</b> triggered by <b>Zoned In on Zero</b> does not consume <b class="text-indigo-300">Shark's Gotta Bite</b>.
       <br />After Ellen or Astra Yao uses their Ultimate, dispels the other's Crowd Control debuffs.`,
-      value: [
-        { base: 20, growth: 2, style: 'curved' },
-        { base: 200, growth: 20, style: 'curved' },
-        { base: 300, growth: 30, style: 'curved' },
-        { base: 120, growth: 8, style: 'curved' },
-      ],
+      value: [{ base: 300, growth: 30, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ST,
       image: 'asset/traces/SkillIcon_1514_Passive.webp',
