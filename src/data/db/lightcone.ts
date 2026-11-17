@@ -2930,7 +2930,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Chant',
-      detail: `Increases the wearer's ATK by {{0}}% and Energy Regeneration Rate by {{1}}%. After the wearer uses their Ultimate, if the wearer is not the first character in the team lineup, advances the action of the first character in the team lineup by <span class="text-desc">25%</span>. If the Ultimate consumes <span class="text-desc">240</span> Energy or more, the wearer gains <b>Our Melody</b>, increasing the CRIT DMG of all allies by {{2}}%, lasting for <span class="text-desc">4</span> turn(s).`,
+      detail: `Increases the wearer's ATK by {{0}}% and Energy Regeneration Rate by {{1}}%. After the wearer uses their Ultimate, if the wearer is not the character in position 1 of the team lineup, advances the action of the character in position 1 of the team lineup by <span class="text-desc">25%</span>. If this Ultimate consumes <span class="text-desc">240</span> Energy or more, the wearer gains <b>Our Melody</b>, increasing the CRIT DMG of all allies by {{2}}%, lasting for <span class="text-desc">4</span> turn(s).`,
       properties: [
         { base: 24, growth: 6 },
         { base: 12, growth: 1 },

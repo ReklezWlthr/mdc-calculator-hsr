@@ -416,33 +416,6 @@ const Ellen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         })
       }
 
-      if (form.kings_acknowledgement && c >= 1) {
-        base.DEF_PEN.push({
-          name: `King's Acknowledgement`,
-          source: 'Gilgamesh',
-          value: calcScaling(0.15, 0.015, skill, 'curved'),
-        })
-      }
-      if (a.a6) {
-        base[Stats.P_ATK].push({
-          name: `Ascension 6 Passive`,
-          source: 'Gilgamesh',
-          value: 0.2 + _.min([0.01 * _.max([base.MAX_ENERGY - 140, 0]), 1]),
-        })
-        base[Stats.CRIT_DMG].push({
-          name: `Ascension 6 Passive`,
-          source: 'Gilgamesh',
-          value: 0.2 + _.min([0.01 * _.max([base.MAX_ENERGY - 140, 0]), 1]),
-        })
-      }
-      if (c >= 6 && !base.SUMMON_ID) {
-        base.ALL_TYPE_RES_PEN.push({
-          name: `Eidolon 6`,
-          source: 'Gilgamesh',
-          value: 0.2,
-        })
-      }
-
       return base
     },
     postCompute: (
