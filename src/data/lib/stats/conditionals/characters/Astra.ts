@@ -442,7 +442,7 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       }
 
       if (form.astra_ult) {
-        _.forEach(team, (x) => {
+        _.forEach(team, (x, i) => {
           const s = x.BASIC_SCALING
           const add = {
             name: "Astra's Additional DMG",
@@ -466,6 +466,9 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
               ...add,
               name: add.name + ` (${x.SUMMON_STATS?.NAME})`,
             })
+          }
+          if (index === i) {
+            x.TALENT_SCALING.push(add)
           }
         })
       }
