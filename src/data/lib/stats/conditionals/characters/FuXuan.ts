@@ -282,6 +282,16 @@ const FuXuan = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
           sum: true,
         },
       ]
+      if (a.a4) {
+        base.ULT_SCALING.push({
+          name: 'A4 Healing',
+          value: [{ scaling: 0.05, multiplier: Stats.HP }],
+          flat: 133,
+          element: TalentProperty.HEAL,
+          property: TalentProperty.HEAL,
+          type: TalentType.ULT,
+        })
+      }
 
       return base
     },
