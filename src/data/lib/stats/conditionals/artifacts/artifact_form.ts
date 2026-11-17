@@ -75,7 +75,7 @@ export const ArtifactForm = () => {
       title: `Non-FUA Grand Duke Stacks`,
       content: `When the wearer uses <u>follow-up attacks</u>, increases the wearer's ATK by <span class="text-desc">6%</span> for every time the <u>follow-up attack</u> deals DMG. This effect can stack up to <span class="text-desc">8</span> time(s) and lasts for <span class="text-desc">3</span> turn(s). This effect is removed the next time the wearer uses a <u>follow-up attack</u>.
       <br />
-      <br /><b class="text-red">This modifier only affects non-FUA DMG. The calculator will automatically apply a sequential ATK bonus to each hit of the character's FUA.</b>`,
+      <br /><b class="text-red">This modifier is for non-FUA DMG only. The calculator has already automatically applied a sequential ATK bonus to each hit of the character's FUA, so this modifier will NOT affect any of those hits.</b>`,
       show: true,
       duration: 3,
       default: 0,

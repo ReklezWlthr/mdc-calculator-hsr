@@ -280,6 +280,7 @@ const JingYuan = (
           sum: true,
           summon: true,
           bonus: form.jingyuan_ex ? 2.4 : 0,
+          hitSplit: Array(form.jingyuan_talent).fill(1 / form.jingyuan_talent),
         },
         {
           name: 'Total Adjacent',
@@ -298,6 +299,7 @@ const JingYuan = (
           vul,
           summon: true,
           bonus: form.jingyuan_ex ? 2.4 : 0,
+          hitSplit: Array(form.jingyuan_talent).fill(1 / form.jingyuan_talent),
         },
       ]
 
