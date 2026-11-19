@@ -188,7 +188,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -316,7 +316,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (form.besotted)
         base.BREAK_VUL.push({
@@ -349,7 +349,7 @@ const Gallagher = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       if (a.a2)
         base.CALLBACK.push((x) => {

@@ -86,7 +86,7 @@ export const AbilityBlock = observer(({ char, onChange, upgrade, talents, disabl
         <TalentIcon
           talent={talents?.ult}
           element={charData?.element}
-          icon={`SkillIcon_${charData?.id}_Ultra_on.png`}
+          icon={`SkillIcon_${charData?.id}_Ultra.png`}
           size="w-9 h-9"
           upgraded={upgrade?.ult}
           level={char?.talents?.ult}

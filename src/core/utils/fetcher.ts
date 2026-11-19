@@ -1,7 +1,7 @@
-import { Element, PathMap, PathType } from '@src/domain/constant'
+import { ElementIcons, NANOKA, PathMap, PathType } from '@src/domain/constant'
 
 export const getEmote = (emote: string) => `https://cdn.wanderer.moe/honkai-star-rail/emotes/${emote}.png`
 
-export const getElementImage = (value: string) => `/asset/element/${value}.webp`
+export const getElementImage = (value: string) => `${NANOKA}/element/${ElementIcons[value]}`
 
-export const getPathImage = (value: PathType) => `/asset/path/${value}.webp`
+export const getPathImage = (value: PathType) => `${NANOKA}/pathicon/${PathMap[value]}`

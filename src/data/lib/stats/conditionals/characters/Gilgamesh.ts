@@ -41,7 +41,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: basic,
       tag: AbilityTag.ST,
       sp: 1,
-      image: 'asset/traces/SkillIcon_1509_Normal.webp',
+      image: 'SkillIcon_1509_Normal.png',
     },
     skill: {
       energy: 30,
@@ -56,7 +56,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ],
       level: skill,
       tag: AbilityTag.BLAST,
-      image: 'asset/traces/SkillIcon_1509_BP.webp',
+      image: 'SkillIcon_1509_BP.png',
     },
     ult: {
       energy: 5,
@@ -69,7 +69,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ],
       level: ult,
       tag: AbilityTag.AOE,
-      image: 'asset/traces/SkillIcon_1509_Ultra_on.webp',
+      image: 'SkillIcon_1509_Ultra.png',
     },
     talent: {
       trace: 'Talent',
@@ -89,7 +89,7 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ],
       level: talent,
       tag: AbilityTag.ENHANCE,
-      image: 'asset/traces/SkillIcon_1509_Passive.webp',
+      image: 'SkillIcon_1509_Passive.png',
     },
     technique: {
       trace: 'Technique',
@@ -97,63 +97,63 @@ const Gilgamesh = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       content: `After using Technique, creates <span class="text-desc">1</span> Special Dimension lasting for <span class="text-desc">10</span> second(s). Enemies in the Special Dimension enter the <b>King's Permission</b> state. Enemies in the <b>King's Permission</b> state will cease all actions.
       <br />When entering combat by actively attacking an enemy in the <b>King's Permission</b> state, causes all enemies in the <b>King's Permission</b> state to enter combat, and deals <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">200%</span> of Gilgamesh's ATK to all enemies after entering combat. Gilgamesh also immediately gains <span class="text-desc">3</span> <b class="text-heal">Interest</b>. Only <span class="text-desc">1</span> Dimension Effect created by allies can exist at the same time.`,
       tag: AbilityTag.IMPAIR,
-      image: 'asset/traces/SkillIcon_1509_Maze.webp',
+      image: 'SkillIcon_1509_Maze.png',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Hegemon's Strife`,
       content: `While Gilgamesh is on the field, increases all ally targets' ATK by <span class="text-desc">20%</span> and CRIT DMG by <span class="text-desc">20%</span>. If the target's Max Energy exceeds <span class="text-desc">140</span>, for every <span class="text-desc">1</span> excess point of Max Energy, additionally increases ATK and CRIT DMG by <span class="text-desc">1%</span>, up to a maximum additional increase of <span class="text-desc">100%</span>.`,
-      image: 'asset/traces/SkillIcon_1509_SkillTree3.webp',
+      image: 'SkillIcon_1509_SkillTree3.png',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Hero's Hauteur`,
       content: `During the current battle, for every <span class="text-desc">1</span> point of <b class="text-heal">Interest</b> gained by Gilgamesh, increases his CRIT DMG by <span class="text-desc">25%</span>. This effect can stack up to <span class="text-desc">6</span> time(s).`,
-      image: 'asset/traces/SkillIcon_1509_SkillTree2.webp',
+      image: 'SkillIcon_1509_SkillTree2.png',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Epic's Opening`,
       content: `When Gilgamesh uses Ultimate, gains <span class="text-desc">2</span> <b class="text-heal">Interest</b>. When other ally characters use Ultimates, Gilgamesh additionally gains <span class="text-desc">2</span> <b class="text-heal">Interest</b> and regenerates a fixed amount of Energy equal to <span class="text-desc">30%</span> of the Energy consumed this time.`,
-      image: 'asset/traces/SkillIcon_1509_SkillTree1.webp',
+      image: 'SkillIcon_1509_SkillTree1.png',
     },
     c1: {
       trace: 'Eidolon 1',
       title: `He Who Saw the Deep`,
       content: `When Gilgamesh holds <b class="text-violet-400">King's Acknowledgement</b>, its DEF-ignoring effect also applies to other teammates, and <b class="text-violet-400">King's Acknowledgement</b> additionally increases Gilgamesh's ATK by <span class="text-desc">60%</span>. When using Skill, additionally regenerates a fixed <span class="text-desc">40</span> Energy.`,
-      image: 'asset/traces/SkillIcon_1509_Rank1.webp',
+      image: 'SkillIcon_1509_Rank1.png',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Wisdom That Encompassed All`,
       content: `When entering combat, Gilgamesh gains <span class="text-desc">5</span> <b class="text-heal">Interest</b>. When using Ultimate, additionally gains <span class="text-desc">5</span> <b class="text-heal">Interest</b>. The DMG multiplier of the Skill <b>Gate of Babylon</b> against the primary target increases by <span class="text-desc">100%</span>, and its DMG multiplier against adjacent targets increases by <span class="text-desc">50%</span>.`,
-      image: 'asset/traces/SkillIcon_1509_Rank2.webp',
+      image: 'SkillIcon_1509_Rank2.png',
     },
     c3: {
       trace: 'Eidolon 3',
       title: 'Journey That Spanned Far',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
-      image: 'asset/traces/SkillIcon_1509_Ultra.webp',
+      image: 'SkillIcon_1509_Ultra.png',
     },
     c4: {
       trace: 'Eidolon 4',
       title: `King Who Bowed to None`,
       content: `Gilgamesh's Energy Regeneration Rate increases by <span class="text-desc">20%</span>.`,
-      image: 'asset/traces/SkillIcon_1509_Rank4.webp',
+      image: 'SkillIcon_1509_Rank4.png',
     },
     c5: {
       trace: 'Eidolon 5',
       title: `Sword That Parted Gods from Man`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1509_BP.webp',
+      image: 'SkillIcon_1509_BP.png',
     },
     c6: {
       trace: 'Eidolon 6',
       title: 'Soul That Bore Friendship',
       content: `Increases the bounce DMG multiplier of the Ultimate <b>Enuma Elish</b> by <span class="text-desc">80%</span>. While Gilgamesh is on the field, increases ally characters' <b>All-Type RES PEN</b> by <span class="text-desc">20%</span>. When a teammate uses Ultimate, Gilgamesh gains <span class="text-desc">1</span> point of <b class="text-desc">Golden Rule</b>, up to a total of <span class="text-desc">3</span> points. When this unit uses Ultimate, consumes all <b class="text-desc">Golden Rule</b> points, and each point of <b class="text-desc">Golden Rule</b> consumed increases the CRIT DMG for the Ultimate DMG dealt by <span class="text-desc">100%</span>.`,
-      image: 'asset/traces/SkillIcon_1509_Rank6.webp',
+      image: 'SkillIcon_1509_Rank6.png',
     },
   }
 

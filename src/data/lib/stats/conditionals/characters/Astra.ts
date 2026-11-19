@@ -50,7 +50,7 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
       tag: AbilityTag.ST,
       sp: 1,
-      image: 'asset/traces/SkillIcon_1515_Normal.webp',
+      image: 'SkillIcon_1515_Normal.png',
     },
     normal_alt1: {
       energy: 30,
@@ -61,7 +61,7 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
       tag: AbilityTag.AOE,
       sp: 1,
-      image: 'asset/traces/SkillIcon_1515_Normal2.webp',
+      image: 'SkillIcon_1515_Normal.png',
     },
     normal_alt2: {
       energy: 10,
@@ -75,7 +75,7 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
       tag: AbilityTag.BLAST,
       sp: 1,
-      image: 'asset/traces/SkillIcon_1515_Normal.webp',
+      image: 'SkillIcon_1515_Normal.png',
     },
     skill: {
       energy: 30,
@@ -89,7 +89,7 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
       tag: AbilityTag.SUPPORT,
       sp: -1,
-      image: 'asset/traces/SkillIcon_1515_BP.webp',
+      image: 'SkillIcon_1515_BP.png',
     },
     ult: {
       energy: 5,
@@ -103,7 +103,7 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ],
       level: ult,
       tag: AbilityTag.AOE,
-      image: 'asset/traces/SkillIcon_1515_Ultra_on.webp',
+      image: 'SkillIcon_1515_Ultra.png',
     },
     talent: {
       trace: 'Talent',
@@ -121,70 +121,70 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       value: [{ base: 2.5, growth: 0.25, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
-      image: 'asset/traces/SkillIcon_1515_Passive.webp',
+      image: 'SkillIcon_1515_Passive.png',
     },
     technique: {
       trace: 'Technique',
       title: `An Overture in Reverie`,
       content: `After using Technique, automatically triggers Skill <span class="text-desc">1</span> time at the start of the next battle. This trigger does not consume Skill Points.`,
       tag: AbilityTag.SUPPORT,
-      image: 'asset/traces/SkillIcon_1515_Maze.webp',
+      image: 'SkillIcon_1515_Maze.png',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Fantasia Scale`,
       content: `Increases CRIT Rate by <span class="text-desc">50%</span>. When Astra Yao's ATK exceeds <span class="text-desc">2,000</span>, for every <span class="text-desc">200</span> ATK above that, increases this unit's CRIT DMG by <span class="text-desc">20%</span>, up to a max increase of <span class="text-desc">200%</span>.`,
-      image: 'asset/traces/SkillIcon_1515_SkillTree1.webp',
+      image: 'SkillIcon_1515_SkillTree1.png',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Filigree Aria`,
       content: `When using <b>Cadenza Cascade</b>, additionally regenerates <span class="text-desc">10</span> Energy.`,
-      image: 'asset/traces/SkillIcon_1515_SkillTree2.webp',
+      image: 'SkillIcon_1515_SkillTree2.png',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Nevernight Tour`,
       content: `When an ally character uses Basic ATK, Astra Yao additionally gains <span class="text-desc">1</span> <b class="text-pink-400">Syncopation</b>. While possessing <b class="text-pink-400">Syncopation</b>, DMG dealt by all allies increases by <span class="text-desc">40%</span>.`,
-      image: 'asset/traces/SkillIcon_1515_SkillTree3.webp',
+      image: 'SkillIcon_1515_SkillTree3.png',
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Her Drumbeat Moves the Stars`,
       content: `While the Zone is active, the DMG boost effect of <b class="text-pink-400">Syncopation</b> takes effect for all attacks of all ally targets. For each <b class="text-pink-400">Syncopation</b> Astra Yao has, DMG dealt by ally targets ignores <span class="text-desc">1.5%</span> of enemy targets' DEF. The Energy regeneration effect of the Trace <b>Filigree Aria</b> increases to <span class="text-desc">20</span>. At the start of each wave, Astra Yao regenerates <span class="text-desc">30</span> Energy.`,
-      image: 'asset/traces/SkillIcon_1515_Rank1.webp',
+      image: 'SkillIcon_1515_Rank1.png',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `The Sun Sets in Her Eyes`,
       content: `The Skill's ATK boost effect additionally increases by an amount equal to <span class="text-desc">12%</span> of Astra Yao's ATK. The Additional DMG dealt by the Zone increases by <span class="text-desc">80%</span>.`,
-      image: 'asset/traces/SkillIcon_1515_Rank2.webp',
+      image: 'SkillIcon_1515_Rank2.png',
     },
     c3: {
       trace: 'Eidolon 3',
       title: `Shh, the Wind Has Ears`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1515_BP.webp',
+      image: 'SkillIcon_1515_BP.png',
     },
     c4: {
       trace: 'Eidolon 4',
       title: `Toasted Alone on Both Sides`,
       content: `The DMG multiplier of <b>Cadenza Cascade</b> increases by <span class="text-desc">60%</span> of the original multiplier, and the DMG multiplier of the Ultimate increases by <span class="text-desc">100%</span> of the original multiplier.`,
-      image: 'asset/traces/SkillIcon_1515_Rank4.webp',
+      image: 'SkillIcon_1515_Rank4.png',
     },
     c5: {
       trace: 'Eidolon 5',
       title: `The Stylus Scripts Her Soul`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
-      image: 'asset/traces/SkillIcon_1515_Ultra.webp',
+      image: 'SkillIcon_1515_Ultra.png',
     },
     c6: {
       trace: 'Eidolon 6',
       title: `Until the Footlights Flare`,
       content: `While the Zone is active, all ally targets' <b>All-Type RES PEN</b> increases by <span class="text-desc">20%</span>. After Astra Yao uses her Ultimate, regenerates a fixed <span class="text-desc">240</span> Energy. This effect can be triggered again after every <span class="text-desc">4</span> Ultimate(s) used. At the start of combat, Astra Yao gains <span class="text-desc">10</span> <b class="text-pink-400">Syncopation</b>.`,
-      image: 'asset/traces/SkillIcon_1515_Rank6.webp',
+      image: 'SkillIcon_1515_Rank6.png',
     },
   }
 

@@ -76,25 +76,25 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       trace: 'Ascension 2 Passive',
       title: 'Retribution',
       content: `When ally targets attack targets under the <b class="text-amber-500">Weightless</b> state, their DMG dealt increases by <span class="text-desc">10%</span>. This effect stacks up to <span class="text-desc">10</span> times and lasts for <span class="text-desc">2</span> turn(s). At the start of the battle, Welt regenerates <span class="text-desc">30</span> Energy.`,
-      image: `asset/traces/SkillIcon_1004_SkillTree1_New.webp`,
+      image: `SkillIcon_1004_SkillTree1.png`,
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Judgment',
       content: `When Welt uses Basic ATK or Skill, additionally deals <span class="text-desc">1</span> extra instance of Additional DMG to the enemy target. The Additional DMG dealt when using Basic ATK is equal to <span class="text-desc">80%</span> of Basic ATK DMG multiplier. The Additional DMG dealt when using Skill is equal to <span class="text-desc">120%</span> of Skill DMG multiplier.`,
-      image: `asset/traces/SkillIcon_1004_SkillTree2_New.webp`,
+      image: `SkillIcon_1004_SkillTree2.png`,
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Punishment',
       content: `When Welt's Effect Hit Rate is greater than <span class="text-desc">40%</span>, for every <span class="text-desc">10%</span> that exceeds this value, increases ATK by <span class="text-desc">20%</span>, up to a maximum increase of <span class="text-desc">80%</span>. When using Ultimate, additionally restores <span class="text-desc">5</span> Energy.`,
-      image: `asset/traces/SkillIcon_1004_SkillTree3_New.webp`,
+      image: `SkillIcon_1004_SkillTree3.png`,
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Legacy of Honor',
       content: `After using a Skill or Ultimate to hit a target in the <b class="text-amber-500">Weightless</b> state, additionally deals <span class="text-desc">1</span> instance of <b class="text-hsr-imaginary">Imaginary Additional DMG</b> equal to <span class="text-desc">40%</span> of the Ultimate's DMG multiplier. This effect can only be triggered once per target per attack.`,
-      image: `asset/traces/SkillIcon_1004_Rank1_New.webp`,
+      image: `SkillIcon_1004_Rank1.png`,
     },
     c2: {
       trace: 'Eidolon 2',
@@ -111,7 +111,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       trace: 'Eidolon 4',
       title: 'Appellation of Justice',
       content: `Enemy targets in the <b class="text-amber-500">Weightless</b> state have their <b>All-Type RES</b> reduced by <span class="text-desc">30%</span>.`,
-      image: `asset/traces/SkillIcon_1004_Rank4_New.webp`,
+      image: `SkillIcon_1004_Rank4.png`,
     },
     c5: {
       trace: 'Eidolon 5',
@@ -123,7 +123,7 @@ const Welt = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalen
       trace: 'Eidolon 6',
       title: 'Prospect of Glory',
       content: `When using Skill or Ultimate to hit an enemy target in the Slow state, increases CRIT Rate by <span class="text-desc">30%</span> and CRIT DMG by <span class="text-desc">60%</span> for the DMG dealt.`,
-      image: `asset/traces/SkillIcon_1004_Rank6_New.webp`,
+      image: `SkillIcon_1004_Rank6.png`,
     },
   }
 

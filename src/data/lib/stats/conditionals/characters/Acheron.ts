@@ -154,7 +154,7 @@ const Acheron = (
       title: 'A Glance Through Rime to Bone',
       content: `After a teammate attacks an enemy target with <b class="text-hsr-fire">Crimson Knot</b>, Acheron launches a <u>Follow-Up ATK</u>, dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">300%</span> of Acheron's ATK to all enemies. Then, deals <span class="text-desc">6</span> instances of DMG, with each dealing <b class="text-hsr-lightning">Lightning DMG</b> equal to <span class="text-desc">80%</span> of Acheron's ATK to one random enemy. Gains <span class="text-desc">1</span> point(s) of <b class="text-hsr-lightning">Slashed Dream</b> and inflicts <span class="text-desc">1</span> stack(s) of <b class="text-hsr-fire">Crimson Knot</b> on the enemy target with the most <b class="text-hsr-fire">Crimson Knot</b>. When this instance of <u>Follow-Up ATK</u> deals DMG, it is considered as dealing Ultimate DMG.
       <br />This effect can trigger up to <span class="text-desc">1</span> time(s) per turn. The trigger count resets at the start of Acheron's turn. The Trace <b>The Abyss</b> will also take effect on this instance of <u>Follow-Up ATK</u>.`,
-      image: `asset/traces/SkillIcon_1308_Affinitive.webp`,
+      image: `SkillIcon_1308_ExRank01.png`,
     },
   }
 

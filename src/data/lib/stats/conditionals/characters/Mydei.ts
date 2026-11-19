@@ -81,7 +81,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ],
       level: skill,
       tag: AbilityTag.BLAST,
-      image: 'asset/traces/SkillIcon_1404_BP02.png',
+      image: 'SkillIcon_1404_BP02.png',
     },
     ult: {
       energy: 5,
@@ -191,7 +191,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       const base = _.cloneDeep(x)
 
@@ -368,7 +368,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       aForm: Record<string, any>,
       debuffs: { type: DebuffTypes; count: number }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       return base
     },
@@ -382,7 +382,7 @@ const Mydei = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         count: number
       }[],
       weakness: Element[],
-      broken: boolean
+      broken: boolean,
     ) => {
       base.CALLBACK.push(function P3(x, _d, _w, _all) {
         if (form.vendetta) {

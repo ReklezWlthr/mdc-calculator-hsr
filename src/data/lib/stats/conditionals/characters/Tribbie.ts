@@ -49,7 +49,7 @@ const Tribbie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       energy: 30,
       trace: 'Skill',
       title: `Where'd the Gifts Go`,
-      content: `Gains <b class="text-violet-300">Numinosity</b>, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn. While Tribbie has <b class="text-violet-300">Numinosity</b>, increases all ally targets' All-Type RES PEN by {{0}}%.`,
+      content: `Gains <b class="text-violet-300">Numinosity</b>, lasting for <span class="text-desc">3</span> turn(s). This duration decreases by <span class="text-desc">1</span> at the start of this unit's every turn. While Tribbie has <b class="text-violet-300">Numinosity</b>, increases all ally targets' <b>All-Type RES PEN</b> by {{0}}%.`,
       value: [{ base: 12, growth: 1.2, style: 'curved' }],
       level: skill,
       tag: AbilityTag.SUPPORT,

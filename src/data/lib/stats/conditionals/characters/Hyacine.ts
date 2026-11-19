@@ -66,7 +66,7 @@ const Hyacine = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       value: [{ base: 10, growth: 2, style: 'linear' }],
       level: memo_skill,
       tag: AbilityTag.AOE,
-      image: 'asset/traces/SkillIcon_11409_Servant.png',
+      image: 'SkillIcon_11409_Servant.png',
     },
     ult: {
       trace: 'Ultimate',

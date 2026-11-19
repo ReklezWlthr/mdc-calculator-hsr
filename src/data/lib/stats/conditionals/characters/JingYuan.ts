@@ -135,7 +135,7 @@ const JingYuan = (
       trace: 'Affinitive Eidolon',
       title: `One Quiet Cup of Thunder`,
       content: `The Max Hits Per Action for <b class="text-amber-400">Lightning-Lord</b> increases by <span class="text-desc">20</span>. When <b class="text-amber-400">Lightning-Lord</b>'s Hits Per Action reach its upper limit, it immediately takes action. At the start of combat and after every <span class="text-desc">1</span> time(s) <b class="text-amber-400">Lightning-Lord</b> takes action, <b class="text-amber-400">Lightning-Lord</b> gets enhanced, and Jing Yuan's DMG dealt increases by <span class="text-desc">240%</span>. When using Skill/Ultimate, additionally increases <b class="text-amber-400">Lightning-Lord</b> Hits Per Action by an extra <span class="text-desc">6</span>/<span class="text-desc">12</span> respectively, lasting for <span class="text-desc">4</span> turn(s).`,
-      image: `asset/traces/SkillIcon_1204_Affinitive.webp`,
+      image: `SkillIcon_1204_ExRank01.png`,
     },
   }
 

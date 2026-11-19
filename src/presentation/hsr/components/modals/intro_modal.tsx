@@ -118,6 +118,16 @@ export const IntroModal = observer(() => {
             </a>{' '}
             - Emotes
           </BulletPoint>
+          <BulletPoint>
+            <a className="cursor-pointer focus:outline-none text-desc" href="https://hsr.nanoka.cc/" target="_blank">
+              nanoka.cc
+            </a>{' '}
+            &{' '}
+            <a className="cursor-pointer focus:outline-none text-desc" href="https://sr.yatta.moe/en" target="_blank">
+              Project Yatta
+            </a>{' '}
+            - Skill Icons
+          </BulletPoint>
         </div>
       </div>
       <div className="p-3 space-y-1 text-sm transition-all duration-200 rounded-lg bg-primary-darker text-gray">

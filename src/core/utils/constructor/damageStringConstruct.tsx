@@ -9,6 +9,7 @@ import {
   Stats,
   TalentProperty,
   TalentType,
+  YATTA,
 } from '@src/domain/constant'
 import { toPercentage } from '../data_format'
 import { ElementColor } from '@src/presentation/hsr/components/tables/super_break_sub_rows'
@@ -276,7 +277,7 @@ export const damageStringConstruct = (
     dmg,
   ).toLocaleString()}</b> = ${breakScale ? baseBreakScaling : shouldWrap ? `(${baseWithFlat})` : baseWithFlat}${
     breakScale && stats.getValue(Stats.BE) > 0
-      ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="/icons/IconBreakUp.png" />${toPercentage(
+      ? ` \u{00d7} <span class="inline-flex items-center h-4">(1 + <b class="inline-flex items-center h-4"><img class="h-3 mx-1" src="${YATTA}/status/IconBreakUp.png" />${toPercentage(
           stats.getValue(Stats.BE),
         )}</b>)</span>`
       : elation && isElation

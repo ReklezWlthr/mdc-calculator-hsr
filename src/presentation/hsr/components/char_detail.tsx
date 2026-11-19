@@ -16,7 +16,7 @@ import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import _ from 'lodash'
 import ConditionalsObject from '@src/data/lib/stats/conditionals/conditionals'
 import { TalentIcon } from './tables/scaling_wrapper'
-import { Element, PathType, StatIcons, Stats, TalentType } from '@src/domain/constant'
+import { Element, NANOKA, PathType, StatIcons, Stats, TalentType, YATTA } from '@src/domain/constant'
 import { useParams } from '@src/core/hooks/useParams'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { toPercentage } from '@src/core/utils/data_format'
@@ -116,8 +116,8 @@ export const CharDetail = observer(() => {
     'Enhanced Skill': 'BP02',
     'Enhanced Skill [1]': 'BP02',
     'Enhanced Skill [2]': 'BP02',
-    [TalentType.ULT]: 'Ultra_on',
-    'Enhanced Ultimate': 'Ultra02_on',
+    [TalentType.ULT]: 'Ultra',
+    'Enhanced Ultimate': 'Ultra02',
     [TalentType.TALENT]: 'Passive',
     [TalentType.TECH]: 'Maze',
     'Ascension 2 Passive': 'SkillTree1',
@@ -174,12 +174,12 @@ export const CharDetail = observer(() => {
             <i className="text-6xl animate-spin fa-solid fa-circle-notch text-gray" />
           </div>
           <img
-            src={`/asset/avatar/full/${id}.webp`}
+            src={`${NANOKA}/avatardrawcard/${id}.webp`}
             className={loading ? 'hidden' : 'block'}
             onLoad={() => setLoading(false)}
           />
           <div className="absolute left-0 flex flex-col space-y-1 bottom-10">
-            <div className="flex gap-1">
+            <div className="flex gap-1 items-end">
               <img
                 src={getElementImage(data.element)}
                 className="w-10 h-10 p-1 bg-opacity-75 rounded-full shrink-0 bg-primary-bg"
@@ -188,8 +188,12 @@ export const CharDetail = observer(() => {
                 src={getPathImage(data.path)}
                 className="w-10 h-10 p-1 bg-opacity-75 rounded-full shrink-0 bg-primary-bg"
               />
+              <div className="italic text-xs text-gray bg-opacity-75 rounded-lg bg-primary-bg px-2 py-1">
+                <b className="mr-1">ID:</b>
+                {data.id}
+              </div>
             </div>
-            <p className="px-3 py-2 text-3xl font-semibold break-words bg-opacity-75 rounded-lg bg-primary-bg">
+            <p className="px-3 py-2 text-3xl font-semibold break-words bg-opacity-75 rounded-lg bg-primary-bg w-fit">
               {data.name}
               {/* <br />
               <span className="block text-base font-normal -pt-3 text-gray">
@@ -332,7 +336,7 @@ export const CharDetail = observer(() => {
                     return (
                       <div className="grid grid-cols-5" key={key}>
                         <div className="flex items-center col-span-4 gap-1.5">
-                          <img className="w-3" src={`/icons/${StatIcons[key]}`} />
+                          <img className="w-3" src={`${YATTA}/status/${StatIcons[key]}`} />
                           <p className="line-clamp-1">{key}</p>
                         </div>
                         <p className="text-end text-gray">{key === Stats.SPD ? total : toPercentage(total)}</p>
@@ -410,11 +414,11 @@ export const CharDetail = observer(() => {
                             </p>
                           )}
                           {!!item.sp && (
-                            <div className="flex items-center font-normal opacity-100 text-gray">
-                              <img className="size-5" src="asset/PointBPFull.png" />
+                            <div className="flex items-center font-normal opacity-100 text-unique-end">
                               {Intl.NumberFormat('en-US', {
                                 signDisplay: 'exceptZero',
                               }).format(item.sp)}
+                              <span className="ml-0.5">SP</span>
                             </div>
                           )}
                         </div>
@@ -483,7 +487,7 @@ export const CharDetail = observer(() => {
             <div className="flex gap-x-3" key={item.trace}>
               {/* <div className="w-28 h-28 shrink-0">
                 <img
-                  src={`https://api.hakush.in/hsr/UI/rank/_dependencies/textures/${id}/${id}_Rank_${i + 1}.webp`}
+                  src={`https://api.hakush.in/hsr/UI/rank/_dependencies/textures/${id}/${id}_Rank_${i + 1}.png`}
                   className="object-contain w-full cons"
                   onLoad={(e) => (e.currentTarget.style.display = 'block')}
                 />

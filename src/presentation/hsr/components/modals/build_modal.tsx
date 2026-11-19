@@ -6,7 +6,7 @@ import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { getEmote } from '@src/core/utils/fetcher'
 import { findArtifactSet, findLightCone } from '@src/core/utils/finder'
 import { findMaxLevel, getSetCount, padArray } from '@src/core/utils/data_format'
-import { IBuild } from '@src/domain/constant'
+import { IBuild, NANOKA, YATTA } from '@src/domain/constant'
 import { romanize } from '../../../../core/utils/converter'
 
 export const BuildModalBlock = ({ build, button }: { build: IBuild; button: React.ReactNode }) => {
@@ -22,7 +22,7 @@ export const BuildModalBlock = ({ build, button }: { build: IBuild; button: Reac
           <div className="relative w-24 h-full overflow-hidden shrink-0">
             <div className="absolute top-0 left-0 z-10 w-full h-full from-12% to-60% bg-gradient-to-l from-primary-darker to-transparent" />
             <img
-              src={`/asset/lightcone/full/${lc.id}.webp`}
+              src={`${NANOKA}/lightconemaxfigures/${lc.id}.webp`}
               className="object-cover h-16 scale-[300%] mt-9 ml-4"
             />
             <div className="absolute z-10 p-1 text-xs text-white rounded-md bottom-1 left-1 bg-primary-dark">
@@ -45,11 +45,8 @@ export const BuildModalBlock = ({ build, button }: { build: IBuild; button: Reac
               (value, key) =>
                 value >= 2 &&
                 _.map(Array(_.floor(value / 2)), (_item) => (
-                  <img
-                    src={`/asset/relic/set/${findArtifactSet(key)?.id}.webp`}
-                    className="w-8 h-8"
-                  />
-                ))
+                  <img src={`${YATTA}/relic/${findArtifactSet(key)?.icon}.png`} className="w-8 h-8" />
+                )),
             )}
           </div>
         </div>
@@ -69,9 +66,9 @@ export const BuildModal = observer(({ index }: { index: number }) => {
       _.orderBy(
         _.filter(buildStore.builds, (build) => build.cId === char?.cId),
         'isDefault',
-        'desc'
+        'desc',
       ),
-    [buildStore.builds, char]
+    [buildStore.builds, char],
   )
 
   return (

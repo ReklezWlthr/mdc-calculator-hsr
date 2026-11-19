@@ -4,7 +4,7 @@ import { findArtifactSet } from '@src/core/utils/finder'
 import { PlanarSets, RelicSets } from '@src/data/db/artifacts'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { MainStat, SubStat } from '@src/domain/artifact'
-import { RelicPieceIcon, Stats } from '@src/domain/constant'
+import { RelicPieceIcon, Stats, YATTA } from '@src/domain/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
@@ -66,7 +66,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
           setValue('main', _.head(MainStat[buttonType]))
         }}
       >
-        <img src={`/asset/relic/part/${RelicPieceIcon[buttonType]}.webp`} />
+        <img src={`${YATTA}/relic/white/${RelicPieceIcon[buttonType]}.png`} />
       </div>
     )
   }
@@ -109,7 +109,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
       </div>
       <div className="flex items-center gap-2">
         <div className="border rounded-full w-9 h-9 bg-primary-darker border-primary-light shrink-0">
-          {setData?.icon && <img src={`/asset/relic/set/${setData.id}.webp`} className="scale-105" />}
+          {setData?.icon && <img src={`${YATTA}/relic/${setData.icon}.png`} className="scale-105" />}
         </div>
         <Controller
           name="setId"
@@ -123,7 +123,7 @@ export const ArtifactModal = ({ type, index, aId }: { type: number; index?: numb
                 (artifact) => ({
                   name: artifact.name,
                   value: artifact.id.toString(),
-                  img: `/asset/relic/set/${artifact.id}.webp`,
+                  img: `${YATTA}/relic/${artifact.icon}.png`,
                 }),
               )}
               placeholder="Relic Set"

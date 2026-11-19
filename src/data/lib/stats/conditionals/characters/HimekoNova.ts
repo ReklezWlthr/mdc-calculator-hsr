@@ -41,7 +41,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       level: basic,
       tag: AbilityTag.ST,
       sp: 1,
-      image: 'asset/traces/SkillIcon_1510_Normal.webp',
+      image: 'SkillIcon_1510_Normal.png',
     },
     skill: {
       energy: 30,
@@ -52,7 +52,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       level: skill,
       tag: AbilityTag.SUPPORT,
       sp: -1,
-      image: 'asset/traces/SkillIcon_1510_BP.webp',
+      image: 'SkillIcon_1510_BP.png',
     },
     ult: {
       energy: 5,
@@ -77,7 +77,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       ],
       level: ult,
       tag: AbilityTag.AOE,
-      image: 'asset/traces/SkillIcon_1510_Ultra_on.webp',
+      image: 'SkillIcon_1510_Ultra.png',
     },
     talent: {
       trace: 'Exclusive Talent',
@@ -101,7 +101,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       ],
       level: talent,
       tag: AbilityTag.ENHANCE,
-      image: 'asset/traces/SkillIcon_1510_Passive.webp',
+      image: 'SkillIcon_1510_Passive.png',
     },
     summon_skill: {
       trace: 'Assist Skill',
@@ -117,7 +117,7 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       level: talent,
       tag: AbilityTag.AOE,
       energy: 18,
-      image: 'asset/traces/SkillIcon_1510_Assist.webp',
+      image: 'SkillIcon_1510_AssisSkill01.png',
     },
     technique: {
       trace: 'Technique',
@@ -126,63 +126,63 @@ const HimekoNova = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: 
       <br />After using Technique, enters the <b>Cruise</b> state for <span class="text-desc">30</span> seconds. Actively using the Technique consumes <span class="text-desc">2</span> Technique Points and immediately attacks all enemies within a certain range. After entering combat, immediately uses Skill <span class="text-desc">1</span> time at the start of each wave.
       <br />If attacking a Normal Enemy, immediately defeats them without entering combat. No Technique Points are consumed if no enemies are hit.`,
       tag: AbilityTag.ENHANCE,
-      image: 'asset/traces/SkillIcon_1510_Maze.webp',
+      image: 'SkillIcon_1510_Maze.png',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'The Silver Rail, Hushed in Antiquity',
       content: `When using Ultimate, immediately gains <span class="text-desc">3</span> <b class="text-desc">Source Energy</b>. If the current <b class="text-desc">Source Energy</b> is <span class="text-desc">3</span> or more, when using the <b>Orbital Annihilation Pulse</b> attack, the DMG multiplier of <b>Orbital Annihilation Pulse</b> against random single enemies increases by <span class="text-desc">30%</span>.`,
-      image: 'asset/traces/SkillIcon_1510_SkillTree3.webp',
+      image: 'SkillIcon_1510_SkillTree3.png',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Hark! The Express's Pulse Roars`,
       content: `When a <u>Trailblaze Companions</u> character other than Himeko • Nova actively uses <u>Assist Skill</u>, that character immediately gains <span class="text-desc">1</span> extra turn in which they can insert the use of their Ultimate. The extra turn gained from <u>Assist Skill</u> will not repeatedly trigger this Trace effect.`,
-      image: 'asset/traces/SkillIcon_1510_SkillTree2.webp',
+      image: 'SkillIcon_1510_SkillTree2.png',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Whither, the Last and First Men?',
       content: `When Himeko • Nova launches <u>Assist Skill</u>, it does not consume <u>Assist Skill</u> uses. At the start of the turn, if the <u>Assist Skill</u> uses have reached the current cap, Himeko • Nova additionally regenerates <span class="text-desc">5</span> Energy.`,
-      image: 'asset/traces/SkillIcon_1510_SkillTree1.webp',
+      image: 'SkillIcon_1510_SkillTree1.png',
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'That Which We Stride Is the Trailblaze',
       content: `The number of extra <u>Assist Skill</u> uses from Talent additionally increases <span class="text-desc">1</span>. While in the <b>Companion Protocol: Verdict</b> state, reduces the number of Ultimate uses required to launch <u>Assist Skill</u> by <span class="text-desc">1</span>. While in the <b>Companion Protocol: Decimation</b> state, reduces the <b>Charge</b> required to launch <u>Assist Skill</u> by <span class="text-desc">3</span>. When Himeko • Nova launches <u>Assist Skill</u>, the number of extra DMG instances increases by <span class="text-desc">1</span>.`,
-      image: 'asset/traces/SkillIcon_1510_Rank1.webp',
+      image: 'SkillIcon_1510_Rank1.png',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `The Colors We Never Strike`,
       content: `The cap <u>Assist Skill</u> uses increases to <span class="text-desc">2</span>, and the DMG dealt by Ultimate and <u>Assist Skill</u> increases by <span class="text-desc">130%</span> of their original DMG. During the <b class="text-hsr-fire">Navigator's Semaphore</b> state, at the start of each turn, additionally recovers <span class="text-desc">1</span> use of <u>Assist Skill</u> immediately. When a non-<u>Trailblaze Companions</u> character uses <u>Assist Skill</u>, the Trace <b>Hark! The Express's Pulse Roars</b> now also grants them <span class="text-desc">1</span> extra turn.`,
-      image: 'asset/traces/SkillIcon_1510_Rank2.webp',
+      image: 'SkillIcon_1510_Rank2.png',
     },
     c3: {
       trace: 'Eidolon 3',
       title: 'We Who Are Starborn Muse Starward',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
-      image: 'asset/traces/SkillIcon_1510_Ultra.webp',
+      image: 'SkillIcon_1510_Ultra.png',
     },
     c4: {
       trace: 'Eidolon 4',
       title: `Let No Skyward Hand Stay Unheld`,
       content: `When using <u>Assist Skill</u> via the Talent <b>Of Fire and Far Faring</b>, the <b>All-Type RES PEN</b> boost now applies to all allies. And when Himeko • Nova gains this effect, her <b>All-Type RES PEN</b> additionally increases by <span class="text-desc">10%</span>.`,
-      image: 'asset/traces/SkillIcon_1510_Rank4.webp',
+      image: 'SkillIcon_1510_Rank4.png',
     },
     c5: {
       trace: 'Eidolon 5',
       title: `To Cross the Cosmos and Beyond`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1510_BP.webp',
+      image: 'SkillIcon_1510_BP.png',
     },
     c6: {
       trace: 'Eidolon 6',
       title: 'Ours Is the Oath to Sail Starward',
       content: `Himeko • Nova's <b class="text-hsr-fire">Fire RES PEN</b> increases by <span class="text-desc">20%</span>. The cap of <b class="text-desc">Source Energy</b> increases to <span class="text-desc">6</span>. When an ally uses or launches <u>Assist Skill</u>, DMG dealt by <u>Assist Skill</u> increases by <span class="text-desc">75%</span>, and Himeko • Nova gains <span class="text-desc">1</span> <b class="text-desc">Source Energy</b>. When launching <b>Hyperluminal Particle Beam</b> during the Ultimate, additionally gains <span class="text-desc">1</span> <b class="text-desc">Source Energy</b>. When launching <b>Orbital Annihilation Pulse</b>, if current <b class="text-desc">Source Energy</b> is <span class="text-desc">6</span> or more, additionally deals <span class="text-desc">1</span> instance of <b class="text-hsr-fire">Fire DMG</b> to all enemies, equal to <span class="text-desc">160%</span> of Himeko • Nova's ATK.`,
-      image: 'asset/traces/SkillIcon_1510_Rank6.webp',
+      image: 'SkillIcon_1510_Rank6.png',
     },
   }
 

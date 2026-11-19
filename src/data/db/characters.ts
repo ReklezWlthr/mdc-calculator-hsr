@@ -203,6 +203,7 @@ export const Characters = [
     path: PathType.DESTRUCTION,
     element: Element.WIND,
     beta: false,
+    collab: 'Fate I',
   },
   {
     id: '1015',
@@ -221,6 +222,7 @@ export const Characters = [
     path: PathType.HUNT,
     element: Element.QUANTUM,
     beta: false,
+    collab: 'Fate I',
   },
   {
     id: '1101',
@@ -1541,6 +1543,7 @@ export const Characters = [
     rarity: 5,
     path: PathType.DESTRUCTION,
     element: Element.LIGHTNING,
+    collab: 'Fate II',
     beta: false,
   },
   {
@@ -1560,6 +1563,7 @@ export const Characters = [
     path: PathType.ERUDITION,
     element: Element.QUANTUM,
     beta: false,
+    collab: 'Fate II',
   },
   {
     id: '1510',
@@ -1650,6 +1654,7 @@ export const Characters = [
     path: PathType.DESTRUCTION,
     element: Element.ICE,
     beta: true,
+    collab: 'ZZZ',
   },
   {
     id: '1515',
@@ -1668,6 +1673,7 @@ export const Characters = [
     path: PathType.HARMONY,
     element: Element.QUANTUM,
     beta: true,
+    collab: 'ZZZ',
   },
 
   // Odd = Male, Even = Female

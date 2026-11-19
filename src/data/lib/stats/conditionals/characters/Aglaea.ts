@@ -55,6 +55,7 @@ const Aglea = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ],
       level: basic,
       tag: AbilityTag.BLAST,
+      image: 'SkillIcon_1402_Normal02.png',
     },
     skill: {
       energy: 20,

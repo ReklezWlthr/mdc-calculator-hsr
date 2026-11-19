@@ -44,7 +44,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       tag: AbilityTag.ST,
       sp: 1,
       energy: 0,
-      image: 'asset/traces/SkillIcon_1506_Normal.webp',
+      image: 'SkillIcon_1506_Normal.png',
     },
     normal_alt: {
       trace: 'Enhanced Basic ATK',
@@ -61,7 +61,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       tag: AbilityTag.BOUNCE,
       sp: 0,
       energy: 0,
-      image: 'asset/traces/SkillIcon_1506_Normal02.webp',
+      image: 'SkillIcon_1506_Normal.png',
     },
     skill: {
       trace: 'Skill',
@@ -71,7 +71,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       level: skill,
       tag: AbilityTag.AOE,
       sp: -1,
-      image: 'asset/traces/SkillIcon_1506_BP.webp',
+      image: 'SkillIcon_1506_BP.png',
     },
     summon_skill: {
       participantId: 999,
@@ -88,7 +88,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       level: elation,
       tag: AbilityTag.BOUNCE,
       energy: 0,
-      image: 'asset/traces/SkillIcon_1506_Elation.webp',
+      image: 'SkillIcon_1506_Elation.png',
     },
     ult: {
       trace: 'Ultimate',
@@ -103,7 +103,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       level: ult,
       tag: AbilityTag.AOE,
       energy: 0,
-      image: 'asset/traces/SkillIcon_1506_Ultra_on.webp',
+      image: 'SkillIcon_1506_Ultra.png',
     },
     talent: {
       trace: `Talent`,
@@ -119,7 +119,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       ],
       level: talent,
       tag: AbilityTag.ENHANCE,
-      image: 'asset/traces/SkillIcon_1506_Passive.webp',
+      image: 'SkillIcon_1506_Passive.png',
     },
     unique_talent: {
       trace: 'Exclusive Talent',
@@ -128,7 +128,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       value: [],
       level: talent,
       tag: AbilityTag.SUPPORT,
-      image: 'asset/traces/SkillIcon_1506_Passive.webp',
+      image: 'SkillIcon_1506_Passive.png',
     },
     technique: {
       trace: 'Technique',
@@ -137,38 +137,38 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       <br /><b class="text-orange-300">Funky Munch Bean</b> causes Normal Enemies within a certain range to enter a Terrified state. It will also automatically search for and attack Normal Enemies, consuming <span class="text-desc">1</span> Technique Point to instantly defeat them without entering combat.
       <br />While <b class="text-orange-300">Funky Munch Bean</b> is present, after entering combat, <span class="text-desc">1</span> instance of <b>Top Loot Box</b> from <b class="text-orange-300">Funky Munch Bean</b> is triggered at the start of each wave. A fixed amount of <span class="text-desc">99</span> <b class="text-blue">Certified Banger</b> is taken into account for the <b class="elation">Elation DMG</b> dealt in this instance.`,
       tag: AbilityTag.SUMMON,
-      image: 'asset/traces/SkillIcon_1506_Maze.webp',
+      image: 'SkillIcon_1506_Maze.png',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'False Ending Speedrun',
       content: `When SPD is <span class="text-desc">160</span> or higher, increases this unit's Elation by <span class="text-desc">50%</span>. For every <span class="text-desc">1</span> SPD exceeded, increases this unit's Elation by <span class="text-desc">2%</span>. Up to a max of <span class="text-desc">100</span> excess SPD can be taken into account for this effect.`,
-      image: 'asset/traces/SkillIcon_1506_SkillTree1.webp',
+      image: 'SkillIcon_1506_SkillTree1.png',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'True Ending Unlocked',
       content: `If the number of <b class="text-orange-400">Punchline</b> points taken into account when using Elation Skill is <span class="text-desc">20</span> or more, additionally gains <span class="text-desc">20</span> <b class="text-violet-300">Hidden MMR</b> points (And if it's <span class="text-desc">40</span> or more, then gains <span class="text-desc">20</span> more points on top of that).`,
-      image: 'asset/traces/SkillIcon_1506_SkillTree2.webp',
+      image: 'SkillIcon_1506_SkillTree2.png',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Secret Level Maxed',
       content: `After entering the <b class="text-red">Godmode Player</b> state, gains <span class="text-desc">20</span> <b class="text-violet-300">Hidden MMR</b> point(s).`,
-      image: 'asset/traces/SkillIcon_1506_SkillTree3.webp',
+      image: 'SkillIcon_1506_SkillTree3.png',
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Aether Editing: Eidolon +1',
       content: `Enemy targets in the Zone take <span class="text-desc">20%</span> increased DMG.
       <br />When exiting the <b class="text-red">Godmode Player</b> state, <b class="text-violet-300">Hidden MMR</b> will not be cleared. Instead, <span class="text-desc">20%</span> of <b class="text-violet-300">Hidden MMR</b> will be retained instead.`,
-      image: 'asset/traces/SkillIcon_1506_Rank1.webp',
+      image: 'SkillIcon_1506_Rank1.png',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `It's a Feature, Not a Bug`,
       content: `After entering the <b class="text-red">Godmode Player</b> state, extends the duration of all buffs on this unit by <span class="text-desc">1</span> turn. In the current <b class="text-red">Godmode Player</b> state, for every <span class="text-desc">120</span> point(s) of <b class="text-violet-300">Hidden MMR</b> increased (including the initial <b class="text-violet-300">Hidden MMR</b>), Silver Wolf LV.999 gains <span class="text-desc">1</span> extra turn and regains <span class="text-desc">1</span> use of Enhanced Basic ATK.`,
-      image: 'asset/traces/SkillIcon_1506_Rank2.webp',
+      image: 'SkillIcon_1506_Rank2.png',
     },
     c3: {
       trace: 'Eidolon 3',
@@ -176,13 +176,13 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Attack Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1506_BP.webp',
+      image: 'SkillIcon_1506_BP.png',
     },
     c4: {
       trace: 'Eidolon 4',
       title: 'I Came. I Saw. I One-Shot.',
       content: `<b class="elation">Elation DMG</b> dealt by <b>Honkai-DMG Demo</b> additionally takes into account <b class="text-orange-400">Punchline</b>, equal to the original amount multiplied by <span class="text-desc">5</span>.`,
-      image: 'asset/traces/SkillIcon_1506_Rank4.webp',
+      image: 'SkillIcon_1506_Rank4.png',
     },
     c5: {
       trace: 'Eidolon 5',
@@ -190,14 +190,14 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1506_Ultra.webp',
+      image: 'SkillIcon_1506_Ultra.png',
     },
     c6: {
       trace: 'Eidolon 6',
       title: 'Solo Maxxing!',
       content: `<b class="elation">Elation DMG</b> dealt during Enhanced Basic ATK merrymakes by <span class="text-desc">50%</span>.
       <br />When enemy targets enter combat, they are implanted with <b class="text-desc">Absolute Weakness</b>: Has All-Type Weakness, and reduces their <b>All-Type Base RES</b> to <span class="text-desc">0</span>. (If <b>Base RES</b> is already <span class="text-desc">0</span>, then the corresponding Type <b>RES</b> decreases by <span class="text-desc">20%</span> instead).`,
-      image: 'asset/traces/SkillIcon_1506_Rank6.webp',
+      image: 'SkillIcon_1506_Rank6.png',
     },
   }
 
@@ -213,7 +213,7 @@ const SilverWolfSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       ],
       tag: AbilityTag.ENHANCE,
       level: nihilux?.cons || -1 >= 2 ? 2 : 1,
-      image: 'asset/traces/SkillIcon_1506_Innate.webp',
+      image: 'SkillIcon_1506_Aha.png',
     }
   }
 

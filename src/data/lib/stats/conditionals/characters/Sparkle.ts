@@ -331,7 +331,7 @@ const Sparkle = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
             flat: toPercentage(calcScaling(0.27, 0.018, skill, 'curved')),
           })
           if (a.a6) {
-            base.ALL_TYPE_RES_PEN.push({
+            y.ALL_TYPE_RES_PEN.push({
               name: `Ascension 6 Passive`,
               source: 'Sparkle',
               value: 0.1,

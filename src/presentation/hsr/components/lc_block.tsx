@@ -8,6 +8,8 @@ import {
   PathType,
   ITeamChar,
   IWeaponEquip,
+  YATTA,
+  NANOKA,
 } from '@src/domain/constant'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
@@ -47,11 +49,11 @@ export const LCTooltip = ({
         curr[0],
         `<span class="text-desc">${_.round(
           properties?.[index]?.base + properties?.[index]?.growth * (refinement - 1),
-          2
-        )}${isPercentage ? '%' : ''}</span>`
+          2,
+        )}${isPercentage ? '%' : ''}</span>`,
       )
     },
-    data?.desc?.detail
+    data?.desc?.detail,
   )
 
   return (
@@ -134,9 +136,9 @@ export const LCBlock = observer(
           (item, index) => ({
             name: _.toString(item + index),
             value: _.toString(item + index),
-          })
+          }),
         ).reverse(),
-      [ascension]
+      [ascension],
     )
 
     const char = team[index]?.cId
@@ -157,7 +159,7 @@ export const LCBlock = observer(
               'flex flex-col h-[200px] w-fit aspect-[226/315] justify-between gap-1 shrink-0 relative',
               {
                 'cursor-pointer': char && canEdit && team[index]?.cId,
-              }
+              },
             )}
             onClick={onOpenModal}
           >
@@ -167,13 +169,13 @@ export const LCBlock = observer(
                   className={classNames(
                     'items-center justify-center h-full rounded-lg bg-primary-darker shrink-0 border',
                     loading ? 'flex' : 'hidden',
-                    invalid ? 'border-error' : 'border-primary-border'
+                    invalid ? 'border-error' : 'border-primary-border',
                   )}
                 >
                   <i className="text-5xl animate-spin fa-solid fa-circle-notch text-gray" />
                 </div>
                 <img
-                  src={`/asset/lightcone/full/${weaponData?.id}.webp`}
+                  src={`${NANOKA}/lightconemaxfigures/${weaponData?.id}.webp`}
                   className={classNames(
                     'object-contain p-1 flex h-full justify-center border rounded-lg bg-primary-darker duration-200',
                     loading ? 'hidden' : 'block',
@@ -181,7 +183,7 @@ export const LCBlock = observer(
                     {
                       [invalid ? 'hover:border-red' : 'hover:border-primary-light']:
                         char && canEdit && team[index]?.cId,
-                    }
+                    },
                   )}
                   onLoad={() => setLoading(false)}
                 />
@@ -259,7 +261,7 @@ export const LCBlock = observer(
             <div className="px-1 pt-1 space-y-3">
               <div className="flex items-center gap-2 text-xs">
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <img className="w-3.5" src={`/icons/${StatIcons[Stats.HP]}`} />
+                  <img className="w-3.5" src={`${YATTA}/status/${StatIcons[Stats.HP]}`} />
                   <p>Base HP</p>
                 </div>
                 <hr className="w-full border border-primary-border" />
@@ -267,7 +269,7 @@ export const LCBlock = observer(
               </div>
               <div className="flex items-center gap-2 text-xs">
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <img className="w-3.5" src={`/icons/${StatIcons[Stats.ATK]}`} />
+                  <img className="w-3.5" src={`${YATTA}/status/${StatIcons[Stats.ATK]}`} />
                   <p>Base ATK</p>
                 </div>
                 <hr className="w-full border border-primary-border" />
@@ -275,7 +277,7 @@ export const LCBlock = observer(
               </div>
               <div className="flex items-center gap-2 text-xs">
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <img className="w-3.5" src={`/icons/${StatIcons[Stats.DEF]}`} />
+                  <img className="w-3.5" src={`${YATTA}/status/${StatIcons[Stats.DEF]}`} />
                   <p>Base DEF</p>
                 </div>
                 <hr className="w-full border border-primary-border" />
@@ -286,5 +288,5 @@ export const LCBlock = observer(
         </div>
       </div>
     )
-  }
+  },
 )

@@ -44,7 +44,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       tag: AbilityTag.ST,
       sp: 1,
       energy: 20,
-      image: 'asset/traces/SkillIcon_8009_Normal.webp',
+      image: 'SkillIcon_8009_Normal.png',
     },
     skill: {
       trace: 'Skill',
@@ -55,7 +55,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       tag: AbilityTag.AOE,
       sp: -1,
       energy: 30,
-      image: 'asset/traces/SkillIcon_8009_BP.webp',
+      image: 'SkillIcon_8009_BP.png',
     },
     summon_skill: {
       participantId: 120,
@@ -69,7 +69,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       level: elation,
       tag: AbilityTag.BOUNCE,
       energy: 5,
-      image: 'asset/traces/SkillIcon_8009_Elation.webp',
+      image: 'SkillIcon_8009_Elation.png',
     },
     ult: {
       trace: 'Ultimate',
@@ -81,7 +81,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       level: ult,
       tag: AbilityTag.SUPPORT,
       energy: 5,
-      image: 'asset/traces/SkillIcon_8009_Ultra_on.webp',
+      image: 'SkillIcon_8009_Ultra.png',
     },
     talent: {
       trace: `Talent`,
@@ -91,7 +91,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       value: [{ base: 15, growth: 1.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.SUPPORT,
-      image: 'asset/traces/SkillIcon_8009_Passive.webp',
+      image: 'SkillIcon_8009_Passive.png',
     },
     technique: {
       trace: 'Technique',
@@ -101,37 +101,37 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       <br />A high chance to gain <b class="text-red">Irrepressible Laughter</b>: Increases Elation by <span class="text-desc">20%</span>.
       <br />When the next battle begins, increases all allies' Elation stat by the corresponding amount for <span class="text-desc">3</span> turn(s).`,
       tag: AbilityTag.ENHANCE,
-      image: 'asset/traces/SkillIcon_8009_Maze.webp',
+      image: 'SkillIcon_8009_Maze.png',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Faster! Faster!',
       content: `For every <span class="text-desc">200</span> point(s) of ATK that exceeds <span class="text-desc">1,000</span>, increases this unit's Elation stat by <span class="text-desc">10%</span>, up to a maximum increase of <span class="text-desc">60%</span>.`,
-      image: 'asset/traces/SkillIcon_8009_SkillTree1.webp',
+      image: 'SkillIcon_8009_SkillTree1.png',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Game Over With You',
       content: `Increases this unit's CRIT Rate by <span class="text-desc">15%</span>. After using Ultimate, recovers <span class="text-desc">1</span> Skill Point(s) for the team.`,
-      image: 'asset/traces/SkillIcon_8009_SkillTree2.webp',
+      image: 'SkillIcon_8009_SkillTree2.png',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Bite Them, Aha!',
       content: `After an ally target uses an Elation Skill, Trailblazer additionally gains <span class="text-desc">2</span> point(s) of <b class="text-blue">Certified Banger</b> the next time they use their Skill.`,
-      image: 'asset/traces/SkillIcon_8009_SkillTree3.webp',
+      image: 'SkillIcon_8009_SkillTree3.png',
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Believe In the Light',
       content: `After using Skill, the next Ultimate increases amount of the <b class="text-blue">Certified Banger</b> gained by ally targets by <span class="text-desc">2</span>. This effect can stack up to <span class="text-desc">3</span> time(s).`,
-      image: 'asset/traces/SkillIcon_8009_Rank1.webp',
+      image: 'SkillIcon_8009_Rank1.png',
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'History in the Making...',
       content: `Ultimate additionally increases the Elation of one designated ally by <span class="text-desc">12%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
-      image: 'asset/traces/SkillIcon_8009_Rank2.webp',
+      image: 'SkillIcon_8009_Rank2.png',
     },
     c3: {
       trace: 'Eidolon 3',
@@ -139,13 +139,13 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_8009_BP.webp',
+      image: 'SkillIcon_8009_BP.png',
     },
     c4: {
       trace: 'Eidolon 4',
       title: 'Save the World. Just Because.',
       content: `When using Elation Skill, increases DMG taken by enemy targets by <span class="text-desc">12%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
-      image: 'asset/traces/SkillIcon_8009_Rank4.webp',
+      image: 'SkillIcon_8009_Rank4.png',
     },
     c5: {
       trace: 'Eidolon 5',
@@ -153,13 +153,13 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Attack Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_8009_Ultra.webp',
+      image: 'SkillIcon_8009_Ultra.png',
     },
     c6: {
       trace: 'Eidolon 6',
       title: 'The Cosmic Legend Cometh!',
       content: `When using Elation Skill, increases this unit's CRIT DMG by <span class="text-desc">100%</span> for <span class="text-desc">3</span> turns.`,
-      image: 'asset/traces/SkillIcon_8009_Rank6.webp',
+      image: 'SkillIcon_8009_Rank6.png',
     },
   }
 
@@ -175,7 +175,7 @@ const EMC = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       ],
       tag: AbilityTag.ENHANCE,
       level: nihilux?.cons || -1 >= 2 ? 2 : 1,
-      image: 'asset/traces/SkillIcon_8009_Innate.webp',
+      image: 'SkillIcon_8009_Aha.png',
     }
   }
 

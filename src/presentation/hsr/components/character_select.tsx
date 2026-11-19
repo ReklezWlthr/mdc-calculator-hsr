@@ -1,5 +1,6 @@
 import { formatIdIcon } from '@src/core/utils/data_format'
 import { useStore } from '@src/data/providers/app_store_provider'
+import { NANOKA } from '@src/domain/constant'
 import classNames from 'classnames'
 
 export const CharacterSelect = ({
@@ -25,14 +26,7 @@ export const CharacterSelect = ({
       onClick={() => onClick?.()}
     >
       <img
-        src={
-          id
-            ? `/asset/avatar/portrait//${formatIdIcon(
-                id,
-                settingStore.settings?.travelerGender
-              )}.webp`
-            : ''
-        }
+        src={id ? `${NANOKA}/avatarshopicon/${formatIdIcon(id, settingStore.settings?.travelerGender)}.webp` : ''}
         className="absolute object-cover scale-[1.75] top-4"
       />
     </div>

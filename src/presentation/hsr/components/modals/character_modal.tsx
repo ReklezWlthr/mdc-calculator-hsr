@@ -2,7 +2,7 @@ import _ from 'lodash'
 import { Characters } from '@src/data/db/characters'
 import { useStore } from '@src/data/providers/app_store_provider'
 import { observer } from 'mobx-react-lite'
-import { DefaultBuild, Element, ITeamChar, IWeaponEquip, PathType } from '@src/domain/constant'
+import { DefaultBuild, Element, ITeamChar, IWeaponEquip, NANOKA, PathType } from '@src/domain/constant'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { useParams } from '@src/core/hooks/useParams'
 import classNames from 'classnames'
@@ -154,14 +154,17 @@ export const CharacterModal = observer(({ index, setChar }: CharacterModalProps)
                     E{_.find(charStore.characters, ['cId', item.id])?.cons || 0}
                   </div>
                 )}
-                {item.beta && (
-                  <div className="absolute right-0 px-1.5 py-0.5 bottom-7 bg-rose-600 rounded-l-md">Beta</div>
-                )}
+                <div className="absolute right-0 bottom-7 flex flex-col gap-1">
+                  {item.collab && (
+                    <div className="px-1.5 py-0.5 bg-violet-600 rounded-l-md text-center">{item.collab}</div>
+                  )}
+                  {item.beta && <div className="px-1.5 py-0.5 bg-rose-600 rounded-l-md">Beta</div>}
+                </div>
                 <div className="absolute bg-primary-darker py-0.5 px-1.5 rounded-full right-1 bottom-0.5">
                   <RarityGauge rarity={item.rarity} />
                 </div>
                 <img
-                  src={`/asset/avatar/portrait/${formatIdIcon(item.id, settingStore.settings?.travelerGender)}.webp`}
+                  src={`${NANOKA}/avatarshopicon/${formatIdIcon(item.id, settingStore.settings?.travelerGender)}.webp`}
                   className="object-cover rounded-t-lg bg-primary-darker aspect-[47/64] w-full"
                 />
               </div>

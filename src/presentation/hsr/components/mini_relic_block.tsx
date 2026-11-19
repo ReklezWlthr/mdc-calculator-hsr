@@ -2,7 +2,7 @@ import { toPercentage } from '@src/core/utils/data_format'
 import { getMainStat, getNearestSpd, getRolls } from '@src/core/utils/data_format'
 import { findArtifactSet } from '@src/core/utils/finder'
 import { useStore } from '@src/data/providers/app_store_provider'
-import { RelicPiece, StatIcons, Stats } from '@src/domain/constant'
+import { RelicPiece, StatIcons, Stats, YATTA } from '@src/domain/constant'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
@@ -58,13 +58,13 @@ export const MiniRelicBlock = observer(
         {aId ? (
           <div className="flex items-center justify-between gap-4">
             <div className="relative flex flex-col items-center w-1/3 gap-1">
-              <img src={`/asset/relic/piece/${setData?.id}_${(relic?.type - 1) % 4}.webp`} className="w-11 h-11" />
+              <img src={`${YATTA}/relic/IconRelic_${setData?.id}_${relic?.type}.png`} className="w-11 h-11" />
               <RarityGauge rarity={relic?.quality} textSize="text-xs" />
               <div className="flex items-center justify-between w-full gap-2 text-xs">
                 <img
                   className="w-3.5"
-                  src={`/icons/${StatIcons[relic?.main]}`}
-                  onError={(e) => (e.currentTarget.src = `/icons/${StatIcons[relic?.main]}`)}
+                  src={`${YATTA}/status/${StatIcons[relic?.main]}`}
+                  onError={(e) => (e.currentTarget.src = `${YATTA}/status/${StatIcons[relic?.main]}`)}
                 />
                 <p className="font-bold text-gray">
                   {_.includes([Stats.HP, Stats.ATK, Stats.SPD], relic?.main)
@@ -79,7 +79,7 @@ export const MiniRelicBlock = observer(
             <div className="grid w-7/12 grid-cols-1 gap-1">
               {_.map(subListWithRolls, (item) => (
                 <div className="flex items-center w-full gap-1.5 text-xs" key={item.stat}>
-                  <img className="w-3.5" src={`/icons/${StatIcons[item.stat]}`} />
+                  <img className="w-3.5" src={`${YATTA}/status/${StatIcons[item.stat]}`} />
                   {item.roll > 1 && (
                     <div
                       className={classNames(

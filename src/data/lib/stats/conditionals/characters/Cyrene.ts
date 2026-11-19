@@ -363,7 +363,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       value: [{ base: 30, growth: 6, style: 'linear' }],
       level: memo_skill,
       tag: AbilityTag.AOE,
-      image: 'asset/traces/SkillIcon_11415_Servant02.png',
+      image: 'SkillIcon_11415_Servant02.png',
     },
     unique_summon_skill: {
       trace: 'Exclusive Memosprite Skill',
@@ -389,7 +389,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       ],
       level: memo_skill,
       tag: AbilityTag.SUPPORT,
-      image: 'asset/traces/SkillIcon_11415_Servant.png',
+      image: 'SkillIcon_11415_Servant.png',
     },
     ult: {
       trace: 'Ultimate',
@@ -399,7 +399,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       value: [{ base: 25, growth: 2.5, style: 'curved' }],
       level: ult,
       tag: AbilityTag.SUMMON,
-      image: 'asset/traces/SkillIcon_1415_Ultra.png',
+      image: 'SkillIcon_1415_Ultra.png',
     },
     ult_alt: {
       trace: 'Alternate Ultimate',
@@ -408,7 +408,7 @@ const Cyrene = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       value: [],
       level: ult,
       tag: AbilityTag.SUMMON,
-      image: 'asset/traces/SkillIcon_1415_Ultra02.png',
+      image: 'SkillIcon_1415_Ultra02.png',
     },
     talent: {
       trace: 'Talent',

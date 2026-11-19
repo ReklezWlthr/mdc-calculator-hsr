@@ -10,6 +10,7 @@ import { findCharacter } from '@src/core/utils/finder'
 import { useCallback, useMemo, useState } from 'react'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { CommonModal } from '@src/presentation/components/common_modal'
+import { NANOKA } from '@src/domain/constant'
 
 export interface TeamModalProps {
   onSelect: (team: TSetup) => void
@@ -19,7 +20,7 @@ export interface TeamModalProps {
 
 export const TeamModalBlock = ({ team, button }: { team: TSetup; button: React.ReactNode }) => {
   const { settingStore, setupStore, toastStore } = useStore()
-  
+
   const [edit, setEdit] = useState(false)
   const [name, setName] = useState(team.name || '')
 
@@ -43,7 +44,7 @@ export const TeamModalBlock = ({ team, button }: { team: TSetup; button: React.R
               <i
                 className={classNames(
                   'flex items-center justify-center w-5 h-5 text-xs rounded-sm cursor-pointer fa-solid fa-check shrink-0 duration-200',
-                  name ? 'text-heal bg-primary' : 'text-primary bg-primary-dark'
+                  name ? 'text-heal bg-primary' : 'text-primary bg-primary-dark',
                 )}
                 onClick={() => {
                   if (name) {
@@ -75,16 +76,13 @@ export const TeamModalBlock = ({ team, button }: { team: TSetup; button: React.R
             <div
               className={classNames(
                 'relative overflow-hidden rounded-lg w-14 h-7 bg-opacity-25',
-                ElementIconColor[findCharacter(item.cId)?.element] || 'bg-primary'
+                ElementIconColor[findCharacter(item.cId)?.element] || 'bg-primary',
               )}
               key={item.cId}
             >
               {!!item.cId && (
                 <img
-                  src={`/asset/avatar/portrait//${formatIdIcon(
-                    item.cId,
-                    settingStore.settings?.travelerGender
-                  )}.webp`}
+                  src={`${NANOKA}/avatarshopicon/${formatIdIcon(item.cId, settingStore.settings?.travelerGender)}.webp`}
                   className="absolute object-cover scale-[1.75]"
                 />
               )}
@@ -110,12 +108,12 @@ export const TeamModal = observer(({ onSelect, filterId, hideCurrent }: TeamModa
       ...(search
         ? _.filter(setupStore.team, (item) =>
             _.some([..._.map(item.char, (c) => findCharacter(c?.cId)?.name), item.name], (q) =>
-              _.includes(q?.toLowerCase(), search?.toLowerCase())
-            )
+              _.includes(q?.toLowerCase(), search?.toLowerCase()),
+            ),
           )
         : setupStore.team),
     ],
-    [setupStore.team, teamStore.characters, search]
+    [setupStore.team, teamStore.characters, search],
   )
 
   const onOpenConfirmModal = useCallback(
@@ -146,10 +144,10 @@ export const TeamModal = observer(({ onSelect, filterId, hideCurrent }: TeamModa
             modalStore.closeModal()
             modalStore.openModal(<TeamModal onSelect={onSelect} filterId={filterId} hideCurrent={hideCurrent} />)
           }}
-        />
+        />,
       )
     },
-    [onSelect, filterId, hideCurrent]
+    [onSelect, filterId, hideCurrent],
   )
 
   return (
@@ -164,8 +162,8 @@ export const TeamModal = observer(({ onSelect, filterId, hideCurrent }: TeamModa
             ? _.filter(team, (item) =>
                 _.includes(
                   _.map(item.char, (c) => c.cId),
-                  filterId
-                )
+                  filterId,
+                ),
               )
             : team,
           (team) => {
@@ -195,7 +193,7 @@ export const TeamModal = observer(({ onSelect, filterId, hideCurrent }: TeamModa
                 }
               />
             )
-          }
+          },
         )}
       </div>
     </div>

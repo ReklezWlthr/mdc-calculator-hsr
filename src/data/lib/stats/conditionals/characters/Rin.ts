@@ -41,7 +41,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       level: basic,
       tag: AbilityTag.ST,
       sp: 1,
-      image: 'asset/traces/SkillIcon_1508_Normal.webp',
+      image: 'SkillIcon_1508_Normal.png',
     },
     skill: {
       energy: 30,
@@ -52,7 +52,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       level: skill,
       tag: AbilityTag.ST,
       sp: -1,
-      image: 'asset/traces/SkillIcon_1508_BP.webp',
+      image: 'SkillIcon_1508_BP.png',
     },
     skill_alt: {
       trace: 'Enhanced Skill',
@@ -62,7 +62,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       level: talent,
       tag: AbilityTag.BOUNCE,
       energy: 30,
-      image: 'asset/traces/SkillIcon_1508_BP02.webp',
+      image: 'SkillIcon_1508_BP02.png',
     },
     ult: {
       energy: 5,
@@ -76,7 +76,7 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       ],
       level: ult,
       tag: AbilityTag.AOE,
-      image: 'asset/traces/SkillIcon_1508_Ultra_on.webp',
+      image: 'SkillIcon_1508_Ultra.png',
     },
     talent: {
       trace: 'Talent',
@@ -91,71 +91,71 @@ const Rin = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITalent
       ],
       level: talent,
       tag: AbilityTag.ENHANCE,
-      image: 'asset/traces/SkillIcon_1508_Passive.webp',
+      image: 'SkillIcon_1508_Passive.png',
     },
     technique: {
       trace: 'Technique',
       title: `Conversion Charge`,
       content: `After using Technique, gains <span class="text-desc">10</span> <b class="text-indigo-400">Gem Energy</b> at the start of the next battle.`,
       tag: AbilityTag.ENHANCE,
-      image: 'asset/traces/SkillIcon_1508_Maze.webp',
+      image: 'SkillIcon_1508_Maze.png',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Inbound Prosperity',
       content: `When Rin Tohsaka uses Ultimate, gains <span class="text-desc">12</span> <b class="text-indigo-400">Gem Energy</b>.`,
-      image: 'asset/traces/SkillIcon_1508_SkillTree3.webp',
+      image: 'SkillIcon_1508_SkillTree3.png',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Ladylike Poise`,
       content: `When entering combat or after using Enhanced Skill, increases Rin Tohsaka's SPD by <span class="text-desc">20%</span> for <span class="text-desc">3</span> turn(s).`,
-      image: 'asset/traces/SkillIcon_1508_SkillTree2.webp',
+      image: 'SkillIcon_1508_SkillTree2.png',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Elegant Conduct',
       content: `While Rin Tohsaka is on the field, additionally increases the upper limit of Skill Points by <span class="text-desc">2</span>. When entering combat, Rin Tohsaka's ATK increases by <span class="text-desc">150%</span>, and <b class="text-hsr-quantum">Quantum RES PEN</b> increases by <span class="text-desc">15%</span>. If Archer is in the team, Archer also gains this effect.`,
-      image: 'asset/traces/SkillIcon_1508_SkillTree1.webp',
+      image: 'SkillIcon_1508_SkillTree1.png',
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Zelretch's Apprentice`,
       content: `If one instance of the Enhanced Skill consumes <span class="text-desc">30</span> or more <b class="text-indigo-400">Gem Energy</b>, Rin Tohsaka gains <b class="text-red">Shadow Gem</b> equal to the amount of <b class="text-indigo-400">Gem Energy</b> consumed.
       <br />While holding <b class="text-red">Shadow Gem</b>, enhances Skill to <b>Second Magic Experiment</b>. The Enhanced Skill consumes all <b class="text-red">Shadow Gem</b>, does not trigger the effect that converts Skill Points into <b class="text-indigo-400">Gem Energy</b>, and does not consume <b class="text-indigo-400">Gem Energy</b>.`,
-      image: 'asset/traces/SkillIcon_1508_Rank1.webp',
+      image: 'SkillIcon_1508_Rank1.png',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Dimensional Traveler`,
       content: `Rin Tohsaka's Skill DMG dealt increases by <span class="text-desc">30%</span>. While Rin Tohsaka is on the field, Skill DMG dealt by all allies becomes <span class="text-desc">130%</span> of the original DMG.`,
-      image: 'asset/traces/SkillIcon_1508_Rank2.webp',
+      image: 'SkillIcon_1508_Rank2.png',
     },
     c3: {
       trace: 'Eidolon 3',
       title: 'Holy Grail War: Victory Memorial',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
-      image: 'asset/traces/SkillIcon_1508_Ultra.webp',
+      image: 'SkillIcon_1508_Ultra.png',
     },
     c4: {
       trace: 'Eidolon 4',
       title: `Red Devil: Triple Speed`,
       content: `When the CRIT DMG boost effect from the Talent <b>Gem Magecraft</b> applies to Rin Tohsaka, the effect can stack, up to <span class="text-desc">2</span> time(s).`,
-      image: 'asset/traces/SkillIcon_1508_Rank4.webp',
+      image: 'SkillIcon_1508_Rank4.png',
     },
     c5: {
       trace: 'Eidolon 5',
       title: `Goddess of Venus's Favor`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1508_BP.webp',
+      image: 'SkillIcon_1508_BP.png',
     },
     c6: {
       trace: 'Eidolon 6',
       title: 'Nailed It This Time!',
       content: `Rin Tohsaka's <b>All-Type RES PEN</b> increases by <span class="text-desc">20%</span>. When using Ultimate, gains <span class="text-desc">24</span> <b class="text-indigo-400">Gem Energy</b> and <span class="text-desc">1</span> extra turn.`,
-      image: 'asset/traces/SkillIcon_1508_Rank6.webp',
+      image: 'SkillIcon_1508_Rank6.png',
     },
   }
 

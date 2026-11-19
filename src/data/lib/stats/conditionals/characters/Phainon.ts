@@ -87,7 +87,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ],
       level: skill,
       tag: AbilityTag.BOUNCE,
-      image: 'asset/traces/SkillIcon_1408_BP03.png',
+      image: 'SkillIcon_1408_BP03.png',
     },
     ult: {
       trace: 'Ultimate',
@@ -119,7 +119,7 @@ const Phainon = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ],
       level: talent,
       tag: AbilityTag.ENHANCE,
-      image: 'asset/traces/SkillIcon_1408_Passive.png',
+      image: 'SkillIcon_1408_Passive.png',
     },
     technique: {
       trace: 'Technique',

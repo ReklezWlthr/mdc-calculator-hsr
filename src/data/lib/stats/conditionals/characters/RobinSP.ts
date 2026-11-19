@@ -48,7 +48,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       tag: AbilityTag.ST,
       sp: 1,
       energy: 20,
-      image: 'asset/traces/SkillIcon_1512_Normal.webp',
+      image: 'SkillIcon_1512_Normal.png',
     },
     skill: {
       trace: 'Skill',
@@ -58,7 +58,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
       tag: AbilityTag.SUMMON,
       sp: -1,
-      image: 'asset/traces/SkillIcon_1512_BP.webp',
+      image: 'SkillIcon_1512_BP.png',
     },
     summon_skill: {
       energy: 20,
@@ -68,7 +68,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       value: [{ base: 75, growth: 15, style: 'linear' }],
       level: memo_skill,
       tag: AbilityTag.AOE,
-      image: 'asset/traces/SkillIcon_11512_Servant.webp',
+      image: 'SkillIcon_11512_Servant.png',
     },
     ult: {
       trace: 'Ultimate',
@@ -78,7 +78,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: ult,
       tag: AbilityTag.SUPPORT,
       energy: 5,
-      image: 'asset/traces/SkillIcon_1512_Ultra_on.webp',
+      image: 'SkillIcon_1512_Ultra.png',
     },
     talent: {
       trace: 'Talent',
@@ -88,7 +88,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       value: [{ base: 10, growth: 0.5, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ENHANCE,
-      image: 'asset/traces/SkillIcon_1512_Passive.webp',
+      image: 'SkillIcon_1512_Passive.png',
     },
     summon_talent: {
       trace: 'Memosprite Talent [1]',
@@ -103,7 +103,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ],
       level: memo_talent,
       tag: AbilityTag.SUPPORT,
-      image: 'asset/traces/SkillIcon_11512_ServantPassive.webp',
+      image: 'SkillIcon_11512_ServantPassive.png',
     },
     summon_talent_2: {
       trace: 'Memosprite Talent [2]',
@@ -112,7 +112,7 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       value: [],
       level: memo_talent,
       tag: AbilityTag.SUPPORT,
-      image: 'asset/traces/SkillIcon_11512_ServantPassive.webp',
+      image: 'SkillIcon_11512_ServantPassive.png',
     },
     summon_talent_3: {
       trace: 'Memosprite Talent [3]',
@@ -121,44 +121,44 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       value: [],
       level: memo_talent,
       tag: AbilityTag.SUPPORT,
-      image: 'asset/traces/SkillIcon_11512_ServantPassive.webp',
+      image: 'SkillIcon_11512_ServantPassive.png',
     },
     technique: {
       trace: 'Technique',
       title: 'We Are the Melody',
       content: `After using Technique, advances action by <span class="text-desc">20%</span> at the start of the next battle, immediately gains <span class="text-desc">6</span> <b class="text-blue">Vibes</b>, and increases all allies' DMG dealt by <span class="text-desc">30%</span>, lasting for <span class="text-desc">2</span> turn(s).`,
       tag: AbilityTag.ENHANCE,
-      image: 'asset/traces/SkillIcon_1512_Maze.webp',
+      image: 'SkillIcon_1512_Maze.png',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Deviated Chords`,
       content: `When an ally target causes Robin • Summeretto to gain <b class="text-blue">Vibes</b>, if their ATK is higher than Robin • Summeretto's, increases that target's ATK by an amount equal to (<span class="text-desc">16%</span> + <b class="text-blue">Vibes</b> × <span class="text-desc">0.4%</span>) of Robin • Summeretto's Max HP. Otherwise, increases that target's CRIT DMG by an amount equal to (<span class="text-desc">40%</span> + <b class="text-blue">Vibes</b> × <span class="text-desc">1.5%</span>). Lasts for <span class="text-desc">2</span> turn(s).`,
-      image: 'asset/traces/SkillIcon_1512_SkillTree1.webp',
+      image: 'SkillIcon_1512_SkillTree1.png',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Improvised Blues`,
       content: `When Robin • Summeretto or the <b>Summer Songbirds</b> receive healing or a Shield provided by teammates, causes Robin • Summeretto to gain <span class="text-desc">12</span> stack(s) of <b class="text-heal">Groove</b>, capped at <span class="text-desc">12</span>. The first time Robin • Summeretto gains <b class="text-blue">Vibes</b> during any target's turn, if she has <b class="text-heal">Groove</b>, consumes <span class="text-desc">1</span> stack of <b class="text-heal">Groove</b> and regenerates a fixed <span class="text-desc">3</span> Energy.`,
-      image: 'asset/traces/SkillIcon_1512_SkillTree2.webp',
+      image: 'SkillIcon_1512_SkillTree2.png',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Rebuilt Harmony`,
       content: `Increases the CRIT Rate of Robin • Summeretto and <b>Summer Songbirds</b> by <span class="text-desc">50%</span>.`,
-      image: 'asset/traces/SkillIcon_1512_SkillTree3.webp',
+      image: 'SkillIcon_1512_SkillTree3.png',
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Stray Bird of Summer`,
       content: `<b>Summer Songbirds</b> will keep a tally of <span class="text-desc">100%</span> of the non-<b class="text-true">True DMG</b> dealt by ally targets. When using the Memosprite Skill, additionally deals <b class="text-true">True DMG</b> to the enemy target with the highest HP, equal to (<span class="text-desc">11%</span> + current <b class="text-blue">Vibes</b> × <span class="text-desc">0.1%</span>) of the total tally. Then, clears <span class="text-desc">50%</span> of the tally.`,
-      image: 'asset/traces/SkillIcon_1512_Rank1.webp',
+      image: 'SkillIcon_1512_Rank1.png',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `A Heart of Still Water`,
       content: `Ally targets' <b>All-Type RES PEN</b> increases by <span class="text-desc">18%</span>. The upper limit of Robin • Summeretto's <b class="text-blue">Vibes</b> increases by <span class="text-desc">20</span>. The first time an ally target uses an ability during any target's turn to cause Robin • Summeretto to gain <b class="text-blue">Vibes</b>, she gains an additional <span class="text-desc">2</span> points.`,
-      image: 'asset/traces/SkillIcon_1512_Rank2.webp',
+      image: 'SkillIcon_1512_Rank2.png',
     },
     c3: {
       trace: 'Eidolon 3',
@@ -166,13 +166,13 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Memosprite Talent Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
-      image: 'asset/traces/SkillIcon_1512_BP.webp',
+      image: 'SkillIcon_1512_BP.png',
     },
     c4: {
       trace: 'Eidolon 4',
       title: 'Her Variation on the Theme',
       content: `Upon entering the <b class="text-orange-400">Fever</b> state, immediately gains <span class="text-desc">12</span> <b class="text-blue">Vibes</b>, and increases the SPD of <b>Summer Songbirds</b> an amount equal to (<span class="text-desc">20%</span> + current <b class="text-blue">Vibes</b> × <span class="text-desc">0.5%</span>).`,
-      image: 'asset/traces/SkillIcon_1512_Rank4.webp',
+      image: 'SkillIcon_1512_Rank4.png',
     },
     c5: {
       trace: 'Eidolon 5',
@@ -180,13 +180,13 @@ const RobinSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.
       <br />Memosprite Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
-      image: 'asset/traces/SkillIcon_1512_Ultra.webp',
+      image: 'SkillIcon_1512_Ultra.png',
     },
     c6: {
       trace: 'Eidolon 6',
       title: 'A Song Yet Unnamed',
       content: `Increases the Memosprite Skill's DMG multiplier by <span class="text-desc">100%</span> of its original value. While in the <b class="text-orange-400">Fever</b> state, Robin • Summeretto store her Ultimate up to <span class="text-desc">2</span> times. After entering the <b class="text-orange-400">Fever</b> state for the first time in this battle or when the <b class="text-orange-400">Fever</b>'s turn starts, regenerates a fixed <span class="text-desc">140</span> Energy.`,
-      image: 'asset/traces/SkillIcon_1512_Rank6.webp',
+      image: 'SkillIcon_1512_Rank6.png',
     },
   }
 

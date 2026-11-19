@@ -44,7 +44,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       tag: AbilityTag.ST,
       sp: 1,
       energy: 20,
-      image: 'asset/traces/SkillIcon_1505_Normal.webp',
+      image: 'SkillIcon_1505_Normal.png',
     },
     skill: {
       trace: 'Skill',
@@ -58,7 +58,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       tag: AbilityTag.AOE,
       sp: -1,
       energy: 30,
-      image: 'asset/traces/SkillIcon_1505_BP.webp',
+      image: 'SkillIcon_1505_BP.png',
     },
     summon_skill: {
       participantId: 146,
@@ -69,7 +69,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: elation,
       tag: AbilityTag.AOE,
       energy: 5,
-      image: 'asset/traces/SkillIcon_1505_Elation.webp',
+      image: 'SkillIcon_1505_Elation.png',
     },
     ult: {
       trace: 'Ultimate',
@@ -82,7 +82,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       level: ult,
       tag: AbilityTag.AOE,
       energy: 5,
-      image: 'asset/traces/SkillIcon_1505_Ultra_on.webp',
+      image: 'SkillIcon_1505_Ultra.png',
     },
     talent: {
       trace: `Talent`,
@@ -101,44 +101,44 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ],
       level: talent,
       tag: AbilityTag.ENHANCE,
-      image: 'asset/traces/SkillIcon_1505_Passive.webp',
+      image: 'SkillIcon_1505_Passive.png',
     },
     technique: {
       trace: 'Technique',
       title: 'Petalfall: Floral Reminiscence',
       content: `Immediately attacks all enemies within a certain range. After entering combat, deals <b class="text-hsr-physical">Physical DMG</b> equal to <span class="text-desc">100%</span> of Evanescia's ATK to all enemies and gains <span class="text-desc">20</span> point(s) of <b class="text-blue">Certified Banger</b>.`,
       tag: AbilityTag.SUMMON,
-      image: 'asset/traces/SkillIcon_1505_Maze.webp',
+      image: 'SkillIcon_1505_Maze.png',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Watch All Revels',
       content: `Increases Evanescia's CRIT Rate by <span class="text-desc">30%</span>. When there are <span class="text-desc">(≥3)</span>/<span class="text-desc">2</span>/<span class="text-desc">1</span> enemy target(s) on the field, the Ultimate's bounce count increases by <span class="text-desc">1</span>/<span class="text-desc">2</span>/<span class="text-desc">4</span>. When a teammate with an Elation Skill Participant ID lower than Evanescia's gains <b class="text-blue">Certified Banger</b>, Evanescia converts <span class="text-desc">50%</span> of it into her own <b class="text-blue">Certified Banger</b>.`,
-      image: 'asset/traces/SkillIcon_1505_SkillTree1.webp',
+      image: 'SkillIcon_1505_SkillTree1.png',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Weigh All Truths',
       content: `When <b>Master Fox</b> uses an attack, it additionally inflicts Vulnerability on the target, increasing the DMG they take by <span class="text-desc">12%</span> for <span class="text-desc">3</span> turn(s).`,
-      image: 'asset/traces/SkillIcon_1505_SkillTree2.webp',
+      image: 'SkillIcon_1505_SkillTree2.png',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Best All Blooms',
       content: `When a teammate's <b class="text-blue">Certified Banger</b> ends, Evanescia converts <span class="text-desc">50%</span> of it into her own <b class="text-blue">Certified Banger</b>.`,
-      image: 'asset/traces/SkillIcon_1505_SkillTree3.webp',
+      image: 'SkillIcon_1505_SkillTree3.png',
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Home: A Prayer in Dance',
       content: `Increases <b>All-Type RES PEN</b> by <span class="text-desc">20%</span>. After <b>Master Fox</b> uses an attack, additionally triggers <span class="text-desc">1</span> instance of Elation Skill. Elation Skill additionally grants this unit <span class="text-desc">10</span> <b class="text-blue">Certified Banger</b> point(s).`,
-      image: 'asset/traces/SkillIcon_1505_Rank1.webp',
+      image: 'SkillIcon_1505_Rank1.png',
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'Voyage: A Wish for Everbloom',
       content: `CRIT DMG increases by <span class="text-desc">36%</span>. When triggering the <b class="text-blue">Certified Banger</b> gain effect from the Trace <b>Watch All Revels</b>/<b>Best All Blooms</b>, additionally gains <b class="text-blue">Certified Banger</b> equal to <span class="text-desc">50%</span>/<span class="text-desc">100%</span> of the <b class="text-blue">Certified Banger</b> gained this time.`,
-      image: 'asset/traces/SkillIcon_1505_Rank2.webp',
+      image: 'SkillIcon_1505_Rank2.png',
     },
     c3: {
       trace: 'Eidolon 3',
@@ -146,13 +146,13 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Attack Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1505_Ultra.webp',
+      image: 'SkillIcon_1505_Ultra.png',
     },
     c4: {
       trace: 'Eidolon 4',
       title: 'Meadow: A Ruin by Vice',
       content: `Evanescia's DMG dealt ignores <span class="text-desc">15%</span> of the enemy targets' DEF.`,
-      image: 'asset/traces/SkillIcon_1505_Rank4.webp',
+      image: 'SkillIcon_1505_Rank4.png',
     },
     c5: {
       trace: 'Eidolon 5',
@@ -160,13 +160,13 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1505_BP.webp',
+      image: 'SkillIcon_1505_BP.png',
     },
     c6: {
       trace: 'Eidolon 6',
       title: 'Maiden: A Step into Dreams',
       content: `The duration of Evanescia's <b class="text-blue">Certified Banger</b> increases by <span class="text-desc">1</span> turn(s). The <b class="elation">Elation DMG</b> dealt by Evanescia merrymakes by <span class="text-desc">15%</span>. For every <span class="text-desc">100</span> points of <b class="text-blue">Certified Banger</b> possessed, it additionally merrymakes by <span class="text-desc">2%</span>. Up to <span class="text-desc">1,000</span> points of <b class="text-blue">Certified Banger</b> can be taken into account. After using her Ultimate for the first time upon entering combat, regenerates a fixed amount of <span class="text-desc">120</span> Energy for Evanescia. This effect can trigger <span class="text-desc">1</span> time for every <span class="text-desc">4</span> more instances of Ultimate used.`,
-      image: 'asset/traces/SkillIcon_1505_Rank6.webp',
+      image: 'SkillIcon_1505_Rank6.png',
     },
   }
 
@@ -184,7 +184,7 @@ const Evanescia = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: I
       ],
       tag: AbilityTag.ENHANCE,
       level: nihilux?.cons || -1 >= 2 ? 2 : 1,
-      image: 'asset/traces/SkillIcon_1505_Innate.webp',
+      image: 'SkillIcon_1505_Aha.png',
     }
   }
 

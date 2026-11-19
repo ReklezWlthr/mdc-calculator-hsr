@@ -7,7 +7,7 @@ import { Characters } from '@src/data/db/characters'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import classNames from 'classnames'
 import { formatIdIcon } from '@src/core/utils/data_format'
-import { Element, PathType } from '@src/domain/constant'
+import { Element, NANOKA, PathType } from '@src/domain/constant'
 import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { getElementImage, getPathImage } from '@src/core/utils/fetcher'
 import { CharDetail } from '../components/char_detail'
@@ -38,9 +38,9 @@ export const MyCharacters = observer(() => {
           const notOwned = !params.notOwned || !_.some(charStore.characters, (c) => c.cId === item.id)
 
           return nameMatch && elmMatch && pathMatch && liveMatch && owned && notOwned
-        }
+        },
       ),
-    [params, settingStore.settings.liveOnly, charStore.characters]
+    [params, settingStore.settings.liveOnly, charStore.characters],
   )
 
   const FilterIcon = ({ type, value }: { type: 'element' | 'path'; value: Element | PathType }) => {
@@ -84,7 +84,7 @@ export const MyCharacters = observer(() => {
                     'text-white cursor-pointer whitespace-nowrap text-sm px-1.5 py-1 rounded-md duration-200 hover:bg-primary-light',
                     {
                       ' bg-primary-light': params.owned,
-                    }
+                    },
                   )}
                   onClick={() => setParams({ owned: !params.owned, notOwned: false })}
                 >
@@ -95,7 +95,7 @@ export const MyCharacters = observer(() => {
                     'text-white cursor-pointer whitespace-nowrap text-sm px-1.5 py-1 rounded-md duration-200 hover:bg-primary-light',
                     {
                       ' bg-primary-light': params.notOwned,
-                    }
+                    },
                   )}
                   onClick={() => setParams({ owned: false, notOwned: !params.notOwned })}
                 >
@@ -135,7 +135,7 @@ export const MyCharacters = observer(() => {
                 <div
                   className={classNames(
                     'w-full text-xs text-white duration-200 border rounded-lg cursor-pointer bg-primary border-primary-border hover:scale-95',
-                    owned ? 'opacity-100' : 'opacity-30'
+                    owned ? 'opacity-100' : 'opacity-30',
                   )}
                   onClick={() => charStore.setValue('selected', item.id)}
                   key={item.name}
@@ -159,9 +159,9 @@ export const MyCharacters = observer(() => {
                       <div className="absolute right-0 px-1 rounded-l-[4px] bottom-1/4 bg-rose-600">Beta</div>
                     )}
                     <img
-                      src={`/asset/avatar/portrait//${formatIdIcon(
+                      src={`${NANOKA}/avatarshopicon/${formatIdIcon(
                         item.id,
-                        settingStore.settings?.travelerGender
+                        settingStore.settings?.travelerGender,
                       )}.webp`}
                       className="object-contain rounded-t-lg bg-primary-darker aspect-[47/64] w-full"
                     />

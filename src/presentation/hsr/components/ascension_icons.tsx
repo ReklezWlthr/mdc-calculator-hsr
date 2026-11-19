@@ -56,7 +56,7 @@ export const AscensionIcons = (props: AscensionProps) => {
           <div className={classNames('opacity-30', ElementColor[props.element])}>✦</div>
           <TalentIcon
             element={Element.NONE}
-            icon={`SkillIcon_${props.id}_Innate.png`}
+            icon={`SkillIcon_${props.id}_Aha.png`}
             talent={props.talents?.innate}
             type={props.talents?.innate?.trace}
             level={props.talents?.innate?.level}

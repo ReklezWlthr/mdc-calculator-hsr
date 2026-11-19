@@ -1,6 +1,9 @@
 import { StatsObject, StatsObjectKeys } from '@src/data/lib/stats/baseConstant'
 import { DefaultWeapon } from '@src/data/stores/team_store'
 
+export const NANOKA = `https://static.nanoka.cc/assets/hsr`
+export const YATTA = `https://sr.yatta.moe/hsr/assets/UI`
+
 export enum HsrPage {
   TEAM = 'team',
   DMG = 'dmg',
@@ -228,6 +231,16 @@ export enum Element {
   NONE = 'None',
 }
 
+export const ElementIcons = {
+  [Element.PHYSICAL]: 'physical.webp',
+  [Element.FIRE]: 'fire.webp',
+  [Element.ICE]: 'ice.webp',
+  [Element.LIGHTNING]: 'thunder.webp',
+  [Element.WIND]: 'wind.webp',
+  [Element.QUANTUM]: 'quantum.webp',
+  [Element.IMAGINARY]: 'imaginary.webp',
+}
+
 export enum Stats {
   HP = 'HP',
   ATK = 'ATK',
@@ -331,12 +344,12 @@ export const RelicPiece = Object.freeze({
 })
 
 export const RelicPieceIcon = Object.freeze({
-  1: 'partHead',
-  2: 'partHands',
-  3: 'partBody',
-  4: 'partFeet',
-  5: 'partPlanarSphere',
-  6: 'partLinkRope',
+  1: 'IconRelicHead',
+  2: 'IconRelicHands',
+  3: 'IconRelicBody',
+  4: 'IconRelicFoot',
+  5: 'IconRelicNeck',
+  6: 'IconRelicGoods',
 })
 
 export const AscensionOptions = [

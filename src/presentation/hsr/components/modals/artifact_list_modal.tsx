@@ -8,7 +8,7 @@ import { useMemo } from 'react'
 import { SelectTextInput } from '@src/presentation/components/inputs/select_text_input'
 import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
 import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
-import { MainStatOptions, Stats, SubStatOptions } from '@src/domain/constant'
+import { MainStatOptions, Stats, SubStatOptions, YATTA } from '@src/domain/constant'
 import { isSubsetOf } from '@src/core/utils/finder'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 
@@ -60,7 +60,7 @@ export const ArtifactListModal = observer(
                 (artifact) => ({
                   name: artifact.name,
                   value: artifact.id.toString(),
-                  img: `/asset/relic/set/${artifact.id}.webp`,
+                  img: `${YATTA}/relic/${artifact.icon}.png`,
                 }),
               )}
               placeholder="Artifact Set"
@@ -76,7 +76,7 @@ export const ArtifactListModal = observer(
               values={params.main}
               options={_.map(MainStatOptions, (item) => ({
                 ...item,
-                img: '/icons/' + item.img,
+                img: `${YATTA}/status/` + item.img,
               }))}
               onChange={(main) => setParams({ main })}
               placeholder="Main Stat - Match Any"
@@ -86,7 +86,7 @@ export const ArtifactListModal = observer(
               values={params.subs}
               options={_.map(SubStatOptions, (item) => ({
                 ...item,
-                img: '/icons/' + item.img,
+                img: `${YATTA}/status/` + item.img,
               }))}
               onChange={(subs) => setParams({ subs })}
               placeholder="Sub Stats - Include All (Max 4)"

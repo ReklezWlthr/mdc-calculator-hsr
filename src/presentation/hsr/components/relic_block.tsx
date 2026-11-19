@@ -1,8 +1,8 @@
 import { useStore } from '@src/data/providers/app_store_provider'
-import { RelicPiece, RelicPieceIcon, IArtifactEquip, Stats, ITeamChar } from '@src/domain/constant'
+import { RelicPiece, RelicPieceIcon, IArtifactEquip, Stats, ITeamChar, NANOKA, YATTA } from '@src/domain/constant'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { ArtifactModal } from '@src/presentation/hsr/components/modals/artifact_modal'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
 import { getMainStat, getNearestSpd, getRolls } from '@src/core/utils/data_format'
@@ -133,6 +133,8 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
     )
   }, [props.index, props.aId])
 
+  const [loading, setLoading] = useState(true)
+
   // const wearer = _.find(teamStore.characters, (item) => _.includes(item.equipments.artifacts, props.aId))
 
   return (
@@ -145,16 +147,20 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
       )}
     >
       <div className="absolute top-0 right-0 flex items-center justify-center h-8 pointer-events-none w-9 rounded-se-lg rounded-es-lg bg-primary-light">
-        <img src={`/asset/relic/part/${RelicPieceIcon[props.piece]}.webp`} className="w-5 h-5" />
+        <img src={`${YATTA}/relic/white/${RelicPieceIcon[props.piece]}.png`} className="w-5 h-5" />
       </div>
       {props.aId ? (
         <div className="relative w-full">
           <div className="px-3 py-4 space-y-3">
             <div className="flex gap-4">
               <div className="relative w-14 h-14 shrink-0">
+                <div className={classNames('items-center justify-center h-full shrink-0', loading ? 'flex' : 'hidden')}>
+                  <i className="text-3xl animate-spin fa-solid fa-circle-notch text-gray" />
+                </div>
                 <img
-                  src={`/asset/relic/piece/${setData?.id}_${(artifact?.type - 1) % 4}.webp`}
-                  className="w-full h-full"
+                  src={`${YATTA}/relic/IconRelic_${setData?.id}_${artifact?.type}.png`}
+                  className={classNames('w-full h-full', loading ? 'hidden' : 'block')}
+                  onLoad={() => setLoading(false)}
                 />
                 <div className="absolute flex items-center justify-center px-1.5 py-0.5 text-xs bg-opacity-75 rounded-full -bottom-0 -right-2 bg-primary-light">
                   +{artifact?.level}
@@ -171,8 +177,8 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
               <div className="flex items-center gap-1.5 shrink-0">
                 <img
                   className="w-3.5"
-                  src={`/icons/${StatIcons[artifact?.main]}`}
-                  onError={(e) => (e.currentTarget.src = `/icons/${StatIcons[artifact?.main]}`)}
+                  src={`${YATTA}/status/${StatIcons[artifact?.main]}`}
+                  onError={(e) => (e.currentTarget.src = `${NANOKA}/skillicons/${StatIcons[artifact?.main]}`)}
                 />
                 {artifact?.main}
               </div>
@@ -187,7 +193,7 @@ export const RelicBlock = observer(({ canEdit = true, ...props }: RelicBlockProp
             {_.map(subListWithRolls, (item) => (
               <div className="flex items-center gap-2 text-xs" key={item.stat}>
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <img className="w-3.5" src={`/icons/${StatIcons[item.stat]}`} />
+                  <img className="w-3.5" src={`${YATTA}/status/${StatIcons[item.stat]}`} />
                   {item.stat}
                 </div>
                 {item.roll > 1 && (

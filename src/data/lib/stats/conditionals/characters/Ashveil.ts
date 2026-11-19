@@ -41,7 +41,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: basic,
       tag: AbilityTag.ST,
       sp: 1,
-      image: 'asset/traces/SkillIcon_1504_Normal.webp',
+      image: 'SkillIcon_1504_Normal.png',
     },
     skill: {
       energy: 30,
@@ -56,7 +56,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
       tag: AbilityTag.ST,
       sp: -1,
-      image: 'asset/traces/SkillIcon_1504_BP.webp',
+      image: 'SkillIcon_1504_BP.png',
     },
     ult: {
       energy: 5,
@@ -70,7 +70,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ],
       level: ult,
       tag: AbilityTag.ST,
-      image: 'asset/traces/SkillIcon_1504_Ultra_on.webp',
+      image: 'SkillIcon_1504_Ultra.png',
     },
     talent: {
       energy: 5,
@@ -80,7 +80,7 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       value: [{ base: 100, growth: 10, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ST,
-      image: 'asset/traces/SkillIcon_1504_Passive.webp',
+      image: 'SkillIcon_1504_Passive.png',
     },
     technique: {
       trace: 'Technique',
@@ -88,63 +88,63 @@ const Ashveil = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `After using Technique, inflicts Daze on enemies within a set area for <span class="text-desc">10</span> second(s). Dazed enemies will not actively attack ally targets.
       <br />When entering combat via actively attacking a Dazed enemy, deals <b class="text-hsr-lightning">Lightning DMG</b> to all enemies equal to <span class="text-desc">100%</span> of Ashveil's ATK, and grants Ashveil <span class="text-desc">1</span> <b>Charge</b>.`,
       tag: AbilityTag.IMPAIR,
-      image: 'asset/traces/SkillIcon_1504_Maze.webp',
+      image: 'SkillIcon_1504_Maze.png',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Damnation Trail`,
       content: `When Ashveil uses Skill/Ultimate, gains <span class="text-desc">1/2</span> stacks of <b class="text-violet-400">Gluttony</b>. During Ashveil's <u>Follow-Up ATK</u>, for every <span class="text-desc">1</span> enemy(ies) that suffer a killing blow, Ashveil gains <span class="text-desc">1</span> stack(s) of <b class="text-violet-400">Gluttony</b>.`,
-      image: 'asset/traces/SkillIcon_1504_SkillTree1.webp',
+      image: 'SkillIcon_1504_SkillTree1.png',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Phantom Limb`,
       content: `DMG dealt by Ashveil's <u>Follow-Up ATK</u> increases by by <span class="text-desc">80%</span>. And for every <span class="text-desc">1</span> stack(s) of <b class="text-violet-400">Gluttony</b> in possession, DMG dealt by <u>Follow-Up ATK</u> additionally increases by <span class="text-desc">10%</span>.`,
-      image: 'asset/traces/SkillIcon_1504_SkillTree2.webp',
+      image: 'SkillIcon_1504_SkillTree2.png',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `First Fang`,
       content: `While Ashveil is on the field, CRIT DMG dealt by ally targets increases by <span class="text-desc">40%</span>, and CRIT DMG dealt by ally target's <u>Follow-Up ATK</u> additionally increases by <span class="text-desc">80%</span>.`,
-      image: 'asset/traces/SkillIcon_1504_SkillTree3.webp',
+      image: 'SkillIcon_1504_SkillTree3.png',
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Beware: Venture Not at Full Moon`,
       content: `While Ashveil is on the field, increases DMG taken by all enemies by <span class="text-desc">24%</span>. When an enemy target's current HP percentage is <span class="text-desc">50%</span> or lower, the DMG they take increases to <span class="text-desc">36%</span>.`,
-      image: 'asset/traces/SkillIcon_1504_Rank1.webp',
+      image: 'SkillIcon_1504_Rank1.png',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Knock: Where Snickers Echo`,
       content: `The max stack limit of <b class="text-violet-400">Gluttony</b> increases to <span class="text-desc">18</span>. After each time Ashveil launches the enhanced Talent's <u>Follow-Up ATK</u>, refunds <span class="text-desc">35%</span> of the removed <b class="text-violet-400">Gluttony</b> stacks.`,
-      image: 'asset/traces/SkillIcon_1504_Rank2.webp',
+      image: 'SkillIcon_1504_Rank2.png',
     },
     c3: {
       trace: 'Eidolon 3',
       title: `Hush: Unsaid Between Friends`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
-      image: 'asset/traces/SkillIcon_1504_Ultra.webp',
+      image: 'SkillIcon_1504_Ultra.png',
     },
     c4: {
       trace: 'Eidolon 4',
       title: `Heed: Swallow Truth Whole`,
       content: `When Ashveil uses his Ultimate, increases ATK by <span class="text-desc">40%</span> for <span class="text-desc">3</span> turn(s).`,
-      image: 'asset/traces/SkillIcon_1504_Rank4.webp',
+      image: 'SkillIcon_1504_Rank4.png',
     },
     c5: {
       trace: 'Eidolon 5',
       title: `Caution: Sleuth Turns Slayer`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1504_BP.webp',
+      image: 'SkillIcon_1504_BP.png',
     },
     c6: {
       trace: 'Eidolon 6',
       title: `Finale: And Then There Were None`,
       content: `When the <b class="text-red">Bait</b> exists on the field, reduces all enemies' <b>All-Type RES</b> by <span class="text-desc">20%</span>. For every <span class="text-desc">1</span> stack of <b class="text-violet-400">Gluttony</b> Ashveil has gained, the DMG dealt increases by <span class="text-desc">3%</span>. This effect can stack up to <span class="text-desc">30</span> time(s).`,
-      image: 'asset/traces/SkillIcon_1504_Rank6.webp',
+      image: 'SkillIcon_1504_Rank6.png',
     },
   }
 

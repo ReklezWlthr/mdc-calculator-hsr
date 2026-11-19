@@ -43,7 +43,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: basic,
       tag: AbilityTag.ST,
       sp: 1,
-      image: 'asset/traces/SkillIcon_1507_Normal.webp',
+      image: 'SkillIcon_1507_Normal.png',
     },
     normal_alt: {
       energy: 20,
@@ -54,7 +54,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: basic,
       tag: AbilityTag.ST,
       sp: 1,
-      image: 'asset/traces/SkillIcon_1507_Normal02.webp',
+      image: 'SkillIcon_1507_Normal02.png',
     },
     skill: {
       energy: 30,
@@ -71,7 +71,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       level: skill,
       tag: AbilityTag.AOE,
       sp: -1,
-      image: 'asset/traces/SkillIcon_1507_BP.webp',
+      image: 'SkillIcon_1507_BP.png',
     },
     ult: {
       energy: 5,
@@ -88,7 +88,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       ],
       level: ult,
       tag: AbilityTag.ENHANCE,
-      image: 'asset/traces/SkillIcon_1507_Ultra_on.webp',
+      image: 'SkillIcon_1507_Ultra.png',
     },
     ult_alt: {
       energy: 5,
@@ -98,7 +98,7 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       value: [{ base: 210, growth: 14, style: 'curved' }],
       level: ult,
       tag: AbilityTag.AOE,
-      image: 'asset/traces/SkillIcon_1507_Ultra02_on.webp',
+      image: 'SkillIcon_1507_Ultra02.png',
     },
     talent: {
       trace: 'Talent',
@@ -107,70 +107,70 @@ const MBlade = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITal
       value: [{ base: 15, growth: 1, style: 'curved' }],
       level: talent,
       tag: AbilityTag.IMPAIR,
-      image: 'asset/traces/SkillIcon_1507_Passive.webp',
+      image: 'SkillIcon_1507_Passive.png',
     },
     technique: {
       trace: 'Technique',
       title: `Blade's Reach Spares None`,
       content: `Immediately attacks all enemies within a certain range. After entering combat, inflicts the Taunt state on all enemies for <span class="text-desc">1</span> turn and decreases DMG taken by this unit by <span class="text-desc">90%</span> for <span class="text-desc">2</span> turn(s).`,
       tag: AbilityTag.IMPAIR,
-      image: 'asset/traces/SkillIcon_1507_Maze.webp',
+      image: 'SkillIcon_1507_Maze.png',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Heart, Refined ad Infinitum',
       content: `While the Zone is active, ally targets deal <span class="text-desc">50%</span> increased DMG. If there are other Nihility characters aside from Mortenax Blade in the team, Ultimate DMG dealt by ally targets increases by <span class="text-desc">75%</span>. Otherwise, DMG dealt by Mortenax Blade additionally increases by <span class="text-desc">75%</span>.`,
-      image: 'asset/traces/SkillIcon_1507_SkillTree3.webp',
+      image: 'SkillIcon_1507_SkillTree3.png',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Soul, Tempered ad Mortem',
       content: `While the Zone is active, increases the chance of being attacked by enemies, decreases DMG taken by this unit by <span class="text-desc">50%</span>, and increases Incoming Healing by <span class="text-desc">50%</span>. After being attacked, inflicts the <b class="text-red">Balefire Bind</b> state on the corresponding target, and enables Mortenax Blade to gain <span class="text-desc">1</span> <b>Charge</b>.`,
-      image: 'asset/traces/SkillIcon_1507_SkillTree2.webp',
+      image: 'SkillIcon_1507_SkillTree2.png',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Bone, Hardened ad Nauseam',
       content: `Mortenax Blade can accumulate up to <span class="text-desc">80</span> overflow Energy. After using Ultimate, clears it and regenerates a corresponding amount of Energy. When the battle starts or when the Zone is dispelled, if Energy is below <span class="text-desc">75%</span>, it is immediately regenerated to <span class="text-desc">75%</span>. When Energy is regenerated to its maximum, dispels all debuffs from this unit.`,
-      image: 'asset/traces/SkillIcon_1507_SkillTree1.webp',
+      image: 'SkillIcon_1507_SkillTree1.png',
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Ere My Death, I Stood Unmade',
       content: `While the Zone is active, decreases all enemies' <b>All-Type RES</b> by <span class="text-desc">20%</span>. After using the extra Skill from Talent, the <b class="text-orange-400">Infinite Fury</b> countdown has its action delayed by <span class="text-desc">15%</span>.`,
-      image: 'asset/traces/SkillIcon_1507_Rank1.webp',
+      image: 'SkillIcon_1507_Rank1.png',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Ash Was My Heart, Yet the Flame Stayed`,
       content: `When an ally character uses Ultimate to deal DMG, it is considered as having launched <u>Follow-Up ATK</u>. And the <u>Follow-Up ATK</u> DMG dealt by ally targets increases by <span class="text-desc">75%</span>. The upper limit of Mortenax Blade's <b>Charge</b> decreases to <span class="text-desc">7</span>.`,
-      image: 'asset/traces/SkillIcon_1507_Rank2.webp',
+      image: 'SkillIcon_1507_Rank2.png',
     },
     c3: {
       trace: 'Eidolon 3',
       title: 'Across the Shore, Wrath Laid Bare',
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1507_Ultra.webp',
+      image: 'SkillIcon_1507_Ultra.png',
     },
     c4: {
       trace: 'Eidolon 4',
       title: `Odium I've Smitten, Thence Came the Blade`,
       content: `<b>Heart, Refined ad Infinitum</b> additionally increases ally targets' DMG dealt by <span class="text-desc">50%</span>.`,
-      image: 'asset/traces/SkillIcon_1507_Rank4.webp',
+      image: 'SkillIcon_1507_Rank4.png',
     },
     c5: {
       trace: 'Eidolon 5',
       title: `I Severed My Woes, Knowing Death Begets Life`,
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
-      image: 'asset/traces/SkillIcon_1507_BP.webp',
+      image: 'SkillIcon_1507_BP.png',
     },
     c6: {
       trace: 'Eidolon 6',
       title: 'If Immortality Could Die, I Swore THEM Slain',
       content: `As the Zone persists, when Mortenax Blade takes DMG or consumes HP, he gains <span class="text-desc">1</span> <b>Charge</b>. This effect can trigger again after any target's turn ends. The DMG multiplier of <b>Tenax Per Ignem</b> increases to <span class="text-desc">150%</span> of its original value.`,
-      image: 'asset/traces/SkillIcon_1507_Rank6.webp',
+      image: 'SkillIcon_1507_Rank6.png',
     },
   }
 

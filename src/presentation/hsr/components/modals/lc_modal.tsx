@@ -6,7 +6,7 @@ import { TextInput } from '@src/presentation/components/inputs/text_input'
 import { useParams } from '@src/core/hooks/useParams'
 import { useMemo } from 'react'
 import { RarityGauge } from '@src/presentation/components/rarity_gauge'
-import { IWeaponEquip, PathType, StatIcons, Stats } from '@src/domain/constant'
+import { IWeaponEquip, NANOKA, PathType, StatIcons, Stats } from '@src/domain/constant'
 import classNames from 'classnames'
 import { findCharacter } from '@src/core/utils/finder'
 import getConfig from 'next/config'
@@ -42,7 +42,7 @@ export const LCModal = observer(({ index, setWeapon, pathOverride }: LCModalProp
 
         return nameMatch && typeMatch && liveMatch
       }),
-    [params, settingStore.settings.liveOnly]
+    [params, settingStore.settings.liveOnly],
   )
 
   const FilterIcon = ({ path }: { path: PathType }) => {
@@ -135,11 +135,11 @@ export const LCModal = observer(({ index, setWeapon, pathOverride }: LCModalProp
                             curr[0],
                             `<span class="text-desc">${_.round(item?.desc?.properties?.[index]?.base, 2)}~${_.round(
                               item?.desc?.properties?.[index]?.base + item?.desc?.properties?.[index]?.growth * 4,
-                              2
-                            )}${isPercentage ? '%' : ''}</span>`
+                              2,
+                            )}${isPercentage ? '%' : ''}</span>`,
                           )
                         },
-                        item?.desc?.detail
+                        item?.desc?.detail,
                       ),
                     }}
                     className="font-normal"
@@ -170,7 +170,7 @@ export const LCModal = observer(({ index, setWeapon, pathOverride }: LCModalProp
                     <div className="absolute right-0 px-1.5 py-0.5 bottom-6 bg-rose-600 rounded-l-md">Beta</div>
                   )}
                   <img
-                    src={`/asset/lightcone/full/${item.id}.webp`}
+                    src={`${NANOKA}/lightconemediumicon/${item.id}.webp`}
                     className="object-contain w-full p-0.5 rounded-t-lg bg-primary-darker aspect-square"
                   />
                 </div>

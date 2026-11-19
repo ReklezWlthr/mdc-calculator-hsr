@@ -46,7 +46,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       tag: AbilityTag.ST,
       sp: 1,
       energy: 20,
-      image: 'asset/traces/SkillIcon_1513_Normal.webp',
+      image: 'SkillIcon_1513_Normal.png',
     },
     skill: {
       trace: 'Skill',
@@ -56,7 +56,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       level: skill,
       tag: AbilityTag.AOE,
       sp: -1,
-      image: 'asset/traces/SkillIcon_1513_BP.webp',
+      image: 'SkillIcon_1513_BP.png',
     },
     summon_skill: {
       participantId: 156,
@@ -70,7 +70,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       level: elation,
       tag: AbilityTag.AOE,
       energy: 5,
-      image: 'asset/traces/SkillIcon_1513_Elation.webp',
+      image: 'SkillIcon_1513_Elation.png',
     },
     summon_skill_alt: {
       participantId: 156,
@@ -85,7 +85,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       level: elation,
       tag: AbilityTag.AOE,
       energy: 30,
-      image: 'asset/traces/SkillIcon_1513_Elation02.webp',
+      image: 'SkillIcon_1513_Elation02.png',
     },
     ult: {
       trace: 'Ultimate',
@@ -98,7 +98,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       level: ult,
       tag: AbilityTag.AOE,
       energy: 5,
-      image: 'asset/traces/SkillIcon_1513_Ultra_on.webp',
+      image: 'SkillIcon_1513_Ultra.png',
     },
     talent: {
       trace: `Talent`,
@@ -112,46 +112,46 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       ],
       level: talent,
       tag: AbilityTag.ENHANCE,
-      image: 'asset/traces/SkillIcon_1513_Passive.webp',
+      image: 'SkillIcon_1513_Passive.png',
     },
     technique: {
       trace: 'Technique',
       title: 'Make Waves in Still Waters',
       content: `Moves forward rapidly for a set distance, attacking all enemies in contact and blocking all incoming attacks. After entering combat via actively attacking enemies, deals <b class="text-hsr-quantum">Quantum DMG</b> to all enemies equal to <span class="text-desc">100%</span> of Aventurine • Waveflair's ATK, and gains <span class="text-desc">2</span> <b class="text-green-300">Fervor</b> and <span class="text-desc">20</span> <b class="text-blue">Certified Banger</b>. Technique Points are not consumed if no enemies are hit.`,
       tag: AbilityTag.IMPAIR,
-      image: 'asset/traces/SkillIcon_1513_Maze.webp',
+      image: 'SkillIcon_1513_Maze.png',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Party in Perfect Paradise',
       content: `When SPD is <span class="text-desc">140</span> or higher, increases this unit's Elation by <span class="text-desc">30%</span>. For every <span class="text-desc">1</span> SPD exceeding that threshold, increases this unit's Elation by <span class="text-desc">1%</span>. Up to a max of <span class="text-desc">200</span> excess SPD can be taken into account for this effect.`,
-      image: 'asset/traces/SkillIcon_1513_SkillTree1.webp',
+      image: 'SkillIcon_1513_SkillTree1.png',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Revel in Raging Tides',
       content: `At the start of the battle, if there are other Elation characters in the team besides Aventurine • Waveflair, then while Aventurine • Waveflair is on the field, increases all allies' Elation by <span class="text-desc">20%</span>, with Aventurine • Waveflair's Elation additionally increases by <span class="text-desc">80%</span>.
       <br />At the start of the battle, if Aventurine • Waveflair is the only Elation character in the team, when Aventurine • Waveflair deals DMG using his Elation Skill, it is considered as launching a <u>Follow-Up ATK</u>. After a teammate uses an attack, Aventurine • Waveflair gains <span class="text-desc">2</span> point(s) of <b class="text-blue">Certified Banger</b> and <span class="text-desc">1</span> <b class="text-orange-400">Punchline(s)</b>, and increases <b class="text-aha">Aha</b>'s SPD by <span class="text-desc">25</span>. The SPD Boost effect lasts until the end of <b class="text-aha">Aha Instant</b>.`,
-      image: 'asset/traces/SkillIcon_1513_SkillTree2.webp',
+      image: 'SkillIcon_1513_SkillTree2.png',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Sift Through Gilded Dreams`,
       content: `Increases CRIT DMG by <span class="text-desc">48%</span>. After a teammate uses Basic ATK, Skill, <u>Follow-Up ATK</u>, or Ultimate, all allies' CRIT DMG increases by <span class="text-desc">48%</span>, lasting for <span class="text-desc">3</span> turn(s), and Aventurine • Waveflair additionally gains <span class="text-desc">2</span> <b class="text-green-300">Fervor</b>. This effect can trigger up to <span class="text-desc">6</span> time(s), and the trigger count resets when Aventurine • Waveflair uses Skill.`,
-      image: 'asset/traces/SkillIcon_1513_SkillTree3.webp',
+      image: 'SkillIcon_1513_SkillTree3.png',
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'A Holiday on the Line',
       content: `Increases <b>All-Type RES PEN</b> by <span class="text-desc">24%</span>.
       <br />Talent gets enhanced: When <b class="text-green-300">Fervor</b> reaches <span class="text-desc">10/20/30</span> points, immediately uses <b>Cheers! To Summer's Blaze</b>.`,
-      image: 'asset/traces/SkillIcon_1513_Rank1.webp',
+      image: 'SkillIcon_1513_Rank1.png',
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'Idle as the Turning Tide',
       content: `Increases the upper limit of <b class="text-green-300">Fervor</b> to <span class="text-desc">50</span> points. <b class="text-green-300">Fervor</b> reaching <span class="text-desc">40/50</span> points can also trigger the Talent to use <b>Cheers! To the Blazing Summer</b>. After using Elation Skill, additionally gains <span class="text-desc">4</span> <b class="text-green-300">Fervor</b>.`,
-      image: 'asset/traces/SkillIcon_1513_Rank2.webp',
+      image: 'SkillIcon_1513_Rank2.png',
     },
     c3: {
       trace: 'Eidolon 3',
@@ -159,13 +159,13 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1513_BP.webp',
+      image: 'SkillIcon_1513_BP.png',
     },
     c4: {
       trace: 'Eidolon 4',
       title: 'Sunlight Runs No Tab',
       content: `When Aventurine • Waveflair uses Skill, enables the DMG dealt by all allies to ignore <span class="text-desc">18%</span> of enemy targets' DEF, lasting for <span class="text-desc">3</span> turn(s).`,
-      image: 'asset/traces/SkillIcon_1513_Rank4.webp',
+      image: 'SkillIcon_1513_Rank4.png',
     },
     c5: {
       trace: 'Eidolon 5',
@@ -173,13 +173,13 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Attack Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1513_Ultra.webp',
+      image: 'SkillIcon_1513_Ultra.png',
     },
     c6: {
       trace: 'Eidolon 6',
       title: 'The Past in Fast Lane',
       content: `<b class="elation">Elation DMG</b> dealt by Aventurine • Waveflair merrymakes by <span class="text-desc">25%</span>. After Aventurine • Waveflair uses his Elation Skill <span class="text-desc">2</span> time(s), all subsequent Elation Skills used become <b>All In! To Summer's Blaze</b>. And when using the Elation Skill <b>All In! To Summer's Blaze</b> to additionally deal DMG outside of <b class="text-aha">Aha Instant</b>, it no longer consumes <b class="text-green-300">Fervor</b>.`,
-      image: 'asset/traces/SkillIcon_1513_Rank6.webp',
+      image: 'SkillIcon_1513_Rank6.png',
     },
   }
 
@@ -195,7 +195,7 @@ const AventurineSP = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t
       ],
       tag: AbilityTag.ENHANCE,
       level: nihilux?.cons || -1 >= 2 ? 2 : 1,
-      image: 'asset/traces/SkillIcon_1513_Innate.webp',
+      image: 'SkillIcon_1513_Aha.png',
     }
   }
 

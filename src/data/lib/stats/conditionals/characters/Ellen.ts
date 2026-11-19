@@ -41,7 +41,7 @@ const Ellen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: basic,
       tag: AbilityTag.ST,
       sp: 1,
-      image: 'asset/traces/SkillIcon_1514_Normal.webp',
+      image: 'SkillIcon_1514_Normal.png',
     },
     normal_alt: {
       energy: 20,
@@ -57,7 +57,7 @@ const Ellen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ],
       level: basic,
       tag: AbilityTag.BLAST,
-      image: 'asset/traces/SkillIcon_1514_Normal_2.webp',
+      image: 'SkillIcon_1514_Normal.png',
     },
     skill: {
       energy: 30,
@@ -72,7 +72,7 @@ const Ellen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       level: skill,
       tag: AbilityTag.BLAST,
       sp: -1,
-      image: 'asset/traces/SkillIcon_1514_BP.webp',
+      image: 'SkillIcon_1514_BP.png',
     },
     ult: {
       energy: 5,
@@ -85,7 +85,7 @@ const Ellen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       ],
       level: ult,
       tag: AbilityTag.AOE,
-      image: 'asset/traces/SkillIcon_1514_Ultra_on.webp',
+      image: 'SkillIcon_1514_Ultra.png',
     },
     talent: {
       trace: 'Talent',
@@ -104,70 +104,70 @@ const Ellen = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       value: [{ base: 300, growth: 30, style: 'curved' }],
       level: talent,
       tag: AbilityTag.ST,
-      image: 'asset/traces/SkillIcon_1514_Passive.webp',
+      image: 'SkillIcon_1514_Passive.png',
     },
     technique: {
       trace: 'Technique',
       title: `Roaming Hunt`,
       content: `Using the Technique grants the <b>Roaming</b> state for <span class="text-desc">20</span> seconds. While in the <b>Roaming</b> state, this unit moves forward rapidly, blocking all enemy attacks while moving. Using an attack or stopping while in the <b>Roaming</b> state ends it prematurely. After actively attacking an enemy and entering combat, this unit gains <span class="text-desc">3</span> <b class="text-indigo-300">Shark's Gotta Bite</b> and regenerates <span class="text-desc">10</span> Energy, and deals <b class="text-hsr-ice">Ice DMG</b> equal to <span class="text-desc">50%</span> of Ellen's ATK to all enemies.`,
       tag: AbilityTag.ENHANCE,
-      image: 'asset/traces/SkillIcon_1514_Maze.webp',
+      image: 'SkillIcon_1514_Maze.png',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Dining Etiquette`,
       content: `After <b>Sharkboo</b> attacks a target, Ellen gains <span class="text-desc">1</span> point of <b class="text-indigo-300">Shark's Gotta Bite</b>. This effect can trigger at most once per <b>Sharkboo</b> action. After Ellen consumes <span class="text-desc">6</span> points of <b class="text-indigo-300">Shark's Gotta Bite</b> to use <b>Ice Sea Diving</b>, for every <span class="text-desc">1</span> point of <b class="text-amber-300">Heat</b> cleared, <b>Sharkboo</b>'s action advances by <span class="text-desc">40%</span>.`,
-      image: 'asset/traces/SkillIcon_1514_SkillTree3.webp',
+      image: 'SkillIcon_1514_SkillTree3.png',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: `Diving Status`,
       content: `At the start of combat, Ellen gains <span class="text-desc">3</span> points of <b class="text-indigo-300">Shark's Gotta Bite</b>. Once <b class="text-indigo-300">Shark's Gotta Bite</b> reaches its limit, for every <span class="text-desc">2</span> points of excess <b class="text-indigo-300">Shark's Gotta Bite</b> accumulated, it is recorded as <span class="text-desc">1</span> point of <b class="text-amber-300">Heat</b>, up to a maximum of <span class="text-desc">2</span> points. After Ellen consumes <span class="text-desc">6</span> points of <b class="text-indigo-300">Shark's Gotta Bite</b> to use <b>Ice Sea Diving</b>, she clears all <b class="text-amber-300">Heat</b>, with every <span class="text-desc">1</span> point of <b class="text-amber-300">Heat</b> cleared recovering <span class="text-desc">1</span> point of <b class="text-indigo-300">Shark's Gotta Bite</b>.`,
-      image: 'asset/traces/SkillIcon_1514_SkillTree2.webp',
+      image: 'SkillIcon_1514_SkillTree2.png',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: `Roaming Mode`,
       content: `For each teammate who provides Ellen with at least <span class="text-desc">1</span> active buff, Ellen's CRIT DMG increases by <span class="text-desc">64%</span>, up to <span class="text-desc">2</span> teammates are taken into account. When <span class="text-desc">2</span> teammates are taken into account, DMG dealt by Ellen additionally increases by <span class="text-desc">48%</span>.`,
-      image: 'asset/traces/SkillIcon_1514_SkillTree1.webp',
+      image: 'SkillIcon_1514_SkillTree1.png',
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Moods Packed and Ready`,
       content: `When Ellen consumes <span class="text-desc">6</span> <b class="text-indigo-300">Shark's Gotta Bite</b> to unleash <b>Ice Sea Diving</b>, all DMG dealt by this <b>Ice Sea Diving</b> ignores <span class="text-desc">30%</span> of the target's DEF. After this attack ends, Ellen's action advances by <span class="text-desc">25%</span> and she recovers <span class="text-desc">3</span> <b class="text-indigo-300">Shark's Gotta Bite</b>.`,
-      image: 'asset/traces/SkillIcon_1514_Rank1.webp',
+      image: 'SkillIcon_1514_Rank1.png',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `Pinch a Smile at the Mirror`,
       content: `After Ellen uses <b>Ice Sea Diving</b>, <b>Sharkboo</b>'s action advances by <span class="text-desc">100%</span>. When using each attack, <b>Sharkboo</b> regenerates <span class="text-desc">10</span> Energy and <span class="text-desc">1</span> <b class="text-indigo-300">Shark's Gotta Bite</b> for Ellen, and increases the CRIT DMG dealt by her next <b>Ice Sea Diving</b> by <span class="text-desc">50%</span>. This effect does not stack.`,
-      image: 'asset/traces/SkillIcon_1514_Rank2.webp',
+      image: 'SkillIcon_1514_Rank2.png',
     },
     c3: {
       trace: 'Eidolon 3',
       title: 'The Morning Melts Sweet',
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1514_BP.webp',
+      image: 'SkillIcon_1514_BP.png',
     },
     c4: {
       trace: 'Eidolon 4',
       title: `A Heart Served All the Same`,
       content: `When Ellen uses <b>Ice Sea Diving</b>, every point of <b class="text-indigo-300">Shark's Gotta Bite</b> consumed increases the <b class="text-hsr-ice">Ice RES PEN</b> of all DMG dealt by this <b>Ice Sea Diving</b> by <span class="text-desc">2%</span>.`,
-      image: 'asset/traces/SkillIcon_1514_Rank4.webp',
+      image: 'SkillIcon_1514_Rank4.png',
     },
     c5: {
       trace: 'Eidolon 5',
       title: `The Ocean Swims Her Home`,
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic ATK Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.`,
-      image: 'asset/traces/SkillIcon_1514_Ultra.webp',
+      image: 'SkillIcon_1514_Ultra.png',
     },
     c6: {
       trace: 'Eidolon 6',
       title: 'Fed, Rested, and Left Alone',
       content: `When Ellen uses <b>Ice Sea Diving</b>, <b class="text-hsr-ice">Ice RES PEN</b> increases by <span class="text-desc">20%</span>, and the number of instances of DMG dealt to random single enemy targets increases by <span class="text-desc">3</span>. After Ellen uses her Ultimate, she gains <span class="text-desc">1</span> stack(s) of <b class="text-desc">Revelry Instant</b>. The max limit of <b class="text-desc">Revelry Instant</b> stacks is <span class="text-desc">2</span>. While possessing <b class="text-desc">Revelry Instant</b>, after Ellen's turn or <b>Zoned In on Zero</b> ends, <span class="text-desc">1</span> stack of <b class="text-desc">Revelry Instant</b> is immediately consumed, and Ellen immediately gains <span class="text-desc">1</span> extra turn and regenerates <span class="text-desc">6</span> <b class="text-indigo-300">Shark's Gotta Bite</b>.`,
-      image: 'asset/traces/SkillIcon_1514_Rank6.webp',
+      image: 'SkillIcon_1514_Rank6.png',
     },
   }
 

@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react'
 import { CharacterModal } from '@src/presentation/hsr/components/modals/character_modal'
 import { observer } from 'mobx-react-lite'
 import { PillInput } from '@src/presentation/components/inputs/pill_input'
-import { AscensionOptions, EidolonOptions, ITeamChar } from '@src/domain/constant'
+import { AscensionOptions, EidolonOptions, ITeamChar, NANOKA } from '@src/domain/constant'
 import { SelectInput } from '@src/presentation/components/inputs/select_input'
 import { findBaseLevel, findMaxTalentLevel, formatIdIcon } from '@src/core/utils/data_format'
 import _ from 'lodash'
@@ -59,7 +59,7 @@ export const CharacterBlock = observer((props: CharacterBlockProps) => {
           {characterData && (
             <>
               <img
-                src={`/asset/avatar/portrait//${formatIdIcon(
+                src={`${NANOKA}/avatarshopicon/${formatIdIcon(
                   characterData?.id,
                   settingStore.settings?.travelerGender,
                 )}.webp`}

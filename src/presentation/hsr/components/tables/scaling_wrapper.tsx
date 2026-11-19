@@ -1,11 +1,12 @@
 import { calcScaling } from '@src/core/utils/calculator'
 import { formatScaleString } from '@src/core/utils/data_format'
 import { ITalentDisplay, TalentScalingStyle } from '@src/domain/conditional'
-import { Element } from '@src/domain/constant'
+import { Element, NANOKA, YATTA } from '@src/domain/constant'
 import { Tooltip } from '@src/presentation/components/tooltip'
 import classNames from 'classnames'
 import _ from 'lodash'
 import { observer } from 'mobx-react-lite'
+import { useEffect, useState } from 'react'
 
 interface ScalingWrapperProps {
   children: React.ReactNode | React.ReactNode[]
@@ -61,6 +62,16 @@ export const TalentIcon = observer(
 
     const formattedString = formatScaleString(talent, level + (upgraded || 0))
 
+    // Use Yatta, fallback to Nanoka
+    const baseName = _.split(talent?.image || icon, '.')[0]
+    const primarySrc = `${YATTA}/skill/${baseName}.png`
+    const fallbackSrc = `${NANOKA}/skillicons/${baseName}.webp`
+
+    const [imgSrc, setImgSrc] = useState(primarySrc)
+    useEffect(() => {
+      setImgSrc(primarySrc)
+    }, [talent])
+
     if (!talent)
       return (
         <div
@@ -82,7 +93,14 @@ export const TalentIcon = observer(
             { 'group-hover:ring-offset-4': !hideTip },
           )}
         >
-          <img src={talent?.image || `asset/traces/${icon}`} />
+          <img
+            src={imgSrc}
+            onError={(e) => {
+              if (imgSrc !== fallbackSrc) {
+                setImgSrc(fallbackSrc)
+              }
+            }}
+          />
           <div className="hidden">?</div>
         </div>
         {hideTip && showUpgrade && !!upgraded && (

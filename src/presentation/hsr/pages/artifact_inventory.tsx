@@ -9,7 +9,7 @@ import { SelectTextInput } from '@src/presentation/components/inputs/select_text
 import { ArtifactModal } from '@src/presentation/hsr/components/modals/artifact_modal'
 import { PrimaryButton } from '@src/presentation/components/primary.button'
 import { AllRelicSets, RelicSets } from '@src/data/db/artifacts'
-import { MainStatOptions, RelicPieceIcon, Stats, SubStatOptions } from '@src/domain/constant'
+import { MainStatOptions, RelicPieceIcon, Stats, SubStatOptions, YATTA } from '@src/domain/constant'
 import { TagSelectInput } from '@src/presentation/components/inputs/tag_select_input'
 import { isSubsetOf } from '@src/core/utils/finder'
 import { AsyncWrapper } from '@src/presentation/components/async_wrapper'
@@ -77,7 +77,7 @@ export const ArtifactInventory = observer(() => {
               {_.map(Array(6), (_item, index) => (
                 <TypeButton
                   field="types"
-                  icon={`/asset/relic/part/${RelicPieceIcon[index + 1]}.webp`}
+                  icon={`${YATTA}/relic/white/${RelicPieceIcon[index + 1]}.png`}
                   value={index + 1}
                   key={index}
                 />
@@ -90,7 +90,7 @@ export const ArtifactInventory = observer(() => {
                 (artifact) => ({
                   name: artifact.name,
                   value: artifact.id.toString(),
-                  img: `/asset/relic/set/${artifact.id}.webp`,
+                  img: `${YATTA}/relic/${artifact.icon}.png`,
                 }),
               )}
               placeholder="Relic Set"
@@ -100,7 +100,7 @@ export const ArtifactInventory = observer(() => {
               values={params.main}
               options={_.map(MainStatOptions, (item) => ({
                 ...item,
-                img: '/icons/' + item.img,
+                img: `${YATTA}/status/` + item.img,
               }))}
               onChange={(main) => setParams({ main })}
               placeholder="Main Stat - Match Any"
@@ -110,7 +110,7 @@ export const ArtifactInventory = observer(() => {
               values={params.subs}
               options={_.map(SubStatOptions, (item) => ({
                 ...item,
-                img: '/icons/' + item.img,
+                img: `${YATTA}/status/` + item.img,
               }))}
               onChange={(subs) => setParams({ subs })}
               placeholder="Sub Stats - Include All (Max 4)"

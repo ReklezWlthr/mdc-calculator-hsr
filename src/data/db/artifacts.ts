@@ -777,7 +777,7 @@ export const RelicSets: IArtifact[] = [
   {
     id: '134',
     name: `The Edacious Heretic`,
-    icon: '71060',
+    icon: '71061',
     bonus: [{ stat: Stats.CRIT_DMG, value: 0.16 }],
     bonusAdd: [],
     add: (base) => {
@@ -800,9 +800,9 @@ export const RelicSets: IArtifact[] = [
     ],
   },
   {
-    id: '135',
+    id: '133',
     name: `Dreamlit Actor`,
-    icon: '71061',
+    icon: '71060',
     bonus: [{ stat: Stats.P_SPD, value: 0.06 }],
     bonusAdd: [],
     desc: [

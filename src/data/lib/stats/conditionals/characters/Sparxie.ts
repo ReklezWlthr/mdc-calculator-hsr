@@ -44,7 +44,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       tag: AbilityTag.ST,
       sp: 1,
       energy: 20,
-      image: 'asset/traces/SkillIcon_1501_Normal.webp',
+      image: 'SkillIcon_1501_Normal.png',
     },
     normal_alt: {
       trace: 'Enhanced Basic ATK',
@@ -58,7 +58,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       tag: AbilityTag.BLAST,
       sp: 1,
       energy: 40,
-      image: 'asset/traces/SkillIcon_1501_Normal2.webp',
+      image: 'SkillIcon_1501_Normal02.png',
     },
     skill: {
       trace: 'Skill',
@@ -77,7 +77,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: skill,
       tag: AbilityTag.ENHANCE,
       sp: -1,
-      image: 'asset/traces/SkillIcon_1501_BP.webp',
+      image: 'SkillIcon_1501_BP.png',
     },
     summon_skill: {
       participantId: 144,
@@ -91,7 +91,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: elation,
       tag: AbilityTag.AOE,
       energy: 5,
-      image: 'asset/traces/SkillIcon_1501_Elation.webp',
+      image: 'SkillIcon_1501_Elation.png',
     },
     ult: {
       trace: 'Ultimate',
@@ -101,7 +101,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       level: ult,
       tag: AbilityTag.AOE,
       energy: 5,
-      image: 'asset/traces/SkillIcon_1501_Ultra_on.webp',
+      image: 'SkillIcon_1501_Ultra.png',
     },
     talent: {
       trace: `Talent`,
@@ -117,7 +117,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ],
       level: talent,
       tag: AbilityTag.ENHANCE,
-      image: 'asset/traces/SkillIcon_1501_Passive.webp',
+      image: 'SkillIcon_1501_Passive.png',
     },
     technique: {
       trace: 'Technique',
@@ -125,37 +125,37 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `After using the Technique, inflicts enemies within a set area with <b>Block</b> for <span class="text-desc">10</span> second(s). <b>Blocked</b> enemies cannot detect ally targets.
       <br />After entering combat via actively attacking a <b>Blocked</b> enemy, deals <b class="text-hsr-fire">Fire DMG</b> to all enemies equal to <span class="text-desc">50%</span> of Sparxie's ATK and recovers <span class="text-desc">2</span> Skill Point(s) for allies.`,
       tag: AbilityTag.IMPAIR,
-      image: 'asset/traces/SkillIcon_1501_Maze.webp',
+      image: 'SkillIcon_1501_Maze.png',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Sweet! Punchline Signing',
       content: `For every <span class="text-desc">100</span> point(s) of Sparxie's ATK that exceeds <span class="text-desc">2,000</span>, increases this unit's Elation by <span class="text-desc">5%</span>, up to a maximum increase of <span class="text-desc">80%</span>.`,
-      image: 'asset/traces/SkillIcon_1501_SkillTree1.webp',
+      image: 'SkillIcon_1501_SkillTree1.png',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Dazzling! Persona Kaleidoscope',
       content: `When there are <span class="text-desc">1/2/≥3</span> Elation characters in the team, using Sparxie's Ultimate will additionally gain <span class="text-desc">2/4/8</span> <b class="text-orange-400">Punchline(s)</b> and <span class="text-desc">1/1/4</span> <b class="text-desc">Thrill(s)</b>.`,
-      image: 'asset/traces/SkillIcon_1501_SkillTree2.webp',
+      image: 'SkillIcon_1501_SkillTree2.png',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Frenzy! Palette of Truth and Lies',
       content: `For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> currently owned, increases all allies' CRIT DMG by <span class="text-desc">8%</span>, up to a max increase of <span class="text-desc">80%</span>.`,
-      image: 'asset/traces/SkillIcon_1501_SkillTree3.webp',
+      image: 'SkillIcon_1501_SkillTree3.png',
     },
     c1: {
       trace: 'Eidolon 1',
       title: '#GoingViral #WhoIsShe',
       content: `When <b class="text-aha">Aha Instant</b> ends, gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b>. For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> owned, increases <b>All-Type RES PEN</b> for all allies by <span class="text-desc">1.5%</span>, up to a max increase of <span class="text-desc">15%</span>.`,
-      image: 'asset/traces/SkillIcon_1501_Rank1.webp',
+      image: 'SkillIcon_1501_Rank1.png',
     },
     c2: {
       trace: 'Eidolon 2',
       title: '#AudienceKnows',
       content: `When <b class="text-aha">Aha Instant</b> ends, Sparxie gains <span class="text-desc">1</span> extra turn and <span class="text-desc">2</span> <b class="text-desc">Thrill</b>. For every <span class="text-desc">1</span> <b class="text-desc">Thrill</b> consumed, increases this unit's CRIT DMG by <span class="text-desc">10%</span>, lasting for <span class="text-desc">2</span> turn(s). This effect can stack up to <span class="text-desc">4</span> time(s).`,
-      image: 'asset/traces/SkillIcon_1501_Rank2.webp',
+      image: 'SkillIcon_1501_Rank2.png',
     },
     c3: {
       trace: 'Eidolon 3',
@@ -163,13 +163,13 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Attack Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1501_BP.webp',
+      image: 'SkillIcon_1501_BP.png',
     },
     c4: {
       trace: 'Eidolon 4',
       title: '#LockedIn #FaceCard',
       content: `When using Ultimate, additionally gains <span class="text-desc">5</span> <b class="text-orange-400">Punchline</b> point(s) and increases this unit's Elation by <span class="text-desc">36%</span> for <span class="text-desc">3</span> turn(s).`,
-      image: 'asset/traces/SkillIcon_1501_Rank4.webp',
+      image: 'SkillIcon_1501_Rank4.png',
     },
     c5: {
       trace: 'Eidolon 5',
@@ -177,13 +177,13 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1501_Ultra.webp',
+      image: 'SkillIcon_1501_Ultra.png',
     },
     c6: {
       trace: 'Eidolon 6',
       title: '#BuiltDifferent #GoingExtinct',
       content: `Increases <b>All-Type RES PEN</b> by <span class="text-desc">20%</span>. For every <span class="text-desc">1</span> <b class="text-orange-400">Punchline</b> taken into account by the Elation Skill, the number of its additional DMG instances increases by <span class="text-desc">1</span>, up to a max of <span class="text-desc">40</span>.`,
-      image: 'asset/traces/SkillIcon_1501_Rank6.webp',
+      image: 'SkillIcon_1501_Rank6.png',
     },
   }
 
@@ -200,7 +200,7 @@ const Sparxie = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITa
       ],
       tag: AbilityTag.ENHANCE,
       level: nihilux?.cons || -1 >= 2 ? 2 : 1,
-      image: 'asset/traces/SkillIcon_1501_Innate.webp',
+      image: 'SkillIcon_1501_Aha.png',
     }
   }
 

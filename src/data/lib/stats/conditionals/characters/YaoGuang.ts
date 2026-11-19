@@ -47,7 +47,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       tag: AbilityTag.BLAST,
       sp: 1,
       energy: 30,
-      image: 'asset/traces/SkillIcon_1502_Normal.webp',
+      image: 'SkillIcon_1502_Normal.png',
     },
     skill: {
       trace: 'Skill',
@@ -58,7 +58,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       tag: AbilityTag.SUPPORT,
       sp: -1,
       energy: 30,
-      image: 'asset/traces/SkillIcon_1502_BP.webp',
+      image: 'SkillIcon_1502_BP.png',
     },
     summon_skill: {
       participantId: 116,
@@ -72,7 +72,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       level: elation,
       tag: AbilityTag.AOE,
       energy: 5,
-      image: 'asset/traces/SkillIcon_1502_Elation.webp',
+      image: 'SkillIcon_1502_Elation.png',
     },
     ult: {
       trace: 'Ultimate',
@@ -82,7 +82,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       level: ult,
       tag: AbilityTag.AOE,
       energy: 5,
-      image: 'asset/traces/SkillIcon_1502_Ultra_on.webp',
+      image: 'SkillIcon_1502_Ultra.png',
     },
     talent: {
       trace: `Talent`,
@@ -94,44 +94,44 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       value: [{ base: 12, growth: 1.2, style: 'curved' }],
       level: talent,
       tag: AbilityTag.SUPPORT,
-      image: 'asset/traces/SkillIcon_1502_Passive.webp',
+      image: 'SkillIcon_1502_Passive.png',
     },
     technique: {
       trace: 'Technique',
       title: 'Untethered Glimmer Sails Far',
       content: `After using the Technique, automatically triggers Skill <span class="text-desc">1</span> time at the start of the next battle without consuming any Skill Points. When Yao Guang is in the team, breaking destructible objects immediately grants <b>Fortune Pouch</b>, up to <span class="text-desc">8</span> within every Earth Week.`,
       tag: AbilityTag.SUPPORT,
-      image: 'asset/traces/SkillIcon_1502_Maze.webp',
+      image: 'SkillIcon_1502_Maze.png',
     },
     a2: {
       trace: 'Ascension 2 Passive',
       title: 'Amaze-In Grace',
       content: `When Yao Guang's SPD is <span class="text-desc">120</span> or higher, increases this unit's Elation by <span class="text-desc">30%</span>. For every <span class="text-desc">1</span> points of SPD exceeded, increases this unit's Elation by <span class="text-desc">1%</span>. Up to a max of <span class="text-desc">200</span> excess SPD can be taken into account for this effect.`,
-      image: 'asset/traces/SkillIcon_1502_SkillTree1.webp',
+      image: 'SkillIcon_1502_SkillTree1.png',
     },
     a4: {
       trace: 'Ascension 4 Passive',
       title: 'Poised and Sated',
       content: `Increases this unit's CRIT DMG by <span class="text-desc">60%</span>. After using Elation Skill, recovers <span class="text-desc">1</span> Skill Point(s) for the team.`,
-      image: 'asset/traces/SkillIcon_1502_SkillTree2.webp',
+      image: 'SkillIcon_1502_SkillTree2.png',
     },
     a6: {
       trace: 'Ascension 6 Passive',
       title: 'Felicity Ensemble',
       content: `When Yao Guang obtains <b class="text-blue">Certified Banger</b>, its duration increases by <span class="text-desc">1</span> turn(s).`,
-      image: 'asset/traces/SkillIcon_1502_SkillTree3.webp',
+      image: 'SkillIcon_1502_SkillTree3.png',
     },
     c1: {
       trace: 'Eidolon 1',
       title: 'Chuckle Chimes Where Jade Falls',
       content: `In <b class="text-aha">Aha</b>'s extra turn triggered by Ultimate, the fixed amount of <b class="text-orange-400">Punchline</b> taken into account increases to <span class="text-desc">40</span>. When all all targets deal <b class="elation">Elation DMG</b>, ignores <span class="text-desc">20%</span> of the target's DEF.`,
-      image: 'asset/traces/SkillIcon_1502_Rank1.webp',
+      image: 'SkillIcon_1502_Rank1.png',
     },
     c2: {
       trace: 'Eidolon 2',
       title: 'Blind Arrows Guided by Feathers',
       content: `While the Zone is active, increases all ally targets' SPD by <span class="text-desc">12%</span>, and additionally increases Elation by <span class="text-desc">16%</span>.`,
-      image: 'asset/traces/SkillIcon_1502_Rank2.webp',
+      image: 'SkillIcon_1502_Rank2.png',
     },
     c3: {
       trace: 'Eidolon 3',
@@ -139,13 +139,13 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       content: `Skill Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Basic Attack Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">10</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1502_BP.webp',
+      image: 'SkillIcon_1502_BP.png',
     },
     c4: {
       trace: 'Eidolon 4',
       title: 'Threads of Fate Colored by Plumes',
       content: `In <b class="text-aha">Aha</b>'s extra turn triggered by Yao Guang's Ultimate, the DMG dealt by all ally characters' Elation Skill becomes <span class="text-desc">150%</span> of the original DMG.`,
-      image: 'asset/traces/SkillIcon_1502_Rank4.webp',
+      image: 'SkillIcon_1502_Rank4.png',
     },
     c5: {
       trace: 'Eidolon 5',
@@ -153,13 +153,13 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       content: `Ultimate Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Talent Lv. <span class="text-desc">+2</span>, up to a maximum of Lv. <span class="text-desc">15</span>.
       <br />Elation Skill Lv. <span class="text-desc">+1</span>, up to a maximum of Lv. <span class="text-desc">15</span>.`,
-      image: 'asset/traces/SkillIcon_1502_Ultra.webp',
+      image: 'SkillIcon_1502_Ultra.png',
     },
     c6: {
       trace: 'Eidolon 6',
       title: 'Ferried Along the Astral Arc',
       content: `All ally targets' <b class="elation">Elation DMG</b> merrymakes by <span class="text-desc">25%</span>. Increases the DMG multiplier of Yao Guang's Elation Skill by <span class="text-desc">100%</span> of the original multiplier.`,
-      image: 'asset/traces/SkillIcon_1502_Rank6.webp',
+      image: 'SkillIcon_1502_Rank6.png',
     },
   }
 
@@ -175,7 +175,7 @@ const YaoGuang = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: IT
       ],
       tag: AbilityTag.ENHANCE,
       level: nihilux?.cons || -1 >= 2 ? 2 : 1,
-      image: 'asset/traces/SkillIcon_1502_Innate.webp',
+      image: 'SkillIcon_1502_Aha.png',
     }
   }
 
