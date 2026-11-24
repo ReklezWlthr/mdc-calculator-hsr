@@ -1643,8 +1643,8 @@ export const Characters = [
     jp: '星神★アッハ',
     stat: {
       baseAtk: 102.96,
-      baseHp: 153.12,
-      baseDef: 66,
+      baseHp: 163.68,
+      baseDef: 72.6,
       baseSpd: 96,
       energy: 240,
     },

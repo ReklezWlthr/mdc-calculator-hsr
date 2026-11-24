@@ -67,7 +67,7 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 10,
       trace: 'Enhanced Basic ATK [2]',
       title: `Minuet Pianissimo`,
-      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Astra Yao's ATK to a designated target, and <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Astra Yao's ATK to adjacent targets.`,
+      content: `Deals <b class="text-hsr-quantum">Quantum DMG</b> equal to {{0}}% of Astra Yao's ATK to a designated enemy, and <b class="text-hsr-quantum">Quantum DMG</b> equal to {{1}}% of Astra Yao's ATK to adjacent targets.`,
       value: [
         { base: 90, growth: 18, style: 'linear' },
         { base: 45, growth: 9, style: 'linear' },
@@ -81,7 +81,7 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       energy: 30,
       trace: 'Skill',
       title: `Shine for You in Every Hue`,
-      content: `Increases the ATK of all ally targets by an amount equal to {{0}}% of Astra Yao's ATK plus {{1}}, and enhances Astra Yao's Basic ATK, lasting for <span class="text-desc">3</span> turn(s). At the start of this unit's turn, this duration decreases by <span class="text-desc">1</span>.`,
+      content: `Increases the ATK of all ally targets by an amount equal to {{0}}% of Astra Yao's ATK plus {{1}}, and enhances Astra Yao's Basic ATK into <b>Cadenza Cascade</b>, lasting for <span class="text-desc">3</span> turn(s). At the start of this unit's turn, this duration decreases by <span class="text-desc">1</span>.`,
       value: [
         { base: 12, growth: 1.2, style: 'curved' },
         { base: 150, growth: 15, style: 'curved' },
@@ -108,15 +108,14 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     talent: {
       trace: 'Talent',
       title: `Play the Galaxy's Message`,
-      content: `When an ally target attacks an enemy, Astra Yao gains <span class="text-desc">1</span> <b class="text-pink-400">Syncopation</b>. Each <b class="text-pink-400">Syncopation</b> increases DMG dealt by all ally characters' Basic ATK by {{0}}%, lasting for <span class="text-desc">3</span> turn(s). Astra Yao can gain a maximum of <span class="text-desc">10</span> <b class="text-pink-400">Syncopation</b>.
+      content: `When an ally target attacks an enemy, Astra Yao gains <span class="text-desc">1</span> <b class="text-pink-400">Syncopation</b>. Each <b class="text-pink-400">Syncopation</b> increases DMG dealt by all ally targets' Basic ATK by {{0}}%. This effect lasts for <span class="text-desc">3</span> turn(s), and its duration decreases by <span class="text-desc">1</span> at the start of this unit's next turn. Astra Yao can gain a maximum of <span class="text-desc">10</span> <b class="text-pink-400">Syncopation</b>.
       <br />
       <br /><b>Zoned In on Zero</b>
       <br />When Ellen is in the team:
-      <br />After Astra Yao uses her Ultimate, she automatically uses <b>Cadenza Cascade</b> <span class="text-desc">1</span> once, then immediately triggers Ellen's <b>Saw Teeth Trimming</b>, causing Ellen to gain <span class="text-desc">1</span> point of <b class="text-indigo-300">Shark's Gotta Bite</b>, and <b>Ice Sea Diving</b>.
-      <br />After Ellen uses her Ultimate, she automatically uses <b>Ice Sea Diving</b> once, then immediately triggers Astra Yao's <b>Minuet Pianissimo</b> and grants Astra Yao <span class="text-desc">1</span> extra turn.
-      <br />While <b>Zoned In on Zero</b> is active, when Ellen and Astra Yao's attacks select a primary target, they both prioritize selecting enemy targets in the <b class="text-red">Bite Mark</b> state.
+      <br />After Astra Yao uses her Ultimate, it dispels Crowd Control debuffs from Ellen, then automatically uses <b>Cadenza Cascade</b> <span class="text-desc">1</span> time, and immediately triggers Ellen's <b>Saw Teeth Trimming</b>, granting Ellen <span class="text-desc">1</span> point of <b class="text-indigo-300">Shark's Gotta Bite</b>. After this <b>Saw Teeth Trimming</b> attack ends, it triggers Ellen's <b>Ice Sea Diving</b> <span class="text-desc">1</span> time.
+      <br />After Ellen uses her Ultimate, dispels Crowd Control debuffs from Astra Yao, then automatically uses <b>Ice Sea Diving</b> <span class="text-desc">1</span> time, immediately triggers Astra Yao's <b>Minuet Pianissimo</b>, and grants Astra Yao <span class="text-desc">1</span> extra turn in which an Ultimate can be inserted.
+      <br />When attacks triggered by <b>Zoned In on Zero</b> select a primary target, they both prioritize selecting enemy targets afflicted with <b class="text-red">Bite Mark</b>.
       <br />Basic ATKs triggered by <b>Zoned In on Zero</b> do not recover Skill Points.
-      <br />After Ellen or Astra Yao uses their Ultimate, they dispel Crowd Control debuffs from the other.
       <br />When Ellen is not in the team: After Astra Yao uses her Ultimate, she additionally regenerates <span class="text-desc">40</span> Energy.`,
       value: [{ base: 2.5, growth: 0.25, style: 'curved' }],
       level: talent,
@@ -145,19 +144,19 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
     a6: {
       trace: 'Ascension 6 Passive',
       title: `Nevernight Tour`,
-      content: `When an ally character uses Basic ATK, Astra Yao additionally gains <span class="text-desc">1</span> <b class="text-pink-400">Syncopation</b>. While possessing <b class="text-pink-400">Syncopation</b>, DMG dealt by all allies increases by <span class="text-desc">40%</span>.`,
+      content: `When an ally target uses Basic ATK, Astra Yao additionally gains <span class="text-desc">1</span> <b class="text-pink-400">Syncopation</b>. While possessing <b class="text-pink-400">Syncopation</b>, DMG dealt by all ally targets increases by <span class="text-desc">40%</span>.`,
       image: 'SkillIcon_1515_SkillTree3.png',
     },
     c1: {
       trace: 'Eidolon 1',
       title: `Her Drumbeat Moves the Stars`,
-      content: `While the Zone is active, the DMG boost effect of <b class="text-pink-400">Syncopation</b> takes effect for all attacks of all ally targets. For each <b class="text-pink-400">Syncopation</b> Astra Yao has, DMG dealt by ally targets ignores <span class="text-desc">1.5%</span> of enemy targets' DEF. The Energy regeneration effect of the Trace <b>Filigree Aria</b> increases to <span class="text-desc">20</span>. At the start of each wave, Astra Yao regenerates <span class="text-desc">30</span> Energy.`,
+      content: `While the Zone is active, after an ally character uses an attack that deals Basic ATK DMG, they additionally deal <span class="text-desc">1</span> instance of <b class="text-true">True DMG</b> equal to <span class="text-desc">24%</span> of the total DMG of this attack to the hit target with the highest current HP. The Energy regeneration effect of the Trace <b>Filigree Aria</b> increases to <span class="text-desc">20</span>.`,
       image: 'SkillIcon_1515_Rank1.png',
     },
     c2: {
       trace: 'Eidolon 2',
       title: `The Sun Sets in Her Eyes`,
-      content: `The Skill's ATK boost effect additionally increases by an amount equal to <span class="text-desc">12%</span> of Astra Yao's ATK. The Additional DMG dealt by the Zone increases by <span class="text-desc">80%</span>.`,
+      content: `The Skill increases the ATK of all allies by an amount equal to <span class="text-desc">12%</span> of Astra Yao's ATK. The DMG Boost effect of Talent <b class="text-pink-400">Syncopation</b> also applies to attack types other than Basic ATK.`,
       image: 'SkillIcon_1515_Rank2.png',
     },
     c3: {
@@ -320,7 +319,7 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         }
       }
       if (form.syncopation) {
-        const target = c >= 1 && form.astra_ult ? base[Stats.ALL_DMG] : base.BASIC_DMG
+        const target = c >= 2 && form.astra_ult ? base[Stats.ALL_DMG] : base.BASIC_DMG
         target.push({
           name: 'Syncopation',
           source: 'Self',
@@ -331,13 +330,6 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             name: 'Ascension 6 Passive',
             source: 'Self',
             value: 0.4,
-          })
-        }
-        if (c >= 1) {
-          base.DEF_PEN.push({
-            name: 'Eidolon 1',
-            source: 'Self',
-            value: 0.015 * form.syncopation,
           })
         }
       }
@@ -375,7 +367,7 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
         }
       }
       if (form.syncopation) {
-        const target = c >= 1 && form.astra_ult ? base[Stats.ALL_DMG] : base.BASIC_DMG
+        const target = c >= 2 && form.astra_ult ? base[Stats.ALL_DMG] : base.BASIC_DMG
         target.push({
           name: 'Syncopation',
           source: 'Astra Yao',
@@ -386,13 +378,6 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
             name: 'Ascension 6 Passive',
             source: 'Astra Yao',
             value: 0.4,
-          })
-        }
-        if (c >= 1) {
-          base.DEF_PEN.push({
-            name: 'Eidolon 1',
-            source: 'Astra Yao',
-            value: 0.015 * form.syncopation,
           })
         }
       }
@@ -442,34 +427,63 @@ const Astra = (c: number, a: { a2: boolean; a4: boolean; a6: boolean }, t: ITale
       }
 
       if (form.astra_ult) {
-        _.forEach(team, (x, i) => {
-          const s = x.BASIC_SCALING
-          const add = {
-            name: "Astra's Additional DMG",
-            value: [{ scaling: calcScaling(0.2, 0.02, ult, 'curved'), multiplier: Stats.ATK }],
-            element: Element.QUANTUM,
-            property: TalentProperty.ADD,
-            type: TalentType.NONE,
-            overrideIndex: index,
-            sum: true,
-            bonus: c >= 2 ? 0.8 : 0,
-          }
-          if (
-            _.some(s, (item) =>
-              _.includes([TalentProperty.NORMAL, TalentProperty.FUA, TalentProperty.ELATION], item.property),
-            )
-          ) {
-            s.push(add)
-          }
-          if (_.some(s, (item) => item.property === TalentProperty.SERVANT)) {
-            s.push({
-              ...add,
-              name: add.name + ` (${x.SUMMON_STATS?.NAME})`,
-            })
-          }
-          if (index === i) {
-            x.TALENT_SCALING.push(add)
-          }
+        _.forEach(team, (t, i) => {
+          _.forEach(
+            [
+              t.BASIC_SCALING,
+              t.SKILL_SCALING,
+              t.ULT_SCALING,
+              t.TALENT_SCALING,
+              t.MEMO_SKILL_SCALING,
+              t.MEMO_TALENT_SCALING,
+            ],
+            (s) => {
+              const add = {
+                name: "Astra's Additional DMG",
+                value: [{ scaling: calcScaling(0.2, 0.02, ult, 'curved'), multiplier: Stats.ATK }],
+                element: Element.QUANTUM,
+                property: TalentProperty.ADD,
+                type: TalentType.NONE,
+                overrideIndex: index,
+                sum: true,
+              }
+              if (
+                _.some(
+                  s,
+                  (item) =>
+                    _.includes([TalentProperty.NORMAL, TalentProperty.FUA, TalentProperty.ELATION], item.property) &&
+                    item.type === TalentType.BA,
+                )
+              ) {
+                s.push(add)
+              }
+              if (_.some(s, (item) => item.property === TalentProperty.SERVANT && item.type === TalentType.BA)) {
+                s.push({
+                  ...add,
+                  name: add.name + ` (${t.SUMMON_STATS?.NAME})`,
+                })
+              }
+
+              if (c >= 1) {
+                _.forEach(s, (ss) => {
+                  if (
+                    !_.includes([TalentProperty.HEAL, TalentProperty.SHIELD, TalentProperty.TRUE], ss.property) &&
+                    (ss.property !== TalentProperty.DOT || ss.detonate) &&
+                    ss.type === TalentType.BA
+                  ) {
+                    s.push({
+                      ...ss,
+                      name: `${ss.name} - Astra E1`,
+                      multiplier: (ss.multiplier || 1) * 0.24,
+                      property: TalentProperty.TRUE,
+                      break: ss.break * 0.24,
+                      chance: null,
+                    })
+                  }
+                })
+              }
+            },
+          )
         })
       }
 

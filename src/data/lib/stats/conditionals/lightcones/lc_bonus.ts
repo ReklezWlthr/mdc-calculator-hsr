@@ -1972,12 +1972,7 @@ const LightConeBonus: { id: string; scaling: (base: StatsObject, refinement: num
       base[Stats.P_ATK].push({
         name: 'Passive',
         source: `Shine Bright Like Her`,
-        value: calcRefinement(0.24, 0.6, r),
-      })
-      base[Stats.ERR].push({
-        name: 'Passive',
-        source: `Shine Bright Like Her`,
-        value: calcRefinement(0.12, 0.01, r),
+        value: calcRefinement(0.36, 0.9, r),
       })
       return base
     },

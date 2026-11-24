@@ -2911,7 +2911,7 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Slack Off',
-      detail: `Increases the wearer's CRIT DMG by {{0}}% and Energy Regeneration Rate by {{1}}%. When the wearer uses a Basic ATK, they gain <b>Snack</b>, lasting for <span class="text-desc">2</span> turns. While <b>Snack</b> is active, the wearer's ATK increases by {{2}}%. When the wearer consumes at least <span class="text-desc">200</span> Energy at once to use their Ultimate, they gain <b>Iced Drink</b>, lasting for <span class="text-desc">3</span> turns. While <b>Iced Drink</b> is active, Basic ATK and Ultimate DMG dealt by the wearer ignores {{1}}% of the target's DEF. When the wearer has both <b>Snack</b> and <b>Iced Drink</b> simultaneously, they additionally gain <b>Good Mood</b>, and Basic ATK and Ultimate DMG dealt additionally ignores {{1}}% of the target's DEF.`,
+      detail: `Increases the wearer's CRIT DMG by {{0}}% and Energy Regeneration Rate by {{1}}%. When the wearer uses a Basic ATK, they gain <b>Snack</b>, lasting for <span class="text-desc">2</span> turns. While <b>Snack</b> is active, the wearer's ATK increases by {{2}}%. At the start of battle or when the wearer uses their Ultimate, they gain <b>Iced Drink</b>, lasting for <span class="text-desc">3</span> turns. While <b>Iced Drink</b> is active, Basic ATK and Ultimate DMG dealt by the wearer ignores {{1}}% of the target's DEF. When the wearer has both <b>Snack</b> and <b>Iced Drink</b> simultaneously, they additionally gain <b>Good Mood</b>, and Basic ATK and Ultimate DMG dealt additionally ignores {{1}}% of the target's DEF.`,
       properties: [
         { base: 24, growth: 4 },
         { base: 12, growth: 2 },
@@ -2930,11 +2930,10 @@ export const LightCones = [
     beta: true,
     desc: {
       name: 'Chant',
-      detail: `Increases the wearer's ATK by {{0}}% and Energy Regeneration Rate by {{1}}%. After the wearer uses their Ultimate, if the wearer is not the character in position 1 of the team lineup, advances the action of the character in position 1 of the team lineup by <span class="text-desc">25%</span>. If this Ultimate consumes <span class="text-desc">240</span> Energy or more, the wearer gains <b>Our Melody</b>, increasing the CRIT DMG of all allies by {{2}}%, lasting for <span class="text-desc">4</span> turn(s).`,
+      detail: `Increases the wearer's ATK by {{0}}%. After the wearer uses their Ultimate, advances all allies' actions by <span class="text-desc">24%</span>, and the wearer gains <b>Our Melody</b>, which increases all allies' CRIT DMG by {{1}}%, lasting for <span class="text-desc">4</span> turn(s).`,
       properties: [
-        { base: 24, growth: 6 },
-        { base: 12, growth: 1 },
-        { base: 48, growth: 12 },
+        { base: 36, growth: 9 },
+        { base: 40, growth: 10 },
       ],
     },
   },

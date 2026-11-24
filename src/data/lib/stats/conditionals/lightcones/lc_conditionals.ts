@@ -3095,7 +3095,7 @@ export const LCTeamConditionals: IWeaponContent[] = [
         base[Stats.CRIT_DMG].push({
           name: `Our Melody`,
           source: 'Shine Bright Like Her',
-          value: calcRefinement(0.48, 0.12, r),
+          value: calcRefinement(0.4, 0.1, r),
         })
       }
       return base
